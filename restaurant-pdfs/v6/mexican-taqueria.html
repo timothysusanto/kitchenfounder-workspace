@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mexican Taqueria — KitchenFounder Operations Guide v6</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#ff4400;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(255,68,0,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #ff4400;}
+.cover-eye{color:#ff4400;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#ff4400;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #ff4400;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#ff4400,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#1a0800;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#ff4400;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#ff4400;color:#fff;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#1a0800;border:1px solid #ff4400;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#ff4400;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #ff4400;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#ff4400;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#ff4400;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#ff4400,#1a0800);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #ff4400;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#ff4400;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#ff4400;color:#fff;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#ff4400;color:#fff;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#1a0800;border:1px solid #ff4400;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#1a0800;border:1px solid #ff4400;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ffaa88;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+<div class="cover">
+<div class="cover-eye">KITCHENFOUNDЕР — OPERATIONS GUIDE V6</div>
+<h1>Mexican<br>Taqueria</h1>
+<div class="cover-tag">Masa, fire, fat, acid. Four things. Done right.</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-val">32</div><div class="kpi-label">Seats</div></div>
+<div class="kpi"><div class="kpi-val">$26</div><div class="kpi-label">Avg Spend</div></div>
+<div class="kpi"><div class="kpi-val">21%</div><div class="kpi-label">Food Cost</div></div>
+<div class="kpi"><div class="kpi-val">$13.8K</div><div class="kpi-label">Est. Monthly Net</div></div>
+</div>
+<div class="lens-card">
+<div class="lens-title">// What a Michelin-trained chef sees in Mexican taqueria cooking</div>
+<div class="lens-text">Mexican street food is built on four elements: masa, fire, fat and acid. The tortilla must be pressed from masa harina and cooked on a comal — not a flat-top, not a skillet, a comal. The char marks matter. The al pastor requires an actual vertical spit or a close approximation — the caramelisation from the rotating fat drip is the flavour. Carnitas at 21% food cost works because pork shoulder is cheap and the lard-braising method converts a tough, inexpensive cut into something that pulls apart and crisps in the pan in 90 seconds. The taqueria format succeeds commercially because the food costs are among the lowest of any cuisine category while the perceived value is high — two tacos at $4 each feel like a deal at $8 and cost $1.70 to produce.</div>
+</div>
+<div class="lens-card">
+<div class="lens-title">// What this guide does</div>
+<div class="lens-text">The US taqueria market is experiencing a quality shift. The customer who grew up eating Taco Bell now knows what a proper taco is — and they're willing to pay for it. Authentic masa. Proper al pastor. A salsa verde made with tomatillos, not green dye. The $26 average spend at 32 covers in a lean operation produces the kind of monthly net that surprises first-time operators. Low labour. High volume. Fast tickets.</div>
+<div class="lens-closer">This guide is the operating manual for doing it right.</div>
+</div>
+</div>
+<div class="page">
+<h2>SECTION 1 — ENTRÉES</h2>
+<table><tr><th>Dish</th><th>Ticket</th><th>Price</th><th>FC%</th></tr>
+<tr><td>Chips &amp; Salsa Trio — Verde, Roja, Habanero</td><td>2 min</td><td>$6.99</td><td>9%</td></tr>
+<tr><td>Guacamole — Table Side</td><td>3 min</td><td>$8.99</td><td>18%</td></tr>
+<tr><td>Elotes — Mexican Street Corn</td><td>5 min</td><td>$5.99</td><td>11%</td></tr>
+<tr><td>Queso Fundido — Melted Cheese, Chorizo</td><td>6 min</td><td>$9.99</td><td>16%</td></tr>
+<tr><td>Ceviche Tostada — Shrimp, Avocado</td><td>5 min</td><td>$9.99</td><td>20%</td></tr>
+<tr><td>Sopa de Lima — Yucatan Lime Chicken Soup</td><td>5 min</td><td>$7.99</td><td>14%</td></tr>
+</table>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Chips &amp; Salsa Trio</span></div>
+<div class="rh"><div class="rh-title">Chips &amp; Salsa Trio — Verde, Roja, Habanero</div>
+<div class="rh-meta">2 min ticket · FC: 9% · $6.99 · Best margin starter</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty (batch)</th><th>Cost/portion</th></tr>
+<tr><td>Corn tortillas, fried in-house</td><td>8 chips</td><td>$0.20</td></tr>
+<tr><td>Salsa verde (tomatillo, jalapeño, cilantro)</td><td>60ml</td><td>$0.15</td></tr>
+<tr><td>Salsa roja (roasted tomato, chipotle)</td><td>60ml</td><td>$0.12</td></tr>
+<tr><td>Habanero salsa</td><td>30ml</td><td>$0.16</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-item"><div class="fc-val">$0.63</div><div class="fc-lbl">Food Cost</div></div>
+<div class="fc-item"><div class="fc-val">$6.99</div><div class="fc-lbl">Menu Price</div></div>
+<div class="fc-item"><div class="fc-val">9%</div><div class="fc-lbl">FC%</div></div>
+<div class="fc-item"><div class="fc-val">$6.36</div><div class="fc-lbl">Gross Profit</div></div>
+</div>
+<div class="chef-tip">💡 Fry tortilla chips in-house — it takes 3 minutes and they're dramatically better than bagged. Salsas batch-made daily. This starter has the best margin on the menu — push it at every table.</div>
+</div></div>
+
+<h2>SECTION 2 — MAINS</h2>
+<table><tr><th>Dish</th><th>Price</th><th>FC%</th><th>Note</th></tr>
+<tr><td>Al Pastor Tacos 2pc — Pineapple, Onion, Cilantro</td><td>$10.99</td><td>20%</td><td>⭐ Signature</td></tr>
+<tr><td>Carnitas Tacos 2pc — Crispy Pork, Salsa Verde</td><td>$10.99</td><td>19%</td><td>⭐ Signature</td></tr>
+<tr><td>Carne Asada Tacos 2pc</td><td>$12.99</td><td>22%</td><td></td></tr>
+<tr><td>Fish Tacos 2pc — Baja Batter, Slaw</td><td>$11.99</td><td>21%</td><td></td></tr>
+<tr><td>Birria Tacos 2pc — Consommé Dip</td><td>$13.99</td><td>22%</td><td>⭐ Signature</td></tr>
+<tr><td>Veggie Tacos 2pc — Roast Cauliflower, Black Bean</td><td>$9.99</td><td>14%</td><td>Vegan</td></tr>
+<tr><td>Taco Platter — 4 Tacos, Beans, Rice</td><td>$18.99</td><td>21%</td><td></td></tr>
+<tr><td>Burrito — Choice of Protein</td><td>$14.99</td><td>20%</td><td></td></tr>
+<tr><td>Quesadilla — Oaxacan Cheese + Protein</td><td>$13.99</td><td>18%</td><td></td></tr>
+<tr><td>Torta — Mexican Sandwich, Telera Roll</td><td>$13.99</td><td>19%</td><td></td></tr>
+</table>
+</div>
+<div class="page">
+<div class="recipe">
+<div class="recipe-color-block"><span>Al Pastor Tacos ⭐</span></div>
+<div class="rh"><div class="rh-title">Al Pastor Tacos 2pc — Vertical Spit, Pineapple</div>
+<div class="rh-meta">8 min ticket · FC: 20% · $10.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty (2 tacos)</th><th>Cost</th></tr>
+<tr><td>Pork shoulder, marinated al pastor</td><td>100g</td><td>$0.70</td></tr>
+<tr><td>Corn tortillas, double-stacked</td><td>4 small</td><td>$0.30</td></tr>
+<tr><td>Pineapple, fresh slice + dice</td><td>30g</td><td>$0.15</td></tr>
+<tr><td>White onion, fine dice</td><td>20g</td><td>$0.05</td></tr>
+<tr><td>Cilantro, rough chop</td><td>5g</td><td>$0.03</td></tr>
+<tr><td>Salsa roja + lime</td><td>30ml / half</td><td>$0.15</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Al pastor marinade (batch): guajillo, ancho, chipotle chiles rehydrated and blended with achiote, pineapple juice, cumin, oregano, vinegar, garlic. Marinate sliced pork 24hr minimum.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Cook on vertical spit or — if no spit — layer in cast iron, cook in batches on high heat to develop caramelisation on edges. The char from the spit drip is the flavour. Don't skip the high heat.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Warm corn tortillas on comal both sides — 30 seconds each. Double-stack two tortillas per taco.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Top: al pastor, diced pineapple, white onion, cilantro. Salsa roja on side. Lime wedge. Serve immediately — corn tortillas dry fast.</div></div>
+</div>
+<div class="chef-tip">💡 The double tortilla is non-negotiable for street-style tacos — the single tortilla tears under the filling. Corn tortillas heated directly on the comal have a completely different texture to steamed.</div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Carnitas Tacos ⭐</span></div>
+<div class="rh"><div class="rh-title">Carnitas Tacos 2pc — Lard-Braised, Crisped</div>
+<div class="rh-meta">6 min ticket (batch prep) · FC: 19% · $10.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Pork shoulder, cubed</td><td>120g pulled</td><td>$0.75</td></tr>
+<tr><td>Lard (braising medium)</td><td>shared batch cost</td><td>$0.25</td></tr>
+<tr><td>Orange, Coke, garlic, bay, cumin</td><td>aromatics</td><td>$0.10</td></tr>
+<tr><td>Corn tortillas x4 (double-stack x2)</td><td>4 small</td><td>$0.30</td></tr>
+<tr><td>Salsa verde, onion, cilantro, lime</td><td>—</td><td>$0.23</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Batch carnitas: cube pork shoulder. Submerge in lard with orange halves, Coke, garlic, bay, cumin. Cook at <span class="temp">160°C</span> for 2.5 hours until tender. Cool in fat.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">To order: portion 120g carnitas into hot dry pan. Press down. Let it crisp on one side — 90 seconds. Flip once. You want crispy exterior, tender inside.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Load on warm double-stacked corn tortillas with salsa verde, onion, cilantro. Lime on side.</div></div>
+</div>
+<div class="chef-tip">💡 Carnitas is one of the best food-cost proteins in Mexican cooking — pork shoulder is cheap, lard can be reused 2-3 times, and batch cooking means service is 90 seconds per order.</div>
+</div></div>
+
+<h2>SECTION 3 — DESSERTS</h2>
+<table><tr><th>Dish</th><th>Price</th><th>FC%</th></tr>
+<tr><td>Churros — Cinnamon Sugar, Chocolate</td><td>$7.99</td><td>12%</td></tr>
+<tr><td>Tres Leches Cake</td><td>$7.99</td><td>11%</td></tr>
+<tr><td>Mango Sorbet — Chile Rim</td><td>$5.99</td><td>10%</td></tr>
+<tr><td>Flan — Cajeta (Goat Milk Caramel)</td><td>$6.99</td><td>9%</td></tr>
+</table>
+</div>
+<div class="page">
+<h2>SECTION 4 — DRINKS</h2>
+<div class="drink-grid">
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Frozen Margarita — House</div><div class="drink-price">$11.99 · Blanco tequila, lime, salt</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Michelada</div><div class="drink-price">$9.99 · Beer, lime, Clamato, Tajín</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Agua Fresca — Jamaica</div><div class="drink-price">$3.99 · Hibiscus, sugar, water</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Horchata</div><div class="drink-price">$3.99 · Rice, cinnamon, vanilla</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Modelo Especial</div><div class="drink-price">$6.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Tamarind Soda</div><div class="drink-price">$3.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Spicy Mezcal Paloma</div><div class="drink-price">$13.99 · Mezcal, grapefruit, jalapeño</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Mexican Hot Chocolate</div><div class="drink-price">$5.99 · Ibarra chocolate, cinnamon</div></div></div>
+</div>
+
+<h2>SECTION 5 — SERVICE TRAINING</h2>
+<div class="script-box">
+<div class="script-label">Script 01 — Welcome + Chip Salsa Push</div>
+<div class="script-text">"The chips are fried in-house — corn tortillas, this morning. The salsa trio is verde, roja and habanero. The habanero is genuinely hot. The verde is the one for the tacos. Start with that."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 02 — Al Pastor Story</div>
+<div class="script-text">"The al pastor has been marinating since yesterday — guajillo chiles, achiote, pineapple. It's the most important taco on the menu. The pineapple isn't garnish — it's part of the flavour balance. Don't skip it."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 03 — Birria Taco + Consommé</div>
+<div class="script-text">"The birria tacos come with consommé — the braising liquid the beef cooked in. You dip the taco before you eat it. It's messy. That's the point."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 04 — Margarita + Mezcal Option</div>
+<div class="script-text">"The house margarita is blanco tequila, fresh lime, triple sec. If you want something smokier, the mezcal paloma — mezcal, fresh grapefruit, jalapeño. $13.99. Very good with the carnitas."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 05 — Return Visit</div>
+<div class="script-text">"The taco special changes weekly — whatever protein we're working with. Worth coming back. Tuesday is the best day — quieter, and the al pastor has been going since Sunday."</div>
+</div>
+
+<h2>SECTION 6 — DAILY PREP SCHEDULE</h2>
+<table class="prep-table">
+<tr><th>Time</th><th>Task</th><th>Who</th></tr>
+<tr><td>08:00</td><td>Carnitas batch into lard, salsa trio prepped</td><td>Chef</td></tr>
+<tr><td>09:00</td><td>Al pastor carved/portioned, tortillas prepped</td><td>Chef</td></tr>
+<tr><td>10:00</td><td>Rice, beans, guac base, fresh limes cut</td><td>Prep</td></tr>
+<tr><td>11:00</td><td>Comal on, chip fryer ready</td><td>Chef</td></tr>
+<tr><td>11:30</td><td>Lunch service opens</td><td>All</td></tr>
+<tr><td>15:00</td><td>Reset, restock salsas, birria braise if needed</td><td>Chef</td></tr>
+<tr><td>17:00</td><td>Dinner mise en place</td><td>All</td></tr>
+<tr><td>22:00</td><td>Close, stock count, marinate next day's al pastor</td><td>Closer</td></tr>
+</table>
+</div>
+<div class="page">
+<h2>SECTION 7 — P&amp;L MODEL</h2>
+<table class="rev-table">
+<tr><th>Revenue</th><th>Daily</th><th>Weekly</th><th>Monthly</th></tr>
+<tr><td>Food Sales (tacos, mains)</td><td>$920</td><td>$5,520</td><td>$23,920</td></tr>
+<tr><td>Beverage (margaritas, beer, aguas)</td><td>$320</td><td>$1,920</td><td>$8,320</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>$1,240</strong></td><td><strong>$7,440</strong></td><td><strong>$32,240</strong></td></tr>
+</table>
+<table class="rev-table">
+<tr><th>Cost</th><th>%</th><th>Monthly</th></tr>
+<tr><td>Food Cost</td><td>21%</td><td>$6,770</td></tr>
+<tr><td>Labour</td><td>28%</td><td>$9,027</td></tr>
+<tr><td>Overheads</td><td>15%</td><td>$4,836</td></tr>
+<tr class="profit-row"><td>NET PROFIT</td><td>36%</td><td>$11,607</td></tr>
+</table>
+<div class="chef-tip">💡 The taqueria format has the best labour efficiency of any casual dining model. Two people can run a 32-seat room. The chips and salsa at 9% FC pays for itself in the first 10 tables.</div>
+
+<h2>SECTION 8 — SAFETY &amp; ALLERGENS</h2>
+<div class="safety">
+<h3>Temperature Control</h3>
+<table><tr><th>Item</th><th>Hold Temp</th><th>Max Hold</th></tr>
+<tr><td>Carnitas (cooked in lard)</td><td>Below 3°C in fat</td><td>5 days</td></tr>
+<tr><td>Al pastor (raw marinated)</td><td>Below 3°C</td><td>48 hours</td></tr>
+<tr><td>Salsas (fresh)</td><td>Below 4°C</td><td>3 days</td></tr>
+<tr><td>Birria consommé</td><td>Above 65°C service</td><td>3 days refrigerated</td></tr>
+<tr><td>Guacamole (with lime)</td><td>Below 4°C, covered</td><td>Same day only</td></tr>
+</table>
+</div>
+<div class="safety">
+<h3>Allergen Matrix</h3>
+<table><tr><th>Dish</th><th>Allergens</th></tr>
+<tr><td>Al Pastor Tacos</td><td><div class="al"><span class="a">None major</span></div></td></tr>
+<tr><td>Fish Tacos</td><td><div class="al"><span class="a">Fish</span><span class="a">Gluten</span></div></td></tr>
+<tr><td>Quesadilla</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span></div></td></tr>
+<tr><td>Burrito</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+<tr><td>Churros</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Tres Leches</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Flan</td><td><div class="al"><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Ceviche Tostada</td><td><div class="al"><span class="a">Shellfish</span><span class="a">Gluten</span></div></td></tr>
+</table>
+</div>
+<footer>KitchenFounder Operations Guide v6 · Mexican Taqueria · kitchenfounder.com · For operator use only</footer>
+</div>
+</body>
+</html>

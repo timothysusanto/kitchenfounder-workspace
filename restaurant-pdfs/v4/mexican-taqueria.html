@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mexican Taqueria — Profitable Cafe Operations Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+@media print{.page{margin:0;}}
+h1{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:#c84b1a;}
+h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#c84b1a;margin:22px 0 11px;border-bottom:2px solid #c84b1a;padding-bottom:5px;}
+h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#c84b1a;margin:16px 0 8px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#c84b1a;margin:10px 0 5px;}
+.cover{text-align:center;padding:32px 0 24px;}
+.cover-sub{font-size:12px;color:#777;letter-spacing:3px;text-transform:uppercase;margin-top:6px;}
+.cover-line{width:60px;height:3px;background:#2a7a1a;margin:16px auto;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#c84b1a;color:#fff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;}
+.info-box{background:#fff5f0;border-left:4px solid #2a7a1a;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;}
+.recipe{border:1px solid #e0d4cc;border-radius:8px;margin-bottom:16px;overflow:hidden;page-break-inside:avoid;}
+.rh{background:linear-gradient(135deg,#c84b1a,#8b2f0a);color:#fff;padding:12px 16px;}
+.rh-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;}
+.rh-sub{font-size:10px;opacity:0.85;margin-top:2px;}
+.rh-meta{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;}
+.rm{background:rgba(255,255,255,0.15);border-radius:10px;padding:2px 8px;font-size:9px;}
+.rb{padding:14px 16px;}
+.photo-box img{width:100%;height:180px;object-fit:cover;display:block;border-radius:7px;margin-bottom:12px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11.5px;}
+.it th{background:#fff5f0;color:#c84b1a;padding:6px 9px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e0d4cc;}
+.it td{padding:5px 9px;border-bottom:1px solid #f5ece8;}
+.cc{text-align:right;color:#888;}
+.step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;}
+.sn{background:#c84b1a;color:#fff;border-radius:50%;width:22px;height:22px;min-width:22px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.sn2{background:#c84b1a;color:#fff;border-radius:50%;width:26px;height:26px;min-width:26px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:8px;}
+.st{font-size:12px;line-height:1.7;color:#333;}
+.temp{background:#1a1a1a;color:#fff;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;}
+.temp.ok{background:#2a7a2a;}
+.tb{background:#fffbf5;border-left:3px solid #2a7a1a;padding:8px 12px;margin:8px 0;font-size:11.5px;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
+.a{background:#f5f5f5;border:1px solid #ddd;color:#555;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+.drink-card{border:1px solid #e0d4cc;border-radius:8px;padding:12px 14px;margin-bottom:12px;}
+.drink-card img{width:100%;height:120px;object-fit:cover;border-radius:5px;margin-bottom:8px;}
+.drink-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.drink-name{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;}
+.drink-price{background:#2a7a1a;color:#fff;border-radius:10px;padding:2px 9px;font-size:10px;font-weight:700;}
+.script-box{background:#fff5f0;border-left:4px solid #c84b1a;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;}
+.script-label{font-weight:700;font-size:10px;color:#c84b1a;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#c84b1a;color:#fff;padding:7px 10px;text-align:left;font-size:10px;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid #eee;}
+.schedule-table tr:nth-child(even) td{background:#fff5f0;}
+.revenue-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.revenue-table th{background:#c84b1a;color:#fff;padding:8px 12px;text-align:left;}
+.revenue-table td{padding:7px 12px;border-bottom:1px solid #eee;}
+.revenue-table tr:last-child td{font-weight:700;background:#fff5f0;}
+.ft{margin-top:24px;padding-top:12px;border-top:1px solid #ddd;display:flex;justify-content:space-between;font-size:9px;color:#aaa;}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="cover">
+  <div style="font-size:11px;color:#2a7a1a;letter-spacing:4px;text-transform:uppercase;font-weight:700;margin-bottom:8px;">&#9733; Operations Guide &#9733;</div>
+  <h1>Mexican Taqueria</h1>
+  <div class="cover-sub">Street soul. Cafe hustle. Serious money.</div>
+  <div class="cover-line"></div>
+  <p style="font-size:12px;color:#555;max-width:420px;margin:0 auto 16px;">A complete operations, recipe and revenue system for authentic Mexican street food in a cafe format. Built for first-time operators who respect the cuisine and want to run a genuinely profitable operation.</p>
+  <div style="font-size:10px;color:#aaa;letter-spacing:2px;">MEXICO &middot; EVERY REGION &middot; PROFITABLE FROM WEEK ONE</div>
+</div>
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">$35</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">23%</div><div class="kpi-lbl">Net Margin</div></div>
+  <div class="kpi"><div class="kpi-val">75</div><div class="kpi-lbl">Daily Covers</div></div>
+  <div class="kpi"><div class="kpi-val">$17,500</div><div class="kpi-lbl">Monthly Net</div></div>
+  <div class="kpi"><div class="kpi-val">45</div><div class="kpi-lbl">Seats</div></div>
+</div>
+<div class="info-box">Mexican cuisine is one of the most misunderstood in the world and one of the most profitable when done right. Every recipe in this guide has been costed to real market prices. The birria alone will build your reputation. The guacamole will pay your rent. The mole negro will earn your respect.</div>
+
+<h2><span class="sn2">1</span> Section One &mdash; Entrees</h2>
+<div class="info-box">Mexican starters are among the highest-margin items in any cuisine. Guacamole at 16.9% food cost and elotes at 16.4% — both deliver exceptional contribution. The ceviche is your premium item and positions the whole menu.</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Guacamole &amp; Totopos</div><div class="rh-sub">Fresh-made guacamole &middot; house tortilla chips &middot; lime</div><div class="rh-meta"><span class="rm">$12.99</span><span class="rm">Food Cost 16.9%</span><span class="rm">Cost ~$2.20</span><span class="rm">Serves 2</span><span class="rm">4 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/fresh-guacamole-avocado-tortilla-chips-mexican-restaurant-food-photography?width=800&height=360&nologo=true&seed=250" alt="Guacamole Totopos" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Hass avocado, ripe</td><td>2 whole</td><td class="cc">$1.20</td></tr><tr><td>Lime juice, fresh</td><td>1 lime</td><td class="cc">$0.20</td></tr><tr><td>White onion, fine dice</td><td>30g</td><td class="cc">$0.10</td></tr><tr><td>Fresh coriander, chopped</td><td>10g</td><td class="cc">$0.15</td></tr><tr><td>Serrano chilli, fine dice</td><td>half</td><td class="cc">$0.10</td></tr><tr><td>Salt, tomato concasse</td><td>to taste</td><td class="cc">$0.15</td></tr><tr><td>House tortilla chips</td><td>80g</td><td class="cc">$0.30</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$2.20</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Make guac to order — never batch it. Halve avocados, remove stone, scoop into molcajete or bowl. Mash with a fork leaving some chunks — a completely smooth guacamole is incorrect texture.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add lime, onion, coriander, chilli, salt, tomato. Mix gently — do not over-mix or it becomes paste. Taste. The balance is acid (lime) against fat (avocado) — the lime should cut through clearly.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve immediately in the molcajete if possible — it is a visual and cultural statement. Arrange chips around. Extra lime wedge on the side. Never refrigerate finished guacamole — serve it within 10 minutes of making.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Avocado Strategy:</strong> Buy avocados at every stage of ripeness — "eat today" and "eat in 3 days." Rotate constantly. A restaurant that runs out of guac because of avocado ripeness is a restaurant that has not planned properly. Always have 20+ avocados in rotation.</div>
+<div class="al"><span class="a">VEGAN</span><span class="a">GF</span><span class="a">TREE NUTS (check chips)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Elotes (Street Corn)</div><div class="rh-sub">Grilled corn &middot; cotija cheese &middot; chipotle mayo &middot; Tajin &middot; lime</div><div class="rh-meta"><span class="rm">$10.99</span><span class="rm">Food Cost 16.4%</span><span class="rm">Cost ~$1.80</span><span class="rm">Serves 1</span><span class="rm">8 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/elotes-mexican-street-corn-cotija-chipotle-mayo-tajin-lime-food-photography?width=800&height=360&nologo=true&seed=251" alt="Elotes" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Corn cob (fresh or frozen)</td><td>1 whole</td><td class="cc">$0.60</td></tr><tr><td>House chipotle mayo</td><td>2 tbsp</td><td class="cc">$0.30</td></tr><tr><td>Cotija cheese, crumbled</td><td>25g</td><td class="cc">$0.50</td></tr><tr><td>Tajin seasoning</td><td>1 tsp</td><td class="cc">$0.10</td></tr><tr><td>Fresh lime</td><td>1 wedge</td><td class="cc">$0.10</td></tr><tr><td>Fresh coriander</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td>Smoked paprika</td><td>pinch</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$1.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Grill corn on high heat — ideally over charcoal, or on a cast iron griddle at maximum heat. Turn every 2 minutes for 8 minutes total. You want genuine char on 30-40% of the kernels.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Brush generously with chipotle mayo while still hot — the fat from the mayo carries the chipotle flavour into every kernel.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Roll in cotija cheese. Dust with Tajin. Squeeze lime over. Garnish with coriander and a final pinch of smoked paprika. Serve on the cob with a stick inserted if you have them — it is more fun and more photogenic.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Chipotle Mayo Recipe:</strong> Blend 200g good mayo with 3 chipotle peppers in adobo sauce, 1 clove garlic, pinch of salt. Adjust heat to taste. Store refrigerated 5 days. This is one of the most versatile sauces on your menu — it goes with almost everything and takes 3 minutes to make.</div>
+<div class="al"><span class="a">DAIRY</span><span class="a">EGGS (mayo)</span><span class="a">GF</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Queso Fundido</div><div class="rh-sub">Melted Oaxacan cheese &middot; chorizo &middot; warm flour tortillas</div><div class="rh-meta"><span class="rm">$13.99</span><span class="rm">Food Cost 20%</span><span class="rm">Cost ~$2.80</span><span class="rm">Serves 2</span><span class="rm">8 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/queso-fundido-melted-cheese-chorizo-flour-tortillas-mexican-cast-iron?width=800&height=360&nologo=true&seed=252" alt="Queso Fundido" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Oaxacan cheese (or mozzarella)</td><td>150g</td><td class="cc">$1.50</td></tr><tr><td>Mexican chorizo, crumbled</td><td>60g</td><td class="cc">$0.60</td></tr><tr><td>White onion, fine dice</td><td>30g</td><td class="cc">$0.10</td></tr><tr><td>Poblano pepper, roasted, diced</td><td>40g</td><td class="cc">$0.30</td></tr><tr><td>Flour tortillas, small</td><td>3 pcs</td><td class="cc">$0.30</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$2.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Cook chorizo in a small cast iron pan until fat renders and meat is slightly crispy. Add onion and cook until soft. Add roasted poblano.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Top with shredded Oaxacan cheese. Place under broiler or in oven at <span class="temp">220C</span> for 3-4 minutes until cheese is fully melted and starting to bubble at the edges. Do not over-bake — it should be melted but still stretchy, not baked firm.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve in the cast iron pan directly to the table — the visual of bubbling cheese in a hot pan sells itself. Bring warm tortillas wrapped in a cloth napkin alongside. Offer salsa and pico de gallo on the side.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Table Side Drama:</strong> The cast iron delivery is your most theatrical moment of service. The cheese should still be bubbling slightly when it arrives. Time it so it goes from oven to table in under 90 seconds. The smell and sound drive impulse orders from neighbouring tables.</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">PORK</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Shrimp Ceviche</div><div class="rh-sub">Fresh shrimp &middot; lime &middot; cucumber &middot; habanero &middot; tostada</div><div class="rh-meta"><span class="rm">$15.99</span><span class="rm">Food Cost 23.8%</span><span class="rm">Cost ~$3.80</span><span class="rm">Serves 1</span><span class="rm">10 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/shrimp-ceviche-lime-cucumber-habanero-tostada-mexican-fresh-seafood?width=800&height=360&nologo=true&seed=253" alt="Shrimp Ceviche" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Fresh shrimp, peeled, deveined</td><td>100g</td><td class="cc">$2.20</td></tr><tr><td>Lime juice, fresh</td><td>3 limes</td><td class="cc">$0.45</td></tr><tr><td>Cucumber, fine dice</td><td>50g</td><td class="cc">$0.15</td></tr><tr><td>White onion, fine dice</td><td>30g</td><td class="cc">$0.10</td></tr><tr><td>Habanero, seeds removed, minced</td><td>quarter</td><td class="cc">$0.10</td></tr><tr><td>Coriander, chopped</td><td>10g</td><td class="cc">$0.15</td></tr><tr><td>Tomato, seeded, fine dice</td><td>40g</td><td class="cc">$0.25</td></tr><tr><td>Tostada shell</td><td>2 pcs</td><td class="cc">$0.40</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Briefly poach shrimp in seasoned water 90 seconds — do not overpoach, they must be just cooked and still tender. Immediately transfer to ice bath. Slice in half lengthways when cold.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Combine lime juice, onion, habanero, salt. Let onion macerate in lime 5 minutes — this takes the raw edge off. Add shrimp, cucumber, tomato, coriander. Toss gently. Adjust salt and acid.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve in a small bowl over crushed ice with tostadas on the side. The ceviche should be dressed but not swimming — excess lime juice should be strained. Garnish with a lime cheek and extra coriander.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Freshness is Everything:</strong> This dish requires same-day fresh shrimp. Do not serve shrimp ceviche with frozen shrimp that has been thawed — the texture is fundamentally different and guests can always tell. If you cannot source fresh shrimp on a given day, remove it from the menu.</div>
+<div class="al"><span class="a">SHELLFISH</span><span class="a">GF</span><span class="a">CELERY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Tostadas de Tinga</div><div class="rh-sub">Chicken tinga &middot; crema &middot; avocado &middot; crunchy tostada</div><div class="rh-meta"><span class="rm">$12.99</span><span class="rm">Food Cost 16.9%</span><span class="rm">Cost ~$2.20</span><span class="rm">Serves 1 (2 tostadas)</span><span class="rm">5 min service</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/chicken-tinga-tostada-crema-avocado-queso-fresco-mexican-street-food?width=800&height=360&nologo=true&seed=254" alt="Tostadas de Tinga" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (2 tostadas)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Chicken tinga (house, braised)</td><td>120g</td><td class="cc">$0.90</td></tr><tr><td>Tostada shells</td><td>2 pcs</td><td class="cc">$0.40</td></tr><tr><td>Refried beans (house)</td><td>2 tbsp</td><td class="cc">$0.15</td></tr><tr><td>Avocado, sliced</td><td>quarter</td><td class="cc">$0.30</td></tr><tr><td>Crema Mexicana</td><td>2 tbsp</td><td class="cc">$0.20</td></tr><tr><td>Queso fresco, crumbled</td><td>20g</td><td class="cc">$0.20</td></tr><tr><td>Pickled jalapeno, coriander</td><td>garnish</td><td class="cc">$0.05</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$2.20</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Reheat tinga in a small pan until piping hot. Tinga is made in advance: braise chicken thighs in a chipotle-tomato sauce until shreddable. Pull apart while warm. Refrigerates well for 3 days.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Spread thin layer of refried beans on each tostada first — this acts as the "glue" that prevents toppings from sliding. Beans must be warm.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Top with tinga, avocado slices, crema drizzle, queso fresco crumble, jalapeno, coriander. Serve immediately on a board or plate — tostadas are best within 2 minutes of assembly as the shell absorbs moisture and softens.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Batch the Tinga:</strong> Make chicken tinga in 3kg batches twice weekly — it is more flavourful on day 2. At $2.20 cost for a $12.99 dish, this is one of your best contribution items. It also works in burritos, enchiladas, and as a quick topping for other dishes. Versatility multiplies your prep efficiency.</div>
+<div class="al"><span class="a">GLUTEN (tostada)</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Sopa de Lima</div><div class="rh-sub">Yucatan lime soup &middot; crispy tortilla strips &middot; avocado &middot; coriander</div><div class="rh-meta"><span class="rm">$11.99</span><span class="rm">Food Cost 16.7%</span><span class="rm">Cost ~$2.00</span><span class="rm">Serves 1</span><span class="rm">8 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/sopa-de-lima-yucatan-lime-soup-crispy-tortilla-avocado-mexican?width=800&height=360&nologo=true&seed=255" alt="Sopa de Lima" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>House chicken broth</td><td>350ml</td><td class="cc">$0.50</td></tr><tr><td>Seville orange juice (or lime + orange)</td><td>2 tbsp</td><td class="cc">$0.20</td></tr><tr><td>Lime juice, fresh</td><td>1 lime</td><td class="cc">$0.15</td></tr><tr><td>Shredded poached chicken</td><td>60g</td><td class="cc">$0.45</td></tr><tr><td>Tomato, fire-roasted, diced</td><td>40g</td><td class="cc">$0.15</td></tr><tr><td>Crispy tortilla strips</td><td>20g</td><td class="cc">$0.20</td></tr><tr><td>Avocado, sliced</td><td>quarter</td><td class="cc">$0.30</td></tr><tr><td>Coriander, lime wedge</td><td>garnish</td><td class="cc">$0.05</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$2.00</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Bring broth to boil. Add roasted tomato, citrus juices. Simmer 3 minutes. Adjust acidity — the lime should be assertive but not puckering. This soup is defined by its citrus brightness.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add shredded chicken to hot broth. Simmer 1 minute to warm through. Do not boil the chicken — it will tighten and lose tenderness.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Ladle into warm bowl. Lay avocado slices across the top. Stack crispy tortilla strips upright in the centre so they stay crunchy above the soup line. Fresh coriander and lime wedge. Serve immediately.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Regional Pride:</strong> Sopa de Lima is from the Yucatan Peninsula — one of Mexico's most distinctive regional cuisines. Most Mexican restaurants serve a generic chicken soup. Yours tells a story. Train your staff to say "this is from the Yucatan — the citrus profile is completely different to what most people expect from Mexican soup."</div>
+<div class="al"><span class="a">GLUTEN (tortilla)</span><span class="a">GF-ADAPTABLE</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">2</span> Section Two &mdash; Mains</h2>
+<div class="info-box">The main event. Birria tacos will define your reputation in the first month. The mole negro will earn your respect. The carne asada will drive your Friday nights. Build each of these carefully and they become the reason people tell their friends.</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Birria Tacos</div><div class="rh-sub">8-hour braised beef cheek &middot; Oaxacan cheese &middot; consomme dip &middot; 3 tacos</div><div class="rh-meta"><span class="rm">$19.99</span><span class="rm">Food Cost 24%</span><span class="rm">Cost ~$4.80</span><span class="rm">Serves 1</span><span class="rm">10 min service</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/birria-tacos-beef-cheek-consomme-dip-oaxacan-cheese-crispy-red-mexican-street-food?width=800&height=360&nologo=true&seed=256" alt="Birria Tacos" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (3 tacos)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Braised beef cheek (birria)</td><td>180g</td><td class="cc">$2.40</td></tr><tr><td>Corn tortillas</td><td>3 pcs</td><td class="cc">$0.30</td></tr><tr><td>Oaxacan cheese, shredded</td><td>60g</td><td class="cc">$0.60</td></tr><tr><td>Birria consomme (braising liquid)</td><td>150ml</td><td class="cc">$0.30</td></tr><tr><td>White onion + coriander</td><td>2 tbsp each</td><td class="cc">$0.15</td></tr><tr><td>Lime wedge, salsa roja</td><td>garnish</td><td class="cc">$0.15</td></tr><tr><td>Cooking fat for tortillas</td><td>1 tsp</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$4.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Dip corn tortillas briefly in the warm consomme fat layer. Press onto a hot comal or griddle — they should sizzle immediately. Add shredded birria and Oaxacan cheese. Fold in half and press gently.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Cook 2 minutes each side until the tortilla is crispy and cheese is fully melted. The exterior should be crunchy, rust-red from the chilli-stained consomme. This is the visual that drives social media.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve 3 tacos on a plate or board. Pour hot consomme into a small dipping cup on the side. Top tacos with onion, coriander, lime. Salsa roja on the side. Instruct guests to dip the taco — many will not know the format.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Birria Braise (batch):</strong> Sear beef cheek in batches. Braise 8 hours in a sauce of dried guajillo, ancho, pasilla chillies + tomato + onion + garlic + spices at 150C. Pull and shred warm. Reserve ALL braising liquid — this is your consomme. Make 5kg batches twice weekly. The birria improves significantly when reheated in its own liquid.</div>
+<div class="al"><span class="a">GLUTEN (check tortilla)</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Al Pastor Tacos</div><div class="rh-sub">Achiote marinated pork &middot; pineapple &middot; coriander &middot; onion &middot; 3 tacos</div><div class="rh-meta"><span class="rm">$17.99</span><span class="rm">Food Cost 20%</span><span class="rm">Cost ~$3.60</span><span class="rm">Serves 1</span><span class="rm">8 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/al-pastor-tacos-achiote-pork-pineapple-corn-tortilla-mexican-street-food?width=800&height=360&nologo=true&seed=257" alt="Al Pastor Tacos" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (3 tacos)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Pork shoulder, al pastor marinated</td><td>160g</td><td class="cc">$1.60</td></tr><tr><td>Corn tortillas</td><td>3 pcs</td><td class="cc">$0.30</td></tr><tr><td>Fresh pineapple, grilled</td><td>40g</td><td class="cc">$0.40</td></tr><tr><td>White onion, fine dice</td><td>2 tbsp</td><td class="cc">$0.10</td></tr><tr><td>Fresh coriander</td><td>2 tbsp</td><td class="cc">$0.10</td></tr><tr><td>Salsa verde</td><td>2 tbsp</td><td class="cc">$0.30</td></tr><tr><td>Lime wedge</td><td>1</td><td class="cc">$0.10</td></tr><tr><td>Chile de arbol salsa</td><td>side</td><td class="cc">$0.20</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.60</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Al pastor marinade: dried guajillo + ancho chillies + achiote paste + orange juice + vinegar + spices, blended smooth. Marinate pork shoulder slices minimum 24 hours. The achiote gives the deep red-orange colour.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Cook marinated pork on a very hot flat-top griddle in a thin layer — you want caramelisation and slight char on the edges. Work quickly in batches. The sugars from the marinade and pineapple create the characteristic caramelised exterior.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Warm tortillas on the comal. Fill each with pork, then add grilled pineapple, onion, coriander. Drizzle salsa verde. Lime on the side. The sweet pineapple acid is essential — do not skip it.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Volume Production:</strong> Without a trompo (vertical rotisserie), cook al pastor in thin marinated sheets on a very hot flat-top. The key is high heat and not overcrowding — you need the Maillard reaction, not steaming. Work in 100g batches maximum.</div>
+<div class="al"><span class="a">GF</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Mole Negro Chicken</div><div class="rh-sub">3-day mole negro sauce &middot; chicken thigh &middot; Mexican rice &middot; plantain</div><div class="rh-meta"><span class="rm">$22.99</span><span class="rm">Food Cost 25.2%</span><span class="rm">Cost ~$5.80</span><span class="rm">Serves 1</span><span class="rm">12 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/mole-negro-chicken-thigh-mexican-rice-plantain-dark-sauce-oaxacan?width=800&height=360&nologo=true&seed=258" alt="Mole Negro Chicken" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Chicken thigh, bone-in</td><td>200g</td><td class="cc">$1.40</td></tr><tr><td>Mole negro sauce (house, 3-day)</td><td>100ml</td><td class="cc">$2.00</td></tr><tr><td>Mexican red rice</td><td>180g cooked</td><td class="cc">$0.40</td></tr><tr><td>Fried plantain slices</td><td>60g</td><td class="cc">$0.50</td></tr><tr><td>Sesame seeds, white onion</td><td>garnish</td><td class="cc">$0.20</td></tr><tr><td>Tortilla (1, warmed)</td><td>1 pcs</td><td class="cc">$0.10</td></tr><tr><td>Crema</td><td>1 tbsp</td><td class="cc">$0.20</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$5.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Season and roast chicken thigh at <span class="temp">200C</span> until skin is golden and internal temperature reaches <span class="temp ok">74C</span>. Rest 5 minutes. The skin should be rendered and crispy.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Heat mole negro in a small saucepan — it should flow like a thick sauce, not paste. Add a splash of chicken broth if it has thickened in storage. Taste and adjust salt.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Pool mole on the plate. Place chicken thigh in the centre, nestled in the mole. Rice on one side, 3 plantain slices on the other. Sesame seeds over the chicken. Crema drizzle. Warm tortilla wrapped in paper on the side.</div></div>
+</div>
+</div>
+<div class="tb"><strong>The Mole Investment:</strong> A proper mole negro takes 3 days — 30+ ingredients including multiple dried chillies, charred tortilla, dark chocolate, and spices. Make it in a 4L batch, refrigerate up to 5 days, freeze the rest. The complexity is the point — no guest can make this at home. This dish is your proof of seriousness.</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">TREE NUTS</span><span class="a">SESAME</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Carne Asada Plate</div><div class="rh-sub">Grilled skirt steak &middot; Mexican rice &middot; black beans &middot; guacamole &middot; pico</div><div class="rh-meta"><span class="rm">$24.99</span><span class="rm">Food Cost 24.8%</span><span class="rm">Cost ~$6.20</span><span class="rm">Serves 1</span><span class="rm">12 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/carne-asada-grilled-skirt-steak-mexican-rice-black-beans-guacamole-platter?width=800&height=360&nologo=true&seed=259" alt="Carne Asada Plate" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Skirt steak, marinated</td><td>200g</td><td class="cc">$3.80</td></tr><tr><td>Mexican red rice</td><td>150g cooked</td><td class="cc">$0.35</td></tr><tr><td>Black beans, seasoned</td><td>100g</td><td class="cc">$0.25</td></tr><tr><td>Fresh guacamole</td><td>60g</td><td class="cc">$0.40</td></tr><tr><td>Pico de gallo</td><td>50g</td><td class="cc">$0.30</td></tr><tr><td>Flour tortillas</td><td>2 pcs</td><td class="cc">$0.60</td></tr><tr><td>Crema, lime</td><td>garnish</td><td class="cc">$0.20</td></tr><tr><td>Jalape&ntilde;o, coriander</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$6.20</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Marinate skirt steak minimum 4 hours in citrus (lime + orange), garlic, cumin, oregano, oil. The acid tenderises the muscle fibres — essential for skirt.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Grill on maximum heat — skirt steak must be cooked fast and hot. 3 minutes per side for medium. <span class="temp ok">Internal 55C</span> for medium. Rest 3 minutes mandatory. Cut against the grain — if you cut with the grain it becomes chewy regardless of cook.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Fan sliced steak on the plate. Build rice, beans, guac, pico in individual sections around it. Tortillas wrapped in paper alongside. This is a generous, abundant plate — it should look like a full Mexican table.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Friday Night Driver:</strong> The carne asada plate at $24.99 is your highest-ticket dinner item. Position it as a Friday special — "Asada Fridays." Create anticipation on Thursday social posts. At 24.8% food cost on your highest ticket item, this is efficient revenue. Run it as a permanent Friday feature.</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">GF-ADAPTABLE (corn tortilla)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Carnitas Burrito</div><div class="rh-sub">Slow-cooked pork &middot; black beans &middot; rice &middot; pico de gallo &middot; sour cream</div><div class="rh-meta"><span class="rm">$17.99</span><span class="rm">Food Cost 21.1%</span><span class="rm">Cost ~$3.80</span><span class="rm">Serves 1</span><span class="rm">6 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/carnitas-burrito-cross-section-pork-beans-rice-guacamole-mexican?width=800&height=360&nologo=true&seed=260" alt="Carnitas Burrito" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Carnitas pork (slow cooked)</td><td>150g</td><td class="cc">$1.50</td></tr><tr><td>Large flour tortilla (30cm)</td><td>1</td><td class="cc">$0.40</td></tr><tr><td>Mexican rice, cooked</td><td>100g</td><td class="cc">$0.25</td></tr><tr><td>Black beans, seasoned</td><td>80g</td><td class="cc">$0.20</td></tr><tr><td>Pico de gallo</td><td>50g</td><td class="cc">$0.30</td></tr><tr><td>Sour cream</td><td>2 tbsp</td><td class="cc">$0.30</td></tr><tr><td>Cheese, shredded</td><td>30g</td><td class="cc">$0.30</td></tr><tr><td>Guacamole (small portion)</td><td>30g</td><td class="cc">$0.25</td></tr><tr><td>Jalape&ntilde;o, hot sauce</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Warm tortilla on the griddle — 20 seconds each side until pliable. Do not crisp it. A warm, pliable tortilla wraps without tearing; a cold tortilla cracks.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Place in the lower third of the tortilla in this order: rice, beans, carnitas, pico, sour cream, cheese, guac. Do not overfill — the total filling weight should not exceed 400g or the wrap will burst.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Fold sides in first, then roll from the bottom in one tight motion. Press firmly. Place seam-side down on the griddle for 90 seconds to seal and crisp. Cut in half diagonally — the cross-section is your photograph.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Carnitas Production:</strong> Braise pork shoulder in lard (or oil), orange juice, lime, garlic, cumin, oregano at 160C for 4-5 hours. Pull apart and crisp the shreds in a hot pan before service — this "confit and crisp" method gives you both juicy interior and caramelised exterior. Make 4kg batches twice weekly.</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">PORK</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Enchiladas Verdes</div><div class="rh-sub">Chicken &middot; tomatillo salsa verde &middot; crema &middot; queso fresco &middot; 3 enchiladas</div><div class="rh-meta"><span class="rm">$17.99</span><span class="rm">Food Cost 18.9%</span><span class="rm">Cost ~$3.40</span><span class="rm">Serves 1</span><span class="rm">10 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/enchiladas-verdes-tomatillo-sauce-chicken-crema-queso-fresco-mexican?width=800&height=360&nologo=true&seed=261" alt="Enchiladas Verdes" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (3 enchiladas)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Shredded chicken (poached thigh)</td><td>150g</td><td class="cc">$1.10</td></tr><tr><td>Corn tortillas</td><td>3 pcs</td><td class="cc">$0.30</td></tr><tr><td>Salsa verde (tomatillo, house)</td><td>200ml</td><td class="cc">$0.60</td></tr><tr><td>Crema Mexicana</td><td>3 tbsp</td><td class="cc">$0.30</td></tr><tr><td>Queso fresco, crumbled</td><td>40g</td><td class="cc">$0.40</td></tr><tr><td>White onion, coriander</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td>Refried beans (side)</td><td>60g</td><td class="cc">$0.15</td></tr><tr><td>Sour cream</td><td>1 tbsp</td><td class="cc">$0.15</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.40</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Warm salsa verde in a wide shallow pan. Dip each corn tortilla briefly in the warm salsa — 3 seconds, then transfer to griddle. This softens the tortilla so it rolls without cracking.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Place 50g shredded chicken in centre of each tortilla. Roll tightly and place seam-side down in a baking dish. Pour remaining salsa verde over all 3. Bake at <span class="temp">190C</span> 8 minutes until sauce bubbles at edges.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Remove from oven. Drizzle crema in a zigzag. Crumble queso fresco over. Add raw onion and coriander. Serve in the baking dish or transfer to a warm plate. Refried beans on the side.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Salsa Verde Production:</strong> Roast tomatillos, onion, garlic, serrano chilli under the broiler until charred. Blend with coriander, salt, water. The char is essential — a raw tomatillo salsa is flat and acidic. The roasting creates a deeper, slightly smoky green sauce. Make 2L batches every 2 days.</div>
+<div class="al"><span class="a">GLUTEN (check tortilla)</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Pozole Rojo</div><div class="rh-sub">Slow pork &middot; hominy corn &middot; guajillo broth &middot; tostadas &middot; cabbage</div><div class="rh-meta"><span class="rm">$18.99</span><span class="rm">Food Cost 20%</span><span class="rm">Cost ~$3.80</span><span class="rm">Serves 1</span><span class="rm">10 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/pozole-rojo-hominy-pork-red-broth-mexican-soup-tostadas-cabbage?width=800&height=360&nologo=true&seed=262" alt="Pozole Rojo" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Pork shoulder, shredded</td><td>120g</td><td class="cc">$1.20</td></tr><tr><td>Hominy corn (canned, drained)</td><td>100g</td><td class="cc">$0.40</td></tr><tr><td>Pozole broth (guajillo + pork)</td><td>400ml</td><td class="cc">$0.80</td></tr><tr><td>Shredded cabbage, raw</td><td>40g</td><td class="cc">$0.15</td></tr><tr><td>Tostada shells</td><td>2 pcs</td><td class="cc">$0.30</td></tr><tr><td>Radish, sliced, lime, oregano</td><td>garnish</td><td class="cc">$0.30</td></tr><tr><td>Chilli flakes, avocado</td><td>optional</td><td class="cc">$0.25</td></tr><tr><td>Onion, coriander</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.80</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Make pozole broth in large batches: rehydrate and toast guajillo chillies, blend with tomato, garlic, onion, cumin. Strain. Combine with pork broth. Simmer 30 minutes. Season well — the broth carries the whole dish.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add shredded pork and hominy to hot broth. Simmer 5 minutes to unite flavours. Taste — it should be rich, slightly smoky from the guajillo, deeply savoury.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Ladle into a wide, deep bowl. Build the garnishes on top: cabbage in one section, radish in another, onion in a third. Tostadas propped against the bowl edge. Lime, oregano, chilli flakes on the side. Guests add their own — this interactive garnishing is part of the pozole ritual.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Pozole is Ritual Food:</strong> In Mexico, pozole is served at celebrations, family gatherings, late nights after events. Position it as your "Sunday special" or "cold weather hero." The toppings laid out at the table feel generous and communal. It photographs beautifully and drives regulars who want comfort.</div>
+<div class="al"><span class="a">GLUTEN (tostada)</span><span class="a">PORK</span><span class="a">GF-ADAPTABLE</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Baja Fish Tacos</div><div class="rh-sub">Beer-battered fish &middot; slaw &middot; chipotle crema &middot; lime &middot; 3 tacos</div><div class="rh-meta"><span class="rm">$17.99</span><span class="rm">Food Cost 20%</span><span class="rm">Cost ~$3.60</span><span class="rm">Serves 1</span><span class="rm">8 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/baja-fish-tacos-beer-battered-slaw-chipotle-crema-corn-tortilla-lime?width=800&height=360&nologo=true&seed=263" alt="Baja Fish Tacos" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (3 tacos)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>White fish (flathead or basa), pieces</td><td>150g</td><td class="cc">$1.80</td></tr><tr><td>Beer batter (house)</td><td>60ml batter</td><td class="cc">$0.20</td></tr><tr><td>Corn tortillas</td><td>3 pcs</td><td class="cc">$0.30</td></tr><tr><td>Shredded cabbage slaw</td><td>60g</td><td class="cc">$0.20</td></tr><tr><td>Chipotle crema</td><td>2 tbsp</td><td class="cc">$0.30</td></tr><tr><td>Pico de gallo</td><td>40g</td><td class="cc">$0.30</td></tr><tr><td>Lime wedge, coriander, avocado</td><td>garnish</td><td class="cc">$0.50</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.60</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Make beer batter: flour, cold beer, pinch of salt, baking powder. The batter should be the consistency of thin pancake batter — not thick. Cold batter creates a crunchier fry.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Fry at <span class="temp">180C</span> for 3-4 minutes until batter is deeply golden and fish is <span class="temp ok">63C internal</span>. Drain on paper. Season immediately with salt and a squeeze of lime.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Warm tortillas on a dry comal. Build each taco: slaw first (creates a bed that prevents sogginess), then fish, then chipotle crema drizzle, then pico. Coriander and a lime wedge. Serve immediately — battered fish loses its crunch in 3 minutes.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Speed Service Note:</strong> Baja tacos are a fast item — 8 minutes from order to table. During lunch rush they are a revenue engine. Position them as your quickest main on the menu. "In a rush? The fish tacos are 8 minutes and they are honestly our most popular item on hot days."</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">FISH</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Chiles Rellenos</div><div class="rh-sub">Stuffed poblano &middot; walnut cream sauce &middot; pomegranate &middot; Oaxacan cheese</div><div class="rh-meta"><span class="rm">$19.99</span><span class="rm">Food Cost 21%</span><span class="rm">Cost ~$4.20</span><span class="rm">Serves 1 (2 chiles)</span><span class="rm">15 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/chiles-rellenos-stuffed-poblano-walnut-cream-pomegranate-mexican-elegant?width=800&height=360&nologo=true&seed=264" alt="Chiles Rellenos" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (2 chiles)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Poblano peppers, large</td><td>2</td><td class="cc">$0.80</td></tr><tr><td>Oaxacan cheese filling</td><td>100g</td><td class="cc">$1.00</td></tr><tr><td>Egg batter (2 whites beaten stiff)</td><td>2 eggs</td><td class="cc">$0.50</td></tr><tr><td>Walnut cream sauce (nogada)</td><td>80ml</td><td class="cc">$1.00</td></tr><tr><td>Pomegranate seeds</td><td>2 tbsp</td><td class="cc">$0.40</td></tr><tr><td>Fresh parsley</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td>Flour for dusting</td><td>2 tbsp</td><td class="cc">$0.10</td></tr><tr><td>Frying oil</td><td>cost</td><td class="cc">$0.30</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$4.20</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Char poblanos directly over gas flame or under broiler until fully blackened on all sides. Seal in a bag 10 minutes — the steam loosens the skin. Peel carefully, cut a small slit, remove seeds without tearing the pepper.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Stuff with Oaxacan cheese. Pin closed with a toothpick. Dust lightly with flour. Dip in stiffly beaten egg whites (not yolks). Fry in 170C oil turning gently until golden all over — about 3-4 minutes. The egg batter should be light and airy, not dense.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Plate 2 chiles. Pour walnut cream sauce (nogada) over. Scatter pomegranate seeds and fresh parsley. This is Mexico's national dish in its most elegant form — red, white, and green: the colours of the flag.</div></div>
+</div>
+</div>
+<div class="tb"><strong>National Dish Story:</strong> Chiles en Nogada was created by nuns in Puebla in 1821 to celebrate Mexican independence. The red, white, and green colours match the Mexican flag. This story sells the dish. Every staff member should know it and tell it. "This is the dish that represents Mexico — created for the first president after independence."</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">EGGS</span><span class="a">TREE NUTS (walnut)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Tamales</div><div class="rh-sub">Pork or cheese &amp; jalape&ntilde;o &middot; masa dough &middot; corn husk &middot; salsa roja &middot; 2 piece</div><div class="rh-meta"><span class="rm">$15.99</span><span class="rm">Food Cost 17.5%</span><span class="rm">Cost ~$2.80</span><span class="rm">Serves 1</span><span class="rm">8 min service</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/tamales-corn-husk-masa-pork-salsa-roja-mexican-traditional-food?width=800&height=360&nologo=true&seed=265" alt="Tamales" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (2 tamales)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Masa dough (house or maseca)</td><td>160g</td><td class="cc">$0.40</td></tr><tr><td>Pork filling or cheese+jalap.</td><td>60g per tamal</td><td class="cc">$0.80</td></tr><tr><td>Corn husks, soaked</td><td>4 husks</td><td class="cc">$0.10</td></tr><tr><td>Salsa roja</td><td>80ml</td><td class="cc">$0.40</td></tr><tr><td>Crema, queso fresco</td><td>garnish</td><td class="cc">$0.30</td></tr><tr><td>Coriander</td><td>garnish</td><td class="cc">$0.10</td></tr><tr><td>Lard or butter for masa</td><td>20g</td><td class="cc">$0.20</td></tr><tr><td>Chicken broth for masa</td><td>50ml</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$2.80</strong></td></tr></table></div>
+<div><h4>Method — make in large batches</h4>
+<div class="step"><div class="sn">1</div><div class="st">Masa dough: beat lard until fluffy, add maseca, broth, salt, baking powder. Dough should be soft and spreadable — take a ball of masa and drop it in water; it should float. If it sinks, add more fat.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Spread masa on soaked corn husk, leaving borders. Place filling in centre. Fold husk to enclose masa around filling, fold up the bottom. Steam in a tamalera for 45-90 minutes until masa pulls cleanly from husk. Make 50+ at a time.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Reheat individual tamales in steam for 8 minutes. Serve in their husk on the plate — guests unwrap at the table, which is part of the experience. Spoon salsa roja over. Crema drizzle, queso fresco, coriander.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Batch Economics:</strong> Tamales take 3+ hours to make in volume, but freeze perfectly for 3 months. One big tamale-making day (aim for 200-300) sets you up for weeks of service at $2.80 cost. The steam reheat is 8 minutes. This is your lowest-effort, highest-margin production item. Make them in bulk, freeze in pairs.</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">PORK</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">3</span> Section Three &mdash; Desserts</h2>
+<div class="info-box">Mexican desserts are underrated money-makers. Churros at 12% food cost, tres leches at 15.6% — both are crowd pleasers with serious margins. Plant the churro suggestion when you take every main course order.</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Churros</div><div class="rh-sub">Fried choux dough &middot; cinnamon sugar &middot; dark chocolate sauce</div><div class="rh-meta"><span class="rm">$9.99</span><span class="rm">Food Cost 12%</span><span class="rm">Cost ~$1.20</span><span class="rm">Serves 1 (5 churros)</span><span class="rm">6 min</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/churros-cinnamon-sugar-chocolate-dipping-sauce-mexican-dessert-golden?width=800&height=360&nologo=true&seed=266" alt="Churros" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Churro dough (choux base)</td><td>150g</td><td class="cc">$0.30</td></tr><tr><td>Cinnamon sugar mix</td><td>3 tbsp</td><td class="cc">$0.10</td></tr><tr><td>Dark chocolate sauce</td><td>45ml</td><td class="cc">$0.50</td></tr><tr><td>Frying oil</td><td>cost</td><td class="cc">$0.20</td></tr><tr><td>Dulce de leche (optional drizzle)</td><td>1 tbsp</td><td class="cc">$0.10</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$1.20</strong></td></tr></table></div>
+<div><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Churro dough: bring water, butter, salt to boil. Add flour in one go, beat vigorously off heat until dough pulls from sides. Cool slightly, beat in eggs one at a time. Pipe through a large star nozzle.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pipe directly into 180C oil in 12-15cm lengths. Cut with scissors. Fry 3-4 minutes, turning once, until deep golden and crispy throughout. Do not crowd the fryer.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Toss immediately in cinnamon sugar while hot. Serve in a basket or on parchment. Chocolate sauce in a ramekin on the side. The churros must be served immediately — they lose crunch within 5 minutes.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Service Timing:</strong> Churros are made to order — this is their main selling point. "Our churros come out fresh to order" is the upsell line that converts. When you plant the dessert at mains time, say: "Just so you know, our churros come out fresh and they take 6 minutes — want me to put them in now so they are ready when you finish your main?"</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Tres Leches Cake</div><div class="rh-sub">Triple milk-soaked sponge &middot; whipped cream &middot; cinnamon</div><div class="rh-meta"><span class="rm">$8.99</span><span class="rm">Food Cost 15.6%</span><span class="rm">Cost ~$1.40</span><span class="rm">Serves 1</span><span class="rm">2 min service</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/tres-leches-cake-whipped-cream-cinnamon-Mexican-dessert-slice?width=800&height=360&nologo=true&seed=267" alt="Tres Leches" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (per portion)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Sponge cake base</td><td>100g</td><td class="cc">$0.30</td></tr><tr><td>Evaporated milk</td><td>60ml</td><td class="cc">$0.25</td></tr><tr><td>Condensed milk</td><td>40ml</td><td class="cc">$0.30</td></tr><tr><td>Heavy cream (for soak)</td><td>40ml</td><td class="cc">$0.25</td></tr><tr><td>Whipped cream topping</td><td>40ml</td><td class="cc">$0.20</td></tr><tr><td>Ground cinnamon</td><td>pinch</td><td class="cc">$0.05</td></tr><tr><td>Fresh strawberry or cherry</td><td>garnish</td><td class="cc">$0.05</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$1.40</strong></td></tr></table></div>
+<div><h4>Method — batch production</h4>
+<div class="step"><div class="sn">1</div><div class="st">Bake vanilla sponge in a 30x20cm tray until springy. While still warm, poke holes all over with a skewer. The holes are the delivery mechanism for the milk soak.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Mix the three milks together. Pour slowly and evenly over the warm, holed sponge. The sponge will absorb every drop — this takes 30 minutes of refrigeration. Do not rush; the soak makes the dish.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Top with a generous layer of lightly sweetened whipped cream. Refrigerate minimum 4 hours before serving. Cut portions as ordered. Dust with cinnamon at service. Garnish with a berry.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Ahead Production:</strong> Tres leches improves for 24 hours as the milk soak fully saturates. Make a full tray the morning before a busy weekend. Cut 12-16 portions per tray. At $1.40 cost, a full tray at $8.99 per slice generates $107-143 revenue from one 40-minute prep session.</div>
+<div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Flan de Cajeta</div><div class="rh-sub">Goat milk caramel custard &middot; toasted pepitas</div><div class="rh-meta"><span class="rm">$8.99</span><span class="rm">Food Cost 13.3%</span><span class="rm">Cost ~$1.20</span><span class="rm">Serves 1</span><span class="rm">2 min service</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/flan-de-cajeta-goat-milk-caramel-Mexican-custard-elegant-dessert?width=800&height=360&nologo=true&seed=268" alt="Flan de Cajeta" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients (per flan)</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Eggs + yolks</td><td>2 whole + 1 yolk</td><td class="cc">$0.40</td></tr><tr><td>Goat milk (or full cream)</td><td>200ml</td><td class="cc">$0.50</td></tr><tr><td>Cajeta (goat milk caramel)</td><td>30ml</td><td class="cc">$0.30</td></tr><tr><td>Sugar for caramel base</td><td>30g</td><td class="cc">$0.05</td></tr><tr><td>Toasted pepitas (pumpkin seeds)</td><td>10g</td><td class="cc">$0.10</td></tr><tr><td>Vanilla extract</td><td>2ml</td><td class="cc">$0.05</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$1.40</strong></td></tr></table></div>
+<div><h4>Method — batch of 12 in ramekins</h4>
+<div class="step"><div class="sn">1</div><div class="st">Make dry caramel: heat sugar in a heavy pan until deep amber. Pour into ramekins immediately and swirl to coat the base. Work fast — caramel sets in seconds.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Beat eggs, yolks, cajeta, vanilla until smooth. Warm milk gently, whisk into egg mixture. Strain through fine sieve. Pour into caramel-coated ramekins.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Bake in a bain-marie (water bath) at <span class="temp">160C</span> for 35-40 minutes until set with a slight wobble. Refrigerate minimum 4 hours. To serve, run a knife around the edge, invert onto plate — the caramel pools around the flan. Scatter toasted pepitas. A showstopper unmould.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Cajeta vs Regular Caramel:</strong> Cajeta is made from goat milk — it has a slightly tangy, more complex flavour than regular dulce de leche. If you cannot source cajeta, use dulce de leche. But cajeta is the authentic choice and the story sells: "It is made with goat milk caramel from Celaya — the cajeta capital of Mexico."</div>
+<div class="al"><span class="a">DAIRY</span><span class="a">EGGS</span><span class="a">GF</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh"><div class="rh-title">Mango Paleta</div><div class="rh-sub">House mango-chilli ice pop &middot; Tajin rim &middot; lime</div><div class="rh-meta"><span class="rm">$5.99</span><span class="rm">Food Cost 10%</span><span class="rm">Cost ~$0.60</span><span class="rm">Serves 1</span><span class="rm">1 min service</span></div></div>
+<div class="rb">
+<div class="photo-box"><img src="https://image.pollinations.ai/prompt/mango-paleta-chilli-ice-pop-tajin-lime-mexican-street-dessert?width=800&height=360&nologo=true&seed=269" alt="Mango Paleta" loading="lazy"/></div>
+<div class="two-col">
+<div><h4>Ingredients</h4><table class="it"><tr><th>Item</th><th>Qty</th><th class="cc">Cost</th></tr><tr><td>Fresh mango puree</td><td>100ml</td><td class="cc">$0.30</td></tr><tr><td>Lime juice</td><td>1 tbsp</td><td class="cc">$0.10</td></tr><tr><td>Sugar or agave</td><td>2 tsp</td><td class="cc">$0.05</td></tr><tr><td>Tajin chilli powder</td><td>pinch</td><td class="cc">$0.05</td></tr><tr><td>Chilli flakes (optional extra heat)</td><td>pinch</td><td class="cc">$0.05</td></tr><tr><td>Popsicle stick</td><td>1</td><td class="cc">$0.05</td></tr><tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$0.60</strong></td></tr></table></div>
+<div><h4>Method — batch of 20</h4>
+<div class="step"><div class="sn">1</div><div class="st">Blend mango puree, lime juice, sugar, salt until smooth. Taste — it should be vibrantly sweet and citrusy with a clean mango flavour. Add chilli flakes if a spicier version is desired.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pour into popsicle moulds. Insert sticks. Freeze minimum 6 hours. Paletas keep for 3 months frozen. Make 40-50 at a time.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">To serve: dip briefly in water to release from mould. Sprinkle Tajin on the sides immediately. Serve on a small plate with a lime wedge. The Tajin dusting must happen at service — pre-dusted paletas get sticky.</div></div>
+</div>
+</div>
+<div class="tb"><strong>Paleta Varieties:</strong> Once you have the base system, make 3-4 flavours simultaneously — tamarind-chilli, coconut, watermelon-lime. Keep 20-30 of each in the freezer. At $0.60 cost and $5.99 sell price, paletas are a near-zero-effort revenue stream. Offer them as a "quick cool-down" item to guests who are deciding on dessert.</div>
+<div class="al"><span class="a">VEGAN</span><span class="a">GF</span><span class="a">MARGIN HERO</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">4</span> Section Four &mdash; Drinks</h2>
+<div class="info-box">Mexican beverages are some of the most distinctive in the world — and among the most profitable. Agua fresca at under 10% food cost, horchata at 12%, tepache at 8%. These are not afterthought drinks; they are the cultural centrepiece of the Mexican cafe experience.</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/agua-de-jamaica-hibiscus-drink-mexican-red-cold-refreshing?width=800&height=220&nologo=true&seed=270" alt="Agua de Jamaica" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Agua de Jamaica</span><span class="drink-price">$5.00</span></div>
+<p>Hibiscus flower agua fresca — Mexico's most iconic non-alcoholic drink. Simmer 30g dried hibiscus flowers in 1L water with sugar and a cinnamon stick for 10 minutes. Strain, cool, dilute to taste. Serve over ice in a tall glass. Deep crimson, tart, floral. Food cost $0.40 = 8%. Your single most-ordered beverage when recommended proactively.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/horchata-rice-milk-cinnamon-vanilla-mexican-drink-cold?width=800&height=220&nologo=true&seed=271" alt="Horchata" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Horchata</span><span class="drink-price">$5.00</span></div>
+<p>Traditional rice milk drink with cinnamon and vanilla. Soak 200g long-grain rice + 1 cinnamon stick in 500ml water overnight. Blend until smooth, add 500ml more water, vanilla, sugar. Strain through muslin. Serve ice cold. Creamy, naturally sweet, deeply satisfying. Food cost $0.50 = 10%. Pairs perfectly with spicy mains — recommend it with the birria tacos or chiles rellenos.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/tamarindo-fresco-sweet-sour-tamarind-drink-Mexican-cold?width=800&height=220&nologo=true&seed=272" alt="Tamarindo Fresco" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Tamarindo Fresco</span><span class="drink-price">$5.50</span></div>
+<p>Sweet-sour tamarind agua fresca with a hint of chilli. Dissolve tamarind paste in hot water, strain, sweeten, add a pinch of chilli and salt. Serve over ice with a Tajin rim. Complex and addictive — guests who try it once always order it again. Food cost $0.45 = 8.2%. This is your most interesting non-coffee beverage conversation starter.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/mango-juice-tajin-rim-Mexican-drink-chilli-tropical?width=800&height=220&nologo=true&seed=273" alt="Mango con Tajin" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Mango con Tajin</span><span class="drink-price">$6.00</span></div>
+<p>Fresh mango juice with a Tajin-salt-chilli rim — the quintessential Mexican street flavour combination. Blend fresh mango with lime juice and a touch of water. Pour into a Tajin-rimmed glass over ice. Garnish with a chilli slice. Vivid orange, incredibly photogenic. Food cost $0.80 = 13.3%. Your highest-performing social media drink — photograph it in natural light every time you make a fresh batch.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/Mexican-hot-chocolate-abuelita-cinnamon-frothy-warm-drink?width=800&height=220&nologo=true&seed=274" alt="Mexican Hot Chocolate" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Mexican Hot Chocolate</span><span class="drink-price">$5.50</span></div>
+<p>Authentic Mexican hot chocolate — Abuelita or Ibarra chocolate tablets dissolved in hot whole milk with cinnamon and a touch of cayenne. Froth with a molinillo or milk frother until foamy. Slightly grainy, deeply chocolatey, warm-spiced — completely different from European hot chocolate. Food cost $0.65 = 11.8%. Your best winter seller — position it as "grandmother's recipe" and mean it.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/cafe-de-olla-cinnamon-piloncillo-Mexican-traditional-coffee-clay-pot?width=800&height=220&nologo=true&seed=275" alt="Cafe de Olla" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Cafe de Olla</span><span class="drink-price">$5.00</span></div>
+<p>Traditional Mexican cinnamon-brewed coffee with piloncillo (unrefined brown sugar). Bring water, cinnamon stick, and piloncillo to boil. Add medium-ground coffee, steep 5 minutes, strain. Serve in a clay cup if available — the earthenware adds to the experience. Warm, sweet, deeply aromatic. Food cost $0.50 = 10%. Your most culturally authentic drink and an easy conversation starter for staff.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/tepache-fermented-pineapple-spiced-drink-Mexican-traditional?width=800&height=220&nologo=true&seed=276" alt="Tepache" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Tepache</span><span class="drink-price">$6.00</span></div>
+<p>Lightly fermented pineapple drink — naturally low-alcohol, probiotic, spiced with cinnamon and cloves. Use whole pineapple rind (do not waste it) + piloncillo + cinnamon + cloves. Ferment 2-3 days at room temperature. Strain, chill, serve over ice. Slightly fizzy, tangy, complex. Food cost $0.40 = 6.7%. You make this from pineapple waste — one of the most sustainable and profitable items on the menu.</p>
+</div>
+
+<div class="drink-card">
+<img src="https://image.pollinations.ai/prompt/jamaica-spritz-hibiscus-lime-sparkling-water-cocktail-glass?width=800&height=220&nologo=true&seed=277" alt="Jamaica Spritz" loading="lazy"/>
+<div class="drink-header"><span class="drink-name">Jamaica Spritz</span><span class="drink-price">$6.50</span></div>
+<p>Hibiscus concentrate with fresh lime and sparkling water — a bright, elegant non-alcoholic alternative to a cocktail. 60ml strong hibiscus concentrate, 15ml lime juice, 150ml sparkling water over ice. Garnish with a fresh hibiscus flower or lime wheel. Deep red, beautiful in a stemmed glass. Food cost $0.50 = 7.7%. When served in the right glassware it elevates the entire table's perceived experience.</p>
+</div>
+
+<h2><span class="sn2">5</span> Section Five &mdash; Service Training Module</h2>
+<div class="info-box">Mexican hospitality is about warmth, generosity, and making guests feel like they are at a friend's table. The best service in a taqueria does not feel like service at all — it feels like someone who genuinely loves the food telling you what to order. Train your team to feel that way.</div>
+
+<h3>The 5 Upsell Scripts</h3>
+<div class="script-box"><span class="script-label">Script 1 — The Pairing</span>
+<p><em>"The birria tacos are incredible with the agua de jamaica — the hibiscus cuts right through the richness of the braised beef. Shall I bring one?"</em></p>
+<p style="margin-top:6px;font-size:11px;color:#666;"><strong>Why it works:</strong> Flavour reasoning + specific recommendation. "Shall I bring one?" is a yes-leaning close that does not feel pushy.</p></div>
+
+<div class="script-box"><span class="script-label">Script 2 — The Upgrade</span>
+<p><em>"Want to add a side of queso fundido to that? It is $4 more, comes with fresh warm tortillas, and honestly most tables wish they had ordered it first."</em></p>
+<p style="margin-top:6px;font-size:11px;color:#666;"><strong>Why it works:</strong> "Most tables wish they had ordered it first" is social proof that lands like honest advice. The $4 framing makes it feel like a small decision.</p></div>
+
+<div class="script-box"><span class="script-label">Script 3 — The Dessert Plant</span>
+<p><em>"Quick heads-up when I put your order in — our churros come out fresh to order and sell out most days. Want me to put one in now so you are not disappointed?"</em></p>
+<p style="margin-top:6px;font-size:11px;color:#666;"><strong>Why it works:</strong> Scarcity is real (make it real — do not run too many). The "heads-up" framing positions the server as an ally, not a salesperson. Say this with every main course order.</p></div>
+
+<div class="script-box"><span class="script-label">Script 4 — The Share Suggestion</span>
+<p><em>"A lot of tables grab the guac and chips while they decide — it is fresh-made right now, $12.99, and it comes out in about 3 minutes. Want to start with that?"</em></p>
+<p style="margin-top:6px;font-size:11px;color:#666;"><strong>Why it works:</strong> "Right now" creates immediacy. "A lot of tables" provides social proof. The 3-minute timeline makes it feel effortless to say yes.</p></div>
+
+<div class="script-box"><span class="script-label">Script 5 — The Regular Builder</span>
+<p><em>"Are you local? We run a Tuesday Taco Special — it is honestly the best value on the menu that day. Would love to see you back for it."</em></p>
+<p style="margin-top:6px;font-size:11px;color:#666;"><strong>Why it works:</strong> Gives them a specific reason to return on a specific day. Creates a weekly ritual that converts into regulars. "Would love to see you back" feels genuine, not transactional.</p></div>
+
+<h3>Cuisine Philosophy</h3>
+<div class="info-box"><strong>When someone asks what kind of food this is:</strong> <em>"It is proper Mexican — not Tex-Mex, not burritos-and-nachos. We are talking birria from Jalisco, mole negro from Oaxaca, pozole from Guerrero. Dishes from specific regions with specific stories. The kind of food Mexican grandmothers actually cook."</em></div>
+
+<h3>Story Cards</h3>
+<div class="tb"><strong>On Entrees:</strong> "Our starters are Mexican street food at its best — guacamole made fresh to order, elotes straight from the grill, ceviche with this morning's shrimp. Quick, bold, vibrant."</div>
+<div class="tb"><strong>On Mains:</strong> "The mains are where the craftsmanship shows. Our birria braises for 8 hours. Our mole negro takes 3 days. The tamales are made in batches of a hundred. None of this is fast food — it just happens to be served quickly."</div>
+<div class="tb"><strong>On Drinks:</strong> "Our drinks are all traditional Mexican — agua frescas made from hibiscus, tamarind, rice, and fresh fruit. No syrups, no concentrates. The tepache is fermented in-house from whole pineapple. These are drinks with 500-year histories."</div>
+
+<h3>How to Answer "What's Good Here?"</h3>
+<div class="script-box"><span class="script-label">Confident Staff Answer</span>
+<p><em>"If you like beef, the birria tacos — the beef braises for 8 hours and you dip the tacos in the consomme. For something lighter, the guac and the fish tacos. If you want the full experience, get the mole negro chicken — it takes 3 days to make. And have the agua de jamaica with whatever you order — it makes everything better."</em></p></div>
+
+<h3>Table Timing Guide</h3>
+<table class="schedule-table">
+<tr><th>Timing</th><th>Action</th></tr>
+<tr><td>0:00</td><td>Greet warmly within 60 seconds. "Welcome in — anywhere you like." Water and menus immediately.</td></tr>
+<tr><td>1:30</td><td>Return for drinks. Offer guac proactively: "While you decide — want the guac? It is made fresh right now."</td></tr>
+<tr><td>3:00</td><td>Take drink orders. If first time, give a 20-second menu tour: "Our most popular are the birria tacos and the carne asada plate — everything is made in-house."</td></tr>
+<tr><td>5:00</td><td>Take food order. Use Script 1 (pairing) and Script 2 (queso upgrade) naturally.</td></tr>
+<tr><td>6:00</td><td>Plant the churros (Script 3) when submitting the order. Say it every single time.</td></tr>
+<tr><td>15:00</td><td>Check in 2 minutes after food arrives. "How is everything?" Offer extra salsa, chips, limes proactively.</td></tr>
+<tr><td>22:00</td><td>Check on dessert if planted. Offer aguas fresca refill.</td></tr>
+<tr><td>30:00</td><td>Drop bill when they signal. Mention Tuesday special (Script 5) to first-timers. Warm farewell by name if learned.</td></tr>
+</table>
+
+<h3>Objection Handling</h3>
+<div class="script-box"><span class="script-label">"It's a bit expensive..."</span>
+<p><em>"I understand — the mole negro is $22.99 but the sauce alone takes 3 days to make. If you want incredible value, the al pastor tacos at $17.99 are honestly one of the best things on the menu — slow-marinated pork, fresh tortillas, grilled pineapple. Completely worth it."</em></p></div>
+<div class="script-box"><span class="script-label">"Not that hungry..."</span>
+<p><em>"No problem — the tostadas or the elotes are perfect for a lighter appetite, or the sopa de lima is a really satisfying bowl without being heavy. Plenty of options."</em></p></div>
+<div class="script-box"><span class="script-label">"Just water please..."</span>
+<p><em>"Of course. Just so you know our agua de jamaica is only $5 and it is made from hibiscus flowers — most people have never had it before and everyone loves it. Worth trying if you are curious."</em></p></div>
+<div class="script-box"><span class="script-label">"We are in a rush..."</span>
+<p><em>"Got it — the fish tacos are 8 minutes, the carnitas burrito is 6. I will flag it as priority right now. You will be out comfortably in 20 minutes."</em></p></div>
+
+<h2><span class="sn2">6</span> Section Six &mdash; Customer Retention System</h2>
+<div class="info-box">Mexican hospitality is inherently relational. In Mexico, a taquero knows every regular by name, knows their order, knows their family. You cannot replicate 20 years of history overnight — but you can start building it from day one. These systems are simple and they work.</div>
+
+<h3>The Regulars Notebook</h3>
+<p>A small notebook near the POS. Record name, usual order, spice preference, any allergies, what days they come in. Review it before every service. A team member who remembers a guest's name and order after 2 visits creates more loyalty than any loyalty app on the market.</p>
+<div class="info-box"><strong>The 3-Visit Rule:</strong><br>
+<strong>Visit 1:</strong> Smile like you recognise them. Note their order internally.<br>
+<strong>Visit 2:</strong> Learn their name. "I think I have seen you in before — I am [name], what is yours?" Write it immediately after they leave.<br>
+<strong>Visit 3:</strong> They are a regular. "The usual birria tacos, extra salsa?" is the most powerful phrase you can say to a guest.</div>
+
+<h3>5 VIP Micro-Moments</h3>
+<p><strong>1. The Extra Salsa.</strong> When a regular orders tacos, bring extra salsa before they ask. It costs nothing and signals that you know them and anticipate their needs.</p>
+<p><strong>2. Spice Memory.</strong> "Still extra habanero?" — remembering a guest's spice preference after two visits is extraordinary in any restaurant. Write it down. Say it. Watch their face.</p>
+<p><strong>3. The Freshness Tip-Off.</strong> Tell your regulars when the birria batch is freshest. "Just so you know, the birria just came off an hour ago — it is at its best right now." Makes them feel like insiders and creates immediate urgency to order it.</p>
+<p><strong>4. The Complimentary Paleta.</strong> For a loyal regular, send a mango paleta with the bill. "On the house today." Cost: $0.60. Value: immeasurable. They will tell three people.</p>
+<p><strong>5. Their Spot.</strong> If a regular always sits at the same table, remember it. When they walk in and it is available, guide them there without being asked. "Your usual table is free." This small act communicates that you pay attention.</p>
+
+<h3>Complaint Recovery — The 3-Step Method</h3>
+<div class="info-box"><strong>Step 1 — Listen completely.</strong> Do not interrupt, explain, or defend. Let them finish. Nod. Make eye contact. Mexican culture values genuine respect in conflict — give it fully before saying anything.</div>
+<div class="info-box"><strong>Step 2 — Acknowledge and own it.</strong> Say exactly: <em>"You are completely right and I am sorry. That is not the experience you should have had here. That is on us."</em> No conditions, no "but." Own it fully. The directness of this response is disarming and immediately builds trust.</div>
+<div class="info-box"><strong>Step 3 — Fix and gesture.</strong> Fix the problem immediately — remake, replace, or refund without hesitation. Then add: <em>"Your dessert is on us today, and I would love you to come back — here is a card for complimentary churros on your next visit."</em> Cost: $1.20. Value of a recovered regular: hundreds of dollars over a year.</div>
+
+<h3>Social Media Content System</h3>
+<p><strong>Best 5 dishes to photograph and why:</strong></p>
+<p><strong>1. Birria Tacos mid-dip:</strong> The action shot of a taco being dipped into the deep red consomme is one of the most viral Mexican food images on social media. Stage this shot intentionally. Hold the taco at 45 degrees, consomme in a contrasting bowl, steam if you can create it. This one image can define your brand.</p>
+<p><strong>2. Elotes close-up:</strong> The colour combination of yellow corn, white crema, orange Tajin, green coriander, and yellow-green lime is visually extraordinary. Photograph from directly above at close range. Zero props needed.</p>
+<p><strong>3. Churros in action:</strong> Churros being dusted with cinnamon sugar, the fine powder falling through the air, photographed at 1/500s shutter speed. This is an action food photograph that performs 3x better than a static shot.</p>
+<p><strong>4. Tres Leches cross-section:</strong> Cut the slice in half before serving and photograph the soaked interior — the density and moisture of the crumb is what communicates the quality. Side-on shot, natural light.</p>
+<p><strong>5. Ceviche for freshness:</strong> The glass-clear, bright ceviche in a clean white bowl signals freshness, health, and quality. Photograph within 5 minutes of assembly before the lime starts to "cook" the colours. The hibiscus spritz alongside makes this a 2-item shot.</p>
+<p style="margin-top:10px;"><strong>Post Timing:</strong> Monday 7am (start of week, people planning meals), Thursday 12pm (end of week anticipation), Saturday 10am (weekend brunch desire at its highest). Never post on Sunday evening — engagement drops significantly.</p>
+<div class="script-box"><span class="script-label">Example Caption 1 — Birria Tacos</span><p>8 hours of braising. 30 seconds of dipping. [Hook]<br>Our birria starts at midnight — beef cheek slow-cooked in guajillo and ancho chillies until it falls apart. The consomme is what you dip into. If you have never had birria before, this is the one. [Story]<br>Open for lunch Tuesday to Sunday. No reservations needed. [CTA]</p></div>
+<div class="script-box"><span class="script-label">Example Caption 2 — Agua de Jamaica</span><p>Mexico in a glass. [Hook]<br>Dried hibiscus flowers, sugar, cinnamon. That is all. We have been making this the same way for two years and it never gets old. $5 and it pairs with everything on the menu. [Story]<br>Come in. Tell us what you think. [CTA]</p></div>
+
+<h3>Neighborhood Anchor Strategy</h3>
+<p><strong>Partner 1 — The Latin Grocery:</strong> Introduce yourself to the nearest Latin or Mexican grocery store owner. Leave your menus there — they are sending customers to you already, they just do not know it. Offer their staff a standing 20% discount. In return, they will recommend you to every customer asking "where can I eat Mexican food nearby?"</p>
+<p><strong>Partner 2 — Local Schools and Universities:</strong> Young people (18-25) are your core demographic for Tuesday taco specials and Instagram-driven growth. Connect with the student union or campus food committee. Offer a student discount card. One Instagram post from a popular student influencer can bring 200 new guests in a week.</p>
+<p><strong>Partner 3 — Nearby Office Buildings:</strong> Mexican food is perfect for group lunch orders. Approach office managers and HR teams within a 500m radius. Offer a "Friday Taco Catering" package — pre-ordered birria and carnitas for 10-20 people, delivered at 12:30. One committed office account can add $400-700 to your Friday revenue reliably.</p>
+<p style="margin-top:10px;"><strong>Weekly Ritual — Tuesday Taco Special:</strong> Every Tuesday, one featured taco at a $3 discount. Rotate the feature weekly — birria Tuesday, al pastor Tuesday, fish taco Tuesday. Post it every Monday evening on social. After 8 weeks, regulars will start asking what Tuesday's special is before they arrive. Anticipation is a loyalty mechanism.</p>
+
+<h2><span class="sn2">7</span> Section Seven &mdash; Revenue Model</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">$2,625</div><div class="kpi-lbl">Daily Target</div></div>
+  <div class="kpi"><div class="kpi-val">27%</div><div class="kpi-lbl">Food Cost</div></div>
+  <div class="kpi"><div class="kpi-val">27%</div><div class="kpi-lbl">Labour Cost</div></div>
+  <div class="kpi"><div class="kpi-val">23%</div><div class="kpi-lbl">Overhead</div></div>
+  <div class="kpi"><div class="kpi-val">23%</div><div class="kpi-lbl">Net Margin</div></div>
+</div>
+
+<table class="revenue-table">
+<tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Revenue</th></tr>
+<tr><td>Breakfast (7am-11am)</td><td>25</td><td>$22</td><td>$550</td></tr>
+<tr><td>Lunch (11am-3pm)</td><td>50</td><td>$38</td><td>$1,900</td></tr>
+<tr><td>Daily Total</td><td>75</td><td>$33</td><td>$2,475</td></tr>
+<tr><td>With upsells (+12%)</td><td>&mdash;</td><td>&mdash;</td><td>$2,773</td></tr>
+</table>
+
+<table class="revenue-table">
+<tr><th>Cost Category</th><th>%</th><th>Daily $</th><th>Monthly (25 days) $</th></tr>
+<tr><td>Food &amp; Beverage</td><td>27%</td><td>$749</td><td>$18,725</td></tr>
+<tr><td>Labour (2 kitchen + 1-2 floor)</td><td>27%</td><td>$749</td><td>$18,725</td></tr>
+<tr><td>Rent &amp; Overhead</td><td>23%</td><td>$638</td><td>$15,950</td></tr>
+<tr><td><strong>Net Profit</strong></td><td><strong>23%</strong></td><td><strong>$638</strong></td><td><strong>$17,525</strong></td></tr>
+</table>
+
+<div class="info-box"><strong>The Birria Effect:</strong> A single viral birria taco video on TikTok or Instagram has generated multi-month queues for cafes worldwide. This is not an accident — it is the most visually compelling taco format ever created. Invest 15 minutes twice a week photographing your birria service. One good video can permanently lift your daily cover count by 20-30%. Your food does the marketing if you let it.</div>
+
+<div class="ft"><span>Mexican Taqueria &mdash; Profitable Cafe Operations Guide</span><span>&copy; 2024 &middot; Professional Use Only &middot; Not for Redistribution</span></div>
+</div>
+</body>
+</html>

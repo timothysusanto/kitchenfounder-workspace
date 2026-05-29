@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hong Kong Cafe — Restaurant Operations Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:13px;}
+.page{width:210mm;min-height:297mm;margin:0 auto;padding:18mm 20mm;background:#fff;}
+@media print{.page{margin:0;padding:18mm 20mm;page-break-after:always;}}
+h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:#c8000a;letter-spacing:1px;line-height:1.1;}
+h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#c8000a;margin:28px 0 14px;border-bottom:2px solid #c8000a;padding-bottom:6px;}
+h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#1a1a1a;margin:0;}
+.cover{text-align:center;padding:40px 0 30px;}
+.cover-sub{font-size:15px;color:#666;letter-spacing:3px;text-transform:uppercase;margin-top:8px;}
+.cover-author{margin-top:30px;font-size:12px;color:#999;letter-spacing:2px;}
+.cover-badge{display:inline-block;background:#c8000a;color:#fff;padding:8px 24px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-top:16px;}
+.cover-divider{width:80px;height:3px;background:#c8000a;margin:20px auto;}
+.intro-box{background:#fdf5f5;border-left:4px solid #c8000a;padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;}
+.intro-box p{line-height:1.7;color:#333;}
+.kpi-row{display:flex;gap:16px;margin:20px 0;}
+.kpi{flex:1;background:#c8000a;color:#fff;border-radius:8px;padding:14px;text-align:center;}
+.kpi-val{font-size:22px;font-weight:700;}
+.kpi-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:3px;}
+.dish-card{border:1px solid #e8e0e0;border-radius:8px;padding:14px 16px;margin-bottom:12px;position:relative;}
+.dish-card:hover{border-color:#c8000a;}
+.dish-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.dish-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#1a1a1a;}
+.dish-price{font-size:18px;font-weight:700;color:#c8000a;white-space:nowrap;margin-left:12px;}
+.dish-desc{color:#555;line-height:1.6;margin-bottom:8px;font-size:12px;}
+.dish-meta{display:flex;gap:12px;flex-wrap:wrap;}
+.tag{background:#fdf5f5;border:1px solid #e0d0d0;border-radius:20px;padding:3px 10px;font-size:10px;color:#c8000a;font-weight:500;}
+.tag.green{background:#f0faf0;border-color:#b0d0b0;color:#2a7a2a;}
+.tag.blue{background:#f0f4fa;border-color:#b0c4d8;color:#1a4a7a;}
+.section-num{display:inline-block;background:#c8000a;color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-weight:700;font-size:13px;margin-right:10px;vertical-align:middle;}
+.forecast-table{width:100%;border-collapse:collapse;margin:14px 0;}
+.forecast-table th{background:#c8000a;color:#fff;padding:9px 12px;text-align:left;font-size:11px;letter-spacing:1px;}
+.forecast-table td{padding:8px 12px;border-bottom:1px solid #f0e8e8;font-size:12px;}
+.forecast-table tr:nth-child(even) td{background:#fdf5f5;}
+.tip-box{background:#fff8e8;border:1px solid #e8c870;border-radius:8px;padding:14px 16px;margin:16px 0;}
+.tip-box strong{color:#9a6800;}
+.profit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.profit-card{border:1px solid #e0d0d0;border-radius:8px;padding:14px;}
+.profit-card h4{color:#c8000a;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.footer-bar{border-top:2px solid #c8000a;margin-top:30px;padding-top:12px;display:flex;justify-content:space-between;font-size:10px;color:#999;}
+.price-strat{background:#1a1a1a;color:#fff;border-radius:8px;padding:16px 20px;margin:16px 0;}
+.price-strat h4{color:#ffd700;margin-bottom:10px;font-size:13px;}
+.price-strat li{margin-bottom:6px;font-size:12px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- COVER -->
+  <div class="cover">
+    <div style="font-size:48px;margin-bottom:16px;">🥢</div>
+    <h1>Hong Kong Café</h1>
+    <div class="cover-sub">Complete Restaurant Operations Guide</div>
+    <div class="cover-divider"></div>
+    <p style="color:#555;max-width:400px;margin:0 auto;line-height:1.7;font-size:13px;">A professional blueprint for launching and operating a profitable Hong Kong-style café in the US market — menu engineering, staff forecasting, kitchen workflow, and profitability systems.</p>
+    <div style="margin-top:20px;">
+      <div class="cover-badge">US Market Edition • $29.99</div>
+    </div>
+    <div class="cover-author">Crafted by a Head Chef • Novotel Ibis Pullman Sydney Olympic Park</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">20</div><div class="kpi-label">Menu Items</div></div>
+    <div class="kpi"><div class="kpi-val">28-32%</div><div class="kpi-label">Target Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">30%</div><div class="kpi-label">Target Labour</div></div>
+    <div class="kpi"><div class="kpi-val">$45-65</div><div class="kpi-label">Avg Spend/Head</div></div>
+  </div>
+
+  <div class="intro-box">
+    <p><strong>Why Hong Kong Café?</strong> HK-style cafés (Cha Chaan Teng) are among the most profitable café formats globally — high table turnover, beloved comfort food, loyal customer base. In US cities with Asian communities, demand is consistently strong. This guide gives you everything to launch, staff, and run one profitably from day one.</p>
+  </div>
+
+  <!-- ENTREES -->
+  <h2><span class="section-num">1</span>Entrées & Small Plates</h2>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>HK Style Egg Tarts (Dan Tat) — 3pc</h3><div class="dish-price">$8.99</div></div>
+    <div class="dish-desc">Flaky shortcrust pastry shells filled with silky smooth egg custard, lightly sweetened and baked to golden perfection. A non-negotiable staple of any HK café.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 22%</span><span class="tag green">High Margin ⭐</span><span class="tag blue">Baked Fresh Daily</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Pineapple Bun with Cold Butter (Bo Lo Bao)</h3><div class="dish-price">$6.50</div></div>
+    <div class="dish-desc">Iconic HK bakery bun with a crunchy sugary crust, split and served warm with a thick slab of cold salted butter melting inside. Best seller for breakfast service.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 18%</span><span class="tag green">Highest Margin ⭐⭐</span><span class="tag blue">Breakfast Hero</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Crispy Spring Rolls — 4pc</h3><div class="dish-price">$10.99</div></div>
+    <div class="dish-desc">Golden deep-fried rolls filled with seasoned pork mince, shredded cabbage, mushroom, and glass noodles. Served with house sweet chilli dipping sauce.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 26%</span><span class="tag green">Star Item ⭐</span><span class="tag blue">Can Prep Ahead</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>HK French Toast (西多士)</h3><div class="dish-price">$12.99</div></div>
+    <div class="dish-desc">Thick white bread sandwiched with peanut butter, dipped in egg batter and deep-fried until golden. Topped with butter and golden syrup. A true HK classic.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 24%</span><span class="tag green">Star Item ⭐</span><span class="tag blue">Brunch Feature</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Shrimp Cheung Fun (Rice Noodle Roll)</h3><div class="dish-price">$13.99</div></div>
+    <div class="dish-desc">Steamed silky rice noodle sheets wrapped around plump tiger shrimp, drizzled with sweet soy, sesame oil, and a touch of chilli oil. Dim sum classic elevated for café dining.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 31%</span><span class="tag blue">Weekend Brunch</span><span class="tag blue">Gluten Free Option</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Crispy Tofu Bites with XO Sauce</h3><div class="dish-price">$11.99</div></div>
+    <div class="dish-desc">Extra-firm tofu, pressed and deep-fried to a golden crust, tossed in house XO sauce with spring onion and sesame. Vegetarian crowd-pleaser with bold umami flavour.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 21%</span><span class="tag green">High Margin ⭐</span><span class="tag blue">Vegetarian ✓</span></div>
+  </div>
+
+  <!-- MAINS -->
+  <h2><span class="section-num">2</span>Main Courses</h2>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Baked Portuguese Chicken Rice (焗葡國雞飯)</h3><div class="dish-price">$18.99</div></div>
+    <div class="dish-desc">Tender chicken thigh in a rich coconut-turmeric curry sauce, baked over fluffy jasmine rice with a golden cheese crust. One of the most iconic HK café dishes — guaranteed repeat orders.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 29%</span><span class="tag green">Signature Star ⭐⭐</span><span class="tag blue">High Repeat Order</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Beef Brisket Noodle Soup (清湯腩)</h3><div class="dish-price">$19.99</div></div>
+    <div class="dish-desc">12-hour slow-braised beef brisket in a clear aromatic broth with daikon and star anise. Served over your choice of egg noodles or rice noodles. The soul of HK café dining.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 32%</span><span class="tag green">Hero Dish ⭐</span><span class="tag blue">Batch Cook Efficient</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Crispy Pork Chop Over Rice (豬扒飯)</h3><div class="dish-price">$17.99</div></div>
+    <div class="dish-desc">Tenderised pork chop marinated in HK-style seasoning, pan-fried crispy, served over steamed rice with pickled vegetables and a fried egg. Fast, filling, profitable.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 28%</span><span class="tag green">Star Item ⭐</span><span class="tag blue">Quick Ticket Time</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Char Siu (BBQ Pork) Rice Plate</h3><div class="dish-price">$17.99</div></div>
+    <div class="dish-desc">House-made char siu pork belly with house five-spice glaze, sliced over jasmine rice with steamed bok choy and house soy sauce. Can be prepped in large batches — excellent labour efficiency.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 27%</span><span class="tag green">High Margin ⭐</span><span class="tag blue">Batch Friendly</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Wonton Noodle Soup</h3><div class="dish-price">$16.99</div></div>
+    <div class="dish-desc">Hand-folded pork and shrimp wontons in a golden pork-shrimp broth, served with thin HK egg noodles, crispy shallots, and spring onion. A timeless classic with strong lunch trade.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 30%</span><span class="tag blue">Lunch Best Seller</span><span class="tag blue">Can Freeze Wontons</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Clay Pot Rice — Lap Cheong & Chicken</h3><div class="dish-price">$19.99</div></div>
+    <div class="dish-desc">Fragrant jasmine rice cooked to crispy-bottom perfection in individual clay pots, topped with Chinese sausage, silky chicken thigh, and shiitake mushrooms. Finished with house soy drizzle tableside.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 30%</span><span class="tag green">Premium Experience ⭐</span><span class="tag blue">Needs Clay Pots — Invest Once</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Typhoon Shelter Garlic Prawns</h3><div class="dish-price">$24.99</div></div>
+    <div class="dish-desc">Tiger prawns wok-tossed in a mountain of golden fried garlic, dried chilli, black bean and breadcrumbs. A showstopper dish with high perceived value and strong upsell potential.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 33%</span><span class="tag green">Premium Upsell ⭐</span><span class="tag blue">Weekend Feature</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Silk Road Lamb Noodle Stir Fry</h3><div class="dish-price">$21.99</div></div>
+    <div class="dish-desc">Wok-fired lamb strips with flat rice noodles, bean sprouts, spring onion, and house XO-cumin sauce. Bold, aromatic, and distinct — differentiates you from standard HK menus.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 31%</span><span class="tag blue">Point of Difference</span><span class="tag blue">High Wok Skill</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>HK Style Spam & Egg Macaroni Soup</h3><div class="dish-price">$14.99</div></div>
+    <div class="dish-desc">The quintessential HK breakfast — macaroni in a light chicken broth with sliced SPAM, a soft-poached egg, and buttered toast on the side. Nostalgic, fast, and extremely profitable.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 20%</span><span class="tag green">Highest Margin ⭐⭐</span><span class="tag blue">Breakfast Staple</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Silken Tofu & Century Egg Congee</h3><div class="dish-price">$15.99</div></div>
+    <div class="dish-desc">Slow-cooked rice porridge with silken tofu, century egg, ginger, and crispy youtiao (fried dough stick) on the side. A warming, healing dish for breakfast and lunch service.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 22%</span><span class="tag green">High Margin ⭐</span><span class="tag blue">Vegetarian Option Available</span></div>
+  </div>
+
+  <!-- DESSERTS -->
+  <h2><span class="section-num">3</span>Desserts</h2>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Mango Pomelo Sago (楊枝甘露)</h3><div class="dish-price">$9.99</div></div>
+    <div class="dish-desc">Chilled sago pearls in fresh mango purée with pomelo segments, coconut milk, and diced fresh mango. The most-ordered HK dessert in the US — Instagram-worthy and extremely profitable.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 19%</span><span class="tag green">Highest Margin ⭐⭐</span><span class="tag blue">Social Media Hero</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Double Skin Milk Pudding (雙皮奶)</h3><div class="dish-price">$8.99</div></div>
+    <div class="dish-desc">Traditional silky steamed whole milk pudding with a delicate double-layer skin on top. Served warm or chilled with optional red bean topping. A true HK artisan dessert — low cost, high perceived value.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 15%</span><span class="tag green">Highest Margin ⭐⭐</span><span class="tag blue">Make Ahead ✓</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>Black Sesame Tang Yuan</h3><div class="dish-price">$8.50</div></div>
+    <div class="dish-desc">Chewy glutinous rice balls filled with rich black sesame paste, served in a warm sweet ginger syrup. Comforting, authentic, and beloved by both Asian and non-Asian guests.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 18%</span><span class="tag green">High Margin ⭐</span><span class="tag blue">Can Be Frozen</span></div>
+  </div>
+
+  <div class="dish-card">
+    <div class="dish-header"><h3>HK Milk Tea Crème Brûlée</h3><div class="dish-price">$10.99</div></div>
+    <div class="dish-desc">Classic French crème brûlée infused with HK-style strong milk tea. Caramelised sugar crust, served in a tea cup. East-meets-West signature dessert — a unique talking point for your café.</div>
+    <div class="dish-meta"><span class="tag">Food Cost: 21%</span><span class="tag green">Signature Item ⭐</span><span class="tag blue">Batch Prep Daily</span></div>
+  </div>
+</div>
+
+<!-- PAGE 2 - OPERATIONS -->
+<div class="page">
+  <h2><span class="section-num">4</span>Staff Forecasting</h2>
+  <div class="intro-box">
+    <p>Staff costs should sit between <strong>28–32% of revenue</strong>. For a 40-seat HK café targeting $4,500–$6,000 daily revenue, the following team structure is proven to work efficiently without sacrificing service quality.</p>
+  </div>
+
+  <table class="forecast-table">
+    <tr><th>Role</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th><th>Hourly Rate</th><th>Daily Cost</th></tr>
+    <tr><td>Head Chef / Chef de Cuisine</td><td>✓</td><td>✓</td><td>✓</td><td>$28–35</td><td>$224–280</td></tr>
+    <tr><td>Sous Chef / 2nd Cook</td><td>—</td><td>✓</td><td>✓</td><td>$22–26</td><td>$132–156</td></tr>
+    <tr><td>Prep Cook / Kitchen Hand</td><td>✓</td><td>✓</td><td>—</td><td>$16–19</td><td>$96–114</td></tr>
+    <tr><td>Front of House Supervisor</td><td>✓</td><td>✓</td><td>✓</td><td>$20–24</td><td>$160–192</td></tr>
+    <tr><td>Wait Staff (×2)</td><td>✓</td><td>✓</td><td>✓</td><td>$15–18</td><td>$240–288</td></tr>
+    <tr><td>Cashier / Runner</td><td>✓</td><td>✓</td><td>—</td><td>$15–17</td><td>$90–102</td></tr>
+    <tr><td><strong>Total Daily Labour</strong></td><td colspan="3"></td><td></td><td><strong>$942–$1,132</strong></td></tr>
+  </table>
+
+  <div class="tip-box">
+    <strong>💡 Chef's Tip:</strong> Cross-train your prep cook as a cashier/runner during service rush. This saves one FTE position ($25K–$35K annually) without impacting quality. HK café menus are designed for speed — most dishes plate in under 4 minutes.
+  </div>
+
+  <h2><span class="section-num">5</span>Kitchen Workflow & Layout</h2>
+  <div class="profit-grid">
+    <div class="profit-card">
+      <h4>🔥 Hot Section</h4>
+      <ul style="padding-left:16px;line-height:2;">
+        <li>2× commercial wok burners (min 100,000 BTU)</li>
+        <li>1× flat top grill for pork chops/toast</li>
+        <li>1× deep fryer (spring rolls, tofu, toast)</li>
+        <li>1× rice cooker station (×3 commercial)</li>
+        <li>1× bain marie for congee/soups</li>
+      </ul>
+    </div>
+    <div class="profit-card">
+      <h4>❄️ Cold & Prep Section</h4>
+      <ul style="padding-left:16px;line-height:2;">
+        <li>1× prep bench (stainless, min 2.4m)</li>
+        <li>1× under-counter fridge (proteins)</li>
+        <li>Sago/dessert prep area (separate)</li>
+        <li>Dedicated noodle boiling station</li>
+        <li>Pass window with heat lamp</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="price-strat">
+    <h4>⚡ Ticket Time Targets (HK Café Standard)</h4>
+    <ul style="padding-left:16px;">
+      <li>Entrées: <strong>4–6 minutes</strong> — pre-prepped, quick fry/steam</li>
+      <li>Noodle soups: <strong>5–7 minutes</strong> — broth always on, noodles to order</li>
+      <li>Rice plates: <strong>6–8 minutes</strong> — proteins pre-cooked, rice pre-steamed</li>
+      <li>Clay pot rice: <strong>12–15 minutes</strong> — inform guests upfront, worth the wait</li>
+      <li>Desserts: <strong>2–3 minutes</strong> — all made ahead, just plate and serve</li>
+    </ul>
+  </div>
+
+  <h2><span class="section-num">6</span>Profitability System</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">$4,800</div><div class="kpi-label">Target Daily Revenue</div></div>
+    <div class="kpi"><div class="kpi-val">$1,440</div><div class="kpi-label">Food Cost (30%)</div></div>
+    <div class="kpi"><div class="kpi-val">$1,050</div><div class="kpi-label">Labour (22%)</div></div>
+    <div class="kpi"><div class="kpi-val">$1,100</div><div class="kpi-label">Overhead (23%)</div></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>💰 Profit Formula:</strong> Revenue ($4,800) − Food Cost ($1,440) − Labour ($1,050) − Overhead ($1,100) = <strong>Net Profit $1,210/day = ~$36,000/month</strong>. Achieve this by maintaining food cost below 30% and keeping your prime cost (food + labour) under 55%.
+  </div>
+
+  <div class="tip-box">
+    <strong>📈 Top 3 Profit Maximisers for HK Café:</strong><br><br>
+    1. <strong>Milk tea & beverages</strong> — food cost 8–12%, must push on every table. Target 1.5 drinks per cover.<br>
+    2. <strong>Egg tarts & pineapple buns</strong> — bake your own, food cost under 22%, sell as add-ons at every meal.<br>
+    3. <strong>Congee & macaroni soup</strong> — breakfast heroes. Food cost 18–22%, fast ticket, table turns in 25 min.
+  </div>
+
+  <div class="footer-bar">
+    <span>Hong Kong Café Operations Guide • US Market Edition</span>
+    <span>© Chef's Restaurant Blueprint Series • $29.99</span>
+  </div>
+</div>
+</body>
+</html>

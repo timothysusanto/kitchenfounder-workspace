@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brazilian Churrasco — KitchenFounder Operations Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#FAFAF8;color:#1C1C1C;font-family:'Inter',system-ui,sans-serif;font-size:13px;line-height:1.7;}
+.page{background:#FAFAF8;max-width:210mm;margin:0 auto;padding:18mm 20mm;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;color:#1C1C1C;line-height:1.1;margin-bottom:10px;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1C1C1C;margin:32px 0 14px;padding-bottom:8px;border-bottom:2px solid #E0E0DC;}
+h3{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#1C1C1C;margin:14px 0 7px;}
+h4{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:#C8860A;margin:10px 0 5px;}
+.cover{background:#FAFAF8;padding:40px 0 32px;border-left:6px solid #C8860A;padding-left:28px;min-height:240mm;display:flex;flex-direction:column;justify-content:center;}
+.cover-eye{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#C8860A;margin-bottom:20px;}
+.cover-rule{width:60px;height:3px;background:#C8860A;margin:20px 0;}
+.cover-tag{color:#888;font-style:italic;font-size:15px;margin-bottom:32px;}
+.kpi-row{display:flex;gap:12px;margin:28px 0;}
+.kpi{flex:1;background:#F2F2F0;border-top:3px solid #C8860A;padding:14px 16px;border-radius:0 0 6px 6px;}
+.kpi-val{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:#C8860A;}
+.kpi-lbl{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-top:3px;}
+.cover-desc{font-size:12px;color:#555;line-height:1.75;max-width:480px;margin-top:16px;border-left:3px solid #E0E0DC;padding-left:16px;}
+.lens-card{background:#FAFAF8;border-left:4px solid #C8860A;padding:20px 24px;margin:16px 0;border-radius:0 8px 8px 0;page-break-inside:avoid;}
+.lens-title{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;color:#C8860A;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.lens-text{font-size:12.5px;color:#444;line-height:1.8;}
+.lens-closer{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#C8860A;margin-top:10px;}
+.recipe{background:#F2F2F0;border-left:4px solid #C8860A;border-radius:0 8px 8px 0;margin:18px 0;overflow:hidden;page-break-inside:avoid;}
+.rh{background:#FAFAF8;border-bottom:1px solid #E0E0DC;padding:14px 18px;}
+.rh-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#1C1C1C;}
+.rh-sub{font-size:11px;color:#888;margin-top:3px;}
+.rh-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.tag{background:#F2F2F0;border:1px solid #E0E0DC;color:#666;border-radius:20px;padding:2px 10px;font-size:10px;}
+.rb{padding:16px 18px;}
+.two-col{display:grid;grid-template-columns:1.2fr 0.8fr;gap:18px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;font-size:11px;}
+.it th{background:#1C1C1C;color:#FAFAF8;padding:7px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.it td{padding:6px 10px;border-bottom:1px solid #E0E0DC;color:#333;}
+.it td:last-child{text-align:right;color:#888;font-family:'DM Mono',monospace;}
+.it tr:last-child td{font-weight:600;background:#F2F2F0;border-top:1px solid #C8860A;}
+.fc-box{background:#FAFAF8;border:1px solid #E0E0DC;border-radius:8px;padding:14px 16px;}
+.fc-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #F0F0EE;font-size:11.5px;}
+.fc-row:last-child{border-bottom:none;font-weight:700;font-size:13px;color:#C8860A;padding-top:8px;}
+.fc-val{color:#C8860A;font-family:'DM Mono',monospace;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#C8860A;color:#fff;width:22px;height:22px;min-width:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;margin-top:2px;}
+.sn2{background:#C8860A;color:#fff;width:26px;height:26px;min-width:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;margin-right:8px;}
+.st{font-size:12px;color:#333;line-height:1.75;}
+.temp{background:#FFF8E7;border:1px solid #C8860A;border-radius:3px;padding:1px 7px;font-family:'DM Mono',monospace;font-size:10px;color:#C8860A;display:inline-block;}
+.tb{background:#FDF6E3;border-left:3px solid #C8860A;padding:10px 14px;margin:12px 0;border-radius:0 5px 5px 0;font-size:11.5px;color:#5C4A1E;line-height:1.7;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
+.a{background:#F0F0EE;border:1px solid #E0E0DC;color:#666;border-radius:10px;padding:2px 8px;font-size:9px;}
+.script-box{background:#FAFAF8;border-left:3px solid #C8860A;padding:14px 18px;margin:12px 0;border-radius:0 6px 6px 0;page-break-inside:avoid;}
+.script-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#C8860A;margin-bottom:6px;display:block;}
+.script-text{font-size:12px;color:#444;font-style:italic;line-height:1.7;}
+.script-why{font-size:11px;color:#888;margin-top:8px;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.rev-table th{background:#1C1C1C;color:#FAFAF8;padding:9px 12px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:1px;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #E0E0DC;color:#333;}
+.rev-table tr:nth-child(even) td{background:#F7F7F5;}
+.rev-table .total-row td{font-weight:700;background:#F2F2F0;border-top:2px solid #1C1C1C;}
+.rev-table .net-row td{font-weight:700;color:#C8860A;background:#FDF6E3;font-family:'DM Mono',monospace;}
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#1C1C1C;color:#FAFAF8;padding:8px 12px;text-align:left;font-size:10px;font-family:'Space Grotesk',sans-serif;}
+.prep-table td{padding:7px 12px;border-bottom:1px solid #E0E0DC;vertical-align:top;color:#333;}
+.prep-table tr:nth-child(even) td{background:#F7F7F5;}
+.info-box{background:#FDF6E3;border-left:4px solid #C8860A;padding:14px 18px;margin:16px 0;border-radius:0 6px 6px 0;font-size:12px;color:#444;line-height:1.75;}
+footer{text-align:center;color:#AAA;font-size:10px;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #E0E0DC;letter-spacing:1px;}
+@media print{html,body{background:#FAFAF8 !important;}.page{background:#FAFAF8 !important;}.recipe{page-break-inside:avoid;}.lens-card{page-break-inside:avoid;}.script-box{page-break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eye">KitchenFounder · Operations Guide · Brazilian Churrasco</div>
+  <h1>Brazilian<br>Churrasco</h1>
+  <div class="cover-rule"></div>
+  <div class="cover-tag">The complete operator blueprint — recipes, costs, service, P&amp;L</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">52</div><div class="kpi-lbl">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$58</div><div class="kpi-lbl">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">26%</div><div class="kpi-lbl">FC Target</div></div>
+    <div class="kpi"><div class="kpi-val">$74,880</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+  </div>
+  <div class="cover-desc">Churrasco is not simply grilled meat. It is a Brazilian institution — born in the southern state of Rio Grande do Sul among the gauchos who drove cattle across the pampas and cooked over open fires at night. The rodízio service model, where servers carry skewered meats tableside in an unending rotation, transforms a meal into an event. This guide gives you every recipe, every cost, every script, and every number you need to build a profitable churrasco operation in the US market.</div>
+</div>
+
+<!-- CHEF'S LENS INTRO -->
+<h2>Chef's Lens</h2>
+<div class="lens-card">
+  <div class="lens-title">// What a Michelin-trained chef sees in Brazilian churrasco</div>
+  <div class="lens-text">The picanha is the most misunderstood cut in American butchery. In Brazil it is the undisputed king of the churrasco — the top sirloin cap with its thick fat layer left entirely intact, skewered in a C-shape so the fat renders slowly over charcoal and bastes the meat from within. In the US, most butchers trim it off. Your first operational task is finding a supplier who understands the cut. The fat is not waste — it is the flavour mechanism. A picanha without the fat cap is a different dish entirely. The entire churrasco philosophy is built on this principle: respect the animal, understand the cut, let fire do the work.</div>
+</div>
+<div class="lens-card">
+  <div class="lens-title">// What this guide does</div>
+  <div class="lens-text">The rodízio model is one of the most operationally elegant formats in casual dining. Fixed input cost, predictable output, continuous service flow with no à la carte complexity. When the P&amp;L clicks into place — 52 covers at $58 average, 26% food cost, labour at 31% — the net margin is genuinely exceptional for the casual dining segment. This guide maps every cut, every fire, every service moment, and every dollar.</div>
+  <div class="lens-closer">This is how you build a churrasco that runs like a machine.</div>
+</div>
+
+<!-- SECTION 1: ENTREES -->
+<h2><span class="sn2">1</span>Entrées</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Pão de Queijo — Brazilian Cheese Bread</div>
+  <div class="rh-sub">Warm tapioca cheese rolls, served in a basket · Sell: $7.99 · 4 pieces</div>
+  <div class="rh-tags"><span class="tag">⏱ 20 min</span><span class="tag">Entrée</span><span class="tag">FC 14%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 4-piece serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Tapioca starch (polvilho azedo)</td><td>80g</td><td>$0.24</td></tr>
+<tr><td>Whole milk</td><td>60ml</td><td>$0.08</td></tr>
+<tr><td>Vegetable oil</td><td>30ml</td><td>$0.06</td></tr>
+<tr><td>Eggs</td><td>1 × 55g</td><td>$0.35</td></tr>
+<tr><td>Minas cheese or Parmesan (grated)</td><td>50g</td><td>$0.37</td></tr>
+<tr><td>Salt</td><td>3g</td><td>$0.01</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.11</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.11</span></div>
+<div class="fc-row"><span>Sell price</span><span>$7.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>13.9%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$6.88</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>The tapioca science:</strong> Pão de queijo uses tapioca starch, not wheat flour — making it naturally gluten-free. Polvilho azedo (sour tapioca starch) is preferred; it produces a slightly chewier, more complex result than sweet tapioca starch. The starch gelatinises when the hot liquid is added, creating a stretchy, sticky dough that is unique in texture.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Scald the liquid first:</strong> Bring milk, oil, and salt to a full boil. Pour immediately over the tapioca starch and beat vigorously — the hot liquid gelatinises the starch on contact. The mixture will look lumpy at first; continue beating until smooth and slightly tacky. Cool to <span class="temp">40°C</span> before adding eggs.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Add cheese and eggs:</strong> Beat in the egg fully, then fold in the grated cheese. Traditional Minas cheese has a mild, milky flavour — Parmesan is an acceptable substitute with more saltiness. The dough should be soft, sticky, and slightly warm. Portion into 25g balls using wet hands or a small ice cream scoop.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Bake at <span class="temp">200°C / 392°F</span> for 18–20 minutes</strong> until puffed, golden, and hollow-sounding when tapped. They deflate slightly on cooling — serve immediately from the oven. Batch-freeze unbaked balls for service efficiency: bake from frozen at 200°C for 22 minutes. Serve in a lined basket lined with a cloth to retain heat.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Pão de queijo is Brazil's most iconic food export after caipirinha. Every Brazilian recognises it. For Brazilian guests, it is an emotional comfort food. For first-time guests, it is a discovery. The hollow, chewy, cheese-scented roll is unlike any bread in Western baking culture. Serve it warm, without exception.</div>
+<div class="al"><span class="a">DAIRY (milk, cheese)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Coxinha de Frango</div>
+  <div class="rh-sub">Chicken croquettes, wheat dough, shredded chicken and cream cheese filling · Sell: $10.99 · 3 pieces</div>
+  <div class="rh-tags"><span class="tag">⏱ 8 min</span><span class="tag">Entrée</span><span class="tag">FC 16%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 3-piece serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Chicken thigh (poached, shredded)</td><td>90g</td><td>$0.54</td></tr>
+<tr><td>Cream cheese</td><td>30g</td><td>$0.22</td></tr>
+<tr><td>Wheat dough (batch — flour, chicken stock, butter)</td><td>120g</td><td>$0.28</td></tr>
+<tr><td>Eggs (for breading)</td><td>1 × 55g</td><td>$0.35</td></tr>
+<tr><td>Breadcrumbs (panko)</td><td>40g</td><td>$0.10</td></tr>
+<tr><td>Onion, garlic, parsley (filling seasoning)</td><td>misc</td><td>$0.08</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.57</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.57</span></div>
+<div class="fc-row"><span>Sell price</span><span>$10.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>14.3%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$9.42</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Make the filling:</strong> Poach chicken thighs in seasoned stock until fully cooked — <span class="temp">74°C / 165°F</span> internal. Shred finely. Sauté with diced onion, garlic, and parsley until fragrant. Cool completely. Mix with cream cheese until bound. The cream cheese adds richness and helps the filling hold its shape inside the coxinha.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Make the dough:</strong> Bring chicken stock and butter to a boil. Add flour all at once and stir vigorously over heat until the dough pulls away from the pan cleanly — this is a choux-adjacent technique. The dough should be smooth, pliable, and slightly tacky when warm. Cool to a workable temperature.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Shape the coxinha:</strong> Portion 40g dough, flatten in palm. Place 30g filling in centre. Gather the dough up around the filling, pinching to seal at the top. Shape into a teardrop — this is the traditional shape that mimics a chicken drumstick (coxinha means "little thigh" in Portuguese). The seal must be completely closed or filling escapes during frying.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Bread and fry:</strong> Dip in egg wash, roll in panko. Deep fry at <span class="temp">180°C / 356°F</span> for 4–5 minutes until deep golden. The dough shell becomes crispy while the filling heats through. Rest on a wire rack 1 minute before serving — the interior is extremely hot. Serve with a spicy mayo or hot sauce on the side.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Coxinha is Brazil's most popular street food snack. Batch-produce and freeze unbaked — fry from frozen at 175°C for 6–7 minutes. Having a frozen batch means you can always have them available without daily production. This is one of your highest-margin entrées — protect it.</div>
+<div class="al"><span class="a">GLUTEN (wheat dough, panko)</span><span class="a">DAIRY (cream cheese, butter)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Queijo Coalho na Brasa</div>
+  <div class="rh-sub">Grilled coalho cheese skewer, honey, oregano, malagueta chili · Sell: $9.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 6 min</span><span class="tag">Entrée</span><span class="tag">FC 18%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve — 2 skewers)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Queijo coalho (halloumi as substitute)</td><td>120g</td><td>$1.44</td></tr>
+<tr><td>Raw honey</td><td>15ml</td><td>$0.22</td></tr>
+<tr><td>Dried oregano</td><td>1g</td><td>$0.02</td></tr>
+<tr><td>Malagueta hot sauce (or sriracha)</td><td>5ml</td><td>$0.04</td></tr>
+<tr><td>Lime wedge</td><td>1 wedge</td><td>$0.06</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.78</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.78</span></div>
+<div class="fc-row"><span>Sell price</span><span>$9.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>17.8%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$8.21</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Understanding coalho cheese:</strong> Queijo coalho is a semi-firm Brazilian cheese with a high melting point — it grills and browns without melting into a puddle. This property makes it ideal for direct flame or grill cooking. Halloumi (Cypriot) has an almost identical cooking behaviour and is widely available in the US as a substitute.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Skewer and grill:</strong> Cut cheese into 3cm cubes, thread 3 pieces per skewer. Grill on a very hot charcoal or gas grill — <span class="temp">250°C+</span> surface heat. The goal is deep grill marks and a golden-brown exterior in 2 minutes per side without the cheese softening through. High heat is essential — medium heat causes sticking and collapse.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Glaze and finish:</strong> Remove from grill. Immediately drizzle with raw honey — the residual heat warms the honey and allows it to penetrate the surface slightly. Sprinkle dried oregano (the aroma released from dried oregano on hot food is significant — use generously). Add a few drops of malagueta sauce for the sweet-heat-savoury balance that defines this dish.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Serve immediately:</strong> Coalho cheese firms up as it cools and loses its yielding, squeaky texture within 3 minutes of leaving the grill. This is a tableside-speed dish — grill, glaze, plate, serve. On a beach in Northeast Brazil, this is sold from a portable grill by vendors shouting "Queijo! Queijo!" — capture that energy in your service.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> This is your most visually distinctive entrée. The honey-glazed, charred cheese skewer on a rustic board looks expensive and tastes extraordinary. It is also your fastest-to-execute entrée — 6 minutes from order to table. Push it at every table.</div>
+<div class="al"><span class="a">DAIRY (cheese)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Vinagrete Salad</div>
+  <div class="rh-sub">Classic Brazilian tomato, onion and capsicum relish, fresh parsley, cider vinegar · Sell: $5.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Entrée / Side</span><span class="tag">FC 12%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Roma tomatoes (diced 8mm)</td><td>100g</td><td>$0.24</td></tr>
+<tr><td>White onion (diced fine)</td><td>40g</td><td>$0.06</td></tr>
+<tr><td>Green capsicum/bell pepper (diced)</td><td>40g</td><td>$0.08</td></tr>
+<tr><td>Fresh flat-leaf parsley (chopped)</td><td>5g</td><td>$0.05</td></tr>
+<tr><td>Apple cider vinegar</td><td>15ml</td><td>$0.04</td></tr>
+<tr><td>Extra virgin olive oil</td><td>10ml</td><td>$0.09</td></tr>
+<tr><td>Salt and black pepper</td><td>2g</td><td>$0.01</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.57</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.57</span></div>
+<div class="fc-row"><span>Sell price</span><span>$5.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>9.5%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$5.42</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Dice consistently:</strong> All components should be diced to a uniform 8mm. This is a relish, not a rough salad — the even dice is what makes it look professional and allows every forkful to contain all flavours simultaneously. Rough chopping produces an uneven eating experience.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Salt the tomato first:</strong> Dice tomato, salt lightly, rest 5 minutes, drain excess liquid. This prevents the vinagrete from becoming watery within 10 minutes of dressing. Watery vinagrete soaks into the pão de queijo and rice — always pre-drain the tomato.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Dress and rest:</strong> Combine all vegetables with apple cider vinegar, olive oil, salt and pepper. Rest minimum 15 minutes for the flavours to meld — the vinegar slightly pickles the onion, reducing its sharpness. Vinagrete made an hour before service is better than vinagrete made to order.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Serve at room temperature:</strong> Never refrigerate dressed vinagrete — cold dulls the acidity and makes the tomato mealy. Serve at ambient temperature alongside the meat courses. This is the palate cleanser and brightness element of a churrasco meal — the acid cuts through the fat of the grilled meats.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Vinagrete is the condiment that sits on every table in a Brazilian churrascaria alongside the farofa. It costs $0.57 and creates a $5.42 margin. Never run out of it. Make a large batch at the start of every service.</div>
+<div class="al"><span class="a">None — naturally allergen-free</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Farofa da Casa</div>
+  <div class="rh-sub">Toasted cassava flour with bacon, egg, onion, parsley · Sell: $4.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 2 min service</span><span class="tag">Entrée / Side</span><span class="tag">FC 8%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (batch — 20 serves)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Cassava flour (farinha de mandioca)</td><td>400g</td><td>$0.88</td></tr>
+<tr><td>Bacon (diced, rendered)</td><td>150g</td><td>$1.20</td></tr>
+<tr><td>Eggs (scrambled)</td><td>3 × 55g</td><td>$1.05</td></tr>
+<tr><td>White onion (diced, sautéed)</td><td>100g</td><td>$0.15</td></tr>
+<tr><td>Butter</td><td>40g</td><td>$0.22</td></tr>
+<tr><td>Parsley, salt, pepper</td><td>misc</td><td>$0.10</td></tr>
+<tr><td><strong>Batch cost · Per serve (80g)</strong></td><td></td><td><strong>$3.60 · $0.18</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.18</span></div>
+<div class="fc-row"><span>Sell price</span><span>$4.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>3.6%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$4.81</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>What is farofa:</strong> Farofa is toasted cassava flour — the staple carbohydrate accompaniment to every Brazilian barbecue. The texture is coarse and dry, somewhere between couscous and breadcrumbs. It is sprinkled over meat and rice to add texture contrast and absorb the juices from the grilled meats. Without farofa, a churrasco feels incomplete to any Brazilian diner.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Render the bacon:</strong> Dice bacon into small lardons, render in a wide pan over medium heat until crispy and the fat is fully rendered. Do not drain the fat — it becomes the cooking medium for the farofa. The bacon fat toasts the cassava flour and adds deep savoury flavour.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Sauté onion and toast the flour:</strong> Add diced onion to the bacon fat, sauté until golden. Add butter. Add cassava flour all at once — stir constantly over medium heat for 3–4 minutes until the flour is toasted, golden, and fragrant. The flour is ready when it smells nutty and looks lightly browned.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Finish with egg and parsley:</strong> Push the mixture to one side, scramble eggs in the pan, then fold through the farofa. The egg adds richness and binding. Finish with fresh parsley and seasoning. Batch-produce and hold warm. Serve in a small bowl or ramekin alongside the main meats.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Farofa has a 3.6% food cost — your most profitable item on the menu. Never skip it. Brazilian diners will immediately notice if it is absent. Non-Brazilian diners who discover it will become regulars who order it every visit.</div>
+<div class="al"><span class="a">EGGS</span><span class="a">DAIRY (butter)</span><span class="a">PORK (bacon)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Bolinho de Bacalhau</div>
+  <div class="rh-sub">Salt cod and potato fritters, lemon aioli · Sell: $12.99 · 4 pieces</div>
+  <div class="rh-tags"><span class="tag">⏱ 8 min</span><span class="tag">Entrée</span><span class="tag">FC 20%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 4-piece serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Salt cod (bacalhau, desalted)</td><td>80g</td><td>$1.60</td></tr>
+<tr><td>Mashed potato (plain, batch)</td><td>100g</td><td>$0.18</td></tr>
+<tr><td>Eggs</td><td>1 × 55g</td><td>$0.35</td></tr>
+<tr><td>Parsley, garlic, black pepper</td><td>misc</td><td>$0.06</td></tr>
+<tr><td>Flour (dredge)</td><td>15g</td><td>$0.02</td></tr>
+<tr><td>Lemon aioli (batch)</td><td>30g</td><td>$0.12</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.33</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$2.33</span></div>
+<div class="fc-row"><span>Sell price</span><span>$12.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>17.9%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$10.66</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Desalt the bacalhau:</strong> Salt cod must be desalted before use — submerge in cold water for 24–48 hours, changing water every 8 hours. Taste after 24 hours — the fish should be pleasantly salty, not overwhelming. The desalting process also rehydrates the cod, changing its texture from stiff and dry to flaky and moist.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Poach and shred:</strong> Simmer desalted cod gently in water with a bay leaf for 8–10 minutes. Drain, cool, and shred finely with your fingers — remove any bones. The shred should be fine, not chunky. Combine with mashed potato, beaten egg, chopped parsley and garlic, black pepper. The mixture should hold a shape when formed into a ball.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Shape and coat:</strong> Using wet hands, form into oval quenelle shapes (traditional) or round balls — 35g each. Dust lightly with flour. The flour creates a thin crust during frying that keeps the fritter intact. Over-flouring creates a thick, doughy exterior that masks the delicate cod flavour.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Fry at <span class="temp">180°C / 356°F</span></strong> for 3–4 minutes until deep golden. The interior should be hot through and slightly creamy from the potato. Drain on a wire rack. Serve with lemon aioli. The combination of salt cod, potato, and the crispy exterior is one of the most satisfying flavour combinations in Portuguese-Brazilian cooking.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Bolinho de bacalhau is the Portuguese-Brazilian snack that transcends culture. It appears in every Brazilian boteco and pastelaria. The desalting process takes 24–48 hours — plan production accordingly. Batch-produce and freeze uncooked for service efficiency.</div>
+<div class="al"><span class="a">FISH (salt cod)</span><span class="a">EGGS</span><span class="a">GLUTEN (flour)</span></div>
+</div>
+</div>
+
+<!-- SECTION 2: MAINS -->
+<h2><span class="sn2">2</span>Mains</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Picanha na Brasa — Top Sirloin Cap</div>
+  <div class="rh-sub">200g USDA Choice picanha, rock salt crust, chimichurri · Sell: $32.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 15 min</span><span class="tag">Premium Main</span><span class="tag">FC 28%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 200g serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Picanha (top sirloin cap, fat cap on)</td><td>200g served (~280g raw)</td><td>$8.12</td></tr>
+<tr><td>Rock salt (coarse)</td><td>8g</td><td>$0.02</td></tr>
+<tr><td>Chimichurri (batch — parsley, garlic, EVOO, vinegar)</td><td>40ml</td><td>$0.28</td></tr>
+<tr><td>Charcoal (per serve fuel cost)</td><td>—</td><td>$0.30</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$8.72</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$8.72</span></div>
+<div class="fc-row"><span>Sell price</span><span>$32.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>26.4%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$24.27</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Source correctly:</strong> Picanha is the biceps femoris — the top sirloin cap with its distinctive thick fat layer. In the US it is often trimmed and sold as rump cap or coulotte. Specify to your butcher: bone-out, fat cap intact at minimum 1.5cm thickness. The fat cap is non-negotiable — it renders over the fire, bastes the meat continuously, and is the primary flavour vehicle of the dish.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Salt only — nothing else:</strong> Traditional churrasco picanha uses only coarse rock salt. No marinade, no oil, no pepper before cooking. The salt draws surface moisture which then re-absorbs, seasoning the meat from within. Apply generously 30 minutes before cooking, then brush off excess before it hits the fire.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>C-shape skewer, fat side out first:</strong> Fold the picanha into a C-shape and skewer through both ends — the fat cap faces outward and hits the fire first. Cook fat-side toward the coals for the first 4 minutes — renders the fat and creates a golden crust. Rotate to flesh side for 3–4 minutes. Internal target: <span class="temp">52–55°C / 126–131°F</span> for medium-rare.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Slice against the grain, serve immediately:</strong> Rest 3 minutes. Slice 1.5cm thick against the grain — the grain runs lengthwise, so slices are cross-sections. Each slice shows the rendered fat cap on one edge. Serve with chimichurri, farofa, and vinagrete. The picanha should be pink throughout with a golden-caramelised fat edge.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Picanha is your menu's identity. If your picanha is right, everything else is forgiven. If it is wrong, nothing else matters. The fat cap must render completely — a white, unrendered fat cap means the fire was too low or the cook time too short. Practice this cut until it is instinct.</div>
+<div class="al"><span class="a">None — naturally allergen-free</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Costela de Boi — Beef Short Ribs</div>
+  <div class="rh-sub">6-hour slow-cooked beef rib, dry rub, charcoal finish · Sell: $34.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 6 hrs + 10 min finish</span><span class="tag">Premium Main</span><span class="tag">FC 30%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve — 2 bone rack)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Beef short rib (2-bone, bone-in)</td><td>~600g raw</td><td>$9.00</td></tr>
+<tr><td>Dry rub (salt, pepper, garlic, cumin, paprika)</td><td>15g</td><td>$0.08</td></tr>
+<tr><td>Chimichurri (batch)</td><td>40ml</td><td>$0.28</td></tr>
+<tr><td>Charcoal (finish)</td><td>—</td><td>$0.30</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$9.66</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$9.66</span></div>
+<div class="fc-row"><span>Sell price</span><span>$34.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>27.6%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$25.33</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Dry rub and rest overnight:</strong> Apply dry rub generously to all surfaces. Rest uncovered in refrigerator overnight. The dry rub draws moisture to the surface which reabsorbs carrying flavour deep into the meat — the same principle as a dry brine. The overnight rest also dries the surface for better crust formation.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Low and slow — 6 hours at <span class="temp">150°C / 302°F</span>:</strong> Place ribs on a rack in a roasting pan with 200ml water in the bottom. Cover tightly with foil. Roast 5–6 hours until the collagen has fully converted to gelatin and the meat pulls back from the bone by 2cm. The probe should meet zero resistance — the "butter test."</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Charcoal finish:</strong> Transfer the slow-cooked rib to a very hot charcoal grill for 3–4 minutes per side. This step adds the smoke flavour and caramelised bark that the oven cannot produce. The contrast between the slow-cooked tender interior and the fire-charred exterior is the entire point of Brazilian costela.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Present whole, slice at the table:</strong> Bring the rack to the table whole on a wooden board. Slice between bones at the table — the moment of carving creates theatre and demonstrates confidence. Each bone portion should have a deep bark exterior and fall-tender interior. The bone is structural — it insulates the meat during the long cook and adds flavour.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> The 6-hour costela is your most labour-intensive item but also your highest-drama presentation. Start at 6am for dinner service. The ribs can hold at <span class="temp">63°C / 145°F</span> wrapped in foil for up to 3 hours before the charcoal finish — this gives you service flexibility.</div>
+<div class="al"><span class="a">MUSTARD (rub may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Fraldinha — Marinated Flank Steak</div>
+  <div class="rh-sub">Garlic and lime marinated flank, charcoal grilled, sliced thin · Sell: $26.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 12 min</span><span class="tag">Main</span><span class="tag">FC 24%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 200g serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Flank steak (marinated, 200g served)</td><td>~250g raw</td><td>$5.63</td></tr>
+<tr><td>Garlic (minced, marinade)</td><td>10g</td><td>$0.06</td></tr>
+<tr><td>Lime juice (marinade)</td><td>20ml</td><td>$0.12</td></tr>
+<tr><td>EVOO (marinade)</td><td>15ml</td><td>$0.14</td></tr>
+<tr><td>Fresh herbs (parsley, oregano)</td><td>5g</td><td>$0.05</td></tr>
+<tr><td>Chimichurri (batch)</td><td>40ml</td><td>$0.28</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$6.28</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$6.28</span></div>
+<div class="fc-row"><span>Sell price</span><span>$26.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>23.3%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$20.71</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Marinade 4–12 hours:</strong> Combine garlic, lime juice, EVOO, parsley and oregano. The acid in the lime begins to denature the surface proteins — this is not tenderisation (acid toughens muscle fibre if over-marinated) but flavour penetration. 4 hours minimum, 12 hours maximum. Beyond 12 hours the lime acid begins to break down the surface texture unpleasantly.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Remove from marinade, pat dry:</strong> Wet meat steams rather than sears. Pat the flank completely dry with paper towels before grilling — any moisture on the surface prevents the Maillard reaction and produces a grey, steamed exterior instead of a brown, caramelised crust. Season with additional salt at this point.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>High heat, fast cook:</strong> Flank steak is thin and cooks quickly — <span class="temp">230°C+</span> grill surface, 4–5 minutes per side for medium-rare. Flank has almost no intramuscular fat — it goes from perfect to overcooked in 2 minutes. Use a thermometer: pull at <span class="temp">52°C / 126°F</span> internal. It will carry-over cook to 55°C during rest.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Rest 5 minutes, slice against the grain:</strong> The grain in flank steak runs lengthwise and is very pronounced — slicing with the grain produces tough, stringy pieces. Slice on a sharp diagonal, against the grain, into 5mm slices. The thin slice reveals the pink interior and dramatically shortens the muscle fibres, making each piece tender regardless of the cut's inherent toughness.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Fraldinha is your best value churrasco cut — flavourful, relatively affordable, and when cooked correctly, extremely satisfying. It is the cut that regulars order because they understand it. Train your staff on the slicing technique — wrong-direction slices are immediately obvious and noticeably tough.</div>
+<div class="al"><span class="a">None — naturally allergen-free</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Linguiça Toscana — Grilled Pork Sausage</div>
+  <div class="rh-sub">3 links Tuscan-style pork sausage, charcoal grilled, whole grain mustard · Sell: $18.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 12 min</span><span class="tag">Main</span><span class="tag">FC 20%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve — 3 links)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Linguiça Toscana sausage (3 × 80g)</td><td>240g</td><td>$3.12</td></tr>
+<tr><td>Whole grain mustard (side)</td><td>20g</td><td>$0.14</td></tr>
+<tr><td>Lemon wedge</td><td>1 wedge</td><td>$0.06</td></tr>
+<tr><td>Charcoal fuel</td><td>—</td><td>$0.30</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$3.62</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$3.62</span></div>
+<div class="fc-row"><span>Sell price</span><span>$18.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>19.1%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$15.37</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Source quality linguiça:</strong> Linguiça Toscana is a coarse-ground pork sausage seasoned with garlic, fennel seed, black pepper, and sometimes wine. Source from a Brazilian or Portuguese specialty supplier — the flavour profile differs significantly from Italian sausage. If unavailable, a high-quality Tuscan-style Italian sausage with fennel seed is an acceptable substitute.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Grill on medium-high heat:</strong> Prick the sausage once on each side — this allows fat to escape and prevents bursting. Grill at <span class="temp">180–200°C</span> turning every 2–3 minutes. The goal is even, deep golden-brown colour on all sides with slight char marks. Internal temperature must reach <span class="temp">74°C / 165°F</span>.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Rest 2 minutes before serving:</strong> Sausage casings hold pressure during cooking — cutting immediately causes the juices to escape dramatically, leaving the sausage dry. A 2-minute rest allows the juices to redistribute. The skin should be tight and slightly crispy — it snaps when bitten.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Serve with mustard and lemon:</strong> The richness of pork fat and fennel in linguiça is perfectly balanced by the acidity of whole grain mustard and a squeeze of lemon. Present 3 links on a small board or plate — whole, not pre-cut. The guest cuts into them at the table, releasing the steam and aroma.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Linguiça is your highest-frequency rodízio item — almost every table orders it, it cooks fast, and the food cost is excellent. Always have a large batch ready to fire throughout service. It is also your best upsell for guests who are unsure about the beef cuts.</div>
+<div class="al"><span class="a">PORK</span><span class="a">GLUTEN (sausage casing/seasoning may contain)</span><span class="a">MUSTARD</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Frango com Alho — Garlic Butter Chicken</div>
+  <div class="rh-sub">Spatchcocked half chicken, garlic butter baste, charcoal roasted · Sell: $19.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 35 min</span><span class="tag">Main</span><span class="tag">FC 18%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per half chicken serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Chicken half (spatchcocked, ~550g)</td><td>550g</td><td>$2.75</td></tr>
+<tr><td>Garlic butter baste (batch — butter, garlic, parsley, lime)</td><td>40g</td><td>$0.44</td></tr>
+<tr><td>Salt, pepper, paprika (dry season)</td><td>8g</td><td>$0.04</td></tr>
+<tr><td>Lime (service)</td><td>½ lime</td><td>$0.12</td></tr>
+<tr><td>Charcoal fuel</td><td>—</td><td>$0.25</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$3.60</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$3.60</span></div>
+<div class="fc-row"><span>Sell price</span><span>$19.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>18.0%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$16.39</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Spatchcock and dry brine:</strong> Remove backbone with kitchen shears, press flat. Season with salt, pepper, and paprika. Rest uncovered in the refrigerator overnight. The dry brine draws moisture out and back in, seasoning deep into the muscle. The uncovered rest dries the skin — essential for crispy skin over charcoal.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Indirect heat first, 25 minutes:</strong> Start the chicken on the indirect side of the grill — away from direct coals — at <span class="temp">180°C</span>. This slow start cooks the thigh through without burning the breast. When the thigh reaches <span class="temp">70°C / 158°F</span> internal, move to direct heat.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Baste and char on direct heat:</strong> Brush generously with garlic butter. Move to direct charcoal heat, skin side down, for 4–5 minutes until skin is deep golden and charred in spots. The butter carries the garlic aroma into the skin. Baste once more when you flip. Final internal: <span class="temp">74°C / 165°F</span> at the thickest point.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Rest and serve with lime:</strong> Rest 5 minutes. Serve with a lime half squeezed over the skin at the last moment — the acid brightens the butter and cuts through the richness of the charred skin. The half chicken on a board with visible grill marks and golden skin is a visually compelling plate.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Frango is your most important accessible item for guests who don't eat beef. At 18% food cost and $16.39 contribution margin, it is also one of your most profitable mains. Never treat it as a secondary item — cook it with the same attention as the picanha.</div>
+<div class="al"><span class="a">DAIRY (butter)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Cordeiro — Charcoal Grilled Lamb Leg</div>
+  <div class="rh-sub">Butterflied lamb leg, garlic and herb marinade, mint salsa verde · Sell: $28.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 20 min</span><span class="tag">Premium Main</span><span class="tag">FC 26%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 200g serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Lamb leg (butterflied, 200g served)</td><td>~260g raw</td><td>$6.76</td></tr>
+<tr><td>Garlic, rosemary, EVOO marinade</td><td>20g</td><td>$0.18</td></tr>
+<tr><td>Mint salsa verde (batch)</td><td>40ml</td><td>$0.32</td></tr>
+<tr><td>Lemon wedge</td><td>½ lemon</td><td>$0.10</td></tr>
+<tr><td>Charcoal fuel</td><td>—</td><td>$0.30</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$7.66</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$7.66</span></div>
+<div class="fc-row"><span>Sell price</span><span>$28.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>26.4%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$21.33</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Butterfly and marinade 12 hours:</strong> Have your butcher butterfly the lamb leg — opened flat, even thickness. Marinade: minced garlic, rosemary, EVOO, lemon zest, black pepper. 12 hours minimum. The butterflied leg has uneven thickness — the marinade helps season all sections consistently before the different sections cook at different rates on the grill.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Temperature management on the grill:</strong> The butterflied leg has thin edges and a thick centre. Start thick parts over direct coals; finish thin edges on indirect heat. Use a probe thermometer — pull at <span class="temp">58°C / 136°F</span> for medium-rare in the thickest section. The thinner edges will be more cooked — this is correct and expected.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Rest 8 minutes:</strong> Lamb needs a longer rest than beef — the muscle fibres are denser and hold heat longer. 8 minutes rest under loose foil. Slice against the grain into 1cm thick pieces — the grain runs differently in different sections of a butterflied leg. Learn the grain of each section and slice accordingly.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Mint salsa verde:</strong> Blend fresh mint, parsley, capers, anchovy (optional), garlic, EVOO, and lemon juice. Do not over-blend — keep it slightly chunky. The bright, acidic, herbal salsa verde is the classical accompaniment to lamb — the acidity cuts the strong flavour of the lamb fat.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Lamb on a Brazilian churrasco menu differentiates you from every other churrascaria. Most focus exclusively on beef and pork. A well-executed lamb leg tells guests and inspectors that your kitchen has range and ambition.</div>
+<div class="al"><span class="a">FISH (anchovy in salsa verde — can omit)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Salmão Grelhado — Cedar Plank Salmon</div>
+  <div class="rh-sub">Cedar plank salmon, dill butter, lemon, capers · Sell: $27.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 18 min</span><span class="tag">Main</span><span class="tag">FC 26%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 180g serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Atlantic salmon fillet (skin on)</td><td>180g</td><td>$5.85</td></tr>
+<tr><td>Cedar plank (soaked 2hrs)</td><td>1 plank</td><td>$0.55</td></tr>
+<tr><td>Dill butter (batch — butter, dill, lemon zest)</td><td>20g</td><td>$0.22</td></tr>
+<tr><td>Capers (garnish)</td><td>10g</td><td>$0.10</td></tr>
+<tr><td>Lemon (service)</td><td>½ lemon</td><td>$0.10</td></tr>
+<tr><td>Salt, white pepper</td><td>3g</td><td>$0.02</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$6.84</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$6.84</span></div>
+<div class="fc-row"><span>Sell price</span><span>$27.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>24.4%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$21.15</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Soak the cedar plank:</strong> Submerge cedar plank in cold water minimum 2 hours — this prevents it from catching fire on the grill. A dry plank will ignite within 3 minutes on a hot grill. The soaked plank smokes rather than burns, imparting a gentle cedar and resin aroma to the salmon that is completely distinctive.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Season and place on plank:</strong> Season salmon with salt and white pepper only. Place skin-side down on the soaked plank. Place the plank directly on a hot grill, close the lid. The salmon cooks by indirect convection heat from the grill plus direct heat conducted through the plank — a unique cooking environment that produces an extraordinarily moist result.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Cook 15–18 minutes, lid closed:</strong> Do not open the lid. The cedar smoke must build up inside the grill to infuse the salmon. The salmon is done when it flakes easily at the thickest point — <span class="temp">52°C / 126°F</span> internal for medium (slightly translucent in centre) or <span class="temp">60°C / 140°F</span> for fully cooked. The plank may char at the edges — this is correct.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Finish with dill butter at the table:</strong> Place a knob of dill butter on the hot salmon the moment it comes off the grill — it melts over the fish at the table. Add capers and a squeeze of lemon. Serve on the cedar plank directly — the plank is the plate. The guest eats from the wood, which continues to release cedar aroma throughout the meal.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Cedar plank salmon is your non-beef option for guests who want the churrasco experience without red meat. The plank-as-plate presentation is highly photogenic and generates social media content without asking. Source planks in bulk — cost per unit drops to $0.30 at volume.</div>
+<div class="al"><span class="a">FISH (salmon)</span><span class="a">DAIRY (butter)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Moqueca de Camarão — Prawn Coconut Stew</div>
+  <div class="rh-sub">Bahian-style prawn stew, dendê oil, coconut milk, white rice · Sell: $24.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 20 min</span><span class="tag">Main</span><span class="tag">FC 24%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Tiger prawns (peeled, deveined)</td><td>180g</td><td>$3.96</td></tr>
+<tr><td>Coconut milk (full fat)</td><td>150ml</td><td>$0.60</td></tr>
+<tr><td>Dendê oil (palm oil) or annatto oil</td><td>15ml</td><td>$0.18</td></tr>
+<tr><td>San Marzano tomatoes (diced)</td><td>80g</td><td>$0.35</td></tr>
+<tr><td>Onion, capsicum, garlic, coriander</td><td>60g</td><td>$0.14</td></tr>
+<tr><td>Lime juice</td><td>15ml</td><td>$0.08</td></tr>
+<tr><td>Jasmine rice (batch, per serve)</td><td>120g cooked</td><td>$0.18</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$5.49</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$5.49</span></div>
+<div class="fc-row"><span>Sell price</span><span>$24.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>22.0%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$19.50</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Build the base:</strong> Heat dendê oil (or annatto oil for colour without the palm flavour) in a wide shallow pan. Sauté sliced onion, capsicum, and garlic until softened — 5 minutes. Add diced tomato, cook 3 more minutes until the tomato breaks down and the base thickens. The dendê oil gives the dish its characteristic deep orange colour and rich, slightly nutty flavour — this colour is the visual signature of Bahian moqueca.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Add coconut milk and simmer:</strong> Pour in coconut milk, stir to combine with the base. Bring to a gentle simmer — do not boil aggressively or the coconut milk splits and the sauce separates. Season with salt and a squeeze of lime. The sauce should be creamy, orange-tinged, and fragrant with coconut and dendê.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Add prawns last:</strong> Prawns are added in the final 3–4 minutes only. They go from raw to perfectly cooked to rubbery in 2 minutes at simmering temperature — timing is critical. Add prawns, cook until they are pink and just curled — <span class="temp">63°C / 145°F</span> internal. Remove from heat immediately.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Finish with lime and coriander:</strong> Squeeze lime over the finished moqueca — the acidity brightens the rich coconut base. Scatter fresh coriander leaves. Serve in a clay pot (traditional) or a wide shallow bowl over jasmine rice. The moqueca should have enough sauce to pool around the rice when served.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Moqueca is the dish that shows your range beyond grilled meats. It is the cuisine of Bahia — Brazil's Afro-Brazilian cultural capital — and has a completely different flavour profile from churrasco. It also appeals to guests who do not eat red meat. The dendê oil is the irreplaceable ingredient — do not substitute with regular vegetable oil.</div>
+<div class="al"><span class="a">SHELLFISH (prawns)</span><span class="a">TREE NUTS (coconut)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Porco na Brasa — Herb Pork Loin</div>
+  <div class="rh-sub">Herb-marinated pork loin, charcoal grilled, apple and ginger sauce · Sell: $21.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 15 min</span><span class="tag">Main</span><span class="tag">FC 22%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per 200g serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Pork loin (centre cut, 200g)</td><td>200g</td><td>$3.40</td></tr>
+<tr><td>Herb marinade (thyme, rosemary, garlic, EVOO)</td><td>20g</td><td>$0.16</td></tr>
+<tr><td>Apple and ginger sauce (batch)</td><td>50ml</td><td>$0.38</td></tr>
+<tr><td>Salt, black pepper</td><td>3g</td><td>$0.01</td></tr>
+<tr><td>Charcoal fuel</td><td>—</td><td>$0.30</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$4.25</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$4.25</span></div>
+<div class="fc-row"><span>Sell price</span><span>$21.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>19.3%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$17.74</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Marinade 6–12 hours:</strong> Combine thyme, rosemary, minced garlic, and EVOO. Coat pork loin thoroughly. The herbs penetrate the lean pork muscle and add aromatic complexity that the relatively flavour-neutral loin lacks on its own. Pork loin has minimal intramuscular fat — the marinade oil also helps prevent surface drying during the cook.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Sear on high, finish on medium:</strong> Start on direct high heat — <span class="temp">230°C+</span> — for 2 minutes per side to develop a crust. Move to indirect medium heat to finish cooking through without burning. Pork loin overcooks easily — it is fully cooked at <span class="temp">63°C / 145°F</span> (safe per USDA) with a slight pink centre. Pull at 63°C, not 74°C.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Apple ginger sauce:</strong> Simmer peeled diced apple with fresh ginger, a splash of apple cider vinegar, and a touch of brown sugar until soft. Blend until smooth. The result is a bright, slightly tart, aromatic sauce that cuts through the richness of the pork and complements the herb marinade. Make in large batches — holds 1 week refrigerated.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Rest and slice:</strong> Rest 4 minutes. Slice 1cm thick medallions. Fan across the plate slightly. Spoon apple ginger sauce alongside — not over — so the guest controls the ratio. The herb crust on the exterior, the pink interior, and the golden sauce make this a visually balanced and genuinely delicious plate.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Pork loin at 19% food cost is one of your best margin proteins after chicken. The apple ginger sauce is the dish's secret weapon — it elevates a simple cut to a memorable eating experience. Make the sauce daily — fresh-made apple sauce has significantly better flavour than day-old.</div>
+<div class="al"><span class="a">None — naturally allergen-free (check herb marinade)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Rodízio Platter for Two</div>
+  <div class="rh-sub">Picanha + linguiça + frango + farofa + vinagrete + pão de queijo · Sell: $58.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 20 min</span><span class="tag">Sharing Main</span><span class="tag">FC 27%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (serves 2)</h4>
+<table class="it">
+<tr><th>Item</th><th>Portion</th><th>Cost</th></tr>
+<tr><td>Picanha (sliced, shared)</td><td>280g raw</td><td>$8.12</td></tr>
+<tr><td>Linguiça Toscana (2 links)</td><td>160g</td><td>$2.08</td></tr>
+<tr><td>Frango half chicken</td><td>550g</td><td>$2.75</td></tr>
+<tr><td>Farofa (shared bowl)</td><td>120g</td><td>$0.27</td></tr>
+<tr><td>Vinagrete (shared bowl)</td><td>120g</td><td>$0.34</td></tr>
+<tr><td>Pão de queijo (4 pieces)</td><td>100g</td><td>$0.55</td></tr>
+<tr><td>Chimichurri + charcoal fuel</td><td>—</td><td>$0.80</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$14.91</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$14.91</span></div>
+<div class="fc-row"><span>Sell price</span><span>$58.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>25.3%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$44.08</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>The platter strategy:</strong> The rodízio platter drives your highest per-table revenue while also being your best introduction to the cuisine for first-time guests. A couple who orders the platter spends $58.99 versus $25–35 each ordering individually. Position it prominently on the menu: "Perfect for first-timers — everything we do, on one board."</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Sequencing the cook:</strong> Start frango first (35 min), then costela if ordered (6 hrs ahead), then picanha and linguiça in the final 15 min. All components must arrive simultaneously on the board — nothing worse than a platter where the chicken arrives 10 minutes after the beef. Coordinate the cook times backwards from the target service time.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Board presentation:</strong> Use a large hardwood carving board minimum 50cm × 30cm. Place picanha slices in a fan at one end. Whole linguiça links alongside. Frango half on the board. Farofa and vinagrete in small ramekins. Pão de queijo in a small basket. Chimichurri in a small bowl. The abundance of the board is the emotional sell of churrasco.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Tableside carving if possible:</strong> Bringing the board to the table and carving the frango or slicing the picanha tableside dramatically elevates the dining experience. This 60-second ritual communicates skill, confidence, and hospitality simultaneously. Tables around you will notice — and order the same thing.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> The rodízio platter should be your #1 selling item. Train every server to recommend it first for tables of 2. The $44.08 contribution margin per platter is your most important number. If half your tables order the platter, your P&L looks very different.</div>
+<div class="al"><span class="a">DAIRY (butter in frango)</span><span class="a">GLUTEN (pão de queijo — tapioca, GF)</span><span class="a">EGGS (pão de queijo)</span><span class="a">PORK (linguiça)</span></div>
+</div>
+</div>
+
+<!-- SECTION 3: DESSERTS -->
+<h2><span class="sn2">3</span>Desserts</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Brigadeiro</div>
+  <div class="rh-sub">3 chocolate fudge truffles, rainbow sprinkles, served warm · Sell: $6.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 2 min service</span><span class="tag">Dessert</span><span class="tag">FC 11%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (batch — 30 pieces)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Sweetened condensed milk (1 tin)</td><td>395g</td><td>$1.89</td></tr>
+<tr><td>Cocoa powder (unsweetened)</td><td>30g</td><td>$0.44</td></tr>
+<tr><td>Unsalted butter</td><td>15g</td><td>$0.08</td></tr>
+<tr><td>Chocolate sprinkles (granulado)</td><td>80g batch</td><td>$0.40</td></tr>
+<tr><td><strong>Batch cost · Per serve (3 pieces)</strong></td><td></td><td><strong>$2.81 · $0.28</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.28</span></div>
+<div class="fc-row"><span>Sell price</span><span>$6.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>4.0%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$6.71</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Cook the mixture:</strong> Combine condensed milk, cocoa powder, and butter in a heavy-based pan over medium heat. Stir continuously with a wooden spoon — never stop stirring or the mixture burns on the bottom. Cook until the mixture thickens, pulls away from the sides, and a line drawn through the mixture holds its shape for 3 seconds. This takes 10–12 minutes.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Cool completely:</strong> Pour onto a buttered tray. Cool to room temperature then refrigerate minimum 2 hours until firm enough to roll. Warm brigadeiro mixture cannot be rolled — it sticks to everything. Patience at this stage determines the quality of the finished product.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Roll and coat:</strong> With lightly buttered hands, roll 15g portions into smooth balls. Roll immediately in chocolate sprinkles (granulado) until completely coated. Place in individual petit four cases. The buttered hands technique prevents sticking — re-butter hands every 5–6 balls.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Serve at room temperature:</strong> Brigadeiro served cold from the refrigerator is hard and loses its characteristic fudge-like yield. Remove from refrigeration 20 minutes before service. Serve 3 pieces per plate on a small board or in the petit four cases. This is Brazil's most beloved sweet — every Brazilian at your table will have a childhood memory attached to it.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> At 4% food cost, brigadeiro is your most profitable item on the entire menu. Batch-produce every 2 days — they hold 5 days refrigerated. Always pre-sell at the main course: "Save room for the brigadeiro — it's Brazil's national chocolate truffle." Almost no one declines.</div>
+<div class="al"><span class="a">DAIRY (condensed milk, butter)</span><span class="a">May contain GLUTEN (check sprinkles)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Pudim de Leite — Brazilian Flan</div>
+  <div class="rh-sub">Condensed milk custard, caramel, served chilled · Sell: $7.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min service</span><span class="tag">Dessert</span><span class="tag">FC 13%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (batch — 8 serves)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Sweetened condensed milk (1 tin)</td><td>395g</td><td>$1.89</td></tr>
+<tr><td>Whole milk</td><td>395ml (1 tin measure)</td><td>$0.55</td></tr>
+<tr><td>Eggs</td><td>3 × 55g</td><td>$1.05</td></tr>
+<tr><td>White sugar (caramel)</td><td>150g</td><td>$0.22</td></tr>
+<tr><td><strong>Batch cost · Per serve</strong></td><td></td><td><strong>$3.71 · $0.46</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.46</span></div>
+<div class="fc-row"><span>Sell price</span><span>$7.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>5.8%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$7.53</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Make the caramel:</strong> Melt sugar in a dry heavy pan over medium heat — do not stir, swirl the pan only. Cook to deep amber caramel (<span class="temp">180°C</span>). Immediately pour into the pudim mould, swirling to coat the base and sides. Work quickly — caramel sets in seconds. The caramel layer becomes the sauce when unmoulded.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Make the custard:</strong> Blend condensed milk, whole milk, and eggs until completely smooth. The condensed milk provides all the sweetness and richness — no additional sugar is needed. Strain through a fine sieve to remove any egg stringiness. Pour over the set caramel in the mould.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Bain marie at <span class="temp">160°C / 320°F</span> for 50 minutes:</strong> Place mould in a roasting pan, add hot water halfway up the side of the mould. The water bath prevents the outer edges of the custard from cooking faster than the centre. The pudim is done when the edges are set but the centre has a slight wobble — it firms completely on cooling.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Cool, refrigerate, unmould:</strong> Cool completely, refrigerate minimum 4 hours or overnight. To unmould: run a thin knife around the edge, place a plate on top, invert quickly. The caramel pours over the custard. Serve chilled with the caramel pooled around the base. Batch-produce daily for next-day service.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Pudim de leite is the dessert that every Brazilian orders first. The condensed milk gives it a richness and sweetness that is distinctly Brazilian — heavier and more intensely flavoured than French crème caramel. At 5.8% food cost it is your second most profitable item after brigadeiro.</div>
+<div class="al"><span class="a">DAIRY (condensed milk, whole milk)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Açaí na Tigela</div>
+  <div class="rh-sub">Frozen açaí bowl, granola, banana, honey, strawberry · Sell: $8.99</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Dessert</span><span class="tag">FC 16%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Açaí purée (frozen, Sambazon or similar)</td><td>200g</td><td>$1.00</td></tr>
+<tr><td>Banana (blended in + sliced garnish)</td><td>1 medium</td><td>$0.18</td></tr>
+<tr><td>Granola (batch or commercial)</td><td>40g</td><td>$0.22</td></tr>
+<tr><td>Strawberries (sliced)</td><td>50g</td><td>$0.35</td></tr>
+<tr><td>Raw honey (drizzle)</td><td>15ml</td><td>$0.22</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.97</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.97</span></div>
+<div class="fc-row"><span>Sell price</span><span>$8.99</span></div>
+<div class="fc-row"><span>Food cost %</span><span>21.9%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$7.02</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Blend to a thick sorbet:</strong> Blend frozen açaí purée with half a banana — minimal liquid, or none. The consistency should be thick enough to hold its shape in the bowl like ice cream — not a smoothie. Over-blending with too much liquid produces a runny açaí that does not hold the toppings. Use a high-powered blender (Vitamix or similar) and blend in short pulses.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Bowl temperature matters:</strong> Chill your serving bowls in the freezer. A warm bowl melts the açaí within 2 minutes of plating. The açaí bowl should hold its form throughout the meal — a frozen bowl extends this window significantly.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Layer the toppings with intention:</strong> Spread açaí base flat in the bowl. Layer granola across the centre. Fan sliced banana on one side, sliced strawberries on the other. Drizzle honey in a thin stream across the toppings. The final plate should look abundant, colourful, and organised — not piled randomly. The visual of the açaí bowl drives its own Instagram marketing.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Serve immediately:</strong> Açaí begins melting from the moment it leaves the blender. Plate, garnish, and serve within 90 seconds. Brief table explanation: "The açaí is from the Amazon — it's what Brazilians eat for breakfast on the beach in Rio. Mix the granola and honey through before you eat." This script turns a familiar health food into a cultural experience.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Açaí na tigela is extremely popular with health-conscious US diners under 40. It gives your menu a fresh, wellness angle that balances the meat-heavy churrasco programme. It is also your only dairy-free dessert — important for a significant portion of your market.</div>
+<div class="al"><span class="a">GLUTEN (granola may contain)</span><span class="a">TREE NUTS (granola may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Romeu e Julieta</div>
+  <div class="rh-sub">Goiabada (guava paste) with Minas Frescal cheese, crackers · Sell: $6.49</div>
+  <div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Dessert</span><span class="tag">FC 14%</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Goiabada (guava paste, imported Brazilian)</td><td>60g</td><td>$0.42</td></tr>
+<tr><td>Minas Frescal or mild fresh cheese</td><td>60g</td><td>$0.36</td></tr>
+<tr><td>Water crackers (4–5 pieces)</td><td>20g</td><td>$0.06</td></tr>
+<tr><td>Fresh mint (garnish)</td><td>2 sprigs</td><td>$0.02</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.86</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.86</span></div>
+<div class="fc-row"><span>Sell price</span><span>$6.49</span></div>
+<div class="fc-row"><span>Food cost %</span><span>13.3%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$5.63</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>The story of the name:</strong> Romeu e Julieta — Romeo and Juliet — is named for the sweet-and-salty contrast between goiabada (the sweet Juliet) and fresh cheese (the salty Romeo). It is one of Brazil's most beloved flavour combinations, appearing as a dessert, a cheese board element, and even inside pastries. The name alone creates a conversation at the table.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Source the right goiabada:</strong> Goiabada is thick guava paste with a deep garnet-red colour and intense tropical sweetness. Brazilian brands (Predilecta, Quero) are available in Latin American grocery stores and online. Do not substitute with guava jam — the paste has a completely different texture and intensity.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Plate with elegance:</strong> Slice goiabada into 3–4 neat rectangles. Fan alongside equal portions of fresh cheese. Place crackers in a small stack beside them. A garnish of fresh mint adds colour and aroma. Despite its simplicity, the presentation should feel considered and intentional.</div></div>
+<div class="step"><div class="sn">4</div><div class="st"><strong>Service suggestion:</strong> Train servers: "Romeu e Julieta is Brazil's version of a cheese board — sweet guava paste with fresh cheese. Try them together on a cracker." This instruction converts hesitation into curiosity. It is also your best light dessert option for guests who are too full for brigadeiro or pudim.</div></div>
+<div class="tb"><strong>Chef's Tip:</strong> Romeu e Julieta requires zero kitchen time — it is an assembly plate. Your lowest-labour, highest-speed dessert. It is also a genuinely delicious and culturally specific experience that guests remember and talk about. Never take it off the menu.</div>
+<div class="al"><span class="a">DAIRY (fresh cheese)</span><span class="a">GLUTEN (crackers)</span></div>
+</div>
+</div>
+
+<!-- SECTION 4: DRINKS -->
+<h2><span class="sn2">4</span>Drinks</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Caipirinha — Classic</div>
+  <div class="rh-sub">Cachaça, fresh lime, white sugar, crushed ice · Sell: $13.99 · FC 11%</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Cocktail</span><span class="tag">Signature</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Cachaça (51 or Leblon)</td><td>60ml</td><td>$1.20</td></tr>
+<tr><td>Fresh limes (quartered)</td><td>1 lime</td><td>$0.22</td></tr>
+<tr><td>White sugar</td><td>2 tsp / 8g</td><td>$0.02</td></tr>
+<tr><td>Crushed ice</td><td>200g</td><td>$0.02</td></tr>
+<tr><td>Lime wheel garnish</td><td>1 slice</td><td>$0.05</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.51</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.51</span></div>
+<div class="fc-row"><span>Sell price</span><span>$13.99</span></div>
+<div class="fc-row"><span>FC%</span><span>10.8%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$12.48</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Muddle properly:</strong> Quarter the lime with the skin on. Place in a rocks glass with sugar. Muddle firmly — you want juice AND the aromatic oils from the skin. The skin oils are what give the Caipirinha its aromatic complexity beyond just lime juice.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Fill with crushed ice and pour cachaça:</strong> Fill glass with crushed ice to the top. Pour 60ml cachaça. Stir from the bottom 5–6 times. The drink should be slightly cloudy from the lime pulp and sugar — this is correct, not a flaw. Do not strain.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>The cachaça education:</strong> Train all servers: "Cachaça is Brazilian sugarcane spirit — distilled from fresh cane juice, not molasses like rum. That's why it tastes different — greener, more complex. The Caipirinha is Brazil's national cocktail." This 10-second explanation converts curiosity into confidence and drives orders.</div></div>
+<div class="al"><span class="a">SULPHITES</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Guaraná Antarctica</div>
+  <div class="rh-sub">Brazil's iconic guaraná berry soft drink, served ice cold · Sell: $4.99 · FC 16%</div>
+  <div class="rh-tags"><span class="tag">⏱ 1 min</span><span class="tag">Soft Drink</span><span class="tag">Signature</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Guaraná Antarctica 350ml bottle</td><td>1 bottle</td><td>$0.72</td></tr>
+<tr><td>Chilled glass + ice</td><td>150g</td><td>$0.08</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.80</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.80</span></div>
+<div class="fc-row"><span>Sell price</span><span>$4.99</span></div>
+<div class="fc-row"><span>FC%</span><span>16.0%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$4.19</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Serve at 2–4°C:</strong> Guaraná Antarctica must be served ice cold — warmth makes it taste flat and overly sweet. Dedicated cold storage at 2–4°C is essential. Present the branded bottle alongside a frosted glass — the visual communicates authenticity to Brazilian guests immediately.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>The discovery script:</strong> "Guaraná is made from an Amazonian berry — naturally caffeinated, Brazil's most popular soft drink since 1921. It tastes like nothing else." For non-Brazilian guests this is always a pleasant surprise. For Brazilian guests it is a comfort and a signal that your kitchen is authentic.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Stock visibly:</strong> Keep Guaraná Antarctica visible behind the bar or in a glass-door fridge visible from the dining room. Brazilian guests will spot it and order immediately — before they look at the menu. This small detail communicates cultural literacy and drives instant trust.</div></div>
+<div class="al"><span class="a">None — check label for sulphites</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Maracujá — Fresh Passion Fruit Juice</div>
+  <div class="rh-sub">Fresh passion fruit pulp, water, simple syrup, lime · Sell: $5.99 · FC 12%</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Fresh Juice</span><span class="tag">Non-Alcoholic</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Passion fruit pulp (fresh or frozen)</td><td>80ml</td><td>$0.56</td></tr>
+<tr><td>Cold water</td><td>150ml</td><td>$0.01</td></tr>
+<tr><td>Simple syrup</td><td>20ml</td><td>$0.04</td></tr>
+<tr><td>Ice + passion fruit half (garnish)</td><td>150g ice</td><td>$0.12</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.73</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.73</span></div>
+<div class="fc-row"><span>Sell price</span><span>$5.99</span></div>
+<div class="fc-row"><span>FC%</span><span>12.2%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$5.26</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Fresh vs frozen:</strong> Fresh passion fruit in season produces the most intensely aromatic juice. Frozen pulp (available from Latin American suppliers year-round) is the consistent operational choice. Never use cordial — the real fruit is categorically different in flavour intensity.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Build and taste:</strong> Combine passion fruit pulp, water, and simple syrup. Taste and adjust sweetness — passion fruit acidity varies significantly by batch. The finished drink should be tart-forward with floral sweetness. Strain if desired or serve with the seeds for a more rustic, authentic presentation.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Garnish for impact:</strong> Float a halved passion fruit on the rim of the glass — the seed-filled interior visible to the guest. This single garnish communicates freshness and craft immediately. Your best non-alcoholic pairing with any dessert.</div></div>
+<div class="al"><span class="a">None — naturally allergen-free</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Skol / Brahma — Brazilian Lager</div>
+  <div class="rh-sub">Brazilian lager, frosted glass, served at near-freezing · Sell: $6.99 · FC 17%</div>
+  <div class="rh-tags"><span class="tag">⏱ 1 min</span><span class="tag">Beer</span><span class="tag">Pairing: All meats</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Skol or Brahma 355ml bottle</td><td>1 bottle</td><td>$1.10</td></tr>
+<tr><td>Frosted glass (freezer-stored)</td><td>1</td><td>$0.05</td></tr>
+<tr><td>Lime wedge</td><td>1 wedge</td><td>$0.06</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.21</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.21</span></div>
+<div class="fc-row"><span>Sell price</span><span>$6.99</span></div>
+<div class="fc-row"><span>FC%</span><span>17.3%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$5.78</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Brazilian beer culture — serve it cold:</strong> Brazilians drink beer at near-freezing temperature — much colder than European or American standards. Store bottles at 2°C. A frosted glass from the freezer extends the cold window significantly. This is not optional — it is culturally expected.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Open at the table:</strong> Present the bottle unopened with the frosted glass. Open at the table — the hiss of the cap is a sensory moment. Pour 2/3 of the bottle, leave the rest for the guest to pour themselves. This is the Brazilian boteco service style — informal, generous, respectful.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>The pairing script:</strong> "The Brahma cuts through the fat in the picanha and the moqueca beautifully — this is how Brazilians drink at a churrasco." Honest, accurate, and sells the second beer before the first is finished. Target: 2 beers per guest over a 90-minute churrasco service.</div></div>
+<div class="al"><span class="a">GLUTEN (barley malt)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Malbec by the Glass</div>
+  <div class="rh-sub">Argentinian Malbec, 180ml pour, soft tannins, pairs with beef · Sell: $10.99 · FC 22%</div>
+  <div class="rh-tags"><span class="tag">⏱ 1 min</span><span class="tag">Wine</span><span class="tag">Pairing: Picanha, costela</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Argentinian Malbec (180ml pour)</td><td>180ml</td><td>$2.20</td></tr>
+<tr><td>Large bowl red wine glass</td><td>1</td><td>$0.10</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.30</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$2.30</span></div>
+<div class="fc-row"><span>Sell price</span><span>$10.99</span></div>
+<div class="fc-row"><span>FC%</span><span>20.9%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$8.69</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Why Malbec with churrasco:</strong> Malbec is South America's great red wine grape — grown in Argentina's Mendoza, adjacent to Brazil's churrasco culture. Soft tannins, dark fruit, richness that enhances beef fat rather than fighting it. The most culturally and geographically authentic wine for this menu.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Serving temperature:</strong> 16–18°C — slightly below room temperature. Never refrigerate red wine but in a warm restaurant, a 15-minute cool is fine. Pour into a large-bowl glass that allows the wine to breathe. The large bowl releases the Malbec's characteristic plum and violet aromas.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>The pairing script:</strong> "For the picanha and the beef ribs, I'd suggest the Malbec — it's Argentinian, right next door to Brazil. Soft tannins that enhance the beef fat rather than fight it. One of the best wine pairings for churrasco." Geography + flavour rationale = confident recommendation.</div></div>
+<div class="al"><span class="a">SULPHITES</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Café Brasileiro</div>
+  <div class="rh-sub">Brazilian single-origin espresso, steamed whole milk, served in ceramic · Sell: $4.99 · FC 9%</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Coffee</span><span class="tag">Post-meal</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Brazilian single-origin espresso (18g dose)</td><td>18g → 36ml</td><td>$0.32</td></tr>
+<tr><td>Whole milk (steamed)</td><td>120ml</td><td>$0.13</td></tr>
+<tr><td>Sugar sachet (side)</td><td>1</td><td>$0.02</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.47</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.47</span></div>
+<div class="fc-row"><span>Sell price</span><span>$4.99</span></div>
+<div class="fc-row"><span>FC%</span><span>9.4%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$4.52</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Source Brazilian beans:</strong> Brazil is the world's largest coffee producer. Santos or Sul de Minas beans are widely available in the US. Medium-dark roast. The story of Brazilian coffee origin adds value to every cup — "Our coffee is Brazilian single-origin from Sul de Minas" is a three-second sentence that increases the perceived value of a $4.99 item.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Café com leite ratio:</strong> 1:1 espresso to steamed milk. Denser than a latte, stronger than a flat white. Steam milk to 65°C with microfoam. Serve in a large ceramic cup — not a glass. The ceramic retains heat and is the traditional Brazilian café service vessel.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Always suggest post-meal:</strong> "Can I get you a café brasileiro to finish? Our beans are Brazilian single-origin." Low resistance upsell at the end of a meal — guests are relaxed, full, and receptive. Also extends the table's stay, increasing the chance of an extra brigadeiro or digestif order.</div></div>
+<div class="al"><span class="a">DAIRY (milk)</span><span class="a">CAFFEINE</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Caipiroska — Vodka Version</div>
+  <div class="rh-sub">Vodka, fresh lime, sugar, crushed ice — fruit variations available · Sell: $13.99 · FC 10%</div>
+  <div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Cocktail</span><span class="tag">Accessible</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Vodka (well brand)</td><td>60ml</td><td>$0.96</td></div>
+<tr><td>Fresh limes (quartered)</td><td>1 lime</td><td>$0.22</td></tr>
+<tr><td>White sugar</td><td>2 tsp</td><td>$0.02</td></tr>
+<tr><td>Crushed ice</td><td>200g</td><td>$0.02</td></tr>
+<tr><td>Fruit option (strawberry or passion fruit)</td><td>30g</td><td>$0.18</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.40</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.40</span></div>
+<div class="fc-row"><span>Sell price</span><span>$13.99</span></div>
+<div class="fc-row"><span>FC%</span><span>10.0%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$12.59</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Same technique as Caipirinha:</strong> Muddle lime with sugar, fill with crushed ice, pour vodka. For fruit variations, muddle 30g fresh strawberry or passion fruit pulp with the lime and sugar before adding ice and vodka. The fruit adds colour and sweetness — Instagram-friendly and highly ordered by groups.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Offer both options:</strong> Always present the choice — "We have the classic Caipirinha with cachaça, Brazil's national spirit, or the vodka Caipiroska if you prefer something cleaner. Both with fresh lime, both $13.99." The comparison framing helps guests choose without feeling lost.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Pitcher strategy for groups:</strong> For tables of 6+, offer a Caipiroska pitcher ($45.99) — serves 4, reduces service time by 60%, increases cocktail revenue per table by 40% over individual orders. Always suggest it for large groups: "For the table, we can do a pitcher — much easier and better value."</div></div>
+<div class="al"><span class="a">SULPHITES</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Coconut Water — Água de Coco</div>
+  <div class="rh-sub">Chilled young coconut water, served cold, lime wedge · Sell: $5.99 · FC 17%</div>
+  <div class="rh-tags"><span class="tag">⏱ 1 min</span><span class="tag">Non-Alcoholic</span><span class="tag">Health</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<div>
+<h4>Ingredients (per serve)</h4>
+<table class="it">
+<tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+<tr><td>Vita Coco or similar (330ml)</td><td>330ml</td><td>$0.86</td></tr>
+<tr><td>Ice + tall glass</td><td>150g</td><td>$0.02</td></tr>
+<tr><td>Lime wedge</td><td>1</td><td>$0.06</td></tr>
+<tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.94</strong></td></tr>
+</table>
+</div>
+<div>
+<div class="fc-box">
+<div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.94</span></div>
+<div class="fc-row"><span>Sell price</span><span>$5.99</span></div>
+<div class="fc-row"><span>FC%</span><span>15.7%</span></div>
+<div class="fc-row"><span>Contribution margin</span><span class="fc-val">$5.05</span></div>
+</div>
+</div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Cultural context:</strong> Água de coco is sold on every beach in Brazil. It is embedded in Brazilian culture as deeply as the Caipirinha. For non-drinkers and health-conscious guests, it is the natural default that doesn't feel like a compromise. Its natural electrolytes make it genuinely functional during a salt-heavy churrasco meal.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Serve properly cold:</strong> Store at 4°C or below. Pour over ice in a tall glass — do not serve warm or room temperature. A warm coconut water loses its fresh, delicate sweetness and tastes flat. The cold temperature is what makes it refreshing alongside hot grilled meats.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Health positioning:</strong> "The coconut water is great with the churrasco — naturally hydrating, no sugar added, balances the salt from the meats. We source it from [brand]." This health framing works well in the US market. Guests who order coconut water tend to spend more on food — they are typically in the health-conscious, higher-income demographic.</div></div>
+<div class="al"><span class="a">TREE NUTS (coconut)</span></div>
+</div>
+</div>
+
+<!-- SECTION 5: SERVICE SCRIPTS -->
+<h2><span class="sn2">5</span>Service Training</h2>
+
+<div class="info-box"><strong>Churrasco service is warm, knowledgeable, and generous.</strong> Guests should feel like they are at a Brazilian friend's house for a weekend barbecue — not a formal restaurant. The energy is festive. The knowledge is genuine. These scripts are starting points; personalise them to your voice.</div>
+
+<div class="script-box">
+<span class="script-label">Script 1 — The Welcome and Rodízio Explanation</span>
+<div class="script-text">"Welcome to [Restaurant Name] — good to have you. Can I start you with a Caipirinha while you look at the menu? It's Brazil's national cocktail — cachaça, which is Brazilian sugarcane spirit, fresh lime, and ice. Or the vodka version if you prefer something cleaner. Both $13.99."</div>
+<div class="script-why"><strong>Why it works:</strong> The Caipirinha offer is your most important opening line. It sets the cultural tone immediately and starts the beverage revenue. The brief cachaça explanation converts curiosity into a confident yes. Aim for Caipirinha conversion on 70% of tables.</div>
+</div>
+
+<div class="script-box">
+<span class="script-label">Script 2 — Menu Guidance and Meat Knowledge</span>
+<div class="script-text">"The highlight is the picanha — it's the top sirloin cap, Brazilian cut, cooked with just rock salt over charcoal. The fat cap renders over the fire and bastes the meat. That's why it's our most popular. The costela — beef ribs — starts at 6am, six hours on low heat, then a charcoal finish. If you want something lighter, the frango is a whole half chicken with garlic butter — beautiful. And the moqueca is our Bahian prawn coconut stew — completely different from the churrasco items but genuinely special."</div>
+<div class="script-why"><strong>Why it works:</strong> This script shows genuine knowledge, differentiates the key items, and manages expectations on the costela timing. Mentioning the moqueca as "completely different" sells the range of the kitchen. Guests feel informed, not sold to.</div>
+</div>
+
+<div class="script-box">
+<span class="script-label">Script 3 — Dessert Pre-Sell at Main Course Delivery</span>
+<div class="script-text">"While I have you — the brigadeiro are Brazil's national chocolate truffle, made here in-house. They're room temperature and need about 20 minutes, so I mention them now so they're ready when you want them. $6.99 for three. The pudim — Brazilian flan — is chilled and ready anytime. Both worth leaving room for."</div>
+<div class="script-why"><strong>Why it works:</strong> Pre-selling at mains delivery removes the "too full" barrier. The brigadeiro production detail adds craft credibility. Mentioning both options gives guests a choice rather than a yes/no decision. This script increases dessert conversion from ~25% to ~55% in most operations.</div>
+</div>
+
+<!-- SECTION 6: PREP SCHEDULE -->
+<h2><span class="sn2">6</span>Weekly Prep Schedule</h2>
+
+<table class="prep-table">
+<tr><th>Day</th><th>Morning (07:00–11:00)</th><th>Service</th><th>Evening Close</th></tr>
+<tr><td><strong>Monday</strong></td><td>Full batch: brigadeiro, pudim, farofa, chimichurri, vinagrete. Marinate fraldinha and porco. Defrost açaí.</td><td>Full service. Monitor all batch levels. Restock as needed.</td><td>Temp log all units. Write Tuesday prep list. Start costela if Tuesday lunch service.</td></tr>
+<tr><td><strong>Tuesday</strong></td><td>Costela into oven 6am if not done Monday. Refresh vinagrete and farofa. Portion picanha. Prep coxinha batch.</td><td>Full service. Push costela as special if available. Track what sold out.</td><td>Clean all grill grates. Marinate Wednesday proteins overnight.</td></tr>
+<tr><td><strong>Wednesday</strong></td><td>Restock pão de queijo batch (freeze extras). Refresh chimichurri. Defrost linguiça for service. Prep moqueca base.</td><td>Full service. Moqueca base prepped — prawns added to order only.</td><td>Full deep clean of grill. Fridge temp logs. Order for weekend.</td></tr>
+<tr><td><strong>Thursday</strong></td><td>Weekend prep begins: large brigadeiro batch (3× normal), double pudim batch, triple farofa. Butterfly and marinate lamb.</td><td>Full service. Begin pre-weekend upsell push — remind FOH of platter upsell.</td><td>Confirm weekend stock levels. Additional protein order if needed.</td></tr>
+<tr><td><strong>Friday</strong></td><td>Full mise en place for high-volume service. All batches at maximum. Costela into oven 5am. Cedar planks soaking. Ice production maximum.</td><td>High volume. All hands. Rodízio platter push on every table of 2+. Caipirinha on every order.</td><td>Full stock count. Emergency order if anything critical. Temp logs.</td></tr>
+<tr><td><strong>Saturday</strong></td><td>Refresh all batches from Friday. Deep check ice, drinks stock, all proteins. Pre-portion all serves for speed.</td><td>Peak service. Maximum covers. Dessert pre-sell every table. Pitcher push for groups.</td><td>Full close. All proteins portioned for Sunday. Fridge logs. Brief team on Sunday specials.</td></tr>
+<tr><td><strong>Sunday</strong></td><td>Light refresh of batches. Sunday typically slower — family dining. Açaí push for health-conscious Sunday crowd.</td><td>Family service pace. Slower, more relaxed. Push rodízio platter for families. Coconut water for children's tables.</td><td>Full weekly close. Deep clean. Inventory count. Place weekly order. Write Monday prep list.</td></tr>
+</table>
+
+<!-- SECTION 7: P&L -->
+<h2><span class="sn2">7</span>Financial Model</h2>
+
+<div class="info-box">Based on 52-seat venue, 2 services/day, 6 days/week · US market 2025 pricing</div>
+
+<table class="rev-table">
+<tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Daily</th><th>Monthly</th></tr>
+<tr><td>Lunch (12:00–3:00pm)</td><td>52</td><td>$48</td><td>$2,496</td><td>$59,904</td></tr>
+<tr><td>Dinner (6:00–10:00pm)</td><td>52</td><td>$68</td><td>$3,536</td><td>$84,864</td></tr>
+<tr><td>Beverage Mix (1.6 drinks/guest)</td><td>104 guests</td><td>$11.00</td><td>$1,144</td><td>$27,456</td></tr>
+<tr class="total-row"><td><strong>Total Revenue</strong></td><td>104 covers/day</td><td>—</td><td><strong>$7,176</strong></td><td><strong>$172,224</strong></td></tr>
+</table>
+
+<table class="rev-table">
+<tr><th>Cost Category</th><th>%</th><th>Monthly</th></tr>
+<tr><td>Food and Beverage Cost</td><td>26%</td><td>$44,778</td></tr>
+<tr><td>Labour — Head Chef + 2 grill cooks + 3 FOH (31%)</td><td>31%</td><td>$53,389</td></tr>
+<tr><td>Rent + Utilities + Misc</td><td>9%</td><td>$15,500</td></tr>
+<tr class="total-row"><td><strong>Total Costs</strong></td><td>66%</td><td><strong>$113,667</strong></td></tr>
+<tr class="net-row"><td><strong>Net Profit (est.)</strong></td><td>34%</td><td><strong>$58,557</strong></td></tr>
+</table>
+
+<div class="info-box"><strong>3-Month Ramp:</strong> Month 1 (~55% capacity) ~$22K net · Month 2 (~75%) ~$38K net · Month 3 (~100%) ~$58K net · Break-even requires ~$3,800/day revenue across both services. The rodízio platter upsell and beverage attach rate are the two levers that move these numbers most significantly.</div>
+
+<!-- SECTION 8: ALLERGENS -->
+<h2><span class="sn2">8</span>Allergen Reference</h2>
+
+<table class="rev-table">
+<tr><th>Dish</th><th>Allergens</th></tr>
+<tr><td>Picanha na Brasa</td><td><div class="al"><span class="a">None (pure beef + salt)</span></div></td></tr>
+<tr><td>Costela de Boi</td><td><div class="al"><span class="a">MUSTARD (rub may contain)</span></div></td></tr>
+<tr><td>Fraldinha</td><td><div class="al"><span class="a">None — naturally allergen-free</span></div></td></tr>
+<tr><td>Linguiça Toscana</td><td><div class="al"><span class="a">PORK</span><span class="a">GLUTEN (casing)</span><span class="a">MUSTARD</span></div></td></tr>
+<tr><td>Frango com Alho</td><td><div class="al"><span class="a">DAIRY (butter)</span></div></td></tr>
+<tr><td>Cordeiro</td><td><div class="al"><span class="a">FISH (anchovy — can omit)</span></div></td></tr>
+<tr><td>Salmão Grelhado</td><td><div class="al"><span class="a">FISH (salmon)</span><span class="a">DAIRY (butter)</span></div></td></tr>
+<tr><td>Moqueca de Camarão</td><td><div class="al"><span class="a">SHELLFISH (prawns)</span><span class="a">TREE NUTS (coconut)</span></div></td></tr>
+<tr><td>Porco na Brasa</td><td><div class="al"><span class="a">None — check marinade herbs</span></div></td></tr>
+<tr><td>Rodízio Platter</td><td><div class="al"><span class="a">DAIRY</span><span class="a">EGGS</span><span class="a">PORK</span></div></td></tr>
+<tr><td>Brigadeiro</td><td><div class="al"><span class="a">DAIRY</span><span class="a">May contain GLUTEN</span></div></td></tr>
+<tr><td>Pudim de Leite</td><td><div class="al"><span class="a">DAIRY</span><span class="a">EGGS</span></div></td></tr>
+<tr><td>Açaí na Tigela</td><td><div class="al"><span class="a">GLUTEN (granola)</span><span class="a">TREE NUTS (granola)</span></div></td></tr>
+<tr><td>Romeu e Julieta</td><td><div class="al"><span class="a">DAIRY (cheese)</span><span class="a">GLUTEN (crackers)</span></div></td></tr>
+</table>
+
+<!-- CLOSING CHEF'S LENS -->
+<h2>Closing — Chef's Lens</h2>
+
+<div class="lens-card">
+<div class="lens-title">// The technical truth about churrasco</div>
+<div class="lens-text">Churrasco is one of the most forgiving cuisines to cook and one of the hardest to master. The forgiveness is in the fire — charcoal covers a multitude of mistakes with smoke and heat. The mastery is in knowing each cut intimately: its grain direction, its fat distribution, its optimal internal temperature, its resting requirement. The picanha at 52°C versus 65°C is not the same dish. The costela at 5 hours versus 7 hours is not the same dish. Temperature is the language of this cuisine. Learn it fluently.</div>
+</div>
+
+<div class="lens-card">
+<div class="lens-title">// What changes when you run this correctly</div>
+<div class="lens-text">The churrascaria that gets it right doesn't need to advertise. The smoke reaches the street. The boards of meat leaving the pass turn heads in the dining room. Tables point. Phones come out. The regulars bring their friends and tell them what to order before they sit down. This is not about food cost percentages — though the percentages here are genuinely excellent. It is about building a place people want to return to. The numbers are the foundation. The fire, the fat, and the fellowship are what you're actually selling.</div>
+<div class="lens-closer">Build the fire. Learn the cuts. Know your numbers. The rest follows.</div>
+</div>
+
+<footer>KitchenFounder · Brazilian Churrasco Operations Guide · kitchenfounder.com · © 2025</footer>
+
+</div>
+</body>
+</html>

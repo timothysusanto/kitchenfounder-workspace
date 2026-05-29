@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hong Kong Café — Profitable Operations Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+@media print{.page{margin:0;page-break-after:always;}}
+h1{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:#c8000a;line-height:1.1;}
+h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#c8000a;margin:22px 0 11px;border-bottom:2px solid #c8000a;padding-bottom:5px;}
+h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin:0 0 3px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#c8000a;margin:10px 0 5px;}
+.cover{text-align:center;padding:32px 0 24px;}
+.cover-sub{font-size:12px;color:#777;letter-spacing:3px;text-transform:uppercase;margin-top:6px;}
+.cover-line{width:60px;height:3px;background:#c8000a;margin:16px auto;}
+.cover-desc{color:#555;max-width:380px;margin:0 auto;line-height:1.8;font-size:12px;}
+.cover-badge{display:inline-block;background:#c8000a;color:#fff;padding:6px 20px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:12px;}
+.cover-credit{margin-top:10px;font-size:10px;color:#aaa;letter-spacing:2px;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#c8000a;color:#fff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;}
+.info-box{background:#fdf5f5;border-left:4px solid #c8000a;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;}
+.recipe{border:1px solid #e0d0d0;border-radius:8px;margin-bottom:16px;overflow:hidden;page-break-inside:avoid;}
+.rh{background:linear-gradient(135deg,#c8000a,#8b0000);color:#fff;padding:12px 16px;}
+.rh-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;}
+.rh-sub{font-size:10px;opacity:0.85;margin-top:2px;letter-spacing:1px;}
+.rh-meta{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;}
+.rm{background:rgba(255,255,255,0.15);border-radius:10px;padding:2px 8px;font-size:9px;letter-spacing:1px;}
+.rb{padding:14px 16px;}
+.photo-box{border-radius:7px;overflow:hidden;margin-bottom:12px;height:180px;}
+.photo-box img{width:100%;height:180px;object-fit:cover;display:block;}
+.ph-lbl{font-size:9px;color:#c8000a;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.ph-src{font-size:10px;color:#666;margin-top:3px;font-style:italic;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11.5px;}
+.it th{background:#fdf5f5;color:#c8000a;padding:6px 9px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e8d0d0;}
+.it td{padding:5px 9px;border-bottom:1px solid #f4ecec;}
+.it tr:last-child td{border-bottom:none;}
+.cc{text-align:right;color:#c8000a;font-weight:600;}
+.step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;}
+.sn{background:#c8000a;color:#fff;width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.st{font-size:11.5px;line-height:1.7;}
+.st strong{color:#c8000a;}
+.tb{background:#fff8e8;border:1px solid #e8c870;border-radius:5px;padding:9px 12px;margin:8px 0;font-size:11px;}
+.tb strong{color:#9a6800;}
+.temp{display:inline-block;background:#1a1a1a;color:#fff;border-radius:3px;padding:1px 6px;font-size:9px;font-weight:700;font-family:monospace;margin:0 2px;}
+.temp.ok{background:#2a7a2a;}
+.temp.rest{background:#cc6600;}
+.cs{background:#fdf5f5;border-radius:5px;padding:10px 14px;margin-top:10px;}
+.cr{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0e8e8;font-size:11.5px;}
+.cr:last-child{border-bottom:none;font-weight:700;color:#c8000a;font-size:12.5px;padding-top:6px;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.a{background:#fff0f0;border:1px solid #e0b0b0;border-radius:10px;padding:2px 7px;font-size:9px;color:#8b0000;font-weight:600;}
+.sn2{display:inline-block;background:#c8000a;color:#fff;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-weight:700;font-size:11px;margin-right:7px;vertical-align:middle;}
+.ft{border-top:2px solid #c8000a;margin-top:24px;padding-top:9px;display:flex;justify-content:space-between;font-size:9px;color:#aaa;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#c8000a;color:#fff;padding:8px 10px;text-align:left;font-size:10px;letter-spacing:1px;}
+.schedule-table td{padding:7px 10px;border-bottom:1px solid #f0e8e8;}
+.schedule-table tr:nth-child(even) td{background:#fdf5f5;}
+.drink-card{border:1px solid #e0d8d0;border-radius:8px;padding:12px 14px;margin-bottom:12px;page-break-inside:avoid;}
+.drink-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.drink-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;}
+.drink-price{font-size:16px;font-weight:700;color:#c8000a;}
+.green-box{background:#f0faf0;border-left:4px solid #2a7a2a;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="cover">
+  <div style="font-size:42px;margin-bottom:12px;">🥢</div>
+  <h1>Hong Kong Café</h1>
+  <div class="cover-sub">Profitable Café Operations Guide</div>
+  <div class="cover-line"></div>
+  <div class="cover-desc">Breakfast & lunch only. 2 kitchen staff. Simple systems. Real profit. Every recipe written so clearly that anyone can execute it consistently — no culinary degree required.</div>
+  <div><div class="cover-badge">US Market Edition • $29.99</div></div>
+  <div class="cover-credit">By a Head Chef — Novotel Ibis Pullman Sydney Olympic Park</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">7am–3pm</div><div class="kpi-lbl">Trading Hours</div></div>
+  <div class="kpi"><div class="kpi-val">2 Staff</div><div class="kpi-lbl">Kitchen Crew</div></div>
+  <div class="kpi"><div class="kpi-val">$2K–$3K</div><div class="kpi-lbl">Daily Revenue</div></div>
+  <div class="kpi"><div class="kpi-val">28–30%</div><div class="kpi-lbl">Target Food Cost</div></div>
+</div>
+
+<div class="info-box">
+  <strong>How this guide works:</strong> Every recipe is written step by step with exact weights, temperatures, and timing. There is no guesswork. Follow the recipe exactly, and you will produce the same result every time. That consistency is what builds a profitable café. The drink menu is included — beverages are your highest-margin items and should be pushed on every single order.
+</div>
+
+<h2><span class="sn2">1</span>Entrées & Small Plates — 6 Items</h2>
+
+<!-- EGG TARTS -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">HK Egg Tarts (Dan Tat) — 3 piece</div>
+    <div class="rh-sub">Bake fresh twice daily • Highest margin item on your menu</div>
+    <div class="rh-meta"><span class="rm">Yield: 24 tarts</span><span class="rm">Prep: 35 min</span><span class="rm">Bake: 22 min</span><span class="rm">Sell: $8.99 / 3pc</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20egg%20tarts%20dan%20tat%20golden%20custard%20pastry%20overhead%20food%20photography%20dark%20slate?width=800&height=360&nologo=true&seed=101" alt="Hong Kong Egg Tarts" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Pastry Shell</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Plain flour</td><td>250g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Cold unsalted butter (cubed)</td><td>125g</td><td class="cc">$0.55</td></tr>
+        <tr><td>Icing sugar</td><td>60g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Egg yolk</td><td>1 piece</td><td class="cc">$0.14</td></tr>
+        <tr><td>Cold water</td><td>20ml</td><td class="cc">—</td></tr>
+        <tr><td>Salt</td><td>1g</td><td class="cc">—</td></tr></table>
+      </div>
+      <div><h4>Custard Filling</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Whole eggs</td><td>3 eggs</td><td class="cc">$0.42</td></tr>
+        <tr><td>Caster sugar</td><td>80g</td><td class="cc">$0.07</td></tr>
+        <tr><td>Full fat milk</td><td>200ml</td><td class="cc">$0.22</td></tr>
+        <tr><td>Evaporated milk</td><td>80ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Vanilla extract</td><td>3ml</td><td class="cc">$0.08</td></tr></table>
+      </div>
+    </div>
+    <h4>Method — Step by Step</h4>
+    <div class="step"><div class="sn">1</div><div class="st">In a food processor, pulse cold butter with flour and icing sugar — <strong>8 short pulses only</strong>. It should look like fine breadcrumbs. If you pulse too long, pastry becomes tough.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Add egg yolk and cold water. Pulse 4 more times until dough just starts coming together. Tip onto a floured bench, press into a flat disc, wrap in cling film. <strong>Refrigerate 30 minutes minimum.</strong></div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Roll pastry to <strong>3mm thick</strong>. Cut circles 1.5cm wider than your tart moulds. Press gently into greased tins — do not stretch. Chill again 15 minutes. Blind bake at <span class="temp">170°C fan</span> with weights for 10 minutes. Remove weights, bake 5 more minutes until base is dry. Set aside.</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">Warm milk to <span class="temp">50°C</span> — just hot to touch, not boiling. Dissolve sugar in milk. Cool to <span class="temp">35°C</span> (lukewarm). Whisk in eggs gently — no foam. Strain through a fine sieve <strong>twice</strong>. Pour into shells to 85% full.</div></div>
+    <div class="step"><div class="sn">5</div><div class="st">Bake at <span class="temp">160°C fan</span> for <strong>18–22 minutes</strong>. They're done when edges are set but centre still wobbles like jelly. <strong>Do not overbake</strong> — a wobble in the oven means perfect custard on the plate. Internal temp: <span class="temp ok">72°C</span>. Cool on a wire rack. Serve warm or room temp. Never refrigerate — pastry goes soggy.</div></div>
+    <div class="tb"><strong>💡 Profit tip:</strong> Bake one batch at 7am and one at 11am. Display on the counter — visible product sells itself. At $8.99 for 3 pieces with a $0.24 ingredient cost, this is your best-performing item per dollar spent.</div>
+    <div class="cs"><div class="cr"><span>Cost per serve (3 tarts)</span><span>$0.24</span></div><div class="cr"><span>Sell price</span><span>$8.99</span></div><div class="cr"><span>Food Cost %</span><span>2.7% ⭐ Best margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Egg</span></div>
+  </div>
+</div>
+
+<!-- PINEAPPLE BUN -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Pineapple Bun with Cold Butter (Bo Lo Bao)</div>
+    <div class="rh-sub">Baked fresh daily • Breakfast best seller • Extremely high margin</div>
+    <div class="rh-meta"><span class="rm">Yield: 12 buns</span><span class="rm">Proof: 90 min</span><span class="rm">Bake: 15 min</span><span class="rm">Sell: $6.50</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20pineapple%20bun%20bo%20lo%20bao%20golden%20crosshatch%20top%20butter%20inside%20bakery%20food%20photography?width=800&height=360&nologo=true&seed=102" alt="Pineapple Bun" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Bread Dough</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Bread flour (high protein)</td><td>300g</td><td class="cc">$0.24</td></tr>
+        <tr><td>Cake flour (soft)</td><td>100g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Instant yeast</td><td>6g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Caster sugar</td><td>50g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Warm milk (35°C)</td><td>180ml</td><td class="cc">$0.20</td></tr>
+        <tr><td>Whole egg</td><td>1 egg</td><td class="cc">$0.14</td></tr>
+        <tr><td>Soft unsalted butter</td><td>40g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Salt</td><td>5g</td><td class="cc">—</td></tr></table>
+      </div>
+      <div><h4>Crunchy Topping + Serve</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Soft unsalted butter</td><td>60g</td><td class="cc">$0.26</td></tr>
+        <tr><td>Icing sugar</td><td>50g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Egg yolk</td><td>1 piece</td><td class="cc">$0.10</td></tr>
+        <tr><td>Cake flour</td><td>90g</td><td class="cc">$0.09</td></tr>
+        <tr><td>Custard powder</td><td>10g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Milk powder</td><td>10g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Cold salted butter (to serve)</td><td>25g/bun</td><td class="cc">$0.11</td></tr></table>
+      </div>
+    </div>
+    <h4>Method — Dough</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Mix flours, yeast, sugar, salt in a stand mixer. Add warm milk at <span class="temp rest">35°C</span> and egg. Mix on low with dough hook 2 minutes. Increase to medium, knead <strong>8 minutes</strong> until smooth. <strong>Do not add butter yet.</strong></div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Add soft butter in 3 small additions, mixing well between each. Total butter time: about 6 minutes. Finished dough should be smooth and slightly tacky but not sticky. Cover and rest at room temp for <strong>60 minutes</strong> until doubled.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Knock back dough. Divide into <strong>12 equal pieces (about 65g each)</strong>. Roll each into a smooth ball. Place on lined baking trays. Cover. Proof 30 more minutes at warm room temp.</div></div>
+    <h4>Method — Topping</h4>
+    <div class="step"><div class="sn">4</div><div class="st">Cream butter and icing sugar until pale. Mix in egg yolk. Fold in cake flour, custard powder, milk powder until it forms a soft paste. Divide into 12 portions. Roll each between cling film to a 7cm circle. Refrigerate 15 minutes until firm.</div></div>
+    <div class="step"><div class="sn">5</div><div class="st">Drape one topping disc over each proofed bun. Score a crosshatch pattern on top with the back of a knife — this is the signature look. Bake at <span class="temp">190°C fan</span> for <strong>14–16 minutes</strong> until golden. Cool 5 minutes. Split open and place a 25g cold butter block inside while still warm. Serve immediately.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per bun + butter</span><span>$0.25</span></div><div class="cr"><span>Sell price</span><span>$6.50</span></div><div class="cr"><span>Food Cost %</span><span>3.8% ⭐ Excellent margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Egg</span></div>
+  </div>
+</div>
+
+<!-- HK FRENCH TOAST -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">HK Style French Toast (西多士)</div>
+    <div class="rh-sub">Deep-fried peanut butter sandwich • Golden crispy exterior • Breakfast icon</div>
+    <div class="rh-meta"><span class="rm">Per order: 1 serve</span><span class="rm">Prep: 3 min</span><span class="rm">Fry: 3 min</span><span class="rm">Sell: $12.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20French%20toast%20deep%20fried%20golden%20thick%20peanut%20butter%20golden%20syrup%20drizzle%20food%20photography?width=800&height=360&nologo=true&seed=103" alt="French Toast" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (per serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Thick white sandwich bread</td><td>2 slices (25mm thick)</td><td class="cc">$0.18</td></tr>
+    <tr><td>Smooth peanut butter</td><td>30g</td><td class="cc">$0.12</td></tr>
+    <tr><td>Whole eggs (beaten)</td><td>2 eggs</td><td class="cc">$0.28</td></tr>
+    <tr><td>Full fat milk</td><td>30ml</td><td class="cc">$0.04</td></tr>
+    <tr><td>Neutral oil (frying)</td><td>reusable</td><td class="cc">$0.08</td></tr>
+    <tr><td>Unsalted butter (topping)</td><td>15g</td><td class="cc">$0.07</td></tr>
+    <tr><td>Golden syrup or condensed milk</td><td>15ml</td><td class="cc">$0.06</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Spread peanut butter evenly on one slice of bread. Press second slice firmly on top — <strong>press the edges together all around</strong> so the sandwich holds during frying. Cut off crusts if preferred (traditional style).</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Beat eggs with milk in a shallow bowl. Submerge the sandwich fully — let it soak <strong>20 seconds each side</strong>. The bread should absorb the egg mixture without falling apart.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Heat oil to <span class="temp">175°C</span>. Lower sandwich gently into oil. Fry <strong>90 seconds each side</strong> until deep golden all over. Drain on a wire rack — not paper towel. Place on plate, top with a knob of butter and drizzle of golden syrup. Serve immediately.</div></div>
+    <div class="tb"><strong>💡 Key point:</strong> Oil must be at 175°C before you add the toast. Too cool = greasy and soggy. Too hot = burnt outside, raw egg inside. A kitchen thermometer is worth every cent here.</div>
+    <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.83</span></div><div class="cr"><span>Sell price</span><span>$12.99</span></div><div class="cr"><span>Food Cost %</span><span>6.4% ⭐ Outstanding margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Egg</span><span class="a">Dairy</span><span class="a">Peanut</span></div>
+  </div>
+</div>
+
+<!-- SPRING ROLLS -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Crispy Spring Rolls — 4 piece</div>
+    <div class="rh-sub">Pork & vegetable filling • Made ahead, fried to order • All-day entrée</div>
+    <div class="rh-meta"><span class="rm">Yield: 40 rolls</span><span class="rm">Prep: 40 min</span><span class="rm">Fry: 4 min</span><span class="rm">Sell: $10.99 / 4pc</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/crispy%20Chinese%20spring%20rolls%20golden%20fried%20cross%20section%20filling%20dipping%20sauce%20food%20photography?width=800&height=360&nologo=true&seed=104" alt="Spring Rolls" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Filling (makes 40 rolls)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Pork mince (20% fat)</td><td>400g</td><td class="cc">$2.80</td></tr>
+        <tr><td>Napa cabbage (shredded fine)</td><td>250g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Dried shiitake (rehydrated, chopped)</td><td>80g</td><td class="cc">$0.55</td></tr>
+        <tr><td>Glass noodles (rehydrated, chopped)</td><td>50g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Spring onion (sliced)</td><td>40g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Fresh ginger (grated)</td><td>15g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Oyster sauce</td><td>30ml</td><td class="cc">$0.10</td></tr>
+        <tr><td>Soy sauce</td><td>20ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sesame oil</td><td>10ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>White pepper</td><td>2g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Cornstarch</td><td>15g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Spring roll pastry sheets</td><td>40 sheets</td><td class="cc">$2.20</td></tr></table>
+      </div>
+      <div><h4>Dipping Sauce</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Sweet chilli sauce</td><td>100ml</td><td class="cc">$0.25</td></tr>
+        <tr><td>Rice vinegar</td><td>20ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Lime juice</td><td>15ml</td><td class="cc">$0.10</td></tr>
+        <tr><td>Fish sauce</td><td>5ml</td><td class="cc">$0.03</td></tr>
+        <tr><td>Sliced fresh chilli</td><td>5g</td><td class="cc">$0.04</td></tr></table>
+        <div class="tb" style="margin-top:8px;"><strong>Make-ahead tip:</strong> Roll all 40 at prep time, freeze on a tray, then bag and store. Fry straight from frozen — 4 minutes at 175°C. No thawing needed. This is your system for fast ticket times with zero waste.</div>
+      </div>
+    </div>
+    <h4>Method — Filling</h4>
+    <div class="step"><div class="sn">1</div><div class="st"><strong>Salt and squeeze the cabbage first.</strong> Toss with 5g salt, rest 10 minutes, then squeeze out all water in a clean cloth. Wet cabbage = soggy rolls. This step is not optional.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Stir-fry pork mince on high heat until fully cooked — <strong>no pink remaining, internal temp <span class="temp ok">75°C</span></strong>. Add ginger, mushrooms, squeezed cabbage. Stir-fry 2 minutes. Add sauces, pepper, glass noodles, sesame oil. Stir in cornstarch. Spread on a tray to cool completely before rolling.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Place <strong>35g filling</strong> on pastry, roll tightly, fold in sides, seal end with beaten egg. Rolls must be tight — loose rolls burst during frying. Freeze until solid. Fry from frozen at <span class="temp">175°C</span> for <strong>3.5–4 minutes</strong> until deep golden. Internal temp: <span class="temp ok">75°C</span>. Rest on wire rack.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per serve (4 rolls + sauce)</span><span>$0.89</span></div><div class="cr"><span>Sell price</span><span>$10.99</span></div><div class="cr"><span>Food Cost %</span><span>8.1% ⭐ Excellent margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Egg</span><span class="a">Soy</span><span class="a">Sesame</span><span class="a">Fish</span></div>
+  </div>
+</div>
+
+<!-- SHRIMP CHEUNG FUN -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Shrimp Rice Noodle Roll (蝦腸粉)</div>
+    <div class="rh-sub">Silky steamed rice noodle • Plump shrimp filling • Weekend brunch feature</div>
+    <div class="rh-meta"><span class="rm">Per order: 2 rolls</span><span class="rm">Steam: 4 min</span><span class="rm">Sell: $13.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/cheung%20fun%20steamed%20rice%20noodle%20rolls%20shrimp%20soy%20sauce%20sesame%20seeds%20dim%20sum%20food%20photography?width=800&height=360&nologo=true&seed=105" alt="Rice Noodle Roll" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (per 2 rolls)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Fresh rice noodle sheet (pre-made)</td><td>1 large sheet</td><td class="cc">$0.60</td></tr>
+    <tr><td>Tiger shrimp (peeled, deveined)</td><td>4 pieces (80g)</td><td class="cc">$1.40</td></tr>
+    <tr><td>Spring onion (chopped)</td><td>10g</td><td class="cc">$0.04</td></tr>
+    <tr><td>Sweet soy sauce</td><td>20ml</td><td class="cc">$0.06</td></tr>
+    <tr><td>Sesame oil</td><td>3ml</td><td class="cc">$0.04</td></tr>
+    <tr><td>Chilli oil (optional, side)</td><td>5ml</td><td class="cc">$0.05</td></tr>
+    <tr><td>Toasted sesame seeds</td><td>3g</td><td class="cc">$0.03</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Season shrimp lightly with salt and white pepper. Lay rice noodle sheet flat on a lightly oiled steamer tray. Place 4 shrimp and some spring onion along one edge of the sheet. Roll tightly into a log. Cut into 2 equal pieces.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Steam over high heat for <strong>4 minutes</strong>. Shrimp internal temp must reach <span class="temp ok">63°C</span>. Transfer carefully to a warm plate. Drizzle with warm sweet soy and sesame oil. Scatter sesame seeds. Serve immediately — rice noodle toughens quickly once cooled.</div></div>
+    <div class="tb"><strong>💡 Use pre-made fresh rice noodle sheets</strong> — available from any Asian grocery supplier. Do not attempt to make your own in a café environment. Pre-made quality is consistent and saves 45 minutes of prep time per service.</div>
+    <div class="cs"><div class="cr"><span>Cost per serve</span><span>$2.22</span></div><div class="cr"><span>Sell price</span><span>$13.99</span></div><div class="cr"><span>Food Cost %</span><span>15.9% — Good margin</span></div></div>
+    <div class="al"><span class="a">Shellfish</span><span class="a">Gluten (soy)</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<!-- CRISPY TOFU BITES -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Crispy Tofu Bites with XO Sauce</div>
+    <div class="rh-sub">Deep-fried extra firm tofu • House XO sauce • Vegetarian option</div>
+    <div class="rh-meta"><span class="rm">Per order: 1 serve</span><span class="rm">Prep: 5 min</span><span class="rm">Fry: 3 min</span><span class="rm">Sell: $11.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/crispy%20fried%20tofu%20golden%20cubes%20XO%20sauce%20spring%20onion%20Asian%20food%20photography?width=800&height=360&nologo=true&seed=106" alt="Crispy Tofu" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Per Serve</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Extra firm tofu (pressed, cubed 3cm)</td><td>180g</td><td class="cc">$0.50</td></tr>
+        <tr><td>Cornstarch (coating)</td><td>20g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Salt & white pepper</td><td>to season</td><td class="cc">$0.01</td></tr>
+        <tr><td>Spring onion (garnish)</td><td>8g</td><td class="cc">$0.04</td></tr></table>
+      </div>
+      <div><h4>House XO Sauce (batch)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Dried scallops (rehydrated, shredded)</td><td>50g</td><td class="cc">$3.50</td></tr>
+        <tr><td>Dried shrimp</td><td>30g</td><td class="cc">$0.80</td></tr>
+        <tr><td>Garlic (fine chop)</td><td>30g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Shallots (fine chop)</td><td>40g</td><td class="cc">$0.15</td></tr>
+        <tr><td>Chilli flakes</td><td>5g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Neutral oil</td><td>100ml</td><td class="cc">$0.20</td></tr>
+        <tr><td>Oyster sauce</td><td>20ml</td><td class="cc">$0.06</td></tr></table>
+      </div>
+    </div>
+    <h4>Method — XO Sauce (Make Weekly, Refrigerate)</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Heat oil in a pan over medium-low heat. Add shallots and garlic — cook slowly until golden, <strong>about 8 minutes</strong>. Add shredded dried scallops and dried shrimp. Cook 5 minutes, stirring frequently. Add chilli flakes and oyster sauce. Cook 2 more minutes. Cool and refrigerate. <strong>Makes approximately 15 serves.</strong></div></div>
+    <h4>Method — Tofu (To Order)</h4>
+    <div class="step"><div class="sn">2</div><div class="st">Press tofu between paper towels for 5 minutes to remove surface moisture. Cut into 3cm cubes. Toss in cornstarch, salt and pepper. Fry at <span class="temp">180°C</span> for <strong>3 minutes</strong> until golden and crispy on all sides. Drain on wire rack. Plate and spoon <strong>25g XO sauce</strong> over top. Garnish with spring onion.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per serve (inc. XO sauce portion)</span><span>$0.95</span></div><div class="cr"><span>Sell price</span><span>$11.99</span></div><div class="cr"><span>Food Cost %</span><span>7.9% ⭐ Strong margin</span></div></div>
+    <div class="al"><span class="a">Soy (tofu)</span><span class="a">Shellfish (XO)</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<h2><span class="sn2">2</span>Main Courses — 10 Items</h2>
+
+<!-- PORTUGUESE CHICKEN RICE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Baked Portuguese Chicken Rice (焗葡國雞飯)</div>
+    <div class="rh-sub">Coconut curry sauce • Baked with cheese • Signature dish — highest repeat orders</div>
+    <div class="rh-meta"><span class="rm">Batch: 10 portions</span><span class="rm">Bake to order: 8 min</span><span class="rm">Sell: $18.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/baked%20Portuguese%20chicken%20rice%20Hong%20Kong%20style%20golden%20melted%20cheese%20coconut%20curry%20sauce%20individual%20dish%20food%20photography?width=800&height=360&nologo=true&seed=107" alt="Portuguese Chicken Rice" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Chicken & Curry Sauce (batch daily)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken thigh (boneless, skin-off)</td><td>180g × 10</td><td class="cc">$13.50</td></tr>
+        <tr><td>Coconut cream (full fat)</td><td>800ml</td><td class="cc">$2.40</td></tr>
+        <tr><td>Chicken stock</td><td>400ml</td><td class="cc">$0.60</td></tr>
+        <tr><td>Yellow onion (diced fine)</td><td>200g</td><td class="cc">$0.25</td></tr>
+        <tr><td>Garlic (minced)</td><td>20g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Turmeric powder</td><td>12g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Mild curry powder</td><td>18g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Light soy sauce</td><td>30ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Fish sauce</td><td>15ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sugar</td><td>12g</td><td class="cc">$0.01</td></tr></table>
+      </div>
+      <div><h4>Per Serve Assembly</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Cooked jasmine rice</td><td>150g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Seared chicken thigh</td><td>180g</td><td class="cc">$1.35</td></tr>
+        <tr><td>Curry sauce (hot)</td><td>120ml</td><td class="cc">$0.33</td></tr>
+        <tr><td>Shredded mozzarella</td><td>40g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Spring onion garnish</td><td>8g</td><td class="cc">$0.04</td></tr></table>
+        <div class="tb" style="margin-top:8px;"><strong>Prep system:</strong> Cook rice and make sauce each morning. Sear all chicken at start of lunch service and hold at <span class="temp ok">60°C</span>. At order — assemble and blast under grill. Ticket time: 8 minutes flat.</div>
+      </div>
+    </div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Marinate chicken thighs in soy sauce, a pinch of white pepper, and 10g cornstarch for minimum 2 hours. Sear in a very hot pan — <strong>2 minutes each side</strong> until deep golden. Do not cook through fully. Target internal temp at this stage: <span class="temp rest">60°C</span>. Set aside.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">In the same pan, soften onion and garlic over medium heat — <strong>5 minutes, no browning</strong>. Add turmeric and curry powder, stir constantly for <strong>90 seconds</strong> to cook out the raw spice flavour. Add coconut cream and stock. Simmer and reduce by 25% — about 8 minutes. Season with soy, fish sauce, sugar. Taste and adjust.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">To order: place 150g rice in an oven-safe dish. Slice chicken and arrange on rice. Ladle 120ml hot sauce over. Top with 40g mozzarella. Grill at <span class="temp">220°C top heat</span> for 6–8 minutes until cheese is bubbling and spotted golden. Final internal temp of chicken: <span class="temp ok">74°C</span>. Rest 2 minutes. Garnish with spring onion.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$2.56</span></div><div class="cr"><span>Sell price</span><span>$18.99</span></div><div class="cr"><span>Food Cost %</span><span>13.5% ⭐ Excellent margin</span></div></div>
+    <div class="al"><span class="a">Dairy</span><span class="a">Soy</span><span class="a">Fish</span><span class="a">Gluten</span></div>
+  </div>
+</div>
+
+<!-- BEEF BRISKET NOODLE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Beef Brisket Noodle Soup (清湯腩)</div>
+    <div class="rh-sub">Slow-braised brisket • Clear aromatic broth • Batch cook — 5 min assembly at service</div>
+    <div class="rh-meta"><span class="rm">Braise: 10–12 hr</span><span class="rm">Yield: 10 portions</span><span class="rm">Service: 5 min</span><span class="rm">Sell: $19.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20beef%20brisket%20noodle%20soup%20clear%20broth%20tender%20sliced%20beef%20egg%20noodles%20deep%20bowl%20steam%20food%20photography?width=800&height=360&nologo=true&seed=108" alt="Beef Brisket Noodle Soup" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Braised Brisket Batch</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Beef brisket (point cut)</td><td>2.5kg</td><td class="cc">$22.50</td></tr>
+        <tr><td>Daikon radish (3cm rounds)</td><td>500g</td><td class="cc">$1.20</td></tr>
+        <tr><td>Star anise</td><td>4 whole</td><td class="cc">$0.12</td></tr>
+        <tr><td>Cinnamon stick</td><td>2 pieces</td><td class="cc">$0.10</td></tr>
+        <tr><td>Fresh ginger (sliced)</td><td>60g</td><td class="cc">$0.14</td></tr>
+        <tr><td>Spring onion</td><td>4 stalks</td><td class="cc">$0.08</td></tr>
+        <tr><td>Light soy sauce</td><td>60ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Shaoxing wine</td><td>80ml</td><td class="cc">$0.35</td></tr>
+        <tr><td>Rock sugar</td><td>30g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Water</td><td>3.5L</td><td class="cc">—</td></tr></table>
+      </div>
+      <div><h4>Per Serve Assembly</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Fresh HK egg noodles</td><td>120g</td><td class="cc">$0.38</td></tr>
+        <tr><td>Braised brisket (sliced)</td><td>160g</td><td class="cc">$2.80</td></tr>
+        <tr><td>Braised daikon (2 pieces)</td><td>80g</td><td class="cc">$0.15</td></tr>
+        <tr><td>Hot broth</td><td>350ml</td><td class="cc">$0.40</td></tr>
+        <tr><td>Spring onion, sesame oil</td><td>garnish</td><td class="cc">$0.08</td></tr></table>
+        <div class="tb" style="margin-top:8px;"><strong>Make schedule:</strong> Braise brisket overnight (start it at end of lunch service). Slice cold the next morning — clean, even cuts. Store brisket and broth separately in fridge. This dish makes your café smell incredible all day — that aroma alone drives orders.</div>
+      </div>
+    </div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st"><strong>Blanch brisket first — do not skip.</strong> Cover with cold water, boil 5 minutes, drain and rinse under cold water. This removes impurities and keeps your broth clear and clean. Skipping = cloudy, bitter soup.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Sear blanched brisket in a hot pot with a little oil — <strong>3 minutes each side</strong> until brown all over. Add all aromatics, soy, wine, rock sugar, and water to cover by 4cm. Bring to a boil, skim any foam. Reduce to the lowest possible simmer — the surface should barely move. Cook covered for <strong>10–12 hours</strong>.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Add daikon in the last 90 minutes. Brisket is done when a chopstick goes through with zero resistance. Internal temp: <span class="temp ok">93°C</span>. Let brisket cool <strong>in the braising liquid</strong> — never remove it hot. Cooling in liquid keeps it moist. Once cold, slice against the grain into 8mm pieces.</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">Service: blanch noodles in boiling water 45 seconds. Drain into a warm bowl. Warm brisket slices in hot broth 60 seconds. Arrange over noodles with 2 daikon pieces. Ladle 350ml hot broth. Garnish with spring onion and 3ml sesame oil. Serve with chilli oil on the side.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$3.81</span></div><div class="cr"><span>Sell price</span><span>$19.99</span></div><div class="cr"><span>Food Cost %</span><span>19.1% — Good margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Soy</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<!-- PORK CHOP RICE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Crispy Pork Chop Over Rice (豬扒飯)</div>
+    <div class="rh-sub">Tenderised loin chop • Pan-fried crispy • Fast ticket — lunch workhorse</div>
+    <div class="rh-meta"><span class="rm">Per order</span><span class="rm">Marinate: 4–24 hr</span><span class="rm">Cook: 7 min</span><span class="rm">Sell: $17.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20crispy%20pork%20chop%20over%20steamed%20rice%20fried%20egg%20pickled%20greens%20golden%20crust%20food%20photography?width=800&height=360&nologo=true&seed=109" alt="Pork Chop Rice" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Pork Chop + Marinade</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Pork loin chop (bone-in, 2cm thick)</td><td>200g</td><td class="cc">$2.20</td></tr>
+        <tr><td>Light soy sauce</td><td>20ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Oyster sauce</td><td>15ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Shaoxing wine</td><td>15ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sugar</td><td>5g</td><td class="cc">$0.01</td></tr>
+        <tr><td>White pepper</td><td>2g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Baking soda (tenderiser)</td><td>1.5g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Cornstarch</td><td>12g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Beaten egg (coating)</td><td>half egg</td><td class="cc">$0.07</td></tr></table>
+      </div>
+      <div><h4>Plate Components</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Cooked jasmine rice</td><td>180g</td><td class="cc">$0.22</td></tr>
+        <tr><td>Free-range egg (fried)</td><td>1 egg</td><td class="cc">$0.14</td></tr>
+        <tr><td>Pickled mustard greens</td><td>30g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Spring onion</td><td>8g</td><td class="cc">$0.04</td></tr>
+        <tr><td>House soy dipping sauce</td><td>30ml</td><td class="cc">$0.08</td></tr></table>
+        <div class="tb" style="margin-top:8px;"><strong>Sauce batch (weekly):</strong> 60ml light soy + 20ml dark soy + 15ml sesame oil + 10g sugar + 5ml rice vinegar. Warm to dissolve sugar. Store refrigerated.</div>
+      </div>
+    </div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st"><strong>Pound the chop physically first.</strong> Using a meat mallet, pound both sides until 1.5cm thick and the fibres are visibly broken. This is the number one step that makes HK pork chop tender. The baking soda in the marinade also helps — but do not exceed 24 hours or the meat turns mushy.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Combine all marinade ingredients except cornstarch and egg. Massage into chop. Add cornstarch and egg, coat evenly. Marinate minimum 4 hours refrigerated. Remove 20 minutes before cooking to bring closer to room temperature.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Heat a heavy pan with 3mm oil until smoking hot. Add chop — <strong>do not move for 3 minutes</strong>. Flip once, cook 3 more minutes. Target: deep mahogany crust, caramelised edges. Internal temp: <span class="temp ok">68°C</span>. Rest <strong>3 minutes before slicing</strong> — this holds the juices inside. Fry egg in the same pan.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$3.09</span></div><div class="cr"><span>Sell price</span><span>$17.99</span></div><div class="cr"><span>Food Cost %</span><span>17.2% — Strong margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Egg</span><span class="a">Soy</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<!-- CHAR SIU RICE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Char Siu BBQ Pork Rice Plate</div>
+    <div class="rh-sub">House-glazed BBQ pork belly • Jasmine rice • Batch cook — fastest plate in the kitchen</div>
+    <div class="rh-meta"><span class="rm">Batch: 10 portions</span><span class="rm">Roast: 35 min</span><span class="rm">Service: 3 min</span><span class="rm">Sell: $17.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/char%20siu%20BBQ%20pork%20sliced%20over%20steamed%20rice%20bok%20choy%20red%20glaze%20Chinese%20restaurant%20food%20photography?width=800&height=360&nologo=true&seed=110" alt="Char Siu Rice" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Char Siu Pork (batch)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Pork shoulder or neck (whole piece)</td><td>1.5kg</td><td class="cc">$9.00</td></tr>
+        <tr><td>Hoisin sauce</td><td>60ml</td><td class="cc">$0.40</td></tr>
+        <tr><td>Honey</td><td>40ml</td><td class="cc">$0.30</td></tr>
+        <tr><td>Light soy sauce</td><td>40ml</td><td class="cc">$0.12</td></tr>
+        <tr><td>Dark soy sauce</td><td>20ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Shaoxing wine</td><td>30ml</td><td class="cc">$0.12</td></tr>
+        <tr><td>Five spice powder</td><td>5g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Red food colouring (optional)</td><td>2ml</td><td class="cc">$0.02</td></tr></table>
+      </div>
+      <div><h4>Per Serve</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Cooked jasmine rice</td><td>160g</td><td class="cc">$0.20</td></tr>
+        <tr><td>Char siu sliced</td><td>150g</td><td class="cc">$1.40</td></tr>
+        <tr><td>Steamed bok choy</td><td>60g</td><td class="cc">$0.22</td></tr>
+        <tr><td>Hoisin-honey drizzle</td><td>20ml</td><td class="cc">$0.10</td></tr></table>
+        <div class="tb" style="margin-top:8px;"><strong>Make twice a week.</strong> Char siu holds well refrigerated for 3 days. At service — slice cold, warm in a hot pan with a little water and extra glaze for 90 seconds. Fresh, glossy, and fast.</div>
+      </div>
+    </div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Mix all marinade ingredients. Cut pork into long strips 4–5cm wide. Coat thoroughly in marinade. Cover and refrigerate <strong>overnight minimum — 24 hours ideal</strong>.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Preheat oven to <span class="temp">200°C fan</span>. Place pork strips on a wire rack over a tray with water in the base (prevents burning drips). Roast <strong>20 minutes</strong>. Brush with extra marinade mixed with honey. Roast further <strong>15 minutes</strong>. Internal temp must reach <span class="temp ok">72°C</span>. Rest 10 minutes before slicing.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$1.92</span></div><div class="cr"><span>Sell price</span><span>$17.99</span></div><div class="cr"><span>Food Cost %</span><span>10.7% ⭐ Excellent margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Soy</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<!-- WONTON NOODLE SOUP -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Wonton Noodle Soup</div>
+    <div class="rh-sub">Pork & shrimp wontons • Clear pork-shrimp broth • Lunch best seller</div>
+    <div class="rh-meta"><span class="rm">Wontons: batch & freeze</span><span class="rm">Assembly: 4 min</span><span class="rm">Sell: $16.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20wonton%20noodle%20soup%20clear%20golden%20broth%20plump%20wontons%20thin%20egg%20noodles%20bowl%20food%20photography?width=800&height=360&nologo=true&seed=111" alt="Wonton Noodle Soup" loading="lazy"></div>
+    <div class="three-col">
+      <div><h4>Wonton Filling (60 pcs)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Wt</th></tr>
+        <tr><td>Pork mince (30% fat)</td><td>300g</td></tr>
+        <tr><td>Tiger shrimp (rough chop)</td><td>200g</td></tr>
+        <tr><td>Water chestnuts (fine dice)</td><td>60g</td></tr>
+        <tr><td>Spring onion</td><td>30g</td></tr>
+        <tr><td>Fresh ginger (grated)</td><td>10g</td></tr>
+        <tr><td>Light soy</td><td>20ml</td></tr>
+        <tr><td>Sesame oil</td><td>8ml</td></tr>
+        <tr><td>Oyster sauce</td><td>15ml</td></tr>
+        <tr><td>White pepper</td><td>2g</td></tr>
+        <tr><td>Cornstarch</td><td>10g</td></tr>
+        <tr><td>Egg white</td><td>1 piece</td></tr>
+        <tr><td>Wonton wrappers</td><td>60 sheets</td></tr></table>
+      </div>
+      <div><h4>Broth (batch 2× weekly)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Wt</th></tr>
+        <tr><td>Pork bones (blanched)</td><td>1.5kg</td></tr>
+        <tr><td>Dried shrimp</td><td>40g</td></tr>
+        <tr><td>Spring onion</td><td>4 stalks</td></tr>
+        <tr><td>Fresh ginger (sliced)</td><td>40g</td></tr>
+        <tr><td>Water</td><td>4L</td></tr>
+        <tr><td>Light soy</td><td>30ml</td></tr>
+        <tr><td>White pepper</td><td>3g</td></tr>
+        <tr><td>Salt</td><td>to taste</td></tr></table>
+      </div>
+      <div><h4>Per Serve</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Wt</th></tr>
+        <tr><td>HK egg noodles (fresh)</td><td>100g</td></tr>
+        <tr><td>Wontons (from frozen)</td><td>6 pieces</td></tr>
+        <tr><td>Hot broth</td><td>350ml</td></tr>
+        <tr><td>Spring onion</td><td>8g</td></tr>
+        <tr><td>Crispy shallots</td><td>5g</td></tr>
+        <tr><td>Sesame oil</td><td>3ml</td></tr></table>
+      </div>
+    </div>
+    <h4>Method — Wontons</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Mix pork mince with all seasonings and egg white. Stir in one direction for <strong>3 minutes by hand</strong> — this makes the filling bouncy and cohesive rather than crumbly. Fold in shrimp and water chestnuts. Fry a small test ball, taste, adjust seasoning before folding all 60.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Place <strong>12g filling</strong> in centre of wrapper. Fold into triangle, seal edges firmly. Bring two bottom corners together and press to seal. No air pockets — they cause bursting. Freeze on trays then bag. Cook from frozen: <strong>3.5 minutes in boiling water</strong>.</div></div>
+    <h4>Method — Broth</h4>
+    <div class="step"><div class="sn">3</div><div class="st">Blanch pork bones in cold water brought to a boil for 5 minutes. Drain and rinse. Combine with dried shrimp, ginger, spring onion, and 4L cold water. Bring to boil, skim thoroughly. Reduce to a <strong>gentle simmer — surface barely moving</strong> for 3 hours. Never boil hard — it turns the broth cloudy. Strain, season, refrigerate. Skim fat when cold.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$2.95</span></div><div class="cr"><span>Sell price</span><span>$16.99</span></div><div class="cr"><span>Food Cost %</span><span>17.4% — Strong margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Shellfish</span><span class="a">Egg</span><span class="a">Soy</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<!-- CLAY POT RICE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Clay Pot Rice — Lap Cheong & Chicken</div>
+    <div class="rh-sub">Crispy-bottom rice • Chinese sausage • Shiitake mushroom • Weekend feature</div>
+    <div class="rh-meta"><span class="rm">Per order</span><span class="rm">Cook: 18 min</span><span class="rm">Sell: $19.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Chinese%20clay%20pot%20rice%20lap%20cheong%20sausage%20chicken%20shiitake%20mushroom%20crispy%20bottom%20steam%20food%20photography?width=800&height=360&nologo=true&seed=112" alt="Clay Pot Rice" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (per pot)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Jasmine rice (washed)</td><td>120g dry</td><td class="cc">$0.15</td></tr>
+    <tr><td>Water</td><td>165ml</td><td class="cc">—</td></tr>
+    <tr><td>Chicken thigh (marinated, diced 3cm)</td><td>130g</td><td class="cc">$1.04</td></tr>
+    <tr><td>Lap cheong sausage (thin sliced)</td><td>60g</td><td class="cc">$0.55</td></tr>
+    <tr><td>Dried shiitake (rehydrated, sliced)</td><td>40g</td><td class="cc">$0.28</td></tr>
+    <tr><td>Light soy sauce</td><td>15ml</td><td class="cc">$0.05</td></tr>
+    <tr><td>Dark soy sauce</td><td>5ml</td><td class="cc">$0.02</td></tr>
+    <tr><td>Sesame oil</td><td>5ml</td><td class="cc">$0.04</td></tr>
+    <tr><td>Oyster sauce</td><td>10ml</td><td class="cc">$0.04</td></tr>
+    <tr><td>Sugar</td><td>3g</td><td class="cc">$0.01</td></tr>
+    <tr><td>Spring onion (garnish)</td><td>8g</td><td class="cc">$0.04</td></tr></table>
+    <h4>Chicken Marinade</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Marinate diced chicken in soy sauce, oyster sauce, sesame oil, sugar, and white pepper for minimum 2 hours. This flavours the chicken and keeps it moist during the long clay pot cooking.</div></div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">2</div><div class="st">Add washed rice and water to clay pot. Bring to boil uncovered over medium-high heat. When water is absorbed and you see small craters forming on the surface — about 8 minutes — reduce heat to lowest setting.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Arrange marinated chicken, sliced lap cheong, and mushrooms on top of the rice. Cover with lid. Cook on lowest heat <strong>10 more minutes</strong>. Chicken internal temp must reach <span class="temp ok">74°C</span>.</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">Mix soy sauces, sesame oil, and oyster sauce together. Drizzle over the pot tableside or at the pass. Garnish spring onion. The bottom of the rice should be golden and slightly crispy — this is the prized part of the dish. Tell guests about it.</div></div>
+    <div class="tb"><strong>💡 Equipment note:</strong> Individual clay pots are a one-time investment of $8–12 per pot. Buy 6 — rotate through service. The clay pot presentation alone justifies the $19.99 price point. Guests photograph this dish consistently.</div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$2.22</span></div><div class="cr"><span>Sell price</span><span>$19.99</span></div><div class="cr"><span>Food Cost %</span><span>11.1% ⭐ Excellent margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Soy</span><span class="a">Sesame</span></div>
+  </div>
+</div>
+
+<!-- HK SPAM EGG MACARONI -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">HK Spam & Egg Macaroni Soup</div>
+    <div class="rh-sub">Quintessential HK breakfast • Fastest ticket on your menu • Highest margin main</div>
+    <div class="rh-meta"><span class="rm">Per order</span><span class="rm">Assembly: 4 min</span><span class="rm">Sell: $14.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20breakfast%20macaroni%20soup%20SPAM%20fried%20egg%20clear%20broth%20white%20bowl%20cafe%20food%20photography?width=800&height=360&nologo=true&seed=113" alt="HK Macaroni Soup" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (per serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Elbow macaroni (cooked)</td><td>120g cooked</td><td class="cc">$0.18</td></tr>
+    <tr><td>SPAM (sliced 1cm thick, pan-fried)</td><td>2 slices (80g)</td><td class="cc">$0.55</td></tr>
+    <tr><td>Whole egg (soft-poached or fried)</td><td>1 egg</td><td class="cc">$0.14</td></tr>
+    <tr><td>Clear chicken broth (house-made or quality stock)</td><td>350ml</td><td class="cc">$0.35</td></tr>
+    <tr><td>Evaporated milk (optional, adds creaminess)</td><td>30ml</td><td class="cc">$0.08</td></tr>
+    <tr><td>White bread toast (buttered, side)</td><td>1 slice</td><td class="cc">$0.10</td></tr>
+    <tr><td>Spring onion garnish</td><td>5g</td><td class="cc">$0.03</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Cook macaroni in salted boiling water until just tender — <strong>do not overcook</strong>. Drain and rinse with cold water to stop cooking. Store in cold water at the pass. At order, drain and reheat in the hot broth for 30 seconds.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Pan-fry SPAM slices in a dry non-stick pan over medium-high heat — <strong>90 seconds each side</strong> until golden and slightly caramelised on the edges. SPAM is pre-cooked so you are adding colour and texture only.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Bring broth to a rolling boil. Add evaporated milk if using. Ladle 350ml into a pre-warmed bowl. Add drained macaroni. Arrange SPAM slices. Top with egg. Toast and butter served alongside. Garnish spring onion. Total ticket time: <strong>4 minutes.</strong></div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$1.43</span></div><div class="cr"><span>Sell price</span><span>$14.99</span></div><div class="cr"><span>Food Cost %</span><span>9.5% ⭐ Outstanding margin</span></div></div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Egg</span><span class="a">Dairy</span><span class="a">Soy (SPAM)</span></div>
+  </div>
+</div>
+
+<!-- CONGEE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Silken Tofu & Century Egg Congee</div>
+    <div class="rh-sub">Slow-cooked rice porridge • Batch cook overnight • Breakfast & lunch</div>
+    <div class="rh-meta"><span class="rm">Batch: 10 portions</span><span class="rm">Cook: 90 min</span><span class="rm">Service: 3 min</span><span class="rm">Sell: $15.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Chinese%20congee%20rice%20porridge%20smooth%20silky%20century%20egg%20silken%20tofu%20ginger%20spring%20onion%20garnish%20food%20photography?width=800&height=360&nologo=true&seed=114" alt="Congee" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Congee Base (batch — 10 serves)</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Jasmine rice</td><td>200g</td><td class="cc">$0.24</td></tr>
+        <tr><td>Chicken stock (good quality)</td><td>3L</td><td class="cc">$3.60</td></tr>
+        <tr><td>Water</td><td>1L</td><td class="cc">—</td></tr>
+        <tr><td>Fresh ginger (sliced)</td><td>30g</td><td class="cc">$0.07</td></tr>
+        <tr><td>Salt</td><td>to taste</td><td class="cc">—</td></tr></table>
+      </div>
+      <div><h4>Per Serve Toppings</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Century egg (quartered)</td><td>half egg</td><td class="cc">$0.40</td></tr>
+        <tr><td>Silken tofu (cubed)</td><td>60g</td><td class="cc">$0.25</td></tr>
+        <tr><td>Spring onion (sliced)</td><td>8g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fresh ginger (julienne)</td><td>5g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Crispy shallots</td><td>5g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Sesame oil</td><td>3ml</td><td class="cc">$0.04</td></tr>
+        <tr><td>White pepper</td><td>pinch</td><td class="cc">$0.01</td></tr>
+        <tr><td>Youtiao (fried dough stick, side)</td><td>1 piece</td><td class="cc">$0.35</td></tr></table>
+      </div>
+    </div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Combine rice, stock, water, and ginger in a heavy pot. Bring to a boil. Stir, then reduce to the lowest simmer. Cook uncovered for <strong>75–90 minutes</strong>, stirring every 15 minutes to prevent sticking. The congee is done when it has a thick, silky, porridge consistency — rice completely broken down. Season with salt.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">At service: ladle 350ml hot congee into a pre-warmed bowl. Add cubed silken tofu — the heat of the congee warms it through without cooking. Arrange century egg quarters. Top with spring onion, ginger julienne, crispy shallots. Drizzle sesame oil, pinch of white pepper. Serve with youtiao on the side.</div></div>
+    <div class="tb"><strong>💡 Make overnight:</strong> Start congee at end of lunch service. Let it cook slowly 90 minutes, turn off, leave covered overnight. Reheat in the morning — the texture improves overnight. This is a zero-ticket-time dish once cooked. Perfect for breakfast service when the kitchen is still setting up.</div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$1.56</span></div><div class="cr"><span>Sell price</span><span>$15.99</span></div><div class="cr"><span>Food Cost %</span><span>9.8% ⭐ Outstanding margin</span></div></div>
+    <div class="al"><span class="a">Soy (tofu)</span><span class="a">Sesame</span><span class="a">Gluten (youtiao)</span></div>
+  </div>
+</div>
+
+<!-- TYPHOON SHELTER PRAWNS -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Typhoon Shelter Garlic Prawns</div>
+    <div class="rh-sub">Wok-fried golden garlic & chilli • Tiger prawns • Premium lunch upsell</div>
+    <div class="rh-meta"><span class="rm">Per order</span><span class="rm">Prep: 5 min</span><span class="rm">Wok: 5 min</span><span class="rm">Sell: $24.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/typhoon%20shelter%20garlic%20prawns%20wok%20fried%20golden%20crispy%20garlic%20chilli%20flakes%20tiger%20prawns%20dramatic%20food%20photography?width=800&height=360&nologo=true&seed=115" alt="Garlic Prawns" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (per serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Tiger prawns (shell-on, head-on if possible)</td><td>6 prawns (200g)</td><td class="cc">$4.20</td></tr>
+    <tr><td>Garlic (fine chop — not minced)</td><td>60g</td><td class="cc">$0.20</td></tr>
+    <tr><td>Dried breadcrumbs (panko)</td><td>20g</td><td class="cc">$0.06</td></tr>
+    <tr><td>Dried chilli flakes</td><td>3g</td><td class="cc">$0.03</td></tr>
+    <tr><td>Fermented black beans (rinsed, chopped)</td><td>10g</td><td class="cc">$0.08</td></tr>
+    <tr><td>Neutral oil</td><td>80ml (wok)</td><td class="cc">$0.10</td></tr>
+    <tr><td>Light soy sauce</td><td>10ml</td><td class="cc">$0.03</td></tr>
+    <tr><td>Sugar</td><td>3g</td><td class="cc">$0.01</td></tr>
+    <tr><td>Spring onion (garnish)</td><td>10g</td><td class="cc">$0.05</td></tr>
+    <tr><td>Steamed jasmine rice (side)</td><td>160g</td><td class="cc">$0.20</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Season prawns with salt and white pepper. Deep-fry or shallow-fry at <span class="temp">180°C</span> for <strong>60–90 seconds only</strong> — they continue cooking in the wok. Remove and drain. Prawn internal temp at this stage: <span class="temp rest">55°C</span>.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">In a very hot wok, heat 80ml oil. Fry chopped garlic and breadcrumbs together over high heat, stirring constantly for <strong>90 seconds</strong> until golden and fragrant. Add chilli flakes and black beans — 20 seconds. This garlic mixture is the soul of the dish.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Add the par-fried prawns back in. Toss vigorously for <strong>60 seconds</strong>. Add soy sauce and sugar — toss 20 seconds more. Prawns are done when shells are pink-orange and tails are curled. Internal temp: <span class="temp ok">63°C</span>. Plate immediately — garlic turns bitter if left in the pan.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$4.96</span></div><div class="cr"><span>Sell price</span><span>$24.99</span></div><div class="cr"><span>Food Cost %</span><span>19.8% — Good margin on premium item</span></div></div>
+    <div class="al"><span class="a">Shellfish</span><span class="a">Gluten</span><span class="a">Soy</span></div>
+  </div>
+</div>
+
+<!-- LAMB NOODLE STIR FRY -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Cumin Lamb Flat Noodle Stir Fry</div>
+    <div class="rh-sub">Wok-fired lamb & rice noodles • XO-cumin sauce • Point of difference dish</div>
+    <div class="rh-meta"><span class="rm">Per order</span><span class="rm">Prep: 5 min</span><span class="rm">Wok: 4 min</span><span class="rm">Sell: $21.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/cumin%20lamb%20flat%20rice%20noodle%20stir%20fry%20wok%20charred%20spring%20onion%20chilli%20Asian%20food%20photography?width=800&height=360&nologo=true&seed=116" alt="Lamb Noodle Stir Fry" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (per serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Lamb loin or leg (thin sliced, 5mm)</td><td>160g</td><td class="cc">$3.80</td></tr>
+    <tr><td>Fresh flat rice noodles</td><td>180g</td><td class="cc">$0.55</td></tr>
+    <tr><td>Bean sprouts</td><td>60g</td><td class="cc">$0.12</td></tr>
+    <tr><td>Spring onion (cut 4cm lengths)</td><td>30g</td><td class="cc">$0.08</td></tr>
+    <tr><td>Ground cumin</td><td>5g</td><td class="cc">$0.04</td></tr>
+    <tr><td>Chilli flakes</td><td>2g</td><td class="cc">$0.02</td></tr>
+    <tr><td>Garlic (sliced)</td><td>10g</td><td class="cc">$0.05</td></tr>
+    <tr><td>Light soy sauce</td><td>20ml</td><td class="cc">$0.06</td></tr>
+    <tr><td>Dark soy sauce</td><td>8ml</td><td class="cc">$0.03</td></tr>
+    <tr><td>Sesame oil</td><td>5ml</td><td class="cc">$0.04</td></tr>
+    <tr><td>Neutral oil (wok)</td><td>30ml</td><td class="cc">$0.04</td></tr></table>
+    <h4>Lamb Marinade (2 hours ahead)</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Slice lamb thinly across the grain. Marinate with soy sauce, a pinch of baking soda, cornstarch, and sesame oil for minimum 2 hours. The baking soda velvets the meat — restaurant technique that makes cheap cuts taste premium.</div></div>
+    <h4>Method — Wok (High Heat Only)</h4>
+    <div class="step"><div class="sn">2</div><div class="st">Wok must be <strong>screaming hot</strong> before anything goes in. Add oil. Sear lamb in a single layer — <strong>do not stir for 60 seconds</strong>. Then toss for 30 seconds. Remove from wok. Internal lamb temp at this stage: <span class="temp rest">58°C</span>.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">In the same wok, add garlic and cumin — toss 15 seconds. Add noodles, spread across wok surface, press down, let char for 30 seconds undisturbed. Add soy sauces, toss vigorously. Add bean sprouts and spring onion — 30 seconds. Return lamb. Toss everything. Drizzle sesame oil. Plate immediately.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per portion</span><span>$4.83</span></div><div class="cr"><span>Sell price</span><span>$21.99</span></div><div class="cr"><span>Food Cost %</span><span>22.0% — Acceptable on premium dish</span></div></div>
+    <div class="al"><span class="a">Gluten (soy)</span><span class="a">Sesame</span><span class="a">Soy</span></div>
+  </div>
+</div>
+
+<h2><span class="sn2">3</span>Desserts — 4 Items</h2>
+
+<!-- MANGO SAGO -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Mango Pomelo Sago (楊枝甘露)</div>
+    <div class="rh-sub">Chilled coconut mango broth • Sago pearls • Best margin dessert on your menu</div>
+    <div class="rh-meta"><span class="rm">Batch: 8 serves</span><span class="rm">Prep: 25 min + chill</span><span class="rm">Service: 2 min</span><span class="rm">Sell: $9.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/mango%20pomelo%20sago%20dessert%20Hong%20Kong%20chilled%20vibrant%20yellow%20coconut%20cream%20glass%20bowl%20overhead%20food%20photography?width=800&height=360&nologo=true&seed=117" alt="Mango Sago" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (8 serves)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Ripe Ataulfo mangoes (puréed)</td><td>600g flesh</td><td class="cc">$4.80</td></tr>
+    <tr><td>Full fat coconut cream</td><td>200ml</td><td class="cc">$0.60</td></tr>
+    <tr><td>Fresh orange juice</td><td>100ml</td><td class="cc">$0.35</td></tr>
+    <tr><td>Caster sugar (only if mango is underripe)</td><td>0–50g</td><td class="cc">$0.05</td></tr>
+    <tr><td>Small sago pearls</td><td>80g dry</td><td class="cc">$0.22</td></tr>
+    <tr><td>Fresh mango (diced, garnish)</td><td>200g</td><td class="cc">$1.60</td></tr>
+    <tr><td>Pomelo segments (peeled, no pith)</td><td>150g</td><td class="cc">$1.20</td></tr>
+    <tr><td>Fresh mint (garnish)</td><td>8 sprigs</td><td class="cc">$0.24</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st"><strong>Sago:</strong> Boil 3L water. Add sago in a thin stream, stir immediately. Cook 12–15 minutes, stirring every 2 minutes, until 95% translucent with only a tiny white dot remaining. Remove from heat, cover, rest 5 minutes — the dot disappears. Drain through a fine sieve. Rinse under cold water until completely cold. Store covered in cold water. <strong>Use within 24 hours</strong> — sago hardens beyond this.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st"><strong>Mango base:</strong> Blend mango flesh until completely smooth. Strain through a fine sieve. Add coconut cream and orange juice. Blend briefly. Taste — if mango is sweet and ripe, no sugar needed. Chill minimum 2 hours. Serve at <span class="temp ok">4°C</span>.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Per serve: drain 40g sago. Place in a chilled bowl. Ladle 180ml cold mango base over sago. Top with 25g diced mango and 18g pomelo. Garnish with mint. Serve immediately — do not let it sit.</div></div>
+    <div class="tb"><strong>💡 Mango tip:</strong> Only use Ataulfo (Champagne) mangoes — fibre-free and intensely sweet. Avoid Tommy Atkins. Taste every batch before service and adjust sweetness with sugar only if needed. A great mango needs nothing added.</div>
+    <div class="cs"><div class="cr"><span>Cost per serve</span><span>$1.13</span></div><div class="cr"><span>Sell price</span><span>$9.99</span></div><div class="cr"><span>Food Cost %</span><span>11.3% ⭐ Outstanding margin</span></div></div>
+    <div class="al"><span class="a">Coconut</span></div>
+  </div>
+</div>
+
+<!-- DOUBLE SKIN MILK -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Double Skin Milk Pudding (雙皮奶)</div>
+    <div class="rh-sub">Traditional steamed whole milk pudding • Silky texture • Make ahead daily</div>
+    <div class="rh-meta"><span class="rm">Yield: 8 bowls</span><span class="rm">Prep: 20 min</span><span class="rm">Steam: 12 min + chill</span><span class="rm">Sell: $8.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Chinese%20double%20skin%20steamed%20milk%20pudding%20silky%20white%20delicate%20skin%20surface%20minimalist%20food%20photography?width=800&height=360&nologo=true&seed=118" alt="Milk Pudding" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (8 portions)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Whole milk (full fat, 3.5%+)</td><td>600ml</td><td class="cc">$0.66</td></tr>
+    <tr><td>Egg whites</td><td>3 pieces</td><td class="cc">$0.42</td></tr>
+    <tr><td>Caster sugar</td><td>50g</td><td class="cc">$0.05</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Heat milk to <span class="temp">70°C</span> — hot but not boiling. Pour into individual bowls. Leave undisturbed for <strong>10 minutes</strong> — a thin skin forms on the surface. This is the first skin.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Gently pierce the skin on one side with a toothpick. Slowly pour the milk back into your mixing bowl — the skin stays in the bowl. Do this carefully. Dissolve sugar in the warm milk. Cool to <span class="temp rest">40°C</span>.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Whisk egg whites lightly — do not create foam or stiff peaks. Strain into the milk. Mix gently. Strain entire mixture through a fine sieve. Slowly pour back into each bowl over the first skin. The skin will float back up.</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">Steam over medium-low heat for <strong>12–14 minutes</strong>. The pudding is set when edges are firm but centre has a gentle wobble. Internal temp: <span class="temp ok">72°C</span>. Cool, refrigerate. Serve cold or warm — both are correct.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.14</span></div><div class="cr"><span>Sell price</span><span>$8.99</span></div><div class="cr"><span>Food Cost %</span><span>1.6% ⭐⭐ Best margin dessert overall</span></div></div>
+    <div class="al"><span class="a">Dairy</span><span class="a">Egg</span></div>
+  </div>
+</div>
+
+<!-- BLACK SESAME TANG YUAN -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">Black Sesame Tang Yuan</div>
+    <div class="rh-sub">Glutinous rice balls • Black sesame paste filling • Warm ginger syrup</div>
+    <div class="rh-meta"><span class="rm">Yield: 30 balls</span><span class="rm">Prep: 40 min</span><span class="rm">Cook: 6 min</span><span class="rm">Sell: $8.50 / 3pc</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/black%20sesame%20tang%20yuan%20glutinous%20rice%20balls%20warm%20ginger%20syrup%20soup%20cross%20section%20filling%20food%20photography?width=800&height=360&nologo=true&seed=119" alt="Tang Yuan" loading="lazy"></div>
+    <div class="two-col">
+      <div><h4>Rice Ball Dough</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Glutinous rice flour</td><td>200g</td><td class="cc">$0.30</td></tr>
+        <tr><td>Water (warm)</td><td>160ml</td><td class="cc">—</td></tr></table>
+        <h4 style="margin-top:10px;">Black Sesame Filling</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Black sesame seeds (toasted)</td><td>100g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Unsalted butter (soft)</td><td>50g</td><td class="cc">$0.22</td></tr>
+        <tr><td>Icing sugar</td><td>40g</td><td class="cc">$0.04</td></tr></table>
+      </div>
+      <div><h4>Ginger Syrup</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+        <tr><td>Water</td><td>600ml</td><td class="cc">—</td></tr>
+        <tr><td>Rock sugar</td><td>80g</td><td class="cc">$0.16</td></tr>
+        <tr><td>Fresh ginger (sliced thick)</td><td>40g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Pandan leaf (knotted, optional)</td><td>1 leaf</td><td class="cc">$0.05</td></tr></table>
+      </div>
+    </div>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st"><strong>Filling first:</strong> Blend toasted sesame seeds until a paste forms — about 2 minutes in a food processor. Add soft butter and icing sugar. Blend until smooth and combined. Roll into <strong>10g balls</strong>. Freeze on a tray until solid — minimum 30 minutes. <strong>Filling must be frozen when wrapping</strong> — it is too soft to handle at room temperature.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st"><strong>Dough:</strong> Mix glutinous rice flour with warm water until a smooth, pliable dough forms — similar to play-dough texture. If too sticky, add flour 5g at a time. Divide into <strong>10g pieces</strong>. Flatten each into a 6cm circle, thicker in the centre.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Place one frozen filling ball in the centre. Wrap the dough around it completely, pinching firmly to seal with no cracks. Roll into a smooth ball. Refrigerate or freeze until service.</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">Cook in gently simmering ginger syrup (not boiling — vigorous boiling breaks the balls) for <strong>5–6 minutes</strong> until they float and look slightly translucent. Serve 3 balls in a bowl with 80ml warm ginger syrup.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per serve (3 balls)</span><span>$0.47</span></div><div class="cr"><span>Sell price</span><span>$8.50</span></div><div class="cr"><span>Food Cost %</span><span>5.5% ⭐ Exceptional margin</span></div></div>
+    <div class="al"><span class="a">Sesame</span><span class="a">Dairy (butter)</span></div>
+  </div>
+</div>
+
+<!-- HK MILK TEA CREME BRULEE -->
+<div class="recipe">
+  <div class="rh">
+    <div class="rh-title">HK Milk Tea Crème Brûlée</div>
+    <div class="rh-sub">Ceylon tea-infused custard • Caramelised sugar crust • Batch bake daily</div>
+    <div class="rh-meta"><span class="rm">Yield: 10 ramekins</span><span class="rm">Bake: 38 min + chill</span><span class="rm">Service: 2 min</span><span class="rm">Sell: $10.99</span></div>
+  </div>
+  <div class="rb">
+    <div class="photo-box"><img src="https://image.pollinations.ai/prompt/Hong%20Kong%20milk%20tea%20creme%20brulee%20caramelised%20sugar%20crust%20ramekin%20amber%20spoon%20cracking%20food%20photography?width=800&height=360&nologo=true&seed=120" alt="HK Milk Tea Creme Brulee" loading="lazy"></div>
+    <table class="it"><tr><th>Ingredient (10 ramekins)</th><th>Amount</th><th class="cc">Cost</th></tr>
+    <tr><td>Heavy cream (35% fat)</td><td>500ml</td><td class="cc">$2.20</td></tr>
+    <tr><td>Full fat milk</td><td>200ml</td><td class="cc">$0.22</td></tr>
+    <tr><td>Strong Ceylon tea leaves (or 6 bags)</td><td>25g</td><td class="cc">$0.35</td></tr>
+    <tr><td>Egg yolks (large)</td><td>8 yolks</td><td class="cc">$1.12</td></tr>
+    <tr><td>Caster sugar</td><td>90g</td><td class="cc">$0.08</td></tr>
+    <tr><td>Sweetened condensed milk</td><td>60ml</td><td class="cc">$0.30</td></tr>
+    <tr><td>Vanilla extract</td><td>5ml</td><td class="cc">$0.12</td></tr>
+    <tr><td>Caster sugar (brûlée crust, per serve)</td><td>8g</td><td class="cc">$0.01</td></tr></table>
+    <h4>Method</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Heat cream and milk to <span class="temp">85°C</span> — do not boil. Add tea, steep covered for <strong>12 minutes</strong>. The colour should be deep amber. Strain firmly, pressing the leaves. Stir in condensed milk while still warm. Cool to <span class="temp rest">40°C</span>.</div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Whisk egg yolks and sugar until pale — <strong>do not create foam</strong>. Air bubbles appear as pits on the finished surface. Add vanilla. Pour cooled cream mixture into yolks slowly while whisking. Strain through a fine sieve twice. Skim any surface foam.</div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Pour into ramekins. Place in a deep roasting tray. Add hot water halfway up the ramekins. Cover loosely with foil. Bake at <span class="temp">150°C fan-off</span> for <strong>35–40 minutes</strong>. Done when edges are set and centre wobbles gently. Internal temp: <span class="temp ok">72°C</span>. Remove from water bath, cool, refrigerate minimum 4 hours.</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">At service: blot surface dry. Sprinkle 8g caster sugar evenly. Brûlée with a blowtorch in circular motion keeping flame <strong>5–7cm from surface</strong> until amber and crackled. Serve within 3 minutes — crust softens quickly.</div></div>
+    <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.44</span></div><div class="cr"><span>Sell price</span><span>$10.99</span></div><div class="cr"><span>Food Cost %</span><span>4.0% ⭐ Exceptional margin</span></div></div>
+    <div class="al"><span class="a">Dairy</span><span class="a">Egg</span></div>
+  </div>
+</div>
+
+<h2><span class="sn2">4</span>Drink Menu — Full Recipes</h2>
+
+<div class="info-box"><strong>Beverages are your most profitable category.</strong> A cup of HK milk tea costs under $0.70 to make and sells for $5.50–$6.50. Train every staff member to offer a drink with every food order. Target 1.5 drinks per cover. This single habit is worth $400–$600 extra per day.</div>
+
+<!-- HK MILK TEA -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🍵 HK Milk Tea (港式奶茶) — Hot or Iced</div><div class="drink-price">$5.50 hot / $6.00 iced</div></div>
+  <img src="https://image.pollinations.ai/prompt/Hong%20Kong%20milk%20tea%20hot%20cup%20evaporated%20milk%20dark%20tea%20cafe%20drink%20photography?width=800&height=220&nologo=true&seed=201" alt="HK Milk Tea" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">The most iconic HK café drink. Strong, silky, slightly bitter Ceylon tea pulled through a stocking strainer and finished with evaporated milk. Cannot be replicated at home — this is your anchor beverage.</p>
+  <div class="two-col">
+    <div><h4>Ingredients (1 serve)</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Amount</th><th class="cc">Cost</th></tr>
+      <tr><td>Ceylon black tea leaves (strong grade)</td><td>8g</td><td class="cc">$0.12</td></tr>
+      <tr><td>Water (freshly boiled)</td><td>200ml</td><td class="cc">—</td></tr>
+      <tr><td>Evaporated milk (full fat)</td><td>80ml</td><td class="cc">$0.22</td></tr>
+      <tr><td>Sugar (optional, to guest preference)</td><td>5–10g</td><td class="cc">$0.01</td></tr>
+      <tr><td>Ice (iced version)</td><td>150g</td><td class="cc">$0.05</td></tr></table>
+    </div>
+    <div><h4>Method</h4>
+      <div class="step"><div class="sn">1</div><div class="st">Steep tea leaves in freshly boiled water for <strong>exactly 5 minutes</strong>. Strain through a fine mesh or cloth strainer. The tea should be very dark and strong — almost opaque.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st"><strong>Pull the tea</strong> — pour brewed tea through a fine strainer between two jugs from a height of 30cm, back and forth 3 times. This aerates the tea and creates a silky texture.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Add evaporated milk. For hot: pour into a pre-warmed cup. For iced: pour over ice in a tall glass. <strong>Never use fresh milk</strong> — only evaporated milk gives the authentic creaminess.</div></div>
+    </div>
+  </div>
+  <div class="cs"><div class="cr"><span>Cost per serve (hot)</span><span>$0.35</span></div><div class="cr"><span>Sell price</span><span>$5.50</span></div><div class="cr"><span>Food Cost %</span><span>6.4% ⭐⭐ Best margin drink</span></div></div>
+</div>
+
+<!-- YUANYANG -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">☕ Yuanyang (鴛鴦) — Coffee Milk Tea</div><div class="drink-price">$6.00 hot / $6.50 iced</div></div>
+  <img src="https://image.pollinations.ai/prompt/yuanyang%20Hong%20Kong%20coffee%20milk%20tea%20iced%20glass%20layers%20cafe%20drink%20photography?width=800&height=220&nologo=true&seed=202" alt="Coffee Milk Tea" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">Half HK milk tea, half strong brewed coffee, combined with evaporated milk. The perfect balance of tea bitterness and coffee depth. A uniquely HK creation that no other café format serves.</p>
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Brewed HK milk tea (from above recipe)</td><td>120ml</td><td class="cc">$0.21</td></tr>
+  <tr><td>Brewed strong coffee (drip or espresso diluted)</td><td>80ml</td><td class="cc">$0.18</td></tr>
+  <tr><td>Evaporated milk</td><td>50ml</td><td class="cc">$0.14</td></tr>
+  <tr><td>Sugar syrup (optional)</td><td>10ml</td><td class="cc">$0.02</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">Combine brewed tea and coffee. Add evaporated milk. Stir. Serve hot in a cup or iced over a tall glass of ice. Sugar syrup on the side — let the guest sweeten to taste. Simple, fast, distinctive.</div></div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.55</span></div><div class="cr"><span>Sell price</span><span>$6.00</span></div><div class="cr"><span>Food Cost %</span><span>9.2% ⭐ Excellent margin</span></div></div>
+</div>
+
+<!-- LEMON HONEY TEA -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🍋 HK Lemon Honey Tea — Hot or Iced</div><div class="drink-price">$5.50 hot / $6.00 iced</div></div>
+  <img src="https://image.pollinations.ai/prompt/lemon%20honey%20tea%20hot%20glass%20fresh%20lemon%20slices%20honey%20drizzle%20warm%20light%20drink%20photography?width=800&height=220&nologo=true&seed=203" alt="Lemon Honey Tea" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">Fresh lemon slices steeped in hot water with pure honey. Clean, refreshing, and a high-margin non-caffeinated option that appeals to every customer segment.</p>
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Fresh lemon (sliced, 3 rounds)</td><td>half lemon</td><td class="cc">$0.18</td></tr>
+  <tr><td>Pure honey</td><td>20ml</td><td class="cc">$0.14</td></tr>
+  <tr><td>Hot water (85°C — not boiling)</td><td>280ml</td><td class="cc">—</td></tr>
+  <tr><td>Fresh mint sprig (garnish)</td><td>2 leaves</td><td class="cc">$0.03</td></tr>
+  <tr><td>Ice (iced version)</td><td>150g</td><td class="cc">$0.05</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">Add honey to the cup or glass first. Pour water at <span class="temp">85°C</span> — boiling water destroys the delicate honey flavour. Add lemon slices. Stir. For iced version: prepare concentrate with half the water, pour over ice. Garnish mint.</div></div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.35</span></div><div class="cr"><span>Sell price</span><span>$5.50</span></div><div class="cr"><span>Food Cost %</span><span>6.4% ⭐⭐ Outstanding</span></div></div>
+</div>
+
+<!-- FRESH CANE JUICE -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🌿 Fresh Sugarcane & Lemon Juice</div><div class="drink-price">$6.50</div></div>
+  <img src="https://image.pollinations.ai/prompt/fresh%20sugarcane%20juice%20green%20glass%20crushed%20ice%20lemon%20mint%20tropical%20drink%20photography?width=800&height=220&nologo=true&seed=204" alt="Sugarcane Juice" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">Cold-pressed fresh sugarcane with a squeeze of lemon and a few mint leaves. Served over crushed ice. A classic HK street drink that becomes a premium café item with the right presentation.</p>
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Fresh sugarcane juice (juiced to order or pre-juiced)</td><td>250ml</td><td class="cc">$0.80</td></tr>
+  <tr><td>Fresh lemon juice</td><td>15ml</td><td class="cc">$0.10</td></tr>
+  <tr><td>Fresh ginger juice (optional)</td><td>5ml</td><td class="cc">$0.04</td></tr>
+  <tr><td>Crushed ice</td><td>150g</td><td class="cc">$0.05</td></tr>
+  <tr><td>Mint sprig</td><td>1 sprig</td><td class="cc">$0.03</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">If using a sugarcane juicer, juice fresh to order for maximum impact. Pre-juiced and refrigerated same-day also works — holds well for up to 6 hours. Combine with lemon juice over crushed ice. Serve immediately as oxidation turns the juice darker within 20 minutes.</div></div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$1.02</span></div><div class="cr"><span>Sell price</span><span>$6.50</span></div><div class="cr"><span>Food Cost %</span><span>15.7% — Good margin on premium drink</span></div></div>
+</div>
+
+<!-- CHRYSANTHEMUM TEA -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🌸 Chrysanthemum Tea — Hot or Iced</div><div class="drink-price">$4.99 hot / $5.50 iced</div></div>
+  <img src="https://image.pollinations.ai/prompt/chrysanthemum%20flower%20tea%20glass%20teapot%20delicate%20floral%20Chinese%20herbal%20drink%20photography?width=800&height=220&nologo=true&seed=205" alt="Chrysanthemum Tea" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">Delicate floral tea made from dried chrysanthemum flowers, lightly sweetened with rock sugar. A traditional Chinese herbal drink that pairs perfectly with any HK café dish. Lowest cost beverage on the menu.</p>
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Dried chrysanthemum flowers</td><td>5g</td><td class="cc">$0.08</td></tr>
+  <tr><td>Hot water (85°C)</td><td>300ml</td><td class="cc">—</td></tr>
+  <tr><td>Rock sugar (dissolved)</td><td>10g</td><td class="cc">$0.02</td></tr>
+  <tr><td>Wolfberries (goji, optional garnish)</td><td>5 pieces</td><td class="cc">$0.05</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">Steep dried flowers in 85°C water for <strong>3–4 minutes</strong>. Do not over-steep — tea becomes bitter. Add dissolved rock sugar. Strain into cup or glass. Garnish with wolfberries. For iced: double the flowers, halve the water, steep, strain over ice.</div></div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.15</span></div><div class="cr"><span>Sell price</span><span>$4.99</span></div><div class="cr"><span>Food Cost %</span><span>3.0% ⭐⭐ Exceptional</span></div></div>
+</div>
+
+<!-- SALTED LEMON SODA -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🥤 HK Salted Lemon Soda (咸檸七)</div><div class="drink-price">$5.50</div></div>
+  <img src="https://image.pollinations.ai/prompt/Hong%20Kong%20salted%20lemon%20soda%207up%20tall%20glass%20ice%20preserved%20lemon%20bubbles%20drink%20photography?width=800&height=220&nologo=true&seed=206" alt="Salted Lemon Soda" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">One of the most beloved HK café drinks — 7Up or Sprite poured over salted preserved lemons with fresh lemon juice. The combination of sweet, salty, and sour is completely addictive. Zero preparation required beyond assembly.</p>
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Preserved salted lemon (1 whole piece, muddled)</td><td>1 piece</td><td class="cc">$0.35</td></tr>
+  <tr><td>Fresh lemon juice</td><td>20ml</td><td class="cc">$0.12</td></tr>
+  <tr><td>7Up or Sprite (ice cold)</td><td>250ml</td><td class="cc">$0.35</td></tr>
+  <tr><td>Ice</td><td>150g</td><td class="cc">$0.05</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">Muddle the salted preserved lemon in the bottom of a glass — break it up completely to release the salty juice. Fill with ice. Add fresh lemon juice. Pour 7Up slowly over ice. Do not stir — let it mix naturally. Serve immediately.</div></div>
+  <div class="tb"><strong>💡 Make your own preserved lemons:</strong> Pack quartered lemons in salt (2:1 lemon to coarse salt ratio) in a jar. Ready in 3–4 weeks. Lasts 12 months. Cost per unit drops from $0.35 to under $0.05. This dramatically improves your margin on this drink.</div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.87</span></div><div class="cr"><span>Sell price</span><span>$5.50</span></div><div class="cr"><span>Food Cost %</span><span>15.8% — Acceptable, high volume</span></div></div>
+</div>
+
+<!-- WATERMELON JUICE -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🍉 Fresh Watermelon & Mint Juice</div><div class="drink-price">$6.00</div></div>
+  <img src="https://image.pollinations.ai/prompt/fresh%20watermelon%20juice%20mint%20lime%20pink%20red%20glass%20ice%20summer%20drink%20photography?width=800&height=220&nologo=true&seed=207" alt="Watermelon Juice" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">Cold-pressed fresh watermelon blended with mint and a squeeze of lime. Summer staple, visually beautiful, and extremely fast to make. A customer favourite that photographs well and drives social media mentions.</p>
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Fresh watermelon flesh (seedless)</td><td>300g</td><td class="cc">$0.60</td></tr>
+  <tr><td>Fresh lime juice</td><td>10ml</td><td class="cc">$0.07</td></tr>
+  <tr><td>Fresh mint</td><td>4 leaves</td><td class="cc">$0.04</td></tr>
+  <tr><td>Ice</td><td>100g</td><td class="cc">$0.04</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">Blend watermelon with lime juice and mint until smooth. Do not strain — the pulp adds body. Pour over ice. Garnish with a mint sprig and a small watermelon wedge on the rim. Serve immediately — separates within 10 minutes.</div></div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.75</span></div><div class="cr"><span>Sell price</span><span>$6.00</span></div><div class="cr"><span>Food Cost %</span><span>12.5% ⭐ Strong margin</span></div></div>
+</div>
+
+<!-- SOYA BEAN DRINK -->
+<div class="drink-card">
+  <div class="drink-header"><div class="drink-name">🫘 House Soya Bean Drink — Hot or Iced</div><div class="drink-price">$4.50 hot / $5.00 iced</div></div>
+  <p style="color:#555;font-size:12px;margin-bottom:10px;">Traditional fresh soya bean milk, lightly sweetened and served hot or over ice. A non-dairy breakfast staple that pairs with every item on your food menu. Use quality commercial soya milk — making from scratch daily is not practical at café scale.</p>
+  <img src="https://image.pollinations.ai/prompt/fresh%20soya%20bean%20milk%20drink%20white%20glass%20warm%20light%20Asian%20cafe%20drink%20photography?width=800&height=220&nologo=true&seed=208" alt="Soya Bean Drink" style="width:100%;height:200px;object-fit:cover;border-radius:5px;margin-bottom:10px;">
+  <table class="it"><tr><th>Ingredient (1 serve)</th><th>Amount</th><th class="cc">Cost</th></tr>
+  <tr><td>Unsweetened soya milk (commercial, high quality)</td><td>280ml</td><td class="cc">$0.35</td></tr>
+  <tr><td>Caster sugar or sugar syrup</td><td>8g</td><td class="cc">$0.01</td></tr>
+  <tr><td>Pandan essence (2 drops, optional)</td><td>0.5ml</td><td class="cc">$0.01</td></tr></table>
+  <div class="step"><div class="sn">1</div><div class="st">Heat soya milk to <span class="temp">75°C</span> for hot service. Add sugar and pandan essence. Stir to dissolve. For iced: serve cold straight from refrigerator over ice. Do not boil soya milk — it develops a strong beany flavour and forms a skin.</div></div>
+  <div class="cs"><div class="cr"><span>Cost per serve</span><span>$0.37</span></div><div class="cr"><span>Sell price</span><span>$4.50</span></div><div class="cr"><span>Food Cost %</span><span>8.2% ⭐ Excellent margin</span></div></div>
+</div>
+
+<h2><span class="sn2">5</span>Staff Structure — 2 Kitchen + 1 Steward</h2>
+
+<div class="green-box">
+  <strong>The 2-person kitchen model works because:</strong> Every dish in this guide is designed for batch preparation. Proteins marinate overnight. Broth simmers the night before. Wontons are frozen ahead. Sauces are made weekly. At service, the kitchen is assembling and finishing — not cooking from scratch. This is the system that allows 2 people to run a profitable service.
+</div>
+
+<table class="schedule-table">
+  <tr><th>Role</th><th>Hours</th><th>Responsibilities</th><th>Rate/hr</th><th>Daily Cost</th></tr>
+  <tr><td><strong>Head Cook / Chef</strong></td><td>6am – 2:30pm (8.5 hrs)</td><td>Morning baking (egg tarts, buns), breakfast service, lunch service, prep for next day, ordering</td><td>$24–$28</td><td>$204–$238</td></tr>
+  <tr><td><strong>2nd Cook / All-Rounder</strong></td><td>7am – 3pm (8 hrs)</td><td>Cold prep, wonton filling, rice cooking, wok dishes, dessert assembly, drink preparation</td><td>$18–$22</td><td>$144–$176</td></tr>
+  <tr><td><strong>Kitchen Steward</strong></td><td>9am – 2pm (5 hrs)</td><td>Dish washing, kitchen cleaning, bin runs, receiving deliveries, basic veg prep</td><td>$15–$17</td><td>$75–$85</td></tr>
+  <tr><td colspan="4"><strong>Total Daily Kitchen Labour</strong></td><td><strong>$423–$499</strong></td></tr>
+</table>
+
+<div class="info-box">
+  <strong>FOH staff cost (not included above):</strong> Add 1–2 FOH staff for café floor service at $15–$18/hr for 6 hours each. Daily FOH labour: $90–$216. <strong>Total daily labour: $513–$715.</strong> At a $2,500 daily revenue target, labour sits at 20–28% — within the healthy range for a café.
+</div>
+
+<div class="two-col">
+  <div>
+    <h4>🌅 Head Cook — Daily Schedule</h4>
+    <table class="it">
+      <tr><th>Time</th><th>Task</th></tr>
+      <tr><td>6:00am</td><td>Oven on. Bake egg tarts (batch 1). Mix pineapple bun dough.</td></tr>
+      <tr><td>6:45am</td><td>Proof buns. Reheat congee. Slice char siu. Warm broth.</td></tr>
+      <tr><td>7:00am</td><td>Café opens. Breakfast service begins.</td></tr>
+      <tr><td>9:00am</td><td>Bake pineapple buns. Second egg tart batch in oven.</td></tr>
+      <tr><td>10:00am</td><td>Mise en place for lunch: sear chicken for Portuguese rice, set up wok station.</td></tr>
+      <tr><td>11:30am</td><td>Lunch service begins. Head cook runs wok and grill.</td></tr>
+      <tr><td>2:00pm</td><td>Service ends. Start brisket braise for tomorrow. Portion proteins.</td></tr>
+      <tr><td>2:30pm</td><td>End shift. 2nd cook finishes clean down.</td></tr>
+    </table>
+  </div>
+  <div>
+    <h4>☀️ 2nd Cook — Daily Schedule</h4>
+    <table class="it">
+      <tr><th>Time</th><th>Task</th></tr>
+      <tr><td>7:00am</td><td>Prep station set-up. Cook jasmine rice (first batch). Prepare drinks station.</td></tr>
+      <tr><td>7:30am</td><td>Breakfast service support — SPAM, eggs, macaroni assembly, drinks.</td></tr>
+      <tr><td>9:00am</td><td>Fold wontons (batch for 2 days). Portion brisket. Prepare XO sauce if needed.</td></tr>
+      <tr><td>10:30am</td><td>Second rice batch on. Dessert mise en place. Chill mango base.</td></tr>
+      <tr><td>11:30am</td><td>Lunch service — cold section, desserts, drinks, noodle blanching.</td></tr>
+      <tr><td>2:30pm</td><td>Kitchen clean-down. Prep mise en place for next morning.</td></tr>
+      <tr><td>3:00pm</td><td>End shift.</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>Kitchen Steward (9am–2pm):</strong> Arrives when service is in full swing. Primary job: keep the kitchen clean and dishes moving so the 2 cooks never stop cooking. Secondary: receive deliveries, basic veg prep (peel ginger, wash vegetables, portion daikon), empty bins. A clean kitchen runs faster. A good steward is worth 3× their wage in productivity.
+</div>
+
+<h2><span class="sn2">6</span>Revenue Model — $2K to $3K Daily</h2>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">35</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">2×</div><div class="kpi-lbl">Table Turns</div></div>
+  <div class="kpi"><div class="kpi-val">$38</div><div class="kpi-lbl">Avg Spend/Head</div></div>
+  <div class="kpi"><div class="kpi-val">$2,660</div><div class="kpi-lbl">Target Daily Rev</div></div>
+</div>
+
+<table class="schedule-table">
+  <tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Revenue</th></tr>
+  <tr><td>Breakfast (7am–11am)</td><td>30 covers</td><td>$22</td><td>$660</td></tr>
+  <tr><td>Lunch (11:30am–2:30pm)</td><td>45 covers</td><td>$35</td><td>$1,575</td></tr>
+  <tr><td>Beverages (all day)</td><td>60 drinks</td><td>$5.80</td><td>$348</td></tr>
+  <tr><td>Desserts add-on</td><td>20 orders</td><td>$9.50</td><td>$190</td></tr>
+  <tr><td colspan="3"><strong>Total Daily Revenue</strong></td><td><strong>$2,773</strong></td></tr>
+</table>
+
+<div class="cs">
+  <div class="cr"><span>Daily Revenue</span><span>$2,773</span></div>
+  <div class="cr"><span>Food Cost (27% avg across menu)</span><span>−$748</span></div>
+  <div class="cr"><span>Labour — kitchen + FOH</span><span>−$650</span></div>
+  <div class="cr"><span>Overhead — rent, utilities, insurance, packaging</span><span>−$620</span></div>
+  <div class="cr"><span><strong>Net Daily Profit ≈ 28%</strong></span><span><strong>$755</strong></span></div>
+  <div class="cr"><span><strong>Monthly Net (25 trading days)</strong></span><span><strong>≈ $18,875</strong></span></div>
+</div>
+
+<div class="info-box">
+  <strong>How to push from $2K to $3K:</strong><br><br>
+  1. <strong>Push beverages harder</strong> — every table gets an offer. 1.5 drinks per cover instead of 1.0 = $+300/day.<br>
+  2. <strong>Weekend brunch surge</strong> — Saturday and Sunday can do 2.5× table turns at higher average spend. These 2 days can contribute 35% of your weekly revenue.<br>
+  3. <strong>Takeaway cups</strong> — HK milk tea, yuanyang, and lemon soda to go. Zero extra labour. Add $150–$250 on a busy day.<br>
+  4. <strong>Counter display</strong> — egg tarts, pineapple buns, and energy bites visible at the counter. Impulse purchases add $50–$120/day with no server required.
+</div>
+
+<div class="ft">
+  <span>Hong Kong Café — Profitable Operations Guide • Breakfast & Lunch • 2 Kitchen Staff</span>
+  <span>© Chef's Restaurant Blueprint Series • US Market Edition • $29.99</span>
+</div>
+</div>
+</body>
+</html>

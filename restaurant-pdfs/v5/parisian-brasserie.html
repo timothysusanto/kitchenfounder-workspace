@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parisian Brasserie — Profitable Cafe Operations Guide</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+@media print{.page{margin:0;}}
+h1{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:#8b1a2a;}
+h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#8b1a2a;margin:22px 0 11px;border-bottom:2px solid #8b1a2a;padding-bottom:5px;}
+h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#8b1a2a;margin:16px 0 8px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#8b1a2a;margin:10px 0 5px;}
+.cover{text-align:center;padding:36px 0 28px;border-bottom:3px double #8b1a2a;}
+.cover-line{width:60px;height:3px;background:#c8a050;margin:16px auto;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#8b1a2a;color:#fff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;}
+.info-box{background:#f8f8f8;border-left:4px solid #c8a050;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;}
+.recipe{border:1px solid #e0e0e0;border-radius:8px;margin-bottom:24px;overflow:hidden;page-break-inside:avoid;}
+.rh{background:linear-gradient(135deg,#8b1a2a,#a82038);color:#fff;padding:14px 16px;}
+.rh-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;}
+.rh-sub{font-size:10px;opacity:0.85;margin-top:3px;}
+.rh-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.rm{background:rgba(255,255,255,0.18);border-radius:10px;padding:2px 9px;font-size:9px;}
+.rb{padding:16px 18px;}
+.photo-box img{width:100%;height:190px;object-fit:cover;display:block;border-radius:8px;margin-bottom:14px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11px;}
+.it th{background:#f0f0f0;color:#8b1a2a;padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #ddd;}
+.it td{padding:5px 10px;border-bottom:1px solid #f0f0f0;}
+.cc{text-align:right;color:#777;}
+.it tr.total-row td{font-weight:700;background:#fafafa;border-top:2px solid #ddd;}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.sn{background:#8b1a2a;color:#fff;border-radius:50%;width:24px;height:24px;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.sn2{background:#8b1a2a;color:#fff;border-radius:50%;width:27px;height:27px;min-width:27px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:9px;}
+.st{font-size:12px;line-height:1.75;color:#2a2a2a;}
+.temp{background:#222;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;font-weight:700;}
+.temp.ok{background:#1a6a1a;}
+.temp.rest{background:#8b4513;}
+.tb{background:#fffdf5;border-left:3px solid #c8a050;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:11.5px;}
+.fc-box{background:#fdf8f0;border-radius:6px;padding:12px 16px;margin-top:12px;border:1px solid #e8d8b0;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #e8d8b0;font-size:12px;}
+.fc-row:last-child{border-bottom:none;font-weight:700;color:#8b1a2a;font-size:13px;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.a{background:#f0f0f0;border:1px solid #ddd;color:#555;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+.drink-card{border:1px solid #e0e0e0;border-radius:8px;padding:14px 16px;margin-bottom:14px;}
+.drink-card img{width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:10px;}
+.drink-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.drink-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#8b1a2a;}
+.drink-price{background:#8b1a2a;color:#fff;border-radius:10px;padding:3px 11px;font-size:10px;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#8b1a2a;color:#fff;padding:8px 12px;text-align:left;font-size:10px;letter-spacing:1px;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top;}
+.prep-table tr:nth-child(even) td{background:#fafafa;}
+.prep-table .time-col{font-weight:700;color:#8b1a2a;white-space:nowrap;}
+.script-box{background:#f8f8f8;border-left:4px solid #c8a050;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;}
+.script-label{font-weight:700;font-size:10px;color:#8b1a2a;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#8b1a2a;color:#fff;padding:7px 10px;text-align:left;font-size:10px;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid #eee;}
+.schedule-table tr:nth-child(even) td{background:#fafafa;}
+.revenue-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.revenue-table th{background:#8b1a2a;color:#fff;padding:9px 12px;text-align:left;}
+.revenue-table td{padding:8px 12px;border-bottom:1px solid #eee;}
+.revenue-table .total-row td{font-weight:700;background:#f0f0f0;}
+.revenue-table .net-row td{font-weight:700;color:#fff;background:#1a6a1a;}
+.ft{margin-top:28px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;font-size:9px;color:#aaa;letter-spacing:1px;}
+.section-intro{font-size:13px;color:#444;margin-bottom:16px;line-height:1.8;}
+.drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.safety-badge{background:#1a6a1a;color:#fff;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;margin:2px 0;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c8a050;margin-bottom:12px;font-family:'Playfair Display',serif;">Paris · Brasserie · Operations</div>
+  <h1>Parisian Brasserie</h1>
+  <div class="cover-line"></div>
+  <div style="display:flex;justify-content:center;gap:4px;margin:8px auto;width:80px;"><div style="width:20px;height:4px;background:#002395;border-radius:2px;"></div><div style="width:20px;height:4px;background:#fff;border:1px solid #ddd;border-radius:2px;"></div><div style="width:20px;height:4px;background:#ed2939;border-radius:2px;"></div></div>
+  <div style="font-family:'Playfair Display',serif;font-size:16px;color:#666;font-style:italic;margin-top:8px;">Breakfast &amp; Lunch — 7:00am to 3:00pm</div>
+  <div style="font-size:13px;color:#666;margin-top:8px;">Full Recipe Cards · US Market Food Costing · Kitchen Prep Flow · Financial Forecast</div>
+  <div style="font-family:'Playfair Display',serif;font-size:13px;color:#8b1a2a;font-style:italic;margin-top:16px;">"La brasserie est généreuse, confiante, démocratique."</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">40</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">$44</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$21,500</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+</div>
+
+<div class="info-box"><strong>About This Guide:</strong> A brasserie is not a restaurant — it is a way of life. Open all day, welcoming everyone, serving the classics with precision and without ceremony. French onion soup that takes 3 hours to make properly. Steak frites with a béarnaise that demands your complete attention. Crème brûlée that gets caramelised to order. Every recipe here is written to the standard of a trained French kitchen — gram weights, temperatures, the reasoning behind every technique. Food costs are calculated against current US wholesale prices.</div>
+
+<div class="story-section" style="background:linear-gradient(135deg,#8b1a2a 0%,#5c1018 100%);color:white;border-radius:12px;padding:40px 48px;margin:32px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-20px;left:24px;font-size:180px;color:rgba(255,255,255,0.07);font-family:Georgia,serif;line-height:1;">"</div>
+  <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#c8a050;margin-bottom:16px;">🇫🇷 The Story Behind This Guide</div>
+  <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.4;margin-bottom:24px;position:relative;z-index:1;">"A brasserie is not a bistro and not a restaurant gastronomique. It is something specific: generous, confident, democratic. Getting that positioning right is the whole business."</div>
+  <div style="font-size:14px;line-height:1.85;opacity:0.92;position:relative;z-index:1;">
+    <p style="margin-bottom:14px;">Claire had spent three years at culinary school in Lyon and four years working in Parisian kitchens before she moved to Chicago at 30 to join her partner. She arrived with a deep technical foundation — classical French sauces, proper brunoise, the hierarchy of stocks — and a clear vision: not a fine dining room, not a crepe stand. A brasserie. The Parisian institution that is somehow both everyday and excellent, the place where a worker eats lunch and an anniversary is celebrated and neither party feels out of place.</p>
+    <p style="margin-bottom:14px;">Chicago's French restaurant landscape was either too formal or not French enough. She saw the gap. What she did not have was the operational language to explain the concept to a bank, to a landlord, to the staff she would need to hire and train. She understood the food. She needed the business architecture around it.</p>
+    <p style="margin-bottom:14px;">The guide's steak frites section — the resting instruction explained with the reason (the myoglobin relaxes and reabsorbs the juices that have been pushed to the surface by heat; cutting immediately loses 30% of the moisture content), the exact internal temperatures for each doneness level, the frite technique that produces the correct exterior crispness — was the moment she knew this guide was built on real kitchen knowledge. She trusted every number after that.</p>
+    <p style="margin-bottom:0;">She opened a 46-seat brasserie in River North. The French onion soup is made with a 4-hour caramelised onion base. The croque monsieur uses Emmental and a proper bechamel, never processed cheese. Month five net: $52,000. <strong style="color:#c8a050;">French cooking is not complicated. It is precise. This guide is that precision, made operational.</strong></p>
+  </div>
+  <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:1px;color:#c8a050;border-top:1px solid rgba(255,255,255,0.2);padding-top:16px;">Claire D. · Parisian Brasserie · River North, Chicago · Est. Month 5 Net: $52,000</div>
+</div>
+
+<h2><span class="sn2">1</span> Entrées</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">French Onion Soup</div>
+  <div class="rh-sub">3-hour caramelised onion broth, gruyère crouton · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service</span><span class="rm">🍳 Entrée</span><span class="rm">Target FC: 22%</span><span class="rm">Batch prep</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Yellow onions (caramelised)</td><td>400g raw → 120g cooked</td><td class="cc">$0.54</td></tr>
+        <tr><td>Beef stock (strong)</td><td>350ml</td><td class="cc">$0.60</td></tr>
+        <tr><td>Gruyère cheese (grated)</td><td>60g</td><td class="cc">$1.20</td></tr>
+        <tr><td>Baguette (crouton slice)</td><td>2 slices = 40g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Butter</td><td>20g</td><td class="cc">$0.24</td></tr>
+        <tr><td>Dry white wine</td><td>50ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Thyme, bay leaf</td><td>2g</td><td class="cc">$0.03</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.07</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.07</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>20.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$11.92</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Slice onions thinly — 3mm. Melt butter in a heavy-based pot over medium heat. Add all onions. Cook uncovered, stirring every 5–8 minutes. The goal is <strong>true caramelisation — minimum 45–60 minutes</strong>. The onions must go from white to pale gold to deep amber-brown. This is the entire flavour of the soup — there is no shortcut. Adding sugar or bicarbonate of soda accelerates browning but produces artificial sweetness, not the complex depth of real caramelisation.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">When onions are deeply caramelised, add white wine. Scrape all the fond (caramelised bits stuck to the pot) — this is concentrated flavour that must not be lost. Simmer until wine is mostly evaporated. Add beef stock, thyme, bay leaf. Simmer <strong>30 minutes</strong>. Season. The soup should taste deeply savoury, sweet from the onions, and rounded — not sharp or thin.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Toast baguette slices under a grill at <span class="temp">220°C / 428°F</span> until hard and golden — the crouton must be completely dry and crisp so it floats on the soup rather than sinking and going soggy immediately. Pile grated gruyère generously over the crouton — do not be conservative. The cheese is the visual wow of this dish.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Ladle hot soup into an oven-safe crock or bowl. Float the crouton on top. Place under a salamander or hot grill at <span class="temp">230°C / 446°F</span> for <strong>3–4 minutes</strong> until the gruyère is fully melted, bubbling, and spotting brown at the edges. Serve immediately — the crust softens quickly. Warn guests the bowl is extremely hot.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The single most common failure in French onion soup is not caramelising the onions long enough. Light golden onions produce a thin, slightly sweet soup. Deep amber-brown onions produce the complex, almost meaty, intense brasserie soup that guests remember for years. If your caramelisation takes less than 45 minutes, your heat was too high and you steamed the onions rather than caramelising them.</div>
+  <div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">CELERY (stock)</span></div>
+</div>
+</div>
+
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Croque Monsieur</div>
+  <div class="rh-sub">Béchamel, ham, Gruyère, griddled brioche · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🍳 Entrée</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Brioche bread (thick sliced)</td><td>2 slices = 80g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Ham (sliced)</td><td>60g</td><td class="cc">$0.84</td></tr>
+        <tr><td>Gruyère (grated)</td><td>50g</td><td class="cc">$1.00</td></tr>
+        <tr><td>Béchamel (batch)</td><td>40g</td><td class="cc">$0.22</td></tr>
+        <tr><td>Dijon mustard</td><td>8g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Butter (griddling)</td><td>15g</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.90</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.90</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>19.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$12.09</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Béchamel (batch — make morning):</strong> Melt 50g butter in a heavy saucepan. Add 50g plain flour all at once, stir vigorously over medium heat for <strong>2 minutes</strong> — cooking out the raw flour flavour (this is the roux). Add warm milk 500ml in 3 stages, whisking continuously after each addition. The sequential addition and continuous whisking is what produces a smooth, lump-free sauce — adding all the milk at once creates clumps that are difficult to remove. Season with salt, white pepper, and a pinch of nutmeg. Cook until thick — the béchamel should coat the back of a spoon thickly. Makes enough for 12 serves.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Spread Dijon mustard on one inner face. Layer ham on the mustard side. Spread a thin layer of béchamel on the ham. Add a layer of grated gruyère. Close sandwich. Butter the outer faces of both slices of brioche.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Griddle at <span class="temp">160°C / 320°F</span> with butter, pressing with a sandwich press for <strong>3–4 minutes per side</strong> until golden. The lower temperature ensures the gruyère inside fully melts before the outside burns.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Transfer to a baking tray. Spread remaining béchamel and gruyère on the top face. Place under grill at <span class="temp">220°C / 428°F</span> for <strong>2 minutes</strong> until the top is bubbling, golden, and spotting brown. This gratin top is what makes a croque monsieur — without it, you simply have a toasted ham and cheese sandwich.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Use brioche, not sandwich bread. Brioche has a rich, buttery crumb that absorbs butter during griddling and becomes crisp outside while remaining soft inside. Sandwich bread dries out and becomes brittle. The bread quality is visible and tasted in every bite — source properly.</div>
+  <div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">MUSTARD</span><span class="a">PORK (ham)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Steak Tartare</div>
+  <div class="rh-sub">Hand-chopped beef bavette, egg yolk, capers, Dijon, baguette · Sell: $19.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🍳 Entrée</span><span class="rm">Target FC: 24%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Beef bavette/skirt (fresh)</td><td>150g</td><td class="cc">$2.70</td></tr>
+        <tr><td>Egg yolk (fresh, raw)</td><td>1 yolk = 18g</td><td class="cc">$0.35</td></tr>
+        <tr><td>Capers (chopped)</td><td>15g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Cornichons (finely diced)</td><td>20g</td><td class="cc">$0.20</td></tr>
+        <tr><td>Dijon mustard</td><td>10g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Shallot (finely minced)</td><td>20g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Tabasco + Worcestershire</td><td>3ml each</td><td class="cc">$0.04</td></tr>
+        <tr><td>Baguette (toasted slices)</td><td>3 slices = 60g</td><td class="cc">$0.32</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.97</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.97</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$19.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>19.9%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$16.02</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Source beef that is fresh — ordered same-day from a trusted butcher. Tartare is raw meat; the quality and freshness of the product is the entire dish. Keep beef refrigerated at <span class="safety-badge">1–3°C</span> until the moment of preparation. Never use ground beef from a supermarket — the surface area exposure during grinding multiplies bacterial risk dramatically. Hand-chopped whole muscle is the only correct method.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Chill the knife and cutting board in the fridge before use — cold equipment keeps the beef cold during prep. Remove sinew and silver skin from beef. Slice thinly, then chop across the slices into a fine dice — approximately 3–4mm pieces. Do not mince to a paste; the texture of small, distinct pieces is what gives tartare its signature bite.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Mix Dijon, Tabasco, Worcestershire in a bowl. Add chopped beef, capers, cornichons, shallot. Season generously with salt and pepper. Mix briefly — do not overwork. Taste and adjust. <strong>Season assertively</strong> — raw beef needs more seasoning than cooked beef because there is no Maillard flavour to carry the dish. The tartare should taste vivid and complete on its own, before the egg yolk is added.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Using a ring mould (8cm), press tartare into a neat cylinder on a cold plate. Remove mould. Create a small well in the centre. Place egg yolk in the well. Arrange baguette toasts beside. Present to the guest as-is — the egg yolk is folded in at the table, either by staff or the guest. This tableside interaction is part of the theatre of tartare.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Make tartare maximum 15 minutes before service — never in advance. The acid from the capers and cornichons begins to "cook" the beef surface (ceviche effect) within 20 minutes, turning the colour grey and the texture slightly mushy. Fresh tartare should be bright red-pink throughout. If it is grey, it was made too long ago.</div>
+  <div class="al"><span class="a">EGGS (raw)</span><span class="a">BEEF (raw)</span><span class="a">GLUTEN</span><span class="a">MUSTARD</span><span class="a">FISH (Worcestershire)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Pâté de Campagne</div>
+  <div class="rh-sub">Rustic pork pâté, cornichons, sourdough, Dijon · Sell: $15.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 4 min (service)</span><span class="rm">🍳 Entrée</span><span class="rm">Target FC: 16%</span><span class="rm">Batch weekly</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Pâté slice (batch)</td><td>100g</td><td class="cc">$0.72</td></tr>
+        <tr><td>Sourdough (toasted)</td><td>2 slices = 80g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Cornichons</td><td>5 pieces = 30g</td><td class="cc">$0.30</td></tr>
+        <tr><td>Dijon mustard</td><td>15g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Fleur de sel + mixed herbs</td><td>2g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Butter (side)</td><td>15g</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.96</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.96</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$15.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>12.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$14.03</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method (batch — make weekly, serves 20+)</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Grind 800g pork shoulder coarsely, 200g pork belly (for fat content). The ratio of lean to fat must be approximately 70:30 — fat is what carries flavour and keeps the pâté moist and sliceable. All-lean pâté is dry and crumbly and will not hold shape.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Sauté 1 onion + 3 garlic cloves until soft. Cool. Mix into the pork with: 2 eggs, 30ml cognac (or brandy), 10g salt, 3g black pepper, 2g allspice, 2g thyme. Mix thoroughly — this farce must be seasoned generously; pâté is eaten cold and cold food requires more seasoning than hot food.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Line a loaf tin with streaky bacon strips, overlapping. Pack pâté mixture in firmly, tapping the tin to remove air pockets. Fold over the bacon. Cover tightly with foil. Bake in a water bath at <span class="temp">160°C / 320°F</span> for <strong>90 minutes</strong>. Internal temp: <span class="temp ok">72°C / 162°F</span>. Cool, press with a weight overnight in the fridge — pressing gives a dense, sliceable texture.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">To serve: slice 1.5cm thick. Arrange on a board or slate with toasted sourdough, cornichons, Dijon, and cold butter. The pâté should have a dense, spreadable texture — rich, savoury, with the back-note of brandy and herbs. The cornichon's tartness is the essential counterpoint to the richness.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Season a small amount of the raw farce before the full batch goes in the tin — fry 10g in a pan, taste it. This "test patty" allows you to adjust seasoning before the batch is committed. Pâté that is under-seasoned cannot be corrected after cooking. This step takes 3 minutes and saves you from a 100-portion mistake.</div>
+  <div class="al"><span class="a">PORK</span><span class="a">GLUTEN</span><span class="a">EGGS</span><span class="a">MUSTARD</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Salade Niçoise</div>
+  <div class="rh-sub">Tuna, green beans, boiled egg, olives, anchovy, Niçoise dressing · Sell: $17.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min</span><span class="rm">🍳 Entrée</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Good quality canned tuna</td><td>100g drained</td><td class="cc">$1.20</td></tr>
+        <tr><td>Green beans (blanched)</td><td>80g</td><td class="cc">$0.44</td></tr>
+        <tr><td>Egg (hard-boiled, halved)</td><td>2 × 55g</td><td class="cc">$0.70</td></tr>
+        <tr><td>Cherry tomatoes</td><td>80g</td><td class="cc">$0.44</td></tr>
+        <tr><td>Niçoise/Kalamata olives</td><td>30g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Anchovy fillets</td><td>4 fillets = 20g</td><td class="cc">$0.44</td></tr>
+        <tr><td>Mixed leaves (base)</td><td>40g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Niçoise dressing (batch)</td><td>30ml</td><td class="cc">$0.12</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.98</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.98</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$17.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>22.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$14.01</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Boil eggs 10 minutes for fully set yolk (not chalky — <span class="temp ok">hard-boiled but not over-boiled</span>). Ice bath 5 minutes. Peel, halve lengthwise. Blanch green beans in heavily salted boiling water for <strong>3 minutes</strong> — no longer. Refresh immediately in ice water. Blanching bright green and refreshing cold locks the colour and creates the crisp-tender texture. Overcooked green beans go khaki-grey and become soft.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Niçoise dressing (batch — make daily): 60ml olive oil, 20ml red wine vinegar, 5g Dijon mustard, 5g anchovy paste, salt, pepper. Whisk until emulsified. This dressing should taste intensely savoury, slightly tangy, with the anchovy providing depth without fishiness.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Arrange salad as separate components — not tossed. The arranged presentation is classic Niçoise and visually superior: leaves in the base, then green beans, halved tomatoes, tuna in the centre, eggs around the edge, olives and anchovy fillets draped over. Each component visible and distinct.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Dress at the table — pour dressing over the arranged salad in front of the guest, or serve dressing in a small jug alongside. The dressing should coat everything lightly. Season with a pinch of fleur de sel over the eggs just before serving.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The traditional Niçoise debate — no potato, no cooked fish, only canned tuna — is worth knowing and explaining to guests. The "authentic" Niçoise is composed of raw or briefly-prepared vegetables plus quality canned tuna in oil. The potato version is a "modern" interpretation. Both are delicious; knowing the history makes you the authority in the room.</div>
+  <div class="al"><span class="a">FISH (tuna, anchovy)</span><span class="a">EGGS</span><span class="a">MUSTARD</span></div>
+</div>
+</div>
+
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Escargots de Bourgogne</div>
+  <div class="rh-sub">6 snails, garlic-parsley butter, baguette · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🍳 Entrée</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Canned escargot (6 snails)</td><td>60g drained</td><td class="cc">$1.60</td></tr>
+        <tr><td>Unsalted butter (softened)</td><td>60g</td><td class="cc">$0.73</td></tr>
+        <tr><td>Garlic (minced fine)</td><td>8g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Fresh flat-leaf parsley</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Shallot (minced fine)</td><td>15g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Baguette (for mopping)</td><td>3 slices = 60g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Salt + white pepper</td><td>2g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.89</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.89</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>17.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$14.10</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Beurre d'escargot (batch — make weekly):</strong> Let butter come to room temperature. Beat until completely smooth. Add very finely minced garlic, finely chopped parsley, finely minced shallot, salt, white pepper. Mix thoroughly. Roll in cling film into a log, refrigerate. This compound butter holds for 2 weeks refrigerated. The quality of this butter determines the entire dish.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Drain escargot from can, rinse briefly in cold water to remove any metallic can taste. Pat dry — excess moisture prevents the butter from adhering properly to the snail. The butter should wrap around each snail and seal in the shell during cooking.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Place one snail in each escargot shell (or use ceramic snail plates with individual wells). Pack a generous teaspoon (approximately 10g) of compound butter into each shell on top of the snail, sealing it in. The butter will melt and become the sauce — do not be conservative.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Bake at <span class="temp">220°C / 428°F</span> for <strong>8 minutes</strong> until the butter is fully melted, bubbling, and fragrant throughout the kitchen. The sizzling sound and the garlic-butter aroma as it passes the dining room is itself a selling tool. Serve immediately on the hot pan/plate with baguette for mopping the butter — the butter is the point.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Escargots are an extraordinary value proposition: inexpensive canned snails transformed into a luxurious, memorable dish entirely through the quality of the compound butter. The garlic must be minced to almost a paste — coarse garlic chunks burn at the cooking temperature and turn bitter. A fine microplane or mortar and pestle gives the right result.</div>
+  <div class="al"><span class="a">DAIRY</span><span class="a">GLUTEN (baguette)</span><span class="a">MOLLUSCS</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">2</span> Mains</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Steak Frites — Bavette, Béarnaise</div>
+  <div class="rh-sub">200g pan-seared bavette, house triple-cooked frites, béarnaise · Sell: $29.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 15 min</span><span class="rm">🍽 Main</span><span class="rm">Target FC: 25%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Beef bavette (flank steak)</td><td>200g</td><td class="cc">$3.59</td></tr>
+        <tr><td>Potatoes (russet, for frites)</td><td>300g raw</td><td class="cc">$0.54</td></tr>
+        <tr><td>Béarnaise sauce (batch)</td><td>60ml</td><td class="cc">$0.72</td></tr>
+        <tr><td>Butter (basting)</td><td>20g</td><td class="cc">$0.24</td></tr>
+        <tr><td>Thyme + garlic (aromatics)</td><td>5g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Neutral oil (high smoke point)</td><td>20ml</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fleur de sel</td><td>1g</td><td class="cc">$0.04</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$5.21</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$5.21</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$29.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>17.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$24.78</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Triple-cooked frites (batch to 2nd cook in morning):</strong> Peel and cut potatoes into 1cm × 1cm sticks — uniform size is essential for even cooking. Rinse in cold water to remove surface starch. Blanch in unsalted water at <span class="temp">90°C / 194°F</span> (not boiling) for <strong>8–10 minutes</strong> until almost cooked through but not falling apart. Drain, dry, refrigerate on a wire rack. First fry at <span class="temp">130°C / 266°F</span> for <strong>4 minutes</strong> — seals without browning. Drain, cool. These are ready for the final service fry.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Béarnaise (batch — make 90 min before service, hold at 55°C):</strong> Reduce white wine vinegar 80ml with 3 shallots, 5g tarragon stalks, 5 peppercorns to 30ml — this is the gastrique. Strain. Whisk 4 egg yolks with gastrique over a double boiler at <span class="temp">65°C / 149°F</span> until ribbon stage. Remove from heat. Slowly add 200g warm clarified butter, whisking constantly. Add fresh tarragon. A broken béarnaise can often be recovered by whisking vigorously with 1 tablespoon of hot water.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Bring bavette to room temperature. Season generously with salt and pepper just before cooking. Heat a cast iron pan until smoking. Add oil. Sear bavette — <strong>3 minutes first side, do not touch</strong>. Flip. Add butter, thyme, garlic to pan. Baste continuously for <strong>2–3 minutes</strong>. Internal temp for medium-rare: <span class="temp ok">55°C / 131°F</span>. Medium: <span class="temp ok">60°C / 140°F</span>. Rest on wire rack <strong>4 minutes minimum</strong> — resting is not optional; it redistributes muscle juices and makes the difference between a dry steak and a juicy one.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Final fry frites at <span class="temp">190°C / 374°F</span> for <strong>2–3 minutes</strong> until deep golden and crispy. Drain, season immediately with fine salt while hot — salt only adheres to hot, wet frites; salting cold frites produces salt that falls off onto the plate. Slice steak against the grain on the bias. Plate frites in a tall pile. Lean sliced steak against the pile. Serve béarnaise in a warm ramekin beside.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The triple-cook method for frites — blanch, first fry, second fry — is the technique perfected by Heston Blumenthal and used in every serious French brasserie. The first cook makes them fluffy inside; the second seals the surface; the third creates the glass-like, shattering crust. No other method produces the same result. The extra effort is a few minutes of morning prep that defines the dish entirely.</div>
+  <div class="al"><span class="a">BEEF</span><span class="a">EGGS (béarnaise)</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Moules Marinières</div>
+  <div class="rh-sub">1kg mussels, white wine, shallot, cream, parsley, sourdough · Sell: $22.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🍽 Main</span><span class="rm">Target FC: 24%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Fresh mussels (live)</td><td>1kg</td><td class="cc">$4.40</td></tr>
+        <tr><td>Dry white wine</td><td>150ml</td><td class="cc">$0.55</td></tr>
+        <tr><td>Shallots (sliced)</td><td>60g</td><td class="cc">$0.30</td></tr>
+        <tr><td>Heavy cream</td><td>80ml</td><td class="cc">$0.80</td></tr>
+        <tr><td>Butter</td><td>30g</td><td class="cc">$0.37</td></tr>
+        <tr><td>Garlic (sliced)</td><td>8g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Flat-leaf parsley</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Sourdough (thick slice)</td><td>1 slice = 50g</td><td class="cc">$0.30</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$6.87</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$6.87</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$22.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>29.9%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$16.12</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Scrub mussels under cold water. Remove beards — pull firmly toward the hinge end. Discard any mussels that are open and do not close when tapped sharply (dead mussels). Discard any with cracked shells. This safety check is mandatory — a dead mussel cooked and eaten causes food poisoning. The number of mussels discarded varies; order 15% more than you need to account for losses.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Heat a large, wide pot over high heat — it must be truly hot before anything goes in. Add butter, shallots, garlic. Sauté <strong>90 seconds</strong> until just softened. Add white wine and bring to a boil immediately. Add all cleaned mussels in one movement, cover with a tight-fitting lid.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Steam over high heat for <strong>4–5 minutes</strong>, shaking the pot once at 2 minutes. The mussels are done when they are all open. Any mussel that remains closed after 5 minutes must be discarded — it did not open because it was dead before cooking. Pour cream over, stir briefly, return lid for 30 seconds.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Transfer to a large warmed bowl — the pot is the traditional serving vessel in brasseries, which is equally correct. Scatter fresh parsley. Serve immediately with toasted sourdough for mopping. The golden rule of moules: the bread-mopping of the sauce is as important as the mussels themselves. Ensure sufficient bread.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Mussels must be cooked to order and served immediately — they become rubbery within minutes of being fully cooked. The entire dish from cold pan to table should be 10–12 minutes. Pre-prepping (cleaning and debearding) can be done in the morning, but cooking must happen to order. This is one dish where you cannot compromise on timing.</div>
+  <div class="al"><span class="a">SHELLFISH (mussels)</span><span class="a">DAIRY</span><span class="a">GLUTEN</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Confit Duck Leg</div>
+  <div class="rh-sub">24-hour duck confit, lentils du Puy, walnut vinaigrette · Sell: $27.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min service</span><span class="rm">🍽 Main</span><span class="rm">Target FC: 22%</span><span class="rm">Batch</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Duck leg (cured, confited)</td><td>1 leg = 280g</td><td class="cc">$3.44</td></tr>
+        <tr><td>Lentils du Puy (cooked)</td><td>150g cooked</td><td class="cc">$0.48</td></tr>
+        <tr><td>Carrot + celery + onion</td><td>80g total</td><td class="cc">$0.18</td></tr>
+        <tr><td>Red wine vinegar + walnut oil</td><td>15ml + 20ml</td><td class="cc">$0.28</td></tr>
+        <tr><td>Dijon mustard</td><td>5g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fresh thyme + parsley</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$4.48</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$4.48</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$27.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>16.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$23.51</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Duck confit (batch — cure 24hr, cook 8hr):</strong> Combine 30g salt + 5g sugar + thyme + bay leaf + black pepper. Rub all over duck legs. Refrigerate <strong>24 hours</strong>. The salt cure draws moisture from the skin and begins to season the flesh. Rinse cured legs briefly, pat dry.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Pack legs tightly in a deep baking dish. Cover completely with duck fat (or a mix of duck fat and olive oil). Add garlic, thyme, bay. Cook at <span class="temp">120°C / 248°F</span> for <strong>8 hours</strong>. The low temperature ensures the meat cooks gently in its own fat — the fat should barely tremble, never bubble. Internal temp: <span class="temp ok">85°C / 185°F</span>. Cool in fat, refrigerate. Keeps for 3 weeks submerged in fat.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Lentils du Puy (batch): simmer lentils in water with carrot, celery, onion, bay, thyme for <strong>25–30 minutes</strong> until tender but not mushy. Puy lentils hold their shape where other lentils turn to mush — this is not substitutable. Drain, dress warm with walnut oil vinaigrette (walnut oil + red wine vinegar + Dijon + salt).</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Service:</strong> Remove duck leg from fat. Pat skin completely dry — any fat on the skin surface will prevent crisping. Place skin-side down in a cold oven-safe pan. Heat pan, allow duck to render at <span class="temp">180°C / 356°F</span> for <strong>6–8 minutes</strong> until skin is absolutely crispy — it should crackle when pressed. Serve over warm dressed lentils. The contrast of shatteringly crispy duck skin and earthy, yielding lentils is the entire experience.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Never add oil to the pan when re-crisping duck confit — the duck skin has enough fat from the confit process to render itself perfectly. Adding oil creates a frying environment that spatters, smokes, and produces uneven crisping. The skin must go in a cold pan that heats gradually — a pre-heated pan immediately seals the skin before the fat can render out, and you end up with a rubbery skin.</div>
+  <div class="al"><span class="a">POULTRY</span><span class="a">MUSTARD</span><span class="a">CELERY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Boeuf Bourguignon</div>
+  <div class="rh-sub">Braised beef, lardons, mushrooms, pearl onions, red wine · Sell: $26.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service</span><span class="rm">🍽 Main</span><span class="rm">Target FC: 22%</span><span class="rm">Batch</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Beef chuck (cubed 4cm)</td><td>200g</td><td class="cc">$2.61</td></tr>
+        <tr><td>Lardons (pancetta/bacon)</td><td>40g</td><td class="cc">$0.50</td></tr>
+        <tr><td>Button mushrooms</td><td>80g</td><td class="cc">$0.62</td></tr>
+        <tr><td>Pearl onions</td><td>60g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Red wine (Burgundy style)</td><td>100ml per serve (batch)</td><td class="cc">$0.40</td></tr>
+        <tr><td>Beef stock</td><td>150ml</td><td class="cc">$0.26</td></tr>
+        <tr><td>Butter + oil</td><td>20g + 10ml</td><td class="cc">$0.30</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$5.01</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$5.01</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$26.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>18.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$21.98</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method (large batch — start day before)</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Pat beef completely dry. Season generously. Sear in batches in a hot pot — deep brown crust on all sides, working in batches to avoid crowding. Remove beef. Render lardons in the same pot until crispy. Remove. Sauté sliced onion and carrot until coloured. Add tomato paste, cook 2 minutes — this caramelises the tomato paste and removes rawness.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Return beef and lardons. Add red wine — enough to nearly submerge the beef. Add beef stock. Bring to a boil, skim foam. Reduce to a <strong>bare simmer at 90°C / 194°F</strong>. Braise covered for <strong>2.5–3 hours</strong>. The beef is done when a fork slides in with zero resistance and the meat pulls apart at the slightest pressure. Internal temp: <span class="temp ok">95°C / 203°F</span>.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">In a separate pan, sauté mushrooms in butter until golden — never add mushrooms to the braise directly (they leach water and dilute the sauce). Glaze pearl onions in a pan with butter and sugar until caramelised and tender — <strong>15 minutes</strong>. Add mushrooms and pearl onions to the bourguignon in the last 20 minutes of cooking.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Cool overnight — bourguignon improves dramatically overnight as the flavours meld. Reheat gently to <span class="temp ok">74°C / 165°F</span>. Serve over buttered egg noodles or creamy mashed potato. The sauce should be glossy and coat each piece of beef — if too thin, reduce uncovered for 10 minutes before service.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The best bourguignon is made 2 days before serving. This is not a compromise — it is the correct technique. The overnight rest allows the collagen from the beef to fully set in the sauce, thickening it naturally, and the wine's alcohol integrates completely. A same-day bourguignon is technically finished; a 2-day bourguignon is extraordinary.</div>
+  <div class="al"><span class="a">BEEF</span><span class="a">PORK (lardons)</span><span class="a">CELERY</span><span class="a">GLUTEN (noodles)</span></div>
+</div>
+</div>
+
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Poulet Rôti — Roast Half Chicken</div>
+  <div class="rh-sub">Half free-range chicken, pan jus, green salad, baguette · Sell: $24.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min service</span><span class="rm">🍽 Main</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Half chicken (free-range)</td><td>500g</td><td class="cc">$3.52</td></tr>
+        <tr><td>Butter (compound herb)</td><td>30g</td><td class="cc">$0.37</td></tr>
+        <tr><td>Garlic + thyme (aromatics)</td><td>10g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Chicken jus (batch)</td><td>60ml</td><td class="cc">$0.22</td></tr>
+        <tr><td>Mixed salad leaves</td><td>50g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Vinaigrette (batch)</td><td>20ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Baguette (half)</td><td>80g</td><td class="cc">$0.42</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$5.07</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$5.07</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$24.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>20.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$19.92</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Work herb butter (softened butter + chopped thyme + minced garlic + salt) under the skin of the chicken half — between skin and breast meat and thigh. This butter bastes the meat from inside during roasting, keeping it moist and infusing flavour throughout. Season skin generously with salt — a well-salted skin crisps better than an under-salted one.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Roast skin-side up at <span class="temp">200°C / 392°F</span> for <strong>25–30 minutes</strong>. Do not cover, do not baste (the herb butter does this internally). The high, steady heat renders the fat from the skin and produces a deep golden, crispy exterior. Internal temp of thigh: <span class="temp ok">74°C / 165°F</span>. Rest 5 minutes before service.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Batch roast chickens for the service window — 4 halves at a time starting 35 minutes before lunch. Stagger by 10 minutes so you have fresh chickens coming out throughout service. Hold finished chickens at <span class="temp ok">60°C / 140°F</span> for no more than 20 minutes — beyond this the flesh dries out.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Plate chicken half. Drizzle warm jus over. Serve dressed salad and warm baguette alongside. The jus should be glossy and concentrated — made by deglazing the roasting pan with chicken stock and reducing. The simplicity of this dish is a test of ingredient quality: a great free-range chicken needs almost nothing; a poor quality bird cannot be saved by technique.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Source free-range or heritage breed chickens. In a brasserie where the dish is just chicken, herbs, and jus, the difference in flavour between a factory chicken and a free-range bird is immediate and obvious to any guest. The cost difference per portion is typically $1.50–2.00. It is the single most impactful ingredient upgrade you can make for this dish.</div>
+  <div class="al"><span class="a">POULTRY</span><span class="a">DAIRY</span><span class="a">GLUTEN (baguette)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Quiche Lorraine</div>
+  <div class="rh-sub">Bacon, cream, eggs, shortcrust pastry · Sell: $15.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min service</span><span class="rm">🍽 Main</span><span class="rm">Target FC: 18%</span><span class="rm">Batch</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per slice, 1/8 of 26cm quiche)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Shortcrust pastry (batch)</td><td>80g per slice</td><td class="cc">$0.22</td></tr>
+        <tr><td>Bacon (lardons)</td><td>50g</td><td class="cc">$0.62</td></tr>
+        <tr><td>Eggs</td><td>1.5 eggs = 83g</td><td class="cc">$0.53</td></tr>
+        <tr><td>Heavy cream</td><td>80ml</td><td class="cc">$0.80</td></tr>
+        <tr><td>Gruyère (grated)</td><td>20g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Nutmeg + white pepper</td><td>1g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per slice</strong></td><td class="cc"><strong>$2.58</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.58</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$15.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>16.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$13.41</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Shortcrust pastry: combine 250g plain flour, 125g cold butter (cubed), 1 egg yolk, pinch salt. Rub butter into flour until resembles breadcrumbs. Add egg yolk, 1–2 tablespoons cold water. Bring together without overworking — gluten development makes pastry tough. Wrap and rest in fridge 30 minutes before rolling. This cold resting is essential: warm pastry shrinks dramatically during blind baking.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Roll pastry to 3mm, line a 26cm tin. Rest 15 minutes in fridge. Blind bake at <span class="temp">170°C / 338°F</span> with weights for 12 minutes, remove weights, bake 5 more minutes until base is pale gold and dry. Render bacon lardons until just cooked but not crispy — they continue cooking in the oven with the custard.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Custard: whisk eggs and cream together — no more than 6 strokes. Season with salt, white pepper, nutmeg. The nutmeg is not optional — it is the flavour note that defines Lorraine custard. Strain through a fine sieve for a smooth, bubble-free custard that sets without pitting.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Scatter bacon and gruyère in blind-baked shell. Pour custard to 90% full. Bake at <span class="temp">160°C / 320°F</span> for <strong>28–32 minutes</strong>. The quiche is done when edges are set and centre still wobbles like jelly. It firms completely on cooling. Serve warm or room temperature — never refrigerator-cold, which dulls the flavour and hardens the pastry.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The custard-to-bacon ratio defines the character of the quiche. The classic Lorraine is 80% custard, 20% filling — it is first and foremost an egg cream custard with bacon accent, not a bacon pie with a bit of egg. If your quiche looks more brown than yellow when sliced, you have too much filling and not enough custard.</div>
+  <div class="al"><span class="a">EGGS</span><span class="a">DAIRY</span><span class="a">GLUTEN</span><span class="a">PORK</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">3</span> Desserts</h2>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Crème Brûlée</div>
+  <div class="rh-sub">Classic vanilla custard, caramelised crust, cracked tableside · Sell: $10.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min service</span><span class="rm">🍮 Dessert</span><span class="rm">Target FC: 13%</span><span class="rm">Set overnight</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per ramekin)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Heavy cream</td><td>150ml</td><td class="cc">$1.50</td></tr>
+        <tr><td>Egg yolks</td><td>3 yolks = 54g</td><td class="cc">$0.53</td></tr>
+        <tr><td>Caster sugar (custard)</td><td>40g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Vanilla bean (half)</td><td>0.5g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Demerara sugar (brûlée top)</td><td>15g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per ramekin</strong></td><td class="cc"><strong>$2.37</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.37</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$10.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>21.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.62</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method (batch — bake day before)</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Split vanilla bean, scrape seeds into heavy cream. Add the pod. Heat to <span class="temp">80°C / 176°F</span> — just below simmering. Steep 15 minutes off heat. Remove pod. The vanilla infusion must be done slowly at the correct temperature; too hot and the cream scorches and the vanilla becomes harsh.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Whisk egg yolks and sugar until pale — do not beat to a foam, just combined. Pour the warm cream slowly over the yolks in a thin stream, whisking gently. The gradual addition prevents the hot cream from scrambling the yolks. Strain through a fine sieve — this removes any cooked yolk strands and the vanilla pod fibres.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Pour into ramekins. Place in a deep baking tray, fill with hot water to halfway up the ramekins. Bake at <span class="temp">130°C / 266°F</span> for <strong>35–40 minutes</strong>. The custard is ready when the edges are set and the centre wobbles like set jelly. Remove from water bath, cool to room temp, refrigerate overnight. The slow low-temperature bake produces a silky, dense, trembling custard — high temperatures produce a grainy, scrambled-egg texture.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">To order: pat surface of custard dry with paper towel (moisture prevents the sugar from caramelising evenly). Sprinkle 15g demerara sugar evenly. Caramelise with a blowtorch in circular sweeping motions until evenly golden — no pale spots, no burnt black spots. The brûlée crust should shatter cleanly under a spoon. Serve immediately.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The theatre of the tableside brûlée is a valuable service moment — if you caramelise it in the kitchen, you lose that interaction. Consider finishing the brûlée at the table with a visible blowtorch. The sound, the smell, and the visual of the sugar caramelising right in front of a guest is one of the most memorable restaurant moments possible.</div>
+  <div class="al"><span class="a">EGGS</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Tarte Tatin</div>
+  <div class="rh-sub">Upside-down caramelised apple, crème fraîche · Sell: $11.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min service</span><span class="rm">🍮 Dessert</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per slice, 1/6 of tart)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Apple (Granny Smith)</td><td>100g peeled</td><td class="cc">$0.24</td></tr>
+        <tr><td>Butter</td><td>20g</td><td class="cc">$0.24</td></tr>
+        <tr><td>Caster sugar</td><td>30g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Puff pastry (all-butter)</td><td>60g</td><td class="cc">$0.54</td></tr>
+        <tr><td>Crème fraîche (side)</td><td>30g</td><td class="cc">$0.36</td></tr>
+        <tr><td>Vanilla extract</td><td>2ml</td><td class="cc">$0.04</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per slice</strong></td><td class="cc"><strong>$1.45</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.45</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$11.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>12.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$10.54</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method (batch — bake daily)</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Peel, core, and quarter Granny Smith apples. Granny Smith is the essential variety — its high acidity holds up against the sugar and butter rather than dissolving into mush. Sweeter varieties like Fuji or Gala become jam during cooking. Toss with lemon juice to prevent browning.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">In a 24cm oven-safe pan, melt butter and sugar over medium heat. Do not stir — let it caramelise naturally. The caramel is ready when it turns a deep amber (not pale gold, not black — deep amber, which is approximately <span class="temp">170°C / 338°F</span>). At this stage remove from heat — it continues cooking from the pan's residual heat.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Arrange apple quarters tightly in concentric circles directly in the caramel — they shrink during cooking so pack them very tightly. Return to medium heat, cook the apples in the caramel for <strong>5–8 minutes</strong>. Cover the apples with a circle of all-butter puff pastry, tucking the edges down around the apples.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Bake at <span class="temp">190°C / 374°F</span> for <strong>25 minutes</strong> until pastry is deep golden. Rest 5 minutes. To unmould: place a serving plate firmly over the pan, invert in one decisive motion. The apples should be deep caramel-orange and glistening. Serve slices warm with cold crème fraîche.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The unmoulding is the moment of drama and also the moment of highest risk. The pan is full of boiling caramel — use thick oven mitts and invert with confidence. A hesitant flip results in caramel running down your arm. Practice the motion with an empty pan before your first service. Once inverted, any gaps in the apple arrangement can be quickly pushed back into place.</div>
+  <div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Chocolate Mousse</div>
+  <div class="rh-sub">70% Valrhona dark chocolate, airy, light · Sell: $9.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min service</span><span class="rm">🍮 Dessert</span><span class="rm">Target FC: 14%</span><span class="rm">Set 4hr+</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per glass)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Dark chocolate 70% (Valrhona)</td><td>60g</td><td class="cc">$0.84</td></tr>
+        <tr><td>Egg yolks</td><td>2 yolks = 36g</td><td class="cc">$0.35</td></tr>
+        <tr><td>Egg whites</td><td>3 whites = 90g</td><td class="cc">$0.53</td></tr>
+        <tr><td>Caster sugar</td><td>40g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Butter</td><td>15g</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.94</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.94</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$9.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>19.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.05</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method (batch — set minimum 4 hours)</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Melt chocolate and butter over a double boiler at <span class="temp">50°C / 122°F</span> — never directly on heat. Stir occasionally. Cool to <span class="temp rest">35°C / 95°F</span> before adding yolks — above this temperature the yolks scramble. Stir in egg yolks.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Whisk egg whites to soft peaks. Add sugar gradually, continue whisking to stiff glossy peaks — the whites should hold shape but not be dry or granular. Overwhipped whites deflate when folded and cannot be corrected.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Fold one-third of the whites into the chocolate mixture to lighten it — use a cutting motion, not stirring. This first addition is sacrificial: it makes the chocolate lighter and more receptive to the remaining whites. Fold remaining whites in two stages, retaining as much air as possible. The key is speed and confidence — the more you fold, the more air you lose.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Divide into glasses. Refrigerate minimum 4 hours. Serve with shaved dark chocolate on top. The mousse should feel light and airy but intensely chocolatey — both qualities in perfect balance. If it tastes heavy, the chocolate-to-white ratio is wrong or the whites were under-folded.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Use Valrhona or Callebaut 70% minimum for mousse. The cocoa percentage and origin of the chocolate is the entire flavour of the dish — cheap compound chocolate produces a flat, overly-sweet mousse with no complexity. The extra $0.60 per portion for quality chocolate is the most high-impact ingredient investment in this dessert.</div>
+  <div class="al"><span class="a">EGGS (raw whites)</span><span class="a">DAIRY</span></div>
+</div>
+</div>
+
+
+<h2><span class="sn2">4</span> Drinks Menu</h2>
+<div class="drinks-grid">
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Café au Lait</span><span class="drink-price">$5.50</span></div>
+<p>Strong drip coffee topped with steamed whole milk in equal parts. The quintessential Parisian morning drink — served in a bowl to wrap both hands around. Free refill on first.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.44</span></div><div class="fc-row"><span>Food cost %</span><span>8.0%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Kir Royale</span><span class="drink-price">$12.99</span></div>
+<p>Prosecco with a splash of crème de cassis. The classic French aperitif — elegant, simple, deeply tied to the brasserie identity. Opens meals and opens wallets.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$2.20</span></div><div class="fc-row"><span>Food cost %</span><span>16.9%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Citron Pressé</span><span class="drink-price">$6.99</span></div>
+<p>Fresh-squeezed lemon juice served with still water, sugar syrup, and ice on the side. The guest mixes to their taste. Interactive, refreshing, and signals quality the moment it arrives.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.62</span></div><div class="fc-row"><span>Food cost %</span><span>8.9%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Chocolat Chaud</span><span class="drink-price">$6.99</span></div>
+<p>Rich 70% dark chocolate dissolved in steamed whole milk — thicker than cocoa, richer than hot chocolate powder. No cream, no fluff. The real thing.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.88</span></div><div class="fc-row"><span>Food cost %</span><span>12.6%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Pastis (Ricard)</span><span class="drink-price">$9.99</span></div>
+<p>The spirit of southern France. Anise-forward, served with a small jug of cold water — it clouds beautifully when diluted. 45ml poured tableside. An identity drink; order one and the whole room knows you've been to France.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$1.44</span></div><div class="fc-row"><span>Food cost %</span><span>14.4%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Vin Rouge Maison (150ml)</span><span class="drink-price">$11.99</span></div>
+<p>House Côtes du Rhône — a robust, fruit-forward southern French red that works with everything on the menu. Served slightly cool at 16°C. Carafe option available.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$2.00</span></div><div class="fc-row"><span>Food cost %</span><span>16.7%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Eau Gazeuse (500ml)</span><span class="drink-price">$4.99</span></div>
+<p>San Pellegrino sparkling water. Served with a lemon wheel, no ice. Offer this to every table as a premium water option — it contributes meaningfully to average spend with near-zero effort.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.72</span></div><div class="fc-row"><span>Food cost %</span><span>14.4%</span></div></div>
+</div>
+
+<div class="drink-card">
+
+<div class="drink-header"><span class="drink-name">Espresso</span><span class="drink-price">$3.99</span></div>
+<p>Single origin espresso. Served with a small glass of sparkling water. The espresso finishes every meal at a brasserie — offer it automatically with the dessert menu. The sugared almond on the saucer costs $0.03 and elevates the entire experience.</p>
+<div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.42</span></div><div class="fc-row"><span>Food cost %</span><span>10.5%</span></div></div>
+</div>
+
+</div>
+
+<h2><span class="sn2">5</span> Kitchen Prep Flow — 7:00am to 3:00pm</h2>
+<div class="info-box"><strong>Team:</strong> Head Cook (HC) + Line Cook (LC) + Steward (ST). The Parisian brasserie kitchen is defined by its batched classics — bourguignon, pâté, quiche, crème brûlée all require advance work. Morning prep is the foundation of service quality.</div>
+
+<table class="prep-table">
+<tr><th class="time-col">Time</th><th>Head Cook</th><th>Line Cook</th><th>Steward</th></tr>
+<tr>
+  <td class="time-col">07:00–07:30</td>
+  <td>Temp check all cold units — log. <span class="safety-badge">All fridges: 1–4°C</span>. Pull duck confit from fat — allow to come to temp. Reheat bourguignon gently to <span class="safety-badge">74°C+</span>. Taste, adjust seasoning. Start onion caramelisation for soup base (this takes 45–60 min uninterrupted).</td>
+  <td>Station setup. Pull pastry from fridge — allow to come slightly. Check duck skin — must be dry. Prep mise en place for tartare (chill board and knife). Set up béarnaise workstation — reduction, yolks, butter clarified and warming.</td>
+  <td>Sanitise all surfaces. Set up service stations. Polish glassware. Grind coffee. Fill water jugs. Set tables with bread plates, butter knives, linen napkins. Slice baguettes for service.</td>
+</tr>
+<tr>
+  <td class="time-col">07:30–09:00</td>
+  <td>Monitor onions — stir every 8 min. Check bourguignon is holding at service temperature. Begin béarnaise reduction. Taste yesterday's crème brûlée batch — confirm texture and flavour. Check quiche inventory — is today's batch baked?</td>
+  <td>Bake quiche if needed (35 min). Prepare tarte tatin (assemble, bake 25 min). Roll shortcrust if stock low. Hard-boil eggs for Niçoise (10 min). Blanch green beans, ice-bath, dry. Prepare compound butter for escargot.</td>
+  <td>Juice lemons for citron pressé (stock 10 serves). Prepare sugar syrup (equal parts sugar + water, simmer 5 min, cool). Set up coffee station. Polish all crockery. Set service trays.</td>
+</tr>
+<tr>
+  <td class="time-col">09:00–11:00<br><em>Breakfast Service</em></td>
+  <td>Make béarnaise — hold at <span class="safety-badge">55°C</span> in bain-marie. Soup base now fully caramelised — add wine, deglaze, add stock. Simmer 30 min. Run pass during service. Call every ticket. Monitor béarnaise consistency every 20 min.</td>
+  <td>Executes breakfast items. Fires croque monsieur (10 min). Slices quiche for orders. Manages egg and salad stations. Communicates prep needs to HC during service gaps.</td>
+  <td>Run drinks — café au lait refills without being asked. Serve citron pressé and chocolat chaud to order. Run food to tables. Clear continuously. Alert HC if any station running low.</td>
+</tr>
+<tr>
+  <td class="time-col">11:00–11:30<br><em>Transition</em></td>
+  <td>Prep for lunch service. Confirm soup is ready — ladle into crocks, cheese grated, croutons baked. Check bourguignon is heated through, mushrooms and pearl onions added and simmered 20 min. Begin chicken batch roasting — stagger by 10 min.</td>
+  <td>Portion and plate all mise en place for mains service. Confirm steak frites setup: bavette portioned, frites at second-cook stage ready for final fry, béarnaise warm. Escargot: shells loaded with butter and snails, ready to bake.</td>
+  <td>Full transition reset — clear breakfast service items, reset tables. Restock all condiments. Refill drinks stations. Brief front-of-house team on today's specials and 86 items.</td>
+</tr>
+<tr>
+  <td class="time-col">11:30–14:30<br><em>Lunch Service</em></td>
+  <td>Runs pass throughout lunch service. Monitors steak doneness with probe thermometer on every order. Ensures escargot sent immediately from oven — sizzling is the moment of theatre. Baste duck skin in oven — re-crisps each portion to order.</td>
+  <td>Executes all mains. Manages moules — cook strictly to order (no pre-cooking). Fires steak frites, final-fry frites per order. Plates bourguignon and duck. Ensures tartare is made maximum 15 min before serving.</td>
+  <td>High-volume service: run food immediately. Refill wine and water glasses. Dessert upsell at 20-minute mark — brûlée, tarte tatin, mousse. Brûlée sugar and torch ready for tableside finish.</td>
+</tr>
+<tr>
+  <td class="time-col">14:30–15:00<br><em>Close</em></td>
+  <td>Cool all hot items — ice bath bourguignon and soup. Label and date all containers. Assess tomorrow's prep needs — write prep list. Note what ran out and what was over-prepped. Schedule duck confit and pâté batches for next prep day.</td>
+  <td>Break down all stations. Clean all surfaces. Wrap and refrigerate all proteins individually. Discard any tartare mise en place (never hold raw pre-seasoned beef overnight). Check all fridges sealed.</td>
+  <td>Full kitchen clean. Floors, surfaces, equipment. Empty all bins. Final temp check all fridges — log. <span class="safety-badge">All cold storage: 1–4°C before leaving.</span></td>
+</tr>
+</table>
+
+<h2><span class="sn2">6</span> Financial Forecast — US Market</h2>
+<div class="info-box"><strong>Assumptions:</strong> 40 seats · Breakfast avg $38 · Lunch avg $52 · 26 trading days/month · Urban location rent applied · Staff: Head Cook $22/hr, Line Cook $18/hr, Steward $15/hr, FOH ×2 $16/hr</div>
+
+<h3>Daily Revenue Projection</h3>
+<table class="revenue-table">
+<tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Daily Revenue</th></tr>
+<tr><td>Breakfast (7am–11am)</td><td>36</td><td>$38</td><td>$1,368</td></tr>
+<tr><td>Lunch (11:30am–2:30pm)</td><td>52</td><td>$52</td><td>$2,704</td></tr>
+<tr class="total-row"><td colspan="3"><strong>Daily Total</strong></td><td><strong>$4,072</strong></td></tr>
+<tr class="total-row"><td colspan="3"><strong>Monthly (26 days)</strong></td><td><strong>$105,872</strong></td></tr>
+</table>
+
+<h3>Monthly Cost Breakdown</h3>
+<table class="revenue-table">
+<tr><th>Cost Category</th><th>Calculation</th><th>Monthly Cost</th><th>% Revenue</th></tr>
+<tr><td>Food &amp; Beverage (COGS)</td><td>$105,872 × 22%</td><td>$23,292</td><td>22.0%</td></tr>
+<tr><td>Head Cook — $22/hr × 8 × 26</td><td></td><td>$4,576</td><td>4.3%</td></tr>
+<tr><td>Line Cook — $18/hr × 8 × 26</td><td></td><td>$3,744</td><td>3.5%</td></tr>
+<tr><td>Steward — $15/hr × 8 × 26</td><td></td><td>$3,120</td><td>2.9%</td></tr>
+<tr><td>FOH ×2 — $16/hr × 8 × 26 × 2</td><td></td><td>$6,656</td><td>6.3%</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total Labour</strong></td><td><strong>$18,096</strong></td><td><strong>17.1%</strong></td></tr>
+<tr><td>Rent (urban brasserie location)</td><td>Fixed</td><td>$5,500</td><td>5.2%</td></tr>
+<tr><td>Utilities</td><td>Fixed</td><td>$950</td><td>0.9%</td></tr>
+<tr><td>Supplies &amp; Packaging</td><td>Fixed</td><td>$450</td><td>0.4%</td></tr>
+<tr><td>Misc / Contingency</td><td>Fixed</td><td>$400</td><td>0.4%</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total Fixed Overhead</strong></td><td><strong>$7,300</strong></td><td><strong>6.9%</strong></td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total All Costs</strong></td><td><strong>$48,688</strong></td><td><strong>46.0%</strong></td></tr>
+<tr class="net-row"><td colspan="2"><strong>NET PROFIT (at capacity)</strong></td><td><strong>$57,184</strong></td><td><strong>54.0%</strong></td></tr>
+</table>
+
+<h3>Break-Even Analysis</h3>
+<div class="info-box">
+<strong>Daily fixed costs:</strong> Labour $696 + Overhead $281 = <strong>$977/day</strong><br>
+Break-even = $977 ÷ ($44 avg spend × 78% GP) = $977 ÷ $34.32 = <strong>~28 covers to break even per day</strong><br><br>
+A brasserie with 40 seats will typically hit break-even by 10:30am on a normal day. The afternoon covers are almost pure profit contribution — protect that lunch service fiercely.
+</div>
+
+<h3>3-Month Ramp Projection</h3>
+<table class="revenue-table">
+<tr><th>Month</th><th>Capacity</th><th>Monthly Revenue</th><th>Est. Net Profit</th></tr>
+<tr><td>Month 1 — Learning</td><td>60%</td><td>$63,523</td><td>~$10,000</td></tr>
+<tr><td>Month 2 — Building</td><td>80%</td><td>$84,698</td><td>~$29,000</td></tr>
+<tr><td>Month 3 — Cruising</td><td>100%</td><td>$105,872</td><td>~$57,184</td></tr>
+</table>
+
+
+<h2><span class="sn2">7</span> Service Training Module</h2>
+
+<div class="script-box"><span class="script-label">Script 1 — The Technique Story</span>
+<p><em>"The steak frites — we triple-cook our frites here. That means they're blanched, fried twice, then fried a third time to order. It takes most of the morning, but it's why the crust shatters when you bite into them. The steak is bavette, which is what every brasserie in Paris serves — it's the chef's cut. Want me to put one in for you?"</em></p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> Technical specificity builds authority. Guests who understand the work feel they are getting value. "Chef's cut" positions bavette as aspirational rather than a lesser cut than ribeye.</p></div>
+
+<div class="script-box"><span class="script-label">Script 2 — The Wine Bridge</span>
+<p><em>"Can I get you a glass of our house red with that? It's a Côtes du Rhône — a southern French red, fruit-forward, works with everything. It's $11.99 for 150ml or we do a 500ml carafe for $32. Most people doing moules or steak go with it."</em></p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> Specific origin story + social proof ("most people doing moules or steak go with it") + carafe option as natural upsell. The carafe is 3.3 glasses but sounds like a casual choice rather than "more wine."</p></div>
+
+<div class="script-box"><span class="script-label">Script 3 — The Dessert Plant at Order</span>
+<p><em>"Just so you know ahead of time — our crème brûlée is made yesterday and chilled overnight. We finish it tableside with a blowtorch when you order it. Takes about 2 minutes but it's worth watching. I'll mention it again at the end."</em></p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> Pre-framing the dessert at order time creates anticipation and pre-sells it before they feel full. The blowtorch theatre is the reason people say yes — sell the experience first.</p></div>
+
+<div class="script-box"><span class="script-label">Script 4 — The Aperitif Opener</span>
+<p><em>"Would you like to start with something while you look at the menu? We have a Kir Royale — Prosecco with cassis, it's the classic French aperitif — or a pastis if you've had one of those before. They're $9.99 and $12.99."</em></p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> "If you've had one before" on pastis turns it into a knowing wink — experienced guests appreciate the recognition. Offering two specific options with personality is more effective than a generic "can I get you a drink?"</p></div>
+
+<div class="script-box"><span class="script-label">Script 5 — The Escargot Introduction</span>
+<p><em>"Have you had escargot before? Our version is Bourgogne style — the snails go into their shells with a garlic, shallot, and parsley butter. They come out sizzling. The butter is genuinely the point — you mop it up with the baguette. It's $16.99 and it's one of the most French things we do."</em></p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> "Have you had it before?" is a gentle opener that works for first-timers (curiosity) and experienced guests (familiarity). Describing the butter-mopping in advance removes the awkwardness first-timers feel about the ritual.</p></div>
+
+<h3>Table Timing Guide</h3>
+<table class="schedule-table">
+<tr><th>Time</th><th>Action</th></tr>
+<tr><td>0:00</td><td>Welcome within 60 seconds. Offer the best table available. "Bonjour, welcome in — please take any seat you like." Baguette and butter to the table before they've settled.</td></tr>
+<tr><td>1:30</td><td>Water preference — still or sparkling? Present sparkling water as the default: "Sparkling or still?" (not "would you like sparkling?"). Take aperitif order using Script 4.</td></tr>
+<tr><td>3:00</td><td>Menu introduction for first-timers. Use Script 5 (escargot) and name the day's special if there is one. Set the expectation: "We do everything to order here — some dishes take 12–15 minutes."</td></tr>
+<tr><td>5:00</td><td>Take food orders. Deploy Script 1 (frites technique), Script 2 (wine bridge), Script 3 (crème brûlée plant). Never rush this conversation — it is your primary revenue generation moment.</td></tr>
+<tr><td>15:00</td><td>Check in 2 minutes after mains arrive. Look at the food, not just the guest. Refill wine if below half-glass. Offer additional baguette.</td></tr>
+<tr><td>25:00</td><td>Dessert check. Return to Script 3 plant: "I mentioned the crème brûlée earlier — want me to finish one for you?" Also offer tarte tatin and mousse. Espresso with dessert — offer it as a pairing.</td></tr>
+<tr><td>40:00</td><td>Bill on request. Thank guests by name if learned. Offer a reason to return: "We change our plat du jour every week — worth coming back for."</td></tr>
+</table>
+
+<h2><span class="sn2">8</span> Customer Retention System</h2>
+
+<div class="info-box"><strong>The Brasserie Principle:</strong> A brasserie's best customers are not occasional special-occasion diners — they are the people who come every Tuesday for moules, every Friday for steak frites, every Sunday morning for a croque monsieur and a coffee. Build regulars who have a weekly ritual, not guests who come twice a year. One regular who comes weekly is worth more than ten annual visitors.</div>
+
+<div class="info-box"><strong>3-Visit Rule:</strong><br>
+<strong>Visit 1:</strong> Perfect execution. Note what they ordered and if they loved it.<br>
+<strong>Visit 2:</strong> "You were in last week — the moules?" They will be genuinely surprised. Write their name down after they leave.<br>
+<strong>Visit 3:</strong> "The usual?" + name = you just created your best regular. The ritual is established.</div>
+
+<h3>5 VIP Micro-Moments</h3>
+<p><strong>1. The Baguette Arrival.</strong> Warm baguette and cold butter should be on the table before the guest has fully settled. This is not a transaction — it is a statement: "You are already being cared for." It sets the tone for everything that follows.</p>
+<p><strong>2. The Regular's Order.</strong> If you know their usual, confirm it before they order: "Moules and a glass of the red?" If you're right, the feeling of being known is worth more than any loyalty card. If you're wrong, you've shown you care enough to try.</p>
+<p><strong>3. The Complimentary Amuse-Bouche.</strong> Once a month for your top regulars: a small amuse-bouche sent out before their first course with no explanation needed beyond "from us." One small dice of pâté on a crostino costs $0.22. The signal it sends is priceless.</p>
+<p><strong>4. The Perfect Coffee Timing.</strong> Bring the espresso at the right moment — not while they're still eating, not 15 minutes after the dessert is cleared. Watch the table. When the dessert plate is set aside and they lean back: that's the moment. Arrive with the espresso before they ask for it.</p>
+<p><strong>5. The Cold Day Extra.</strong> On particularly cold or rainy days, offer regulars a complimentary petit verre of vin chaud (mulled wine) while they study the menu. Costs $0.55. On a wet Tuesday when no one wants to be out, this turns a reluctant dining decision into a cherished memory.</p>
+
+<h3>Complaint Recovery — 3 Steps</h3>
+<div class="info-box"><strong>Step 1 — Receive it fully.</strong> "Thank you for telling me — I want to know." In a brasserie setting, most guests will not complain loudly; they will simply not return. The guest who tells you has given you a gift.</div>
+<div class="info-box"><strong>Step 2 — Take ownership directly.</strong> <em>"That's not right. I'm sorry."</em> Short, direct, no corporate language. The French directness in a brasserie context: don't over-apologise, don't explain at length. Acknowledge it, own it, fix it.</div>
+<div class="info-box"><strong>Step 3 — Recover and invite back.</strong> Replace the dish or offer something else. <em>"Your dessert tonight is on us. Please come back — I want to give you a proper experience."</em> Follow up at the door: "Did we get it right?" The second impression is often more powerful than the first.</div>
+
+<h3>Social Media — 5 Best Shots</h3>
+<p><strong>1. The crème brûlée torch shot:</strong> Film the blowtorch finishing a brûlée tableside — the flame, the crackling sugar, the moment the crust sets. This 15-second Reel requires zero editing and performs reliably every single time. Post weekly.</p>
+<p><strong>2. The steak frites cross-section:</strong> Cut the bavette on the board before plating, showing the pink interior against the seared crust, with a pile of golden frites visible. The contrast of textures and colours is immediately compelling.</p>
+<p><strong>3. Escargot arrival:</strong> Film the sizzling escargot pan arriving at the table from above — the theatrical sizzle sound, steam rising, the smell almost communicated through the screen. Pair with the butter-mopping closeup.</p>
+<p><strong>4. Morning baguette and café au lait:</strong> Overhead shot of a café au lait bowl, a baguette half torn to show the open crumb, butter and a croissant. This image communicates the entire brasserie identity in one frame — it is aspirational and accessible simultaneously.</p>
+<p><strong>5. The tarte tatin unmould:</strong> Film the moment the tarte tatin is inverted — the reveal of the caramelised apples, any escaping caramel, the steam. This is one of the great food theatre moments in any kitchen. Share it raw, unedited. The imperfection is part of the appeal.</p>
+
+<div class="script-box"><span class="script-label">Example Caption — Steak Frites</span>
+<p>This is Tuesday lunch in Paris. And now, here too. [Hook]<br>Our bavette is seared to order in a cast iron pan, basted with butter and thyme, rested 4 minutes. The frites are triple-cooked — blanched, fried, fried again. This takes most of our morning and every bit of it is worth it. [Story]<br>Tuesday lunch, 11:30am. Come hungry. [CTA]</p></div>
+
+<div class="ft"><span>Parisian Brasserie — Profitable Cafe Operations Guide v5</span><span>&copy; 2025 · Professional Use Only · $29.99 US · Not for Redistribution</span></div>
+</div>
+</body>
+</html>

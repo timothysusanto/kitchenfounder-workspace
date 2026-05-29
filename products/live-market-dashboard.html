@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Market Dashboard — KitchenFounder</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Arial',sans-serif;background:#0F0F0F;color:#F0F0F0;min-height:100vh;padding:24px;}
+.header{text-align:center;margin-bottom:32px;}
+.header h1{font-size:28px;color:#00FF88;font-family:'Courier New',monospace;letter-spacing:3px;}
+.header .sub{color:#666;font-size:12px;letter-spacing:2px;margin-top:6px;text-transform:uppercase;}
+.refresh-bar{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:24px;}
+.refresh-btn{background:#00FF88;color:#000;border:none;padding:8px 20px;border-radius:4px;font-weight:700;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;letter-spacing:1px;}
+.refresh-btn:hover{background:#00cc6a;}
+.refresh-btn:active{transform:scale(0.97);}
+.last-updated{color:#555;font-family:'Courier New',monospace;font-size:11px;}
+.section{margin-bottom:32px;}
+.section-title{font-family:'Courier New',monospace;font-size:13px;color:#888;letter-spacing:3px;text-transform:uppercase;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:16px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.card{background:#1A1A1A;border:1px solid #2A2A2A;border-radius:8px;padding:16px;transition:border-color 0.2s;}
+.card:hover{border-color:#444;}
+.card-symbol{font-family:'Courier New',monospace;font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;}
+.card-name{font-size:13px;color:#aaa;margin:4px 0 10px;}
+.card-price{font-size:24px;font-weight:700;font-family:'Courier New',monospace;color:#F0F0F0;}
+.card-change{font-size:13px;font-family:'Courier New',monospace;margin-top:6px;font-weight:700;}
+.up{color:#00FF88;}
+.down{color:#FF4444;}
+.flat{color:#888;}
+.card-mktcap{font-size:11px;color:#555;margin-top:6px;font-family:'Courier New',monospace;}
+.loading{color:#555;font-family:'Courier New',monospace;font-size:13px;text-align:center;padding:20px;}
+.error{color:#FF4444;font-family:'Courier New',monospace;font-size:12px;text-align:center;padding:10px;background:#1a0000;border-radius:4px;border:1px solid #440000;}
+.headlines-list{list-style:none;}
+.headline-item{padding:10px 0;border-bottom:1px solid #1a1a1a;display:flex;gap:12px;align-items:flex-start;}
+.headline-item:last-child{border-bottom:none;}
+.headline-source{font-family:'Courier New',monospace;font-size:10px;color:#555;min-width:80px;padding-top:2px;text-transform:uppercase;}
+.headline-text{font-size:14px;color:#ccc;line-height:1.4;}
+.headline-text a{color:#ccc;text-decoration:none;}
+.headline-text a:hover{color:#00FF88;}
+.headline-time{font-family:'Courier New',monospace;font-size:10px;color:#444;margin-top:4px;}
+.fx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.fx-card{background:#1A1A1A;border:1px solid #2A2A2A;border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;}
+.fx-pair{font-family:'Courier New',monospace;font-size:13px;color:#888;letter-spacing:1px;}
+.fx-rate{font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:#F0F0F0;}
+.fx-change{font-family:'Courier New',monospace;font-size:11px;margin-top:3px;}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid #333;border-top:2px solid #00FF88;border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.dot-live{display:inline-block;width:8px;height:8px;background:#00FF88;border-radius:50%;margin-right:6px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.tab-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.tab{padding:6px 16px;border-radius:4px;font-family:'Courier New',monospace;font-size:12px;cursor:pointer;border:1px solid #333;color:#666;background:#111;letter-spacing:1px;text-transform:uppercase;}
+.tab.active{background:#00FF88;color:#000;border-color:#00FF88;font-weight:700;}
+.section-panel{display:none;}
+.section-panel.active{display:block;}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📊 LIVE MARKET DASHBOARD</h1>
+  <div class="sub"><span class="dot-live"></span>Real-time data · Powered by free APIs</div>
+</div>
+
+<div class="refresh-bar">
+  <button class="refresh-btn" onclick="loadAll()">↻ REFRESH ALL</button>
+  <span class="last-updated" id="lastUpdated">Not loaded yet</span>
+</div>
+
+<div class="tab-bar">
+  <div class="tab active" onclick="showTab('crypto')">Crypto</div>
+  <div class="tab" onclick="showTab('stocks')">Stocks</div>
+  <div class="tab" onclick="showTab('fx')">Forex</div>
+  <div class="tab" onclick="showTab('news')">Headlines</div>
+</div>
+
+<!-- CRYPTO -->
+<div id="panel-crypto" class="section-panel active">
+  <div class="section">
+    <div class="section-title">Cryptocurrency — Live Prices</div>
+    <div class="grid" id="crypto-grid"><div class="loading"><span class="spinner"></span>Loading crypto prices...</div></div>
+  </div>
+</div>
+
+<!-- STOCKS -->
+<div id="panel-stocks" class="section-panel">
+  <div class="section">
+    <div class="section-title">US Stocks — Key Tickers</div>
+    <div class="grid" id="stocks-grid"><div class="loading"><span class="spinner"></span>Loading stock prices...</div></div>
+  </div>
+</div>
+
+<!-- FOREX -->
+<div id="panel-fx" class="section-panel">
+  <div class="section">
+    <div class="section-title">Forex — Exchange Rates (vs USD)</div>
+    <div class="fx-grid" id="fx-grid"><div class="loading"><span class="spinner"></span>Loading exchange rates...</div></div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<div id="panel-news" class="section-panel">
+  <div class="section">
+    <div class="section-title">Latest Headlines</div>
+    <ul class="headlines-list" id="headlines-list"><li class="loading"><span class="spinner"></span>Loading headlines...</li></ul>
+  </div>
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[onclick="showTab('${name}')"]`).classList.add('active');
+  document.getElementById(`panel-${name}`).classList.add('active');
+}
+
+function fmt(n, d=2) {
+  if(n >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+  if(n >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+  if(n >= 1e3) return '$' + (n/1e3).toFixed(2) + 'K';
+  return '$' + n.toFixed(d);
+}
+
+function changeClass(c) {
+  if(c > 0.05) return 'up';
+  if(c < -0.05) return 'down';
+  return 'flat';
+}
+
+function changeArrow(c) {
+  if(c > 0.05) return '▲';
+  if(c < -0.05) return '▼';
+  return '—';
+}
+
+// CRYPTO via CoinGecko (free, no key needed)
+async function loadCrypto() {
+  const grid = document.getElementById('crypto-grid');
+  grid.innerHTML = '<div class="loading"><span class="spinner"></span>Fetching crypto...</div>';
+  try {
+    const ids = 'bitcoin,ethereum,solana,ripple,binancecoin,cardano,dogecoin,pepe,the-open-network,sui';
+    const r = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`);
+    if(!r.ok) throw new Error('CoinGecko rate limit or error');
+    const data = await r.json();
+    grid.innerHTML = data.map(c => {
+      const chg = c.price_change_percentage_24h || 0;
+      const cls = changeClass(chg);
+      const price = c.current_price >= 1 ? '$' + c.current_price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : '$' + c.current_price.toFixed(6);
+      return `<div class="card">
+        <div class="card-symbol">${c.symbol.toUpperCase()}</div>
+        <div class="card-name">${c.name}</div>
+        <div class="card-price">${price}</div>
+        <div class="card-change ${cls}">${changeArrow(chg)} ${chg.toFixed(2)}% 24h</div>
+        <div class="card-mktcap">Mkt Cap: ${fmt(c.market_cap,0)}</div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    grid.innerHTML = `<div class="error">⚠ Crypto fetch failed: ${e.message}<br>Try refreshing in 30s (CoinGecko free tier = rate limited)</div>`;
+  }
+}
+
+// STOCKS via Yahoo Finance (unofficial endpoint, works from browser)
+const STOCKS = [
+  {sym:'AAPL',name:'Apple'},
+  {sym:'MSFT',name:'Microsoft'},
+  {sym:'NVDA',name:'Nvidia'},
+  {sym:'TSLA',name:'Tesla'},
+  {sym:'META',name:'Meta'},
+  {sym:'GOOGL',name:'Alphabet'},
+  {sym:'AMZN',name:'Amazon'},
+  {sym:'SPY',name:'S&P 500 ETF'},
+  {sym:'BTC-USD',name:'Bitcoin/USD'},
+  {sym:'GC=F',name:'Gold Futures'},
+];
+
+async function loadOneStock(sym, name) {
+  try {
+    const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=1d`, {mode:'cors'});
+    const d = await r.json();
+    const meta = d.chart.result[0].meta;
+    const price = meta.regularMarketPrice;
+    const prev = meta.previousClose || meta.chartPreviousClose;
+    const chg = prev ? ((price - prev)/prev)*100 : 0;
+    const cls = changeClass(chg);
+    return `<div class="card">
+      <div class="card-symbol">${sym}</div>
+      <div class="card-name">${name}</div>
+      <div class="card-price">$${price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+      <div class="card-change ${cls}">${changeArrow(chg)} ${chg.toFixed(2)}% today</div>
+      <div class="card-mktcap">${meta.exchangeName || ''} · ${meta.currency || 'USD'}</div>
+    </div>`;
+  } catch(e) {
+    return `<div class="card"><div class="card-symbol">${sym}</div><div class="card-name">${name}</div><div class="error" style="font-size:11px;margin-top:8px;">Fetch failed</div></div>`;
+  }
+}
+
+async function loadStocks() {
+  const grid = document.getElementById('stocks-grid');
+  grid.innerHTML = '<div class="loading"><span class="spinner"></span>Fetching stocks...</div>';
+  const results = await Promise.all(STOCKS.map(s => loadOneStock(s.sym, s.name)));
+  grid.innerHTML = results.join('');
+}
+
+// FOREX via exchangerate.host or frankfurter.app (free, no key)
+async function loadFX() {
+  const grid = document.getElementById('fx-grid');
+  grid.innerHTML = '<div class="loading"><span class="spinner"></span>Fetching exchange rates...</div>';
+  try {
+    const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=AUD,EUR,GBP,JPY,THB,SGD,CNY,HKD,CAD,NZD');
+    const d = await r.json();
+    const pairs = Object.entries(d.rates);
+    grid.innerHTML = pairs.map(([code, rate]) => `
+      <div class="fx-card">
+        <div>
+          <div class="fx-pair">USD/${code}</div>
+          <div class="fx-change flat">—</div>
+        </div>
+        <div class="fx-rate">${rate.toFixed(4)}</div>
+      </div>
+    `).join('');
+  } catch(e) {
+    grid.innerHTML = `<div class="error">⚠ FX fetch failed: ${e.message}</div>`;
+  }
+}
+
+// HEADLINES via RSS2JSON (free tier)
+async function loadHeadlines() {
+  const list = document.getElementById('headlines-list');
+  list.innerHTML = '<li class="loading"><span class="spinner"></span>Fetching headlines...</li>';
+  const feeds = [
+    {url:'https://feeds.bbci.co.uk/news/world/rss.xml', name:'BBC World'},
+    {url:'https://rss.cnn.com/rss/edition.rss', name:'CNN'},
+  ];
+  try {
+    // Use rss2json free API
+    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feeds[0].url)}&api_key=FREE&count=15`);
+    const d = await r.json();
+    if(d.status !== 'ok') throw new Error('RSS fetch error');
+    const items = d.items;
+    const when = (pub) => {
+      const t = new Date(pub);
+      const diff = Math.floor((Date.now() - t)/60000);
+      if(diff < 60) return diff + 'm ago';
+      if(diff < 1440) return Math.floor(diff/60) + 'h ago';
+      return Math.floor(diff/1440) + 'd ago';
+    };
+    list.innerHTML = items.map(item => `
+      <li class="headline-item">
+        <span class="headline-source">${d.feed.title?.replace('BBC News - ','').substring(0,12) || 'BBC'}</span>
+        <div>
+          <div class="headline-text"><a href="${item.link}" target="_blank">${item.title}</a></div>
+          <div class="headline-time">${when(item.pubDate)}</div>
+        </div>
+      </li>
+    `).join('');
+  } catch(e) {
+    list.innerHTML = `<li class="error">⚠ Headlines fetch failed: ${e.message}<br>This may require an API key for RSS2JSON free tier.</li>`;
+  }
+}
+
+function updateTimestamp() {
+  const now = new Date();
+  document.getElementById('lastUpdated').textContent = 'Updated: ' + now.toLocaleTimeString() + ' ' + Intl.DateTimeFormat().resolvedOptions().timeZone;
+}
+
+async function loadAll() {
+  updateTimestamp();
+  loadCrypto();
+  loadStocks();
+  loadFX();
+  loadHeadlines();
+}
+
+// Auto-load on open
+loadAll();
+
+// Auto-refresh every 60 seconds
+setInterval(() => {
+  updateTimestamp();
+  loadCrypto();
+  loadStocks();
+  loadFX();
+}, 60000);
+</script>
+</body>
+</html>

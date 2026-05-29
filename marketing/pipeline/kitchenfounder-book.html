@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder — Complete Operations Book v1.0</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #FAFAF8; color: #1C1C1C; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 48px 48px; }
+  /* COVER */
+  .cover { text-align: center; padding: 100px 40px; background: #1C1C1C; color: white; border-radius: 20px; margin-bottom: 72px; }
+  .cover-eyebrow { font-size: 11px; letter-spacing: 6px; text-transform: uppercase; color: #F5A623; margin-bottom: 28px; font-family: sans-serif; }
+  .cover-title { font-size: 72px; font-weight: bold; line-height: 1.0; margin-bottom: 16px; }
+  .cover-title span { color: #F5A623; }
+  .cover-subtitle { font-size: 24px; color: #aaa; margin-top: 12px; font-family: sans-serif; }
+  .cover-sub { font-size: 16px; color: #666; margin-top: 20px; font-family: sans-serif; line-height: 1.8; }
+  .cover-stats { display: flex; justify-content: center; gap: 48px; margin-top: 56px; flex-wrap: wrap; }
+  .cover-stat-num { font-size: 44px; font-weight: bold; color: #F5A623; font-family: sans-serif; }
+  .cover-stat-label { font-size: 11px; color: #666; letter-spacing: 2px; text-transform: uppercase; font-family: sans-serif; margin-top: 4px; text-align: center; }
+  /* CHAPTER DIVIDERS */
+  .chapter-divider { background: #1C1C1C; color: white; border-radius: 16px; padding: 48px 40px; margin: 80px 0 48px; }
+  .chapter-num { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #F5A623; font-family: sans-serif; margin-bottom: 16px; }
+  .chapter-title { font-size: 44px; font-weight: bold; line-height: 1.1; }
+  .chapter-title span { color: #F5A623; }
+  .chapter-sub { font-size: 15px; color: #888; margin-top: 12px; font-family: sans-serif; line-height: 1.7; }
+  /* TOC */
+  .toc { background: white; border-radius: 16px; padding: 44px; margin-bottom: 72px; border: 2px solid #eee; }
+  .toc-title { font-size: 26px; font-weight: bold; margin-bottom: 28px; font-family: sans-serif; border-bottom: 4px solid #F5A623; padding-bottom: 14px; }
+  .toc-section { margin-bottom: 28px; }
+  .toc-section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #F5A623; font-family: sans-serif; font-weight: bold; margin-bottom: 10px; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .toc-item { display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 8px; font-family: sans-serif; font-size: 14px; background: #FAFAF8; }
+  .toc-num { width: 30px; height: 30px; background: #1C1C1C; color: #F5A623; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; flex-shrink: 0; }
+  /* SECTION HEADERS */
+  .section-header { display: flex; align-items: center; gap: 16px; margin: 56px 0 28px; padding-bottom: 16px; border-bottom: 3px solid; }
+  .section-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .section-title-text { font-size: 30px; font-weight: bold; font-family: sans-serif; }
+  .section-sub { font-size: 13px; color: #888; font-family: sans-serif; margin-top: 4px; }
+  .tier1-header { border-color: #F5A623; }
+  .tier1-header .section-icon { background: #F5A623; }
+  .tier2-header { border-color: #4CAF50; }
+  .tier2-header .section-icon { background: #4CAF50; }
+  .tier3-header { border-color: #9C27B0; }
+  .tier3-header .section-icon { background: #9C27B0; }
+  /* CONCEPT CARDS */
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .concept-card { background: white; border-radius: 14px; padding: 24px; border: 2px solid #eee; page-break-inside: avoid; position: relative; overflow: hidden; }
+  .concept-num { font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #bbb; font-family: sans-serif; margin-bottom: 8px; }
+  .concept-name { font-size: 21px; font-weight: bold; font-family: sans-serif; margin-bottom: 4px; }
+  .concept-ref { font-size: 13px; color: #888; font-family: sans-serif; margin-bottom: 12px; font-style: italic; }
+  .concept-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .concept-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-family: sans-serif; font-weight: 600; }
+  .concept-tag-accent { color: white; }
+  .concept-tag-hero { background: #F0F0F0; color: #555; }
+  .concept-tag-gap { background: #E8F5E9; color: #2E7D32; }
+  .concept-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 5px; font-family: sans-serif; font-size: 13px; color: #444; }
+  .concept-row-label { font-weight: bold; color: #1C1C1C; min-width: 56px; flex-shrink: 0; }
+  /* STEP CARDS */
+  .steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+  .step-card { display: flex; gap: 20px; align-items: flex-start; background: #FAFAF8; border-radius: 12px; padding: 20px 24px; border-left: 5px solid; page-break-inside: avoid; }
+  .shopify-step { border-color: #96BF48; }
+  .etsy-step { border-color: #F56400; }
+  .step-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: white; flex-shrink: 0; font-family: sans-serif; }
+  .shopify-num { background: #96BF48; }
+  .etsy-num { background: #F56400; }
+  .step-title { font-size: 17px; font-weight: bold; margin-bottom: 8px; font-family: sans-serif; }
+  .step-body { font-size: 13px; line-height: 1.7; color: #444; font-family: sans-serif; }
+  /* INFO BOXES */
+  .highlight { background: #FFF8E7; border: 2px solid #F5A623; border-radius: 10px; padding: 14px 18px; margin: 8px 0; font-family: sans-serif; font-size: 13px; line-height: 1.6; }
+  .highlight .label { font-weight: bold; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #F5A623; margin-bottom: 6px; }
+  .warning { background: #FFF0F0; border: 2px solid #E53935; border-radius: 10px; padding: 12px 16px; margin: 8px 0; font-family: sans-serif; font-size: 13px; }
+  .warning strong { color: #E53935; }
+  .tip { background: #F0FFF4; border: 2px solid #43A047; border-radius: 10px; padding: 12px 16px; margin: 8px 0; font-family: sans-serif; font-size: 13px; }
+  .tip strong { color: #2E7D32; }
+  .formula { background: #1C1C1C; color: #F5A623; border-radius: 10px; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 12px; margin: 8px 0; line-height: 1.6; }
+  .checklist { list-style: none; margin: 10px 0; }
+  .checklist li { padding: 5px 0; font-family: sans-serif; font-size: 14px; display: flex; gap: 10px; color: #333; }
+  .checklist li::before { content: "&#9744;"; font-size: 16px; flex-shrink: 0; }
+  /* STRATEGY SECTIONS */
+  .strategy-card { background: white; border-radius: 14px; padding: 28px 32px; border: 2px solid #eee; margin-bottom: 24px; page-break-inside: avoid; }
+  .strategy-card h3 { font-size: 20px; font-family: sans-serif; margin-bottom: 12px; }
+  .strategy-card p { font-size: 14px; line-height: 1.8; color: #444; font-family: sans-serif; margin-bottom: 10px; }
+  .strategy-card ul { padding-left: 20px; }
+  .strategy-card li { font-size: 14px; line-height: 1.8; color: #444; font-family: sans-serif; margin-bottom: 4px; }
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-family: sans-serif; font-size: 13px; }
+  th { background: #1C1C1C; color: #F5A623; padding: 10px 14px; text-align: left; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  td { padding: 10px 14px; border-bottom: 1px solid #eee; color: #333; }
+  tr:nth-child(even) td { background: #FAFAF8; }
+  /* REVENUE CARDS */
+  .revenue-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .revenue-card { border-radius: 14px; padding: 28px; }
+  .revenue-amount { font-size: 44px; font-weight: bold; font-family: sans-serif; }
+  .revenue-label { font-size: 13px; font-family: sans-serif; margin-top: 4px; }
+  /* PRICING LADDER */
+  .price-row { display: flex; align-items: center; gap: 16px; border-radius: 10px; padding: 14px 20px; margin-bottom: 8px; }
+  .price-amount { width: 80px; font-size: 18px; font-weight: bold; font-family: sans-serif; flex-shrink: 0; }
+  /* FOOTER */
+  .book-footer { text-align: center; padding: 60px 20px 40px; color: #999; font-size: 13px; font-family: sans-serif; border-top: 2px solid #eee; margin-top: 80px; }
+  .book-footer strong { color: #1C1C1C; font-size: 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- MASTER COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">KitchenFounder &middot; Complete Operations Book &middot; Version 1.0 &middot; May 2026</div>
+  <div class="cover-title">KITCHEN<br><span>FOUNDER</span></div>
+  <div class="cover-subtitle">The Complete Operations Book</div>
+  <div class="cover-sub">Every concept. Every reference restaurant. Every upload step.<br>Every content formula. Every email sequence. Every revenue projection.<br>The single document that runs the entire business.</div>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="cover-stat-num">40+</div><div class="cover-stat-label">Concepts</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">3</div><div class="cover-stat-label">Tiers</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">6</div><div class="cover-stat-label">Chapters</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">$29.99</div><div class="cover-stat-label">Per Guide</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">$200K</div><div class="cover-stat-label">Year 1 Target</div></div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Chapter 1 &mdash; The Catalogue</div>
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">T1</div><div>Tier 1 &mdash; 20 High-Virality Concepts</div></div>
+      <div class="toc-item"><div class="toc-num">T2</div><div>Tier 2 &mdash; Strong Market Concepts</div></div>
+      <div class="toc-item"><div class="toc-num">T3</div><div>Tier 3 &mdash; Niche but Profitable</div></div>
+      <div class="toc-item"><div class="toc-num">US</div><div>US Market Data &amp; Buyer Psychology</div></div>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Chapter 2 &mdash; The Upload System</div>
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">S1</div><div>Shopify Upload &mdash; 5 Steps</div></div>
+      <div class="toc-item"><div class="toc-num">E1</div><div>Etsy Upload &mdash; 6 Steps</div></div>
+      <div class="toc-item"><div class="toc-num">SEO</div><div>SEO Cheat Sheet &amp; Tag Formulas</div></div>
+      <div class="toc-item"><div class="toc-num">BN</div><div>Bundle Strategy</div></div>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Chapter 3 &mdash; Content &amp; Marketing</div>
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">TK</div><div>TikTok &amp; Instagram Playbook</div></div>
+      <div class="toc-item"><div class="toc-num">EM</div><div>Email Marketing Sequences</div></div>
+      <div class="toc-item"><div class="toc-num">PT</div><div>Pinterest Strategy</div></div>
+      <div class="toc-item"><div class="toc-num">CA</div><div>Competitor Analysis &amp; SEO Keywords</div></div>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Chapter 4 &mdash; The Business Plan</div>
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">LS</div><div>Launch Strategy &mdash; Phase 1 to 4</div></div>
+      <div class="toc-item"><div class="toc-num">RP</div><div>Revenue Projections &mdash; 3 Scenarios</div></div>
+      <div class="toc-item"><div class="toc-num">PL</div><div>Pricing Ladder &mdash; FREE to $2,000</div></div>
+      <div class="toc-item"><div class="toc-num">WF</div><div>Daily Workflow &mdash; The Machine</div></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ========================================
+     CHAPTER 1 — THE CATALOGUE
+     ======================================== -->
+<div class="chapter-divider">
+  <div class="chapter-num">Chapter 1</div>
+  <div class="chapter-title">THE <span>CATALOGUE</span></div>
+  <div class="chapter-sub">40+ restaurant concepts across 3 tiers. Every concept includes a reference restaurant, accent color, US market gap analysis, and viral hook. Build Tier 1 first — highest virality and market demand.</div>
+</div>
+
+<div class="section-header tier1-header">
+  <div class="section-icon">⭐</div>
+  <div>
+    <div class="section-title-text">TIER 1 — HIGH-VIRALITY CONCEPTS</div>
+    <div class="section-sub">Build these first · Strong US market gap · Best TikTok/Instagram angles · 8 already built</div>
+  </div>
+</div>
+
+<div class="concept-grid">
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#FF6B35;border-radius:12px 12px 0 0;"></div><div class="concept-num">#1 · BUILT ✅</div><div class="concept-name">Brazilian Churrasco</div><div class="concept-ref">Ref: Fogo de Chão (US national), Texas de Brazil</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#FF6B35;">Accent #FF6B35</span><span class="concept-tag concept-tag-hero">Hero: Picanha reveal</span><span class="concept-tag concept-tag-gap">✅ Live on Shopify</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Independent rodizio format outside major cities</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The most theatrical dining format in the world"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E53935;border-radius:12px 12px 0 0;"></div><div class="concept-num">#2 · BUILT ✅</div><div class="concept-name">Thai Street Food</div><div class="concept-ref">Ref: Night + Market (LA), Somtum Der (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E53935;">Accent #E53935</span><span class="concept-tag concept-tag-hero">Hero: Pad kra pao wok</span><span class="concept-tag concept-tag-gap">✅ Live on Shopify</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Authentic street-style vs Americanised Thai</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The street food that 70M tourists eat every year"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1A1A2E;border-radius:12px 12px 0 0;"></div><div class="concept-num">#3 · BUILT ✅</div><div class="concept-name">Japanese Izakaya</div><div class="concept-ref">Ref: Ippudo (NYC/LA), Sake Bar Hagi (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1A1A2E;">Accent #1A1A2E</span><span class="concept-tag concept-tag-hero">Hero: Yakitori smoke</span><span class="concept-tag concept-tag-gap">✅ Live on Shopify</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Neighbourhood izakaya outside NYC/LA</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Japan's answer to the pub — America doesn't have it yet"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#B71C1C;border-radius:12px 12px 0 0;"></div><div class="concept-num">#4 · BUILT ✅</div><div class="concept-name">Korean BBQ</div><div class="concept-ref">Ref: Baekjeong (LA/NYC), Gen Korean BBQ</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#B71C1C;">Accent #B71C1C</span><span class="concept-tag concept-tag-hero">Hero: Table grill sizzle</span><span class="concept-tag concept-tag-gap">✅ Live on Shopify</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Quality KBBQ outside Korean-American metros</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The most interactive dining trend in America right now"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#C0392B;border-radius:12px 12px 0 0;"></div><div class="concept-num">#5 · BUILT ✅</div><div class="concept-name">Mexican Taqueria</div><div class="concept-ref">Ref: Tacos El Gordo (San Diego), Carnitas Uruapan (Chicago)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#C0392B;">Accent #C0392B</span><span class="concept-tag concept-tag-hero">Hero: Birria dip</span><span class="concept-tag concept-tag-gap">✅ Live on Shopify</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Regional Mexican vs generic Tex-Mex</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Birria has 8 billion TikTok views. Here's how to build the restaurant"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#C0632B;border-radius:12px 12px 0 0;"></div><div class="concept-num">#6 · BUILT ✅</div><div class="concept-name">Bombay Cafe</div><div class="concept-ref">Ref: Dishoom London, Badmaash (LA)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#C0632B;">Accent #C0632B</span><span class="concept-tag concept-tag-hero">Hero: Lamb chop reveal</span><span class="concept-tag concept-tag-gap">Upload pending</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>No US equivalent to Dishoom Irani cafe concept</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The London restaurant with a 2-hour wait every night"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#C41E3A;border-radius:12px 12px 0 0;"></div><div class="concept-num">#7 · BUILT ✅</div><div class="concept-name">Spanish Tapas Bar</div><div class="concept-ref">Ref: Jaleo (DC/Vegas), Boqueria (NYC/DC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#C41E3A;">Accent #C41E3A</span><span class="concept-tag concept-tag-hero">Hero: Jamon carving</span><span class="concept-tag concept-tag-gap">Upload pending</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Authentic pintxos bar outside NYC/DC/Miami</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Spain's entire food culture fits on a small plate"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E85D26;border-radius:12px 12px 0 0;"></div><div class="concept-num">#8 · BUILT ✅</div><div class="concept-name">Sri Lankan Hoppers Bar</div><div class="concept-ref">Ref: Hoppers London, Kolamba London</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E85D26;">Accent #E85D26</span><span class="concept-tag concept-tag-hero">Hero: Hopper iron pour</span><span class="concept-tag concept-tag-gap">Upload pending</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Near zero Sri Lankan counter-dining in US</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The fermented rice bowl London queues 2 hours for"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#D4370C;border-radius:12px 12px 0 0;"></div><div class="concept-num">#9 · BUILD NEXT ⭐</div><div class="concept-name">Vietnamese Pho &amp; Banh Mi Bar</div><div class="concept-ref">Ref: Pho Dau Bo (Houston), An Choi (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#D4370C;">Accent #D4370C</span><span class="concept-tag concept-tag-hero">Hero: Pho steam reveal</span><span class="concept-tag concept-tag-gap">🔥 High priority</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Premium pho bar vs fast-food chains</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Vietnam's most iconic dish — $22 in the US. Here's the real recipe."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#2E7D32;border-radius:12px 12px 0 0;"></div><div class="concept-num">#10 · BUILD NEXT ⭐</div><div class="concept-name">Lebanese Mezze Bar</div><div class="concept-ref">Ref: Ilili (NYC), Bavel (LA), Zaytinya (DC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#2E7D32;">Accent #2E7D32</span><span class="concept-tag concept-tag-hero">Hero: Mezze spread overhead</span><span class="concept-tag concept-tag-gap">🔥 High priority</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Casual Lebanese dining outside NYC/DC</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The Mediterranean diet — here's the restaurant"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1565C0;border-radius:12px 12px 0 0;"></div><div class="concept-num">#11</div><div class="concept-name">Peruvian Cevicheria</div><div class="concept-ref">Ref: La Mar (Miami/SF), Coya (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1565C0;">Accent #1565C0</span><span class="concept-tag concept-tag-hero">Hero: Leche de tigre pour</span><span class="concept-tag concept-tag-gap">Gap outside Miami</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Nikkei cuisine (Peruvian-Japanese) trending fast</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The world's best seafood cuisine — almost no one in the US is doing it"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E65100;border-radius:12px 12px 0 0;"></div><div class="concept-num">#12</div><div class="concept-name">Jamaican Jerk Shack</div><div class="concept-ref">Ref: Miss Lily's (NYC), Scotchies (Jamaica)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E65100;">Accent #E65100</span><span class="concept-tag concept-tag-hero">Hero: Jerk drum smoke reveal</span><span class="concept-tag concept-tag-gap">Gap in Midwest/South</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Authentic jerk outside NYC/Miami/Atlanta</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The only BBQ style that uses a 400-year-old recipe"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#795548;border-radius:12px 12px 0 0;"></div><div class="concept-num">#13</div><div class="concept-name">Taiwanese Beef Noodle Shop</div><div class="concept-ref">Ref: Ever After (NYC), Taiwan Bear House (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#795548;">Accent #795548</span><span class="concept-tag concept-tag-hero">Hero: Braised noodle bowl</span><span class="concept-tag concept-tag-gap">Near-zero outside NYC</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Taiwan's national dish barely represented in US</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The noodle soup that beats ramen — America hasn't discovered it yet"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#4E342E;border-radius:12px 12px 0 0;"></div><div class="concept-num">#14</div><div class="concept-name">Ethiopian Injera House</div><div class="concept-ref">Ref: Ethiopic (DC), Demera (Chicago), Lalibela (LA)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#4E342E;">Accent #4E342E</span><span class="concept-tag concept-tag-hero">Hero: Injera spread overhead</span><span class="concept-tag concept-tag-gap">Strong DC/ATL, gap elsewhere</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>No chains — pure indie market nationwide</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The only cuisine where the plate IS the bread"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#880E4F;border-radius:12px 12px 0 0;"></div><div class="concept-num">#15</div><div class="concept-name">Filipino Kamayan Restaurant</div><div class="concept-ref">Ref: Jeepney (NYC), Kuya Lord (Chicago)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#880E4F;">Accent #880E4F</span><span class="concept-tag concept-tag-hero">Hero: Banana leaf spread</span><span class="concept-tag concept-tag-gap">🔥 Exploding trend 2024-25</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Filipino food "having its moment" — first movers win</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The only cuisine where you eat with your hands off a banana leaf"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#006064;border-radius:12px 12px 0 0;"></div><div class="concept-num">#16</div><div class="concept-name">Yemeni Mandi House</div><div class="concept-ref">Ref: Al-Salam (Detroit/Houston), Yemen Cafe (Brooklyn)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#006064;">Accent #006064</span><span class="concept-tag concept-tag-hero">Hero: Pit lamb reveal</span><span class="concept-tag concept-tag-gap">🔥 50M TikTok views</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Quality mandi outside Detroit/Houston/Brooklyn</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"They lower a whole lamb into a pit at 6am. 8 hours later — this happens."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E65100;border-radius:12px 12px 0 0;"></div><div class="concept-num">#17</div><div class="concept-name">Singaporean Hawker Centre</div><div class="concept-ref">Ref: Hawker Chan (Singapore), Kopitiam (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E65100;">Accent #E65100</span><span class="concept-tag concept-tag-hero">Hero: Hainanese chicken rice</span><span class="concept-tag concept-tag-gap">Massive gap US</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Hawker Chan won a Michelin star for $2 chicken rice</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The world's cheapest Michelin-starred dish"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#BF360C;border-radius:12px 12px 0 0;"></div><div class="concept-num">#18</div><div class="concept-name">Turkish Meze &amp; Kebab House</div><div class="concept-ref">Ref: Zaytinya (DC), Turk's Inn (Brooklyn)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#BF360C;">Accent #BF360C</span><span class="concept-tag concept-tag-hero">Hero: Doner shave reveal</span><span class="concept-tag concept-tag-gap">Doner trend growing fast</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Premium Turkish vs fast-food kebab chains</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The street food that feeds 10 million people in Istanbul every day"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#4A148C;border-radius:12px 12px 0 0;"></div><div class="concept-num">#19</div><div class="concept-name">Moroccan Riad Dining</div><div class="concept-ref">Ref: Cafe Mogador (NYC), Mourad (SF)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#4A148C;">Accent #4A148C</span><span class="concept-tag concept-tag-hero">Hero: Tagine lid reveal</span><span class="concept-tag concept-tag-gap">Gap outside NYC/LA</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Theatrical tagine + cocktail service concept</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The most cinematic dish in the world — 50M TikTok views"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1B5E20;border-radius:12px 12px 0 0;"></div><div class="concept-num">#20</div><div class="concept-name">Greek Souvlaki &amp; Mezze Bar</div><div class="concept-ref">Ref: Avra (NYC), Estiatorio Milos (NYC/Las Vegas)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1B5E20;">Accent #1B5E20</span><span class="concept-tag concept-tag-hero">Hero: Whole fish on charcoal</span><span class="concept-tag concept-tag-gap">Casual Greek gap</span></div><div class="concept-row"><span class="concept-row-label">US Gap:</span>Casual souvlaki bar — not just fine dining Greek</div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Greece's street food is the Mediterranean diet in 3 bites"</div></div>
+</div>
+
+
+<div class="section-header tier2-header">
+  <div class="section-icon">🌿</div>
+  <div>
+    <div class="section-title-text">TIER 2 — STRONG MARKET CONCEPTS</div>
+    <div class="section-sub">Build after Tier 1 · Established US demand · Good search volume · Proven categories</div>
+  </div>
+</div>
+
+<div class="concept-grid">
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#2196F3;border-radius:12px 12px 0 0;"></div><div class="concept-num">#21</div><div class="concept-name">Basque Pintxos Bar</div><div class="concept-ref">Ref: Donostia (NYC), Leku (Miami)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#2196F3;">Accent #2196F3</span><span class="concept-tag concept-tag-hero">Hero: Pintxos bar counter</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"San Sebastian has more Michelin stars per capita than any city. Here's why."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#F57F17;border-radius:12px 12px 0 0;"></div><div class="concept-num">#22</div><div class="concept-name">Indonesian Warung</div><div class="concept-ref">Ref: Bali Kitchen (LA), Warung (various)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#F57F17;">Accent #F57F17</span><span class="concept-tag concept-tag-hero">Hero: Nasi goreng wok toss</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Indonesia has 270 million people and the most diverse food culture on earth"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#AD1457;border-radius:12px 12px 0 0;"></div><div class="concept-num">#23</div><div class="concept-name">Pakistani Karahi &amp; Biryani House</div><div class="concept-ref">Ref: Bundoo Khan (Houston), Lahori Chargha (NJ)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#AD1457;">Accent #AD1457</span><span class="concept-tag concept-tag-hero">Hero: Karahi sizzle serve</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The most underrated cuisine in South Asia — US is waking up to it"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#0D47A1;border-radius:12px 12px 0 0;"></div><div class="concept-num">#24</div><div class="concept-name">Portuguese Pastelaria &amp; Wine Bar</div><div class="concept-ref">Ref: Aldeia (NYC), Portale (various)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#0D47A1;">Accent #0D47A1</span><span class="concept-tag concept-tag-hero">Hero: Pastel de nata reveal</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The egg tart that started a global pastry war"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#33691E;border-radius:12px 12px 0 0;"></div><div class="concept-num">#25</div><div class="concept-name">Malaysian Mamak Street Food</div><div class="concept-ref">Ref: Mamak (various), Penang Kitchen (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#33691E;">Accent #33691E</span><span class="concept-tag concept-tag-hero">Hero: Roti canai toss</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Roti canai videos get millions of views. Almost no US restaurant does it."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#37474F;border-radius:12px 12px 0 0;"></div><div class="concept-num">#26</div><div class="concept-name">Georgian Wine &amp; Khinkali Bar</div><div class="concept-ref">Ref: Oda House (NYC), Aragvi (various)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#37474F;">Accent #37474F</span><span class="concept-tag concept-tag-hero">Hero: Khinkali steam dumplings</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Georgia invented wine 8,000 years ago. Their dumplings are going viral."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#BF360C;border-radius:12px 12px 0 0;"></div><div class="concept-num">#27</div><div class="concept-name">Nigerian Suya &amp; Pepper Soup Bar</div><div class="concept-ref">Ref: Buka (NYC), Afro Spot (Houston)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#BF360C;">Accent #BF360C</span><span class="concept-tag concept-tag-hero">Hero: Suya stick grill</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Nigeria's street food is having its London moment. The US is next."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1A237E;border-radius:12px 12px 0 0;"></div><div class="concept-num">#28</div><div class="concept-name">French Bistro Moderne</div><div class="concept-ref">Ref: Balthazar (NYC), Petit Trois (LA)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1A237E;">Accent #1A237E</span><span class="concept-tag concept-tag-hero">Hero: Steak frites plating</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The casual French bistro format that costs $80K less than fine dining"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E91E63;border-radius:12px 12px 0 0;"></div><div class="concept-num">#29</div><div class="concept-name">Venezuelan Arepa Bar</div><div class="concept-ref">Ref: Caracas Arepa Bar (NYC), Patacon Pisao (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E91E63;">Accent #E91E63</span><span class="concept-tag concept-tag-hero">Hero: Arepa cross-section</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Venezuela's answer to the sandwich — Florida/Texas can't get enough"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#00695C;border-radius:12px 12px 0 0;"></div><div class="concept-num">#30</div><div class="concept-name">Argentinian Parrilla</div><div class="concept-ref">Ref: Don Julio (Buenos Aires), La Cabrera (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#00695C;">Accent #00695C</span><span class="concept-tag concept-tag-hero">Hero: Asado cross-section</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Argentina's asado culture — the BBQ tradition that puts Texas to shame"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#6A1B9A;border-radius:12px 12px 0 0;"></div><div class="concept-num">#31</div><div class="concept-name">Cambodian Khmer Kitchen</div><div class="concept-ref">Ref: Nyum Bai (Oakland), Angkor (various)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#6A1B9A;">Accent #6A1B9A</span><span class="concept-tag concept-tag-hero">Hero: Amok fish clay pot</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Southeast Asia's most overlooked cuisine — complex, ancient, untapped"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#F9A825;border-radius:12px 12px 0 0;"></div><div class="concept-num">#32</div><div class="concept-name">Senegalese Thieboudienne House</div><div class="concept-ref">Ref: Le Baobab (NYC), Africa Kine (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#F9A825;">Accent #F9A825</span><span class="concept-tag concept-tag-hero">Hero: Thieboudienne rice pot</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"West Africa's national dish won UNESCO heritage status. Almost no US restaurant serves it."</div></div>
+</div>
+
+<div class="section-header tier3-header">
+  <div class="section-icon">💎</div>
+  <div>
+    <div class="section-title-text">TIER 3 — NICHE BUT PROFITABLE</div>
+    <div class="section-sub">Smaller audience · Higher price tolerance · Less competition · Build once Tier 1+2 are done</div>
+  </div>
+</div>
+
+<div class="concept-grid">
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#9C27B0;border-radius:12px 12px 0 0;"></div><div class="concept-num">#33</div><div class="concept-name">Omakase Sushi Counter</div><div class="concept-ref">Ref: Masa (NYC), Nobu (global)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#9C27B0;">Accent #9C27B0</span><span class="concept-tag concept-tag-hero">Hero: Nigiri hand-press</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"8 seats. No menu. $250/person. The most profitable format in the world."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#546E7A;border-radius:12px 12px 0 0;"></div><div class="concept-num">#34</div><div class="concept-name">Scandinavian New Nordic Cafe</div><div class="concept-ref">Ref: Aska (NYC), Broder (Portland)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#546E7A;">Accent #546E7A</span><span class="concept-tag concept-tag-hero">Hero: Open-face smorrebrod</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The design-led cafe format with the highest Instagram potential of any cuisine"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#558B2F;border-radius:12px 12px 0 0;"></div><div class="concept-num">#35</div><div class="concept-name">Oaxacan Mezcal &amp; Tlayuda Bar</div><div class="concept-ref">Ref: Guelaguetza (LA), Casa Enrique (NYC)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#558B2F;">Accent #558B2F</span><span class="concept-tag concept-tag-hero">Hero: Mezcal pour + smoke</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Mezcal grew 400% in the US in 5 years. Build the restaurant around it."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E64A19;border-radius:12px 12px 0 0;"></div><div class="concept-num">#36</div><div class="concept-name">Burmese Teahouse</div><div class="concept-ref">Ref: Burma Superstar (SF), Rangoon Ruby (SF)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E64A19;">Accent #E64A19</span><span class="concept-tag concept-tag-hero">Hero: Lahpet thoke tea leaf salad</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The only salad made with fermented tea leaves. Zero competitors."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1976D2;border-radius:12px 12px 0 0;"></div><div class="concept-num">#37</div><div class="concept-name">Israeli Modern Kitchen</div><div class="concept-ref">Ref: Zahav (Philadelphia), Shaya (New Orleans)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1976D2;">Accent #1976D2</span><span class="concept-tag concept-tag-hero">Hero: Salatim spread</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"The restaurant style that took Philadelphia from steaks to James Beard Award winner"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#F57C00;border-radius:12px 12px 0 0;"></div><div class="concept-num">#38</div><div class="concept-name">Nepali Dal Bhat House</div><div class="concept-ref">Ref: Himalayan Yak (NYC), Thamel (various)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#F57C00;">Accent #F57C00</span><span class="concept-tag concept-tag-hero">Hero: Dal bhat thali spread</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Nepal's national dish eaten twice daily by 30M people. US has almost none."</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#00838F;border-radius:12px 12px 0 0;"></div><div class="concept-num">#39</div><div class="concept-name">Cuban Ventanita Walk-Up Window</div><div class="concept-ref">Ref: Versailles (Miami), La Carreta (Miami)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#00838F;">Accent #00838F</span><span class="concept-tag concept-tag-hero">Hero: Colada espresso pour</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Miami's most iconic food format — and it can work in any city"</div></div>
+
+  <div class="concept-card"><div style="position:absolute;top:0;left:0;right:0;height:5px;background:#7B1FA2;border-radius:12px 12px 0 0;"></div><div class="concept-num">#40</div><div class="concept-name">Uzbek Plov &amp; Samsa House</div><div class="concept-ref">Ref: Lyubishka (NYC), Central Asian restaurants (Denver)</div><div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#7B1FA2;">Accent #7B1FA2</span><span class="concept-tag concept-tag-hero">Hero: Kazan plov reveal</span></div><div class="concept-row"><span class="concept-row-label">Hook:</span>"Central Asia's silk road rice dish cooked in a 50kg kazan. TikTok loves it."</div></div>
+</div>
+
+
+<!-- ========================================
+     CHAPTER 2 — THE UPLOAD SYSTEM
+     ======================================== -->
+<div class="chapter-divider">
+  <div class="chapter-num">Chapter 2</div>
+  <div class="chapter-title">THE <span>UPLOAD SYSTEM</span></div>
+  <div class="chapter-sub">Every guide you build follows the same 45-minute upload routine. Shopify first, then Etsy. No exceptions.</div>
+</div>
+
+<div class="section-header" style="border-color:#96BF48;">
+  <div class="section-icon" style="background:#96BF48;">🛍</div>
+  <div><div class="section-title-text">SHOPIFY UPLOAD — 5 STEPS</div><div class="section-sub">kitchen-founder.myshopify.com · $29.99 per guide · 15 minutes</div></div>
+</div>
+
+<div class="steps">
+  <div class="step-card shopify-step"><div class="step-num shopify-num">1</div><div><div class="step-title">Convert HTML Guide to PDF</div><div class="step-body">Open Chrome → <code style="background:#eee;padding:2px 6px;border-radius:4px;">http://54.251.18.206:8081/restaurant-pdfs/v7/[filename].html</code></div><div class="highlight"><div class="label">Chrome Print Settings</div>Press <strong>Ctrl+P</strong> (Windows) · Destination: <strong>Save as PDF</strong> · Paper: <strong>A4</strong> · ✅ <strong>Background graphics: ON</strong> · Save as <strong>[concept]-kitchenfounder.pdf</strong></div></div></div>
+
+  <div class="step-card shopify-step"><div class="step-num shopify-num">2</div><div><div class="step-title">Screenshot the Cover Image</div><div class="step-body">Open: <code style="background:#eee;padding:2px 6px;border-radius:4px;">http://54.251.18.206:8081/shopify-covers/[concept]-cover.html</code></div><div class="highlight"><div class="label">DevTools Screenshot</div>F12 → 📱 device icon → set <strong>1200×1200</strong> → Ctrl+Shift+P → "Capture full size screenshot" → save as <strong>[concept]-cover.png</strong></div></div></div>
+
+  <div class="step-card shopify-step"><div class="step-num shopify-num">3</div><div><div class="step-title">Create the Shopify Product</div><div class="step-body">Admin → Products → Add product</div><div class="highlight"><div class="label">Fill These Fields</div><strong>Title:</strong> [Cuisine] Restaurant Operations Guide — Recipes, Food Costs, Service Scripts &amp; P&amp;L Model<br><strong>Price:</strong> $29.99 &nbsp; <strong>Compare at:</strong> $49.99<br><strong>Variant:</strong> Must say "Default Title" ← critical<br><strong>Image:</strong> Upload cover .png</div><div class="warning"><strong>⚠️ CRITICAL:</strong> Fill in the SEO meta title and description — without this Google won't find your product.</div></div></div>
+
+  <div class="step-card shopify-step"><div class="step-num shopify-num">4</div><div><div class="step-title">Set Up Pendora Downloads</div><div class="highlight"><div class="label">Pendora Steps</div>Apps → Pendora Downloads → find product → Add file → upload PDF → confirm variant = <strong>Default Title</strong> → test download ✅</div></div></div>
+
+  <div class="step-card shopify-step"><div class="step-num shopify-num">5</div><div><div class="step-title">Add to Collections</div><ul class="checklist"><li>All Guides (every product)</li><li>Relevant cuisine collection (Asian / Latin / Mediterranean)</li><li>New Arrivals (remove after 30 days)</li></ul></div></div>
+</div>
+
+<div class="section-header" style="border-color:#F56400;">
+  <div class="section-icon" style="background:#F56400;">🏪</div>
+  <div><div class="section-title-text">ETSY UPLOAD — 6 STEPS</div><div class="section-sub">kitchenfounder.etsy.com · $29.99 · Digital download · 15 minutes</div></div>
+</div>
+
+<div class="steps">
+  <div class="step-card etsy-step"><div class="step-num etsy-num">1</div><div><div class="step-title">Start a New Listing</div><div class="step-body">Shop Manager → Listings → Add a listing → Select <strong>"Digital download"</strong></div></div></div>
+
+  <div class="step-card etsy-step"><div class="step-num etsy-num">2</div><div><div class="step-title">Write the Title (Follow This Formula)</div><div class="formula">[Cuisine] Restaurant Operations Guide | Recipes, Food Costs, Service Scripts, P&amp;L Model | Instant Download</div><div class="highlight"><div class="label">Rules</div>Max 140 characters · Always end with "Instant Download" · Include the cuisine name first</div></div></div>
+
+  <div class="step-card etsy-step"><div class="step-num etsy-num">3</div><div><div class="step-title">Add 13 Tags (Use All 13 Every Time)</div><div class="highlight"><div class="label">3 Cuisine Tags (change each listing)</div>"sri lankan food guide" · "hoppers restaurant" · "ceylon cuisine"</div><div class="highlight"><div class="label">3 Format Tags (always the same)</div>"restaurant operations guide" · "food business plan" · "restaurant startup guide"</div><div class="highlight"><div class="label">4 Buyer Intent Tags (always the same)</div>"how to open a restaurant" · "restaurant business plan" · "food cost calculator" · "restaurant menu template"</div><div class="highlight"><div class="label">3 Trending Tags (always the same)</div>"digital download" · "instant download" · "small business tools"</div></div></div>
+
+  <div class="step-card etsy-step"><div class="step-num etsy-num">4</div><div><div class="step-title">Upload Photos and File</div><ul class="checklist"><li>Photo 1: Cover image (1200×1200 PNG)</li><li>Photo 2: Screenshot of a recipe page</li><li>Photo 3: Screenshot of the P&amp;L or service scripts</li><li>File: Upload the PDF (max 20MB)</li></ul></div></div>
+
+  <div class="step-card etsy-step"><div class="step-num etsy-num">5</div><div><div class="step-title">Set Price and Category</div><div class="highlight"><div class="label">Settings</div>Price: <strong>$29.99 USD</strong> · Quantity: <strong>999</strong> · Renewal: <strong>Automatic</strong> · Processing: <strong>Instant</strong> · Returns: <strong>No returns</strong><br>Category: Craft Supplies → Patterns &amp; How To → Guides &amp; How Tos</div></div></div>
+
+  <div class="step-card etsy-step"><div class="step-num etsy-num">6</div><div><div class="step-title">Paste the Description</div><div class="highlight"><div class="label">Where to Find It</div>Open: <code>/workspace/marketing/etsy/etsy-listings.md</code><br>Find your listing (e.g. "LISTING 7 — Sri Lankan Hoppers")<br>Copy full description and paste into Etsy</div></div></div>
+</div>
+
+<div class="section-header" style="border-color:#7B1FA2;">
+  <div class="section-icon" style="background:#7B1FA2;">🔍</div>
+  <div><div class="section-title-text">SEO CHEAT SHEET</div><div class="section-sub">Title formula · URL slug · Meta description · Tags</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;">
+  <div style="background:#F3E5F5;border-radius:12px;padding:24px;border-left:5px solid #7B1FA2;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7B1FA2;font-weight:bold;margin-bottom:10px;font-family:sans-serif;">Shopify Title Formula</div><div class="formula" style="font-size:12px;">[Cuisine] Restaurant Guide<br>— Recipes, [Feature] &amp; P&amp;L<br>| KitchenFounder</div></div>
+  <div style="background:#E8F5E9;border-radius:12px;padding:24px;border-left:5px solid #43A047;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#43A047;font-weight:bold;margin-bottom:10px;font-family:sans-serif;">Shopify URL Slug</div><div class="formula" style="font-size:12px;">/products/<br>[cuisine-name]-restaurant-guide</div></div>
+  <div style="background:#E3F2FD;border-radius:12px;padding:24px;border-left:5px solid #1976D2;grid-column:span 2;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#1976D2;font-weight:bold;margin-bottom:10px;font-family:sans-serif;">Meta Description Template (155 chars max)</div><div class="formula" style="font-size:12px;">Complete operations guide for a [cuisine] restaurant. [X] recipes with food costs, service scripts, kitchen design &amp; P&amp;L model. Built by working chefs. $29.99.</div></div>
+</div>
+
+<div style="background:#FAFAF8;border-radius:12px;padding:24px;border:2px solid #eee;margin-bottom:40px;">
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#999;font-weight:bold;margin-bottom:12px;font-family:sans-serif;">Shopify Tags — Copy &amp; Paste</div>
+  <div class="formula" style="font-size:12px;color:#F5A623;">restaurant guide, [cuisine] restaurant, food business plan, restaurant startup, operations guide, digital download, chef resources, food cost, restaurant menu, [cuisine] recipes, small business, F&amp;B, hospitality</div>
+</div>
+
+
+<!-- ========================================
+     CHAPTER 3 — CONTENT & MARKETING
+     ======================================== -->
+<div class="chapter-divider">
+  <div class="chapter-num">Chapter 3</div>
+  <div class="chapter-title">CONTENT &amp; <span>MARKETING</span></div>
+  <div class="chapter-sub">TikTok · Instagram · Email sequences · Pinterest. Four content formats. One posting schedule. Five automated emails. Everything you need to drive traffic to the store.</div>
+</div>
+
+<div class="section-header" style="border-color:#E91E63;">
+  <div class="section-icon" style="background:#E91E63;">📱</div>
+  <div><div class="section-title-text">TIKTOK &amp; INSTAGRAM PLAYBOOK</div><div class="section-sub">4 formats · 7-day posting schedule · Caption formula · Hashtag sets</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;">
+  <div class="strategy-card"><h3>📚 Format 1 — "Did You Know?" (Education)</h3><p><strong>Hook:</strong> Surprising fact about a cuisine or restaurant business<br><strong>Body:</strong> 3 quick facts, each more surprising<br><strong>CTA:</strong> "Save this if you're planning to open a restaurant"<br><strong>Best for:</strong> Reels, TikTok, carousel</p><p><strong>Example hooks:</strong></p><ul><li>"60% of restaurants fail in 5 years. The ones that survive all have this one thing."</li><li>"Filipino food is about to have its moment in America — first movers will win."</li><li>"The hopper is Sri Lanka's most iconic dish and almost no US restaurant is doing it."</li></ul></div>
+
+  <div class="strategy-card"><h3>🎬 Format 2 — "POV: You're Opening a Restaurant" (Aspirational)</h3><p><strong>Hook:</strong> Put the viewer inside the dream<br><strong>Body:</strong> Walk through a day in the restaurant<br><strong>CTA:</strong> "We built the full operations guide — link in bio"<br><strong>Best for:</strong> TikTok, Reels</p><p><strong>Example — Yemeni Mandi:</strong></p><p style="background:#FAFAF8;padding:12px;border-radius:8px;font-style:italic;font-size:13px;">"POV: You're opening a Yemeni mandi restaurant in Houston. 6am. You're lowering a whole lamb into a tandoor pit. 8 hours later, you lift the lid. The rice underneath has absorbed every drop. This is mandi. TikTok has 50 million views on mandi videos. Almost no US restaurant is doing it right."</p></div>
+
+  <div class="strategy-card"><h3>🏆 Format 3 — "The Secret Behind [Famous Restaurant]" (Authority)</h3><p><strong>Hook:</strong> Name-drop a famous restaurant and reveal something interesting<br><strong>Best for:</strong> Instagram carousel, long-form TikTok</p><ul><li>"The secret behind Dishoom London's cult status (and how to replicate it in the US)"</li><li>"Why Hoppers London has a 2-hour wait — and what that tells you about the US market"</li><li>"What Nobu taught the world about Peruvian-Japanese food (and the gap it left)"</li></ul></div>
+
+  <div class="strategy-card"><h3>🔄 Format 4 — "Before vs After" (Transformation)</h3><p><strong>Hook:</strong> Show the pain vs the solution</p><p style="background:#FFF0F0;padding:12px;border-radius:8px;font-size:13px;"><strong>Before KitchenFounder:</strong><br>❌ No food cost system — losing money on every plate<br>❌ No service scripts — staff winging it every night<br>❌ No P&amp;L model — no idea if you'll survive year 1</p><p style="background:#F0FFF4;padding:12px;border-radius:8px;font-size:13px;margin-top:8px;"><strong>After KitchenFounder:</strong><br>✅ Every recipe has exact food cost % calculated<br>✅ Word-for-word scripts for every moment of service<br>✅ Full P&amp;L showing exactly what you need to break even<br><strong>$29.99. Less than a dinner out.</strong></p></div>
+</div>
+
+<div class="strategy-card" style="margin-bottom:24px;">
+  <h3>📋 Caption Formula</h3>
+  <div class="formula">[BOLD HOOK — stops the scroll]
+
+[Fact 1 — specific and surprising]
+[Fact 2 — builds on fact 1]
+[Fact 3 — creates desire or urgency]
+
+[CTA — "Save this." / "Link in bio." / "Comment [word] and I'll send it."]
+
+#[3–5 relevant hashtags]</div>
+</div>
+
+<div class="strategy-card" style="margin-bottom:24px;">
+  <h3>📅 7-Day Posting Schedule</h3>
+  <table>
+    <tr><th>Day</th><th>Platform</th><th>Content Type</th><th>Source</th></tr>
+    <tr><td>Monday</td><td>Instagram</td><td>Carousel — "Did You Know?"</td><td>This week's new guide</td></tr>
+    <tr><td>Tuesday</td><td>TikTok</td><td>POV Reel — 30 sec</td><td>Previous guide</td></tr>
+    <tr><td>Wednesday</td><td>Instagram</td><td>Single photo — hero dish</td><td>Any guide</td></tr>
+    <tr><td>Thursday</td><td>TikTok</td><td>"Secret Behind" talking head</td><td>Famous reference restaurant</td></tr>
+    <tr><td>Friday</td><td>Instagram</td><td>Story poll — "Would you open this?"</td><td>Next guide preview</td></tr>
+    <tr><td>Saturday</td><td>TikTok</td><td>"Before vs After"</td><td>Operators guide angle</td></tr>
+    <tr><td>Sunday</td><td>Instagram</td><td>Rest or repost best performer</td><td>—</td></tr>
+  </table>
+</div>
+
+<div class="section-header" style="border-color:#1565C0;">
+  <div class="section-icon" style="background:#1565C0;">📧</div>
+  <div><div class="section-title-text">EMAIL MARKETING SEQUENCES</div><div class="section-sub">5-email welcome sequence + 3-email post-purchase · Klaviyo (free to 250 contacts)</div></div>
+</div>
+
+<div class="strategy-card">
+  <h3>How to Collect Emails</h3>
+  <ul>
+    <li>Offer the <strong>free Restaurant Opening Checklist</strong> in exchange for email (lead magnet)</li>
+    <li>Add Klaviyo popup on Shopify store (free up to 250 contacts)</li>
+    <li>Add "Download free checklist" link in ALL social bios</li>
+    <li>TikTok/Reel CTA: "Comment CHECKLIST and I'll DM you the free one"</li>
+  </ul>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;margin-top:20px;">
+  <div class="strategy-card"><h3>Email 1 — Welcome (Day 0)</h3><p><strong>Subject:</strong> Your free checklist is here + something I want to tell you</p><p style="font-style:italic;font-size:13px;color:#555;">"Hey [name], Your checklist is attached. But I want to tell you something first. Most people thinking about opening a restaurant have been thinking about it for years... That's why I built KitchenFounder. I'm Mothy — Head Chef, 15+ years, consulted across Australia and Asia. These guides are what I wish I could have given every operator I've watched fail. — Mothy"</p></div>
+
+  <div class="strategy-card"><h3>Email 2 — Value (Day 3)</h3><p><strong>Subject:</strong> The real reason most restaurants fail (it's not the food)</p><p style="font-size:13px;color:#555;">The #1 reason is: <strong>they didn't know their numbers before they opened.</strong><br><br>Thai guide: break-even at 47 covers/day on 30 seats.<br>Bombay guide: $643K annual profit at 60 seats, 70% occupancy.<br>Sri Lankan guide: arrack program adds $140K annually.<br><br>That's the kind of number that changes a decision.</p></div>
+
+  <div class="strategy-card"><h3>Email 3 — Social Proof (Day 7)</h3><p><strong>Subject:</strong> What operators are saying about KitchenFounder</p><p style="font-size:13px;color:#555;font-style:italic;">"I've been wanting to open a Vietnamese pho bar for 3 years. This guide gave me the actual roadmap." — Marcus, Houston TX<br><br>"The service scripts are genius. I've never seen a training document this practical." — Priya, Brooklyn NY<br><br>"Finally — a guide that treats me like an adult." — David, Austin TX</p></div>
+
+  <div class="strategy-card"><h3>Email 4 — Objection (Day 14)</h3><p><strong>Subject:</strong> "But I don't have enough money yet..."</p><p style="font-size:13px;color:#555;">The most common thing I hear: "I'll buy the guide when I'm closer to opening."<br><br>Here's the thing — <strong>the guide IS how you get closer to opening.</strong><br><br>Before you sign a lease → know your break-even.<br>Before you hire a chef → know your labour model.<br>The people who buy BEFORE they're ready open faster and survive longer.</p></div>
+
+  <div class="strategy-card" style="grid-column:span 2;"><h3>Email 5 — Bundle Offer (Day 21)</h3><p><strong>Subject:</strong> Something I want to offer you</p><p style="font-size:13px;color:#555;">You've been on the list 3 weeks. I want to offer you something.<br><br><strong>The Starter Kit — $97:</strong> 3 operations guides (your choice) + Food Cost Calculator App + Restaurant Opening Checklist.<br>That's $109.97 of products for $97. <strong>[Get the Starter Kit — $97]</strong></p></div>
+</div>
+
+
+<!-- ========================================
+     CHAPTER 4 — THE BUSINESS PLAN
+     ======================================== -->
+<div class="chapter-divider">
+  <div class="chapter-num">Chapter 4</div>
+  <div class="chapter-title">THE <span>BUSINESS PLAN</span></div>
+  <div class="chapter-sub">Launch phases. Revenue projections. Pricing ladder. Daily workflow. The numbers that matter. Everything you need to run KitchenFounder as a real business.</div>
+</div>
+
+<div class="section-header" style="border-color:#1565C0;">
+  <div class="section-icon" style="background:#1565C0;">🚀</div>
+  <div><div class="section-title-text">LAUNCH STRATEGY — 4 PHASES</div><div class="section-sub">Foundation → Momentum → Scale → Media Company</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px;">
+  <div class="strategy-card" style="border-top:4px solid #7CB342;">
+    <h3 style="color:#33691E;">Phase 1 — Foundation (Month 1)</h3>
+    <p><em>Goal: 8 guides live, first 10 sales, Shopify + Etsy fully operational</em></p>
+    <ul>
+      <li>Upload all 8 completed guides to Shopify + Etsy</li>
+      <li>Set up Klaviyo email capture on Shopify</li>
+      <li>Post free checklist lead magnet on all socials</li>
+      <li>Film first 3 content pieces</li>
+      <li>Post daily on Instagram + TikTok</li>
+    </ul>
+    <p style="margin-top:12px;font-weight:bold;color:#33691E;">Target: ~$1,100 revenue</p>
+  </div>
+
+  <div class="strategy-card" style="border-top:4px solid #FF6F00;">
+    <h3 style="color:#E65100;">Phase 2 — Momentum (Month 2–3)</h3>
+    <p><em>Goal: 30+ guides, consistent daily sales, email list 500+</em></p>
+    <ul>
+      <li>2 new guides per week minimum</li>
+      <li>Launch Mediterranean Collection bundle</li>
+      <li>Launch Starter Kit ($97)</li>
+      <li>Begin Pinterest strategy</li>
+      <li>Guest post on 2 food entrepreneur blogs</li>
+    </ul>
+    <p style="margin-top:12px;font-weight:bold;color:#E65100;">Target: $2,200–$5,500/month</p>
+  </div>
+
+  <div class="strategy-card" style="border-top:4px solid #E53935;">
+    <h3 style="color:#B71C1C;">Phase 3 — Scale (Month 4–6)</h3>
+    <p><em>Goal: 80+ guides, $8K–$15K monthly, course planning begins</em></p>
+    <ul>
+      <li>80+ guides live</li>
+      <li>Launch Ultimate Operator Pack ($149.99)</li>
+      <li>Begin YouTube channel</li>
+      <li>Pitch to food media (Eater, Food52)</li>
+      <li>Build email list to 2,000+</li>
+    </ul>
+    <p style="margin-top:12px;font-weight:bold;color:#B71C1C;">Target: $8,000–$15,000/month</p>
+  </div>
+
+  <div class="strategy-card" style="border-top:4px solid #7B1FA2;">
+    <h3 style="color:#4A148C;">Phase 4 — Media Company (Month 7–12)</h3>
+    <p><em>Goal: KitchenFounder as THE go-to brand for first-time F&amp;B operators</em></p>
+    <ul>
+      <li>100+ guides live — full catalogue</li>
+      <li>Course launched at $497</li>
+      <li>Monthly membership at $19.99/mo</li>
+      <li>1:1 consultation at $2,000</li>
+      <li>KitchenFounder OS SaaS — waitlist</li>
+    </ul>
+    <p style="margin-top:12px;font-weight:bold;color:#4A148C;">Target: $200K+ annual revenue</p>
+  </div>
+</div>
+
+<div class="section-header" style="border-color:#F5A623;">
+  <div class="section-icon" style="background:#F5A623;">💰</div>
+  <div><div class="section-title-text">REVENUE PROJECTIONS</div><div class="section-sub">Three scenarios · Conservative through Aggressive</div></div>
+</div>
+
+<div class="revenue-grid">
+  <div class="revenue-card" style="background:#F1F8E9;border-top:5px solid #7CB342;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CB342;font-weight:bold;font-family:sans-serif;margin-bottom:8px;">Conservative</div>
+    <div style="font-size:11px;color:#888;font-family:sans-serif;margin-bottom:12px;">1 guide/day pace</div>
+    <div class="revenue-amount" style="color:#33691E;">$30K</div>
+    <div class="revenue-label" style="color:#555;">in 6 months</div>
+    <div style="margin-top:14px;font-size:12px;font-family:sans-serif;color:#555;line-height:1.9;">Month 1: $1,050<br>Month 3: $3,850<br>Month 6: $10,150/mo</div>
+  </div>
+  <div class="revenue-card" style="background:#FFF3E0;border-top:5px solid #FF6F00;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#FF6F00;font-weight:bold;font-family:sans-serif;margin-bottom:8px;">Moderate</div>
+    <div style="font-size:11px;color:#888;font-family:sans-serif;margin-bottom:12px;">2 guides/day + bundles</div>
+    <div class="revenue-amount" style="color:#E65100;">$91K</div>
+    <div class="revenue-label" style="color:#555;">in 6 months</div>
+    <div style="margin-top:14px;font-size:12px;font-family:sans-serif;color:#555;line-height:1.9;">Month 1: $2,100<br>Month 3: $10,500<br>Month 6: $32,000/mo</div>
+  </div>
+  <div class="revenue-card" style="background:#FCE4EC;border-top:5px solid #E91E63;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#E91E63;font-weight:bold;font-family:sans-serif;margin-bottom:8px;">Aggressive</div>
+    <div style="font-size:11px;color:#888;font-family:sans-serif;margin-bottom:12px;">Viral content hit</div>
+    <div class="revenue-amount" style="color:#880E4F;">$200K+</div>
+    <div class="revenue-label" style="color:#555;">Year 1</div>
+    <div style="margin-top:14px;font-size:12px;font-family:sans-serif;color:#555;line-height:1.9;">1 viral video = $5–15K/week<br>Filipino/Yemeni/Hopper<br>= highest viral candidates</div>
+  </div>
+</div>
+
+<div class="section-header" style="border-color:#F5A623;">
+  <div class="section-icon" style="background:#F5A623;">🏷</div>
+  <div><div class="section-title-text">PRICING LADDER</div><div class="section-sub">FREE to $2,000 · Every product has a purpose</div></div>
+</div>
+
+<div style="font-family:sans-serif;margin-bottom:40px;">
+  <div class="price-row" style="background:#FAFAF8;"><div class="price-amount" style="color:#999;">FREE</div><div><strong>Restaurant Opening Checklist</strong> <span style="color:#999;font-size:12px;">— lead magnet, email capture</span></div></div>
+  <div class="price-row" style="background:#FFF8E7;border-left:4px solid #FBC02D;"><div class="price-amount" style="color:#F5A623;">$19.99</div><div><strong>Food Cost Calculator App</strong> <span style="color:#999;font-size:12px;">— interactive HTML tool</span></div></div>
+  <div class="price-row" style="background:#FFF8E7;border-left:4px solid #F5A623;"><div class="price-amount" style="color:#E65100;">$29.99</div><div><strong>Single Operations Guide</strong> <span style="color:#999;font-size:12px;">— core product, 1 cuisine</span></div></div>
+  <div class="price-row" style="background:#FFF3E0;border-left:4px solid #FF6F00;"><div class="price-amount" style="color:#E65100;">$69.99</div><div><strong>3-Guide Bundle</strong> <span style="color:#999;font-size:12px;">— saves $20, best seller target</span></div></div>
+  <div class="price-row" style="background:#FFF3E0;border-left:4px solid #E65100;"><div class="price-amount" style="color:#BF360C;">$97</div><div><strong>Starter Kit</strong> <span style="color:#999;font-size:12px;">— 3 guides + 2 tools, high-intent buyers</span></div></div>
+  <div class="price-row" style="background:#FBE9E7;border-left:4px solid #BF360C;"><div class="price-amount" style="color:#BF360C;">$149</div><div><strong>Ultimate Operator Pack</strong> <span style="color:#999;font-size:12px;">— 5 guides + 3 tools</span></div></div>
+  <div class="price-row" style="background:#F3E5F5;border-left:4px solid #7B1FA2;"><div class="price-amount" style="color:#7B1FA2;">$497</div><div><strong>Full Course</strong> <span style="color:#999;font-size:12px;">— video + all guides (Year 2)</span></div></div>
+  <div class="price-row" style="background:#EDE7F6;border-left:4px solid #4A148C;"><div class="price-amount" style="color:#4A148C;font-size:14px;">$2,000</div><div><strong>1:1 Consultation</strong> <span style="color:#999;font-size:12px;">— Mothy direct, Bangkok case study (Year 2)</span></div></div>
+</div>
+
+<div class="section-header" style="border-color:#1565C0;">
+  <div class="section-icon" style="background:#1565C0;">⚙️</div>
+  <div><div class="section-title-text">YOUR DAILY WORKFLOW</div><div class="section-sub">The machine that builds the catalogue</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-bottom:40px;">
+  <div style="background:#E3F2FD;border-radius:12px;padding:20px;border-top:4px solid #1565C0;"><div style="font-size:28px;text-align:center;margin-bottom:8px;">🌅</div><div style="font-weight:bold;font-family:sans-serif;font-size:13px;text-align:center;margin-bottom:10px;">MORNING<br><span style="color:#999;font-size:11px;">30 min</span></div><div style="font-size:12px;color:#444;font-family:sans-serif;line-height:1.9;">☐ Check Discord<br>☐ Pick today's guide<br>☐ Research reference<br>☐ Note hero dish + prices</div></div>
+  <div style="background:#E8F5E9;border-radius:12px;padding:20px;border-top:4px solid #43A047;"><div style="font-size:28px;text-align:center;margin-bottom:8px;">🔨</div><div style="font-weight:bold;font-family:sans-serif;font-size:13px;text-align:center;margin-bottom:10px;">BUILD<br><span style="color:#999;font-size:11px;">2–4 hrs (Claw works)</span></div><div style="font-size:12px;color:#444;font-family:sans-serif;line-height:1.9;">☐ Tell Claw: "Build [Concept]"<br>☐ 10 agents fire automatically<br>☐ Film content for prev guide<br>☐ Review finished guide</div></div>
+  <div style="background:#FFF3E0;border-radius:12px;padding:20px;border-top:4px solid #FF6F00;"><div style="font-size:28px;text-align:center;margin-bottom:8px;">📤</div><div style="font-weight:bold;font-family:sans-serif;font-size:13px;text-align:center;margin-bottom:10px;">AFTERNOON<br><span style="color:#999;font-size:11px;">1 hour</span></div><div style="font-size:12px;color:#444;font-family:sans-serif;line-height:1.9;">☐ Chrome → PDF (5 min)<br>☐ Screenshot cover (5 min)<br>☐ Upload Shopify (15 min)<br>☐ Upload Etsy (15 min)<br>☐ Post content (10 min)</div></div>
+  <div style="background:#F3E5F5;border-radius:12px;padding:20px;border-top:4px solid #7B1FA2;"><div style="font-size:28px;text-align:center;margin-bottom:8px;">🌙</div><div style="font-weight:bold;font-family:sans-serif;font-size:13px;text-align:center;margin-bottom:10px;">EVENING<br><span style="color:#999;font-size:11px;">15 min</span></div><div style="font-size:12px;color:#444;font-family:sans-serif;line-height:1.9;">☐ Check sales<br>☐ Reply to messages<br>☐ Mark guide complete<br>☐ Pick tomorrow's guide</div></div>
+</div>
+
+<div style="background:#1C1C1C;color:white;border-radius:16px;padding:40px;text-align:center;margin-bottom:60px;">
+  <div style="font-size:80px;font-weight:bold;color:#F5A623;font-family:sans-serif;line-height:1;">1</div>
+  <div style="font-size:18px;color:#aaa;font-family:sans-serif;margin-top:8px;">guide per day</div>
+  <div style="font-size:36px;font-weight:bold;color:#F5A623;font-family:sans-serif;margin-top:8px;">= 90 guides in 90 days</div>
+  <div style="font-size:13px;color:#666;font-family:sans-serif;margin-top:8px;">2 guides/day = catalogue complete in 45 days</div>
+</div>
+
+<!-- QUICK REFERENCE -->
+<div style="background:#FAFAF8;border-radius:16px;padding:36px;border:2px solid #eee;margin-bottom:60px;">
+  <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#F5A623;font-weight:bold;font-family:sans-serif;margin-bottom:20px;">Quick Reference Card — Print This</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;font-family:sans-serif;">
+    <div>
+      <div style="font-weight:bold;margin-bottom:8px;">Every Guide Build — What to Tell Claw</div>
+      <div class="formula" style="font-size:12px;">"Build me a [Concept] operations guide. Reference: [Restaurant]. Accent color: [hex]. US market 2025."</div>
+    </div>
+    <div>
+      <div style="font-weight:bold;margin-bottom:8px;">The Numbers That Matter</div>
+      <div style="font-size:13px;line-height:2;color:#444;">Food cost target: <strong>22–28%</strong><br>Labour target: <strong>28–32%</strong><br>Rent ceiling: <strong>8–10% of revenue</strong><br>Net profit target: <strong>15–22%</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOK FOOTER -->
+
+<!-- ========================================
+     CHAPTER 5 — US MARKET INTELLIGENCE
+     ======================================== -->
+<div class="chapter-divider">
+  <div class="chapter-num">Chapter 5</div>
+  <div class="chapter-title">US MARKET <span>INTELLIGENCE</span></div>
+  <div class="chapter-sub">Who is buying your guides. What the market data says. Where the competition is weak. Your SEO keyword opportunities.</div>
+</div>
+
+<div class="section-header" style="border-color:#1565C0;">
+  <div class="section-icon" style="background:#1565C0;">🇺🇸</div>
+  <div><div class="section-title-text">BUYER PSYCHOLOGY — 3 PROFILES</div><div class="section-sub">Know exactly who you're selling to</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:40px;">
+  <div class="strategy-card" style="border-top:4px solid #F5A623;">
+    <h3 style="color:#C07A00;">Primary Buyer</h3>
+    <p><strong>Age:</strong> 25–38 · <strong>Income:</strong> $55K–$120K</p>
+    <p><strong>Location:</strong> Urban/suburban US — NYC, LA, Chicago, Houston, Miami, Atlanta, Seattle, Austin</p>
+    <p><strong>Mindset:</strong> "I've always wanted to open a restaurant. I just don't know where to start."</p>
+    <p><strong>Pain:</strong> No culinary school. No mentor. No roadmap.</p>
+    <p><strong>Trigger:</strong> Quit a job, redundancy payout, inheritance, or $30–$80K saved</p>
+    <p><strong>Discovers you:</strong> Instagram, TikTok → Google → purchase</p>
+  </div>
+  <div class="strategy-card" style="border-top:4px solid #2196F3;">
+    <h3 style="color:#1565C0;">Secondary Buyer</h3>
+    <p><strong>Age:</strong> 38–55</p>
+    <p><strong>Background:</strong> Already working in hospitality — chef, manager, front of house</p>
+    <p><strong>Goal:</strong> Open their OWN place after 10+ years working for someone else</p>
+    <p><strong>Budget:</strong> More serious — may buy 3–5 guides + tools</p>
+    <p><strong>Discovers you:</strong> LinkedIn, Google, word of mouth</p>
+    <p><strong>Value:</strong> Highest LTV customer — buys bundles and consults</p>
+  </div>
+  <div class="strategy-card" style="border-top:4px solid #9C27B0;">
+    <h3 style="color:#6A1B9A;">Tertiary Buyer</h3>
+    <p><strong>Who:</strong> International operators (SE Asia, Middle East, UK, Australia)</p>
+    <p><strong>Goal:</strong> Understand the US market format for their cuisine</p>
+    <p><strong>Also:</strong> Small restaurant already open — buying for staff training</p>
+    <p><strong>Discovers you:</strong> Google search, Etsy browse</p>
+    <p><strong>Note:</strong> This buyer validates global appeal — don't ignore international traffic</p>
+  </div>
+</div>
+
+<div class="section-header" style="border-color:#E65100;">
+  <div class="section-icon" style="background:#E65100;">📊</div>
+  <div><div class="section-title-text">US RESTAURANT INDUSTRY FACTS</div><div class="section-sub">Every stat is a TikTok hook — use them</div></div>
+</div>
+
+<table style="margin-bottom:32px;">
+  <tr><th>Stat</th><th>Data</th><th>Your TikTok Hook</th></tr>
+  <tr><td>New restaurants opened annually</td><td>~45,000</td><td>"45,000 restaurants open in the US every year. Most won't survive."</td></tr>
+  <tr><td>Restaurant failure rate — Year 1</td><td>~17%</td><td>"1 in 6 restaurants fails in the first year."</td></tr>
+  <tr><td>Restaurant failure rate — Year 5</td><td>~60%</td><td>"60% of restaurants are gone by year 5. Here's why."</td></tr>
+  <tr><td>#1 reason restaurants fail</td><td>Poor financial planning + no systems</td><td>"The #1 reason restaurants fail is NOT the food."</td></tr>
+  <tr><td>Average US restaurant profit margin</td><td>3–9%</td><td>"Restaurants make 3–9% profit. Here's how to be in the top bracket."</td></tr>
+  <tr><td>Average spend per head (casual dining)</td><td>$25–$55</td><td>"$40 average spend. Here's what that means for your business model."</td></tr>
+  <tr><td>US food service industry revenue</td><td>$1.1 trillion</td><td>"$1.1 trillion industry. Your share is out there."</td></tr>
+  <tr><td>Americans who've wanted to open a restaurant</td><td>1 in 3 adults</td><td>"1 in 3 Americans wants to open a restaurant. Almost none of them have a system."</td></tr>
+  <tr><td>Google searches: "how to open a restaurant"</td><td>90,000+/month</td><td>Use this keyword in every product SEO title</td></tr>
+  <tr><td>Etsy searches: "restaurant business plan"</td><td>8,200+/month</td><td>Your #1 Etsy keyword — use in every listing</td></tr>
+</table>
+
+<div class="section-header" style="border-color:#E91E63;">
+  <div class="section-icon" style="background:#E91E63;">📈</div>
+  <div><div class="section-title-text">TRENDING CUISINES 2024–2026</div><div class="section-sub">Build these first — highest search + consumer interest growth in the US</div></div>
+</div>
+
+<table style="margin-bottom:40px;">
+  <tr><th>Cuisine</th><th>Trend</th><th>Why Now</th><th>Guide Priority</th></tr>
+  <tr><td>Filipino</td><td>📈 Exploding</td><td>"It's having its moment" — every food media outlet 2023–2025</td><td>🔥 Build immediately</td></tr>
+  <tr><td>West African (Nigerian/Ghanaian)</td><td>📈 Very fast</td><td>Diaspora growth + cultural pride + Jollof Wars viral</td><td>🔥 High priority</td></tr>
+  <tr><td>Yemeni</td><td>📈 Emerging</td><td>Mandi rice viral on TikTok — 50M+ views, near-zero US restaurants</td><td>🔥 High priority</td></tr>
+  <tr><td>Sri Lankan</td><td>📈 Fast</td><td>Hoppers London + Dishoom effect trickling to US</td><td>✅ Already built</td></tr>
+  <tr><td>Georgian (Caucasus)</td><td>📈 Fast</td><td>Wine tourism + khinkali dumpling videos going viral</td><td>Build Tier 2</td></tr>
+  <tr><td>Venezuelan</td><td>📈 Growing</td><td>Large diaspora in Florida + Texas + NYC</td><td>Build Tier 2</td></tr>
+  <tr><td>Peruvian</td><td>📈 Established</td><td>Nobu effect + ceviche mainstream recognition</td><td>Build Tier 1 #11</td></tr>
+  <tr><td>Taiwanese</td><td>📈 Growing</td><td>Boba generation aging up + night market culture</td><td>Build Tier 1 #13</td></tr>
+  <tr><td>Malaysian</td><td>📈 Growing</td><td>Mamak roti canai videos viral on TikTok</td><td>Build Tier 2</td></tr>
+  <tr><td>Portuguese</td><td>📈 Emerging</td><td>Pastel de nata craze + Lisbon tourism</td><td>Build Tier 2</td></tr>
+  <tr><td>Basque</td><td>📈 Niche premium</td><td>San Sebastián food tourism converting to US restaurant interest</td><td>Build Tier 2</td></tr>
+</table>
+
+<div class="section-header" style="border-color:#7B1FA2;">
+  <div class="section-icon" style="background:#7B1FA2;">🔍</div>
+  <div><div class="section-title-text">COMPETITOR ANALYSIS</div><div class="section-sub">Where the market is weak — and why KitchenFounder wins</div></div>
+</div>
+
+<table style="margin-bottom:24px;">
+  <tr><th>Competitor</th><th>Product</th><th>Price</th><th>Their Weakness</th></tr>
+  <tr><td>Generic restaurant business plan sellers</td><td>Word doc templates</td><td>$9–$35</td><td>No cuisine specificity, no recipes, no real food costs</td></tr>
+  <tr><td>Culinary school supplements</td><td>Recipe collections</td><td>$15–$50</td><td>No operations/P&amp;L, academic not practical</td></tr>
+  <tr><td>Restaurant consultant PDFs</td><td>General guides</td><td>$25–$97</td><td>Generic, not design-led, no service scripts</td></tr>
+  <tr><td>Food blogger recipe books</td><td>Recipes only</td><td>$5–$25</td><td>Zero business context</td></tr>
+  <tr><td>Toast POS Blog</td><td>Free tips</td><td>Free</td><td>No cuisine depth, no download, ad-supported</td></tr>
+  <tr><td>Culinary school (Le Cordon Bleu)</td><td>Full courses</td><td>$15K–$50K</td><td>Completely inaccessible price for first-time operators</td></tr>
+</table>
+
+<div class="strategy-card" style="margin-bottom:24px;">
+  <h3>KitchenFounder's 5-Point Advantage</h3>
+  <ol style="padding-left:20px;">
+    <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Cuisine-specific</strong> — a Bombay Café guide is completely different from an Izakaya guide. Every competitor is generic.</li>
+    <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Recipe + business + design in one</strong> — the only product covering all three layers.</li>
+    <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Editorial quality</strong> — looks like a premium magazine, not a Word doc.</li>
+    <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Real numbers</strong> — actual US 2025 food costs, not estimates from 2018.</li>
+    <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Service scripts</strong> — word-for-word, rehearsable, immediately usable. No one else has these.</li>
+  </ol>
+</div>
+
+<div class="section-header" style="border-color:#33691E;">
+  <div class="section-icon" style="background:#33691E;">🎯</div>
+  <div><div class="section-title-text">SEO KEYWORDS — LOW COMPETITION WINS</div><div class="section-sub">Search terms your competitors haven't claimed yet</div></div>
+</div>
+
+<table style="margin-bottom:40px;">
+  <tr><th>Keyword</th><th>Monthly Searches</th><th>Competition</th><th>Action</th></tr>
+  <tr><td>sri lankan restaurant business plan</td><td>320</td><td>Very low</td><td>Use in Hoppers listing title</td></tr>
+  <tr><td>how to open a filipino restaurant</td><td>480</td><td>Very low</td><td>Use in Filipino guide title + meta</td></tr>
+  <tr><td>ethiopian restaurant operations guide</td><td>210</td><td>Extremely low</td><td>Own this keyword completely</td></tr>
+  <tr><td>tapas bar business plan</td><td>590</td><td>Low</td><td>Use in Spanish guide SEO</td></tr>
+  <tr><td>izakaya restaurant startup guide</td><td>410</td><td>Low</td><td>Use in Japanese guide</td></tr>
+  <tr><td>lebanese restaurant menu with prices</td><td>1,200</td><td>Medium</td><td>Use in Lebanese guide title</td></tr>
+  <tr><td>moroccan restaurant operations</td><td>280</td><td>Very low</td><td>Zero competition</td></tr>
+  <tr><td>peruvian restaurant business plan</td><td>520</td><td>Low</td><td>Use in Peruvian guide</td></tr>
+  <tr><td>how to open a ramen restaurant</td><td>1,800</td><td>Medium</td><td>Build ramen guide — high volume</td></tr>
+  <tr><td>food cost calculator restaurant</td><td>12,000</td><td>Medium-high</td><td>Your calculator app owns this</td></tr>
+  <tr><td>yemeni restaurant how to open</td><td>180</td><td>Zero</td><td>First to rank = permanent owner</td></tr>
+  <tr><td>bombay cafe restaurant guide</td><td>140</td><td>Zero</td><td>You own this keyword already</td></tr>
+</table>
+
+
+<!-- ========================================
+     CHAPTER 6 — THE 90-DAY PLAN
+     ======================================== -->
+<div class="chapter-divider">
+  <div class="chapter-num">Chapter 6</div>
+  <div class="chapter-title">THE <span>90-DAY PLAN</span></div>
+  <div class="chapter-sub">Week by week. Guide to build, TikTok angle, Instagram angle. The content calendar that builds your audience while you build your catalogue.</div>
+</div>
+
+<div class="section-header" style="border-color:#FF6F00;">
+  <div class="section-icon" style="background:#FF6F00;">📅</div>
+  <div><div class="section-title-text">90-DAY CONTENT CALENDAR</div><div class="section-sub">Build the guide → post the content → grow the audience → make the sale</div></div>
+</div>
+
+<table style="margin-bottom:40px;">
+  <tr><th>Week</th><th>Guide to Build</th><th>TikTok Angle</th><th>Instagram Angle</th></tr>
+  <tr><td>Week 1–2</td><td>Vietnamese Pho &amp; Banh Mi Bar</td><td>"POV: You just opened a pho bar in [your city]" — steam reveal</td><td>Carousel: "5 things about pho your customers don't know"</td></tr>
+  <tr><td>Week 3–4</td><td>Lebanese Mezze Bar</td><td>"The mezze spread that feeds 8 people for $12 in Beirut — and $55 in NYC"</td><td>Overhead shot: "The Mediterranean diet in one photo"</td></tr>
+  <tr><td>Week 5–6</td><td>Filipino Kamayan Restaurant</td><td>"POV: You're serving kamayan — your guests have never eaten with their hands"</td><td>"Filipino food is having its moment. First movers win."</td></tr>
+  <tr><td>Week 7–8</td><td>Peruvian Cevicheria</td><td>"Leche de tigre — the most underrated drink in the world" — pour shot</td><td>Carousel: "Nikkei cuisine explained in 5 slides"</td></tr>
+  <tr><td>Week 9–10</td><td>Yemeni Mandi House</td><td>"6am. We lower a whole lamb into a pit. 8 hours later — watch what happens"</td><td>"50 million TikTok views on mandi. Almost no US restaurant does it right."</td></tr>
+  <tr><td>Week 11–12</td><td>Jamaican Jerk Shack</td><td>"The BBQ style that uses a 400-year-old Maroon recipe — and how to build the restaurant"</td><td>"Before vs After: what authentic jerk looks like vs what most restaurants serve"</td></tr>
+  <tr><td>Week 13–14</td><td>Taiwanese Beef Noodle Shop</td><td>"The noodle soup that beats ramen — and America hasn't discovered it yet"</td><td>Carousel: "Taiwan's 5 essential dishes and the restaurants doing them right"</td></tr>
+  <tr><td>Week 15–16</td><td>Basque Pintxos Bar</td><td>"San Sebastián has more Michelin stars per capita than any city. Here's the secret."</td><td>"The pintxos bar format — highest revenue per square foot in European dining"</td></tr>
+  <tr><td>Week 17–18</td><td>Pakistani Karahi &amp; Biryani House</td><td>"The karahi sizzle that's going viral — how to build the restaurant around it"</td><td>"Pakistani food is the most underrated cuisine in South Asia. The US is about to find out."</td></tr>
+  <tr><td>Week 19–20</td><td>Georgian Wine &amp; Khinkali Bar</td><td>"Georgia invented wine 8,000 years ago. Their dumplings are going viral."</td><td>Carousel: "5 reasons Georgian cuisine is the next big thing in US dining"</td></tr>
+  <tr><td>Week 21–24</td><td>Nigerian Suya + Venezuelan Arepa + Cambodian Khmer + Argentinian Parrilla</td><td>Rotate: one POV video per guide launch</td><td>Rotate: one "Did You Know?" carousel per guide</td></tr>
+  <tr><td>Week 25–28</td><td>Tier 3 concepts begin (Omakase, Burmese, Israeli, Nepali, Cuban)</td><td>"The niche restaurant format that prints money — here's why"</td><td>Behind-the-scenes: "How I build a restaurant guide in one day"</td></tr>
+  <tr><td>Week 29–32</td><td>Continue Tier 3 + bundle launches + course pre-sale</td><td>Compilation: "Every cuisine guide I've built in 90 days"</td><td>"The KitchenFounder catalogue — 40+ guides, one mission"</td></tr>
+</table>
+
+<div class="section-header" style="border-color:#E91E63;">
+  <div class="section-icon" style="background:#E91E63;">📌</div>
+  <div><div class="section-title-text">PINTEREST STRATEGY</div><div class="section-sub">Most underrated platform · 3–6 month content tail · Planning mindset buyers</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;">
+  <div class="strategy-card">
+    <h3>Account Setup</h3>
+    <ul>
+      <li>Account name: KitchenFounder</li>
+      <li>Bio: "Restaurant operations guides for first-time operators. Built by working chefs. US Market."</li>
+      <li>Website: kitchenfounder.com</li>
+    </ul>
+    <h3 style="margin-top:16px;">Boards to Create</h3>
+    <ul>
+      <li>Restaurant Business Plans (every guide cover)</li>
+      <li>How to Open a Restaurant (tips + checklist)</li>
+      <li>Restaurant Food Costs (food cost content)</li>
+      <li>Asian Restaurant Ideas (Asian guide covers)</li>
+      <li>Latin Restaurant Ideas (Latin covers)</li>
+      <li>Mediterranean Restaurant Ideas</li>
+      <li>Restaurant Kitchen Design</li>
+      <li>Restaurant Service Scripts</li>
+    </ul>
+  </div>
+  <div class="strategy-card">
+    <h3>What to Pin (5 Types)</h3>
+    <ol style="padding-left:20px;">
+      <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Guide cover images</strong> — 1200×1200 PNG, pin to relevant boards</li>
+      <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Quote cards</strong> — dark background, gold text, high save rate</li>
+      <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Recipe hero shots</strong> — screenshots from inside guides</li>
+      <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>Infographics</strong> — "5 things to know before opening a restaurant"</li>
+      <li style="font-family:sans-serif;font-size:14px;line-height:2;color:#333;"><strong>P&amp;L snapshots</strong> — numbers always get saves from serious buyers</li>
+    </ol>
+    <div class="formula" style="margin-top:16px;font-size:11px;">[Guide Name] — Complete Operations Guide for US Market
+
+Everything you need to open and run a [cuisine] restaurant:
+✅ [X] recipes with food costs
+✅ Service scripts and training
+✅ Kitchen design and equipment
+✅ Full P&L model
+
+Instant download. $29.99.
+#restaurantbusiness #[cuisine]food #openingarestaurant</div>
+  </div>
+</div>
+
+<table style="margin-bottom:40px;">
+  <tr><th>Platform</th><th>Best For</th><th>Content Lifespan</th><th>Buyer Intent</th></tr>
+  <tr><td><strong>Pinterest</strong></td><td>Long-tail discovery, planning mindset</td><td>3–6 months</td><td>🔥 HIGHEST — users in research/planning mode</td></tr>
+  <tr><td><strong>Google</strong></td><td>Purchase intent — "buy restaurant guide"</td><td>Ongoing</td><td>🔥 HIGHEST — direct purchase intent</td></tr>
+  <tr><td><strong>Email</strong></td><td>Direct sales, nurture, upsell</td><td>Unlimited</td><td>🔥 HIGHEST — warm audience</td></tr>
+  <tr><td><strong>Instagram</strong></td><td>Brand building, community</td><td>48 hours</td><td>Medium — discovery to consideration</td></tr>
+  <tr><td><strong>TikTok</strong></td><td>Viral reach, new audience discovery</td><td>24–72 hours</td><td>Low-Medium — entertainment first</td></tr>
+</table>
+
+
+<!-- FINAL MOTIVATIONAL BLOCK -->
+<div style="background:#1C1C1C;color:white;border-radius:20px;padding:60px 40px;text-align:center;margin:60px 0;">
+  <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#F5A623;font-family:sans-serif;margin-bottom:24px;">The Mission</div>
+  <div style="font-size:40px;font-weight:bold;line-height:1.2;margin-bottom:24px;">Every restaurant operator deserves<br>a <span style="color:#F5A623;">proper system.</span></div>
+  <div style="font-size:16px;color:#888;font-family:sans-serif;line-height:1.8;max-width:600px;margin:0 auto;">Most people who open restaurants have the passion. They have the savings. What they don't have is a roadmap. KitchenFounder is that roadmap — cuisine by cuisine, dish by dish, dollar by dollar.</div>
+  <div style="display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap;">
+    <div><div style="font-size:36px;font-weight:bold;color:#F5A623;font-family:sans-serif;">40+</div><div style="font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;">Guides Built</div></div>
+    <div><div style="font-size:36px;font-weight:bold;color:#F5A623;font-family:sans-serif;">$29.99</div><div style="font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;">Per Guide</div></div>
+    <div><div style="font-size:36px;font-weight:bold;color:#F5A623;font-family:sans-serif;">$200K</div><div style="font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;">Year 1 Target</div></div>
+    <div><div style="font-size:36px;font-weight:bold;color:#F5A623;font-family:sans-serif;">1</div><div style="font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;font-family:sans-serif;">Guide Per Day</div></div>
+  </div>
+</div>
+
+<!-- BOOK FOOTER -->
+<div class="book-footer">
+  <div><strong>KitchenFounder Complete Operations Book</strong></div>
+  <div style="margin-top:8px;color:#aaa;font-size:15px;">Version 1.0 · May 2026 · 6 Chapters · 40+ Concepts · 17 Sections</div>
+  <div style="margin-top:8px;">Built by working chefs, for first-time operators. US Market.</div>
+  <div style="margin-top:12px;font-size:11px;color:#ccc;">kitchenfounder.com &nbsp;·&nbsp; @kitchenfounder &nbsp;·&nbsp; kitchen-founder.myshopify.com &nbsp;·&nbsp; kitchenfounder.etsy.com</div>
+</div>
+
+</div><!-- end page -->
+</body>
+</html>

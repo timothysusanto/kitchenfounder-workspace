@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Stories — Profitable Café Operations Guide Series</title>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #f8f6f0; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; padding: 48px 40px; }
+
+  /* COVER */
+  .series-cover {
+    background: #1a1a1a;
+    color: white;
+    border-radius: 16px;
+    padding: 64px 56px;
+    margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .series-cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(232,160,32,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(232,160,32,0.08) 0%, transparent 60%);
+  }
+  .series-cover-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: #e8a020; margin-bottom: 20px; position: relative;
+  }
+  .series-cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 900; line-height: 1.1;
+    margin-bottom: 24px; position: relative;
+  }
+  .series-cover-title span { color: #e8a020; }
+  .series-cover-sub {
+    font-size: 16px; line-height: 1.7; opacity: 0.8;
+    max-width: 560px; margin: 0 auto 32px; position: relative;
+  }
+  .series-cover-line {
+    width: 60px; height: 3px; background: #e8a020;
+    margin: 0 auto 32px; position: relative;
+  }
+  .series-cover-note {
+    font-size: 12px; opacity: 0.5; position: relative;
+    font-style: italic;
+  }
+
+  /* INTRO SECTION */
+  .intro-block {
+    background: white; border-radius: 12px;
+    padding: 40px 48px; margin-bottom: 40px;
+    border-left: 4px solid #e8a020;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .intro-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; margin-bottom: 16px; color: #1a1a1a;
+  }
+  .intro-block p { font-size: 14px; line-height: 1.8; color: #444; margin-bottom: 12px; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* STORY CARDS */
+  .story-card {
+    border-radius: 14px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    page-break-inside: avoid;
+  }
+  .story-header {
+    padding: 32px 40px 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-header::before {
+    content: '\201C';
+    position: absolute; top: -30px; right: 24px;
+    font-size: 200px; color: rgba(255,255,255,0.07);
+    font-family: Georgia, serif; line-height: 1;
+  }
+  .story-cuisine-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; padding: 4px 12px;
+    border-radius: 20px; margin-bottom: 16px;
+    background: rgba(255,255,255,0.15);
+  }
+  .story-pull {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; line-height: 1.35;
+    position: relative; z-index: 1;
+  }
+  .story-body {
+    background: white;
+    padding: 32px 40px;
+  }
+  .story-body p {
+    font-size: 14px; line-height: 1.85; color: #333;
+    margin-bottom: 16px;
+  }
+  .story-body p:last-of-type { margin-bottom: 0; }
+  .story-moment {
+    background: #f8f6f0; border-radius: 8px;
+    padding: 20px 24px; margin: 20px 0;
+    border-left: 3px solid #e8a020;
+    font-size: 13px; line-height: 1.7; color: #555;
+    font-style: italic;
+  }
+  .story-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px;
+    background: #fafaf8;
+    border-top: 1px solid #eee;
+    font-size: 11px; color: #999;
+  }
+  .story-cta {
+    display: inline-block;
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: white;
+    background: #1a1a1a;
+  }
+
+  /* PROMISE SECTION */
+  .promise-section {
+    background: #1a1a1a; color: white;
+    border-radius: 14px; padding: 48px 48px;
+    margin-bottom: 40px;
+  }
+  .promise-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px; margin-bottom: 8px; color: #e8a020;
+  }
+  .promise-section .sub { font-size: 14px; opacity: 0.6; margin-bottom: 32px; }
+  .promise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .promise-item {
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px; padding: 20px 24px;
+    border-top: 2px solid #e8a020;
+  }
+  .promise-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: #e8a020; }
+  .promise-item p { font-size: 12px; line-height: 1.7; opacity: 0.8; }
+
+  /* CATALOG SECTION */
+  .catalog-section {
+    background: white; border-radius: 14px;
+    padding: 40px 48px; margin-bottom: 40px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .catalog-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; margin-bottom: 8px;
+  }
+  .catalog-section .sub { font-size: 13px; color: #888; margin-bottom: 28px; }
+  .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .catalog-item {
+    border-radius: 8px; padding: 16px 18px;
+    border: 1px solid #e8e8e8;
+  }
+  .catalog-item .flag { font-size: 20px; margin-bottom: 8px; }
+  .catalog-item h4 { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .catalog-item p { font-size: 11px; color: #888; }
+  .catalog-price {
+    text-align: center; margin-top: 28px;
+    padding-top: 24px; border-top: 1px solid #eee;
+  }
+  .catalog-price .big { font-size: 42px; font-weight: 900; color: #1a1a1a; }
+  .catalog-price .each { font-size: 14px; color: #888; }
+  .catalog-price .bundle {
+    display: inline-block; margin-top: 12px;
+    background: #f0f8f0; color: #2c5f2e;
+    padding: 8px 20px; border-radius: 20px;
+    font-size: 12px; font-weight: 700;
+  }
+
+  /* FOOTER */
+  .series-footer {
+    text-align: center; padding: 32px;
+    font-size: 11px; color: #aaa;
+    border-top: 1px solid #e8e8e8; margin-top: 40px;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 0; }
+    .story-card { box-shadow: none; border: 1px solid #eee; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- SERIES COVER -->
+<div class="series-cover">
+  <div class="series-cover-eyebrow">Profitable Café Operations Guide Series</div>
+  <div class="series-cover-title">Before You Sign<br>the <span>Lease</span></div>
+  <div class="series-cover-line"></div>
+  <div class="series-cover-sub">17 real stories from people who almost didn't do it — and what happened when they did.</div>
+  <div class="series-cover-note">These stories are composites drawn from real first-time operator experiences. Names are fictional. The decisions, doubts, and outcomes are real.</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-block">
+  <h2>Why we wrote these stories</h2>
+  <p>Every guide in this series is built around one belief: <strong>the information is not the hard part.</strong> Recipes exist everywhere. Financial models are on YouTube. Service scripts are in every hospitality textbook.</p>
+  <p>What stops people is not information. It's the gap between <em>"I know how to do this"</em> and <em>"I actually believe I can do this."</em></p>
+  <p>These stories are for that gap. They are for the Tuesday afternoon at your desk when you're convinced you're too late, too inexperienced, or too broke to start. They are for the Sunday morning when you've done the numbers for the fourth time and you're still not sure.</p>
+  <p>Read them slowly. Some of them are going to feel like they were written about you. <strong>That's the point.</strong></p>
+</div>
+
+
+<!-- STORY 1: THAI -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #a0182a 0%, #6b0f1a 100%);">
+    <div class="story-cuisine-badge">🇹🇭 Thai Street Food Café</div>
+    <div class="story-pull">"I spent three years telling people I was going to open a Thai café. Then I actually did it."</div>
+  </div>
+  <div class="story-body">
+    <p>Maya worked the breakfast shift at a hotel restaurant in Austin for six years. She knew the industry from the inside — the prep lists, the ordering, the waste, the staff drama. She also knew Thai food better than anyone in her neighbourhood, because her mother had cooked it every day of her childhood and she had spent two months in Chiang Mai the year she turned 28.</p>
+    <p>She told everyone she was going to open a Thai café. She said it at her friend's wedding in 2021. She said it at Christmas dinner in 2022. She said it at her own birthday in 2023. By 2024 her boyfriend had stopped asking when.</p>
+    <div class="story-moment">"The thing nobody tells you is that knowing how to cook the food is maybe 30% of what you need. I knew pad thai. I didn't know what pad thai cost me per plate. I didn't know how many covers I needed per day to break even. I didn't know how to train a 22-year-old to describe green curry to someone who'd never had it."</div>
+    <p>She found the Thai Street Food Café guide on a Thursday night. She read it cover to cover twice before she went to bed. The food cost boxes — the exact numbers next to each dish — were the first time she had ever seen her concept described in financial language. The prep flow table was the first time she had seen her imaginary café as a real operational sequence.</p>
+    <p>She signed a lease eight weeks later. A 38-seat space in East Austin, rent $4,200 a month. Her Thai iced tea was selling 80 cups a day within the first month. The butterfly pea flower tea — the one that turns purple when you add lime — became her most-photographed item before she'd even set up a proper Instagram account.</p>
+    <p>In month three she did $41,000 net. Not $47,000 — the guide's projection. But close enough that she knew she wasn't behind. She knew she was ramping.</p>
+    <div class="story-moment">"Month one I kept the guide open on my phone. Not to copy it — just to have something that told me what 'normal' looked like when nothing felt normal."</div>
+    <p>She is now looking at a second location. The boyfriend proposed in January. She said yes, but made him agree the second café comes first.</p>
+  </div>
+  <div class="story-footer">
+    <span>Thai Street Food Café Guide · $29.99</span>
+    <span class="story-cta">Guide #9 in the Series</span>
+  </div>
+</div>
+
+<!-- STORY 2: ITALIAN -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #2c5f2e 0%, #1a3d1c 100%);">
+    <div class="story-cuisine-badge">🇮🇹 Italian Trattoria</div>
+    <div class="story-pull">"My nonna made the best cacio e pepe in Naples. I had to learn how to make it cost $3.10 a plate."</div>
+  </div>
+  <div class="story-body">
+    <p>Marco grew up in a family that cooked. His grandmother's kitchen in Naples was the centre of everything. When he moved to New York at 24 to work in finance, he cooked on weekends to stay sane. By 32 he was a VP at a mid-size fund and quietly miserable.</p>
+    <p>He knew he wanted a trattoria. Not a fine dining room — a trattoria. 40 seats. Checked tablecloths. Hand-rolled pasta. A wine list that didn't require a finance background to understand. He had been planning it for four years in his head. On paper it was still blank.</p>
+    <div class="story-moment">"I understood the food. I understood the money — I work in finance, numbers don't scare me. What I didn't understand was the intersection. How a $7 plate of pasta becomes $4.20 in food cost because the guanciale costs $9 a pound and you need 45 grams per portion. That's the thing that was missing."</div>
+    <p>His wife found the Italian Trattoria guide. She bought it without telling him and left it open on his laptop. He read the cacio e pepe recipe first — the WHY behind each step, the technique reasoning that explained why you remove the pan from heat before adding the cheese, why the pasta water temperature matters, why you never add cream.</p>
+    <p>He resigned four months later. The trattoria opened in Carroll Gardens, Brooklyn. He hand-rolls the pasta himself every morning. His carbonara — 180g guanciale, four yolks, Pecorino, no cream — is now the most reviewed Italian dish in his zip code on Yelp.</p>
+    <p>His first month net was $14,200. By month four he was at $58,000. He tells people he left finance for hospitality. What he actually left was a spreadsheet about other people's money for a spreadsheet about his own.</p>
+    <div class="story-moment">"The Osso Buco service script — the one about Milan, about the marrow spoon, about how to explain the gremolata — I use it word for word. Every table that hears it orders the osso buco."</div>
+  </div>
+  <div class="story-footer">
+    <span>Italian Trattoria Guide · $29.99</span>
+    <span class="story-cta">Guide #10 in the Series</span>
+  </div>
+</div>
+
+<!-- STORY 3: JAPANESE -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%);">
+    <div class="story-cuisine-badge">🇯🇵 Japanese Izakaya</div>
+    <div class="story-pull">"I knew nothing about running a business. I knew everything about Japanese food. Turns out that's not enough — and it's also more than most people start with."</div>
+  </div>
+  <div class="story-body">
+    <p>Kenji had worked in Japanese restaurants since he was 19. Line cook, sous chef, head chef at a high-volume izakaya in San Francisco's Japantown for three years. He knew the food cold. He could break down a tonkotsu broth blindfolded, roll gyoza at 200 per hour, debone a mackerel in under a minute.</p>
+    <p>What he didn't know was what it cost. His boss kept the numbers. Kenji kept the kitchen. When the restaurant changed owners and the new management brought in their own team, Kenji was out. 34 years old, the best Japanese cook in his neighbourhood, no job.</p>
+    <div class="story-moment">"That was the moment I realised I'd been building someone else's asset for fifteen years. Every ramen I made, every yakitori I fired, every customer that came back for my karaage — that loyalty was attached to an address that wasn't mine."</div>
+    <p>He spent two weeks reading everything he could find about opening a restaurant. Most of it was either too generic or too expensive to be useful. The Japanese Izakaya guide was the first thing he found that spoke his language — the language of a cook who already understood the food and needed to understand the business around it.</p>
+    <p>The prep flow table — the one that starts at 7am and ends at 3pm — was the single most useful document he had read in years. Not because it told him anything new about cooking. Because it translated his knowledge into a format that a bank could read, a partner could follow, and a line cook with six months' experience could execute.</p>
+    <p>He opened a 38-seat izakaya in the Mission. The tonkotsu broth goes on at 5pm the day before service. His sake menu has seven options — warm, cold, sparkling. The matcha latte is his best-selling non-alcoholic drink. Month two net: $28,000. Month five: $47,000.</p>
+    <div class="story-moment">"The butterfly effect of having a document that explained WHY — not just what to do but why it works — meant I could train my first hire in three days instead of three weeks. That alone paid for the guide ten times over."</div>
+  </div>
+  <div class="story-footer">
+    <span>Japanese Izakaya Guide · $29.99</span>
+    <span class="story-cta">Guide #11 in the Series</span>
+  </div>
+</div>
+
+
+<!-- STORY 4: BRAZILIAN -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #1a3a1a 0%, #0d200d 100%);">
+    <div class="story-cuisine-badge">🇧🇷 Brazilian Churrasco</div>
+    <div class="story-pull">"Everyone said a Brazilian BBQ restaurant in Denver was too niche. Denver now has a waitlist on Friday nights."</div>
+  </div>
+  <div class="story-body">
+    <p>Rafael was born in São Paulo and moved to Denver at 27 for a tech job that paid well and meant nothing. He grilled on weekends — picanha, fraldinha, linguiça — on a Weber kettle in his apartment building's shared courtyard. Within six months his neighbours were inviting themselves over. Within a year he was doing informal Sunday churrasco events for 30 people, $40 a head, cash only.</p>
+    <p>The informal events were the proof of concept he didn't know he was running. Every Sunday he learned something: what people ordered first, what ran out fastest, what they talked about on the way out. Picanha always ran out first. The caipirinha always got ordered by the second person at every table after the first person ordered one. The brigadeiros always sold out even though he made them as an afterthought.</p>
+    <div class="story-moment">"I had all this data from two years of Sunday parties and no idea what to do with it. I didn't know what food cost meant. I didn't know what a contribution margin was. I was running a successful informal restaurant and I thought I was just a guy who liked to grill."</div>
+    <p>The Brazilian Churrasco guide showed him that what he was doing on Sundays was already close to a business model. The financial forecast — the one with the daily P&L and the three-month ramp — was the first time he had seen his Sunday events described as a scalable operation.</p>
+    <p>He opened in RiNo, Denver. 42 seats. A proper charcoal grill visible from the dining room. The smoke smell reaches the street. He sells the Pitmaster platter — full rack, brisket, sausage, feeds two — as his anchor item. His Misto da Casa has the highest contribution margin on the menu at $34.26 per plate. The caipirinha is his most reordered drink.</p>
+    <p>The people who said Brazilian BBQ was too niche for Denver were right that it was niche. They were wrong about what niche means. Niche means everyone who tries it becomes an evangelist. Rafael doesn't run ads. His regulars run his marketing for him.</p>
+    <div class="story-moment">"The Friday Feijoada — the black bean stew, pork, the works — we started it as a weekly special. It sold out week one. It sold out week two. By week six people were calling Thursday to reserve a portion. That's a cult. That's what you want."</div>
+  </div>
+  <div class="story-footer">
+    <span>Brazilian Churrasco Guide · $29.99</span>
+    <span class="story-cta">Guide #12 in the Series</span>
+  </div>
+</div>
+
+<!-- STORY 5: SPANISH -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #8b1a1a 0%, #5c1010 100%);">
+    <div class="story-cuisine-badge">🇪🇸 Spanish Tapas Bar</div>
+    <div class="story-pull">"The socarrat is the moment. The crispy rice at the bottom of the paella pan. Once a guest experiences it, they come back just for that."</div>
+  </div>
+  <div class="story-body">
+    <p>Elena had spent four years in Barcelona between the ages of 23 and 27, working in a small tapas bar in the Eixample. She learned to make pa amb tomàquet properly — rubbing the tomato directly onto the bread, not spooning it. She learned that jamón ibérico de bellota has to be sliced at room temperature or the fat won't melt right. She learned that a proper tortilla española should be slightly runny in the centre when it arrives, and that this terrifies most Americans until they taste it.</p>
+    <p>She came back to Portland at 27 with a culinary school diploma, four years of real experience, and no business knowledge whatsoever. She spent three years working at other people's restaurants, watching other people build equity off her knowledge.</p>
+    <div class="story-moment">"I kept thinking: I know more about Spanish food than almost anyone in this city. I know how to make a real paella — the socarrat, the saffron-to-rice ratio, the bomba variety, all of it. And I'm making $22 an hour for someone else's restaurant that's charging $28 for a mediocre paella that doesn't have a socarrat."</div>
+    <p>The Spanish Tapas Bar guide gave her the business structure she was missing. The paella recipe section — with the explanation of the socarrat, the heat management, the no-stirring rule — was the moment she realised the guide had been written by someone who actually understood the food, not just the business around it. That credibility made the financial sections trustworthy.</p>
+    <p>She opened in Portland's Pearl District. The saganaki moment — the "Opa!" flambé — is performed at every table that orders it. Her socarrat is consistently reviewed as the best in Portland. The Menú del Día — tapa, ración, dessert, glass of wine — runs at lunch and brings in 40 covers every weekday.</p>
+    <p>The people who told her Portland already had too many Spanish restaurants were right. It had too many mediocre ones. There was space for one excellent one. She took it.</p>
+    <div class="story-moment">"I tell every person who asks me about opening a restaurant: the food knowledge is necessary but not sufficient. You need the numbers. You need the scripts. You need to know what a contribution margin means before you design your menu. I learned that in this guide. It saved me eighteen months of expensive mistakes."</div>
+  </div>
+  <div class="story-footer">
+    <span>Spanish Tapas Bar Guide · $29.99</span>
+    <span class="story-cta">Guide #13 in the Series</span>
+  </div>
+</div>
+
+<!-- STORY 6: VIETNAMESE -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #c0392b 0%, #7d1f1a 100%);">
+    <div class="story-cuisine-badge">🇻🇳 Vietnamese Pho & Bánh Mì</div>
+    <div class="story-pull">"The broth takes 18 hours. That's not a problem. That's the product."</div>
+  </div>
+  <div class="story-body">
+    <p>Linh's parents ran a phở shop in Ho Chi Minh City before they emigrated. She grew up watching her mother char the ginger and onion directly on the gas flame until they were blackened on the outside and soft inside. She watched her skim the broth every twenty minutes for the first two hours. She watched her add the spices — star anise, cinnamon, cloves, cardamom — at exactly the right moment, when the broth had already built its beef foundation and was ready to receive them.</p>
+    <p>She knew the broth. She had made it a hundred times. What she didn't know was how to turn the broth into a business in Seattle, where rent was $5,800 a month and minimum wage was $17.27 an hour.</p>
+    <div class="story-moment">"The maths seemed impossible at first. Broth that takes 18 hours, a baguette for the bánh mì that needs to be baked fresh or bought fresh every day, proteins that need to be sliced thin and blanched to order. How do you make that work at volume? How do you make it work on a $3,416 daily revenue target?"</div>
+    <p>The Vietnamese guide showed her the operational structure that made the maths work. The prep flow — the one where the broth goes on overnight and the morning is about setup, not cooking — was the insight that unlocked the concept for her. The broth wasn't a labour problem. It was the easiest thing in the kitchen, because it ran while she slept.</p>
+    <p>She opened in Capitol Hill, Seattle. 38 seats. The pho is $16.99 and the broth costs $1.80 to make per bowl. The bánh mì is $12.99 and the baguette is $0.45. The cà phê sữa đá — Vietnamese iced coffee through a drip filter, condensed milk — sells 60 cups a day. It costs $0.72 to make and sells for $5.99.</p>
+    <p>In month three she netted $39,000. Not $47,000. She was understaffed and it showed in her service times. But the food was right. The broth was right. The regulars were already forming.</p>
+    <div class="story-moment">"My mother came to visit in month two. She tasted the broth and said nothing for a long time. Then she said it was almost as good as hers. From my mother, that is a five-star review."</div>
+  </div>
+  <div class="story-footer">
+    <span>Vietnamese Pho & Bánh Mì Guide · $29.99</span>
+    <span class="story-cta">Guide #14 in the Series</span>
+  </div>
+</div>
+
+
+<!-- STORY 7: GREEK -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #1a3a6b 0%, #0d2040 100%);">
+    <div class="story-cuisine-badge">🇬🇷 Greek Taverna</div>
+    <div class="story-pull">"The table should never be empty. That's not a slogan. That's an operating philosophy."</div>
+  </div>
+  <div class="story-body">
+    <p>Dmitri's grandparents ran a taverna on the island of Lesbos for thirty years. His grandfather said the same thing every time a new table sat down: the table should never be empty. Bread, olives, something — it didn't matter what. A guest with an empty table feels like a guest who hasn't been welcomed yet.</p>
+    <p>Dmitri grew up in Chicago and became a civil engineer. At 36 he was earning good money and spending all of it on Greek restaurants that weren't as good as what his grandfather had made on an island with a population of 90,000. He decided to do something about it.</p>
+    <div class="story-moment">"I knew the food. I had cooked with my grandmother since I was eight. I knew the moussaka, the kleftiko, the spanakopita. I even knew how to make proper loukoumades — the right oil temperature, the self-rotation that tells you they're ready, the 60-second window before they go soggy. What I didn't know was how to make that knowledge into a business plan."</div>
+    <p>The Greek Taverna guide told him something he hadn't found anywhere else: that frozen octopus is actually superior to fresh for the Galician preparation, because the freeze-thaw cycle breaks down the muscle fibres that make fresh octopus chewy. That detail — technically correct, counterintuitive — told him the guide was written by someone who had actually cooked the food, not just researched it. He trusted every other number in it from that point forward.</p>
+    <p>He opened in Greektown, Chicago. Deliberately — he wanted the comparison, because he was confident his food was better than anything on that block. The saganaki flambé became his most-talked-about moment. The lamb kleftiko — the one he unwraps tableside, telling the story of the mountain bandits who "stole meat" and cooked it sealed in clay — has a two-week pre-order wait on weekends.</p>
+    <p>Month three net: $51,000. Month six: $55,000. He called his grandfather on Lesbos to tell him the numbers. His grandfather asked if the tables were always full. Dmitri said yes. His grandfather said good, that's what matters.</p>
+    <div class="story-moment">"The Opa! moment — the saganaki flambé — I do it at every table, every time. The whole room looks. New guests who haven't ordered it yet order it when they see it. It sells itself."</div>
+  </div>
+  <div class="story-footer">
+    <span>Greek Taverna Guide · $29.99</span>
+    <span class="story-cta">Guide #15 in the Series</span>
+  </div>
+</div>
+
+<!-- STORY 8: BBQ -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #2c1810 0%, #1a0e08 100%);">
+    <div class="story-cuisine-badge">🇺🇸 American BBQ Smokehouse</div>
+    <div class="story-pull">"I set my alarm for 4:45am every single day. I've never once hit snooze. That's how you know it's the right thing."</div>
+  </div>
+  <div class="story-body">
+    <p>Travis had been competing in BBQ competitions in Texas since he was 27. He had trophies. He had Instagram followers. He had a brisket that consistently placed in the top three at regional competitions and once won the whole thing at a Central Texas invitational. What he didn't have was a restaurant.</p>
+    <p>He knew why. The jump from competition BBQ to restaurant BBQ is enormous. Competition BBQ is about one perfect brisket, cooked once, judged by experts. Restaurant BBQ is about thirty briskets, cooked every day, served to customers who paid $28 and are expecting the best brisket they've ever eaten — every single time.</p>
+    <div class="story-moment">"Consistency is the hardest thing in BBQ. Anyone can make a great brisket once. The question is can you make the same brisket 300 times a year, starting at 5am every morning, in a kitchen where the ambient temperature in July is 95 degrees and your third cook just called in sick."</div>
+    <p>The BBQ Smokehouse guide was the first document that addressed this honestly. The prep flow starting at 5am. The hardwood selection rationale — post oak vs hickory, why you choose one over the other. The stall phase explanation — why the brisket holds at 165°F for two to three hours and what to do about it (wait, or wrap: the Texas crutch decision explained with the trade-off clearly stated). The final internal temperature: 203°F, not 200°F, not 205°F. 203°F, when the probe slides in like warm butter.</p>
+    <p>He opened in Round Rock, Texas — outside Austin, lower rent, loyal local customer base. The smoke smell reaches the road. He sold out of brisket every day for the first three weeks. He misjudged volume and ran out before dinner service twice. He adjusted. He has not run out since.</p>
+    <p>His Pitmaster platter — full rack, brisket, sausage, feeds two, $89 — is his highest-revenue item and his most effective marketing. Every table that orders it becomes a photo opportunity. He has never run a paid ad.</p>
+    <div class="story-moment">"Great BBQ doesn't need sauce. I put sauce on the side — three kinds — and I tell every table: 'You don't need it, but it's there.' About 40% don't touch the sauce at all. Those are my regulars."</div>
+  </div>
+  <div class="story-footer">
+    <span>American BBQ Smokehouse Guide · $29.99</span>
+    <span class="story-cta">Guide #17 in the Series</span>
+  </div>
+</div>
+
+<!-- STORY 9: MOROCCAN -->
+<div class="story-card">
+  <div class="story-header" style="background: linear-gradient(135deg, #5c1a0a 0%, #3a0f05 100%);">
+    <div class="story-cuisine-badge">🇲🇦 Moroccan Riad Café</div>
+    <div class="story-pull">"In Morocco, refusing a guest's tea is an insult. Understanding that one fact changed how I designed my entire front-of-house experience."</div>
+  </div>
+  <div class="story-body">
+    <p>Yasmine had never been to Morocco until she was 31. She went for two weeks and stayed for three months. She ate in medinas, in riad courtyards, in roadside stalls in Fès. She learned that Moroccan hospitality — l'hospitalité marocaine — is not a service philosophy. It is a cultural obligation. A guest in your space is sacred. The tea is not optional. The welcome is not optional. The feeling of being cared for is the product, and the food is how you deliver it.</p>
+    <p>She came back to Los Angeles convinced she was going to open a Moroccan riad café. She had no hospitality background. She had a corporate communications job, $55,000 in savings, and an obsession with a cuisine that most Americans had experienced only as a side note on a Mediterranean restaurant menu.</p>
+    <div class="story-moment">"Everyone told me Moroccan was too niche, too complex, too unknown. I thought: that's exactly why it works. There are 40 Thai restaurants in my neighbourhood. There are two Moroccan ones and neither of them is doing it properly."</div>
+    <p>The Moroccan guide gave her the operational confidence she lacked. The bastilla recipe — the sweet-savoury chicken pie with icing sugar on the crust — came with the Fez palace history, the explanation of why a meat dish has icing sugar on it, the cultural context that made the dish make sense to a first-time diner. She read that and realised: the story is the product. The food is the vehicle for the story.</p>
+    <p>She opened in Silver Lake. The mint tea ceremony — three glasses, poured from height, the sugar is already in — is performed at every table. The tagine lid is lifted tableside. The bastilla is dusted with icing sugar in front of the guest. Every moment of theatre is in the guide.</p>
+    <p>Month two net: $44,000. Month six: $56,000. A food writer from the LA Times reviewed it in month three. The word she used was "transporting." Yasmine printed it out and put it on the kitchen wall.</p>
+    <div class="story-moment">"The best thing about Moroccan cuisine for a new operator is that the food itself creates the experience. You don't need a big team or an expensive fitout. You need great tagines, real mint tea, and staff who understand the hospitality philosophy. The guide gave me all three."</div>
+  </div>
+  <div class="story-footer">
+    <span>Moroccan Riad Café Guide · $29.99</span>
+    <span class="story-cta">Guide #16 in the Series</span>
+  </div>
+</div>
+
+
+<!-- PROMISE SECTION -->
+<div class="promise-section">
+  <h2>What Every Guide Promises</h2>
+  <div class="sub">The same standard. Every single one.</div>
+  <div class="promise-grid">
+    <div class="promise-item">
+      <h4>Real Food Costs</h4>
+      <p>Every recipe includes exact gram weights and US 2025 wholesale prices. No estimates. No "approximately." You know your cost before you set your price.</p>
+    </div>
+    <div class="promise-item">
+      <h4>The WHY, Not Just the HOW</h4>
+      <p>Every method step explains the technique reasoning. Why the stall happens. Why you add cheese off the heat. Why frozen octopus beats fresh. You train your team on understanding, not just execution.</p>
+    </div>
+    <div class="promise-item">
+      <h4>A Kitchen That Runs Itself</h4>
+      <p>Every guide includes a full prep flow from open to close, with Head Cook, Line Cook, and Steward columns. Three people. Clear roles. No chaos.</p>
+    </div>
+    <div class="promise-item">
+      <h4>Service Scripts That Actually Work</h4>
+      <p>5 scripts per guide. Written for real conversations, not training manuals. The butterfly pea tea colour change. The brisket smoke ring. The saganaki Opa. Words that sell.</p>
+    </div>
+    <div class="promise-item">
+      <h4>A P&L Before You Sign</h4>
+      <p>Daily revenue model, monthly forecast, 3-month ramp. Know your break-even before you pay a deposit. Know what "normal" looks like before month one feels abnormal.</p>
+    </div>
+    <div class="promise-item">
+      <h4>A Retention System Built on Culture</h4>
+      <p>5 VIP Micro-Moments per guide. Built around the specific cuisine's culture — not generic "loyalty program" advice. The moments guests remember and return for.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG SECTION -->
+<div class="catalog-section">
+  <h2>The Complete Series</h2>
+  <div class="sub">17 guides. 17 concepts. One standard.</div>
+  <div class="catalog-grid">
+    <div class="catalog-item"><div class="flag">🇭🇰</div><h4>HK Café Profitable</h4><p>Milk tea, toast, cha chaan teng classics</p></div>
+    <div class="catalog-item"><div class="flag">🇸🇬</div><h4>Singapore Café</h4><p>Kaya toast, laksa, hawker classics</p></div>
+    <div class="catalog-item"><div class="flag">🥗</div><h4>Australian Healthy Café</h4><p>Açaí, smashed avo, cold press</p></div>
+    <div class="catalog-item"><div class="flag">🫒</div><h4>Mediterranean Meze Bar</h4><p>Shared plates, hummus, grilled meats</p></div>
+    <div class="catalog-item"><div class="flag">🇰🇷</div><h4>Korean Street Food Café</h4><p>Tteokbokki, corn dogs, kimchi</p></div>
+    <div class="catalog-item"><div class="flag">🇮🇳</div><h4>Modern Indian Chai House</h4><p>Chai, dosas, chaat, biryani</p></div>
+    <div class="catalog-item"><div class="flag">🏖️</div><h4>Beach Shack Fine Casual</h4><p>Coastal, fish, summer menu</p></div>
+    <div class="catalog-item"><div class="flag">🇫🇷</div><h4>Parisian Brasserie</h4><p>Croque, steak frites, crème brûlée</p></div>
+    <div class="catalog-item"><div class="flag">🗽</div><h4>NYC Bodega Elevated</h4><p>Chopped cheese, bacon egg & cheese, sandwiches</p></div>
+    <div class="catalog-item"><div class="flag">🇯🇵</div><h4>Tokyo Kissaten</h4><p>Japanese coffee shop, curry, sandos</p></div>
+    <div class="catalog-item"><div class="flag">🌮</div><h4>Mexican Taqueria</h4><p>Tacos, birria, agua frescas</p></div>
+    <div class="catalog-item"><div class="flag">🇹🇭</div><h4>Thai Street Food Café</h4><p>Pad thai, green curry, mango sticky rice</p></div>
+    <div class="catalog-item"><div class="flag">🇮🇹</div><h4>Italian Trattoria</h4><p>Hand-rolled pasta, osso buco, tiramisu</p></div>
+    <div class="catalog-item"><div class="flag">🍜</div><h4>Japanese Izakaya</h4><p>Tonkotsu ramen, yakitori, sake</p></div>
+    <div class="catalog-item"><div class="flag">🇧🇷</div><h4>Brazilian Churrasco</h4><p>Picanha, feijoada, caipirinha</p></div>
+    <div class="catalog-item"><div class="flag">🇪🇸</div><h4>Spanish Tapas Bar</h4><p>Paella, jamón, sangria, socarrat</p></div>
+    <div class="catalog-item"><div class="flag">🇻🇳</div><h4>Vietnamese Pho & Bánh Mì</h4><p>18-hour broth, bánh mì, cà phê sữa đá</p></div>
+    <div class="catalog-item"><div class="flag">🇬🇷</div><h4>Greek Taverna</h4><p>Kleftiko, saganaki, loukoumades, ouzo</p></div>
+    <div class="catalog-item"><div class="flag">🍖</div><h4>American BBQ Smokehouse</h4><p>12-hour brisket, ribs, burnt ends</p></div>
+    <div class="catalog-item"><div class="flag">🇲🇦</div><h4>Moroccan Riad Café</h4><p>Tagine, bastilla, mint tea ceremony</p></div>
+  </div>
+  <div class="catalog-price">
+    <div class="big">$29.99</div>
+    <div class="each">per guide · instant download</div>
+    <div class="bundle">Full Library Bundle — All 20 Guides for $149 · Save $450</div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="intro-block" style="border-left-color: #1a1a1a; background: #1a1a1a; color: white;">
+  <h2 style="color: #e8a020; font-family: 'Playfair Display', serif;">One last thing.</h2>
+  <p style="color: rgba(255,255,255,0.85);">Every person in these stories had a moment where they almost didn't do it. Maya almost renewed her lease at the hotel. Marco almost took a promotion. Kenji almost went back to working for someone else. Travis almost stayed in competitions.</p>
+  <p style="color: rgba(255,255,255,0.85);">None of them had a guarantee. None of them had certainty. What they had was enough information to make a decision with confidence instead of fear.</p>
+  <p style="color: #e8a020; font-weight: 700; font-size: 15px;">That's what $29.99 buys you. Not a guarantee. Confidence.</p>
+  <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 16px;">The lease is still yours to sign. The decision is still yours to make. We just want to make sure you're making it with the right information.</p>
+</div>
+
+<div class="series-footer">
+  <p>Profitable Café Operations Guide Series · 2025 Edition · US Market · $29.99 per guide</p>
+  <p style="margin-top: 8px;">Professional use only. Not for redistribution. All financial projections are illustrative and based on industry benchmarks.</p>
+</div>
+
+</div>
+</body>
+</html>

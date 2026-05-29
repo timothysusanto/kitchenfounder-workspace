@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder — Pipeline Bible v1.0</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #FAFAF8; color: #1C1C1C; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 40px; }
+  .cover { text-align: center; padding: 80px 40px; background: #1C1C1C; color: white; border-radius: 16px; margin-bottom: 60px; }
+  .cover-eyebrow { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #F5A623; margin-bottom: 24px; font-family: sans-serif; }
+  .cover-title { font-size: 64px; font-weight: bold; line-height: 1.05; margin-bottom: 16px; }
+  .cover-title span { color: #F5A623; }
+  .cover-sub { font-size: 18px; color: #888; margin-top: 20px; font-family: sans-serif; line-height: 1.6; }
+  .cover-stats { display: flex; justify-content: center; gap: 60px; margin-top: 48px; }
+  .cover-stat-num { font-size: 48px; font-weight: bold; color: #F5A623; font-family: sans-serif; }
+  .cover-stat-label { font-size: 12px; color: #666; letter-spacing: 2px; text-transform: uppercase; font-family: sans-serif; margin-top: 4px; text-align: center; }
+  .toc { background: white; border-radius: 16px; padding: 40px; margin-bottom: 60px; border: 2px solid #eee; }
+  .toc-title { font-size: 24px; font-weight: bold; margin-bottom: 24px; font-family: sans-serif; border-bottom: 3px solid #F5A623; padding-bottom: 12px; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .toc-item { display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 8px; font-family: sans-serif; font-size: 14px; }
+  .toc-num { width: 28px; height: 28px; background: #1C1C1C; color: #F5A623; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0; }
+  .section-header { display: flex; align-items: center; gap: 16px; margin: 60px 0 28px; padding-bottom: 16px; border-bottom: 3px solid; }
+  .section-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .section-title-text { font-size: 32px; font-weight: bold; font-family: sans-serif; }
+  .section-sub { font-size: 14px; color: #888; font-family: sans-serif; margin-top: 4px; }
+  .tier1-header { border-color: #F5A623; }
+  .tier1-header .section-icon { background: #F5A623; }
+  .tier2-header { border-color: #4CAF50; }
+  .tier2-header .section-icon { background: #4CAF50; }
+  .tier3-header { border-color: #9C27B0; }
+  .tier3-header .section-icon { background: #9C27B0; }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .concept-card { background: white; border-radius: 14px; padding: 24px; border: 2px solid #eee; page-break-inside: avoid; position: relative; overflow: hidden; }
+  .concept-num { font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #bbb; font-family: sans-serif; margin-bottom: 8px; }
+  .concept-name { font-size: 22px; font-weight: bold; font-family: sans-serif; margin-bottom: 4px; }
+  .concept-ref { font-size: 13px; color: #888; font-family: sans-serif; margin-bottom: 14px; font-style: italic; }
+  .concept-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .concept-tag { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-family: sans-serif; font-weight: 600; }
+  .concept-tag-accent { color: white; }
+  .concept-tag-hero { background: #F0F0F0; color: #555; }
+  .concept-tag-gap { background: #E8F5E9; color: #2E7D32; }
+  .concept-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; font-family: sans-serif; font-size: 13px; color: #444; }
+  .concept-row-label { font-weight: bold; color: #1C1C1C; min-width: 60px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div class="cover-eyebrow">KitchenFounder · Operations Bible · Version 1.0 · May 2026</div>
+  <div class="cover-title">THE<br><span>PIPELINE</span><br>BIBLE</div>
+  <div class="cover-sub">Every concept. Every reference restaurant.<br>Every accent color. Every US market angle.<br>Your complete guide-building catalogue.</div>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="cover-stat-num">40+</div><div class="cover-stat-label">Concepts</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">3</div><div class="cover-stat-label">Tiers</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">17</div><div class="cover-stat-label">Sections</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">$29.99</div><div class="cover-stat-label">Per Guide</div></div>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-grid">
+    <div class="toc-item"><div class="toc-num">T1</div><div>Tier 1 — 20 High-Virality Concepts (build first)</div></div>
+    <div class="toc-item"><div class="toc-num">T2</div><div>Tier 2 — 40 Strong Market Concepts</div></div>
+    <div class="toc-item"><div class="toc-num">T3</div><div>Tier 3 — Niche but Profitable Concepts</div></div>
+    <div class="toc-item"><div class="toc-num">10</div><div>US Market Data &amp; Buyer Psychology</div></div>
+    <div class="toc-item"><div class="toc-num">11</div><div>Instagram &amp; TikTok Content Playbook</div></div>
+    <div class="toc-item"><div class="toc-num">12</div><div>Email Marketing Sequences</div></div>
+    <div class="toc-item"><div class="toc-num">13</div><div>Launch Strategy — Phase 1 to 4</div></div>
+    <div class="toc-item"><div class="toc-num">14</div><div>Competitor Analysis &amp; SEO Keywords</div></div>
+    <div class="toc-item"><div class="toc-num">15</div><div>Pinterest Strategy</div></div>
+    <div class="toc-item"><div class="toc-num">16</div><div>Revenue Projections (3 scenarios)</div></div>
+    <div class="toc-item"><div class="toc-num">17</div><div>Quick Reference Card</div></div>
+    <div class="toc-item"><div class="toc-num">$</div><div>Bundle Strategy &amp; Pricing Ladder</div></div>
+  </div>
+</div>
+
+<div class="section-header tier1-header">
+  <div class="section-icon">&#11088;</div>
+  <div>
+    <div class="section-title-text">TIER 1 — HIGH-VIRALITY CONCEPTS</div>
+    <div class="section-sub">Build these first · Strong US market gap · Best TikTok/Instagram angles · Reference restaurants confirmed</div>
+  </div>
+</div>
+
+<div class="concept-grid">
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#FF6B35;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#1 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Brazilian Churrasco</div>
+    <div class="concept-ref">Ref: Fogo de Chao (US national), Texas de Brazil</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#FF6B35;">Accent #FF6B35</span><span class="concept-tag concept-tag-hero">Hero: Picanha reveal</span><span class="concept-tag concept-tag-gap">Live on Shopify</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Independent rodizio format outside major cities</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The most theatrical dining format in the world"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E53935;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#2 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Thai Street Food</div>
+    <div class="concept-ref">Ref: Night + Market (LA), Somtum Der (NYC)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E53935;">Accent #E53935</span><span class="concept-tag concept-tag-hero">Hero: Pad kra pao wok</span><span class="concept-tag concept-tag-gap">Live on Shopify</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Authentic street-style vs Americanised Thai</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The street food that 70M tourists eat every year"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1A1A2E;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#3 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Japanese Izakaya</div>
+    <div class="concept-ref">Ref: Ippudo (NYC/LA), Sake Bar Hagi (NYC)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1A1A2E;">Accent #1A1A2E</span><span class="concept-tag concept-tag-hero">Hero: Yakitori smoke</span><span class="concept-tag concept-tag-gap">Live on Shopify</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Neighbourhood izakaya format outside NYC/LA</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Japan's answer to the pub — and America doesn't have it yet"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#B71C1C;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#4 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Korean BBQ</div>
+    <div class="concept-ref">Ref: Baekjeong (LA/NYC), Gen Korean BBQ</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#B71C1C;">Accent #B71C1C</span><span class="concept-tag concept-tag-hero">Hero: Table grill sizzle</span><span class="concept-tag concept-tag-gap">Live on Shopify</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Quality KBBQ outside Korean-American metros</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The most interactive dining trend in America right now"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#C0392B;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#5 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Mexican Taqueria</div>
+    <div class="concept-ref">Ref: Tacos El Gordo (San Diego), Carnitas Uruapan (Chicago)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#C0392B;">Accent #C0392B</span><span class="concept-tag concept-tag-hero">Hero: Birria dip</span><span class="concept-tag concept-tag-gap">Live on Shopify</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Regional Mexican vs generic Tex-Mex</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Birria has 8 billion TikTok views. Here's how to build the restaurant"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#C0632B;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#6 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Bombay Cafe</div>
+    <div class="concept-ref">Ref: Dishoom London, Badmaash (LA)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#C0632B;">Accent #C0632B</span><span class="concept-tag concept-tag-hero">Hero: Lamb chop reveal</span><span class="concept-tag concept-tag-gap">Built · Upload pending</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>No US equivalent to Dishoom's Irani cafe concept</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The London restaurant with a 2-hour wait every night"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#C41E3A;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#7 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Spanish Tapas Bar</div>
+    <div class="concept-ref">Ref: Jaleo (DC/Vegas), Boqueria (NYC/DC)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#C41E3A;">Accent #C41E3A</span><span class="concept-tag concept-tag-hero">Hero: Jamon carving</span><span class="concept-tag concept-tag-gap">Built · Upload pending</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Authentic pintxos bar format outside NYC/DC/Miami</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Spain's entire food culture fits on a small plate"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E85D26;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#8 · ALREADY BUILT &#10003;</div>
+    <div class="concept-name">Sri Lankan Hoppers Bar</div>
+    <div class="concept-ref">Ref: Hoppers London, Kolamba London</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E85D26;">Accent #E85D26</span><span class="concept-tag concept-tag-hero">Hero: Hopper iron pour</span><span class="concept-tag concept-tag-gap">Built · Upload pending</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Near zero Sri Lankan counter-dining in US</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The fermented rice bowl that London queues 2 hours for"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#D4370C;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#9 · BUILD NEXT &#11088;</div>
+    <div class="concept-name">Vietnamese Pho &amp; Banh Mi Bar</div>
+    <div class="concept-ref">Ref: Pho Dau Bo (Houston), An Choi (NYC)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#D4370C;">Accent #D4370C</span><span class="concept-tag concept-tag-hero">Hero: Pho steam reveal</span><span class="concept-tag concept-tag-gap">High priority</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Premium pho bar vs fast-food chains</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Vietnam's most iconic dish costs $22 in the US. Here's the real recipe."</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#2E7D32;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#10 · BUILD NEXT &#11088;</div>
+    <div class="concept-name">Lebanese Mezze Bar</div>
+    <div class="concept-ref">Ref: Ilili (NYC), Bavel (LA), Zaytinya (DC)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#2E7D32;">Accent #2E7D32</span><span class="concept-tag concept-tag-hero">Hero: Mezze spread overhead</span><span class="concept-tag concept-tag-gap">High priority</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Casual Lebanese dining outside NYC/DC</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The Mediterranean diet is the healthiest in the world — here's the restaurant"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1565C0;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#11</div>
+    <div class="concept-name">Peruvian Cevicheria</div>
+    <div class="concept-ref">Ref: La Mar (Miami/SF), Coya (NYC)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#1565C0;">Accent #1565C0</span><span class="concept-tag concept-tag-hero">Hero: Leche de tigre pour</span><span class="concept-tag concept-tag-gap">Strong gap outside Miami</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Nikkei cuisine (Peruvian-Japanese) trending fast</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The world's best seafood cuisine — almost no one in the US is doing it"</div>
+  </div>
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E65100;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#12</div>
+    <div class="concept-name">Jamaican Jerk Shack</div>
+    <div class="concept-ref">Ref: Miss Lily's (NYC), Scotchies (Jamaica)</div>
+    <div class="concept-tags"><span class="concept-tag concept-tag-accent" style="background:#E65100;">Accent #E65100</span><span class="concept-tag concept-tag-hero">Hero: Jerk drum smoke reveal</span><span class="concept-tag concept-tag-gap">Huge gap in Midwest/South</span></div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Authentic jerk outside NYC/Miami/Atlanta</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The only BBQ style that uses a 400-year-old recipe"</div>
+  </div>
+</div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#795548;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#13</div>
+    <div class="concept-name">Taiwanese Beef Noodle Shop</div>
+    <div class="concept-ref">Ref: Ever After (NYC), Taiwan Bear House (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#795548;">Accent #795548</span>
+      <span class="concept-tag concept-tag-hero">Hero: Braised beef noodle bowl</span>
+      <span class="concept-tag concept-tag-gap">Near-zero outside NYC</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Taiwan's national dish barely represented in US</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The noodle soup that beats ramen — and America hasn't discovered it yet"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#4E342E;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#14</div>
+    <div class="concept-name">Ethiopian Injera House</div>
+    <div class="concept-ref">Ref: Ethiopic (DC), Demera (Chicago), Lalibela (LA)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#4E342E;">Accent #4E342E</span>
+      <span class="concept-tag concept-tag-hero">Hero: Injera spread overhead</span>
+      <span class="concept-tag concept-tag-gap">Strong in DC/ATL, gap elsewhere</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>No chains — pure indie market nationwide</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The only cuisine where the plate IS the bread"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1B5E20;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#15</div>
+    <div class="concept-name">Greek Souvlaki & Mezze</div>
+    <div class="concept-ref">Ref: Avra (NYC), Estiatorio Milos (NYC/Las Vegas)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#1B5E20;">Accent #1B5E20</span>
+      <span class="concept-tag concept-tag-hero">Hero: Whole fish on charcoal</span>
+      <span class="concept-tag concept-tag-gap">Casual Greek gap outside NYC</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Casual souvlaki bar — not just fine dining Greek</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Greece's street food is the Mediterranean diet in 3 bites"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E65100;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#16</div>
+    <div class="concept-name">Singaporean Hawker Centre</div>
+    <div class="concept-ref">Ref: Hawker Chan (Singapore), Kopitiam (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#E65100;">Accent #E65100</span>
+      <span class="concept-tag concept-tag-hero">Hero: Hainanese chicken rice</span>
+      <span class="concept-tag concept-tag-gap">Massive gap — near zero US</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Hawker Chan won a Michelin star for $2 chicken rice</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The world's cheapest Michelin-starred dish — and how to build the restaurant"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#880E4F;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#17</div>
+    <div class="concept-name">Filipino Kamayan Restaurant</div>
+    <div class="concept-ref">Ref: Jeepney (NYC), Kuya Lord (Chicago)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#880E4F;">Accent #880E4F</span>
+      <span class="concept-tag concept-tag-hero">Hero: Banana leaf spread</span>
+      <span class="concept-tag concept-tag-gap">🔥 Exploding trend 2024–25</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Filipino food "having its moment" — first movers win</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The only cuisine where you eat with your hands off a banana leaf"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#BF360C;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#18</div>
+    <div class="concept-name">Turkish Meze & Kebab House</div>
+    <div class="concept-ref">Ref: Zaytinya (DC), Turk's Inn (Brooklyn)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#BF360C;">Accent #BF360C</span>
+      <span class="concept-tag concept-tag-hero">Hero: Döner shave reveal</span>
+      <span class="concept-tag concept-tag-gap">Döner trend growing fast</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Premium Turkish vs fast-food kebab chains</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The street food that feeds 10 million people in Istanbul every day"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#4A148C;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#19</div>
+    <div class="concept-name">Moroccan Riad Dining</div>
+    <div class="concept-ref">Ref: Cafe Mogador (NYC), Mourad (SF)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#4A148C;">Accent #4A148C</span>
+      <span class="concept-tag concept-tag-hero">Hero: Tagine lid reveal</span>
+      <span class="concept-tag concept-tag-gap">Strong gap outside NYC/LA</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Theatrical tagine + cocktail service concept</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The most cinematic dish in the world — filmed in 50M TikToks"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#006064;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#20</div>
+    <div class="concept-name">Yemeni Mandi House</div>
+    <div class="concept-ref">Ref: Al-Salam Restaurant (Detroit/Houston), Yemen Cafe (Brooklyn)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#006064;">Accent #006064</span>
+      <span class="concept-tag concept-tag-hero">Hero: Pit lamb/chicken reveal</span>
+      <span class="concept-tag concept-tag-gap">🔥 50M TikTok views on mandi</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">US Gap:</span>Quality mandi outside Detroit/Houston/Brooklyn</div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"They lower a whole lamb into a pit at 6am. 8 hours later — this happens."</div>
+  </div>
+
+
+<!-- TIER 2 -->
+<div class="section-header tier2-header">
+  <div class="section-icon">🌿</div>
+  <div>
+    <div class="section-title-text">TIER 2 — STRONG MARKET CONCEPTS</div>
+    <div class="section-sub">Build after Tier 1 · Established US demand · Good search volume · Proven cuisine categories</div>
+  </div>
+</div>
+
+<div class="concept-grid">
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#2196F3;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#21</div>
+    <div class="concept-name">Basque Pintxos Bar</div>
+    <div class="concept-ref">Ref: Donostia (NYC), Leku (Miami)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#2196F3;">Accent #2196F3</span>
+      <span class="concept-tag concept-tag-hero">Hero: Pintxos bar counter</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"San Sebastián has more Michelin stars per capita than any city. Here's why."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#F57F17;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#22</div>
+    <div class="concept-name">Indonesian Warung</div>
+    <div class="concept-ref">Ref: Bali Kitchen (LA), Warung (various)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#F57F17;">Accent #F57F17</span>
+      <span class="concept-tag concept-tag-hero">Hero: Nasi goreng wok toss</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Indonesia has 270 million people and the most diverse food culture on earth"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#AD1457;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#23</div>
+    <div class="concept-name">Pakistani Karahi & Biryani House</div>
+    <div class="concept-ref">Ref: Bundoo Khan (Houston), Lahori Chargha (NJ)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#AD1457;">Accent #AD1457</span>
+      <span class="concept-tag concept-tag-hero">Hero: Karahi sizzle serve</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The most underrated cuisine in South Asia — and the US is waking up to it"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#0D47A1;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#24</div>
+    <div class="concept-name">Portuguese Pastelaria & Wine Bar</div>
+    <div class="concept-ref">Ref: Aldeia (NYC), Portale (various)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#0D47A1;">Accent #0D47A1</span>
+      <span class="concept-tag concept-tag-hero">Hero: Pastel de nata reveal</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The egg tart that started a global pastry war — and how to build the café"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#33691E;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#25</div>
+    <div class="concept-name">Malaysian Mamak Street Food</div>
+    <div class="concept-ref">Ref: Mamak (various US/AU), Penang Kitchen (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#33691E;">Accent #33691E</span>
+      <span class="concept-tag concept-tag-hero">Hero: Roti canai toss</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Roti canai videos get millions of views. Almost no US restaurant does it."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#37474F;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#26</div>
+    <div class="concept-name">Georgian (Caucasus) Wine & Khinkali Bar</div>
+    <div class="concept-ref">Ref: Oda House (NYC), Aragvi (various)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#37474F;">Accent #37474F</span>
+      <span class="concept-tag concept-tag-hero">Hero: Khinkali steam dumplings</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Georgia invented wine 8,000 years ago. Their dumplings are going viral."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#BF360C;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#27</div>
+    <div class="concept-name">Nigerian Suya & Pepper Soup Bar</div>
+    <div class="concept-ref">Ref: Buka (NYC), Afro Spot (Houston)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#BF360C;">Accent #BF360C</span>
+      <span class="concept-tag concept-tag-hero">Hero: Suya stick grill</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Nigeria's street food is having its London moment. The US is next."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1A237E;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#28</div>
+    <div class="concept-name">French Bistro Moderne</div>
+    <div class="concept-ref">Ref: Balthazar (NYC), Petit Trois (LA)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#1A237E;">Accent #1A237E</span>
+      <span class="concept-tag concept-tag-hero">Hero: Steak frites plating</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The casual French bistro format that costs $80K less than fine dining"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E91E63;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#29</div>
+    <div class="concept-name">Venezuelan Arepa Bar</div>
+    <div class="concept-ref">Ref: Caracas Arepa Bar (NYC), Patacon Pisao (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#E91E63;">Accent #E91E63</span>
+      <span class="concept-tag concept-tag-hero">Hero: Arepa cross-section</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Venezuela's answer to the sandwich — and Florida/Texas can't get enough"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#00695C;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#30</div>
+    <div class="concept-name">Argentinian Parrilla</div>
+    <div class="concept-ref">Ref: Don Julio (Buenos Aires), La Cabrera (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#00695C;">Accent #00695C</span>
+      <span class="concept-tag concept-tag-hero">Hero: Asado grill cross-section</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Argentina's asado culture — the BBQ tradition that puts Texas to shame"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#6A1B9A;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#31</div>
+    <div class="concept-name">Cambodian Khmer Kitchen</div>
+    <div class="concept-ref">Ref: Nyum Bai (Oakland), Angkor (various)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#6A1B9A;">Accent #6A1B9A</span>
+      <span class="concept-tag concept-tag-hero">Hero: Amok fish clay pot</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Southeast Asia's most overlooked cuisine — complex, ancient, and completely untapped"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#F9A825;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#32</div>
+    <div class="concept-name">Senegalese Thiéboudienne House</div>
+    <div class="concept-ref">Ref: Le Baobab (NYC), Africa Kine (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#F9A825;">Accent #F9A825</span>
+      <span class="concept-tag concept-tag-hero">Hero: Thiéboudienne rice pot</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"West Africa's national dish has won UNESCO heritage status. Almost no US restaurant serves it."</div>
+  </div>
+
+</div>
+
+
+<!-- TIER 3 -->
+<div class="section-header tier3-header">
+  <div class="section-icon">💎</div>
+  <div>
+    <div class="section-title-text">TIER 3 — NICHE BUT PROFITABLE</div>
+    <div class="section-sub">Smaller audience · Higher price tolerance · Less competition · Build once Tier 1+2 are done</div>
+  </div>
+</div>
+
+<div class="concept-grid">
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#9C27B0;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#33</div>
+    <div class="concept-name">Omakase Sushi Counter</div>
+    <div class="concept-ref">Ref: Masa (NYC), Nobu (global)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#9C27B0;">Accent #9C27B0</span>
+      <span class="concept-tag concept-tag-hero">Hero: Nigiri hand-press</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"8 seats. No menu. $250/person. How to run the most profitable restaurant format in the world."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#546E7A;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#34</div>
+    <div class="concept-name">Scandinavian New Nordic Café</div>
+    <div class="concept-ref">Ref: Aska (NYC), Broder (Portland)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#546E7A;">Accent #546E7A</span>
+      <span class="concept-tag concept-tag-hero">Hero: Open-face smørrebrød</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The design-led café format with the highest Instagram potential of any cuisine"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#558B2F;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#35</div>
+    <div class="concept-name">Oaxacan Mezcal & Tlayuda Bar</div>
+    <div class="concept-ref">Ref: Guelaguetza (LA), Casa Enrique (NYC)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#558B2F;">Accent #558B2F</span>
+      <span class="concept-tag concept-tag-hero">Hero: Mezcal pour + smoke</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Mezcal grew 400% in the US in 5 years. Build the restaurant around it."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E64A19;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#36</div>
+    <div class="concept-name">Burmese Teahouse</div>
+    <div class="concept-ref">Ref: Burma Superstar (SF), Rangoon Ruby (SF)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#E64A19;">Accent #E64A19</span>
+      <span class="concept-tag concept-tag-hero">Hero: Lahpet thoke tea leaf salad</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The only salad in the world made with fermented tea leaves. Zero competitors."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1976D2;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#37</div>
+    <div class="concept-name">Israeli Modern Kitchen</div>
+    <div class="concept-ref">Ref: Zahav (Philadelphia), Shaya (New Orleans)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#1976D2;">Accent #1976D2</span>
+      <span class="concept-tag concept-tag-hero">Hero: Salatim spread</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"The restaurant style that took Philadelphia from steaks to James Beard Award winner"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#F57C00;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#38</div>
+    <div class="concept-name">Nepali Dal Bhat House</div>
+    <div class="concept-ref">Ref: Himalayan Yak (NYC), Thamel (various)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#F57C00;">Accent #F57C00</span>
+      <span class="concept-tag concept-tag-hero">Hero: Dal bhat thali spread</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Nepal's national dish is eaten twice a day by 30 million people. US has almost none."</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#00838F;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#39</div>
+    <div class="concept-name">Cuban Ventanita (Walk-Up Window)</div>
+    <div class="concept-ref">Ref: Versailles (Miami), La Carreta (Miami)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#00838F;">Accent #00838F</span>
+      <span class="concept-tag concept-tag-hero">Hero: Colada espresso pour</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Miami's most iconic food format — and it can work in any city"</div>
+  </div>
+
+  <div class="concept-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#7B1FA2;border-radius:12px 12px 0 0;"></div>
+    <div class="concept-num">#40</div>
+    <div class="concept-name">Uzbek Plov & Samsa House</div>
+    <div class="concept-ref">Ref: Lyubishka (NYC), Central Asian restaurants (Denver)</div>
+    <div class="concept-tags">
+      <span class="concept-tag concept-tag-accent" style="background:#7B1FA2;">Accent #7B1FA2</span>
+      <span class="concept-tag concept-tag-hero">Hero: Kazan plov reveal</span>
+    </div>
+    <div class="concept-row"><span class="concept-row-label">Hook:</span>"Central Asia's silk road rice dish — cooked in a 50kg kazan. TikTok loves it."</div>
+  </div>
+
+</div>
+
+<!-- REVENUE SECTION -->
+<div class="section-header" style="border-color:#F5A623;">
+  <div class="section-icon" style="background:#F5A623;">💰</div>
+  <div>
+    <div class="section-title-text">REVENUE PROJECTIONS</div>
+    <div class="section-sub">Three scenarios · Guide-per-day pace · Bundle and tool revenue included</div>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:40px;">
+
+  <div style="background:#F1F8E9;border-radius:14px;padding:28px;border-top:5px solid #7CB342;">
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#7CB342;font-weight:bold;font-family:sans-serif;margin-bottom:12px;">Conservative</div>
+    <div style="font-size:11px;color:#888;font-family:sans-serif;margin-bottom:16px;">1 guide/day pace</div>
+    <div style="font-size:40px;font-weight:bold;color:#33691E;font-family:sans-serif;">$30K</div>
+    <div style="font-size:13px;color:#555;font-family:sans-serif;margin-top:4px;">in 6 months</div>
+    <div style="margin-top:16px;font-size:12px;font-family:sans-serif;color:#555;line-height:1.8;">
+      Month 1: $1,050<br>Month 3: $3,850<br>Month 6: $10,150/mo
+    </div>
+  </div>
+
+  <div style="background:#FFF3E0;border-radius:14px;padding:28px;border-top:5px solid #FF6F00;">
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#FF6F00;font-weight:bold;font-family:sans-serif;margin-bottom:12px;">Moderate</div>
+    <div style="font-size:11px;color:#888;font-family:sans-serif;margin-bottom:16px;">2 guides/day + bundles</div>
+    <div style="font-size:40px;font-weight:bold;color:#E65100;font-family:sans-serif;">$91K</div>
+    <div style="font-size:13px;color:#555;font-family:sans-serif;margin-top:4px;">in 6 months</div>
+    <div style="margin-top:16px;font-size:12px;font-family:sans-serif;color:#555;line-height:1.8;">
+      Month 1: $2,100<br>Month 3: $10,500<br>Month 6: $32,000/mo
+    </div>
+  </div>
+
+  <div style="background:#FCE4EC;border-radius:14px;padding:28px;border-top:5px solid #E91E63;">
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#E91E63;font-weight:bold;font-family:sans-serif;margin-bottom:12px;">Aggressive</div>
+    <div style="font-size:11px;color:#888;font-family:sans-serif;margin-bottom:16px;">Viral content hit</div>
+    <div style="font-size:40px;font-weight:bold;color:#880E4F;font-family:sans-serif;">$200K+</div>
+    <div style="font-size:13px;color:#555;font-family:sans-serif;margin-top:4px;">Year 1</div>
+    <div style="margin-top:16px;font-size:12px;font-family:sans-serif;color:#555;line-height:1.8;">
+      1 viral video = $5–15K/week<br>Filipino/Yemeni/Hopper<br>= highest viral candidates
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:48px 20px;color:#999;font-size:13px;font-family:sans-serif;border-top:2px solid #eee;margin-top:60px;">
+  <div style="font-size:22px;font-weight:bold;color:#1C1C1C;margin-bottom:8px;">KitchenFounder Pipeline Bible</div>
+  <div style="color:#888;margin-bottom:8px;">Version 1.0 · May 2026 · 100+ Concepts · 17 Sections</div>
+  <div>Built by working chefs, for first-time operators. US Market.</div>
+  <div style="margin-top:16px;font-size:11px;color:#bbb;">kitchenfounder.com · @kitchenfounder</div>
+</div>
+
+</div><!-- end page -->
+</body>
+</html>

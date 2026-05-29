@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parisian Brasserie — KitchenFounder Operations Guide v6</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#cc99ff;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(204,153,255,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #cc99ff;}
+.cover-eye{color:#cc99ff;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#cc99ff;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #cc99ff;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#cc99ff,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#000;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#150a1e;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#cc99ff;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#cc99ff;color:#000;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#150a1e;border:1px solid #cc99ff;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#cc99ff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #cc99ff;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#cc99ff;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#cc99ff;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#cc99ff,#150a1e);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #cc99ff;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#cc99ff;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#cc99ff;color:#000;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#cc99ff;color:#000;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#150a1e;border:1px solid #cc99ff;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#150a1e;border:1px solid #cc99ff;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ddbbff;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+<div class="cover">
+<div class="cover-eye">KITCHENFOUNDЕР — OPERATIONS GUIDE V6</div>
+<h1>Parisian<br>Brasserie</h1>
+<div class="cover-tag">All-day French classics. Executed with precision. Without ceremony.</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-val">40</div><div class="kpi-label">Seats</div></div>
+<div class="kpi"><div class="kpi-val">$44</div><div class="kpi-label">Avg Spend</div></div>
+<div class="kpi"><div class="kpi-val">22%</div><div class="kpi-label">Food Cost</div></div>
+<div class="kpi"><div class="kpi-val">$21.5K</div><div class="kpi-label">Est. Monthly Net</div></div>
+</div>
+<div class="lens-card">
+<div class="lens-title">// What a Michelin-trained chef sees in French brasserie cooking</div>
+<div class="lens-text">French classical technique is the foundation of every professional kitchen in the world — not because French food is superior, but because the French were the first to codify technique into a transferable system. Escoffier's brigade. The mother sauces. The stocks that take 8 hours because the collagen needs that long to convert to gelatin. A proper French onion soup takes 3 hours: 45 minutes to caramelise the onions properly — not brown them, caramelise them — then the stock, then the gratin. The version made in 20 minutes is not the same dish. The brasserie format demands this standard because its regulars remember the difference.</div>
+</div>
+<div class="lens-card">
+<div class="lens-title">// What this guide does</div>
+<div class="lens-text">The Parisian brasserie is the most democratic fine dining format ever created. Open all day. Welcoming everyone. The classics executed with precision and without ceremony. The croissant and flat white at $12.50 with a $0.82 food cost is the most efficient breakfast item in this collection. The steak frites at $28.99 closes dinner. When readers understand the all-day revenue model, the brasserie reveals itself as one of the most commercially intelligent formats in casual dining.</div>
+<div class="lens-closer">This guide is the blueprint.</div>
+</div>
+</div>
+<div class="page">
+<h2>SECTION 1 — ENTRÉES</h2>
+<table><tr><th>Dish</th><th>Ticket</th><th>Price</th><th>FC%</th></tr>
+<tr><td>French Onion Soup</td><td>8 min</td><td>$12.99</td><td>16%</td></tr>
+<tr><td>Croque Monsieur</td><td>6 min</td><td>$11.99</td><td>14%</td></tr>
+<tr><td>Steak Tartare</td><td>5 min</td><td>$16.99</td><td>22%</td></tr>
+<tr><td>Pâté de Campagne</td><td>3 min</td><td>$10.99</td><td>11%</td></tr>
+<tr><td>Salade Niçoise</td><td>5 min</td><td>$13.99</td><td>15%</td></tr>
+<tr><td>Escargots de Bourgogne</td><td>8 min</td><td>$14.99</td><td>18%</td></tr>
+</table>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>French Onion Soup</span></div>
+<div class="rh"><div class="rh-title">French Onion Soup — Gruyère Croûte</div>
+<div class="rh-meta">8 min ticket · 3 hr base prep · FC: 16% · $12.99</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty (per portion)</th><th>Cost</th></tr>
+<tr><td>Yellow onions, sliced thin</td><td>300g</td><td>$0.40</td></tr>
+<tr><td>Unsalted butter</td><td>30g</td><td>$0.33</td></tr>
+<tr><td>Beef stock (house)</td><td>400ml</td><td>$0.60</td></tr>
+<tr><td>Dry white wine</td><td>50ml</td><td>$0.30</td></tr>
+<tr><td>Gruyère, grated</td><td>60g</td><td>$0.90</td></tr>
+<tr><td>Sourdough crouton</td><td>1 thick slice</td><td>$0.25</td></tr>
+<tr><td>Thyme, bay leaf</td><td>to taste</td><td>$0.05</td></tr>
+</table>
+<div class="fc-box"><div class="fc-item"><div class="fc-val">$2.83</div><div class="fc-lbl">Food Cost</div></div>
+<div class="fc-item"><div class="fc-val">$12.99</div><div class="fc-lbl">Menu Price</div></div>
+<div class="fc-item"><div class="fc-val">21.8%</div><div class="fc-lbl">FC %</div></div>
+<div class="fc-item"><div class="fc-val">$10.16</div><div class="fc-lbl">Gross Profit</div></div></div>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Melt butter over low heat. Add sliced onions with a pinch of salt. Cook stirring every 5 min for 45 min until deeply caramelised — not brown, deeply amber and sweet.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add white wine, deglaze, reduce by half. Add beef stock, thyme, bay leaf. Simmer 20 min. Season. Hold hot for service.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">To order: ladle into oven-safe bowl. Float crouton on top. Pack with Gruyère.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Grill or salamander at <span class="temp">220°C</span> until cheese is melted, bubbly and golden-brown. 3–4 min. Serve immediately on a plate with a napkin underneath.</div></div>
+</div>
+<div class="chef-tip">💡 The caramelisation is the dish. Rush it and you get brown onion water. 45 minutes minimum — the sugars need time. Make the base the night before and it improves overnight.</div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Steak Tartare</span></div>
+<div class="rh"><div class="rh-title">Steak Tartare — Table Assembly</div>
+<div class="rh-meta">5 min ticket · FC: 22% · $16.99 · Assembled at the table</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Beef tenderloin, hand-chopped</td><td>150g</td><td>$2.10</td></tr>
+<tr><td>Egg yolk, free range</td><td>1</td><td>$0.35</td></tr>
+<tr><td>Dijon mustard</td><td>5g</td><td>$0.08</td></tr>
+<tr><td>Shallot, fine dice</td><td>15g</td><td>$0.10</td></tr>
+<tr><td>Capers, rinsed</td><td>10g</td><td>$0.15</td></tr>
+<tr><td>Cornichons, sliced</td><td>20g</td><td>$0.18</td></tr>
+<tr><td>Worcestershire, Tabasco</td><td>dash</td><td>$0.05</td></tr>
+<tr><td>Toasted baguette slices</td><td>4 pcs</td><td>$0.40</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Hand-chop tenderloin to order. Never grind — texture matters. Keep cold on ice until assembly.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Bring components to table on a board: meat, yolk in shell, dijon, shallot, capers, cornichons, Worcestershire, Tabasco.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Assemble at table in front of the guest — mix in order: mustard, yolk, shallot, capers, cornichons, season, finish with dashes. Takes 3 minutes. It's theatre. Let it be.</div></div>
+</div>
+<div class="chef-tip">💡 The table assembly is the product — not just the food. Train the server to do it confidently and slowly. Guests remember it.</div>
+</div></div>
+</div>
+<div class="page">
+<h2>SECTION 2 — MAINS</h2>
+<table><tr><th>Dish</th><th>Ticket</th><th>Price</th><th>FC%</th><th>Note</th></tr>
+<tr><td>Steak Frites — Bavette, Béarnaise</td><td>12 min</td><td>$28.99</td><td>20%</td><td>⭐ Signature</td></tr>
+<tr><td>Moules Marinières</td><td>12 min</td><td>$22.99</td><td>19%</td><td></td></tr>
+<tr><td>Confit Duck Leg</td><td>10 min</td><td>$26.99</td><td>21%</td><td>⭐ Signature</td></tr>
+<tr><td>Boeuf Bourguignon</td><td>10 min</td><td>$24.99</td><td>22%</td><td></td></tr>
+<tr><td>Poulet Rôti — Half Chicken</td><td>12 min</td><td>$22.99</td><td>18%</td><td></td></tr>
+<tr><td>Quiche Lorraine</td><td>8 min</td><td>$14.99</td><td>14%</td><td></td></tr>
+<tr><td>Croissant &amp; Flat White</td><td>5 min</td><td>$12.50</td><td>7%</td><td>⭐ Breakfast Sig.</td></tr>
+<tr><td>Crêpe Complète — Ham, Egg, Gruyère</td><td>8 min</td><td>$15.99</td><td>13%</td><td></td></tr>
+<tr><td>Tartine au Saumon Fumé</td><td>5 min</td><td>$16.99</td><td>20%</td><td></td></tr>
+<tr><td>Plat du Jour</td><td>varies</td><td>$18.99</td><td>18–22%</td><td>Daily special</td></tr>
+</table>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Steak Frites — Bavette, Béarnaise ⭐</span></div>
+<div class="rh"><div class="rh-title">Steak Frites — Bavette, Béarnaise</div>
+<div class="rh-meta">12 min ticket · FC: 20% · $28.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Bavette steak (flank/skirt)</td><td>220g</td><td>$3.80</td></tr>
+<tr><td>Frites (house-cut, double-fried)</td><td>180g raw</td><td>$0.50</td></tr>
+<tr><td>Béarnaise — butter, egg yolk, tarragon</td><td>60ml</td><td>$0.90</td></tr>
+<tr><td>Butter, thyme, garlic (basting)</td><td>20g</td><td>$0.30</td></tr>
+<tr><td>Watercress garnish</td><td>20g</td><td>$0.30</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-item"><div class="fc-val">$5.80</div><div class="fc-lbl">Food Cost</div></div>
+<div class="fc-item"><div class="fc-val">$28.99</div><div class="fc-lbl">Menu Price</div></div>
+<div class="fc-item"><div class="fc-val">20%</div><div class="fc-lbl">FC %</div></div>
+<div class="fc-item"><div class="fc-val">$23.19</div><div class="fc-lbl">Gross Profit</div></div>
+</div>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Season bavette generously. Bring to room temp 30 min before service. Frites: cut uniform, blanch in oil at <span class="temp">140°C</span> until soft, drain, hold. Second fry to order at <span class="temp">190°C</span> for 3 min until golden.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Sear bavette on cast iron at <span class="temp">high heat</span> — 2 min each side for medium-rare. Add butter, thyme, garlic. Baste 90 seconds. Rest 3 min minimum.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Slice against the grain at 45°. Fan on plate with frites. Béarnaise in a small pot on the side. Watercress dressed with lemon.</div></div>
+</div>
+<div class="chef-tip">💡 Bavette is a working muscle — it needs the rest. Cut too early and the juices run out. 3 minutes minimum. The béarnaise must be made fresh every service; never reheat.</div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Confit Duck Leg ⭐</span></div>
+<div class="rh"><div class="rh-title">Confit Duck Leg — Lentilles du Puy</div>
+<div class="rh-meta">10 min ticket (3 hr confit prep) · FC: 21% · $26.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Duck leg, skin-on</td><td>1 whole</td><td>$3.20</td></tr>
+<tr><td>Duck fat (or blend)</td><td>300ml to submerge</td><td>$1.20</td></tr>
+<tr><td>Lentilles du Puy, cooked</td><td>120g</td><td>$0.40</td></tr>
+<tr><td>Lardon, shallot, Dijon</td><td>30g / 20g / 5g</td><td>$0.50</td></tr>
+<tr><td>Thyme, garlic, bay</td><td>aromatics</td><td>$0.05</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Salt duck legs overnight. Rinse, pat dry. Submerge fully in duck fat with aromatics. Cook at <span class="temp">80°C</span> for 3 hours until meat pulls from bone.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Cool and refrigerate in fat — improves for 2 days. To order: remove from fat, skin-side down in hot dry pan. Render and crisp skin 4 min. Finish in oven at <span class="temp">200°C</span> for 3 min.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Warm lentils with lardon, shallot, splash of red wine vinegar, Dijon. Plate lentils, duck leg on top, skin up.</div></div>
+</div>
+<div class="chef-tip">💡 The fat can be reused up to 3 times if strained clean. The duck improves significantly after 48 hours in fat — batch cook Tuesday for Thursday/Friday service.</div>
+</div></div>
+</div>
+<div class="page">
+<h2>SECTION 3 — DESSERTS</h2>
+<table><tr><th>Dish</th><th>Ticket</th><th>Price</th><th>FC%</th></tr>
+<tr><td>Crème Brûlée</td><td>2 min (torch)</td><td>$9.99</td><td>10%</td></tr>
+<tr><td>Tarte Tatin</td><td>5 min</td><td>$10.99</td><td>13%</td></tr>
+<tr><td>Chocolate Mousse</td><td>3 min</td><td>$8.99</td><td>11%</td></tr>
+<tr><td>Île Flottante — Floating Island</td><td>4 min</td><td>$9.99</td><td>9%</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-item"><div class="fc-val">$1.00</div><div class="fc-lbl">Brûlée FC</div></div>
+<div class="fc-item"><div class="fc-val">$1.43</div><div class="fc-lbl">Tatin FC</div></div>
+<div class="fc-item"><div class="fc-val">$0.99</div><div class="fc-lbl">Mousse FC</div></div>
+<div class="fc-item"><div class="fc-val">$0.90</div><div class="fc-lbl">Île Flottante FC</div></div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Crème Brûlée</span></div>
+<div class="rh"><div class="rh-title">Crème Brûlée — Vanilla, Torch to Order</div>
+<div class="rh-meta">2 min ticket · FC: 10% · $9.99</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Double cream</td><td>180ml</td><td>$0.50</td></tr>
+<tr><td>Egg yolks</td><td>3</td><td>$1.05</td></tr>
+<tr><td>Caster sugar</td><td>45g + 15g brûlée</td><td>$0.10</td></tr>
+<tr><td>Vanilla bean</td><td>1/4 pod</td><td>$0.35</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Heat cream with vanilla to <span class="temp">80°C</span>. Whisk yolks with sugar until pale. Temper cream in slowly. Strain. Pour into ramekins.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Bake bain-marie at <span class="temp">150°C</span> for 35 min until just set with slight wobble in centre. Refrigerate minimum 4 hours.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">To order: dust with 5mm even layer of caster sugar. Torch in circular motion until golden caramel crust. No brown spots — even coverage. Serve immediately.</div></div>
+</div>
+<div class="chef-tip">💡 The crust should crack cleanly — if it bends, the sugar layer is too thin or the torch was too fast. Tell your team: if in doubt, redo it. It takes 30 seconds.</div>
+</div></div>
+
+<h2>SECTION 4 — DRINKS</h2>
+<div class="drink-grid">
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Kir Royale</div><div class="drink-price">$13.99 · Cassis, Champagne</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Pastis 51</div><div class="drink-price">$9.99 · Anise, Water</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Côtes du Rhône Red</div><div class="drink-price">$12.99/glass</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Muscadet White</div><div class="drink-price">$11.99/glass</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Kronenbourg 1664</div><div class="drink-price">$7.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Café Allongé</div><div class="drink-price">$4.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Café Crème</div><div class="drink-price">$5.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Eau Minérale — Perrier</div><div class="drink-price">$4.99</div></div></div>
+</div>
+<div class="chef-tip">💡 Open every table with the kir royale offer — it's $13.99 at under $2 cost. Even if 30% of tables take it, it adds $4+ to average spend before they order food.</div>
+</div>
+<div class="page">
+<h2>SECTION 5 — SERVICE TRAINING</h2>
+
+<div class="script-box">
+<div class="script-label">Script 01 — Welcome + Kir Royale</div>
+<div class="script-text">"We open every table with the option of a kir royale — cassis, champagne. $13.99. It's how the French start dinner. If you'd prefer, the pastis is also very good — anise spirit with cold water, very traditional. Both are on the menu."</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">Script 02 — Steak Tartare Table Assembly</div>
+<div class="script-text">"The tartare is assembled at the table — egg yolk, capers, cornichons, Dijon, shallot. We season it in front of you. Takes 3 minutes. Worth watching. If you'd like it spicier I can add more Tabasco. Your call."</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">Script 03 — Confit Duck Explanation</div>
+<div class="script-text">"The duck has been in its own fat since this morning. Three hours at 80°C. It's the most classical French technique — the fat preserves the moisture completely. You can't replicate it with a faster method. The skin gets crisped to order."</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">Script 04 — Crème Brûlée Theatre</div>
+<div class="script-text">"The brûlée is torched to order — you'll hear it from the kitchen. The crust should crack cleanly when you tap it. If it doesn't, send it back. We'll redo it. Takes 30 seconds."</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">Script 05 — Return Visit + Plat du Jour</div>
+<div class="script-text">"The plat du jour changes daily — whatever came in fresh, cooked the French way. It's always the best value on the menu and it changes every day. Worth coming back for."</div>
+</div>
+
+<h2>SECTION 6 — DAILY PREP SCHEDULE</h2>
+<table class="prep-table">
+<tr><th>Time</th><th>Task</th><th>Who</th></tr>
+<tr><td>07:00</td><td>Croissant delivery check, breakfast station setup</td><td>Opener</td></tr>
+<tr><td>08:00</td><td>Open for breakfast service</td><td>FOH</td></tr>
+<tr><td>09:00</td><td>Confit duck into fat — 3hr cook</td><td>Chef</td></tr>
+<tr><td>10:00</td><td>Boeuf bourguignon braise starts (4hr)</td><td>Chef</td></tr>
+<tr><td>10:30</td><td>Onion soup base starts, crème brûlée sets</td><td>Chef</td></tr>
+<tr><td>11:30</td><td>Lunch mise en place complete</td><td>All</td></tr>
+<tr><td>12:00</td><td>Lunch service</td><td>All</td></tr>
+<tr><td>15:00</td><td>Afternoon reset, restock, plat du jour prep</td><td>Chef</td></tr>
+<tr><td>17:00</td><td>Dinner mise en place</td><td>All</td></tr>
+<tr><td>18:30</td><td>Dinner service opens</td><td>All</td></tr>
+<tr><td>22:30</td><td>Close, stock check, prep notes for tomorrow</td><td>Closer</td></tr>
+</table>
+</div>
+<div class="page">
+<h2>SECTION 7 — P&amp;L MODEL</h2>
+<table class="rev-table">
+<tr><th>Revenue Stream</th><th>Daily</th><th>Weekly</th><th>Monthly</th></tr>
+<tr><td>Food Sales (lunch + dinner)</td><td>$2,640</td><td>$15,840</td><td>$68,640</td></tr>
+<tr><td>Breakfast Set (Croissant + Coffee)</td><td>$500</td><td>$3,000</td><td>$13,000</td></tr>
+<tr><td>Beverage (wine, cocktails, coffee)</td><td>$380</td><td>$2,280</td><td>$9,880</td></tr>
+<tr><td><strong>Total Revenue</strong></td><td><strong>$3,520</strong></td><td><strong>$21,120</strong></td><td><strong>$91,520</strong></td></tr>
+</table>
+<table class="rev-table">
+<tr><th>Cost</th><th>%</th><th>Monthly</th></tr>
+<tr><td>Food Cost</td><td>22%</td><td>$20,134</td></tr>
+<tr><td>Labour</td><td>28%</td><td>$25,626</td></tr>
+<tr><td>Overheads (rent, utilities, etc.)</td><td>15%</td><td>$13,728</td></tr>
+<tr class="profit-row"><td>NET PROFIT</td><td>35%</td><td>$32,032</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-item"><div class="fc-val">$0.82</div><div class="fc-lbl">Croissant FC</div></div>
+<div class="fc-item"><div class="fc-val">$12.50</div><div class="fc-lbl">Set Price</div></div>
+<div class="fc-item"><div class="fc-val">6.6%</div><div class="fc-lbl">Breakfast FC%</div></div>
+<div class="fc-item"><div class="fc-val">$32K</div><div class="fc-lbl">Monthly Net</div></div>
+</div>
+<div class="chef-tip">💡 The all-day model is the margin play. Breakfast with 6.6% FC fills dead morning hours. Wine margins (70%+) raise the average spend at dinner. The brasserie is never not open.</div>
+
+<h2>SECTION 8 — SAFETY &amp; ALLERGENS</h2>
+<div class="safety">
+<h3>Temperature Control</h3>
+<table><tr><th>Item</th><th>Hold Temp</th><th>Max Hold</th></tr>
+<tr><td>Duck confit (in fat)</td><td>Below 3°C</td><td>5 days</td></tr>
+<tr><td>Steak tartare (prepped)</td><td>Below 2°C</td><td>Same day only</td></tr>
+<tr><td>Béarnaise sauce</td><td>Above 63°C or below 5°C</td><td>2 hr warm hold max</td></tr>
+<tr><td>Onion soup base</td><td>Above 65°C service / below 3°C storage</td><td>3 days</td></tr>
+<tr><td>Crème brûlée (pre-brûlée)</td><td>Below 3°C</td><td>2 days</td></tr>
+</table>
+</div>
+<div class="safety">
+<h3>Allergen Matrix</h3>
+<table><tr><th>Dish</th><th>Allergens</th></tr>
+<tr><td>French Onion Soup</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span></div></td></tr>
+<tr><td>Croque Monsieur</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Steak Tartare</td><td><div class="al"><span class="a">Eggs</span></div></td></tr>
+<tr><td>Escargots</td><td><div class="al"><span class="a">Dairy</span></div></td></tr>
+<tr><td>Quiche Lorraine</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Croissant</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Crème Brûlée</td><td><div class="al"><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Tarte Tatin</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span></div></td></tr>
+</table>
+</div>
+<footer>KitchenFounder Operations Guide v6 · Parisian Brasserie · kitchenfounder.com · For operator use only</footer>
+</div>
+</body>
+</html>

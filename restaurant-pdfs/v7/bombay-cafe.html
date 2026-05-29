@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bombay Café · KitchenFounder Operations Guide v7</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#FAFAF8;color:#1C1C1C;font-family:'Georgia',serif;font-size:14px;line-height:1.7;}
+.page{background:#FAFAF8;max-width:210mm;margin:0 auto;padding:18mm 20mm;}
+h1,h2,h3,h4{font-family:'Arial',sans-serif;}
+h2{color:#1C1C1C;font-size:1.2rem;font-weight:700;margin:32px 0 14px;padding-bottom:8px;border-bottom:2px solid #C0632B;letter-spacing:1px;text-transform:uppercase;}
+h4{color:#1C1C1C;font-size:0.9rem;font-weight:700;margin:12px 0 6px;text-transform:uppercase;letter-spacing:0.5px;}
+.sn2{display:inline-block;background:#C0632B;color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:0.85rem;font-weight:700;margin-right:10px;}
+.cover{background:#FAFAF8;padding:60px 20mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;page-break-after:always;}
+.flag-bar{height:6px;background:linear-gradient(to right,#FF9933 33%,#fff 33%,#fff 66%,#138808 66%);margin-bottom:32px;border-radius:3px;}
+.cover-eye{color:#C0632B;font-family:'Courier New',monospace;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px;}
+.cover h1{color:#1C1C1C;font-size:3.2rem;font-weight:900;line-height:1.05;margin-bottom:8px;font-family:'Arial Black',sans-serif;}
+.cover-sub{color:#C0632B;font-size:1.1rem;font-weight:600;margin-bottom:12px;font-family:'Arial',sans-serif;}
+.cover-tag{color:#666;font-style:italic;font-size:0.95rem;margin-bottom:48px;border-left:3px solid #C0632B;padding-left:12px;}
+.kpi-row{display:flex;gap:16px;margin:32px 0;flex-wrap:wrap;}
+.kpi{background:#fff;border:1px solid #e8e8e4;border-top:3px solid #C0632B;border-radius:4px;padding:18px 22px;flex:1;min-width:110px;}
+.kpi-val{color:#C0632B;font-family:'Courier New',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#888;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-family:'Arial',sans-serif;}
+.cover-lang{margin-top:40px;padding:20px 24px;background:#fff;border:1px solid #e8e8e4;border-radius:4px;}
+.cover-lang-title{color:#C0632B;font-family:'Courier New',monospace;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.cover-lang-text{color:#444;font-size:0.88rem;font-style:italic;line-height:1.65;}
+.recipe{background:#fff;border:1px solid #e8e8e4;border-radius:4px;margin:20px 0;overflow:hidden;page-break-inside:avoid;}
+.rh{background:#FAFAF8;padding:16px 20px;border-bottom:1px solid #e8e8e4;border-left:4px solid #C0632B;}
+.rh-title{color:#1C1C1C;font-family:'Arial',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-sub{color:#666;font-size:0.82rem;margin-top:3px;font-family:'Arial',sans-serif;}
+.rh-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.tag{background:#F2F2F0;border:1px solid #ddd;border-radius:3px;padding:2px 8px;font-size:0.72rem;color:#555;font-family:'Courier New',monospace;}
+.rb{padding:16px 20px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;font-size:0.82rem;}
+.it th{background:#C0632B;color:#fff;padding:7px 10px;text-align:left;font-family:'Arial',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;}
+.it tr:nth-child(even){background:#F7F7F5;}
+.it tr:nth-child(odd){background:#fff;}
+.it td{padding:6px 10px;border-bottom:1px solid #ece9e4;color:#1C1C1C;}
+.fc-box{background:#F2F2F0;border:1px solid #e0ddd8;border-radius:4px;padding:14px 16px;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #e8e8e4;font-size:0.82rem;font-family:'Arial',sans-serif;}
+.fc-row:last-child{border-bottom:none;font-weight:700;}
+.fc-val{color:#C0632B;font-family:'Courier New',monospace;font-weight:700;}
+.step{display:flex;gap:12px;margin:10px 0;align-items:flex-start;page-break-inside:avoid;}
+.sn{background:#C0632B;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:0.72rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#1C1C1C;font-size:0.87rem;line-height:1.65;}
+.temp{background:#FFF8E1;border:1px solid #C0632B;border-radius:3px;padding:1px 6px;font-family:'Courier New',monospace;font-size:0.76rem;color:#C0632B;display:inline-block;}
+.tb{background:#FDF6E3;border-left:3px solid #C0632B;padding:10px 14px;margin:12px 0;border-radius:0 4px 4px 0;font-size:0.84rem;color:#555;font-style:italic;}
+.al{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0;}
+.a{background:#FFFBF0;border:1px solid #C0632B;border-radius:3px;padding:2px 8px;font-size:0.72rem;color:#8B4A0A;font-family:'Courier New',monospace;}
+.info-box{background:#fff;border:1px solid #e8e8e4;border-left:4px solid #C0632B;border-radius:0 4px 4px 0;padding:14px 18px;margin:16px 0;font-size:0.87rem;color:#444;}
+.script-box{background:#fff;border:1px solid #e8e8e4;border-left:3px solid #C0632B;padding:14px 18px;margin:14px 0;border-radius:0 4px 4px 0;page-break-inside:avoid;}
+.script-label{color:#C0632B;font-family:'Courier New',monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#333;font-style:italic;font-size:0.87rem;line-height:1.65;}
+.script-why{color:#666;font-size:0.82rem;margin-top:8px;padding-top:8px;border-top:1px solid #ece9e4;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin:12px 0;}
+.prep-table th{background:#C0632B;color:#fff;padding:8px 10px;text-align:left;font-family:'Arial',sans-serif;font-size:0.75rem;text-transform:uppercase;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #e8e8e4;background:#fff;vertical-align:top;}
+.prep-table tr:nth-child(even) td{background:#F7F7F5;}
+.rev-table{width:100%;border-collapse:collapse;font-size:0.83rem;margin:12px 0;}
+.rev-table th{background:#C0632B;color:#fff;padding:8px 12px;text-align:left;font-family:'Arial',sans-serif;font-size:0.75rem;text-transform:uppercase;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #e8e8e4;background:#fff;}
+.rev-table tr:nth-child(even) td{background:#F7F7F5;}
+.total-row td{background:#F2F2F0 !important;font-weight:700;}
+.net-row td{background:#FDF6E3 !important;font-weight:700;color:#C0632B;font-family:'Courier New',monospace;}
+.lens-card{background:#fff;border:1px solid #e8e8e4;border-left:4px solid #C0632B;border-radius:0 4px 4px 0;padding:22px 26px;margin:20px 0;}
+.lens-title{color:#C0632B;font-family:'Courier New',monospace;font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#444;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#C0632B;font-weight:700;margin-top:12px;font-size:0.9rem;font-family:'Arial',sans-serif;}
+.staff-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin:12px 0;}
+.staff-table th{background:#1C1C1C;color:#fff;padding:8px 10px;text-align:left;font-family:'Arial',sans-serif;font-size:0.75rem;text-transform:uppercase;}
+.staff-table td{padding:7px 10px;border-bottom:1px solid #e8e8e4;background:#fff;vertical-align:top;}
+.staff-table tr:nth-child(even) td{background:#F7F7F5;}
+.section-header{display:flex;align-items:center;gap:12px;margin:40px 0 16px;padding-bottom:10px;border-bottom:2px solid #C0632B;}
+.kitchen-layout{background:#fff;border:2px solid #1C1C1C;border-radius:4px;padding:20px 24px;font-family:'Courier New',Courier,monospace;font-size:0.78rem;line-height:1.6;white-space:pre;overflow-x:auto;margin:20px 0;}
+.station-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0;}
+.station-card{background:#fff;border:1px solid #e8e8e4;border-top:3px solid #C0632B;border-radius:4px;padding:16px 18px;page-break-inside:avoid;}
+.station-card h4{color:#C0632B;margin:0 0 8px;font-size:0.88rem;}
+.station-card ul{padding-left:16px;font-size:0.83rem;line-height:1.8;color:#444;}
+.equip-tag{display:inline-block;background:#FDF6E3;border:1px solid #C0632B;border-radius:3px;padding:2px 8px;font-size:0.7rem;color:#C0632B;font-family:'Courier New',monospace;margin-top:8px;}
+footer{text-align:center;color:#aaa;font-size:0.7rem;font-family:'Courier New',monospace;margin-top:48px;padding-top:16px;border-top:1px solid #e8e8e4;}
+@media print{html,body{background:#FAFAF8 !important;}.page{background:#FAFAF8 !important;}.recipe,.script-box,.step,.station-card{page-break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="cover">
+<div class="flag-bar"></div>
+<div class="cover-eye">KitchenFounder &middot; Operations Guide v7 &middot; US Market 2025</div>
+<h1>Bombay<br>Cafe</h1>
+<div class="cover-sub">The Complete Operator Blueprint &mdash; Spice, Soul &amp; Indian Hospitality</div>
+<div class="cover-tag">From pau bhaji to lamb rogan josh &mdash; everything you need to open and run a profitable Bombay-style cafe in the US market. Built from real kitchen experience, inspired by the greatest Indian restaurant concept in the world.</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-val">22-28%</div><div class="kpi-label">Food Cost Target</div></div>
+<div class="kpi"><div class="kpi-val">28</div><div class="kpi-label">Menu Items</div></div>
+<div class="kpi"><div class="kpi-val">$35-55</div><div class="kpi-label">Avg Spend / Head</div></div>
+<div class="kpi"><div class="kpi-val">$307K</div><div class="kpi-label">Annual Net Profit (model)</div></div>
+</div>
+<div class="cover-lang">
+<div class="cover-lang-title">// What This Guide Contains</div>
+<div class="cover-lang-text">6 Entrees &middot; 10 Mains &middot; 4 Desserts &middot; 8 Drinks (incl. Indian-inspired cocktails) &middot; Kitchen Design &middot; Service Training Module &middot; Staff Workflow &middot; Weekly Prep Schedule &middot; Customer Retention System &middot; P&amp;L Model &middot; Allergen Table &middot; Chef&rsquo;s Lens. Every recipe includes gram weights, US market ingredient costs, food cost %, and word-for-word service scripts.</div>
+</div>
+</div>
+
+<!-- SECTION 1: ENTREES -->
+<h2><span class="sn2">1</span> Entrees</h2>
+<div class="info-box">Street-food soul, fine-dining execution. These six starters set the tone for the entire meal. Speed and consistency are critical — most fire in under 8 minutes.</div>
+
+<!-- Pau Bhaji -->
+<div class="recipe">
+<div class="rh">
+<div class="rh-title">Pau Bhaji</div>
+<div class="rh-sub">Mumbai street classic &mdash; spiced vegetable mash with buttered rolls &mdash; Yield: 1 portion</div>
+<div class="rh-tags"><span class="tag">vegetarian</span><span class="tag">gluten</span><span class="tag">dairy</span><span class="tag">8 min fire</span><span class="tag">menu price $14</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<table class="it">
+<tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Potatoes (boiled, mashed)</td><td>180g</td><td>$0.22</td></tr>
+<tr><td>Mixed veg (peas, cauliflower, carrot)</td><td>80g</td><td>$0.30</td></tr>
+<tr><td>Tomato (chopped)</td><td>60g</td><td>$0.18</td></tr>
+<tr><td>Onion (fine dice)</td><td>40g</td><td>$0.08</td></tr>
+<tr><td>Butter</td><td>30g</td><td>$0.24</td></tr>
+<tr><td>Pau bhaji masala</td><td>8g</td><td>$0.14</td></tr>
+<tr><td>Ginger-garlic paste</td><td>10g</td><td>$0.10</td></tr>
+<tr><td>Pau rolls (2)</td><td>2pc</td><td>$0.40</td></tr>
+<tr><td>Butter (for rolls)</td><td>15g</td><td>$0.12</td></tr>
+<tr><td>Coriander, lemon wedge</td><td>garnish</td><td>$0.08</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-row"><span>Total food cost</span><span class="fc-val">$1.86</span></div>
+<div class="fc-row"><span>Menu price</span><span class="fc-val">$14.00</span></div>
+<div class="fc-row"><span>Food cost %</span><span class="fc-val">13.3%</span></div>
+<div class="fc-row"><span>Gross profit</span><span class="fc-val">$12.14</span></div>
+</div>
+</div>
+<h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Heat flat griddle or tawa to <span class="temp">medium-high</span>. Add 15g butter, sweat onion 2 min until soft.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add ginger-garlic paste, cook 1 min. Add tomato, cook down 2 min until jammy.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Add all vegetables and mashed potato. Mix and mash on the griddle. Add pau bhaji masala and 30ml water. Cook, pressing and folding, for 3 min until unified.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Add remaining butter, fold through. Taste — it needs to be spicy, tangy, rich. Adjust salt and a squeeze of lemon.</div></div>
+<div class="step"><div class="sn">5</div><div class="st">Slice pau rolls, butter generously, toast cut-side on griddle until golden. Plate bhaji in a small cast iron or bowl, garnish with raw onion, coriander, lemon wedge. Rolls alongside.</div></div>
+<div class="al"><span class="a">DAIRY: butter</span><span class="a">GLUTEN: pau rolls</span></div>
+<div class="tb">Pro tip: The bhaji is better the second day. Par-cook a big batch, portion and reheat to order on the tawa with a fresh knob of butter. The mashing on the griddle is the signature move — do it in front of guests at an open kitchen if possible.</div>
+<div class="script-box">
+<div class="script-label">// Service Script</div>
+<div class="script-text">"This is our Pau Bhaji — Mumbai's most beloved street food. Spiced vegetable mash cooked on the iron griddle with hand-rolled butter. Tear the pau and scoop straight in. The lemon brightens everything — squeeze it on when you're ready."</div>
+<div class="script-why">Why it works: Gives guests permission to eat with their hands. Sets a casual, joyful tone for the meal.</div>
+</div>
+</div>
+</div>
+
+<!-- Chicken Tikka -->
+<div class="recipe">
+<div class="rh">
+<div class="rh-title">Chicken Tikka</div>
+<div class="rh-sub">Tandoor-charred yoghurt-marinated chicken thighs &mdash; Yield: 1 portion (4 pieces)</div>
+<div class="rh-tags"><span class="tag">gluten-free</span><span class="tag">dairy</span><span class="tag">tandoor/grill</span><span class="tag">12 min fire</span><span class="tag">menu price $18</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<table class="it">
+<tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Chicken thigh (boneless, cubed)</td><td>200g</td><td>$1.20</td></tr>
+<tr><td>Full-fat yoghurt</td><td>60g</td><td>$0.18</td></tr>
+<tr><td>Ginger-garlic paste</td><td>15g</td><td>$0.15</td></tr>
+<tr><td>Kashmiri chilli powder</td><td>5g</td><td>$0.08</td></tr>
+<tr><td>Garam masala</td><td>3g</td><td>$0.06</td></tr>
+<tr><td>Cumin powder</td><td>2g</td><td>$0.04</td></tr>
+<tr><td>Lemon juice</td><td>15ml</td><td>$0.06</td></tr>
+<tr><td>Mustard oil</td><td>10ml</td><td>$0.10</td></tr>
+<tr><td>Chaat masala (finish)</td><td>2g</td><td>$0.04</td></tr>
+<tr><td>Mint chutney, onion salad</td><td>40g</td><td>$0.28</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-row"><span>Total food cost</span><span class="fc-val">$2.19</span></div>
+<div class="fc-row"><span>Menu price</span><span class="fc-val">$18.00</span></div>
+<div class="fc-row"><span>Food cost %</span><span class="fc-val">12.2%</span></div>
+<div class="fc-row"><span>Gross profit</span><span class="fc-val">$15.81</span></div>
+</div>
+</div>
+<h4>Marinade (min 6h, ideal 24h)</h4>
+<div class="step"><div class="sn">1</div><div class="st">Combine yoghurt, ginger-garlic paste, Kashmiri chilli, garam masala, cumin, lemon juice, mustard oil. Mix thoroughly. Score chicken pieces, marinate minimum 6 hours refrigerated.</div></div>
+<h4>Service Fire</h4>
+<div class="step"><div class="sn">2</div><div class="st">Pull chicken from fridge 20 min before service. Thread onto skewers leaving small gaps.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Cook in tandoor at <span class="temp">450-500°F</span> for 8-10 min, or on charcoal grill, turning once. Aim for char marks and slight blackening on edges &mdash; that is the flavour.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Rest 2 min off heat. Dust with chaat masala, squeeze lemon. Plate with onion rings, coriander, mint chutney.</div></div>
+<div class="al"><span class="a">DAIRY: yoghurt</span><span class="a">GF: no gluten ingredients</span></div>
+<div class="tb">The char is non-negotiable. Pale tikka is wrong tikka. If using a commercial oven, finish under the broiler at maximum heat for 2 min to get colour.</div>
+<div class="script-box">
+<div class="script-label">// Service Script</div>
+<div class="script-text">"Chicken Tikka &mdash; marinated 24 hours in yoghurt and Kashmiri chilli, then cooked in our tandoor at over 450 degrees. The chaat masala on top is our secret finish. Dip in the mint chutney, but honestly, it doesn't need it."</div>
+</div>
+</div>
+</div>
+
+<!-- Chaat Papdi -->
+<div class="recipe">
+<div class="rh">
+<div class="rh-title">Chaat Papdi</div>
+<div class="rh-sub">Crispy wafers with chickpeas, chutneys &amp; yoghurt &mdash; Yield: 1 portion</div>
+<div class="rh-tags"><span class="tag">vegetarian</span><span class="tag">gluten</span><span class="tag">dairy</span><span class="tag">5 min assemble</span><span class="tag">menu price $13</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<table class="it">
+<tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Papdi wafers</td><td>8pc</td><td>$0.30</td></tr>
+<tr><td>Boiled chickpeas</td><td>60g</td><td>$0.18</td></tr>
+<tr><td>Boiled potato (diced)</td><td>50g</td><td>$0.08</td></tr>
+<tr><td>Whisked yoghurt</td><td>60g</td><td>$0.18</td></tr>
+<tr><td>Tamarind chutney</td><td>20g</td><td>$0.20</td></tr>
+<tr><td>Green mint chutney</td><td>15g</td><td>$0.12</td></tr>
+<tr><td>Chaat masala</td><td>3g</td><td>$0.06</td></tr>
+<tr><td>Sev (fine chickpea noodles)</td><td>15g</td><td>$0.10</td></tr>
+<tr><td>Pomegranate seeds</td><td>10g</td><td>$0.14</td></tr>
+<tr><td>Coriander (fresh)</td><td>garnish</td><td>$0.05</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-row"><span>Total food cost</span><span class="fc-val">$1.41</span></div>
+<div class="fc-row"><span>Menu price</span><span class="fc-val">$13.00</span></div>
+<div class="fc-row"><span>Food cost %</span><span class="fc-val">10.8%</span></div>
+<div class="fc-row"><span>Gross profit</span><span class="fc-val">$11.59</span></div>
+</div>
+</div>
+<h4>Assembly (to order)</h4>
+<div class="step"><div class="sn">1</div><div class="st">Arrange papdi on plate. Place chickpeas and potato on top of each wafer.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Spoon yoghurt over generously. Drizzle tamarind chutney, then green chutney in zigzag pattern.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Sprinkle chaat masala, sev, pomegranate seeds. Garnish with coriander. Serve immediately &mdash; soggy papdi is a failure.</div></div>
+<div class="al"><span class="a">DAIRY: yoghurt</span><span class="a">GLUTEN: papdi wafers</span></div>
+<div class="tb">Speed is everything. Assemble chaat at the pass, not in the kitchen. The papdi must be crispy when it hits the table. Pre-portion toppings in small ramekins during mise en place.</div>
+</div>
+</div>
+
+<!-- Keema Pau -->
+<div class="recipe">
+<div class="rh">
+<div class="rh-title">Keema Pau</div>
+<div class="rh-sub">Spiced minced lamb with soft Mumbai rolls &mdash; Yield: 1 portion</div>
+<div class="rh-tags"><span class="tag">lamb</span><span class="tag">gluten</span><span class="tag">dairy</span><span class="tag">10 min fire</span><span class="tag">menu price $17</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<table class="it">
+<tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Minced lamb (20% fat)</td><td>160g</td><td>$2.40</td></tr>
+<tr><td>Onion (fine dice)</td><td>50g</td><td>$0.10</td></tr>
+<tr><td>Tomato (chopped)</td><td>40g</td><td>$0.12</td></tr>
+<tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.12</td></tr>
+<tr><td>Green peas</td><td>30g</td><td>$0.10</td></tr>
+<tr><td>Keema masala blend</td><td>8g</td><td>$0.14</td></tr>
+<tr><td>Butter</td><td>15g</td><td>$0.12</td></tr>
+<tr><td>Pau rolls (2)</td><td>2pc</td><td>$0.40</td></tr>
+<tr><td>Fried egg (optional)</td><td>1pc</td><td>$0.18</td></tr>
+<tr><td>Coriander, green chilli</td><td>garnish</td><td>$0.06</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-row"><span>Total food cost</span><span class="fc-val">$3.74</span></div>
+<div class="fc-row"><span>Menu price</span><span class="fc-val">$17.00</span></div>
+<div class="fc-row"><span>Food cost %</span><span class="fc-val">22.0%</span></div>
+<div class="fc-row"><span>Gross profit</span><span class="fc-val">$13.26</span></div>
+</div>
+</div>
+<h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Heat pan on high. Brown mince in batches &mdash; no crowding. Drain fat, set aside.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">In same pan: butter, onion until golden (5 min). Add ginger-garlic paste 1 min. Add tomato, cook down 2 min.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Add keema masala, stir 30 sec. Return mince, add peas and 30ml water. Simmer 4 min. Taste and adjust salt.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Toast buttered pau on griddle. Plate keema with optional fried egg on top, rolls alongside, fresh coriander and sliced green chilli.</div></div>
+<div class="al"><span class="a">DAIRY: butter</span><span class="a">GLUTEN: pau rolls</span><span class="a">EGGS: optional</span></div>
+<div class="tb">Batch-cook keema at the start of service. Hold at 140°F+. Reheat per-order with a splash of water to loosen. The egg upgrade ($2) is a high-margin upsell &mdash; train servers to offer it.</div>
+</div>
+</div>
+
+<!-- Aloo Tikki -->
+<div class="recipe">
+<div class="rh">
+<div class="rh-title">Aloo Tikki</div>
+<div class="rh-sub">Spiced potato cakes with chutneys &mdash; vegan, gluten-free &mdash; Yield: 1 portion (3 cakes)</div>
+<div class="rh-tags"><span class="tag">vegan</span><span class="tag">gluten-free</span><span class="tag">8 min fire</span><span class="tag">menu price $12</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<table class="it">
+<tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Mashed potato (cold, dry)</td><td>220g</td><td>$0.26</td></tr>
+<tr><td>Boiled green peas</td><td>40g</td><td>$0.12</td></tr>
+<tr><td>Cumin seeds</td><td>3g</td><td>$0.04</td></tr>
+<tr><td>Ginger (grated)</td><td>8g</td><td>$0.08</td></tr>
+<tr><td>Green chilli (minced)</td><td>5g</td><td>$0.04</td></tr>
+<tr><td>Coriander (chopped)</td><td>10g</td><td>$0.06</td></tr>
+<tr><td>Amchur (dry mango powder)</td><td>3g</td><td>$0.06</td></tr>
+<tr><td>Rice flour (binding)</td><td>10g</td><td>$0.04</td></tr>
+<tr><td>Oil (pan fry)</td><td>15ml</td><td>$0.05</td></tr>
+<tr><td>Tamarind &amp; mint chutney</td><td>40g</td><td>$0.24</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-row"><span>Total food cost</span><span class="fc-val">$0.99</span></div>
+<div class="fc-row"><span>Menu price</span><span class="fc-val">$12.00</span></div>
+<div class="fc-row"><span>Food cost %</span><span class="fc-val">8.3%</span></div>
+<div class="fc-row"><span>Gross profit</span><span class="fc-val">$11.01</span></div>
+</div>
+</div>
+<h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Mix all tikki ingredients except oil. Season well. Form into 3 flat patties ~1.5cm thick. Refrigerate 15 min to firm up.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Heat oil in non-stick pan over medium-high. Cook tikkis 3-4 min per side until deep golden crust forms. Don't rush &mdash; the crust is structural.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Drain briefly, plate immediately with both chutneys, garnish with sev and coriander.</div></div>
+<div class="al"><span class="a">VEGAN</span><span class="a">GF: no gluten ingredients</span></div>
+<div class="tb">Potato must be completely dry and cold. Any moisture and tikkis fall apart. Par-cook patties at start of service, finish to order. Highest-margin item on the menu.</div>
+</div>
+</div>
+
+<!-- Lamb Chops -->
+<div class="recipe">
+<div class="rh">
+<div class="rh-title">Seekh &amp; Lamb Chops</div>
+<div class="rh-sub">Tandoor-fired lamb cutlets with smoky spice crust &mdash; Yield: 1 portion (3 chops)</div>
+<div class="rh-tags"><span class="tag">lamb</span><span class="tag">gluten-free</span><span class="tag">dairy</span><span class="tag">tandoor</span><span class="tag">14 min fire</span><span class="tag">menu price $26</span></div>
+</div>
+<div class="rb">
+<div class="two-col">
+<table class="it">
+<tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Lamb loin chops (French-trimmed)</td><td>3pc (~240g)</td><td>$5.40</td></tr>
+<tr><td>Yoghurt</td><td>50g</td><td>$0.15</td></tr>
+<tr><td>Ginger-garlic paste</td><td>15g</td><td>$0.15</td></tr>
+<tr><td>Kashmiri chilli</td><td>6g</td><td>$0.10</td></tr>
+<tr><td>Garam masala</td><td>4g</td><td>$0.08</td></tr>
+<tr><td>Raw papaya paste (tenderizer)</td><td>20g</td><td>$0.20</td></tr>
+<tr><td>Mustard oil</td><td>15ml</td><td>$0.15</td></tr>
+<tr><td>Lemon juice</td><td>15ml</td><td>$0.06</td></tr>
+<tr><td>Mint raita (50g)</td><td>1 pot</td><td>$0.30</td></tr>
+<tr><td>Chaat masala, salad garnish</td><td>garnish</td><td>$0.14</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-row"><span>Total food cost</span><span class="fc-val">$6.73</span></div>
+<div class="fc-row"><span>Menu price</span><span class="fc-val">$26.00</span></div>
+<div class="fc-row"><span>Food cost %</span><span class="fc-val">25.9%</span></div>
+<div class="fc-row"><span>Gross profit</span><span class="fc-val">$19.27</span></div>
+</div>
+</div>
+<h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Score lamb chops through to bone. Mix marinade: yoghurt, ginger-garlic, Kashmiri chilli, garam masala, raw papaya paste, mustard oil, lemon juice. Marinate minimum 4h, ideally overnight.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Remove from fridge 30 min before cooking. Shake off excess marinade.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Tandoor or high-heat grill at <span class="temp">475°F+</span>. Cook 5-6 min per side for medium. Rest 3 min. Internal temp should read <span class="temp">145°F</span>.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Finish with chaat masala and lemon. Plate with onion rings, mint raita, coriander. Bones should be clean for handle grip.</div></div>
+<div class="al"><span class="a">DAIRY: yoghurt, raita</span><span class="a">GF: no gluten</span></div>
+<div class="tb">Raw papaya paste contains papain enzyme &mdash; a natural tenderizer. Don't marinate longer than 18h or meat becomes mushy. If unavailable, substitute with 1 tsp kiwi paste.</div>
+<div class="script-box">
+<div class="script-label">// Service Script</div>
+<div class="script-text">"Our lamb chops are marinated overnight in Kashmiri chilli and yoghurt, then fired in the tandoor. Pick them up by the bone and eat them. This is not a knife-and-fork dish. The mint raita is house-made &mdash; use it."</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: MAINS part 2 -->
+<div class="recipe"><div class="rh"><div class="rh-title">Fish Curry — Kerala Style</div><div class="rh-sub">Kingfish fillet · coconut milk · tamarind · curry leaves · Sell: $23.99</div><div class="rh-tags"><span class="tag">⏱ 18 min</span><span class="tag">Main</span><span class="tag">FC 21.8%</span><span class="tag">GF</span><span class="tag">Dairy-Free</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Kingfish / mahi-mahi fillet</td><td>220g</td><td>$3.85</td></tr><tr><td>Coconut milk (full fat)</td><td>150ml</td><td>$0.55</td></tr><tr><td>Tamarind paste</td><td>15g</td><td>$0.12</td></tr><tr><td>Curry leaves (fresh)</td><td>10 leaves</td><td>$0.08</td></tr><tr><td>Mustard seeds</td><td>3g</td><td>$0.04</td></tr><tr><td>Dried red chilli</td><td>2 pcs</td><td>$0.04</td></tr><tr><td>Onion (sliced)</td><td>80g</td><td>$0.09</td></tr><tr><td>Tomato (chopped)</td><td>60g</td><td>$0.09</td></tr><tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.09</td></tr><tr><td>Turmeric + red chilli powder</td><td>5g total</td><td>$0.06</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.12</td></tr><tr><td>Basmati rice</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$5.48</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$23.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$18.51</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">22.8%</span></div></div><div class="al"><span class="a">FISH</span><span class="a">GF</span><span class="a">DAIRY-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat coconut oil. Splutter mustard seeds, dried chilli, curry leaves 30 sec. Add sliced onion, cook golden 5 min.</div></div><div class="step"><div class="sn">2</div><div class="st">Add ginger-garlic paste, turmeric, chilli powder. Cook 1 min. Add tomato, cook to soft paste 3 min.</div></div><div class="step"><div class="sn">3</div><div class="st">Add coconut milk and tamarind paste. Bring to gentle simmer. Taste for balance — sweet (coconut) / sour (tamarind) / heat (chilli) should all be present.</div></div><div class="step"><div class="sn">4</div><div class="st">Slide fish into simmering curry. Cook <span class="temp">6–8 min</span> — do not stir or fish will break. Spoon sauce over top. Rest 2 min off heat before serving.</div></div><div class="tb">💡 Chef's tip: Kerala fish curry is not a stirred dish — it's a poached dish. Once the fish goes in, leave it alone. The coconut milk should never boil hard or it will split. Gentle simmer only.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Lamb Biryani — Dum Pukht</div><div class="rh-sub">Slow-braised lamb · saffron basmati · crispy onions · Sell: $24.99</div><div class="rh-tags"><span class="tag">⏱ 25 min service (batch)</span><span class="tag">Main</span><span class="tag">FC 22.1%</span><span class="tag">GF</span><span class="tag">⭐ Weekend Hero</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Lamb shoulder (bone-in, braised)</td><td>280g raw</td><td>$4.66</td></tr><tr><td>Basmati rice (aged, soaked)</td><td>180g dry</td><td>$0.90</td></tr><tr><td>Saffron in warm milk</td><td>0.1g</td><td>$0.28</td></tr><tr><td>Crispy fried onions (birista)</td><td>30g</td><td>$0.22</td></tr><tr><td>Ghee</td><td>25g</td><td>$0.38</td></tr><tr><td>Whole spices (bay, clove, cardamom)</td><td>5g</td><td>$0.12</td></tr><tr><td>Yogurt (lamb marinade)</td><td>60g</td><td>$0.18</td></tr><tr><td>Biryani masala</td><td>8g</td><td>$0.10</td></tr><tr><td>Mint + cilantro</td><td>10g</td><td>$0.06</td></tr><tr><td>Rose water</td><td>5ml</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$6.94</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$24.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$18.05</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">27.7%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Marinate lamb in yogurt, biryani masala, ginger-garlic paste, salt minimum 4 hours. Braise in pot with whole spices and water until tender ~90 min. Reserve braising liquid.</div></div><div class="step"><div class="sn">2</div><div class="st">Cook basmati in well-salted water with whole spices to 70% done. Drain, spread on tray.</div></div><div class="step"><div class="sn">3</div><div class="st">Layer: lamb at base with 2 tbsp braising liquid. Then rice, mint/cilantro, birista, more rice. Top with saffron milk, ghee, rose water.</div></div><div class="step"><div class="sn">4</div><div class="st">Seal with foil + lid. Dum cook on very low heat <span class="temp">18–20 min</span>. Serve tableside with raita.</div></div><div class="tb">💡 Chef's tip: The braising liquid is gold — it carries all the lamb flavour developed during the braise. Add 2 tablespoons per serve to the base of the biryani layer. This is what separates a dry biryani from a spectacular one.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Chana Masala — Black Chickpeas</div><div class="rh-sub">Kala chana · amchur · whole spices · Sell: $14.99</div><div class="rh-tags"><span class="tag">⏱ 12 min service (batch)</span><span class="tag">Main</span><span class="tag">FC 11.2%</span><span class="tag">Vegan</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Black chickpeas (kala chana, soaked)</td><td>150g dry</td><td>$0.42</td></tr><tr><td>Onion (finely chopped)</td><td>80g</td><td>$0.09</td></tr><tr><td>Tomato (crushed)</td><td>80g</td><td>$0.12</td></tr><tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.09</td></tr><tr><td>Chana masala spice blend</td><td>8g</td><td>$0.10</td></tr><tr><td>Amchur (dry mango powder)</td><td>3g</td><td>$0.05</td></tr><tr><td>Neutral oil</td><td>15ml</td><td>$0.04</td></tr><tr><td>Basmati rice</td><td>180g dry</td><td>$0.35</td></tr><tr><td>Cilantro + green chilli garnish</td><td>garnish</td><td>$0.06</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.32</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$14.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$13.67</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">8.8%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Soak kala chana overnight. Pressure cook until completely tender ~40 min. Reserve some cooking liquid.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat oil, cook onion to deep golden 6 min. Add ginger-garlic paste 1 min. Add tomato and chana masala, cook to thick paste.</div></div><div class="step"><div class="sn">3</div><div class="st">Add cooked chickpeas + splash of cooking liquid. Simmer 10 min — sauce should cling to chickpeas, not pool. Finish with amchur for sour lift.</div></div><div class="tb">💡 Chef's tip: Kala chana (black chickpeas) has a nuttier, earthier flavour than regular kabuli chana. The amchur is non-negotiable — it gives the signature sour note. Don't substitute with lemon juice; the flavour profile is completely different.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Saag Paneer — Creamy Spinach</div><div class="rh-sub">Blanched spinach · house paneer · cream · Sell: $17.99</div><div class="rh-tags"><span class="tag">⏱ 15 min</span><span class="tag">Main</span><span class="tag">FC 18.3%</span><span class="tag">Vegetarian</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Fresh spinach (blanched, blended)</td><td>200g raw</td><td>$0.60</td></tr><tr><td>Paneer (cubed, pan-fried)</td><td>180g</td><td>$1.62</td></tr><tr><td>Heavy cream</td><td>40ml</td><td>$0.40</td></tr><tr><td>Butter</td><td>20g</td><td>$0.24</td></tr><tr><td>Onion (blended)</td><td>60g</td><td>$0.07</td></tr><tr><td>Ginger-garlic paste</td><td>10g</td><td>$0.08</td></tr><tr><td>Cumin seeds</td><td>2g</td><td>$0.03</td></tr><tr><td>Garam masala</td><td>3g</td><td>$0.05</td></tr><tr><td>Basmati rice</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$3.44</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$17.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$14.55</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">19.1%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">VEGETARIAN</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Blanch spinach in boiling salted water 60 sec. Ice bath immediately. Squeeze dry, blend until very smooth.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat butter, splutter cumin seeds. Add blended onion, cook golden 5 min. Add ginger-garlic paste, garam masala, 1 min.</div></div><div class="step"><div class="sn">3</div><div class="st">Add spinach purée. Cook 3 min. Add cream, stir. Season well.</div></div><div class="step"><div class="sn">4</div><div class="st">Fold in pan-fried paneer cubes. Heat through 2 min. Serve with basmati and a cream swirl.</div></div><div class="tb">💡 Chef's tip: The spinach must be vibrant green. Ice bath immediately after blanching is not optional — it preserves colour. Grey-green saag looks unappetising and tells the guest it was prepped days ago.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Prawns Masala — Bombay Style</div><div class="rh-sub">Tiger prawns · onion-tomato masala · curry leaf oil · Sell: $26.99</div><div class="rh-tags"><span class="tag">⏱ 14 min</span><span class="tag">Main</span><span class="tag">FC 22.9%</span><span class="tag">GF</span><span class="tag">⭐ High Margin Star</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Tiger prawns (U/15, peeled, deveined)</td><td>6 pcs / 200g</td><td>$4.20</td></tr><tr><td>Onion (finely diced)</td><td>80g</td><td>$0.09</td></tr><tr><td>Tomato (fresh, diced)</td><td>80g</td><td>$0.12</td></tr><tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.09</td></tr><tr><td>Kashmiri chilli powder</td><td>5g</td><td>$0.07</td></tr><tr><td>Coriander + cumin powder</td><td>5g total</td><td>$0.06</td></tr><tr><td>Curry leaves (fresh)</td><td>8 leaves</td><td>$0.06</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.12</td></tr><tr><td>Lemon juice</td><td>10ml</td><td>$0.05</td></tr><tr><td>Basmati rice</td><td>180g dry</td><td>$0.35</td></tr><tr><td>Cilantro garnish</td><td>garnish</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$5.25</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$26.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$21.74</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">19.4%</span></div></div><div class="al"><span class="a">SHELLFISH</span><span class="a">GF</span><span class="a">DAIRY-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat coconut oil until smoking. Add curry leaves — they will splutter. Add prawn, sear 90 sec per side. Remove and rest.</div></div><div class="step"><div class="sn">2</div><div class="st">In same pan: add onion, cook 4 min. Add ginger-garlic paste, chilli, coriander/cumin. Cook 2 min. Add tomato, cook to thick masala 3 min.</div></div><div class="step"><div class="sn">3</div><div class="st">Return prawns to masala. Toss, heat through <span class="temp">2 min max</span>. Finish with lemon juice. Do not overcook — prawns should be just cooked through, bouncy texture.</div></div><div class="tb">💡 Chef's tip: Prawns are a 2-minute protein at service — the fastest high-value dish on the menu. Keep them partially cooked ahead of service (90 sec sear) and finish in masala to order. Never hold cooked prawns more than 30 min.</div></div></div>
+<!-- SECTION 3: DESSERTS -->
+<h2><span class="sn2">3</span>Desserts</h2>
+<div class="info-box"><strong>Dessert philosophy:</strong> Indian desserts are unapologetically sweet, rich and aromatic. Rose water, cardamom, saffron, pistachio. The goal is not a small refined finish — it is a generous, joyful close. Keep your dessert list short, execute each one perfectly, and train your team to upsell with confidence. A $9.99 gulab jamun at 8% food cost is some of the best margin on your entire menu.</div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Gulab Jamun — House-Made</div><div class="rh-sub">Milk solid dumplings · rose-cardamom syrup · pistachios · Sell: $9.99</div><div class="rh-tags"><span class="tag">⏱ 8 min service (batch-fried)</span><span class="tag">Dessert</span><span class="tag">FC 8.2%</span><span class="tag">⭐ #1 Dessert</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve — 3 pieces)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Khoya / milk powder (dough base)</td><td>60g</td><td>$0.42</td></tr><tr><td>All-purpose flour</td><td>12g</td><td>$0.02</td></tr><tr><td>Baking soda</td><td>0.5g</td><td>$0.01</td></tr><tr><td>Milk (to bind)</td><td>20ml</td><td>$0.05</td></tr><tr><td>Sugar (syrup)</td><td>80g</td><td>$0.08</td></tr><tr><td>Rose water</td><td>5ml</td><td>$0.04</td></tr><tr><td>Cardamom pods (syrup)</td><td>2 pods</td><td>$0.04</td></tr><tr><td>Pistachios (garnish)</td><td>8g</td><td>$0.18</td></tr><tr><td>Neutral oil (frying)</td><td>deep fry</td><td>$0.08</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$0.92</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$9.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$9.07</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">9.2%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">GLUTEN</span><span class="a">TREE NUTS</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Mix khoya, flour, baking soda with just enough milk to form soft dough. Do not over-knead. Rest 5 min. Roll into smooth balls ~25g each — no cracks.</div></div><div class="step"><div class="sn">2</div><div class="st">Make syrup: sugar + water (1:1 ratio) + cardamom + rose water. Bring to boil, simmer 5 min until slightly sticky. Keep warm.</div></div><div class="step"><div class="sn">3</div><div class="st">Deep fry balls at <span class="temp">150°C / 300°F</span> — low and slow. They need 6–8 min to cook through without burning. Turn gently. They should be deep golden-brown.</div></div><div class="step"><div class="sn">4</div><div class="st">Immediately transfer to warm syrup. Soak minimum 30 min (overnight is better). Serve warm, 3 per plate, spooned with syrup, crushed pistachios on top.</div></div><div class="tb">💡 Chef's tip: The most common mistake is frying too hot — the outside browns before the centre cooks. Low and slow is the rule. If a ball cracks in the fryer, the dough is too dry. Add a few drops of milk to the batch.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Mango Kulfi — House Frozen</div><div class="rh-sub">Reduced milk · Alphonso mango · cardamom · pistachio · Sell: $8.99</div><div class="rh-tags"><span class="tag">⏱ 2 min service (pre-frozen)</span><span class="tag">Dessert</span><span class="tag">FC 14.6%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Whole milk (reduced to khoya)</td><td>300ml</td><td>$0.48</td></tr><tr><td>Condensed milk</td><td>50g</td><td>$0.22</td></tr><tr><td>Alphonso mango puree</td><td>80g</td><td>$0.45</td></tr><tr><td>Heavy cream</td><td>40ml</td><td>$0.40</td></tr><tr><td>Cardamom powder</td><td>1g</td><td>$0.03</td></tr><tr><td>Pistachios (crushed)</td><td>10g</td><td>$0.22</td></tr><tr><td>Saffron threads</td><td>pinch</td><td>$0.08</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.88</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$8.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$7.11</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">20.9%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">TREE NUTS</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Reduce whole milk over medium heat stirring constantly until reduced by 2/3 — about 45 min. Add condensed milk, cream, cardamom, saffron. Cook 5 more min.</div></div><div class="step"><div class="sn">2</div><div class="st">Cool completely. Fold in mango puree. Pour into kulfi moulds or small cups. Freeze minimum 6 hours — overnight preferred.</div></div><div class="step"><div class="sn">3</div><div class="st">To serve: dip mould in warm water 10 sec, unmould onto plate. Garnish with crushed pistachios and mango coulis. Serve immediately — kulfi melts fast.</div></div><div class="tb">💡 Chef's tip: Kulfi is denser and less airy than ice cream — it's slow-melting and intensely flavoured. Alphonso mango is the gold standard. Don't substitute with fresh mango — the puree has the concentrated flavour profile that makes the dessert work.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Masala Chai Creme Brulee</div><div class="rh-sub">Spiced custard · caramelised sugar · cardamom · ginger · Sell: $9.99</div><div class="rh-tags"><span class="tag">⏱ 3 min service (pre-baked)</span><span class="tag">Dessert</span><span class="tag">FC 9.8%</span><span class="tag">GF</span><span class="tag">⭐ Signature Fusion</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Heavy cream</td><td>150ml</td><td>$1.50</td></tr><tr><td>Egg yolks</td><td>3 yolks</td><td>$0.33</td></tr><tr><td>Caster sugar (custard)</td><td>40g</td><td>$0.04</td></tr><tr><td>Caster sugar (brulee top)</td><td>15g</td><td>$0.02</td></tr><tr><td>Black tea (infused in cream)</td><td>5g</td><td>$0.04</td></tr><tr><td>Cardamom pods (crushed)</td><td>3 pods</td><td>$0.06</td></tr><tr><td>Fresh ginger (sliced)</td><td>5g</td><td>$0.03</td></tr><tr><td>Cinnamon stick</td><td>1/2 stick</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$2.06</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$9.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$7.93</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">20.6%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">EGGS</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Steep cream with black tea, cardamom, ginger, cinnamon over low heat 10 min. Do not boil. Strain.</div></div><div class="step"><div class="sn">2</div><div class="st">Whisk egg yolks and sugar until pale. Slowly pour warm spiced cream into yolks, whisking constantly. Strain again.</div></div><div class="step"><div class="sn">3</div><div class="st">Pour into ramekins. Bake in water bath at <span class="temp">150°C / 300°F</span> 35–40 min until set with slight wobble. Cool, refrigerate minimum 4 hours.</div></div><div class="step"><div class="sn">4</div><div class="st">To order: dust even layer of caster sugar on top. Brulee with torch until deep amber crackle. Serve immediately.</div></div><div class="tb">💡 Chef's tip: This is your western-Indian fusion showpiece. The masala chai infusion transforms a classic French technique into something uniquely Bombay Cafe. The crack of the brulee at the table is an experience — train your team to serve it immediately after torching while still warm.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Chocolate Cardamom Tart</div><div class="rh-sub">Dark chocolate ganache · cardamom · sea salt · gold leaf · Sell: $10.99</div><div class="rh-tags"><span class="tag">⏱ 3 min service (pre-made)</span><span class="tag">Dessert</span><span class="tag">FC 12.4%</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Dark chocolate 70% (ganache)</td><td>60g</td><td>$0.72</td></tr><tr><td>Heavy cream (ganache)</td><td>60ml</td><td>$0.60</td></tr><tr><td>Butter (ganache)</td><td>15g</td><td>$0.18</td></tr><tr><td>Cardamom powder</td><td>1.5g</td><td>$0.04</td></tr><tr><td>Tart shell (pre-baked, 9cm)</td><td>1 shell</td><td>$0.45</td></tr><tr><td>Flaky sea salt</td><td>pinch</td><td>$0.02</td></tr><tr><td>Gold leaf or edible lustre</td><td>small piece</td><td>$0.14</td></tr><tr><td>Cream (whipped, service)</td><td>30ml</td><td>$0.22</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$2.37</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$10.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$8.62</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">21.6%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">GLUTEN</span><span class="a">EGGS</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat cream until just simmering. Pour over chopped chocolate. Wait 1 min then stir from centre outward until smooth. Add butter and cardamom, stir in.</div></div><div class="step"><div class="sn">2</div><div class="st">Pour ganache into pre-baked tart shells. Refrigerate minimum 2 hours until set.</div></div><div class="step"><div class="sn">3</div><div class="st">To serve: remove from fridge 15 min before service (room temp ganache is silkier than cold). Flaky sea salt, gold leaf, quenelle of whipped cream alongside.</div></div><div class="tb">💡 Chef's tip: The gold leaf turns an $11 dessert into a $16 experience. People photograph it. That photo is posted, shared, and seen by people who haven't been to your restaurant yet. Gold leaf costs pennies. The marketing value is priceless.</div></div></div>
+<!-- SECTION 4: DRINKS -->
+<h2><span class="sn2">4</span>Drinks — Indian-Inspired Cocktail Program</h2>
+<div class="info-box"><strong>Drinks philosophy:</strong> The cocktail program is where a Bombay Cafe generates its highest margins. A $13.99 cocktail at 12% food cost contributes $12.31 gross profit — more than most mains. Build a compelling drinks list that tells a story: spiced, aromatic, surprising. Your guests don't want a generic bar — they want Mumbai through a glass.</div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Mumbai Mule</div><div class="rh-sub">Vodka · ginger beer · tamarind · lime · curry leaf salt rim · Sell: $13.99</div><div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Cocktail</span><span class="tag">FC 9.8%</span><span class="tag">⭐ Signature Drink</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Vodka</td><td>45ml</td><td>$0.65</td></tr><tr><td>Ginger beer</td><td>120ml</td><td>$0.45</td></tr><tr><td>Tamarind concentrate</td><td>15ml</td><td>$0.10</td></tr><tr><td>Fresh lime juice</td><td>20ml</td><td>$0.10</td></tr><tr><td>Curry leaf + black salt rim</td><td>pinch</td><td>$0.06</td></tr><tr><td>Ice + lime wedge garnish</td><td>garnish</td><td>$0.05</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.41</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$13.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$12.58</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">10.1%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Rim a copper mug or highball with curry leaf-black salt mix (blitz dried curry leaves with black salt).</div></div><div class="step"><div class="sn">2</div><div class="st">Fill glass with ice. Add vodka, tamarind, lime. Top with ginger beer. Stir gently once. Garnish with lime wedge and fresh curry leaf.</div></div><div class="tb">💡 The curry leaf salt rim is the visual hook — guests photograph it before they drink it. It's also genuinely delicious.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Chai Old Fashioned</div><div class="rh-sub">Bourbon · masala chai syrup · cardamom bitters · orange peel · Sell: $15.99</div><div class="rh-tags"><span class="tag">⏱ 4 min</span><span class="tag">Cocktail</span><span class="tag">FC 11.2%</span><span class="tag">⭐ Premium</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Bourbon whiskey</td><td>60ml</td><td>$1.20</td></tr><tr><td>Masala chai syrup (house-made)</td><td>15ml</td><td>$0.18</td></tr><tr><td>Cardamom bitters</td><td>2 dashes</td><td>$0.10</td></tr><tr><td>Orange peel (expressed)</td><td>1 strip</td><td>$0.08</td></tr><tr><td>Large ice cube</td><td>1</td><td>$0.05</td></tr><tr><td>Star anise garnish</td><td>1</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.65</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$15.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$14.34</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">10.3%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Make chai syrup: steep strong masala chai (cardamom, ginger, cinnamon, black tea) with equal weight sugar. Strain and cool. Keeps 2 weeks refrigerated.</div></div><div class="step"><div class="sn">2</div><div class="st">In mixing glass: combine bourbon, chai syrup, bitters over ice. Stir 30 sec until cold and diluted. Strain over large ice cube in rocks glass.</div></div><div class="step"><div class="sn">3</div><div class="st">Express orange peel over glass, run around rim, drop in. Garnish with star anise.</div></div><div class="tb">💡 This is your highest-value cocktail. It speaks to American whiskey culture (Old Fashioned is the #1 ordered cocktail in the US) while being unmistakably Indian. Price it at $15.99 — it's worth it.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Saffron Rose Gin Sour</div><div class="rh-sub">Gin · saffron · rose water · lemon · egg white foam · Sell: $14.99</div><div class="rh-tags"><span class="tag">⏱ 4 min</span><span class="tag">Cocktail</span><span class="tag">FC 10.7%</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>London Dry Gin</td><td>45ml</td><td>$0.80</td></tr><tr><td>Fresh lemon juice</td><td>25ml</td><td>$0.12</td></tr><tr><td>Simple syrup</td><td>15ml</td><td>$0.06</td></tr><tr><td>Saffron syrup (house)</td><td>10ml</td><td>$0.22</td></tr><tr><td>Rose water</td><td>5ml</td><td>$0.06</td></tr><tr><td>Egg white</td><td>1 white</td><td>$0.12</td></tr><tr><td>Dried rose petals garnish</td><td>pinch</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.42</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$14.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$13.57</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">9.5%</span></div></div><div class="al"><span class="a">EGGS</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Dry shake all ingredients without ice first — 15 sec hard shake to build foam from egg white.</div></div><div class="step"><div class="sn">2</div><div class="st">Add ice, shake again 10 sec. Double strain into chilled coupe glass.</div></div><div class="step"><div class="sn">3</div><div class="st">The foam should hold the rose petals on top. Golden from saffron, white foam, pink petals — this is your most photogenic drink.</div></div><div class="tb">💡 Golden colour from saffron + white foam + rose petal garnish = Instagram gold. This drink photographs in under 2 seconds and gets shared before they take the first sip.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Tamarind Whisky Sour</div><div class="rh-sub">Scotch · tamarind · jaggery · lime · Sell: $14.99</div><div class="rh-tags"><span class="tag">⏱ 3 min</span><span class="tag">Cocktail</span><span class="tag">FC 10.5%</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Blended Scotch whisky</td><td>45ml</td><td>$0.85</td></tr><tr><td>Tamarind concentrate</td><td>20ml</td><td>$0.14</td></tr><tr><td>Jaggery syrup</td><td>15ml</td><td>$0.10</td></tr><tr><td>Fresh lime juice</td><td>20ml</td><td>$0.10</td></tr><tr><td>Ice + lime wheel</td><td>garnish</td><td>$0.05</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.24</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$14.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$13.75</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">8.3%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Combine all in shaker with ice. Shake hard 10 sec. Strain into rocks glass over fresh ice. Lime wheel garnish.</div></div><div class="tb">💡 Jaggery (unrefined cane sugar) gives a molasses-earthy sweetness that simple syrup cannot replicate. Worth stocking — it's also used in your dessert program.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Mango Lassi</div><div class="rh-sub">Alphonso mango · full-fat yogurt · cardamom · rose water · Sell: $6.99</div><div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Non-Alcoholic</span><span class="tag">FC 16.7%</span><span class="tag">GF</span><span class="tag">Vegetarian</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Full-fat yogurt</td><td>150g</td><td>$0.45</td></tr><tr><td>Alphonso mango puree</td><td>100g</td><td>$0.55</td></tr><tr><td>Milk</td><td>50ml</td><td>$0.08</td></tr><tr><td>Sugar</td><td>10g</td><td>$0.01</td></tr><tr><td>Cardamom powder</td><td>0.5g</td><td>$0.01</td></tr><tr><td>Rose water</td><td>3ml</td><td>$0.03</td></tr><tr><td>Pistachios + dried rose garnish</td><td>garnish</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$1.17</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$6.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$5.82</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">16.7%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">TREE NUTS</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Blend yogurt, mango, milk, sugar, cardamom, rose water until completely smooth. Taste and adjust sweetness.</div></div><div class="step"><div class="sn">2</div><div class="st">Serve in tall glass over ice. Top with crushed pistachio and dried rose petals. Mango lassi should be thick — if too thin, add more yogurt.</div></div><div class="tb">💡 Lassi is your best non-alcoholic upsell — it pairs with spicy food perfectly and every Indian-food lover knows and orders it. Train FOH to suggest it proactively for guests not drinking alcohol.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">House Masala Chai</div><div class="rh-sub">Darjeeling black tea · ginger · cardamom · cinnamon · full-fat milk · Sell: $5.99</div><div class="rh-tags"><span class="tag">⏱ 6 min</span><span class="tag">Hot Drink</span><span class="tag">FC 8.5%</span><span class="tag">GF</span><span class="tag">Vegetarian</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Full-fat milk</td><td>200ml</td><td>$0.32</td></tr><tr><td>Water</td><td>100ml</td><td>$0.00</td></tr><tr><td>Darjeeling loose leaf tea</td><td>4g</td><td>$0.08</td></tr><tr><td>Fresh ginger (grated)</td><td>8g</td><td>$0.06</td></tr><tr><td>Cardamom pods (crushed)</td><td>3</td><td>$0.06</td></tr><tr><td>Cinnamon stick</td><td>1/2</td><td>$0.04</td></tr><tr><td>Jaggery or sugar</td><td>10g</td><td>$0.02</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$0.58</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$5.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$5.41</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">9.7%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Combine water, ginger, cardamom, cinnamon in small pot. Bring to boil, simmer 2 min.</div></div><div class="step"><div class="sn">2</div><div class="st">Add milk and tea. Bring back to boil, reduce heat, simmer 3 min. Sweeten with jaggery.</div></div><div class="step"><div class="sn">3</div><div class="st">Strain into pre-warmed glass or ceramic cup through fine sieve. Serve hot, immediately.</div></div><div class="tb">💡 Masala chai is your restaurant's handshake — it can be offered as a welcome drink, a meal closer, or a mid-afternoon drop-in reason. The aroma alone sells the concept when a new guest walks in.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Jaljeera — Spiced Tamarind Water</div><div class="rh-sub">Cumin · tamarind · black salt · mint · cooling digestif · Sell: $5.99</div><div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Non-Alcoholic</span><span class="tag">FC 5.3%</span><span class="tag">Vegan</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Cold water</td><td>250ml</td><td>$0.00</td></tr><tr><td>Tamarind concentrate</td><td>15ml</td><td>$0.10</td></tr><tr><td>Jaljeera powder (cumin/black salt/mint/chilli)</td><td>5g</td><td>$0.08</td></tr><tr><td>Fresh mint leaves</td><td>4 leaves</td><td>$0.04</td></tr><tr><td>Lemon juice</td><td>10ml</td><td>$0.05</td></tr><tr><td>Boondi (crispy chickpea pearls, opt)</td><td>5g</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$0.31</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$5.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$5.68</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">5.2%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Mix cold water, tamarind, jaljeera powder, lemon juice. Stir until powder dissolves. Taste — should be tangy, slightly spiced, refreshing.</div></div><div class="step"><div class="sn">2</div><div class="st">Serve in tall glass over ice. Float mint leaves. Drop 5–6 boondi pearls on top for texture.</div></div><div class="tb">💡 Jaljeera is a natural digestif — it aids digestion, cools the body and is deeply refreshing after spicy food. Position it on the menu as your "house digestif" alongside desserts. At 5.2% food cost, it is your highest margin drink on the menu.</div></div></div>
+
+<div class="recipe"><div class="rh"><div class="rh-title">Virgin Rose Sharbat</div><div class="rh-sub">Rose syrup · milk · basil seeds · chilled · Sell: $5.99</div><div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Non-Alcoholic</span><span class="tag">FC 10.2%</span><span class="tag">GF</span><span class="tag">Vegetarian</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Rose syrup (Rooh Afza)</td><td>30ml</td><td>$0.18</td></tr><tr><td>Full-fat milk</td><td>150ml</td><td>$0.24</td></tr><tr><td>Basil seeds (sabja, soaked)</td><td>5g</td><td>$0.10</td></tr><tr><td>Cold water</td><td>50ml</td><td>$0.00</td></tr><tr><td>Ice + dried rose garnish</td><td>garnish</td><td>$0.09</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Ingredient cost</span><span class="fc-val">$0.61</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$5.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$5.38</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">10.2%</span></div></div><div class="al"><span class="a">DAIRY</span><span class="a">GF</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Soak basil seeds in cold water 10 min — they swell into tapioca-like pearls.</div></div><div class="step"><div class="sn">2</div><div class="st">Mix rose syrup with milk and water. Stir. Add soaked basil seeds. Pour over ice.</div></div><div class="step"><div class="sn">3</div><div class="st">Serve with dried rose petal garnish. The pink colour + white basil seeds is visually striking.</div></div><div class="tb">💡 Rooh Afza rose syrup is a summer institution across India and Pakistan — it triggers deep nostalgia for any South Asian guest. For American guests, it is completely new. Both reactions are great for your brand.</div></div></div>
+<!-- SECTION 5: KITCHEN DESIGN -->
+<h2><span class="sn2">5</span>Kitchen Design — The Bombay Cafe Kitchen</h2>
+<div class="info-box"><strong>Kitchen design philosophy:</strong> A Bombay Cafe kitchen is built around three centrepiece stations: the tandoor (radiant heat, 400°C clay oven), the tawa (flat iron griddle for pau bhaji and breads), and the curry station (multiple burners, high heat, rapid saucing). Every other station supports these three. Design your kitchen so these three stations are accessible, well-ventilated and efficient. Everything else is secondary.</div>
+
+<h4>2D Floor Plan — 40-Seat Bombay Cafe (24ft x 14ft Kitchen)</h4>
+<pre class="kitchen-layout">
+  24 ft
+┌─────────────────────────────────────────────────────────┐
+│  [DISHWASH]   [DRY STORE / COLD PREP]    [TANDOOR]      │ BACK WALL
+│   hood ↑           hood ↑               hood ↑  400°C  │ 14 ft
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│  [CURRY STATION]  ══════════════  [TAWA STATION]        │ CENTRE
+│  4-burner high     12 ft wide      flat iron griddle    │
+│  heat range        centrepiece     pau bhaji / breads   │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│  [COLD SECTION]          [PASS LINE / PLATING]           │ FRONT
+│  salads, desserts,       ticket rail, heat lamp,         │
+│  drinks mise en          garnish station                 │
+└─────────────────────────────────────────────────────────┘
+        ↓ SERVICE WINDOW / PASS TO DINING ROOM ↓
+  Dining Room: 40 seats · 10 tables · avg 4-top layout
+</pre>
+
+<div class="station-grid">
+<div class="station-card"><h4>Tandoor Station</h4><ul><li>Clay tandoor oven (medium — 36" recommended)</li><li>Operating temp: 380–420°C (716–788°F)</li><li>Uses: tikka, naan, seekh kebab, lamb chops</li><li>Requires: dedicated hood, fire suppression, gas line</li><li>Pre-heat time: 45 min from cold start</li><li>Batch tikka in 8–10 skewers at once</li></ul><span class="equip-tag">CENTREPIECE EQUIPMENT</span></div>
+<div class="station-card"><h4>Tawa Station</h4><ul><li>Cast iron flat griddle 36" x 24"</li><li>Commercial grade — minimum 12,000 BTU</li><li>Uses: pau bhaji, paratha, roti, searing paneer</li><li>Always on during service — never let tawa go cold</li><li>Season with oil daily pre-service</li><li>Position: visible from dining room if possible</li></ul><span class="equip-tag">THEATRE STATION</span></div>
+<div class="station-card"><h4>Curry Station</h4><ul><li>4-burner commercial range (high BTU — 30,000+ each)</li><li>Wok burners preferred for rapid temperature control</li><li>Uses: all curries, biryani finishing, dal, masala sauces</li><li>Batch sauces in 4L containers — replenish during service</li><li>2 dedicated pans per burner during peak service</li><li>Chef de partie owns this station — never leave unmanned</li></ul><span class="equip-tag">PRODUCTION CORE</span></div>
+<div class="station-card"><h4>Cold Section / Pass</h4><ul><li>Under-counter refrigeration: 2 x 2-door units</li><li>Holds: desserts, dairy, garnishes, prepped proteins</li><li>Pass line: 6ft stainless steel, heat lamp over, ticket rail above</li><li>Plating: all plates pre-warmed in low oven or pass</li><li>Drinks: blender station for lassi adjacent to pass</li><li>Allergen notice posted at pass level — eye height</li></ul><span class="equip-tag">SERVICE HUB</span></div>
+</div>
+
+<h4>Equipment Budget — New Build Estimate</h4>
+<table class="rev-table">
+<tr><th>Equipment</th><th>Spec</th><th>Est. Cost (US)</th><th>Priority</th></tr>
+<tr><td>Tandoor oven (clay, medium)</td><td>36" commercial grade</td><td>$3,500–5,000</td><td>MUST HAVE</td></tr>
+<tr><td>Tawa / flat griddle</td><td>36" x 24" cast iron commercial</td><td>$1,200–1,800</td><td>MUST HAVE</td></tr>
+<tr><td>4-burner high-BTU range</td><td>30,000 BTU per burner</td><td>$2,500–4,000</td><td>MUST HAVE</td></tr>
+<tr><td>Exhaust hood + fire suppression</td><td>Per local code</td><td>$4,000–8,000</td><td>MUST HAVE</td></tr>
+<tr><td>Under-counter refrigeration x2</td><td>2-door sandwich units</td><td>$2,400–3,600</td><td>MUST HAVE</td></tr>
+<tr><td>Commercial pressure cooker x2</td><td>For dal, biryani base, chana</td><td>$400–600</td><td>HIGH</td></tr>
+<tr><td>Blender (commercial)</td><td>For lassi, sauce base</td><td>$600–900</td><td>HIGH</td></tr>
+<tr><td>Food processor</td><td>Onion masala base batching</td><td>$400–600</td><td>HIGH</td></tr>
+<tr><td>Heat lamp / pass equipment</td><td>6ft stainless pass</td><td>$800–1,200</td><td>STANDARD</td></tr>
+<tr><td>Misc smallwares (pans, ladles, tongs)</td><td>Full set for 40-seat operation</td><td>$2,000–3,000</td><td>STANDARD</td></tr>
+<tr class="total-row"><td><strong>TOTAL ESTIMATE</strong></td><td></td><td><strong>$18,000–28,000</strong></td><td>New build</td></tr>
+</table>
+
+<h4>Tandoor Deep-Dive — Your Most Important Piece of Equipment</h4>
+<div class="info-box">The tandoor is the heart of a Bombay Cafe kitchen. It is not optional — it is the piece of equipment that makes chicken tikka, naan, seekh kebab and lamb chops possible at the authentic quality level. A charcoal grill is not a substitute. An oven is not a substitute. The clay walls of a tandoor radiate intense, even heat at 400°C that chars the exterior while keeping the interior moist — that is physics you cannot replicate with any other equipment.
+<br><br>
+<strong>Gas vs Charcoal tandoor:</strong> Gas is preferred for US commercial kitchens — easier to regulate, consistent temperature, meets most health code requirements without special permitting. Charcoal gives slightly better flavour but requires more management and may need additional fire code approval.
+<br><br>
+<strong>Pre-heat discipline:</strong> Your tandoor must be lit 45 minutes before service. Every morning. No exceptions. A cold tandoor produces steamed tikka, not charred tikka. The difference is immediately visible and tasted.
+<br><br>
+<strong>Loading and skewers:</strong> Use flat-blade skewers (not round) — chicken and kebab mix stays on. Load maximum 8 skewers at once in a medium tandoor. Over-crowding drops temperature. Under-loading wastes heat. Learn your tandoor's sweet spot and batch accordingly.
+</div>
+<!-- SECTION 6: SERVICE TRAINING -->
+<h2><span class="sn2">6</span>Service Training Module</h2>
+<div class="info-box"><strong>Service philosophy:</strong> In Indian hospitality tradition, a guest is never allowed to leave hungry or un-refreshed. That principle — applied to every table, every service, every night — is what builds a great restaurant. Your FOH team must understand the food, believe in it, and sell it with genuine enthusiasm. Scripts are a starting point. Mastery is when they don't sound like scripts anymore.</div>
+
+<h4>Table Greeting — First 60 Seconds</h4>
+<div class="script-box">
+<div class="script-label">// Opening Script</div>
+<div class="script-text">"Welcome to Bombay Cafe. I'm [name] and I'll be looking after you tonight. Can I start you with something to drink while you look at the menu? Our Mumbai Mule is a great way to start — it's our house cocktail, vodka with tamarind and a curry leaf salt rim. Or if you'd prefer something non-alcoholic, our mango lassi is exceptional."</div>
+<div class="script-why">Why it works: Names the signature drink immediately, offers a non-alcoholic alternative, sets a warm and knowledgeable tone in 20 seconds.</div>
+</div>
+
+<h4>Menu Guidance Script</h4>
+<div class="script-box">
+<div class="script-label">// When guests look unsure</div>
+<div class="script-text">"The menu is designed to share — most tables order two or three starters for the table and then a main each. Our pau bhaji is a must — it's a Mumbai street classic, spiced potato on a butter-toasted roll. And if you eat meat, the chicken tikka is our most popular starter. For mains, the butter chicken is our number one, and the lamb biryani is made dum-style — sealed and slow-cooked, so when we bring it out there's a moment when we lift the lid at the table."</div>
+<div class="script-why">Why it works: Suggests a sharing format (increases spend), names two specific dishes with mini-stories, creates anticipation around the biryani experience.</div>
+</div>
+
+<h4>Upsell Scripts</h4>
+<div class="script-box">
+<div class="script-label">// Keema Pau egg upsell</div>
+<div class="script-text">"Would you like a fried egg on your keema pau? Most guests do — it's a $2 addition and it makes the dish."</div>
+<div class="script-why">60% uptake rate. $1.65 pure profit per order.</div>
+</div>
+<div class="script-box">
+<div class="script-label">// Dessert transition</div>
+<div class="script-text">"Are you thinking about dessert? Our gulab jamun are made in-house — they're the classic Indian milk dumpling in rose-cardamom syrup, served warm. And the masala chai creme brulee is our signature fusion dessert — you crack the brulee yourself at the table."</div>
+<div class="script-why">Name two specific desserts with sensory detail. The interactive crack = tableside theatre = other tables notice.</div>
+</div>
+<div class="script-box">
+<div class="script-label">// Chai close</div>
+<div class="script-text">"Can I bring you a masala chai to finish? It's our house recipe — brewed with cardamom, ginger and cinnamon. It's a lovely way to close the meal."</div>
+<div class="script-why">$5.99 at 9.7% food cost. The aroma of chai brewing sells itself to nearby tables. Always offer.</div>
+</div>
+
+<h4>Allergen Protocol</h4>
+<div class="script-box">
+<div class="script-label">// When a guest mentions an allergy</div>
+<div class="script-text">"Thank you for letting me know. I'm going to mark your order with that allergy right now and check directly with our chef before your food is prepared. Can you tell me the severity — is this a preference, an intolerance, or a serious allergy?"</div>
+<div class="script-why">Three-tier question matters legally and operationally. A serious allergy changes how the kitchen handles every item for that table. Never guess. Never assume. Always escalate to the chef.</div>
+</div>
+
+<h4>Service Timing Standards</h4>
+<table class="prep-table">
+<tr><th>Action</th><th>Standard Time</th><th>Notes</th></tr>
+<tr><td>Greet table after seating</td><td>Under 2 min</td><td>Even if just "I'll be right with you"</td></tr>
+<tr><td>Drinks delivered after ordering</td><td>Under 5 min</td><td>Cocktails 3–4 min; chai 6 min</td></tr>
+<tr><td>Entrees fired after order</td><td>Immediate</td><td>All entrees should arrive together</td></tr>
+<tr><td>Entrees to table</td><td>8–12 min</td><td>Chaat papdi: assemble to order, 5 min max</td></tr>
+<tr><td>Mains to table after entrees cleared</td><td>5–8 min</td><td>Biryani: 25 min from order — communicate proactively</td></tr>
+<tr><td>Dessert menu offered</td><td>When mains cleared</td><td>Don't wait for guest to ask</td></tr>
+<tr><td>Bill presented after requested</td><td>Under 2 min</td><td>Never leave a guest waiting for the bill</td></tr>
+</table>
+<!-- SECTION 7: STAFF WORKFLOW -->
+<h2><span class="sn2">7</span>Staff Workflow &amp; Prep Schedule</h2>
+<div class="info-box"><strong>Workflow philosophy:</strong> A Bombay Cafe runs on batch cooking. The makhani base, the dal, the biryani rice, the birista — none of these are made to order. They are made in volume, held correctly, and finished to order. This is what makes a 40-seat Indian restaurant serviceable by a team of 4. Without batch prep discipline, you are cooking from scratch every ticket and your kitchen will collapse under pressure.</div>
+
+<h4>Weekly Prep Schedule — Head Chef Responsibility</h4>
+<table class="prep-table">
+<tr><th>Prep Item</th><th>Batch Size</th><th>Frequency</th><th>Hold Time</th><th>Station</th></tr>
+<tr><td>Makhani sauce base</td><td>8 litres</td><td>Daily</td><td>3 days refrigerated</td><td>Curry</td></tr>
+<tr><td>Ginger-garlic paste</td><td>2 kg</td><td>Every 2 days</td><td>5 days refrigerated</td><td>Cold prep</td></tr>
+<tr><td>Dal makhani</td><td>6 litres</td><td>Every 2 days</td><td>Overnight hold in bain marie</td><td>Curry</td></tr>
+<tr><td>Chicken tikka marinade + pre-cook</td><td>3 kg</td><td>Daily AM</td><td>Service only — 4 hrs max</td><td>Tandoor</td></tr>
+<tr><td>Crispy onions (birista)</td><td>500g</td><td>Every 2 days</td><td>1 week airtight container</td><td>Cold prep</td></tr>
+<tr><td>Saffron milk</td><td>500ml</td><td>Daily</td><td>1 day refrigerated</td><td>Cold section</td></tr>
+<tr><td>Mint + tamarind chutneys</td><td>1 litre each</td><td>Every 2 days</td><td>5 days refrigerated</td><td>Cold prep</td></tr>
+<tr><td>Gulab jamun (soaked in syrup)</td><td>40 pieces</td><td>Daily</td><td>3 days refrigerated</td><td>Cold section</td></tr>
+<tr><td>Mango kulfi (frozen)</td><td>20 moulds</td><td>Every 2 days</td><td>2 weeks frozen</td><td>Freezer</td></tr>
+<tr><td>Masala chai brulee (baked)</td><td>12 ramekins</td><td>Daily AM</td><td>2 days refrigerated</td><td>Cold section</td></tr>
+<tr><td>Chai syrup (for cocktails)</td><td>1 litre</td><td>Weekly</td><td>2 weeks refrigerated</td><td>Bar</td></tr>
+<tr><td>Saffron syrup (for cocktails)</td><td>500ml</td><td>Weekly</td><td>2 weeks refrigerated</td><td>Bar</td></tr>
+</table>
+
+<h4>Daily Service Timeline — 40-Seat Dinner Service</h4>
+<table class="prep-table">
+<tr><th>Time</th><th>Action</th><th>Who</th></tr>
+<tr><td>14:00</td><td>Tandoor lit — 45 min preheat begins</td><td>Head Chef</td></tr>
+<tr><td>14:00</td><td>Makhani base portioned and heating in bain marie</td><td>CDP</td></tr>
+<tr><td>14:15</td><td>Dal makhani checked — reheated, butter and cream added</td><td>CDP</td></tr>
+<tr><td>14:30</td><td>Chicken tikka skewered and ready at tandoor station</td><td>Tandoor chef</td></tr>
+<tr><td>14:45</td><td>All chutney ramekins portioned — 20+ sets ready</td><td>Commis</td></tr>
+<tr><td>15:00</td><td>Cold section: desserts counted, brulee ramekins ready, kulfi moulds in freezer</td><td>Commis</td></tr>
+<tr><td>15:30</td><td>Tawa heated and seasoned — pau bhaji base batch ready</td><td>Tawa chef</td></tr>
+<tr><td>16:00</td><td>FOH briefing: specials, 86 list, table allocations, allergen reminders</td><td>Manager + Head Chef</td></tr>
+<tr><td>17:00</td><td>Doors open — first covers seated</td><td>All</td></tr>
+<tr><td>17:00–21:00</td><td>Peak service — all stations manned, ticket rail monitored</td><td>All</td></tr>
+<tr><td>21:00</td><td>Last orders communicated to kitchen</td><td>Manager</td></tr>
+<tr><td>22:00</td><td>Kitchen clean-down begins — tandoor cool-down, bain marie empties labelled</td><td>All kitchen</td></tr>
+<tr><td>22:30</td><td>Prep list written for next day — what to make, what to order</td><td>Head Chef</td></tr>
+</table>
+
+<h4>Staffing Model — 40-Seat Restaurant</h4>
+<table class="staff-table">
+<tr><th>Role</th><th>Dinner Shift</th><th>Lunch Shift</th><th>Weekly Hours</th><th>Rate (est. US)</th></tr>
+<tr><td>Head Chef</td><td>5 days</td><td>2 days</td><td>50 hrs</td><td>$28–35/hr</td></tr>
+<tr><td>Chef de Partie (curry/tandoor)</td><td>5 days</td><td>2 days</td><td>45 hrs</td><td>$22–26/hr</td></tr>
+<tr><td>Commis Chef</td><td>5 days</td><td>3 days</td><td>40 hrs</td><td>$16–20/hr</td></tr>
+<tr><td>FOH Manager / Senior Server</td><td>5 days</td><td>2 days</td><td>40 hrs</td><td>$18–22/hr + tips</td></tr>
+<tr><td>Server x2</td><td>5 days each</td><td>2 days each</td><td>35 hrs each</td><td>$12–15/hr + tips</td></tr>
+<tr><td>Dishwasher</td><td>5 days</td><td>3 days</td><td>38 hrs</td><td>$15–17/hr</td></tr>
+</table>
+<div class="tb">💡 Labour cost target: 28–32% of revenue. At $113,384/month revenue (P&L model), your labour budget is $31,748–36,283/month. Track weekly — labour is your most controllable cost.</div>
+<!-- SECTION 8: RETENTION + ALLERGEN -->
+<h2><span class="sn2">8</span>Customer Retention System</h2>
+<div class="info-box"><strong>Retention philosophy:</strong> It costs 5x more to acquire a new customer than to retain an existing one. A Bombay Cafe with 200 loyal regulars visiting twice a month is more valuable than one chasing viral moments. Build systems that bring people back: SMS, loyalty, birthdays, community. Every guest who leaves happy is a future booking.</div>
+
+<h4>SMS Retention Scripts</h4>
+<div class="script-box">
+<div class="script-label">// Welcome message (send within 24 hrs of first visit)</div>
+<div class="script-text">"Thanks for visiting Bombay Cafe! We hope the tikka was everything it should be. Show this message on your next visit for a complimentary mango lassi. See you soon — [Restaurant Name]"</div>
+</div>
+<div class="script-box">
+<div class="script-label">// Re-engagement (send after 30 days no visit)</div>
+<div class="script-text">"It's been a while! The dal makhani has been slow-cooking since yesterday morning. Table waiting for you this week — book at [link] or reply to reserve. — Bombay Cafe"</div>
+</div>
+<div class="script-box">
+<div class="script-label">// Weekend special push (send Thursday PM)</div>
+<div class="script-text">"Weekend special: Lamb Biryani dum-style is on this Saturday and Sunday only. Limited portions. Book now at [link] — Bombay Cafe"</div>
+</div>
+<div class="script-box">
+<div class="script-label">// Birthday message (send morning of birthday)</div>
+<div class="script-text">"Happy Birthday! 🎂 Celebrate with us tonight — complimentary gulab jamun for the birthday guest. Show this message to your server. Booking: [link] — Bombay Cafe"</div>
+</div>
+
+<h4>Loyalty Program Structure</h4>
+<table class="prep-table">
+<tr><th>Tier</th><th>Qualification</th><th>Benefit</th></tr>
+<tr><td>Spice Lover</td><td>First visit + SMS opt-in</td><td>Complimentary mango lassi on return</td></tr>
+<tr><td>Regular</td><td>5 visits in 90 days</td><td>10% off every Tuesday (quiet night driver)</td></tr>
+<tr><td>Bombay Family</td><td>12 visits in a year</td><td>Monthly chef's table reservation priority + birthday dessert always free</td></tr>
+</table>
+
+<h4>Google Reviews Protocol</h4>
+<div class="script-box">
+<div class="script-label">// Ask for review (say at bill delivery)</div>
+<div class="script-text">"We're a small independent restaurant and reviews make a huge difference for us. If you enjoyed tonight, we'd really appreciate a Google review — it takes about 60 seconds and helps us enormously. There's a QR code on the receipt."</div>
+<div class="script-why">Print QR code linking to your Google review page on every receipt. Target: 1 review per 15 covers. At 60 covers/night that's 4 new reviews per service.</div>
+</div>
+
+<h4>Allergen Table — All 28 Menu Items</h4>
+<div class="info-box"><strong>US allergen compliance (FALCPA):</strong> The 9 major allergens must be clearly disclosed: Milk, Eggs, Fish, Shellfish, Tree Nuts, Peanuts, Wheat, Soybeans, Sesame. Print this table and post it in the kitchen at eye level. Train all FOH staff — a guest with a serious allergy is trusting your team with their life. Never guess. Always check with the chef.</div>
+<table class="rev-table" style="font-size:0.78rem;">
+<tr><th>Dish</th><th>Dairy</th><th>Gluten</th><th>Eggs</th><th>Tree Nuts</th><th>Fish</th><th>Shellfish</th><th>Vegan</th><th>GF</th></tr>
+<tr style="background:#FDF6E3;"><td colspan="9" style="font-weight:700;color:#C0632B;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">ENTREES</td></tr>
+<tr><td>Pau Bhaji</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Chicken Tikka</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Chaat Papdi</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Keema Pau</td><td>✓</td><td>✓</td><td>opt</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Aloo Tikki</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Lamb Chops</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr style="background:#FDF6E3;"><td colspan="9" style="font-weight:700;color:#C0632B;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">MAINS</td></tr>
+<tr><td>Butter Chicken</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Dal Makhani</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Lamb Rogan Josh</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Paneer Makhani</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Chicken Biryani</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Fish Curry (Kerala)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Lamb Biryani</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Chana Masala</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Saag Paneer</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Prawns Masala</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>✓</td></tr>
+<tr style="background:#FDF6E3;"><td colspan="9" style="font-weight:700;color:#C0632B;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">DESSERTS</td></tr>
+<tr><td>Gulab Jamun</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Mango Kulfi</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Masala Chai Brulee</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Chocolate Cardamom Tart</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr style="background:#FDF6E3;"><td colspan="9" style="font-weight:700;color:#C0632B;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">DRINKS</td></tr>
+<tr><td>Mumbai Mule</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Chai Old Fashioned</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Saffron Rose Gin Sour</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Tamarind Whisky Sour</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Mango Lassi</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>House Masala Chai</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Jaljeera</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Virgin Rose Sharbat</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+</table>
+<div class="tb">⚠️ Always verify allergen information with your suppliers for every batch. Cross-contamination risk exists in any shared kitchen. Guests with severe allergies (anaphylaxis risk) should consult directly with the chef before ordering. Never guess — always check.</div>
+<!-- SECTION 9: P&L -->
+<h2><span class="sn2">9</span>P&amp;L Model — Full-Year Projection</h2>
+<div class="info-box"><strong>Model assumptions:</strong> 40-seat restaurant · 2 seatings per night dinner · 1 seating lunch (weekdays only) · 5 dinner services + 3 lunch services per week · Average spend $43/head dinner, $28/head lunch · 70% occupancy dinner, 50% occupancy lunch · 52 weeks per year · Cocktail program active dinner service only.</div>
+
+<h4>Monthly Revenue Model</h4>
+<table class="rev-table">
+<tr><th>Revenue Stream</th><th>Covers/Week</th><th>Avg Spend</th><th>Weekly Rev</th><th>Monthly Rev</th></tr>
+<tr><td>Dinner (40 seats × 2 seatings × 70% × 5 nights)</td><td>280</td><td>$43.00</td><td>$12,040</td><td>$52,173</td></tr>
+<tr><td>Lunch (40 seats × 1 seating × 50% × 3 days)</td><td>60</td><td>$28.00</td><td>$1,680</td><td>$7,280</td></tr>
+<tr><td>Cocktail / bar revenue (est. 30% of dinner covers)</td><td>84 drinks</td><td>$14.50</td><td>$1,218</td><td>$5,278</td></tr>
+<tr><td>Private dining / events (est. 2 per month)</td><td>—</td><td>—</td><td>—</td><td>$4,800</td></tr>
+<tr class="total-row"><td><strong>TOTAL MONTHLY REVENUE</strong></td><td></td><td></td><td></td><td><strong>$69,531</strong></td></tr>
+</table>
+
+<h4>Monthly Cost Model</h4>
+<table class="rev-table">
+<tr><th>Cost Category</th><th>% of Revenue</th><th>Monthly $</th><th>Notes</th></tr>
+<tr><td>Food cost (COGS)</td><td>26%</td><td>$18,078</td><td>Blended: entrées 15%, mains 22%, drinks 10%</td></tr>
+<tr><td>Labour — kitchen</td><td>18%</td><td>$12,516</td><td>Head chef + CDP + commis + dishwasher</td></tr>
+<tr><td>Labour — FOH</td><td>12%</td><td>$8,344</td><td>Manager + 2 servers (excl. tips)</td></tr>
+<tr><td>Rent (commercial, US avg)</td><td>10%</td><td>$6,953</td><td>Varies heavily by market — NYC/LA higher</td></tr>
+<tr><td>Utilities (gas, electric, water)</td><td>4%</td><td>$2,781</td><td>Gas-heavy kitchen; tandoor runs 8hrs/day</td></tr>
+<tr><td>Marketing + social</td><td>2%</td><td>$1,391</td><td>Instagram ads, Google, print</td></tr>
+<tr><td>Packaging + consumables</td><td>1%</td><td>$695</td><td>Takeaway containers, napkins, receipts</td></tr>
+<tr><td>Repairs, insurance, misc</td><td>3%</td><td>$2,086</td><td>Equipment maintenance, public liability</td></tr>
+<tr class="total-row"><td><strong>TOTAL MONTHLY COSTS</strong></td><td><strong>76%</strong></td><td><strong>$52,844</strong></td><td></td></tr>
+<tr class="net-row"><td><strong>NET MONTHLY PROFIT</strong></td><td><strong>24%</strong></td><td><strong>$16,687</strong></td><td>Before tax + loan repayment</td></tr>
+</table>
+
+<h4>Annual Summary</h4>
+<table class="rev-table">
+<tr><th>Metric</th><th>Figure</th><th>Notes</th></tr>
+<tr><td>Annual Revenue</td><td>$834,372</td><td>Conservative model, no catering</td></tr>
+<tr><td>Annual Net Profit (before tax)</td><td>$200,244</td><td>24% net margin</td></tr>
+<tr><td>Monthly Break-Even Revenue</td><td>$52,844</td><td>Cover your costs at this revenue level</td></tr>
+<tr><td>Break-Even Daily Revenue</td><td>$1,761</td><td>41 covers at $43 avg spend</td></tr>
+<tr><td>Year 1 target (ramp-up)</td><td>$600,000 rev</td><td>Allow 6 months to reach full occupancy</td></tr>
+<tr><td>Year 2 target (stabilised)</td><td>$900,000 rev</td><td>Add weekend lunch, private events</td></tr>
+</table>
+
+<h4>Menu Engineering — Stars vs Plow Horses</h4>
+<table class="rev-table">
+<tr><th>Dish</th><th>Category</th><th>FC%</th><th>Popularity</th><th>Action</th></tr>
+<tr><td>Butter Chicken</td><td>⭐ Star</td><td>18.2%</td><td>High</td><td>Protect position — never remove</td></tr>
+<tr><td>Chicken Biryani</td><td>⭐ Star</td><td>17.1%</td><td>High</td><td>Tableside theatre — keep premium price</td></tr>
+<tr><td>Chai Old Fashioned</td><td>⭐ Star</td><td>10.3%</td><td>High</td><td>Feature on menu prominently</td></tr>
+<tr><td>Prawns Masala</td><td>⭐ Star</td><td>19.4%</td><td>High</td><td>Market as premium — high GP per serve</td></tr>
+<tr><td>Dal Makhani</td><td>🐴 Plow Horse</td><td>13.7%</td><td>High</td><td>High popularity, good margin — keep as anchor</td></tr>
+<tr><td>Chana Masala</td><td>🐴 Plow Horse</td><td>8.8%</td><td>Medium</td><td>Best vegan option — promote for dietary segment</td></tr>
+<tr><td>Lamb Rogan Josh</td><td>🧩 Puzzle</td><td>24.7%</td><td>Medium</td><td>High FC but premium positioning — review portion</td></tr>
+<tr><td>Lamb Biryani</td><td>🧩 Puzzle</td><td>27.7%</td><td>Medium</td><td>Weekend special only — limits exposure</td></tr>
+</table>
+<div class="info-box"><strong>Key financial insight:</strong> Your cocktail program punches above its weight. A $15.99 Chai Old Fashioned at 10.3% food cost = $14.34 gross profit per drink. If your 40 dinner covers average 0.8 cocktails each, that's 32 cocktails × $14.34 = $459 gross profit per dinner service from drinks alone. That is $167,535 annual gross from cocktails at this volume. Invest in the bar program — it is the highest-return line on your P&L.</div>
+<!-- SECTION 10: CHEF'S LENS -->
+<h2><span class="sn2">10</span>Chef's Lens — The Bombay Cafe in Context</h2>
+<div class="lens-card">
+<div class="lens-title">// A Working Chef's Perspective on Opening a Bombay Cafe in the United States</div>
+<div class="lens-text">
+The Bombay Cafe concept is one of the most compelling restaurant opportunities in the current American market. Indian cuisine is the fastest-growing major cuisine category in the US, with the market expected to surpass $8 billion by 2027. And yet, outside of certain metropolitan areas, quality Indian dining is still genuinely hard to find. The gap between what Indian food can be and what most Americans have experienced is enormous. That gap is your opportunity.<br><br>
+What Dishoom proved in London — and what this guide is built around — is that Indian food does not need to be cheap to be full. It needs to be excellent, hospitable, and consistent. The queue outside Dishoom at 8pm on a Tuesday is not because of marketing. It's because of masala chai and lamb chops and keema pau and the feeling that the restaurant genuinely cares whether you had a good time.<br><br>
+The dishes in this guide are not restaurant inventions. They are the food of Mumbai street stalls, Irani cafes, home kitchens, and wedding feasts. They have been eaten and loved for generations. Your job as an operator is not to create them — it is to honour them. Use the right ingredients. Cook with the right technique. Serve with the right warmth.<br><br>
+The cocktail program is your creative space. The Mumbai Mule, the Chai Old Fashioned, the Saffron Rose Gin Sour — these do not exist at a street stall in Mumbai. They exist at a Bombay Cafe in the United States, where your guests want the soul of Indian hospitality filtered through the lens of an American bar. That is your unique position: deeply rooted in culture, fully fluent in the market you are serving.<br><br>
+The tandoor is your commitment device. When you invest in a clay tandoor oven, you are telling your team, your guests, and your market: we are doing this properly. You cannot cut corners on tikka when you own a tandoor. You cannot serve mediocre naan when you have a 400-degree clay oven running every service. The equipment forces quality.<br><br>
+One last thing. In Indian hospitality tradition, a guest is never allowed to leave hungry or un-refreshed. Atithi devo bhava — the guest is God. That principle, applied to every table, every service, every night — is what builds a great restaurant. The numbers in this guide will only work if the hospitality is real.
+</div>
+<div class="lens-closer">The food is the foundation. The hospitality is the building. — KitchenFounder</div>
+</div>
+
+<footer>
+KitchenFounder · Bombay Cafe Operations Guide v7 · US Market 2025<br>
+Built by working chefs, for first-time operators · kitchen-founder.myshopify.com<br>
+© 2025 KitchenFounder — All rights reserved · For single-operator use only
+</footer>
+</div>
+</body>
+</html>

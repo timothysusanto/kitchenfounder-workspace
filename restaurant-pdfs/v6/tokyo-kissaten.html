@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokyo Kissaten — Operations Guide v6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#e0d0b0;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(224,208,176,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #e0d0b0;}
+.cover-eye{color:#e0d0b0;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#e0d0b0;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #e0d0b0;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#e0d0b0,#1a1510);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#0a0a0a;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#181510;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#e0d0b0;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#e0d0b0;color:#0a0a0a;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#181510;border:1px solid #e0d0b0;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#e0d0b0;color:#0a0a0a;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #e0d0b0;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#e0d0b0;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#e0d0b0;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#e0d0b0,#181510);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #e0d0b0;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#e0d0b0;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#e0d0b0;color:#0a0a0a;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#e0d0b0;color:#0a0a0a;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#181510;border:1px solid #e0d0b0;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#181510;border:1px solid #e0d0b0;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#e0d0b0;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eye">Operations Guide — v6 — 2026</div>
+  <h1>Tokyo<br>Kissaten</h1>
+  <div class="cover-tag">喫茶店 — The art of slowness, served daily</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">35</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$38</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-label">Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">$17.2k</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+  <div style="color:#666;font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:20px;">
+    ENTRÉES: 6 &nbsp;|&nbsp; MAINS: 10 &nbsp;|&nbsp; DESSERTS: 4 &nbsp;|&nbsp; DRINKS: 8
+  </div>
+</div>
+
+<!-- CHEF'S LENS -->
+<div class="page">
+  <h2>Chef's Lens</h2>
+
+  <div class="lens-card">
+    <div class="lens-title">// What a Michelin-trained chef sees in Tokyo kissaten cooking</div>
+    <div class="lens-text">
+      The Tokyo kissaten operates on a philosophy that is almost impossible to find in commercial food culture: the belief that slowness is a service, not a failure. The pour-over coffee drips at its own pace. The morning set takes as long as it takes. The kissaten owner does not rush the customer. This is not inefficiency — it is the product. The matcha latte requires water at 80°C, not boiling: above that temperature, the matcha oxidises and turns bitter. The whisking technique matters: the chasen bamboo whisk creates a foam through the figure-eight motion that a blender cannot replicate. The thick toast is Shokupan — Japanese milk bread — with a crumb so soft it requires a specific knife technique to slice without compressing. Precision in service of gentleness.
+    </div>
+  </div>
+
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">
+      In a market saturated with fast coffee and performance café culture, the kissaten offers something increasingly rare: permission to slow down. The customer who wants quiet, a counter seat, and coffee taken seriously exists in every major US city and is currently underserved. The morning set at $12.99 with a $1.20 food cost funds a kitchen model that requires minimal equipment and a small, highly skilled team.
+    </div>
+    <div class="lens-closer">The margins are better than they look. This guide shows you how.</div>
+  </div>
+</div>
+
+<!-- ENTRÉES -->
+<div class="page">
+  <h2>Entrées</h2>
+
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Tamago Sando</span></div>
+    <div class="rh">
+      <div class="rh-title">Tamago Sando — Japanese Egg Salad Sandwich</div>
+      <div class="rh-meta">TICKET: 5 min &nbsp;|&nbsp; FOOD COST: 14%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Soft-boil eggs for exactly 10 minutes, shock in ice bath, peel clean.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Mash eggs with Japanese mayo (Kewpie), season with salt and white pepper.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Spread filling evenly on Shokupan, crust removed, press firmly and slice diagonally.</div></div>
+      </div>
+      <div class="chef-tip">🍳 The Kewpie mayo is non-negotiable. It has rice vinegar and egg yolk only — the flavour profile is fundamentally different from Western mayo.</div>
+      <div class="al"><span class="a">Eggs</span><span class="a">Gluten</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Chicken Katsu Sando</div>
+      <div class="rh-meta">TICKET: 8 min &nbsp;|&nbsp; FOOD COST: 18%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Pound chicken breast to even <span class="temp">1cm</span> thickness. Season, coat: flour → egg → panko.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Fry at <span class="temp">170°C</span> for 4–5 minutes until golden. Drain on rack, not paper.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Spread tonkatsu sauce and Japanese mayo on Shokupan. Layer katsu, press, slice.</div></div>
+      </div>
+      <div class="al"><span class="a">Gluten</span><span class="a">Eggs</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Tamagoyaki — Rolled Dashi Omelette</div>
+      <div class="rh-meta">TICKET: 6 min &nbsp;|&nbsp; FOOD COST: 12%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Whisk 3 eggs with dashi, mirin, soy, and a pinch of sugar until combined.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Heat tamagoyaki pan over medium. Oil lightly. Pour thin layer, roll forward as it sets.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Repeat 3–4 layers, rolling each onto the previous. Shape in bamboo mat. Slice and serve.</div></div>
+      </div>
+      <div class="chef-tip">🥢 The roll direction is consistent — always away from you. Muscle memory over method once trained.</div>
+      <div class="al"><span class="a">Eggs</span><span class="a">Soy</span><span class="a">Gluten</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ENTRÉES CONTINUED -->
+<div class="page">
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Edamame Gyoza — Pan-fried, Ponzu</div>
+      <div class="rh-meta">TICKET: 8 min &nbsp;|&nbsp; FOOD COST: 15%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Fill gyoza skins with edamame-ginger filling. Pleat and seal edges with water.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Pan-fry flat side down in oil, <span class="temp">medium-high</span>, until golden — about 2 minutes.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add splash of water, cover immediately to steam. Uncover, cook dry. Serve with ponzu.</div></div>
+      </div>
+      <div class="al"><span class="a">Gluten</span><span class="a">Soy</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Miso Soup &amp; House Pickle Set</div>
+      <div class="rh-meta">TICKET: 4 min &nbsp;|&nbsp; FOOD COST: 10%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Heat dashi to <span class="temp">65°C</span>. Dissolve white miso — do not boil. Add tofu and wakame.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plate house pickles: tsukemono of cucumber, daikon, and ginger.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Garnish miso with spring onion. Serve together in lacquered bowls.</div></div>
+      </div>
+      <div class="chef-tip">🍵 Never boil miso — it destroys the live cultures and muddles the flavour. 65°C is the ceiling.</div>
+      <div class="al"><span class="a">Soy</span><span class="a">Gluten (miso)</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Onigiri 2pc — Salmon Mayo &amp; Tuna Nori</div>
+      <div class="rh-meta">TICKET: 5 min &nbsp;|&nbsp; FOOD COST: 13%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Season sushi rice with rice vinegar and salt while still warm. Cool to hand-temperature.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Wet hands with salted water. Shape rice into triangle with filling in centre.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Wrap lower half in nori. Serve immediately — nori stays crisp for approx. 3 minutes.</div></div>
+      </div>
+      <div class="al"><span class="a">Fish</span><span class="a">Gluten (soy in tuna)</span><span class="a">Eggs (mayo)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAINS PAGE 1 -->
+<div class="page">
+  <h2>Mains</h2>
+
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Shio Ramen — Signature</span></div>
+    <div class="rh">
+      <div class="rh-title">Shio Ramen — Clear Chicken-Pork Broth ★ Signature</div>
+      <div class="rh-meta">TICKET: 12 min &nbsp;|&nbsp; FOOD COST: 16% &nbsp;|&nbsp; BROTH: 4hr min prep</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Broth starts at 07:00 daily. Simmer chicken carcasses and pork neck bones 4hr minimum. Skim constantly first 30 min.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Season with shio tare (sea salt, sake, mirin). Broth should be crystal clear — never cloudy.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook fresh ramen noodles 90 seconds. Plate broth at <span class="temp">85°C</span>, add noodles, chashu, ajitsuke tamago, nori, menma.</div></div>
+      </div>
+      <div class="chef-tip">🍜 The clarity of shio ramen is its identity. Cloudy broth means rushed technique. The patience in the pot translates directly to the bowl.</div>
+      <div class="al"><span class="a">Gluten</span><span class="a">Pork</span><span class="a">Eggs</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Japanese Beef Curry Rice</div>
+      <div class="rh-meta">TICKET: 10 min &nbsp;|&nbsp; FOOD COST: 19%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Curry base made in batches. Sauté onion until deeply caramelised — minimum 25 min.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add beef, potato, carrot. Simmer with S&B curry roux until thick and glossy.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Plate Japanese rice on right side of oval plate. Ladle curry on left. Garnish with fukujinzuke.</div></div>
+      </div>
+      <div class="al"><span class="a">Gluten (roux)</span><span class="a">Dairy (some roux brands)</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Oyakodon — Chicken &amp; Egg Rice Bowl</div>
+      <div class="rh-meta">TICKET: 8 min &nbsp;|&nbsp; FOOD COST: 17%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Simmer chicken thigh in dashi, soy, mirin, sugar in small oyakodon pan until cooked through.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add sliced onion, soften 2 min. Pour beaten egg over in spiral — do not stir.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cover 30 seconds. Egg should be 80% set, custardy. Slide immediately over hot rice. Garnish mitsuba.</div></div>
+      </div>
+      <div class="chef-tip">🥚 The custard set is the entire dish. Over-cooked egg is scrambled egg on rice — technically wrong. The residual heat of the rice finishes the cook.</div>
+      <div class="al"><span class="a">Eggs</span><span class="a">Soy</span><span class="a">Gluten</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAINS PAGE 2 -->
+<div class="page">
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Teriyaki Salmon Don</div>
+      <div class="rh-meta">TICKET: 10 min &nbsp;|&nbsp; FOOD COST: 20%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Score salmon skin. Sear skin-side down in oil, medium-high, 4 minutes until crispy. Flip 90 seconds.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Glaze with teriyaki (soy, mirin, sake, sugar) in final 30 seconds. Rest 1 minute before slicing.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve over Japanese short-grain rice with pickled ginger, julienned cucumber, sesame.</div></div>
+      </div>
+      <div class="al"><span class="a">Fish</span><span class="a">Soy</span><span class="a">Gluten</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Pork Katsu Curry</div>
+      <div class="rh-meta">TICKET: 12 min &nbsp;|&nbsp; FOOD COST: 18%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Prepare pork cutlet as per Chicken Katsu method — panko, <span class="temp">170°C</span>, drain on rack.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plate rice, ladle curry from batch over half. Slice katsu and fan over curry.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Garnish with fukujinzuke. Serve with tonkatsu sauce on the side.</div></div>
+      </div>
+      <div class="al"><span class="a">Gluten</span><span class="a">Eggs</span><span class="a">Pork</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Cold Soba — House Tsuyu Dipping Noodles</div>
+      <div class="rh-meta">TICKET: 6 min &nbsp;|&nbsp; FOOD COST: 14%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Cook soba 4 minutes in boiling water. Drain and rinse immediately in cold running water.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plate soba on bamboo zaru. Serve tsuyu (dashi, soy, mirin concentrate) in chilled cup alongside.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Condiments: wasabi, sliced spring onion, nori strips. Instruct customer on dipping ratio.</div></div>
+      </div>
+      <div class="al"><span class="a">Gluten (wheat soba)</span><span class="a">Soy</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Mentaiko Pasta</div>
+      <div class="rh-meta">TICKET: 10 min &nbsp;|&nbsp; FOOD COST: 16%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Cook spaghetti al dente. Reserve 60ml pasta water.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Mix mentaiko roe with butter, cream, soy, and lemon juice off-heat.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Toss pasta in sauce with pasta water to emulsify. Do not heat — mentaiko should stay raw and bright. Garnish nori, shiso, extra roe.</div></div>
+      </div>
+      <div class="al"><span class="a">Fish (mentaiko)</span><span class="a">Gluten</span><span class="a">Dairy</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAINS PAGE 3 -->
+<div class="page">
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Napolitan Spaghetti</div>
+      <div class="rh-meta">TICKET: 10 min &nbsp;|&nbsp; FOOD COST: 15%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Sauté onion, capsicum, mushroom, and Vienna sausage slices in butter.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add ketchup, Worcestershire, and a dash of Tabasco. Toss with pre-cooked spaghetti.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Plate in oval dish. Garnish with parsley and grated Parmesan. Serve with Tabasco on table.</div></div>
+      </div>
+      <div class="chef-tip">🍝 Napolitan is a Showa-era kissaten classic — deliberately retro, deliberately comforting. The ketchup base is authentic. Do not attempt to elevate it with fresh tomato.</div>
+      <div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Pork (sausage)</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Yakitori Plate — 5 Skewers</div>
+      <div class="rh-meta">TICKET: 12 min &nbsp;|&nbsp; FOOD COST: 17%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Skewer chicken thigh and spring onion alternating. Skewer negima, tsukune, liver, skin separately.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Grill over charcoal or high broiler. Baste with tare (soy, mirin, sake, sugar) during last 2 minutes.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Plate on yakitori holder. Serve with sansho pepper, yuzu kosho, and lemon wedge.</div></div>
+      </div>
+      <div class="al"><span class="a">Soy</span><span class="a">Gluten (tare)</span></div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Hiyashi Chuka — Cold Noodle Salad</div>
+      <div class="rh-meta">TICKET: 8 min &nbsp;|&nbsp; FOOD COST: 14%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Cook ramen noodles, rinse cold, toss in sesame oil to prevent sticking.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Arrange toppings in radial sections: julienned cucumber, egg strips, ham, tomato, wakame.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Pour chilled tsuyu-sesame dressing over table. Garnish with mustard, pickled ginger.</div></div>
+      </div>
+      <div class="al"><span class="a">Gluten</span><span class="a">Eggs</span><span class="a">Sesame</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DESSERTS & DRINKS -->
+<div class="page">
+  <h2>Desserts</h2>
+
+  <table>
+    <tr><th>Item</th><th>Ticket</th><th>Food Cost</th><th>Notes</th></tr>
+    <tr><td>Matcha Tiramisu</td><td>5 min</td><td>13%</td><td>Matcha soaked ladyfingers, mascarpone cream, dusted matcha</td></tr>
+    <tr><td>Hojicha Panna Cotta</td><td>3 min</td><td>11%</td><td>Pre-set. Plate with roasted hojicha syrup and gold flake</td></tr>
+    <tr><td>Dorayaki 2pc — Red Bean Pancakes</td><td>4 min</td><td>10%</td><td>Fluffy pancakes, house anko filling. Serve warm.</td></tr>
+    <tr><td>Kakigori — Japanese Shaved Ice</td><td>5 min</td><td>12%</td><td>Machine-shaved, not crushed. Matcha, condensed milk, anko</td></tr>
+  </table>
+
+  <div class="fc-box">
+    <div class="fc-item"><div class="fc-val">10–13%</div><div class="fc-lbl">Dessert FC Range</div></div>
+    <div class="fc-item"><div class="fc-val">4 items</div><div class="fc-lbl">Menu Count</div></div>
+    <div class="fc-item"><div class="fc-val">3–5 min</div><div class="fc-lbl">Max Ticket Time</div></div>
+  </div>
+
+  <div class="safety">
+    <strong style="color:#e0d0b0;">Allergen Summary — Desserts</strong>
+    <div class="al">
+      <span class="a">Matcha Tiramisu: Gluten, Eggs, Dairy</span>
+      <span class="a">Hojicha Panna Cotta: Dairy</span>
+      <span class="a">Dorayaki: Gluten, Eggs, Red Bean</span>
+      <span class="a">Kakigori: Dairy</span>
+    </div>
+  </div>
+
+  <h2>Drinks</h2>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Pour-Over Coffee — Single Origin</div>
+        <div class="drink-price">$6.99 &nbsp;|&nbsp; FC: 12%</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">Ground to order. 4 minute brew. Rotates weekly.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Matcha Latte — 80°C, Chasen Whisked</div>
+        <div class="drink-price">$6.99 &nbsp;|&nbsp; FC: 11%</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">Never above 80°C. Chasen whisk only. Dairy allergen.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Hojicha Latte</div>
+        <div class="drink-price">$6.99</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">Roasted green tea, steamed oat or dairy milk.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Morning Set — Coffee + Toast + Egg</div>
+        <div class="drink-price">$12.99 &nbsp;|&nbsp; FC: $1.20</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">Highest margin item on menu. Anchor the morning.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Canned Chu-Hi — Lemon Sour</div>
+        <div class="drink-price">$5.99</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">Serve chilled in can with glass of ice.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Asahi Super Dry</div>
+        <div class="drink-price">$6.99</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">Serve at 2–4°C. Pre-chill glasses.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Yuzu Soda</div>
+        <div class="drink-price">$4.99</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">House yuzu syrup, sparkling water, ice.</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Cold Brew Concentrate</div>
+        <div class="drink-price">$5.99</div>
+        <div style="color:#999;font-size:0.78rem;margin-top:6px;">18hr cold steep. Dilute 1:1 over ice. Instant serve.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE SCRIPTS -->
+<div class="page">
+  <h2>Service Scripts</h2>
+
+  <div class="script-box">
+    <div class="script-label">Welcome + Pour-Over Explanation</div>
+    <div class="script-text">"The coffee is pour-over — single origin, ground to order. It takes 4 minutes. If you're in a rush, the cold brew is instant and very good. But the pour-over is worth the 4 minutes."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Matcha Latte Temperature Note</div>
+    <div class="script-text">"The matcha is whisked at 80°C — not boiling. Above that it oxidises and turns bitter. It takes a minute longer. That's why it tastes like matcha and not grass."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Morning Set Pitch</div>
+    <div class="script-text">"The morning set is coffee, thick toast with butter, and a soft-boiled egg. $12.99. It's a Japanese breakfast — slow, deliberate. We don't rush it."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Kissaten Philosophy</div>
+    <div class="script-text">"This is a kissaten — a Japanese coffee shop that's been around since the 1950s. The concept is slowness. You're welcome to stay as long as you like."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Return Visit</div>
+    <div class="script-text">"We change the single-origin coffee weekly. If you liked today's, ask us what it was — we write it on the board by the bar. Next week is different."</div>
+  </div>
+
+  <h2>Daily Prep Schedule</h2>
+
+  <table class="prep-table">
+    <tr><th>Time</th><th>Task</th><th>Notes</th></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">07:00</span></td><td>Ramen broth on</td><td>4hr minimum simmer. Skim first 30 min aggressively.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">08:00</span></td><td>Tamagoyaki prep</td><td>Batch for morning service. Cover and hold warm.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">08:30</span></td><td>Onigiri assembly</td><td>Wrap and hold. Nori applied to order only.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">09:00</span></td><td>Open + pour-over calibration</td><td>Grind test, bloom check, scale tare, board update.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">10:00</span></td><td>Lunch mise en place</td><td>Rice on, curry heated, soba prepped, gyoza filled.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">11:30</span></td><td>Lunch service begins</td><td>Full menu available. 35 covers max.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">14:30</span></td><td>Lunch reset</td><td>Clean stations. Broth top-up. Restock mise.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">15:00</span></td><td>Afternoon coffee service</td><td>Coffee, light bites, desserts only.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">17:30</span></td><td>Dinner mise en place</td><td>Yakitori skewers ready. Rice fresh batch. Full prep.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">18:00</span></td><td>Dinner service begins</td><td>Full menu. Alcohol available from this service.</td></tr>
+    <tr><td><span style="color:#e0d0b0;font-family:'DM Mono',monospace;">21:00</span></td><td>Close</td><td>Deep clean stations. Log waste. Count broth yield.</td></tr>
+  </table>
+</div>
+
+<!-- P&L + ALLERGENS + FOOTER -->
+<div class="page">
+  <h2>Profit &amp; Loss Overview</h2>
+
+  <table class="rev-table">
+    <tr><th>Metric</th><th>Figure</th><th>% of Revenue</th></tr>
+    <tr><td>Daily Revenue</td><td>~$1,900</td><td>—</td></tr>
+    <tr><td>Weekly Revenue</td><td>~$11,400</td><td>—</td></tr>
+    <tr><td>Monthly Revenue</td><td>~$49,400</td><td>100%</td></tr>
+    <tr><td>Food Cost (22%)</td><td>~$10,868</td><td>22%</td></tr>
+    <tr><td>Labour Cost (28%)</td><td>~$13,832</td><td>28%</td></tr>
+    <tr><td>Overheads (15%)</td><td>~$7,410</td><td>15%</td></tr>
+    <tr class="profit-row"><td>Est. Monthly Net</td><td>~$17,290</td><td>~35%</td></tr>
+  </table>
+
+  <div class="fc-box">
+    <div class="fc-item"><div class="fc-val">$38</div><div class="fc-lbl">Avg Spend / Cover</div></div>
+    <div class="fc-item"><div class="fc-val">35</div><div class="fc-lbl">Seats</div></div>
+    <div class="fc-item"><div class="fc-val">~50</div><div class="fc-lbl">Covers / Day (est.)</div></div>
+    <div class="fc-item"><div class="fc-val">35%</div><div class="fc-lbl">Net Margin</div></div>
+  </div>
+
+  <div class="chef-tip">💡 The morning set at $12.99 with a $1.20 food cost (9.2% FC) is the engine. At 20 covers per morning service, that's $259 revenue at under $25 food cost. Build the open around it.</div>
+
+  <h2>Allergen Matrix</h2>
+
+  <div class="safety">
+    <p style="color:#999;font-size:0.8rem;margin-bottom:12px;">Staff must verify all allergens at point of order. Menu items below flagged with primary allergens. Always check with kitchen for current prep.</p>
+    <table>
+      <tr><th>Item</th><th>Allergens</th></tr>
+      <tr><td>Tamago Sando</td><td><div class="al"><span class="a">Eggs</span><span class="a">Gluten</span></div></td></tr>
+      <tr><td>Chicken Katsu Sando</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span></div></td></tr>
+      <tr><td>Edamame Gyoza</td><td><div class="al"><span class="a">Gluten</span><span class="a">Soy</span></div></td></tr>
+      <tr><td>Shio Ramen</td><td><div class="al"><span class="a">Gluten</span><span class="a">Pork</span></div></td></tr>
+      <tr><td>Matcha Latte</td><td><div class="al"><span class="a">Dairy</span></div></td></tr>
+      <tr><td>Dorayaki 2pc</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span><span class="a">Red Bean</span></div></td></tr>
+      <tr><td>Kakigori</td><td><div class="al"><span class="a">Dairy</span></div></td></tr>
+      <tr><td>Yakitori Plate</td><td><div class="al"><span class="a">Soy</span></div></td></tr>
+    </table>
+  </div>
+
+  <footer>
+    TOKYO KISSATEN — OPERATIONS GUIDE v6 — 2026 &nbsp;|&nbsp; CONFIDENTIAL &nbsp;|&nbsp; 35 SEATS &nbsp;|&nbsp; 喫茶店
+  </footer>
+</div>
+
+</body>
+</html>

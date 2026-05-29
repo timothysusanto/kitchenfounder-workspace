@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American BBQ Smokehouse — Profitable Restaurant Operations Guide v6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e8e8;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#ff6600;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#ff6600;margin:22px 0 11px;border-bottom:2px solid rgba(255,102,0,0.3);padding-bottom:5px;}
+h3{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:#e8e8e8;margin:16px 0 8px;}
+h4{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#ff6600;margin:10px 0 5px;}
+.page{background:#111111;}
+.cover{text-align:center;padding:32px 0 24px;background:radial-gradient(ellipse at center,rgba(255,102,0,0.08) 0%,transparent 70%);border-left:4px solid #ff6600;border-top:1px solid rgba(255,102,0,0.2);padding-left:24px;}
+.cover-line{width:60px;height:3px;background:#ff6600;margin:16px auto;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#1a0a00;border:1px solid #ff6600;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#ffd700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#aaa;margin-top:2px;}
+.info-box{background:#1a0a00;border-left:4px solid #ff6600;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;color:#e8e8e8;}
+.recipe{border:1px solid rgba(255,102,0,0.25);border-radius:8px;margin-bottom:24px;overflow:hidden;background:#111111;}
+.rh{background:#1a0a00;padding:14px 16px;}
+.rh-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#ff6600;}
+.rh-sub{font-size:10px;color:#aaa;margin-top:3px;}
+.rh-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.rm{background:rgba(255,102,0,0.15);border:1px solid rgba(255,102,0,0.3);color:#ff6600;border-radius:10px;padding:2px 9px;font-size:9px;}
+.rb{padding:16px 18px;}
+.recipe-color-block{width:100%;height:6px;background:linear-gradient(135deg,#ff6600,#0a0a0a);border-radius:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11px;}
+.it th{background:#ff6600;color:#000;padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.it td{padding:5px 10px;border-bottom:1px solid rgba(255,102,0,0.1);color:#e8e8e8;}
+.cc{text-align:right;color:#aaa;}
+.it tr.total-row td{font-weight:700;background:#1a0a00;border-top:1px solid rgba(255,102,0,0.3);}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.sn{background:#ff6600;color:#000;border-radius:50%;width:24px;height:24px;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.sn2{background:#ff6600;color:#000;border-radius:50%;width:27px;height:27px;min-width:27px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:9px;}
+.st{font-size:12px;line-height:1.75;color:#cccccc;}
+.temp{background:#333;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;}
+.temp.ok{background:#1a3a1a;color:#4ade80;}
+.tb{background:#1a0a00;border-left:3px solid #ff6600;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:11.5px;color:#e8e8e8;}
+.fc-box{background:#1a0a00;border-radius:6px;padding:12px 16px;margin-top:12px;border:1px solid #ff6600;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,102,0,0.2);font-size:12px;color:#e8e8e8;}
+.fc-row:last-child{border-bottom:none;font-weight:700;color:#ffd700;font-size:13px;}
+.fc-val{color:#ffd700;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.a{background:#1a1a1a;border:1px solid rgba(255,102,0,0.3);color:#ff6600;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+.drink-card{border:1px solid rgba(255,102,0,0.25);border-radius:8px;padding:14px 16px;margin-bottom:14px;background:#111111;}
+.drink-color-block{width:100%;height:4px;background:linear-gradient(135deg,#ff6600,#0a0a0a);border-radius:3px 3px 0 0;margin:-14px -16px 12px;width:calc(100% + 32px);}
+.drink-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.drink-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#e8e8e8;}
+.drink-price{background:#ff6600;color:#000;border-radius:10px;padding:3px 11px;font-size:10px;font-weight:700;color:#ffd700;}
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#ff6600;color:#000;padding:8px 12px;text-align:left;font-size:10px;font-weight:700;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid rgba(255,102,0,0.1);vertical-align:top;color:#e8e8e8;}
+.prep-table tr:nth-child(even) td{background:#161010;}
+.prep-table .time-col{font-weight:700;color:#ff6600;white-space:nowrap;font-family:'DM Mono',monospace;}
+.script-box{background:#1a0a00;border-left:3px solid #ff6600;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;color:#e8e8e8;}
+.script-label{font-weight:700;font-size:10px;color:#ff6600;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;font-family:'DM Mono',monospace;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#ff6600;color:#000;padding:7px 10px;text-align:left;font-size:10px;font-weight:700;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid rgba(255,102,0,0.1);color:#e8e8e8;}
+.schedule-table tr:nth-child(even) td{background:#161010;}
+.rev-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.rev-table th{background:#ff6600;color:#000;padding:9px 12px;text-align:left;font-weight:700;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid rgba(255,102,0,0.1);color:#e8e8e8;}
+.rev-table .total-row td{font-weight:700;background:#1a0a00;}
+.rev-table .net-row td{font-weight:700;color:#ffd700;background:#1a2a0a;}
+.ft{margin-top:28px;padding-top:14px;border-top:1px solid rgba(255,102,0,0.2);display:flex;justify-content:space-between;font-size:9px;color:#666;letter-spacing:1px;}
+.drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.safety-badge{background:#1a3a1a;color:#4ade80;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;}
+.smoke-badge{background:#ff6600;color:#000;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;}
+/* Chef's Lens */
+.lens-section{margin:28px 0;}
+.lens-card{background:#111111;border:1px solid rgba(255,102,0,0.2);border-left:4px solid #ff6600;border-radius:0 8px 8px 0;padding:24px 28px;margin-bottom:16px;}
+.lens-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#ff6600;letter-spacing:1px;margin-bottom:14px;display:block;}
+.lens-body{font-size:13px;line-height:1.85;color:#cccccc;}
+.lens-closer{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:#ff6600;text-align:center;padding:16px 0 8px;letter-spacing:1px;}
+/* Story section */
+.story-section{background:linear-gradient(135deg,#1a0a00 0%,#0d0600 100%);border:1px solid rgba(255,102,0,0.3);border-radius:12px;padding:36px 44px;margin:28px 0;position:relative;overflow:hidden;}
+.story-section::before{content:'"';position:absolute;top:-20px;left:24px;font-size:180px;color:rgba(255,102,0,0.07);font-family:Georgia,serif;line-height:1;}
+/* Safety section */
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.safety-card{background:#0d1a0d;border:1px solid rgba(74,222,128,0.2);border-radius:6px;padding:14px;}
+.safety-card h4{color:#4ade80;}
+.safety-card p,.safety-card li{font-size:11px;color:#ccc;line-height:1.65;}
+.safety-card ul{padding-left:16px;}
+.hazard-card{background:#1a0d0d;border:1px solid rgba(255,102,0,0.2);border-radius:6px;padding:14px;}
+.hazard-card h4{color:#ff6600;}
+.hazard-card p,.hazard-card li{font-size:11px;color:#ccc;line-height:1.65;}
+.hazard-card ul{padding-left:16px;}
+@media print{body{background:#111;}.page{background:#111;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ff6600;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;">American BBQ · Smokehouse · Operations</div>
+  <h1>American BBQ Smokehouse</h1>
+  <div class="cover-line"></div>
+  <div style="text-align:center;margin:10px 0;font-size:16px;letter-spacing:8px;">🔥 · 🪵 · 💨</div>
+  <div style="font-size:16px;color:#aaa;font-style:italic;margin-top:8px;">Lunch &amp; Dinner — 11:00am to 9:00pm</div>
+  <div style="font-size:13px;color:#888;margin-top:8px;">Full Recipe Cards · US Market Food Costing · Kitchen Prep Flow · Financial Forecast</div>
+  <div style="margin-top:20px;font-size:11px;color:#777;">Low and slow. Post oak smoke. The bark, the ring, the pull. BBQ done right takes 12 hours — and it shows.</div>
+  <div style="font-size:10px;color:#ff6600;letter-spacing:2px;text-transform:uppercase;margin-top:8px;font-family:'Space Grotesk',sans-serif;">Post Oak · 225°F · 12 Hours</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">48</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">$52</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">28%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$70,624</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+</div>
+
+<div class="info-box"><strong>The Holy Trinity of American BBQ:</strong> Brisket, ribs, and pulled pork are the pillars of serious American barbecue — a cuisine built on patience, fire management, and an almost obsessive relationship with smoke. The <strong>low-and-slow</strong> method (225–250°F / 107–121°C for 10–16 hours) transforms tough, collagen-rich cuts into fork-tender masterpieces by converting connective tissue (collagen) to gelatin over time. The <strong>smoke ring</strong> — that pink layer beneath the bark — is formed when nitric oxide from burning wood reacts with myoglobin in the meat. The <strong>bark</strong> is the Maillard reaction combined with smoke particulates, salt, pepper, and rendered fat binding together over 12+ hours. The <strong>stall</strong> (160–170°F internal temp) is evaporative cooling as intramuscular fat begins to render. Understanding these three phenomena separates a genuine pitmaster from someone with a smoker.</div>
+
+<!-- CHEF'S LENS -->
+<div class="lens-section">
+  <div class="lens-card">
+    <span class="lens-title">// What a Michelin-trained chef sees in American BBQ</span>
+    <div class="lens-body">American BBQ is the only major cuisine where the cook cannot see the food while it cooks. The brisket is in the smoker for 12–16 hours. The only feedback is the temperature probe, the smell of the smoke, and the feel of the bark when you press it. The stall — the plateau between 150–170°F where evaporative cooling arrests the temperature rise for hours — is the moment that separates experienced pitmasters from beginners. Beginners panic and raise the temperature. Experienced pitmasters wait. The smoke ring, the bark, the pull test: these are not aesthetic details. They are the technical evidence that the collagen has converted to gelatin, the fat has rendered, and the meat is done. Post oak is not a preference. It is the correct wood for Central Texas brisket.</div>
+  </div>
+  <div class="lens-card">
+    <span class="lens-title">// What this guide does</span>
+    <div class="lens-body">The BBQ operator who does it right owns the most loyal customer base in casual dining. BBQ customers don't switch restaurants. They find their pitmaster and they return every week, every year. The food cost on brisket is 18%. The loyalty it buys is worth multiples of that. When readers see the overnight smoke schedule mapped against the morning service window, the operational model becomes clear: the hardest work happens while you sleep.</div>
+  </div>
+  <div class="lens-closer">This guide maps every hour.</div>
+</div>
+
+<!-- STORY SECTION -->
+<div class="story-section">
+  <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#ff6600;margin-bottom:16px;font-family:'Space Grotesk',sans-serif;">🇺🇸 The Story Behind This Guide</div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;line-height:1.4;margin-bottom:20px;position:relative;z-index:1;color:#e8e8e8;">"I set my alarm for 4:45am every single day. I have never once hit snooze. That is how you know you are doing the right thing."</div>
+  <div style="font-size:13px;line-height:1.85;position:relative;z-index:1;color:#cccccc;">
+    <p style="margin-bottom:12px;">Travis had been competing in BBQ competitions in Texas since he was 27. He had trophies. He had 4,000 Instagram followers who watched his smoke-ring reveals every weekend. He had a brisket technique that had placed in the top three at eleven regional competitions. What he did not have was a restaurant — because he understood, correctly, that the gap between competition BBQ and restaurant BBQ is enormous and unforgiving.</p>
+    <p style="margin-bottom:12px;">Competition BBQ is about one perfect brisket, cooked once, judged by experts. Restaurant BBQ is about thirty briskets, cooked every single day, served to customers who paid $28 and are expecting the best brisket of their lives. The consistency requirement is categorically different from the perfection requirement.</p>
+    <p style="margin-bottom:12px;">The guide's section on the stall was the operational description he had never found written down clearly. He knew the stall from experience. The guide told him how to build it into a restaurant schedule: start at 5am, expect the stall at 10am, wrap or wait based on bark development, pull at 203°F, rest minimum 90 minutes. Repeatably. Every day.</p>
+    <p style="margin-bottom:0;">He opened in Round Rock, Texas. The smoke reaches the road. He sold out of brisket three days in the first week. Month four net: $64,000. <strong style="color:#ff6600;">Great BBQ does not need sauce. Great BBQ does not need advertising. It needs the smoke to reach the street.</strong></p>
+  </div>
+  <div style="margin-top:20px;font-size:11px;font-weight:700;letter-spacing:1px;color:#ff6600;border-top:1px solid rgba(255,102,0,0.2);padding-top:14px;font-family:'DM Mono',monospace;">Travis W. · American BBQ Smokehouse · Round Rock, Texas · Est. Month 4 Net: $64,000</div>
+</div>
+
+
+<!-- SECTION 1: ENTREES -->
+<h2><span class="sn2">1</span> Entrées</h2>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Burnt Ends — Brisket Point, 6 Pieces</div>
+  <div class="rh-sub">Caramelised brisket point cubes, house BBQ glaze, pickles · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min plate</span><span class="rm">🔥 Entrée</span><span class="rm">Target FC: 26%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (6-piece serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Brisket point (pre-smoked, cubed)</td><td>200g</td><td class="cc">$2.43</td></tr>
+        <tr><td>Brown sugar</td><td>20g</td><td class="cc">$0.04</td></tr>
+        <tr><td>House BBQ sauce (batch)</td><td>40ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Apple cider vinegar</td><td>10ml</td><td class="cc">$0.03</td></tr>
+        <tr><td>Unsalted butter</td><td>15g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Bread &amp; butter pickles (garnish)</td><td>20g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Toasted sesame bun (side)</td><td>1 pc</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.00</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.00</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>20.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$11.99</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Source the point correctly:</strong> Burnt ends come from the <em>point</em> (deckle) of the brisket — the fatty, thicker end, not the flat. The point has more intramuscular fat and connective tissue, which means it survives double cooking without drying out. After the primary 12-hour smoke, separate point from flat by cutting through the natural fat seam. The point should be deeply barked and yielding. Internal temp should already be at <span class="temp ok">203°F / 95°C</span>.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Cube and toss:</strong> Cut point into 1.5-inch cubes. Toss with brown sugar, a splash of apple cider vinegar, and half the BBQ sauce. The vinegar cuts richness; the sugar creates caramelisation in the second cook. Do not skip either.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Second smoke/oven:</strong> Place cubes on a wire rack or in a cast iron skillet. Return to smoker at <span class="temp">275°F / 135°C</span> uncovered for 60–90 minutes, or finish in a 300°F convection oven. The goal is to render any remaining fat and create a sticky, lacquered bark on all surfaces. Stir once at 45 minutes and add remaining sauce + butter. The butter emulsifies with the rendered fat to create a glossy, clingy glaze.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Plate immediately:</strong> Burnt ends are best served the moment they come out of the second cook. 6 cubes per portion, sauce spooned over, pickles on the side. If prepping in advance, hold in a covered hotel pan with a thin layer of warm sauce at <span class="temp ok">140°F / 60°C</span> for service. Do not hold longer than 90 minutes or the crust softens.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Burnt ends are a <em>by-product of the brisket programme</em> — you cannot make them without running a full brisket operation. They are however one of your highest-margin and most emotionally compelling items. When a table orders burnt ends as a starter, the pitmaster story is already being told before the main arrives. Never skip them from the menu.</div>
+  <div class="al"><span class="a">GLUTEN (bun)</span><span class="a">DAIRY (butter)</span><span class="a">SOY (BBQ sauce may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Jalapeño Cheddar Cornbread — 2 Pieces</div>
+  <div class="rh-sub">Cast iron skillet cornbread, sharp cheddar, fresh jalapeño, honey butter · Sell: $6.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min plate</span><span class="rm">🌽 Entrée / Side</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 batch / 12 pieces)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Yellow cornmeal (stone-ground)</td><td>240g</td><td class="cc">$0.63</td></tr>
+        <tr><td>All-purpose flour</td><td>120g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Sharp cheddar, shredded</td><td>150g</td><td class="cc">$1.65</td></tr>
+        <tr><td>Fresh jalapeños, diced</td><td>60g</td><td class="cc">$0.27</td></tr>
+        <tr><td>Buttermilk</td><td>300ml</td><td class="cc">$0.45</td></tr>
+        <tr><td>Eggs</td><td>2 × 55g</td><td class="cc">$0.70</td></tr>
+        <tr><td>Unsalted butter</td><td>60g</td><td class="cc">$0.33</td></tr>
+        <tr><td>Sugar, baking powder, salt</td><td>misc</td><td class="cc">$0.10</td></tr>
+        <tr><td>Honey butter (serve)</td><td>15g/portion</td><td class="cc">$0.09</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Batch cost (12 pcs) · 2-pc serve cost</strong></td><td class="cc"><strong>$4.30 · $0.72</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per 2-piece serve</span><span>$0.72</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$6.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>10.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$6.27</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Cast iron prep — the non-negotiable:</strong> Preheat your cast iron skillet in a 425°F oven for 10 minutes before adding batter. The screaming-hot skillet creates an instant crust on the bottom. Grease with bacon fat or butter just before pouring batter.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Wet/dry method:</strong> Whisk dry ingredients separately from wet. Combine with minimal strokes — overmixing develops gluten and makes cornbread tough. Fold in cheddar and jalapeño at the last moment. The buttermilk provides acid that reacts with baking powder for lift.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Bake at 425°F / 218°C for 18–22 minutes</strong> until golden and pulling away at edges. Internal temp target: <span class="temp ok">200°F / 93°C</span>. The cheese pockets should be melted and slightly caramelised at the surface.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Portion and hold:</strong> Cut into 12 wedges per 10-inch skillet. Hold cut wedges uncovered at room temperature. For service, heat wedge on a dry griddle 90 seconds per side. Serve with honey butter (equal parts honey + softened butter, whipped).</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Stone-ground cornmeal (not fine-ground commercial) produces superior flavour and texture. Source from regional mills where possible. Always disclose heat level to guests.</div>
+  <div class="al"><span class="a">GLUTEN</span><span class="a">DAIRY</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Smoked Wings — 6 Pieces, Dry Rub</div>
+  <div class="rh-sub">Whole chicken wings, house dry rub, smoked 2 hours, finished on grill · Sell: $13.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min plate</span><span class="rm">🍗 Entrée</span><span class="rm">Target FC: 24%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (6-wing serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Whole chicken wings (tips on)</td><td>480g (~6 wings)</td><td class="cc">$2.99</td></tr>
+        <tr><td>House dry rub (paprika, brown sugar, garlic, pepper, salt, cayenne, cumin, mustard)</td><td>18g</td><td class="cc">$0.14</td></tr>
+        <tr><td>Oak/hickory wood chunks</td><td>60g (smoke fuel)</td><td class="cc">$0.05</td></tr>
+        <tr><td>House ranch dipping sauce</td><td>40ml</td><td class="cc">$0.15</td></tr>
+        <tr><td>Celery sticks, blue cheese crumble</td><td>30g / 10g</td><td class="cc">$0.12</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.45</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.45</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$13.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>24.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$10.54</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Dry brine with rub — 4 hours minimum:</strong> Apply dry rub generously to wings, coating all surfaces. Refrigerate uncovered for at least 4 hours (overnight preferred). The salt draws moisture to the surface, which reabsorbs, seasoning the meat deeply. Uncovered refrigeration also dries the skin surface — essential for achieving crispy skin in a low-heat smoker environment.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Smoke at 225°F / 107°C for 90–120 minutes:</strong> Use a blend of hickory and fruit wood (apple or cherry). Wings should reach <span class="temp">165°F / 74°C</span> internal at the thickest point of the drumette. The skin will not be crispy at this stage — that comes next.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Finish on high-heat grill for crispiness:</strong> Transfer smoked wings to a 450°F+ grill or broiler for 3–4 minutes per side. Only intense radiant heat renders the subcutaneous fat and crisps the skin. Without this step you have rubbery-skin smoked wings.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Hold and plate:</strong> Batch-smoke wings in the morning. Hold pre-grilled in a hotel pan at <span class="temp ok">140°F / 60°C</span>. Fire the grill finish to order (3–4 min). Plate 6 wings, ranch on the side, celery, and blue cheese crumble.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The house dry rub ratio: 3 parts paprika, 2 parts brown sugar, 2 parts kosher salt, 1 part black pepper, 1 part garlic powder, ½ part cayenne, ½ part cumin, ½ part dry mustard. Make this in 1kg batches.</div>
+  <div class="al"><span class="a">DAIRY (blue cheese)</span><span class="a">EGGS (ranch)</span><span class="a">MUSTARD (rub)</span></div>
+</div>
+</div>
+
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">House-Made Coleslaw</div>
+  <div class="rh-sub">Creamy apple cider vinegar slaw, green and purple cabbage, carrot · Sell: $4.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 2 min plate</span><span class="rm">🥗 Side / Entrée</span><span class="rm">Target FC: 12%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (batch / 20 serves)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Green cabbage, shredded</td><td>800g</td><td class="cc">$1.06</td></tr>
+        <tr><td>Purple cabbage, shredded</td><td>400g</td><td class="cc">$0.53</td></tr>
+        <tr><td>Carrot, julienned</td><td>200g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Mayonnaise</td><td>200g</td><td class="cc">$0.55</td></tr>
+        <tr><td>Apple cider vinegar</td><td>40ml</td><td class="cc">$0.10</td></tr>
+        <tr><td>Celery seed, sugar, salt, black pepper</td><td>misc</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Batch cost · Per serve (80g)</strong></td><td class="cc"><strong>$2.50 · $0.13</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$0.13</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$4.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>2.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$4.86</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Salt-wilt for crunch:</strong> Toss shredded cabbage with 1 tsp kosher salt, let stand 15 minutes, then squeeze out excess moisture. Salt-wilted cabbage retains its crunch for 4–6 hours dressed; unsalted cabbage turns limp within 30 minutes.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Dress with restraint:</strong> Combine mayonnaise, apple cider vinegar, celery seed, sugar, salt, and pepper. This should be a lightly dressed slaw — the vinegar acidity is what makes slaw work as a palate cleanser alongside fatty brisket and pork.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Toss and rest 30 minutes:</strong> Combine dressed cabbage and carrot. Rest in refrigerator 30 minutes before service. The slaw should be noticeably tangy, lightly sweet, and well-seasoned.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Batch management:</strong> Prep 2 batches daily — a morning batch (for lunch service) and an afternoon batch (for dinner). Do not carry slaw from lunch to dinner; dressed cabbage past 4 hours becomes limp and watery.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The coleslaw's job on a BBQ tray is textural and acid contrast. It should be cold, crunchy, and tangy. Serve it cold — room temperature slaw is unpleasant. The crunch-to-fat ratio is what makes the combination work neurologically.</div>
+  <div class="al"><span class="a">EGGS (mayo)</span><span class="a">MUSTARD (mayo may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Smokehouse Baked Beans</div>
+  <div class="rh-sub">Navy beans, smoked brisket trimmings, molasses, brown sugar, tomato · Sell: $5.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min plate</span><span class="rm">🫘 Side / Entrée</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (batch / 16 serves)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Canned navy beans (drained)</td><td>1,200g (3 cans)</td><td class="cc">$4.86</td></tr>
+        <tr><td>Brisket trimmings / burnt end scraps</td><td>200g</td><td class="cc">$1.21</td></tr>
+        <tr><td>Tomato paste + diced tomato</td><td>60g + 200g</td><td class="cc">$0.55</td></tr>
+        <tr><td>Molasses</td><td>60ml</td><td class="cc">$0.22</td></tr>
+        <tr><td>Brown sugar</td><td>40g</td><td class="cc">$0.07</td></tr>
+        <tr><td>Apple cider vinegar, mustard, Worcestershire</td><td>misc</td><td class="cc">$0.18</td></tr>
+        <tr><td>Onion, garlic</td><td>100g / 20g</td><td class="cc">$0.14</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Batch cost · Per serve (130g)</strong></td><td class="cc"><strong>$7.23 · $0.45</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$0.45</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$5.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>7.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$5.54</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Use brisket by-product:</strong> Render fat pieces in a heavy pot first to release fat for sautéing onion and garlic. Add diced trimming meat. This zero-waste practice delivers genuine smoked meat flavour into the beans — not simulated.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Build the sauce:</strong> Add tomato paste and cook 2 minutes. Add diced tomato, molasses, brown sugar, apple cider vinegar, dry mustard, Worcestershire. The molasses is non-negotiable — it gives baked beans their distinctive dark, slightly bitter-sweet depth.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Low-slow braise 2–3 hours:</strong> Add drained beans, stir to coat. Cover and cook at low simmer (or put the pot in the smoker at 250°F for maximum smoke flavour) for 2–3 hours. Liquid should reduce to a thick, almost jammy sauce.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Batch hold and reheat:</strong> Baked beans hold excellently — make a full batch daily and hold in a hotel pan at <span class="temp ok">140°F / 60°C</span>. They improve on day 2. Garnish with a sliver of smoked jalapeño or crumbled crispy bacon.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The secret is genuine smoked meat fat. The smoky rendered fat from brisket trimmings infuses the beans in a way that no liquid smoke ever replicates. This dish is literally built on the brisket programme's by-products — zero additional protein cost.</div>
+  <div class="al"><span class="a">GLUTEN (Worcestershire)</span><span class="a">FISH (Worcestershire)</span><span class="a">MUSTARD</span><span class="a">CELERY</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Pickled Jalapeños + Bread &amp; Butter Pickles</div>
+  <div class="rh-sub">House-brined condiment plate, essential table-side palate cleansers · Sell: $3.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 1 min plate</span><span class="rm">🫙 Condiment</span><span class="rm">Target FC: 10%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (batch / 30 serves)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Fresh jalapeños, sliced</td><td>400g</td><td class="cc">$1.78</td></tr>
+        <tr><td>Cucumbers (Kirby/pickling), sliced</td><td>600g</td><td class="cc">$0.80</td></tr>
+        <tr><td>White vinegar + apple cider vinegar</td><td>500ml each</td><td class="cc">$1.40</td></tr>
+        <tr><td>Sugar, kosher salt, turmeric, mustard seed, celery seed</td><td>misc</td><td class="cc">$0.45</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Batch cost · Per serve (50g plate)</strong></td><td class="cc"><strong>$4.43 · $0.15</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$0.15</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$3.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>3.8%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$3.84</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Bread &amp; Butter Pickles:</strong> Slice cucumbers ¼-inch thick. Toss with salt, rest 1 hour, rinse and squeeze dry. Prepare brine: equal parts white vinegar and water, sugar, turmeric, mustard seed, celery seed. Boil brine, pour over packed cucumbers in sterilized jars. Refrigerate 24 hours minimum.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Pickled Jalapeños:</strong> Slice jalapeños into ¼-inch rounds. Brine: apple cider vinegar + water (2:1), salt, garlic cloves, a pinch of sugar. Pack tightly, pour hot brine, seal and refrigerate. Ready in 12 hours; best after 48 hours.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Batch schedule:</strong> Produce both pickle types twice weekly. Label with date. House-brined pickles vs commercial is a differentiator worth mentioning in service scripts.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Plate presentation:</strong> Serve on a small board or two-section ramekin — pickled jalapeños one side, bread &amp; butter pickles the other. Serve cold, straight from refrigerator.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> These pickles are the unsung heroes of your BBQ programme. The acid cuts through brisket fat, resets the palate, and adds brightness to an otherwise deeply savoury flavour profile. Always include a few pieces on every platter.</div>
+  <div class="al"><span class="a">MUSTARD (seeds)</span><span class="a">CELERY (seeds)</span></div>
+</div>
+</div>
+
+
+<!-- SECTION 2: MAINS -->
+<h2><span class="sn2">2</span> Mains</h2>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Texas Brisket — 12-Hour Smoked, Sliced 200g</div>
+  <div class="rh-sub">USDA Choice packer brisket, post oak smoke, salt &amp; pepper rub (SPG), sliced to order · Sell: $26.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 hrs smoke + 5 min plate</span><span class="rm">🥩 Main Feature</span><span class="rm">Target FC: 30%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per 200g serve, from whole packer)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>USDA Choice packer brisket (raw, 6–7kg)</td><td>200g served (from ~6kg)</td><td class="cc">$6.05</td></tr>
+        <tr><td>Kosher salt + coarse black pepper (SPG rub)</td><td>12g per kg raw</td><td class="cc">$0.08</td></tr>
+        <tr><td>Post oak / white oak wood chunks</td><td>600g fuel per smoke</td><td class="cc">$0.53</td></tr>
+        <tr><td>Butcher paper (for wrapping)</td><td>1 sheet</td><td class="cc">$0.04</td></tr>
+        <tr><td>White bread (Texas tradition, side)</td><td>2 slices</td><td class="cc">$0.12</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$6.82</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$6.82</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$26.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>25.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$20.17</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method — The Complete 12-Hour Protocol</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Trim and rub (night before, 8pm):</strong> Trim fat cap to ¼-inch. Apply SPG rub generously (salt + coarse black pepper, 50/50 by volume, optionally garlic powder). Let rest uncovered in walk-in overnight — this dries the surface slightly, aiding bark development. <span class="smoke-badge">SMOKE SCIENCE</span> The Maillard reaction requires a dry surface. A wet brisket entering a smoker will steam rather than crust.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Smoker at 225–250°F / 107–121°C, post oak, 5am start:</strong> Post oak is the canonical Texas brisket wood — it burns clean and long, producing a medium-weight smoke that penetrates without overwhelming. Maintain fire temperature at 225–250°F. Place brisket fat-side up. The smoke ring forms in the first 4 hours only — once internal temp exceeds <span class="temp">140°F / 60°C</span>, the ring stops developing. <span class="smoke-badge">SMOKE RING SCIENCE</span></div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Managing the stall (160–170°F internal, typically 10am–12pm):</strong> At approximately <span class="temp">160°F / 71°C</span> internal temperature, the brisket will stop rising for 2–4 hours. This is evaporative cooling. New pitmasters panic and raise the temperature; experienced ones wait. <strong>Texas Crutch (optional):</strong> Wrap in pink butcher paper at 165°F to accelerate through the stall while allowing some steam to escape. Target final internal: <span class="temp ok">203°F / 95°C</span>. <span class="smoke-badge">STALL SCIENCE</span></div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Rest 1–2 hours before slicing:</strong> Wrap in butcher paper, place in an empty cooler, rest minimum 1 hour. <strong>Slice across the grain in ¼-inch slices</strong>. The flat and point have grains running different directions — separate and slice each correctly. Serve on butcher paper with white bread and pickles: Texas BBQ tradition.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The 203°F target is not about time — it is about collagen conversion, complete when the probe meets zero resistance (the "probe slide" or "butter test"). Some briskets hit this at 195°F; some need 210°F. The number is a guide; the feel is the truth. Invest in a good wireless meat thermometer.</div>
+  <div class="al"><span class="a">GLUTEN (white bread)</span><span class="a">CELERY (rub may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">St. Louis Spare Ribs — Half Rack</div>
+  <div class="rh-sub">5–6 bone half rack, dry rub bark, 5-hour smoke, unwrapped finish · Sell: $28.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 hrs smoke + 5 min plate</span><span class="rm">🍖 Main</span><span class="rm">Target FC: 27%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (half rack / 5–6 bones)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>St. Louis spare ribs (trimmed rack)</td><td>~700g half rack</td><td class="cc">$6.95</td></tr>
+        <tr><td>House dry rub</td><td>25g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Apple cider vinegar (spritz)</td><td>50ml spray</td><td class="cc">$0.07</td></tr>
+        <tr><td>Post oak + cherry wood</td><td>400g fuel</td><td class="cc">$0.35</td></tr>
+        <tr><td>House BBQ sauce (side)</td><td>40ml</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$7.73</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$7.73</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$28.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>26.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$21.26</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Membrane removal — non-negotiable:</strong> The silvery membrane on the bone-side of spare ribs must be removed. It is tough, inedible, and blocks smoke penetration. Use a butter knife to loosen one corner, grip with a paper towel, and peel in one piece. St. Louis cut means sternum bone, cartilage tips, and skirt flap have been removed. Apply dry rub to both sides and rest 2 hours minimum.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>225°F for 3 hours, unwrapped:</strong> Place ribs bone-side down. Cherry wood adds sweetness and deep mahogany colour; post oak provides foundational smoke flavour. Spritz with 50/50 apple cider vinegar and water every 60–75 minutes.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>The 3-2-1 decision:</strong> After 3 hours, assess bark development. For maximum bark, go <em>unwrapped</em> the full 5 hours at 225°F. Target internal temp: <span class="temp ok">195–203°F / 90–95°C</span> — or use the <strong>bend test</strong>: if the rack bends 90° and the bark cracks slightly, it is done.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Rest 20 minutes, slice and serve:</strong> Rest wrapped 20 minutes. Slice between bones. Each bone should have a clean pull — meat detaches with slight resistance. BBQ sauce on the side. Plate on butcher paper with coleslaw and pickles.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> St. Louis has more fat, more cartilage, and more flavour than baby backs. They take longer (5 hours vs 4) but produce a richer, more complex eating experience. For a BBQ joint, St. Louis is the professional's choice for standalone rib orders.</div>
+  <div class="al"><span class="a">MUSTARD (rub)</span><span class="a">CELERY (rub)</span><span class="a">SOY (BBQ sauce may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Baby Back Ribs — Half Rack</div>
+  <div class="rh-sub">6–7 bone half rack, loin back ribs, lighter smoke profile, tender pull · Sell: $26.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 4 hrs smoke + 5 min plate</span><span class="rm">🍖 Main</span><span class="rm">Target FC: 28%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (half rack / 6–7 bones)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Baby back ribs (loin back, half rack)</td><td>~600g</td><td class="cc">$7.67</td></tr>
+        <tr><td>House dry rub</td><td>22g</td><td class="cc">$0.16</td></tr>
+        <tr><td>Apple/cherry wood chips</td><td>300g fuel</td><td class="cc">$0.26</td></tr>
+        <tr><td>Apple juice (wrap/spritz)</td><td>60ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>House BBQ sauce (side)</td><td>40ml</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$8.35</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$8.35</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$26.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>30.9%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$18.64</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Baby backs anatomy:</strong> Baby back ribs come from the upper rib cage, near the spine and loin. They are shorter, leaner, and more tender than spare ribs — cooking faster (4 hours vs 5). Remove membrane as with spare ribs. Apply rub and rest 2 hours.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>225°F with apple and cherry wood:</strong> Lighter woods suit baby backs — their leaner meat can be overpowered by heavy hickory. Apple produces sweet, fruity smoke; cherry adds colour and mild sweetness. Spritz with apple juice every hour.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>2-2 method for baby backs:</strong> 2 hours unwrapped, then wrap in butcher paper with 2 tbsp apple juice for the final 2 hours. Baby backs benefit more from wrapping because of their lower fat content. Target internal: <span class="temp ok">195–200°F / 90–93°C</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Rest and slice:</strong> Rest 15–20 minutes. Fan the cut ribs slightly to show the smoke ring cross-section — this is a visual selling point. Garnish with pickled red onion for colour contrast.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Baby backs are often what guests mean when they say "ribs" — your accessible rib option. The spare ribs are for guests who want more flavour and are comfortable with fattier meat. Train servers to explain this difference.</div>
+  <div class="al"><span class="a">MUSTARD (rub)</span><span class="a">CELERY (rub)</span></div>
+</div>
+</div>
+
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Pulled Pork Sandwich</div>
+  <div class="rh-sub">8-hour smoked pork shoulder, house slaw, brioche bun, Carolina-style vinegar sauce · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 hrs smoke + 5 min plate</span><span class="rm">🥪 Main</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (per sandwich)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Pork shoulder (Boston butt, bone-in), smoked</td><td>170g pulled</td><td class="cc">$2.12</td></tr>
+        <tr><td>House dry rub (applied before smoke)</td><td>15g</td><td class="cc">$0.11</td></tr>
+        <tr><td>Brioche bun (toasted)</td><td>1 × 85g</td><td class="cc">$0.45</td></tr>
+        <tr><td>House coleslaw</td><td>60g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Carolina vinegar sauce (house batch)</td><td>30ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Dill pickle slices (house or commercial)</td><td>15g</td><td class="cc">$0.04</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.84</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.84</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>16.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$14.15</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Pork shoulder yield:</strong> A bone-in Boston butt (4–5kg) yields approximately 55–60% cooked weight — so a 5kg raw butt yields ~2.8kg of pulled pork (17–18 sandwich portions per butt). Apply rub the night before. Pork shoulder has enough intramuscular fat to self-baste — no need for injection.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Smoke at 225–250°F with hickory and oak, 8 hours:</strong> Hickory is the traditional choice for pork shoulder. Wrap in foil (not butcher paper — foil is appropriate here) with ¼ cup apple juice at hour 5. Target final internal: <span class="temp ok">203–205°F / 95–96°C</span>.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Pull technique:</strong> Rest 30 minutes minimum. Pull using two forks or bear-claw shredding tools while still warm. Toss pulled pork with a splash of Carolina vinegar sauce immediately. The pulled pork should be visibly smoky, moist, and have visible bark pieces integrated into the shred.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Build the sandwich:</strong> Toast brioche bun cut-side on flat-top until golden. Bottom bun: layer of coleslaw (acts as moisture barrier, prevents bun sogginess). Load 170g pulled pork. Top with Carolina vinegar sauce and dill pickle slices. Carolina sauce cuts through pork fat beautifully — do not substitute with sweet Kansas City sauce here.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Pulled pork is your highest-margin protein because pork shoulder is the cheapest cut ($4/lb) and the smoke transforms it dramatically. It holds exceptionally well — properly pulled pork at 140°F maintains quality for 3–4 hours. Pulled pork actually improves 24 hours after smoking.</div>
+  <div class="al"><span class="a">GLUTEN (brioche bun)</span><span class="a">EGGS (brioche)</span><span class="a">DAIRY (brioche)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Smoked Chicken — Half Bird</div>
+  <div class="rh-sub">Spatchcocked half chicken, dry-brined 24 hours, smoked 3 hours, finished on grill · Sell: $21.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 hrs smoke + 5 min plate</span><span class="rm">🐔 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (half bird serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken half (breast + thigh + drumstick + wing)</td><td>~550g</td><td class="cc">$3.40</td></tr>
+        <tr><td>Dry brine (kosher salt, garlic powder, paprika)</td><td>12g</td><td class="cc">$0.06</td></tr>
+        <tr><td>House dry rub (applied day-of)</td><td>15g</td><td class="cc">$0.11</td></tr>
+        <tr><td>Apple/cherry wood (smoke)</td><td>250g fuel</td><td class="cc">$0.22</td></tr>
+        <tr><td>Compound butter (herb)</td><td>15g</td><td class="cc">$0.14</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.93</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.93</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$21.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>17.9%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$18.06</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Dry brine 24 hours uncovered:</strong> Halve whole chickens through the backbone and breastbone. Apply kosher salt (1 tsp per 450g) and garlic powder to all surfaces, including under skin. Refrigerate uncovered on a wire rack for 24 hours. The dry brine draws moisture out, which reabsorbs carrying salt deep into the muscle. Uncovered rest dries the skin surface — critical for crispy skin in a smoker environment.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Apply rub, smoke at 250°F with fruit wood:</strong> Smoke at 250°F with apple and cherry wood only. After 90 minutes, breast should be at <span class="temp">145°F / 63°C</span> internal; continue until breast reaches <span class="temp ok">160°F / 71°C</span> and thigh/drumstick reaches <span class="temp ok">175°F / 79°C</span>.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Grill finish for skin:</strong> Transfer to a 500°F grill for 3–4 minutes, skin side down. This renders subcutaneous fat and crisps the skin. Watch carefully — the rub's brown sugar can burn quickly at this temperature.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Rest 5 minutes, plate with compound butter:</strong> Serve with a knob of herb compound butter (softened butter + fresh thyme + parsley + garlic + lemon zest) placed on the hot chicken to melt at the table. Serve with coleslaw, baked beans, and cornbread.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The two-temperature problem in chicken (breast vs thigh) is solved by correct anatomical preparation. At the point where the breast reads 160°F, the thigh should read 175°F if you started with a correctly oriented half-bird. Adjust placement so breast faces indirect heat and thigh faces the heat source.</div>
+  <div class="al"><span class="a">DAIRY (compound butter)</span><span class="a">MUSTARD (rub)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Beef Short Rib — Single Bone, 400g</div>
+  <div class="rh-sub">USDA Choice plate short rib, 8-hour smoke, SPG rub, epic bark formation · Sell: $34.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8–10 hrs smoke + 5 min plate</span><span class="rm">🥩 Premium Main</span><span class="rm">Target FC: 29%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (single bone / 400g)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Beef plate short rib (bone-in, single rib)</td><td>~800g raw → 400g served</td><td class="cc">$14.11</td></tr>
+        <tr><td>SPG rub (coarse salt + pepper + garlic)</td><td>20g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Post oak wood chunks</td><td>500g fuel</td><td class="cc">$0.44</td></tr>
+        <tr><td>Horseradish cream (side)</td><td>30ml</td><td class="cc">$0.22</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$14.87</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$14.87</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$34.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>42.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$20.12</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Understanding the cut — plate vs chuck:</strong> Plate short ribs (USDA 123 cut, bone-in) are what you want. These are thick-cut single bones (3–4 inch meat cap above the bone) with extreme intramuscular fat. Sometimes called "dinosaur ribs." Trim hard fat cap but leave the fat seam intact. Apply generous SPG rub night before.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>225°F smoke, post oak only, 8–10 hours:</strong> Short ribs have extremely high collagen and fat content — they need the full time. Use only post oak. Place bone-side down. Expect a significant stall at 160–170°F that may last 3 hours.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>No wrap protocol — bark is the product:</strong> Short ribs should be cooked unwrapped the entire time. The meat cap is small, well-marbled, and self-bastes from rendered fat. Wrapping would compromise the spectacular bark that is the visual and textural selling point. Target internal: <span class="temp ok">203–205°F / 95–96°C</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st"><strong>Rest 30–45 minutes, present whole:</strong> Present the whole bone-in rib to the table on a board — do not slice in the kitchen. The dramatic size and appearance is a tableside theatre moment. Provide a sharp knife and fork. Horseradish cream on the side. This dish will generate social media content without asking.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Beef short ribs are your prestige item — at 42% food cost they look inefficient, but the $20 contribution margin is strong and the halo effect on table perception is worth it. One table with a short rib draws the attention of surrounding tables. The visual sell is free marketing. Make it unavailable once sold out — scarcity drives desirability.</div>
+  <div class="al"><span class="a">DAIRY (horseradish cream)</span></div>
+</div>
+</div>
+

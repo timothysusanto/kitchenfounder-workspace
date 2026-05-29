@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1200px;height:1200px;background:#1C1C1C;font-family:'Inter',sans-serif;overflow:hidden;}
+.card{width:1200px;height:1200px;display:flex;flex-direction:column;position:relative;background:#1C1C1C;}
+
+/* TOP HEADER */
+.header{height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:#161616;border-bottom:1px solid #2a2a2a;}
+.logo{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.3px;}
+.logo span{color:#C0392B;}
+.tool-badge{background:#C0392B;color:#fff;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 14px;border-radius:4px;}
+
+/* MAIN CONTENT */
+.main{flex:1;display:flex;flex-direction:column;align-items:center;padding:44px 60px 0;position:relative;}
+.main::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse at center,rgba(192,57,43,0.12) 0%,transparent 70%);pointer-events:none;}
+
+.heading-group{text-align:center;margin-bottom:28px;position:relative;z-index:1;}
+.main-title{font-size:72px;font-weight:900;color:#ffffff;line-height:1.05;letter-spacing:-2px;margin-bottom:10px;}
+.main-sub{font-size:24px;font-weight:400;color:#aaaaaa;letter-spacing:0.5px;}
+
+/* PRICE + FEATURES ROW */
+.mid-row{display:flex;gap:32px;align-items:flex-start;margin-bottom:32px;width:100%;max-width:1000px;position:relative;z-index:1;}
+
+.price-block{background:#212121;border:1px solid #2e2e2e;border-radius:12px;padding:28px 36px;min-width:220px;text-align:center;flex-shrink:0;}
+.price-val{font-size:64px;font-weight:900;color:#C0392B;line-height:1;letter-spacing:-2px;}
+.price-note{font-size:14px;color:#777;margin-top:8px;line-height:1.4;}
+
+.features-block{background:#212121;border:1px solid #2e2e2e;border-radius:12px;padding:28px 36px;flex:1;}
+.features-title{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#555;margin-bottom:16px;}
+.feature-item{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:20px;color:#e0e0e0;font-weight:500;}
+.feature-item:last-child{margin-bottom:0;}
+.check{color:#27AE60;font-size:20px;font-weight:700;flex-shrink:0;}
+
+/* MOCK UI */
+.mockup-wrap{width:100%;max-width:1000px;position:relative;z-index:1;}
+.mockup-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#444;margin-bottom:10px;text-align:center;}
+.mockup{width:100%;height:230px;background:#0f0f0f;border-radius:10px;border:1px solid #2e2e2e;overflow:hidden;display:flex;}
+
+/* sidebar */
+.mock-sidebar{width:180px;background:#161616;border-right:1px solid #222;padding:16px 12px;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
+.mock-nav-item{height:12px;border-radius:3px;background:#252525;}
+.mock-nav-item.active{background:#C0392B;opacity:0.7;}
+.mock-nav-group{margin-top:12px;display:flex;flex-direction:column;gap:7px;}
+.mock-logo-bar{height:8px;width:80px;background:#333;border-radius:2px;margin-bottom:16px;}
+
+/* main panel */
+.mock-main{flex:1;background:#1a1a1a;padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+
+/* stat cards */
+.mock-stats{display:flex;gap:10px;}
+.mock-stat{flex:1;background:#212121;border:1px solid #2a2a2a;border-radius:6px;padding:8px 10px;}
+.mock-stat-val{height:10px;width:55%;background:#C0392B;border-radius:2px;opacity:0.6;margin-bottom:6px;}
+.mock-stat-val.green{background:#27AE60;}
+.mock-stat-label{height:6px;width:70%;background:#2e2e2e;border-radius:2px;}
+
+/* table */
+.mock-table{flex:1;background:#212121;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;}
+.mock-table-head{display:flex;gap:0;background:#252525;padding:7px 12px;border-bottom:1px solid #2e2e2e;}
+.mock-th{height:7px;flex:1;background:#333;border-radius:2px;margin-right:8px;}
+.mock-th:last-child{margin-right:0;flex:0.6;}
+.mock-rows{padding:8px 12px;display:flex;flex-direction:column;gap:7px;}
+.mock-row{display:flex;gap:8px;align-items:center;}
+.mock-cell{height:7px;flex:1;background:#2a2a2a;border-radius:2px;}
+.mock-cell.highlight{background:#C0392B;opacity:0.35;flex:0.6;}
+.mock-cell.g{background:#27AE60;opacity:0.25;flex:0.6;}
+
+/* chart strip */
+.mock-bottom{background:#181818;border-top:1px solid #222;padding:10px 20px;display:flex;gap:10px;align-items:center;}
+.mock-chart{flex:1;height:36px;display:flex;align-items:flex-end;gap:4px;}
+.mock-bar{flex:1;background:#C0392B;border-radius:2px 2px 0 0;opacity:0.45;}
+.mock-info-card{width:140px;height:36px;background:#212121;border:1px solid #2a2a2a;border-radius:4px;display:flex;align-items:center;padding:0 10px;gap:8px;}
+.mock-info-dot{width:8px;height:8px;border-radius:50%;background:#27AE60;flex-shrink:0;}
+.mock-info-text{height:7px;flex:1;background:#2e2e2e;border-radius:2px;}
+
+/* BOTTOM STRIP */
+.bottom-strip{height:56px;background:#242424;display:flex;align-items:center;justify-content:center;gap:0;margin-top:auto;}
+.strip-text{color:#aaa;font-size:15px;font-weight:400;letter-spacing:0.3px;}
+.strip-dot{color:#555;margin:0 18px;font-size:18px;}
+
+/* BOTTOM BORDER */
+.bottom-border{height:4px;background:#C0392B;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">Kitchen<span>Founder</span></div>
+    <div class="tool-badge">TOOL</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TITLE -->
+    <div class="heading-group">
+      <div class="main-title">Food Cost Calculator</div>
+      <div class="main-sub">Interactive Recipe Costing App</div>
+    </div>
+
+    <!-- PRICE + FEATURES -->
+    <div class="mid-row">
+
+      <!-- Price -->
+      <div class="price-block">
+        <div class="price-val">$19.99</div>
+        <div class="price-note">or free with<br>any guide</div>
+      </div>
+
+      <!-- Features -->
+      <div class="features-block">
+        <div class="features-title">What's Inside</div>
+        <div class="feature-item"><span class="check">&#10003;</span> Live FC% calculation</div>
+        <div class="feature-item"><span class="check">&#10003;</span> Menu Engineering Matrix</div>
+        <div class="feature-item"><span class="check">&#10003;</span> Dashboard &amp; weekly revenue</div>
+        <div class="feature-item"><span class="check">&#10003;</span> Print-ready PDF report</div>
+      </div>
+
+    </div>
+
+    <!-- MOCK UI -->
+    <div class="mockup-wrap">
+      <div class="mockup-label">App Preview</div>
+      <div class="mockup">
+
+        <!-- Sidebar -->
+        <div class="mock-sidebar">
+          <div class="mock-logo-bar"></div>
+          <div class="mock-nav-item active"></div>
+          <div class="mock-nav-item" style="width:75%;"></div>
+          <div class="mock-nav-item" style="width:60%;"></div>
+          <div class="mock-nav-group">
+            <div class="mock-nav-item" style="width:85%;background:#252525;"></div>
+            <div class="mock-nav-item" style="width:65%;background:#252525;"></div>
+            <div class="mock-nav-item" style="width:70%;background:#252525;"></div>
+            <div class="mock-nav-item" style="width:55%;background:#252525;"></div>
+          </div>
+        </div>
+
+        <!-- Main panel -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div class="mock-main">
+            <!-- Stat cards -->
+            <div class="mock-stats">
+              <div class="mock-stat">
+                <div class="mock-stat-val"></div>
+                <div class="mock-stat-label"></div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-val green"></div>
+                <div class="mock-stat-label"></div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-val" style="background:#F39C12;opacity:0.6;"></div>
+                <div class="mock-stat-label"></div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-val green"></div>
+                <div class="mock-stat-label"></div>
+              </div>
+            </div>
+
+            <!-- Table -->
+            <div class="mock-table">
+              <div class="mock-table-head">
+                <div class="mock-th"></div>
+                <div class="mock-th"></div>
+                <div class="mock-th"></div>
+                <div class="mock-th" style="flex:0.6;"></div>
+                <div class="mock-th" style="flex:0.6;background:#C0392B;opacity:0.4;"></div>
+              </div>
+              <div class="mock-rows">
+                <div class="mock-row">
+                  <div class="mock-cell"></div><div class="mock-cell" style="flex:0.8;"></div><div class="mock-cell" style="flex:0.7;"></div><div class="mock-cell highlight"></div><div class="mock-cell g"></div>
+                </div>
+                <div class="mock-row">
+                  <div class="mock-cell"></div><div class="mock-cell" style="flex:0.6;"></div><div class="mock-cell" style="flex:0.9;"></div><div class="mock-cell highlight"></div><div class="mock-cell g"></div>
+                </div>
+                <div class="mock-row">
+                  <div class="mock-cell"></div><div class="mock-cell" style="flex:0.75;"></div><div class="mock-cell" style="flex:0.65;"></div><div class="mock-cell highlight"></div><div class="mock-cell g"></div>
+                </div>
+                <div class="mock-row">
+                  <div class="mock-cell" style="opacity:0.5;"></div><div class="mock-cell" style="flex:0.8;opacity:0.5;"></div><div class="mock-cell" style="flex:0.7;opacity:0.5;"></div><div class="mock-cell highlight" style="opacity:0.2;"></div><div class="mock-cell g" style="opacity:0.15;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart strip -->
+          <div class="mock-bottom">
+            <div class="mock-chart">
+              <div class="mock-bar" style="height:40%;"></div>
+              <div class="mock-bar" style="height:65%;"></div>
+              <div class="mock-bar" style="height:50%;"></div>
+              <div class="mock-bar" style="height:80%;background:#27AE60;"></div>
+              <div class="mock-bar" style="height:60%;"></div>
+              <div class="mock-bar" style="height:90%;background:#27AE60;"></div>
+              <div class="mock-bar" style="height:70%;"></div>
+            </div>
+            <div class="mock-info-card">
+              <div class="mock-info-dot"></div>
+              <div class="mock-info-text"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- BOTTOM STRIP -->
+  <div class="bottom-strip">
+    <span class="strip-text">Works in any browser</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-text">No install</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-text">Instant download</span>
+  </div>
+
+  <!-- BOTTOM BORDER -->
+  <div class="bottom-border"></div>
+
+</div>
+</body>
+</html>

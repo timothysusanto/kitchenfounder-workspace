@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mediterranean Meze Bar — Operations Guide v6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#00ffcc;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(0,255,204,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #00ffcc;}
+.cover-eye{color:#00ffcc;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#00ffcc;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #00ffcc;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#00ffcc,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#000;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#001a15;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#00ffcc;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#00ffcc;color:#000;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#001a15;border:1px solid #00ffcc;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#00ffcc;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #00ffcc;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#00ffcc;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#00ffcc;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#00ffcc,#001a15);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #00ffcc;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#00ffcc;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#00ffcc;color:#000;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#00ffcc;color:#000;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#001a15;border:1px solid #00ffcc;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#001a15;border:1px solid #00ffcc;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#88ffee;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eye">Operations Guide · v6 · 2026</div>
+  <h1>Mediterranean<br>Meze Bar</h1>
+  <div class="cover-tag">Sharing plates. Exceptional margins. The Mediterranean way.</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">36</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$42</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-label">Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">$19.4K</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+</div>
+<!-- PAGE 2: CHEF'S LENS -->
+<div class="page">
+  <h2>Chef's Lens</h2>
+  <div class="lens-card">
+    <div class="lens-title">// What a Michelin-trained chef sees in Mediterranean meze</div>
+    <div class="lens-text">The Mediterranean meze tradition understands something about eating that single-plate dining ignores: that the act of sharing food changes the experience of eating it. Meze is not a starter. It is a format — one that produces higher average spends, longer dwell times and stronger repeat visit rates than almost any other casual dining model. The food costs are exceptional because the foundation is plant-based: hummus, baba ghanoush and labneh cost less to produce than any protein dish, and all three improve significantly after 24 hours in the fridge. The cold meze advantage is operational gold: your highest-selling items are made the night before, your morning prep is restocking, and your kitchen is calm before service.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">The Mediterranean diet is the most researched, most validated dietary pattern in the world. Your customers already believe in it. Your job is to execute it properly — olive oil that is genuinely good, bread that is baked the same day, octopus that has been through the freeze-thaw tenderising cycle and hit the grill at the right temperature. When readers reach the financial model, the response is consistent: the margins on plant-forward meze are better than they expected.</div>
+    <div class="lens-closer">They are. This guide shows you exactly why.</div>
+  </div>
+
+  <h2>Key Performance Indicators</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">36</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$42</div><div class="kpi-label">Avg Spend / Cover</div></div>
+    <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-label">Food Cost Target</div></div>
+    <div class="kpi"><div class="kpi-val">$19,400</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+</div>
+
+<!-- PAGE 3: ENTRÉES -->
+<div class="page">
+  <h2>Entrées — Cold &amp; Hot Meze</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Classic Hummus — Whole &amp; Fried Chickpeas</div>
+      <div class="rh-meta">SERVICE: 4 min &nbsp;|&nbsp; FOOD COST: 11% &nbsp;|&nbsp; ALLERGENS: Sesame (tahini)</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Blend soaked chickpeas with tahini, lemon juice, garlic and ice water until ultra-smooth. Rest overnight in fridge — texture improves dramatically.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">To serve: swirl hummus in bowl, drizzle with <span class="temp">high-quality EVOO</span>, scatter whole chickpeas and 3–4 fried crispy chickpeas on top.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Finish with sumac and paprika. Serve with warm flatbread.</div></div>
+      </div>
+      <div class="chef-tip">💡 The overnight rest is non-negotiable. Garlic mellows, lemon integrates, texture silks out. Never serve day-of hummus.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Baba Ghanoush</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FOOD COST: 13% &nbsp;|&nbsp; ALLERGENS: Sesame (tahini)</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Char whole aubergines directly over open flame until fully collapsed and smoky — <span class="temp">skin blackened all over</span>. This is the flavour.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Scoop flesh, drain excess liquid 15 min, fold in tahini, lemon, garlic, salt. Do not over-blend — texture should be slightly rough.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve with EVOO, pomegranate seeds, fresh parsley.</div></div>
+      </div>
+      <div class="chef-tip">💡 Gas flame &gt; grill. The carbonisation of the skin is what creates the smokiness that makes baba ghanoush taste like baba ghanoush.</div>
+    </div>
+  </div>
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Labneh — Strained Yogurt</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FOOD COST: 10% &nbsp;|&nbsp; ALLERGENS: Dairy</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Strain full-fat yogurt through muslin for 24–48 hours in the fridge. Salt lightly before straining.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plate in a shallow bowl, drizzle generously with EVOO, dust with za'atar or dried mint.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve with crudités or warm pita. Can be rolled into balls and stored in olive oil for extended shelf life.</div></div>
+      </div>
+      <div class="chef-tip">💡 10% food cost. This is your highest-margin cold meze. Push it as a table opener — it sells itself.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Falafel — Crispy Herb</div>
+      <div class="rh-meta">SERVICE: 7 min &nbsp;|&nbsp; FOOD COST: 14% &nbsp;|&nbsp; ALLERGENS: Gluten</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Soak raw (not canned) chickpeas 12 hours. Blend with parsley, coriander, cumin, garlic, onion — do not over-process. Mix should be coarse.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Rest mix 30 min, form balls, fry at <span class="temp">175°C</span> for 3–4 minutes until deep golden. Do not crowd the fryer.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve immediately — falafel must be eaten hot. Accompaniments: tahini sauce, pickled turnip, fresh herbs.</div></div>
+      </div>
+      <div class="chef-tip">💡 Canned chickpeas produce wet, dense falafel that falls apart in oil. Raw and soaked only. Non-negotiable.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Spanakopita — Spinach &amp; Feta Triangles</div>
+      <div class="rh-meta">SERVICE: 8 min &nbsp;|&nbsp; FOOD COST: 16% &nbsp;|&nbsp; ALLERGENS: Gluten, Dairy, Eggs</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Wilt and fully drain spinach — squeeze out every drop of moisture or the filo will become soggy.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Mix with crumbled feta, egg, dill, nutmeg. Fold into buttered filo triangles, seal edges with egg wash.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Bake at <span class="temp">190°C</span> until golden and crisp — approx 18 min. Reheat orders: 4 min in hot oven. Never microwave.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Lamb Kofta — Grilled, Tahini &amp; Pomegranate</div>
+      <div class="rh-meta">SERVICE: 10 min &nbsp;|&nbsp; FOOD COST: 19% &nbsp;|&nbsp; ALLERGENS: None</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Mix ground lamb (20% fat) with grated onion, parsley, cumin, cinnamon, allspice, salt. Knead 5 min to develop binding.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Shape onto flat skewers, press firmly. Grill over high heat — <span class="temp">charcoal preferred</span> — 4 min each side.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Rest 2 min. Drizzle tahini sauce, scatter pomegranate seeds and fresh mint. Serve with flatbread.</div></div>
+      </div>
+      <div class="chef-tip">💡 Lamb fat content is critical. Under 20% and the kofta dries out on the grill. Source from a butcher who understands the ratio.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 4: MAINS PART 1 -->
+<div class="page">
+  <h2>Mains — Part I</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Shakshuka — Eggs in Spiced Tomato ⭐ Signature</div>
+      <div class="rh-meta">SERVICE: 12 min &nbsp;|&nbsp; FOOD COST: 15%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Base: sweat onion and red pepper in EVOO, add garlic, cumin, paprika, harissa. Add crushed tomatoes. Simmer 20 min. This base is made in bulk each morning — holds 3 days.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">To order: heat base in cast iron pan, create 3 wells, crack eggs in. Cover and cook until whites set but yolks remain runny — approx <span class="temp">8–10 min at medium</span>.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Finish with crumbled feta, fresh coriander, EVOO drizzle. Serve in the cast iron with warm bread alongside.</div></div>
+      </div>
+      <div class="chef-tip">💡 The cast iron goes to the table. Theatre matters. Customers photograph it. That's earned marketing.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Grilled Halloumi Plate</div>
+      <div class="rh-meta">SERVICE: 8 min &nbsp;|&nbsp; FOOD COST: 18% &nbsp;|&nbsp; ALLERGENS: Dairy</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Slice halloumi 1cm thick. Pat dry — moisture prevents caramelisation. Brush with EVOO.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Grill on very hot griddle pan — <span class="temp">high heat, no moving</span> — 2 min per side until deep char marks appear and cheese softens.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve immediately on a bed of dressed rocket with watermelon, mint and a honey-lemon drizzle. Halloumi must be served hot — it becomes rubbery cold.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Slow-Braised Lamb Shoulder ⭐ Signature</div>
+      <div class="rh-meta">SERVICE: 5 min (6hr braise) &nbsp;|&nbsp; FOOD COST: 24%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Into oven at 08:00 every morning. Rubbed with garlic, rosemary, cumin, cinnamon, EVOO. Placed over sliced onions, stock and wine. Sealed with foil.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Braise at <span class="temp">160°C for 6 hours</span>. Remove foil last 30 min to caramelise the exterior.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">To serve: pull meat from bone, plate over roasted root vegetables, spoon braising jus. Garnish with gremolata and pomegranate.</div></div>
+      </div>
+      <div class="chef-tip">💡 At 24% FC this is your highest cost main — but it justifies premium pricing and drives repeat visits. The 6-hour story sells it. Your servers know the story (see service scripts).</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Mezze Platter for Two — 8 Cold Dishes ⭐ Signature</div>
+      <div class="rh-meta">SERVICE: 6 min &nbsp;|&nbsp; FOOD COST: 20%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Assemble on large slate or wood board: hummus, baba ghanoush, labneh, tabbouleh, olives, dolmades (2), stuffed peppers, pickled turnip.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Each component kept prepped and portioned in the cold section. Assembly is a presentation task, not a cooking task — speed is achievable.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Accompany with warm flatbreads (3), lemon wedge, fresh herbs. Present to the table as a single board.</div></div>
+      </div>
+      <div class="chef-tip">💡 Highest dollar-value item, 6-minute ticket time, no live cooking required. This is the model dish. Push it hard.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 5: MAINS PART 2 -->
+<div class="page">
+  <h2>Mains — Part II</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Chicken Shawarma Plate</div>
+      <div class="rh-meta">SERVICE: 10 min &nbsp;|&nbsp; FOOD COST: 19%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Marinate chicken thighs minimum 24h: yogurt, lemon, garlic, cumin, coriander, turmeric, cinnamon, cardamom, EVOO. Thighs only — breast dries out.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Roast at <span class="temp">220°C for 25 min</span> or grill on vertical spit. Slice thin against the grain.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve over saffron rice with garlic sauce (toum), pickled turnip, fresh tomato-parsley salad, tahini.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Grilled Whole Sea Bream</div>
+      <div class="rh-meta">SERVICE: 14 min &nbsp;|&nbsp; FOOD COST: 23%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Score fish 3 times each side. Season cavity with lemon, garlic, fresh herbs. Brush skin with EVOO, season aggressively with sea salt.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Grill on very hot grill — <span class="temp">do not touch for 6 min</span>. Skin will release naturally when ready. Flip once. Total 12 min for 400g fish.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve whole on the plate — this is Mediterranean, not a filleted piece. Accompaniments: chargrilled lemon, fresh herbs, EVOO, roasted cherry tomatoes.</div></div>
+      </div>
+      <div class="chef-tip">💡 At 14 min ticket, this is your longest-firing main. Take the order before the table is fully settled if they express interest early.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Moussaka — Lamb &amp; Béchamel</div>
+      <div class="rh-meta">SERVICE: 12 min &nbsp;|&nbsp; FOOD COST: 21% &nbsp;|&nbsp; ALLERGENS: Gluten, Dairy, Eggs</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Made in trays: layers of roasted aubergine, spiced lamb mince (cinnamon, allspice, tomato), topped with thick béchamel.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Baked until top is golden — <span class="temp">180°C, 45 min</span>. Rested and cut into portions. Reheated to order in oven 10 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve with Greek salad alongside and crusty bread. A scattering of grated kefalotiri cheese on the béchamel before service.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Fattoush Salad — Crisp Bread, Sumac</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; FOOD COST: 12%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Tear day-old pita into pieces, toast or fry until very crisp. These can be prepped in bulk each morning.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Toss with tomato, cucumber, radish, spring onion, fresh mint, parsley. Dress with sumac-pomegranate molasses vinaigrette.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add bread last, toss lightly — pita goes in at service to retain crunch. Serve immediately.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Dolmades — Stuffed Vine Leaves</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; FOOD COST: 14%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Rice filling: short-grain rice with dill, mint, lemon zest, pine nuts, currants, EVOO. Blanch vine leaves 1 min, shock in ice water.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Roll tightly, pack into pot with lemon slices and EVOO. Braise gently <span class="temp">1 hour</span> until rice cooked through and leaves tender.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve 5–6 per portion at room temperature with tzatziki and lemon wedge.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Vegetarian Mezze Bowl 🌱 Vegan</div>
+      <div class="rh-meta">SERVICE: 6 min &nbsp;|&nbsp; FOOD COST: 13%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Base of saffron-scented couscous or bulgur wheat. Top with 5 components: hummus, roasted vegetables, tabbouleh, olives, pickled turnip.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Drizzle with herbed EVOO and lemon. Scatter toasted pine nuts and fresh herbs.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve with warm flatbread. All components prepped — assembly only. Flag as vegan on menu with clear icon.</div></div>
+      </div>
+      <div class="chef-tip">💡 13% food cost, 6 min ticket, vegan-certified. This dish sells to the fastest-growing dining demographic. Price it accordingly — do not undercharge.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 6: DESSERTS -->
+<div class="page">
+  <h2>Desserts</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Baklava — Pistachio &amp; Honey</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FOOD COST: 14% &nbsp;|&nbsp; ALLERGENS: Gluten, Nuts</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Layer buttered filo with crushed pistachio and walnut mix (2:1 ratio). Bake at <span class="temp">170°C until deep golden</span> — approx 35 min. Cut into diamonds immediately after baking.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Soak in honey-sugar syrup with rose water and orange blossom while hot. Allow to absorb fully — minimum 2 hours, overnight preferred.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve 2 pieces per portion at room temperature with a scattering of crushed pistachios. Pair with Turkish coffee (see service scripts).</div></div>
+      </div>
+      <div class="chef-tip">💡 Made in bulk, holds 5 days at room temperature, 3 min service. One of the best margin desserts in any cuisine.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Knafeh — Shredded Pastry, Cheese, Orange Blossom</div>
+      <div class="rh-meta">SERVICE: 6 min &nbsp;|&nbsp; FOOD COST: 16% &nbsp;|&nbsp; ALLERGENS: Gluten, Dairy</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Press buttered kataifi pastry into base of pan. Layer with sweet cheese filling (akkawi or mozzarella, desalted). Top with more kataifi.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Bake at <span class="temp">190°C for 20 min</span> until golden. Must be served hot — the cheese pull is the experience.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Invert onto plate, soak in orange blossom syrup. Dust with crushed pistachios. Serve immediately.</div></div>
+      </div>
+      <div class="chef-tip">💡 Knafeh cannot be held. Fire to order. The 6-minute ticket is honest. Warn the table it is coming hot.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Loukoumades — Greek Honey Doughnuts</div>
+      <div class="rh-meta">SERVICE: 7 min &nbsp;|&nbsp; FOOD COST: 11% &nbsp;|&nbsp; ALLERGENS: Gluten, Dairy</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Yeast batter: flour, water, yeast, salt. Allow to prove until doubled. Batter should be loose and bubbly — not a dough.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Fry teaspoon-sized drops in <span class="temp">180°C oil</span> until puffed and golden all over — about 3 min. They will rotate naturally as one side browns.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Drain, pile in bowl, drizzle with honey, dust with cinnamon, scatter sesame seeds and chopped walnuts. Serve instantly.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Halva with Pistachio &amp; Rose</div>
+      <div class="rh-meta">SERVICE: 2 min &nbsp;|&nbsp; FOOD COST: 8%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Source high-quality tahini-based halva. Slice 2cm-thick portions with a warm knife for clean edges.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plate on a small slate with a scattering of crushed pistachios, dried rose petals and a drizzle of honey.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Accompaniments: fresh mint, lemon wedge. Pairs with Turkish coffee or mint tea.</div></div>
+      </div>
+      <div class="chef-tip">💡 8% food cost, 2 min service. Halva is the perfect late-night dessert upsell — light, not heavy, makes the bill feel worthwhile.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 7: DRINKS -->
+<div class="page">
+  <h2>Drinks Menu</h2>
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Ayran — Salted Yogurt Drink</div>
+        <div class="drink-price">$4.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Traditional cold yogurt drink. Salted, not sweet. Pairs with everything spiced.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Lebanese Arak — Anise Spirit</div>
+        <div class="drink-price">$10.99 / glass</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Served with water and ice. Turns milky white when mixed. Table ritual.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Mint Lemonade</div>
+        <div class="drink-price">$5.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Fresh-pressed, blended with whole mint. Made to order. High perceived value.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Turkish Coffee</div>
+        <div class="drink-price">$4.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Prepared in cezve. Ask sweet, medium or unsweetened at order. Pair with baklava.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Pomegranate Juice</div>
+        <div class="drink-price">$6.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Cold-pressed, no sugar added. Deep colour, high visual appeal on the table.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Arak &amp; Meze Welcome Set</div>
+        <div class="drink-price">$14.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Arak glass + olives + flatbread. Best table opener. Push to every party of 2+.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">House White Wine — Greek Assyrtiko</div>
+        <div class="drink-price">$12.99 / glass</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Crisp, mineral, high acid. Perfect with seafood and cold meze. From Santorini.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Sparkling Water — Efes</div>
+        <div class="drink-price">$3.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Turkish mineral water. Strong carbonation. Cleanses palate between dishes.</p>
+      </div>
+    </div>
+  </div>
+  <div class="chef-tip">💡 Always offer the Arak &amp; Meze Welcome Set on arrival — it sets the tone, increases average spend and begins the mezze narrative before the menu is even opened.</div>
+</div>
+<!-- PAGE 8: SERVICE SCRIPTS -->
+<div class="page">
+  <h2>Service Scripts</h2>
+  <p style="color:#999;margin-bottom:16px;font-size:0.88rem;">These are not scripts to memorise verbatim. They are the ideas your team must understand deeply enough to say naturally. Authenticity beats recitation every time.</p>
+
+  <div class="script-box">
+    <div class="script-label">// Welcome + Drink Choice</div>
+    <div class="script-text">"We start every table with a welcome drink — either the arak, which is anise and water, or the ayran, which is cold salted yogurt. Both are traditional. Your choice."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">// Mezze Rhythm Explanation</div>
+    <div class="script-text">"The mezze comes in waves — cold dishes first, then the hot. Don't wait for everything to arrive before starting. That's not how mezze works."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">// Lamb Shoulder Timing</div>
+    <div class="script-text">"The lamb has been in the oven since 8am. Six hours. It's been basting in its own fat and spices the whole time. When it falls off the bone, it's ready."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">// Baklava + Turkish Coffee Pairing</div>
+    <div class="script-text">"The baklava is best with the Turkish coffee — the bitterness cuts through the honey and pistachio. That's how it's eaten in Istanbul."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">// Return Visit</div>
+    <div class="script-text">"Thursday nights we do a mezze feast — $45 per person, 12 dishes, shared. Different experience. Worth coming back for."</div>
+  </div>
+
+  <h2>Prep Schedule</h2>
+  <table class="prep-table">
+    <thead>
+      <tr><th>Time</th><th>Task</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>07:00</td><td>Cold mezze prep</td><td>Hummus, baba, labneh improve overnight — check and refresh</td></tr>
+      <tr><td>08:00</td><td>Lamb shoulder into oven</td><td>6-hour braise begins. No exceptions on timing.</td></tr>
+      <tr><td>09:00</td><td>Falafel mix prep</td><td>Raw chickpeas blended fresh. Rest 30 min before forming.</td></tr>
+      <tr><td>10:00</td><td>Baklava assembly</td><td>Cut, syrup-soak today's portion. Pre-made holds 5 days.</td></tr>
+      <tr><td>11:00</td><td>Shakshuka base prep</td><td>Bulk base for service. Holds 3 days refrigerated.</td></tr>
+      <tr><td>12:00</td><td>Lunch service opens</td><td>All cold sections stocked. Hot sections at temperature.</td></tr>
+      <tr><td>15:00</td><td>Reset</td><td>Restock, clean, prep for dinner. Brief team debrief.</td></tr>
+      <tr><td>17:00</td><td>Second lamb batch</td><td>Fresh shoulder for dinner service. Into oven now.</td></tr>
+      <tr><td>18:30</td><td>Dinner service opens</td><td>Full team, all stations live.</td></tr>
+      <tr><td>22:30</td><td>Close</td><td>Cold prep for next day. Overnight rest begins.</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- PAGE 9: P&L MODEL -->
+<div class="page">
+  <h2>Financial Model — P&amp;L Overview</h2>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">$2,520</div><div class="kpi-label">Daily Revenue</div></div>
+    <div class="kpi"><div class="kpi-val">$15,120</div><div class="kpi-label">Weekly Revenue</div></div>
+    <div class="kpi"><div class="kpi-val">$65,520</div><div class="kpi-label">Monthly Revenue</div></div>
+    <div class="kpi"><div class="kpi-val">$22,932</div><div class="kpi-label">Monthly Net (~35%)</div></div>
+  </div>
+
+  <table class="rev-table">
+    <thead>
+      <tr><th>Line Item</th><th>% of Revenue</th><th>Monthly ($)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gross Revenue</td><td>100%</td><td>$65,520</td></tr>
+      <tr><td>Food Cost</td><td>22%</td><td>$14,414</td></tr>
+      <tr><td>Labour</td><td>28%</td><td>$18,346</td></tr>
+      <tr><td>Overheads</td><td>15%</td><td>$9,828</td></tr>
+      <tr class="profit-row"><td>Net Profit</td><td>~35%</td><td>$22,932</td></tr>
+    </tbody>
+  </table>
+
+  <div class="chef-tip">💡 Mediterranean meze achieves 22% food cost because the highest-volume items — hummus, baba ghanoush, labneh, dolmades — are plant-based and prep-forward. The model rewards operational discipline, not complicated cooking.</div>
+
+  <h2>Food Cost by Category</h2>
+  <table>
+    <thead>
+      <tr><th>Dish</th><th>Category</th><th>Food Cost %</th><th>Service Time</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Halva with Pistachio &amp; Rose</td><td>Dessert</td><td>8%</td><td>2 min</td></tr>
+      <tr><td>Labneh</td><td>Entrée</td><td>10%</td><td>3 min</td></tr>
+      <tr><td>Classic Hummus</td><td>Entrée</td><td>11%</td><td>4 min</td></tr>
+      <tr><td>Fattoush Salad</td><td>Main</td><td>12%</td><td>5 min</td></tr>
+      <tr><td>Vegetarian Mezze Bowl</td><td>Main</td><td>13%</td><td>6 min</td></tr>
+      <tr><td>Baba Ghanoush</td><td>Entrée</td><td>13%</td><td>3 min</td></tr>
+      <tr><td>Baklava</td><td>Dessert</td><td>14%</td><td>3 min</td></tr>
+      <tr><td>Falafel</td><td>Entrée</td><td>14%</td><td>7 min</td></tr>
+      <tr><td>Dolmades</td><td>Main</td><td>14%</td><td>5 min</td></tr>
+      <tr><td>Shakshuka</td><td>Main ⭐</td><td>15%</td><td>12 min</td></tr>
+      <tr><td>Knafeh</td><td>Dessert</td><td>16%</td><td>6 min</td></tr>
+      <tr><td>Spanakopita</td><td>Entrée</td><td>16%</td><td>8 min</td></tr>
+      <tr><td>Grilled Halloumi Plate</td><td>Main</td><td>18%</td><td>8 min</td></tr>
+      <tr><td>Chicken Shawarma</td><td>Main</td><td>19%</td><td>10 min</td></tr>
+      <tr><td>Lamb Kofta</td><td>Entrée</td><td>19%</td><td>10 min</td></tr>
+      <tr><td>Mezze Platter for Two</td><td>Main ⭐</td><td>20%</td><td>6 min</td></tr>
+      <tr><td>Moussaka</td><td>Main</td><td>21%</td><td>12 min</td></tr>
+      <tr><td>Grilled Whole Sea Bream</td><td>Main</td><td>23%</td><td>14 min</td></tr>
+      <tr><td>Slow-Braised Lamb Shoulder</td><td>Main ⭐</td><td>24%</td><td>5 min service</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- PAGE 10: ALLERGENS & CLOSE -->
+<div class="page">
+  <h2>Allergen Reference</h2>
+  <p style="color:#999;font-size:0.85rem;margin-bottom:16px;">Staff must be able to recite allergen information for every dish without referring to a menu. This is a legal and ethical responsibility.</p>
+
+  <div class="safety">
+    <h3 style="color:#00ffcc;margin-bottom:12px;">Allergen Matrix</h3>
+    <table>
+      <thead>
+        <tr><th>Dish</th><th>Allergens</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Classic Hummus</td><td><div class="al"><span class="a">Sesame (tahini)</span></div></td></tr>
+        <tr><td>Baba Ghanoush</td><td><div class="al"><span class="a">Sesame (tahini)</span></div></td></tr>
+        <tr><td>Labneh</td><td><div class="al"><span class="a">Dairy</span></div></td></tr>
+        <tr><td>Falafel</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+        <tr><td>Spanakopita</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+        <tr><td>Lamb Kofta</td><td><div class="al"><span class="a" style="color:#555;border-color:#444;">None declared</span></div></td></tr>
+        <tr><td>Baklava</td><td><div class="al"><span class="a">Gluten</span><span class="a">Nuts</span></div></td></tr>
+        <tr><td>Knafeh</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span></div></td></tr>
+        <tr><td>Moussaka</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+        <tr><td>Loukoumades</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span></div></td></tr>
+      </tbody>
+    </table>
+    <p style="color:#88ffee;font-size:0.8rem;margin-top:12px;">⚠ Always check with the kitchen for dish modifications. Cross-contamination risk exists in a shared kitchen environment. When in doubt, escalate to the chef on duty.</p>
+  </div>
+
+  <h2>Full Menu Summary</h2>
+  <table>
+    <thead>
+      <tr><th>Section</th><th>Count</th><th>Avg FC</th><th>Avg Ticket</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Entrées</td><td>6 dishes</td><td>~13.8%</td><td>~6 min</td></tr>
+      <tr><td>Mains</td><td>10 dishes</td><td>~18.9%</td><td>~8.8 min</td></tr>
+      <tr><td>Desserts</td><td>4 dishes</td><td>~12.3%</td><td>~4.5 min</td></tr>
+      <tr><td>Drinks</td><td>8 items</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="lens-card" style="margin-top:32px;">
+    <div class="lens-title">// The model in summary</div>
+    <div class="lens-text">The Mediterranean Meze Bar is built on a foundation that is genuinely unusual in casual dining: its highest-volume, highest-frequency items are also its lowest cost-to-produce items. Hummus, baba ghanoush and labneh improve in the fridge overnight, require no live cooking, and sell at significant margins. The prep-forward, share-format model compresses kitchen labour during service while increasing average covers and dwell time. When the financial model works at 22% food cost across 20 dishes spanning proteins, seafood and plant-based formats — that is not luck. That is the Mediterranean kitchen working exactly as it was designed to work. Your job is to execute it with integrity.</div>
+    <div class="lens-closer">Run it right. The numbers will follow.</div>
+  </div>
+
+  <footer>
+    Mediterranean Meze Bar · Operations Guide v6 · 2026 · Confidential Internal Document<br>
+    36 Seats · $42 Avg Spend · 22% Food Cost · $22,932 Est. Monthly Net
+  </footer>
+</div>
+
+</body>
+</html>

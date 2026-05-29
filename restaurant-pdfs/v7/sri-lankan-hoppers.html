@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Lankan Hoppers — KitchenFounder Operations Guide v7</title>
+  <style>
+    /* ─────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #FAFAF8;
+      color: #1C1C1C;
+      font-family: 'Georgia', serif;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+      line-height: 1.15;
+    }
+
+    a { color: #E85D26; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─────────────────────────────────────────────
+       FLAG BAR
+       Sri Lanka: green left stripe / dark-red body / saffron bands
+    ───────────────────────────────────────────── */
+    .flag-bar {
+      display: flex;
+      height: 10px;
+      width: 100%;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .flag-bar::before {
+      content: '';
+      display: block;
+      width: 6%;
+      background: #4B8B3B;
+    }
+
+    .flag-bar::after {
+      content: '';
+      display: block;
+      flex: 1;
+      background: linear-gradient(
+        to right,
+        #F5A800 0%,
+        #F5A800 6%,
+        #8D153A 6%,
+        #8D153A 94%,
+        #F5A800 94%,
+        #F5A800 100%
+      );
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION HEADER
+    ───────────────────────────────────────────── */
+    .section-header {
+      border-top: 4px solid #E85D26;
+      padding-top: 12px;
+      margin: 48px 0 24px;
+    }
+
+    .section-header h2 {
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #1C1C1C;
+    }
+
+    .section-header p {
+      font-size: 13px;
+      color: #666;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .sn2 {
+      display: inline-block;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #E85D26;
+      margin-bottom: 6px;
+    }
+
+    /* ─────────────────────────────────────────────
+       RECIPE CARD
+    ───────────────────────────────────────────── */
+    .recipe {
+      background: #fff;
+      border: 1px solid #E8E4DF;
+      border-radius: 6px;
+      padding: 28px 32px;
+      margin: 28px 0;
+    }
+
+    .rh {
+      border-bottom: 2px solid #E85D26;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .rh-title {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 20px;
+      color: #1C1C1C;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .rh-sub {
+      font-size: 13px;
+      color: #777;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    .rh-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 3px;
+      background: #F0ECE7;
+      color: #5A4A3A;
+    }
+
+    .tag.accent  { background: #E85D26; color: #fff; }
+    .tag.green   { background: #4B8B3B; color: #fff; }
+    .tag.saffron { background: #F5A800; color: #1C1C1C; }
+
+    .rb {
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+
+    /* ─────────────────────────────────────────────
+       TWO-COLUMN GRID
+    ───────────────────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ─────────────────────────────────────────────
+       INGREDIENT TABLE
+    ───────────────────────────────────────────── */
+    .it {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 12px 0;
+    }
+
+    .it thead th {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #E85D26;
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 1px solid #E8E4DF;
+    }
+
+    .it tbody td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #F0ECE7;
+      vertical-align: top;
+    }
+
+    .it tbody tr:last-child td { border-bottom: none; }
+    .it tbody tr:hover td { background: #F8F5F1; }
+
+    .it td:first-child {
+      font-weight: 700;
+      white-space: nowrap;
+      width: 90px;
+    }
+
+    .it td:last-child {
+      color: #888;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOD COST BOX
+    ───────────────────────────────────────────── */
+    .fc-box {
+      background: #F0ECE7;
+      border-radius: 5px;
+      padding: 16px 18px;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+
+    .fc-box h4 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #E85D26;
+      margin-bottom: 10px;
+    }
+
+    .fc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px solid #DDD8D2;
+    }
+
+    .fc-row:last-child { border-bottom: none; }
+
+    .fc-val {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 14px;
+      color: #1C1C1C;
+    }
+
+    .fc-val.good  { color: #4B8B3B; }
+    .fc-val.warn  { color: #E85D26; }
+    .fc-val.alert { color: #C0392B; }
+
+    /* ─────────────────────────────────────────────
+       ALLERGEN BADGES
+    ───────────────────────────────────────────── */
+    .al {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 10px 0 4px;
+    }
+
+    .a {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 2px 7px;
+      border-radius: 2px;
+      background: #FFE4D4;
+      color: #A83210;
+      border: 1px solid #F5B8A0;
+    }
+
+    .a.gf { background: #E8F5E2; color: #2D6A1F; border-color: #A8D89A; }
+    .a.v  { background: #E2F0E8; color: #1A5C35; border-color: #8FCF9F; }
+    .a.vg { background: #D8EFD0; color: #1A5C35; border-color: #7DC87A; }
+    .a.df { background: #FFF8E2; color: #7A5800; border-color: #F5D880; }
+    .a.n  { background: #FDE8E8; color: #9A1515; border-color: #F5A0A0; }
+
+    /* ─────────────────────────────────────────────
+       METHOD STEPS
+    ───────────────────────────────────────────── */
+    .step {
+      display: flex;
+      gap: 14px;
+      margin: 10px 0;
+      align-items: flex-start;
+    }
+
+    .sn {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      background: #E85D26;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .st {
+      font-size: 14px;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .st strong { color: #E85D26; }
+
+    /* ─────────────────────────────────────────────
+       TEMPERATURE BADGE
+    ───────────────────────────────────────────── */
+    .temp {
+      display: inline-block;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 12px;
+      background: #1C1C1C;
+      color: #FAFAF8;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .temp.hot  { background: #C0392B; }
+    .temp.warm { background: #E85D26; }
+    .temp.cold { background: #2C6FAC; }
+
+    /* ─────────────────────────────────────────────
+       CHEF TIP BOX
+    ───────────────────────────────────────────── */
+    .tb {
+      background: #FFF8F0;
+      border-left: 4px solid #E85D26;
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      font-style: italic;
+      color: #4A3828;
+    }
+
+    .tb::before {
+      content: 'Chef tip: ';
+      font-style: normal;
+      font-weight: 700;
+      color: #E85D26;
+    }
+
+    /* ─────────────────────────────────────────────
+       INFO BOX
+    ───────────────────────────────────────────── */
+    .info-box {
+      background: #F5F1EC;
+      border: 1px solid #DDD6CC;
+      border-radius: 5px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #3A3028;
+    }
+
+    .info-box h4 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #E85D26;
+      margin-bottom: 8px;
+    }
+
+    /* ─────────────────────────────────────────────
+       KITCHEN LAYOUT (monospace)
+    ───────────────────────────────────────────── */
+    .kitchen-layout {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      background: #1C1C1C;
+      color: #D4C8B8;
+      border: 2px solid #E85D26;
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* ─────────────────────────────────────────────
+       STATION GRID
+    ───────────────────────────────────────────── */
+    .station-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 720px) {
+      .station-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .station-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─────────────────────────────────────────────
+       STATION CARD
+    ───────────────────────────────────────────── */
+    .station-card {
+      background: #fff;
+      border: 1px solid #E8E4DF;
+      border-left: 4px solid #E85D26;
+      border-radius: 0 5px 5px 0;
+      padding: 16px 18px;
+    }
+
+    .station-card h4 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #E85D26;
+      margin-bottom: 8px;
+    }
+
+    .station-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      color: #4A3828;
+    }
+
+    .station-card ul li {
+      padding: 2px 0;
+      border-bottom: 1px solid #F5F1EC;
+    }
+
+    .station-card ul li:last-child { border-bottom: none; }
+
+    .station-card ul li::before {
+      content: '> ';
+      color: #E85D26;
+      font-weight: 700;
+    }
+
+    /* ─────────────────────────────────────────────
+       COVER STYLES
+    ───────────────────────────────────────────── */
+    .cover {
+      padding: 48px 0 40px;
+    }
+
+    .cover-eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E85D26;
+      margin-bottom: 20px;
+    }
+
+    .cover-title {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 58px;
+      line-height: 1.0;
+      color: #1C1C1C;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin: 0 0 10px;
+    }
+
+    .cover-title span {
+      color: #E85D26;
+      display: block;
+    }
+
+    .cover-tagline {
+      font-family: 'Georgia', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: #7A6558;
+      margin: 12px 0 32px;
+      letter-spacing: 0.01em;
+    }
+
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .kpi-badge {
+      background: #1C1C1C;
+      color: #FAFAF8;
+      border-radius: 5px;
+      padding: 12px 18px;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .kpi-badge .kpi-val {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 22px;
+      color: #E85D26;
+      display: block;
+      line-height: 1.1;
+    }
+
+    .kpi-badge .kpi-label {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #B0A898;
+      margin-top: 3px;
+      display: block;
+    }
+
+    /* ─────────────────────────────────────────────
+       PRINT
+    ───────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; max-width: 100%; padding: 0; }
+
+      .recipe       { page-break-inside: avoid; break-inside: avoid; }
+      .station-card { page-break-inside: avoid; break-inside: avoid; }
+      .step         { page-break-inside: avoid; break-inside: avoid; }
+
+      .cover-title { font-size: 40px; }
+
+      .kpi-badge      { background: #1C1C1C !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .flag-bar       { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .kitchen-layout { background: #1C1C1C !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLAG BAR - top -->
+  <div class="flag-bar"></div>
+
+  <!-- ══════════════════════════════════════════
+       COVER
+  ══════════════════════════════════════════════ -->
+  <section class="cover">
+
+    <p class="cover-eyebrow">KitchenFounder &nbsp;&middot;&nbsp; Operations Guide v7 &nbsp;&middot;&nbsp; US Market 2025</p>
+
+    <h1 class="cover-title">
+      Sri Lankan
+      <span>Hoppers</span>
+    </h1>
+
+    <p class="cover-tagline">Fermented rice bowls &nbsp;&middot;&nbsp; coconut curries &nbsp;&middot;&nbsp; Colombo soul</p>
+
+    <div class="flag-bar"></div>
+
+    <div class="kpi-row">
+      <div class="kpi-badge">
+        <span class="kpi-val">24</span>
+        <span class="kpi-label">Menu Items</span>
+      </div>
+      <div class="kpi-badge">
+        <span class="kpi-val">4</span>
+        <span class="kpi-label">Cocktails</span>
+      </div>
+      <div class="kpi-badge">
+        <span class="kpi-val">$1.8M</span>
+        <span class="kpi-label">Annual Revenue</span>
+      </div>
+      <div class="kpi-badge">
+        <span class="kpi-val">26&ndash;30%</span>
+        <span class="kpi-label">Food Cost</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>The Concept</h4>
+      Hoppers opened in Soho in 2015. No reservations. Instant cult following. The hopper &mdash; a
+      bowl-shaped fermented rice and coconut milk pancake &mdash; became London's most talked-about dish
+      overnight. This guide is inspired by that model: a Sri Lankan concept built around one iconic
+      vessel, deeply aromatic curries, and some of the most underrepresented flavours in the Western
+      restaurant world. The US market has almost no serious Sri Lankan restaurants. That is the
+      opportunity.
+    </div>
+
+  </section>
+  <!-- /COVER -->
+
+  <!-- Subsequent chunks appended below -->
+
+<div class="section-header"><span class="sn2" style="background:#E85D26;">1</span>Entrées — Small Plates</div>
+<div class="info-box"><strong>Entrées philosophy:</strong> Sri Lankan small plates are built on contrast — the crisp papadum against the cool coconut sambol, the hot devilled cashews against the cold king coconut water. These six dishes introduce guests to the flavour vocabulary of the island before the curries arrive. Most US guests have never tasted pol sambol or kottu roti. Your team's job is to make that discovery feel exciting, not intimidating.</div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Plain Hopper — Appa</div><div class="rh-sub">Fermented rice & coconut batter · bowl-shaped · crisp edges · soft centre · Sell: $8.99</div><div class="rh-tags"><span class="tag">⏱ 5 min</span><span class="tag">Entrée</span><span class="tag">FC 17.8%</span><span class="tag">GF</span><span class="tag">Vegan</span><span class="tag">⭐ Signature</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve — 2 hoppers)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Rice flour (fine, raw)</td><td>80g</td><td>$0.14</td></tr><tr><td>Coconut milk (full fat)</td><td>100ml</td><td>$0.45</td></tr><tr><td>Water</td><td>60ml</td><td>$0.00</td></tr><tr><td>Yeast (or toddy)</td><td>2g</td><td>$0.02</td></tr><tr><td>Sugar</td><td>5g</td><td>$0.01</td></tr><tr><td>Salt</td><td>2g</td><td>$0.01</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$0.63</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$8.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$8.36</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">7.0%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span><span class="a">VEGAN</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Mix batter morning: rice flour + coconut milk + water + yeast + sugar + salt. Whisk smooth. Cover and ferment at room temperature 8 hours. The batter should be slightly bubbly and smell gently sour when ready.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat appa chatty iron over medium-high gas flame. Season with a light wipe of coconut oil using a folded cloth. Iron must be <span class="temp">190°C / 375°F</span> — a drop of batter should sizzle immediately.</div></div><div class="step"><div class="sn">3</div><div class="st">Ladle 60ml batter into the centre of the iron. Quickly swirl the iron in a circular motion so batter climbs the sides. Return to flame. Cover with the lid.</div></div><div class="step"><div class="sn">4</div><div class="st">Cook 2–3 minutes until edges are golden and crisp, centre is soft and slightly puffed. Do not flip. Slide out of iron with a thin spatula. Serve immediately.</div></div><div class="tb">💡 Chef's tip: The hopper is your entire concept in one vessel. The crispy bowl edge that you can snap off and dip — that is the moment guests fall in love. Train your team to explain: "The edge is the crunch, the centre is the soft — eat it together." That one sentence sells the experience before the food even lands.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Egg Hopper</div><div class="rh-sub">Hopper with egg cracked in the centre · soft-steamed yolk · Sell: $9.99</div><div class="rh-tags"><span class="tag">⏱ 5 min</span><span class="tag">Entrée</span><span class="tag">FC 18.9%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Hopper batter (from plain hopper batch)</td><td>60ml</td><td>$0.45</td></tr><tr><td>Free-range egg</td><td>1</td><td>$0.35</td></tr><tr><td>Salt + pepper</td><td>pinch</td><td>$0.01</td></tr><tr><td>Coconut oil (iron)</td><td>2ml</td><td>$0.01</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$0.82</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$9.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$9.17</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">8.2%</span></div></div><div class="al"><span class="a">EGG</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Swirl batter in hot iron as per plain hopper method. When edges begin to set (30 seconds), crack egg into the centre pool of batter.</div></div><div class="step"><div class="sn">2</div><div class="st">Season egg with salt and pepper. Cover with lid. Steam <span class="temp">2–3 min</span> — whites should be just set, yolk still runny. This is the correct texture. A fully cooked yolk is wrong.</div></div><div class="step"><div class="sn">3</div><div class="st">Slide from iron. Serve immediately with pol sambol alongside — the egg yolk and coconut sambol eaten together is the classic Sri Lankan breakfast combination.</div></div><div class="tb">💡 Chef's tip: The egg hopper is the most photographed dish in Sri Lankan food globally. The runny yolk in the crispy bowl is a perfect visual. Train your team to call it as soon as it's plated — egg hoppers hold for maximum 90 seconds before the yolk overcooks from residual heat. Speed is everything.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Kottu Roti</div><div class="rh-sub">Shredded roti · egg · vegetables · Sri Lankan spices · stir-fried · Sell: $13.99</div><div class="rh-tags"><span class="tag">⏱ 8 min</span><span class="tag">Entrée</span><span class="tag">FC 23.7%</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Godamba roti (shredded, pre-cooked)</td><td>150g</td><td>$0.55</td></tr><tr><td>Egg</td><td>2</td><td>$0.70</td></tr><tr><td>Onion (sliced)</td><td>50g</td><td>$0.06</td></tr><tr><td>Leek (sliced)</td><td>40g</td><td>$0.08</td></tr><tr><td>Carrot (julienne)</td><td>30g</td><td>$0.05</td></tr><tr><td>Sri Lankan curry powder</td><td>5g</td><td>$0.07</td></tr><tr><td>Soy sauce</td><td>10ml</td><td>$0.04</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr><tr><td>Curry leaves</td><td>5 leaves</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.69</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$13.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$12.30</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">12.1%</span></div></div><div class="al"><span class="a">GLUTEN</span><span class="a">EGG</span><span class="a">SOY</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat a flat griddle or tawa to <span class="temp">220°C / 430°F</span> — very high. Add coconut oil. Fry curry leaves 15 seconds, add onion and leek. Cook 2 minutes moving constantly.</div></div><div class="step"><div class="sn">2</div><div class="st">Add shredded roti to the hot griddle. Chop and mix using two metal scrapers — this chopping action is the signature sound of kottu being made (loud, rhythmic clang). Cook 2 minutes.</div></div><div class="step"><div class="sn">3</div><div class="st">Push roti to the side. Crack eggs directly onto the griddle, scramble quickly, then fold through the roti mixture. Add curry powder and soy sauce. Toss everything together 1 minute.</div></div><div class="step"><div class="sn">4</div><div class="st">Add carrot julienne last — 30 seconds only, keep it slightly crunchy. Plate immediately.</div></div><div class="tb">💡 Chef's tip: The sound of kottu being made — the two-scraper chopping rhythm on a hot griddle — is distinctive, loud, and incredibly effective restaurant theatre. If your kitchen is open to guests, make kottu where they can hear it. That sound alone will make people ask "what is THAT?" and order it. It's the equivalent of a sizzling fajita plate.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Devilled Cashews</div><div class="rh-sub">Fried cashews · curry leaves · dried chilli · lime · Sell: $7.99</div><div class="rh-tags"><span class="tag">⏱ 4 min</span><span class="tag">Entrée</span><span class="tag">FC 14.5%</span><span class="tag">GF</span><span class="tag">Vegan</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Raw cashews</td><td>80g</td><td>$1.41</td></tr><tr><td>Curry leaves (fresh)</td><td>8 leaves</td><td>$0.06</td></tr><tr><td>Dried red chilli (whole)</td><td>3</td><td>$0.04</td></tr><tr><td>Turmeric</td><td>2g</td><td>$0.03</td></tr><tr><td>Salt + black pepper</td><td>2g</td><td>$0.02</td></tr><tr><td>Lime (wedge)</td><td>1/4</td><td>$0.05</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.71</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$7.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$6.28</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">21.4%</span></div></div><div class="al"><span class="a">TREE NUTS</span><span class="a">GLUTEN-FREE</span><span class="a">VEGAN</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat coconut oil in a small pan over medium-high heat. Add cashews, fry 2–3 minutes until golden. Stir constantly — they burn fast.</div></div><div class="step"><div class="sn">2</div><div class="st">Add curry leaves (stand back — they spit violently in hot oil). Add dried chilli. Fry 30 seconds.</div></div><div class="step"><div class="sn">3</div><div class="st">Add turmeric, salt, pepper. Toss to coat. Drain on paper towel. Serve hot in a small bowl with lime wedge.</div></div><div class="tb">💡 Chef's tip: Devilled cashews are your best drink pairing item — order them with the arrack sour and you have the perfect Sri Lankan aperitivo. Keep a batch pre-fried and reheat to order in 90 seconds. At $7.99 with a food cost under $1.72, this is one of your highest-margin plates.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Pol Sambol — Coconut Relish</div><div class="rh-sub">Fresh grated coconut · red onion · chilli · lime · Sell: $5.99</div><div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Condiment / Side</span><span class="tag">FC 11.8%</span><span class="tag">GF</span><span class="tag">Vegan</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve / batch portion)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Fresh grated coconut (or desiccated, rehydrated)</td><td>60g</td><td>$0.40</td></tr><tr><td>Red onion (finely minced)</td><td>20g</td><td>$0.04</td></tr><tr><td>Green chilli (minced)</td><td>5g</td><td>$0.03</td></tr><tr><td>Dried Maldive fish (optional — skip for vegan)</td><td>5g</td><td>$0.08</td></tr><tr><td>Lime juice</td><td>10ml</td><td>$0.05</td></tr><tr><td>Salt</td><td>1g</td><td>$0.00</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$0.60</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$5.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$5.39</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">10.0%</span></div></div><div class="al"><span class="a">FISH (if Maldive fish used)</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Combine grated coconut, minced onion, minced chilli, Maldive fish (if using) and lime juice. Mix by hand — squeeze and combine so the coconut absorbs the lime and chilli.</div></div><div class="step"><div class="sn">2</div><div class="st">Taste and season with salt. The sambol should be bright, fresh and punchy — not wet. If using desiccated coconut, rehydrate with 2 tbsp warm water first and dry slightly before using.</div></div><div class="tb">💡 Chef's tip: Pol sambol is served with virtually every Sri Lankan meal. It is the flavour glue of the cuisine — the acid, heat and freshness that cuts through rich curries. Batch-make every morning; it keeps 24 hours refrigerated (without Maldive fish) or 8 hours with. Never serve it cold from the fridge — bring to room temperature first.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Papadum with Three Chutneys</div><div class="rh-sub">Crispy lentil wafers · coconut chutney · tamarind · mango pickle · Sell: $6.99</div><div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Entrée</span><span class="tag">FC 13.6%</span><span class="tag">GF</span><span class="tag">Vegan</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Papadum (raw, lentil-based)</td><td>3 pieces</td><td>$0.18</td></tr><tr><td>Coconut chutney (batch)</td><td>30g</td><td>$0.18</td></tr><tr><td>Tamarind chutney (batch)</td><td>20g</td><td>$0.12</td></tr><tr><td>Mango pickle / achar</td><td>15g</td><td>$0.10</td></tr><tr><td>Oil (for frying)</td><td>small amount</td><td>$0.08</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$0.66</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$6.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$6.33</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">9.4%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span><span class="a">VEGAN</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Fry papadum in hot oil (175°C) for 15–20 seconds until puffed and golden. Drain on paper. Alternatively, microwave 45 seconds for a lighter option.</div></div><div class="step"><div class="sn">2</div><div class="st">Arrange 3 papadum in a fan on a small plate or board. Serve 3 small ramekins of chutneys alongside: coconut, tamarind, mango achar.</div></div><div class="tb">💡 Chef's tip: This is your fastest, lowest-cost, highest-margin starter. It arrives within 2 minutes of seating and immediately gives guests something to do while reading the menu. The three chutneys introduce the flavour profile of the meal — sweet tamarind, fresh coconut, spicy pickle. Think of it as an edible menu preview.</div></div></div>
+<div class="section-header"><span class="sn2" style="background:#E85D26;">2b</span>Mains — Part 2 (continued)</div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Fish Ambulthiyal — Dry Sour Fish Curry</div><div class="rh-sub">Firm white fish · goraka · black pepper · dry-cooked · Sell: $22.99</div><div class="rh-tags"><span class="tag">⏱ 12 min (pre-made)</span><span class="tag">Main</span><span class="tag">FC 25.2%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Firm white fish (tuna/wahoo, cubed)</td><td>220g</td><td>$3.41</td></tr><tr><td>Goraka (dried, soaked — gives sourness)</td><td>15g</td><td>$0.40</td></tr><tr><td>Black pepper (coarsely ground)</td><td>5g</td><td>$0.06</td></tr><tr><td>Roasted curry powder</td><td>8g</td><td>$0.10</td></tr><tr><td>Turmeric</td><td>3g</td><td>$0.04</td></tr><tr><td>Garlic (sliced)</td><td>8g</td><td>$0.05</td></tr><tr><td>Green chilli (sliced)</td><td>10g</td><td>$0.06</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr><tr><td>Pandan leaf</td><td>1 leaf</td><td>$0.05</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$4.27</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$22.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$18.72</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">18.6%</span></div></div><div class="al"><span class="a">FISH</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Soak goraka pieces in 100ml warm water for 20 minutes. Reserve the soaking liquid — it's acidic and becomes the cooking liquid.</div></div><div class="step"><div class="sn">2</div><div class="st">In a clay pot or heavy pan, combine fish cubes with goraka, soaking liquid, curry powder, turmeric, pepper, garlic, chilli, pandan. No added water — this is a dry curry.</div></div><div class="step"><div class="sn">3</div><div class="st">Cook over medium heat, stirring gently, until liquid is almost completely absorbed — about 20 minutes. The fish should be coated in a dark, dry spice crust. <span class="temp">Internal 63°C / 145°F</span>.</div></div><div class="step"><div class="sn">4</div><div class="st">Finish with a drizzle of coconut oil. Serve with plain hoppers or rice. The ambulthiyal keeps improving for 2–3 days — batch-cook for best results.</div></div><div class="tb">💡 Chef's tip: Goraka is the ingredient that makes ambulthiyal unmistakably Sri Lankan. It's a dried fruit with a deep, almost smoky sourness — nothing else tastes like it. Source from Sri Lankan or South Asian grocery suppliers. Without goraka, this dish does not exist. With it, it tastes like nothing else on any menu in America.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Jackfruit Curry — Polos Maluwa</div><div class="rh-sub">Young jackfruit · roasted coconut · spices · Sell: $16.99</div><div class="rh-tags"><span class="tag">⏱ 10 min (batch-cooked)</span><span class="tag">Main</span><span class="tag">FC 17.5%</span><span class="tag">Vegan</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Young jackfruit (canned, drained)</td><td>200g</td><td>$1.10</td></tr><tr><td>Coconut milk (full fat)</td><td>100ml</td><td>$0.45</td></tr><tr><td>Roasted curry powder</td><td>8g</td><td>$0.10</td></tr><tr><td>Onion (sliced)</td><td>60g</td><td>$0.07</td></tr><tr><td>Curry leaves (fresh)</td><td>8 leaves</td><td>$0.06</td></tr><tr><td>Mustard seeds</td><td>3g</td><td>$0.04</td></tr><tr><td>Turmeric + chilli powder</td><td>4g</td><td>$0.05</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.97</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$16.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$15.02</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">11.6%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Drain canned jackfruit thoroughly. Tear into rough shreds by hand — this creates better texture than cutting.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat coconut oil, bloom mustard seeds until they pop. Add curry leaves (stand back — they spit). Add sliced onion, cook 5 minutes until soft.</div></div><div class="step"><div class="sn">3</div><div class="st">Add curry powder, turmeric, chilli. Stir 1 minute. Add jackfruit and toss to coat in the spice base.</div></div><div class="step"><div class="sn">4</div><div class="st">Add coconut milk. Simmer 15 minutes until jackfruit is very tender and sauce coats well. Taste and adjust salt. Serve with hoppers or rice.</div></div><div class="tb">💡 Chef's tip: Young jackfruit is your best vegan main — it pulls apart like braised pork and absorbs curry flavour deeply. At 11.6% food cost it's also your highest-margin dish. Your vegan and plant-based guests will love this. Make sure your team knows how to describe it — "young jackfruit slow-cooked in roasted Sri Lankan spices with coconut milk" is more compelling than just "jackfruit curry."</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Crab Curry — Kakuluwo</div><div class="rh-sub">Whole mud crab · Sri Lankan spices · coconut milk · Sell: $32.99</div><div class="rh-tags"><span class="tag">⏱ 20 min</span><span class="tag">Main</span><span class="tag">FC 31.5%</span><span class="tag">⭐ Premium</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Mud crab (whole, cleaned, halved)</td><td>500g whole</td><td>$9.92</td></tr><tr><td>Coconut milk (full fat)</td><td>150ml</td><td>$0.68</td></tr><tr><td>Onion (sliced)</td><td>80g</td><td>$0.10</td></tr><tr><td>Tomato (chopped)</td><td>60g</td><td>$0.09</td></tr><tr><td>Roasted curry powder</td><td>10g</td><td>$0.13</td></tr><tr><td>Curry leaves + pandan</td><td>10g</td><td>$0.08</td></tr><tr><td>Ginger-garlic paste</td><td>15g</td><td>$0.11</td></tr><tr><td>Green chilli (2)</td><td>15g</td><td>$0.09</td></tr><tr><td>Coconut oil</td><td>20ml</td><td>$0.14</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$11.34</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$32.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$21.65</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">34.4%</span></div></div><div class="al"><span class="a">SHELLFISH</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Clean and halve live crab. Remove gills. Crack claws slightly — this allows the sauce to penetrate the shell during cooking.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat coconut oil in a wide heavy pot. Fry curry leaves and pandan 30 seconds. Add onion, cook 5 minutes. Add ginger-garlic paste, cook 2 minutes. Add curry powder, turmeric, chilli.</div></div><div class="step"><div class="sn">3</div><div class="st">Add crab pieces, toss in the spice base. Add tomato and 100ml water. Cover and cook <span class="temp">8 minutes</span> on high heat, shaking the pan occasionally.</div></div><div class="step"><div class="sn">4</div><div class="st">Add coconut milk. Simmer uncovered 5 minutes. Internal crab temp <span class="temp">74°C / 165°F</span>. Sauce should be deep orange and coating the shell. Serve immediately in the pot with plenty of napkins and finger bowls.</div></div><div class="tb">💡 Chef's tip: This is your highest-ticket item and your best Instagram post. Whole crab in a deep orange curry arriving at the table is a guaranteed social media moment. Supply with finger bowls and a crab cracker — the tactile experience of eating whole crab is part of the hospitality. Price at $32.99, never apologise for it.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">String Hoppers — Indi Appa</div><div class="rh-sub">Steamed rice noodle nests · served with 3 curries · Sell: $19.99</div><div class="rh-tags"><span class="tag">⏱ 15 min</span><span class="tag">Main</span><span class="tag">FC 21.8%</span><span class="tag">GF</span><span class="tag">Vegan option</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve — 6 string hoppers)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Rice flour (fine, roasted)</td><td>100g</td><td>$0.18</td></tr><tr><td>Boiling water</td><td>120ml</td><td>$0.00</td></tr><tr><td>Salt</td><td>2g</td><td>$0.01</td></tr><tr><td>Dhal curry (batch)</td><td>80ml</td><td>$0.35</td></tr><tr><td>Coconut milk gravy (kiri hodi)</td><td>80ml</td><td>$0.40</td></tr><tr><td>Pol sambol (coconut relish)</td><td>40g</td><td>$0.25</td></tr><tr><td>Coconut oil (greasing molds)</td><td>5ml</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.23</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$19.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$18.76</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">6.2%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span><span class="a">VEGAN option</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Mix roasted rice flour with boiling water and salt into a stiff dough — similar to choux pastry consistency. Work quickly while hot.</div></div><div class="step"><div class="sn">2</div><div class="st">Fill the string hopper press (indi appa press) with dough. Press in circular motions onto greased string hopper molds to form noodle nests.</div></div><div class="step"><div class="sn">3</div><div class="st">Stack molds in a steamer. Steam <span class="temp">5–7 minutes</span> until set and slightly translucent. Peel from molds carefully.</div></div><div class="step"><div class="sn">4</div><div class="st">Serve 6 string hoppers per plate with dhal curry, kiri hodi (coconut milk gravy), and pol sambol in separate small bowls. Guest mixes and eats their own way.</div></div><div class="tb">💡 Chef's tip: String hoppers are your lowest food cost main at 6.2% — essentially rice flour and water. The margin comes from the curries served alongside (which are batched). The string hopper press is a $15–25 piece of equipment from any Sri Lankan grocery or Amazon. Buy 4 presses and train your team — each press takes 60 seconds to load and produces 4 nests.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Lamprais — Dutch-Sri Lankan Banana Leaf Parcel</div><div class="rh-sub">Rice + 4 accompaniments · baked in banana leaf · Sell: $26.99</div><div class="rh-tags"><span class="tag">⏱ 20 min (pre-assembled)</span><span class="tag">Main</span><span class="tag">FC 27.6%</span><span class="tag">⭐ Signature</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per parcel)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Basmati rice (cooked in stock)</td><td>200g dry</td><td>$0.40</td></tr><tr><td>Chicken curry (batch)</td><td>100g</td><td>$0.55</td></tr><tr><td>Dhal curry (batch)</td><td>60g</td><td>$0.22</td></tr><tr><td>Seeni sambol (caramelised onion)</td><td>30g</td><td>$0.18</td></tr><tr><td>Prawn blachan (shrimp paste sambol)</td><td>20g</td><td>$0.25</td></tr><tr><td>Hard boiled egg (halved)</td><td>1 egg</td><td>$0.35</td></tr><tr><td>Banana leaf (30x30cm, softened)</td><td>1 piece</td><td>$0.18</td></tr><tr><td>Coconut oil (brushing)</td><td>5ml</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$2.17</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$26.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$24.82</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">8.0%</span></div></div><div class="al"><span class="a">EGG</span><span class="a">SHELLFISH (blachan)</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Soften banana leaf over an open flame or in boiling water for 30 seconds — it becomes pliable and releases a fresh green fragrance. Pat dry.</div></div><div class="step"><div class="sn">2</div><div class="st">Lay leaf flat. Place mound of cooked rice in centre. Arrange chicken curry, dhal, seeni sambol and blachan in small portions around the rice. Tuck halved egg in.</div></div><tr><div class="step"><div class="sn">3</div><div class="st">Fold banana leaf over the filling — sides first, then ends. Secure with toothpicks or tie with a strip of leaf. Brush outside with coconut oil.</div></div><div class="step"><div class="sn">4</div><div class="st">Bake at <span class="temp">180°C / 350°F</span> for 15 minutes. The banana leaf imparts a subtle smoky-green fragrance into the rice that cannot be replicated any other way.</div></div><div class="step"><div class="sn">5</div><div class="st">Serve whole, unopened parcel to the guest. They unwrap it at the table — the fragrant steam release is the theatre moment. This is your most Instagrammed dish.</div></div><div class="tb">💡 Chef's tip: Lamprais is the Dutch-Sri Lankan dish born from 400 years of colonial history — "lomprijst" in Dutch, meaning "lump rice." It's entirely unique in the world. When a guest unwraps a banana leaf parcel at a restaurant table in New York or LA for the first time — that is a memory. That memory brings them back. Pre-assemble the parcels during afternoon prep and bake to order. The 15-minute bake time means it needs to be ordered first, before other dishes — train your staff to mention this.</div></div></div>
+<div class="section-header"><span class="sn2" style="background:#E85D26;">2</span>Mains — Curries & Rice</div>
+<div class="info-box"><strong>Mains philosophy:</strong> Sri Lankan curries are built on three foundations: roasted curry powder (darker, more complex than raw), coconut milk (added at the end, never boiled aggressively), and tempering (mustard seeds, curry leaves, dried chilli bloomed in hot oil). Master these three techniques and you can cook any Sri Lankan curry. The recipes below represent the full breadth of the island — from the dry, sour ambulthiyal of the south to the rich, black pork curry of Colombo.</div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Black Pork Curry — Kalu Pol Maluwa</div><div class="rh-sub">Pork shoulder · black curry powder · goraka · coconut · Sell: $21.99</div><div class="rh-tags"><span class="tag">⏱ 15 min service (batch)</span><span class="tag">Main</span><span class="tag">FC 24.3%</span><span class="tag">GF</span><span class="tag">⭐ Signature</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Pork shoulder (cubed, bone-in option)</td><td>250g</td><td>$2.49</td></tr><tr><td>Black roasted curry powder</td><td>12g</td><td>$0.15</td></tr><tr><td>Goraka (dried sour fruit)</td><td>10g</td><td>$0.27</td></tr><tr><td>Coconut milk</td><td>80ml</td><td>$0.36</td></tr><tr><td>Onion (sliced)</td><td>60g</td><td>$0.07</td></tr><tr><td>Curry leaves + pandan</td><td>10g</td><td>$0.08</td></tr><tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.09</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr><tr><td>Basmati rice (cooked)</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$3.96</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$21.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$18.03</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">18.0%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Marinate pork with black curry powder, goraka (soaked and mashed), ginger-garlic paste and salt for minimum 1 hour — overnight is best.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat coconut oil. Temper curry leaves and pandan 30 seconds. Add onion, cook 5 minutes until deep golden.</div></div><div class="step"><div class="sn">3</div><div class="st">Add marinated pork. Sear until browned on all sides. Add 150ml water. Braise covered at <span class="temp">160°C / 320°F</span> for 90 minutes until very tender.</div></div><div class="step"><div class="sn">4</div><div class="st">Add coconut milk. Simmer uncovered 10 minutes until sauce thickens and turns deep black-brown. Serve over rice.</div></div><div class="tb">💡 Chef's tip: The "black" in black pork curry comes from heavily roasted curry powder — toasted until almost burnt. This creates a deep, slightly bitter, incredibly aromatic base unlike anything in Indian or Thai cooking. It's uniquely Sri Lankan. Batch this curry 2 days ahead — it gets dramatically better. This is your weekend special, your hero dish.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Lamb Kari — Slow Lamb Curry</div><div class="rh-sub">Lamb shoulder · roasted spice paste · coconut milk · Sell: $23.99</div><div class="rh-tags"><span class="tag">⏱ 15 min service (batch)</span><span class="tag">Main</span><span class="tag">FC 26.6%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Lamb shoulder (cubed)</td><td>250g</td><td>$4.16</td></tr><tr><td>Sri Lankan curry powder (roasted)</td><td>10g</td><td>$0.13</td></tr><tr><td>Coconut milk</td><td>100ml</td><td>$0.45</td></tr><tr><td>Onion (sliced)</td><td>70g</td><td>$0.08</td></tr><tr><td>Tomato (chopped)</td><td>50g</td><td>$0.08</td></tr><tr><td>Curry leaves + pandan</td><td>10g</td><td>$0.08</td></tr><tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.09</td></tr><tr><td>Ceylon cinnamon stick</td><td>1 small</td><td>$0.05</td></tr><tr><td>Basmati rice</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$5.47</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$23.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$18.52</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">22.8%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat oil, bloom curry leaves, pandan, cinnamon. Add onion — cook 6 minutes until golden. Add ginger-garlic paste, cook 2 minutes.</div></div><div class="step"><div class="sn">2</div><div class="st">Add curry powder. Cook 1 minute. Add lamb, sear all sides. Add tomato and 200ml water. Cover and braise <span class="temp">160°C / 320°F</span> for 90 minutes.</div></div><div class="step"><div class="sn">3</div><div class="st">Add coconut milk. Simmer uncovered 15 minutes until sauce coats the back of a spoon. Season, serve with rice and pol sambol.</div></div><div class="tb">💡 Chef's tip: Ceylon cinnamon (true cinnamon, not cassia) is sweeter and more delicate than the cinnamon most Americans know. It's the spice that separates Sri Lankan curry from Indian curry. Source from Sri Lankan grocery suppliers — it's worth the extra $2/lb.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Prawn Curry — Isso Maluwa</div><div class="rh-sub">Coastal prawns · coconut milk · green chilli · tomato · Sell: $24.99</div><div class="rh-tags"><span class="tag">⏱ 10 min</span><span class="tag">Main</span><span class="tag">FC 27.6%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Tiger prawns (peeled, deveined)</td><td>220g</td><td>$6.85</td></tr><tr><td>Coconut milk</td><td>120ml</td><td>$0.54</td></tr><tr><td>Tomato (chopped)</td><td>60g</td><td>$0.09</td></tr><tr><td>Green chilli (sliced)</td><td>10g</td><td>$0.06</td></tr><tr><td>Curry leaves</td><td>8 leaves</td><td>$0.06</td></tr><tr><td>Mustard seeds + turmeric</td><td>4g</td><td>$0.05</td></tr><tr><td>Onion (sliced)</td><td>50g</td><td>$0.06</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr><tr><td>Rice (cooked)</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$8.16</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$24.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$16.83</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">32.7%</span></div></div><div class="al"><span class="a">SHELLFISH</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Heat coconut oil. Bloom mustard seeds until they pop. Add curry leaves, onion, green chilli. Cook 4 minutes.</div></div><div class="step"><div class="sn">2</div><div class="st">Add tomato, turmeric. Cook 3 minutes until soft. Add coconut milk, simmer 2 minutes.</div></div><div class="step"><div class="sn">3</div><div class="st">Add prawns. Cook <span class="temp">3–4 min max</span> until pink and just curled. Do not overcook. Serve immediately over rice.</div></div><div class="tb">💡 Chef's tip: Sri Lankan prawn curry is lighter and brighter than Indian prawn masala — less tomato, more coconut, more mustard seed. The coastal, almost tropical flavour should be fresh and clean. If your sauce tastes heavy, you've cooked it too long. Speed at service is essential — prawns go from perfect to rubber in 90 seconds.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Dhal Curry — Parippu</div><div class="rh-sub">Red lentils · coconut milk · turmeric · tempered mustard · Sell: $13.99</div><div class="rh-tags"><span class="tag">⏱ 8 min (batch)</span><span class="tag">Main</span><span class="tag">FC 13.5%</span><span class="tag">GF</span><span class="tag">Vegan</span><span class="tag">⭐ Essential</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Red lentils (dry)</td><td>80g</td><td>$0.21</td></tr><tr><td>Coconut milk</td><td>60ml</td><td>$0.27</td></tr><tr><td>Turmeric</td><td>3g</td><td>$0.04</td></tr><tr><td>Mustard seeds</td><td>3g</td><td>$0.04</td></tr><tr><td>Curry leaves</td><td>6 leaves</td><td>$0.05</td></tr><tr><td>Dried red chilli</td><td>2</td><td>$0.03</td></tr><tr><td>Onion (sliced)</td><td>40g</td><td>$0.05</td></tr><tr><td>Coconut oil</td><td>10ml</td><td>$0.07</td></tr><tr><td>Rice (cooked)</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.11</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$13.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$12.88</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">7.9%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span><span class="a">VEGAN</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Boil lentils with turmeric and water until completely soft — about 20 minutes. They should mash easily between fingers. Batch daily.</div></div><div class="step"><div class="sn">2</div><div class="st">Add coconut milk to cooked lentils. Simmer 5 minutes. Season with salt.</div></div><div class="step"><div class="sn">3</div><div class="st">Tempering (do fresh per batch): heat coconut oil in a small pan until very hot. Add mustard seeds — wait for them to pop. Add curry leaves and dried chilli — 15 seconds. Pour entire sizzling tempering over the dhal. Do not stir immediately — let guests see the sizzle.</div></div><div class="tb">💡 Chef's tip: Dhal is served at every Sri Lankan meal — it is the constant, the comfort, the anchor. Your dhal should be silky, slightly thick, and fragrant from the tempering. The tempering (tarka) poured over at service is the finishing touch that separates restaurant dhal from home dhal. Never skip it.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Chicken Curry — Kukul Maluwa</div><div class="rh-sub">Free-range chicken thigh · Sri Lankan curry powder · pandan · coconut · Sell: $18.99</div><div class="rh-tags"><span class="tag">⏱ 12 min (batch)</span><span class="tag">Main</span><span class="tag">FC 21.8%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Chicken thigh (bone-in, skin-off)</td><td>250g</td><td>$1.77</td></tr><tr><td>Sri Lankan curry powder</td><td>10g</td><td>$0.13</td></tr><tr><td>Coconut milk</td><td>100ml</td><td>$0.45</td></tr><tr><td>Pandan leaf (2 pieces)</td><td>10g</td><td>$0.08</td></tr><tr><td>Lemongrass (bruised)</td><td>1 stalk</td><td>$0.10</td></tr><tr><td>Curry leaves</td><td>8 leaves</td><td>$0.06</td></tr><tr><td>Onion</td><td>60g</td><td>$0.07</td></tr><tr><td>Ginger-garlic paste</td><td>12g</td><td>$0.09</td></tr><tr><td>Coconut oil</td><td>15ml</td><td>$0.10</td></tr><tr><td>Rice (cooked)</td><td>180g dry</td><td>$0.35</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$3.20</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$18.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$15.79</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">16.8%</span></div></div><div class="al"><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Marinate chicken with curry powder, ginger-garlic paste, salt for 30 minutes minimum.</div></div><div class="step"><div class="sn">2</div><div class="st">Heat coconut oil. Add pandan leaf, lemongrass, curry leaves. Fry 30 seconds until fragrant. Add onion, cook 5 minutes.</div></div><div class="step"><div class="sn">3</div><div class="st">Add chicken, sear on all sides. Add 150ml water. Cover and cook at <span class="temp">160°C / 320°F</span> for 25 minutes until chicken is pull-tender.</div></div><div class="step"><div class="sn">4</div><div class="st">Add coconut milk. Simmer uncovered 8 minutes. Internal chicken <span class="temp">74°C / 165°F</span>. Remove pandan and lemongrass before serving. Serve over rice with pol sambol.</div></div><div class="tb">💡 Chef's tip: Pandan leaf is the ingredient that makes Sri Lankan chicken curry taste completely different from Indian chicken curry — it adds a soft, grassy, almost vanilla-like fragrance. Fresh pandan is available at most Asian grocery stores. Frozen works nearly as well. Dried pandan is almost useless — don't bother.</div></div></div>
+<div class="section-header"><span class="sn2" style="background:#E85D26;">3</span>Desserts — Mithai</div>
+<div class="info-box"><strong>Desserts philosophy:</strong> Sri Lankan desserts are built on coconut, jaggery, and spice. Watalappan is the crown jewel — a steamed coconut custard set with jaggery that tastes like nothing else in the world. Your four desserts cover all preferences: rich, light, vegan, and traditional. Food cost ranges 10–18% — some of your best margins of the entire menu.</div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Watalappan — Coconut Jaggery Custard</div><div class="rh-sub">Coconut milk · jaggery · cardamom · cashew · steamed · Sell: $8.99</div><div class="rh-tags"><span class="tag">⏱ 5 min (batch steamed)</span><span class="tag">Dessert</span><span class="tag">FC 15.6%</span><span class="tag">GF</span><span class="tag">⭐ Signature</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve — batch of 10)</h4><table class="it"><tr><th>Ingredient</th><th>Qty per serve</th><th>Cost</th></tr><tr><td>Coconut milk (full fat)</td><td>80ml</td><td>$0.36</td></tr><tr><td>Jaggery (dark palm sugar, grated)</td><td>40g</td><td>$0.32</td></tr><tr><td>Eggs (whole)</td><td>1.5</td><td>$0.53</td></tr><tr><td>Cardamom (ground)</td><td>1g</td><td>$0.04</td></tr><tr><td>Nutmeg (grated)</td><td>0.5g</td><td>$0.02</td></tr><tr><td>Vanilla</td><td>1ml</td><td>$0.02</td></tr><tr><td>Cashews (toasted, garnish)</td><td>10g</td><td>$0.18</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.47</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$8.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$7.52</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">16.4%</span></div></div><div class="al"><span class="a">EGG</span><span class="a">TREE NUTS</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Melt grated jaggery in warm coconut milk. Stir until dissolved. Cool slightly. Whisk in eggs, cardamom, nutmeg and vanilla. Strain through fine sieve.</div></div><div class="step"><div class="sn">2</div><div class="st">Pour into small ramekins or traditional clay pots (80ml each). Place in a steamer. Steam at <span class="temp">85°C / 185°F</span> (gentle steam, NOT boiling) for 20–25 minutes until just set with a slight wobble.</div></div><div class="step"><div class="sn">3</div><div class="st">Cool completely. Refrigerate minimum 2 hours. Serve cold, topped with toasted cashews and a very light grating of fresh nutmeg.</div></div><div class="tb">💡 Chef's tip: Watalappan is one of the great custards of the world — in the same league as crème brûlée or panna cotta, but almost completely unknown outside Sri Lanka. Jaggery gives it a deep, smoky-sweet flavour that sugar simply cannot replicate. If you can serve it in a small clay pot (matka), the presentation is spectacular. Batch 20 portions every morning — they hold 3 days refrigerated and get better on day 2.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Coconut Pancake — Appa Pancake</div><div class="rh-sub">Thin coconut crepe · palm sugar filling · fresh coconut · Sell: $7.99</div><div class="rh-tags"><span class="tag">⏱ 5 min</span><span class="tag">Dessert</span><span class="tag">FC 13.8%</span><span class="tag">GF</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve — 2 pancakes)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Rice flour (fine)</td><td>60g</td><td>$0.11</td></tr><tr><td>Coconut milk</td><td>80ml</td><td>$0.36</td></tr><tr><td>Egg</td><td>1</td><td>$0.35</td></tr><tr><td>Palm sugar (scraped)</td><td>30g</td><td>$0.24</td></tr><tr><td>Fresh grated coconut (filling)</td><td>40g</td><td>$0.27</td></tr><tr><td>Cardamom (pinch)</td><td>0.5g</td><td>$0.02</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.35</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$7.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$6.64</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">16.9%</span></div></div><div class="al"><span class="a">EGG</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Whisk rice flour, coconut milk and egg into a thin, smooth batter. Rest 10 minutes. Consistency should be thinner than regular pancake batter — almost crêpe-thin.</div></div><div class="step"><div class="sn">2</div><div class="st">Mix filling: grated coconut + palm sugar + cardamom. Warm in a pan 2 minutes until sugar melts into the coconut.</div></div><div class="step"><div class="sn">3</div><div class="st">Cook thin pancakes on a lightly oiled non-stick pan. Fill each with coconut mixture, roll and plate. Dust with icing sugar.</div></div><div class="tb">💡 Chef's tip: This is your approachable dessert for guests who are nervous about unfamiliar flavours — it looks like a crêpe and tastes extraordinary. The palm sugar and coconut filling is deeply comforting. Sell it to the table as "a Sri Lankan crêpe with coconut and palm sugar — like nothing you've tried before."</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Mango Sorbet with Chilli Salt</div><div class="rh-sub">Fresh mango · lime · Colombo chilli salt · Sell: $6.99</div><div class="rh-tags"><span class="tag">⏱ 2 min</span><span class="tag">Dessert</span><span class="tag">FC 14.2%</span><span class="tag">GF</span><span class="tag">Vegan</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per serve)</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Alphonso mango purée (or fresh)</td><td>150g</td><td>$0.60</td></tr><tr><td>Lime juice</td><td>15ml</td><td>$0.08</td></tr><tr><td>Sugar syrup</td><td>30ml</td><td>$0.05</td></tr><tr><td>Chilli salt (red chilli + flaky sea salt blend)</td><td>1g</td><td>$0.02</td></tr><tr><td>Fresh mint (garnish)</td><td>2 leaves</td><td>$0.02</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$0.77</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$6.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$6.22</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">11.0%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GLUTEN-FREE</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Blend mango, lime juice and sugar syrup until smooth. Churn in ice cream machine or batch-freeze in a shallow tray and blend when frozen for a rougher texture.</div></div><div class="step"><div class="sn">2</div><div class="st">Scoop and serve. Pinch chilli salt over the top at the pass. Garnish with mint.</div></div><div class="tb">💡 Chef's tip: The chilli salt is what makes this dish Sri Lankan rather than generic. In Colombo, fresh mango with chilli and lime is a street food snack. Replicate that in a frozen form and you've created something utterly simple and completely memorable. This is your vegan dessert and your highest-margin dessert simultaneously.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Bibikkan — Coconut Cake</div><div class="rh-sub">Coconut · semolina · treacle · cashew · traditional baked cake · Sell: $7.99</div><div class="rh-tags"><span class="tag">⏱ 3 min (pre-baked)</span><span class="tag">Dessert</span><span class="tag">FC 17.4%</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients (per slice — batch of 12)</h4><table class="it"><tr><th>Ingredient</th><th>Qty (whole cake)</th><th>Cost per slice</th></tr><tr><td>Fresh grated coconut</td><td>200g</td><td>$0.37</td></tr><tr><td>Semolina (fine)</td><td>100g</td><td>$0.08</td></tr><tr><td>Treacle (dark Ceylon)</td><td>80g</td><td>$0.20</td></tr><tr><td>Jaggery (grated)</td><td>80g</td><td>$0.19</td></tr><tr><td>Cashews (roughly chopped)</td><td>50g</td><td>$0.13</td></tr><tr><td>Cardamom + cloves</td><td>3g</td><td>$0.04</td></tr><tr><td>Butter (for tin)</td><td>10g</td><td>$0.04</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.05</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$7.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$6.94</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">13.1%</span></div></div><div class="al"><span class="a">GLUTEN</span><span class="a">TREE NUTS</span><span class="a">DAIRY</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Mix all ingredients together — no cooking required for the batter. The treacle and jaggery bind the mixture. Fold in cashews and spices.</div></div><div class="step"><div class="sn">2</div><div class="st">Press into a greased tin (2cm thick). Bake at <span class="temp">170°C / 340°F</span> for 30–35 minutes until firm and dark brown. Cool completely before slicing.</div></div><div class="tb">💡 Chef's tip: Bibikkan keeps for 5–7 days at room temperature, improving with age as the treacle and coconut flavours meld. Bake twice a week. Serve with a scoop of the mango sorbet alongside for a contrast pairing that works beautifully on the menu.</div></div></div>
+
+<div class="section-header"><span class="sn2" style="background:#E85D26;">4</span>Drinks — Beverages & Arrack Cocktails</div>
+<div class="info-box"><strong>Drinks philosophy:</strong> Ceylon arrack is the most exciting spirits story almost nobody in the US is telling. Distilled from coconut flower sap (toddy), it's complex, slightly funky, deeply aromatic — halfway between rum and whisky. Your cocktail program is built around it. A 35% attachment rate at $13.50 average generates $140,000+ annually. Train your team to introduce arrack to every table.</div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">King Coconut Water</div><div class="rh-sub">Fresh king coconut · chilled · served in shell (or glass) · Sell: $6.99</div><div class="rh-tags"><span class="tag">Non-Alcoholic</span><span class="tag">GF</span><span class="tag">Vegan</span><span class="tag">FC 18%</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>King coconut (or young coconut water)</td><td>300ml</td><td>$1.20</td></tr><tr><td>Ice</td><td>handful</td><td>$0.03</td></tr><tr><td>Lime wedge (garnish)</td><td>1/4</td><td>$0.05</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.28</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$6.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$5.71</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">18.3%</span></div></div><div class="al"><span class="a">VEGAN</span><span class="a">GLUTEN-FREE</span></div></div></div><div class="tb">💡 Chef's tip: King coconut (thambili) is a specific orange-shelled coconut from Sri Lanka — sweeter and more complex than regular young coconut. Source from Sri Lankan or Southeast Asian suppliers. If unavailable, use premium packaged coconut water (Harmless Harvest is closest in flavour). Serve in the shell with a straw for theatre, or in a tall glass over ice.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Arrack Sour</div><div class="rh-sub">Ceylon arrack · lime · egg white · palm sugar syrup · Sell: $13.99</div><div class="rh-tags"><span class="tag">Cocktail</span><span class="tag">FC 16%</span><span class="tag">⭐ Signature Drink</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Ceylon arrack (VSOA or Double Distilled)</td><td>50ml</td><td>$1.25</td></tr><tr><td>Fresh lime juice</td><td>25ml</td><td>$0.13</td></tr><tr><td>Palm sugar syrup (house-made)</td><td>20ml</td><td>$0.15</td></tr><tr><td>Egg white</td><td>1</td><td>$0.12</td></tr><tr><td>Angostura bitters (2 drops)</td><td>—</td><td>$0.03</td></tr><tr><td>Ice</td><td>—</td><td>$0.03</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.71</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$13.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$12.28</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">12.2%</span></div></div><div class="al"><span class="a">EGG</span><span class="a">SULPHITES</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Dry shake (no ice): combine arrack, lime, palm sugar syrup and egg white in shaker. Shake hard 15 seconds to emulsify egg white.</div></div><div class="step"><div class="sn">2</div><div class="st">Add ice. Shake again 10 seconds. Double strain into a chilled coupe glass.</div></div><div class="step"><div class="sn">3</div><div class="st">The egg white foam should sit proud above the glass rim. Add 2 drops bitters on the foam and use a toothpick to draw a pattern.</div></div><div class="tb">💡 Chef's tip: This is your best arrack introduction cocktail. It's approachable (sour-style that guests already understand), but the arrack gives it a complexity — slightly funky, coconut-forward — that whisky sour or pisco sour can't match. Train your team: "Think of arrack as coconut rum's sophisticated older cousin." That one line sells it.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">Tamarind Old Fashioned</div><div class="rh-sub">Ceylon arrack · tamarind syrup · Angostura bitters · orange · Sell: $14.99</div><div class="rh-tags"><span class="tag">Cocktail</span><span class="tag">FC 14%</span><span class="tag">⭐ Premium</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Ceylon arrack (aged)</td><td>60ml</td><td>$1.50</td></tr><tr><td>Tamarind syrup (house-made)</td><td>15ml</td><td>$0.18</td></tr><tr><td>Angostura bitters</td><td>3 dashes</td><td>$0.04</td></tr><tr><td>Orange peel (expressed)</td><td>1 strip</td><td>$0.08</td></tr><tr><td>Ice (large single cube)</td><td>1</td><td>$0.03</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.83</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$14.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$13.16</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">12.2%</span></div></div><div class="al"><span class="a">SULPHITES</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Stir (never shake) arrack, tamarind syrup and bitters with ice in a mixing glass for 30 seconds until chilled and diluted.</div></div><div class="step"><div class="sn">2</div><div class="st">Strain over a single large ice cube in a rocks glass. Express orange peel over the surface — flame it for theatre if you have a torch. Garnish with the peel.</div></div><div class="tb">💡 Chef's tip: Tamarind syrup adds a tart complexity that transforms the old fashioned format — the sourness from the tamarind plays against the bitters and the slight sweetness of the arrack. Make tamarind syrup in bulk: 200g tamarind block dissolved in 200ml hot water, strained, combined 1:1 with sugar syrup. Keeps 3 weeks refrigerated.</div></div></div>
+
+<div class="recipe"><div class="rh" style="border-left:5px solid #E85D26;"><div class="rh-title">King Coconut Mojito</div><div class="rh-sub">Ceylon arrack · king coconut water · mint · lime · Sell: $12.99</div><div class="rh-tags"><span class="tag">Cocktail</span><span class="tag">FC 13%</span><span class="tag">⭐ Best Seller</span></div></div><div class="rb"><div class="two-col"><div><h4>Ingredients</h4><table class="it"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr><tr><td>Ceylon arrack</td><td>45ml</td><td>$1.13</td></tr><tr><td>King coconut water</td><td>100ml</td><td>$0.40</td></tr><tr><td>Fresh lime juice</td><td>20ml</td><td>$0.10</td></tr><tr><td>Fresh mint (generous bunch)</td><td>8g</td><td>$0.10</td></tr><tr><td>Palm sugar syrup</td><td>15ml</td><td>$0.11</td></tr><tr><td>Ice + soda top</td><td>—</td><td>$0.03</td></tr></table></div><div><div class="fc-box"><div class="fc-row"><span>Total ingredient cost</span><span class="fc-val">$1.87</span></div><div class="fc-row"><span>Sell price</span><span class="fc-val">$12.99</span></div><div class="fc-row"><span>Gross profit</span><span class="fc-val">$11.12</span></div><div class="fc-row"><span>Food cost %</span><span class="fc-val">14.4%</span></div></div><div class="al"><span class="a">SULPHITES</span></div></div></div><h4>Method</h4><div class="step"><div class="sn">1</div><div class="st">Muddle mint leaves gently with palm sugar syrup in a tall glass. Do not tear — press to release oils without shredding.</div></div><div class="step"><div class="sn">2</div><div class="st">Add arrack, lime juice, king coconut water. Fill with crushed ice. Top with a splash of soda. Garnish with fresh mint sprig and lime wheel.</div></div><div class="tb">💡 Chef's tip: This is your most accessible arrack drink — guests who know mojitos will order it immediately. The coconut water replaces the sugar and adds an unmistakably tropical, Sri Lankan character. Your front-of-house team should lead with this when introducing arrack: "Have you tried our King Coconut Mojito? It's made with Ceylon arrack — Sri Lanka's national spirit. It's our most popular cocktail."</div></div></div>
+<div class="section-header"><span class="sn2" style="background:#E85D26;">5</span>Service Training — Educate to Elevate</div>
+<div class="info-box"><strong>The Hoppers Service Philosophy:</strong> Most of your US guests have never eaten Sri Lankan food. That is not a problem — it is your greatest opportunity. When someone tries a hopper for the first time and the crispy edge snaps and the soft centre yields and the egg yolk breaks into the pol sambol — that moment of discovery is yours to create. Train your team to be guides, not just servers. Education is your hospitality.</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">How to Explain the Hopper</h3>
+<div class="info-box">The single most important thing your staff must learn is how to explain the hopper in 30 seconds. Practice this until it's natural:<br><br><em>"A hopper is a bowl-shaped pancake made from fermented rice flour and coconut milk — crispy at the edges, soft in the centre. We make them one at a time in a small cast iron bowl over an open flame. You can have it plain, or with an egg cracked in the middle. The way to eat it is to tear the crispy edge off, scoop some curry with it, and eat them together. It's Sri Lanka's most iconic dish — and most of our guests say it's unlike anything they've ever tasted."</em><br><br>That speech takes 25 seconds. Practice it until it flows like a story, not a script.</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Counter/Table Lifecycle Scripts</h3>
+
+<div class="info-box"><strong>Welcome Script:</strong><br>"Welcome — have you been to us before? [If no] Perfect — I love first timers. Let me tell you a little about how we eat here, because it's a bit different from most restaurants..."<br>[If yes] "Welcome back! Anything new on the menu you want to know about?"</div>
+
+<div class="info-box"><strong>Hopper Explanation Script:</strong><br>"So the star of the show is the hopper — it's this beautiful little bowl-shaped pancake made from fermented rice and coconut milk. Crispy at the edges, soft in the middle. We make them to order in these small cast iron bowls — you can see them being made [gesture to kitchen] right there. Most people have one each and share the curries between them. Does that sound good? I'd suggest starting with an egg hopper each, plus maybe three or four curries to share."</div>
+
+<div class="info-box"><strong>Order-Taking Script:</strong><br>"Are you ready to order? For two people, I'd suggest: two hoppers each — one plain, one egg — and then three curries to share. The black pork curry is our signature — it's been slow-cooked since this morning. The dhal is essential — every Sri Lankan meal has dhal. And if you eat seafood, the prawn curry is stunning right now. Does that work for you? I can also do you the lamprais — that's our Dutch-Sri Lankan banana leaf parcel — but that one takes 20 minutes, so let me know if you'd like it and I'll put it on first."</div>
+
+<div class="info-box"><strong>Arrack Introduction Script:</strong><br>"Can I tell you about our drinks? We have a full arrack cocktail menu — arrack is Sri Lanka's national spirit, made from coconut flower sap. It's a bit like rum but more complex — slightly floral, slightly funky. Our most popular cocktail is the King Coconut Mojito — arrack, fresh coconut water, mint and lime. It's very refreshing with the curries. Or if you prefer something more serious, the Arrack Sour is incredible — it has palm sugar and egg white and a foam on top. Would you like to try one?"</div>
+
+<div class="info-box"><strong>Mid-Meal Check Script:</strong><br>"How are the curries? Are you eating them with the hoppers — tearing the edge and scooping? [If not] Try it that way — the contrast of the crispy hopper with the sauce is the whole thing. [Pause] Can I get you anything else? More hoppers are very quick — we can do them in about 4 minutes."</div>
+
+<div class="info-box"><strong>Dessert Upsell Script:</strong><br>"Can I tell you about our desserts? The watalappan is a must — it's a Sri Lankan coconut custard made with jaggery, which is a dark palm sugar. It's been steamed since this morning. I genuinely can't recommend it highly enough. It comes cold, and it's just... unlike anything else. And a Ceylon tea to finish? We have a proper loose-leaf from the hill country — it's the best tea in the world and most people have never drunk it properly."</div>
+
+<div class="info-box"><strong>Farewell Script:</strong><br>"It was so great having you. How was the hopper — first time? [Listen genuinely] I love that reaction. If you enjoyed it, please come back — the menu changes seasonally and there's so much more to try. And if you have a moment for a Google review, it genuinely helps us. Safe travels."</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Upsell Opportunity Table</h3>
+<table class="it"><thead><tr><th>Upsell</th><th>Trigger Moment</th><th>Extra per Cover</th><th>Monthly Impact (150 covers/wk)</th></tr></thead><tbody>
+<tr><td>Egg hopper upgrade (from plain)</td><td>Hopper explanation</td><td>+$1.00</td><td>+$600 (100% take)</td></tr>
+<tr><td>Lamprais (premium dish, $26.99)</td><td>Order-taking</td><td>+$7.00 vs avg main</td><td>+$840 at 20% take</td></tr>
+<tr><td>Arrack cocktail</td><td>Drinks intro</td><td>+$13.50 avg</td><td>+$4,050 at 20% take</td></tr>
+<tr><td>Arrack flight (3 styles, $22)</td><td>After first cocktail</td><td>+$22.00</td><td>+$660 at 10% take</td></tr>
+<tr><td>Extra hopper round</td><td>Mid-meal check</td><td>+$8.99</td><td>+$1,079 at 20% take</td></tr>
+<tr><td>Watalappan dessert</td><td>Dessert script</td><td>+$8.99</td><td>+$1,079 at 20% take</td></tr>
+<tr><td>Ceylon tea with dessert</td><td>After dessert order</td><td>+$4.50</td><td>+$540 at 20% take</td></tr>
+<tr><td><strong>Total monthly upsell potential</strong></td><td>—</td><td>—</td><td><strong>+$8,848/month</strong></td></tr>
+</tbody></table>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Handling Unfamiliar Guests — Education as Hospitality</h3>
+<div class="info-box"><strong>The 3 types of first-time Sri Lankan food guests:</strong><br><br>
+🟢 <strong>The Adventurous Guest</strong> — excited, wants to try everything. Give them the full story. Recommend the lamprais. Push the arrack. They will come back and bring friends.<br><br>
+🟡 <strong>The Cautious Guest</strong> — interested but nervous. Start them with papadum and chutneys to build confidence. Recommend the chicken curry and egg hopper first. Let them discover complexity gradually.<br><br>
+🔴 <strong>The Reluctant Guest</strong> — brought by a friend, not sure. Don't push. Offer the mango sorbet and king coconut water as entry points. Let the food speak. One bite of a good egg hopper converts almost everyone.
+</div>
+<div class="tb">💡 Training note: Your single biggest competitive advantage as a Sri Lankan restaurant in the US is that you are probably the only one within 20 miles. Every guest who walks in is discovering your cuisine for the first time. That is a gift. Train your team to understand this and treat first-time guests as ambassadors — because they are. One converted first-timer tells 5 people. Five converts tell 25. That is how cult restaurants are built.</div>
+
+<div class="section-header"><span class="sn2">6</span>Kitchen Design — The Hopper Kitchen</div>
+<div class="info-box"><strong>Kitchen Philosophy:</strong> A Sri Lankan hoppers restaurant kitchen is built around one piece of equipment — the <em>appa chatty</em>, the small cast-iron hopper iron. Like the plancha in a Spanish kitchen, or the tandoor in an Indian one, the hopper iron is not just a tool. It is the identity of the cuisine. Every menu item, every workflow, every staffing decision radiates outward from those six irons lined up in a row, glowing with heat, facing the guests. Design your kitchen to put them front and centre — visible, theatrical, and operating at full speed.</div>
+
+<div class="info-box">The hopper iron does something no other piece of equipment can replicate: it creates a crispy, lacy edge and a soft, custardy centre simultaneously. That textural contrast is the reason hoppers exist. It cannot be achieved in a pan, on a plancha, or in an oven. Protect the iron. Train the iron specialist. Never compromise on the quality of your <em>appa chatty</em>.</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Recommended Kitchen Layout</h3>
+<div class="info-box">The hopper station should sit at the front of the kitchen, closest to the guest — the theatre position. Guests see the batter go in, the iron rotate, the hopper emerge. String hoppers steam quietly beside it. Curry pots simmer at the back. This is a kitchen designed to be watched.</div>
+
+<pre class="kitchen-layout">
+┌──────────────────────────────────────────────────────────────────────┐
+│                         BACK OF HOUSE                                │
+│  [BACK DOOR / DELIVERY]     [DRY STORE]     [REACH-IN FRIDGE x2]    │
+│                                                                       │
+│  ┌──────────────┐  ┌──────────────────────────────────────────────┐  │
+│  │  DISH WASH   │  │            CURRY STATION                     │  │
+│  │  ──────────  │  │  [4-BURNER GAS RANGE]  [HEAVY POT RACK]     │  │
+│  │  Sink x2     │  │  [COCONUT MILK STATION] [SPICE RACK]        │  │
+│  │  Rack        │  │  [6x SAUCE POTS 8L]  [BAIN MARIE 4-WELL]   │  │
+│  │  Chemical    │  └──────────────────────────────────────────────┘  │
+│  └──────────────┘                                                     │
+│  ┌─────────────────────────────────────────────────────────────────┐  │
+│  │                 PREP / RICE / COLD SECTION                      │  │
+│  │  [RICE COOKER x3]  [STRING HOPPER STEAMER x2]  [U/C FRIDGE]   │  │
+│  │  [PREP SURFACE 1500mm]  [SCALE]  [COCONUT GRATER / BLENDER]   │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────┐  │
+│  │         HOPPER STATION — FRONT / GUEST-FACING (THE THEATRE)    │  │
+│  │  [APPA CHATTY IRON x6]  [6-BURNER GAS HOPPER RANGE]           │  │
+│  │  [BATTER DISPENSERS x2]  [EGG STATION]  [SWEET BATTER JUG]    │  │
+│  │  [MISE EN PLACE: coconut milk, banana leaf liners, lids]       │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│                            ↑ PASS ↑                                   │
+│  ═══════════════════ PASS / COUNTER LINE ══════════════════════════   │
+│  [HEAT LAMPS x2]  [GARNISH: curry leaves · lime · green chilli]      │
+│  [PLATE WARM STORE]  [TICKET RAIL]  [ACCOMPANIMENT POTS — sambol]    │
+│                                                                       │
+│  ████████████████  GUEST COUNTER / TABLE SEATING  ████████████████   │
+└──────────────────────────────────────────────────────────────────────┘
+</pre>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Equipment by Station</h3>
+<div class="station-grid">
+
+<div class="station-card"><h4 style="color:#E85D26;margin:0 0 12px;">Station 1 — Hopper Station</h4>
+<ul style="margin:0;padding-left:18px;line-height:1.8;">
+<li><strong>Appa chatty irons x6</strong> — traditional cast-iron, 6&quot; bowl diameter, pre-seasoned</li>
+<li>Dedicated 6-burner gas range (low-profile, wok-style burners) — one burner per iron</li>
+<li>Batter dispenser ladles x2 (one plain, one sweet batter)</li>
+<li>Egg station: cracked eggs in ramekins, ready for egg hoppers</li>
+<li>Lids (small, domed) to steam-set the centre of each hopper</li>
+<li>Banana leaf liners or small boards for plating</li>
+<li>Coconut oil in squeeze bottle (for seasoning irons between batches)</li>
+<li>Fire suppression system above (code requirement)</li>
+</ul>
+<div class="tb" style="margin-top:12px;">The hopper specialist is the most skilled person in your kitchen. This station is physically demanding — six irons running simultaneously, batter swirled to coat, egg dropped, lid on, lid off, hopper released in under 90 seconds per iron. Speed and confidence are non-negotiable. Pay accordingly.</div>
+</div>
+
+<div class="station-card"><h4 style="color:#E85D26;margin:0 0 12px;">Station 2 — Curry Station</h4>
+<ul style="margin:0;padding-left:18px;line-height:1.8;">
+<li><strong>Heavy-bottomed pots x6</strong> (8L minimum — for dhal, chicken, fish, seeni sambol, coconut sambol, pol curry)</li>
+<li>4-burner commercial gas range — high BTU for rapid reduction</li>
+<li>Coconut milk station: canned coconut milk rack (48-can capacity), ladle, measuring jug</li>
+<li>Spice rack: Ceylon cinnamon, cardamom, cloves, curry leaf, mustard seed, chilli powder, turmeric, pandan leaf — all pre-measured in mise en place</li>
+<li>Bain marie (4 well) for holding curries at service temp (85°C+)</li>
+<li>Mortar and pestle (large, stone) for fresh tempering</li>
+<li>Digital probe thermometer</li>
+</ul>
+<div class="tb" style="margin-top:12px;">Sri Lankan curry bases are built in stages: tempering whole spices in hot oil first, then aromatics, then protein or vegetables, then coconut milk reduction. The bain marie holds finished curries at temperature without overcooking. Never leave curries on direct flame at service — they will split and scorch.</div>
+</div>
+
+<div class="station-card"><h4 style="color:#E85D26;margin:0 0 12px;">Station 3 — Prep / Rice Station</h4>
+<ul style="margin:0;padding-left:18px;line-height:1.8;">
+<li><strong>Commercial rice cookers x3</strong> (10L each — keeps red rice, white rice, and jackfruit rice warm through service)</li>
+<li>String hopper steamers x2 (stacked bamboo or stainless tray steamers — essential for <em>idiyappam</em>)</li>
+<li>String hopper press (murukku/idiyappam press with fine disc) — one per cook on string hopper duties</li>
+<li>Prep surface: 1500mm stainless — for coconut scraping, sambol mixing, batter preparation</li>
+<li>Box grater + electric coconut grater (fresh coconut scraped daily)</li>
+<li>High-speed blender (wet coconut grinding for batter and chutneys)</li>
+<li>Under-counter fridge (prepped batter, overnight fermented hopper mix, cut garnishes)</li>
+</ul>
+</div>
+
+<div class="station-card"><h4 style="color:#E85D26;margin:0 0 12px;">Station 4 — Pass / Counter</h4>
+<ul style="margin:0;padding-left:18px;line-height:1.8;">
+<li><strong>Heat lamp strip x2</strong> (full counter width — keeps plated hoppers and rice warm 2–3 min max before service)</li>
+<li>Ticket rail (KDS or paper — both work at this scale)</li>
+<li>Plate warm store (under-counter, 60°C)</li>
+<li>Garnish station: fresh curry leaves (fried, in hot coconut oil), lime wedges, sliced green chilli, Maldive fish flakes</li>
+<li>Accompaniment pots (small clay pots or ramekins): pol sambol, seeni sambol, dhal, lunu miris — pre-portioned for service</li>
+<li>Tweezers and small spoons for plating</li>
+</ul>
+<div class="tb" style="margin-top:12px;">Hoppers must be served <em>immediately</em>. The lacy edge softens within 3 minutes. Train your pass staff to call hoppers the moment they land. Never hold a hopper under a lamp for more than 2 minutes — it defeats the entire point of making it fresh.</div>
+</div>
+
+</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">The Hopper Iron — Deep Dive</h3>
+<div class="info-box"><strong>The appa chatty is the soul of your kitchen.</strong> It is a small, hemispherical cast-iron pan, roughly 6 inches in diameter, with steep curved sides. Batter is poured in, the pan is rotated to coat the walls, and the result is a bowl-shaped crisp with thin, lacy, almost-fried walls and a soft, steamed centre. It is one of the most technically specific cooking vessels in the world. Treat it with respect — a well-seasoned iron is irreplaceable.</div>
+
+<div class="step"><div class="sn">1</div><div class="st"><strong>Seasoning a new iron:</strong> Wash once with mild soap and dry completely. Place on medium heat. When hot, rub with a cut half-onion dipped in coconut oil — this builds the initial seasoning layer. Wipe clean. Repeat 3–4 times before first use. Never use soap again. After each service, wipe with a dry cloth and apply a thin film of coconut oil.</div></div>
+
+<div class="step"><div class="sn">2</div><div class="st"><strong>Temperature — the critical variable:</strong> The iron must be hot enough that batter immediately starts to crisp on contact (approximately <strong>190–210°C surface temp</strong>), but not so hot that the batter scorches before the centre sets. Test by dropping a small amount of water — it should evaporate in under 2 seconds. The edge should sizzle immediately when batter contacts the iron. Too cold: hopper sticks. Too hot: edge burns before centre cooks. You will develop a feel for this within a week of daily cooking.</div></div>
+
+<div class="step"><div class="sn">3</div><div class="st"><strong>Batter consistency — the foundation:</strong> Hopper batter is made from raw rice (soaked 4–6 hours), coconut milk, a small amount of cooked rice (for softness), salt, and a fermentation starter (a small amount of toddy or active yeast). It should be the consistency of thin crêpe batter — it must flow freely when you swirl the pan, coating the walls in a thin, even film. Too thick: walls will be doughy and won't crisp. Too thin: the centre won't hold. Ferment overnight (8–12 hours) at room temperature. Batter peaks in the morning — make it fresh daily.</div></div>
+
+<div class="step"><div class="sn">4</div><div class="st"><strong>The swirl technique:</strong> Add one ladle of batter to the centre of the hot iron. Immediately pick up the iron with both hands using cloth handles and swirl in a continuous circular motion — the batter climbs the walls by centrifugal force. Return to burner. Drop egg in centre if making egg hopper. Cover with lid. Cook 90 seconds. The edges will be golden and pulling away from the iron naturally. Slide a thin spatula under the edge and lift out — it should release cleanly. If it sticks, the iron needs more seasoning or the temperature was wrong.</div></div>
+
+<div class="step"><div class="sn">5</div><div class="st"><strong>Common mistakes:</strong><br>
+&bull; <strong>Batter not fermented enough</strong> — hopper is dense and doughy, no airiness in the centre. Fix: longer ferment, or add a small pinch of sugar to accelerate yeast.<br>
+&bull; <strong>Iron not hot enough</strong> — batter doesn't climb the walls, hopper is flat and soft. Fix: increase flame, wait 30 more seconds before next batch.<br>
+&bull; <strong>Iron too hot</strong> — edges burn before the lid goes on. Fix: reduce flame slightly, work faster.<br>
+&bull; <strong>Insufficient seasoning</strong> — hopper tears when removing. Fix: re-season with coconut oil and onion method, do not use soap.<br>
+&bull; <strong>Batter too cold from fridge</strong> — doesn't flow properly. Fix: always bring batter to room temperature 30 minutes before service.</div></div>
+
+<div class="step"><div class="sn">6</div><div class="st"><strong>End of service iron care:</strong> While still warm, wipe interior with a dry cloth. Apply a thin film of coconut oil with a folded paper towel. Store upside-down on a clean dry surface. Never stack cast iron without a cloth between. A properly cared-for appa chatty will last 20+ years and season better with every use.</div></div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Staffing — Minimum Viable Kitchen</h3>
+<div class="info-box"><strong>Minimum crew for a 40-seat hopper restaurant running 2 services per day:</strong> You need three people in the kitchen and you cannot compromise on any of them. The hopper specialist is irreplaceable — this person is your highest kitchen priority. Find them before you open, not after.</div>
+
+<div class="step"><div class="sn">1</div><div class="st"><strong>Hopper Specialist (Chef de Partie, Hopper Station):</strong> This person runs the appa chatty irons. They are responsible for batter preparation, iron maintenance, egg hopper production, and string hopper supervision. Ideally Sri Lankan-trained or with direct hopper experience — the technique is not learnable from YouTube in one week. Budget <strong>$22–$28/hr</strong> (US) for someone with real hopper experience. This is your most critical hire.</div></div>
+
+<div class="step"><div class="sn">2</div><div class="st"><strong>Curry Chef (Chef de Partie, Curry Station):</strong> Responsible for all curry preparation — daily batch cooking of dhal, chicken curry, fish curry, seeni sambol, pol sambol, and lunu miris. Also handles all coconut-based tempering and manages the bain marie through service. Must understand Sri Lankan spice technique — Ceylon cinnamon, pandan, curry leaf tempering, and coconut milk reduction. Budget <strong>$20–$26/hr</strong>. Can be Indian or South Asian trained; Sri Lankan curry technique is learnable with a good recipe brief.</div></div>
+
+<div class="step"><div class="sn">3</div><div class="st"><strong>Kitchen Porter / Runner (KP):</strong> Dishes, prep support, rice cooker management, restocking the pass, plating accompaniment ramekins, and general kitchen flow. This person is critical to speed — a busy hopper service generates significant dishwashing volume (six irons = six washes per cycle). Budget <strong>$15–$18/hr</strong>. A good KP is worth more than a slow chef — hire for energy and reliability.</div></div>
+
+<div class="step"><div class="sn">4</div><div class="st"><strong>At scale (60+ seats or high-volume service):</strong> Add a second hopper specialist to run a parallel set of irons, or a dedicated prep cook to handle string hopper pressing, coconut scraping, and batter preparation. The hopper station becomes the bottleneck above 80 covers per hour — plan accordingly.</div></div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Equipment Budget Guide</h3>
+<table class="it"><thead><tr><th>Equipment</th><th>New (USD)</th><th>Used (USD)</th><th>Priority</th></tr></thead><tbody>
+<tr><td>Appa chatty cast-iron irons x6</td><td>$25–$45 each ($150–$270 total)</td><td>N/A (order from Sri Lanka / Indian importers)</td><td>⭐ Must-Have</td></tr>
+<tr><td>6-burner gas hopper range (low-profile)</td><td>$1,200–$2,000</td><td>$500–$900</td><td>⭐ Must-Have</td></tr>
+<tr><td>4-burner commercial gas range (curry station)</td><td>$900–$1,600</td><td>$350–$700</td><td>⭐ Must-Have</td></tr>
+<tr><td>Heavy-bottomed pots x6 (8L)</td><td>$60–$120 each ($360–$720 total)</td><td>$20–$50 each</td><td>⭐ Must-Have</td></tr>
+<tr><td>Bain marie 4-well (electric)</td><td>$500–$900</td><td>$200–$400</td><td>⭐ Must-Have</td></tr>
+<tr><td>Commercial rice cooker x3 (10L)</td><td>$180–$350 each ($540–$1,050 total)</td><td>$80–$180 each</td><td>⭐ Must-Have</td></tr>
+<tr><td>String hopper steamers x2 (stacked tray)</td><td>$80–$150 each ($160–$300 total)</td><td>$40–$80 each</td><td>⭐ Must-Have</td></tr>
+<tr><td>String hopper press (idiyappam press)</td><td>$30–$60</td><td>N/A (buy new)</td><td>⭐ Must-Have</td></tr>
+<tr><td>Electric coconut grater</td><td>$150–$300</td><td>$60–$120</td><td>⭐ Must-Have</td></tr>
+<tr><td>High-speed blender (wet grinding)</td><td>$300–$600</td><td>$100–$250</td><td>⭐ Must-Have</td></tr>
+<tr><td>Under-counter fridge x2</td><td>$1,200–$1,800 each</td><td>$500–$900 each</td><td>⭐ Must-Have</td></tr>
+<tr><td>Reach-in fridge (200L)</td><td>$1,400–$2,000</td><td>$600–$1,000</td><td>⭐ Must-Have</td></tr>
+<tr><td>Heat lamp strip x2 (pass)</td><td>$300–$500 each</td><td>$100–$200 each</td><td>⭐ Must-Have</td></tr>
+<tr><td>Plate warm store (under-counter)</td><td>$600–$900</td><td>$200–$400</td><td>✅ High Priority</td></tr>
+<tr><td>Commercial dishwasher</td><td>$2,500–$4,000</td><td>$900–$1,800</td><td>⭐ Must-Have</td></tr>
+<tr><td>Fire suppression system</td><td>$2,000–$3,500</td><td>N/A (must be new)</td><td>⭐ Must-Have (code)</td></tr>
+<tr><td>Prep surface 1500mm (stainless)</td><td>$400–$700</td><td>$150–$300</td><td>⭐ Must-Have</td></tr>
+<tr><td>KDS / Ticket rail</td><td>$800–$1,500</td><td>$300–$600</td><td>✅ High Priority</td></tr>
+<tr><td><strong>Total estimate (new)</strong></td><td><strong>$14,000–$22,000</strong></td><td><strong>$5,500–$10,500 (used where noted)</strong></td><td>—</td></tr>
+</tbody></table>
+<div class="tb">💡 Chef's tip: The appa chatty irons are the one piece of equipment you should source from specialist Sri Lankan or Indian kitchen suppliers (or order direct from Colombo importers). Cheap substitute pans will not work — the hemispherical shape and cast-iron heat retention are non-negotiable. Everything else — rice cookers, gas ranges, fridges — can be sourced used from restaurant auctions. The irons and the gas hopper range are your two non-negotiable new purchases. The rest: buy used, save the difference.</div>
+
+
+<h2><span class="sn2" style="background:#E85D26;">7</span>Staff Workflow &amp; Prep Schedule</h2>
+
+<div class="info-box" style="border-left-color:#E85D26;"><strong>Sri Lankan kitchen workflow principle:</strong> A hopper kitchen lives or dies by the batter. The fermentation clock starts at 7am — miss that window and you have no hoppers for dinner service. Everything else bends around that. Slow curries need 2+ hours; coconut milk curries are faster but need fresh coconut milk in the final stage. Build your day around the batter, the slow curries, and the irons. Get those three right and the rest of service runs itself.</div>
+
+<h4>Kitchen Hierarchy</h4>
+<table class="staff-table">
+<tr><th>Role</th><th>Responsibilities</th><th>Weekly Hours</th><th>US Wage (2025)</th></tr>
+<tr><td><strong>Head Chef / Kitchen Manager</strong></td><td>Menu development, ordering, recipe standards, quality control, scheduling</td><td>50–55 hrs</td><td>$28–36/hr</td></tr>
+<tr><td><strong>Sous Chef / Senior Cook</strong></td><td>Batter oversight, batch curry production, service execution, staff training</td><td>40–45 hrs</td><td>$21–27/hr</td></tr>
+<tr><td><strong>Chef de Partie (CDP)</strong></td><td>Hopper iron station, coconut milk curries, sambol prep, station ownership</td><td>38–42 hrs</td><td>$17–22/hr</td></tr>
+<tr><td><strong>Commis Chef</strong></td><td>Vegetable prep, dhal, pol sambol, mise en place, rice cooker</td><td>35–40 hrs</td><td>$15–18/hr</td></tr>
+<tr><td><strong>Kitchen Hand / Porter</strong></td><td>Washing, cleaning, basic prep support, coconut scraping, iron maintenance</td><td>30–35 hrs</td><td>$13–16/hr</td></tr>
+</table>
+
+<h4>Daily Prep Schedule</h4>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">1</div>
+  <div class="st"><strong>7:00am — Hopper Batter Mix</strong> <span class="temp" style="border-color:#E85D26;color:#E85D26;">MUST DO FIRST</span><br>Mix hopper batter: rice flour, coconut milk, a touch of sugar, salt, and yeast (or toddy). Cover and leave in a warm spot to ferment for 8 hours. This batch covers lunch service. <em>No shortcuts — the fermentation window is fixed.</em> Assign Sous Chef to own this task every single morning. If yeast-based: water temp <span class="temp" style="border-color:#E85D26;color:#E85D26;">38–40°C</span> to activate. If toddy-based: use 2 tbsp toddy per batch, room temp.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">2</div>
+  <div class="st"><strong>8:00am — Curry Base Prep</strong><br>Sweat down the aromatic base: sliced red onion, crushed ginger, garlic, and green chilli in coconut oil until deeply golden (20–25 min). Add roasted curry powder, black pepper, mustard seeds, curry leaves, and pandan. Build the paste that becomes the backbone of black pork curry, devilled chicken, and lamb curry. Batch 3–4 litres — enough for full day. Grate or blend fresh coconut for sambol and curry finishing.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">3</div>
+  <div class="st"><strong>9:00am — Slow Curry Batch Begins</strong> <span class="temp" style="border-color:#E85D26;color:#E85D26;">2+ hours required</span><br>Add black pork and lamb pieces to the curry base. Brown well in batches, then slow simmer covered. Black pork curry needs a minimum 2 hrs to tenderise and develop its dark, almost-caramelised sauce character. Lamb curry: 90 min minimum, 2.5 hrs ideal. Do not rush with coconut milk — add it only in the final 20 minutes of cooking. These are your most expensive menu items; give them the time they need.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">4</div>
+  <div class="st"><strong>10:30am — Coconut Milk Curries, Dhal &amp; Pol Sambol</strong><br>Start the faster curries: coconut milk fish curry, devilled potato, jackfruit curry. Add coconut milk to the slow curries in their final stage. Cook parippu (dhal): red lentils simmered with turmeric, tempered with mustard seeds, curry leaves, and dried chilli. Make pol sambol: freshly grated coconut, red chilli flakes, lime juice, onion — this must be fresh daily for texture. Rice cooker on for samba or red rice.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">5</div>
+  <div class="st"><strong>11:30am — Mise En Place Check &amp; Irons Ready</strong><br>Full mise en place check: all curries in bain marie at <span class="temp" style="border-color:#E85D26;color:#E85D26;">75°C+</span>, pol sambol portioned, dhal ladled into holding pots, rice cooked and held. Hopper irons: season with coconut oil and heat over medium-high flame. Confirm batter has fermented — it should have risen slightly and smell faintly tangy. Test one hopper before service: it should peel cleanly from the iron with crisp lacy edges. 10-min team briefing — covers, specials, any 86s.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">6</div>
+  <div class="st"><strong>12:00pm — Lunch Service</strong><br>Full kitchen on. Hopper station: one CDP per 2 irons. Target ticket time 10–14 min. String hoppers steamed to order (3–4 min). Egg hoppers: crack egg into iron after batter sets on edge, cover with lid to steam egg white. Monitor batter consistency throughout service — add 1–2 tbsp coconut milk if thinning. Never refrigerate active batter; it kills fermentation.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">7</div>
+  <div class="st"><strong>2:30pm — Break &amp; Evening Prep Begins</strong><br>Post-lunch: clean irons while warm (never cold), re-season with coconut oil, store covered. Assess curry stock levels for dinner. Mix <strong>second batter batch</strong> for dinner service now — 8 hours fermentation means it's ready for 10:30pm last orders. Restock pol sambol (must be fresh), refresh curry garnishes, cook second rice batch. Prep lamprais banana leaf packets if on the menu (banana leaf soaked, portioned, folded parcels assembled).</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">8</div>
+  <div class="st"><strong>6:00pm — Dinner Service</strong><br>Full team back on. Re-heat slow curries gently — never boil, especially coconut milk curries (they split). Re-season irons. Confirm dinner batter is bubbly and ready. Watalappam (coconut custard) must be portioned and plated cold — ensure enough portions for full dinner service. Bar: kirala (arrack-based) cocktails, arrack syrups ready. Expect higher covers than lunch — dinner is your revenue service.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">9</div>
+  <div class="st"><strong>10:30pm — Last Orders</strong><br>Call last orders to FOH. Batter at this stage should still be active from the evening batch — use it through. Begin cooling curries not needed for last covers: spread into shallow hotel pans, cool to <span class="temp" style="border-color:#E85D26;color:#E85D26;">&lt;70°F within 2 hrs</span>, refrigerate immediately. FIFO labelling on all containers: item name, date, time cooled.</div>
+</div>
+
+<div class="step">
+  <div class="sn" style="background:#E85D26;">10</div>
+  <div class="st"><strong>11:00pm — Kitchen Close &amp; Iron Clean</strong><br>Cool irons completely before storage. Wipe with dry cloth — never wash with water or soap (destroys seasoning). Rub lightly with coconut oil, cover with cloth or paper. Deep clean bain marie, pots, and surfaces. Prep first morning task card for tomorrow's opener: batter time, curry base quantities, any specials requiring long prep. Sign off on waste log and fridge temp log.</div>
+</div>
+
+<h4>Weekly Prep Calendar</h4>
+<table class="prep-table">
+<tr><th>Day</th><th>Special Prep Task</th><th>Notes</th></tr>
+<tr><td><strong>Monday</strong></td><td>Deep clean all equipment including irons. Batch roast and grind curry powder (black, roasted, unroasted). Make watalappam base (coconut custard) for the week — bake in water bath, cool and refrigerate.</td><td>Roasted curry powder: dry roast 30 min at low heat until deep brown and fragrant. Lasts 2 weeks sealed.</td></tr>
+<tr><td><strong>Tuesday</strong></td><td>Place mid-week produce order. Batch-make string hopper press dough (rice flour + hot water) — test for the right consistency. Make kiri hodi (coconut milk gravy) base for the week.</td><td>Kiri hodi base lasts 3 days refrigerated. Finish with fresh coconut milk per service.</td></tr>
+<tr><td><strong>Wednesday</strong></td><td>Produce delivery. Check all coconut milk stock — Sri Lankan cooking burns through coconut milk fast. Make fresh coconut sambol paste base (dried Maldive fish, chilli, onion) — pol sambol is built fresh daily on top of this.</td><td>Maldive fish paste lasts 5 days refrigerated.</td></tr>
+<tr><td><strong>Thursday</strong></td><td>Batch arrack syrups for cocktails (seeni sambol syrup, pandan-lime, tamarind reduction). Double-check weekend staffing roster. Start watalappam second batch if weekend volume is expected to be high.</td><td>Arrack syrups last 2–3 weeks refrigerated. Make in 1L batches.</td></tr>
+<tr><td><strong>Friday</strong></td><td><strong>Lamprais banana leaf prep:</strong> Source fresh banana leaves (cut into 12×12-inch sheets). Soften over open flame briefly (makes pliable, adds aroma). Portion lamprais fillings: mixed rice, two curries, frikkadels, blachan, ash plantain curry. Fold and pin parcels. Parcels can be pre-assembled and refrigerated; bake to order at <span class="temp" style="border-color:#E85D26;color:#E85D26;">375°F for 20 min</span>. Also: double curry paste batch — weekend is 140% weekday volume.</td><td>Lamprais is your highest-ticket item. Friday prep is critical — run out on Saturday night and you've left revenue on the table.</td></tr>
+<tr><td><strong>Saturday</strong></td><td>All staff in by 7am sharp. Batter on by 7:00am without exception. Double batch. String hopper press tested and staffed. Full curry lineup. Lamprais selling from lunch. Watalappam fully stocked.</td><td>Busiest day — both services will be full. No prep shortcuts on Saturdays.</td></tr>
+<tr><td><strong>Sunday</strong></td><td>Brunch focus: egg hoppers, hoppers with kiri hodi and pol sambol, string hoppers. Afternoon: inventory count, waste log review, menu rotation discussion, update FIFO in all fridges.</td><td>Sunday afternoon is your operations window. Use it.</td></tr>
+</table>
+
+<h4>Batch Cooking Guide</h4>
+<table class="prep-table">
+<tr><th>Item</th><th>Batch Size</th><th>Frequency</th><th>Shelf Life</th><th>Critical Notes</th></tr>
+<tr><td><strong>Hopper Batter</strong></td><td>2kg rice flour per batch → ~40–50 hoppers</td><td>Twice daily (7am + 2:30pm)</td><td>Use within 10 hrs of mixing — does not refrigerate well once active</td><td>Ferment at room temp (72–78°F ideal). Do NOT refrigerate active batter. If over-fermented (too sour), add a pinch of sugar and small amount of fresh coconut milk to balance.</td></tr>
+<tr><td><strong>Curry Paste Base</strong></td><td>3–4 litres per day (morning batch)</td><td>Daily (or twice on weekends)</td><td>2 days refrigerated as paste; use within same day once curries are cooking</td><td>Cook onion base until genuinely golden-brown, not just softened. Colour = flavour. The paste is the backbone of 4–5 different curries — get it right once.</td></tr>
+<tr><td><strong>Roasted Curry Powder</strong></td><td>500g dry-roasted batch</td><td>Weekly (Monday)</td><td>2 weeks in airtight container</td><td>Sri Lankan roasted curry powder (thala petti) is darker and more complex than standard. Dry roast whole spices, cool, then grind. Never substitute with Indian curry powder — flavour profile is completely different.</td></tr>
+<tr><td><strong>Pol Sambol (Coconut Sambol)</strong></td><td>600–800g per day</td><td>Daily (fresh only)</td><td>Same-day use — texture degrades after 4 hrs</td><td>Always made fresh — coconut weeps and loses texture when refrigerated. Grate coconut fresh or use frozen fresh-grated (not desiccated). Maldive fish (umami base), red chilli, lime juice, onion. Adjust lime and chilli to order.</td></tr>
+<tr><td><strong>Dhal (Parippu)</strong></td><td>2kg dry red lentils → serves 40–50</td><td>Daily</td><td>3 days refrigerated</td><td>Cook lentils to soft (not mushy). Temper in separate pan: coconut oil, mustard seeds, curry leaves, dried red chilli, shallots. Pour temper over dhal at service. Never mix temper into bulk batch — it goes stale faster.</td></tr>
+<tr><td><strong>Kiri Hodi (Coconut Gravy)</strong></td><td>2 litres base per day</td><td>Daily to every 2 days</td><td>3 days refrigerated (base only)</td><td>Base: tempered shallots, green chilli, turmeric, pandan, curry leaves. Finish with coconut milk per service — do not pre-mix coconut milk into bulk as it splits on reheating. Add coconut milk fresh, simmer 3 min, serve.</td></tr>
+<tr><td><strong>Seeni Sambol (Caramelised Onion)</strong></td><td>1kg cooked per batch</td><td>2× per week</td><td>5 days refrigerated</td><td>Slow-cook red onion with Maldive fish, cinnamon, cardamom, chilli, lime, and sugar for 45–60 min until dark amber and jammy. One of the most labour-intensive items — batch properly to avoid daily prep. Excellent as a topping for hoppers, lamprais, and string hoppers.</td></tr>
+<tr><td><strong>Arrack Syrups (Cocktail Bar)</strong></td><td>1 litre per flavour per batch</td><td>Weekly (Thursday)</td><td>2–3 weeks refrigerated</td><td>Three base syrups: (1) Pandan-lime: pandan leaves simmered in 2:1 sugar syrup + lime zest. (2) Tamarind reduction: tamarind paste, jaggery, water, reduced to syrup consistency. (3) Cinnamon-cardamom: whole spice infusion in simple syrup. All three drive your arrack cocktail menu — running out mid-service kills bar revenue.</td></tr>
+</table>
+
+<h4>US Wage Guide 2025</h4>
+<div class="info-box" style="border-left-color:#E85D26;"><strong>Wage context:</strong> The following reflects 2025 US market rates for restaurant staff. Always check your state's minimum wage — several states (CA, WA, NY, CO, IL) have significantly higher minimums than the federal floor of $7.25/hr. Tip credits apply in some states for FOH staff. BOH wages are non-tipped and must meet or exceed the state minimum. Budget labour at 30–35% of revenue total (BOH + FOH combined).</div>
+<table class="staff-table">
+<tr><th>Role</th><th>Hourly Rate (2025)</th><th>Weekly Hours (typical)</th><th>Weekly Cost (est.)</th><th>Notes</th></tr>
+<tr><td><strong>Head Chef / Kitchen Manager</strong></td><td>$28–$36/hr</td><td>50–55 hrs</td><td>$1,540–$1,980</td><td>May be salaried in larger operations ($70–90k annual). Includes overtime above 40 hrs in most states.</td></tr>
+<tr><td><strong>Sous Chef</strong></td><td>$21–$27/hr</td><td>40–45 hrs</td><td>$840–$1,215</td><td>Critical role in a hopper kitchen — owns the batter schedule. Don't underpay this position.</td></tr>
+<tr><td><strong>Chef de Partie (CDP)</strong></td><td>$17–$22/hr</td><td>38–42 hrs</td><td>$646–$924</td><td>Hopper iron station requires skilled hands — experienced CDP can run 2 irons at once, critical for service speed.</td></tr>
+<tr><td><strong>Commis Chef</strong></td><td>$15–$18/hr</td><td>35–40 hrs</td><td>$525–$720</td><td>Dhal, sambol, veg prep. Good entry-level role for training junior cooks into Sri Lankan cuisine.</td></tr>
+<tr><td><strong>Kitchen Hand / Porter</strong></td><td>$13–$16/hr</td><td>30–35 hrs</td><td>$390–$560</td><td>Iron care, coconut prep, dishwashing. Underestimated role — clean irons = better hoppers. Don't skip this position.</td></tr>
+<tr><td><strong>Floor Manager / FOH Lead</strong></td><td>$22–$28/hr</td><td>40–45 hrs</td><td>$880–$1,260</td><td>Manages floor staff, reservations, guest recovery. Essential for dinner service quality.</td></tr>
+<tr><td><strong>Server (non-tipped base)</strong></td><td>$12–$16/hr + tips</td><td>30–38 hrs</td><td>$360–$608 + tips</td><td>Average tips in full-service Sri Lankan concept: $8–15/hr additional. Total compensation typically $20–28/hr with tips. Tip pool arrangement recommended for equity.</td></tr>
+<tr><td><strong>Bar Staff (if operating cocktail bar)</strong></td><td>$14–$18/hr + tips</td><td>25–35 hrs</td><td>$350–$630 + tips</td><td>Arrack cocktail knowledge is a training requirement. Budget 4 hrs training time for all bar staff on the arrack lineup.</td></tr>
+<tr><td><strong>Host / Cashier</strong></td><td>$13–$16/hr</td><td>25–30 hrs</td><td>$325–$480</td><td>—</td></tr>
+</table>
+
+<div class="tb" style="border-left-color:#E85D26;"><strong>State minimums to know in 2025:</strong> California $17.00/hr (fast food $20.00/hr). Washington $16.28/hr. New York City $17.00/hr. Colorado $14.42/hr. Illinois $15.00/hr. Florida $13.00/hr. Texas / Tennessee: federal minimum $7.25/hr (very low — recruit carefully, wages below market lose good staff fast). Always budget above minimum to retain talent.</div>
+
+<h4>Weekly Staff Schedule Template</h4>
+<div class="info-box" style="border-left-color:#E85D26;">Build your schedule around the batter clock: the Sous Chef <strong>must</strong> be in by 7:00am every operating day. Schedule backwards from there. A schedule that leaves the batter to a commis or kitchen hand is a schedule that will fail service. The Head Chef should review the weekly schedule every Thursday for the following week — adjust for events, bookings, and expected covers.</div>
+<table class="staff-table">
+<tr><th>Role</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
+<tr><td><strong>Head Chef</strong></td><td>OFF</td><td>9am–10pm</td><td>9am–10pm</td><td>9am–10pm</td><td>8am–11pm</td><td>7am–11pm</td><td>8am–5pm</td></tr>
+<tr><td><strong>Sous Chef</strong></td><td>8am–5pm<br><em>(deep clean + batch)</em></td><td>7am–4pm</td><td>7am–4pm</td><td>7am–4pm</td><td>7am–9pm<br><em>(split)</em></td><td>7am–11pm</td><td>7am–4pm</td></tr>
+<tr><td><strong>CDP (Hopper Station)</strong></td><td>OFF</td><td>10am–9pm</td><td>10am–9pm</td><td>10am–9pm</td><td>10am–11pm</td><td>7am–11pm</td><td>7am–5pm</td></tr>
+<tr><td><strong>Commis Chef</strong></td><td>8am–4pm</td><td>9am–6pm</td><td>9am–6pm</td><td>9am–6pm</td><td>9am–9pm</td><td>8am–10pm</td><td>8am–4pm</td></tr>
+<tr><td><strong>Kitchen Hand</strong></td><td>8am–3pm<br><em>(equipment clean)</em></td><td>10am–8pm</td><td>10am–8pm</td><td>10am–8pm</td><td>10am–11pm</td><td>9am–11pm</td><td>9am–3pm</td></tr>
+<tr><td><strong>Floor Manager</strong></td><td>OFF</td><td>11am–10pm</td><td>11am–10pm</td><td>11am–10pm</td><td>11am–11pm</td><td>10am–11pm</td><td>10am–5pm</td></tr>
+<tr><td><strong>Server 1</strong></td><td>OFF</td><td>11am–3pm</td><td>11am–3pm</td><td>11am–3pm</td><td>5pm–11pm</td><td>10am–11pm</td><td>10am–5pm</td></tr>
+<tr><td><strong>Server 2</strong></td><td>OFF</td><td>5pm–10pm</td><td>5pm–10pm</td><td>5pm–10pm</td><td>11am–11pm</td><td>10am–11pm</td><td>10am–5pm</td></tr>
+<tr><td><strong>Server 3</strong></td><td>OFF</td><td>OFF</td><td>5pm–10pm</td><td>5pm–10pm</td><td>11am–11pm</td><td>10am–11pm</td><td>OFF</td></tr>
+<tr><td><strong>Bar Staff</strong></td><td>OFF</td><td>5pm–10pm</td><td>5pm–10pm</td><td>5pm–10pm</td><td>5pm–11pm</td><td>12pm–11pm</td><td>12pm–6pm</td></tr>
+</table>
+
+<div class="tb" style="border-left-color:#E85D26;"><strong>Schedule notes:</strong> Monday is the restaurant's rest day — skeleton crew for deep clean, batch work, and ordering only. Friday is split-shift day for the Sous Chef to cover both the 7am batter start and the high-volume dinner service. On Saturdays, all BOH staff are in by 7–9am — this is non-negotiable. Post the weekly schedule by Thursday evening so staff can arrange childcare, transport, and secondary jobs. Last-minute scheduling changes destroy morale faster than low wages.</div>
+
+
+<div class="section-header"><span class="sn2" style="background:#E85D26;">8</span>Customer Retention — Marketing &amp; Allergens</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">5 SMS Retention Templates</h3>
+<div class="info-box"><strong>The Hopper Effect:</strong> Guests who try hoppers for the first time and love them almost always return within 2 weeks to bring someone else. Build your retention around this — encourage guests to bring a friend, share the discovery. First-mover restaurants in underrepresented cuisine categories build loyalty faster than any other format.</div>
+
+<div class="info-box"><strong>SMS 1 — Welcome (2 hours after first visit):</strong><br>"Hi [Name] — thank you so much for coming tonight and being brave enough to try something new 🙏 Hope the hopper blew your mind. Bring someone next time — introducing people to Sri Lankan food for the first time is our favourite thing. — [Restaurant Name]"</div>
+
+<div class="info-box"><strong>SMS 2 — Off-Peak Incentive:</strong><br>"Hi [Name] — did you know we're much quieter on Tuesday and Wednesday evenings? Same kitchen, same hoppers, much more relaxed. Come in this week and we'll start you with a complimentary devilled cashews. — [Restaurant Name]"</div>
+
+<div class="info-box"><strong>SMS 3 — New Seasonal Dish:</strong><br>"Hi [Name] — we just added [dish name] to the menu for this season. It's on the menu for 6 weeks only. If you're a fan of [flavour profile], this is for you. No reservations needed. — [Restaurant Name]"</div>
+
+<div class="info-box"><strong>SMS 4 — Birthday:</strong><br>"Hi [Name] — happy birthday! 🎂 Come celebrate with us this week and your watalappan is on the house. It's our most special dessert — proper Sri Lankan coconut custard made with jaggery. Just mention this message. — [Restaurant Name]"</div>
+
+<div class="info-box"><strong>SMS 5 — 60-Day Win-Back:</strong><br>"Hi [Name] — the hoppers miss you. We've got a new curry on the menu and the lamprais is better than ever. Come back soon — first-timers always become regulars eventually 😄 — [Restaurant Name]"</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Instagram Strategy — The Hopper Iron is Your Camera</h3>
+<div class="info-box">
+<strong>What to post:</strong><br>
+📱 <strong>Daily:</strong> Egg hopper being lifted from the iron — yolk visible, steam rising — 10 seconds, no caption. This single clip gets 5,000–50,000 views consistently.<br>
+📱 <strong>3x per week:</strong> Lamprais being unwrapped at the table — the steam release, the banana leaf fragrance you can almost smell through the screen.<br>
+📱 <strong>Weekly:</strong> Kottu being made — the two-scraper rhythm is one of the most distinctive sounds in all of street food. Film it close. Let the sound do the work.<br>
+📱 <strong>Monthly:</strong> The full rice and curry spread — watalappan, pol sambol, three curries, hoppers all on one table. Caption: "This is what Sunday looks like in Colombo."<br><br>
+<strong>Content rule:</strong> Never explain too much in the caption. Let the visual and sound create curiosity. "What IS that?" in the comments is worth more than any description.
+</div>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Menu Engineering Matrix</h3>
+<table class="it"><thead><tr><th>Category</th><th>Dishes</th><th>Action</th></tr></thead><tbody>
+<tr><td>⭐ <strong>STARS</strong><br><small>High popularity + high margin</small></td><td>Egg Hopper · Plain Hopper · Dhal Curry · Pol Sambol · Arrack Sour · King Coconut Mojito · Watalappan</td><td>Feature on menu prominently. Train staff to mention first. Never remove. These are your identity dishes.</td></tr>
+<tr><td>🐴 <strong>PLOW HORSES</strong><br><small>High popularity + lower margin</small></td><td>Chicken Curry · Prawn Curry · Crab Curry</td><td>Keep — they drive covers. Look for supplier deals to improve margin. Slight price increase of $1–2 justified.</td></tr>
+<tr><td>❓ <strong>PUZZLES</strong><br><small>Low popularity + high margin</small></td><td>Lamprais · Fish Ambulthiyal · Bibikkan · Jackfruit Curry</td><td>Invest in staff training and menu positioning. Add visual cues (photos, descriptions). These are your most unique dishes — guests who try them become your most loyal regulars.</td></tr>
+<tr><td>🐕 <strong>DOGS</strong><br><small>Low popularity + low margin</small></td><td>Review quarterly</td><td>Replace with seasonal specials. Keep menu fresh — rotate 2 dishes per season.</td></tr>
+</tbody></table>
+
+<h3 style="color:#E85D26;font-size:1.1rem;margin:28px 0 12px;text-transform:uppercase;letter-spacing:2px;">Allergen Table — All 24 Menu Items</h3>
+<div class="info-box">Print and post in kitchen. Update when recipes change. Hoppers are naturally gluten-free (rice flour). Always clarify Maldive fish presence in pol sambol for pescatarians and vegans.</div>
+<table class="it" style="font-size:0.8rem;"><thead><tr><th>Menu Item</th><th>Gluten</th><th>Dairy</th><th>Egg</th><th>Shellfish</th><th>Fish</th><th>Nuts</th><th>Sulphites</th></tr></thead><tbody>
+<tr><td><strong>ENTRÉES</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Plain Hopper</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Egg Hopper</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Kottu Roti</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Devilled Cashews</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>Pol Sambol</td><td>—</td><td>—</td><td>—</td><td>—</td><td>⚠ (Maldive fish)</td><td>—</td><td>—</td></tr>
+<tr><td>Papadum + Chutneys</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>MAINS</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Black Pork Curry</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Lamb Kari</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Prawn Curry</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Dhal Curry</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Chicken Curry</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Fish Ambulthiyal</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td>Jackfruit Curry</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Crab Curry</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>String Hoppers</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Lamprais</td><td>—</td><td>—</td><td>✓</td><td>⚠ (blachan)</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>DESSERTS</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Watalappan</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>Coconut Pancake</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Mango Sorbet</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Bibikkan</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td><strong>DRINKS</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>King Coconut Water</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tamarind Cooler</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Arrack Sour</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>Other Arrack Cocktails</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+</tbody></table>
+<div class="tb">💡 Google Reviews tip: Ask immediately after the watalappan arrives — that's peak happiness for a Sri Lankan meal. "I'm so glad you enjoyed the watalappan — if you have 30 seconds, a Google review would mean the world to us." Step away. Don't hover. Most guests who say yes will do it before they leave.</div>
+<!-- SECTION 9: P&L MODEL -->
+<div class="section">
+  <h2>Section 9 — P&amp;L Model: 40-Seat Sri Lankan Hoppers Restaurant</h2>
+  <p class="subtitle">US Urban Market · Monthly &amp; Annual Projections</p>
+
+  <h3>Monthly Revenue Breakdown</h3>
+  <table>
+    <thead>
+      <tr><th>Revenue Stream</th><th>Calculation</th><th>Monthly Total</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Lunch</strong></td>
+        <td>40 seats × 2.0 turns × 6 days/wk × 4.33 wks × $32 avg spend</td>
+        <td><strong>$66,662</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Dinner</strong></td>
+        <td>40 seats × 2.5 turns × 6 days/wk × 4.33 wks × $45 avg spend</td>
+        <td><strong>$117,090</strong></td>
+      </tr>
+      <tr class="highlight-row">
+        <td colspan="3" style="font-size:0.85rem;color:#888;font-style:italic;">↳ Blended revenue before bar: ~$113,000–$120,000 (realistic 85–90% occupancy applied)</td>
+      </tr>
+      <tr>
+        <td><strong>Bar — Ceylon Arrack Program</strong></td>
+        <td>15% of covers × $13.50 avg drink spend</td>
+        <td><strong>~$5,100</strong></td>
+      </tr>
+      <tr style="background:#fff8f4;">
+        <td><strong>Total Monthly Revenue</strong></td>
+        <td><em>Realistic blended (85% occupancy)</em></td>
+        <td><strong>~$118,000–$125,000</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tb" style="margin-top:0.5rem;">📊 Revenue note: Lunch numbers assume a tight 2-hour service window popular in urban markets (11:30–1:30pm). Dinner assumes 5:30–10:00pm. A 6-day week is realistic for a lean owner-operator model — Sunday closures reduce labour burn significantly.</div>
+
+  <h3>Monthly Cost Structure</h3>
+  <table>
+    <thead>
+      <tr><th>Cost Line</th><th>Basis</th><th>Monthly Cost</th><th>% of Revenue</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Food Cost</strong></td>
+        <td>27% of $121,000</td>
+        <td><strong>$32,670</strong></td>
+        <td>27%</td>
+      </tr>
+      <tr>
+        <td><strong>Labour</strong></td>
+        <td>31% of $121,000</td>
+        <td><strong>$37,510</strong></td>
+        <td>31%</td>
+      </tr>
+      <tr>
+        <td><strong>Rent</strong></td>
+        <td>Fixed — smaller footprint (~900–1,100 sq ft)</td>
+        <td><strong>$7,500</strong></td>
+        <td>6.2%</td>
+      </tr>
+      <tr>
+        <td><strong>Utilities</strong></td>
+        <td>Gas-heavy kitchen; hopper irons run hot</td>
+        <td><strong>$2,000</strong></td>
+        <td>1.7%</td>
+      </tr>
+      <tr>
+        <td><strong>Marketing</strong></td>
+        <td>Social-first brand; low spend needed early</td>
+        <td><strong>$700</strong></td>
+        <td>0.6%</td>
+      </tr>
+      <tr>
+        <td><strong>Supplies / Misc</strong></td>
+        <td>Packaging, smallwares, cleaning</td>
+        <td><strong>$1,000</strong></td>
+        <td>0.8%</td>
+      </tr>
+      <tr style="background:#fff8f4;">
+        <td><strong>Total Monthly Costs</strong></td>
+        <td></td>
+        <td><strong>$81,380</strong></td>
+        <td><strong>67.3%</strong></td>
+      </tr>
+      <tr style="background:#fdf0e8;">
+        <td><strong>Net Monthly Profit</strong></td>
+        <td>Revenue $121,000 − Costs $81,380</td>
+        <td><strong>$39,620</strong></td>
+        <td><strong>~32.7%</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tb">💡 27% food cost is achievable in Sri Lankan cuisine because the menu is built around pulses, coconut, rice flour, and eggs — not proteins. A hopper with two eggs and sambol costs roughly $1.20 to produce and sells for $9–$12. The economics of this cuisine are genuinely strong compared to protein-heavy Western menus where food cost creeps to 33–38%.</div>
+
+  <h3>Annual Projection</h3>
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Figure</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Annual Revenue (×12)</td><td><strong>~$1,452,000</strong></td></tr>
+      <tr><td>Annual Food Cost (27%)</td><td>$392,040</td></tr>
+      <tr><td>Annual Labour (31%)</td><td>$450,120</td></tr>
+      <tr><td>Annual Fixed + Variable Overhead</td><td>$136,560</td></tr>
+      <tr><td><strong>Annual Net Profit</strong></td><td><strong>~$475,000</strong></td></tr>
+      <tr><td><strong>Net Margin</strong></td><td><strong>~32.7%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Break-Even Analysis</h3>
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Calculation</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Daily fixed + semi-fixed costs</td>
+        <td>($7,500 + $2,000 + $700 + $1,000) ÷ 26 operating days</td>
+        <td><strong>$431/day</strong></td>
+      </tr>
+      <tr>
+        <td>Contribution margin per cover</td>
+        <td>Avg blended $38.50 spend × (1 − 0.27 food − 0.31 labour)</td>
+        <td><strong>$16.16/cover</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Break-even covers/day</strong></td>
+        <td>$431 ÷ $16.16</td>
+        <td><strong>~27 covers/day</strong></td>
+      </tr>
+      <tr>
+        <td>Break-even as % of 40-seat capacity</td>
+        <td>27 covers ÷ (40 seats × 2.25 avg turns)</td>
+        <td><strong>~30% utilisation</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tb">📌 You only need 27 covers a day to cover your fixed overheads. That's less than one full turn of a 40-seat room. The margin of safety in this model is unusually high — a bad week or a slow January doesn't threaten solvency the way it would in a higher-overhead operation.</div>
+
+  <h3>Ceylon Arrack Program — Contribution Model</h3>
+  <table>
+    <thead>
+      <tr><th>Scenario</th><th>Covers/Month</th><th>% Ordering Arrack</th><th>Avg Drink</th><th>Bar Revenue</th><th>Bar Profit (70% margin)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Conservative (15% take)</td>
+        <td>~3,160</td>
+        <td>15%</td>
+        <td>$13.50</td>
+        <td>$6,399</td>
+        <td><strong>$4,479</strong></td>
+      </tr>
+      <tr style="background:#fff8f4;">
+        <td><strong>Target (35% take)</strong></td>
+        <td>~3,160</td>
+        <td><strong>35%</strong></td>
+        <td>$13.50</td>
+        <td><strong>$14,931</strong></td>
+        <td><strong>$10,452</strong></td>
+      </tr>
+      <tr>
+        <td>Optimistic (50% take)</td>
+        <td>~3,160</td>
+        <td>50%</td>
+        <td>$13.50</td>
+        <td>$21,330</td>
+        <td><strong>$14,931</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tb">🥃 The arrack program at 35% penetration adds ~$125,000 in annual bar revenue and ~$87,000 in pure profit — essentially funding your entire marketing budget, reserve fund, and owner draw on top of the food operation. Ceylon arrack isn't a nice-to-have; it's a profit engine hiding in plain sight. Staff it right: train every server to pitch one cocktail per table, and offer a three-arrack flight ($22) that tells the origin story.</div>
+
+  <h3>Capital Requirements &amp; Payback Period</h3>
+  <table>
+    <thead>
+      <tr><th>Capital Category</th><th>Estimate</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kitchen equipment (Section 8)</td><td>$14,000–$22,000</td></tr>
+      <tr><td>Leasehold improvements / fit-out</td><td>$35,000–$60,000</td></tr>
+      <tr><td>Furniture, fixtures, tableware</td><td>$8,000–$15,000</td></tr>
+      <tr><td>Licenses, deposits, legal</td><td>$8,000–$14,000</td></tr>
+      <tr><td>Working capital (3 months)</td><td>$25,000–$35,000</td></tr>
+      <tr><td>Contingency (15%)</td><td>$14,000–$22,000</td></tr>
+      <tr style="background:#fff8f4;"><td><strong>Total Capital Required</strong></td><td><strong>$104,000–$168,000</strong></td></tr>
+      <tr><td><strong>Payback Period</strong></td><td><strong>~3.3–5.5 months</strong> (at $39,620 net/month)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tb">⚡ A sub-6-month payback period on restaurant capital is rare. This is achievable here because the concept is compact (no sprawling dining room), the cuisine has low food cost, and the equipment list is modest. The appa chatty irons and custom gas range are your most unique capex — everything else sources used.</div>
+</div>
+
+<!-- SECTION 10: CHEF'S LENS -->
+<div class="section">
+  <h2>Section 10 — Chef's Lens: Why This, Why Now</h2>
+  <p class="subtitle">A considered perspective on the Sri Lankan opportunity in America</p>
+
+  <div class="chef-lens-body">
+
+    <h3>The Most Underrepresented Great Cuisine in the US</h3>
+    <p>Sri Lankan food is, by any objective measure, one of the world's great cuisines — and it is almost entirely absent from the American dining landscape. In a country where Thai, Vietnamese, Korean, and even Burmese restaurants now anchor neighborhoods in every major city, Sri Lanka remains a blank on the map. This isn't because the food is difficult, or the diaspora is small (there are over 50,000 Sri Lankans in the US), or the flavours are too challenging for Western palates. It's simply a matter of timing, critical mass, and the absence of a breakout moment. That moment is coming. The question is whether you'll be in front of it or behind it.</p>
+
+    <h3>The Hopper as a Commercial Vessel</h3>
+    <p>In twenty years of watching concepts succeed and fail, few dishes have the convergence of properties that hoppers do. They are visually dramatic — a crisp-edged bowl of fermented rice batter, served hot from a curved iron, with an egg pooled in the centre. They are inherently Instagram-native: the shape, the colour contrast, the steam. They carry theatre — the appa chatty is worked live on the line, and a good cook flipping hoppers in an open kitchen is a show. They are portion-controllable and cost-efficient. They are novel enough to drive destination dining but familiar enough (think: crispy pancake with egg) to convert the mildly adventurous. You will not find another dish that checks every box.</p>
+
+    <h3>Ceylon Arrack — The Spirits Story Nobody Is Telling</h3>
+    <p>Mezcal had its moment. Cachaça had its moment. Shochu is still waiting for its. Ceylon arrack — distilled from the fermented sap of coconut flowers, aged in Halmilla wood, with a terroir unlike anything in the Western spirits canon — has not had its moment yet. In Sri Lanka, it's the national drink, consumed daily, made by multi-generational distilleries. In London, a handful of bars have started building arrack cocktail programs. In the US: almost nothing. The founder who builds a genuine arrack program — flights, cocktails, a short education card on the back of the menu — is sitting on a differentiator with press-ready narrative and genuine depth.</p>
+
+    <h3>The Hoppers London Effect</h3>
+    <p>In 2015, a small restaurant opened on Frith Street in Soho, London. It was called Hoppers. It was 40 seats. It had a short menu, loud music, no reservations, and a months-long waitlist within weeks of opening. It went on to win awards, open a second location in King's Cross, and inspire a generation of Sri Lankan cooks to take their cuisine seriously in a professional context. More importantly: it created global demand for a cuisine that didn't have a restaurant identity before. People who ate at Hoppers went home wanting more — and found nothing. The US is still in the pre-Hoppers era. The restaurant that defines Sri Lankan cuisine for American diners doesn't exist yet. It could be yours.</p>
+
+    <h3>The Honest Challenge: Sourcing</h3>
+    <p>Goraka (a dried tamarind-adjacent souring agent), fresh pandan, curry leaves, dried Maldive fish, raw coconut toddy for fermentation — these are not available at Restaurant Depot. This is the real operational challenge of Sri Lankan cuisine in the US, and it's worth being honest about. The solution is threefold: build relationships with South Asian and Southeast Asian grocery distributors in your market (most now carry curry leaves and pandan); source goraka and Maldive fish through Sri Lankan and South Indian online importers (Diaspora Co., iShopIndian, local Sri Lankan grocers who will often sell wholesale to restaurants); and adapt where necessary — not compromising flavour, but substituting intelligently where a fresh ingredient isn't viable. The chefs running the best Sri Lankan restaurants in London solved this five years ago. Their playbook is available.</p>
+
+    <h3>The Opportunity: First-Mover Advantage</h3>
+    <p>In most American cities — Boston, Denver, Nashville, Portland, Austin, Atlanta, Chicago outside of Devon Avenue — there is no Sri Lankan restaurant. Not a bad one. Not a great one. None. You would not be competing for share of an existing market. You would be creating the market, owning the search terms, earning every local press story about "the best new restaurant" and "have you tried Sri Lankan food yet?" The first-mover premium in emerging cuisine categories is real, measurable, and durable. The Tamil-inflected, coconut-rich, hopper-centred cuisine of Sri Lanka is ready. The only missing ingredient is a founder willing to build it.</p>
+
+  </div>
+</div>
+
+<!-- KITCHENFOUNDERSTUDIO FOOTER -->
+<footer class="kf-footer">
+  <div class="kf-footer-inner">
+    <div class="kf-footer-brand">
+      <span class="kf-logo">🍳</span>
+      <span class="kf-brand-name">KitchenFounder</span>
+    </div>
+    <div class="kf-footer-tagline">
+      Restaurant concepts built on numbers, not vibes.
+    </div>
+    <div class="kf-footer-links">
+      <a href="https://kitchenfounderstudio.com" target="_blank">kitchenfounderstudio.com</a>
+      <span class="kf-divider">·</span>
+      <span>Concept Research Series</span>
+      <span class="kf-divider">·</span>
+      <span>Sri Lankan Hoppers — Full Build</span>
+    </div>
+    <div class="kf-footer-copy">
+      © 2026 KitchenFounder Studio. For educational and planning purposes. All figures are projections based on market research and operator benchmarks — verify with your own accountant, attorney, and local licensing authority before committing capital.
+    </div>
+  </div>
+</footer>
+
+<style>
+/* Section 9 & 10 additional styles */
+.section {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem 2rem 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  border-top: 4px solid #E85D26;
+}
+.section h2 {
+  color: #E85D26;
+  font-size: 1.45rem;
+  margin-bottom: 0.25rem;
+}
+.section h3 {
+  color: #2d2d2d;
+  font-size: 1.1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 2px solid #f0e8e0;
+  padding-bottom: 0.3rem;
+}
+.section .subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+.section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+.section table th {
+  background: #E85D26;
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+.section table td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid #f0e8e0;
+  vertical-align: top;
+}
+.section table tr:nth-child(even) td {
+  background: #fafafa;
+}
+.tb {
+  background: #fff8f4;
+  border-left: 4px solid #E85D26;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0 1.25rem;
+  font-size: 0.88rem;
+  color: #555;
+  border-radius: 0 4px 4px 0;
+}
+.chef-lens-body p {
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.kf-footer {
+  background: #1a1a1a;
+  color: #ccc;
+  padding: 2.5rem 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+.kf-footer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.kf-footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.kf-logo {
+  font-size: 1.6rem;
+}
+.kf-brand-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #E85D26;
+  letter-spacing: 0.02em;
+}
+.kf-footer-tagline {
+  color: #aaa;
+  font-size: 0.92rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.kf-footer-links {
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+  color: #bbb;
+}
+.kf-footer-links a {
+  color: #E85D26;
+  text-decoration: none;
+}
+.kf-footer-links a:hover {
+  text-decoration: underline;
+}
+.kf-divider {
+  margin: 0 0.5rem;
+  color: #555;
+}
+.kf-footer-copy {
+  font-size: 0.78rem;
+  color: #666;
+  line-height: 1.5;
+}
+</style>
+
+</body>
+</html>

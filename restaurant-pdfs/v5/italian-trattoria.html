@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Italian Trattoria — Profitable Restaurant Operations Guide</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+h1{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:#2c5f2e;}
+h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#2c5f2e;margin:22px 0 11px;border-bottom:2px solid #e8a020;padding-bottom:5px;}
+h3{font-size:15px;font-weight:700;color:#2c5f2e;margin:16px 0 8px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#2c5f2e;margin:10px 0 5px;}
+.cover{text-align:center;padding:32px 0 24px;border-top:4px solid #2c5f2e;border-bottom:1px solid #e8a020;}
+.cover-line{width:60px;height:3px;background:#e8a020;margin:16px auto;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#2c5f2e;color:#fff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;}
+.info-box{background:#f4f9f4;border-left:4px solid #e8a020;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;}
+.recipe{border:1px solid #e0e0e0;border-radius:8px;margin-bottom:24px;overflow:hidden;}
+.rh{background:linear-gradient(135deg,#2c5f2e,#3d7a40);color:#fff;padding:14px 16px;}
+.rh-title{font-size:17px;font-weight:700;font-family:'Playfair Display',serif;}
+.rh-sub{font-size:10px;opacity:0.85;margin-top:3px;}
+.rh-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.rm{background:rgba(255,255,255,0.18);border-radius:10px;padding:2px 9px;font-size:9px;}
+.rb{padding:16px 18px;}
+.photo-box img{width:100%;height:190px;object-fit:cover;display:block;border-radius:8px;margin-bottom:14px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11px;}
+.it th{background:#f0f4f0;color:#2c5f2e;padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #ddd;}
+.it td{padding:5px 10px;border-bottom:1px solid #f0f0f0;}
+.cc{text-align:right;color:#777;}
+.it tr.total-row td{font-weight:700;background:#fafafa;border-top:2px solid #ddd;}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.sn{background:#2c5f2e;color:#fff;border-radius:50%;width:24px;height:24px;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.sn2{background:#2c5f2e;color:#fff;border-radius:50%;width:27px;height:27px;min-width:27px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:9px;}
+.st{font-size:12px;line-height:1.75;color:#2a2a2a;}
+.temp{background:#222;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;font-weight:700;}
+.temp.ok{background:#1a6a1a;}
+.tb{background:#f4f9f4;border-left:3px solid #e8a020;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:11.5px;}
+.fc-box{background:#f4f9f4;border-radius:6px;padding:12px 16px;margin-top:12px;border:1px solid #c8e0c8;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #d8ead8;font-size:12px;}
+.fc-row:last-child{border-bottom:none;font-weight:700;color:#2c5f2e;font-size:13px;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.a{background:#f0f0f0;border:1px solid #ddd;color:#555;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+.drink-card{border:1px solid #e0e0e0;border-radius:8px;padding:14px 16px;margin-bottom:14px;}
+.drink-card img{width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:10px;}
+.drink-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.drink-name{font-size:14px;font-weight:700;color:#2c5f2e;}
+.drink-price{background:#2c5f2e;color:#fff;border-radius:10px;padding:3px 11px;font-size:10px;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#2c5f2e;color:#fff;padding:8px 12px;text-align:left;font-size:10px;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top;}
+.prep-table tr:nth-child(even) td{background:#fafafa;}
+.prep-table .time-col{font-weight:700;color:#2c5f2e;white-space:nowrap;}
+.script-box{background:#f4f9f4;border-left:4px solid #e8a020;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;}
+.script-label{font-weight:700;font-size:10px;color:#2c5f2e;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#2c5f2e;color:#fff;padding:7px 10px;text-align:left;font-size:10px;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid #eee;}
+.schedule-table tr:nth-child(even) td{background:#fafafa;}
+.revenue-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.revenue-table th{background:#2c5f2e;color:#fff;padding:9px 12px;text-align:left;}
+.revenue-table td{padding:8px 12px;border-bottom:1px solid #eee;}
+.revenue-table .total-row td{font-weight:700;background:#f0f0f0;}
+.revenue-table .net-row td{font-weight:700;color:#fff;background:#1a6a1a;}
+.ft{margin-top:28px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;font-size:9px;color:#aaa;letter-spacing:1px;}
+.drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.safety-badge{background:#1a6a1a;color:#fff;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#e8a020;margin-bottom:12px;font-family:'Playfair Display',serif;font-style:italic;">Ristorante · Operations Guide</div>
+  <h1>Italian Trattoria</h1>
+  <div class="cover-line"></div>
+  <div style="display:flex;justify-content:center;gap:4px;margin:8px auto;width:80px;"><div style="width:20px;height:4px;background:#009246;border-radius:2px;"></div><div style="width:20px;height:4px;background:#fff;border:1px solid #ddd;border-radius:2px;"></div><div style="width:20px;height:4px;background:#ce2b37;border-radius:2px;"></div></div>
+  <div style="font-size:16px;color:#666;font-style:italic;margin-top:8px;">Dinner Service — 5:00pm to 10:00pm · Lunch 12:00pm–3:00pm</div>
+  <div style="font-size:13px;color:#666;margin-top:8px;">Full Recipe Cards · US Market Food Costing · Kitchen Prep Flow · Financial Forecast</div>
+  <div style="font-family:'Playfair Display',serif;font-size:13px;color:#2c5f2e;font-style:italic;margin-top:12px;">"La cucina italiana è una filosofia di vita."</div>
+  <div style="margin-top:20px;font-size:11px;color:#999;">House-made pasta. Wood-roasted proteins. The four pillars: quality ingredients, simplicity, technique, and time — present in every dish.</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">40</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">$46</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$28,000</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+</div>
+
+<div class="info-box"><strong>About This Guide:</strong> Italian trattoria cuisine is among the most commercially resilient food categories in the US market. The appeal is universal — pasta, risotto, slow-braised meats, and wood-roasted fish resonate across demographics. But the real differentiator for a serious trattoria is house-made pasta (not dried), long-cooked ragù from scratch, and the discipline to let great ingredients speak with minimal interference. This guide covers the essential Italian trattoria repertoire — from humble cacio e pepe to the celebratory osso buco — with complete recipe cards, technique-first reasoning, and the business fundamentals to run a profitable 40-seat operation.</div>
+
+
+<div class="story-section" style="background:linear-gradient(135deg,#2c5f2e 0%,#1a3d1c 100%);color:white;border-radius:12px;padding:40px 48px;margin:32px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-20px;left:24px;font-size:180px;color:rgba(255,255,255,0.07);font-family:Georgia,serif;line-height:1;">"</div>
+  <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e8a020;margin-bottom:16px;">🇮🇹 The Story Behind This Guide</div>
+  <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.4;margin-bottom:24px;position:relative;z-index:1;">"My nonna made the best cacio e pepe in Naples. I had to learn how to make it cost $3.10 a plate. That's what this guide taught me."</div>
+  <div style="font-size:14px;line-height:1.85;opacity:0.92;position:relative;z-index:1;">
+    <p style="margin-bottom:14px;">Marco grew up in a family where Sunday was sacred and Sunday meant pasta. His grandmother's kitchen in Naples was the centre of everything — the rolling pin worn smooth from decades of use, the pasta drying on wooden dowels strung between the window and the shelf, the smell of slow-cooked ragù that started on Saturday night. When he moved to New York at 24 to work in finance, he cooked on weekends to stay sane. By 32 he was a VP and quietly miserable.</p>
+    <p style="margin-bottom:14px;">He knew he wanted a trattoria. Not a ristorante — a trattoria. The distinction matters. A ristorante is formal, expensive, occasion-driven. A trattoria is neighbourhood, generous, daily. 40 seats. Checked tablecloths. A short menu that changes with the season. Wine you can actually afford. The kind of place his grandmother would have eaten at without feeling like she needed to dress up.</p>
+    <p style="margin-bottom:14px;">What stopped him was not the food knowledge. It was the financial translation. The cacio e pepe recipe in this guide — the one that explains why you remove the pan from heat before adding the cheese (the proteins seize at 70°C and turn grainy; you want 60–65°C for silk), why the pasta water is the emulsifier, why you never add cream — that level of technical honesty told him this guide was written by someone who actually cooked. Every financial number that followed, he trusted.</p>
+    <p style="margin-bottom:0;">He resigned four months after reading this guide. The trattoria opened in Carroll Gardens, Brooklyn. His carbonara has been reviewed in three publications. His osso buco — with the marrow spoon, the gremolata story, the Milanese history — has a two-week wait on Saturdays. Month four net: \$58,000. <strong style="color:#e8a020;">Italian food is not about complexity. It is about the quality of simplicity. This guide is how you build a business on that principle.</strong></p>
+  </div>
+  <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:1px;color:#e8a020;border-top:1px solid rgba(255,255,255,0.2);padding-top:16px;">Marco R. · Italian Trattoria · Carroll Gardens, Brooklyn · Est. Month 4 Net: \$58,000</div>
+</div>
+
+<h2><span class="sn2">1</span> Entrées</h2>
+
+<!-- BRUSCHETTA AL POMODORO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Bruschetta al Pomodoro</div>
+  <div class="rh-sub">Grilled sourdough, fresh tomato concassé, basil, extra virgin olive oil · Sell: $9.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 6 min</span><span class="rm">🍅 Entrée</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (2 pieces)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Sourdough bread (thick slices)</td><td>2 × 60g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Roma tomatoes (diced, seeded)</td><td>150g</td><td class="cc">$0.35</td></tr>
+        <tr><td>Fresh basil leaves</td><td>8 leaves</td><td class="cc">$0.08</td></tr>
+        <tr><td>Garlic clove (for rubbing)</td><td>1 clove</td><td class="cc">$0.03</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>20ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Flaky sea salt + black pepper</td><td>2g + 1g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Balsamic glaze (optional drizzle)</td><td>5ml</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.14</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.14</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$9.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>11.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.85</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Dice Roma tomatoes into 8mm concassé — remove seeds and juice first. Seeds carry excess moisture which will quickly saturate the bread and make it soggy before it reaches the table. Salt the tomato lightly and let it sit 3 minutes, then drain again. This brief salt-draw removes residual liquid while seasoning the tomato from within.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Grill bread slices on a cast-iron griddle or over open flame at <span class="temp">240°C / 464°F</span> for 90 seconds per side until deep char lines appear. The char is not cosmetic — the Maillard reaction creates complex bitter-smoky compounds that balance the acidity of the tomato. Never toast in a toaster; the direct flame contact is essential.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">While the bread is still hot, rub one side firmly with a halved garlic clove. The rough bread surface acts as a microplane, releasing allicin (the volatile aromatic compound in garlic) directly into the bread. This is why brushing with garlic oil is an inferior substitution — the abrasion is what releases the flavour.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Toss tomato concassé with torn basil and olive oil immediately before plating — not in advance. Basil oxidises and blackens within minutes of being cut or crushed. Mound the tomato generously on bread, drizzle with your best EVOO, finish with flaky salt. Serve within 90 seconds of assembly.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The quality of olive oil defines this dish more than anything else. Use a single-estate EVOO with a peppery finish — the polyphenols that create that throat-hit are also responsible for the complexity of flavour. Never use "light" or "pure" olive oil for finishing. Reserve your best bottle for the table and bruschetta.</div>
+  <div class="al"><span class="a">GLUTEN (bread)</span><span class="a">SULPHITES (balsamic)</span></div>
+</div>
+</div>
+
+<!-- BURRATA E PROSCIUTTO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Burrata e Prosciutto</div>
+  <div class="rh-sub">Fresh burrata, Prosciutto di Parma, heirloom tomatoes, basil oil · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 4 min</span><span class="rm">🧀 Entrée</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Fresh burrata (1 ball)</td><td>125g</td><td class="cc">$6.00</td></tr>
+        <tr><td>Prosciutto di Parma (3 slices)</td><td>45g</td><td class="cc">$1.84</td></tr>
+        <tr><td>Heirloom cherry tomatoes (halved)</td><td>80g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Fresh basil leaves</td><td>6 leaves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>15ml</td><td class="cc">$0.14</td></tr>
+        <tr><td>Flaky sea salt + cracked pepper</td><td>2g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Crostini (2 small)</td><td>30g</td><td class="cc">$0.12</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$8.78</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$8.78</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>21.7% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.21</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Remove burrata from refrigeration 20 minutes before service. Cold burrata straight from the fridge has a firm, rubbery stracciatella centre — allowing it to come to room temperature lets the cream filling loosen to its correct, rich, spoonable consistency. This single step dramatically changes the eating experience.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Place burrata whole in the centre of a chilled plate. Arrange folded Prosciutto di Parma ribbons loosely around — do not lay flat and stiff. The irregular fold creates visual drama and allows the salt-cured silk texture to be properly experienced when lifted with a fork. Never pre-cut prosciutto for this dish.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Scatter halved heirloom cherry tomatoes and torn basil. Season tomatoes only with flaky salt — the prosciutto provides all the saltiness the dish needs. Overseasoning a dish built around delicate dairy and cured meat is one of the most common errors. Restraint is the entire philosophy of this plate.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Finish with a generous pour of your best EVOO over everything at the last moment. At the table (or in the pass), score the top of the burrata lightly so the cream begins to pour out as the guest receives the dish. This tableside moment of breaking the burrata is a genuine hospitality experience and drives memorable dining.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Burrata has a 3–4 day shelf life from production. Source from a local Italian deli or specialty importer who can guarantee 48-hour-fresh product. Burrata that is even slightly old develops an acidic, off flavour. At $6 per ball, every piece must be perfect. Build your supplier relationship around freshness guarantees, not just price.</div>
+  <div class="al"><span class="a">DAIRY (burrata)</span><span class="a">GLUTEN (crostini)</span></div>
+</div>
+</div>
+
+
+<!-- ARANCINI -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Arancini</div>
+  <div class="rh-sub">Fried risotto balls, mozzarella centre, tomato sauce · Sell: $13.99 (3 pieces)</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min</span><span class="rm">🍚 Entrée</span><span class="rm">Target FC: 17%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (3 balls)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Cooked risotto (cold, batch)</td><td>240g</td><td class="cc">$0.88</td></tr>
+        <tr><td>Buffalo mozzarella (cubed)</td><td>30g</td><td class="cc">$0.53</td></tr>
+        <tr><td>Eggs (for breading)</td><td>1 × 55g</td><td class="cc">$0.35</td></tr>
+        <tr><td>Breadcrumbs (panko)</td><td>60g</td><td class="cc">$0.14</td></tr>
+        <tr><td>All-purpose flour (for dredge)</td><td>20g</td><td class="cc">$0.03</td></tr>
+        <tr><td>San Marzano tomato sauce (batch)</td><td>80ml</td><td class="cc">$0.25</td></tr>
+        <tr><td>Parmesan, grated (garnish)</td><td>10g</td><td class="cc">$0.27</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.45</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.45</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$13.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>17.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$11.54</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Arancini must be made from cold risotto — never warm. Cold risotto has enough starch gel and protein structure to hold a ball shape without disintegrating during frying. Make risotto the day before service, spread thin on trays, refrigerate overnight. The cold compaction is what makes the difference between arancini and risotto soup in your fryer.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Wet hands, scoop 80g cold risotto. Press a cube of mozzarella into the centre, then close the risotto around it completely with no gaps — any exposed mozzarella will leak during frying and cause oil splatter and soggy breading. Roll into a firm ball. The internal mozzarella should be completely sealed.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Standard breading: flour → egg wash → panko. The flour layer creates a protein surface for the egg to adhere to. Without flour, egg slides off the starchy risotto surface and the breading falls off in the fryer. Double-bread for an extra-crisp shell: flour → egg → panko → egg → panko again.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Deep fry at <span class="temp">180°C / 356°F</span> for 4–5 minutes until deep golden-amber. The high heat creates a rigid, crackling shell while the interior reaches <span class="temp ok">74°C / 165°F</span>, which melts the mozzarella centre. Do not rush by raising oil temperature — the exterior will burn while the centre stays cold.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The risotto batch for arancini should be slightly over-seasoned and slightly over-cooked compared to table risotto — more salt and more starch (by cooking past al dente) ensures the arancini are flavourful after frying dilutes the seasoning, and firm enough to ball without falling apart.</div>
+  <div class="al"><span class="a">GLUTEN (breadcrumbs, flour)</span><span class="a">DAIRY (mozzarella, parmesan)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<!-- CARPACCIO DI MANZO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Carpaccio di Manzo</div>
+  <div class="rh-sub">Beef tenderloin carpaccio, lemon-caper dressing, rocket, shaved Parmesan · Sell: $17.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🥩 Entrée</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Beef tenderloin (centre-cut)</td><td>80g</td><td class="cc">$3.20</td></tr>
+        <tr><td>Parmesan (shaved)</td><td>15g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Rocket (arugula)</td><td>25g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Capers (rinsed)</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Fresh lemon juice</td><td>15ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>15ml</td><td class="cc">$0.14</td></tr>
+        <tr><td>Dijon mustard (for dressing)</td><td>5g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Flaky salt + cracked pepper</td><td>2g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$4.16</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$4.16</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$17.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>23.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$13.83</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Use only centre-cut beef tenderloin (filet mignon) from a USDA-certified, sushi-grade or equivalent supplier. The beef must be fresh (not previously frozen), and sliced to order or within 2 hours of service. Freeze the loin for 25 minutes before slicing — not to freeze solid, but to firm the muscle fibres so they slice cleanly and thinly without tearing.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Slice 1.5mm thin on a mandoline or with a sharp slicing knife. Lay slices between cling film and gently press flat with a meat mallet or the back of a pan — this is called "velo" technique. The pressed slices are nearly translucent. Arrange in a single overlapping layer on a chilled plate immediately.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Dress the carpaccio with lemon-Dijon emulsion (lemon + Dijon + EVOO whisked together) immediately before service. The acid in the lemon begins to "cook" (denature) the beef proteins — this is deliberate and adds complexity, but timing matters. Dress less than 2 minutes before serving so the beef retains its vivid red colour and just-kissed-by-acid flavour.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Top with rocket, capers, and Parmesan shavings. The rocket's peppery bitterness cuts the richness of raw beef and olive oil. Capers provide bursts of brine. Parmesan adds umami. These are not garnishes — each element serves a specific flavour and textural function. Never skip any of the three.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Carpaccio requires a raw meat advisory on your menu as mandated by most US health codes. More importantly, it requires impeccable supply chain hygiene. Build a relationship with a single trusted butcher for your tenderloin. Never use carpaccio as a vehicle for clearing old beef — guests can taste the difference, and the food safety implications are serious.</div>
+  <div class="al"><span class="a">DAIRY (parmesan)</span><span class="a">RAW BEEF advisory</span><span class="a">MUSTARD</span></div>
+</div>
+</div>
+
+
+<!-- CALAMARI FRITTI -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Calamari Fritti</div>
+  <div class="rh-sub">Lightly floured squid rings, lemon aioli, marinara dip · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 7 min</span><span class="rm">🦑 Entrée</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Fresh squid (cleaned, ring-cut)</td><td>150g</td><td class="cc">$1.50</td></tr>
+        <tr><td>Semolina flour (dredge)</td><td>40g</td><td class="cc">$0.06</td></tr>
+        <tr><td>All-purpose flour (dredge)</td><td>20g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Lemon (for service)</td><td>½ lemon</td><td class="cc">$0.15</td></tr>
+        <tr><td>Lemon aioli (batch)</td><td>40g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Marinara dipping sauce (batch)</td><td>50ml</td><td class="cc">$0.20</td></tr>
+        <tr><td>Fresh parsley (garnish)</td><td>3g</td><td class="cc">$0.03</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.15</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.15</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>14.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$12.84</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Pat squid rings completely dry with paper towels before dredging. Moisture is the enemy of crispy frying — any water on the squid surface will turn to steam in the hot oil, creating a soggy, soft coating instead of a crispy shell. Dry the squid, then season it lightly with salt before dredging so the seasoning penetrates the flesh.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Use a 50/50 mix of semolina and all-purpose flour. The semolina's coarser grain creates a textured, crunchy exterior with more surface area than plain flour alone. Do not use a wet batter — traditional Italian calamari fritti uses only dry flour, which allows the flavour of fresh squid to shine through rather than being masked by batter.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Fry in batches — never crowd the fryer. Crowding drops oil temperature below <span class="temp">180°C / 356°F</span> and causes the squid to steam rather than fry, resulting in rubbery, greasy calamari. Small batches (100g max) at a constant temperature produce consistently crispy results. Total fry time: <strong>2–2.5 minutes</strong> only. Overcooked squid toughens irreversibly.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Drain immediately on a wire rack (not paper towel — the bottom will steam). Season with flaky salt the instant they leave the fryer while the surface is still tacky with oil — salt adheres at this moment and won't at any other. Serve within 3 minutes or the coating softens from residual moisture.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The secret to non-rubbery calamari is freshness and timing. Fresh squid (not frozen) has better moisture content and texture. If using frozen, thaw completely in the fridge overnight and pat ultra-dry. The 2.5-minute fry time is non-negotiable — every extra 30 seconds adds noticeable toughness. Set a timer every single time.</div>
+  <div class="al"><span class="a">SHELLFISH (squid)</span><span class="a">GLUTEN (flour)</span><span class="a">EGGS (aioli)</span></div>
+</div>
+</div>
+
+<!-- ZUPPA DI POMODORO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Zuppa di Pomodoro</div>
+  <div class="rh-sub">San Marzano tomato soup, basil crema, grilled focaccia · Sell: $11.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min</span><span class="rm">🍲 Entrée</span><span class="rm">Target FC: 13%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve, batch costed)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>San Marzano tomatoes (28oz can ÷ 4 serves)</td><td>200g</td><td class="cc">$0.88</td></tr>
+        <tr><td>Yellow onion (batch)</td><td>40g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Garlic cloves</td><td>2 cloves</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fresh basil (soup + garnish)</td><td>8g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Heavy cream (swirl)</td><td>20ml</td><td class="cc">$0.12</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>10ml</td><td class="cc">$0.09</td></tr>
+        <tr><td>Focaccia (grilled, batch-baked)</td><td>60g</td><td class="cc">$0.22</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.49</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.49</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$11.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>12.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$10.50</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Sweat diced onion and garlic in olive oil over medium heat for 12–15 minutes until fully translucent and beginning to caramelise. This low-and-slow cooking converts the harsh, sharp compounds in raw onion into sweet, complex sugars. A rushed 5-minute sweat produces a soup with a raw, sharp undertone that no amount of seasoning can fix.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Add San Marzano tomatoes whole (crush by hand into the pot). San Marzanos are the critical ingredient — their low acidity, thick flesh, and natural sweetness produce a soup that needs minimal sugar correction. Standard canned tomatoes can be used in a pinch but require added sugar and longer cooking to achieve comparable depth. Do not substitute.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Simmer 20 minutes uncovered. The uncovered simmer allows moisture to evaporate and the tomato to concentrate. A lid traps steam and dilutes the final flavour. Add fresh basil in the last 5 minutes only — prolonged cooking destroys the volatile aromatic oils that make basil distinctive, leaving only a generic herbal note.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Blend until silky smooth, pass through a fine-mesh strainer for restaurant quality. Adjust seasoning. Serve at <span class="temp ok">74°C / 165°F</span>. Swirl heavy cream decoratively on top — do not stir in. The cream swirl provides visual elegance and the guest experience of combining richness with acidity in each spoonful.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> This soup is a profit leader — low food cost, batch-produced, holds well under refrigeration for 3 days. Make a large batch every two days. The key operational discipline is temperature holding: soup served below 70°C feels watery and bland. Keep it in a bain-marie at 78°C and test with a thermometer every service.</div>
+  <div class="al"><span class="a">DAIRY (cream)</span><span class="a">GLUTEN (focaccia)</span></div>
+</div>
+</div>
+
+
+<h2><span class="sn2">2</span> Mains</h2>
+
+<!-- CACIO E PEPE -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Cacio e Pepe</div>
+  <div class="rh-sub">Tonnarelli pasta, Pecorino Romano, Parmesan, black pepper · Sell: $18.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🍝 Main</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Tonnarelli / spaghetti (house-made)</td><td>120g raw</td><td class="cc">$0.62</td></tr>
+        <tr><td>Pecorino Romano (finely grated)</td><td>40g</td><td class="cc">$0.88</td></tr>
+        <tr><td>Parmesan (finely grated)</td><td>20g</td><td class="cc">$0.53</td></tr>
+        <tr><td>Black pepper (coarsely ground)</td><td>3g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Pasta water (starchy)</td><td>80ml</td><td class="cc">$0.00</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>10ml</td><td class="cc">$0.09</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.16</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.16</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$18.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>11.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$16.83</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Toast whole black peppercorns in a dry pan until fragrant, then crack coarsely — not fine powder. Toasting activates the essential oils in peppercorns (principally piperine) and develops a complex, woody heat. Cracked pepper has surface area that releases flavour during cooking while maintaining visible texture in the finished dish. Pre-ground pepper is flat and monotone by comparison.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Cook pasta in heavily salted water (pasta water should taste "like the sea"). Reserve 200ml of pasta water before draining — this starchy liquid is the entire sauce base. The dissolved starch acts as an emulsifier, allowing cheese and water to form a creamy, cohesive sauce rather than a broken, grainy paste. This water is irreplaceable.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">In a wide, low pan over medium-low heat, toast the cracked pepper 30 seconds in olive oil. Add 60ml hot pasta water — it will sizzle. Add al-dente pasta and toss vigorously. Remove from heat completely before adding cheese. This is critical: cheese added to a hot pan over direct heat seizes, clumps, and becomes irreversibly grainy. Off heat only.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Add grated Pecorino and Parmesan in two additions, tossing and adding pasta water gradually until the sauce coats every strand in a glossy, creamy emulsion. The target consistency is "wet silk" — not soupy, not dry. Plate immediately with a final dusting of Pecorino and cracked pepper. Time to table: under 90 seconds from completion.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Cacio e Pepe fails for one of two reasons: cheese clumping (heat too high) or sauce breaking (not enough starchy water). Train every cook with a dedicated practice session before service. Have backup pasta water in a small pot beside the range at all times. This dish's simplicity is deceptive — it is technically one of the most demanding pasta preparations.</div>
+  <div class="al"><span class="a">GLUTEN (pasta)</span><span class="a">DAIRY (Pecorino, Parmesan)</span></div>
+</div>
+</div>
+
+<!-- CARBONARA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Carbonara</div>
+  <div class="rh-sub">Rigatoni, guanciale, Pecorino, egg yolks, black pepper · Sell: $20.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 14 min</span><span class="rm">🥚 Main</span><span class="rm">Target FC: 21%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Rigatoni (house-made or bronze-die)</td><td>120g dry</td><td class="cc">$0.62</td></tr>
+        <tr><td>Guanciale (cured pork cheek, diced)</td><td>60g</td><td class="cc">$1.19</td></tr>
+        <tr><td>Egg yolks</td><td>3 yolks</td><td class="cc">$1.05</td></tr>
+        <tr><td>Pecorino Romano (grated)</td><td>35g</td><td class="cc">$0.77</td></tr>
+        <tr><td>Parmesan (grated)</td><td>15g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Black pepper (cracked)</td><td>2g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Pasta water (starchy)</td><td>80ml</td><td class="cc">$0.00</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$4.06</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$4.06</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$20.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>19.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$16.93</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Render diced guanciale in a cold pan — start cold so the fat renders gradually and the meat crisps from the inside out. A hot-pan start seizes the exterior before the fat has rendered, producing chewy, under-rendered chunks. Cook over medium heat 8–10 minutes until the guanciale is golden, crispy-edged, and has released its fat. Do not drain this fat — it is the flavour base of the sauce.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Whisk egg yolks with grated Pecorino and Parmesan into a thick paste. Add a ladle of warm (not boiling) pasta water to temper the eggs — this gradually raises the yolk temperature, reducing the risk of scrambling while loosening the mixture to a pourable consistency. The tempering step is what separates a silky carbonara from scrambled eggs with pasta.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Remove pan from heat. Add al-dente pasta to the guanciale pan and toss in the rendered fat. Allow the pan to cool 20 seconds — you want residual warmth, not active heat. Pour in the egg-cheese mixture and toss rapidly and continuously, adding pasta water tablespoon by tablespoon to maintain emulsion. The pasta motion keeps the sauce moving so no single point overheats and scrambles.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">The finished sauce should coat every piece of pasta in a glossy, custard-like film. If the sauce looks broken or dry, add more pasta water and toss off-heat. Plate, add a spoonful of extra crispy guanciale on top, finish with a heavy grind of black pepper and a dusting of Pecorino. No cream. No peas. No bacon. Ever.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Authentic carbonara contains zero cream — the creaminess comes entirely from emulsified egg yolk and starchy pasta water. If you're adding cream, you've lost control of the emulsification process. Train your team to be proud of making the real version. When guests ask about cream, it's a teaching moment: "The creaminess you taste is three egg yolks. That's the skill."</div>
+  <div class="al"><span class="a">GLUTEN (pasta)</span><span class="a">DAIRY (Pecorino, Parmesan)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+
+<!-- RAGÙ ALLA BOLOGNESE TAGLIATELLE -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Ragù alla Bolognese Tagliatelle</div>
+  <div class="rh-sub">Hand-rolled tagliatelle, slow-cooked beef &amp; pork ragù, Parmesan · Sell: $22.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min (sauce batch-cooked)</span><span class="rm">🍝 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Tagliatelle (house-made egg pasta)</td><td>120g raw</td><td class="cc">$0.70</td></tr>
+        <tr><td>Beef mince (80/20)</td><td>90g</td><td class="cc">$0.90</td></tr>
+        <tr><td>Pork mince</td><td>40g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Pancetta (diced)</td><td>20g</td><td class="cc">$0.29</td></tr>
+        <tr><td>San Marzano tomatoes (batch)</td><td>80g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Whole milk + dry white wine</td><td>30ml + 20ml</td><td class="cc">$0.14</td></tr>
+        <tr><td>Soffritto (onion/carrot/celery batch)</td><td>40g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Parmesan (grated, service)</td><td>20g</td><td class="cc">$0.53</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.36</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.36</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$22.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>14.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$19.63</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Bolognese is built on time — minimum 3 hours of simmering, ideally 4–5. Begin with soffritto: finely diced onion, carrot, and celery in equal parts, cooked in butter until completely soft and beginning to caramelise (25–30 minutes). The soffritto's role is to provide a sweet, aromatic base that counterbalances the acidity of tomato and the richness of meat fat.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Add diced pancetta, render 5 minutes. Add beef and pork mince — but do not brown aggressively. The traditional Bolognese technique is to cook the meat just until it loses its pink colour (not caramelise), then add white wine immediately. This softer approach keeps the final sauce silkier and less gamey than a heavily seared Bolognese.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">After wine reduces, add whole milk. This sounds counterintuitive but the milk proteins tenderise the meat further and neutralise the acidity of the wine, creating a rounder, softer sauce. Add San Marzano tomatoes last — not first. The tomato is a minor player in authentic Bolognese; the meat is the star. Simmer on the lowest possible heat, partially covered, 3–4 hours.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Finish al-dente tagliatelle in the ragù with a splash of pasta water — the pasta must finish cooking IN the sauce, not be sauced after. This final 60-second marriage in the pan allows the pasta starch to bind with the meat sauce, creating a cohesive dish rather than pasta with sauce sitting on top. Plate, top with Parmesan, serve immediately.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Never serve Bolognese with spaghetti in your trattoria. Tagliatelle is the authentic vessel — the broad, flat noodle catches and carries the meat. This is a point of culinary pride and an education opportunity for guests. Make a small card explaining the Bologna tradition. Guests appreciate when restaurants respect the history of a dish.</div>
+  <div class="al"><span class="a">GLUTEN (pasta)</span><span class="a">DAIRY (milk, Parmesan)</span><span class="a">SULPHITES (wine)</span></div>
+</div>
+</div>
+
+<!-- RISOTTO AL PARMIGIANO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Risotto al Parmigiano</div>
+  <div class="rh-sub">Arborio risotto, aged Parmesan, butter, white wine, chives · Sell: $19.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 22 min</span><span class="rm">🌾 Main</span><span class="rm">Target FC: 19%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Arborio rice</td><td>90g</td><td class="cc">$0.44</td></tr>
+        <tr><td>Parmesan (aged 24-month, grated)</td><td>50g</td><td class="cc">$1.33</td></tr>
+        <tr><td>Unsalted butter (mantecatura)</td><td>30g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Dry white wine (Pinot Grigio)</td><td>60ml</td><td class="cc">$0.28</td></tr>
+        <tr><td>Shallot (finely diced)</td><td>25g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Chicken or veg stock (warm)</td><td>350ml</td><td class="cc">$0.28</td></tr>
+        <tr><td>Chives (garnish)</td><td>3g</td><td class="cc">$0.04</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.61</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.61</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$19.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>13.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$17.38</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Sweat shallot in butter over medium heat until translucent — not browned. Add Arborio rice and toast dry for 2 minutes, stirring constantly until the outside of each grain turns slightly translucent and opaque at the centre. This toasting step gelatinises the outer starch layer of the rice, which creates the characteristic creamy risotto consistency during cooking by slowly releasing amylose into the stock.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Add white wine all at once — it will sizzle dramatically. Stir until fully absorbed. The wine does two things: its acidity provides brightness that prevents the finished risotto from tasting heavy or one-dimensional, and its alcohol dissolves fat-soluble flavour compounds in the butter that water-based stock cannot extract. A risotto without wine is noticeably flatter.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Add warm stock ladleful by ladleful, stirring continuously. The continuous stirring agitates the rice grains against each other, releasing amylose starch into the liquid and creating the cream without adding actual cream. Always use warm stock — cold stock shocks the rice and uneven cooking results. Total cooking time from first stock addition: 16–18 minutes to al-dente.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Remove from heat. Mantecatura: fold in cold butter and grated Parmesan vigorously and quickly — this is the technique that creates the "all'onda" (wave) texture of great risotto. The cold butter emulsifies into the starchy rice, and the sudden temperature drop stops cooking immediately. The risotto should be fluid enough to spread slightly when spooned onto a plate — never stiff or gummy.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Risotto cannot be rushed. Budget 22 minutes per order. Manage the kitchen ticket flow so risotto orders are staggered. A risotto station during peak service requires a dedicated cook. The dish's profitability (13% food cost) justifies the attention. Train guests through menu language: "Please allow 22 minutes — made from scratch, ladle by ladle."</div>
+  <div class="al"><span class="a">DAIRY (butter, Parmesan)</span><span class="a">SULPHITES (wine)</span></div>
+</div>
+</div>
+
+
+<!-- BRANZINO AL FORNO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Branzino al Forno</div>
+  <div class="rh-sub">Whole roasted sea bass, lemon, capers, cherry tomatoes, olive oil · Sell: $29.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 18 min</span><span class="rm">🐟 Main</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Whole branzino (sea bass), gutted</td><td>450g whole</td><td class="cc">$5.50</td></tr>
+        <tr><td>Cherry tomatoes (halved)</td><td>80g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Capers (rinsed)</td><td>15g</td><td class="cc">$0.14</td></tr>
+        <tr><td>Lemon (slices inside + juice)</td><td>1 lemon</td><td class="cc">$0.28</td></tr>
+        <tr><td>Fresh thyme + rosemary</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Garlic cloves (whole, inside cavity)</td><td>3 cloves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>20ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Sea salt + white pepper</td><td>3g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$6.84</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$6.84</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$29.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>22.8%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$23.15</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Score the branzino skin 3 times on each side at 45° angle — cuts about 5mm deep. Scoring does two things: it allows heat to penetrate the thick part of the fish evenly (preventing an overcooked tail and undercooked shoulder), and it allows the olive oil, salt, and aromatics to season the flesh beneath the skin, not just the surface.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Season aggressively inside and out with sea salt. Stuff the cavity with lemon slices, garlic, thyme, and rosemary — these aromatics perfume the fish from the inside during roasting in a way that exterior seasoning cannot achieve. The steam trapped in the cavity carries the herb and citrus oils through the flesh.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Roast at <span class="temp">220°C / 428°F</span> on a bed of cherry tomatoes and capers for 14–16 minutes. High oven temperature creates crispy, blistered skin while the tomatoes release their juices into a natural pan sauce below. The fish is done when the flesh at the thickest point is opaque and flakes with slight pressure — internal temp <span class="temp ok">63°C / 145°F</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Rest 3 minutes before serving. Resting allows the proteins in the fish to relax slightly and the juices to redistribute — a branzino served immediately from the oven is slightly tough and the flesh falls apart less cleanly when filleted tableside. Serve in the pan or on a platter with the roasted tomatoes and caper pan sauce spooned over.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Branzino presented whole at the table and filleted in front of the guest is a significant hospitality moment. Train your service staff to perform tableside fish filleting confidently — the technique is simple (use a fish knife and fork: skin, fillet each side away from the spine, lift spine and remove all pin bones). A confident tableside fillet is memorable and justifies the $29.99 price point.</div>
+  <div class="al"><span class="a">FISH</span><span class="a">SULPHITES (capers in vinegar)</span></div>
+</div>
+</div>
+
+<!-- POLLO ALLA CACCIATORE -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Pollo alla Cacciatore</div>
+  <div class="rh-sub">Braised chicken thighs, tomato, olives, capers, rosemary, white wine · Sell: $23.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min (batch-braised)</span><span class="rm">🍗 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve, 2 thighs)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken thighs (bone-in, skin-on)</td><td>2 × 140g</td><td class="cc">$2.00</td></tr>
+        <tr><td>San Marzano tomatoes (batch)</td><td>120g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Kalamata olives (pitted)</td><td>30g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Capers (rinsed)</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Dry white wine</td><td>60ml</td><td class="cc">$0.28</td></tr>
+        <tr><td>Rosemary + bay leaf</td><td>3g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Garlic cloves (crushed)</td><td>3 cloves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Polenta or ciabatta (side)</td><td>80g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.64</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.64</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$23.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>15.2%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$20.35</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Pat chicken thighs completely dry and season generously. Sear skin-side down in a cold-start heavy pan — place the thighs skin-down in the pan before turning on the heat. The gradual rendering of the thick fat layer under the chicken skin produces the crispiest possible skin. A hot-pan start causes the skin to contract and crinkle before the fat renders.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Sear skin-side 8–10 minutes until deep golden and the thigh releases easily. Flip, sear flesh side 3 minutes. Remove. In the same pan, sweat garlic and rosemary in the rendered chicken fat — this fat is more flavourful than fresh oil and carries the flavour of the fond (caramelised proteins) stuck to the pan, which is deglazed with white wine in the next step.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Deglaze with white wine, scraping all fond from the pan base — the fond contains enormous flavour from the Maillard reaction. Add San Marzano tomatoes, olives, and capers. Return chicken skin-side up (never submerged — the skin must stay above the braising liquid to remain crispy). Braise at <span class="temp">160°C / 320°F</span> for 35 minutes covered, then 10 minutes uncovered to reduce the sauce.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">The chicken is done when it pulls cleanly from the bone with a fork and reaches an internal temp of <span class="temp ok">74°C / 165°F</span>. The braising liquid should have reduced to a glossy, concentrated sauce. Serve the thighs skin-side up over polenta or with ciabatta to mop the sauce. Never plate the chicken submerged in sauce — the skin presentation matters.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Cacciatore is ideal batch-cooked in large shallow roasting pans during afternoon prep. It reheats perfectly — in fact, like all braises, it improves the next day as the flavours meld. The skin can be re-crisped under a hot grill (broiler) for 3 minutes at service. Batch braising reduces dinner service pressure while delivering a dish with genuinely complex flavour.</div>
+  <div class="al"><span class="a">SULPHITES (wine, olives)</span></div>
+</div>
+</div>
+
+
+<!-- OSSO BUCO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Osso Buco</div>
+  <div class="rh-sub">Braised veal shank, gremolata, saffron risotto Milanese · Sell: $34.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 15 min (3hr braise)</span><span class="rm">🥩 Main — Signature</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Veal shank (cross-cut, 5cm)</td><td>350g</td><td class="cc">$9.33</td></tr>
+        <tr><td>Dry white wine</td><td>100ml</td><td class="cc">$0.45</td></tr>
+        <tr><td>San Marzano tomatoes (batch)</td><td>80g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Soffritto (onion/carrot/celery)</td><td>60g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Chicken stock</td><td>200ml</td><td class="cc">$0.24</td></tr>
+        <tr><td>Gremolata (lemon zest/garlic/parsley)</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Saffron risotto Milanese (side)</td><td>90g rice</td><td class="cc">$0.56</td></tr>
+        <tr><td>Flour (dredge)</td><td>20g</td><td class="cc">$0.03</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$11.17</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$11.17</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$34.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>21.9% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$23.82</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Tie kitchen twine around the circumference of each shank to prevent the meat from falling away from the bone during the long braise. Dredge the shank lightly in flour — the flour creates a crust during searing that later dissolves into the braising liquid as a natural thickener, giving the final sauce body and gloss without adding a separate thickening agent.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Sear shanks in a heavy Dutch oven or braising pan at high heat — deep golden-brown on all sides (including the cut bone surfaces), 4–5 minutes per side. The Maillard reaction at this stage creates hundreds of flavour compounds that define the depth of the final braise. A pale or under-seared shank produces a wan, flat sauce regardless of braise time.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Remove shank. Sweat soffritto in the same pan. Add white wine, deglaze thoroughly. Add tomatoes and stock, return shanks — liquid should come halfway up the shank, never completely submerging it. Cover tightly. Braise at <span class="temp">150°C / 302°F</span> for 2.5–3 hours. The low, gentle heat prevents the collagen from tightening and keeps the meat falling-tender.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Gremolata — lemon zest, finely minced garlic, fresh flat-leaf parsley — is added at service, never during braising. The volatile lemon oils and fresh parsley flavour are destroyed by heat. Gremolata's purpose is to provide a bright, sharp counterpoint to the deep, unctuous richness of the braised veal and marrow. It is applied at the last second and cannot be substituted or skipped.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The marrow inside the bone is the luxury gift of osso buco — teach your front-of-house team to hand guests a small spoon and explain the marrow tradition. "The bone marrow is considered the prize — scoop it out with the spoon and spread it on your bread." This adds a memorable educational moment that elevates the experience and validates the $34.99 price.</div>
+  <div class="al"><span class="a">GLUTEN (flour dredge)</span><span class="a">DAIRY (risotto butter/parmesan)</span><span class="a">SULPHITES (wine)</span></div>
+</div>
+</div>
+
+<!-- PENNE ALL'ARRABBIATA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Penne all'Arrabbiata</div>
+  <div class="rh-sub">Penne rigate, San Marzano tomato, red chili, garlic, parsley · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🌶 Main</span><span class="rm">Target FC: 13%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Penne rigate (bronze-die dried)</td><td>120g</td><td class="cc">$0.44</td></tr>
+        <tr><td>San Marzano tomatoes (batch)</td><td>150g</td><td class="cc">$0.75</td></tr>
+        <tr><td>Dried red chili flakes</td><td>2g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Garlic cloves (sliced thin)</td><td>3 cloves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>15ml</td><td class="cc">$0.14</td></tr>
+        <tr><td>Fresh flat-leaf parsley</td><td>5g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Sea salt</td><td>3g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.48</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.48</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>8.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$15.51</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Arrabbiata means "angry" in Italian — the sauce must be genuinely, assertively spicy or it loses its identity. Start with cold olive oil and sliced garlic in a cold pan. Bring to heat together — this slow infusion extracts the garlic's flavour into the oil over 4–5 minutes without burning. Burnt garlic turns bitter in seconds and ruins the entire batch of sauce.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Add chili flakes when the garlic is golden and fragrant — the oil must be hot enough to bloom the chili (releasing capsaicin and chili oils into the fat) before the tomatoes go in. The fat-soluble heat compounds in chili only fully activate in oil — this 30-second bloom step is what makes arrabbiata genuinely spicy rather than merely seasoned with chili.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Add San Marzano tomatoes (crushed by hand) all at once. The sizzle of cold tomatoes hitting hot oil is the sound of flavour development. Cook at a rapid simmer uncovered for 12–15 minutes, stirring occasionally, until the sauce thickens and the oil appears to "separate" at the edges — this separation (called insaporire) indicates the tomato has fully broken down and merged with the oil into a homogenous sauce.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Finish al-dente penne directly in the sauce with a splash of pasta water. Toss 60 seconds — the ridged surface of penne rigate grips the sauce. No Parmesan on arrabbiata — this is a Roman rule. Cheese on a spicy tomato sauce dulls the heat and adds dairy richness that fights with the clean, sharp tomato-chili combination. Add fresh parsley only at service.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Arrabbiata is your most profitable main (8.7% food cost) and one of the fastest to execute — a 10-minute turn from order to table. It is also genuinely polarising in the best way. Put a small chili icon on the menu and a note: "Roman heat — genuinely spicy." Guests who order it knowing that become loyal regulars. Never water it down to appease heat-adverse guests — that's what the other 9 mains are for.</div>
+  <div class="al"><span class="a">GLUTEN (pasta)</span></div>
+</div>
+</div>
+
+
+<!-- GNOCCHI AL GORGONZOLA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Gnocchi al Gorgonzola</div>
+  <div class="rh-sub">House potato gnocchi, Gorgonzola dolce cream sauce, toasted walnuts, sage · Sell: $21.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🥔 Main</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Potato gnocchi (house-made)</td><td>200g</td><td class="cc">$0.72</td></tr>
+        <tr><td>Gorgonzola dolce</td><td>50g</td><td class="cc">$1.25</td></tr>
+        <tr><td>Heavy cream</td><td>80ml</td><td class="cc">$0.48</td></tr>
+        <tr><td>Toasted walnuts (chopped)</td><td>15g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Fresh sage leaves</td><td>4 leaves</td><td class="cc">$0.04</td></tr>
+        <tr><td>Butter (for sage)</td><td>10g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Parmesan (grated, optional)</td><td>10g</td><td class="cc">$0.27</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.10</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.10</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$21.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>14.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$18.89</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">House-made gnocchi requires baked (not boiled) potatoes — baking drives off excess moisture, producing a drier, denser potato that needs less flour to bind. Less flour = lighter gnocchi. Boiled potato gnocchi absorbs water, requiring more flour, which produces heavy, dense, gluey results. Bake at <span class="temp">200°C / 392°F</span>, split open, scoop, and rice while still hot.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Work the dough minimally: fold in egg yolk, Parmesan, salt, and just enough flour until the dough barely comes together. Overworking develops gluten and produces the notorious "gummy gnocchi" failure. The dough should be slightly tacky and soft — if it feels like pasta dough, you've added too much flour. Test-boil one gnocco before shaping the batch.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">For the sauce: reduce heavy cream with Gorgonzola dolce over medium-low heat, stirring, until the cheese melts completely and the sauce coats a spoon. Use dolce (young, creamy Gorgonzola) not piccante (aged, pungent) — the dolce has a milder, sweeter blue cheese flavour that won't overwhelm the delicate gnocchi. Add gnocchi directly to the sauce from the boiling water.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Fry sage leaves in brown butter until crispy — 45 seconds in foaming butter. The browned butter (beurre noisette) adds a nutty complexity that complements both the Gorgonzola and the earthiness of potato. Scatter crispy sage and toasted walnuts over the finished dish. The walnuts provide textural contrast against the soft gnocchi and echo the bitterness of the blue cheese.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Gnocchi must be made and used the same day — they do not survive refrigeration intact (the starch retrogrades and the texture becomes tough and starchy). Pre-batch the potato dough but shape and cook to order. For service efficiency, par-boil gnocchi in advance, toss in a little oil, and finish in the Gorgonzola sauce per order. Par-boiling ahead reduces the per-order time to under 4 minutes.</div>
+  <div class="al"><span class="a">GLUTEN (flour)</span><span class="a">DAIRY (Gorgonzola, cream, butter, Parmesan)</span><span class="a">EGGS</span><span class="a">NUTS (walnuts)</span></div>
+</div>
+</div>
+
+<!-- PIZZA MARGHERITA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Pizza Margherita</div>
+  <div class="rh-sub">72-hour cold-fermented dough, San Marzano sauce, buffalo mozzarella, basil · Sell: $18.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 90 seconds (wood-fired) / 8 min (deck oven)</span><span class="rm">🍕 Main</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 pizza, 30cm)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Pizza dough ball (72h ferment)</td><td>250g</td><td class="cc">$0.62</td></tr>
+        <tr><td>San Marzano tomato sauce (batch)</td><td>80g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Buffalo mozzarella (torn)</td><td>100g</td><td class="cc">$1.77</td></tr>
+        <tr><td>Fresh basil leaves</td><td>5 leaves</td><td class="cc">$0.05</td></tr>
+        <tr><td>Extra virgin olive oil (finish)</td><td>10ml</td><td class="cc">$0.09</td></tr>
+        <tr><td>Sea salt</td><td>1g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.94</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.94</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$18.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>15.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$16.05</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">72-hour cold fermentation is mandatory for genuine Neapolitan character. The long, cold fermentation allows yeast to develop the complex esters and organic acids that produce the distinctive flavour (slightly sour, deeply wheaty) and airy, blistering texture of great pizza. A same-day dough is fast but flat in flavour. Make dough in large batches on Thursday for the full weekend service.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Stretch dough by hand — never use a rolling pin. A rolling pin presses out the gas bubbles developed during fermentation, producing a flat, dense, cracker-like base instead of the airy, cornicione (crust) that puffs and chars in the oven. Stretch from the centre outward using the back of your hands, rotating as you stretch, leaving a thick rim of undisturbed dough around the perimeter.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">San Marzano sauce: crushed by hand (never blended — the fibrous texture is part of the sauce character), seasoned with salt and a little olive oil only. No cooking required. The pizza oven cooks the sauce — pre-cooking makes it acidic and jammy. Spread sauce in a thin spiral. Tear buffalo mozzarella by hand and place evenly — torn pieces brown and blister more attractively than sliced.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Deck oven: <span class="temp">290°C / 554°F</span> for 7–8 minutes. Wood-fired: <span class="temp">450°C / 842°F</span> for 90 seconds, rotating once. The leopard-spotting (leopardatura) char on the crust is not burning — it's the Maillard reaction at extreme heat creating bitter, complex flavour compounds that are inseparable from the Neapolitan experience. Add fresh basil leaves and a drizzle of EVOO immediately after the oven, never before.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Buffalo mozzarella releases significant moisture during baking — if not properly drained, it makes the pizza wet and soggy. Tear the mozzarella 30 minutes before service onto a wire rack over a tray. Allow the excess whey to drain before topping. A well-drained buffalo mozzarella bakes into creamy, blistered pools; an undrained one creates a swimming pool on your pizza.</div>
+  <div class="al"><span class="a">GLUTEN (pizza dough)</span><span class="a">DAIRY (buffalo mozzarella)</span></div>
+</div>
+</div>
+
+
+<h2><span class="sn2">3</span> Desserts</h2>
+
+<!-- TIRAMISU -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Tiramisù</div>
+  <div class="rh-sub">Savoiardi soaked in espresso, mascarpone zabaglione, cocoa · Sell: $10.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min (set overnight)</span><span class="rm">☕ Dessert</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 portion, batch-set)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Savoiardi (ladyfinger biscuits)</td><td>40g (4–5 pieces)</td><td class="cc">$0.32</td></tr>
+        <tr><td>Mascarpone</td><td>80g</td><td class="cc">$0.70</td></tr>
+        <tr><td>Egg yolks</td><td>2 yolks</td><td class="cc">$0.70</td></tr>
+        <tr><td>Caster sugar</td><td>25g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Espresso (double shot)</td><td>60ml</td><td class="cc">$0.22</td></tr>
+        <tr><td>Marsala wine</td><td>15ml</td><td class="cc">$0.12</td></tr>
+        <tr><td>Cocoa powder (unsweetened)</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.16</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.16</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$10.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>19.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.83</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Make the zabaglione base: whisk egg yolks and caster sugar in a heatproof bowl over simmering water (bain-marie), whisking constantly for 8–10 minutes until the mixture is pale, thick, and triples in volume (ribbon stage). The heat of the bain-marie pasteurises the egg yolks (eliminating food safety concerns) while simultaneously incorporating air into the sugar-egg foam. This airy base is what gives tiramisù its lift.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Cool the zabaglione to room temperature, then fold in mascarpone gently. Overfold and the mascarpone seizes into a grainy, separated mass — undermix and you get streaks. The mascarpone must be at room temperature (not cold from the fridge) to fold smoothly. Cold mascarpone curdles when it contacts warm zabaglione due to the temperature differential.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Dip savoiardi briefly — 1 second per side — into espresso mixed with Marsala. The temptation is to soak longer for more flavour, but over-soaked biscuits dissolve into mush and the tiramisù becomes wet. A 1-second dip moistens the surface while leaving a dry core that softens to the correct texture after overnight refrigeration.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Layer: savoiardi → mascarpone → savoiardi → mascarpone. Refrigerate minimum 6 hours, ideally overnight. The resting time is not optional — it allows the espresso to migrate through the biscuit, the mascarpone to set to a sliceable, creamy consistency, and the flavours to meld. Tiramisù served at 2 hours is a wet, unstable mess. Dust generously with unsweetened cocoa at service only.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Tiramisù is your most labour-efficient dessert — set in bulk the night before, portion to order in 3 minutes. One batch of 20 portions takes 45 minutes to prepare. This is what dessert profitability looks like. The challenge is managing par: make too many and you carry unsold inventory past the 3-day shelf life; too few and you disappoint guests. Track tiramisù sales by day of week and optimise your batch size accordingly.</div>
+  <div class="al"><span class="a">DAIRY (mascarpone)</span><span class="a">EGGS</span><span class="a">GLUTEN (savoiardi)</span><span class="a">SULPHITES (Marsala)</span></div>
+</div>
+</div>
+
+<!-- PANNA COTTA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Panna Cotta</div>
+  <div class="rh-sub">Vanilla panna cotta, berry coulis, fresh berries · Sell: $9.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 2 min (set overnight)</span><span class="rm">🍮 Dessert</span><span class="rm">Target FC: 12%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 portion)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Heavy cream</td><td>150ml</td><td class="cc">$0.90</td></tr>
+        <tr><td>Whole milk</td><td>50ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Caster sugar</td><td>25g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Vanilla bean (split, scraped)</td><td>½ pod</td><td class="cc">$0.30</td></tr>
+        <tr><td>Gelatin leaf (gold)</td><td>2g (1 sheet)</td><td class="cc">$0.08</td></tr>
+        <tr><td>Berry coulis (batch)</td><td>40ml</td><td class="cc">$0.30</td></tr>
+        <tr><td>Fresh berries (garnish)</td><td>20g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.96</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.96</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$9.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>12.1% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.03</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Bloom gelatin leaf in cold water for 5 minutes until completely soft. Cold water hydration is critical — hot water partially dissolves the gelatin prematurely and reduces its setting power, resulting in a panna cotta that is too soft or doesn't set. Gold-grade gelatin (200 bloom) is the professional standard — it produces a clean, neutral flavour and reliable, consistent set.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Heat cream, milk, sugar, and vanilla bean together to <span class="temp">80°C / 176°F</span> — hot enough to dissolve the gelatin fully and steep the vanilla, but below boiling. Boiling cream reduces it and changes the ratio of ingredients, affecting the final set. Remove vanilla pod, squeeze bloomed gelatin dry, and whisk into the warm cream mixture until fully dissolved.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Strain through a fine sieve into moulds or glasses. The straining removes vanilla seeds (for a smooth presentation) and any undissolved gelatin fragments. Refrigerate minimum 4 hours until completely set and firm to the touch. The set panna cotta should wobble with a slight, sensual tremor when the mould is gently shaken — never solid like jelly, never runny.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Un-mould by running a warm knife around the edge and briefly dipping the mould base in hot water — the warmth releases the gelatin from the mould walls. Invert onto a chilled plate. Pour berry coulis around (not over) the panna cotta — this reveals the pristine white shape and allows the vibrant red-purple coulis to frame it. Scatter fresh berries, serve immediately.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Panna cotta is your most profitable dessert at 12.1% food cost and requires zero skill to execute at service (it was made the day before). The single variable is gelatin quantity — too little and it doesn't set; too much and it becomes rubbery. At 2g gelatin per 200ml of cream/milk, the set will be perfect every time. Measure gelatin by weight, not by sheets (sheets vary in size by brand).</div>
+  <div class="al"><span class="a">DAIRY (cream, milk)</span></div>
+</div>
+</div>
+
+
+<!-- CANNOLI SICILIANI -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Cannoli Siciliani</div>
+  <div class="rh-sub">Crispy pastry tubes, ricotta cream, candied orange, pistachios · Sell: $9.99 (2 pieces)</div>
+  <div class="rh-meta"><span class="rm">⏱ 4 min (fill to order)</span><span class="rm">🥐 Dessert</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (2 cannoli)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Cannoli shells (batch-fried)</td><td>2 × 20g</td><td class="cc">$0.36</td></tr>
+        <tr><td>Fresh ricotta (drained)</td><td>100g</td><td class="cc">$0.55</td></tr>
+        <tr><td>Icing sugar (sifted)</td><td>20g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Vanilla extract</td><td>2ml</td><td class="cc">$0.04</td></tr>
+        <tr><td>Candied orange peel (diced)</td><td>10g</td><td class="cc">$0.14</td></tr>
+        <tr><td>Crushed pistachios (ends)</td><td>10g</td><td class="cc">$0.22</td></tr>
+        <tr><td>Icing sugar (dusting)</td><td>2g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.35</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.35</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$9.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>13.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.64</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Drain fresh ricotta overnight through cheesecloth — it must lose as much moisture as possible. Undrained ricotta contains 40–50% excess water which makes the cannoli filling runny, causing the shells to soften within minutes of filling. Well-drained ricotta is firm and pipeable. This single overnight prep step is what separates professional cannoli from soggy ones.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Fold sifted icing sugar, vanilla, and finely diced candied orange peel into the drained ricotta. Do not whip — whipping incorporates air, which creates an unstable, airy filling that deflates and becomes watery. Fold gently until just combined. Transfer to a piping bag with a plain round tip. Hold refrigerated until service.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Cannoli shells must be fried in lard — traditional Sicilian technique. Lard's high smoke point and neutral flavour produces a crispier, lighter shell than vegetable oil. The dough wraps around metal cannoli tubes and fries at <span class="temp">180°C / 356°F</span> for 3–4 minutes until blistered and golden. The blistering (achieved by adding white wine to the dough) creates the shell's signature bubble texture.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Fill to order — never pre-fill. Pre-filled cannoli soften within 10 minutes as the ricotta moisture migrates into the shell. Fill both ends of the shell generously so the filling emerges slightly from each end. Dip the exposed ricotta ends into crushed pistachios. Dust with icing sugar immediately before delivery to the table.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Cannoli shells can be batch-fried up to 5 days in advance and stored in an airtight container at room temperature. The ricotta filling keeps refrigerated for 48 hours. This means zero waste risk: unsold shells remain crispy indefinitely, and the filling is made every two days. Fill to order and you have a fast, profitable dessert with essentially no food waste.</div>
+  <div class="al"><span class="a">GLUTEN (pastry)</span><span class="a">DAIRY (ricotta)</span><span class="a">NUTS (pistachios)</span><span class="a">EGGS (pastry dough)</span></div>
+</div>
+</div>
+
+<!-- AFFOGATO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Affogato</div>
+  <div class="rh-sub">Double espresso poured over vanilla gelato, amaretti crumble · Sell: $8.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 90 seconds</span><span class="rm">☕ Dessert + Coffee</span><span class="rm">Target FC: 11%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Vanilla gelato (premium)</td><td>2 × 60g scoops</td><td class="cc">$0.60</td></tr>
+        <tr><td>Espresso (double shot)</td><td>60ml</td><td class="cc">$0.22</td></tr>
+        <tr><td>Amaretti biscuits (crushed)</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Optional: Amaretto liqueur</td><td>15ml</td><td class="cc">$0.35</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost (w/ Amaretto)</strong></td><td class="cc"><strong>$1.27</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.27</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$8.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>14.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$7.72</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Affogato is one of the great crossover items — simultaneously dessert and coffee. Its 90-second execution makes it the most labour-efficient item on your menu. The key is the gelato temperature: it must be pulled from the freezer (-18°C) but served at around -12°C (slightly softened). Too frozen and the espresso beads off; too soft and it melts immediately before the guest can experience the contrast.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Use a chilled glass (pre-chilled in freezer for 5 minutes) — a warm glass accelerates melting from the outside in. Scoop two rounds of gelato into the glass. The glass presentation allows the guest to see the dramatic pour of espresso hitting the ice cream, which creates tableside theatre.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Pull the double espresso at the exact moment of service — espresso begins oxidising immediately after extraction, losing its bright citric and caramellic compounds within 30 seconds. A stale espresso poured over gelato tastes flat and bitter. The espresso must arrive at the table while the crema is still intact and the extraction temperature is high enough to create the intended melt-contrast.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Pour the espresso tableside — present the glass of gelato and the shot in a small carafe or jug, and invite the guest to pour themselves (or pour confidently at the table). The interactive pour is part of the experience. The espresso begins melting the gelato edges immediately, creating a mocha-vanilla liquid at the base that the guest spoons through with each bite.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Offer an "upgraded" affogato with 15ml Amaretto for $2 extra — accept this adds $0.35 to cost but the additional $2 sell is pure margin. Train servers to suggest this automatically: "Would you like the Amaretto version? It's our chef's preferred way." The upgrade sell rate is typically 40–60% and adds $0.75–1.00 per dessert to your average dessert spend.</div>
+  <div class="al"><span class="a">DAIRY (gelato)</span><span class="a">GLUTEN (amaretti)</span><span class="a">NUTS (amaretti may contain almonds)</span></div>
+</div>
+</div>
+
+
+<h2><span class="sn2">4</span> Drinks Menu</h2>
+
+<div class="drinks-grid">
+
+<!-- APEROL SPRITZ -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">Aperol Spritz</div>
+    <div class="drink-price">$12.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">3 parts Prosecco · 2 parts Aperol · 1 part soda water · orange slice · olive</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>Prosecco (90ml)</td><td class="cc">$0.72</td></tr>
+    <tr><td>Aperol (60ml)</td><td class="cc">$0.90</td></tr>
+    <tr><td>Soda water + garnish</td><td class="cc">$0.10</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$1.72</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>13.2%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$11.27</span></div>
+  </div>
+</div>
+
+<!-- NEGRONI -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">Negroni</div>
+    <div class="drink-price">$14.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">Equal parts: Gin · Campari · Sweet Vermouth · orange peel</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>Gin (30ml)</td><td class="cc">$0.60</td></tr>
+    <tr><td>Campari (30ml)</td><td class="cc">$0.70</td></tr>
+    <tr><td>Sweet Vermouth (30ml)</td><td class="cc">$0.44</td></tr>
+    <tr><td>Orange peel + ice</td><td class="cc">$0.05</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$1.79</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>11.9%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$13.20</span></div>
+  </div>
+</div>
+
+<!-- HOUSE CHIANTI -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">House Chianti</div>
+    <div class="drink-price">$10.99 / glass</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">Tuscan Sangiovese · 180ml pour · earthy, cherry, medium tannins</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>Chianti (180ml pour from $14 bottle)</td><td class="cc">$2.10</td></tr>
+    <tr><td>Glassware overhead</td><td class="cc">$0.05</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$2.15</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>19.6%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$8.84</span></div>
+  </div>
+</div>
+
+<!-- LIMONCELLO -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">Limoncello</div>
+    <div class="drink-price">$7.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">House-infused limoncello · 45ml · serve frozen · post-dinner digestif</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>House limoncello (45ml, batch-made)</td><td class="cc">$0.65</td></tr>
+    <tr><td>Frozen glass overhead</td><td class="cc">$0.03</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$0.68</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>8.5%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$7.31</span></div>
+  </div>
+</div>
+
+<!-- SAN PELLEGRINO -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">San Pellegrino</div>
+    <div class="drink-price">$4.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">750ml bottle · sparkling mineral water · table water upsell</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>San Pellegrino 750ml bottle</td><td class="cc">$1.80</td></tr>
+    <tr><td>Lemon + glass</td><td class="cc">$0.08</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$1.88</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>37.7%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$3.11</span></div>
+  </div>
+</div>
+
+<!-- ESPRESSO -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">Espresso</div>
+    <div class="drink-price">$3.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">Single or double · Italian blend dark roast · traditional ceramic cup</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>Coffee beans (18g, $22/lb)</td><td class="cc">$0.87</td></tr>
+    <tr><td>Milk (for macchiato var.)</td><td class="cc">$0.06</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$0.93</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>23.3%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$3.06</span></div>
+  </div>
+</div>
+
+<!-- CAPPUCCINO -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">Cappuccino</div>
+    <div class="drink-price">$5.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">Double espresso · equal parts steamed milk · thick milk foam · 180ml</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>Espresso (double shot)</td><td class="cc">$0.87</td></tr>
+    <tr><td>Whole milk (120ml steamed)</td><td class="cc">$0.14</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$1.01</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>16.9%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$4.98</span></div>
+  </div>
+</div>
+
+<!-- BELLINI -->
+<div class="drink-card">
+  
+  <div class="drink-header">
+    <div class="drink-name">Bellini</div>
+    <div class="drink-price">$11.99</div>
+  </div>
+  <div style="font-size:11px;color:#555;margin-bottom:8px;">White peach purée · Prosecco · champagne flute · Harry's Bar Venice original</div>
+  <table class="it">
+    <tr><th>Component</th><th class="cc">Cost</th></tr>
+    <tr><td>White peach purée (60ml)</td><td class="cc">$0.48</td></tr>
+    <tr><td>Prosecco (120ml)</td><td class="cc">$0.96</td></tr>
+    <tr><td>Garnish</td><td class="cc">$0.05</td></tr>
+    <tr class="total-row"><td><strong>Total cost</strong></td><td class="cc"><strong>$1.49</strong></td></tr>
+  </table>
+  <div class="fc-box" style="margin-top:8px;">
+    <div class="fc-row"><span>Food cost %</span><span>12.4%</span></div>
+    <div class="fc-row"><span>Contribution margin</span><span>$10.50</span></div>
+  </div>
+</div>
+
+</div><!-- end drinks-grid -->
+
+
+<h2><span class="sn2">5</span> Kitchen Prep Flow — 7:00am to 3:00pm</h2>
+
+<div class="info-box"><strong>Staffing Model:</strong> Head Cook (opens, manages all batch-cooking and technique), Line Cook (pasta station, fry, plating support), Steward (dishwashing, prep support, mise-en-place). Target mise-en-place complete by 4:30pm for 5:00pm service open.</div>
+
+<table class="prep-table">
+  <tr>
+    <th style="width:16%">Time Block</th>
+    <th style="width:28%">Head Cook</th>
+    <th style="width:28%">Line Cook</th>
+    <th style="width:28%">Steward</th>
+  </tr>
+  <tr>
+    <td class="time-col">7:00–8:30am</td>
+    <td>Open kitchen. Check refrigeration temps. Pull veal shanks for osso buco — begin browning. Start Bolognese batch: soffritto in 2 large pans, add mince. Pull cacciatore batch into roasting trays.</td>
+    <td>Arrive 7:30. Proof pizza dough balls — pull from fridge, portion to 250g, rest covered on floured trays. Set pasta mixer — begin egg pasta dough for tagliatelle and tonnarelli (2kg flour batches).</td>
+    <td>Full kitchen sanitise. Stock check against prep list. Pull all dry goods. Wash and prep all vegetables: dice soffritto (3 batches), halve cherry tomatoes, prep rocket, pick basil (2 bunches).</td>
+  </tr>
+  <tr>
+    <td class="time-col">8:30–10:30am</td>
+    <td>Transfer osso buco to oven (150°C, covered). Add wine, stock, soffritto. Start zuppa di pomodoro — sweat onions 25 min. Blend previous day's risotto — portion arancini, bread, hold cold. Make Bolognese: add milk, tomato, reduce to lowest heat.</td>
+    <td>Roll and cut tagliatelle — hang to dry. Roll tonnarelli. Make gnocchi batch: bake potatoes, rice while hot, fold dough, portion 200g serves, refrigerate. Prepare cannoli shells — fry in batches, cool on wire rack, store airtight.</td>
+    <td>Prepare tiramisu batch (20 portions): make zabaglione, fold mascarpone, dip savoiardi, layer, refrigerate. Make panna cotta batch (16 portions): warm cream, add gelatin, pour into moulds, refrigerate. Wash all AM prep dishes.</td>
+  </tr>
+  <tr>
+    <td class="time-col">10:30am–12:30pm</td>
+    <td>Blend and strain zuppa di pomodoro — hold in bain-marie. Make arrabbiata sauce batch (covers 25 serves) — simmer 20 min. Prepare berry coulis. Check osso buco: should be tender. Taste and adjust all batch sauces. Begin risotto rice mise-en-place: portion shallots, measure arborio.</td>
+    <td>Prepare calamari — clean and ring-cut all squid, pat dry, portion 150g bags. Prep carpaccio tenderloin: wrap in cling film, freeze loin for slicing readiness. Dice guanciale — portion into 60g bags for carbonara. Portion all pasta dough.</td>
+    <td>Full vegetable prep: portion branzino — score and season 6 fish. Prep chicken thighs for cacciatore — sear skin down in large batches. Dice pancetta for Bolognese service portions. Prep garnish mise: gremolata, basil oil, chive bundles, chopped parsley.</td>
+  </tr>
+  <tr>
+    <td class="time-col">12:30–2:00pm</td>
+    <td>Full menu tasting walk — taste every sauce, adjust salt, acid, heat. Write 86 list for any shortfalls. Brief service team (2:30pm) on specials, allergen flags, any ingredient changes. Set up pass: warming plates, garnish rail, sauce ladles in order.</td>
+    <td>Set pasta station: hanging dried tagliatelle into service portions, portion gnocchi onto oiled trays. Fill cannoli piping bags. Check pizza dough — stretch-test one ball. Set up fry station: oil at 180°C, breading station for arancini and calamari.</td>
+    <td>Set all starters: arrange arancini on trays, portion burrata (room temp 30 min before service), pre-slice sourdough for bruschetta, set up carpaccio plates with rocket. Ensure all refrigeration at correct temps. Complete dish and surface sanitise.</td>
+  </tr>
+  <tr>
+    <td class="time-col">2:00–3:00pm</td>
+    <td>Kitchen handover brief with evening Head Cook (if different). Write detailed notes on batch statuses: how many osso buco, litres of soup, bolognese portions. Adjust par for slow/fast items. Personal break. Return for 4:30pm service setup.</td>
+    <td>Label and date all refrigerated items. Check all portion weights against standard cards. Stock service mise-en-place: olive oil bottles at each station, cheese grated and weighed, butter cubed for mantecatura. Confirm pizza dough count for evening.</td>
+    <td>Final clean sweep: fryer oil fresh for service, all prep surfaces sanitised, dish machine cleared and reset. Check smallwares: tongs, ladles, fish spatulas all cleaned and at stations. Set dessert station: portion tiramisù, un-mould panna cotta, keep on chilled trays.</td>
+  </tr>
+</table>
+
+
+<h2><span class="sn2">6</span> Service Training</h2>
+
+<div class="info-box"><strong>Training Philosophy:</strong> Every guest interaction is an opportunity to build loyalty. Italian hospitality (ospitalità) is warm, knowledgeable, and unhurried — the opposite of the transactional. Train your team to genuinely know the food, speak about it with pride, and guide guests toward dishes that will delight them. A server who says "the carbonara is my favourite" sells more carbonara than any marketing.</div>
+
+<h3>Script 1 — Welcome &amp; Seating</h3>
+<div class="script-box">
+  <span class="script-label">Server (within 60 seconds of seating):</span>
+  "Buonasera, welcome! I'm [Name] and I'll be looking after you tonight. Can I start you with still or sparkling water — we have San Pellegrino — and perhaps an aperitivo? Our Aperol Spritz and Bellini are both made to order and perfect for settling in."
+  <br><br>
+  <em>Wait naturally — don't rush to the menu. Allow 90 seconds for guests to settle before handing menus. Aperitivo ordering at arrival increases average spend by $10–14 per table.</em>
+</div>
+
+<h3>Script 2 — Introducing the Menu</h3>
+<div class="script-box">
+  <span class="script-label">Server (handing menus):</span>
+  "We make our pasta fresh daily — the carbonara, cacio e pepe, and tagliatelle Bolognese are all house-made this morning. Our osso buco has been braising since 7am and is typically the last to leave the kitchen each night. Is anyone celebrating or are there any dietary needs I should know about before you look through?"
+  <br><br>
+  <em>Mentioning specific dishes by name plants a seed. Asking about celebrations opens upsell opportunities (wine, dessert, birthday tiramisu). Asking about dietary needs early prevents awkward moments at ordering.</em>
+</div>
+
+<h3>Script 3 — Taking the Order (Upsell)</h3>
+<div class="script-box">
+  <span class="script-label">Server (after guests have decided):</span>
+  "Excellent choices. For the carbonara, would you like to hear about our wine pairing? We have a glass of Chianti that's a beautiful match with the guanciale. And for the table — would you like to start with the burrata while you wait? It's very popular and only takes a moment."
+  <br><br>
+  <em>Pair wine to the dish ordered, not generically. Offering a starter "to bridge the wait" for a slow dish (risotto, osso buco) increases starter attachment rate and prevents impatient guest complaints.</em>
+</div>
+
+<h3>Script 4 — Checking In During Mains</h3>
+<div class="script-box">
+  <span class="script-label">Server (2 minutes after mains arrive):</span>
+  "Is everything coming together well for you? The osso buco — don't forget the marrow inside the bone, that's the best part. There's a small spoon there — scoop it out and spread it on the bread."
+  <br><br>
+  <em>The marrow prompt is one of the most memorable moments in the meal. Guests who experience it become advocates. Never skip this for an osso buco table. It requires a two-second stop and zero extra effort.</em>
+</div>
+
+<h3>Script 5 — Dessert Offer</h3>
+<div class="script-box">
+  <span class="script-label">Server (clearing mains):</span>
+  "Can I tempt you with dessert? Our tiramisù is made in-house every morning — it's the real thing, no cream. And the affogato is our fastest — double espresso poured over vanilla gelato, done in 90 seconds and a beautiful way to finish. If you'd like, I can bring the dessert menu and give you a few minutes."
+  <br><br>
+  <em>Naming specific items outperforms "would you like to see the dessert menu?" by 30–40%. The affogato's speed argument ("90 seconds") reduces the #1 reason guests decline dessert: time pressure at the end of a meal.</em>
+</div>
+
+<h3>Table Timing Guide</h3>
+<table class="schedule-table">
+  <tr>
+    <th>Stage</th>
+    <th>Target Time</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td>Welcome → Aperitivo delivered</td>
+    <td>≤3 min</td>
+    <td>First impression window — critical for tone of visit</td>
+  </tr>
+  <tr>
+    <td>Menus → Order taken</td>
+    <td>8–12 min</td>
+    <td>Allow guests to read; don't rush. Check back at 8 min.</td>
+  </tr>
+  <tr>
+    <td>Order → Entrée arrives</td>
+    <td>≤10 min</td>
+    <td>Bruschetta and soup should arrive first; warn for arancini (8 min)</td>
+  </tr>
+  <tr>
+    <td>Entrée cleared → Mains arrive</td>
+    <td>≤5 min gap</td>
+    <td>No "dead time" between courses — keep guests' glasses topped</td>
+  </tr>
+  <tr>
+    <td>Risotto / Osso Buco — advise guests</td>
+    <td>22 min / 3hr batch</td>
+    <td>Flag wait time at ordering; prevent surprise and complaints</td>
+  </tr>
+  <tr>
+    <td>Mains cleared → Dessert offered</td>
+    <td>≤2 min</td>
+    <td>Offer immediately — every minute of dead time loses a dessert sale</td>
+  </tr>
+  <tr>
+    <td>Dessert → Bill requested</td>
+    <td>Guest-led</td>
+    <td>Never rush the bill. Check in at 8 min post-dessert.</td>
+  </tr>
+  <tr>
+    <td>Bill delivered → Table turned</td>
+    <td>≤8 min</td>
+    <td>Efficient close — clear, clean, reset for next booking</td>
+  </tr>
+</table>
+
+
+<h2><span class="sn2">7</span> Customer Retention — VIP Micro-Moments</h2>
+
+<div class="info-box"><strong>Retention Philosophy:</strong> Italian trattoria culture is built on regulars (habitués). The goal is not to acquire guests — it's to turn first visits into habits. Every micro-moment of genuine hospitality creates a guest who returns, brings friends, and speaks about the restaurant. These five moments cost nothing to execute but compound into loyalty.</div>
+
+<h3>VIP Micro-Moment 1 — The Name Game</h3>
+<div class="script-box">
+  From the second visit onward: use the guest's name. Train your host to match reservation names to faces and brief the server before service. "Welcome back, Mr. Santos — your usual table?" is worth more than any loyalty points program. Most restaurants never do it. You will stand out immediately.
+</div>
+
+<h3>VIP Micro-Moment 2 — The Chef's Gift</h3>
+<div class="script-box">
+  At the end of a first visit that felt special (celebrations, anniversaries, guests who engaged warmly with the food), send out a complimentary glass of house limoncello with a card: "From our kitchen — a little taste of Amalfi to end the evening." Cost: $0.68. Value: incalculable. The table will photograph it, post it, and return.
+</div>
+
+<h3>VIP Micro-Moment 3 — The Birthday Call</h3>
+<div class="script-box">
+  Collect birthdays at reservation. Three days before a guest's birthday, send a personalised text: "Buongiorno [Name], we're saving your favourite table for your birthday week — shall we book you in? We'll have something special waiting." The proactive outreach drives a confirmed booking and signals that you genuinely remember your guests as people.
+</div>
+
+<h3>VIP Micro-Moment 4 — The Pasta Lesson</h3>
+<div class="script-box">
+  Once a month, offer a Sunday morning "pasta-making morning" for 8 guests at $65pp — 2 hours with the head cook learning tagliatelle and cacio e pepe, then eating what they made with a glass of wine. This converts regulars into brand ambassadors, fills a typically quiet day with premium revenue ($520 for 3 hours kitchen time), and creates social content that guests share organically.
+</div>
+
+<h3>VIP Micro-Moment 5 — The Follow-Up Note</h3>
+<div class="script-box">
+  For tables celebrating occasions (anniversaries, birthdays, milestone dinners): send a handwritten postcard within 48 hours thanking them and mentioning something specific from their visit ("We hope the osso buco was everything you hoped for — it was a joy to cook for you"). A physical card, not email. 94% of people read physical mail. Almost no restaurants do this.
+</div>
+
+<h3>🏆 Best Social Post — Carbonara</h3>
+<div class="script-box">
+  <span class="script-label">Caption Copy:</span>
+  "No cream. No shortcuts. Just egg yolks, Pecorino, guanciale, and pasta water — exactly how Rome intended. Our Carbonara is made fresh, to order, every single time. There's a reason it's ordered at every second table. 🥚🍝 #Carbonara #ItalianFood #TrattoriaLife #MadeFromScratch #Pasta"
+  <br><br>
+  <strong>Shot guide:</strong> Video clip from behind the pass — close-up of the creamy sauce being tossed in the pan off-heat, the glossy egg-cheese emulsion coating the rigatoni in slow motion. No filter. Natural kitchen light. End frame: fork twirling into a perfect portion with a visible egg yolk gloss. Post Tuesday and Thursday 6–8pm (peak engagement for food content).
+  <br><br>
+  <strong>Story version:</strong> 3-frame sequence — raw guanciale → rendered and golden → finished carbonara in bowl. No text needed. The transformation is the content.
+</div>
+
+<h2><span class="sn2">8</span> Financial Forecast</h2>
+
+<div class="info-box"><strong>Model Assumptions:</strong> 40 seats · $46 average spend per cover · 2.5 turns per service · 6 services per week · 26 trading days per month. Food cost 22% of revenue. Labour based on 3-person kitchen + 2 front of house.</div>
+
+<table class="revenue-table">
+  <tr>
+    <th>Revenue &amp; Cost Category</th>
+    <th style="text-align:right">Daily</th>
+    <th style="text-align:right">Monthly (26 days)</th>
+    <th style="text-align:right">% Revenue</th>
+  </tr>
+  <tr>
+    <td>Gross Revenue</td>
+    <td style="text-align:right">$4,584</td>
+    <td style="text-align:right">$119,184</td>
+    <td style="text-align:right">100%</td>
+  </tr>
+  <tr>
+    <td>Food Cost (22%)</td>
+    <td style="text-align:right">($1,008)</td>
+    <td style="text-align:right">($26,220)</td>
+    <td style="text-align:right">22%</td>
+  </tr>
+  <tr>
+    <td>Labour Cost</td>
+    <td style="text-align:right">($877)</td>
+    <td style="text-align:right">($22,800)</td>
+    <td style="text-align:right">19.1%</td>
+  </tr>
+  <tr>
+    <td>Rent &amp; Utilities</td>
+    <td style="text-align:right">($327)</td>
+    <td style="text-align:right">($8,500)</td>
+    <td style="text-align:right">7.1%</td>
+  </tr>
+  <tr class="total-row">
+    <td>Total Operating Costs</td>
+    <td style="text-align:right">($2,212)</td>
+    <td style="text-align:right">($57,520)</td>
+    <td style="text-align:right">48.3%</td>
+  </tr>
+  <tr class="net-row">
+    <td>Net Profit</td>
+    <td style="text-align:right">$2,372</td>
+    <td style="text-align:right">$61,664</td>
+    <td style="text-align:right">51.7%</td>
+  </tr>
+</table>
+
+<h3>3-Month Revenue Ramp</h3>
+<table class="schedule-table">
+  <tr>
+    <th>Month</th>
+    <th>Capacity Utilisation</th>
+    <th>Est. Monthly Revenue</th>
+    <th>Est. Net Profit</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td><strong>Month 1</strong></td>
+    <td>55%</td>
+    <td>$65,551</td>
+    <td>~$13,500</td>
+    <td>Soft opening, word-of-mouth building, team speed optimisation</td>
+  </tr>
+  <tr>
+    <td><strong>Month 2</strong></td>
+    <td>75%</td>
+    <td>$89,388</td>
+    <td>~$31,000</td>
+    <td>Local press, social traction, regulars forming, pasta lunches launching</td>
+  </tr>
+  <tr>
+    <td><strong>Month 3</strong></td>
+    <td>100%</td>
+    <td>$119,184</td>
+    <td>~$61,664</td>
+    <td>Full capacity, wait lists on weekends, loyalty program active</td>
+  </tr>
+</table>
+
+<div class="info-box" style="margin-top:18px;"><strong>Key Profit Levers:</strong>
+<ul style="margin-left:16px;margin-top:6px;font-size:11.5px;line-height:2;">
+  <li><strong>Aperitivo attachment rate</strong> — Each Aperol Spritz or Negroni sold adds ~$11–13 contribution margin. Target 60% of tables ordering an aperitivo.</li>
+  <li><strong>Dessert attachment rate</strong> — Each dessert adds $7–9 CM. Target 40% attachment. The affogato's 90-second execution removes the "no time" objection.</li>
+  <li><strong>Wine by the glass</strong> — Every Chianti glass sold at $10.99 costs $2.15. The biggest revenue multiplier per table is wine — push training to recommend one specific pairing per main dish.</li>
+  <li><strong>Osso Buco and Branzino</strong> — Your two highest sell prices ($34.99 / $29.99) with strong margin. Train servers to mention these proactively at every table.</li>
+  <li><strong>Limoncello close</strong> — The digestif habit in Italian culture is strong. A $7.99 limoncello sold to one person per table adds $460/month at 60 tables per week.</li>
+</ul>
+</div>
+
+
+<div class="ft">
+  <span>Italian Trattoria · Profitable Restaurant Operations Guide · v5.0</span>
+  <span>Recipes serve 1 unless stated · US wholesale pricing 2025 · For internal kitchen use only</span>
+  <span>© 2025 Restaurant Operations Series</span>
+</div>
+
+</div><!-- end .page -->
+</body>
+</html>

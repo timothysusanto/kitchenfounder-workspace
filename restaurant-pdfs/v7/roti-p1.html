@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caribbean Roti Shop — KitchenFounder Operations Guide v7</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Georgia', serif; background: #FAFAF8; color: #1C1C1C; font-size: 13px; line-height: 1.7; }
+.container { max-width: 900px; margin: 0 auto; padding: 40px 40px 60px; }
+
+/* COVER */
+.cover {
+  background: linear-gradient(160deg, #0A2240 0%, #1A4A2A 45%, #8B1A1A 100%);
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 60px 50px;
+  position: relative; overflow: hidden;
+  page-break-after: always;
+}
+.cover::before {
+  content: 'ROTI';
+  position: absolute; font-size: 280px; font-weight: 900;
+  color: rgba(255,200,0,0.05); letter-spacing: -8px;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+/* TT flag stripes */
+.cover-flag {
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg, #CE1126 40%, #000 40%, #000 43%, #FFF 43%, #FFF 57%, #000 57%, #000 60%, #CE1126 60%);
+  margin-bottom: 36px; border-radius: 2px;
+}
+.cover-brand { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #FFD700; margin-bottom: 22px; }
+.cover-title { font-size: 52px; color: #FAFAF8; font-weight: normal; letter-spacing: 2px; margin-bottom: 8px; }
+.cover-subtitle-tt { font-size: 18px; color: rgba(250,250,248,0.5); letter-spacing: 2px; margin-bottom: 6px; }
+.cover-subtitle { font-size: 12px; color: rgba(250,250,248,0.35); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
+.cover-divider { width: 180px; height: 1px; background: linear-gradient(90deg, transparent, #CE1126, #FFD700, #CE1126, transparent); margin: 0 auto 40px; }
+.kpi-strip { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
+.kpi { text-align: center; padding: 14px 20px; border: 1px solid rgba(206,17,38,0.40); background: rgba(206,17,38,0.08); border-radius: 4px; min-width: 105px; }
+.kpi-val { font-size: 22px; color: #FFD700; font-weight: bold; }
+.kpi-lbl { font-size: 9px; color: rgba(250,250,248,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+.cover-includes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 540px; margin: 0 auto 36px; }
+.inc { font-size: 11px; color: rgba(250,250,248,0.7); padding: 8px 14px; border-left: 2px solid #CE1126; background: rgba(206,17,38,0.06); text-align: left; }
+.cover-price { font-size: 36px; color: #FAFAF8; font-weight: bold; margin-bottom: 6px; }
+.cover-price-note { font-size: 10px; color: rgba(250,250,248,0.35); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; }
+.cover-footer { font-size: 10px; color: rgba(250,250,248,0.3); letter-spacing: 2px; text-transform: uppercase; }
+
+/* BODY */
+h2 { font-size: 22px; font-weight: normal; color: #1A3A1A; border-bottom: 2px solid #CE1126; padding-bottom: 10px; margin: 48px 0 20px; letter-spacing: 1px; }
+.sn2 { display: inline-block; background: #CE1126; color: #fff; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; font-size: 13px; margin-right: 10px; }
+.info-box { background: #FFF9EC; border-left: 4px solid #FFD700; padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; font-size: 12.5px; line-height: 1.7; }
+
+/* RECIPE CARDS */
+.recipe { border: 1px solid #E8E0D4; border-radius: 8px; margin: 28px 0; overflow: hidden; page-break-inside: avoid; }
+.rh { background: linear-gradient(135deg, #0A2240, #1A4A2A); padding: 18px 22px; }
+.rh-title { font-size: 16px; color: #FAFAF8; font-weight: bold; margin-bottom: 4px; }
+.rh-sub { font-size: 11px; color: rgba(250,250,248,0.65); letter-spacing: 0.5px; margin-bottom: 8px; }
+.rh-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 9px; background: rgba(206,17,38,0.55); color: #FAFAF8; padding: 3px 8px; border-radius: 12px; letter-spacing: 0.5px; }
+.rb { padding: 20px 22px; }
+.two-col { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; margin-bottom: 18px; }
+h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #CE1126; margin-bottom: 10px; }
+.it { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+.it th { background: #F0EDE4; padding: 6px 10px; text-align: left; font-weight: bold; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.it td { padding: 5px 10px; border-bottom: 1px solid #EEE8DC; }
+.it tr:last-child td { border-bottom: none; }
+.fc-box { background: #FFF9EC; border: 1px solid #F0E4CC; border-radius: 6px; padding: 12px 14px; margin-bottom: 14px; }
+.fc-row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px; }
+.fc-row:last-child { margin-bottom: 0; font-weight: bold; }
+.fc-val { font-weight: bold; color: #CE1126; }
+.al { display: flex; flex-wrap: wrap; gap: 4px; }
+.a { font-size: 9px; background: #FFE8E8; color: #CE1126; padding: 2px 7px; border-radius: 10px; font-weight: bold; }
+.step { display: flex; gap: 12px; margin-bottom: 12px; }
+.sn { background: #CE1126; color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+.st { font-size: 12.5px; line-height: 1.75; flex: 1; }
+.temp { background: #FFE8E8; color: #CE1126; padding: 1px 6px; border-radius: 4px; font-weight: bold; font-size: 11px; }
+.tb { background: #FFF9EC; border-radius: 6px; padding: 12px 14px; font-size: 11.5px; line-height: 1.7; margin-top: 14px; border-left: 3px solid #FFD700; }
+.flavour-note { background: #F4F8F0; border-radius: 6px; padding: 12px 14px; font-size: 11.5px; font-style: italic; line-height: 1.75; margin-top: 10px; color: #1A3A1A; border-left: 3px solid #1A4A2A; }
+
+/* STATION GRID */
+.station-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.station-card { background: #FAFAF8; border: 1px solid #E8E0D4; border-radius: 6px; padding: 16px 18px; page-break-inside: avoid; }
+.station-card h4 { margin-bottom: 10px; }
+.station-card ul { padding-left: 16px; font-size: 12px; line-height: 1.7; }
+.equip-tag { display: block; margin-top: 10px; font-size: 10px; color: #CE1126; font-weight: bold; }
+
+/* KITCHEN LAYOUT */
+.kitchen-layout { background: #1C1C1C; color: #E8E0D0; font-family: 'Courier New', monospace; font-size: 10.5px; line-height: 1.5; padding: 24px; border-radius: 8px; margin: 20px 0; overflow-x: auto; white-space: pre; }
+
+/* SCRIPTS */
+.script-box { background: #FFF9EC; border: 1px solid #E8D8B0; border-radius: 6px; padding: 18px 20px; margin: 16px 0; page-break-inside: avoid; }
+.script-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #CE1126; font-weight: bold; margin-bottom: 10px; }
+.script-text { font-size: 12.5px; line-height: 1.75; font-style: italic; color: #1A2A1A; margin-bottom: 10px; }
+.script-why { font-size: 11px; color: #666; border-top: 1px solid #E8D8B0; padding-top: 8px; }
+
+/* TABLES */
+.prep-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 16px 0; }
+.prep-table th { background: #0A2240; color: #FAFAF8; padding: 8px 12px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.prep-table td { padding: 8px 12px; border-bottom: 1px solid #EEE8DC; vertical-align: top; }
+.prep-table tr:nth-child(even) td { background: #FAFAF8; }
+.total-row td { background: #F0EDE4 !important; font-weight: bold; }
+.net-row td { background: #FFE8E8 !important; font-weight: bold; color: #CE1126; }
+.rev-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 16px 0; }
+.rev-table th { background: #0A2240; color: #FAFAF8; padding: 8px 12px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.rev-table td { padding: 8px 12px; border-bottom: 1px solid #EEE8DC; }
+.rev-table tr:nth-child(even) td { background: #FAFAF8; }
+.rev-table .total-row td { background: #F0EDE4 !important; font-weight: bold; }
+.rev-table .net-row td { background: #FFE8E8 !important; font-weight: bold; color: #CE1126; }
+
+/* LENS */
+.lens-card { background: #0A2240; color: #FAFAF8; border-radius: 8px; padding: 36px 40px; margin: 28px 0; page-break-inside: avoid; }
+.lens-title { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; margin-bottom: 24px; }
+.lens-text p { font-size: 13px; line-height: 1.85; margin-bottom: 16px; color: rgba(250,250,248,0.88); }
+.lens-closer { font-size: 12px; color: #FFD700; font-style: italic; border-top: 1px solid rgba(250,250,248,0.15); padding-top: 16px; margin-top: 8px; }
+
+footer { text-align: center; margin-top: 60px; padding-top: 24px; border-top: 1px solid #E8E0D4; font-size: 10px; color: #999; letter-spacing: 1px; line-height: 2; }
+
+@media print {
+  .cover { page-break-after: always; min-height: 100vh; }
+  .recipe { page-break-inside: avoid; }
+  .station-card { page-break-inside: avoid; }
+  .script-box { page-break-inside: avoid; }
+  .lens-card { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-brand">KitchenFounder · Restaurant Operations Guide · v7 · Guide #29</div>
+  <div class="cover-flag"></div>
+  <div class="cover-title">Caribbean Roti Shop</div>
+  <div class="cover-subtitle-tt">Trinidad · Guyana · Barbados · Jamaica</div>
+  <div class="cover-subtitle">Complete Restaurant Operations Guide · US Market 2025</div>
+  <div class="cover-divider"></div>
+  <div class="kpi-strip">
+    <div class="kpi"><div class="kpi-val">$986K</div><div class="kpi-lbl">Year 1 Revenue</div></div>
+    <div class="kpi"><div class="kpi-val">38%</div><div class="kpi-lbl">Net Margin Y2</div></div>
+    <div class="kpi"><div class="kpi-val">$375K</div><div class="kpi-lbl">Net Profit Y2</div></div>
+    <div class="kpi"><div class="kpi-val">28</div><div class="kpi-lbl">Recipes</div></div>
+  </div>
+  <div class="cover-includes">
+    <div class="inc">🌶 Pepper Bible — Scotch Bonnet & Wiri Wiri</div>
+    <div class="inc">🫓 6 Starters incl. Doubles & Pholourie</div>
+    <div class="inc">🍖 10 Mains — Curry to Jerk</div>
+    <div class="inc">🍮 4 Desserts — Rum Cake to Sorrel Jelly</div>
+    <div class="inc">🥃 8 Drinks — Full Rum Programme</div>
+    <div class="inc">🏗 Kitchen Layout — Tawa & Roti Station</div>
+    <div class="inc">📋 7-Day Prep Schedule</div>
+    <div class="inc">💰 Full P&L + Staff Forecast</div>
+  </div>
+  <div class="cover-price">US $29.99</div>
+  <div class="cover-price-note">Instant digital download · Print-ready PDF · US Market 2025</div>
+  <div class="cover-footer">kitchenfounder · kitchen-founder.myshopify.com · @kitchenfounder</div>
+</div>
+
+<div class="container">
+
+<!-- PEPPER & ROTI BIBLE -->
+<h2><span class="sn2">0</span>The Caribbean Pantry Bible — Pepper, Roti & the Soul of the Islands</h2>
+
+<div class="info-box"><strong>What is a roti shop?</strong> The roti shop is the Caribbean equivalent of the French brasserie — a casual, high-turnover, deeply loved neighbourhood institution where the food is honest, the portions are generous, and the price is always right. Born in Trinidad from the Indian indentured labourers brought to the island after emancipation in 1838, the roti shop fuses Indian flatbread tradition (the roti, the dhal puri, the paratha) with Caribbean stew cooking, Creole spice traditions, and local ingredients like callaloo, breadfruit, plantain, and scotch bonnet pepper. The result is one of the most joyful, complex, and deeply misunderstood cuisines in the world.</div>
+
+<div class="info-box"><strong>The Scotch Bonnet & Wiri Wiri Bible — heat with flavour:</strong><br><br>
+<strong>Scotch Bonnet (Capsicum chinense):</strong> The defining pepper of the Caribbean. Named for its resemblance to a Scottish bonnet hat. Heat level: 100,000–350,000 Scoville units (10–20× hotter than a jalapeño). But the heat is only half the story: the scotch bonnet has a distinctly fruity, floral, almost tropical aroma when raw that is completely lost if the pepper is cooked in too early or at too high a temperature. The professional technique: add scotch bonnet whole to stews and remove before serving — the heat infuses into the sauce without the full searing intensity. For guests who want maximum heat: slice and serve as a garnish tableside. For maximum flavour extraction: toast a whole pepper directly on a gas flame until charred, then add to the stew.<br><br>
+<strong>Wiri Wiri (Capsicum frutescens):</strong> Specifically Guyanese. A small, round, red pepper with a more complex, almost berry-like flavour profile underneath intense heat. Essential for authentic Guyanese pepper pot. Less available in US markets than scotch bonnet — source from Caribbean specialty suppliers or grow from seed (they fruit prolifically in containers).<br><br>
+<strong>Shadow beni (Eryngium foetidum):</strong> Also called culantro or long coriander. The Caribbean's most important herb — used in everything from doubles to stewed chicken to rum punch. It looks like a serrated flat leaf and smells like an intense, slightly more earthy version of coriander. Not interchangeable with coriander — the flavour is deeper and more pungent. Source from Caribbean or Latin grocery stores; grows readily in warm climates.<br><br>
+<strong>Green seasoning (the foundational Trinidadian marinade):</strong> Blend shadow beni, coriander, chive/green onion, pimento peppers (or mild sweet peppers), garlic, and thyme with a small amount of water or oil. This is the base marinade for virtually every protein dish in the roti shop — chicken, goat, beef, shrimp. Makes 1L batches. Store refrigerated up to 5 days. The green seasoning is what makes Caribbean chicken taste Caribbean rather than merely spiced chicken.<br><br>
+<strong>Geera (whole cumin):</strong> The most important spice in Trinidadian cooking. Dry-toasted whole until fragrant, then ground fresh. Used in curry goat, curried channa (chickpea), and dhalpuri filling. Pre-ground cumin is an inferior substitute — the volatile oils in whole cumin toast differently and produce a deeper, more complex flavour.<br><br>
+<strong>Amchar masala:</strong> A Trinidadian spice blend specifically for mango and fruit-based chutneys. Contains roasted cumin, fennel, mustard seed, and fenugreek. Essential for the green mango chutney served with doubles.<br><br>
+<strong>Coconut milk (fresh or canned):</strong> Used in rundown fish, rice and peas, and many desserts. Fresh coconut milk (blended fresh coconut flesh + water, strained) produces a significantly richer, more flavourful result than canned for cooking applications that require the coconut flavour to be prominent.
+</div>

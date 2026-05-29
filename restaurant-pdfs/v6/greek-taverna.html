@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greek Taverna — Profitable Restaurant Operations Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e8e8;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;background:#111111;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#e8e8e8;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#4d79ff;margin:22px 0 11px;border-bottom:2px solid rgba(77,121,255,0.3);padding-bottom:5px;}
+h3{font-size:15px;font-weight:700;color:#e8e8e8;margin:16px 0 8px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d79ff;margin:10px 0 5px;}
+a{color:#4d79ff;}
+.cover{text-align:center;padding:32px 0 24px;border-left:4px solid #4d79ff;border-bottom:1px solid rgba(77,121,255,0.3);padding-left:24px;}
+.cover-line{width:60px;height:3px;background:#4d79ff;margin:16px auto;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#161616;border:1px solid #4d79ff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;color:#ffd700;font-family:'DM Mono',monospace;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-top:2px;}
+.info-box{background:#151520;border-left:4px solid rgba(77,121,255,0.5);padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;color:#ccc;}
+.recipe{border:1px solid #222;border-radius:8px;margin-bottom:24px;overflow:hidden;}
+.rh{background:#0a0a1e;padding:14px 16px;}
+.rh-title{font-size:17px;font-weight:700;font-family:'Space Grotesk',sans-serif;color:#4d79ff;}
+.rh-sub{font-size:10px;color:#aaa;margin-top:3px;}
+.rh-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.rm{background:rgba(77,121,255,0.15);border:1px solid rgba(77,121,255,0.3);border-radius:10px;padding:2px 9px;font-size:9px;color:#4d79ff;font-weight:600;}
+.rb{padding:16px 18px;background:#111111;}
+.recipe-color-block{width:100%;height:90px;background:linear-gradient(135deg,#4d79ff,#0a0a0a);margin-bottom:14px;border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block-inner{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:3px;text-transform:uppercase;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11px;}
+.it th{background:#4d79ff;color:#000;padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.it td{padding:5px 10px;border-bottom:1px solid #1e1e1e;color:#ccc;}
+.cc{text-align:right;}
+.it tr.total-row td{font-weight:700;background:#161616;border-top:1px solid #4d79ff;color:#e8e8e8;}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.sn{background:#4d79ff;color:#fff;border-radius:50%;width:24px;height:24px;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;font-family:'DM Mono',monospace;}
+.sn2{background:#4d79ff;color:#fff;border-radius:50%;width:27px;height:27px;min-width:27px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:9px;font-family:'DM Mono',monospace;}
+.st{font-size:12px;line-height:1.75;color:#ccc;}
+.temp{background:#1a1a2e;color:#4d79ff;border:1px solid #4d79ff;border-radius:3px;padding:1px 7px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;}
+.temp.ok{background:#0a1e0a;color:#4dff88;border-color:#4dff88;}
+.tb{background:#0d0d1a;border-left:3px solid rgba(77,121,255,0.4);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:11.5px;color:#bbb;}
+.fc-box{background:#0a0a1a;border-radius:6px;padding:12px 16px;margin-top:12px;border:1px solid #4d79ff;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #1a1a2e;font-size:12px;color:#ccc;}
+.fc-row:last-child{border-bottom:none;font-weight:700;color:#e8e8e8;font-size:13px;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.a{background:#1a1a1a;border:1px solid #333;color:#888;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+.drink-card{border:1px solid #1e1e1e;border-radius:8px;padding:14px 16px;margin-bottom:14px;background:#111;}
+.drink-color-block{width:100%;height:70px;border-radius:6px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4d79ff,#0a0a0a);}
+.drink-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.drink-name{font-size:14px;font-weight:700;color:#e8e8e8;font-family:'Space Grotesk',sans-serif;}
+.drink-price{background:#0a0a1a;color:#ffd700;border:1px solid #4d79ff;border-radius:10px;padding:3px 11px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;}
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#4d79ff;color:#000;padding:8px 12px;text-align:left;font-size:10px;font-weight:700;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid #1a1a1a;vertical-align:top;color:#ccc;}
+.prep-table tr:nth-child(even) td{background:#0d0d0d;}
+.prep-table .time-col{font-weight:700;color:#4d79ff;white-space:nowrap;font-family:'DM Mono',monospace;}
+.script-box{background:#0a0a14;border-left:3px solid #4d79ff;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;color:#ccc;}
+.script-label{font-weight:700;font-size:10px;color:#4d79ff;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;font-family:'DM Mono',monospace;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#4d79ff;color:#000;padding:7px 10px;text-align:left;font-size:10px;font-weight:700;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid #1a1a1a;color:#ccc;}
+.schedule-table tr:nth-child(even) td{background:#0d0d0d;}
+.rev-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.rev-table th{background:#4d79ff;color:#000;padding:9px 12px;text-align:left;font-weight:700;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #1a1a1a;color:#ccc;}
+.rev-table .total-row td{font-weight:700;background:#161616;color:#e8e8e8;}
+.rev-table .net-row td{font-weight:700;color:#ffd700;background:#0a0a1e;}
+.ft{margin-top:28px;padding-top:14px;border-top:1px solid #222;display:flex;justify-content:space-between;font-size:9px;color:#555;letter-spacing:1px;font-family:'DM Mono',monospace;}
+.drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.safety-badge{background:#0a1e0a;color:#4dff88;border:1px solid #4dff88;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;}
+.lens-card{background:#0d0d1a;border:1px solid #1e1e2e;border-left:4px solid #4d79ff;border-radius:8px;padding:28px 32px;margin:20px 0;}
+.lens-title{font-family:'DM Mono',monospace;font-size:11px;color:#4d79ff;font-weight:500;margin-bottom:14px;letter-spacing:1px;}
+.lens-body{font-size:13px;line-height:1.85;color:#ccc;}
+.lens-closer{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#4d79ff;margin-top:20px;padding-top:16px;border-top:1px solid rgba(77,121,255,0.2);}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#4d79ff;margin-bottom:12px;font-family:'DM Mono',monospace;">ΕΛΛΗΝΙΚΗ ΚΟΥΖΙΝΑ · Operations Guide</div>
+  <h1>Greek Taverna</h1>
+  <div class="cover-line"></div>
+  <div style="font-size:16px;color:#999;font-style:italic;margin-top:8px;">Mezedes Hour &amp; Lunch Service — 11:00am to 3:00pm</div>
+  <div style="font-size:13px;color:#777;margin-top:8px;">Full Recipe Cards · US Market Food Costing · Kitchen Prep Flow · Financial Forecast</div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:#4d79ff;letter-spacing:3px;margin-top:12px;font-weight:600;">ΦΙΛΟΞΕΝΙa · PHILOXENIA</div>
+  <div style="margin-top:20px;font-size:11px;color:#888;">The philosophy of the Greek table: food is not ordered — it is offered. Dishes arrive in waves. The table should never be empty. Olive oil, lemon, and salt are not condiments — they are the cuisine.</div>
+</div>
+
+<!-- KPIs -->
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">42</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">$44</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$27,000</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+</div>
+
+<div class="info-box"><strong>About This Guide:</strong> Greek meze is one of the most commercially intelligent formats — sharing plates, high margin dips, batch-friendly prep, olive oil-forward cuisine with strong US appeal driven by the Mediterranean diet movement. The taverna format rewards operators who understand the rhythm of the Greek table: cold meze arrive first, hot dishes follow in waves, the table is never empty. This guide covers the essential Greek taverna repertoire — from tzatziki to slow-roasted lamb shoulder — with complete recipe cards, US 2025 market costing, kitchen prep flow, and the business fundamentals to run a profitable 42-seat mezedes operation.</div>
+
+<!-- CHEF'S LENS -->
+<div class="lens-card">
+  <div class="lens-title">// What a Michelin-trained chef sees in Greek cooking</div>
+  <div class="lens-body">Greek cuisine is built on a philosophy that Western fine dining spent decades trying to rediscover: that great ingredients, treated with restraint, produce better food than complex technique applied to mediocre produce. Horiatiki — the village salad — is tomato, cucumber, feta, olive oil, oregano. No dressing beyond the oil. No lettuce. The feta is a block, not crumbled, because the Greeks understood that texture is part of the dish. The olive oil is poured generously because in Greek cooking, olive oil is not a condiment. It is the cuisine. The cold meze advantage is real: tzatziki, taramosalata and hummus all improve after 24 hours in the fridge. Your prep is done the night before. Your morning is calm.</div>
+</div>
+
+<div class="lens-card">
+  <div class="lens-title">// What this guide does</div>
+  <div class="lens-body">Philoxenia — the Greek tradition of radical hospitality — is not a marketing strategy. It is an operational system. The complimentary welcome drink, the table that is never empty, the meze that arrives in waves without being ordered: these are the mechanics of a format that consistently generates 30–40% higher per-table spends than single-plate dining. When readers reach the financial model, the response is always the same: the margins are better than expected.</div>
+  <div class="lens-closer">This guide is why.</div>
+</div>
+
+<!-- SECTION 1: ENTRÉES -->
+<h2><span class="sn2">1</span> Entrées</h2>
+
+<!-- ENTRÉE 1: TZATZIKI & PITA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Tzatziki &amp; Pita</div>
+  <div class="rh-sub">Greek yoghurt, cucumber, garlic, dill, extra virgin olive oil · Sell: $8.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 4 min</span><span class="rm">🫙 Entrée</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="recipe-color-block"><div class="recipe-color-block-inner">tzatziki · pita</div></div>
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Greek yoghurt (strained)</td><td>120g</td><td class="cc">$0.48</td></tr>
+        <tr><td>Cucumber (grated, salted, drained)</td><td>60g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Garlic cloves (minced)</td><td>2 cloves</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fresh dill</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>15ml</td><td class="cc">$0.24</td></tr>
+        <tr><td>Lemon juice</td><td>10ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Warm pita bread (2 pieces)</td><td>2 × 60g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.25</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.25</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$8.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">13.9% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$7.74</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">The foundation of tzatziki is properly drained yoghurt. Use full-fat Greek yoghurt (strained) — the higher fat content produces a richer, creamier base. If your yoghurt is not thick enough, strain overnight in cheesecloth. A watery tzatziki is a failed tzatziki regardless of other flavours. The texture should be thick enough to hold a spoon upright.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Grate cucumber on the large holes of a box grater. Salt generously and let sit 10 minutes, then squeeze aggressively in a clean kitchen towel — you want to remove 60–70% of the moisture. Undrained cucumber is the most common tzatziki error: it releases water into the yoghurt within minutes, turning a thick dip into a watery soup by the time it reaches the table.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Combine yoghurt, drained cucumber, minced garlic, fresh dill, lemon juice, and half the olive oil. Fold gently — do not whip. Season with salt. Make this at least 2 hours before service, ideally the day before. The resting time allows the garlic and dill flavours to fully infuse the yoghurt. Fresh tzatziki is good; overnight tzatziki is excellent.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve in a shallow bowl or on a small plate. Make a shallow well with the back of a spoon and pour the remaining olive oil into the well — this presentation is traditional and keeps the oil visible and fresh. Garnish with a sprig of fresh dill and a dusting of dried oregano. Warm pita is essential: cold or stale pita is a false economy that undermines the entire experience.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Tzatziki is your highest-volume cold meze. Make a large batch daily — it holds perfectly for 3 days refrigerated. The day-two and day-three tzatziki is actually better than day-one as the garlic mellows and the flavours integrate. This is your most profitable dish: $1.25 cost on an $8.99 sell. Every table will order it. Never run out.</div>
+  <div class="al"><span class="a">DAIRY (yoghurt)</span><span class="a">GLUTEN (pita)</span></div>
+</div>
+</div>
+
+<!-- ENTRÉE 2: TARAMOSALATA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Taramosalata</div>
+  <div class="rh-sub">Fish roe dip, lemon, olive oil, soaked bread · Sell: $9.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🐟 Entrée</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="recipe-color-block"><div class="recipe-color-block-inner">taramosalata</div></div>
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Tarama (carp roe paste)</td><td>40g</td><td class="cc">$0.90</td></tr>
+        <tr><td>Day-old white bread (crusts off)</td><td>50g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>60ml</td><td class="cc">$0.96</td></tr>
+        <tr><td>Fresh lemon juice</td><td>30ml</td><td class="cc">$0.15</td></tr>
+        <tr><td>Small onion (grated)</td><td>20g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Warm pita (accompaniment)</td><td>2 × 60g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.41</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$2.41</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$9.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">24.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$7.58</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Soak white bread (crustless) in cold water for 5 minutes. Squeeze out excess moisture completely — the bread acts as an emulsifying base. The bread's starch absorbs the oil during blending and creates the creamy, smooth texture of authentic taramosalata. Without bread, the dip separates into an oily, grainy mess.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">In a food processor, blend tarama and grated onion until combined. Add squeezed bread and pulse. Begin adding olive oil in a slow, steady stream — exactly as you would make mayonnaise. The emulsification requires patience: add oil too fast and the mixture breaks. Too slow and it over-emulsifies into a paste. A slow, steady pour over 2 minutes produces the ideal silky consistency.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Alternate between olive oil and lemon juice — a tablespoon of each at a time — adjusting balance as you go. Taste constantly. Authentic taramosalata should be briny, rich, lemony, and slightly sharp from the raw onion. It should never taste overwhelmingly fishy or overly oily. The bread absorbs excess oil and moderates the flavour intensity.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve chilled in a shallow bowl with olive oil drizzled across the top and a black olive garnish. Taramosalata holds refrigerated for 4 days. Like tzatziki, it improves overnight as flavours meld. The onion sharpness mellows beautifully after 12 hours. Make daily, serve the day-old version — it is superior to fresh.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Source your tarama from a Greek or Middle Eastern specialty supplier. The best tarama is pale pink — heavily dyed bright-red product is inferior quality with artificial colouring. White tarama is smoked cod roe and has a more delicate flavour than pink carp roe; both are correct. Keep tarama refrigerated and use within 4 days of opening.</div>
+  <div class="al"><span class="a">FISH (roe)</span><span class="a">GLUTEN (bread, pita)</span></div>
+</div>
+</div>

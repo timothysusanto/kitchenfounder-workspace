@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>Spanish Tapas Bar — Complete Operations Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 1200px;
+      overflow: hidden;
+      background: #FAFAF8;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .cover {
+      width: 1200px;
+      height: 1200px;
+      background: #FAFAF8;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* FLAG BARS */
+    .flag-bar { width: 100%; display: flex; flex-shrink: 0; }
+    .flag-bar .stripe-red  { background: #c60b1e; flex: 1; height: 24px; }
+    .flag-bar .stripe-gold { background: #f1bf00; flex: 2; height: 24px; }
+
+    /* MAIN CONTENT */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 56px 80px 52px;
+      position: relative;
+    }
+
+    /* CSS WINE GLASS MOTIF (right) */
+    .motif-container {
+      position: absolute;
+      right: 68px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    .wine-glass { width: 80px; display: flex; flex-direction: column; align-items: center; }
+    .glass-bowl {
+      width: 70px; height: 80px;
+      border: 3px solid #C41E3A;
+      border-radius: 0 0 40px 40px;
+      border-top: none;
+      position: relative;
+    }
+    .glass-bowl::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -3px; right: -3px; height: 24px;
+      border: 3px solid #C41E3A;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+    .glass-liquid {
+      position: absolute;
+      bottom: 0; left: 3px; right: 3px; height: 44px;
+      background: #C41E3A;
+      border-radius: 0 0 36px 36px;
+      opacity: 0.6;
+    }
+    .glass-stem { width: 4px; height: 60px; background: #C41E3A; }
+    .glass-base { width: 54px; height: 6px; background: #C41E3A; border-radius: 3px; }
+
+    /* CSS FLAMENCO FAN MOTIF (left) */
+    .fan-container {
+      position: absolute;
+      left: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.065;
+      pointer-events: none;
+    }
+    .fan { width: 90px; height: 90px; position: relative; }
+    .fan-spoke {
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 3px; height: 72px;
+      background: #C41E3A;
+      transform-origin: bottom center;
+      border-radius: 2px 2px 0 0;
+    }
+    .fan-arc {
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 80px; height: 80px;
+      border: 3px solid #C41E3A;
+      border-radius: 80px 80px 0 0;
+      transform: translateX(-50%);
+      border-bottom: none;
+    }
+
+    /* CORNER MARKS */
+    .corner-mark { position: absolute; width: 20px; height: 20px; }
+    .corner-mark.tl { top: 80px; left: 80px; border-top: 1.5px solid #C41E3A; border-left: 1.5px solid #C41E3A; opacity: 0.22; }
+    .corner-mark.tr { top: 80px; right: 80px; border-top: 1.5px solid #C41E3A; border-right: 1.5px solid #C41E3A; opacity: 0.22; }
+    .corner-mark.bl { bottom: 80px; left: 80px; border-bottom: 1.5px solid #C41E3A; border-left: 1.5px solid #C41E3A; opacity: 0.22; }
+    .corner-mark.br { bottom: 80px; right: 80px; border-bottom: 1.5px solid #C41E3A; border-right: 1.5px solid #C41E3A; opacity: 0.22; }
+
+    /* EYEBROW */
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C41E3A;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    /* TITLE BLOCK */
+    .title-block { text-align: center; width: 100%; }
+    .title-line {
+      display: block;
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-weight: 900;
+      color: #1C1C1C;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+    }
+    .title-spanish { font-size: 116px; }
+    .title-tapas   { font-size: 116px; margin-top: -8px; }
+
+    .subtitle {
+      margin-top: 22px;
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: #555;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* DIVIDER */
+    .divider-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .divider-line { flex: 1; height: 1.5px; background: #C41E3A; opacity: 0.3; }
+    .divider-center { display: flex; align-items: center; gap: 10px; }
+    .divider-diamond {
+      width: 8px; height: 8px;
+      background: #C41E3A;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* BADGES */
+    .badges-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+    .badge {
+      padding: 10px 22px;
+      border: 1.5px solid #C41E3A;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #C41E3A;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      background: rgba(196,30,58,0.04);
+    }
+
+    /* BOTTOM */
+    .bottom-section { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .price-row { display: flex; align-items: baseline; gap: 12px; }
+    .price {
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #C41E3A;
+      letter-spacing: -0.01em;
+    }
+    .price-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #999;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .domain {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #aaa;
+      letter-spacing: 0.12em;
+    }
+
+    /* TEXTURE */
+    .texture {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(196,30,58,0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(196,30,58,0.015) 0%, transparent 50%);
+    }
+  </style>
+</head>
+<body>
+<div class="cover">
+
+  <!-- TOP FLAG BAR -->
+  <div class="flag-bar">
+    <div class="stripe-red"></div>
+    <div class="stripe-gold"></div>
+    <div class="stripe-red"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <div class="texture"></div>
+
+    <!-- Corner marks -->
+    <div class="corner-mark tl"></div>
+    <div class="corner-mark tr"></div>
+    <div class="corner-mark bl"></div>
+    <div class="corner-mark br"></div>
+
+    <!-- Flamenco fan (left) -->
+    <div class="fan-container" aria-hidden="true">
+      <div class="fan">
+        <div class="fan-arc"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(-50deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(-35deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(-20deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(-5deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(10deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(25deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(40deg);"></div>
+        <div class="fan-spoke" style="transform:translateX(-50%) rotate(55deg);"></div>
+      </div>
+    </div>
+
+    <!-- Wine glass (right) -->
+    <div class="motif-container" aria-hidden="true">
+      <div class="wine-glass">
+        <div class="glass-bowl"><div class="glass-liquid"></div></div>
+        <div class="glass-stem"></div>
+        <div class="glass-base"></div>
+      </div>
+    </div>
+
+    <!-- TOP SECTION -->
+    <div style="display:flex;flex-direction:column;align-items:center;width:100%;">
+      <div class="eyebrow">KitchenFounder &nbsp;&middot;&nbsp; Operations Guide v7 &nbsp;&middot;&nbsp; US Market 2025</div>
+      <div class="title-block">
+        <span class="title-line title-spanish">SPANISH</span>
+        <span class="title-line title-tapas">TAPAS BAR</span>
+        <div class="subtitle">Complete Restaurant Operations Guide</div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider-container">
+      <div class="divider-line"></div>
+      <div class="divider-center">
+        <div class="divider-diamond"></div>
+        <div class="divider-diamond" style="width:5px;height:5px;opacity:0.4;"></div>
+        <div class="divider-diamond"></div>
+      </div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- BADGES -->
+    <div class="badges-row">
+      <div class="badge">20 Recipes</div>
+      <div class="badge">Service Scripts</div>
+      <div class="badge">Kitchen Design</div>
+      <div class="badge">$1.44M P&amp;L</div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="bottom-section">
+      <div class="price-row">
+        <span class="price">$29.99</span>
+        <span class="price-label">Complete Guide</span>
+      </div>
+      <div class="domain">kitchenfounder.com</div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- BOTTOM FLAG BAR -->
+  <div class="flag-bar">
+    <div class="stripe-red"></div>
+    <div class="stripe-gold"></div>
+    <div class="stripe-red"></div>
+  </div>
+
+</div><!-- /cover -->
+</body>
+</html>

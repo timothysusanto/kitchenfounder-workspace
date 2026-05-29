@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beach Shack Fine Casual — Operations Guide</title>
+<style>
+  :root {
+    --primary: #1a5fa0;
+    --accent: #e05a1a;
+    --light-bg: #f0f7ff;
+    --card-bg: #f8fbff;
+    --border: #b8d4f0;
+    --text: #0d2a45;
+    --muted: #4a7aaa;
+    --success: #1a7a3a;
+    --sand: #f5e6c8;
+    --coral: #e05a1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--light-bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0d2a45 0%, var(--primary) 50%, #1a8ad4 100%);
+    color: #fff;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🌊 🦞 ☀️ 🐚 🌊 🦞 ☀️ 🐚';
+    position: absolute;
+    top: 10px; left: 0; right: 0;
+    font-size: 1.2rem;
+    opacity: 0.25;
+    letter-spacing: 20px;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent), #f5a050, var(--accent));
+  }
+  .hero h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  }
+  .hero .tagline {
+    font-size: 1.3rem;
+    font-style: italic;
+    opacity: 0.92;
+    margin-bottom: 20px;
+    color: #f5c890;
+  }
+  .hero .meta {
+    font-size: 0.95rem;
+    opacity: 0.75;
+    font-family: 'Arial', sans-serif;
+  }
+  .toc {
+    background: #0d2a45;
+    color: #fff;
+    padding: 30px 40px;
+  }
+  .toc h2 { font-size: 1.4rem; margin-bottom: 16px; color: #f5c890; }
+  .toc ol { columns: 2; gap: 40px; padding-left: 20px; }
+  .toc li { margin-bottom: 8px; font-family: Arial, sans-serif; font-size: 0.95rem; }
+  .toc a { color: #7dc8f0; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 30px;
+  }
+  .section-header {
+    background: linear-gradient(90deg, var(--primary), #1a8ad4);
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px 8px 0 0;
+  }
+  .section-header h2 { font-size: 1.8rem; }
+  .section-header .section-num {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .section-body {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+  h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1.05rem;
+    margin: 18px 0 8px;
+  }
+  p { margin-bottom: 12px; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .menu-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26,95,160,0.08);
+  }
+  .menu-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .menu-card-body {
+    padding: 14px 16px 16px;
+  }
+  .menu-card-body h4 { margin: 0 0 6px; font-size: 1.05rem; color: #0d2a45; }
+  .menu-card-body .desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 10px; font-family: Arial, sans-serif; }
+  .price-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+  .sell-price { font-size: 1.2rem; font-weight: bold; color: var(--primary); }
+  .cost-badge { font-size: 0.78rem; background: #e8f0fa; color: var(--muted); padding: 3px 8px; border-radius: 20px; font-family: Arial, sans-serif; }
+  .profit-badge { font-size: 0.78rem; background: #d4edda; color: var(--success); padding: 3px 8px; border-radius: 20px; font-family: Arial, sans-serif; font-weight: bold; }
+  .drink-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .drink-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 6px rgba(26,95,160,0.06); }
+  .drink-card img { width: 100%; height: 120px; object-fit: cover; }
+  .drink-card-body { padding: 12px 14px 14px; }
+  .drink-card-body h4 { margin: 0 0 4px; font-size: 0.98rem; color: #0d2a45; }
+  .drink-card-body .desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; font-family: Arial, sans-serif; }
+  .revenue-box {
+    background: linear-gradient(135deg, #0d2a45, #1a4a80);
+    color: #fff;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .revenue-box h3 { color: #7dc8f0; border-bottom-color: rgba(255,255,255,0.2); }
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .revenue-stat { text-align: center; background: rgba(255,255,255,0.1); border-radius: 8px; padding: 14px 10px; }
+  .revenue-stat .num { font-size: 1.8rem; font-weight: bold; color: #f5c890; display: block; }
+  .revenue-stat .label { font-size: 0.82rem; opacity: 0.85; font-family: Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-family: Arial, sans-serif; font-size: 0.92rem; }
+  th { background: var(--primary); color: #fff; padding: 10px 14px; text-align: left; font-weight: bold; }
+  td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #eaf4ff; }
+  tr:hover td { background: #d4eaff; }
+  .script-card {
+    background: #fff;
+    border-left: 5px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px;
+    margin: 16px 0;
+    box-shadow: 0 2px 6px rgba(26,95,160,0.08);
+  }
+  .script-card .script-title { font-size: 1rem; font-weight: bold; color: var(--primary); margin-bottom: 10px; font-family: Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+  .script-card .staff-says { background: #f0f7ff; border: 1px dashed var(--border); border-radius: 6px; padding: 12px 16px; font-style: italic; color: var(--text); margin-bottom: 10px; font-size: 0.97rem; }
+  .script-card .why { font-size: 0.85rem; color: var(--muted); font-family: Arial, sans-serif; }
+  .why-label { font-weight: bold; color: var(--accent); }
+  .objection-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin: 14px 0; }
+  .objection-card .objection { font-weight: bold; color: #c0392b; font-family: Arial, sans-serif; margin-bottom: 8px; font-size: 0.95rem; }
+  .objection-card .response { background: #eafaf1; border-left: 4px solid var(--success); padding: 10px 14px; border-radius: 0 6px 6px 0; font-style: italic; color: var(--text); font-size: 0.95rem; }
+  .vip-card { background: linear-gradient(135deg, #f0f9ff, #e8f5ff); border: 1px solid #a0c8e8; border-radius: 10px; padding: 18px 20px; margin: 12px 0; display: flex; gap: 14px; align-items: flex-start; }
+  .vip-card .icon { font-size: 2rem; flex-shrink: 0; }
+  .vip-card h4 { color: var(--primary); margin: 0 0 6px; }
+  .vip-card p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+  .complaint-step { background: #fff; border-radius: 8px; padding: 18px 20px; margin: 12px 0; border: 1px solid var(--border); display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; }
+  .complaint-step .step-num { background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; font-family: Arial, sans-serif; flex-shrink: 0; }
+  .complaint-step h4 { margin: 0 0 6px; color: var(--accent); }
+  .complaint-step p { margin: 0; font-size: 0.92rem; }
+  .social-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 14px 0; }
+  .social-card h4 { color: var(--primary); margin-bottom: 8px; }
+  .caption-example { background: #f0f4f8; border-radius: 6px; padding: 12px 14px; font-family: Arial, sans-serif; font-size: 0.88rem; color: #333; margin: 8px 0; white-space: pre-line; }
+  .partnership-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; margin: 10px 0; border-left: 4px solid var(--accent); }
+  .partnership-card h4 { margin: 0 0 6px; color: var(--primary); }
+  .partnership-card p { margin: 0; font-size: 0.9rem; }
+  .notebook-system { background: linear-gradient(135deg, #f0f9ff, #e8f5ff); border: 2px solid #a0c8e8; border-radius: 12px; padding: 24px 28px; margin: 20px 0; }
+  .notebook-system h3 { color: var(--primary); }
+  .visit-milestone { background: #fff; border-radius: 8px; padding: 14px 18px; margin: 10px 0; border-left: 5px solid var(--accent); }
+  .visit-milestone strong { color: var(--accent); font-family: Arial, sans-serif; }
+  .info-callout { background: #eaf4ff; border: 1px solid #a0c8e8; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; }
+  .info-callout strong { color: var(--primary); }
+  .ops-checklist { list-style: none; padding: 0; margin: 12px 0; }
+  .ops-checklist li { padding: 8px 12px 8px 36px; position: relative; border-bottom: 1px solid var(--border); font-family: Arial, sans-serif; font-size: 0.92rem; }
+  .ops-checklist li::before { content: '☐'; position: absolute; left: 10px; color: var(--primary); font-size: 1rem; }
+  .ops-checklist li:last-child { border-bottom: none; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0; }
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .toc ol { columns: 1; }
+    .menu-grid { grid-template-columns: 1fr; }
+  }
+  .footer { background: #0d2a45; color: rgba(255,255,255,0.7); text-align: center; padding: 30px; font-family: Arial, sans-serif; font-size: 0.85rem; margin-top: 60px; }
+  .footer strong { color: #f5c890; }
+  .badge { display: inline-block; background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-family: Arial, sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 8px; }
+  .section-divider { height: 4px; background: linear-gradient(90deg, var(--primary), transparent); border: none; margin: 40px 0; }
+  .story-card { background: #fff; border-radius: 8px; padding: 16px 20px; margin: 12px 0; border: 1px solid var(--border); border-top: 3px solid var(--primary); }
+  .story-card h4 { color: var(--primary); margin-bottom: 8px; }
+  .story-card p { margin: 0; font-size: 0.93rem; color: var(--muted); }
+  .catch-banner { background: linear-gradient(135deg, var(--accent), #f57c40); color: #fff; border-radius: 10px; padding: 18px 24px; margin: 16px 0; text-align: center; }
+  .catch-banner h4 { font-size: 1.2rem; margin-bottom: 6px; color: #fff; }
+  .catch-banner p { margin: 0; font-size: 0.92rem; opacity: 0.92; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🌊 Beach Shack Fine Casual</h1>
+  <div class="tagline">"Salt air. Fresh catch. Serious food."</div>
+  <div class="meta">Complete Operations Guide &nbsp;|&nbsp; 45 Seats &nbsp;|&nbsp; Daily Target: $3,600 &nbsp;|&nbsp; Monthly Net: ~$25,000</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>📋 Table of Contents</h2>
+  <ol>
+    <li><a href="#bs1">Restaurant Identity & Brand</a></li>
+    <li><a href="#bs2">Menu — Entrées</a></li>
+    <li><a href="#bs3">Menu — Mains</a></li>
+    <li><a href="#bs4">Menu — Desserts & Drinks</a></li>
+    <li><a href="#bs5">Service Training Module</a></li>
+    <li><a href="#bs6">Customer Retention System</a></li>
+    <li><a href="#bs7">Revenue Model & Finance</a></li>
+    <li><a href="#bs8">Operations & Opening Procedures</a></li>
+  </ol>
+</div>
+
+
+<!-- SECTION 1: IDENTITY -->
+<div class="section" id="bs1">
+  <div class="section-header">
+    <div class="section-num">Section 01</div>
+    <h2>🏖️ Restaurant Identity & Brand Story</h2>
+  </div>
+  <div class="section-body">
+    <h3>Who We Are</h3>
+    <p>Beach Shack Fine Casual is the answer to a question coastal Australia has been asking for years: why can't excellent seafood and a genuinely relaxed beach atmosphere coexist with serious cooking? We are not a fish and chip shop. We are not a fine dining restaurant. We are something better — the place where the lobster roll comes in a paper-lined basket and the kitchen genuinely gives a damn about every dish that leaves it.</p>
+
+    <p>We take our cues from the best of coastal casual dining worldwide — the lobster shacks of Maine, the ceviche counters of Lima, the beachfront bistros of Byron Bay — and we serve it with the unpretentious warmth of a place where sandy feet are welcome and reservations are optional.</p>
+
+    <h3>The Brand Pillars</h3>
+    <div class="two-col">
+      <div class="vip-card">
+        <div class="icon">🎣</div>
+        <div>
+          <h4>Fresh Is Non-Negotiable</h4>
+          <p>Our menu is built around what the coast provides. Market fish changes. Oysters come in twice a week. If it isn't fresh today, it isn't on the menu today. This commitment is central to everything — guests can taste the difference, and we tell them why.</p>
+        </div>
+      </div>
+      <div class="vip-card">
+        <div class="icon">🦞</div>
+        <div>
+          <h4>Elevated Without Pretension</h4>
+          <p>The Lobster Roll is butter-poached and served in brioche. The chips are triple-cooked. The ceviche uses coconut milk and fresh lime. We cook at a serious level — but guests never feel intimidated, rushed, or underdressed. The beach levels the playing field.</p>
+        </div>
+      </div>
+      <div class="vip-card">
+        <div class="icon">☀️</div>
+        <div>
+          <h4>Coastal Joy as Design</h4>
+          <p>The experience should feel like a good beach day — relaxed, unhurried, full of unexpected pleasures. The music is right. The natural light is maximised. The pace is confident but never frantic. Guests should leave feeling restored, not processed.</p>
+        </div>
+      </div>
+      <div class="vip-card">
+        <div class="icon">🌊</div>
+        <div>
+          <h4>Community Anchor</h4>
+          <p>We are a neighbourhood institution in the making. Locals should feel ownership over this place — it's their shack. Tourists discover it and come back. We know our regulars by name, we know which fishermen supply us, and we share those stories with anyone who asks.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Core Values (Staff Communication)</h3>
+    <ul style="padding-left:20px; font-family: Arial, sans-serif; font-size: 0.93rem;">
+      <li style="margin-bottom:8px;"><strong>Know where the fish came from.</strong> If the market fish is today's snapper from a local boat, say so. It matters.</li>
+      <li style="margin-bottom:8px;"><strong>Relaxed is not the same as careless.</strong> Our standard is excellent. Our delivery is unhurried.</li>
+      <li style="margin-bottom:8px;"><strong>The view sells itself — you sell the experience.</strong> Make people feel like insiders.</li>
+      <li style="margin-bottom:8px;"><strong>Seasonal thinking.</strong> Know what's in season, what's running, what's exceptional right now.</li>
+      <li style="margin-bottom:8px;"><strong>Leave no table under-attended.</strong> Long stretches without check-ins kill the experience, even in casual settings.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2: ENTREES -->
+<div class="section" id="bs2">
+  <div class="section-header">
+    <div class="section-num">Section 02</div>
+    <h2>🦪 Menu — Entrées</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:20px;">6 starters that set the coastal tone — from raw bar elegance to shareable crowd pleasers. These are designed to extend the table's time and spend.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?oysters,fresh+seafood&nologo=true&seed=950" alt="Oysters Natural" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Oysters Natural</h4>
+          <div class="desc">6 piece, finger lime pearls, cucumber mignonette, rye cracker</div>
+          <div class="price-row">
+            <span class="sell-price">$18.99</span>
+            <span class="cost-badge">Cost ~$5.50</span>
+            <span class="profit-badge">GP 71%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?ceviche,fresh+fish+lime&nologo=true&seed=951" alt="Ceviche" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Ceviche</h4>
+          <div class="desc">Local white fish, coconut milk, fresh lime, bird's eye chilli, coriander, tiger's milk</div>
+          <div class="price-row">
+            <span class="sell-price">$17.99</span>
+            <span class="cost-badge">Cost ~$4.80</span>
+            <span class="profit-badge">GP 73%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?salt+pepper+squid,fried+calamari&nologo=true&seed=952" alt="Salt & Pepper Squid" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Salt & Pepper Squid</h4>
+          <div class="desc">Crispy local squid, house aioli, charred lime, fried shallot, chilli</div>
+          <div class="price-row">
+            <span class="sell-price">$14.99</span>
+            <span class="cost-badge">Cost ~$3.80</span>
+            <span class="profit-badge">GP 75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?smoked+fish+dip,charcuterie+board&nologo=true&seed=953" alt="Fish Dip Board" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Fish Dip Board</h4>
+          <div class="desc">House smoked fish spread, house-made crackers, pickled cucumber, cornichons, dill</div>
+          <div class="price-row">
+            <span class="sell-price">$16.99</span>
+            <span class="cost-badge">Cost ~$4.20</span>
+            <span class="profit-badge">GP 75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?prawn+toast,sesame+prawns&nologo=true&seed=954" alt="Prawn Toast" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Prawn Toast</h4>
+          <div class="desc">House-style prawn mousse on brioche toast, toasted sesame, sweet chilli glaze</div>
+          <div class="price-row">
+            <span class="sell-price">$13.99</span>
+            <span class="cost-badge">Cost ~$3.50</span>
+            <span class="profit-badge">GP 75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?corn+fritters,zucchini+fritters&nologo=true&seed=955" alt="Corn & Zucchini Fritters" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Corn & Zucchini Fritters</h4>
+          <div class="desc">Golden fritters, whipped feta, smashed avocado, lemon, micro herbs</div>
+          <div class="price-row">
+            <span class="sell-price">$14.99</span>
+            <span class="cost-badge">Cost ~$3.20</span>
+            <span class="profit-badge">GP 79%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="catch-banner">
+      <h4>🎣 The Catch of the Day Ritual</h4>
+      <p>Every service, staff must know what the day's fresh fish is, where it came from, and how it's being prepared. This is a talking point, not just a menu item. When a guest says "what's good today?" — this is the first thing you mention, with genuine enthusiasm.</p>
+    </div>
+
+    <div class="info-callout">
+      <strong>📊 Entrée Strategy:</strong> Oysters are your prestige opener — lead with them for groups. Salt & Pepper Squid and Corn Fritters are your highest-GP entrées. Fish Dip Board is the perfect "while we look at the menu" table-setter. Push Prawn Toast as a quick share while mains cook.
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 3: MAINS -->
+<div class="section" id="bs3">
+  <div class="section-header">
+    <div class="section-num">Section 03</div>
+    <h2>🦞 Menu — Mains</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:20px;">10 mains anchored in fresh seafood — from the showstopping Lobster Roll to elevated classics and one grounding non-seafood option for the group's reluctant companion.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?lobster+roll,brioche+seafood&nologo=true&seed=956" alt="Lobster Roll" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Lobster Roll ⭐</h4>
+          <div class="desc">Butter-poached local lobster, brioche roll, celery mayo, chives, lemon</div>
+          <div class="price-row">
+            <span class="sell-price">$28.99</span>
+            <span class="cost-badge">Cost ~$9.80</span>
+            <span class="profit-badge">GP 66%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?fish+chips,beer+battered+fish&nologo=true&seed=957" alt="Fish & Chips Elevated" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Fish & Chips Elevated</h4>
+          <div class="desc">Beer-battered flathead, triple-cooked chips, house tartare, charred lemon</div>
+          <div class="price-row">
+            <span class="sell-price">$22.99</span>
+            <span class="cost-badge">Cost ~$6.80</span>
+            <span class="profit-badge">GP 70%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?fish+tacos,baja+tacos&nologo=true&seed=958" alt="Baja Fish Tacos" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Baja Fish Tacos</h4>
+          <div class="desc">Crispy fried fish, cabbage slaw, chipotle crema, pickled jalapeño — 3 tacos</div>
+          <div class="price-row">
+            <span class="sell-price">$19.99</span>
+            <span class="cost-badge">Cost ~$5.50</span>
+            <span class="profit-badge">GP 72%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?grilled+whole+fish,seafood+platter&nologo=true&seed=959" alt="Grilled Whole Fish" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Grilled Whole Fish</h4>
+          <div class="desc">Market fish of the day, herb butter, triple-cooked chips, dressed side salad</div>
+          <div class="price-row">
+            <span class="sell-price">$29.99</span>
+            <span class="cost-badge">Cost ~$9.50</span>
+            <span class="profit-badge">GP 68%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?prawn+linguine,seafood+pasta&nologo=true&seed=960" alt="Prawn Linguine" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Prawn Linguine</h4>
+          <div class="desc">Local prawns, garlic, chilli, white wine, cherry tomato, parsley, house linguine</div>
+          <div class="price-row">
+            <span class="sell-price">$23.99</span>
+            <span class="cost-badge">Cost ~$7.00</span>
+            <span class="profit-badge">GP 71%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?poke+bowl,sashimi+tuna+bowl&nologo=true&seed=961" alt="Poke Bowl" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Poke Bowl</h4>
+          <div class="desc">Sashimi-grade tuna, sushi rice, edamame, cucumber, avocado, ponzu, sesame</div>
+          <div class="price-row">
+            <span class="sell-price">$22.99</span>
+            <span class="cost-badge">Cost ~$6.80</span>
+            <span class="profit-badge">GP 70%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?chilli+crab,crab+pasta&nologo=true&seed=962" alt="Chilli Crab Pasta" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Chilli Crab Pasta</h4>
+          <div class="desc">House chilli crab sauce, blue swimmer crab, linguine, garlic bread, fresh herbs</div>
+          <div class="price-row">
+            <span class="sell-price">$24.99</span>
+            <span class="cost-badge">Cost ~$7.80</span>
+            <span class="profit-badge">GP 69%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?gourmet+burger,beef+burger&nologo=true&seed=963" alt="Byron Burger" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Byron Burger</h4>
+          <div class="desc">Grass-fed beef, streaky bacon, triple brie, truffle aioli, brioche, house pickles</div>
+          <div class="price-row">
+            <span class="sell-price">$21.99</span>
+            <span class="cost-badge">Cost ~$6.50</span>
+            <span class="profit-badge">GP 70%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?acai+bowl,tropical+breakfast&nologo=true&seed=964" alt="Açaí Bowl" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Açaí Bowl (Lunch)</h4>
+          <div class="desc">Thick blended açaí, house granola, fresh tropical fruit, coconut flake, honey</div>
+          <div class="price-row">
+            <span class="sell-price">$17.99</span>
+            <span class="cost-badge">Cost ~$4.50</span>
+            <span class="profit-badge">GP 75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?fish+burger,crispy+fish+bun&nologo=true&seed=965" alt="Fish Burger" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Fish Burger</h4>
+          <div class="desc">Crispy beer-battered flathead, toasted brioche, pickles, iceberg, house tartare</div>
+          <div class="price-row">
+            <span class="sell-price">$19.99</span>
+            <span class="cost-badge">Cost ~$5.60</span>
+            <span class="profit-badge">GP 72%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-callout">
+      <strong>💡 Mains Strategy:</strong> The Lobster Roll is your prestige item — it's what people photograph and tell friends about, even if they order Fish & Chips. Lead with it: "The Lobster Roll is amazing today." Grilled Whole Fish should be introduced with the daily catch story. Açaí Bowl and Poke Bowl drive the health-conscious coastal demographic at premium GP.
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: DESSERTS & DRINKS -->
+<div class="section" id="bs4">
+  <div class="section-header">
+    <div class="section-num">Section 04</div>
+    <h2>🍦 Menu — Desserts & Drinks</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>Desserts</h3>
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:20px;">Four coastal-inspired desserts — bright, fresh, and not too heavy after a seafood meal.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?pavlova,meringue+dessert&nologo=true&seed=966" alt="Passionfruit Pavlova" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Passionfruit Pavlova ⭐</h4>
+          <div class="desc">Crisp meringue, lashings of cream, passionfruit, mango, kiwi, toasted coconut</div>
+          <div class="price-row">
+            <span class="sell-price">$11.99</span>
+            <span class="cost-badge">Cost ~$2.80</span>
+            <span class="profit-badge">GP 77%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?salted+caramel+tart,caramel+dessert&nologo=true&seed=967" alt="Salted Caramel Tart" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Salted Caramel Tart</h4>
+          <div class="desc">Buttery shortcrust, smooth salted caramel, dark chocolate ganache, sea salt flakes</div>
+          <div class="price-row">
+            <span class="sell-price">$9.99</span>
+            <span class="cost-badge">Cost ~$2.20</span>
+            <span class="profit-badge">GP 78%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?mango+sorbet,tropical+ice+cream&nologo=true&seed=968" alt="Mango Sorbet" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Mango Sorbet</h4>
+          <div class="desc">House-churned Alphonso mango sorbet, coconut tuile, lime zest, fresh mint</div>
+          <div class="price-row">
+            <span class="sell-price">$8.99</span>
+            <span class="cost-badge">Cost ~$1.90</span>
+            <span class="profit-badge">GP 79%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?banana+split,caramel+banana+dessert&nologo=true&seed=969" alt="Banana Split" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Banana Split</h4>
+          <div class="desc">Caramelised banana, vanilla bean ice cream, honeycomb, toasted almond, toffee</div>
+          <div class="price-row">
+            <span class="sell-price">$10.99</span>
+            <span class="cost-badge">Cost ~$2.50</span>
+            <span class="profit-badge">GP 77%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>Drinks</h3>
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:16px;">Eight non-alcoholic coastal drinks built for warm weather, active lifestyles, and premium positioning.</p>
+    <div class="drink-grid">
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?cold+press+juice,fresh+juice&nologo=true&seed=970" alt="Cold Press Juice" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Cold Press Juice ⭐</h4>
+          <div class="desc">Seasonal blend, daily rotation — ask your server what's running today</div>
+          <div class="price-row">
+            <span class="sell-price">$9.00</span>
+            <span class="profit-badge">GP 78%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?coconut+water,tropical+drink&nologo=true&seed=971" alt="Coconut Water" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Coconut Water</h4>
+          <div class="desc">Young coconut, fresh lime, mint, served iced</div>
+          <div class="price-row">
+            <span class="sell-price">$7.50</span>
+            <span class="profit-badge">GP 75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?berry+smoothie,purple+smoothie&nologo=true&seed=972" alt="Berry Smoothie" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Berry Smoothie</h4>
+          <div class="desc">Frozen mixed berries, banana, almond milk, honey, chia seeds</div>
+          <div class="price-row">
+            <span class="sell-price">$11.00</span>
+            <span class="profit-badge">GP 73%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?iced+coffee,cold+brew+coffee&nologo=true&seed=973" alt="Iced Long Black" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Iced Long Black</h4>
+          <div class="desc">Cold-brew concentrate, sparkling water, single ice cube, orange twist</div>
+          <div class="price-row">
+            <span class="sell-price">$6.00</span>
+            <span class="profit-badge">GP 82%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?watermelon+juice,pink+drink&nologo=true&seed=974" alt="Watermelon Juice" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Watermelon Juice</h4>
+          <div class="desc">Fresh-pressed watermelon, mint, squeeze of lime</div>
+          <div class="price-row">
+            <span class="sell-price">$7.00</span>
+            <span class="profit-badge">GP 80%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?turmeric+latte,golden+milk&nologo=true&seed=975" alt="Turmeric Latte" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Turmeric Latte</h4>
+          <div class="desc">Golden milk blend, oat milk, black pepper, ginger, honey</div>
+          <div class="price-row">
+            <span class="sell-price">$6.50</span>
+            <span class="profit-badge">GP 81%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?kombucha,fermented+drink&nologo=true&seed=976" alt="Kombucha Spritz" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Kombucha Spritz</h4>
+          <div class="desc">House kombucha, fresh lime, sparkling water, mint — serve tall with ice</div>
+          <div class="price-row">
+            <span class="sell-price">$7.50</span>
+            <span class="profit-badge">GP 79%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?matcha+latte,green+drink&nologo=true&seed=977" alt="Matcha Latte" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Matcha Latte</h4>
+          <div class="desc">Ceremonial-grade matcha, oat milk, light honey — iced or hot</div>
+          <div class="price-row">
+            <span class="sell-price">$6.50</span>
+            <span class="profit-badge">GP 80%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-callout">
+      <strong>🥤 Drinks Revenue Note:</strong> Premium coastal drinks at $6.50–$11.00 are high-margin additions that align with the health-conscious demographic. Berry Smoothie at $11 has the highest absolute sell price — use it as a breakfast/brunch anchor. Always mention the Cold Press daily rotation; it creates conversation and interest.
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 5: SERVICE TRAINING -->
+<div class="section" id="bs5">
+  <div class="section-header">
+    <div class="section-num">Section 05</div>
+    <h2>🎓 Service Training Module</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>Cuisine Philosophy — What Staff Say</h3>
+    <div class="script-card">
+      <div class="staff-says">"We cook serious food with a coastal soul — every piece of seafood is sourced fresh, every sauce is made from scratch, and nothing on the menu exists just to fill space. We aim to be the best seafood you've had, in the most relaxed setting you've been to."</div>
+    </div>
+
+    <h3>Story Cards — Know Your Menu</h3>
+    <div class="story-card">
+      <h4>🦪 About Our Entrées</h4>
+      <p>"Our starters are built for the beach table — shareable, flavour-packed, and designed to be eaten slowly while you settle in. The oysters come in twice a week and we serve them as nature made them, with just a finger lime mignonette that doesn't fight the ocean flavour. Everything else is made in-house: the smoked fish dip, the prawn toast, the fritters. Nothing from a packet, nothing frozen."</p>
+    </div>
+    <div class="story-card">
+      <h4>🦞 About Our Mains</h4>
+      <p>"Our mains start with what's running — the market fish changes based on what's exceptional that morning. The Lobster Roll is butter-poached and in brioche because if you're going to do a lobster roll, you do it properly. The chips are triple-cooked because the difference is real and our guests notice. We cook to a standard, not a price point."</p>
+    </div>
+    <div class="story-card">
+      <h4>🍦 About Our Desserts</h4>
+      <p>"Our desserts are light, coastal, and designed not to overwhelm after a seafood meal. The Pavlova is made fresh each morning and layered with tropical fruit. The Mango Sorbet is house-churned from Alphonso mangoes. The Salted Caramel Tart is the one that turns non-dessert people. They're all shareable — and at these prices, most tables try one."</p>
+    </div>
+    <div class="story-card">
+      <h4>🥤 About Our Drinks</h4>
+      <p>"Our drinks list is built for the coast — fresh-pressed, cold, vibrant. The Cold Press Juice changes daily based on what's peak seasonal, which means something different every time. The Kombucha Spritz is house-made and genuinely effervescent. The Matcha and Turmeric Lattes are the ones health-conscious guests come back specifically for. Ask us what the daily juice is — it's usually something interesting."</p>
+    </div>
+
+    <h3>"What's Good Here?" — The Enthusiastic Answer</h3>
+    <div class="script-card">
+      <div class="staff-says">"Okay — the Lobster Roll. Full stop. It's butter-poached, it's in brioche, it's beautiful. If you want something lighter to start, get the Oysters while they're in — they came in this morning. The Fish & Chips sounds simple but the chips are triple-cooked and the flathead is local and fresh, not frozen. For drinks, ask what the cold press is today — it changes daily and it's always worth trying. And the Pavlova is the dessert — I know everyone says that but seriously, get it."</div>
+    </div>
+
+    <h3>5 Upsell Scripts</h3>
+
+    <div class="script-card">
+      <div class="script-title">Script 1 — The Pairing (Match Drink to Dish)</div>
+      <div class="staff-says">"The Lobster Roll goes beautifully with the Watermelon Juice — there's something about the freshness that pairs perfectly with the richness of the lobster. Or if you want something a bit more complex, the Kombucha Spritz is sharp and citrusy and really cuts through. Which sounds better?"</div>
+      <div class="why"><span class="why-label">Why it works:</span> Offering a specific flavour reason for the pairing elevates the choice from transactional to experiential — guests feel guided, not sold to.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 2 — The Upgrade ($2–4 Premium Add-On)</div>
+      <div class="staff-says">"Would you like to add a side of our triple-cooked chips to that? They're $4 and they're genuinely different from regular chips — crispy all the way through, kind of addictive. Most people who try them once get them every time."</div>
+      <div class="why"><span class="why-label">Why it works:</span> Social proof ("most people who try them") and a specific sensory description ("crispy all the way through") make this an irresistible low-resistance upsell at a high GP price point.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 3 — The Dessert Plant (Mention When Mains Arrive)</div>
+      <div class="staff-says">"Here's your Grilled Snapper — beautiful fish today, enjoy! Just a heads-up — the Pavlova is made fresh this morning and we've got about six portions left. Worth keeping in mind when you're done. I'll check in on you in a bit."</div>
+      <div class="why"><span class="why-label">Why it works:</span> Scarcity ("about six portions left") creates urgency without being pushy — and planting the dessert thought while guests are at peak enjoyment dramatically increases conversion.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 4 — The Share Suggestion (Starter to Share)</div>
+      <div class="staff-says">"While you're looking — the Oysters just came in this morning and they're really good right now. For two people, a half dozen is the perfect way to start. Want me to put those in while you decide on mains?"</div>
+      <div class="why"><span class="why-label">Why it works:</span> The freshness credential ("came in this morning") provides an authentic reason to order now rather than overthink it — the sense of occasion is already there.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 5 — The Regular Builder (Invite Them Back)</div>
+      <div class="staff-says">"We change the market fish every day depending on what's exceptional — tomorrow we're expecting a beautiful barramundi from the local boats. If you liked the fish today, it's worth coming back for. We put it on our Instagram the night before so you can see what's running."</div>
+      <div class="why"><span class="why-label">Why it works:</span> Gives a concrete, specific reason to return tomorrow — and drives Instagram follows, which creates an ongoing marketing relationship with the guest at zero cost.</div>
+    </div>
+
+    <h3>Table Timing Guide</h3>
+    <table>
+      <thead>
+        <tr><th>Time After Arrival</th><th>Staff Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>0 min — Arrival</strong></td><td>Warm coastal welcome. "Welcome in — grab a seat anywhere you like." Menus delivered, specials mentioned. "Can I get you something cold to start — juice, coconut water, something sparkling?" Drink before food order.</td></tr>
+        <tr><td><strong>2–3 min — Settled</strong></td><td>Deliver drinks. Mention the catch of the day by name and with genuine enthusiasm. Suggest Oysters as a share starter while they decide. Take order when ready — don't hover.</td></tr>
+        <tr><td><strong>6 min — After Order</strong></td><td>Confirm order. Mention timing ("mains about 15–18 minutes"). Upsell chips or side salad. Ensure all dietary needs captured.</td></tr>
+        <tr><td><strong>12 min — Entrée Delivery</strong></td><td>Deliver starters with brief description of each dish. Refill drinks or offer a fresh round. Dessert plant: "The Pavlova is freshly made today — worth knowing."</td></tr>
+        <tr><td><strong>20–25 min — Mains Delivery</strong></td><td>Deliver mains with any relevant notes (e.g., "the snapper is from this morning's catch"). Check everything looks right. Offer extra napkins, sides, condiments.</td></tr>
+        <tr><td><strong>35 min — Check-In</strong></td><td>"How is everything?" Genuine, brief. Address any issues immediately. If all good, mention desserts naturally: "Can I bring you a dessert menu?"</td></tr>
+        <tr><td><strong>45 min — Dessert/Coffee</strong></td><td>Take dessert and hot drink order. Offer today's cold press juice for dessert pairing. This is high-GP territory — make it feel easy and natural.</td></tr>
+        <tr><td><strong>55–65 min — Departure</strong></td><td>Bill delivered promptly when requested. Thank guests, mention tomorrow's catch or Friday special. "Follow us on Instagram — we post the daily catch the night before."</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Objection Handling</h3>
+
+    <div class="objection-card">
+      <div class="objection">❝ It's a bit pricey... ❞</div>
+      <div class="response">"I completely get that — honestly, everything on our menu is made fresh with locally sourced seafood, so you're not paying for a brand, you're paying for the actual quality of the ingredients. The Fish Burger at $19.99 is a great value option, and the Fish & Chips is fantastic — locally caught flathead, not frozen fish. You'll definitely get your money's worth."</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="objection">❝ I'm not very hungry... ❞</div>
+      <div class="response">"No problem at all — the Açaí Bowl is a lighter option and it's really satisfying, or the Ceviche on its own is perfect if you just want something fresh and light. A lot of people pair an entrée with a drink and they're perfectly happy. What sounds good to you?"</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="objection">❝ Just water thanks... ❞</div>
+      <div class="response">"Of course — still or sparkling? And have you tried our Watermelon Juice? It's fresh-pressed, really light, just watermelon, lime, and mint — basically summer in a glass. It's $7 and a lot of people get it alongside water. Happy to bring one to try?"</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="objection">❝ We need to be quick... ❞</div>
+      <div class="response">"Totally fine — I'll flag your order as a priority with the kitchen. The Baja Fish Tacos and Fish Burger come out in 10–12 minutes, the Poke Bowl is even faster. Entrées are almost immediate. What looks good to you? I'll get it moving straight away."</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 6: CUSTOMER RETENTION -->
+<div class="section" id="bs6">
+  <div class="section-header">
+    <div class="section-num">Section 06</div>
+    <h2>❤️ Customer Retention System</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>The Regulars Notebook System</h3>
+    <div class="notebook-system">
+      <h3>📓 How It Works</h3>
+      <p>At Beach Shack, the notebook lives at the host stand. It's a physical record of guests who've visited more than once. The goal isn't data collection — it's genuine recognition. There is nothing more powerful in hospitality than a server who remembers you.</p>
+
+      <h4>What to Record:</h4>
+      <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.92rem; margin-bottom:14px;">
+        <li style="margin-bottom:6px;"><strong>Name and physical description</strong> — enough for any team member to recognise them</li>
+        <li style="margin-bottom:6px;"><strong>Usual order</strong> — "always the Lobster Roll", "tries different things each time"</li>
+        <li style="margin-bottom:6px;"><strong>Dietary notes</strong> — allergies, preferences, restrictions</li>
+        <li style="margin-bottom:6px;"><strong>Timing pattern</strong> — "Saturday mornings", "Friday lunch with colleagues"</li>
+        <li style="margin-bottom:6px;"><strong>Personal context</strong> — occupation, interests, family, anything naturally shared</li>
+        <li style="margin-bottom:6px;"><strong>Last visit notes</strong> — what they ordered, any feedback, any issues resolved</li>
+        <li style="margin-bottom:6px;"><strong>What they haven't tried yet</strong> — useful for menu guidance on next visit</li>
+      </ul>
+
+      <h4>How to Brief the Team:</h4>
+      <p style="font-family:Arial,sans-serif; font-size:0.92rem; margin-bottom:10px;">At the start of service, the manager reviews the notebook and mentions 2–3 regulars likely to come in: "James usually comes Saturday around 12:30 — he always starts with Oysters, loves the Lobster Roll, and has mentioned he's keen to try the Ceviche. If he comes in, tell him the ceviche is particularly good today." That's the difference between a café and a place that feels like home.</p>
+
+      <div class="visit-milestone">
+        <strong>Visit 1 — The First Impression:</strong>
+        <p style="margin-top:6px; font-family:Arial,sans-serif; font-size:0.9rem;">Execute perfectly. Know the menu inside out, be enthusiastic about the catch, plant the dessert, give a personal farewell. Write your notes after they leave — appearance, name if you caught it, what they ordered, any observations. This is the foundation of the relationship.</p>
+      </div>
+      <div class="visit-milestone">
+        <strong>Visit 2 — The Recognition:</strong>
+        <p style="margin-top:6px; font-family:Arial,sans-serif; font-size:0.9rem;">"Welcome back!" If you remember their name, use it. If you remember their order: "Lobster Roll again, or feeling adventurous today?" This is transformative. Guests who feel recognised return at 3x the rate of those who don't. This is the most important visit in the relationship.</p>
+      </div>
+      <div class="visit-milestone">
+        <strong>Visit 3 — The Anchor:</strong>
+        <p style="margin-top:6px; font-family:Arial,sans-serif; font-size:0.9rem;">They are yours. Mark them as a VIP in the notebook. Do something small and unexpected this visit — let them know about the catch before they sit down, give them a complimentary Mango Sorbet with their bill, or simply say "we always love seeing you in here." By visit 3, they will recommend you to others. This is your best marketing.</p>
+      </div>
+    </div>
+
+    <h3>5 VIP Micro-Moments</h3>
+
+    <div class="vip-card">
+      <div class="icon">🎣</div>
+      <div>
+        <h4>The Catch Tip-Off</h4>
+        <p>When exceptional fish comes in — truly special market fish, first-of-season produce — text or phone a handful of regulars: "Hey, we just got a stunning whole barramundi in today — it's not on the regular menu, just 6 portions. Thought of you." This is VIP treatment at zero cost. They feel like insiders. They come in. They tell people.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">🦞</div>
+      <div>
+        <h4>The Complimentary Lobster Toast</h4>
+        <p>For regulars on a milestone (anniversary, birthday, first visit after a long absence), send out a small amuse-bouche: a single Prawn Toast or a teaspoon of the lobster filling on a cracker, unprompted. "Welcome back — a little something from us while you settle in." Cost is pennies. The memory lasts years.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">🌅</div>
+      <div>
+        <h4>The Best Table</h4>
+        <p>For regulars who always book, note their preferred table or seating orientation (window, outside, quieter corner). Seat them there without being asked. Say nothing — just lead them to their table. When they notice you've remembered, they'll feel like the place was built for them. This costs nothing and means everything.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">🍦</div>
+      <div>
+        <h4>The Birthday Sorbet</h4>
+        <p>If a regular mentions their birthday or you have it noted, bring out a Mango Sorbet with a candle: "Happy birthday — this one's on the shack." If the team knows in advance, have everyone at the pass say happy birthday when they arrive. The effort-to-impact ratio is extraordinary. This person will post about it, tell their friends, and be yours for life.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">📸</div>
+      <div>
+        <h4>The Content Collaboration</h4>
+        <p>For regulars who are photographers, food bloggers, or simply active on social media, offer them a chef's table or a "behind the scenes" look at something: a quick tour of the raw bar, watching the Lobster Roll being built, a chat with the chef about the catch. This creates authentic content you can share, deepens the relationship, and earns word-of-mouth marketing you can't buy.</p>
+      </div>
+    </div>
+
+    <h3>Complaint Recovery — Exact Script</h3>
+
+    <div class="complaint-step">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Stop and Listen Completely</h4>
+        <p>Put down whatever you're holding. Fully face the guest. Maintain eye contact. Do not look over their shoulder, check your section, or start solving before they've finished. The act of truly listening is itself a form of repair. Let them say everything. Then pause before responding.</p>
+      </div>
+    </div>
+
+    <div class="complaint-step">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Acknowledge & Apologize Without Excuses</h4>
+        <div class="staff-says" style="margin-top:8px; font-style:italic; background:#f0f7ff; border:1px dashed var(--border); padding:10px 14px; border-radius:6px; font-size:0.93rem;">"I'm really sorry — that's not the experience we want for you at all. You were completely right to tell me, and I'm going to sort this out right now. Thank you for saying something instead of just leaving."</div>
+        <p style="margin-top:8px; font-size:0.88rem; color:var(--muted);">The "thank you for saying something" is powerful — it reframes the complaint as a gift and immediately reduces tension. Never say "I'm sorry you feel that way." Never blame the kitchen, the supplier, or being busy.</p>
+      </div>
+    </div>
+
+    <div class="complaint-step">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Fix It & Make a Meaningful Gesture</h4>
+        <div class="staff-says" style="margin-top:8px; font-style:italic; background:#f0f7ff; border:1px dashed var(--border); padding:10px 14px; border-radius:6px; font-size:0.93rem;">"I'm taking that off your bill right now — no question. And I'd really like you to come back and let us show you what we're actually about. I'll leave you a card for a complimentary entrée on your next visit — no conditions, no expiry, just come back. I want you to leave here feeling like we earned another chance."</div>
+        <p style="margin-top:8px; font-size:0.88rem; color:var(--muted);">Always give them the choice of remedy when possible. Log the complaint in full before end of service. Brief the manager immediately. Check back with the table before they leave to ensure they're satisfied with the resolution.</p>
+      </div>
+    </div>
+
+    <h3>Social Media Content System</h3>
+
+    <h4>Best 5 Dishes to Photograph</h4>
+    <table>
+      <thead>
+        <tr><th>Dish</th><th>Why It Works Visually</th><th>Best Shot</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Lobster Roll</strong></td><td>The lobster tumbling out of brioche is aspirational, premium, and immediately recognisable — it's the dish that defines the restaurant's positioning</td><td>Slight angle, natural coastal light, the roll split open showing the filling</td></tr>
+        <tr><td><strong>Oysters Natural</strong></td><td>The pearlescent shells, finger lime pearls, and mignonette create jewel-like visual texture — feels luxurious and fresh simultaneously</td><td>Overhead on ice with lemon, minimal props, let the natural colour do the work</td></tr>
+        <tr><td><strong>Passionfruit Pavlova</strong></td><td>The contrast of white meringue, vivid passionfruit, and tropical fruit is highly saturated and visually dramatic — stops the scroll instantly</td><td>Side angle on a white plate, bright natural light, the passion fruit dripping is key</td></tr>
+        <tr><td><strong>Ceviche</strong></td><td>The white fish, coconut milk, chilli, and herbs create a sophisticated colour palette — looks clean, light, coastal, and aspirational</td><td>Overhead in a white bowl, natural light, coriander and chilli as colour accent</td></tr>
+        <tr><td><strong>Fish & Chips Elevated</strong></td><td>The steam from fresh batter, the golden chips, the charred lemon — it's comfort and quality combined, universally relatable</td><td>Side angle, close in on the batter texture, steam visible if possible</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <h4>Optimal Posting Times</h4>
+        <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.9rem;">
+          <li style="margin-bottom:6px;"><strong>Wednesday 11:00am</strong> — mid-week hunger peak, weekend planning starts</li>
+          <li style="margin-bottom:6px;"><strong>Friday 4:00–5:30pm</strong> — highest pre-weekend planning engagement</li>
+          <li style="margin-bottom:6px;"><strong>Saturday 8:00am</strong> — weekend morning scrollers, brunch deciders</li>
+          <li style="margin-bottom:6px;"><strong>Reels/video: Thursday–Sunday 6–8pm</strong> — peak Instagram reel consumption</li>
+          <li style="margin-bottom:6px;"><strong>Catch of the day post: evening before</strong> — drives next-day bookings</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Caption Formula</h4>
+        <p style="font-family:Arial,sans-serif; font-size:0.9rem;"><strong>Hook</strong> — one line that creates appetite, curiosity, or FOMO<br>
+        <strong>Story</strong> — 2–3 lines of provenance, technique, or seasonal context<br>
+        <strong>CTA</strong> — specific: "We're open from 8am" or "DM us to book"</p>
+        <p style="font-family:Arial,sans-serif; font-size:0.88rem; margin-top:8px; color:var(--muted);">Coastal personality: relaxed, knowledgeable, slightly sun-bleached. Not corporate, not trying too hard.</p>
+      </div>
+    </div>
+
+    <div class="social-card">
+      <h4>📸 Example Caption 1 — Lobster Roll</h4>
+      <div class="caption-example">Butter-poached. In brioche. No compromises. 🦞
+
+This is what we spend our Monday mornings thinking about. Local lobster, poached gently in brown butter, celery mayo, fresh chives, brioche that's been toasted until just warm. It's not cheap and it shouldn't be.
+
+We're open from 8am. Treat yourself.
+#lobsterroll #beachshack #freshseafood #coastaleats #finecasual</div>
+    </div>
+
+    <div class="social-card">
+      <h4>📸 Example Caption 2 — Catch of the Day</h4>
+      <div class="caption-example">Tomorrow's fish just landed. 🎣
+
+Beautiful whole snapper from the local boats — it'll be on the board grilled with herb butter, triple-cooked chips, and dressed leaves. Limited portions. We'll sell out.
+
+Open 8am–3pm. See you at the shack.
+#catchoftheday #freshfish #localseafood #beachbreak #coastaldining</div>
+    </div>
+
+    <h3>Neighbourhood Anchor Strategy</h3>
+
+    <div class="partnership-card">
+      <h4>🏄 Local Surf School / Beach Sports Club</h4>
+      <p>Partner with the nearest surf school or beach sports club to offer post-session meal deals — "Salt & Sand Menu": Açaí Bowl or Poke Bowl + Cold Press Juice for $26, exclusive to members. Sponsor their end-of-season events. Offer to cater their instructor meetings. The active coastal demographic is your exact target market — they value fresh food, they eat well, and they recommend restaurants to each other constantly.</p>
+    </div>
+
+    <div class="partnership-card">
+      <h4>🏨 Coastal Accommodation & Holiday Rentals</h4>
+      <p>Build relationships with nearby hotels, B&Bs, and holiday rental managers. Provide them with printed menus and a discount card ("Welcome to the area — 10% off your first visit"). Offer to supply a "welcome seafood pack" for premium rentals — smoked fish dip, crackers, local produce — branded with our logo. This creates a warm introduction and a reason to visit. Accommodation providers refer hundreds of guests per month at zero cost to you.</p>
+    </div>
+
+    <div class="partnership-card">
+      <h4>🎨 Local Artists & Markets</h4>
+      <p>Collaborate with the local coastal art community and farmers market. Display local art in the restaurant (sale commissions shared with artists). Partner with the weekly coastal market to offer "market to table" specials using produce sourced that morning. Host a monthly art opening evening — drinks and seafood bites, 20 guests, built-in press opportunity. This embeds the restaurant in the cultural fabric of the community in a way that advertising cannot replicate.</p>
+    </div>
+
+    <h4>Weekly Special That Creates Anticipation</h4>
+    <div class="info-callout">
+      <strong>Friday Catch Special:</strong> Every Friday we feature a single premium catch dish not on the regular menu — a whole crab, a prized king prawn dish, a rare seasonal fish. Announced Thursday evening on Instagram with a one-word teaser. Guests plan their Friday lunch around it. Seats for Friday lunch book up by Thursday afternoon. Creates a Friday morning buzz that is entirely organic.
+    </div>
+
+    <h4>Community Engagement Tactic</h4>
+    <div class="info-callout">
+      <strong>Monthly "Dock to Dish" Morning:</strong> Once a month, invite 10–15 people (regulars, media, community members) for a 7am experience — meet the fishing boat, watch the catch come in, then come to the shack for a fresh breakfast cooked from that morning's haul. $55 per person. Always fully booked. Generates authentic content, word-of-mouth, and media coverage. Guests who attend become lifelong advocates. This experience money cannot replicate.
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 7: REVENUE MODEL -->
+<div class="section" id="bs7">
+  <div class="section-header">
+    <div class="section-num">Section 07</div>
+    <h2>💰 Revenue Model & Financial Overview</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="revenue-box">
+      <h3>Monthly Revenue Snapshot</h3>
+      <div class="revenue-grid">
+        <div class="revenue-stat"><span class="num">45</span><span class="label">Seats</span></div>
+        <div class="revenue-stat"><span class="num">$55</span><span class="label">Avg Lunch Spend</span></div>
+        <div class="revenue-stat"><span class="num">$28</span><span class="label">Avg Breakfast Spend</span></div>
+        <div class="revenue-stat"><span class="num">$3,600</span><span class="label">Daily Target</span></div>
+        <div class="revenue-stat"><span class="num">30%</span><span class="label">Food Cost</span></div>
+        <div class="revenue-stat"><span class="num">27%</span><span class="label">Labour Cost</span></div>
+        <div class="revenue-stat"><span class="num">22%</span><span class="label">Overhead</span></div>
+        <div class="revenue-stat"><span class="num">~$25K</span><span class="label">Monthly Net</span></div>
+      </div>
+    </div>
+
+    <h3>Daily Revenue Breakdown</h3>
+    <table>
+      <thead>
+        <tr><th>Daypart</th><th>Covers</th><th>Avg Spend</th><th>Revenue</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Breakfast (8–10:30am)</td><td>30–35</td><td>$28</td><td>~$910</td><td>Açaí Bowl, Poke Bowl, Cold Press, Matcha, smoothies</td></tr>
+        <tr><td>Late Morning (10:30–12pm)</td><td>15–20</td><td>$18</td><td>~$320</td><td>Oysters, Fish Dip Board, drinks — walk-in beach trade</td></tr>
+        <tr><td>Lunch (12–2:30pm)</td><td>55–65</td><td>$55</td><td>~$3,300</td><td>Full menu, premium items — Lobster Roll, Whole Fish, Linguine</td></tr>
+        <tr><td>Afternoon (2:30–4pm)</td><td>10–15</td><td>$16</td><td>~$210</td><td>Drinks, Pavlova, light snacks, beach crowd</td></tr>
+        <tr><td><strong>Daily Total</strong></td><td><strong>~125</strong></td><td><strong>~$37 avg</strong></td><td><strong>$3,600+</strong></td><td>Strong lunch trade is the engine; morning builds the habit</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Highest-Profit Items — Push These</h3>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Sell Price</th><th>GP %</th><th>GP $</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Iced Long Black</td><td>$6.00</td><td>82%</td><td>$4.92</td><td>Easy add alongside any meal</td></tr>
+        <tr><td>Watermelon Juice</td><td>$7.00</td><td>80%</td><td>$5.60</td><td>Suggest as "instead of water"</td></tr>
+        <tr><td>Mango Sorbet</td><td>$8.99</td><td>79%</td><td>$7.10</td><td>Dessert plant at mains delivery</td></tr>
+        <tr><td>Salted Caramel Tart</td><td>$9.99</td><td>78%</td><td>$7.79</td><td>Converts non-dessert guests</td></tr>
+        <tr><td>Corn & Zucchini Fritters</td><td>$14.99</td><td>79%</td><td>$11.84</td><td>Vegetarian recommendation</td></tr>
+        <tr><td>Açaí Bowl</td><td>$17.99</td><td>75%</td><td>$13.49</td><td>Health-conscious demographic anchor</td></tr>
+        <tr><td>Passionfruit Pavlova</td><td>$11.99</td><td>77%</td><td>$9.23</td><td>Best dessert by GP — lead with it</td></tr>
+        <tr><td>Berry Smoothie</td><td>$11.00</td><td>73%</td><td>$8.03</td><td>Highest drink price — push at breakfast</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cost Structure Analysis</h3>
+    <div class="two-col">
+      <div>
+        <h4>Monthly Revenue (26 trading days)</h4>
+        <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.92rem;">
+          <li style="margin-bottom:6px;">Gross Revenue: <strong>$93,600</strong></li>
+          <li style="margin-bottom:6px;">Food Cost (30%): <strong>−$28,080</strong></li>
+          <li style="margin-bottom:6px;">Gross Profit: <strong>$65,520 (70%)</strong></li>
+          <li style="margin-bottom:6px;">Labour (27%): <strong>−$25,272</strong></li>
+          <li style="margin-bottom:6px;">Overhead (22%): <strong>−$20,592</strong></li>
+          <li style="margin-bottom:6px;"><strong>Net Profit: ~$19,000–$25,000</strong></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key Revenue Levers</h4>
+        <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.92rem;">
+          <li style="margin-bottom:6px;">Sell one extra drink per table → +$7–$9 per turn</li>
+          <li style="margin-bottom:6px;">Convert 35% of tables to dessert → +$3.50 avg contribution</li>
+          <li style="margin-bottom:6px;">Add Friday Catch Special → +$180/week premium revenue</li>
+          <li style="margin-bottom:6px;">Morning covers +5 per day → +$140/day, +$3,640/month</li>
+          <li style="margin-bottom:6px;">Oyster sales: push to 3 tables per service → +$54/day</li>
+          <li style="margin-bottom:6px;">Reduce seafood waste 2% → +$1,872/month</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Seasonal Revenue Planning</h3>
+    <table>
+      <thead>
+        <tr><th>Season</th><th>Modifier</th><th>Strategy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Summer (Dec–Feb)</td><td>+35% revenue</td><td>Maximise covers, extend trading hours, beach walk-in focus, fresh cold drinks push</td></tr>
+        <tr><td>Autumn (Mar–May)</td><td>Baseline</td><td>Local regulars programme, event hosting, community anchor activities</td></tr>
+        <tr><td>Winter (Jun–Aug)</td><td>−20% revenue</td><td>Warm dishes and hot drinks push, locals-only specials, "Dock to Dish" mornings drive bookings</td></tr>
+        <tr><td>Spring (Sep–Nov)</td><td>+15% revenue</td><td>Early reopening push, new menu items, social media ramp-up, summer teasers</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- SECTION 8: OPERATIONS -->
+<div class="section" id="bs8">
+  <div class="section-header">
+    <div class="section-num">Section 08</div>
+    <h2>⚙️ Operations & Opening Procedures</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>Opening Checklist (Before 8am)</h3>
+    <ul class="ops-checklist">
+      <li>Confirm today's market fish — name, source, freshness check, how kitchen is preparing it</li>
+      <li>Oyster stock checked — received within 48 hours, properly stored on ice below 4°C</li>
+      <li>Cold Press Juice of the day confirmed and portioned — brief all staff on today's blend</li>
+      <li>All seafood checked for freshness by head chef — sign off before service begins</li>
+      <li>Mise en place: ceviche ingredients fresh-prepped (fish never sits more than 2 hours in lime)</li>
+      <li>Triple-cooked chips batch confirmed — first cook done, ready for second and third</li>
+      <li>Desserts checked — Pavlova made this morning? Sorbet churned? Tart portioned?</li>
+      <li>POS system on, float counted, specials board updated with catch of the day</li>
+      <li>All tables cleaned and set — menus clean, condiments full, napkins fresh</li>
+      <li>Instagram post for today's catch scheduled or ready to post</li>
+      <li>Staff briefing (5 min): today's fish, specials, any 86'd items, VIP regulars expected today</li>
+    </ul>
+
+    <h3>Closing Checklist (After Last Service)</h3>
+    <ul class="ops-checklist">
+      <li>All seafood checked — what carries over to tomorrow? What needs to be discarded?</li>
+      <li>Fish stock for tomorrow's catch assessed — contact supplier if needed tonight</li>
+      <li>All surfaces cleaned and sanitised — raw seafood prep areas extra thorough</li>
+      <li>Temperature logs complete for all cold storage</li>
+      <li>Waste recorded — food cost tracking, any patterns to note for ordering adjustments</li>
+      <li>Daily takings recorded, float counted, discrepancies reported</li>
+      <li>Regulars notebook updated with any new entries or visit notes</li>
+      <li>Social media: photograph anything not photographed today, schedule tomorrow morning's post</li>
+      <li>Complaint log updated — any incidents briefed to manager, any follow-up required</li>
+      <li>Tomorrow's prep list created — what needs 24-hour advance work?</li>
+    </ul>
+
+    <h3>Food Safety Standards — Seafood Specific</h3>
+    <div class="info-callout">
+      <strong>🐟 Fresh Seafood Protocol:</strong> All whole fish must be received on ice, eyes clear and bright, gills red/pink, flesh firm. Any fish with milky eyes, grey gills, or soft flesh is rejected without exception. Sign the delivery docket only after freshness check. Ceviche fish must be same-day fresh — never yesterday's fish in citrus. Oysters must be alive when served (close when tapped). Any oyster that is open and doesn't close is discarded.
+    </div>
+
+    <div class="two-col">
+      <div class="info-callout">
+        <strong>🧊 Cold Chain:</strong> Seafood fridge: 0–2°C maximum. All seafood stored on ice if possible. Never store next to dairy or produce. First in, first out — label all deliveries with date and time received. Nothing to service without head chef sign-off.
+      </div>
+      <div class="info-callout">
+        <strong>⚠️ Allergen Protocol:</strong> All staff must know the top allergens in every dish. Shellfish, fish, gluten, dairy, eggs — Beach Shack dishes contain all of these. Every order with an allergen request goes directly to the head chef. No assumptions, no workarounds. Document every allergen order in the docket.
+      </div>
+    </div>
+
+    <h3>Staff Training Timeline</h3>
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Training Focus</th><th>Pass Standard</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Day 1</td><td>Brand story, seafood knowledge (fish types, provenance), allergen training, POS</td><td>Identify every fish type on menu, describe their flavour profile and preparation</td></tr>
+        <tr><td>Day 2</td><td>Full menu knowledge, freshness standards, catch-of-day ritual, table timing guide</td><td>Describe every dish from memory with enthusiasm; identify today's catch and its story</td></tr>
+        <tr><td>Day 3</td><td>Upsell scripts, objection handling, regulars notebook system</td><td>Role-play all 5 scripts and 4 objections to manager standard</td></tr>
+        <tr><td>Day 4–5</td><td>Supervised service — shadow senior staff, manage tables under supervision</td><td>Complete full service with no significant errors; positive guest feedback noted</td></tr>
+        <tr><td>Week 2</td><td>Independent service with check-ins; focus on dessert/drink conversion and retention tactics</td><td>Avg table spend within 8% of store average over 5 consecutive shifts</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Weekly Manager Review</h3>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Target</th><th>Action if Below</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Daily revenue average</td><td>$3,600+</td><td>Review upsell conversion; check drink attachment rate</td></tr>
+        <tr><td>Food cost %</td><td>28–32%</td><td>Review waste log; check ordering patterns; review portion compliance</td></tr>
+        <tr><td>Dessert conversion rate</td><td>35%+ of tables</td><td>Reinforce dessert plant training; ensure staff doing it at mains delivery</td></tr>
+        <tr><td>Drink attachment per cover</td><td>1.4+ drinks per person</td><td>Reinforce pairing scripts; ensure drinks are offered proactively</td></tr>
+        <tr><td>Instagram post frequency</td><td>5–7 posts/week</td><td>Review content capture during service; assign content responsibility</td></tr>
+        <tr><td>New regulars added to notebook</td><td>3+ per week</td><td>Brief team on recognition importance; improve visit-2 protocols</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="footer">
+  <strong>Beach Shack Fine Casual — Operations Guide</strong><br>
+  "Salt air. Fresh catch. Serious food."<br>
+  <br>
+  Confidential — For Internal Use Only &nbsp;|&nbsp; Review quarterly &nbsp;|&nbsp; Last updated 2026
+</div>
+
+</body>
+</html>

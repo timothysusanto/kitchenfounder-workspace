@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greek Taverna — Profitable Restaurant Operations Guide</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+h1{font-family:'Cinzel',serif;font-size:34px;font-weight:700;color:#1a3a6b;}
+h2{font-family:'Cinzel',serif;font-size:19px;font-weight:700;color:#1a3a6b;margin:22px 0 11px;border-bottom:2px solid #e8c040;padding-bottom:5px;}
+h3{font-size:15px;font-weight:700;color:#1a3a6b;margin:16px 0 8px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1a3a6b;margin:10px 0 5px;}
+.cover{text-align:center;padding:32px 0 24px;border-top:4px solid #1a3a6b;border-bottom:1px solid #e8c040;}
+.cover-line{width:60px;height:3px;background:#e8c040;margin:16px auto;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#1a3a6b;color:#fff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;}
+.info-box{background:#f4f7ff;border-left:4px solid #e8c040;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;}
+.recipe{border:1px solid #e0e0e0;border-radius:8px;margin-bottom:24px;overflow:hidden;}
+.rh{background:linear-gradient(135deg,#1a3a6b,#0d1f42);color:#fff;padding:14px 16px;}
+.rh-title{font-size:17px;font-weight:700;font-family:'Cinzel',serif;}
+.rh-sub{font-size:10px;opacity:0.85;margin-top:3px;}
+.rh-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.rm{background:rgba(232,192,64,0.28);border-radius:10px;padding:2px 9px;font-size:9px;color:#e8c040;font-weight:600;}
+.rb{padding:16px 18px;}
+.photo-box img{width:100%;height:190px;object-fit:cover;display:block;border-radius:8px;margin-bottom:14px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11px;}
+.it th{background:#f0f4f8;color:#1a3a6b;padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #ddd;}
+.it td{padding:5px 10px;border-bottom:1px solid #f0f0f0;}
+.cc{text-align:right;color:#777;}
+.it tr.total-row td{font-weight:700;background:#fafafa;border-top:2px solid #ddd;}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.sn{background:#1a3a6b;color:#e8c040;border-radius:50%;width:24px;height:24px;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.sn2{background:#1a3a6b;color:#e8c040;border-radius:50%;width:27px;height:27px;min-width:27px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:9px;}
+.st{font-size:12px;line-height:1.75;color:#2a2a2a;}
+.temp{background:#222;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;font-weight:700;}
+.temp.ok{background:#1a6a1a;}
+.tb{background:#f4f7ff;border-left:3px solid #e8c040;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:11.5px;}
+.fc-box{background:#f4f7ff;border-radius:6px;padding:12px 16px;margin-top:12px;border:1px solid #b8cce8;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #d0dff0;font-size:12px;}
+.fc-row:last-child{border-bottom:none;font-weight:700;color:#1a3a6b;font-size:13px;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.a{background:#f0f0f0;border:1px solid #ddd;color:#555;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+.drink-card{border:1px solid #e0e0e0;border-radius:8px;padding:14px 16px;margin-bottom:14px;}
+.drink-card img{width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:10px;}
+.drink-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.drink-name{font-size:14px;font-weight:700;color:#1a3a6b;font-family:'Cinzel',serif;}
+.drink-price{background:#1a3a6b;color:#e8c040;border-radius:10px;padding:3px 11px;font-size:10px;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#1a3a6b;color:#e8c040;padding:8px 12px;text-align:left;font-size:10px;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top;}
+.prep-table tr:nth-child(even) td{background:#fafafa;}
+.prep-table .time-col{font-weight:700;color:#1a3a6b;white-space:nowrap;}
+.script-box{background:#f4f7ff;border-left:4px solid #e8c040;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;}
+.script-label{font-weight:700;font-size:10px;color:#1a3a6b;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#1a3a6b;color:#e8c040;padding:7px 10px;text-align:left;font-size:10px;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid #eee;}
+.schedule-table tr:nth-child(even) td{background:#fafafa;}
+.revenue-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.revenue-table th{background:#1a3a6b;color:#e8c040;padding:9px 12px;text-align:left;}
+.revenue-table td{padding:8px 12px;border-bottom:1px solid #eee;}
+.revenue-table .total-row td{font-weight:700;background:#f0f0f0;}
+.revenue-table .net-row td{font-weight:700;color:#fff;background:#1a3a6b;}
+.ft{margin-top:28px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;font-size:9px;color:#aaa;letter-spacing:1px;}
+.drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.safety-badge{background:#1a6a1a;color:#fff;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;}
+.story-section{}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#e8c040;margin-bottom:12px;font-family:'Cinzel',serif;">ΕΛΛΗΝΙΚΗ ΚΟΥΖΙΝΑ · Operations Guide</div>
+  <h1>Greek Taverna</h1>
+  <div class="cover-line"></div>
+  <div style="display:flex;justify-content:center;flex-direction:column;gap:2px;margin:10px auto;width:80px;"><div style="height:3px;background:#1a3a6b;border-radius:1px;"></div><div style="height:3px;background:#fff;border:1px solid #ddd;border-radius:1px;"></div><div style="height:3px;background:#1a3a6b;border-radius:1px;"></div><div style="height:3px;background:#fff;border:1px solid #ddd;border-radius:1px;"></div><div style="height:3px;background:#1a3a6b;border-radius:1px;"></div></div>
+  <div style="font-size:16px;color:#666;font-style:italic;margin-top:8px;">Mezedes Hour &amp; Lunch Service — 11:00am to 3:00pm</div>
+  <div style="font-size:13px;color:#666;margin-top:8px;">Full Recipe Cards · US Market Food Costing · Kitchen Prep Flow · Financial Forecast</div>
+  <div style="font-family:'Cinzel',serif;font-size:12px;color:#1a3a6b;letter-spacing:2px;margin-top:12px;">ΦΙΛΟΞΕΝΙa · PHILOXENIA</div>
+  <div style="margin-top:20px;font-size:11px;color:#999;">The philosophy of the Greek table: food is not ordered — it is offered. Dishes arrive in waves. The table should never be empty. Olive oil, lemon, and salt are not condiments — they are the cuisine.</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">42</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">$44</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$27,000</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+</div>
+
+<div class="info-box"><strong>About This Guide:</strong> Greek meze is one of the most commercially intelligent formats — sharing plates, high margin dips, batch-friendly prep, olive oil-forward cuisine with strong US appeal driven by the Mediterranean diet movement. The taverna format rewards operators who understand the rhythm of the Greek table: cold meze arrive first, hot dishes follow in waves, the table is never empty. This guide covers the essential Greek taverna repertoire — from tzatziki to slow-roasted lamb shoulder — with complete recipe cards, US 2025 market costing, kitchen prep flow, and the business fundamentals to run a profitable 42-seat mezedes operation.</div>
+
+<div class="story-section" style="background:linear-gradient(135deg,#1a3a6b 0%,#0d1f42 100%);color:white;border-radius:12px;padding:40px 48px;margin:32px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-20px;left:24px;font-size:180px;color:rgba(255,255,255,0.07);font-family:Georgia,serif;line-height:1;">"</div>
+  <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e8c040;margin-bottom:16px;">🇬🇷 The Story Behind This Guide</div>
+  <div style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;line-height:1.4;margin-bottom:24px;position:relative;z-index:1;">"My yiayia never let a table sit empty. Not for one minute. That is not a rule. That is a philosophy of hospitality that the Greeks have a word for: philoxenia."</div>
+  <div style="font-size:14px;line-height:1.85;opacity:0.92;position:relative;z-index:1;">
+    <p style="margin-bottom:14px;">Dmitri grew up in a Greek household in Chicago where food was never a meal — it was an event. His grandmother's table was always full before anyone sat down. Taramosalata, tzatziki, olives, bread. Then the hot dishes would arrive in waves. You never ordered. Things just appeared. You ate until you couldn't, then somehow ate more. The meal lasted three hours. No one looked at their phone.</p>
+    <p style="margin-bottom:14px;">When he started researching the business model, the meze format's economics surprised him. The food cost on dips and cold meze was 14–18%. The octopus — which he thought would be expensive — came in at 19% once he understood the freeze-thaw tenderizing technique that eliminated the need for expensive long-braise preparation. The lamb shoulder, slow-cooked for four hours, yielded enough for 22 portions from one cut. The numbers were better than he expected.</p>
+    <p style="margin-bottom:14px;">The guide's prep flow was the unlock. He could make the tzatziki, hummus, and taramosalata the day before — they were better after 24 hours. The spanakopita could be pre-portioned and frozen. The octopus went in the freezer Sunday night. By the time service started, most of the menu was already done. The kitchen was calm in a way he hadn't experienced before.</p>
+    <p style="margin-bottom:0;">He opened a 42-seat taverna in Chicago's Greektown. The table is never empty. Month three net: $55,000. <strong style="color:#e8c040;">Philoxenia is not a marketing strategy. It is a way of operating that happens to be extremely profitable.</strong></p>
+  </div>
+  <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:1px;color:#e8c040;border-top:1px solid rgba(255,255,255,0.2);padding-top:16px;">Dmitri K. · Greek Taverna · Greektown, Chicago · Est. Month 3 Net: $55,000</div>
+</div>
+
+<h2><span class="sn2">1</span> Entrées</h2>
+
+<!-- ENTRÉE 1: TZATZIKI & PITA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Tzatziki &amp; Pita</div>
+  <div class="rh-sub">Greek yoghurt, cucumber, garlic, dill, extra virgin olive oil · Sell: $8.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 4 min</span><span class="rm">🫙 Entrée</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Greek yoghurt (strained)</td><td>120g</td><td class="cc">$0.48</td></tr>
+        <tr><td>Cucumber (grated, salted, drained)</td><td>60g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Garlic cloves (minced)</td><td>2 cloves</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fresh dill</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>15ml</td><td class="cc">$0.24</td></tr>
+        <tr><td>Lemon juice</td><td>10ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Warm pita bread (2 pieces)</td><td>2 × 60g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.25</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.25</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$8.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>13.9% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$7.74</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">The foundation of tzatziki is properly drained yoghurt. Use full-fat Greek yoghurt (strained) — the higher fat content produces a richer, creamier base. If your yoghurt is not thick enough, strain overnight in cheesecloth. A watery tzatziki is a failed tzatziki regardless of other flavours. The texture should be thick enough to hold a spoon upright.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Grate cucumber on the large holes of a box grater. Salt generously and let sit 10 minutes, then squeeze aggressively in a clean kitchen towel — you want to remove 60–70% of the moisture. Undrained cucumber is the most common tzatziki error: it releases water into the yoghurt within minutes, turning a thick dip into a watery soup by the time it reaches the table.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Combine yoghurt, drained cucumber, minced garlic, fresh dill, lemon juice, and half the olive oil. Fold gently — do not whip. Season with salt. Make this at least 2 hours before service, ideally the day before. The resting time allows the garlic and dill flavours to fully infuse the yoghurt. Fresh tzatziki is good; overnight tzatziki is excellent.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve in a shallow bowl or on a small plate. Make a shallow well with the back of a spoon and pour the remaining olive oil into the well — this presentation is traditional and keeps the oil visible and fresh. Garnish with a sprig of fresh dill and a dusting of dried oregano. Warm pita is essential: cold or stale pita is a false economy that undermines the entire experience.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Tzatziki is your highest-volume cold meze. Make a large batch daily — it holds perfectly for 3 days refrigerated. The day-two and day-three tzatziki is actually better than day-one as the garlic mellows and the flavours integrate. This is your most profitable dish: $1.25 cost on an $8.99 sell. Every table will order it. Never run out.</div>
+  <div class="al"><span class="a">DAIRY (yoghurt)</span><span class="a">GLUTEN (pita)</span></div>
+</div>
+</div>
+
+<!-- ENTRÉE 2: TARAMOSALATA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Taramosalata</div>
+  <div class="rh-sub">Fish roe dip, lemon, olive oil, soaked bread · Sell: $9.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🐟 Entrée</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Tarama (carp roe paste)</td><td>40g</td><td class="cc">$0.90</td></tr>
+        <tr><td>Day-old white bread (crusts off)</td><td>50g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>60ml</td><td class="cc">$0.96</td></tr>
+        <tr><td>Fresh lemon juice</td><td>30ml</td><td class="cc">$0.15</td></tr>
+        <tr><td>Small onion (grated)</td><td>20g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Warm pita (accompaniment)</td><td>2 × 60g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.41</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.41</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$9.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>24.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$7.58</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Soak white bread (crustless) in cold water for 5 minutes. Squeeze out excess moisture completely — the bread acts as an emulsifying base. The bread's starch absorbs the oil during blending and creates the creamy, smooth texture of authentic taramosalata. Without bread, the dip separates into an oily, grainy mess.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">In a food processor, blend tarama and grated onion until combined. Add squeezed bread and pulse. Begin adding olive oil in a slow, steady stream — exactly as you would make mayonnaise. The emulsification requires patience: add oil too fast and the mixture breaks. Too slow and it over-emulsifies into a paste. A slow, steady pour over 2 minutes produces the ideal silky consistency.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Alternate between olive oil and lemon juice — a tablespoon of each at a time — adjusting balance as you go. Taste constantly. Authentic taramosalata should be briny, rich, lemony, and slightly sharp from the raw onion. It should never taste overwhelmingly fishy or overly oily. The bread absorbs excess oil and moderates the flavour intensity.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve chilled in a shallow bowl with olive oil drizzled across the top and a black olive garnish. Taramosalata holds refrigerated for 4 days. Like tzatziki, it improves overnight as flavours meld. The onion sharpness mellows beautifully after 12 hours. Make daily, serve the day-old version — it is superior to fresh.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Source your tarama from a Greek or Middle Eastern specialty supplier. The best tarama is pale pink — heavily dyed bright-red product is inferior quality with artificial colouring. White tarama is smoked cod roe and has a more delicate flavour than pink carp roe; both are correct. Keep tarama refrigerated and use within 4 days of opening.</div>
+  <div class="al"><span class="a">FISH (roe)</span><span class="a">GLUTEN (bread, pita)</span></div>
+</div>
+</div>
+
+<!-- ENTRÉE 3: SPANAKOPITA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Spanakopita — Spinach &amp; Feta Pie</div>
+  <div class="rh-sub">Phyllo pastry, spinach, feta, dill, eggs · Sell: $10.99 (2 pieces)</div>
+  <div class="rh-meta"><span class="rm">⏱ 6 min</span><span class="rm">🥬 Entrée</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (2 triangles, batch-costed)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Phyllo dough</td><td>40g</td><td class="cc">$0.44</td></tr>
+        <tr><td>Spinach (wilted, squeezed dry)</td><td>80g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Feta cheese (crumbled)</td><td>50g</td><td class="cc">$0.80</td></tr>
+        <tr><td>Eggs</td><td>1 egg</td><td class="cc">$0.35</td></tr>
+        <tr><td>Fresh dill</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Butter (for brushing)</td><td>20g</td><td class="cc">$0.12</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.05</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.05</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$10.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>18.7% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$8.94</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Spinach preparation is critical: wilt fresh spinach, drain, and squeeze out every drop of moisture in a kitchen towel. Excess moisture is the enemy of crispy phyllo. Wet filling creates steam inside the pastry during baking, softening the phyllo from within and destroying the characteristic crunch. Properly squeezed spinach reduces to about 30% of its raw weight.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Combine drained spinach, crumbled feta, egg, and fresh dill. The egg acts as a binder — without it, the filling crumbles out when cut. Feta provides all the saltiness needed; do not add extra salt. Use genuine Greek feta (PDO) for its characteristic briny, slightly crumbly texture — block feta packed in brine is superior to pre-crumbled for this application.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Layer 4–5 sheets of phyllo, brushing each generously with melted butter. Phyllo that is not properly buttered bakes dry and papery rather than golden and flaky. Cut into strips and fold into triangles, enclosing filling. These can be assembled, placed on lined trays, and frozen unbaked — bake from frozen at 190°C for 22 minutes. This batch freeze is your operational advantage.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Bake at <span class="temp">190°C / 374°F</span> for 18 minutes (fresh) or 22 minutes (from frozen) until deep golden. Rest 5 minutes before serving — the molten cheese filling is extremely hot directly from the oven and will burn guests. Serve on a plate with a lemon wedge. Never microwave to reheat: the phyllo becomes rubbery. Always oven or grill to reheat.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Assemble a large batch of spanakopita weekly, freeze unbaked, and bake to order from frozen. This eliminates daily prep and ensures consistent quality. Phyllo thaws overnight in the refrigerator — never at room temperature, which introduces condensation. A frozen spanakopita inventory is your buffer against busy service: you can always fire more.</div>
+  <div class="al"><span class="a">DAIRY (feta, butter)</span><span class="a">GLUTEN (phyllo)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<!-- ENTRÉE 4: SAGANAKI -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Saganaki — Flamed Greek Cheese</div>
+  <div class="rh-sub">Pan-fried kefalograviera, flamed with brandy, lemon · Sell: $13.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🔥 Entrée — Signature</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Kefalograviera (or kasseri) cheese</td><td>120g slice</td><td class="cc">$2.16</td></tr>
+        <tr><td>All-purpose flour (dredge)</td><td>15g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Brandy (for flaming)</td><td>30ml</td><td class="cc">$0.42</td></tr>
+        <tr><td>Butter + olive oil (pan)</td><td>10g + 10ml</td><td class="cc">$0.16</td></tr>
+        <tr><td>Lemon wedge</td><td>1 wedge</td><td class="cc">$0.08</td></tr>
+        <tr><td>Dried oregano (garnish)</td><td>1g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.85</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.85</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$13.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>20.4% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$11.14</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Cut kefalograviera into a thick slab (approximately 1.5–2cm). The thickness is important: too thin and the cheese melts completely before the crust forms; too thick and the exterior burns before the interior warms through. Pat dry, then dredge lightly in flour — just enough to coat, not cake. The flour creates the signature golden crust and prevents sticking.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Heat a small cast-iron pan (saganaki pan) until very hot. Add butter and olive oil together — the butter browns and adds nuttiness while the olive oil raises the smoke point. When the butter foams subside, add the floured cheese. Sear undisturbed for 2–2.5 minutes until deep golden on the bottom — the crust should be firm and crispy. Flip once, sear 1.5 minutes more.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">For the OPA! moment: pour brandy into the hot pan and ignite immediately with a long match or lighter. The flame burns off the alcohol (10–15 seconds), leaving a slightly caramelised, smoky flavour on the cheese. Safety: have a lid ready to extinguish if needed. The flame is the entire theatre of this dish — it is meant to be seen and heard. Carry it to the table while still flaming.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Set the pan on the table while the flame dies. Squeeze lemon over the cheese immediately — the acid cuts the rich fat and is the traditional accompaniment. Sprinkle dried oregano. Serve with warm pita or crusty bread to scoop the molten cheese. The cheese should be golden-crusted outside and soft, yielding — almost runny — inside. Serve within 60 seconds or the cheese re-solidifies.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Saganaki is your highest-impact tableside experience. Train every server to announce "OPA!" as they flambe tableside. This moment draws attention from neighbouring tables and triggers secondary orders. Track how many saganaki orders convert neighbouring tables — it is one of the most powerful visual selling tools in Greek taverna service. Make it theatrical every single time.</div>
+  <div class="al"><span class="a">DAIRY (cheese, butter)</span><span class="a">GLUTEN (flour)</span><span class="a">SULPHITES (brandy)</span></div>
+</div>
+</div>
+
+<!-- ENTRÉE 5: DOLMADES -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Dolmades — Rice-Stuffed Vine Leaves</div>
+  <div class="rh-sub">Grape leaves, rice, fresh herbs, lemon · Sell: $11.99 (4 pieces)</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min service</span><span class="rm">🍃 Entrée</span><span class="rm">Target FC: 17%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (4 pieces, batch-costed)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Preserved grape leaves (jar)</td><td>4 large leaves</td><td class="cc">$0.28</td></tr>
+        <tr><td>Short-grain rice (uncooked)</td><td>60g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Fresh mint &amp; dill</td><td>8g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Spring onions (finely sliced)</td><td>20g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Lemon juice</td><td>20ml</td><td class="cc">$0.10</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>20ml</td><td class="cc">$0.32</td></tr>
+        <tr><td>Plain yoghurt (accompaniment)</td><td>40g</td><td class="cc">$0.16</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.12</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.12</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$11.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>9.3% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$10.87</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Rinse preserved grape leaves in cold water to remove brine. The brine is intensely salty and will overseason the finished dolmades if not washed. Blanch briefly in hot water if the leaves are stiff — they should be pliable enough to roll without cracking. Lay flat, trim stems flush with the leaf.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Combine uncooked rice with spring onions, mint, dill, half the lemon juice, and half the olive oil. The rice is not pre-cooked — it finishes cooking inside the rolled leaf. Use short-grain rice (not long-grain) — the starch releases during cooking and binds the filling. Season lightly; the grape leaf provides its own tannic, slightly sour seasoning.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Place a spoonful of filling near the stem end of each leaf. Roll tightly — not so tight the rice has no room to expand during cooking (it will burst the leaf), but firm enough to hold its shape. Layer rolled dolmades tightly in a pot, cover with remaining olive oil, lemon juice, and enough water to submerge. Place a plate on top to keep them submerged during simmering.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Simmer covered on low heat for 40–45 minutes until the rice is fully cooked and the leaves are tender. Cool in the cooking liquid — this prevents them from drying out and allows the flavours to develop. Serve at room temperature or slightly warmed, drizzled with olive oil and fresh lemon. Dolmades are a batch-cook staple: make large quantities, hold refrigerated for 4 days.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Dolmades are one of the most profitable items in your mezedes lineup — minimal ingredient cost, batch-cooked, excellent hold time. The labour is the investment, but dolmades are rolled in advance (ideally the day before service) and simply portioned at service. A trained prep cook can roll 80 dolmades in 45 minutes. Make 120 daily and always have them available.</div>
+  <div class="al"><span class="a">DAIRY (yoghurt accompaniment)</span></div>
+</div>
+</div>
+
+<!-- ENTRÉE 6: OCTOPUS CARPACCIO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Octopus Carpaccio</div>
+  <div class="rh-sub">Tenderised octopus, olive oil, capers, lemon, parsley · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🐙 Entrée — Premium</span><span class="rm">Target FC: 19%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Octopus tentacle (cooked, sliced)</td><td>100g</td><td class="cc">$2.40</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>20ml</td><td class="cc">$0.32</td></tr>
+        <tr><td>Capers</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Fresh lemon juice</td><td>15ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Fresh flat-leaf parsley</td><td>5g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Red onion (paper thin)</td><td>10g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.97</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.97</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>19.8% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$12.02</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">The freeze-thaw tenderising technique eliminates expensive long-braising. Freeze raw octopus for 24–48 hours — freezing ruptures the muscle cells, breaking down the connective tissue that makes raw octopus tough. This is why previously frozen octopus (standard at most suppliers) is often more tender than fresh: it has already undergone this cellular breakdown. Thaw in the refrigerator overnight.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Simmer thawed octopus in gently simmering water (not boiling — boiling tightens the proteins) for 45–60 minutes until a knife slides through the thickest tentacle with no resistance. Add a wine cork to the pot (the enzymes in cork are traditionally believed to tenderise octopus — the science is debated, but the tradition persists). Cool completely in the cooking liquid for maximum moisture retention.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Once cooled, slice tentacles very thin (2–3mm) on a bias with a sharp slicing knife. The bias cut creates wider, more elegant slices than a straight cut. Arrange overlapping on a chilled plate. The texture should be tender and silky, not rubbery. If the octopus is rubbery, it was cooked at too high a temperature — slow and gentle is the Greek way.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Dress generously with excellent olive oil, fresh lemon juice, capers, paper-thin red onion, and torn flat-leaf parsley. Season with flaky salt and cracked pepper. The dressing should be generous — octopus carpaccio can handle bold dressing. Serve immediately at room temperature or slightly cool (not refrigerator-cold, which firms the octopus). This dish is best eaten within 5 minutes of plating.</div></div>
+  <div class="tb"><strong>Chef's Tip (US Market 2025):</strong> Octopus at $8/lb is your premium protein but the yield is excellent — a 2lb octopus produces 80–90% usable meat after cleaning and cooking. One batch cook on Sunday serves the week. The freeze-thaw technique means you never need expensive 6-hour braises. Your true cost per portion is $2.97 — a 19.8% food cost at $14.99 makes this a high-value item.</div>
+  <div class="al"><span class="a">SHELLFISH (octopus)</span><span class="a">SULPHITES (capers in vinegar)</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">2</span> Mains</h2>
+
+<!-- MAIN 1: MOUSSAKA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Moussaka</div>
+  <div class="rh-sub">Baked eggplant, spiced lamb mince, béchamel · Sell: $18.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service (batch-baked)</span><span class="rm">🍆 Main — Signature</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve, batch-costed)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Ground lamb</td><td>120g</td><td class="cc">$1.73</td></tr>
+        <tr><td>Eggplant (salted, oiled, roasted)</td><td>100g</td><td class="cc">$0.35</td></tr>
+        <tr><td>Tomato sauce (spiced: cinnamon, allspice)</td><td>80g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Béchamel sauce (batch)</td><td>100g</td><td class="cc">$0.38</td></tr>
+        <tr><td>Onion + garlic (soffritto)</td><td>40g</td><td class="cc">$0.07</td></tr>
+        <tr><td>Parmesan/graviera (topping)</td><td>15g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$3.13</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$3.13</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$18.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>16.5% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$15.86</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">The signature of authentic moussaka is the spice profile of the lamb: cinnamon and allspice (and sometimes clove) are the Greek distinction from standard Italian bolognese. These warm spices transform ground lamb into something unmistakably Hellenic. Brown the lamb with onion and garlic, add cinnamon, allspice, and tomato paste before adding crushed tomatoes. Simmer 20 minutes uncovered to reduce and concentrate.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Salt eggplant slices and let sit 20 minutes to draw out bitterness and excess moisture. Rinse, pat dry, brush with olive oil, and roast at <span class="temp">200°C / 392°F</span> until golden and fully softened. Properly roasted eggplant should be completely tender and slightly caramelised — raw or underoasted eggplant remains spongy and bitter in the final dish, no matter how long the moussaka bakes.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Make béchamel with whole milk, butter, flour, and egg yolks — the egg yolks are the Greek addition that distinguishes moussaka béchamel from standard French béchamel. They add richness, colour, and help the topping set into a firm, sliceable layer. Season with nutmeg. The béchamel should be thick enough to pour slowly — if it pours like milk, it will spread off the lamb layer during baking.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Layer in a deep baking tray: eggplant → lamb meat sauce → eggplant → béchamel. Top with grated cheese. Bake at <span class="temp">180°C / 356°F</span> for 45 minutes until the top is deeply golden and set. Rest 20 minutes before portioning — moussaka that is cut hot collapses. A rested, cooled moussaka portions into clean squares. Reheat portions individually for service.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Moussaka is your best batch-cook item. A full hotel pan (12 portions) takes 45 minutes to bake and holds refrigerated for 4 days. Reheat individual portions at 180°C for 15 minutes covered, then 5 minutes uncovered to re-crisp the top. Day-two moussaka is frequently better than day-one as the layers set more firmly. This is a true prep-ahead profit driver.</div>
+  <div class="al"><span class="a">DAIRY (béchamel, cheese)</span><span class="a">GLUTEN (béchamel flour)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<!-- MAIN 2: SLOW-ROASTED LAMB SHOULDER -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Slow-Roasted Lamb Shoulder — Sharing</div>
+  <div class="rh-sub">Bone-in shoulder, garlic, rosemary, lemon, 4-hour braise · Sell: $34.99 (serves 2–3)</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min service (4hr prep)</span><span class="rm">🐑 Main — Table Share</span><span class="rm">Target FC: 24%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 shoulder, serves 2–3)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Bone-in lamb shoulder</td><td>1.2kg whole</td><td class="cc">$9.70</td></tr>
+        <tr><td>Garlic cloves (spiked into flesh)</td><td>8 cloves</td><td class="cc">$0.16</td></tr>
+        <tr><td>Fresh rosemary + oregano</td><td>10g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Lemons (juice + zest)</td><td>2 lemons</td><td class="cc">$0.56</td></tr>
+        <tr><td>Olive oil (marinade)</td><td>40ml</td><td class="cc">$0.64</td></tr>
+        <tr><td>White wine (braising)</td><td>150ml</td><td class="cc">$0.55</td></tr>
+        <tr><td>Roast potatoes (accompaniment)</td><td>200g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$11.99</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per shoulder</span><span>$11.99</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$34.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>34.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$23.00</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Marinate the lamb shoulder overnight (minimum): stab deep incisions all over with a paring knife and push garlic cloves and sprigs of rosemary into each hole. Rub with olive oil, lemon zest, dried oregano, and salt. The overnight marinade allows the garlic and herbs to perfume the meat from within. This step cannot be replicated in a short marinade — the flavour penetrates differently.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Sear the marinated shoulder on all sides in a hot roasting pan — 3 minutes per side until deeply browned. This Maillard crust provides colour, flavour complexity, and textural contrast to the eventual falling-tender interior. Do not skip the sear: a braised lamb shoulder without searing is pale and flavourless despite hours of cooking.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Add white wine, lemon juice, and enough water to come 3cm up the pan. Cover tightly with foil. Roast at <span class="temp">160°C / 320°F</span> for 3.5–4 hours. The low temperature and steam from the wine-water mixture slowly breaks down the collagen in the shoulder into gelatin, producing the characteristic pull-apart tenderness. At this temperature the meat cannot overcook — it only improves with time.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Remove foil for the final 30 minutes and raise temperature to 200°C to crisp the exterior fat and reduce the braising juices into a natural jus. Rest 15 minutes before service. At the table, present the shoulder in its pan and pull the meat apart tableside with two forks — this service moment is visual, aromatic, and memorable. The braising jus is served alongside as a natural sauce.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The lamb shoulder is your highest-ticket item and your most powerful up-sell. Train servers to suggest it for every table of 3 or more: "Our lamb shoulder is slow-roasted for four hours every morning — it's a sharing experience that's become legendary at this table." One sale covers the food cost of the entire table's meze. The ceremony of pulling it apart at the table drives repeat visits.</div>
+  <div class="al"><span class="a">SULPHITES (wine)</span></div>
+</div>
+</div>
+
+<!-- MAIN 3: GRILLED WHOLE BRANZINO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Grilled Whole Branzino</div>
+  <div class="rh-sub">Whole sea bass, lemon, herbs, olive oil, Greek-style · Sell: $28.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 16 min</span><span class="rm">🐟 Main</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 fish)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Whole branzino (gutted, scaled)</td><td>450g</td><td class="cc">$7.20</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>30ml</td><td class="cc">$0.48</td></tr>
+        <tr><td>Lemons (2 — for cavity &amp; serving)</td><td>2 lemons</td><td class="cc">$0.56</td></tr>
+        <tr><td>Fresh thyme + rosemary</td><td>5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Garlic cloves (in cavity)</td><td>3 cloves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sea salt + cracked pepper</td><td>3g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$8.38</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$8.38</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$28.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>28.9%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$20.61</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Score the branzino skin 3 times on each side, cutting about 5mm deep. Brush aggressively with olive oil, ensuring the oil penetrates the score cuts. Season generously inside and out with sea salt. Greek grilled fish (psari sti skara) relies on good olive oil and salt — flavoured butter, sauces, or heavy seasonings are not the Greek way. The quality of the oil and the freshness of the fish are the entire dish.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Stuff the cavity with lemon slices, crushed garlic, and fresh thyme and rosemary. The aromatics perfume the fish from within during grilling. On a charcoal or gas grill at high heat (250–280°C), the fish takes 5–7 minutes per side, depending on thickness. The skin should char and crisp while the flesh just cooks through — internal temp <span class="temp ok">63°C / 145°F</span> at the thickest point.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Resist the urge to move the fish while it grills. The fish will naturally release from the grill grates when the skin has formed a proper crust — if you try to turn it prematurely, the skin tears. Brush with additional olive oil halfway through grilling on each side. A quality fish grill brush or a fish basket makes this operation much smoother during service.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Rest 3 minutes, then serve whole on a platter. The traditional Greek accompaniment is ladolemono — a simple emulsion of olive oil and lemon juice (2:1 ratio) with dried oregano, whisked together and poured over the fish. Present tableside and fillet in front of the guest. The ladolemono is the soul of Greek grilled fish — never substitute with tartar sauce or aioli.</div></div>
+  <div class="tb"><strong>Chef's Tip (US Market 2025):</strong> Branzino at $12/lb is your premium fish. A 450g fish yields 270–300g edible flesh after cleaning — excellent yield for a whole fish. Source fresh, never previously frozen for this dish — the texture difference in a grilled whole fish is dramatic. Build a relationship with your fishmonger for twice-weekly delivery and specify "day-boat" or "ice-fresh" product only.</div>
+  <div class="al"><span class="a">FISH</span></div>
+</div>
+</div>
+
+<!-- MAIN 4: LAMB SOUVLAKI -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Lamb Souvlaki — 3 Skewers</div>
+  <div class="rh-sub">Marinated lamb leg cubes, lemon, oregano, tzatziki, pita · Sell: $19.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🍢 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (3 skewers)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Lamb leg (cubed 3cm)</td><td>220g</td><td class="cc">$3.10</td></tr>
+        <tr><td>Olive oil (marinade)</td><td>20ml</td><td class="cc">$0.32</td></tr>
+        <tr><td>Lemon juice + zest</td><td>20ml</td><td class="cc">$0.10</td></tr>
+        <tr><td>Dried oregano + garlic</td><td>3g + 2 cloves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Tzatziki (batch)</td><td>60g</td><td class="cc">$0.45</td></tr>
+        <tr><td>Warm pita (2 pieces)</td><td>2 × 60g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Tomato, onion, lemon (garnish)</td><td>40g</td><td class="cc">$0.10</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$4.41</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$4.41</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$19.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>22.1% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$15.58</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Marinate lamb cubes for minimum 4 hours (overnight preferred) in olive oil, lemon juice, dried oregano, garlic, and a pinch of cinnamon. The acid in the lemon begins to denature the surface proteins, helping the marinade penetrate. Oregano is the definitive Greek herb — use dried Greek oregano (rigani), which is more pungent and resinous than the dried oregano commonly sold in US supermarkets.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Thread onto metal skewers — not bamboo (bamboo burns on a hot grill and imparts a bitter flavour). Cut lamb into consistent 3cm cubes so all pieces cook evenly. Pieces that are too small will overcook; pieces too large will be raw at the centre when the exterior is done. Pre-cut and marinate lamb in large batches daily during morning prep.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Grill over high heat (or charcoal for authentic flavour) for 3–4 minutes per side. The target is medium — pink at the centre, nicely charred on the outside. Lamb souvlaki cooked to well-done loses its juiciness and becomes dry. Train your grill cook to touch-test: medium lamb has slight resistance, medium-well has firm resistance. Pull at medium and rest 2 minutes before plating.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve on warm pita with tzatziki, sliced tomato, and thin-sliced red onion. The traditional Greek plating is simple — the souvlaki rests on the pita so the bread absorbs the meat juices. A squeeze of fresh lemon at service brightens everything. Never serve souvlaki on a cold plate: the lamb continues to lose heat rapidly and cold ceramic accelerates this. Warm your plates.</div></div>
+  <div class="tb"><strong>Chef's Tip (US Market 2025):</strong> Lamb leg at $9/lb is your primary souvlaki cut. Leg is preferable to loin for skewers — more flavourful, cheaper, and holds moisture better on the grill. Buy bone-in leg and break it down yourself to reduce cost; boneless leg at a premium is convenient but erodes margin. The yield from a bone-in leg is approximately 65–70% usable meat.</div>
+  <div class="al"><span class="a">DAIRY (tzatziki)</span><span class="a">GLUTEN (pita)</span></div>
+</div>
+</div>
+
+<!-- MAIN 5: CHICKEN SOUVLAKI PITA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Chicken Souvlaki Pita</div>
+  <div class="rh-sub">Marinated chicken, tomato, onion, tzatziki in toasted pita · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🍗 Main</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 pita wrap)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken thigh (boneless, marinated)</td><td>140g</td><td class="cc">$0.62</td></tr>
+        <tr><td>Pita bread (large)</td><td>80g</td><td class="cc">$0.30</td></tr>
+        <tr><td>Tzatziki (batch)</td><td>50g</td><td class="cc">$0.38</td></tr>
+        <tr><td>Tomato (diced)</td><td>40g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Red onion (thin sliced)</td><td>20g</td><td class="cc">$0.04</td></tr>
+        <tr><td>French fries (side)</td><td>80g</td><td class="cc">$0.22</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.68</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$1.68</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>11.2% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$13.31</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Use chicken thigh, not breast — thigh's higher fat content makes it far more forgiving on the grill and produces a juicier, more flavourful result. Marinate overnight in olive oil, lemon, garlic, paprika, and oregano. The chicken souvlaki pita is your most accessible price point and highest-volume item — it will be your first reorder for tables who underordered initially.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Grill marinated thighs over high heat for 5–6 minutes per side until charred in spots and cooked through to <span class="temp ok">74°C / 165°F</span>. Rest 3 minutes, then slice thin — sliced chicken has more surface area to soak the pita with juices. Never use a whole thigh in the pita; it becomes unwieldy. Thin slices integrate with the other components into a cohesive bite.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Toast the pita on the grill for 45 seconds per side — just until it develops light char marks and softens. Toasted pita wraps without cracking; cold or room-temperature pita cracks along the fold. Spread tzatziki generously inside, add chicken, tomato, and red onion. Roll firmly and secure with parchment paper or foil for 30 seconds to hold its shape.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve with thick-cut fries (patates tiganites) — this is non-negotiable in Greek street food culture. Fries are not a side dish; they are part of the souvlaki experience. Drizzle a little extra tzatziki over the top of the wrap when plating. Serve immediately — a souvlaki pita that sits longer than 5 minutes begins to steam itself soggy from the hot chicken inside.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The chicken souvlaki pita is your lunch service workhorse. At 11.2% food cost and a 4-minute ticket time, it is your most efficient revenue generator during the 11am–1pm rush. Pre-marinate chicken in 2kg batches each morning. Have 20 pitas warmed and ready by 11am. The lunch pita crowd is loyal, fast, and often adds a cold meze to their order.</div>
+  <div class="al"><span class="a">GLUTEN (pita)</span><span class="a">DAIRY (tzatziki)</span></div>
+</div>
+</div>
+
+<!-- MAIN 6: PASTITSIO -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Pastitsio — Greek Baked Pasta</div>
+  <div class="rh-sub">Tubular pasta, spiced lamb mince, creamy béchamel top · Sell: $17.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service (batch-baked)</span><span class="rm">🍝 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve, batch-costed)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Tubular pasta (ziti or pastitsio)</td><td>80g dry</td><td class="cc">$0.28</td></tr>
+        <tr><td>Ground lamb</td><td>100g</td><td class="cc">$1.44</td></tr>
+        <tr><td>Tomato sauce (cinnamon, allspice)</td><td>80g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Béchamel sauce (batch)</td><td>120g</td><td class="cc">$0.46</td></tr>
+        <tr><td>Graviera or Parmesan</td><td>20g</td><td class="cc">$0.38</td></tr>
+        <tr><td>Onion + garlic</td><td>30g</td><td class="cc">$0.05</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.93</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.93</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$17.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>16.3% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$15.06</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Pastitsio is moussaka's pasta cousin — same spiced lamb meat sauce, same egg-enriched béchamel, but with par-cooked tubular pasta replacing eggplant. Use proper pastitsio tubes (slightly thicker than ziti, with a ridged exterior) for authentic texture; ziti is an acceptable substitute. Par-cook pasta to 60% done — it finishes in the oven and absorbs the meat sauce flavours during baking.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">The meat sauce is identical to moussaka — ground lamb with cinnamon, allspice, tomato, onion, and garlic. The warm spice profile is the Greek signature. Make one large batch of spiced lamb sauce per day and use it across both moussaka and pastitsio — this is your kitchen efficiency play. One sauce, two dishes, two revenue streams.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Layer in baking pan: pasta → meat sauce → pasta → béchamel, finishing with grated cheese. The béchamel must be thick (it will not firm up in the oven if too thin) and the pasta and meat sauce layers must be level and even. An uneven pastitsio portions poorly — the slices will be different sizes, which creates inconsistency at the table and waste in the kitchen.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Bake at <span class="temp">180°C / 356°F</span> for 35–40 minutes until the top is deep golden and set. Rest 20 minutes. Reheat portions individually. Like moussaka, pastitsio improves on day two and holds perfectly for 4 days refrigerated. This is your second major batch-cook item — prepared simultaneously with moussaka during the 9am prep session to maximise oven efficiency.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Many guests have never tried pastitsio and will default to moussaka on the menu. Train servers to describe it: "Pastitsio is our Greek baked pasta — it is like moussaka but with tubular pasta instead of eggplant, and a very creamy béchamel top. It is deeply comforting." This description converts moussaka orderers into pastitsio tries — and pastitsio has a lower food cost, so every conversion is a margin gain.</div>
+  <div class="al"><span class="a">GLUTEN (pasta)</span><span class="a">DAIRY (béchamel, cheese)</span><span class="a">EGGS</span></div>
+</div>
+</div>
+
+<!-- MAIN 7: GEMISTA -->
+<div class="recipe">
+<div class="rh">
+  <div class="rh-title">Gemista — Stuffed Tomatoes &amp; Peppers</div>
+  <div class="rh-sub">Baked vegetables stuffed with herbed rice, olive oil · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service (batch-baked)</span><span class="rm">🫑 Main — Vegetarian</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 tomato + 1 pepper)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Large tomatoes (2, tops removed)</td><td>2 × 150g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Green peppers (1)</td><td>1 × 120g</td><td class="cc">$0.28</td></tr>
+        <tr><td>Short-grain rice (raw)</td><td>80g</td><td class="cc">$0.14</td></tr>
+        <tr><td>Tomato pulp (from coring)</td><td>80g</td><td class="cc">$0.00</td></tr>
+        <tr><td>Fresh mint, parsley, dill</td><td>10g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Olive oil (generous)</td><td>40ml</td><td class="cc">$0.64</td></tr>
+        <tr><td>Pine nuts (optional)</td><td>10g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.06</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span>$2.06</span></div>
+        <div class="fc-row"><span>Sell price</span><span>$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span>12.1% ✓</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span>$14.93</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Core tomatoes and peppers, reserving the tomato pulp and juice — this becomes part of the filling liquid. Season the hollow vegetable shells with salt and a drizzle of olive oil. The olive oil inside the shell prevents the rice from sticking to the vegetable walls during baking and adds flavour that permeates the rice from the outside in.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Combine uncooked rice with tomato pulp, diced onion, fresh mint, parsley, dill, olive oil, and salt. The rice is stuffed raw — it cooks inside the vegetable during the long oven roast, absorbing the tomato juices and developing a starchy, creamy texture quite different from boiled rice. Fill vegetables three-quarters full only — the rice expands significantly during baking.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Place stuffed vegetables in a deep roasting pan, replace their tops as lids. Pour olive oil and water (or vegetable stock) into the base of the pan — the vegetables steam-braise from below while roasting from above. Cover with foil for the first 45 minutes, then uncover for 20 minutes to colour the tops. Total bake time: 65–70 minutes at <span class="temp">180°C / 356°F</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Gemista is served at room temperature in Greek tradition — not hot. The flavours are more complex and the olive oil richness more pronounced when the dish has cooled slightly. This is your operational gift: gemista can be baked in the morning and served throughout lunch service without reheating. It also holds perfectly for 3 days refrigerated. Your highest-margin main with the least service pressure.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Gemista is your vegetarian anchor — a genuinely satisfying main that appeals to health-conscious US diners drawn to the Mediterranean diet. Feature it prominently on the menu with "Vegan" and "GF" badges. A table with one vegetarian is a table you can serve completely. Olive oil quality matters enormously here — the dish is primarily olive oil and rice. Use your best.</div>
+  <div class="al"><span class="a">VEGAN</span><span class="a">GLUTEN-FREE</span><span class="a">NUTS (pine nuts, optional)</span></div>
+</div>
+</div>
+
+<!-- MAIN 8: Fasolada -->
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Fasolada <span style="font-size:13px;font-weight:400;">White Bean Soup</span></div>
+  <div class="rh-sub">Bowl · Main · The National Dish of Greece</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service (batch)</span><span class="rm">🫘 Main — Vegan</span><span class="rm">Target FC: 12%</span></div></div>
+  <div class="rb">
+    <div class="two-col">
+      <table class="it"><thead><tr><th>Ingredient</th><th>Qty</th><th class="cc">Cost</th></tr></thead>
+      <tbody>
+        <tr><td>White cannellini beans (soaked)</td><td>5 oz dry</td><td class="cc">$0.45</td></tr>
+        <tr><td>Tomatoes, crushed</td><td>3 oz</td><td class="cc">$0.18</td></tr>
+        <tr><td>Carrot, celery, onion</td><td>2 oz each</td><td class="cc">$0.22</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>1.5 oz</td><td class="cc">$0.48</td></tr>
+        <tr><td>Parsley, bay leaf</td><td>herbs</td><td class="cc">$0.08</td></tr>
+        <tr><td>Vegetable stock</td><td>12 oz</td><td class="cc">$0.12</td></tr>
+        <tr><td>Bread (crusty, side)</td><td>2 slices</td><td class="cc">$0.03</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$1.56</strong></td></tr>
+      </tbody></table>
+      <div><div class="fc-box">
+        <div class="fc-row"><span>Sell Price</span><span>$12.99</span></div>
+        <div class="fc-row"><span>Food Cost</span><span>$1.56</span></div>
+        <div class="fc-row"><span>FC %</span><span>12.0%</span></div>
+        <div class="fc-row"><span>Gross Profit</span><span>$11.43</span></div>
+      </div>
+      <div class="al"><strong>Allergens:</strong><span class="a">VEGAN</span><span class="a">GLUTEN-FREE</span></div></div>
+    </div>
+    <div class="step"><span class="sn">1</span><span class="st">Soak beans overnight. Drain. Sauté onion, carrot, celery in olive oil until soft — 8 min. Add beans, crushed tomato, stock, bay leaf.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Simmer 60–75 min until beans are completely tender. Season with salt, pepper. Finish with a heavy pour of best-quality olive oil.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Serve in deep bowl with olive oil swirl, fresh parsley, crusty bread on the side. The olive oil finish is non-negotiable — it transforms the soup.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> Batch 8 litres every morning — it holds perfectly all day and improves as it sits. Your highest-margin main. A humble dish Greeks genuinely love.</div>
+  </div>
+</div>
+
+<!-- MAIN 9: Horiatiki -->
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Horiatiki <span style="font-size:13px;font-weight:400;">Greek Village Salad</span></div>
+  <div class="rh-sub">Large Plate · Main</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🥗 Main — No-Cook</span><span class="rm">Target FC: 16%</span></div></div>
+  <div class="rb">
+    <div class="two-col">
+      <table class="it"><thead><tr><th>Ingredient</th><th>Qty</th><th class="cc">Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Tomatoes, ripe, wedged</td><td>5 oz</td><td class="cc">$0.45</td></tr>
+        <tr><td>Cucumber, chunked</td><td>4 oz</td><td class="cc">$0.18</td></tr>
+        <tr><td>Red onion, thin rings</td><td>1 oz</td><td class="cc">$0.08</td></tr>
+        <tr><td>Green pepper, rings</td><td>1 oz</td><td class="cc">$0.10</td></tr>
+        <tr><td>Kalamata olives</td><td>1 oz</td><td class="cc">$0.35</td></tr>
+        <tr><td>Feta block (do not crumble)</td><td>2 oz</td><td class="cc">$0.63</td></tr>
+        <tr><td>Extra virgin olive oil</td><td>1 oz</td><td class="cc">$0.32</td></tr>
+        <tr><td>Dried oregano</td><td>pinch</td><td class="cc">$0.05</td></tr>
+        <tr><td>Bread, crusty side</td><td>2 slices</td><td class="cc">$0.08</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$2.24</strong></td></tr>
+      </tbody></table>
+      <div><div class="fc-box">
+        <div class="fc-row"><span>Sell Price</span><span>$13.99</span></div>
+        <div class="fc-row"><span>Food Cost</span><span>$2.24</span></div>
+        <div class="fc-row"><span>FC %</span><span>16.0%</span></div>
+        <div class="fc-row"><span>Gross Profit</span><span>$11.75</span></div>
+      </div>
+      <div class="al"><strong>Allergens:</strong><span class="a">Dairy (feta)</span><span class="a">GLUTEN-FREE</span></div></div>
+    </div>
+    <div class="step"><span class="sn">1</span><span class="st">Chunk vegetables large — this is NOT a tossed salad. Tomato wedges, thick cucumber pieces, green pepper rings. No lettuce. Ever.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Arrange in bowl. Scatter olives and red onion rings. Place the whole feta slab on top — do not crumble it. This is tradition and presentation.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Drizzle generously with best olive oil. Dust dried oregano over the feta. Serve immediately with bread. No dressing beyond olive oil and oregano.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> The feta must be a block, not crumbled. Greeks see pre-crumbled feta on horiatiki as an insult. Serve a proper feta slab and let guests break it themselves.</div>
+  </div>
+</div>
+
+<!-- MAIN 10: Grilled Halloumi -->
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Grilled Halloumi & Vegetables <span style="font-size:13px;font-weight:400;">Vegetarian Main</span></div>
+  <div class="rh-sub">Plate · Main</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🧀 Main — Vegetarian</span><span class="rm">Target FC: 18%</span></div></div>
+  <div class="rb">
+    <div class="two-col">
+      <table class="it"><thead><tr><th>Ingredient</th><th>Qty</th><th class="cc">Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Halloumi cheese</td><td>4 oz</td><td class="cc">$2.00</td></tr>
+        <tr><td>Zucchini, grilled</td><td>2 oz</td><td class="cc">$0.18</td></tr>
+        <tr><td>Bell pepper, grilled</td><td>2 oz</td><td class="cc">$0.20</td></tr>
+        <tr><td>Cherry tomatoes, roasted</td><td>2 oz</td><td class="cc">$0.18</td></tr>
+        <tr><td>Lemon wedge</td><td>½ lemon</td><td class="cc">$0.12</td></tr>
+        <tr><td>Olive oil, dried oregano</td><td>season</td><td class="cc">$0.20</td></tr>
+        <tr><td>Fresh mint garnish</td><td>few leaves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Pita bread, warm</td><td>1 piece</td><td class="cc">$0.12</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td class="cc"><strong>$3.06</strong></td></tr>
+      </tbody></table>
+      <div><div class="fc-box">
+        <div class="fc-row"><span>Sell Price</span><span>$16.99</span></div>
+        <div class="fc-row"><span>Food Cost</span><span>$3.06</span></div>
+        <div class="fc-row"><span>FC %</span><span>18.0%</span></div>
+        <div class="fc-row"><span>Gross Profit</span><span>$13.93</span></div>
+      </div>
+      <div class="al"><strong>Allergens:</strong><span class="a">Dairy (halloumi)</span><span class="a">VEGETARIAN</span></div></div>
+    </div>
+    <div class="step"><span class="sn">1</span><span class="st">Slice halloumi 1cm thick. Pat completely dry — moisture prevents the crust. Grill on cast iron over high heat 2 min per side until golden and squeaky.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Grill vegetables separately: zucchini and peppers in olive oil, lightly charred. Roast cherry tomatoes 200°C / 392°F for 15 min until blistered.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Arrange vegetables as base. Lay halloumi slices on top. Squeeze lemon over everything. Scatter fresh mint, drizzle olive oil. Serve with warm pita.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> Halloumi must be served within 3 minutes of grilling — it goes rubbery as it cools. Fire it only on order. The squeaky texture when hot is a feature, not a bug.</div>
+  </div>
+</div>
+
+<!-- SECTION 3: DESSERTS -->
+<h2><span class="sn2">3</span> Desserts</h2>
+
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Baklava <span style="font-size:13px;font-weight:400;">2 Pieces</span></div>
+  <div class="rh-meta"><span class="rm">$7.99</span><span class="rm">FC ~14% · $1.12</span><span class="rm">Batch prep</span></div></div>
+  <div class="rb">
+    <div class="step"><span class="sn">1</span><span class="st">Layer phyllo sheets with butter between each, adding walnut-cinnamon-honey filling every 4 sheets. Top with 6 buttered phyllo layers.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Score into diamonds before baking at 175°C / 347°F for 45 min until deep golden. Pour cold honey syrup over hot baklava immediately from oven.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Rest minimum 4 hours before cutting — the syrup needs to absorb. Serve at room temperature, 2 pieces, with a pistachio garnish.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> Bake one full tray (40 pieces) per day. FC $0.56/piece. At $4/piece revenue on a $7.99 two-piece serve, this is your highest-margin dessert. It also holds 5 days.</div>
+    <div class="fc-box">
+      <div class="fc-row"><span>Sell Price</span><span>$7.99</span></div>
+      <div class="fc-row"><span>Food Cost</span><span>$1.12</span></div>
+      <div class="fc-row"><span>FC %</span><span>14.0%</span></div>
+      <div class="fc-row"><span>Gross Profit</span><span>$6.87</span></div>
+    </div>
+    <div class="al"><span class="a">Nuts (walnuts)</span><span class="a">Gluten (phyllo)</span><span class="a">Dairy (butter)</span></div>
+  </div>
+</div>
+
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Loukoumades <span style="font-size:13px;font-weight:400;">Honey Doughnuts — 6 pieces</span></div>
+  <div class="rh-meta"><span class="rm">$8.99</span><span class="rm">FC ~16% · $1.44</span><span class="rm">Fry to order — 4 min</span></div></div>
+  <div class="rb">
+    <div class="step"><span class="sn">1</span><span class="st">Yeast dough: flour, water, yeast, pinch of salt. Rest 1 hour. Batter should be thick and sticky — thicker than pancake, thinner than bread dough.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Drop tablespoon portions into 180°C / 356°F oil using wet spoon. They naturally round into spheres. Fry 3 min turning until uniformly golden.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Drain briefly, pile in bowl immediately. Drizzle generously with warm honey, dust cinnamon, scatter crushed walnuts. Serve within 90 seconds — they deflate as they cool.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> The "serve within 90 seconds" rule is your strongest selling point. Train servers to say: "These are best in the first two minutes — do you want me to time them with your coffee?" Conversion is near-total.</div>
+    <div class="fc-box">
+      <div class="fc-row"><span>Sell Price</span><span>$8.99</span></div>
+      <div class="fc-row"><span>Food Cost</span><span>$1.44</span></div>
+      <div class="fc-row"><span>FC %</span><span>16.0%</span></div>
+      <div class="fc-row"><span>Gross Profit</span><span>$7.55</span></div>
+    </div>
+    <div class="al"><span class="a">Gluten</span><span class="a">Nuts (walnuts)</span><span class="a">Eggs</span></div>
+  </div>
+</div>
+
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Galaktoboureko <span style="font-size:13px;font-weight:400;">Semolina Custard Pastry</span></div>
+  <div class="rh-meta"><span class="rm">$7.99</span><span class="rm">FC ~17% · $1.36</span><span class="rm">Batch prep · Slice to order</span></div></div>
+  <div class="rb">
+    <div class="step"><span class="sn">1</span><span class="st">Custard: heat milk with sugar, whisk in semolina, eggs, vanilla. Cook until thick. Cool slightly. Pour into phyllo-lined baking dish, top with phyllo, butter, score.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Bake 170°C / 338°F for 50 min until golden. Pour warm citrus syrup (lemon, orange zest, sugar, water) over hot pastry. Rest 2 hours minimum.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Serve at room temp, dusted with cinnamon. One generous slice. Holds 3 days refrigerated — improve after day 1.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> Make one tray (12 portions) each morning. It is genuinely better on day 2 — the syrup fully absorbs overnight. Your most impressive-looking dessert for least service effort.</div>
+    <div class="fc-box">
+      <div class="fc-row"><span>Sell Price</span><span>$7.99</span></div>
+      <div class="fc-row"><span>Food Cost</span><span>$1.36</span></div>
+      <div class="fc-row"><span>FC %</span><span>17.0%</span></div>
+      <div class="fc-row"><span>Gross Profit</span><span>$6.63</span></div>
+    </div>
+    <div class="al"><span class="a">Gluten (phyllo, semolina)</span><span class="a">Dairy</span><span class="a">Eggs</span></div>
+  </div>
+</div>
+
+<div class="recipe">
+  <div class="rh"><div class="rh-title">Greek Yoghurt with Honey & Walnuts</div>
+  <div class="rh-meta"><span class="rm">$6.99</span><span class="rm">FC ~16% · $1.12</span><span class="rm">Plate to order — 2 min</span></div></div>
+  <div class="rb">
+    <div class="step"><span class="sn">1</span><span class="st">Use full-fat strained Greek yoghurt (10% fat). Scoop 6 oz into chilled bowl. The yoghurt must be thick enough to hold a spoon upright.</span></div>
+    <div class="step"><span class="sn">2</span><span class="st">Drizzle 1 oz thyme or wildflower honey in a slow spiral. Scatter roughly crushed toasted walnuts. Dust with cinnamon.</span></div>
+    <div class="step"><span class="sn">3</span><span class="st">Serve immediately with a small spoon. Simple. Perfect. The quality of the yoghurt and honey is everything.</span></div>
+    <div class="tb">💡 <strong>Chef's Tip:</strong> This is your fastest dessert and a natural health-conscious option. At $1.12 FC against $6.99 sell, it also has the best margin after baklava. Position it as "how Greeks actually end a meal."</div>
+    <div class="fc-box">
+      <div class="fc-row"><span>Sell Price</span><span>$6.99</span></div>
+      <div class="fc-row"><span>Food Cost</span><span>$1.12</span></div>
+      <div class="fc-row"><span>FC %</span><span>16.0%</span></div>
+      <div class="fc-row"><span>Gross Profit</span><span>$5.87</span></div>
+    </div>
+    <div class="al"><span class="a">Dairy</span><span class="a">Nuts (walnuts)</span></div>
+  </div>
+</div>
+
+<!-- SECTION 4: DRINKS -->
+<h2><span class="sn2">4</span> Drinks</h2>
+<div class="drinks-grid">
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Greek Coffee</span><span class="drink-price">$4.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Sketo (unsweetened) · Metrio (medium) · Glykos (sweet). Brewed in briki, served with cold water. The ritual is as important as the coffee.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$0.40 (8.0%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Frappe</span><span class="drink-price">$5.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Instant coffee shaken with water into thick foam, poured over ice with milk. The Greek summer drink — invented in Thessaloniki in 1957, still the most-ordered café drink in Greece.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$0.55 (9.2%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Mastiha Soda</span><span class="drink-price">$6.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Sparkling water infused with Chios mastic resin — piney, slightly sweet, utterly unique. Your most conversation-starting drink. Serve with a sprig of fresh mint.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$0.80 (11.4%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Fresh Orange Juice</span><span class="drink-price">$5.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">4 medium oranges, squeezed to order. Nothing else. The simplest thing on the menu and the one guests mention in reviews most often.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$0.90 (15.0%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Mythos Beer</span><span class="drink-price">$6.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Greek lager, light and clean. The standard companion to meze. Serve very cold in frosted glass. Don't over-think it.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$1.40 (20.0%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Assyrtiko (glass)</span><span class="drink-price">$10.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Santorini's native white — volcanic minerality, high acidity, bone dry. Pairs with octopus, halloumi, and anything from the sea. Your most profitable drink per glass.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$2.20 (20.0%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Ouzo on Ice</span><span class="drink-price">$8.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Anise-distilled spirit, served with a small glass of water alongside. When water is added, it turns milky white — the "louche" effect. Explain it to guests who haven't seen it. They'll order another.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$1.60 (17.8%)</span></div></div>
+</div>
+
+<div class="drink-card">
+  
+  <div class="drink-header"><span class="drink-name">Greek Mountain Tea</span><span class="drink-price">$4.99</span></div>
+  <p style="font-size:11px;color:#555;margin:0 0 6px;">Tsai tou vounou — dried Sideritis herb, earthy and floral. Served in a small pot with honey on the side. A caffeine-free alternative that signals authenticity to anyone who knows Greece.</p>
+  <div class="fc-box"><div class="fc-row"><span>FC</span><span>$0.25 (5.0%)</span></div></div>
+</div>
+
+</div>
+
+<!-- SECTION 5: KITCHEN PREP FLOW -->
+<h2><span class="sn2">5</span> Kitchen Prep Flow</h2>
+<div class="info-box"><strong>The Cold Meze Advantage:</strong> Most of your starters — tzatziki, taramosalata, hummus — are better made the day before. That means your morning prep is mostly restocking, not cooking. Your kitchen is calm before service. This is the operational gift of Greek cuisine.</div>
+<table class="prep-table">
+<thead><tr><th>Time</th><th>Head Cook</th><th>Line Cook</th><th>Steward</th></tr></thead>
+<tbody>
+<tr><td class="time-col">5:00 PM (prev day)</td><td>Octopus into freezer (freeze-thaw tenderising). Lamb shoulder marinated in garlic, lemon, oregano, olive oil. Phyllo dough thawed in fridge.</td><td>Baklava tray baked and syruped. Galaktoboureko custard made and set.</td><td>Full kitchen sanitise. Stock inventory. Order check for next day.</td></tr>
+<tr><td class="time-col">7:00 AM</td><td>All cold meze made: tzatziki (strain yoghurt, grate cucumber, press dry), taramosalata (blend roe, bread, lemon, oil), hummus (blend chickpeas, tahini, lemon). All go in fridge — they are better in 2 hours.</td><td>Spanakopita assembled, portioned, held in fridge raw. Dolmades rolled and held in pot ready to steam.</td><td>Produce wash and prep. Lemon squeezed. Herbs picked and stored damp.</td></tr>
+<tr><td class="time-col">9:00 AM</td><td>Lamb shoulder into oven (4-hr braise at 160°C / 320°F). Moussaka béchamel made. Fasolada bean soup on simmer — 75 min.</td><td>Pastitsio assembled and into oven. Gemista stuffed and into oven (65 min). Souvlaki meat portioned and threaded.</td><td>Tables set. Cold meze portioned into serving bowls and refrigerated. Bread sliced.</td></tr>
+<tr><td class="time-col">11:00 AM (Open)</td><td>Saganaki station ready (brandy, flame tool). Grill preheated for souvlaki and halloumi. Branzino checked — score, season, ready to fire.</td><td>Cold meze station live. Dessert trays sliced and held. Loukoumades batter ready in squeeze bottle.</td><td>Front of house setup complete. Welcome drinks (mastiha soda) iced and ready. Side stations stocked.</td></tr>
+<tr><td class="time-col">1:00 PM</td><td>Replenish meze cold station. Second lamb shoulder check (pull test). Fasolada tasted and seasoned.</td><td>Restock bread station. Fire loukoumades to order. Prep tomorrow: octopus into freezer, phyllo thaw, marinate lamb.</td><td>Mid-service clean. Restock pita bread. Clear and reset tables for second covers.</td></tr>
+</tbody>
+</table>
+
+<!-- SECTION 6: FINANCIALS -->
+<h2><span class="sn2">6</span> Financial Model</h2>
+<table class="revenue-table">
+<thead><tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Daily Revenue</th></tr></thead>
+<tbody>
+<tr><td>Mezedes Hour</td><td>28</td><td>$32</td><td>$896</td></tr>
+<tr><td>Lunch Service</td><td>52</td><td>$48</td><td>$2,496</td></tr>
+<tr class="total-row"><td><strong>Daily Total</strong></td><td><strong>80</strong></td><td><strong>$42 avg</strong></td><td><strong>$3,392</strong></td></tr>
+<tr class="total-row"><td><strong>Monthly (26 days)</strong></td><td></td><td></td><td><strong>$88,192</strong></td></tr>
+</tbody>
+</table>
+<table class="revenue-table">
+<thead><tr><th>Cost</th><th>% / Month</th><th>Amount</th></tr></thead>
+<tbody>
+<tr><td>Food Cost</td><td>22%</td><td>$19,402</td></tr>
+<tr><td>Labour</td><td>—</td><td>$17,500</td></tr>
+<tr><td>Rent</td><td>—</td><td>$5,800</td></tr>
+<tr><td>Other (utilities, supplies)</td><td>—</td><td>$5,000</td></tr>
+<tr class="net-row"><td><strong>Net Profit</strong></td><td><strong>45.9%</strong></td><td><strong>$40,490</strong></td></tr>
+</tbody>
+</table>
+<table class="revenue-table">
+<thead><tr><th>Month</th><th>Capacity</th><th>Est. Net</th></tr></thead>
+<tbody>
+<tr><td>Month 1</td><td>60%</td><td>~$10,000</td></tr>
+<tr><td>Month 2</td><td>78%</td><td>~$25,000</td></tr>
+<tr><td>Month 3</td><td>100%</td><td>~$40,490</td></tr>
+</tbody>
+</table>
+
+<!-- SECTION 7: SERVICE TRAINING -->
+<h2><span class="sn2">7</span> Service Training Module</h2>
+<div class="script-box"><span class="script-label">Script 1 — The Philoxenia Welcome</span>
+<p><em>"The moment guests sit:"</em></p>
+<p>"Welcome — let me get a mastiha soda to the table while you look at the menu. It's a sparkling drink made with Chios mastic — pine-like, slightly sweet, completely unique to Greece. On the house. [Deliver within 90 seconds.] Now — have you had Greek food before? [If no:] Perfect. We eat differently here. Things come in waves. You don't need to order everything at once — let us guide you."</p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> The free welcome drink is philoxenia in action — hospitality as philosophy. The "eat in waves" framing sets up the table for multiple ordering rounds, naturally increasing average spend.</p></div>
+<div class="script-box"><span class="script-label">Script 2 — The Meze Ordering Ritual</span>
+<p><em>"When taking the order:"</em></p>
+<p>"So the way we eat here — start with two or three cold meze: the tzatziki is always right, the taramosalata if you're adventurous, maybe the octopus carpaccio. Then we'll bring the hot dishes: saganaki if you haven't had flamed cheese before, dolmades. Then your main. Then we'll ask about dessert. You don't need to decide everything now — just tell me what sounds good and we'll pace it for you."</p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> This is how Greeks actually eat. Tables that follow this rhythm consistently order 30–40% more than tables that order à la carte in one go. You are not upselling — you are educating.</p></div>
+<div class="script-box"><span class="script-label">Script 3 — The Saganaki Moment</span>
+<p><em>"When delivering saganaki tableside:"</em></p>
+<p>"This is saganaki — kasseri cheese, pan-fried in butter. [Pour brandy, ignite — let it flame for 3 seconds.] OPA! [Let guests react.] The flame burns off the alcohol and caramelises the outside. You eat it immediately while it's hot — it gets stringy and amazing for about 4 minutes, then it firms back up. Squeeze the lemon over it [hand them the lemon] — the acid cuts the richness. Best $13.99 you'll spend this month."</p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> The OPA moment is shareable, memorable, and drives reorders. Every table that sees it ordered nearby orders one themselves. It is your most powerful table-to-table conversion tool.</p></div>
+<div class="script-box"><span class="script-label">Script 4 — The Assyrtiko Story</span>
+<p><em>"When guests ask about wine:"</em></p>
+<p>"The one I'd steer you toward is the Assyrtiko — it's from Santorini, which has some of the most unusual soil in the world: volcanic ash from ancient eruptions. The vines are trained in baskets low to the ground to survive the island winds. The wine is bone dry, very high in acidity, and has this mineral quality you don't find anywhere else. It pairs with almost everything on our menu — especially the seafood and the meze. $10.99 a glass. You'll remember it."</p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> Provenance and unusual facts sell wine. "Volcanic soil" and "basket-trained vines" are both memorable and true. A server who knows this converts hesitant guests to the highest-margin drink on the list.</p></div>
+<div class="script-box"><span class="script-label">Script 5 — The Loukoumades Pre-Sell</span>
+<p><em>"When clearing mains, before dessert menu:"</em></p>
+<p>"One thing worth knowing — the loukoumades are fried to order and best within the first two minutes. If you want them, I'll put them on now so they time right with your coffee. They're honey doughnuts — six pieces, cinnamon, crushed walnuts, warm honey poured tableside. $8.99. [Pause.] I can also tell you what Greek coffee is if you haven't had it — we make it three ways depending on how sweet you like it."</p>
+<p style="font-size:11px;color:#666;margin-top:6px;"><strong>Why it works:</strong> Pre-ordering eliminates the "too full" objection. Offering both together — loukoumades AND coffee — creates a natural dessert-and-coffee pairing that increases both items' conversion.</p></div>
+
+<h3>Table Timing Guide</h3>
+<table class="schedule-table">
+<thead><tr><th>Time</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>0:00</td><td>Seat and deliver mastiha soda on arrival (Script 1). Menus down. Zero wait signal.</td></tr>
+<tr><td>1:30</td><td>Greet, explain meze rhythm (Script 2), take drinks and first meze round.</td></tr>
+<tr><td>4:00</td><td>Deliver drinks. Fire first cold meze.</td></tr>
+<tr><td>8:00</td><td>Cold meze arrives. Take hot meze + main order.</td></tr>
+<tr><td>12:00</td><td>Saganaki delivered tableside with flame (Script 3). Hot meze follows.</td></tr>
+<tr><td>18:00</td><td>Mains arrive. Check in 2 min after delivery.</td></tr>
+<tr><td>30:00</td><td>Clear plates. Suggest second meze round or move to dessert. Loukoumades pre-sell (Script 5).</td></tr>
+<tr><td>35:00</td><td>Fire loukoumades. Take Greek coffee order (Script 4 if wine still flowing).</td></tr>
+<tr><td>50:00</td><td>Dessert and coffee cleared. Present check. Aim for 50-min turn at mezedes hour, 65 min at lunch.</td></tr>
+</tbody>
+</table>
+
+<!-- SECTION 8: CUSTOMER RETENTION -->
+<h2><span class="sn2">8</span> Customer Retention</h2>
+<div class="info-box"><strong>VIP Micro-Moment 1 — The Welcome Drink:</strong> Every table receives a complimentary mastiha soda on arrival. Cost: $0.80. Value: It signals philoxenia, the Greek tradition of radical hospitality. Guests who receive something unexpected before they order become emotionally invested in the experience. This single act drives more 5-star reviews than anything else you will do.</div>
+<div class="info-box"><strong>VIP Micro-Moment 2 — Remember the Meze:</strong> Keep a simple notes system — paper or POS — logging regular guests' preferred cold meze. When they return, say: "I have your tzatziki coming." One sentence. The impact is enormous. Greeks call this being a good host. Your regulars will call it their favourite restaurant.</div>
+<div class="info-box"><strong>VIP Micro-Moment 3 — The Lamb Shoulder Suggest:</strong> For tables of 3 or more, always mention the slow-roasted lamb shoulder as a sharing option. Say: "If you're three or four people, the lamb shoulder is the move — it's been in since 9 this morning." It's your highest-ticket item and the most memorable dish you serve. A table that orders it always comes back.</div>
+<div class="info-box"><strong>VIP Micro-Moment 4 — Never Let It Go Empty:</strong> The cardinal rule of Greek hospitality: the table should never be empty. When cold meze is half-finished, suggest another round or ask if they're ready for the next wave. This is not upselling — it is the Greek way of hosting. Your guests feel cared for. Your revenue increases organically.</div>
+<div class="info-box"><strong>VIP Micro-Moment 5 — The Coffee Goodbye:</strong> Ask every regular: "Sketo, metrio, or glykos?" — and remember the answer. Delivering someone's Greek coffee exactly how they take it, without asking, on their third visit, is the moment they stop being a customer and become a regular. It costs nothing. It is worth everything.</div>
+<div class="script-box"><span class="script-label">Best Social Post — The Saganaki Flame</span>
+<p><strong>Video:</strong> 15-second Reel. Close-up of saganaki in pan. Pour brandy. Ignite. OPA. Guest reaction. Squeeze lemon. Pull shot of the cheese stretching.<br><strong>Caption:</strong> "OPA. Every single time. 🔥 The saganaki is $13.99. The reaction is free. Greek Taverna — [location]. #greekfood #saganaki #opa #taverna #greekrestaurant #foodfire"<br><strong>Why it works:</strong> Fire + cheese + a word everyone knows = guaranteed shares. This is your most viral-ready content and it's already happening in your dining room every service.</p></div>
+
+<div class="ft"><span>Greek Taverna — Profitable Café Operations Guide v5</span><span>© 2025 · Professional Use Only · $29.99 US · Not for Redistribution</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish Tapas Bar — Operations Guide v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#ff6b00;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(255,107,0,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #ff6b00;}
+.cover-eye{color:#ff6b00;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#ff6b00;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #ff6b00;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#ff6b00,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#1a0800;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#ff6b00;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#ff6b00;color:#000;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#1a0800;border:1px solid #ff6b00;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#ff6b00;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #ff6b00;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#ff6b00;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#ff6b00;font-weight:600;margin-top:10px;font-size:0.9rem;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<style>
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#ff6b00,#1a0800);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #ff6b00;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#ff6b00;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#ff6b00;color:#000;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#ff6b00;color:#000;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#1a0800;border:1px solid #ff6b00;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#1a0800;border:1px solid #ff6b00;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ffaa88;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eye">Operations Guide — v6 — 2026</div>
+  <h1>Spanish<br>Tapas Bar</h1>
+  <div class="cover-tag">From sofrito to socarrat — the complete operations manual</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">44</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$44</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">23%</div><div class="kpi-label">Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">~$28K</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+  <div class="lens-card" style="margin-top:32px;">
+    <div class="lens-title">// What a Michelin-trained chef sees in Spanish tapas</div>
+    <div class="lens-text">The Spanish kitchen operates on time in a way that no other European cuisine does. The sofrito takes 45 minutes minimum — not because the recipe says so, but because the tomato and onion need that long to lose their water, concentrate their sugars and develop the sweet, jammy base that defines Spanish flavour. Rush it and every dish built on it is compromised. The socarrat — the caramelised crust on the bottom of a proper paella — cannot be engineered. It happens in the last 3 minutes over maximum heat and you listen for the crackle. This guide teaches you to listen.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">The tapas format generates 30–40% higher average spends than single-plate dining. That is not an accident. It is the architecture of the format — small plates arrive in waves, each one creating the appetite for the next. The operator who understands this rhythm and trains their floor staff to manage it owns the most profitable casual dining model in Spanish food.</div>
+    <div class="lens-closer">This guide is that training.</div>
+  </div>
+</div>
+<!-- PAGE 2: MENU OVERVIEW -->
+<div class="page">
+  <h2>Menu Overview</h2>
+  <table>
+    <tr><th>Category</th><th>Item</th><th>Time</th><th>Food Cost</th></tr>
+    <tr><td>Tapas</td><td>Pan con Tomate — Catalan Tomato Bread</td><td>4 min</td><td>12%</td></tr>
+    <tr><td>Tapas</td><td>Jamón Ibérico — Bellota Dry-Cured Ham</td><td>3 min</td><td>21%</td></tr>
+    <tr><td>Tapas</td><td>Patatas Bravas — Fried Potatoes, Two Sauces</td><td>12 min</td><td>14%</td></tr>
+    <tr><td>Tapas</td><td>Gambas al Ajillo — Garlic Prawns in Sizzling Oil</td><td>6 min</td><td>19%</td></tr>
+    <tr><td>Tapas</td><td>Croquetas de Jamón — Ham Béchamel Croquettes</td><td>6 min</td><td>16%</td></tr>
+    <tr><td>Tapas</td><td>Tortilla Española — Spanish Omelette Wedge</td><td>5 min</td><td>13%</td></tr>
+    <tr><td>Mains</td><td>Paella Valenciana — Traditional Rice Dish</td><td>22 min</td><td>24%</td></tr>
+    <tr><td>Mains</td><td>Paella de Mariscos — Seafood Paella</td><td>22 min</td><td>26%</td></tr>
+    <tr><td>Mains</td><td>Cochinillo Asado — Slow Roast Suckling Pig</td><td>3hr + 8 min</td><td>22%</td></tr>
+    <tr><td>Mains</td><td>Pulpo a la Gallega — Galician Octopus</td><td>45 min + 5 min</td><td>20%</td></tr>
+    <tr><td>Mains</td><td>Chuletón — Grilled T-Bone Steak</td><td>15 min</td><td>25%</td></tr>
+    <tr><td>Mains</td><td>Bacalao al Pil Pil — Basque Salt Cod</td><td>20 min (48hr desalt)</td><td>21%</td></tr>
+    <tr><td>Mains</td><td>Pollo al Ajillo — Garlic Chicken</td><td>30 min</td><td>18%</td></tr>
+    <tr><td>Mains</td><td>Fideuà — Noodle Paella</td><td>18 min</td><td>22%</td></tr>
+    <tr><td>Mains</td><td>Rabo de Toro — Braised Oxtail</td><td>3.5hr + 8 min</td><td>19%</td></tr>
+    <tr><td>Mains</td><td>Menú del Día — Daily Set Menu</td><td>45 min table</td><td>24%</td></tr>
+    <tr><td>Desserts</td><td>Crema Catalana — Catalan Burnt Cream</td><td>2 min torch</td><td>11%</td></tr>
+    <tr><td>Desserts</td><td>Churros con Chocolate — Fried Dough + Hot Chocolate</td><td>8 min</td><td>14%</td></tr>
+    <tr><td>Desserts</td><td>Tarta de Santiago — Galician Almond Cake</td><td>3 min plating</td><td>13%</td></tr>
+    <tr><td>Desserts</td><td>Arroz con Leche — Spanish Rice Pudding</td><td>3 min plating</td><td>10%</td></tr>
+  </table>
+</div>
+<!-- PAGE 3: TAPAS RECIPES -->
+<div class="page">
+  <h2>Entrées / Tapas</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Pan con Tomate — Catalan Tomato Bread</div>
+      <div class="rh-meta">⏱ 4 min &nbsp;|&nbsp; FC: 12% &nbsp;|&nbsp; Allergens: Gluten</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Toast sourdough slices on a cast iron griddle until charred on both sides.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Rub immediately with a halved raw garlic clove while still hot.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Halve ripe tomatoes and rub vigorously over the bread — the flesh should dissolve in. Season with sea salt.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Drizzle generously with extra virgin olive oil. Serve immediately.</div></div>
+      </div>
+      <div class="chef-tip">⚡ The tomato must be room temperature — never cold. Cold tomato kills the flavour and the technique. This is the first thing a guest tastes. Make it count.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Jamón Ibérico — Bellota Dry-Cured Ham</div>
+      <div class="rh-meta">⏱ 3 min &nbsp;|&nbsp; FC: 21% &nbsp;|&nbsp; Allergens: None</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Slice Jamón Ibérico de Bellota paper-thin using a sharp carving knife — never a machine.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Lay slices loosely on a warm plate — do not fold or stack.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Allow to reach room temperature before serving. Cold jamón loses its fat-bloom character.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Bellota means acorn-fed. The fat melts at below body temperature — that silky finish on the palate is the entire point. Never refrigerate the serving plate.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Patatas Bravas — Fried Potatoes, Two Sauces</div>
+      <div class="rh-meta">⏱ 12 min &nbsp;|&nbsp; FC: 14% &nbsp;|&nbsp; Allergens: None</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Par-boil diced Maris Piper potatoes until just tender (8 min). Drain and steam-dry 5 min.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Fry in sunflower oil at <span class="temp">180°C</span> until golden and crisp on all sides, approx 6 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Drain, season with sea salt and smoked paprika. Serve in a clay cazuela.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Drizzle brava sauce (spiced tomato) and alioli side by side — never mixed.</div></div>
+      </div>
+      <div class="chef-tip">⚡ The double-cook is non-negotiable. Par-boiling first gives a fluffy interior; high-heat frying gives the crust. One step alone gives you neither.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 4: TAPAS CONTINUED -->
+<div class="page">
+  <h2>Entrées / Tapas (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Gambas al Ajillo — Garlic Prawns in Sizzling Oil</div>
+      <div class="rh-meta">⏱ 6 min &nbsp;|&nbsp; FC: 19% &nbsp;|&nbsp; Allergens: Shellfish</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Heat a terracotta cazuela directly on a high flame until smoking.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add generous olive oil, thinly sliced garlic and a dried guindilla chilli. Let garlic turn golden — 60 seconds.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add shell-on king prawns, season with sea salt. Cook 2 min per side until pink and just cooked through.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Finish with a splash of dry sherry. Serve immediately in the same cazuela — it should still be sizzling at the table.</div></div>
+      </div>
+      <div class="chef-tip">⚡ The dish must arrive sizzling. If it stops at the pass, it's dead. This is theatre as much as food — the sound sells the next order.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Croquetas de Jamón — Ham Béchamel Croquettes</div>
+      <div class="rh-meta">⏱ 6 min &nbsp;|&nbsp; FC: 16% &nbsp;|&nbsp; Allergens: Gluten, Dairy, Eggs</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Prepare béchamel with butter, flour, warm milk and finely diced jamón ibérico. Cook until very thick. Season, chill overnight.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Shape into oval croquettes. Coat in flour, egg wash, then fine breadcrumbs. Freeze 30 min before service.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Fry from frozen at <span class="temp">180°C</span> for 4–5 min until deep golden. Drain on paper.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve immediately — the molten centre is the entire experience.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Croquetas must be made with proper jamón in the béchamel — not as a garnish. The fat from the jamón enriches the entire sauce. Inferior ham = inferior croqueta.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Tortilla Española — Spanish Omelette Wedge</div>
+      <div class="rh-meta">⏱ 5 min &nbsp;|&nbsp; FC: 13% &nbsp;|&nbsp; Allergens: Eggs</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Confite thin-sliced onion and potato in olive oil at <span class="temp">140°C</span> for 20–25 min until completely soft. Drain oil.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Beat eggs, season well. Fold in warm potato-onion mix. Rest 5 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook in a 22cm non-stick pan on medium heat 4 min. Flip with a plate. Cook reverse side 2 min — centre should remain custardy.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Rest 10 min before cutting into wedges. Serve warm or room temperature.</div></div>
+      </div>
+      <div class="chef-tip">⚡ A tortilla is not a frittata. The inside should be barely set — trembling, almost runny. Fully cooked is overcooked. This is the debate that defines Spanish cooking.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 5: MAINS PART 1 -->
+<div class="page">
+  <h2>Mains</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Paella Valenciana — Traditional Rice Dish</div>
+      <div class="rh-meta">⏱ 22 min &nbsp;|&nbsp; FC: 24% &nbsp;|&nbsp; Allergens: Gluten possible</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Heat paella pan over high heat. Brown chicken thighs and rabbit pieces in olive oil. Remove, rest.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add sofrito (pre-made, 45 min minimum). Add green beans and flat beans. Stir 2 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add Bomba rice, stir to coat in sofrito. Add hot chicken stock — ratio 1:2.5 rice to liquid. Add saffron.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Return meat. Cook 18 min without stirring. Last 3 min: maximum heat for socarrat.</div></div>
+        <div class="step"><div class="sn">5</div><div class="st">Remove from heat. Rest 5 min covered with foil. Serve from pan.</div></div>
+      </div>
+      <div class="chef-tip">⚡ The socarrat is the caramelised crust on the bottom. Listen for a dry crackling sound — that's it forming. Remove immediately after. This cannot be rushed or engineered — only heard.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Paella de Mariscos — Seafood Paella</div>
+      <div class="rh-meta">⏱ 22 min &nbsp;|&nbsp; FC: 26% &nbsp;|&nbsp; Allergens: Shellfish</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Sauté squid rings in hot olive oil 2 min. Add sofrito and pimentón. Cook 2 min.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add Bomba rice. Add hot fish/shellfish stock with saffron — ratio 1:2.5.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook 15 min. Arrange prawns, mussels and clams on top. Cook 4 more min until shellfish open.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Maximum heat 2–3 min for socarrat. Rest 4 min, serve from pan.</div></div>
+      </div>
+      <div class="chef-tip">⚡ The highest food cost main at 26%. Justify it with quality shellfish and a properly made fish stock. Frozen shellfish signals itself immediately on the palate.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Cochinillo Asado — Slow Roast Suckling Pig</div>
+      <div class="rh-meta">⏱ 3hr roast + 8 min &nbsp;|&nbsp; FC: 22%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Rub cochinillo (3–4kg) with lard, sea salt and garlic. Place skin-side up in a deep roasting tray with water.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Roast at <span class="temp">160°C</span> for 2.5–3hrs until flesh pulls from bone. Baste every 45 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Final 15 min: raise to <span class="temp">220°C</span> for crackling. Rest 10 min before service.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Portion to order using a ceramic plate (the Segovian tradition — prove it's tender).</div></div>
+      </div>
+      <div class="chef-tip">⚡ In Segovia they cut cochinillo with a plate to prove how tender it is, then smash the plate. The ritual is the dish. Your staff should know this story and tell it.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 6: MAINS PART 2 -->
+<div class="page">
+  <h2>Mains (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Pulpo a la Gallega — Galician Octopus</div>
+      <div class="rh-meta">⏱ 45 min boil + 5 min &nbsp;|&nbsp; FC: 20%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Freeze octopus 48hrs before cooking (breaks down muscle fibre). Defrost fully.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">"Scare" the octopus — dip in boiling water 3 times before full submersion. This firms the skin.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Boil 40–45 min until a skewer passes through the thickest tentacle with slight resistance. Rest in liquid.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Slice tentacles, arrange on wooden board. Dress with olive oil, smoked paprika (pimentón de la Vera), sea salt flakes.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Galicians serve pulpo on a wooden board with sea salt and pimentón. No garnish. No fuss. The dish is the technique. Overcook by 5 min and you have rubber.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Rabo de Toro — Braised Oxtail</div>
+      <div class="rh-meta">⏱ 3.5hr braise + 8 min &nbsp;|&nbsp; FC: 19%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Season and brown oxtail pieces on all sides in a heavy casserole. Remove. (Start 08:30 per prep schedule.)</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Sauté mirepoix in the same fat until caramelised. Add tomato paste, cook 3 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Deglaze with Pedro Ximénez sherry. Return oxtail. Add beef stock to cover. Braise at <span class="temp">160°C</span> for 3.5hrs.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Strain sauce and reduce by half. Pick meat from bone, portion. To order: heat in sauce 8 min. Serve with mashed potato.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Pedro Ximénez is the magic. A sweet, syrupy sherry that gives the braise its dark, raisined depth. Substitute with regular red wine and you lose 30% of the character.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Bacalao al Pil Pil — Basque Salt Cod</div>
+      <div class="rh-meta">⏱ 20 min + 48hr desalt &nbsp;|&nbsp; FC: 21%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Desalt cod 48hrs in cold water, changing water every 12hrs. Dry thoroughly before service.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Confite cod skin-side up in olive oil at <span class="temp">60°C</span> for 15 min until just cooked. Remove cod, reserve oil.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Swirl the warm oil in the pan — the gelatine from the cod skin creates the emulsion naturally. This is pil pil.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Return cod to sauce. Serve with the sauce coating the fish. Garnish with piquillo pepper.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Pil pil is one of the great chef tests. The emulsion forms from nothing but fish gelatine and olive oil. No cream, no butter. It takes patience and a gentle wrist.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 7: MAINS PART 3 + DESSERTS -->
+<div class="page">
+  <h2>Mains (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Pollo al Ajillo — Garlic Chicken</div>
+      <div class="rh-meta">⏱ 30 min &nbsp;|&nbsp; FC: 18%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Joint whole chicken into 8 pieces. Season generously with salt and pimentón.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Brown in olive oil over high heat — skin side down first, 6 min. Flip 4 min. Remove.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add 10–12 whole garlic cloves (skin on) to same pan. Cook 2 min. Add dry sherry, let it reduce by half.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Return chicken. Cover, cook 18 min at <span class="temp">180°C</span> until cooked through. Finish with fresh parsley.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Whole garlic cloves soften to sweet, spreadable paste during cooking. The guest who discovers this mid-dish always orders it again.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Fideuà — Noodle Paella</div>
+      <div class="rh-meta">⏱ 18 min &nbsp;|&nbsp; FC: 22%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Toast thin fideuà noodles (No. 2) dry in the paella pan until golden — 3 min. Remove.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Sauté squid, prawns in sofrito in the same pan. Add toasted noodles back.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add hot fish stock (ratio 1:2 noodles to stock). Cook 12 min until absorbed and noodles stand upright.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Crisp under grill 2 min. Serve with alioli on the side — essential.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Fideuà is the Valencian coast answer to paella. The toasted noodle technique is identical in principle to socarrat — concentrated, slightly smoky, deeply satisfying.</div>
+    </div>
+  </div>
+
+  <h2>Desserts</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Crema Catalana — Catalan Burnt Cream</div>
+      <div class="rh-meta">⏱ 2 min torch finish &nbsp;|&nbsp; FC: 11%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Infuse cream with lemon zest, cinnamon stick and orange zest. Bring to simmer. Cool.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Whisk egg yolks with sugar. Temper warm cream in. Pour into shallow terracotta dishes.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Bake in bain-marie at <span class="temp">150°C</span> for 30 min until just set with a wobble. Chill thoroughly.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">To order: dust with caster sugar. Torch in even circular motion until amber caramel forms. Serve immediately.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Crema catalana pre-dates crème brûlée by at least a century — a point worth making to guests. The citrus and cinnamon infusion is the differentiator. Never skip it.</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 8: DESSERTS CONT + DRINKS -->
+<div class="page">
+  <h2>Desserts (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Churros con Chocolate — Fried Dough with Hot Chocolate</div>
+      <div class="rh-meta">⏱ 8 min &nbsp;|&nbsp; FC: 14% &nbsp;|&nbsp; Allergens: Gluten</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Make choux-style dough: water, flour, salt, pinch of sugar. Pipe into 15cm lengths.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Fry in sunflower oil at <span class="temp">180°C</span> for 3–4 min until golden and crisp. Drain.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Roll in cinnamon sugar immediately. Serve upright in a tall glass or cup.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Chocolate: melt Valrhona 70% with warm cream and milk. Serve hot in a small jug alongside.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Churros are fried to order — 8 minutes. The server must pre-sell this at the start of the meal, not when clearing mains. Cold churros in cold chocolate is a waste of a dish.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Tarta de Santiago — Galician Almond Cake</div>
+      <div class="rh-meta">⏱ 3 min plating &nbsp;|&nbsp; FC: 13% &nbsp;|&nbsp; Allergens: Nuts (almonds), Eggs</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Bake in advance: ground almonds, sugar, eggs, lemon zest, cinnamon. No flour — naturally gluten-free base.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Cool completely. Dust icing sugar through the Cross of St James stencil over the top.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">To order: slice and plate with a quenelle of orange mascarpone.</div></div>
+      </div>
+      <div class="chef-tip">⚡ The cross of Santiago on every tarta is the mark of Galicia. Use the stencil every time. That small gesture connects the dish to 700 years of pilgrimage culture.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Arroz con Leche — Spanish Rice Pudding</div>
+      <div class="rh-meta">⏱ 3 min plating &nbsp;|&nbsp; FC: 10%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Simmer short-grain rice in whole milk with lemon peel, cinnamon stick and sugar for 35 min, stirring constantly.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Remove lemon and cinnamon. Cool to room temperature. Chill.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">To order: scoop into clay bowl. Dust generously with cinnamon. Serve chilled.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Best food cost on the menu at 10%. Never undersell it. A properly made arroz con leche — creamy, faintly bitter from cinnamon — is a better dessert than many restaurant cheesecakes.</div>
+    </div>
+  </div>
+
+  <h2>Drinks</h2>
+  <div class="drink-grid">
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Sangria — Red Wine Punch (Jug, serves 2)</div><div class="drink-price">$22.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Tinto de Verano — Red Wine &amp; Lemon Soda</div><div class="drink-price">$9.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Estrella Damm — Spanish Lager 330ml</div><div class="drink-price">$8.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Cava — Spanish Sparkling Glass 150ml</div><div class="drink-price">$12.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Rioja Tempranillo — Glass 150ml</div><div class="drink-price">$11.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Horchata de Chufa — Tiger Nut Milk</div><div class="drink-price">$7.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Café Cortado — Espresso + Warm Milk</div><div class="drink-price">$5.00</div></div></div>
+    <div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Rebujito — Sherry &amp; Lemonade</div><div class="drink-price">$10.00</div></div></div>
+  </div>
+</div>
+<!-- PAGE 9: SERVICE SCRIPTS -->
+<div class="page">
+  <h2>Service Scripts</h2>
+  <p style="color:#999;font-size:0.85rem;margin-bottom:16px;">These are not suggestions. These are the words your floor staff say. Verbatim, every time, until they own them.</p>
+
+  <div class="script-box">
+    <div class="script-label">01 — Welcome + Sangria Upsell</div>
+    <div class="script-text">"The sangria is made in-house — red wine, brandy, orange, cinnamon. Jug serves two. $22. Better value than two glasses of wine and it's the way the Spanish drink it."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">02 — Tapas Arrival Flow</div>
+    <div class="script-text">"We bring things as they're ready — that's the tapas rhythm. Don't wait for everything before eating. Start with the pan con tomate while it's warm."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">03 — Paella Explanation + Socarrat</div>
+    <div class="script-text">"The paella takes 22 minutes because the rice has to crust on the bottom — that's the socarrat. It's the best part. If your paella arrives in 10 minutes, it's not paella."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">04 — Churros Pre-Sell</div>
+    <div class="script-text">"The churros are fried to order. 8 minutes. Worth planning for. The chocolate is real — Valrhona, served hot. It's a proper dessert, not an afterthought."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">05 — Return Visit + Menú del Día</div>
+    <div class="script-text">"Lunch Tuesday to Friday we do Menú del Día — starter, main, dessert, glass of wine, $28. That's how the Spanish eat lunch. Worth coming back for."</div>
+  </div>
+
+  <div class="chef-tip" style="margin-top:20px;">⚡ Script delivery is not robotic recitation. It's confident, conversational, knowledgeable. The server who delivers script 03 correctly is teaching the guest about Spanish culture. That's the job.</div>
+</div>
+<!-- PAGE 10: PREP SCHEDULE + P&L + ALLERGENS -->
+<div class="page">
+  <h2>Daily Prep Schedule</h2>
+  <table class="prep-table">
+    <tr><th>Time</th><th>Task</th><th>Notes</th></tr>
+    <tr><td>07:00</td><td>Sofrito — begin</td><td>45 min minimum. Non-negotiable. Base of everything.</td></tr>
+    <tr><td>08:30</td><td>Oxtail into braise</td><td>3.5hr braise. Must be on by 08:30 for service readiness.</td></tr>
+    <tr><td>09:00</td><td>Tortilla Española bake</td><td>Bake, cool, hold at room temp. Cut to order.</td></tr>
+    <tr><td>10:00</td><td>Pulpo boil</td><td>45 min boil. Scare technique applied first.</td></tr>
+    <tr><td>11:00</td><td>Cochinillo into oven</td><td>3hr roast. 160°C to start, blast at end.</td></tr>
+    <tr><td>12:00</td><td>Lunch service opens</td><td>Menú del Día available Tue–Fri.</td></tr>
+    <tr><td>15:00</td><td>Reset + team brief</td><td>Stock counts. Mise en place for dinner.</td></tr>
+    <tr><td>17:00</td><td>Paella stock prep</td><td>Chicken and fish stock for dinner paellas.</td></tr>
+    <tr><td>18:30</td><td>Dinner service opens</td><td>Full menu available.</td></tr>
+    <tr><td>22:30</td><td>Close</td><td>Kitchen close, cleanup, oxtail into fridge.</td></tr>
+  </table>
+
+  <h2>P&amp;L Summary</h2>
+  <table class="rev-table">
+    <tr><th>Metric</th><th>Amount</th></tr>
+    <tr><td>Daily Revenue</td><td>~$3,520</td></tr>
+    <tr><td>Weekly Revenue</td><td>~$21,120</td></tr>
+    <tr><td>Monthly Revenue</td><td>~$91,520</td></tr>
+    <tr><td>Food Cost (23%)</td><td>~$21,050</td></tr>
+    <tr><td>Labour (30%)</td><td>~$27,456</td></tr>
+    <tr><td>Overheads (16%)</td><td>~$14,643</td></tr>
+    <tr class="profit-row"><td>Net Profit (~31%)</td><td>~$28,371 / month</td></tr>
+  </table>
+
+  <h2>Allergen Register</h2>
+  <div class="safety">
+    <p style="color:#ffaa88;font-size:0.82rem;margin-bottom:10px;">Always verify allergens with kitchen before service. This register is a guide — not a guarantee. Allergen cross-contamination risk must be assessed per order.</p>
+    <table>
+      <tr><th>Dish</th><th>Allergens</th></tr>
+      <tr><td>Pan con Tomate</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+      <tr><td>Jamón Ibérico</td><td><div class="al"><span class="a">None declared</span></div></td></tr>
+      <tr><td>Croquetas de Jamón</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+      <tr><td>Gambas al Ajillo</td><td><div class="al"><span class="a">Shellfish</span></div></td></tr>
+      <tr><td>Tortilla Española</td><td><div class="al"><span class="a">Eggs</span></div></td></tr>
+      <tr><td>Paella Valenciana</td><td><div class="al"><span class="a">Gluten (possible)</span></div></td></tr>
+      <tr><td>Paella de Mariscos</td><td><div class="al"><span class="a">Shellfish</span></div></td></tr>
+      <tr><td>Tarta de Santiago</td><td><div class="al"><span class="a">Nuts (almonds)</span><span class="a">Eggs</span></div></td></tr>
+      <tr><td>Churros con Chocolate</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+    </table>
+  </div>
+
+  <footer>
+    Spanish Tapas Bar — Operations Guide v6 — Confidential — For Internal Use Only<br>
+    Generated 2026 &nbsp;|&nbsp; All food costs, times and yields are operational targets
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moroccan Riad Café — Operations Guide v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#ffaa00;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(255,170,0,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #ffaa00;}
+.cover-eye{color:#ffaa00;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#ffaa00;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #ffaa00;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#ffaa00,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#000;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#1a0f00;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#ffaa00;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#ffaa00;color:#000;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#1a0f00;border:1px solid #ffaa00;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#ffaa00;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #ffaa00;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#ffaa00;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#ffaa00;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#ffaa00,#1a0f00);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #ffaa00;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#ffaa00;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#ffaa00;color:#000;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#ffaa00;color:#000;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#1a0f00;border:1px solid #ffaa00;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#1a0f00;border:1px solid #ffaa00;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ffcc88;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eye">Restaurant Operations Guide — v6</div>
+  <h1>Moroccan<br>Riad Café</h1>
+  <div class="cover-tag">Clay pots. Saffron smoke. Mint tea poured from height.</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">40</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$46</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">24%</div><div class="kpi-label">Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">$57,292</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+  <div class="lens-card" style="margin-top:32px;">
+    <div class="lens-title">// What a Michelin-trained chef sees in Moroccan cooking</div>
+    <div class="lens-text">Moroccan spice work is the most complex in this collection. Ras el hanout — the name means 'top of the shop,' the best the spice merchant has — contains up to 30 individual spices, balanced against each other in proportions that vary by region, by family, by cook. The commercial version is a shortcut. Making it properly means toasting whole spices individually, grinding them separately, and combining them in a sequence that prevents the volatile aromatics of one spice from overwhelming another. Chermoula, harissa, preserved lemon: each one a complete flavour system in itself. The tagine is not a stew. It is a steam environment — the conical lid returns condensed moisture to the ingredients, basting them continuously for 3–4 hours. The result cannot be replicated in a standard pot.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">The mint tea ceremony at $6.99 with a food cost of $0.45 is the highest-margin item in this collection. It is also the one that drives dessert covers to near 100%. The riad café format photographs itself. The terracotta, the hand-painted tiles, the tagine arriving at the table: every service is content.</div>
+    <div class="lens-closer">This guide builds the operation. Instagram builds the audience.</div>
+  </div>
+</div>
+
+<!-- PAGE 2: ENTRÉES -->
+<div class="page">
+  <h2>Entrées</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Harira — Moroccan Tomato, Lentil &amp; Lamb Soup</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; FC: 18% &nbsp;|&nbsp; BATCH COOK &nbsp;|&nbsp; ALLERGENS: Gluten, May contain traces of nuts</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Prepare lamb shoulder, tomatoes, lentils, chickpeas, onion, celery, parsley and coriander. Season with <span class="temp">ras el hanout</span>, turmeric, cinnamon, saffron.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Sweat onion and celery in olive oil until soft. Add lamb, brown evenly. Add spices and stir for 1 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add tomatoes, lentils, chickpeas, stock. Simmer <span class="temp">90 min</span> until thick. Finish with lemon juice, fresh coriander, parsley.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Batch hold at <span class="temp">75°C+</span>. Serve with lemon wedge and crusty bread.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: The tdouira — a flour-water slurry — is added at the end for body. Don't skip it. It's what makes harira harira.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Briouats au Poulet — Chicken &amp; Almond Pastilla Triangles</div>
+      <div class="rh-meta">SERVICE: 6 min &nbsp;|&nbsp; FC: 20% &nbsp;|&nbsp; ALLERGENS: Gluten, Eggs, Nuts</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Shred braised chicken. Mix with toasted almonds, egg, onion, parsley, cinnamon, ginger, saffron, icing sugar.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Cut warka (or filo) into strips. Place filling at base, fold into triangles, seal with egg wash.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Deep-fry at <span class="temp">180°C</span> for 3–4 min until golden. Drain. Dust with icing sugar and cinnamon.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: The sweet-savoury balance is intentional. Don't be tempted to reduce the sugar — it's architecturally correct.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Zaalouk — Smoky Aubergine Salad</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FC: 14% &nbsp;|&nbsp; BATCH COOK &nbsp;|&nbsp; VEGAN</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Char aubergines directly over flame or under grill until completely collapsed and smoky. Peel, drain, roughly chop.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Cook with tomatoes, garlic, olive oil, cumin, paprika, preserved lemon until dry. Mash roughly — texture should be chunky, not smooth.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Finish with fresh coriander, lemon juice. Serve at room temp with warm bread.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Moroccan Carrot Salad with Cumin &amp; Preserved Lemon</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FC: 12% &nbsp;|&nbsp; BATCH COOK &nbsp;|&nbsp; VEGAN</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Steam or boil carrots until just tender. Drain, cool slightly.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Dress with olive oil, cumin, paprika, harissa, preserved lemon rind (finely chopped), honey, lemon juice.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Top with fresh coriander, black olives. Batch and hold chilled. Bring to room temp before service.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: ENTRÉES CONT + MAINS START -->
+<div class="page">
+  <h2>Entrées (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Msemen — Flaky Moroccan Flatbread</div>
+      <div class="rh-meta">SERVICE: 8 min &nbsp;|&nbsp; FC: 16%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Mix semolina, flour, salt, yeast, warm water into smooth dough. Rest <span class="temp">30 min</span>.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Divide into balls. Stretch thin on oiled surface, fold into square layers. Rest again 10 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook on dry griddle <span class="temp">medium-high</span> 3–4 min per side until golden with charred patches.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve immediately with amlou (argan oil, almonds, honey) or alongside tagines and salads.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: The lamination is what creates the flaky layers. Oil your hands, not the bread — each fold traps air.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Kefta Cigares — Lamb Mince Rolls</div>
+      <div class="rh-meta">SERVICE: 6 min &nbsp;|&nbsp; FC: 22%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Combine lamb mince, onion (grated), parsley, cumin, paprika, cinnamon, cayenne, salt. Mix thoroughly.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Roll into cigar shapes on warka or filo strips. Seal with egg wash. Chill until service.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Deep fry at <span class="temp">180°C</span> for 4 min until dark golden. Drain on paper. Serve with harissa yoghurt.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Signature Mains</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Lamb Tagine with Preserved Lemon &amp; Olives ⭐ SIGNATURE</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; BATCH: 2.5hr &nbsp;|&nbsp; FC: 24% &nbsp;|&nbsp; BATCH COOK</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Marinate bone-in lamb in chermoula (coriander, parsley, garlic, cumin, paprika, olive oil, lemon) overnight.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Layer onion, saffron water, ginger, turmeric in tagine base. Add lamb. Seal lid.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook at <span class="temp">160°C</span> for 2.5 hours. Add preserved lemon quarters and green olives in final 30 min.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve in tagine with garnish of fresh coriander. Accompany with msemen or couscous.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: The tagine has been in the clay pot since 10am. You can't rush a tagine. That's why it tastes like it does.</div>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">24%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">2.5hr</div><div class="fc-lbl">Batch Time</div></div>
+        <div class="fc-item"><div class="fc-val">5 min</div><div class="fc-lbl">Service Time</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Bastilla au Poulet — Moroccan Chicken &amp; Almond Pie ⭐ SIGNATURE</div>
+      <div class="rh-meta">SERVICE: 8 min &nbsp;|&nbsp; FC: 24% &nbsp;|&nbsp; ALLERGENS: Gluten, Eggs, Nuts, Chicken</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Braise chicken thighs with saffron, ginger, cinnamon, onion until very tender. Shred. Reserve braising liquid and reduce.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Scramble eggs gently in reduced braising liquid until just set. Combine with shredded chicken.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Toast almonds, grind coarsely with cinnamon and icing sugar. Layer warka sheets with butter, chicken mixture, almond layer, seal.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Bake at <span class="temp">200°C</span> for 20 min until crisp and deep golden. Dust generously with icing sugar and cinnamon cross.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: The bastilla is our signature — chicken, almonds, eggs, cinnamon, icing sugar on top. It's sweet and savoury in the same bite. Made fresh this morning. 8 minutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: MAINS CONTINUED -->
+<div class="page">
+  <h2>Mains (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Chicken Tagine with Apricot &amp; Almond</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; BATCH: 2hr &nbsp;|&nbsp; FC: 22%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Brown chicken pieces in olive oil. Remove. Sweat onion with ginger, turmeric, cinnamon, saffron.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Return chicken. Add dried apricots, honey, chicken stock. Cover and braise <span class="temp">2hr at 160°C</span>.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Top with toasted flaked almonds, fresh coriander before service.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Beef Kefta Tagine — Meatballs, Egg &amp; Tomato</div>
+      <div class="rh-meta">SERVICE: 15 min &nbsp;|&nbsp; FC: 23%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Roll beef mince (seasoned with cumin, paprika, coriander, mint, parsley, salt) into walnut-sized balls.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Build tomato sauce in tagine: onion, garlic, tomatoes, cumin, paprika, chilli, olive oil. Simmer 15 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add kefta balls to sauce, cover and cook 10 min. Crack eggs on top, cover and cook <span class="temp">4 min</span> to set whites.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve in tagine, garnish with fresh coriander and drizzle of argan oil.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Couscous Royale — Lamb, Chicken, Merguez &amp; Seven Vegetables</div>
+      <div class="rh-meta">FRI–SUN SPECIAL &nbsp;|&nbsp; FC: 28% &nbsp;|&nbsp; ALLERGENS: Gluten, Meat</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Prepare broth with lamb, chicken, merguez, onion, tomatoes, spices. Simmer <span class="temp">1.5hr</span>. Add vegetables in stages by density.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Steam couscous three times in couscoussier with butter between each steam for maximum fluffiness.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Mount couscous as dome on large platter. Arrange meats and vegetables. Pour ladle of broth over. Serve harissa separately.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Service note: Friday and Saturday we do Couscous Royale — lamb, chicken, merguez, seven vegetables. Different dish entirely. Worth coming back for.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Chermoula Grilled Prawns</div>
+      <div class="rh-meta">SERVICE: 10 min &nbsp;|&nbsp; FC: 24% &nbsp;|&nbsp; ALLERGENS: Shellfish</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Marinate king prawns in chermoula (coriander, parsley, garlic, cumin, paprika, preserved lemon, olive oil, lemon) min 30 min.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Grill on charcoal or griddle at <span class="temp">high heat</span> 2–3 min per side until charred and cooked through.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve on warm platter with extra chermoula, lemon wedges and warm msemen.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Mechoui — Slow-Roasted Lamb Shoulder</div>
+      <div class="rh-meta">WEEKEND ONLY &nbsp;|&nbsp; 6hr OVEN &nbsp;|&nbsp; FC: 28%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Rub whole lamb shoulder with smen (aged butter), cumin, sea salt, coriander seeds. Work into all crevices.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Roast in sealed clay vessel or covered roasting pan at <span class="temp">150°C for 6hr</span>. Uncover for final 30 min to colour skin.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Rest <span class="temp">20 min</span>. Serve on communal platter. Guests pull meat with fingers, Moroccan style. Accompanies with cumin salt and bread.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: MAINS FINAL + DESSERTS -->
+<div class="page">
+  <h2>Mains (final)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Rfissa — Shredded Chicken on Msemen with Fenugreek Broth</div>
+      <div class="rh-meta">SERVICE: 8 min &nbsp;|&nbsp; BATCH COOK &nbsp;|&nbsp; FC: 21%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Braise chicken with fenugreek seeds, lentils, saffron, ginger, onion in rich broth. Shred chicken.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Tear msemen into rough pieces, layer in bowl base.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Layer shredded chicken over msemen. Ladle hot fenugreek-saffron broth over everything. Garnish with lentils and fresh coriander.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: Rfissa is celebratory home cooking — served after childbirth in Moroccan tradition. It carries cultural weight. Explain that to the table.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Lamb Mrouzia — Honey, Raisin &amp; Ras el Hanout Tagine</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; BATCH: 3hr &nbsp;|&nbsp; FC: 26%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Brown lamb chunks. Add ras el hanout, cinnamon, ginger, saffron, onion. Cover with water, braise <span class="temp">2hr at 160°C</span>.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add honey, raisins, toasted almonds in final hour. Sauce should be thick, glossy, deeply caramelised.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Serve garnished with sesame seeds and extra almonds. The sweetness is a deliberate Andalusian-Moroccan flavour legacy.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Vegetarian Tagine — Root Vegetable, Chickpea &amp; Preserved Lemon</div>
+      <div class="rh-meta">SERVICE: 5 min &nbsp;|&nbsp; VEGAN &nbsp;|&nbsp; FC: 15%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Layer carrot, potato, turnip, butternut squash, courgette, chickpeas in tagine. Season with ras el hanout, cumin, turmeric, cinnamon.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add preserved lemon, olive oil, water. Seal and cook at <span class="temp">170°C for 1.5hr</span>.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Top with fresh coriander, green olives. Serve in tagine with couscous or msemen.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Desserts</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Chebakia — Honey &amp; Sesame Fried Pastry</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FC: 14% &nbsp;|&nbsp; ALLERGENS: Gluten, Sesame, Nuts</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Mix flour, sesame seeds, anise, cinnamon, saffron, rose water, orange blossom water, vinegar, yeast, oil, eggs into dough.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Roll thin, cut into strips, fold into flower shape. Deep fry at <span class="temp">175°C</span> until golden.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Immediately dip in warm honey infused with orange blossom water. Roll in sesame seeds. Allow to set.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Service note: The Moroccan tradition is — you don't refuse tea. And the chebakia with the honey and sesame makes the second glass of tea mandatory. That's just how it works.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Kaab el Ghazal — Gazelle Horn Almond Pastries</div>
+      <div class="rh-meta">SERVICE: 2 min &nbsp;|&nbsp; FC: 15% &nbsp;|&nbsp; ALLERGENS: Gluten, Nuts</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Mix ground almonds with icing sugar, orange blossom water, butter, cinnamon. Roll into thin finger shapes.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Wrap in thin pastry dough, shape into crescent (gazelle horn). Bake at <span class="temp">180°C for 12 min</span> — pale gold only, no browning.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cool completely. Dust lightly with icing sugar. Serve with mint tea ceremony.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: DESSERTS CONT + DRINKS -->
+<div class="page">
+  <h2>Desserts (continued)</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Orange &amp; Cinnamon Salad</div>
+      <div class="rh-meta">SERVICE: 3 min &nbsp;|&nbsp; FC: 11% &nbsp;|&nbsp; VEGAN &nbsp;|&nbsp; GF</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Peel and slice navel oranges into rounds. Arrange on chilled plate.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Dust generously with ground cinnamon. Drizzle orange blossom water and a little honey.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Garnish with fresh mint leaves and a few pomegranate seeds for colour.</div></div>
+      </div>
+      <div class="chef-tip">⚡ Chef's note: Deceptively simple. The orange blossom water elevates this from fruit plate to Moroccan classic. Do not skip it.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Seffa — Sweet Couscous with Raisins &amp; Almonds</div>
+      <div class="rh-meta">SERVICE: 4 min &nbsp;|&nbsp; FC: 17%</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Steam fine couscous with butter. Fluff and sweeten with icing sugar and cinnamon.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plump raisins in rose water and orange blossom water for 10 min. Toast flaked almonds.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Mount couscous as dome. Decorate with alternating rings of raisins and almonds. Dust with icing sugar and cinnamon. Serve warm.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Drinks</h2>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Moroccan Mint Tea — Atay</div>
+        <div class="drink-price">$6.99 &nbsp;·&nbsp; 3 glasses &nbsp;·&nbsp; FC: $0.45</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Gunpowder green tea, fresh spearmint, sugar. Poured from height. Three rounds, each sweeter than the last.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Jus d'Avocat — Avocado Juice</div>
+        <div class="drink-price">$8.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Blended avocado, milk, honey, orange blossom water. Thick, creamy, cold.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Rose Water Lemonade</div>
+        <div class="drink-price">$6.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Fresh lemon, rose water, sugar syrup, still water. House signature non-alcoholic.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Iced Moroccan Coffee</div>
+        <div class="drink-price">$6.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Double espresso, cardamom, cold milk, ice. The spice distinguishes it.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Casablanca Beer</div>
+        <div class="drink-price">$8.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Moroccan pale lager. Light, clean, cold. The only beer on the menu.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Sidi Ali Mineral Water</div>
+        <div class="drink-price">$4.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Moroccan still mineral water. Authentic detail that guests notice.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Almond Milkshake — Lben Louz</div>
+        <div class="drink-price">$7.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Ground almonds, milk, honey, ice, rose water. Rich and sweet.</p>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Fresh Pomegranate Juice</div>
+        <div class="drink-price">$7.99</div>
+        <p style="color:#999;font-size:0.8rem;margin-top:6px;">Pressed to order. Deep red, tart, seasonal. Pairs beautifully with bastilla.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chef-tip" style="margin-top:20px;">⚡ Drinks strategy: Lead with mint tea at welcome — $0.45 cost, $6.99 revenue, drives dessert uptake. The highest-margin item in the house. It is also a cultural ritual. Treat it as one.</div>
+</div>
+
+<!-- PAGE 7: SERVICE SCRIPTS -->
+<div class="page">
+  <h2>Service Scripts</h2>
+  <p style="color:#999;margin-bottom:20px;font-size:0.88rem;">Memorise these. They are not suggestions — they are the revenue conversion layer of the operation.</p>
+
+  <div class="script-box">
+    <div class="script-label">01 — Welcome &amp; Atay Mint Tea Upsell</div>
+    <div class="script-text">"Welcome to Moroccan Riad Café. Before we go through the menu — can I start you with our mint tea? The tea is served Moroccan style — poured from height, three glasses, each one sweeter than the last. $6.99 for three glasses. Worth it."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">02 — Tagine Explanation + Cook Time</div>
+    <div class="script-text">"The lamb tagine has been in the clay pot since 10am. You can't rush a tagine. That's why it tastes like it does. It comes to the table in the tagine — the lid comes off at the table. 5 minutes from now."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">03 — Bastilla Pre-Sell</div>
+    <div class="script-text">"The bastilla is our signature — chicken, almonds, eggs, cinnamon, icing sugar on top. It's sweet and savoury in the same bite. Made fresh this morning. 8 minutes. A lot of people come back specifically for this one."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">04 — Dessert Pitch with Tea Pairing</div>
+    <div class="script-text">"For dessert — the Moroccan tradition is you don't refuse tea. And the chebakia with the honey and sesame makes the second glass of tea mandatory. That's just how it works. The orange salad is lighter if you want something fresh. The seffa is sweet couscous — very traditional, very good."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">05 — Return Visit Driver</div>
+    <div class="script-text">"One thing to know — Friday and Saturday we do Couscous Royale. Lamb, chicken, merguez, seven vegetables, the whole ceremony. We don't do it midweek. Different dish entirely. Worth coming back for."</div>
+  </div>
+
+  <h2>Menu Overview</h2>
+  <table>
+    <thead>
+      <tr><th>Section</th><th>Item</th><th>Service Time</th><th>Food Cost</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Entrée</td><td>Harira</td><td>5 min</td><td>18%</td><td>Batch</td></tr>
+      <tr><td>Entrée</td><td>Briouats au Poulet</td><td>6 min</td><td>20%</td><td>—</td></tr>
+      <tr><td>Entrée</td><td>Zaalouk</td><td>3 min</td><td>14%</td><td>Batch, Vegan</td></tr>
+      <tr><td>Entrée</td><td>Moroccan Carrot Salad</td><td>3 min</td><td>12%</td><td>Batch, Vegan</td></tr>
+      <tr><td>Entrée</td><td>Msemen</td><td>8 min</td><td>16%</td><td>—</td></tr>
+      <tr><td>Entrée</td><td>Kefta Cigares</td><td>6 min</td><td>22%</td><td>—</td></tr>
+      <tr><td>Main</td><td>Lamb Tagine ⭐</td><td>5 min</td><td>24%</td><td>Signature, Batch</td></tr>
+      <tr><td>Main</td><td>Chicken Tagine</td><td>5 min</td><td>22%</td><td>Batch</td></tr>
+      <tr><td>Main</td><td>Beef Kefta Tagine</td><td>15 min</td><td>23%</td><td>—</td></tr>
+      <tr><td>Main</td><td>Bastilla au Poulet ⭐</td><td>8 min</td><td>24%</td><td>Signature</td></tr>
+      <tr><td>Main</td><td>Couscous Royale</td><td>—</td><td>28%</td><td>Fri–Sun only</td></tr>
+      <tr><td>Main</td><td>Chermoula Grilled Prawns</td><td>10 min</td><td>24%</td><td>Shellfish</td></tr>
+      <tr><td>Main</td><td>Mechoui</td><td>—</td><td>28%</td><td>Weekend only</td></tr>
+      <tr><td>Main</td><td>Rfissa</td><td>8 min</td><td>21%</td><td>Batch</td></tr>
+      <tr><td>Main</td><td>Lamb Mrouzia</td><td>5 min</td><td>26%</td><td>Batch</td></tr>
+      <tr><td>Main</td><td>Vegetarian Tagine</td><td>5 min</td><td>15%</td><td>Vegan</td></tr>
+      <tr><td>Dessert</td><td>Chebakia</td><td>3 min</td><td>14%</td><td>—</td></tr>
+      <tr><td>Dessert</td><td>Kaab el Ghazal</td><td>2 min</td><td>15%</td><td>—</td></tr>
+      <tr><td>Dessert</td><td>Orange &amp; Cinnamon Salad</td><td>3 min</td><td>11%</td><td>Vegan, GF</td></tr>
+      <tr><td>Dessert</td><td>Seffa</td><td>4 min</td><td>17%</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PAGE 8: PREP SCHEDULE + P&L + ALLERGENS -->
+<div class="page">
+  <h2>Daily Prep Schedule</h2>
+
+  <table class="prep-table">
+    <thead>
+      <tr><th>Time</th><th>Task</th><th>Who</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>07:00</td><td>Tagine prep — marinate lamb, measure spices, prep vegetables</td><td>Head Chef</td><td>Start both tagine batches</td></tr>
+      <tr><td>08:00</td><td>Bread dough (msemen), pastry prep (briouats, bastilla warka)</td><td>Prep Chef</td><td>Kefta cigares formed and chilled</td></tr>
+      <tr><td>09:00</td><td>Batch cooking: harira, zaalouk, carrot salad, couscous broth</td><td>Head Chef</td><td>All batch items held at 75°C+</td></tr>
+      <tr><td>10:00</td><td>Tagines sealed and in oven. Tea station stocked. Desserts prepped.</td><td>All</td><td>Chebakia batch fried and dipped</td></tr>
+      <tr><td>11:00</td><td>Mechoui in oven (weekends only). Tables set. Staff briefed.</td><td>FOH + Chef</td><td>Weekend only — 6hr cook</td></tr>
+      <tr><td>12:00</td><td>LUNCH SERVICE</td><td>All</td><td>Full team on floor</td></tr>
+      <tr><td>14:00</td><td>Second tagine batch started. Msemen cooked to order from 14:30.</td><td>Head Chef</td><td>Monitor batch stock levels</td></tr>
+      <tr><td>15:30</td><td>Post-lunch clean, restock, mise en place for dinner</td><td>All</td><td>Check allergen boards</td></tr>
+      <tr><td>17:00</td><td>RESET — full mise en place, team changeover briefing</td><td>FOH Manager</td><td>Scripts reviewed</td></tr>
+      <tr><td>18:30</td><td>DINNER SERVICE</td><td>All</td><td>Full team on floor</td></tr>
+      <tr><td>21:00</td><td>Last orders. Begin clean-down of prep areas.</td><td>Kitchen</td><td>—</td></tr>
+      <tr><td>22:00</td><td>CLOSE — deep clean, stock count, prep list for AM</td><td>All</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h2>P&amp;L Snapshot</h2>
+
+  <table class="rev-table">
+    <thead>
+      <tr><th>Line</th><th>Daily</th><th>Weekly</th><th>Monthly</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Revenue</td><td>~$3,680</td><td>~$22,080</td><td>~$95,680</td></tr>
+      <tr><td>Food Cost (24%)</td><td>~$883</td><td>~$5,299</td><td>~$22,963</td></tr>
+      <tr><td>Labour (28%)</td><td>~$1,030</td><td>~$6,182</td><td>~$26,790</td></tr>
+      <tr><td>Overheads (15%)</td><td>~$552</td><td>~$3,312</td><td>~$14,352</td></tr>
+      <tr class="profit-row"><td>NET PROFIT (~33%)</td><td>~$1,215</td><td>~$7,297</td><td>~$31,575</td></tr>
+    </tbody>
+  </table>
+
+  <div class="fc-box">
+    <div class="fc-item"><div class="fc-val">$95,680</div><div class="fc-lbl">Monthly Revenue</div></div>
+    <div class="fc-item"><div class="fc-val">24%</div><div class="fc-lbl">Food Cost</div></div>
+    <div class="fc-item"><div class="fc-val">28%</div><div class="fc-lbl">Labour</div></div>
+    <div class="fc-item"><div class="fc-val">15%</div><div class="fc-lbl">Overheads</div></div>
+    <div class="fc-item"><div class="fc-val">~33%</div><div class="fc-lbl">Net Margin</div></div>
+  </div>
+
+  <h2>Allergen Matrix</h2>
+
+  <div class="safety">
+    <p style="color:#ffaa00;font-family:'DM Mono',monospace;font-size:0.8rem;margin-bottom:12px;">ALLERGEN DECLARATIONS — VERIFY WITH SUPPLIER ON EACH DELIVERY</p>
+
+    <table>
+      <thead><tr><th>Item</th><th>Allergens</th></tr></thead>
+      <tbody>
+        <tr><td>Harira</td><td><div class="al"><span class="a">Gluten</span><span class="a">May contain nuts</span></div></td></tr>
+        <tr><td>Briouats au Poulet</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span><span class="a">Nuts</span></div></td></tr>
+        <tr><td>Bastilla au Poulet</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span><span class="a">Nuts</span><span class="a">Chicken</span></div></td></tr>
+        <tr><td>Chebakia</td><td><div class="al"><span class="a">Gluten</span><span class="a">Sesame</span><span class="a">Nuts</span></div></td></tr>
+        <tr><td>Kaab el Ghazal</td><td><div class="al"><span class="a">Gluten</span><span class="a">Nuts</span></div></td></tr>
+        <tr><td>Couscous Royale</td><td><div class="al"><span class="a">Gluten</span><span class="a">Meat</span></div></td></tr>
+        <tr><td>Chermoula Grilled Prawns</td><td><div class="al"><span class="a">Shellfish</span></div></td></tr>
+      </tbody>
+    </table>
+
+    <p style="color:#999;font-size:0.78rem;margin-top:12px;">⚠️ Always ask guests about allergies at order. Cross-contamination risk exists in a shared kitchen environment. When in doubt — escalate to head chef before service.</p>
+  </div>
+
+  <footer>
+    Moroccan Riad Café — Operations Guide v6 &nbsp;|&nbsp; Confidential — Internal Use Only &nbsp;|&nbsp; Generated by OpenClaw
+  </footer>
+</div>
+
+</body>
+</html>

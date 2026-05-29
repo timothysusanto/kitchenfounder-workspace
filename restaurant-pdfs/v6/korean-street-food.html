@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korean Street Food Café — Operations Guide v6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#ff0080;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(255,0,128,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #ff0080;}
+.cover-eye{color:#ff0080;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#ff0080;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #ff0080;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#ff0080,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#1a0010;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#ff0080;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#ff0080;color:#fff;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#1a0010;border:1px solid #ff0080;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#ff0080;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #ff0080;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#ff0080;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#ff0080;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#ff0080,#1a0010);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #ff0080;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#ff0080;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#ff0080;color:#fff;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#ff0080;color:#fff;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#1a0010;border:1px solid #ff0080;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#1a0010;border:1px solid #ff0080;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ff99cc;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eye">Operations Guide · v6 · 2026</div>
+  <h1>Korean Street Food Café</h1>
+  <div class="cover-tag">Fermentation. Fire. Flavour. — The complete operations guide.</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">30</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$34</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-label">Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">$17,600</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+  <div class="lens-card" style="margin-top:40px;">
+    <div class="lens-title">// What a Michelin-trained chef sees in Korean cooking</div>
+    <div class="lens-text">Korean fermentation is a living process, not a recipe. Kimchi is not made — it is started. The lacto-fermentation that transforms salted napa cabbage, gochugaru, garlic and ginger into kimchi takes days, weeks, months depending on temperature and desired flavour profile. The kimchi in this guide is made in-house because the commercial alternative is a different product. In-house kimchi at 3 weeks fermentation has a complexity that no factory product replicates. Gochujang — fermented chili paste aged for months — is the backbone of Korean flavour. Making it from scratch is a commitment. It is also a competitive moat. Your gochujang is yours. Nobody else's kitchen tastes like yours.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">Korean food in America is having its defining decade. The operators who will own this market long-term are not the ones following the trend — they are the ones making it properly, with fermented kimchi, house gochujang and jjigae that takes three hours. The food cost on kimchi jjigae is 13.8%. The differentiation it creates is incalculable.</div>
+    <div class="lens-closer">This guide is for operators who want to do it right.</div>
+  </div>
+</div>
+
+<!-- PAGE 2: ENTRÉES -->
+<div class="page">
+  <h2>Entrées</h2>
+
+  <!-- Pajeon -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Pajeon — Korean Scallion Pancake</span></div>
+    <div class="rh">
+      <div class="rh-title">Pajeon — Korean Scallion Pancake</div>
+      <div class="rh-meta">COOK TIME: 8 min &nbsp;|&nbsp; FOOD COST: 16%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Scallions (trimmed)</td><td>6–8 stalks</td><td>Cut to pan length</td></tr>
+        <tr><td>Pajeon batter (flour, egg, ice water)</td><td>180ml</td><td>Keep batter cold</td></tr>
+        <tr><td>Soy dipping sauce</td><td>60ml</td><td>Soy, rice vinegar, sesame oil, chili</td></tr>
+        <tr><td>Sesame oil</td><td>1 tsp</td><td>Finish only</td></tr>
+        <tr><td>Vegetable oil</td><td>2 tbsp</td><td>High-smoke point</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">16%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">8 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">High</div><div class="fc-lbl">Volume</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Heat cast-iron skillet over high heat. Add vegetable oil — it should shimmer immediately. <span class="temp">HIGH HEAT</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Lay scallions flat in pan. Pour cold batter over scallions to just cover. Do not stir.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook 3–4 min until edges crisp and golden. Flip in one motion. Press lightly. Cook 2–3 min more.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Slide onto board, cut into pieces, finish with sesame oil. Serve immediately with dipping sauce.</div></div>
+      </div>
+      <div class="chef-tip">💡 Batter must be ice-cold — the thermal shock from cold batter hitting hot oil creates the crispy texture. Warm batter makes soft pancake. Non-negotiable.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span></div></div>
+    </div>
+  </div>
+
+  <!-- Tteokbokki -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Tteokbokki — Spicy Rice Cakes</span></div>
+    <div class="rh">
+      <div class="rh-title">Tteokbokki — Spicy Rice Cakes</div>
+      <div class="rh-meta">COOK TIME: 10 min &nbsp;|&nbsp; FOOD COST: 18%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Garae-tteok (cylinder rice cakes)</td><td>250g</td><td>Soaked 10 min if refrigerated</td></tr>
+        <tr><td>Gochujang</td><td>3 tbsp</td><td>House-made preferred</td></tr>
+        <tr><td>Fish cakes (eomuk)</td><td>80g</td><td>Sliced diagonal</td></tr>
+        <tr><td>Dashi broth</td><td>400ml</td><td>Anchovy + kelp base</td></tr>
+        <tr><td>Spring onion</td><td>2 stalks</td><td>Garnish</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">18%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">10 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">High</div><div class="fc-lbl">Volume</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Bring dashi broth to a boil in wide pan. Add gochujang and stir to dissolve fully.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add rice cakes. Simmer on medium-high, stirring frequently to prevent sticking. <span class="temp">MEDIUM-HIGH</span></div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add fish cakes after 4 min. Continue to reduce sauce until thick and glossy — 3–4 min more.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Plate into bowl. Sauce should coat and cling. Garnish with sliced spring onion. Serve hot.</div></div>
+      </div>
+      <div class="chef-tip">💡 The sauce must reduce to a glaze-like consistency. Thin tteokbokki sauce is the most common failure point — keep reducing. The rice cakes will absorb flavour as they sit.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Gluten (fish cake)</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: MORE ENTRÉES -->
+<div class="page">
+  <!-- Japchae -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Japchae — Glass Noodle Stir-Fry</span></div>
+    <div class="rh">
+      <div class="rh-title">Japchae — Glass Noodle Stir-Fry</div>
+      <div class="rh-meta">COOK TIME: 12 min &nbsp;|&nbsp; FOOD COST: 17%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Dangmyeon (sweet potato glass noodles)</td><td>150g dry</td><td>Soaked 30 min, parboiled</td></tr>
+        <tr><td>Spinach, julienned carrot, shiitake</td><td>200g total</td><td>Stir-fry separately</td></tr>
+        <tr><td>Soy sauce</td><td>3 tbsp</td><td>Low-sodium preferred</td></tr>
+        <tr><td>Sesame oil</td><td>2 tsp</td><td>Finish</td></tr>
+        <tr><td>Toasted sesame seeds</td><td>1 tsp</td><td>Garnish</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">17%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">12 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Soak and parboil noodles until just pliable (not fully cooked). Drain, toss with 1 tsp sesame oil to prevent clumping.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Stir-fry vegetables separately in order of density: carrot → shiitake → spinach. Season each lightly with soy.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Combine noodles and vegetables in hot wok. Add remaining soy sauce. Toss constantly over high heat for 2–3 min. <span class="temp">HIGH HEAT</span></div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Off heat, finish with sesame oil. Plate with sesame seed garnish. Serve warm or at room temperature.</div></div>
+      </div>
+      <div class="chef-tip">💡 Dangmyeon over-cooks instantly. Remove from boiling water when still slightly firm — residual heat from the wok finishes them. Overcooked japchae is mushy and unsellable.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Sesame</span><span class="a">Soy</span></div></div>
+    </div>
+  </div>
+
+  <!-- Kimchijeon -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Kimchi Pancake — Kimchijeon</span></div>
+    <div class="rh">
+      <div class="rh-title">Kimchi Pancake — Kimchijeon</div>
+      <div class="rh-meta">COOK TIME: 8 min &nbsp;|&nbsp; FOOD COST: 14%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Fermented kimchi (chopped)</td><td>150g</td><td>Well-fermented (3+ weeks) preferred</td></tr>
+        <tr><td>All-purpose flour</td><td>100g</td><td>Or rice flour for GF option</td></tr>
+        <tr><td>Kimchi brine</td><td>3 tbsp</td><td>From jar — adds flavour</td></tr>
+        <tr><td>Cold water</td><td>80ml</td><td>Ice-cold</td></tr>
+        <tr><td>Vegetable oil</td><td>3 tbsp</td><td>Enough to shallow-fry</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">14%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">8 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">Best Margin</div><div class="fc-lbl">Entrée</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Mix flour, cold water, and kimchi brine into a loose batter. Fold in chopped kimchi. Do not overmix.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Heat oil in skillet until shimmering. Pour batter as one large pancake. <span class="temp">MEDIUM-HIGH</span></div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Cook until edges brown and set, about 3–4 min. Flip confidently. Press with spatula. Cook 3 min more.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Cut into wedges. Serve with soy-vinegar dipping sauce. Kimchi juices should sizzle at the edges.</div></div>
+      </div>
+      <div class="chef-tip">💡 Use kimchi that is fully fermented and sour — fresh kimchi won't give you the deep savoury-acid flavour. If your kimchi isn't 3 weeks old minimum, you're making a different dish.</div>
+    </div>
+  </div>
+
+  <!-- Bibimbap -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Bibimbap</span></div>
+    <div class="rh">
+      <div class="rh-title">Bibimbap</div>
+      <div class="rh-meta">COOK TIME: 10 min &nbsp;|&nbsp; FOOD COST: 20%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Steamed short-grain rice</td><td>200g</td><td>From rice cooker batch</td></tr>
+        <tr><td>Namul (seasoned veg assortment)</td><td>150g</td><td>Spinach, bean sprouts, carrot, zucchini</td></tr>
+        <tr><td>Fried egg (sunny-side up)</td><td>1</td><td>Yolk runny</td></tr>
+        <tr><td>Gochujang</td><td>1–2 tbsp</td><td>Serve on side — customer controls heat</td></tr>
+        <tr><td>Sesame oil</td><td>1 tsp</td><td>Finish</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">20%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">10 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Heat dolsot (stone bowl) or cast-iron bowl until very hot. Add sesame oil and press rice into base. <span class="temp">HIGH HEAT</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Arrange namul around the edges in distinct colour groups. Place egg in centre.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Allow rice to form crust on bottom (nurungji) — 2–3 min. You'll hear it sizzle and smell nutty rice.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve in hot bowl with gochujang on side. Instruct guest to mix everything together at the table.</div></div>
+      </div>
+      <div class="chef-tip">💡 The nurungji (crispy rice crust) at the bottom is the prize. Serve in the hot bowl — never transfer to a cold plate. The sizzle is part of the experience.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: DAKGALBI + SIGNATURE MAINS -->
+<div class="page">
+  <!-- Dakgalbi -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Dakgalbi — Spicy Stir-Fried Chicken</span></div>
+    <div class="rh">
+      <div class="rh-title">Dakgalbi — Spicy Stir-Fried Chicken</div>
+      <div class="rh-meta">COOK TIME: 12 min &nbsp;|&nbsp; FOOD COST: 19%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Chicken thigh (diced 3cm)</td><td>200g</td><td>Thigh preferred — juicier</td></tr>
+        <tr><td>Gochujang marinade</td><td>4 tbsp</td><td>Gochujang, soy, garlic, ginger, sesame oil</td></tr>
+        <tr><td>Sweet potato (cubed)</td><td>80g</td><td>Par-cook before service</td></tr>
+        <tr><td>Cabbage (rough chop)</td><td>100g</td><td>Adds bulk, absorbs sauce</td></tr>
+        <tr><td>Rice cake (tteok)</td><td>60g</td><td>Optional — adds chew</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">19%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">12 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Marinate chicken in gochujang mix minimum 2 hours. Overnight preferred for penetration.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Heat flat griddle or cast-iron to high. Add chicken — spread flat. Do not stir for 2 min to get sear. <span class="temp">HIGH HEAT</span></div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add par-cooked sweet potato and cabbage. Stir-fry together until chicken is cooked through and sauce caramelises.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Finish with tteok if using. Serve on sizzling plate. Optionally top with melted cheese for the Chuncheon-style presentation.</div></div>
+      </div>
+      <div class="chef-tip">💡 The caramelisation of gochujang sugars on the griddle creates the flavour — do not rush with constant stirring. Let it char slightly at the edges. That bitterness is intentional.</div>
+    </div>
+  </div>
+
+  <h2>Mains</h2>
+
+  <!-- Doenjang Jjigae — Signature -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>★ Doenjang Jjigae — Fermented Soybean Stew</span></div>
+    <div class="rh">
+      <div class="rh-title">★ Doenjang Jjigae — Fermented Soybean Stew <span style="color:#ffd700;font-size:0.8rem;margin-left:8px;">SIGNATURE</span></div>
+      <div class="rh-meta">COOK TIME: 15 min &nbsp;|&nbsp; FOOD COST: 13.8%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Doenjang (fermented soybean paste)</td><td>3 tbsp</td><td>Aged minimum 6 months</td></tr>
+        <tr><td>Anchovy-kelp dashi</td><td>400ml</td><td>Made fresh daily</td></tr>
+        <tr><td>Firm tofu (cubed)</td><td>150g</td><td>Press before use</td></tr>
+        <tr><td>Zucchini, mushroom, onion</td><td>150g total</td><td>Rough cut</td></tr>
+        <tr><td>Garlic (minced)</td><td>2 cloves</td><td>Added with paste</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">13.8%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">15 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">Signature</div><div class="fc-lbl">Status</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Bring dashi to boil in stone pot (ttukbaegi). Dissolve doenjang and garlic into broth. The smell should be intensely savoury.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add zucchini and mushrooms. Simmer 5 min. <span class="temp">MEDIUM SIMMER</span></div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add tofu cubes gently. Do not stir aggressively — tofu breaks. Simmer 4–5 min until tofu is heated through.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve in boiling stone pot directly to table. Still bubbling on arrival is the standard. Top with sliced chili if requested.</div></div>
+      </div>
+      <div class="chef-tip">💡 Doenjang quality is everything here. The fermented paste is the dish. Cheap paste makes weak jjigae. Aged, high-quality doenjang is the single most important ingredient on this menu.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Soy</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: MORE MAINS -->
+<div class="page">
+  <!-- Galbi -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Galbi — Korean BBQ Short Ribs</span></div>
+    <div class="rh">
+      <div class="rh-title">Galbi — Korean BBQ Short Ribs</div>
+      <div class="rh-meta">COOK TIME: 12 min &nbsp;|&nbsp; FOOD COST: 24%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Flanken-cut beef short ribs</td><td>250g</td><td>Cross-cut, marinated overnight</td></tr>
+        <tr><td>Galbi marinade (soy, pear, sugar, sesame)</td><td>80ml</td><td>Korean pear tenderises meat</td></tr>
+        <tr><td>Garlic, ginger</td><td>2 cloves / 1 tsp</td><td>Grated into marinade</td></tr>
+        <tr><td>Sesame oil</td><td>1 tsp</td><td>Finish only</td></tr>
+        <tr><td>Pickled daikon (banchan)</td><td>30g</td><td>Served alongside</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">24%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">12 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">Tuesday BBQ</div><div class="fc-lbl">Feature Night</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Marinate ribs overnight minimum. Korean pear enzymes need time to tenderise the collagen. 24h is standard. <span class="temp">MARINATE 24H</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Grill on high-heat charcoal or gas grill. Ribs are thin — 2–3 min per side maximum. Watch for flare-ups from sugar caramelisation.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Char at edges is desired. The marinade sugars should caramelise — not burn. Pull when lacquered and glistening.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Rest 1 min. Serve with steamed rice, lettuce wraps (ssam), and pickled banchan. Finish with sesame oil brush.</div></div>
+      </div>
+      <div class="chef-tip">💡 Korean pear (or Asian pear) in the marinade is non-negotiable for tenderness. Apple juice is not a substitute. The enzymes are different. Use real pear.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Soy</span><span class="a">Sesame</span></div></div>
+    </div>
+  </div>
+
+  <!-- Kimchi Fried Rice -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Kimchi Fried Rice — Kimchi Bokkeumbap</span></div>
+    <div class="rh">
+      <div class="rh-title">Kimchi Fried Rice — Kimchi Bokkeumbap</div>
+      <div class="rh-meta">COOK TIME: 8 min &nbsp;|&nbsp; FOOD COST: 15%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Day-old cooked rice</td><td>220g</td><td>Must be cold — hot rice clumps</td></tr>
+        <tr><td>Fermented kimchi (chopped)</td><td>100g</td><td>Sour, well-fermented</td></tr>
+        <tr><td>Spam or bacon (diced)</td><td>60g</td><td>Classic version uses Spam</td></tr>
+        <tr><td>Soy sauce + gochujang</td><td>1 tbsp each</td><td>Season to taste</td></tr>
+        <tr><td>Fried egg</td><td>1</td><td>Sunny-side up topping</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">15%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">8 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Fry meat in hot wok until crispy edges. Add kimchi — let it fry in the fat until fragrant and slightly darkened. <span class="temp">HIGH HEAT</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add cold rice. Break up clumps immediately. Toss and stir-fry constantly for 3 min.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add soy sauce and gochujang. Toss until rice is evenly coated and slightly crispy at edges.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Plate in bowl with slight dome shape. Top with fried egg (yolk unbroken). Serve with nori sheet on side.</div></div>
+      </div>
+      <div class="chef-tip">💡 The kimchi must actually fry in the fat — not steam. Wok temperature must be high enough that the kimchi sizzles aggressively when it hits the pan. Insufficient heat = steamed kimchi rice.</div>
+    </div>
+  </div>
+
+  <!-- Sundubu Jjigae -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Sundubu Jjigae — Soft Tofu Stew</span></div>
+    <div class="rh">
+      <div class="rh-title">Sundubu Jjigae — Soft Tofu Stew</div>
+      <div class="rh-meta">COOK TIME: 12 min &nbsp;|&nbsp; FOOD COST: 14%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Silken tofu (sundubu)</td><td>300g tube</td><td>Do not press — use as-is</td></tr>
+        <tr><td>Gochugaru (Korean chili flakes)</td><td>1–2 tbsp</td><td>Adjust per customer preference</td></tr>
+        <tr><td>Anchovy dashi</td><td>350ml</td><td>Strong base</td></tr>
+        <tr><td>Clams or shrimp (optional)</td><td>80g</td><td>Seafood version — upsell</td></tr>
+        <tr><td>Egg</td><td>1</td><td>Cracked in raw — finishes in stew</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">14%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">12 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Fry gochugaru in sesame oil in stone pot until fragrant — 30 seconds. The oil should turn deep red. <span class="temp">MEDIUM HEAT</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add dashi. Bring to rolling boil. Add seafood if using — cook through before tofu.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Spoon large chunks of silken tofu directly into boiling broth. Do not stir. Simmer 3 min.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Crack egg into centre. Serve immediately still boiling. Egg finishes cooking at the table. Serve with rice on side.</div></div>
+      </div>
+      <div class="chef-tip">💡 The raw egg cracked in at the end is a service moment — the customer watches it cook in the bubbling stew. Never pre-cook the egg. The drama is part of the dish.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Soy</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: MORE MAINS CONTINUED -->
+<div class="page">
+  <!-- Ramyeon -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Ramyeon — Korean Ramen</span></div>
+    <div class="rh">
+      <div class="rh-title">Ramyeon — Korean Ramen</div>
+      <div class="rh-meta">COOK TIME: 10 min &nbsp;|&nbsp; FOOD COST: 16%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Instant ramyeon noodles</td><td>1 block</td><td>Shin Ramyun or similar — the ingredient is the brand</td></tr>
+        <tr><td>House broth (anchovy + gochujang)</td><td>500ml</td><td>Replace or augment packet broth</td></tr>
+        <tr><td>Egg</td><td>1</td><td>Soft-boiled or raw cracked in</td></tr>
+        <tr><td>Spring onion, kimchi, nori</td><td>As needed</td><td>Garnish toppings</td></tr>
+        <tr><td>Processed cheese slice</td><td>1</td><td>Optional — melted on top</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">16%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">10 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Bring house broth to boil. Season with gochujang if needed. The instant packet seasoning adds MSG — use judiciously.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add noodle block. Cook exactly per package instruction — typically 3–4 min. Do not over-cook. <span class="temp">ROLLING BOIL</span></div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Transfer to deep bowl. Add soft-boiled egg halved, spring onion, kimchi, nori sheet.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Optional: lay cheese slice on top, torch briefly to melt. Serve immediately before noodles absorb all broth.</div></div>
+      </div>
+      <div class="chef-tip">💡 Ramyeon noodles continue cooking in the bowl. Time from stove to table matters. If the table is more than 2 minutes away, pull noodles slightly under-done.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Gluten</span></div></div>
+    </div>
+  </div>
+
+  <!-- Gyeran Toast -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Gyeran Toast — Korean Egg Toast</span></div>
+    <div class="rh">
+      <div class="rh-title">Gyeran Toast — Korean Egg Toast</div>
+      <div class="rh-meta">COOK TIME: 5 min &nbsp;|&nbsp; FOOD COST: 12%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>White sandwich bread</td><td>2 slices</td><td>Milk bread preferred</td></tr>
+        <tr><td>Eggs (beaten with cabbage, carrot)</td><td>2</td><td>Vegetable omelette style</td></tr>
+        <tr><td>Butter</td><td>1 tbsp</td><td>For both bread and egg</td></tr>
+        <tr><td>Ketchup + yellow mustard</td><td>Drizzle each</td><td>The authentic topping — do not skip</td></tr>
+        <tr><td>Sugar</td><td>Pinch</td><td>Sprinkled on egg — Korean street style</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">12%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">5 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">Best Margin</div><div class="fc-lbl">Mains</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Butter and toast bread on griddle until golden. Set aside. <span class="temp">MEDIUM HEAT</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Beat eggs with shredded cabbage and carrot. Pour into buttered pan in a rectangle shape matching bread size.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Flip egg patty. Sprinkle pinch of sugar on cooked side. Place on buttered toast.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Drizzle ketchup and mustard in zigzag pattern. Wrap in paper for street-food presentation, or serve open-faced.</div></div>
+      </div>
+      <div class="chef-tip">💡 The sugar on the egg is not optional — it's what makes this Korean. Sweet-savoury is the point. Guests will ask about it. Tell them it's authentic Seoul street cart technique.</div>
+    </div>
+  </div>
+
+  <!-- Kimchi Jjigae — Signature -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>★ Kimchi Jjigae — Kimchi Stew</span></div>
+    <div class="rh">
+      <div class="rh-title">★ Kimchi Jjigae — Kimchi Stew <span style="color:#ffd700;font-size:0.8rem;margin-left:8px;">SIGNATURE</span></div>
+      <div class="rh-meta">COOK TIME: 15 min &nbsp;|&nbsp; FOOD COST: 13%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Well-fermented kimchi</td><td>200g</td><td>Must be sour (4+ weeks) — key flavour</td></tr>
+        <tr><td>Pork belly (sliced)</td><td>100g</td><td>Renders fat into broth</td></tr>
+        <tr><td>Firm tofu</td><td>100g</td><td>Added last</td></tr>
+        <tr><td>Gochugaru + gochujang</td><td>1 tbsp each</td><td>Double chili = depth</td></tr>
+        <tr><td>Dashi broth</td><td>300ml</td><td>Less liquid than doenjang — more concentrated</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">13%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">15 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">Signature</div><div class="fc-lbl">Status</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Fry pork belly in dry pot until fat renders and edges crisp. Do not drain the fat — it becomes the base. <span class="temp">MEDIUM-HIGH</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Add kimchi directly to pork fat. Fry together for 3–4 min until kimchi caramelises slightly and smells deeply fermented.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add gochugaru, gochujang, dashi. Bring to vigorous boil. Reduce to hard simmer — 8–10 min.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Add tofu. Simmer 3 min more. Serve in stone pot, still bubbling, with steamed rice on side.</div></div>
+      </div>
+      <div class="chef-tip">💡 Kimchi jjigae with fresh kimchi is a different — inferior — dish. The acid from fermentation is the flavour backbone. Source the oldest, most sour kimchi you have for this pot.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 7: FINAL MAINS + DESSERTS -->
+<div class="page">
+  <!-- Japchae Bap -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Japchae Bap — Glass Noodles on Rice</span></div>
+    <div class="rh">
+      <div class="rh-title">Japchae Bap — Glass Noodles on Rice</div>
+      <div class="rh-meta">COOK TIME: 10 min &nbsp;|&nbsp; FOOD COST: 17%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Japchae (prepared, see entrée)</td><td>150g</td><td>Made to order from prep</td></tr>
+        <tr><td>Steamed rice</td><td>180g</td><td>Short-grain</td></tr>
+        <tr><td>Fried egg</td><td>1</td><td>Runny yolk — tops the bowl</td></tr>
+        <tr><td>Sesame seeds + scallion</td><td>As needed</td><td>Garnish</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">17%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">10 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Plate steamed rice in bowl as base layer. Leave slight indent in centre.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Re-heat japchae in hot wok — 2 min with splash of soy to re-season. <span class="temp">HIGH HEAT</span></div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Spoon hot japchae over rice. The noodles should cascade over the rice naturally.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Top with fried egg. Garnish with sesame seeds and scallion. Serve with kimchi banchan on side.</div></div>
+      </div>
+      <div class="chef-tip">💡 This dish lives or dies on the japchae quality. Use the same prep standards as the entrée version — dangmyeon cook-time precision and high wok heat for re-heating.</div>
+    </div>
+  </div>
+
+  <!-- Budae Jjigae -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Budae Jjigae — Army Stew</span></div>
+    <div class="rh">
+      <div class="rh-title">Budae Jjigae — Army Stew</div>
+      <div class="rh-meta">COOK TIME: 15 min &nbsp;|&nbsp; FOOD COST: 20%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Spam (sliced)</td><td>80g</td><td>The defining ingredient — non-negotiable</td></tr>
+        <tr><td>Korean instant ramen noodles</td><td>1 block</td><td>Added last — absorbs broth</td></tr>
+        <tr><td>Kimchi, baked beans, hot dog</td><td>80g each</td><td>The army base pantry origins</td></tr>
+        <tr><td>Gochujang broth</td><td>500ml</td><td>Spicy anchovy-gochujang base</td></tr>
+        <tr><td>Processed cheese slice</td><td>1</td><td>Melted on top — signature finish</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">20%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">15 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Arrange all ingredients in wide pot before adding broth — this is a visual dish. The presentation before cooking matters. <span class="temp">TABLETOP OPTIONAL</span></div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Pour gochujang broth over all ingredients. Bring to boil on high. All ingredients visible above broth line.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add ramen noodle block when broth is boiling. Cook 3 min — noodles absorb spiced broth.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Lay cheese slice on top at table. It melts naturally into broth. Serve communal-style with rice bowls.</div></div>
+      </div>
+      <div class="chef-tip">💡 Budae jjigae is comfort food with a history — American military surplus foods fused with Korean flavour post-Korean War. Tell the story. It makes the Spam intentional, not accidental.</div>
+    </div>
+  </div>
+
+  <!-- Korean Fried Chicken -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Korean Fried Chicken — Yangnyeom</span></div>
+    <div class="rh">
+      <div class="rh-title">Korean Fried Chicken — Yangnyeom</div>
+      <div class="rh-meta">COOK TIME: 14 min &nbsp;|&nbsp; FOOD COST: 22%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Chicken wings or thigh pieces</td><td>300g</td><td>Double-fried technique</td></tr>
+        <tr><td>Rice flour + corn starch batter</td><td>150g dry</td><td>No wheat — lighter, crispier</td></tr>
+        <tr><td>Yangnyeom sauce (gochujang, soy, honey, garlic)</td><td>80ml</td><td>Sticky, sweet-spicy</td></tr>
+        <tr><td>Oil for frying</td><td>As needed</td><td><span class="temp">165°C first fry / 185°C second</span></td></tr>
+        <tr><td>Sesame seeds, scallion</td><td>As needed</td><td>Garnish after saucing</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">22%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">14 min</div><div class="fc-lbl">Cook Time</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">First fry at <span class="temp">165°C</span> for 8 min — cooking through without browning. Remove and rest 3 min. Do not skip rest.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Second fry at <span class="temp">185°C</span> for 4–5 min until deep golden and shattering crisp. The double-fry drives out moisture.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Drain immediately. Toss in warm yangnyeom sauce while still hot. Sauce adheres to the crispy shell.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Plate over shredded cabbage slaw. Garnish with sesame and scallion. Serve with radish pickle on side.</div></div>
+      </div>
+      <div class="chef-tip">💡 The double-fry is the technique — no shortcuts. First fry cooks, second fry crisps. Single-fry KFC is soft KFC. The crispy shell is the product.</div>
+      <div class="safety"><strong style="color:#ff0080;">Allergens:</strong><div class="al"><span class="a">Gluten</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 8: DESSERTS + DRINKS -->
+<div class="page">
+  <h2>Desserts</h2>
+
+  <!-- Hotteok -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Hotteok — Sweet Pancakes</span></div>
+    <div class="rh">
+      <div class="rh-title">Hotteok — Sweet Pancakes</div>
+      <div class="rh-meta">COOK TIME: 6 min &nbsp;|&nbsp; FOOD COST: 10%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Yeasted dough (flour, milk, sugar, yeast)</td><td>120g per piece</td><td>Proof 1h minimum</td></tr>
+        <tr><td>Brown sugar, cinnamon, crushed nuts</td><td>2 tbsp mixture</td><td>The filling</td></tr>
+        <tr><td>Vegetable oil</td><td>2 tbsp</td><td>Shallow fry</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">10%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">6 min</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">Best Margin</div><div class="fc-lbl">Desserts</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Flatten proofed dough ball. Place filling in centre. Seal edges completely — no gaps or filling leaks during cooking.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Place sealed-side down in oiled pan. <span class="temp">MEDIUM HEAT</span> Cook 2 min. Press flat with spatula.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Flip. Press again. Cook 2 min until both sides are golden and caramelised. Filling should be molten.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve immediately. Warn customer the filling is hot. The sugar filling will be extremely hot — caution script required.</div></div>
+      </div>
+      <div class="chef-tip">💡 Dough must be properly proofed or hotteok will be dense. This is a yeasted product — it needs time. Prep dough at 10:00, first service at 12:00. Never rush fermentation.</div>
+    </div>
+  </div>
+
+  <!-- Bingsu -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Bingsu — Shaved Ice Dessert</span></div>
+    <div class="rh">
+      <div class="rh-title">Bingsu — Shaved Ice Dessert</div>
+      <div class="rh-meta">COOK TIME: 5 min &nbsp;|&nbsp; FOOD COST: 12%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+        <tr><td>Shaved ice (milk-based preferred)</td><td>300g</td><td>Shaved — not crushed. Completely different texture.</td></tr>
+        <tr><td>Sweetened red bean (patbingsu)</td><td>80g</td><td>Adzuki beans, cooked and sweetened</td></tr>
+        <tr><td>Condensed milk</td><td>2 tbsp</td><td>Drizzled over</td></tr>
+        <tr><td>Mochi pieces</td><td>3–4 pieces</td><td>Chewy contrast</td></tr>
+        <tr><td>Matcha powder (optional)</td><td>Dusting</td><td>Matcha bingsu variant</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">12%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">5 min</div><div class="fc-lbl">Assembly</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Shave ice using bingsu machine — must be feather-light flakes, not crushed. This is the product differentiator.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Mound shaved ice high in bowl — dramatic presentation is expected. Do not pack down.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Spoon red bean over top and sides. Drizzle condensed milk. Add mochi pieces.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve immediately — shaved ice melts faster than crushed. Table delivery within 60 seconds of assembly.</div></div>
+      </div>
+      <div class="chef-tip">💡 Milk-shaved ice (milky ice frozen and shaved) has a creamier mouthfeel than water ice. Freeze your ice blocks with milk or condensed milk mixed in for premium bingsu texture.</div>
+    </div>
+  </div>
+
+  <!-- Mochi Ice Cream + Sikhye -->
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Mochi Ice Cream &amp; Sikhye</span></div>
+    <div class="rh">
+      <div class="rh-title">Mochi Ice Cream &amp; Sikhye — Traditional Rice Punch</div>
+      <div class="rh-meta">MOCHI: 2 min | FC: 14% &nbsp;&nbsp;&nbsp; SIKHYE: 2 min | FC: 8%</div>
+    </div>
+    <div class="rm">
+      <table>
+        <tr><th>Item</th><th>Prep</th><th>Notes</th></tr>
+        <tr><td>Mochi Ice Cream</td><td>2 min — plate from frozen</td><td>3 pieces per serve. Fan on plate with garnish. Keep frozen until order.</td></tr>
+        <tr><td>Sikhye</td><td>2 min — pour and garnish</td><td>Traditional sweet rice punch. Serve chilled with floating rice grains. Ladle from batch.</td></tr>
+      </table>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">14%</div><div class="fc-lbl">Mochi FC</div></div>
+        <div class="fc-item"><div class="fc-val">8%</div><div class="fc-lbl">Sikhye FC</div></div>
+        <div class="fc-item"><div class="fc-val">Best</div><div class="fc-lbl">Margin Item</div></div>
+      </div>
+      <div class="chef-tip">💡 Sikhye is housemade rice punch — malt barley water sweetened with sugar, with cooked rice grains floating in it. The rice grains are intentional. Explain to staff so they don't remove them thinking it's a mistake.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 9: DRINKS + SERVICE SCRIPTS -->
+<div class="page">
+  <h2>Drinks</h2>
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Soju Cocktail — Yuzu &amp; Soda</div>
+        <div class="drink-price">$9.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Korean Plum Wine — Maesil</div>
+        <div class="drink-price">$8.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">OB / Hite Beer</div>
+        <div class="drink-price">$6.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Barley Tea — Boricha</div>
+        <div class="drink-price">$3.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Banana Milk</div>
+        <div class="drink-price">$4.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Sikhye — Sweet Rice Drink</div>
+        <div class="drink-price">$4.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Korean Citrus Ade — Yuzu</div>
+        <div class="drink-price">$5.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Makgeolli — Rice Wine</div>
+        <div class="drink-price">$8.99/glass</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Service Scripts</h2>
+
+  <div class="script-box">
+    <div class="script-label">Welcome + Soju Cocktail Pitch</div>
+    <div class="script-text">"The soju cocktail is the lightest way to start — yuzu, soju, soda. $9.99. It pairs with everything on the menu and it's what everyone drinks in Seoul."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Fermentation Explanation</div>
+    <div class="script-text">"The kimchi is house-made. Three-week ferment. You'll taste the difference from commercial kimchi immediately — more complex, more sour, more alive."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Jjigae Spice Warning + Management</div>
+    <div class="script-text">"The doenjang jjigae is a fermented soybean stew — the flavour is deep and savoury, not spicy. The sundubu is the one that has heat. I'll ask before I put the gochugaru on the side."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Bingsu Pre-Sell</div>
+    <div class="script-text">"The bingsu is shaved ice, not crushed ice — it melts on your tongue. Red bean, condensed milk, mochi pieces on top. 5 minutes. Worth it at the end."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Return Visit</div>
+    <div class="script-text">"Tuesday nights we do Korean BBQ — galbi and pork belly on the tabletop grill. Different experience entirely. Worth coming back for."</div>
+  </div>
+</div>
+
+<!-- PAGE 10: PREP SCHEDULE + P&L + ALLERGENS -->
+<div class="page">
+  <h2>Daily Prep Schedule</h2>
+  <table class="prep-table">
+    <tr><th>Time</th><th>Task</th><th>Notes</th></tr>
+    <tr><td>06:00</td><td>Kimchi Check</td><td>Rotate jars, taste fermentation stage — assess sourness level for service</td></tr>
+    <tr><td>07:00</td><td>Jjigae Bases Prep</td><td>Doenjang and sundubu broth bases made fresh — anchovy-kelp dashi from scratch</td></tr>
+    <tr><td>09:00</td><td>Rice Cooks</td><td>Short-grain rice in rice cooker. Set batch quantity per expected covers</td></tr>
+    <tr><td>10:00</td><td>Pancake Batters</td><td>Pajeon + kimchijeon batters — keep cold in fridge until service</td></tr>
+    <tr><td>11:00</td><td>Galbi Marinade</td><td>Next-day galbi into marinade. Today's galbi from overnight into dry storage rack.</td></tr>
+    <tr><td>12:00</td><td>Lunch Service</td><td>All stations ready. Jjigae bases hot and holding. Rice cooked and holding.</td></tr>
+    <tr><td>15:00</td><td>Reset + Bingsu Prep</td><td>Ice blocks into bingsu machine. Reset stations. Restock from prep fridge.</td></tr>
+    <tr><td>18:00</td><td>Dinner Service</td><td>Full menu available. Tuesday = BBQ night setup (tabletop grills, galbi service)</td></tr>
+    <tr><td>22:00</td><td>Close</td><td>Kimchi rotation, stock count, jars labelled with fermentation date</td></tr>
+  </table>
+
+  <h2>P&amp;L Overview</h2>
+  <table class="rev-table">
+    <tr><th>Period</th><th>Revenue</th><th>Food Cost (22%)</th><th>Labour (30%)</th><th>Overheads (16%)</th><th>Net</th></tr>
+    <tr><td>Daily</td><td>~$2,040</td><td>~$449</td><td>~$612</td><td>~$326</td><td>~$653</td></tr>
+    <tr><td>Weekly</td><td>~$12,240</td><td>~$2,693</td><td>~$3,672</td><td>~$1,958</td><td>~$3,917</td></tr>
+    <tr><td>Monthly</td><td>~$53,040</td><td>~$11,669</td><td>~$15,912</td><td>~$8,486</td><td class="profit-row">~$17,600 (~33%)</td></tr>
+  </table>
+
+  <h2>Allergen Reference</h2>
+  <div class="safety">
+    <p style="color:#ff99cc;margin-bottom:12px;font-family:'DM Mono',monospace;font-size:0.8rem;">ALWAYS VERIFY WITH GUEST BEFORE SERVICE — ALLERGEN INFORMATION IS A LEGAL REQUIREMENT</p>
+    <table>
+      <tr><th>Dish</th><th>Allergens</th></tr>
+      <tr><td>Pajeon — Scallion Pancake</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span></div></td></tr>
+      <tr><td>Tteokbokki — Spicy Rice Cakes</td><td><div class="al"><span class="a">Gluten (fish cake)</span></div></td></tr>
+      <tr><td>Japchae — Glass Noodle Stir-Fry</td><td><div class="al"><span class="a">Sesame</span><span class="a">Soy</span></div></td></tr>
+      <tr><td>Galbi — Korean BBQ Short Ribs</td><td><div class="al"><span class="a">Soy</span><span class="a">Sesame</span></div></td></tr>
+      <tr><td>Ramyeon — Korean Ramen</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+      <tr><td>Korean Fried Chicken — Yangnyeom</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+      <tr><td>Doenjang Jjigae — Fermented Soybean Stew</td><td><div class="al"><span class="a">Soy</span></div></td></tr>
+      <tr><td>Sundubu Jjigae — Soft Tofu Stew</td><td><div class="al"><span class="a">Soy</span></div></td></tr>
+    </table>
+  </div>
+
+  <h2>Chef's Lens</h2>
+  <div class="lens-card">
+    <div class="lens-title">// What a Michelin-trained chef sees in Korean cooking</div>
+    <div class="lens-text">Korean fermentation is a living process, not a recipe. Kimchi is not made — it is started. The lacto-fermentation that transforms salted napa cabbage, gochugaru, garlic and ginger into kimchi takes days, weeks, months depending on temperature and desired flavour profile. The kimchi in this guide is made in-house because the commercial alternative is a different product. In-house kimchi at 3 weeks fermentation has a complexity that no factory product replicates. Gochujang — fermented chili paste aged for months — is the backbone of Korean flavour. Making it from scratch is a commitment. It is also a competitive moat. Your gochujang is yours. Nobody else's kitchen tastes like yours.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">Korean food in America is having its defining decade. The operators who will own this market long-term are not the ones following the trend — they are the ones making it properly, with fermented kimchi, house gochujang and jjigae that takes three hours. The food cost on kimchi jjigae is 13.8%. The differentiation it creates is incalculable.</div>
+    <div class="lens-closer">This guide is for operators who want to do it right.</div>
+  </div>
+
+  <footer>
+    Korean Street Food Café — Operations Guide v6 &nbsp;·&nbsp; Confidential — Internal Use Only &nbsp;·&nbsp; 2026
+  </footer>
+</div>
+
+</body>
+</html>

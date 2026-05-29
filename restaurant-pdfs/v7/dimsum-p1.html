@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dim Sum Teahouse — KitchenFounder Operations Guide v7</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;background:#FAFAF8;color:#1C1C1C;font-size:15px;line-height:1.7;}
+.cover{background:linear-gradient(160deg,#7A0000 0%,#C62828 55%,#B71C1C 100%);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 80px 60px;position:relative;overflow:hidden;page-break-after:always;}
+.cover::before{content:'茶';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:400px;color:rgba(255,255,255,0.04);font-family:'Georgia',serif;line-height:1;}
+.cover-kf{color:#FFCDD2;font-family:'Courier New',monospace;font-size:12px;letter-spacing:5px;text-transform:uppercase;margin-bottom:32px;}
+.cover-title{color:#FAFAF8;font-size:68px;font-weight:900;line-height:1.0;margin-bottom:12px;text-transform:uppercase;font-family:'Arial Black',Arial,sans-serif;}
+.cover-title-accent{color:#FFCDD2;}
+.cover-subtitle{color:#FFCDD2;font-size:22px;font-weight:700;margin-bottom:20px;letter-spacing:2px;text-transform:uppercase;font-family:'Arial Black',Arial,sans-serif;}
+.cover-tagline{color:rgba(255,255,255,0.75);font-size:15px;font-style:italic;margin-bottom:48px;line-height:1.7;max-width:520px;}
+.cover-items{color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;font-family:'Courier New',monospace;}
+.cover-kpis{display:flex;gap:28px;flex-wrap:wrap;}
+.cover-kpi{border-top:2px solid #FFCDD2;padding-top:14px;min-width:100px;}
+.cover-kpi-val{color:#FFCDD2;font-size:26px;font-weight:900;font-family:'Courier New',monospace;}
+.cover-kpi-label{color:rgba(255,255,255,0.6);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+.cover-badge{position:absolute;bottom:60px;right:80px;width:108px;height:108px;border-radius:50%;background:#B71C1C;border:3px solid #FFCDD2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.cover-badge-price{color:#FFCDD2;font-size:25px;font-weight:900;font-family:'Courier New',monospace;}
+.cover-badge-label{color:rgba(255,255,255,0.7);font-size:8px;letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.container{max-width:900px;margin:0 auto;padding:48px 40px;}
+h2{font-family:'Arial Black',Arial,sans-serif;font-size:22px;color:#C62828;text-transform:uppercase;letter-spacing:2px;border-bottom:3px solid #C62828;padding-bottom:10px;margin:48px 0 24px;}
+.sn2{background:#C62828;color:#fff;font-size:11px;font-family:'Courier New',monospace;padding:2px 8px;border-radius:2px;margin-right:10px;vertical-align:middle;}
+.info-box{background:#fff8f8;border-left:4px solid #C62828;padding:16px 20px;margin:20px 0 28px;font-size:14px;color:#444;line-height:1.6;}
+.recipe{border:1px solid #e8e0e0;border-radius:6px;margin-bottom:28px;overflow:hidden;page-break-inside:avoid;}
+.rh{background:#C62828;padding:16px 20px;}
+.rh-title{color:#FAFAF8;font-size:17px;font-weight:700;font-family:'Arial Black',Arial,sans-serif;}
+.rh-sub{color:#FFCDD2;font-size:12px;margin-top:4px;}
+.rh-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;}
+.tag{background:rgba(255,255,255,0.15);color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-family:'Courier New',monospace;}
+.rb{padding:20px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:16px;}
+.it{width:100%;border-collapse:collapse;font-size:13px;}
+.it th{background:#f5f0f0;color:#C62828;text-align:left;padding:6px 10px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:1px;}
+.it td{padding:6px 10px;border-bottom:1px solid #f0e8e8;vertical-align:top;}
+.fc-box{background:#fff8f8;border:1px solid #f0c8c8;border-radius:4px;padding:12px 16px;font-size:13px;margin-bottom:12px;}
+.fc-row{display:flex;justify-content:space-between;padding:3px 0;}
+.fc-val{font-family:'Courier New',monospace;font-weight:700;color:#C62828;}
+.al{display:flex;flex-wrap:wrap;gap:4px;}
+.a{background:#ffebee;color:#C62828;font-size:10px;padding:2px 7px;border-radius:10px;font-family:'Courier New',monospace;}
+h4{font-family:'Arial Black',Arial,sans-serif;font-size:13px;color:#1C1C1C;text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px;}
+.step{display:flex;gap:12px;margin-bottom:10px;}
+.sn{background:#C62828;color:#fff;font-size:11px;font-family:'Courier New',monospace;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.st{font-size:14px;color:#333;line-height:1.6;}
+.temp{background:#C62828;color:#fff;font-size:11px;padding:1px 6px;border-radius:3px;font-family:'Courier New',monospace;}
+.tb{background:#fff8f8;border-left:3px solid #FFCDD2;padding:10px 14px;font-size:13px;color:#555;font-style:italic;margin-top:10px;line-height:1.5;}
+.kitchen-layout{font-family:'Courier New',monospace;font-size:11px;line-height:1.5;background:#1C1C1C;color:#FFCDD2;padding:24px;border-radius:6px;margin:20px 0;overflow-x:auto;white-space:pre;}
+.station-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+.station-card{background:#fff8f8;border:1px solid #f0c8c8;border-radius:6px;padding:16px;page-break-inside:avoid;}
+.station-card h4{color:#C62828;margin-bottom:8px;}
+.station-card ul{padding-left:16px;font-size:13px;color:#333;line-height:1.6;}
+.equip-tag{display:block;margin-top:8px;font-family:'Courier New',monospace;font-size:10px;color:#C62828;letter-spacing:1px;}
+.script-box{border:1px solid #f0c8c8;border-radius:6px;margin-bottom:20px;overflow:hidden;page-break-inside:avoid;}
+.script-label{background:#1C1C1C;color:#FFCDD2;font-family:'Courier New',monospace;font-size:11px;padding:8px 16px;letter-spacing:2px;}
+.script-text{padding:14px 16px;font-size:13px;color:#333;font-style:italic;line-height:1.6;background:#FAFAF8;}
+.script-why{padding:10px 16px;font-size:12px;color:#666;background:#fff8f8;border-top:1px solid #f0c8c8;}
+.prep-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;}
+.prep-table th{background:#C62828;color:#fff;padding:8px 12px;text-align:left;font-family:'Courier New',monospace;font-size:11px;letter-spacing:1px;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid #f0e8e8;vertical-align:top;}
+.prep-table tr:nth-child(even) td{background:#fff8f8;}
+.rev-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;}
+.rev-table th{background:#C62828;color:#fff;padding:8px 12px;text-align:left;font-family:'Courier New',monospace;font-size:11px;letter-spacing:1px;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #f0e8e8;}
+.total-row td{background:#fff0f0;font-weight:700;border-top:2px solid #C62828;}
+.net-row td{background:#C62828;color:#fff;font-weight:700;font-size:14px;}
+.lens-card{background:#1C1C1C;color:#FAFAF8;border-radius:8px;padding:36px;margin:32px 0;page-break-inside:avoid;}
+.lens-title{font-family:'Courier New',monospace;font-size:12px;color:#FFCDD2;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;}
+.lens-text{font-size:14px;line-height:1.8;color:#ccc;}
+.lens-text p{margin-bottom:14px;}
+.lens-closer{font-family:'Courier New',monospace;font-size:11px;color:#FFCDD2;margin-top:20px;letter-spacing:2px;}
+footer{text-align:center;padding:40px;font-family:'Courier New',monospace;font-size:11px;color:#aaa;letter-spacing:1px;border-top:1px solid #e8e0e0;margin-top:40px;}
+@media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.recipe,.station-card,.script-box,.lens-card{page-break-inside:avoid;}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+<div class="cover-kf">KitchenFounder · Operations Guide v7 · US Market 2025</div>
+<div class="cover-title">DIM SUM<br><span class="cover-title-accent">TEAHOUSE</span></div>
+<div class="cover-subtitle">The Complete Operator Blueprint</div>
+<div class="cover-tagline">Har gow, siu mai, char siu bao, cheung fun, turnip cake, egg tarts, and the ancient art of yum cha — taking tea while eating small bites. A Dim Sum Teahouse is not just a restaurant; it is a ritual of gathering, sharing, and conversation that has been practised in Cantonese households for over a thousand years.</div>
+<div class="cover-items">6 Starters · 10 Mains · 4 Desserts · 8 Drinks · Kitchen Design · Yum Cha Ceremony Guide</div>
+<div class="cover-kpis">
+<div class="cover-kpi"><div class="cover-kpi-val">18-28%</div><div class="cover-kpi-label">Food Cost</div></div>
+<div class="cover-kpi"><div class="cover-kpi-val">28</div><div class="cover-kpi-label">Menu Items</div></div>
+<div class="cover-kpi"><div class="cover-kpi-val">$1.3M</div><div class="cover-kpi-label">Revenue Model</div></div>
+<div class="cover-kpi"><div class="cover-kpi-val">$208K</div><div class="cover-kpi-label">Net Profit Y1</div></div>
+</div>
+<div class="cover-badge"><div class="cover-badge-price">$29.99</div><div class="cover-badge-label">Instant<br>Download</div></div>
+</div>
+
+<div class="container">
+
+<h2><span class="sn2">*</span>The Dim Sum &amp; Yum Cha Bible</h2>
+<div class="info-box"><strong>What is Yum Cha?</strong> "Yum cha" (飲茶) means "to drink tea" in Cantonese — the full ritual of ordering tea and eating small dishes (dim sum) with family and friends, traditionally on Sunday mornings. "Dim sum" (點心) means "touch the heart" — small bites designed to delight rather than fill. The tradition originated in teahouses along the Silk Road where travellers would rest and eat small snacks with tea. In Cantonese culture, yum cha is a social institution as significant as Sunday dinner in an Italian family. Your teahouse does not just serve food — it hosts a weekly ritual.</div>
+
+<div class="info-box"><strong>The Cantonese Pantry:</strong>
+<strong>Aromatics:</strong> Ginger (ginger + prawn filling is non-negotiable), garlic, green onion, sesame oil (finish, not cook), Shaoxing wine (rice wine for marinades).<br>
+<strong>Sauces:</strong> Oyster sauce (the Cantonese umami backbone), light soy (seasoning), dark soy (colour + sweetness), hoisin sauce (char siu), chilli oil (condiment, always on table), XO sauce (premium condiment — dried seafood + chilli).<br>
+<strong>Proteins:</strong> Pork (siu mai filling), prawns/shrimp (har gow filling — must be fresh, not frozen), chicken (cheung fun + congee), char siu (BBQ pork — make in-house or source from Chinatown BBQ supplier).<br>
+<strong>Starches:</strong> Wheat starch + tapioca starch (har gow dough — creates translucent wrapper), rice flour (cheung fun rice rolls), glutinous rice (lo mai gai — lotus leaf sticky rice).<br>
+<strong>Specialty items:</strong> Bamboo steamers × 30+ minimum; dim sum pushcarts (optional but authentic for larger venues); bamboo leaves (lo mai gai wrap); dried shrimp (lo bak go turnip cake); Chinese sausage (lap cheong).<br>
+<strong>Tea programme:</strong> Jasmine (most popular), pu-erh (earthy, aids digestion — traditional pairing), chrysanthemum (floral, caffeine-free), longjing/Dragon Well (green, premium), oolong (aged, complex). The tea is not an afterthought — it is the centrepiece of the experience.</div>
+
+<div class="info-box"><strong>Steamer Science:</strong> Dim sum is almost entirely steam-cooked. The steamer is your most important piece of equipment. Bamboo steamers (not metal) are traditional and create a slightly absorbent steam environment that prevents water droplets from falling onto the dim sum surface. Stack up to 3 layers per wok. Each steamer basket holds approximately 4–6 pieces. Average dim sum service: 2–3 steamers ordered per person in a group. A table of 4 orders 8–12 baskets. The service rhythm is continuous refill of steamers and tea — not a single order taken at the start. This is the heart of the dim sum service model.</div>

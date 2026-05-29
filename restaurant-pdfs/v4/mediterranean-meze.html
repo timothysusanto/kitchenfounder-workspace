@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mediterranean Meze Bar — Operations Guide</title>
+<style>
+  :root {
+    --primary: #1a6a6a;
+    --accent: #d4b896;
+    --dark: #1a2e2e;
+    --light: #f7f3ee;
+    --white: #ffffff;
+    --text: #2c2c2c;
+    --muted: #6b7280;
+    --border: #e0d5c8;
+    --success: #2d7a4a;
+    --warning: #c97a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: var(--light); color: var(--text); line-height: 1.7; }
+  
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 60%, #2a8a8a 100%);
+    color: white; text-align: center; padding: 80px 40px; min-height: 340px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><circle cx="30" cy="30" r="28" fill="none" stroke="rgba(212,184,150,0.12)" stroke-width="1"/><circle cx="30" cy="30" r="18" fill="none" stroke="rgba(212,184,150,0.08)" stroke-width="1"/></svg>') repeat;
+  }
+  .cover-badge {
+    background: var(--accent); color: var(--dark); font-size: 0.75rem; font-weight: bold;
+    letter-spacing: 3px; text-transform: uppercase; padding: 6px 20px; border-radius: 20px;
+    margin-bottom: 24px; position: relative;
+  }
+  .cover h1 { font-size: 3rem; font-weight: bold; letter-spacing: -1px; margin-bottom: 12px; position: relative; }
+  .cover .tagline { font-size: 1.2rem; color: var(--accent); font-style: italic; margin-bottom: 24px; position: relative; }
+  .cover-meta { display: flex; gap: 40px; position: relative; }
+  .cover-meta div { text-align: center; }
+  .cover-meta .num { font-size: 2rem; font-weight: bold; color: var(--accent); }
+  .cover-meta .lbl { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; }
+
+  /* NAV */
+  .toc { background: var(--primary); color: white; padding: 32px 40px; }
+  .toc h2 { font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+  .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .toc-item { background: rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 8px; border-left: 3px solid var(--accent); }
+  .toc-item .num { font-size: 0.75rem; color: var(--accent); font-weight: bold; letter-spacing: 1px; }
+  .toc-item .title { font-size: 0.9rem; font-weight: bold; }
+
+  /* SECTIONS */
+  .section { padding: 48px 40px; border-bottom: 2px solid var(--border); }
+  .section:nth-child(even) { background: var(--white); }
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+  .section-num { background: var(--primary); color: var(--accent); width: 48px; height: 48px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .section-title { font-size: 1.8rem; color: var(--primary); font-weight: bold; }
+  .section-subtitle { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+
+  /* MENU CARDS */
+  .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; }
+  .menu-card {
+    background: white; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,106,106,0.1); border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+  .menu-card img { width: 100%; height: 200px; object-fit: cover; display: block; background: #ddd; }
+  .menu-card-body { padding: 16px; }
+  .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .menu-card-name { font-size: 1.05rem; font-weight: bold; color: var(--dark); }
+  .menu-card-price { font-size: 1.1rem; font-weight: bold; color: var(--primary); white-space: nowrap; margin-left: 8px; }
+  .menu-card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+  .menu-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 12px; font-weight: bold; letter-spacing: 0.5px; }
+  .tag-veg { background: #e6f4ea; color: #2d7a4a; }
+  .tag-gf { background: #fff3e0; color: #c97a1a; }
+  .tag-popular { background: #fce4ec; color: #c2185b; }
+  .tag-share { background: #e3f2fd; color: #1565c0; }
+  .tag-spicy { background: #fdecea; color: #b71c1c; }
+
+  /* DRINKS GRID */
+  .drinks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .drink-card { background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .drink-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
+  .drink-card-body { padding: 14px; }
+  .drink-name { font-weight: bold; font-size: 0.95rem; color: var(--dark); }
+  .drink-price { font-weight: bold; color: var(--primary); float: right; }
+  .drink-desc { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+  /* REVENUE */
+  .revenue-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
+  .rev-card { background: white; border-radius: 10px; padding: 20px; text-align: center; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .rev-card .val { font-size: 1.8rem; font-weight: bold; color: var(--primary); }
+  .rev-card .lbl { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .cost-bar { margin: 20px 0; }
+  .cost-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
+  .cost-track { background: #e0d5c8; border-radius: 4px; height: 12px; }
+  .cost-fill { height: 100%; border-radius: 4px; }
+
+  /* TRAINING */
+  .script-card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 16px; border-left: 4px solid var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .script-title { font-weight: bold; color: var(--primary); font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .script-says { background: var(--light); border-radius: 8px; padding: 14px 16px; font-style: italic; color: var(--dark); margin-bottom: 10px; line-height: 1.6; font-size: 0.95rem; }
+  .script-says::before { content: '"'; font-size: 2rem; color: var(--accent); line-height: 0; vertical-align: -8px; margin-right: 4px; }
+  .script-says::after { content: '"'; font-size: 2rem; color: var(--accent); line-height: 0; vertical-align: -8px; margin-left: 4px; }
+  .script-why { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+  .script-why strong { color: var(--warning); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  tr:nth-child(even) td { background: #faf8f5; }
+  tr:hover td { background: #f0ece6; }
+
+  /* OBJECTION */
+  .objection-card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 14px; display: grid; grid-template-columns: 1fr 2fr; gap: 20px; border: 1px solid var(--border); }
+  .obj-q { font-weight: bold; color: #b71c1c; font-style: italic; font-size: 0.95rem; }
+  .obj-a { font-size: 0.9rem; color: var(--dark); line-height: 1.6; }
+
+  /* RETENTION */
+  .retention-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+  .visit-card { background: white; border-radius: 10px; padding: 20px; border-top: 4px solid var(--accent); text-align: center; }
+  .visit-num { font-size: 2.5rem; font-weight: bold; color: var(--primary); }
+  .visit-label { font-weight: bold; color: var(--dark); margin: 8px 0 4px; font-size: 1rem; }
+  .visit-desc { font-size: 0.82rem; color: var(--muted); }
+
+  .vip-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 14px; margin-bottom: 32px; }
+  .vip-card { background: white; border-radius: 10px; padding: 18px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid var(--border); }
+  .vip-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .vip-title { font-weight: bold; color: var(--primary); margin-bottom: 4px; }
+  .vip-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.5; }
+
+  .recovery-step { background: white; border-radius: 10px; padding: 20px; margin-bottom: 14px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid var(--border); }
+  .step-num { background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+  .step-content .step-title { font-weight: bold; color: var(--dark); margin-bottom: 6px; }
+  .step-content .step-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* SOCIAL */
+  .caption-box { background: #1a1a2e; color: #e0e0e0; border-radius: 10px; padding: 20px; margin: 14px 0; font-family: monospace; font-size: 0.88rem; line-height: 1.8; }
+  .caption-box .hook { color: #ffd700; font-weight: bold; }
+  .caption-box .story { color: #aaddff; }
+  .caption-box .cta { color: #90ee90; }
+
+  /* PHOTO GRID */
+  .photo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
+  .photo-card { background: white; border-radius: 8px; padding: 12px; text-align: center; border: 1px solid var(--border); }
+  .photo-rank { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
+  .photo-name { font-size: 0.78rem; font-weight: bold; color: var(--dark); margin: 4px 0; }
+  .photo-why { font-size: 0.7rem; color: var(--muted); }
+
+  /* PARTNERSHIPS */
+  .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .partner-card { background: white; border-radius: 10px; padding: 20px; border-top: 3px solid var(--primary); }
+  .partner-type { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: bold; margin-bottom: 8px; }
+  .partner-name { font-weight: bold; color: var(--dark); margin-bottom: 8px; font-size: 1rem; }
+  .partner-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+  /* FOOTER */
+  .footer { background: var(--dark); color: rgba(255,255,255,0.6); text-align: center; padding: 32px; font-size: 0.85rem; }
+  .footer strong { color: var(--accent); }
+
+  /* PHILOSOPHY BOX */
+  .philosophy-box { background: var(--primary); color: white; border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; }
+  .philosophy-box .quote { font-size: 1.2rem; font-style: italic; color: var(--accent); margin-bottom: 8px; }
+  .philosophy-box .attr { font-size: 0.8rem; opacity: 0.7; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* INFO BOXES */
+  .info-box { border-radius: 10px; padding: 20px; margin: 16px 0; }
+  .info-box.teal { background: #e6f4f4; border-left: 4px solid var(--primary); }
+  .info-box.gold { background: #fdf6ed; border-left: 4px solid var(--accent); }
+  .info-box h4 { font-weight: bold; margin-bottom: 8px; color: var(--primary); }
+  .info-box p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  h3 { color: var(--primary); font-size: 1.2rem; margin: 24px 0 12px; }
+  h4 { color: var(--dark); font-size: 1rem; margin: 16px 0 8px; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; font-size: 0.88rem; color: var(--muted); }
+  p { margin-bottom: 12px; font-size: 0.9rem; color: var(--muted); }
+  strong { color: var(--dark); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Operations & Training Guide</div>
+  <h1>Mediterranean Meze Bar</h1>
+  <p class="tagline">Shared plates. Shared stories. Serious margins.</p>
+  <div class="cover-meta">
+    <div><div class="num">45</div><div class="lbl">Seats</div></div>
+    <div><div class="num">$55</div><div class="lbl">Avg Spend</div></div>
+    <div><div class="num">$23K</div><div class="lbl">Monthly Net</div></div>
+    <div><div class="num">6</div><div class="lbl">Sections</div></div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <div class="toc-item"><div class="num">01</div><div class="title">Entrées Menu</div></div>
+    <div class="toc-item"><div class="num">02</div><div class="title">Mains Menu</div></div>
+    <div class="toc-item"><div class="num">03</div><div class="title">Desserts & Drinks</div></div>
+    <div class="toc-item"><div class="num">04</div><div class="title">Revenue Model</div></div>
+    <div class="toc-item"><div class="num">05</div><div class="title">Service Training</div></div>
+    <div class="toc-item"><div class="num">06</div><div class="title">Customer Retention</div></div>
+  </div>
+</div>
+
+
+<!-- SECTION 1: ENTRÉES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">Entrées</div>
+      <div class="section-subtitle">Start the table talking — sharing begins here</div>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/mezze-board-hummus-baba-ghanoush-labneh-olives-warm-pita-Mediterranean-overhead-rustic?width=800&height=360&seed=700&nologo=true" alt="Mezze Board for Two">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Mezze Board for Two</div>
+          <div class="menu-card-price">$22.99</div>
+        </div>
+        <div class="menu-card-desc">Hummus, baba ghanoush, labneh, marinated olives, warm pita. The perfect table opener — four dips, endless conversation.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-share">Sharing</span>
+          <span class="tag tag-popular">Best Seller</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/shakshuka-eggs-poached-spiced-tomato-sauce-feta-crumbled-sourdough-cast-iron-pan?width=800&height=360&seed=701&nologo=true" alt="Shakshuka">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Shakshuka</div>
+          <div class="menu-card-price">$16.99</div>
+        </div>
+        <div class="menu-card-desc">Eggs poached in rich spiced tomato sauce, crumbled feta, served with grilled sourdough. A North African classic that warms every table.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-spicy">Mildly Spicy</span>
+          <span class="tag tag-gf">GF option</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/lamb-kofta-skewers-chargrilled-harissa-yoghurt-flatbread-herbs-Mediterranean-platter?width=800&height=360&seed=702&nologo=true" alt="Lamb Kofta">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Lamb Kofta</div>
+          <div class="menu-card-price">$15.99</div>
+        </div>
+        <div class="menu-card-desc">Three chargrilled lamb kofta skewers, fiery harissa yoghurt, warm flatbread. Spiced with cumin, coriander, and fresh herbs.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-spicy">Spiced</span>
+          <span class="tag tag-popular">Popular</span>
+          <span class="tag tag-gf">GF option</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/crispy-falafel-five-pieces-tahini-sauce-pickled-turnip-pink-herbs-platter-overhead?width=800&height=360&seed=703&nologo=true" alt="Crispy Falafel">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Crispy Falafel</div>
+          <div class="menu-card-price">$12.99</div>
+        </div>
+        <div class="menu-card-desc">Five golden falafel bites, creamy tahini, vibrant pickled turnip. House-made from soaked chickpeas — crispy outside, fluffy within.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegan</span>
+          <span class="tag tag-popular">Popular</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/burrata-cheese-heirloom-tomatoes-dukkah-nuts-olive-oil-drizzle-rustic-board-Mediterranean?width=800&height=360&seed=704&nologo=true" alt="Burrata with Dukkah">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Burrata with Dukkah</div>
+          <div class="menu-card-price">$17.99</div>
+        </div>
+        <div class="menu-card-desc">Whole burrata, heirloom tomatoes, cold-pressed olive oil, house dukkah. The table's most Instagrammed dish — creamy, crunchy, stunning.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-gf">Gluten-Free</span>
+          <span class="tag tag-popular">Instagram Hit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/grilled-halloumi-zaatar-pomegranate-molasses-mint-garnish-warm-rustic-plate?width=800&height=360&seed=705&nologo=true" alt="Grilled Halloumi">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Grilled Halloumi</div>
+          <div class="menu-card-price">$13.99</div>
+        </div>
+        <div class="menu-card-desc">Thick-cut halloumi, za'atar herb blend, pomegranate molasses glaze, fresh mint. Golden and squeaky — a crowd favourite every time.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end menu-grid entrées -->
+</div><!-- end section 1 -->
+
+
+<!-- SECTION 2: MAINS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">Mains</div>
+      <div class="section-subtitle">The heart of the menu — big flavours, generous portions</div>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/grilled-charred-octopus-white-bean-puree-chorizo-lemon-Mediterranean-restaurant-plate?width=800&height=360&seed=706&nologo=true" alt="Grilled Octopus">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Grilled Octopus</div>
+          <div class="menu-card-price">$28.99</div>
+        </div>
+        <div class="menu-card-desc">Chargrilled octopus, silky white bean purée, crispy chorizo, fresh lemon. Slow-cooked then finished on the grill for the perfect char.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-gf">Gluten-Free</span>
+          <span class="tag tag-popular">Chef's Pick</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/slow-roasted-lamb-shoulder-freekeh-chermoula-herb-sauce-sharing-platter-feast?width=800&height=360&seed=707&nologo=true" alt="Lamb Shoulder Sharer">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Lamb Shoulder Sharer</div>
+          <div class="menu-card-price">$32.99</div>
+        </div>
+        <div class="menu-card-desc">6-hour slow-roasted lamb shoulder, freekeh grain salad, vibrant chermoula. Designed for two — the most celebratory dish on the menu.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-share">For Two</span>
+          <span class="tag tag-popular">Signature</span>
+          <span class="tag tag-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/moroccan-chicken-tagine-preserved-lemon-olives-couscous-terracotta-pot-steam?width=800&height=360&seed=708&nologo=true" alt="Moroccan Chicken Tagine">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Moroccan Chicken Tagine</div>
+          <div class="menu-card-price">$23.99</div>
+        </div>
+        <div class="menu-card-desc">Slow-braised chicken, preserved lemon, green olives, fluffy couscous. Served in a terracotta pot — aromatic, hearty, and deeply satisfying.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-popular">Popular</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/whole-roasted-sea-bream-chermoula-herb-crust-roasted-vegetables-Mediterranean-seafood?width=800&height=360&seed=709&nologo=true" alt="Sea Bream Chermoula">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Sea Bream Chermoula</div>
+          <div class="menu-card-price">$26.99</div>
+        </div>
+        <div class="menu-card-desc">Whole roasted sea bream, vibrant chermoula herb crust, seasonal roasted vegetables. A showpiece fish dish — fragrant and flaky.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-gf">Gluten-Free</span>
+          <span class="tag tag-popular">Chef's Pick</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/sabich-fried-eggplant-egg-tahini-amba-sauce-pita-Israeli-street-food-plate?width=800&height=360&seed=710&nologo=true" alt="Sabich">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Sabich</div>
+          <div class="menu-card-price">$17.99</div>
+        </div>
+        <div class="menu-card-desc">Fried eggplant, hard-boiled egg, tahini, tangy amba sauce, warm pita. An Israeli street food classic reimagined as a proper café main.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-popular">Cult Favourite</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/fattoush-salad-grilled-chicken-pita-chips-sumac-pomegranate-seeds-fresh-herbs?width=800&height=360&seed=711&nologo=true" alt="Fattoush & Grilled Chicken">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Fattoush & Grilled Chicken</div>
+          <div class="menu-card-price">$21.99</div>
+        </div>
+        <div class="menu-card-desc">Crispy pita fattoush salad, sumac dressing, juicy grilled chicken, pomegranate jewels. Light, fresh, and deeply flavourful.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-popular">Light Option</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/lamb-moussaka-bechamel-topping-eggplant-potato-layers-Greek-baked-casserole?width=800&height=360&seed=712&nologo=true" alt="Lamb Moussaka">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Lamb Moussaka</div>
+          <div class="menu-card-price">$24.99</div>
+        </div>
+        <div class="menu-card-desc">Layers of spiced lamb, eggplant, and potato, topped with golden béchamel. Baked to order — the most comforting dish on the menu.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-popular">Comfort Classic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/prawn-saganaki-spiced-tomato-feta-ouzo-prawns-Greek-mezze-pan-rustic?width=800&height=360&seed=713&nologo=true" alt="Prawn Saganaki">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Prawn Saganaki</div>
+          <div class="menu-card-price">$25.99</div>
+        </div>
+        <div class="menu-card-desc">Plump prawns in a rich spiced tomato sauce, crumbled feta, ouzo kick. Served bubbling in a pan with crusty bread on the side.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-popular">Showstopper</span>
+          <span class="tag tag-spicy">Spiced</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/vegetarian-mezze-feast-dips-sides-pita-breads-table-spread-Mediterranean-sharing?width=800&height=360&seed=714&nologo=true" alt="Mezze Vegetarian Feast">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Mezze Vegetarian Feast</div>
+          <div class="menu-card-price">$38.99</div>
+        </div>
+        <div class="menu-card-desc">Five house dips, four rotating vegetable sides, endless warm pita. For two — a full table experience that celebrates the art of sharing.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-share">For Two</span>
+          <span class="tag tag-popular">Best Value</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/merguez-lamb-sausage-eggs-harissa-crusty-bread-North-African-breakfast-plate?width=800&height=360&seed=715&nologo=true" alt="Merguez & Eggs">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Merguez & Eggs</div>
+          <div class="menu-card-price">$19.99</div>
+        </div>
+        <div class="menu-card-desc">Spiced lamb merguez sausage, fried eggs, harissa drizzle, crusty bread. A North African-inspired brunch hero — fiery and satisfying.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-spicy">Spicy</span>
+          <span class="tag tag-popular">Brunch Hit</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end mains grid -->
+</div><!-- end section 2 -->
+
+
+<!-- SECTION 3: DESSERTS & DRINKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title">Desserts & Drinks</div>
+      <div class="section-subtitle">End on a high — sweet finishes and signature sips</div>
+    </div>
+  </div>
+
+  <h3>Desserts</h3>
+  <div class="menu-grid">
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/baklava-pistachio-honey-rose-water-syrup-layers-filo-pastry-Turkish-dessert?width=800&height=360&seed=716&nologo=true" alt="Baklava">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Baklava</div>
+          <div class="menu-card-price">$8.99</div>
+        </div>
+        <div class="menu-card-desc">Crispy filo layered with crushed pistachios, soaked in honey and rose water syrup. Three generous pieces — a timeless sweet finish.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-popular">Classic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/malabi-rose-water-milk-pudding-pomegranate-seeds-pistachio-Middle-Eastern-dessert?width=800&height=360&seed=717&nologo=true" alt="Malabi">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Malabi</div>
+          <div class="menu-card-price">$8.99</div>
+        </div>
+        <div class="menu-card-desc">Silky rose water milk pudding, jewelled with pomegranate seeds, crushed pistachios. Delicate, fragrant, and impossibly light.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/orange-almond-cake-gluten-free-orange-blossom-cream-slice-rustic-cake-Mediterranean?width=800&height=360&seed=718&nologo=true" alt="Orange & Almond Cake">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Orange & Almond Cake</div>
+          <div class="menu-card-price">$9.99</div>
+        </div>
+        <div class="menu-card-desc">Whole-orange almond cake, naturally gluten-free, orange blossom cream. Dense, moist, and fragrant — a gift for dietary-conscious guests.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-gf">Gluten-Free</span>
+          <span class="tag tag-popular">GF Favourite</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://image.pollinations.ai/prompt/knafeh-crispy-cheese-pastry-rose-water-syrup-pistachio-golden-Middle-Eastern-sweet?width=800&height=360&seed=719&nologo=true" alt="Knafeh">
+      <div class="menu-card-body">
+        <div class="menu-card-header">
+          <div class="menu-card-name">Knafeh</div>
+          <div class="menu-card-price">$10.99</div>
+        </div>
+        <div class="menu-card-desc">Crispy shredded pastry, molten cheese, drenched in rose water syrup, crushed pistachios. The ultimate Middle Eastern dessert — warm and extraordinary.</div>
+        <div class="menu-card-tags">
+          <span class="tag tag-veg">Vegetarian</span>
+          <span class="tag tag-popular">Must Try</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end desserts grid -->
+
+  <h3>Drinks</h3>
+  <div class="drinks-grid">
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/turkish-coffee-cardamom-small-cup-copper-pot-dark-foam-Middle-Eastern-café?width=800&height=220&seed=720&nologo=true" alt="Turkish Coffee">
+      <div class="drink-card-body">
+        <div class="drink-name">Turkish Coffee <span class="drink-price">$5.50</span></div>
+        <div class="drink-desc">Fine ground, cardamom-spiced, double serve. Brewed in a copper cezve, poured unfiltered — the flavour lingers long after the last sip.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/Moroccan-mint-tea-glass-teapot-fresh-mint-sugar-cubes-pouring-steam?width=800&height=220&seed=721&nologo=true" alt="Mint Tea">
+      <div class="drink-card-body">
+        <div class="drink-name">Mint Tea <span class="drink-price">$4.50</span></div>
+        <div class="drink-desc">Moroccan-style, loose leaf green tea, fresh mint, traditional sugar. Poured high from the teapot for the signature frothy head.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/ayran-yoghurt-drink-chilled-glass-mint-garnish-white-frothy-Turkish-beverage?width=800&height=220&seed=722&nologo=true" alt="Ayran">
+      <div class="drink-card-body">
+        <div class="drink-name">Ayran <span class="drink-price">$5.00</span></div>
+        <div class="drink-desc">Chilled yoghurt drink, sea salt, fresh mint. Creamy and cooling — the perfect counter to spicy dishes. Non-alcoholic crowd-pleaser.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/jallab-rose-water-grape-juice-pine-nuts-floating-Syrian-drink-glass-red?width=800&height=220&seed=723&nologo=true" alt="Jallab">
+      <div class="drink-card-body">
+        <div class="drink-name">Jallab <span class="drink-price">$6.00</span></div>
+        <div class="drink-desc">Rose water, grape juice, pine nuts, crushed ice. A Levantine summer drink — sweet, floral, and visually stunning in the glass.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/limonana-frozen-mint-lemonade-slushy-glass-fresh-mint-lemon-Israeli-drink?width=800&height=220&seed=724&nologo=true" alt="Limonana">
+      <div class="drink-card-body">
+        <div class="drink-name">Limonana <span class="drink-price">$6.50</span></div>
+        <div class="drink-desc">Blended fresh mint lemonade, served icy-cold. An Israeli street staple — refreshing, zingy, and impossible to put down.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/pomegranate-juice-cold-pressed-fresh-deep-red-glass-pomegranate-seeds-garnish?width=800&height=220&seed=725&nologo=true" alt="Pomegranate Juice">
+      <div class="drink-card-body">
+        <div class="drink-name">Pomegranate Juice <span class="drink-price">$7.00</span></div>
+        <div class="drink-desc">Cold-pressed fresh pomegranate, nothing added. Deep ruby-red, tart and rich — antioxidant-packed and visually striking on any table.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/arak-mocktail-anise-water-milky-cloudy-glass-ice-Lebanese-drink-non-alcoholic?width=800&height=220&seed=726&nologo=true" alt="Arak Mocktail">
+      <div class="drink-card-body">
+        <div class="drink-name">Arak Mocktail <span class="drink-price">$6.00</span></div>
+        <div class="drink-desc">Anise syrup, chilled water, ice — turns milky-white when poured. Mimics the theatre of real arak without the alcohol. A conversation starter.</div>
+      </div>
+    </div>
+
+    <div class="drink-card">
+      <img src="https://image.pollinations.ai/prompt/sahlab-warm-orchid-milk-cinnamon-coconut-flakes-glass-mug-Middle-Eastern-winter?width=800&height=220&seed=727&nologo=true" alt="Sahlab">
+      <div class="drink-card-body">
+        <div class="drink-name">Sahlab <span class="drink-price">$6.00</span></div>
+        <div class="drink-desc">Warm orchid milk powder, cinnamon, toasted coconut. A Levantine winter drink that tastes like a liquid dessert — rich and deeply comforting.</div>
+      </div>
+    </div>
+
+  </div><!-- end drinks grid -->
+</div><!-- end section 3 -->
+
+
+<!-- SECTION 4: REVENUE MODEL -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title">Revenue Model</div>
+      <div class="section-subtitle">The numbers behind shared plates — and serious margins</div>
+    </div>
+  </div>
+
+  <div class="revenue-grid">
+    <div class="rev-card">
+      <div class="val">45</div>
+      <div class="lbl">Seats</div>
+    </div>
+    <div class="rev-card">
+      <div class="val">$55</div>
+      <div class="lbl">Avg Spend/Head</div>
+    </div>
+    <div class="rev-card">
+      <div class="val">$3,500</div>
+      <div class="lbl">Daily Target</div>
+    </div>
+    <div class="rev-card">
+      <div class="val">~$23K</div>
+      <div class="lbl">Monthly Net</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3>Cost Structure</h3>
+      <div class="cost-bar">
+        <div class="cost-label"><span><strong>Food Cost</strong></span><span>30%</span></div>
+        <div class="cost-track"><div class="cost-fill" style="width:30%;background:#e57373;"></div></div>
+      </div>
+      <div class="cost-bar">
+        <div class="cost-label"><span><strong>Labour</strong></span><span>28%</span></div>
+        <div class="cost-track"><div class="cost-fill" style="width:28%;background:#64b5f6;"></div></div>
+      </div>
+      <div class="cost-bar">
+        <div class="cost-label"><span><strong>Overhead</strong></span><span>22%</span></div>
+        <div class="cost-track"><div class="cost-fill" style="width:22%;background:#ffb74d;"></div></div>
+      </div>
+      <div class="cost-bar">
+        <div class="cost-label"><span><strong>Net Margin</strong></span><span>20%</span></div>
+        <div class="cost-track"><div class="cost-fill" style="width:20%;background:#81c784;"></div></div>
+      </div>
+    </div>
+    <div>
+      <h3>Table Turn Strategy</h3>
+      <div class="info-box teal">
+        <h4>Lunch Service (1.5 Turns)</h4>
+        <p>Sharing format naturally extends table time to ~75 min. Drive turns with prompt ordering, pre-set mezze boards as table arrivals, and streamlined payment. Target: 45 seats × 1.5 = 67.5 covers at lunch.</p>
+      </div>
+      <div class="info-box gold">
+        <h4>Dinner Service (1.2 Turns)</h4>
+        <p>Dinner guests linger longer — 90–100 min is typical. Maximise spend per head with upsell on sharing mains, dessert pairs, and signature drinks. Target: $65+ per head at dinner.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Monthly Revenue Snapshot</h3>
+  <table>
+    <thead>
+      <tr><th>Line</th><th>Calculation</th><th>Monthly</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gross Revenue</td><td>$3,500/day × 26 days</td><td><strong>$91,000</strong></td></tr>
+      <tr><td>Food Cost (30%)</td><td>–$27,300</td><td>$63,700 gross profit</td></tr>
+      <tr><td>Labour (28%)</td><td>–$25,480</td><td>$38,220 remaining</td></tr>
+      <tr><td>Overhead (22%)</td><td>–$20,020</td><td></td></tr>
+      <tr><td><strong>Monthly Net</strong></td><td></td><td><strong style="color:#2d7a4a;">~$23,000</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box teal" style="margin-top:20px;">
+    <h4>Why Sharing Format Drives Revenue</h4>
+    <p>Sharing tables consistently spend 25–35% more than individual ordering. When guests order for the table, anchoring bias kicks in — each person feels less responsible for the total. The Mezze Board ($22.99) plus one main per person at $25 avg = $47.99 before drinks. Add two drinks at $6 = $59.99 per head. Dessert upsell gets you to $65+.</p>
+  </div>
+</div><!-- end section 4 -->
+
+
+<!-- SECTION 5: SERVICE TRAINING -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <div class="section-title">Service Training Module</div>
+      <div class="section-subtitle">What to say, when to say it, and why it works</div>
+    </div>
+  </div>
+
+  <div class="philosophy-box">
+    <div class="quote">"Mediterranean food is the art of turning simple, fresh ingredients into a shared experience — every dish is an invitation to slow down and connect."</div>
+    <div class="attr">Cuisine Philosophy — What staff say when asked "what kind of food is this?"</div>
+  </div>
+
+  <h3>Menu Storytelling — What to Say When Describing the Menu</h3>
+  <div class="two-col">
+    <div class="info-box teal">
+      <h4>Entrées</h4>
+      <p>"Our entrées are made for the middle of the table — everything here is designed to share and start the conversation. The Mezze Board is the best way to kick things off; it gives you a taste of our house dips, and it comes with warm pita straight from the oven."</p>
+    </div>
+    <div class="info-box gold">
+      <h4>Mains</h4>
+      <p>"The mains range from light and fresh — like the fattoush chicken plate — to full celebration dishes like our 6-hour lamb shoulder, which we'd recommend for two. Our chef's personal favourites are the grilled octopus and the prawn saganaki."</p>
+    </div>
+    <div class="info-box teal">
+      <h4>Desserts</h4>
+      <p>"Our desserts come from across the Mediterranean — the Knafeh is warm, cheesy, and a bit addictive; the malabi is light and floral if you want something delicate. Both pair beautifully with a Turkish coffee."</p>
+    </div>
+    <div class="info-box gold">
+      <h4>Drinks</h4>
+      <p>"All our drinks are non-alcoholic and inspired by the region — the Jallab is our most visual drink, deep red with pine nuts floating on top; the Limonana is fresh blended mint lemonade that guests keep ordering back. The Turkish coffee is a must to finish."</p>
+    </div>
+  </div>
+
+  <div class="info-box teal" style="margin:24px 0;">
+    <h4>How to Answer "What's Good Here?"</h4>
+    <p>"Honestly? If it's your first time, get the Mezze Board to start — it gives you a feel for the kitchen. Then I'd point you toward the Lamb Shoulder if there are two of you, or the Prawn Saganaki for something a bit more theatrical. And don't leave without trying the Knafeh — it's warm cheese pastry with rose water syrup and it's genuinely one of the best things we make."</p>
+  </div>
+
+  <h3>Upsell Scripts</h3>
+
+  <div class="script-card">
+    <div class="script-title">Script 1 — The Pairing</div>
+    <div class="script-says">You've got the lamb kofta coming — can I suggest our Limonana to go alongside? It's a frozen mint lemonade and the citrus cuts straight through the spice. Most people order a second one.</div>
+    <div class="script-why"><strong>Why it works:</strong> Flavour pairing creates a logical reason to add a drink. "Most people order a second one" uses social proof to pre-sell the repeat. Mention the drink name specifically — vague suggestions don't convert.</div>
+  </div>
+
+  <div class="script-card">
+    <div class="script-title">Script 2 — The Upgrade</div>
+    <div class="script-says">The Mezze Board comes standard, but for just $4 more we can add a portion of our house labneh with za'atar oil — it's made fresh this morning and honestly it's the thing I'd add if it were my table.</div>
+    <div class="script-why"><strong>Why it works:</strong> Personal endorsement ("if it were my table") creates authenticity. Small price increment ($4) feels trivial against a $55 spend. Freshness cue ("made this morning") adds perceived value.</div>
+  </div>
+
+  <div class="script-card">
+    <div class="script-title">Script 3 — The Dessert Plant</div>
+    <div class="script-says">Here are your mains — enjoy! Just so you know, we have Knafeh on tonight — it's our warm cheese pastry with rose water syrup and it sells out most nights, so if you're thinking dessert, I'd let me know before the kitchen closes it off.</div>
+    <div class="script-why"><strong>Why it works:</strong> Scarcity ("sells out most nights") creates urgency without pressure. Planting the idea at mains arrival means guests are thinking dessert while they still have appetite. No selling — just informing.</div>
+  </div>
+
+  <div class="script-card">
+    <div class="script-title">Script 4 — The Share Suggestion</div>
+    <div class="script-says">Are you thinking of sharing starters? The Mezze Board and the Grilled Halloumi together is probably the best opening to the meal — they complement each other perfectly and it's how most of our regulars start.</div>
+    <div class="script-why"><strong>Why it works:</strong> Suggesting two starters instead of one increases the entrée spend without feeling pushy. "How most of our regulars start" uses belonging and social proof to make the choice feel natural and endorsed.</div>
+  </div>
+
+  <div class="script-card">
+    <div class="script-title">Script 5 — The Regular Builder</div>
+    <div class="script-says">Did you enjoy the lamb shoulder? That's one of our weekend specials — we do it differently each season. We'd love to have you back for the next one. If you follow us on Instagram we put the menu up on Thursdays.</div>
+    <div class="script-why"><strong>Why it works:</strong> Connects a dish they loved to future visits with a reason to return. Instagram follow turns a one-time guest into a warm lead for every future special. Low-friction — no loyalty card, no sign-up, just a follow.</div>
+  </div>
+
+  <h3>Table Timing Guide</h3>
+  <table>
+    <thead>
+      <tr><th>Time</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>0:00 — Arrival</strong></td><td>Greet within 60 seconds. Seat, hand menus, place water. Say: "Take your time — I'll be back in a few minutes to talk you through it."</td></tr>
+      <tr><td><strong>3:00 — Engagement</strong></td><td>Return to table. Briefly describe 2 dishes. Answer questions. Take drink order. Ask: "Are you thinking of sharing starters?"</td></tr>
+      <tr><td><strong>8:00 — Order</strong></td><td>Take full order. Confirm sharing items. Suggest pairing drink if not already ordered. Repeat order back to confirm.</td></tr>
+      <tr><td><strong>12:00 — Starters Arrive</strong></td><td>Deliver entrées with a brief description. Check cutlery and bread. Do not ask "is everything okay?" — ask "how's the mezze board?"</td></tr>
+      <tr><td><strong>20:00 — Mains Arrive</strong></td><td>Clear entrée plates first. Deliver mains. Plant dessert mention naturally. Offer top-up on drinks.</td></tr>
+      <tr><td><strong>45:00 — Main Check</strong></td><td>Return once mains are 2/3 eaten. "How's everything going?" Offer dessert menu if not mentioned. Offer another drink.</td></tr>
+      <tr><td><strong>60:00 — Dessert/Coffee</strong></td><td>Present dessert menu. Pair with Turkish coffee or Sahlab suggestion. Take order promptly to maintain table flow.</td></tr>
+      <tr><td><strong>80:00 — Close</strong></td><td>Present bill without being asked (after coffee/dessert is finished). Thank them personally. Invite back with specific reason.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Objection Scripts</h3>
+
+  <div class="objection-card">
+    <div class="obj-q">"It's a bit expensive..."</div>
+    <div class="obj-a">Staff: "I completely get that — and honestly, the best way to eat here is sharing, which makes it really good value. If two of you share the Mezze Board, one main each, and split a dessert, you're looking at around $35 each. The lamb shoulder for two at $32.99 is our best value by far." <em>Redirect from price to value-per-experience.</em></div>
+  </div>
+
+  <div class="objection-card">
+    <div class="obj-q">"I'm not that hungry..."</div>
+    <div class="obj-a">Staff: "No problem at all — our menu is actually designed for that. The mezze format means you can order two or three small plates and graze. The falafel, halloumi, and a dip board would make a really lovely lighter meal without feeling like too much." <em>Turn low appetite into a positive — the sharing format is the answer.</em></div>
+  </div>
+
+  <div class="objection-card">
+    <div class="obj-q">"Just water for me..."</div>
+    <div class="obj-a">Staff: "Of course! Can I just tell you about our Limonana quickly — it's a frozen fresh mint lemonade and it's non-alcoholic, around $6.50. It's genuinely one of the most refreshing things on the menu and guests often switch from water once they try it. Would you like a small taste?" <em>Offer a sample if possible. Never push — offer once, offer gently.</em></div>
+  </div>
+
+  <div class="objection-card">
+    <div class="obj-q">"We're quite rushed..."</div>
+    <div class="obj-a">Staff: "No worries at all — I'll make sure you're looked after quickly. Can I suggest the Shakshuka and the Lamb Kofta? They're both out in under 15 minutes. I'll put them through as priority and check on you every few minutes. How much time do you have?" <em>Take control, offer a solution, and set expectations. Rushed guests who have a good quick experience become regulars.</em></div>
+  </div>
+
+</div><!-- end section 5 -->
+
+
+<!-- SECTION 6: CUSTOMER RETENTION -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <div class="section-title">Customer Retention System</div>
+      <div class="section-subtitle">Turn first visits into lifelong regulars</div>
+    </div>
+  </div>
+
+  <h3>The Regulars Notebook</h3>
+  <div class="two-col">
+    <div>
+      <div class="info-box teal">
+        <h4>What to Write Down</h4>
+        <ul style="color:#2c2c2c; list-style:disc;">
+          <li>First name (and last if given)</li>
+          <li>Usual table preference (window, corner, outside)</li>
+          <li>Favourite dishes ordered</li>
+          <li>Dietary notes (GF, vegan, allergies)</li>
+          <li>How they take their coffee</li>
+          <li>Whether they come alone, with partner, with kids</li>
+          <li>Anything personal they mentioned (birthday, anniversary)</li>
+          <li>What they said they'd come back for</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="info-box gold">
+        <h4>When to Write It</h4>
+        <p>Write notes <strong>immediately after the guest leaves</strong> — never during service in front of them. Use a physical notebook kept at the host station or a shared note in your POS. Update after every visit. Review before each shift: scan for returning faces from the last 7 days.</p>
+        <br>
+        <h4>Natural Conversation Starters to Learn Their Name</h4>
+        <ul style="color:#2c2c2c; list-style:disc;">
+          <li>"Did you want to give your name for the table?" (at booking)</li>
+          <li>"I'll bring that to your card — what name shall I put?" (at payment)</li>
+          <li>"I'm [name] by the way — welcome back!" (they usually reciprocate)</li>
+          <li>After they pay by card: glance at name, use it at departure</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>The 3-Visit Rule</h3>
+  <div class="retention-grid">
+    <div class="visit-card">
+      <div class="visit-num">1</div>
+      <div class="visit-label">Remember the Face</div>
+      <div class="visit-desc">Make eye contact and greet warmly on arrival. Note table, rough time of visit, and what they ordered. Even "couple, lunch, mezze board + lamb" is enough to start.</div>
+    </div>
+    <div class="visit-card">
+      <div class="visit-num">2</div>
+      <div class="visit-label">Remember the Name</div>
+      <div class="visit-desc">On second visit, recognise them: "Welcome back!" Find their name naturally through payment or casual chat. Write it down tonight. Never fake familiarity you don't have.</div>
+    </div>
+    <div class="visit-card">
+      <div class="visit-num">3</div>
+      <div class="visit-label">Know Their Usual</div>
+      <div class="visit-desc">By the third visit, greet by name and have a suggestion ready: "The lamb shoulder is on today — I remembered you loved it last time." This is the moment they become regulars for life.</div>
+    </div>
+  </div>
+
+  <h3>VIP Micro-Moments — 5 Small Gestures That Create Loyalty</h3>
+  <div class="vip-grid">
+    <div class="vip-card">
+      <div class="vip-icon">🫓</div>
+      <div>
+        <div class="vip-title">The Pita Refill (Without Being Asked)</div>
+        <div class="vip-desc">When you see the bread basket getting low during a mezze meal, bring fresh warm pita before they have to ask. Say: "I noticed the pita was running low — I've brought you some more." This single gesture gets mentioned in more reviews than almost anything else. Cost: near zero. Impact: disproportionate.</div>
+      </div>
+    </div>
+    <div class="vip-card">
+      <div class="vip-icon">☕</div>
+      <div>
+        <div class="vip-title">The Birthday Coffee</div>
+        <div class="vip-desc">If a guest mentions they're celebrating a birthday or anniversary, bring a complimentary Turkish coffee or Sahlab at the end — no announcement, no fuss. Just set it down and say: "Compliments of the kitchen — happy birthday." One small gesture turns a dining memory into a story they'll tell.</div>
+      </div>
+    </div>
+    <div class="vip-card">
+      <div class="vip-icon">🌿</div>
+      <div>
+        <div class="vip-title">The Dietary Memory</div>
+        <div class="vip-desc">When a returning guest has a dietary need (GF, vegan, nut allergy) and they don't remind you — you remember and inform them proactively: "Just so you know, the new seasonal side tonight is vegan — I thought you might want to try it." Shows you were paying attention. Builds profound trust.</div>
+      </div>
+    </div>
+    <div class="vip-card">
+      <div class="vip-icon">📸</div>
+      <div>
+        <div class="vip-title">The Photo Offer</div>
+        <div class="vip-desc">When the Lamb Shoulder Sharer or Mezze Vegetarian Feast arrives at a table that looks celebratory, offer to take a photo for them before diving in. "Would you like me to get a photo before you start? It looks incredible right now." Guests post these — your food markets itself, their memory is framed perfectly.</div>
+      </div>
+    </div>
+    <div class="vip-card">
+      <div class="vip-icon">🍋</div>
+      <div>
+        <div class="vip-title">The Lemon Water Upgrade</div>
+        <div class="vip-desc">For regular guests who typically order just water, proactively bring it with fresh lemon slices, mint, and cucumber — no charge, no mention of it. It reframes "house water" into a hospitality gesture. Upgrade the experience without upgrading the bill. The regulars will notice. They always notice.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Complaint Recovery — 3-Step System</h3>
+  <div class="recovery-step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <div class="step-title">Step 1: Stop, Absorb, Don't Defend</div>
+      <div class="step-text">When a complaint is raised, stop what you're doing and give full attention. Do not explain, justify, or involve the kitchen immediately. Say: <em>"Thank you for telling me — I'm really glad you said something. Can you tell me what happened so I fully understand?"</em> Let them speak without interruption. Nodding, eye contact, no crossed arms. You're absorbing, not arguing.</div>
+    </div>
+  </div>
+  <div class="recovery-step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <div class="step-title">Step 2: Own It, Fix It, Tell Them What Happens Next</div>
+      <div class="step-text">Say: <em>"I'm really sorry about that — that's not the experience we want for you, and it's not the standard we hold ourselves to. Here's what I'm going to do right now: I'm going to [replace the dish / remove it from the bill / speak to the kitchen immediately]. You should have [expected outcome] in the next [timeframe]."</em> Specificity matters — "I'll sort it" is not enough. Tell them exactly what changes.</div>
+    </div>
+  </div>
+  <div class="recovery-step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <div class="step-title">Step 3: The Gesture That Seals It</div>
+      <div class="step-text">After the issue is resolved, return to the table with something unexpected: a complimentary baklava, a round of Turkish coffees, or a sincere verbal follow-up: <em>"I just wanted to check in — is everything better now? I'm glad you stayed, and I hope we can make it right fully tonight."</em> The gesture doesn't need to be expensive. It needs to be genuine. A recovered complaint done well creates a more loyal guest than one who never had a problem.</div>
+    </div>
+  </div>
+
+  <h3>Social Media System</h3>
+  <h4>Best 5 Dishes to Photograph & Why</h4>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <div class="photo-rank">🥇</div>
+      <div class="photo-name">Burrata with Dukkah</div>
+      <div class="photo-why">Cream-white burrata against red tomatoes and speckled dukkah — high contrast, natural light dream. Horizontal composition fills the frame perfectly.</div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-rank">🥈</div>
+      <div class="photo-name">Lamb Shoulder Sharer</div>
+      <div class="photo-why">Theatrical centrepiece dish. Pull-apart meat, green chermoula against golden freekeh. Best photographed from above before serving.</div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-rank">🥉</div>
+      <div class="photo-name">Mezze Board for Two</div>
+      <div class="photo-why">Six textures, six colours — the flattest overhead shot in the restaurant. Every element tells the menu story in one frame. Maximum shareability.</div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-rank">4th</div>
+      <div class="photo-name">Jallab Drink</div>
+      <div class="photo-why">Deep ruby-red with pine nuts floating on top. Holds well on camera, unusual enough to stop the scroll. Cocktail-hour energy without the alcohol.</div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-rank">5th</div>
+      <div class="photo-name">Knafeh</div>
+      <div class="photo-why">Golden shreds, syrup drizzle, pistachio dusting — the cheese pull video is content gold. Warm tones perform well in the 4pm–7pm lighting window.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h4>Post Timing</h4>
+      <table>
+        <thead><tr><th>Window</th><th>Best Days</th><th>Content Type</th></tr></thead>
+        <tbody>
+          <tr><td>11:30am–12:30pm</td><td>Tue–Thu</td><td>Lunch specials, food shots</td></tr>
+          <tr><td>5:00pm–6:30pm</td><td>Fri–Sat</td><td>Atmospheric, dinner ambience</td></tr>
+          <tr><td>8:00pm–9:00pm</td><td>Fri–Sun</td><td>Dessert, drink reels, Knafeh pulls</td></tr>
+          <tr><td>Sunday 10am</td><td>Weekly</td><td>Week preview, behind-the-scenes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h4>Caption Formula</h4>
+      <div class="info-box gold">
+        <p><strong>Hook:</strong> Bold first line — stops the scroll<br>
+        <strong>Story:</strong> 1–2 sentences of origin, technique, or feeling<br>
+        <strong>CTA:</strong> Soft action — link in bio, tag someone, save for later</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>Example Captions</h4>
+  <div class="caption-box">
+    <div class="hook">Some things are better shared. 🫙</div>
+    <div class="story">Our Mezze Board for Two is how every great evening should start — hummus still warm, pita fresh out of the oven, and absolutely no rush. This is what the Mediterranean does best.</div>
+    <div class="cta">📍 Book the table via link in bio. Tag who you'd bring. ⬇️</div>
+  </div>
+  <div class="caption-box">
+    <div class="hook">Six hours of patience. Two minutes of silence. 🐑</div>
+    <div class="story">Our lamb shoulder is slow-roasted from dawn, finished with chermoula and served on freekeh grain. It's not a dish you order when you're in a hurry. It's a dish you plan your Friday night around.</div>
+    <div class="cta">🔖 Save this for your next celebration dinner. Reservations open now — link in bio.</div>
+  </div>
+
+  <h3>Neighbourhood Anchor Strategy</h3>
+  <div class="partner-grid">
+    <div class="partner-card">
+      <div class="partner-type">Partnership 1</div>
+      <div class="partner-name">Local Wine Merchant or Bottle Shop</div>
+      <div class="partner-desc">Partner with a nearby wine merchant to create a "BYO Wednesday" promotion. Guests bring their own bottle, you charge a modest corkage ($8–$12). The bottle shop promotes you on their board and bags; you promote them on your menu. Both businesses benefit, and guests feel like insiders.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-type">Partnership 2</div>
+      <div class="partner-name">Yoga Studio or Pilates Gym</div>
+      <div class="partner-desc">Align with a local yoga or pilates studio — your menu is naturally aligned with their health-conscious clientele (GF options, vegetarian feasts, fresh juices). Offer a "post-class lunch card" — 10% off for anyone showing their class card. They promote you in their newsletter; you display their schedule at the host stand.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-type">Partnership 3</div>
+      <div class="partner-name">Local Art Gallery or Cultural Centre</div>
+      <div class="partner-desc">Partner with a gallery for cultural event nights — "Art & Mezze" evenings where a local artist is featured on your walls for a month. Opening night is a ticketed event with food and drinks. Gallery promotes to their mailing list; you get PR and a story to tell. The cultural connection reinforces the Mediterranean identity.</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:24px;">
+    <div class="info-box teal">
+      <h4>Weekly Special Idea</h4>
+      <p><strong>"Sunday Feast Sundays"</strong> — Every Sunday, add one large-format sharing dish not on the regular menu. Rotate through: Egyptian koshary, Libyan bazeen, Tunisian brik. Post it on Saturday night. Creates FOMO, drives Sunday covers, and gives regulars a reason to return weekly. Price point: $28–$35 for two.</p>
+    </div>
+    <div class="info-box gold">
+      <h4>Community Engagement Tactic</h4>
+      <p><strong>Mediterranean Cooking Class (Monthly)</strong> — Host a 2-hour cooking class on a Tuesday morning (quiet cover time). Teach two dishes: one mezze dip and one main. Charge $65 per person, includes lunch. Limit to 12 guests. Creates a recurring event, free PR, content for social, and a cohort of deeply loyal regulars who feel invested in the kitchen.</p>
+    </div>
+  </div>
+
+</div><!-- end section 6 -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>Mediterranean Meze Bar</strong> — Operations & Training Guide</p>
+  <p>"Shared plates. Shared stories. Serious margins."</p>
+  <p style="margin-top:12px; font-size:0.75rem;">Confidential — For internal staff use only. Not for distribution.</p>
+</div>
+
+</body>
+</html>

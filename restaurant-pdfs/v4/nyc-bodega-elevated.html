@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Bodega Elevated — Operations Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --primary:#1a1a1a; --accent:#f5c518; --bg:#fafaf8; --card:#ffffff; --text:#2d2d2d; --muted:#888; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+h1,h2,h3,h4{font-family:"Playfair Display",serif}
+.page{max-width:960px;margin:0 auto;padding:40px 24px}
+.cover{background:var(--primary);color:#fff;padding:72px 40px;text-align:center;margin-bottom:48px;border-radius:4px;position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(245,197,24,0.15) 0%,transparent 60%)}
+.cover h1{font-size:3.2rem;font-weight:900;letter-spacing:-1px;margin-bottom:8px}
+.cover-line{width:60px;height:4px;background:var(--accent);margin:16px auto;border-radius:2px}
+.cover p{font-size:1.1rem;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto 32px}
+.kpi-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.kpi{background:rgba(255,255,255,0.1);border:1px solid rgba(245,197,24,0.3);border-radius:8px;padding:20px 28px;min-width:140px;text-align:center}
+.kpi-val{font-size:2rem;font-weight:700;color:var(--accent);font-family:"Playfair Display",serif}
+.kpi-lbl{font-size:0.72rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.info-box{background:#fff;border-left:4px solid var(--accent);padding:20px 24px;margin:32px 0;border-radius:0 8px 8px 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.info-box h3{font-size:1rem;color:var(--primary);margin-bottom:6px}
+.info-box p{font-size:0.9rem;color:var(--muted)}
+.section-title{font-size:2rem;color:var(--primary);margin:56px 0 8px;padding-bottom:12px;border-bottom:3px solid var(--accent)}
+.section-sub{color:var(--muted);font-size:0.9rem;margin-bottom:32px}
+.recipe{background:var(--card);border-radius:12px;overflow:hidden;margin-bottom:40px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid #eee}
+.rh{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 28px 16px;background:var(--primary);color:#fff}
+.rh-title{font-size:1.5rem;font-weight:700;font-family:"Playfair Display",serif}
+.rh-sub{font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:4px}
+.rh-meta{text-align:right}
+.rh-meta .price{font-size:1.8rem;color:var(--accent);font-family:"Playfair Display",serif;font-weight:700}
+.rh-meta .fc{font-size:0.75rem;color:rgba(255,255,255,0.55)}
+.rm{padding:24px 28px}
+.rb{padding:0 28px 24px}
+.photo-box{width:100%;height:360px;overflow:hidden;background:#1a1a1a}
+.photo-box img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-box.drink{height:220px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px}
+.it{width:100%;border-collapse:collapse;font-size:0.85rem;margin-bottom:16px}
+.it th{background:var(--primary);color:var(--accent);padding:8px 12px;text-align:left;font-weight:600}
+.it td{padding:7px 12px;border-bottom:1px solid #eee}
+.it tr:hover td{background:#fafafa}
+.cc{background:#f9f9f7;border-radius:8px;padding:16px 20px;margin-bottom:16px}
+.cc h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
+.step{display:flex;gap:12px;margin-bottom:10px;font-size:0.88rem}
+.sn{min-width:24px;height:24px;background:var(--accent);color:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0;margin-top:1px}
+.sn2{min-width:24px}
+.st{line-height:1.55}
+.temp{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;background:#eee;color:#666;margin-left:8px}
+.temp.ok{background:#d4edda;color:#155724}
+.tb{background:#fff8e1;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 6px 6px 0;font-size:0.85rem;font-style:italic;margin:12px 0}
+.cs{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:6px}
+.cr{font-size:0.85rem;margin-bottom:4px}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.a{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.72rem;font-weight:600;background:var(--primary);color:var(--accent);border:1px solid var(--accent)}
+.drink-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.07);border:1px solid #eee;margin-bottom:32px}
+.drink-header{background:var(--primary);padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.drink-name{font-family:"Playfair Display",serif;font-size:1.25rem;color:#fff;font-weight:700}
+.drink-price{font-size:1.4rem;color:var(--accent);font-family:"Playfair Display",serif;font-weight:700}
+.script-box{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.script-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:8px;background:var(--primary);display:inline-block;padding:3px 10px;border-radius:4px}
+blockquote.staff-words{border-left:4px solid var(--accent);padding:12px 20px;margin:10px 0;background:#fffdf0;font-style:italic;color:var(--primary);font-size:0.95rem;border-radius:0 8px 8px 0}
+.schedule-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin:20px 0}
+.schedule-table th{background:var(--primary);color:var(--accent);padding:10px 14px;text-align:left}
+.schedule-table td{padding:9px 14px;border-bottom:1px solid #eee}
+.schedule-table tr:nth-child(even) td{background:#fafafa}
+.revenue-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin:20px 0}
+.revenue-table th{background:var(--primary);color:var(--accent);padding:10px 14px}
+.revenue-table td{padding:9px 14px;border-bottom:1px solid #eee;text-align:center}
+.revenue-table .total-row td{background:var(--accent);color:var(--primary);font-weight:700;font-size:1rem}
+.ft{background:var(--primary);color:rgba(255,255,255,0.6);text-align:center;padding:32px 24px;margin-top:64px;font-size:0.82rem}
+.ft strong{color:var(--accent)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.retention-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-top:3px solid var(--accent);margin-bottom:20px}
+.retention-card h4{font-size:1rem;color:var(--primary);margin-bottom:10px;font-family:"Playfair Display",serif}
+.retention-card ul{padding-left:18px;font-size:0.86rem;line-height:1.8;color:var(--text)}
+.highlight-num{font-size:2.4rem;font-family:"Playfair Display",serif;color:var(--accent);font-weight:700}
+@media(max-width:640px){.two-col,.grid-2,.grid-3{grid-template-columns:1fr}.kpi{min-width:120px}.cover h1{font-size:2.2rem}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,0.5);margin-bottom:12px">Operations &amp; Training Guide</div>
+  <h1>NYC Bodega Elevated</h1>
+  <div class="cover-line"></div>
+  <p>A New York City deli café blending classic bodega energy with elevated technique. Counter service meets table hospitality in the city that never sleeps.</p>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">35</div><div class="kpi-lbl">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$22–38</div><div class="kpi-lbl">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">23%</div><div class="kpi-lbl">Net Margin</div></div>
+    <div class="kpi"><div class="kpi-val">80</div><div class="kpi-lbl">Daily Covers</div></div>
+    <div class="kpi"><div class="kpi-val">$18,500</div><div class="kpi-lbl">Monthly Net</div></div>
+  </div>
+</div>
+
+<div class="info-box">
+  <h3>Concept Philosophy</h3>
+  <p>We honour the New York bodega — the neighbourhood anchor, the morning ritual, the late-night lifeline. Every dish is made with deli-counter precision: house-cured, hand-sliced, never pre-packaged. The coffee is bottomless because New Yorkers deserve better.</p>
+</div>
+
+<h2 class="section-title">Section 1 — Entrées</h2>
+<p class="section-sub">6 starters &amp; sharing plates · seeds 200–205</p>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Bagel &amp; Lox Board</div><div class="rh-sub">House-cured salmon · cream cheese · all the fixings</div></div>
+    <div class="rh-meta"><div class="price">$18.99</div><div class="fc">Food cost 22.4%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-200-food-plated-overhead-professional?seed=200&width=800&height=360&nologo=true" alt="Bagel &amp; Lox Board" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div>
+        <div class="cc"><h4>Ingredients &amp; Costs</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>House-cured salmon (2oz)</td><td>.80</td></tr>
+<tr><td>Cream cheese (3oz)</td><td>/tmp/build_nyc.pl.45</td></tr>
+<tr><td>Everything bagel</td><td>/tmp/build_nyc.pl.60</td></tr>
+<tr><td>Capers</td><td>/tmp/build_nyc.pl.15</td></tr>
+<tr><td>Red onion, shaved</td><td>/tmp/build_nyc.pl.10</td></tr>
+<tr><td>Lemon wedge</td><td>/tmp/build_nyc.pl.05</td></tr>
+<tr><td>Dill, microgreens</td><td>/tmp/build_nyc.pl.25</td></tr>
+<tr><td>Total food cost</td><td>.40</td></tr>
+</table></div></div>
+      <div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Cure salmon 24 hrs in salt, sugar, dill, lemon zest brine. Slice paper-thin against the grain.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Toast bagel cut-side down on flat-top until golden. Spread cream cheese generously.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Assemble board: salmon draped over cream cheese, capers in a small pile, red onion rings, dill fronds, lemon. Serve with extra cream cheese on the side.</div></div>
+</div></div>
+    <div class="tb">&#128161; Chef's Tip: Always slice salmon to order — never pre-slice. Pre-sliced salmon oxidises and loses colour within 15 minutes.</div>
+    <div class="cs">Allergens:</div>
+    <div class="al">
+<span class="a">Fish</span>
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Sesame</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Bodega Egg &amp; Cheese</div><div class="rh-sub">Fresh-cracked egg · American cheese · Kaiser roll</div></div>
+    <div class="rh-meta"><div class="price">$11.99</div><div class="fc">Food cost 18.2%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-201-food-plated-overhead-professional?seed=201&width=800&height=360&nologo=true" alt="Bodega Egg &amp; Cheese" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div>
+        <div class="cc"><h4>Ingredients &amp; Costs</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Large egg (2)</td><td>/tmp/build_nyc.pl.40</td></tr>
+<tr><td>American cheese (2 slices)</td><td>/tmp/build_nyc.pl.30</td></tr>
+<tr><td>Kaiser roll</td><td>/tmp/build_nyc.pl.45</td></tr>
+<tr><td>Butter</td><td>/tmp/build_nyc.pl.10</td></tr>
+<tr><td>Salt &amp; pepper</td><td>/tmp/build_nyc.pl.02</td></tr>
+<tr><td>Hot sauce (optional)</td><td>/tmp/build_nyc.pl.03</td></tr>
+<tr><td>Total food cost</td><td>.30 (serve with 2 condiment cups)</td></tr>
+</table></div></div>
+      <div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Crack 2 eggs onto a lightly buttered hot flat-top. Break yolks for a scramble, or keep intact for over-easy. Season immediately.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Layer 2 slices American cheese over eggs. Fold into a square to match roll footprint. Let cheese fully melt.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Split and lightly toast kaiser. Slide egg-cheese onto roll. Wrap in deli paper for 30 seconds — the steam finishes the melt.</div></div>
+</div></div>
+    <div class="tb">&#128161; Chef's Tip: The wrap-in-paper step is non-negotiable. It creates the signature steamed-cheese texture that NYC bodega regulars expect.</div>
+    <div class="cs">Allergens:</div>
+    <div class="al">
+<span class="a">Egg</span>
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Matzo Ball Soup</div><div class="rh-sub">Grandma-style · 6-hr golden broth · fluffy floater ball</div></div>
+    <div class="rh-meta"><div class="price">$12.99</div><div class="fc">Food cost 20.1%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-202-food-plated-overhead-professional?seed=202&width=800&height=360&nologo=true" alt="Matzo Ball Soup" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div>
+        <div class="cc"><h4>Ingredients &amp; Costs</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Chicken broth (12oz)</td><td>/tmp/build_nyc.pl.90</td></tr>
+<tr><td>Matzo ball (1 large)</td><td>/tmp/build_nyc.pl.55</td></tr>
+<tr><td>Carrots, sliced</td><td>/tmp/build_nyc.pl.15</td></tr>
+<tr><td>Celery</td><td>/tmp/build_nyc.pl.10</td></tr>
+<tr><td>Fresh dill</td><td>/tmp/build_nyc.pl.20</td></tr>
+<tr><td>Egg noodles (optional)</td><td>/tmp/build_nyc.pl.12</td></tr>
+<tr><td>Schmaltz (chicken fat)</td><td>/tmp/build_nyc.pl.08</td></tr>
+<tr><td>Total food cost</td><td>.10</td></tr>
+</table></div></div>
+      <div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Make matzo balls the night before: mix matzo meal, eggs, schmaltz, salt. Rest batter 30 min refrigerated. Roll into 60g balls. Simmer in salted water 35 min until puffed and cooked through.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Simmer house chicken stock with carrots, celery, onion. Adjust seasoning.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">To plate: ladle hot broth into warm bowl. Add matzo ball, carrots, fresh dill. Serve with a small rye bread roll.</div></div>
+</div></div>
+    <div class="tb">&#128161; Chef's Tip: The 'floater vs sinker' debate: floaters use baking powder (lighter). Sinkers are more traditional. We use the floater method — guests prefer it.</div>
+    <div class="cs">Allergens:</div>
+    <div class="al">
+<span class="a">Gluten</span>
+<span class="a">Egg</span>
+<span class="a">Celery</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Potato Knish</div><div class="rh-sub">Baked not fried · smashed Yukon gold · caramelised onion</div></div>
+    <div class="rh-meta"><div class="price">$8.99</div><div class="fc">Food cost 19.8%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-203-food-plated-overhead-professional?seed=203&width=800&height=360&nologo=true" alt="Potato Knish" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div>
+        <div class="cc"><h4>Ingredients &amp; Costs</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Yukon Gold potato (200g)</td><td>/tmp/build_nyc.pl.35</td></tr>
+<tr><td>Caramelised onion</td><td>/tmp/build_nyc.pl.22</td></tr>
+<tr><td>Dough (flour, oil)</td><td>/tmp/build_nyc.pl.20</td></tr>
+<tr><td>Black pepper, salt</td><td>/tmp/build_nyc.pl.03</td></tr>
+<tr><td>Egg wash</td><td>/tmp/build_nyc.pl.05</td></tr>
+<tr><td>Mustard (dip)</td><td>/tmp/build_nyc.pl.08</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc.pl.93</td></tr>
+</table></div></div>
+      <div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Make filling: boil Yukon Golds, smash with butter, fold in deeply caramelised onion, season with salt and white pepper. Cool completely.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Roll dough to 3mm. Cut 15cm rounds. Place 90g filling in centre, fold and seal edges firmly. Egg-wash exterior.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Bake at 375°F / 190°C for 22–25 min until golden. Serve with deli mustard and sour cream.</div></div>
+</div></div>
+    <div class="tb">&#128161; Chef's Tip: Knishes must be baked same-day. Day-old knish dough becomes tough. Make in batches of 12 through service.</div>
+    <div class="cs">Allergens:</div>
+    <div class="al">
+<span class="a">Gluten</span>
+<span class="a">Egg</span>
+<span class="a">Dairy</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Chopped Liver Toast</div><div class="rh-sub">Schmaltz-roasted chicken livers · pickled mustard seeds · rye</div></div>
+    <div class="rh-meta"><div class="price">$13.99</div><div class="fc">Food cost 21.3%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-204-food-plated-overhead-professional?seed=204&width=800&height=360&nologo=true" alt="Chopped Liver Toast" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div>
+        <div class="cc"><h4>Ingredients &amp; Costs</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Chicken livers (80g)</td><td>/tmp/build_nyc.pl.65</td></tr>
+<tr><td>Schmaltz</td><td>/tmp/build_nyc.pl.12</td></tr>
+<tr><td>Hard-boiled egg (1)</td><td>/tmp/build_nyc.pl.20</td></tr>
+<tr><td>Caramelised onion</td><td>/tmp/build_nyc.pl.22</td></tr>
+<tr><td>Pickled mustard seeds</td><td>/tmp/build_nyc.pl.18</td></tr>
+<tr><td>Rye bread (2 slices)</td><td>/tmp/build_nyc.pl.40</td></tr>
+<tr><td>Dill, salt</td><td>/tmp/build_nyc.pl.08</td></tr>
+<tr><td>Total food cost</td><td>.85</td></tr>
+</table></div></div>
+      <div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Season livers with salt and pepper. Sear in schmaltz over high heat 2 min per side — keep slightly pink inside. Rest 3 min.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Chop livers finely with knife (not food processor). Fold in caramelised onion, chopped hard-boiled egg, salt, and pepper.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Toast rye. Spread liver mixture generously. Top with pickled mustard seeds and fresh dill. Serve immediately.</div></div>
+</div></div>
+    <div class="tb">&#128161; Chef's Tip: Never blitz the liver — always hand-chop. The texture should be coarse, not paté-smooth. That rusticity is the point.</div>
+    <div class="cs">Allergens:</div>
+    <div class="al">
+<span class="a">Gluten</span>
+<span class="a">Egg</span>
+<span class="a">Celery</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">House Pickle Plate</div><div class="rh-sub">Half-sours · full-sours · pickled tomatoes · rye bread</div></div>
+    <div class="rh-meta"><div class="price">$9.99</div><div class="fc">Food cost 16.7%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-205-food-plated-overhead-professional?seed=205&width=800&height=360&nologo=true" alt="House Pickle Plate" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div>
+        <div class="cc"><h4>Ingredients &amp; Costs</h4>
+        <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Half-sour cucumber (3)</td><td>/tmp/build_nyc.pl.40</td></tr>
+<tr><td>Full-sour dill pickle (2)</td><td>/tmp/build_nyc.pl.35</td></tr>
+<tr><td>Pickled green tomato (2)</td><td>/tmp/build_nyc.pl.30</td></tr>
+<tr><td>Pickled red onion</td><td>/tmp/build_nyc.pl.15</td></tr>
+<tr><td>House brine herbs</td><td>/tmp/build_nyc.pl.10</td></tr>
+<tr><td>Rye bread (2 slices)</td><td>/tmp/build_nyc.pl.40</td></tr>
+<tr><td>Total food cost</td><td>.70</td></tr>
+</table></div></div>
+      <div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Cure cucumbers 48 hrs in salt, garlic, dill brine for half-sours. Cure 7+ days for full-sours. Keep separate crocks in walkin.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pickle tomatoes separately in apple cider vinegar brine with dill and mustard seed.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Arrange on wooden board: half-sours sliced, full-sours whole, tomatoes halved. Add rye bread slices. Finish with fresh dill.</div></div>
+</div></div>
+    <div class="tb">&#128161; Chef's Tip: The pickle plate is a table-starter upsell — staff should mention it the moment a table is seated. It is pre-prepped, nearly zero labour, and high-perceived-value.</div>
+    <div class="cs">Allergens:</div>
+    <div class="al">
+<span class="a">Gluten</span>
+<span class="a">Sulphites</span>
+</div></div></div>
+<h2 class="section-title">Section 2 — Mains</h2>
+<p class="section-sub">10 signature dishes · seeds 206–215</p>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Classic Reuben</div><div class="rh-sub">House corned beef · Swiss · sauerkraut · Russian dressing · rye</div></div>
+    <div class="rh-meta"><div class="price">$19.99</div><div class="fc">Food cost 21.8%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-206?seed=206&width=800&height=360&nologo=true" alt="Classic Reuben" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Corned beef (5oz, house-brined)</td><td>.20</td></tr>
+<tr><td>Swiss cheese (2 slices)</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Marble rye (2 slices)</td><td>/tmp/build_nyc_mains.pl.45</td></tr>
+<tr><td>Sauerkraut (3oz)</td><td>/tmp/build_nyc_mains.pl.30</td></tr>
+<tr><td>Russian dressing (2 tbsp)</td><td>/tmp/build_nyc_mains.pl.25</td></tr>
+<tr><td>Butter (for press)</td><td>/tmp/build_nyc_mains.pl.08</td></tr>
+<tr><td>Total food cost</td><td>.83</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Warm corned beef on flat-top. Butter both sides of marble rye. Build sandwich: Russian dressing, corned beef, sauerkraut (squeezed dry), Swiss.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Press on panini press or flat-top with weight 3–4 min each side until golden and cheese melts through.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Slice diagonally, skewer with deli pick. Serve with dill pickle spear and fries or slaw.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Squeeze the sauerkraut in a cloth — excess moisture is what makes a Reuben go soggy. Dry kraut = crispy bread.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+<span class="a">Celery</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Smash Burger</div><div class="rh-sub">6oz dual-smash · American cheese · special sauce · brioche</div></div>
+    <div class="rh-meta"><div class="price">$17.99</div><div class="fc">Food cost 22.3%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-207?seed=207&width=800&height=360&nologo=true" alt="Smash Burger" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Beef blend 80/20 (6oz balls x2)</td><td>.80</td></tr>
+<tr><td>American cheese (2 slices)</td><td>/tmp/build_nyc_mains.pl.30</td></tr>
+<tr><td>Brioche bun</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Special sauce (mayo, pickle, ketchup)</td><td>/tmp/build_nyc_mains.pl.20</td></tr>
+<tr><td>Iceberg lettuce, tomato, onion</td><td>/tmp/build_nyc_mains.pl.25</td></tr>
+<tr><td>Pickles (3 slices)</td><td>/tmp/build_nyc_mains.pl.10</td></tr>
+<tr><td>Total food cost</td><td>.20</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Heat flat-top to maximum. Place 3oz beef balls. Smash firmly with heavy press — hold 10 seconds. Season with salt and pepper. Cook 90 seconds per side.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add cheese to one patty, stack the second on top. Cover with dome to melt. 30 seconds.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Toast bun cut-side on flat-top. Build: sauce on both buns, lettuce, tomato, patties, pickles, onion. Serve immediately.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: The smash must happen within 5 seconds of beef hitting the hot surface. Delay = no crust, no flavour.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+<span class="a">Sesame</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Pastrami on Rye</div><div class="rh-sub">6oz house-smoked pastrami · spicy brown mustard · marble rye</div></div>
+    <div class="rh-meta"><div class="price">$21.99</div><div class="fc">Food cost 23.1%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-208?seed=208&width=800&height=360&nologo=true" alt="Pastrami on Rye" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>House pastrami (6oz, steamed)</td><td>.80</td></tr>
+<tr><td>Marble rye (2 slices)</td><td>/tmp/build_nyc_mains.pl.45</td></tr>
+<tr><td>Spicy brown mustard</td><td>/tmp/build_nyc_mains.pl.12</td></tr>
+<tr><td>Swiss cheese (optional +)</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Dill pickle spear</td><td>/tmp/build_nyc_mains.pl.15</td></tr>
+<tr><td>Total food cost</td><td>.52</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Steam pastrami over boiling water until internal temp reaches 165°F / 74°C. This takes 8–10 min for a thick stack.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Spread spicy brown mustard on both slices of rye. No butter, no toast — the pastrami provides all the richness.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Pile pastrami high. Serve open-face or folded. Dill pickle spear on the side. That is the whole dish. Respect it.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Never slice cold pastrami. Always steam to order. Cold pastrami = chewy fat = complaints. Steamed = melts in the mouth.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Celery</span>
+<span class="a">Mustard</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Lox Benedict</div><div class="rh-sub">House-cured lox · poached egg · everything bagel · cream hollandaise</div></div>
+    <div class="rh-meta"><div class="price">$19.99</div><div class="fc">Food cost 22.8%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-209?seed=209&width=800&height=360&nologo=true" alt="Lox Benedict" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>House-cured lox (3oz)</td><td>.80</td></tr>
+<tr><td>Eggs (2, poached)</td><td>/tmp/build_nyc_mains.pl.40</td></tr>
+<tr><td>Everything bagel (1, halved)</td><td>/tmp/build_nyc_mains.pl.60</td></tr>
+<tr><td>Hollandaise (3oz)</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Capers, dill, red onion</td><td>/tmp/build_nyc_mains.pl.22</td></tr>
+<tr><td>Total food cost</td><td>.57</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Poach eggs in salted water with a splash of vinegar. 3 min for runny yolk. Hold in warm water bath.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Make hollandaise: whisk yolks over double boiler, add clarified butter slowly, finish with lemon juice. Season with salt and white pepper.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Toast bagel halves. Top each with lox, poached egg, hollandaise. Finish with capers, fresh dill, shaved red onion.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Make hollandaise in 15-minute batches — it cannot be held safely beyond 30 min. Brief your team: if it breaks, start again, never rescue with hot water.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Egg</span>
+<span class="a">Fish</span>
+<span class="a">Dairy</span>
+<span class="a">Sesame</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Chopped Cheese</div><div class="rh-sub">Ground beef · American cheese · onion · bodega roll · bodega-style</div></div>
+    <div class="rh-meta"><div class="price">$16.99</div><div class="fc">Food cost 20.4%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-210?seed=210&width=800&height=360&nologo=true" alt="Chopped Cheese" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Ground beef 80/20 (5oz)</td><td>.80</td></tr>
+<tr><td>American cheese (2 slices)</td><td>/tmp/build_nyc_mains.pl.30</td></tr>
+<tr><td>Onion, chopped</td><td>/tmp/build_nyc_mains.pl.12</td></tr>
+<tr><td>Hoagie roll</td><td>/tmp/build_nyc_mains.pl.45</td></tr>
+<tr><td>Lettuce, tomato</td><td>/tmp/build_nyc_mains.pl.22</td></tr>
+<tr><td>Ketchup, mayo</td><td>/tmp/build_nyc_mains.pl.10</td></tr>
+<tr><td>Total food cost</td><td>.99</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Cook ground beef on flat-top, chopping and smashing as it cooks. Add onion. Season with salt and pepper. Cook until caramelised, about 4 min.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Lay cheese slices over beef mixture on the flat-top. Let melt 30 sec, then fold into a rough log shape matching the roll.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Lightly toast roll. Build with ketchup, mayo, lettuce, tomato, then the beef-cheese log. Wrap in foil 1 min before serving.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: This is Harlem's sandwich. The chopping motion matters — use a metal bench scraper to get the authentic shred-and-chop texture.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Manhattan Clam Chowder</div><div class="rh-sub">Tomato-based · littleneck clams · potato · fresh thyme</div></div>
+    <div class="rh-meta"><div class="price">$16.99</div><div class="fc">Food cost 21.6%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-211?seed=211&width=800&height=360&nologo=true" alt="Manhattan Clam Chowder" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Littleneck clams (6oz)</td><td>.20</td></tr>
+<tr><td>Crushed tomato (4oz)</td><td>/tmp/build_nyc_mains.pl.35</td></tr>
+<tr><td>Potato, diced (80g)</td><td>/tmp/build_nyc_mains.pl.22</td></tr>
+<tr><td>Onion, celery, garlic</td><td>/tmp/build_nyc_mains.pl.28</td></tr>
+<tr><td>Thyme, bay leaf</td><td>/tmp/build_nyc_mains.pl.08</td></tr>
+<tr><td>Clam broth (8oz)</td><td>/tmp/build_nyc_mains.pl.45</td></tr>
+<tr><td>Total food cost</td><td>.58</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Sweat onion, celery, garlic in olive oil 5 min. Add crushed tomato, clam broth, potato. Simmer 15 min until potato is tender.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Add clams (fresh or fresh-frozen to order). Cook 4–5 min until clams open. Discard any that don't open. Season.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve in a warm bowl with oyster crackers. Finish with fresh thyme leaves and a crack of black pepper.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Manhattan not New England — this is tomato-based. If a guest expects cream-based, explain the distinction warmly. Most are pleased once they taste it.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Shellfish</span>
+<span class="a">Celery</span>
+<span class="a">Gluten</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Tuna Melt</div><div class="rh-sub">House tuna salad · melted Swiss · rye toast · pickles</div></div>
+    <div class="rh-meta"><div class="price">$16.99</div><div class="fc">Food cost 19.8%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-212?seed=212&width=800&height=360&nologo=true" alt="Tuna Melt" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Albacore tuna (4oz, drained)</td><td>.80</td></tr>
+<tr><td>Mayo (2 tbsp)</td><td>/tmp/build_nyc_mains.pl.18</td></tr>
+<tr><td>Celery, diced</td><td>/tmp/build_nyc_mains.pl.10</td></tr>
+<tr><td>Red onion, diced</td><td>/tmp/build_nyc_mains.pl.08</td></tr>
+<tr><td>Swiss cheese (2 slices)</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Rye bread (2 slices)</td><td>/tmp/build_nyc_mains.pl.45</td></tr>
+<tr><td>Total food cost</td><td>.16</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Mix tuna, mayo, diced celery, red onion, salt, pepper, and a squeeze of lemon. Taste and adjust seasoning.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pile tuna mixture on rye. Layer Swiss cheese on top. Broil or use flat-top press until cheese melts and bread is golden.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Slice diagonally. Serve open-face with dill pickle slices and a small side salad.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Always press the tuna melt with weight — an open broil gives uneven heat. The press ensures uniform cheese melt and crisp bread.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Fish</span>
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+<span class="a">Celery</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">12-Hr Brisket Sandwich</div><div class="rh-sub">Low-and-slow beef brisket · horseradish cream · toasted challah</div></div>
+    <div class="rh-meta"><div class="price">$22.99</div><div class="fc">Food cost 23.4%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-213?seed=213&width=800&height=360&nologo=true" alt="12-Hr Brisket Sandwich" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Beef brisket (5oz, braised)</td><td>.90</td></tr>
+<tr><td>Challah bread (2 thick slices)</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Horseradish cream (2 tbsp)</td><td>/tmp/build_nyc_mains.pl.30</td></tr>
+<tr><td>Caramelised onion</td><td>/tmp/build_nyc_mains.pl.22</td></tr>
+<tr><td>Au jus (for dipping, 3oz)</td><td>/tmp/build_nyc_mains.pl.25</td></tr>
+<tr><td>Pickled jalapeño (optional)</td><td>/tmp/build_nyc_mains.pl.08</td></tr>
+<tr><td>Total food cost</td><td>.30</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Braise brisket 12 hrs at 300°F with beef stock, onion, garlic, thyme. Rest 30 min, slice against grain at 6mm thickness.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Toast challah on flat-top with a touch of butter. Spread horseradish cream on both sides. Add caramelised onion.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Pile brisket slices. Serve with warm au jus in a small ramekin for dipping. Optional pickled jalapeño on the side.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Slice brisket to order — never pre-slice. A pre-sliced brisket dries out within 20 minutes. The au jus also rescues any slightly dry slices.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+<span class="a">Celery</span>
+<span class="a">Sulphites</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">NYC Steak &amp; Eggs</div><div class="rh-sub">6oz hanger steak · 2 eggs any style · hash browns · toast</div></div>
+    <div class="rh-meta"><div class="price">$24.99</div><div class="fc">Food cost 24.1%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-214?seed=214&width=800&height=360&nologo=true" alt="NYC Steak &amp; Eggs" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Hanger steak (6oz)</td><td>.20</td></tr>
+<tr><td>Eggs (2)</td><td>/tmp/build_nyc_mains.pl.40</td></tr>
+<tr><td>Hash browns (150g)</td><td>/tmp/build_nyc_mains.pl.55</td></tr>
+<tr><td>Rye toast (2 slices)</td><td>/tmp/build_nyc_mains.pl.45</td></tr>
+<tr><td>Compound butter</td><td>/tmp/build_nyc_mains.pl.15</td></tr>
+<tr><td>Steak seasoning</td><td>/tmp/build_nyc_mains.pl.05</td></tr>
+<tr><td>Total food cost</td><td>.80</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Season hanger steak generously with salt and pepper. Sear on screaming-hot cast iron or flat-top, 3 min each side for medium-rare. Rest 3 min minimum.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">While steak rests, cook eggs to order and fry hash browns until golden and crispy on flat-top.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Slice steak against the grain. Plate with eggs, hash browns, and rye toast. Finish steak with compound butter.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Hanger steak must be served medium-rare to medium. Well-done hanger is chewy and loses all its charm. Politely communicate this to guests.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Egg</span>
+<span class="a">Dairy</span>
+<span class="a">Celery</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Bodega Breakfast Burrito</div><div class="rh-sub">Scrambled eggs · chorizo · pepper jack · home fries · flour tortilla</div></div>
+    <div class="rh-meta"><div class="price">$16.99</div><div class="fc">Food cost 20.7%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dish-plated-professional-215?seed=215&width=800&height=360&nologo=true" alt="Bodega Breakfast Burrito" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Eggs (3, scrambled)</td><td>/tmp/build_nyc_mains.pl.60</td></tr>
+<tr><td>Chorizo (2oz)</td><td>/tmp/build_nyc_mains.pl.85</td></tr>
+<tr><td>Pepper jack cheese</td><td>/tmp/build_nyc_mains.pl.40</td></tr>
+<tr><td>Home fries (100g)</td><td>/tmp/build_nyc_mains.pl.40</td></tr>
+<tr><td>Large flour tortilla</td><td>/tmp/build_nyc_mains.pl.35</td></tr>
+<tr><td>Salsa, sour cream</td><td>/tmp/build_nyc_mains.pl.25</td></tr>
+<tr><td>Total food cost</td><td>.85</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Cook chorizo on flat-top until crispy. Scramble eggs softly — pull off heat while still slightly wet. Home fries: crispy on flat-top with peppers and onion.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Warm tortilla on flat-top 30 seconds. Layer: eggs, chorizo, home fries, cheese. Fold tightly burrito-style.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Press folded burrito seam-down on flat-top 2 min. Slice in half on the diagonal. Serve with salsa and sour cream.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: The press step seals the burrito and crisps the outside. Never skip it. A soggy, unfolded burrito is a complaint waiting to happen.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Egg</span>
+<span class="a">Dairy</span>
+</div></div></div>
+
+<h2 class="section-title">Section 3 — Desserts</h2>
+<p class="section-sub">4 classic NYC sweet endings · seeds 216–219</p>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">NY Cheesecake</div><div class="rh-sub">New York-style baked · graham crust · sour cream top</div></div>
+    <div class="rh-meta"><div class="price">$9.99</div><div class="fc">Food cost 21.2%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dessert-plated-216?seed=216&width=800&height=360&nologo=true" alt="NY Cheesecake" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Cream cheese (120g)</td><td>/tmp/build_nyc_desserts_drinks.pl.90</td></tr>
+<tr><td>Graham crust (1 slice worth)</td><td>/tmp/build_nyc_desserts_drinks.pl.35</td></tr>
+<tr><td>Sour cream top</td><td>/tmp/build_nyc_desserts_drinks.pl.22</td></tr>
+<tr><td>Eggs (1.5)</td><td>/tmp/build_nyc_desserts_drinks.pl.30</td></tr>
+<tr><td>Sugar, vanilla</td><td>/tmp/build_nyc_desserts_drinks.pl.18</td></tr>
+<tr><td>Berry coulis (optional)</td><td>/tmp/build_nyc_desserts_drinks.pl.15</td></tr>
+<tr><td>Total food cost</td><td>.10</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Bake cheesecakes as whole cakes in water bath at 325°F for 55 min. Cool in oven with door cracked 1 hr to prevent cracking. Refrigerate overnight.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pre-slice into 12 portions per cake. Store on parchment-lined tray in fridge.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Plate: slice on plate with spoon of sour cream and optional berry coulis. Serve at fridge-cold temperature.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Never rush the cooling. A cheesecake cracked through the centre is still delicious but unsellable at full price — do the water bath every time.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Black &amp; White Cookie</div><div class="rh-sub">NYC classic · vanilla-lemon cake cookie · half-half fondant icing</div></div>
+    <div class="rh-meta"><div class="price">$5.99</div><div class="fc">Food cost 18.5%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dessert-plated-217?seed=217&width=800&height=360&nologo=true" alt="Black &amp; White Cookie" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Cake flour, butter, eggs</td><td>/tmp/build_nyc_desserts_drinks.pl.45</td></tr>
+<tr><td>Vanilla &amp; lemon extract</td><td>/tmp/build_nyc_desserts_drinks.pl.08</td></tr>
+<tr><td>White fondant icing</td><td>/tmp/build_nyc_desserts_drinks.pl.25</td></tr>
+<tr><td>Dark chocolate fondant</td><td>/tmp/build_nyc_desserts_drinks.pl.22</td></tr>
+<tr><td>Total food cost</td><td>.00</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Bake cakey cookie rounds at 375°F for 12 min. Cool completely on wire rack — do not rush.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Flip cookie flat-side up. Ice one half white (vanilla), other half dark chocolate. Use an offset spatula for a clean centre line.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Allow icing to set 20 min before serving or packaging. Store at room temp, never refrigerated (fridge makes fondant weep).</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: The line between the two icings must be perfectly straight. Use a ruler guide or tape template on first batches until staff nail the technique.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Chocolate Babka Slice</div><div class="rh-sub">Brioche swirl · dark chocolate · toasted hazelnuts</div></div>
+    <div class="rh-meta"><div class="price">$7.99</div><div class="fc">Food cost 20.4%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dessert-plated-218?seed=218&width=800&height=360&nologo=true" alt="Chocolate Babka Slice" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Babka loaf (per slice cost)</td><td>/tmp/build_nyc_desserts_drinks.pl.95</td></tr>
+<tr><td>Dark chocolate filling</td><td>/tmp/build_nyc_desserts_drinks.pl.40</td></tr>
+<tr><td>Hazelnut praline</td><td>/tmp/build_nyc_desserts_drinks.pl.20</td></tr>
+<tr><td>Glaze (sugar syrup)</td><td>/tmp/build_nyc_desserts_drinks.pl.08</td></tr>
+<tr><td>Total food cost</td><td>.63</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Bake babka loaves fresh daily. Recipe: enriched brioche dough filled with dark chocolate paste, rolled and twisted, baked 40 min at 350°F.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Brush with sugar syrup immediately out of oven for shine and moisture retention.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Slice to order at 3cm thickness. Warm briefly in oven 3 min or serve at room temp. Plate with a dusting of cocoa powder.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Pre-slice babka the night before and it dries out fast. Always slice to order. A brief warm in the oven transforms it from good to extraordinary.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Gluten</span>
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+<span class="a">Tree Nuts</span>
+</div></div></div>
+
+<div class="recipe">
+  <div class="rh">
+    <div><div class="rh-title">Egg Cream Float</div><div class="rh-sub">Chocolate syrup · cold whole milk · seltzer · vanilla ice cream</div></div>
+    <div class="rh-meta"><div class="price">$7.50</div><div class="fc">Food cost 17.8%</div></div>
+  </div>
+  <div class="photo-box"><img src="https://image.pollinations.ai/prompt/nyc-deli-dessert-plated-219?seed=219&width=800&height=360&nologo=true" alt="Egg Cream Float" loading="lazy"></div>
+  <div class="rm">
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients &amp; Costs</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Fox's U-Bet chocolate syrup (2oz)</td><td>/tmp/build_nyc_desserts_drinks.pl.35</td></tr>
+<tr><td>Whole milk (3oz)</td><td>/tmp/build_nyc_desserts_drinks.pl.22</td></tr>
+<tr><td>Seltzer (6oz)</td><td>/tmp/build_nyc_desserts_drinks.pl.05</td></tr>
+<tr><td>Vanilla ice cream (1 scoop)</td><td>/tmp/build_nyc_desserts_drinks.pl.45</td></tr>
+<tr><td>Total food cost</td><td>.07</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Add chocolate syrup to chilled tall glass. Pour cold whole milk over syrup — do not stir yet.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Slowly pour ice-cold seltzer down the side of the glass. Stir from the bottom up with a long spoon — just 2–3 strokes.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Add one scoop of vanilla ice cream. Serve immediately with a straw and long spoon.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Chef's Tip: Fox's U-Bet is non-negotiable. No substitute creates the same flavour. Seltzer must be ice-cold. Warm seltzer = flat foam. Keep CO2 pressure high.</div>
+    <div class="cs">Allergens:</div><div class="al">
+<span class="a">Dairy</span>
+<span class="a">Egg</span>
+</div></div></div>
+
+<h2 class="section-title">Section 4 — Drinks</h2>
+<p class="section-sub">8 deli classics &amp; house-made beverages · seeds 220–227</p>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Bottomless Deli Coffee</div>
+    <div class="drink-price">$4.00</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-220?seed=220&width=800&height=220&nologo=true" alt="Bottomless Deli Coffee" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">House blend drip · unlimited refills · the NYC ritual &nbsp;·&nbsp; Food cost 12.5%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Coffee grounds (12g per cup)</td><td>/tmp/build_nyc_desserts_drinks.pl.18</td></tr>
+<tr><td>Water</td><td>/tmp/build_nyc_desserts_drinks.pl.01</td></tr>
+<tr><td>Milk/cream (optional)</td><td>/tmp/build_nyc_desserts_drinks.pl.06</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc_desserts_drinks.pl.19</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Brew fresh every 30 minutes maximum. Never hold coffee beyond 45 min on the burner.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Serve in classic deli white mug, already warmed. Fill to 1cm from rim.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Refill proactively without being asked — that is the deli way.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Bottomless coffee drives loyalty. The cost is almost nothing. The goodwill is everything. Track refill frequency to understand guest dwell time.</div>
+<div class="al"><span class="a">Dairy (if cream added)</span></div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Classic Egg Cream</div>
+    <div class="drink-price">$5.50</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-221?seed=221&width=800&height=220&nologo=true" alt="Classic Egg Cream" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Fox's U-Bet · whole milk · ice-cold seltzer · no egg, no cream &nbsp;·&nbsp; Food cost 14.2%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Fox's U-Bet chocolate syrup (2oz)</td><td>/tmp/build_nyc_desserts_drinks.pl.35</td></tr>
+<tr><td>Whole milk (3oz, cold)</td><td>/tmp/build_nyc_desserts_drinks.pl.22</td></tr>
+<tr><td>Seltzer (6oz, ice-cold)</td><td>/tmp/build_nyc_desserts_drinks.pl.05</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc_desserts_drinks.pl.62</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Add 2oz chocolate syrup to tall chilled glass. Pour cold milk over.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Blast with ice-cold seltzer. Stir from the bottom 2–3 times only.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve immediately in a tall glass. The frothy head is the signature — do not let it sit.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; An egg cream must be made and served in under 90 seconds. It deflates quickly. Teach staff to make it at the counter, not walk it across the room.</div>
+<div class="al"><span class="a">Dairy</span></div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Fresh OJ</div>
+    <div class="drink-price">$6.00</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-222?seed=222&width=800&height=220&nologo=true" alt="Fresh OJ" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Squeezed to order · Valencia oranges · no pulp option &nbsp;·&nbsp; Food cost 20.8%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Valencia oranges (4 medium)</td><td>/tmp/build_nyc_desserts_drinks.pl.90</td></tr>
+<tr><td>Ice (optional)</td><td>/tmp/build_nyc_desserts_drinks.pl.02</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc_desserts_drinks.pl.92</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Squeeze 4 oranges per glass to order using electric juicer. Do not pre-squeeze.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Serve in a chilled glass, over ice or straight depending on guest preference.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Garnish with a small orange wedge on the rim.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Post a 'Squeezed to Order' sign at the counter. Guests pay the premium when they see and hear it being made. Pre-squeezed OJ destroys margin and trust.</div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Celery Soda</div>
+    <div class="drink-price">$4.50</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-223?seed=223&width=800&height=220&nologo=true" alt="Celery Soda" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Dr Brown's · the original deli soda · ice-cold &nbsp;·&nbsp; Food cost 18.9%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Dr Brown's Cel-Ray (12oz can)</td><td>/tmp/build_nyc_desserts_drinks.pl.65</td></tr>
+<tr><td>Ice</td><td>/tmp/build_nyc_desserts_drinks.pl.02</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc_desserts_drinks.pl.67</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Serve ice-cold in a tall glass over ice.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pour slowly to preserve carbonation.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">No garnish needed — this drink is iconic as-is.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Stock Dr Brown's Black Cherry and Cream Soda alongside Cel-Ray. Guests who order one will often try another next visit. It is a flavour discovery moment.</div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Vanilla Egg Cream</div>
+    <div class="drink-price">$5.50</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-224?seed=224&width=800&height=220&nologo=true" alt="Vanilla Egg Cream" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Vanilla syrup · whole milk · seltzer · frothy &amp; sweet &nbsp;·&nbsp; Food cost 14.5%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Vanilla syrup (2oz, house-made)</td><td>/tmp/build_nyc_desserts_drinks.pl.28</td></tr>
+<tr><td>Whole milk (3oz, cold)</td><td>/tmp/build_nyc_desserts_drinks.pl.22</td></tr>
+<tr><td>Seltzer (6oz, ice-cold)</td><td>/tmp/build_nyc_desserts_drinks.pl.05</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc_desserts_drinks.pl.55</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Add 2oz vanilla syrup to chilled tall glass.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Pour cold milk, then blast with ice-cold seltzer. Stir from the bottom only.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve immediately with a straw.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; House-made vanilla syrup (simple syrup infused with vanilla bean) is far superior to purchased. Make weekly batches. The difference is noticeable.</div>
+<div class="al"><span class="a">Dairy</span></div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Iced Tea &amp; Lemon</div>
+    <div class="drink-price">$4.50</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-225?seed=225&width=800&height=220&nologo=true" alt="Iced Tea &amp; Lemon" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">House-brewed black tea · fresh lemon · served over ice &nbsp;·&nbsp; Food cost 11.8%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Black tea (4 bags, brewed)</td><td>/tmp/build_nyc_desserts_drinks.pl.15</td></tr>
+<tr><td>Lemon (1/2, freshly squeezed)</td><td>/tmp/build_nyc_desserts_drinks.pl.20</td></tr>
+<tr><td>Cane sugar syrup (optional)</td><td>/tmp/build_nyc_desserts_drinks.pl.05</td></tr>
+<tr><td>Total food cost</td><td>/tmp/build_nyc_desserts_drinks.pl.40</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Brew strong black tea, cool to room temperature. Never refrigerate hot tea directly.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Fill tall glass with ice. Pour tea. Squeeze half a lemon directly in.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve with a lemon slice on the rim and sugar syrup on the side for those who want it sweet.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Brew tea in large batches (1 gallon at a time) every 3–4 hours during service. Never serve day-old iced tea — it turns bitter and cloudy.</div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Cream Soda Float</div>
+    <div class="drink-price">$7.50</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-226?seed=226&width=800&height=220&nologo=true" alt="Cream Soda Float" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Dr Brown's Cream Soda · vanilla ice cream · whipped cream &nbsp;·&nbsp; Food cost 19.6%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Dr Brown's Cream Soda (12oz)</td><td>/tmp/build_nyc_desserts_drinks.pl.65</td></tr>
+<tr><td>Vanilla ice cream (2 scoops)</td><td>/tmp/build_nyc_desserts_drinks.pl.90</td></tr>
+<tr><td>Whipped cream</td><td>/tmp/build_nyc_desserts_drinks.pl.20</td></tr>
+<tr><td>Cherry (garnish)</td><td>/tmp/build_nyc_desserts_drinks.pl.08</td></tr>
+<tr><td>Total food cost</td><td>.83</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Chill a tall glass. Add 2 scoops vanilla ice cream.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Slowly pour Dr Brown's Cream Soda over the scoops — it will foam up dramatically.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Top with whipped cream and a maraschino cherry. Serve with a long spoon and straw.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; The float is a theatre dish. Make it at the counter where guests can see. It photographs beautifully and drives social sharing.</div>
+<div class="al"><span class="a">Dairy</span><span class="a">Egg</span></div>
+</div></div>
+
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Rich Hot Chocolate</div>
+    <div class="drink-price">$5.50</div>
+  </div>
+  <div class="photo-box drink"><img src="https://image.pollinations.ai/prompt/nyc-deli-drink-beverage-styled-227?seed=227&width=800&height=220&nologo=true" alt="Rich Hot Chocolate" loading="lazy"></div>
+  <div class="rm">
+    <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Valrhona dark cocoa · steamed whole milk · marshmallow &nbsp;·&nbsp; Food cost 16.4%</div>
+    <div class="two-col">
+      <div><div class="cc"><h4>Ingredients</h4>
+      <table class="it"><tr><th>Ingredient</th><th>Cost</th></tr>
+<tr><td>Valrhona cocoa powder (15g)</td><td>/tmp/build_nyc_desserts_drinks.pl.45</td></tr>
+<tr><td>Whole milk (10oz)</td><td>/tmp/build_nyc_desserts_drinks.pl.40</td></tr>
+<tr><td>Cane sugar (1 tsp)</td><td>/tmp/build_nyc_desserts_drinks.pl.03</td></tr>
+<tr><td>House marshmallow (2)</td><td>/tmp/build_nyc_desserts_drinks.pl.15</td></tr>
+<tr><td>Total food cost</td><td>.03</td></tr>
+</table></div></div>
+      <div><div class="cc"><h4>Method</h4>
+<div class="step"><div class="sn">1</div><div class="st">Dissolve cocoa and sugar in 2oz hot water to make a paste. This prevents lumps.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Steam whole milk to 65°C / 150°F. Pour over cocoa paste, whisk vigorously.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve in a wide ceramic mug topped with house-made marshmallows.</div></div>
+</div></div></div>
+    <div class="tb">&#128161; Use Valrhona or equivalent quality cocoa only. The difference between premium and generic cocoa in hot chocolate is staggering. Do not cut corners here.</div>
+<div class="al"><span class="a">Dairy</span><span class="a">Egg (marshmallow)</span></div>
+</div></div>
+
+<h2 class="section-title">Section 5 — Service Training Module</h2>
+<div class="info-box">These are not suggestions. They are scripts. The difference between a $28 average spend and a $42 average spend is almost entirely how your team communicates. Read these, practice them out loud, then make them yours.</div>
+
+<h3>The 5 Upsell Scripts</h3>
+
+<div class="script-box">
+<span class="script-label">Script 1 — The Pairing</span>
+<p><em>"That lox board is incredible with our egg cream — the sweetness cuts right through the richness of the fish. Want one? It only takes 30 seconds to make."</em></p>
+<p style="margin-top:8px;font-size:11px;color:#666;"><strong>Why it works:</strong> You're giving them a flavour reason, not just a sales pitch. "Incredible with" feels like a recommendation from a friend, not a server chasing a tip.</p>
+</div>
+
+<div class="script-box">
+<span class="script-label">Script 2 — The Upgrade</span>
+<p><em>"You want that egg and cheese with pastrami instead of bacon? It's $3 more and honestly it's a completely different sandwich. Worth it every time."</em></p>
+<p style="margin-top:8px;font-size:11px;color:#666;"><strong>Why it works:</strong> "Honestly" signals authenticity. "Worth it every time" is social proof without being fake. The $3 framing makes it feel small.</p>
+</div>
+
+<div class="script-box">
+<span class="script-label">Script 3 — The Dessert Plant</span>
+<p><em>"When I put your order in — just letting you know, our cheesecake sells out by noon most days. Want me to hold a slice for you now so you're not disappointed later?"</em></p>
+<p style="margin-top:8px;font-size:11px;color:#666;"><strong>Why it works:</strong> Scarcity is real (or should be — make it real). The offer to "hold a slice" makes the guest feel looked after, not sold to. Say this when you take the main course order, every time.</p>
+</div>
+
+<div class="script-box">
+<span class="script-label">Script 4 — The Share Suggestion</span>
+<p><em>"A lot of tables get the pickle plate while they're looking at the menu — it's $9.99 and it's already sitting on the counter. Want one for the table while you decide?"</em></p>
+<p style="margin-top:8px;font-size:11px;color:#666;"><strong>Why it works:</strong> "Already sitting on the counter" reduces perceived effort. "A lot of tables" is social proof. Zero pressure — just an offer. Converts on 50%+ of tables when said confidently.</p>
+</div>
+
+<div class="script-box">
+<span class="script-label">Script 5 — The Regular Builder</span>
+<p><em>"Are you nearby? We do a loyalty stamp card — tenth coffee is free. Worth grabbing one if you're in the area a lot."</em></p>
+<p style="margin-top:8px;font-size:11px;color:#666;"><strong>Why it works:</strong> Plants the idea of returning without being pushy. The card becomes a physical reminder of your cafe in their wallet. Offer to first-time customers who seem local.</p>
+</div>
+
+<h3>Menu Philosophy — What to Say</h3>
+<div class="info-box"><strong>When someone asks "what kind of food is this?"</strong> — say this: <em>"It's New York deli food done properly — proper pastrami, real schmear, good coffee, honest prices. The kind of place that used to be on every corner."</em></div>
+
+<h3>Story Cards</h3>
+<div class="tb"><strong>When describing Entrees:</strong> "Our starters are classic New York deli culture — the pickle plate, the lox board, the liver toast. These are dishes that have been feeding this city for a hundred years. We just make sure they're done right."</div>
+<div class="tb"><strong>When describing Mains:</strong> "The mains are the heart of it — the Reuben, the pastrami on rye, the smash burger. Everything is made to order. The brisket is 12 hours. We don't rush anything."</div>
+<div class="tb"><strong>When describing Drinks:</strong> "Our coffee is bottomless filter — old school deli style. The egg cream is a New York institution — chocolate syrup, seltzer, whole milk. Try it once and you'll understand."</div>
+
+<h3>How to Answer "What's Good Here?"</h3>
+<div class="script-box">
+<span class="script-label">Confident Answer</span>
+<p><em>"Honestly? Start with the pickle plate — it comes out immediately and it's our best value. For mains, the pastrami on rye is what we're known for — 12-hour cured, sliced thick. If you want something more filling, the Reuben or the brisket sandwich. And get the egg cream — most people haven't had a real one before."</em></p>
+</div>
+
+<h3>Table Timing Guide</h3>
+<table class="schedule-table">
+<tr><th>Time</th><th>Action</th></tr>
+<tr><td>0:00</td><td>Greet within 60 seconds. Make eye contact. Smile. "Welcome in, grab any table you like."</td></tr>
+<tr><td>1:00</td><td>Return with water and menus. Ask if they've been in before — if no, give the 30-second menu tour.</td></tr>
+<tr><td>2:00</td><td>Offer the pickle plate proactively: "While you're deciding — our house pickles?" Take drinks order.</td></tr>
+<tr><td>5:00</td><td>Take food order. Use Script 1 (pairing) and Script 2 (upgrade) naturally in the conversation.</td></tr>
+<tr><td>6:00</td><td>Plant the dessert (Script 3) when submitting the food order. "Just so you know, cheesecake goes fast..."</td></tr>
+<tr><td>15:00</td><td>Check in 2-3 minutes after food arrives. "How's everything tasting?" Then step away — do not hover.</td></tr>
+<tr><td>25:00</td><td>Offer coffee refill (bottomless). Check if they want dessert if you planted it earlier.</td></tr>
+<tr><td>30:00</td><td>Drop bill only when they signal or after 35+ minutes. Offer loyalty card to new guests. Warm goodbye by name if you learned it.</td></tr>
+</table>
+
+<h3>Handling Objections</h3>
+<div class="script-box">
+<span class="script-label">"It's a bit expensive..."</span>
+<p><em>"I hear you — the pastrami is $21.99 but it's 12-hour cured and sliced thick, you're genuinely getting more than you'd expect. If you want something lighter on the wallet, the egg and cheese is $11.99 and it's honestly one of our best sellers."</em></p>
+</div>
+<div class="script-box">
+<span class="script-label">"I'm not that hungry..."</span>
+<p><em>"No problem — the knish or the pickle plate are perfect for that. Or the matzo ball soup is light but really satisfying. Plenty of options that won't leave you overfull."</em></p>
+</div>
+<div class="script-box">
+<span class="script-label">"Just water please..."</span>
+<p><em>"Of course, no problem. Just so you know our deli coffee is bottomless — it's $4 and you can sit here all morning with refills. A lot of people come in just for that."</em></p>
+</div>
+<div class="script-box">
+<span class="script-label">"We're in a rush..."</span>
+<p><em>"Got it — the egg and cheese is 4 minutes flat, and the knish is 6. I'll put it in right now and flag it as priority. You'll be out in 15 minutes."</em></p>
+</div>
+
+<h2 class="section-title">Section 6 — Customer Retention System</h2>
+<div class="info-box">Acquiring a new customer costs 5x more than keeping an existing one. Your regulars are your business. These systems are simple, free, and devastatingly effective. No CRM software needed — just attention and a notebook.</div>
+
+<h3>The Regulars Notebook</h3>
+<p>Keep a small notebook near the POS. Every time you learn something about a regular, write it down. Name, usual order, allergies, how they take their coffee, what days they come in. That's it. Review it before service.</p>
+<div class="info-box"><strong>The 3-Visit Rule:</strong><br>
+<strong>Visit 1:</strong> Remember their face. Smile like you recognise them even if you don't quite yet.<br>
+<strong>Visit 2:</strong> Learn their name. "I feel like I've seen you before — I'm [name], what's yours?" Natural, not scripted.<br>
+<strong>Visit 3:</strong> They are a regular now. Remember their order. "The usual?" is the most powerful two-word phrase in hospitality.</div>
+
+<h3>5 VIP Micro-Moments</h3>
+<p><strong>1. The Pre-Emptive Pickle.</strong> When a regular sits down, bring the pickle plate before they ask. No charge. It costs you $0.80 and earns you loyalty worth $500 over a year.</p>
+<p><strong>2. "Still black coffee?"</strong> Remembering how someone takes their coffee is worth more than any loyalty card program. Write it down after visit 2. Say it naturally on visit 3.</p>
+<p><strong>3. "Fresh rye just came out."</strong> Text your regulars or tell them in person when something good just happened in the kitchen. It makes them feel like insiders.</p>
+<p><strong>4. The Free Refill.</strong> For morning regulars who are clearly working from your cafe, bring a fresh coffee refill without being asked and without charging. They will be back tomorrow.</p>
+<p><strong>5. The Name Drop.</strong> When a regular walks in and there is a short wait: "Hey [name], give me 2 minutes, I'll get your table sorted." They feel seen. They come back. They bring their friends.</p>
+
+<h3>Complaint Recovery — The 3-Step Method</h3>
+<div class="info-box"><strong>Step 1 — Listen fully.</strong> Do not interrupt. Do not defend. Do not explain. Let them finish completely. Nod. Make eye contact. This alone defuses 40% of complaints before you say a word.</div>
+<div class="info-box"><strong>Step 2 — Acknowledge and own it.</strong> Say exactly this: <em>"You're completely right and I'm sorry — that's not the experience you should have had here. That's on us."</em> Do not blame the kitchen, the rush, or anything else. Own it fully. Guests respect that immediately.</div>
+<div class="info-box"><strong>Step 3 — Fix it and add a gesture.</strong> Fix the problem immediately — replace the dish, remake the drink, whatever it takes. Then add: <em>"Your dessert is on us today, and I want to give you this for next time"</em> — hand them a card for a free coffee. Total cost to you: $3-5. Value of a recovered regular: hundreds of dollars.</div>
+
+<h3>Social Media Content System</h3>
+<p><strong>Best 5 dishes to photograph and why:</strong></p>
+<p><strong>1. The Reuben:</strong> The cross-section shot — cut it in half, photograph the layers of pastrami and melted Swiss against the rye. Steam if possible. This is your most shareable image.</p>
+<p><strong>2. The Bagel Board:</strong> Overhead flat-lay of the full board — the colours of lox, white schmear, red onion, green dill on natural wood. Classic Instagram composition. No filter needed.</p>
+<p><strong>3. The Egg Cream:</strong> Action shot while mixing — the foam forming at the top as you pour the seltzer. Capture the New York nostalgia in motion.</p>
+<p><strong>4. The Cheesecake:</strong> Side-on shot of a thick slice — the dense white filling, the brown graham cracker base. Simple, clean, instantly recognisable.</p>
+<p><strong>5. The Pickle Plate:</strong> The whole spread on the wooden board — three types of pickle, glistening brine, fresh dill. This photograph makes people hungry and curious simultaneously.</p>
+
+<p style="margin-top:12px;"><strong>Post Timing:</strong> Tuesday and Thursday 7:30-8:30am (before your morning crowd arrives — post the plate you want to sell that day). Friday 12-1pm (lunch rush anticipation). Sunday 10am (brunch desire is peak on Sunday morning).</p>
+
+<p style="margin-top:12px;"><strong>Caption Formula: Hook + Story + CTA</strong></p>
+<div class="script-box"><span class="script-label">Example Caption 1 — Reuben</span><p>The Reuben debate ends here. [Hook]<br>12-hour cured pastrami, Gruyere melted into every layer, sauerkraut that's been fermenting since Tuesday. On rye that came out of the oven this morning. [Story]<br>Come settle it for yourself. We're open 7am. [CTA]</p></div>
+<div class="script-box"><span class="script-label">Example Caption 2 — Bagel Board</span><p>Sunday morning deserves this. [Hook]<br>House-sliced Nova lox, schmear we make in-house, everything bagel still warm. The kind of breakfast your grandmother would approve of. [Story]<br>Walk-ins welcome. Corner table is waiting. [CTA]</p></div>
+
+<h3>Neighborhood Anchor Strategy</h3>
+<p><strong>Partner 1 — The Morning Coffee Shop:</strong> Cross-promote with a nearby coffee-only spot. You send them people who just want a quick takeaway coffee; they send you people who want a proper meal. Give each other 10% discount cards to hand out. Zero cost, mutual benefit.</p>
+<p><strong>Partner 2 — The Office Building:</strong> Introduce yourself to the office manager of the nearest large building. Offer a standing catering order for Friday team lunches — pre-ordered Reubens and brisket sandwiches delivered at 12:30. One building can add $400-600 to your Friday revenue permanently.</p>
+<p><strong>Partner 3 — The Bookshop or Independent Retailer:</strong> Partner with a nearby independent business — leave your menus there, they leave their flyers here. Run a "bring your receipt" promotion: show their receipt, get $2 off your lunch. Drives foot traffic from their loyal customers to yours.</p>
+<p style="margin-top:10px;"><strong>Weekly Special:</strong> "Friday Pastrami Day" — the full pastrami platter at $4 off, available only on Fridays from 11am. Creates a weekly ritual. Regulars plan their week around it. Post it every Thursday night on social.</p>
+
+<h2 class="section-title">Section 7 — Revenue Model</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">$2,850</div><div class="kpi-lbl">Daily Target</div></div>
+  <div class="kpi"><div class="kpi-val">26%</div><div class="kpi-lbl">Food Cost</div></div>
+  <div class="kpi"><div class="kpi-val">29%</div><div class="kpi-lbl">Labour Cost</div></div>
+  <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-lbl">Overhead</div></div>
+  <div class="kpi"><div class="kpi-val">23%</div><div class="kpi-lbl">Net Margin</div></div>
+</div>
+
+<table class="revenue-table">
+<tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Revenue</th></tr>
+<tr><td>Breakfast (7am-11am)</td><td>30</td><td>$22</td><td>$660</td></tr>
+<tr><td>Lunch (11am-3pm)</td><td>50</td><td>$38</td><td>$1,900</td></tr>
+<tr><td>Total Daily</td><td>80</td><td>$32</td><td>$2,560</td></tr>
+<tr><td>With upsells (+12%)</td><td>—</td><td>—</td><td>$2,867</td></tr>
+</table>
+
+<table class="revenue-table">
+<tr><th>Cost Category</th><th>%</th><th>Daily $</th><th>Monthly $</th></tr>
+<tr><td>Food &amp; Beverage</td><td>26%</td><td>$745</td><td>$18,625</td></tr>
+<tr><td>Labour (2 kitchen + 1 floor)</td><td>29%</td><td>$831</td><td>$20,775</td></tr>
+<tr><td>Rent &amp; Overhead</td><td>22%</td><td>$631</td><td>$15,775</td></tr>
+<tr><td><strong>Net Profit</strong></td><td><strong>23%</strong></td><td><strong>$659</strong></td><td><strong>$18,525</strong></td></tr>
+</table>
+
+<div class="info-box"><strong>The Upsell Multiplier:</strong> Every $3 upsell (bacon add-on, drink pairing, dessert) across 50% of your 80 daily covers adds $120/day — that is $3,000/month in pure margin improvement from training your team to say one extra sentence. This is why the Service Training section exists. The recipes get people in. The scripts make you profitable.</div>
+
+<div class="ft"><span>NYC Bodega Elevated — Profitable Cafe Operations Guide</span><span>&copy; 2024 &middot; Professional Use Only &middot; Not for Redistribution</span></div>
+</div>
+</body>
+</html>

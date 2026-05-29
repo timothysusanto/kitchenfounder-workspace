@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>KitchenFounder — Restaurant Food Cost Calculator</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#FAFAF8;font-family:'Arial',sans-serif;color:#1C1C1C;padding:40px;}
+.page{max-width:900px;margin:0 auto;}
+.cover{background:#1C1C1C;color:#FAFAF8;padding:48px;margin-bottom:40px;border-radius:4px;}
+.cover-eye{color:#C0392B;font-family:'Courier New',monospace;font-size:13px;letter-spacing:4px;margin-bottom:16px;}
+.cover-title{font-size:52px;font-weight:900;line-height:1.1;margin-bottom:12px;}
+.cover-sub{color:rgba(250,250,248,0.6);font-size:18px;margin-bottom:32px;}
+.cover-price{display:inline-block;background:#C0392B;color:#FAFAF8;padding:12px 28px;font-size:24px;font-weight:700;border-radius:2px;}
+.cover-note{margin-top:16px;color:rgba(250,250,248,0.4);font-size:13px;font-family:'Courier New',monospace;}
+h2{font-size:22px;font-weight:700;margin:40px 0 20px;padding-bottom:8px;border-bottom:3px solid #C0392B;}
+.intro{background:#fff;border:1px solid #e8e4de;border-left:4px solid #C0392B;padding:24px;margin-bottom:32px;font-size:15px;line-height:1.8;}
+.calc-section{background:#fff;border:1px solid #e8e4de;padding:28px;margin-bottom:28px;border-radius:4px;}
+.calc-title{font-size:18px;font-weight:700;margin-bottom:6px;color:#C0392B;}
+.calc-sub{font-size:13px;color:#888;margin-bottom:20px;font-family:'Courier New',monospace;}
+table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+th{background:#1C1C1C;color:#FAFAF8;padding:10px 14px;text-align:left;font-size:13px;}
+td{padding:10px 14px;border-bottom:1px solid #f0ece6;font-size:14px;}
+.formula-box{background:#1C1C1C;color:#FAFAF8;padding:20px 24px;border-radius:4px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;line-height:2;}
+.formula-box .label{color:#C0392B;font-size:11px;letter-spacing:2px;margin-bottom:8px;display:block;}
+.result-row td{background:#C0392B;color:#FAFAF8;font-weight:700;}
+.target-box{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0;}
+.target{background:#FAFAF8;border:1px solid #e8e4de;padding:16px;border-radius:4px;text-align:center;}
+.target-val{font-size:24px;font-weight:700;color:#C0392B;font-family:'Courier New',monospace;}
+.target-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.tip{background:#FAFAF8;border-left:3px solid #C0392B;padding:14px 18px;margin:16px 0;font-size:14px;line-height:1.7;}
+.step-item{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start;}
+.step-num{background:#C0392B;color:#FAFAF8;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;min-width:32px;}
+.step-content{flex:1;padding-top:4px;font-size:14px;line-height:1.7;}
+.step-content strong{display:block;margin-bottom:4px;}
+.fi{background:#1C1C1C;color:#C0392B;padding:2px 7px;border-radius:2px;font-family:'Courier New',monospace;font-size:13px;}
+.benchmark{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.bench-card{background:#fff;border:1px solid #e8e4de;padding:20px;border-radius:4px;}
+.bench-cuisine{font-weight:700;font-size:15px;margin-bottom:8px;}
+.bench-target{font-size:24px;font-weight:700;color:#C0392B;font-family:'Courier New',monospace;}
+.bench-range{font-size:12px;color:#888;margin-top:4px;}
+.bench-why{font-size:13px;color:#555;margin-top:8px;line-height:1.5;}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid #e8e4de;text-align:center;font-size:12px;color:#aaa;font-family:'Courier New',monospace;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div class="cover-eye">KITCHENFOUNDER · DIGITAL TOOL</div>
+  <div class="cover-title">Restaurant<br>Food Cost<br>Calculator</div>
+  <div class="cover-sub">Calculate exact food cost % for every dish on your menu.<br>Built for first-time operators. US market 2025.</div>
+  <div class="cover-price">$19.99</div>
+  <div class="cover-note">Google Sheets setup guide + formulas + benchmark targets by cuisine + menu engineering matrix</div>
+</div>
+
+<div class="intro">
+<strong>Why food cost % is the most important number in your restaurant:</strong><br><br>
+Food cost % tells you exactly how much of every dollar you earn goes back to buying ingredients. If your food cost is 30%, you keep 70 cents of every dollar before labour, rent, and utilities. If your food cost is 40%, you keep 60 cents — and most restaurants at 40% food cost are losing money.<br><br>
+Most first-time operators price their menu by gut feeling or by copying competitors. This calculator shows you the exact number for every dish — so you can price with confidence and build a menu that actually makes money.
+</div>
+
+<h2>Part 1 — The Core Formula</h2>
+<div class="calc-section">
+<div class="calc-title">Food Cost % Formula</div>
+<div class="calc-sub">The only formula you need to know</div>
+<div class="formula-box">
+<span class="label">// FORMULA</span>
+Food Cost % = (Total Ingredient Cost / Selling Price) x 100<br><br>
+<span class="label">// EXAMPLE</span>
+Ingredient cost: $4.20 per serve<br>
+Selling price: $18.99<br>
+Food cost % = ($4.20 / $18.99) x 100 = <span style="color:#C0392B;font-weight:700;">22.1%</span>
+</div>
+<div class="target-box">
+<div class="target"><div class="target-val">15–20%</div><div class="target-label">Excellent</div></div>
+<div class="target"><div class="target-val">20–25%</div><div class="target-label">Good — Target</div></div>
+<div class="target"><div class="target-val">25–30%</div><div class="target-label">Acceptable</div></div>
+<div class="target"><div class="target-val">30%+</div><div class="target-label">Review Pricing</div></div>
+</div>
+</div>
+
+<h2>Part 2 — Single Dish Calculator</h2>
+<div class="calc-section">
+<div class="calc-title">Step-by-Step: Calculate One Dish</div>
+<div class="calc-sub">Use this method for every recipe on your menu</div>
+<table>
+<tr><th>Step</th><th>Action</th><th>Example — Pad Thai</th></tr>
+<tr><td><strong>1</strong></td><td>List every ingredient</td><td>Rice noodles, egg, tofu, bean sprouts, spring onion, tamarind, fish sauce, peanuts, lime</td></tr>
+<tr><td><strong>2</strong></td><td>Weigh each ingredient per serve</td><td>150g noodles, 1 egg, 80g tofu, 60g sprouts, 30g peanuts, 30ml sauce</td></tr>
+<tr><td><strong>3</strong></td><td>Calculate cost per serve</td><td>$0.38 + $0.35 + $0.42 + $0.18 + $0.28 + $0.32 = $1.93</td></tr>
+<tr><td><strong>4</strong></td><td>Add 10% waste factor</td><td>$1.93 x 1.10 = $2.12</td></tr>
+<tr><td><strong>5</strong></td><td>Divide by selling price</td><td>$2.12 / $16.99 = 0.1248</td></tr>
+<tr class="result-row"><td><strong>6</strong></td><td>Multiply by 100</td><td>0.1248 x 100 = 12.5% food cost</td></tr>
+</table>
+<div class="tip"><strong>The 10% waste factor:</strong> Always add 10% to ingredient cost for trim waste, spillage, portioning variance, and spoilage. Restaurants that skip this consistently underestimate true food cost by 8–12%.</div>
+</div>
+
+<h2>Part 3 — Google Sheets Template Setup</h2>
+<div class="calc-section">
+<div class="step-item">
+<div class="step-num">1</div>
+<div class="step-content"><strong>Open a new Google Sheet</strong><br>Go to sheets.google.com — New blank spreadsheet — Name it "KitchenFounder Food Cost Calculator"</div>
+</div>
+<div class="step-item">
+<div class="step-num">2</div>
+<div class="step-content"><strong>Create your Ingredient Database tab</strong><br>Tab name: "Ingredients" — Column A = Ingredient Name · Column B = Purchase Price ($) · Column C = Purchase Weight (g) · Column D = Cost per gram<br>Formula for D: <span class="fi">=B2/C2</span></div>
+</div>
+<div class="step-item">
+<div class="step-num">3</div>
+<div class="step-content"><strong>Create a Recipe tab for each dish</strong><br>Column A = Ingredient · Column B = Grams per serve · Column C = Cost per serve<br>Formula for C: <span class="fi">=B2*VLOOKUP(A2,Ingredients!A:D,4,0)</span></div>
+</div>
+<div class="step-item">
+<div class="step-num">4</div>
+<div class="step-content"><strong>Add Food Cost Summary rows</strong><br>
+Total cost: <span class="fi">=SUM(C2:C20)</span> — With waste: <span class="fi">=SUM(C2:C20)*1.1</span><br>
+Food cost %: <span class="fi">=(waste_cell/sell_price_cell)*100</span></div>
+</div>
+<div class="step-item">
+<div class="step-num">5</div>
+<div class="step-content"><strong>Create a Menu Overview tab</strong><br>One row per dish: Name · Cost · Sell Price · FC % · Target · Status<br>Conditional formatting: Green under 25% · Yellow 25–30% · Red over 30%</div>
+</div>
+<div class="step-item">
+<div class="step-num">6</div>
+<div class="step-content"><strong>Add Minimum Price column</strong><br>"Price needed for 22% FC": <span class="fi">=(ingredient_cost_with_waste)/0.22</span><br>Shows the minimum price to charge to hit your target on every dish.</div>
+</div>
+</div>
+
+<h2>Part 4 — Benchmark Targets by Cuisine</h2>
+<div class="benchmark">
+<div class="bench-card"><div class="bench-cuisine">Thai Street Food</div><div class="bench-target">18–24%</div><div class="bench-range">Target: 21%</div><div class="bench-why">Batch curry pastes reduce herb costs. Rice and noodles are low cost bases that offset protein effectively.</div></div>
+<div class="bench-card"><div class="bench-cuisine">Brazilian Churrasco</div><div class="bench-target">20–28%</div><div class="bench-range">Target: 24%</div><div class="bench-why">Premium beef drives higher FC. Offset with farofa, pao de queijo, and high-margin caipirinha at 14% FC.</div></div>
+<div class="bench-card"><div class="bench-cuisine">Japanese Izakaya</div><div class="bench-target">18–24%</div><div class="bench-range">Target: 22%</div><div class="bench-why">Ramen broth amortised over 20+ serves. Sake and highball programme at 12–15% FC offsets premium ingredients.</div></div>
+<div class="bench-card"><div class="bench-cuisine">Korean BBQ</div><div class="bench-target">20–26%</div><div class="bench-range">Target: 23%</div><div class="bench-why">Premium BBQ cuts offset by soju at 17% FC. Banchan drives alcohol spend significantly.</div></div>
+<div class="bench-card"><div class="bench-cuisine">Mexican Taqueria</div><div class="bench-target">18–25%</div><div class="bench-range">Target: 22%</div><div class="bench-why">Tortillas, beans, rice are very low cost. Al pastor and carnitas are the main cost drivers to manage.</div></div>
+<div class="bench-card"><div class="bench-cuisine">American Casual</div><div class="bench-target">25–32%</div><div class="bench-range">Target: 28%</div><div class="bench-why">Higher FC accepted at higher spend. Bar programme at 18–22% FC is essential to overall profitability.</div></div>
+</div>
+
+<h2>Part 5 — Menu Engineering Matrix</h2>
+<div class="calc-section">
+<div class="calc-title">The 4-Zone Menu Model</div>
+<div class="calc-sub">Every dish falls into one of four zones — know where each one sits</div>
+<table>
+<tr><th>Zone</th><th>Food Cost</th><th>Sales Volume</th><th>Action</th></tr>
+<tr><td><strong>Stars</strong></td><td>Low — under 22%</td><td>High</td><td>Feature prominently. Name in server scripts. These dishes fund your restaurant.</td></tr>
+<tr><td><strong>Plough Horses</strong></td><td>High — over 28%</td><td>High</td><td>Reduce portion 10% or raise price $1–2. Don't remove — guests love them.</td></tr>
+<tr><td><strong>Puzzles</strong></td><td>Low — under 22%</td><td>Low</td><td>Reposition on menu, train servers to suggest, or bundle with popular items.</td></tr>
+<tr><td><strong>Dogs</strong></td><td>High — over 28%</td><td>Low</td><td>Remove from menu. They cost money to produce and nobody orders them.</td></tr>
+</table>
+<div class="tip"><strong>The quarterly menu review:</strong> Every 3 months, pull your sales data and map every dish to these 4 zones. Remove all Dogs. Promote all Stars. This single habit is worth more than any marketing spend.</div>
+</div>
+
+<h2>Part 6 — Reverse Pricing Formula</h2>
+<div class="calc-section">
+<div class="calc-title">Work Backwards From Your Target Food Cost</div>
+<div class="calc-sub">Use when building a new menu from scratch</div>
+<div class="formula-box">
+<span class="label">// REVERSE FORMULA — minimum price to hit your target FC</span>
+Minimum Sell Price = Ingredient Cost (with waste) / Target FC %<br><br>
+<span class="label">// EXAMPLES</span>
+Ingredient cost $3.20, Target FC 22% — Min price = $3.20 / 0.22 = <span style="color:#C0392B;font-weight:700;">$14.55</span><br>
+Ingredient cost $5.80, Target FC 24% — Min price = $5.80 / 0.24 = <span style="color:#C0392B;font-weight:700;">$24.17</span><br>
+Ingredient cost $8.40, Target FC 26% — Min price = $8.40 / 0.26 = <span style="color:#C0392B;font-weight:700;">$32.31</span>
+</div>
+<div class="tip"><strong>Round up strategically:</strong> Never price at $14.55 — round to $14.99 or $15.99. That extra dollar drops food cost from 22% to 20.1%. On 50 covers a night that is roughly $20,000 extra per year from rounding alone.</div>
+</div>
+
+<footer>
+KitchenFounder Food Cost Calculator · kitchen-founder.myshopify.com<br>
+2025 KitchenFounder · US Market Edition · Digital Product
+</footer>
+</div>
+</body>
+</html>

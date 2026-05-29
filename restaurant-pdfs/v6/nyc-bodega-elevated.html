@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NYC Bodega Elevated — KitchenFounder Operations Guide v6</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#ffee00;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(255,238,0,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #ffee00;}
+.cover-eye{color:#ffee00;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#ffee00;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #ffee00;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#ffee00,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#000;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#1a1a00;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#ffee00;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#ffee00;color:#000;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#1a1a00;border:1px solid #ffee00;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#ffee00;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #ffee00;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#ffee00;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#ffee00;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#ffee00,#1a1a00);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #ffee00;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#ffee00;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#ffee00;color:#000;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#ffee00;color:#000;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#1a1a00;border:1px solid #ffee00;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#1a1a00;border:1px solid #ffee00;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ffffaa;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+<div class="cover">
+<div class="cover-eye">KITCHENFOUNDЕР — OPERATIONS GUIDE V6</div>
+<h1>NYC Bodega<br>Elevated</h1>
+<div class="cover-tag">The most democratic food institution in New York City. Made properly.</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-val">30</div><div class="kpi-label">Seats</div></div>
+<div class="kpi"><div class="kpi-val">$28</div><div class="kpi-label">Avg Spend</div></div>
+<div class="kpi"><div class="kpi-val">20%</div><div class="kpi-label">Food Cost</div></div>
+<div class="kpi"><div class="kpi-val">$14.5K</div><div class="kpi-label">Est. Monthly Net</div></div>
+</div>
+<div class="lens-card">
+<div class="lens-title">// What a Michelin-trained chef sees in the NYC bodega format</div>
+<div class="lens-text">The bodega is the most honest food institution in New York City. Open at 5am. Feeds everyone. No pretension. The bacon egg and cheese on a Kaiser roll is one of the most technically interesting sandwiches in American food — the egg folded just so, the cheese melted through with steam from the flat-top, the roll toasted on the same surface. It takes 4 minutes and requires a specific sequence that every bodega worker learns by feel. Elevating that format means respecting the original: keeping the speed, the value, the accessibility — and improving ingredient quality and technique without losing the soul. The chopped cheese is not a burger. Do not make it into a burger.</div>
+</div>
+<div class="lens-card">
+<div class="lens-title">// What this guide does</div>
+<div class="lens-text">The bodega elevated concept works because it takes a format that New Yorkers trust emotionally and adds the execution quality the original format never had resources for. The café Bustelo cortadito at $3.99 costs under $0.50 to make. The banana pudding at $8.99 with an 8% food cost closes the ticket. The $28 average spend in a 30-seat room with minimal labour produces margins that most full-service restaurants cannot match.</div>
+<div class="lens-closer">This guide shows you how to run it.</div>
+</div>
+</div>
+<div class="page">
+<h2>SECTION 1 — ENTRÉES</h2>
+<table><tr><th>Dish</th><th>Ticket</th><th>Price</th><th>FC%</th></tr>
+<tr><td>Bacon Egg &amp; Cheese — Brioche Roll</td><td>5 min</td><td>$9.99</td><td>18%</td></tr>
+<tr><td>Avocado Toast — Everything Bagel</td><td>5 min</td><td>$10.99</td><td>15%</td></tr>
+<tr><td>Elote Cup — Street Corn</td><td>4 min</td><td>$6.99</td><td>11%</td></tr>
+<tr><td>Chicken Soup — Abuela Style</td><td>5 min</td><td>$8.99</td><td>14%</td></tr>
+<tr><td>Loaded Fries — Cheese Sauce, Jalapeño</td><td>7 min</td><td>$8.99</td><td>13%</td></tr>
+<tr><td>Tostones — Fried Plantain, Garlic Mojo</td><td>6 min</td><td>$7.99</td><td>10%</td></tr>
+</table>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Bacon Egg &amp; Cheese ⭐</span></div>
+<div class="rh"><div class="rh-title">Bacon Egg &amp; Cheese — Brioche Roll</div>
+<div class="rh-meta">5 min ticket · FC: 18% · $9.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Brioche roll, halved</td><td>1</td><td>$0.60</td></tr>
+<tr><td>Eggs, cracked flat</td><td>2</td><td>$0.70</td></tr>
+<tr><td>American cheese slice</td><td>2</td><td>$0.25</td></tr>
+<tr><td>Bacon strips, cooked</td><td>3</td><td>$0.90</td></tr>
+<tr><td>Butter, salt, pepper</td><td>10g</td><td>$0.10</td></tr>
+</table>
+<div class="fc-box">
+<div class="fc-item"><div class="fc-val">$2.55</div><div class="fc-lbl">Food Cost</div></div>
+<div class="fc-item"><div class="fc-val">$9.99</div><div class="fc-lbl">Menu Price</div></div>
+<div class="fc-item"><div class="fc-val">25.5%</div><div class="fc-lbl">FC %</div></div>
+<div class="fc-item"><div class="fc-val">$7.44</div><div class="fc-lbl">Gross Profit</div></div>
+</div>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Toast brioche cut-side down on flat-top with butter. 90 seconds. Move to corner of grill to keep warm.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Crack eggs directly onto flat-top at <span class="temp">180°C</span>. Break yolks. Fold into rectangle roughly the size of the roll. Season.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Lay cheese slices over egg. Cover with dome or foil for 30 seconds to melt through with steam. Do not skip this step — the steam melt is the technique.</div></div>
+<div class="step"><div class="sn">4</div><div class="st">Add bacon to bottom bun. Slide egg-cheese stack on top. Close. Wrap in foil for 20 seconds — it steams further and holds together. Serve immediately.</div></div>
+</div>
+<div class="chef-tip">💡 The foil wrap is the bodega secret. It steams everything together and means the customer gets it hot even if they walk out. 20 seconds in foil = better sandwich.</div>
+</div></div>
+
+<h2>SECTION 2 — MAINS</h2>
+<table><tr><th>Dish</th><th>Price</th><th>FC%</th><th>Note</th></tr>
+<tr><td>Chopped Cheese — Bodega Classic</td><td>$14.99</td><td>19%</td><td>⭐ Signature</td></tr>
+<tr><td>Italian Hero — Mortadella, Provolone</td><td>$13.99</td><td>18%</td><td></td></tr>
+<tr><td>Breakfast Burrito — Egg, Potato, Chorizo</td><td>$12.99</td><td>17%</td><td></td></tr>
+<tr><td>Pastrami on Rye — Deli Mustard</td><td>$15.99</td><td>20%</td><td></td></tr>
+<tr><td>Chicken Cutlet Parm Sub</td><td>$13.99</td><td>19%</td><td></td></tr>
+<tr><td>Jerk Chicken Rice Bowl</td><td>$13.99</td><td>20%</td><td></td></tr>
+<tr><td>Birria Quesadilla — Consommé Dip</td><td>$14.99</td><td>21%</td><td>⭐ Signature</td></tr>
+<tr><td>Bodega Salad — Chopped, House Dressing</td><td>$11.99</td><td>12%</td><td></td></tr>
+<tr><td>Macaroni Salad — House</td><td>$8.99</td><td>9%</td><td></td></tr>
+<tr><td>Big Breakfast Plate</td><td>$14.99</td><td>20%</td><td>⭐ Signature</td></tr>
+</table>
+</div>
+<div class="page">
+<div class="recipe">
+<div class="recipe-color-block"><span>Chopped Cheese ⭐</span></div>
+<div class="rh"><div class="rh-title">Chopped Cheese — Bodega Classic</div>
+<div class="rh-meta">8 min ticket · FC: 19% · $14.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Ground beef (80/20)</td><td>180g</td><td>$1.40</td></tr>
+<tr><td>American cheese slices</td><td>3</td><td>$0.38</td></tr>
+<tr><td>Hero roll (hoagie)</td><td>1</td><td>$0.55</td></tr>
+<tr><td>Onion, diced</td><td>40g</td><td>$0.08</td></tr>
+<tr><td>Ketchup, mayo, mustard</td><td>to taste</td><td>$0.15</td></tr>
+<tr><td>Shredded lettuce, tomato</td><td>30g / 2 slices</td><td>$0.25</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Cook onions on flat-top until soft. Add beef, season. Cook breaking apart with spatula. When nearly done, chop repeatedly with spatula — you're creating a crumbled, chopped texture, not a patty.</div></div>
+<div class="step"><div class="sn">2</div><div class="st">Lay cheese slices over meat. Cover with dome 30 seconds to melt completely into the meat mixture.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Toast hero roll on flat-top. Sauce bottom half (ketchup, mayo). Add meat-cheese mixture. Top with lettuce and tomato. Wrap tight in foil.</div></div>
+</div>
+<div class="chef-tip">💡 The chopping motion is essential. It combines the beef, onion and cheese into one unified filling. A burger patty on a roll is not a chopped cheese. The texture is the identity.</div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"><span>Birria Quesadilla + Consommé</span></div>
+<div class="rh"><div class="rh-title">Birria Quesadilla — Consommé Dip</div>
+<div class="rh-meta">10 min ticket · FC: 21% · $14.99 · SIGNATURE</div></div>
+<div class="rm">
+<table><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+<tr><td>Beef birria (braised chuck, chiles)</td><td>150g</td><td>$1.80</td></tr>
+<tr><td>Consommé (birria braising liquid)</td><td>120ml</td><td>$0.40</td></tr>
+<tr><td>Flour tortillas</td><td>2 large</td><td>$0.30</td></tr>
+<tr><td>Oaxacan cheese, shredded</td><td>60g</td><td>$0.90</td></tr>
+<tr><td>White onion + cilantro, fine chop</td><td>20g each</td><td>$0.15</td></tr>
+</table>
+<div class="steps">
+<div class="step"><div class="sn">1</div><div class="st">Birria prep (batch, day before): Braise beef chuck with guajillo, ancho, pasilla chiles, tomato, onion, garlic, cumin, oregano at <span class="temp">160°C</span> for 4 hours. Pull meat, strain braising liquid (this is the consommé).</div></div>
+<div class="step"><div class="sn">2</div><div class="st">To order: dip tortilla in consommé fat layer. Place on hot flat-top. Add cheese, birria meat, onion-cilantro. Fold, press. Cook 2 min each side until crispy and cheese melts through.</div></div>
+<div class="step"><div class="sn">3</div><div class="st">Serve with ramekin of hot consommé for dipping. Dip, eat, repeat.</div></div>
+</div>
+<div class="chef-tip">💡 The consommé dip is the dish. Without it, it's a quesadilla. With it, it's an experience. Keep the consommé hot and well-seasoned — it gets tasted and it gets Instagrammed.</div>
+</div></div>
+
+<h2>SECTION 3 — DESSERTS</h2>
+<table><tr><th>Dish</th><th>Price</th><th>FC%</th></tr>
+<tr><td>Flan — Caramel, Vanilla</td><td>$7.99</td><td>10%</td></tr>
+<tr><td>Tres Leches Cake</td><td>$7.99</td><td>12%</td></tr>
+<tr><td>Churros — Dulce de Leche</td><td>$7.99</td><td>11%</td></tr>
+<tr><td>Bodega Banana Pudding</td><td>$8.99</td><td>8%</td></tr>
+</table>
+<div class="chef-tip">💡 Banana pudding at $8.99 with 8% FC ($0.72 cost) is the best margin dessert in this guide. Make it in large batches. Nilla wafers, banana, vanilla custard — unmistakably New York.</div>
+</div>
+<div class="page">
+<h2>SECTION 4 — DRINKS</h2>
+<div class="drink-grid">
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Café Bustelo — Cortadito</div><div class="drink-price">$3.99 · Cuban espresso, condensed milk</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Mango Juice — Jumex</div><div class="drink-price">$2.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Malta India</div><div class="drink-price">$2.99 · Non-alcoholic malt</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Horchata</div><div class="drink-price">$4.99 · Rice, cinnamon, vanilla</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Agua Fresca — Hibiscus</div><div class="drink-price">$3.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Bodega Smoothie</div><div class="drink-price">$5.99 · Mango, banana, OJ</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Brooklyn Lager</div><div class="drink-price">$6.99</div></div></div>
+<div class="drink-card"><div class="drink-color"></div><div class="drink-body"><div class="drink-name">Iced Coffee — Sweetened</div><div class="drink-price">$3.99</div></div></div>
+</div>
+<div class="fc-box">
+<div class="fc-item"><div class="fc-val">$0.48</div><div class="fc-lbl">Cortadito FC</div></div>
+<div class="fc-item"><div class="fc-val">$3.99</div><div class="fc-lbl">Sell Price</div></div>
+<div class="fc-item"><div class="fc-val">12%</div><div class="fc-lbl">FC%</div></div>
+<div class="fc-item"><div class="fc-val">$3.51</div><div class="fc-lbl">Gross Profit</div></div>
+</div>
+
+<h2>SECTION 5 — SERVICE TRAINING</h2>
+<div class="script-box">
+<div class="script-label">Script 01 — Welcome</div>
+<div class="script-text">"The food is bodega. The technique isn't. Everything here is made from scratch — the cheese sauce, the consommé, the flan. Same energy, different standard. The chopped cheese and the BEC are the moves."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 02 — Chopped Cheese</div>
+<div class="script-text">"The chopped cheese is chopped on the flat-top — beef, onion, American cheese melted through, ketchup, mayo on a hero roll. It's a New York thing. You won't find it outside the five boroughs. We do it right."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 03 — Birria Quesadilla</div>
+<div class="script-text">"The birria is beef braised in chiles for 4 hours. The consommé on the side is the braising liquid. You dip the quesadilla in, eat it, repeat. The dip is the whole point."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 04 — Café Bustelo Cortadito</div>
+<div class="script-text">"The cortadito is Cuban espresso with sweetened condensed milk. $3.99. Stronger than anything at Starbucks. It's how the bodega opens every morning in New York."</div>
+</div>
+<div class="script-box">
+<div class="script-label">Script 05 — Return Visit</div>
+<div class="script-text">"The big breakfast plate on weekends — two eggs, meat of your choice, toast, home fries. Different energy. Same quality. Come back Saturday."</div>
+</div>
+
+<h2>SECTION 6 — DAILY PREP SCHEDULE</h2>
+<table class="prep-table">
+<tr><th>Time</th><th>Task</th><th>Who</th></tr>
+<tr><td>06:00</td><td>Open, BEC station ready, flat-top on</td><td>Opener</td></tr>
+<tr><td>07:00</td><td>Breakfast rush — BEC, cortadito, smoothies</td><td>FOH + Chef</td></tr>
+<tr><td>09:00</td><td>Lunch prep: birria consommé on, chorizo cooked</td><td>Chef</td></tr>
+<tr><td>10:30</td><td>Flan sets, banana pudding assembled</td><td>Chef</td></tr>
+<tr><td>11:30</td><td>Lunch service starts</td><td>All</td></tr>
+<tr><td>15:00</td><td>Afternoon — restock, batch cook for next day</td><td>Chef</td></tr>
+<tr><td>20:00</td><td>Close, stock check</td><td>Closer</td></tr>
+</table>
+</div>
+<div class="page">
+<h2>SECTION 7 — P&amp;L MODEL</h2>
+<table class="rev-table">
+<tr><th>Revenue</th><th>Daily</th><th>Weekly</th><th>Monthly</th></tr>
+<tr><td>Food Sales</td><td>$980</td><td>$5,880</td><td>$25,480</td></tr>
+<tr><td>Beverage</td><td>$280</td><td>$1,680</td><td>$7,280</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>$1,260</strong></td><td><strong>$7,560</strong></td><td><strong>$32,760</strong></td></tr>
+</table>
+<table class="rev-table">
+<tr><th>Cost</th><th>%</th><th>Monthly</th></tr>
+<tr><td>Food Cost</td><td>20%</td><td>$6,552</td></tr>
+<tr><td>Labour</td><td>30%</td><td>$9,828</td></tr>
+<tr><td>Overheads</td><td>15%</td><td>$4,914</td></tr>
+<tr class="profit-row"><td>NET PROFIT</td><td>35%</td><td>$11,466</td></tr>
+</table>
+<div class="chef-tip">💡 30-seat bodega with minimal kitchen equipment and lean labour. The cortadito alone — 40 cups/day at $3.51 profit each — generates $140/day in coffee margin. That's $4,200/month from one item.</div>
+
+<h2>SECTION 8 — SAFETY &amp; ALLERGENS</h2>
+<div class="safety">
+<h3>Temperature Control</h3>
+<table><tr><th>Item</th><th>Hold Temp</th><th>Max Hold</th></tr>
+<tr><td>Birria beef + consommé</td><td>Above 65°C or below 3°C</td><td>4 days refrigerated</td></tr>
+<tr><td>Flan (set)</td><td>Below 3°C</td><td>3 days</td></tr>
+<tr><td>Banana pudding</td><td>Below 3°C</td><td>2 days</td></tr>
+<tr><td>Chopped cheese (cooked)</td><td>Serve immediately</td><td>No hold — cook to order</td></tr>
+</table>
+</div>
+<div class="safety">
+<h3>Allergen Matrix</h3>
+<table><tr><th>Dish</th><th>Allergens</th></tr>
+<tr><td>Bacon Egg &amp; Cheese</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span><span class="a">Dairy</span></div></td></tr>
+<tr><td>Chopped Cheese</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span></div></td></tr>
+<tr><td>Avocado Toast</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+<tr><td>Pastrami on Rye</td><td><div class="al"><span class="a">Gluten</span></div></td></tr>
+<tr><td>Chicken Cutlet Parm Sub</td><td><div class="al"><span class="a">Gluten</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Flan</td><td><div class="al"><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Tres Leches</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+<tr><td>Banana Pudding</td><td><div class="al"><span class="a">Gluten</span><span class="a">Dairy</span><span class="a">Eggs</span></div></td></tr>
+</table>
+</div>
+<footer>KitchenFounder Operations Guide v6 · NYC Bodega Elevated · kitchenfounder.com · For operator use only</footer>
+</div>
+</body>
+</html>

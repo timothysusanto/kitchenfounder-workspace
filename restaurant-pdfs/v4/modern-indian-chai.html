@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Indian Chai House — Operations Guide</title>
+<style>
+  :root {
+    --primary: #c8600a;
+    --accent: #3a1a08;
+    --light-bg: #fdf6ef;
+    --card-bg: #fff8f2;
+    --border: #e8c9a0;
+    --text: #2a1005;
+    --muted: #7a5030;
+    --success: #2d7a3a;
+    --warning: #c8600a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--light-bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .hero {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 60%, #e8820a 100%);
+    color: #fff;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '☕ 🌿 ✨ 🍃 ☕ 🌿 ✨ 🍃';
+    position: absolute;
+    top: 10px; left: 0; right: 0;
+    font-size: 1.2rem;
+    opacity: 0.3;
+    letter-spacing: 20px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  }
+  .hero .tagline {
+    font-size: 1.3rem;
+    font-style: italic;
+    opacity: 0.92;
+    margin-bottom: 20px;
+  }
+  .hero .meta {
+    font-size: 0.95rem;
+    opacity: 0.75;
+    font-family: 'Arial', sans-serif;
+  }
+  .toc {
+    background: var(--accent);
+    color: #fff;
+    padding: 30px 40px;
+  }
+  .toc h2 { font-size: 1.4rem; margin-bottom: 16px; color: #f5c87a; }
+  .toc ol { columns: 2; gap: 40px; padding-left: 20px; }
+  .toc li { margin-bottom: 8px; font-family: Arial, sans-serif; font-size: 0.95rem; }
+  .toc a { color: #f5c87a; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 30px;
+  }
+  .section-header {
+    background: linear-gradient(90deg, var(--primary), #e8820a);
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+  }
+  .section-header h2 { font-size: 1.8rem; }
+  .section-header .section-num {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .section-body {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+  h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1.05rem;
+    margin: 18px 0 8px;
+  }
+  p { margin-bottom: 12px; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .menu-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(200,96,10,0.08);
+    transition: transform 0.2s;
+  }
+  .menu-card:hover { transform: translateY(-2px); }
+  .menu-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .menu-card-body {
+    padding: 14px 16px 16px;
+  }
+  .menu-card-body h4 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: var(--accent);
+  }
+  .menu-card-body .desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .sell-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+  .cost-badge {
+    font-size: 0.78rem;
+    background: #f0e8d8;
+    color: var(--muted);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+  }
+  .profit-badge {
+    font-size: 0.78rem;
+    background: #d4edda;
+    color: var(--success);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+  .drink-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .drink-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(200,96,10,0.06);
+  }
+  .drink-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+  }
+  .drink-card-body {
+    padding: 12px 14px 14px;
+  }
+  .drink-card-body h4 { margin: 0 0 4px; font-size: 0.98rem; }
+  .drink-card-body .desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; font-family: Arial, sans-serif; }
+  .revenue-box {
+    background: linear-gradient(135deg, var(--accent), #5a2a10);
+    color: #fff;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .revenue-box h3 { color: #f5c87a; border-bottom-color: rgba(255,255,255,0.2); }
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .revenue-stat {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 14px 10px;
+  }
+  .revenue-stat .num {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #f5c87a;
+    display: block;
+  }
+  .revenue-stat .label {
+    font-size: 0.82rem;
+    opacity: 0.85;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: Arial, sans-serif;
+    font-size: 0.92rem;
+  }
+  th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: bold;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) td { background: #fdf0e4; }
+  tr:hover td { background: #fce8d0; }
+  .script-card {
+    background: #fff;
+    border-left: 5px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px;
+    margin: 16px 0;
+    box-shadow: 0 2px 6px rgba(200,96,10,0.08);
+  }
+  .script-card .script-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .script-card .staff-says {
+    background: #fdf6ef;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 10px;
+    font-size: 0.97rem;
+  }
+  .script-card .why {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+  }
+  .why-label {
+    font-weight: bold;
+    color: var(--primary);
+  }
+  .objection-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 14px 0;
+  }
+  .objection-card .objection {
+    font-weight: bold;
+    color: #c0392b;
+    font-family: Arial, sans-serif;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  .objection-card .response {
+    background: #eafaf1;
+    border-left: 4px solid var(--success);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .vip-card {
+    background: linear-gradient(135deg, #fffbf4, #fdf0e0);
+    border: 1px solid #e0b870;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 12px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .vip-card .icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .vip-card h4 { color: var(--primary); margin: 0 0 6px; }
+  .vip-card p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+  .complaint-step {
+    background: #fff;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 12px 0;
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .complaint-step .step-num {
+    background: var(--primary);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    flex-shrink: 0;
+  }
+  .complaint-step h4 { margin: 0 0 6px; color: var(--accent); }
+  .complaint-step p { margin: 0; font-size: 0.92rem; }
+  .social-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 14px 0;
+  }
+  .social-card h4 { color: var(--primary); margin-bottom: 8px; }
+  .caption-example {
+    background: #f5f5f5;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: Arial, sans-serif;
+    font-size: 0.88rem;
+    color: #333;
+    margin: 8px 0;
+    white-space: pre-line;
+  }
+  .partnership-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 10px 0;
+    border-left: 4px solid var(--primary);
+  }
+  .partnership-card h4 { margin: 0 0 6px; color: var(--accent); }
+  .partnership-card p { margin: 0; font-size: 0.9rem; }
+  .notebook-system {
+    background: linear-gradient(135deg, #fffbf0, #fff5e0);
+    border: 2px solid #e0b870;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .notebook-system h3 { color: var(--accent); }
+  .visit-milestone {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    border-left: 5px solid var(--primary);
+  }
+  .visit-milestone strong { color: var(--primary); font-family: Arial, sans-serif; }
+  .info-callout {
+    background: #fef9ee;
+    border: 1px solid #e0c060;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.92rem;
+  }
+  .info-callout strong { color: var(--accent); }
+  .ops-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+  }
+  .ops-checklist li {
+    padding: 8px 12px 8px 36px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 0.92rem;
+  }
+  .ops-checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 10px;
+    color: var(--primary);
+    font-size: 1rem;
+  }
+  .ops-checklist li:last-child { border-bottom: none; }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 16px 0;
+  }
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .toc ol { columns: 1; }
+    .menu-grid { grid-template-columns: 1fr; }
+  }
+  .footer {
+    background: var(--accent);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    margin-top: 60px;
+  }
+  .footer strong { color: #f5c87a; }
+  .badge {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+  }
+  .section-divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    border: none;
+    margin: 40px 0;
+  }
+  .story-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--primary);
+  }
+  .story-card h4 { color: var(--primary); margin-bottom: 8px; }
+  .story-card p { margin: 0; font-size: 0.93rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>☕ Modern Indian Chai House</h1>
+  <div class="tagline">"Ancient flavours. Modern margins. Chai culture."</div>
+  <div class="meta">Complete Operations Guide &nbsp;|&nbsp; 40 Seats &nbsp;|&nbsp; Daily Target: $2,800 &nbsp;|&nbsp; Monthly Net: ~$19,000</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>📋 Table of Contents</h2>
+  <ol>
+    <li><a href="#section1">Restaurant Identity & Brand</a></li>
+    <li><a href="#section2">Menu — Entrées</a></li>
+    <li><a href="#section3">Menu — Mains</a></li>
+    <li><a href="#section4">Menu — Desserts & Drinks</a></li>
+    <li><a href="#section5">Service Training Module</a></li>
+    <li><a href="#section6">Customer Retention System</a></li>
+    <li><a href="#section7">Revenue Model & Finance</a></li>
+    <li><a href="#section8">Operations & Opening Procedures</a></li>
+  </ol>
+</div>
+
+
+<!-- SECTION 1: IDENTITY -->
+<div class="section" id="section1">
+  <div class="section-header">
+    <div class="section-num">Section 01</div>
+    <h2>🏮 Restaurant Identity & Brand Story</h2>
+  </div>
+  <div class="section-body">
+    <h3>Who We Are</h3>
+    <p>Modern Indian Chai House is a love letter to Bombay's legendary Irani cafés, Dishoom's nostalgic embrace, and India's street food energy — translated into a contemporary café experience built for daily visits, serious margins, and genuine cultural pride. We are not a novelty or a theme. We are a real place where chai culture is central, not decorative.</p>
+
+    <h3>The Brand Pillars</h3>
+    <div class="two-col">
+      <div class="vip-card">
+        <div class="icon">🫖</div>
+        <div>
+          <h4>Chai as Culture</h4>
+          <p>Chai is our anchor. Every visit starts with chai, often ends with chai. It's the reason people come at 7am and the reason they linger at 3pm. We pull chai traditionally — high pour, frothy, aromatic. It is our signature act.</p>
+        </div>
+      </div>
+      <div class="vip-card">
+        <div class="icon">🌶️</div>
+        <div>
+          <h4>Bombay Street Soul</h4>
+          <p>Our entrées draw from Mumbai's chaotic, joyful street food tradition. Pani puri. Bhel puri. Chaat. These are flavours that make people close their eyes. We honour that tradition while making it table-service accessible.</p>
+        </div>
+      </div>
+      <div class="vip-card">
+        <div class="icon">📖</div>
+        <div>
+          <h4>Anglo-Indian Heritage</h4>
+          <p>Railway curries. Bacon naan rolls. Filter coffee. The Anglo-Indian chapter of Indian food history is criminally underrepresented. We tell that story through dishes like Railway Lamb Curry and Chilli Cheese Toast.</p>
+        </div>
+      </div>
+      <div class="vip-card">
+        <div class="icon">💰</div>
+        <div>
+          <h4>Modern Margins</h4>
+          <p>Great food doesn't have to bleed money. With food costs targeted at 28%, smart portion control on premium items, and high-frequency beverage sales driving profitability, this is a sustainable operation built to last.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Core Values (Staff Communication)</h3>
+    <ul style="padding-left:20px; font-family: Arial, sans-serif; font-size: 0.93rem;">
+      <li style="margin-bottom:8px;"><strong>Warmth is not optional.</strong> Every guest gets a genuine welcome, not a scripted one.</li>
+      <li style="margin-bottom:8px;"><strong>Know the food.</strong> Staff who can't describe a dish with enthusiasm shouldn't be describing it.</li>
+      <li style="margin-bottom:8px;"><strong>Chai is our signature.</strong> Every staff member knows how to explain the chai-pulling process.</li>
+      <li style="margin-bottom:8px;"><strong>Speed with soul.</strong> We move quickly but we don't rush people. There's a difference.</li>
+      <li style="margin-bottom:8px;"><strong>Pride in the origin.</strong> These recipes have histories. Share them when appropriate.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2: ENTREES -->
+<div class="section" id="section2">
+  <div class="section-header">
+    <div class="section-num">Section 02</div>
+    <h2>🥘 Menu — Entrées</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:20px;">6 starters rooted in Mumbai's street food tradition. These dishes are designed for sharing, for ordering alongside chai, and for drawing guests deeper into the menu.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?pani+puri,indian+street+food&nologo=true&seed=900" alt="Pani Puri" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Pani Puri</h4>
+          <div class="desc">6 crispy shells, spiced potato, 3 pani waters — tamarind, mint, and spicy jaljeera</div>
+          <div class="price-row">
+            <span class="sell-price">$12.99</span>
+            <span class="cost-badge">Cost ~$3.25</span>
+            <span class="profit-badge">GP 75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?samosa+chaat,indian+food&nologo=true&seed=901" alt="Samosa Chaat" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Samosa Chaat</h4>
+          <div class="desc">Crushed samosa, chickpea curry, tamarind chutney, cool yoghurt, sev</div>
+          <div class="price-row">
+            <span class="sell-price">$13.99</span>
+            <span class="cost-badge">Cost ~$3.65</span>
+            <span class="profit-badge">GP 74%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?kebab,indian+appetizer&nologo=true&seed=902" alt="Dahi Ke Kebab" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Dahi Ke Kebab</h4>
+          <div class="desc">Pan-fried hung curd patties, green chutney, crispy onion, chaat masala</div>
+          <div class="price-row">
+            <span class="sell-price">$13.99</span>
+            <span class="cost-badge">Cost ~$3.80</span>
+            <span class="profit-badge">GP 73%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?bhel+puri,indian+snack&nologo=true&seed=903" alt="Bhel Puri" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Bhel Puri</h4>
+          <div class="desc">Puffed rice, tamarind chutney, green chutney, raw mango, onion, sev</div>
+          <div class="price-row">
+            <span class="sell-price">$10.99</span>
+            <span class="cost-badge">Cost ~$2.20</span>
+            <span class="profit-badge">GP 80%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?golgappa,puri+shots&nologo=true&seed=904" alt="Golgappa" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Golgappa</h4>
+          <div class="desc">Dishoom-style pani puri shots — crispy puri with three flavoured waters</div>
+          <div class="price-row">
+            <span class="sell-price">$11.99</span>
+            <span class="cost-badge">Cost ~$2.80</span>
+            <span class="profit-badge">GP 77%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?cheese+toast,bombay+cafe&nologo=true&seed=905" alt="Chilli Cheese Toast" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Chilli Cheese Toast</h4>
+          <div class="desc">Bombay café classic — thick-cut toast, green chilli, cheddar, coriander, grilled</div>
+          <div class="price-row">
+            <span class="sell-price">$10.99</span>
+            <span class="cost-badge">Cost ~$2.40</span>
+            <span class="profit-badge">GP 78%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-callout">
+      <strong>📊 Entrée Sales Strategy:</strong> Pani Puri and Bhel Puri are your highest-GP items — push these first when guests ask for suggestions. The Chilli Cheese Toast is a breakfast/all-day performer. Samosa Chaat is the best upsell to pair with a Masala Chai arrival drink.
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 3: MAINS -->
+<div class="section" id="section3">
+  <div class="section-header">
+    <div class="section-num">Section 03</div>
+    <h2>🍛 Menu — Mains</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:20px;">10 mains spanning the full breadth of Indian cooking — from Mughlai richness to Anglo-Indian comfort to Bombay street food elevated to table dining.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?butter+chicken,indian+curry&nologo=true&seed=906" alt="Butter Chicken" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Butter Chicken</h4>
+          <div class="desc">Classic makhani sauce, charred chicken thigh, house butter naan, pickled onion</div>
+          <div class="price-row">
+            <span class="sell-price">$21.99</span>
+            <span class="cost-badge">Cost ~$6.20</span>
+            <span class="profit-badge">GP 72%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?daal+makhani,lentil+curry&nologo=true&seed=907" alt="Daal Makhani" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Daal Makhani</h4>
+          <div class="desc">24-hour slow-cooked black lentil, lashings of butter and cream, house naan</div>
+          <div class="price-row">
+            <span class="sell-price">$17.99</span>
+            <span class="cost-badge">Cost ~$3.80</span>
+            <span class="profit-badge">GP 79%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?lamb+rogan+josh,kashmiri+curry&nologo=true&seed=908" alt="Lamb Rogan Josh" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Lamb Rogan Josh</h4>
+          <div class="desc">Kashmiri chilli, aromatic broth, slow-braised lamb, steamed basmati rice</div>
+          <div class="price-row">
+            <span class="sell-price">$23.99</span>
+            <span class="cost-badge">Cost ~$7.80</span>
+            <span class="profit-badge">GP 67%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?bacon+naan+roll,indian+breakfast&nologo=true&seed=909" alt="Dishoom-Style Bacon Naan Roll" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Dishoom-Style Bacon Naan Roll</h4>
+          <div class="desc">House-cured streaky bacon, cream cheese, chilli sauce, fresh naan, fried egg option</div>
+          <div class="price-row">
+            <span class="sell-price">$14.99</span>
+            <span class="cost-badge">Cost ~$3.90</span>
+            <span class="profit-badge">GP 74%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?keema+pav,minced+lamb&nologo=true&seed=910" alt="Keema Pau" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Keema Pau</h4>
+          <div class="desc">Spiced minced lamb, green peas, house Bombay bread, fried egg, pickled chilli</div>
+          <div class="price-row">
+            <span class="sell-price">$16.99</span>
+            <span class="cost-badge">Cost ~$4.50</span>
+            <span class="profit-badge">GP 73%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?paneer+tikka+masala,indian+vegetarian&nologo=true&seed=911" alt="Paneer Tikka Masala" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Paneer Tikka Masala</h4>
+          <div class="desc">Tandoor-charred paneer, rich tomato masala, house naan, fresh coriander</div>
+          <div class="price-row">
+            <span class="sell-price">$19.99</span>
+            <span class="cost-badge">Cost ~$5.20</span>
+            <span class="profit-badge">GP 74%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?chicken+biryani,indian+rice&nologo=true&seed=912" alt="Chicken Biryani" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Chicken Biryani</h4>
+          <div class="desc">Dum-cooked basmati, marinated chicken, saffron, raita, mirchi ka salan</div>
+          <div class="price-row">
+            <span class="sell-price">$22.99</span>
+            <span class="cost-badge">Cost ~$6.80</span>
+            <span class="profit-badge">GP 70%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?railway+curry,anglo+indian+food&nologo=true&seed=913" alt="Railway Lamb Curry" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Railway Lamb Curry</h4>
+          <div class="desc">Anglo-Indian classic, slow-cooked lamb, potatoes, warm spices, steamed rice</div>
+          <div class="price-row">
+            <span class="sell-price">$21.99</span>
+            <span class="cost-badge">Cost ~$6.50</span>
+            <span class="profit-badge">GP 70%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?masoor+dal,red+lentil+curry&nologo=true&seed=914" alt="Masoor Dal Tadka" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Masoor Dal Tadka</h4>
+          <div class="desc">Red lentil, sizzling cumin tadka, rice, house pickle, papad</div>
+          <div class="price-row">
+            <span class="sell-price">$15.99</span>
+            <span class="cost-badge">Cost ~$3.20</span>
+            <span class="profit-badge">GP 80%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?pav+bhaji,bombay+street+food&nologo=true&seed=915" alt="Pav Bhaji" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Pav Bhaji</h4>
+          <div class="desc">Spiced mixed vegetable mash, generous butter, toasted Bombay bun, raw onion, lime</div>
+          <div class="price-row">
+            <span class="sell-price">$14.99</span>
+            <span class="cost-badge">Cost ~$3.10</span>
+            <span class="profit-badge">GP 79%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-callout">
+      <strong>💡 Upsell Note:</strong> Daal Makhani, Masoor Dal Tadka, and Pav Bhaji are your highest-GP mains — push these hard for vegetarian guests. Lamb Rogan Josh and Biryani command premium spend. The Bacon Naan Roll is your breakfast/brunch star — it drives morning trade and is highly Instagrammable.
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: DESSERTS & DRINKS -->
+<div class="section" id="section4">
+  <div class="section-header">
+    <div class="section-num">Section 04</div>
+    <h2>🍮 Menu — Desserts & Drinks</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>Desserts</h3>
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:20px;">Four classic Indian sweets — traditionally made, beautifully presented, and priced for impulse purchase.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?gulab+jamun,indian+dessert&nologo=true&seed=916" alt="Gulab Jamun" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Gulab Jamun</h4>
+          <div class="desc">2 warm milk-solid dumplings, rose syrup, crushed pistachio, edible rose petal</div>
+          <div class="price-row">
+            <span class="sell-price">$8.99</span>
+            <span class="cost-badge">Cost ~$1.80</span>
+            <span class="profit-badge">GP 80%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?kulfi,indian+ice+cream&nologo=true&seed=917" alt="Kulfi" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Kulfi</h4>
+          <div class="desc">House pistachio & cardamom kulfi, rose syrup, crushed pistachios</div>
+          <div class="price-row">
+            <span class="sell-price">$8.99</span>
+            <span class="cost-badge">Cost ~$1.90</span>
+            <span class="profit-badge">GP 79%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?gajar+halwa,carrot+pudding&nologo=true&seed=918" alt="Gajar Ka Halwa" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Gajar Ka Halwa</h4>
+          <div class="desc">Slow-cooked carrot pudding, pure ghee, cardamom, silver leaf, serve warm</div>
+          <div class="price-row">
+            <span class="sell-price">$8.99</span>
+            <span class="cost-badge">Cost ~$2.10</span>
+            <span class="profit-badge">GP 77%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://source.unsplash.com/800x360/?rasmalai,indian+milk+dessert&nologo=true&seed=919" alt="Rasmalai" loading="lazy">
+        <div class="menu-card-body">
+          <h4>Rasmalai</h4>
+          <div class="desc">Soft paneer discs in chilled saffron milk, cardamom, pistachio, edible rose petal</div>
+          <div class="price-row">
+            <span class="sell-price">$9.99</span>
+            <span class="cost-badge">Cost ~$2.40</span>
+            <span class="profit-badge">GP 76%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>Drinks</h3>
+    <p style="font-family:Arial,sans-serif; color:var(--muted); margin-bottom:16px;">Eight drinks built around chai culture — from the iconic pulled masala chai to cold lassis and South Indian filter coffee.</p>
+    <div class="drink-grid">
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?masala+chai,indian+tea&nologo=true&seed=920" alt="Masala Chai" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Masala Chai ⭐</h4>
+          <div class="desc">House spice blend, fresh ginger, pulled from height for froth, whole milk</div>
+          <div class="price-row">
+            <span class="sell-price">$5.00</span>
+            <span class="profit-badge">GP 82%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?cold+brew+latte,iced+chai&nologo=true&seed=921" alt="Cold Brew Chai Latte" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Cold Brew Chai Latte</h4>
+          <div class="desc">House-brewed chai concentrate, oat milk, ice, light froth</div>
+          <div class="price-row">
+            <span class="sell-price">$6.50</span>
+            <span class="profit-badge">GP 81%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?mango+lassi,indian+yoghurt+drink&nologo=true&seed=922" alt="Mango Lassi" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Mango Lassi</h4>
+          <div class="desc">Fresh Alphonso mango, thick yoghurt, cardamom, saffron strand garnish</div>
+          <div class="price-row">
+            <span class="sell-price">$6.50</span>
+            <span class="profit-badge">GP 74%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?rose+lassi,pink+yoghurt+drink&nologo=true&seed=923" alt="Rose Lassi" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Rose Lassi</h4>
+          <div class="desc">Rose syrup, yoghurt, crushed pistachio, dried rose petals</div>
+          <div class="price-row">
+            <span class="sell-price">$6.50</span>
+            <span class="profit-badge">GP 76%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?thandai,saffron+milk+drink&nologo=true&seed=924" alt="Thandai" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Thandai</h4>
+          <div class="desc">Saffron milk, fennel, rose petals, nuts, warm spices — serve chilled</div>
+          <div class="price-row">
+            <span class="sell-price">$6.00</span>
+            <span class="profit-badge">GP 78%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?nimbu+pani,lime+soda&nologo=true&seed=925" alt="Nimbu Pani" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Nimbu Pani</h4>
+          <div class="desc">Fresh Indian lime, sparkling water, black salt, kala namak, cumin</div>
+          <div class="price-row">
+            <span class="sell-price">$5.00</span>
+            <span class="profit-badge">GP 85%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?filter+coffee,south+indian+coffee&nologo=true&seed=926" alt="Filter Coffee" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Filter Coffee</h4>
+          <div class="desc">South Indian drip brew, chicory blend, pulled between cups, serve hot</div>
+          <div class="price-row">
+            <span class="sell-price">$5.00</span>
+            <span class="profit-badge">GP 83%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <img src="https://source.unsplash.com/800x220/?aam+panna,raw+mango+drink&nologo=true&seed=927" alt="Aam Panna" loading="lazy">
+        <div class="drink-card-body">
+          <h4>Aam Panna</h4>
+          <div class="desc">Raw mango, roasted cumin, black salt, mint — cooling summer classic</div>
+          <div class="price-row">
+            <span class="sell-price">$5.50</span>
+            <span class="profit-badge">GP 80%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="info-callout">
+      <strong>☕ Drink Revenue Note:</strong> Beverages are the engine of this business. At food cost under 20%, every Masala Chai sold adds $4.10 to contribution. Push drink pairings with every order. A table of 4 ordering drinks = $20–$26 extra revenue with minimal food cost drag.
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 5: SERVICE TRAINING -->
+<div class="section" id="section5">
+  <div class="section-header">
+    <div class="section-num">Section 05</div>
+    <h2>🎓 Service Training Module</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>Cuisine Philosophy — What Staff Say</h3>
+    <div class="script-card">
+      <div class="staff-says">"We cook from the soul of Indian café culture — Bombay's Irani cafés, street food stalls, and railway dining cars — made fresh every day and served with the warmth those places were famous for."</div>
+    </div>
+
+    <h3>Story Cards — Know Your Menu</h3>
+    <div class="story-card">
+      <h4>🥘 About Our Entrées</h4>
+      <p>"Our starters are drawn straight from Mumbai's street food scene — the kind of food people eat standing up at roadside stalls, full of bold flavour and texture. We've brought that energy indoors without losing a drop of the original soul. Everything is made fresh — nothing from a packet, nothing from a jar."</p>
+    </div>
+    <div class="story-card">
+      <h4>🍛 About Our Mains</h4>
+      <p>"Our mains cover the full sweep of Indian cooking — from Mughal-era dishes like Rogan Josh and Butter Chicken to Bombay street staples like Pav Bhaji and Keema Pau. The Daal Makhani is cooked for 24 hours. The Biryani is sealed and dum-cooked. These are dishes that take real time to make properly, and we don't shortcut them."</p>
+    </div>
+    <div class="story-card">
+      <h4>🍮 About Our Desserts</h4>
+      <p>"Indian desserts are about perfume and warmth — rose, cardamom, saffron, pistachio. Our Gulab Jamun is made in-house and served warm. The Kulfi is churned daily. The Rasmalai is chilled in saffron milk. These are the flavours that end a meal on a high note and make people book again."</p>
+    </div>
+    <div class="story-card">
+      <h4>☕ About Our Drinks</h4>
+      <p>"Chai isn't just a drink here — it's our identity. We pull our masala chai from height, the traditional way, to create that characteristic froth and aerate the spices. Our chai blend is a house recipe developed over months of testing. Everything from the Cold Brew Chai Latte to the Aam Panna is made in-house with real ingredients — no syrups, no shortcuts."</p>
+    </div>
+
+    <h3>"What's Good Here?" — The Enthusiastic Answer</h3>
+    <div class="script-card">
+      <div class="staff-says">"Honestly? Start with a Masala Chai and the Pani Puri — the pani waters are incredible, three different flavours. If you're hungry, the Butter Chicken with naan is a crowd favourite, but the Daal Makhani is actually what our regulars order — it's cooked for 24 hours and it shows. For something different, the Railway Lamb Curry is an Anglo-Indian classic that most people have never tried. And save room for the Gulab Jamun — they're warm, they're fresh, and they're $8.99. You won't regret it."</div>
+    </div>
+
+    <h3>5 Upsell Scripts</h3>
+
+    <div class="script-card">
+      <div class="script-title">Script 1 — The Pairing (Match Drink to Dish)</div>
+      <div class="staff-says">"The Butter Chicken pairs beautifully with our Mango Lassi — the coolness of the yoghurt cuts right through the richness of the makhani sauce. Or if you want something warming alongside it, our Masala Chai is perfect. Which sounds better to you?"</div>
+      <div class="why"><span class="why-label">Why it works:</span> Giving two options removes the yes/no question and frames the choice as a matter of preference, not spending — almost everyone picks one.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 2 — The Upgrade ($2–4 Premium Add-On)</div>
+      <div class="staff-says">"Would you like to add a side of house-made naan to that? It's just $3 and it's straight out of the oven — perfect for scooping up the sauce. A lot of people get one even when their main already comes with bread."</div>
+      <div class="why"><span class="why-label">Why it works:</span> Anchors the upsell to a specific, low-cost item with a sensory trigger ("straight out of the oven") and social proof ("a lot of people") — reduces resistance significantly.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 3 — The Dessert Plant (Mention When Mains Arrive)</div>
+      <div class="staff-says">"Here's your Chicken Biryani — enjoy! Just so you know, we've just made a fresh batch of Gulab Jamun today — they're warm and they're going quickly. I'll come back and check on you shortly."</div>
+      <div class="why"><span class="why-label">Why it works:</span> Planting the dessert idea at the moment of maximum enjoyment (when food arrives) means guests are already thinking about it before they're even asked — conversion rate jumps dramatically.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 4 — The Share Suggestion (Starter to Share)</div>
+      <div class="staff-says">"If you're up for it, the Pani Puri is brilliant to share while you wait for mains — you pour the pani waters yourself at the table, and each one tastes completely different. It's a bit of a talking point. Want me to put that in?"</div>
+      <div class="why"><span class="why-label">Why it works:</span> Framing it as "a bit of a talking point" makes it experiential rather than transactional — guests don't feel they're being upsold, they feel they're being offered something special.</div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 5 — The Regular Builder (Invite Them Back)</div>
+      <div class="staff-says">"We change our daily chai special every week — this week it's a saffron and cardamom cold brew that's been really popular. Next week we're doing a winter masala version with cinnamon and clove. Worth coming back for if you're a chai person."</div>
+      <div class="why"><span class="why-label">Why it works:</span> Creates a reason for a specific, time-bounded return visit — it's not "come back sometime," it's "come back next week for this specific thing" — much more actionable.</div>
+    </div>
+
+    <h3>Table Timing Guide</h3>
+    <table>
+      <thead>
+        <tr><th>Time After Arrival</th><th>Staff Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>0 min — Arrival</strong></td><td>Greet warmly, seat, hand menus. "Can I start you with a Masala Chai or something cold while you look?" — chai order before food order whenever possible.</td></tr>
+        <tr><td><strong>2–3 min — Settled</strong></td><td>Deliver drinks if ordered. Return to take food order. Mention specials and highest-GP items. Suggest entrée to share if group of 2+.</td></tr>
+        <tr><td><strong>5 min — After Order</strong></td><td>Confirm order, confirm any dietary needs. Mention expected timing. Offer additional naan / sides upsell here.</td></tr>
+        <tr><td><strong>12–15 min — Entrée Delivery</strong></td><td>Deliver entrées. Check drinks — offer refill or new round. Use dessert plant: "We have fresh Gulab Jamun today."</td></tr>
+        <tr><td><strong>20–25 min — Mains Delivery</strong></td><td>Deliver mains, confirm everything looks right. Check if extra naan or raita is needed. Ensure drinks are topped up.</td></tr>
+        <tr><td><strong>35 min — Check-In</strong></td><td>"How's everything tasting?" — address any issues immediately. Offer dessert menus proactively, not reactively.</td></tr>
+        <tr><td><strong>45 min — Dessert/Coffee</strong></td><td>Take dessert and/or chai/coffee order. This is the second revenue opportunity — don't skip it.</td></tr>
+        <tr><td><strong>55–60 min — Departure</strong></td><td>Bring bill unprompted when guests signal readiness. Thank them specifically. Mention the weekly chai special for return visit.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Objection Handling</h3>
+
+    <div class="objection-card">
+      <div class="objection">❝ It's a bit pricey... ❞</div>
+      <div class="response">"I completely understand — honestly, our portions are pretty generous. The Daal Makhani, for example, is $17.99 and it's been cooking for 24 hours — it's a proper, filling meal. And our entrées are great for sharing if you want to try a few things without spending too much. You'll leave full, I promise."</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="objection">❝ I'm not very hungry... ❞</div>
+      <div class="response">"No problem at all — the Chilli Cheese Toast is a brilliant lighter option, and the Bhel Puri is more of a snack-size dish. A lot of people pair those with a chai or lassi and they're perfectly happy. Or the Masoor Dal with rice is quite light but really satisfying."</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="objection">❝ Just water thanks... ❞</div>
+      <div class="response">"Of course — still or sparkling? And have you tried a Nimbu Pani before? It's our Indian lime soda with black salt — really refreshing, and it's only $5. A lot of people get one alongside water. Happy to bring you one to try alongside your water if you like."</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="objection">❝ We need to be quick... ❞</div>
+      <div class="response">"Absolutely — I'll put your order in straight away and flag it as a priority. The Masala Chai takes about 3 minutes, the Chilli Cheese Toast or Bhel Puri comes out fast. Most of our mains are 12–15 minutes. I'll keep an eye on you and make sure the timing works."</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 6: CUSTOMER RETENTION -->
+<div class="section" id="section6">
+  <div class="section-header">
+    <div class="section-num">Section 06</div>
+    <h2>❤️ Customer Retention System</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>The Regulars Notebook System</h3>
+    <div class="notebook-system">
+      <h3>📓 How It Works</h3>
+      <p>Keep a physical notebook behind the counter (or a shared notes app). Every time a guest returns more than once, they get a page. You're building a simple profile that makes them feel known — not tracked.</p>
+
+      <h4>What to Record:</h4>
+      <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.92rem; margin-bottom:14px;">
+        <li style="margin-bottom:6px;"><strong>Name</strong> (if they've shared it — don't ask awkwardly)</li>
+        <li style="margin-bottom:6px;"><strong>Usual order</strong> — what they always get, what they've tried</li>
+        <li style="margin-bottom:6px;"><strong>Dietary preferences/restrictions</strong></li>
+        <li style="margin-bottom:6px;"><strong>When they usually come</strong> — morning regular, Friday lunch, etc.</li>
+        <li style="margin-bottom:6px;"><strong>Conversation notes</strong> — job, family, anything they've mentioned naturally</li>
+        <li style="margin-bottom:6px;"><strong>Last visit</strong> — date, what they ordered</li>
+      </ul>
+
+      <h4>When to Use It:</h4>
+      <p style="font-family:Arial,sans-serif; font-size:0.92rem;">Brief the team at start of service: "Mrs. Chen usually comes Tuesday mornings — she has the Masala Chai and Chilli Cheese Toast. She mentioned her daughter's wedding in March." When she walks in, you're not reading from a card — you're a person who remembered.</p>
+
+      <div class="visit-milestone">
+        <strong>Visit 1 — The First Impression:</strong>
+        <p style="margin-top:6px; font-family:Arial,sans-serif; font-size:0.9rem;">This is your only chance to make a first impression. Focus on: warm greeting, genuine menu guidance, dessert plant, personal farewell. Aim to learn their name. Write a note after they leave.</p>
+      </div>
+      <div class="visit-milestone">
+        <strong>Visit 2 — The Recognition Moment:</strong>
+        <p style="margin-top:6px; font-family:Arial,sans-serif; font-size:0.9rem;">"Welcome back!" — just these two words change everything. If you remember what they ordered last time, mention it: "The Butter Chicken again, or are you trying something new today?" This is the visit that turns a customer into a regular.</p>
+      </div>
+      <div class="visit-milestone">
+        <strong>Visit 3 — The Anchor:</strong>
+        <p style="margin-top:6px; font-family:Arial,sans-serif; font-size:0.9rem;">By the third visit, they are a regular. Use their name. Know their order. Offer something small and unexpected — a complimentary second chai, a small taste of today's special. This visit cements lifetime loyalty. Statistics show guests who visit 3 times are 10x more likely to continue returning than those who've visited once.</p>
+      </div>
+    </div>
+
+    <h3>5 VIP Micro-Moments</h3>
+
+    <div class="vip-card">
+      <div class="icon">☕</div>
+      <div>
+        <h4>The Complimentary Second Chai</h4>
+        <p>When a regular has been sitting a while, working or chatting, bring a small second chai unprompted: "We had a little extra today — thought you might want it." Cost: ~90 cents. Impact: they'll tell three people about it. Do this selectively — once every few visits, not every time.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">🌶️</div>
+      <div>
+        <h4>The Secret Spice Level</h4>
+        <p>For regulars who've mentioned they like heat, offer to make their dish "actually spicy" — not on the menu, just for them: "I can ask the kitchen to go proper on the chilli for your Rogan Josh — we usually tone it down for new guests." Creates exclusivity and a sense of insider status.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">🍮</div>
+      <div>
+        <h4>The Friday Treat</h4>
+        <p>On Fridays, drop a small complimentary sweet with the bill for regulars — a single Gulab Jamun, a small Kulfi bite. Not every week, not expected — but when it happens, it creates a moment of delight. "Happy Friday — this one's on us."</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">📱</div>
+      <div>
+        <h4>The Early Heads-Up</h4>
+        <p>When you get something special in — a seasonal ingredient, a new chai blend, a limited batch of Alphonso mangoes for the lassi — text or verbally tell regulars: "Just wanted to let you know we've got real Alphonso mangoes in this week, so the lassi is especially good right now." This works because it feels like a tip-off, not marketing.</p>
+      </div>
+    </div>
+
+    <div class="vip-card">
+      <div class="icon">🎂</div>
+      <div>
+        <h4>The Birthday Surprise</h4>
+        <p>If a regular mentions their birthday (or you notice a celebration), bring out a Gulab Jamun with a small candle and no fuss: "We heard it's your birthday — happy birthday from us." If the team knows in advance, have everyone briefly say happy birthday when they walk in. Costs $2, creates a memory they'll talk about for years.</p>
+      </div>
+    </div>
+
+    <h3>Complaint Recovery — Exact Script</h3>
+
+    <div class="complaint-step">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Listen Without Interrupting</h4>
+        <p>Stop what you're doing. Face them. Don't start solving before they've finished. Nod. Let them say everything they need to say. Most complaints escalate because people feel unheard, not because the original problem was serious.</p>
+      </div>
+    </div>
+
+    <div class="complaint-step">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Acknowledge & Apologize</h4>
+        <div class="staff-says" style="margin-top:8px; font-style:italic; background:#fff8f2; border:1px dashed #e8c9a0; padding:10px 14px; border-radius:6px; font-size:0.93rem;">"Thank you for telling me — I'm really sorry about that. That's not the experience we want you to have, and I completely understand why you're frustrated. You were right to say something."</div>
+        <p style="margin-top:8px; font-size:0.88rem; color:var(--muted);">Do not: make excuses, blame the kitchen, or say "sorry you feel that way." Own it unconditionally.</p>
+      </div>
+    </div>
+
+    <div class="complaint-step">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Fix It + Make a Gesture</h4>
+        <div class="staff-says" style="margin-top:8px; font-style:italic; background:#fff8f2; border:1px dashed #e8c9a0; padding:10px 14px; border-radius:6px; font-size:0.93rem;">"I'm going to take that off your bill right now. And I'd really like to make it up to you — can I bring you a fresh [dish] on us, or if you'd prefer, I'll send you with a complimentary chai and a voucher for your next visit? I want you to come back feeling good about us."</div>
+        <p style="margin-top:8px; font-size:0.88rem; color:var(--muted);">The gesture matters as much as the fix. Give them a choice — it returns control to them. Log the complaint in the notebook and brief the manager before end of service.</p>
+      </div>
+    </div>
+
+    <h3>Social Media Content System</h3>
+
+    <h4>Best 5 Dishes to Photograph</h4>
+    <table>
+      <thead>
+        <tr><th>Dish</th><th>Why It Works Visually</th><th>Best Shot</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Pani Puri</strong></td><td>Three coloured pani waters in small jugs create colour contrast; crispy shells arranged in a line have great texture</td><td>Overhead flat-lay, all three jugs in frame, natural light</td></tr>
+        <tr><td><strong>Masala Chai</strong></td><td>The pour itself — the long stream from height, the froth forming — is extremely watchable as video; steam on a cold day is golden</td><td>Video of the pull from 60cm height; close-up of froth settling</td></tr>
+        <tr><td><strong>Gulab Jamun</strong></td><td>Deep amber syrup, soft spheres, green pistachio crumble, rose petal — rich colour palette that pops on dark backgrounds</td><td>Side-angle on dark slate, soft light from one side</td></tr>
+        <tr><td><strong>Rose Lassi</strong></td><td>The layered effect of rose syrup sinking through white yoghurt is visually striking and creates colour drama</td><td>Before mixing — capture the syrup swirl first</td></tr>
+        <tr><td><strong>Bacon Naan Roll</strong></td><td>The cross-section cut shows layers — naan, cream cheese, bacon — and the steam and char marks are evocative</td><td>Cut in half on a plate, slight angle, capture steam</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <h4>Optimal Posting Times</h4>
+        <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.9rem;">
+          <li style="margin-bottom:6px;"><strong>Tuesday–Thursday 11:30am–12:30pm</strong> — catches pre-lunch hunger scroll</li>
+          <li style="margin-bottom:6px;"><strong>Friday 4:00pm–5:30pm</strong> — weekend planning traffic</li>
+          <li style="margin-bottom:6px;"><strong>Sunday 8:30am–9:30am</strong> — morning browsing, brunch consideration</li>
+          <li style="margin-bottom:6px;"><strong>Reels/video: any evening 6–8pm</strong> — highest Instagram engagement window</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Caption Formula</h4>
+        <p style="font-family:Arial,sans-serif; font-size:0.9rem;"><strong>Hook</strong> — one line that creates curiosity or appetite<br>
+        <strong>Story</strong> — 2–3 lines of context, history, or process<br>
+        <strong>CTA</strong> — specific action: "Book via link in bio" or "We're open from 7am"</p>
+      </div>
+    </div>
+
+    <div class="social-card">
+      <h4>📸 Example Caption 1 — Masala Chai</h4>
+      <div class="caption-example">This is how we make our chai. ☕
+
+Poured from height. Always. Not for show — the high pour aerates the spice blend and creates that froth you can't get any other way. Our recipe has cardamom, fresh ginger, cinnamon, black pepper, and two things we'll never tell you.
+
+Come in and try to guess. We're open 7am daily.
+#masalachai #indiancafe #chailife #bombayvibes #sydneycafe</div>
+    </div>
+
+    <div class="social-card">
+      <h4>📸 Example Caption 2 — Daal Makhani</h4>
+      <div class="caption-example">This dal started cooking yesterday. 🫕
+
+24 hours. That's how long our Daal Makhani simmers. Black lentils, butter, cream — no shortcuts. It's the dish our regulars order quietly without looking at the menu, because they already know.
+
+$17.99 and worth every cent. Come find out why.
+#daalmakhani #indianfood #comfortfood #slowcooked #chaihouse</div>
+    </div>
+
+    <h3>Neighbourhood Anchor Strategy</h3>
+
+    <div class="partnership-card">
+      <h4>🧘 Local Yoga Studio / Wellness Centre</h4>
+      <p>Partner with a nearby yoga or Pilates studio to offer a "post-practice chai" — 10% off for students showing their membership card. They come in healthy and calm, they buy Nimbu Pani, a light entrée, chai. Offer to host their end-of-term celebration. The wellness demographic aligns perfectly with the Indian mindfulness aesthetic.</p>
+    </div>
+
+    <div class="partnership-card">
+      <h4>📚 Independent Bookshop or Library</h4>
+      <p>The contemplative, slow nature of chai culture aligns naturally with book culture. Partner to cross-promote: chai discount with a book purchase, reciprocal loyalty card stamping. Host a monthly "chai and pages" morning where the bookshop recommends an India-related title and we provide the chai. Creates community and press coverage potential.</p>
+    </div>
+
+    <div class="partnership-card">
+      <h4>🏢 Nearby Office Buildings</h4>
+      <p>Offer a "corporate chai delivery" — a thermos of masala chai and a tray of Chilli Cheese Toast or Bhel Puri for team meetings, delivered within a 5-minute walk. Minimum order $60. Build relationships with office managers. Monday morning deliveries create weekly recurring revenue. Leave branded chai cups as gifts to anchor brand recall.</p>
+    </div>
+
+    <h4>Weekly Special That Creates Anticipation</h4>
+    <div class="info-callout">
+      <strong>Friday Chai Special:</strong> Every Friday we feature a limited chai variant — Kashmiri kahwa, saffron cardamom cold brew, turmeric honey chai, winter masala. Announce on Thursday evening via Instagram. Friday regulars ask about it by name. Creates a reason to visit specifically on Fridays and drives social media content organically.
+    </div>
+
+    <h4>Community Engagement Tactic</h4>
+    <div class="info-callout">
+      <strong>Monthly "Chai Tasting Evening":</strong> Once a month, after service (6pm–8pm), host a 12-person paid chai tasting — $35pp, two hours, six chai varieties, small snacks, the story behind each blend. Seats sell in hours. Creates a super-engaged loyal community, press coverage, and waiting list demand. Graduates of the tasting become our most vocal word-of-mouth advocates.
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 7: REVENUE MODEL -->
+<div class="section" id="section7">
+  <div class="section-header">
+    <div class="section-num">Section 07</div>
+    <h2>💰 Revenue Model & Financial Overview</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="revenue-box">
+      <h3>Monthly Revenue Snapshot</h3>
+      <div class="revenue-grid">
+        <div class="revenue-stat"><span class="num">40</span><span class="label">Seats</span></div>
+        <div class="revenue-stat"><span class="num">$35</span><span class="label">Avg Lunch Spend</span></div>
+        <div class="revenue-stat"><span class="num">$22</span><span class="label">Avg Breakfast Spend</span></div>
+        <div class="revenue-stat"><span class="num">$2,800</span><span class="label">Daily Target</span></div>
+        <div class="revenue-stat"><span class="num">28%</span><span class="label">Food Cost</span></div>
+        <div class="revenue-stat"><span class="num">28%</span><span class="label">Labour Cost</span></div>
+        <div class="revenue-stat"><span class="num">22%</span><span class="label">Overhead</span></div>
+        <div class="revenue-stat"><span class="num">~$19K</span><span class="label">Monthly Net</span></div>
+      </div>
+    </div>
+
+    <h3>Daily Revenue Breakdown</h3>
+    <table>
+      <thead>
+        <tr><th>Daypart</th><th>Covers</th><th>Avg Spend</th><th>Revenue</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Breakfast (7–10am)</td><td>35–40</td><td>$22</td><td>~$800</td><td>Chai + Chilli Cheese Toast, Bacon Naan Roll</td></tr>
+        <tr><td>Morning Tea (10–12pm)</td><td>20–25</td><td>$12</td><td>~$280</td><td>Chai + Bhel Puri, entrée snacks</td></tr>
+        <tr><td>Lunch (12–2:30pm)</td><td>50–60</td><td>$35</td><td>~$1,950</td><td>Full menu, mains, drinks, desserts</td></tr>
+        <tr><td>Afternoon (2:30–5pm)</td><td>15–20</td><td>$14</td><td>~$250</td><td>Chai, cold drinks, light entrées</td></tr>
+        <tr><td><strong>Daily Total</strong></td><td><strong>~130</strong></td><td><strong>~$22 avg</strong></td><td><strong>$2,800+</strong></td><td>Target met with healthy lunch trade</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Highest-Profit Items — Push These</h3>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Sell Price</th><th>GP %</th><th>GP $</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nimbu Pani</td><td>$5.00</td><td>85%</td><td>$4.25</td><td>Suggest as "instead of water"</td></tr>
+        <tr><td>Masala Chai</td><td>$5.00</td><td>82%</td><td>$4.10</td><td>Suggest at every opportunity</td></tr>
+        <tr><td>Filter Coffee</td><td>$5.00</td><td>83%</td><td>$4.15</td><td>Strong southern option for non-chai guests</td></tr>
+        <tr><td>Bhel Puri</td><td>$10.99</td><td>80%</td><td>$8.79</td><td>Easy share recommendation</td></tr>
+        <tr><td>Gulab Jamun</td><td>$8.99</td><td>80%</td><td>$7.19</td><td>Dessert plant with every main delivery</td></tr>
+        <tr><td>Daal Makhani</td><td>$17.99</td><td>79%</td><td>$14.21</td><td>First recommendation for vegetarians</td></tr>
+        <tr><td>Masoor Dal Tadka</td><td>$15.99</td><td>80%</td><td>$12.79</td><td>Light option recommendation</td></tr>
+        <tr><td>Pav Bhaji</td><td>$14.99</td><td>79%</td><td>$11.84</td><td>Bombay classic — tell the story</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cost Structure Analysis</h3>
+    <div class="two-col">
+      <div>
+        <h4>Monthly Revenue (26 trading days)</h4>
+        <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.92rem;">
+          <li style="margin-bottom:6px;">Gross Revenue: <strong>$72,800</strong></li>
+          <li style="margin-bottom:6px;">Food Cost (28%): <strong>−$20,384</strong></li>
+          <li style="margin-bottom:6px;">Gross Profit: <strong>$52,416 (72%)</strong></li>
+          <li style="margin-bottom:6px;">Labour (28%): <strong>−$20,384</strong></li>
+          <li style="margin-bottom:6px;">Overhead (22%): <strong>−$16,016</strong></li>
+          <li style="margin-bottom:6px;"><strong>Net Profit: ~$16,000–$19,000</strong></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key Levers to Improve Net</h4>
+        <ul style="padding-left:20px; font-family:Arial,sans-serif; font-size:0.92rem;">
+          <li style="margin-bottom:6px;">Increase average spend by $2 → +$260/day, +$6,760/month</li>
+          <li style="margin-bottom:6px;">Sell one extra chai per table of 2 → +$5 per table</li>
+          <li style="margin-bottom:6px;">Convert 30% of tables to dessert → +$2.70 avg contribution</li>
+          <li style="margin-bottom:6px;">Reduce food waste 2% → +$1,456/month</li>
+          <li style="margin-bottom:6px;">Morning tea trade × 5 extra covers → +$60/day, +$1,560/month</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: OPERATIONS -->
+<div class="section" id="section8">
+  <div class="section-header">
+    <div class="section-num">Section 08</div>
+    <h2>⚙️ Operations & Opening Procedures</h2>
+  </div>
+  <div class="section-body">
+
+    <h3>Opening Checklist (Before 7am)</h3>
+    <ul class="ops-checklist">
+      <li>Chai spice blend prepared and ready — mise en place for 40+ pulls</li>
+      <li>All refrigerated items checked for temperature (below 4°C)</li>
+      <li>Daal Makhani checked — has it been cooking overnight? What time did it start?</li>
+      <li>Mise en place: all chaat components prepped (tamarind chutney, chutneys, sev, yoghurt)</li>
+      <li>Coffee filter set up — chicory blend, South Indian drip ready</li>
+      <li>Bread dough checked — naan ready for first service?</li>
+      <li>POS system on, float correct, receipt paper loaded</li>
+      <li>All tables cleaned, settings ready, menus clean and complete</li>
+      <li>Front of house sweep — floor clean, windows clean, entrance welcoming</li>
+      <li>Staff briefing (5 min): specials, reservations, any 86'd items, today's VIP regulars</li>
+    </ul>
+
+    <h3>Closing Checklist (After Last Service)</h3>
+    <ul class="ops-checklist">
+      <li>All surfaces cleaned and sanitised — counters, prep benches, chai station</li>
+      <li>Waste disposed, bins cleaned, recycling sorted</li>
+      <li>Daal Makhani started for tomorrow (if applicable) or properly stored</li>
+      <li>All cold items sealed and refrigerated, temperatures checked</li>
+      <li>Float counted, daily takings recorded, discrepancies noted</li>
+      <li>Regulars notebook updated — any new entries, any special notes for tomorrow</li>
+      <li>Complaints or incidents logged and reported to manager</li>
+      <li>Social media — did we get content today? Scheduled for tomorrow morning?</li>
+      <li>Staff feedback — any observations from service worth noting?</li>
+      <li>Doors locked, alarms set</li>
+    </ul>
+
+    <h3>Quality Standards</h3>
+    <div class="two-col">
+      <div class="info-callout">
+        <strong>Chai Quality Check:</strong> Every chai should have visible froth from the pull. If staff can't pour from at least 40cm consistently, they need more practice. The froth is non-negotiable — it's our signature and every guest notices.
+      </div>
+      <div class="info-callout">
+        <strong>Plating Standard:</strong> Chaat dishes should have a drizzle of each chutney visible — not mixed in, not hidden. The visual of contrasting colours (green, tamarind brown, white yoghurt) is part of the experience. Sev always goes on last, always fresh and crispy.
+      </div>
+    </div>
+
+    <h3>Staff Training Timeline</h3>
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Training Focus</th><th>Pass Standard</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Day 1</td><td>Brand story, menu knowledge, allergy training, POS system</td><td>Recite all 28 menu items and their descriptions from memory</td></tr>
+        <tr><td>Day 2</td><td>Chai pulling technique, table timing guide, greeting standards</td><td>Pull chai consistently from 40cm with visible froth — 5 in a row</td></tr>
+        <tr><td>Day 3</td><td>Upsell scripts, objection handling, regulars notebook introduction</td><td>Role-play all 5 upsell scripts and 4 objection responses with manager</td></tr>
+        <tr><td>Day 4–5</td><td>Supervised service — shadow senior staff, handle tables under supervision</td><td>Complete full service shift with positive customer feedback noted</td></tr>
+        <tr><td>Week 2</td><td>Independent service, dessert and drink upsell focus, retention tactics</td><td>Achieve avg table spend within 5% of store average over 5 shifts</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="footer">
+  <strong>Modern Indian Chai House — Operations Guide</strong><br>
+  "Ancient flavours. Modern margins. Chai culture."<br>
+  <br>
+  Confidential — For Internal Use Only &nbsp;|&nbsp; Review quarterly &nbsp;|&nbsp; Last updated 2026
+</div>
+
+</body>
+</html>

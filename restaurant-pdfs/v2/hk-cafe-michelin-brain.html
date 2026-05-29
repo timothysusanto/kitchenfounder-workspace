@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hong Kong Café — Michelin-Brain Recipe Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;font-size:12.5px;line-height:1.6;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;background:#fff;}
+@media print{.page{margin:0;page-break-after:always;}body{font-size:11.5px;}}
+h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#c8000a;line-height:1.1;}
+h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#c8000a;margin:24px 0 12px;border-bottom:2px solid #c8000a;padding-bottom:5px;}
+h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin:0 0 4px;}
+h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#c8000a;margin:12px 0 6px;}
+.cover{text-align:center;padding:36px 0 28px;}
+.cover-sub{font-size:13px;color:#777;letter-spacing:3px;text-transform:uppercase;margin-top:6px;}
+.cover-line{width:70px;height:3px;background:#c8000a;margin:18px auto;}
+.cover-desc{color:#555;max-width:400px;margin:0 auto;line-height:1.8;font-size:12.5px;}
+.cover-badge{display:inline-block;background:#c8000a;color:#fff;padding:7px 22px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:14px;}
+.cover-credit{margin-top:12px;font-size:11px;color:#aaa;letter-spacing:2px;}
+.kpi-row{display:flex;gap:12px;margin:18px 0;}
+.kpi{flex:1;background:#c8000a;color:#fff;border-radius:6px;padding:12px;text-align:center;}
+.kpi-val{font-size:20px;font-weight:700;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;}
+.intro-box{background:#fdf5f5;border-left:4px solid #c8000a;padding:14px 18px;margin:16px 0;border-radius:0 6px 6px 0;}
+/* Recipe card */
+.recipe{border:1px solid #e0d0d0;border-radius:8px;margin-bottom:20px;overflow:hidden;page-break-inside:avoid;}
+.recipe-header{background:linear-gradient(135deg,#c8000a,#8b0000);color:#fff;padding:14px 18px;}
+.recipe-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
+.recipe-subtitle{font-size:11px;opacity:0.85;margin-top:3px;letter-spacing:1px;}
+.recipe-meta{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+.rmeta{background:rgba(255,255,255,0.15);border-radius:12px;padding:3px 10px;font-size:10px;letter-spacing:1px;}
+.recipe-body{padding:16px 18px;}
+.photo-box{background:#f5f0f0;border:1px dashed #c8a0a0;border-radius:6px;padding:14px;margin-bottom:14px;text-align:center;}
+.photo-label{font-size:10px;color:#c8000a;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.photo-search{font-size:11px;color:#666;margin-top:4px;font-style:italic;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;}
+.ing-table{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.ing-table th{background:#fdf5f5;color:#c8000a;padding:7px 10px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e0d0d0;}
+.ing-table td{padding:6px 10px;border-bottom:1px solid #f0e8e8;font-size:12px;}
+.ing-table tr:last-child td{border-bottom:none;}
+.ing-table .cost-col{text-align:right;color:#c8000a;font-weight:600;}
+.method-steps{counter-reset:step;}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.step-num{background:#c8000a;color:#fff;width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:1px;}
+.step-text{font-size:12px;line-height:1.7;color:#2a2a2a;}
+.step-text strong{color:#c8000a;}
+.temp-badge{display:inline-block;background:#1a1a1a;color:#fff;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;font-family:monospace;margin:0 3px;}
+.temp-badge.safe{background:#2a7a2a;}
+.temp-badge.rest{background:#cc6600;}
+.tip-row{background:#fff8e8;border:1px solid #e8c870;border-radius:6px;padding:10px 14px;margin:10px 0;font-size:11.5px;}
+.tip-row strong{color:#9a6800;}
+.cost-summary{background:#fdf5f5;border-radius:6px;padding:12px 16px;margin-top:12px;}
+.cost-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0e8e8;font-size:12px;}
+.cost-row:last-child{border-bottom:none;font-weight:700;color:#c8000a;font-size:13px;}
+.section-num{display:inline-block;background:#c8000a;color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-weight:700;font-size:12px;margin-right:8px;vertical-align:middle;}
+.allergen-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+.allergen{background:#fff0f0;border:1px solid #e0b0b0;border-radius:10px;padding:2px 8px;font-size:10px;color:#8b0000;font-weight:600;}
+.wine-box{background:#f0f0fa;border:1px solid #c0b8e0;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:11.5px;}
+.wine-box strong{color:#3a2a7a;}
+.plating-box{background:#f0faf0;border:1px solid #a0c8a0;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:11.5px;}
+.plating-box strong{color:#2a7a2a;}
+.footer{border-top:2px solid #c8000a;margin-top:28px;padding-top:10px;display:flex;justify-content:space-between;font-size:9px;color:#aaa;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- COVER -->
+<div class="cover">
+  <div style="font-size:44px;margin-bottom:14px;">🥢</div>
+  <h1>Hong Kong Café</h1>
+  <div class="cover-sub">Professional Recipe & Operations Guide</div>
+  <div class="cover-line"></div>
+  <div class="cover-desc">Written with the precision and discipline of a Michelin-trained kitchen. Every recipe includes exact weights, temperatures, timing, and technique — so your team executes consistently, every service, every cover.</div>
+  <div><div class="cover-badge">US Market Edition • $29.99</div></div>
+  <div class="cover-credit">By a Head Chef — Novotel Ibis Pullman Sydney Olympic Park • 10+ Restaurants Consulted</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">20</div><div class="kpi-lbl">Recipes</div></div>
+  <div class="kpi"><div class="kpi-val">28–32%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$120–180</div><div class="kpi-lbl">Avg Spend/Head</div></div>
+  <div class="kpi"><div class="kpi-val">$8–12K</div><div class="kpi-lbl">Target Daily Rev</div></div>
+</div>
+
+<div class="intro-box">
+  <strong>Chef's Note:</strong> Every recipe in this guide is written for a professional kitchen. Temperatures are non-negotiable — they are the line between a great dish and a food safety incident. Methods are sequenced for real service conditions: high volume, tight ticket times, and consistent output. Read each recipe fully before service. Mise en place is everything.
+</div>
+
+<!-- ENTREES -->
+<h2><span class="section-num">1</span>Entrées & Small Plates</h2>
+
+<!-- RECIPE 1: EGG TARTS -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">HK Egg Tarts (Dan Tat) — 3 piece</div>
+    <div class="recipe-subtitle">Classic shortcrust egg custard tart • Baked fresh daily • Breakfast & all-day</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 24 tarts</span>
+      <span class="rmeta">Prep: 40 min</span>
+      <span class="rmeta">Bake: 22–25 min</span>
+      <span class="rmeta">Sell Price: $8.99 / 3pc</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "Hong Kong egg tart dan tat golden" — use warm-lit overhead shot on dark slate</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Shortcrust Pastry Shell</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost/Unit</th></tr>
+          <tr><td>Plain flour (00 grade)</td><td>250g</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Unsalted butter (cold, cubed)</td><td>125g</td><td class="cost-col">$0.55</td></tr>
+          <tr><td>Icing sugar (sifted)</td><td>60g</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Egg yolk (large)</td><td>1 × 18g</td><td class="cost-col">$0.14</td></tr>
+          <tr><td>Cold water</td><td>20ml</td><td class="cost-col">—</td></tr>
+          <tr><td>Fine sea salt</td><td>1g</td><td class="cost-col">—</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Custard Filling</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost/Unit</th></tr>
+          <tr><td>Whole eggs (room temp)</td><td>3 × 55g</td><td class="cost-col">$0.42</td></tr>
+          <tr><td>Caster sugar</td><td>80g</td><td class="cost-col">$0.07</td></tr>
+          <tr><td>Whole milk (full fat)</td><td>200ml</td><td class="cost-col">$0.22</td></tr>
+          <tr><td>Evaporated milk</td><td>80ml</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Pure vanilla extract</td><td>3ml</td><td class="cost-col">$0.08</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h4>Method — Pastry Shell</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">In a food processor, pulse cold cubed butter with flour and icing sugar until it resembles <strong>fine breadcrumbs — 8–10 short pulses only</strong>. Overworking develops gluten and toughens the pastry.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Add egg yolk and cold water. Pulse 4–5 times until dough <strong>just comes together</strong>. It should hold when pressed — do not form a ball in the processor.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Turn out onto a lightly floured bench. Bring together by hand, flatten into a disc, wrap in cling film. <strong>Rest in refrigerator minimum 30 minutes</strong> (overnight preferred). This relaxes the gluten and prevents shrinkage during baking.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Roll to <strong>3mm thickness</strong> on a cold bench. Cut rounds 1.5cm wider than your tart moulds. Press gently into greased 8cm tart tins without stretching. Trim flush. <strong>Chill again 15 minutes before baking</strong>.</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">Blind bake at <span class="temp-badge">170°C / 340°F fan</span> for <strong>10 minutes</strong> with baking paper and weights. Remove weights, bake a further <strong>5 minutes</strong> until base is dry and very lightly golden. Do not fully colour — they will bake again with filling.</div></div>
+    </div>
+
+    <h4>Method — Custard Filling</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Dissolve caster sugar completely in warm milk over <span class="temp-badge">50°C / 122°F</span> — do not boil. Remove from heat. Add evaporated milk and vanilla. Allow to cool to <span class="temp-badge">35°C / 95°F</span> before adding eggs.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Whisk eggs gently — <strong>do not incorporate air</strong>. Strain milk mixture into eggs through a fine sieve. Whisk to combine. Strain entire custard through a fine sieve a second time. <strong>Two passes through the sieve is non-negotiable</strong> for a smooth set.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Pour custard into blind-baked shells to <strong>85% full</strong>. Bake at <span class="temp-badge">160°C / 320°F fan</span> for <strong>18–22 minutes</strong>. Custard is done when it has a slight wobble in the centre — it will set further on cooling. Internal temp at set: <span class="temp-badge safe">72°C / 162°F</span>.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Remove from oven. <strong>Do not touch or move for 5 minutes</strong>. Surface cracking is caused by sudden temperature change or overbaking. Cool on wire rack. Serve warm or at room temperature — <strong>never refrigerated</strong> (pastry becomes soggy).</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> The biggest mistake with egg tarts is overbaking. Pull them when the centre still wobbles — residual heat finishes the set. A fully set custard in the oven = a rubbery custard on the plate. Bake fresh twice daily: 7am and 12pm service batches.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total ingredient cost (24 tarts)</span><span>$1.90</span></div>
+      <div class="cost-row"><span>Cost per tart</span><span>$0.08</span></div>
+      <div class="cost-row"><span>Cost per serve (3pc)</span><span>$0.24</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$8.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>2.7% — EXCEPTIONAL MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Gluten</span><span class="allergen">Dairy</span><span class="allergen">Egg</span></div>
+  </div>
+</div>
+
+<!-- RECIPE 2: PINEAPPLE BUN -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Pineapple Bun with Cold Butter (Bo Lo Bao)</div>
+    <div class="recipe-subtitle">HK bakery classic • Baked fresh daily • Breakfast staple</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 12 buns</span>
+      <span class="rmeta">Proof: 90 min</span>
+      <span class="rmeta">Bake: 14–16 min</span>
+      <span class="rmeta">Sell Price: $6.50</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "pineapple bun bo lo bao Hong Kong bakery" — cross-hatch top, split open with butter melting</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Enriched Bread Dough</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Bread flour (strong, 12% protein)</td><td>300g</td><td class="cost-col">$0.24</td></tr>
+          <tr><td>Cake flour (soft, 8% protein)</td><td>100g</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Instant dried yeast</td><td>6g</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Caster sugar</td><td>50g</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>Full fat milk (warm, 35°C)</td><td>180ml</td><td class="cost-col">$0.20</td></tr>
+          <tr><td>Whole egg (room temp)</td><td>1 × 55g</td><td class="cost-col">$0.14</td></tr>
+          <tr><td>Unsalted butter (soft)</td><td>40g</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Fine salt</td><td>5g</td><td class="cost-col">—</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Crunchy Topping (Polo Crust)</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Unsalted butter (room temp)</td><td>60g</td><td class="cost-col">$0.26</td></tr>
+          <tr><td>Icing sugar (sifted)</td><td>50g</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Egg yolk</td><td>1 × 18g</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Cake flour</td><td>90g</td><td class="cost-col">$0.09</td></tr>
+          <tr><td>Custard powder</td><td>10g</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>Milk powder</td><td>10g</td><td class="cost-col">$0.04</td></tr>
+          <tr><th colspan="2">To Serve (per order)</th><th class="cost-col"></th></tr>
+          <tr><td>Cold salted butter block</td><td>25g</td><td class="cost-col">$0.11</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h4>Method — Bread Dough</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Combine flours, yeast, sugar, and salt in a stand mixer bowl. Add warm milk <span class="temp-badge">35°C / 95°F</span> and egg. Mix on low (hook) 2 minutes until shaggy dough forms. <strong>Do not add butter yet.</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Increase to medium speed. Knead <strong>8 minutes</strong> until smooth and elastic. Test with windowpane method — stretch a small piece: it should be thin enough to see light through without tearing.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Add soft butter in 3 additions on medium speed. Each addition fully incorporated before adding the next — approximately <strong>2 minutes per addition</strong>. Final dough should be smooth, glossy, and slightly tacky — not sticky.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Bulk ferment covered at <span class="temp-badge rest">26°C / 79°F</span> for <strong>60 minutes</strong> until doubled. Knock back gently. Divide into <strong>12 × 60g portions</strong>. Round tightly. Place on lined trays, cover. Proof at <span class="temp-badge rest">28°C / 82°F</span> for <strong>30 minutes</strong>.</div></div>
+    </div>
+
+    <h4>Method — Polo Crust Topping</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Cream butter and icing sugar until pale — <strong>3 minutes</strong>. Add egg yolk, mix to combine. Fold in sifted flour, custard powder, and milk powder until just combined into a soft paste. Do not overmix.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Divide into 12 portions. Roll each between two sheets of cling film to a <strong>7cm circle, 4mm thick</strong>. Refrigerate until firm enough to handle — minimum 15 minutes.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Drape one topping disc over each proofed bun. Using the back of a knife or a dough scraper, score a <strong>crosshatch pattern</strong> across the top — this is the signature "pineapple" look. Egg wash exposed bun edges only (not the topping — it will colour unevenly).</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Bake at <span class="temp-badge">190°C / 374°F fan</span> for <strong>14–16 minutes</strong> until topping is golden and cracked. Internal bread temp should reach <span class="temp-badge safe">93°C / 200°F</span>. Cool on rack 5 minutes before service. <strong>Split and serve with a 25g cold butter block inside while still warm.</strong></div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> The ratio of bread flour to cake flour is deliberate — bread flour provides structure and chew, cake flour keeps the crumb tender. Using 100% bread flour gives a chewy, tough result. The dough temperature after mixing should be <span class="temp-badge rest">24–26°C / 75–79°F</span> — use cold milk in summer, warm in winter to control this.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total ingredient cost (12 buns)</span><span>$1.64</span></div>
+      <div class="cost-row"><span>Cost per bun + butter</span><span>$0.25</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$6.50</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>3.8% — EXCEPTIONAL MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Gluten</span><span class="allergen">Dairy</span><span class="allergen">Egg</span></div>
+  </div>
+</div>
+
+<!-- RECIPE 3: CRISPY SPRING ROLLS -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Crispy Spring Rolls — 4 piece</div>
+    <div class="recipe-subtitle">Pork & vegetable filling • Deep fried to order • All-day entrée</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 40 rolls</span>
+      <span class="rmeta">Prep: 45 min</span>
+      <span class="rmeta">Fry: 3–4 min per batch</span>
+      <span class="rmeta">Sell Price: $10.99 / 4pc</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "crispy spring rolls golden fried Chinese" — cross-section showing filling, dipping sauce alongside</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Filling</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Pork mince (20% fat)</td><td>400g</td><td class="cost-col">$2.80</td></tr>
+          <tr><td>Napa cabbage (fine shredded)</td><td>250g</td><td class="cost-col">$0.40</td></tr>
+          <tr><td>Dried shiitake mushrooms (rehydrated, chopped)</td><td>80g dry</td><td class="cost-col">$0.55</td></tr>
+          <tr><td>Glass noodles (rehydrated, chopped 3cm)</td><td>50g dry</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Spring onion (fine sliced)</td><td>40g</td><td class="cost-col">$0.12</td></tr>
+          <tr><td>Fresh ginger (microplane)</td><td>15g</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Oyster sauce</td><td>30ml</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Light soy sauce</td><td>20ml</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Sesame oil</td><td>10ml</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>White pepper (ground)</td><td>2g</td><td class="cost-col">$0.02</td></tr>
+          <tr><td>Cornstarch</td><td>15g</td><td class="cost-col">$0.03</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Assembly & Frying</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Spring roll pastry (21cm square)</td><td>40 sheets</td><td class="cost-col">$2.20</td></tr>
+          <tr><td>Egg wash (beaten egg + water 1:1)</td><td>1 egg</td><td class="cost-col">$0.14</td></tr>
+          <tr><td>Canola or rice bran oil (frying)</td><td>3L</td><td class="cost-col">$4.20 (reusable)</td></tr>
+        </table>
+        <h4 style="margin-top:14px;">House Dipping Sauce</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Sweet chilli sauce</td><td>100ml</td><td class="cost-col">$0.25</td></tr>
+          <tr><td>Rice vinegar</td><td>20ml</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Fresh lime juice</td><td>15ml</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Fish sauce</td><td>5ml</td><td class="cost-col">$0.03</td></tr>
+          <tr><td>Fresh chilli (fine sliced)</td><td>5g</td><td class="cost-col">$0.04</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h4>Method — Filling</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Salt and squeeze cabbage first.</strong> Toss shredded cabbage with 5g salt, rest 10 minutes, then squeeze firmly in a clean cloth to remove excess moisture. This is critical — wet filling causes soggy rolls and dangerous oil spatter during frying.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Heat wok over high heat. Add 15ml oil. Stir-fry pork mince, breaking up continuously, until <strong>fully cooked through — no pink remaining, internal temp</strong> <span class="temp-badge safe">75°C / 167°F</span>. Approximately 3–4 minutes on high heat.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Add ginger, mushrooms, and squeezed cabbage. Stir-fry 2 minutes on high. Add oyster sauce, soy, and white pepper. Toss to combine. Add glass noodles and sesame oil. Stir through cornstarch. Remove from heat. <strong>Spread filling on a tray to cool to below</strong> <span class="temp-badge safe">20°C / 68°F</span> before rolling — hot filling tears the pastry.</div></div>
+    </div>
+
+    <h4>Method — Rolling & Frying</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Lay pastry sheet as a diamond. Place <strong>35g filling</strong> in a compact log shape across the lower third. Fold bottom corner up tightly over filling. Fold in both side corners. Roll firmly upward to halfway. Brush remaining flap with egg wash. Complete roll. Press to seal. <strong>Rolls must be tight — any air pockets cause bursting during frying.</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Freeze assembled rolls on a tray, then transfer to bags once solid. <strong>Fry from frozen — do not thaw.</strong> This is the correct professional method: frozen interior prevents overcooked filling while exterior achieves maximum crispness.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Heat oil to <span class="temp-badge">175°C / 347°F</span>. Fry in batches of 6–8 (do not crowd — oil temp drops and rolls absorb oil instead of frying). Fry <strong>3.5–4 minutes</strong> until deep golden. Internal temp must reach <span class="temp-badge safe">75°C / 167°F</span>. Drain on wire rack — never paper towel (steam makes them soggy).</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> Oil temperature is everything with spring rolls. Below 170°C = greasy, soggy rolls. Above 185°C = burnt exterior, cold interior. Use a probe thermometer and check between batches. Allow oil to recover to 175°C for at least 90 seconds before adding the next batch.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total ingredient cost (40 rolls)</span><span>$7.04</span></div>
+      <div class="cost-row"><span>Cost per roll</span><span>$0.18</span></div>
+      <div class="cost-row"><span>Cost per serve (4pc + sauce)</span><span>$0.89</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$10.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>8.1% — EXCEPTIONAL MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Gluten</span><span class="allergen">Egg</span><span class="allergen">Soy</span><span class="allergen">Fish (sauce)</span><span class="allergen">Sesame</span></div>
+  </div>
+</div>
+
+<!-- MAINS SECTION -->
+<h2><span class="section-num">2</span>Main Courses — Full Recipe Cards</h2>
+
+<!-- RECIPE 4: BAKED PORTUGUESE CHICKEN RICE -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Baked Portuguese Chicken Rice (焗葡國雞飯)</div>
+    <div class="recipe-subtitle">Coconut-turmeric curry • Baked over jasmine rice • Signature main</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 4 portions</span>
+      <span class="rmeta">Prep: 30 min</span>
+      <span class="rmeta">Bake: 18–20 min</span>
+      <span class="rmeta">Sell Price: $18.99</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "baked Portuguese chicken rice Hong Kong café golden cheese" — individual clay dish, bubbling sauce, golden top</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Chicken & Sauce</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Chicken thigh (boneless, skin-off)</td><td>180g × 4</td><td class="cost-col">$5.40</td></tr>
+          <tr><td>Coconut cream (full fat)</td><td>400ml</td><td class="cost-col">$1.20</td></tr>
+          <tr><td>Chicken stock (good quality)</td><td>200ml</td><td class="cost-col">$0.30</td></tr>
+          <tr><td>Yellow onion (fine diced)</td><td>120g</td><td class="cost-col">$0.15</td></tr>
+          <tr><td>Garlic cloves (minced)</td><td>15g</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Turmeric powder</td><td>8g</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Mild curry powder</td><td>12g</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Light soy sauce</td><td>20ml</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Fish sauce</td><td>10ml</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>Sugar</td><td>10g</td><td class="cost-col">$0.01</td></tr>
+          <tr><td>Mozzarella (shredded)</td><td>40g × 4</td><td class="cost-col">$2.40</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Steamed Jasmine Rice (per portion)</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Jasmine rice (washed 3×)</td><td>100g dry</td><td class="cost-col">$0.12</td></tr>
+          <tr><td>Water</td><td>150ml</td><td class="cost-col">—</td></tr>
+          <tr><td>Fine salt</td><td>1g</td><td class="cost-col">—</td></tr>
+        </table>
+        <h4 style="margin-top:14px;">Chicken Marinade</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Light soy sauce</td><td>20ml</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Oyster sauce</td><td>15ml</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Sesame oil</td><td>5ml</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>White pepper</td><td>2g</td><td class="cost-col">$0.01</td></tr>
+          <tr><td>Cornstarch</td><td>10g</td><td class="cost-col">$0.02</td></tr>
+          <tr><td>Garlic (minced)</td><td>8g</td><td class="cost-col">$0.04</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h4>Method — Chicken & Sauce (Mise en Place — Batch Daily)</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Butterfly chicken thighs to an even <strong>2cm thickness</strong> — this ensures consistent cooking. Marinate minimum <strong>2 hours, maximum 24 hours</strong> refrigerated. Remove from fridge <strong>20 minutes before cooking</strong> to temper.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Sear chicken in a hot pan with neutral oil, <strong>presentation side down first</strong>, over high heat 2 minutes each side. Target colour: deep golden. Do not cook through — target internal temp at this stage: <span class="temp-badge rest">60°C / 140°F</span>. Remove and rest. It will finish in the oven.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">In the same pan, sweat onion and garlic over medium heat until soft and translucent — <strong>5 minutes, no colour</strong>. Add turmeric and curry powder, cook out <strong>90 seconds</strong> until fragrant. This blooms the spices in fat and removes the raw flour taste.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Add coconut cream and chicken stock. Bring to a gentle simmer. Reduce by <strong>25%</strong> — approximately 8 minutes. Season with soy, fish sauce, and sugar. Taste: the sauce should be rich, slightly sweet, gently spiced. Adjust seasoning. <strong>Cool sauce completely before service assembly.</strong></div></div>
+    </div>
+
+    <h4>Method — Assembly & Baking (To Order)</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Place <strong>150g cooked jasmine rice</strong> in an individual oven-safe dish or deep plate. Spread evenly. Slice seared chicken thigh across the grain into 4–5 pieces and arrange over rice.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Ladle <strong>120ml hot sauce</strong> evenly over chicken and rice. Top with <strong>40g shredded mozzarella</strong>. Place in preheated oven at <span class="temp-badge">220°C / 428°F top grill/broil</span> for <strong>6–8 minutes</strong> until cheese is bubbling and golden-spotted.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Final chicken internal temp must reach <span class="temp-badge safe">74°C / 165°F</span> — probe through the cheese into the thickest part of the chicken. Rest <strong>2 minutes</strong> before service. Garnish: spring onion fine sliced, a pinch of white pepper.</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> Pre-cook rice and sauce in morning prep. Sear all chicken portions at start of service, hold at <span class="temp-badge safe">60°C / 140°F</span> in a warm oven. At order: assemble cold rice + chicken + hot sauce + cheese → blast under grill. Ticket time: <strong>8 minutes</strong>. This dish should never be reheated from cold to order — it becomes dry and the rice absorbs all the sauce.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total ingredient cost (4 portions)</span><span>$10.12</span></div>
+      <div class="cost-row"><span>Cost per portion</span><span>$2.53</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$18.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>13.3% — EXCELLENT MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Dairy</span><span class="allergen">Soy</span><span class="allergen">Fish</span><span class="allergen">Sesame</span><span class="allergen">Gluten (oyster sauce)</span></div>
+  </div>
+</div>
+
+<!-- RECIPE 5: BEEF BRISKET NOODLE SOUP -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Beef Brisket Noodle Soup (清湯腩)</div>
+    <div class="recipe-subtitle">12-hour braised brisket • Clear aromatic broth • Lunch hero dish</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Braise: 10–12 hours</span>
+      <span class="rmeta">Yield: 10 portions</span>
+      <span class="rmeta">Assembly: 5 min</span>
+      <span class="rmeta">Sell Price: $19.99</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "beef brisket noodle soup clear broth Chinese" — deep bowl, tender meat sliced, noodles visible, steam rising</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Braised Brisket</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Beef brisket (point cut, untrimmed)</td><td>2.5kg</td><td class="cost-col">$22.50</td></tr>
+          <tr><td>Daikon radish (3cm rounds)</td><td>500g</td><td class="cost-col">$1.20</td></tr>
+          <tr><td>Star anise</td><td>4 whole</td><td class="cost-col">$0.12</td></tr>
+          <tr><td>Cinnamon stick</td><td>2 × 8cm</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Dried tangerine peel</td><td>3 pieces</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Whole white peppercorns</td><td>10g</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Fresh ginger (thick sliced)</td><td>60g</td><td class="cost-col">$0.14</td></tr>
+          <tr><td>Spring onion (knotted)</td><td>4 stalks</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Premium light soy sauce</td><td>60ml</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Shaoxing rice wine</td><td>80ml</td><td class="cost-col">$0.35</td></tr>
+          <tr><td>Rock sugar</td><td>30g</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Water / beef stock</td><td>3.5L</td><td class="cost-col">$0.80</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Per Serve Assembly</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Fresh HK egg noodles (or rice noodles)</td><td>120g</td><td class="cost-col">$0.38</td></tr>
+          <tr><td>Braised brisket (sliced)</td><td>160g</td><td class="cost-col">$2.80</td></tr>
+          <tr><td>Braised daikon (2 pieces)</td><td>80g</td><td class="cost-col">$0.15</td></tr>
+          <tr><td>Hot broth (ladled)</td><td>350ml</td><td class="cost-col">$0.40</td></tr>
+          <tr><td>Spring onion (fine sliced)</td><td>8g</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>White pepper (pinch)</td><td>0.5g</td><td class="cost-col">$0.01</td></tr>
+          <tr><td>Sesame oil (finish)</td><td>3ml</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>Chilli oil (side)</td><td>5ml</td><td class="cost-col">$0.06</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h4>Method — Braised Brisket (Prep Day Before)</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Blanch brisket first — mandatory.</strong> Place whole brisket in cold water, bring to a boil. Boil 5 minutes. Drain, rinse under cold water. This removes impurities and blood, producing a clear broth. Skipping this step results in a cloudy, bitter soup.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">In a large stockpot, sear blanched brisket over high heat in neutral oil until deep brown on all sides — <strong>3–4 minutes per side</strong>. Colour = flavour. Do not rush this step.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Add all aromatics (star anise, cinnamon, tangerine peel, peppercorns, ginger, spring onion) tied in muslin. Add soy, Shaoxing wine, rock sugar, and stock/water to cover brisket by 4cm. Bring to a boil. Skim any foam. Reduce to a <strong>bare simmer</strong> — the surface should barely tremble.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Braise covered at <span class="temp-badge">90–95°C / 194–203°F</span> for <strong>10–12 hours</strong>. Add daikon in the last 90 minutes — it becomes silky and absorbs broth without falling apart. Brisket is done when a chopstick passes through with no resistance. Internal temp: <span class="temp-badge safe">93°C / 200°F</span> (collagen breakdown requires this).</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">Remove brisket. Cool completely in braising liquid — <strong>this is critical</strong>. Cooling in the liquid prevents moisture loss and keeps the meat tender. Once cold, slice against the grain into <strong>8mm portions</strong>. Portion and refrigerate. Strain and reserve broth separately.</div></div>
+    </div>
+
+    <h4>Method — Service Assembly (5 minutes)</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Bring broth to a rolling boil. Blanch noodles in a separate pot of boiling salted water — fresh egg noodles: <strong>45 seconds</strong>. Drain, divide into pre-warmed deep bowls.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Reheat brisket slices in hot broth for <strong>60 seconds</strong> — do not boil. Arrange over noodles with 2 pieces of daikon. Ladle <strong>350ml hot broth</strong>. Finish with spring onion, white pepper, 3ml sesame oil. Serve with chilli oil on the side.</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> The clear broth (清湯) should be golden and clean — not brown or cloudy. If it clouds during service, it has been boiled too hard. Keep broth at a consistent <span class="temp-badge">85°C / 185°F</span> during service — a gentle simmer. Boiling makes it cloudy and changes the flavour profile. Make broth every 2 days maximum — day 3 broth tastes flat.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total batch cost (brisket + broth)</span><span>$26.08</span></div>
+      <div class="cost-row"><span>Cost per portion (inc. noodles)</span><span>$3.88</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$19.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>19.4% — STRONG MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Gluten (noodles, soy)</span><span class="allergen">Sesame</span><span class="allergen">Soy</span></div>
+  </div>
+</div>
+
+<!-- RECIPE 6: CRISPY PORK CHOP RICE -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Crispy Pork Chop Over Rice (豬扒飯)</div>
+    <div class="recipe-subtitle">Tenderised loin chop • Pan-fried to order • Fast ticket time</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 1 portion</span>
+      <span class="rmeta">Marinate: 4–24 hr</span>
+      <span class="rmeta">Cook: 6–8 min</span>
+      <span class="rmeta">Sell Price: $17.99</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "pork chop rice Hong Kong cha chaan teng" — golden seared chop over white rice, fried egg on top</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Pork Chop & Marinade</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Pork loin chop (bone-in, 2cm thick)</td><td>200g</td><td class="cost-col">$2.20</td></tr>
+          <tr><td>Light soy sauce</td><td>20ml</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Oyster sauce</td><td>15ml</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Shaoxing wine</td><td>15ml</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Sugar</td><td>5g</td><td class="cost-col">$0.01</td></tr>
+          <tr><td>White pepper</td><td>2g</td><td class="cost-col">$0.01</td></tr>
+          <tr><td>Garlic powder</td><td>3g</td><td class="cost-col">$0.02</td></tr>
+          <tr><td>Baking soda (tenderiser)</td><td>1.5g</td><td class="cost-col">$0.01</td></tr>
+          <tr><td>Cornstarch</td><td>12g</td><td class="cost-col">$0.02</td></tr>
+          <tr><td>Egg (beaten, for coating)</td><td>0.5 egg</td><td class="cost-col">$0.07</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Plate Components</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Jasmine rice (cooked)</td><td>180g</td><td class="cost-col">$0.22</td></tr>
+          <tr><td>Free-range egg (fried)</td><td>1 × 55g</td><td class="cost-col">$0.14</td></tr>
+          <tr><td>Pickled mustard greens (sliced)</td><td>30g</td><td class="cost-col">$0.12</td></tr>
+          <tr><td>Spring onion (fine sliced)</td><td>8g</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>House soy-sesame dipping sauce</td><td>30ml</td><td class="cost-col">$0.08</td></tr>
+        </table>
+        <div class="tip-row" style="margin-top:10px;"><strong>Sauce recipe:</strong> 60ml light soy + 20ml dark soy + 15ml sesame oil + 10g sugar + 5ml rice vinegar. Warm to dissolve sugar. Batch weekly.</div>
+      </div>
+    </div>
+
+    <h4>Method</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Tenderise the chop physically first.</strong> Using a meat mallet or back of a heavy knife, pound both sides of the loin chop until thickness is reduced to <strong>1.5cm and fibres are visibly broken</strong>. This mechanical tenderising, combined with the baking soda in the marinade, produces the characteristic HK-style tender, slightly springy texture.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Combine all marinade ingredients except cornstarch and egg. Massage into pork. Add cornstarch and egg last — mix to coat evenly. Marinate minimum <strong>4 hours, ideal 24 hours</strong> refrigerated. The baking soda raises surface pH and accelerates tenderising — <strong>do not exceed 24 hours</strong> or the texture becomes mushy.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Remove from marinade. Shake off excess. Heat a heavy pan or cast iron with <strong>3mm neutral oil</strong> over high heat until smoking. Place chop — <strong>do not move for 3 minutes</strong>. Flip once. Cook 3 more minutes. Target: deep mahogany crust, caramelised edges. Internal temp: <span class="temp-badge safe">68°C / 154°F</span> for pork loin (USDA safe with 3-minute rest). Rest <strong>3 minutes</strong> before plating — mandatory for juice retention.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Fry egg in the same pan — basted with hot oil for a crispy white, runny yolk. Plate rice, slice pork chop and fan across rice, top with egg. Add pickled greens and spring onion. Sauce on the side.</div></div>
+    </div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total ingredient cost per portion</span><span>$3.11</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$17.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>17.3% — EXCELLENT MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Gluten</span><span class="allergen">Egg</span><span class="allergen">Soy</span><span class="allergen">Sesame</span></div>
+  </div>
+</div>
+
+<!-- RECIPE 7: WONTON NOODLE SOUP -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Wonton Noodle Soup</div>
+    <div class="recipe-subtitle">Hand-folded pork & shrimp wontons • Golden pork-shrimp broth • Lunch best seller</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Wonton yield: 60 pieces</span>
+      <span class="rmeta">Broth: 3–4 hr</span>
+      <span class="rmeta">Assembly: 4 min</span>
+      <span class="rmeta">Sell Price: $16.99</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "wonton noodle soup Hong Kong clear broth" — plump wontons, thin egg noodles, golden broth, clean bowl</div>
+    </div>
+    <div class="three-col">
+      <div>
+        <h4>Wonton Filling</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Wt</th></tr>
+          <tr><td>Pork mince (30% fat)</td><td>300g</td></tr>
+          <tr><td>Tiger shrimp (peeled, rough chop)</td><td>200g</td></tr>
+          <tr><td>Water chestnuts (fine dice)</td><td>60g</td></tr>
+          <tr><td>Spring onion (fine sliced)</td><td>30g</td></tr>
+          <tr><td>Fresh ginger (microplane)</td><td>10g</td></tr>
+          <tr><td>Light soy sauce</td><td>20ml</td></tr>
+          <tr><td>Sesame oil</td><td>8ml</td></tr>
+          <tr><td>Oyster sauce</td><td>15ml</td></tr>
+          <tr><td>White pepper</td><td>2g</td></tr>
+          <tr><td>Cornstarch</td><td>10g</td></tr>
+          <tr><td>Egg white</td><td>1 × 30g</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Pork-Shrimp Broth</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Wt</th></tr>
+          <tr><td>Pork bones (blanched)</td><td>1.5kg</td></tr>
+          <tr><td>Dried shrimp</td><td>40g</td></tr>
+          <tr><td>Dried flounder (optional)</td><td>20g</td></tr>
+          <tr><td>Spring onion</td><td>4 stalks</td></tr>
+          <tr><td>Fresh ginger (sliced)</td><td>40g</td></tr>
+          <tr><td>Water</td><td>4L</td></tr>
+          <tr><td>Light soy sauce</td><td>30ml</td></tr>
+          <tr><td>Salt</td><td>to taste</td></tr>
+          <tr><td>White pepper</td><td>3g</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Per Serve Assembly</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Wt</th></tr>
+          <tr><td>HK thin egg noodles (fresh)</td><td>100g</td></tr>
+          <tr><td>Wontons</td><td>6 pieces</td></tr>
+          <tr><td>Hot broth</td><td>350ml</td></tr>
+          <tr><td>Spring onion</td><td>8g</td></tr>
+          <tr><td>Crispy shallots</td><td>5g</td></tr>
+          <tr><td>Sesame oil (finish)</td><td>3ml</td></tr>
+          <tr><td>Chilli oil (side)</td><td>5ml</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h4>Method — Wonton Filling & Folding</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Combine pork mince with all seasonings and egg white. Mix in one direction only — <strong>clockwise for 3 minutes by hand</strong> or 90 seconds in a stand mixer with paddle. This develops the myosin proteins and creates a bouncy, cohesive texture. Fold in chopped shrimp and water chestnuts last — do not overmix shrimp.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Test seasoning: fry a small ball of filling in a pan until cooked through <span class="temp-badge safe">75°C / 167°F</span>. Taste and adjust. <strong>Always test filling before folding 60 wontons.</strong></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Place <strong>12g filling</strong> in the centre of a wonton wrapper. Fold into a triangle, pressing edges firmly. Bring the two base corners together and press to seal. Finished wontons should be plump with no air pockets. Freeze on trays then bag. <strong>Cook from frozen — 3.5 minutes in boiling water.</strong></div></div>
+    </div>
+
+    <h4>Method — Broth (Make Every 2 Days)</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Blanch pork bones: cover with cold water, bring to boil, boil 5 minutes, drain and rinse. This removes blood and impurities for a clean, golden broth.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Combine blanched bones, dried shrimp, dried flounder, ginger, and spring onion in a stockpot with 4L cold water. Bring to a boil over high heat. Skim thoroughly. Reduce to a <strong>gentle simmer — surface barely moving</strong>. Simmer <strong>3 hours</strong>. Do not boil — boiling emulsifies fat into broth making it cloudy and greasy.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Strain through a fine sieve. Season with soy, white pepper, and salt. The finished broth should be <strong>pale golden, clear, and deeply savoury with a clean shrimp sweetness</strong>. Refrigerate. Skim solid fat from surface when cold before reheating for service.</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> The secret to exceptional wonton soup is the broth temperature at service. Bowls must be <strong>pre-warmed</strong> — cold bowls drop broth temperature by 8–12°C in under 60 seconds. Stack bowls in a warm oven (60°C) during service. Noodles must be rinsed in cold water after blanching and shaken completely dry before adding to the bowl — waterlogged noodles dilute the broth.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Cost per portion (6 wontons + noodles + broth)</span><span>$2.95</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$16.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>17.4% — EXCELLENT MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Gluten</span><span class="allergen">Shellfish</span><span class="allergen">Egg</span><span class="allergen">Soy</span><span class="allergen">Sesame</span><span class="allergen">Fish</span></div>
+  </div>
+</div>
+
+<!-- DESSERTS SECTION -->
+<h2><span class="section-num">3</span>Desserts — Full Recipe Cards</h2>
+
+<!-- RECIPE 8: MANGO POMELO SAGO -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">Mango Pomelo Sago (楊枝甘露)</div>
+    <div class="recipe-subtitle">Chilled coconut mango broth • Sago pearls • Pomelo • No-cook dessert</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 8 portions</span>
+      <span class="rmeta">Prep: 30 min</span>
+      <span class="rmeta">Chill: 2 hr min</span>
+      <span class="rmeta">Sell Price: $9.99</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "mango sago pomelo dessert Hong Kong yellow" — overhead shot, chilled glass bowl, vibrant yellow, pomelo garnish</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>Mango Base & Sago</h4>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+          <tr><td>Ripe Ataulfo mangoes (puréed)</td><td>600g flesh</td><td class="cost-col">$4.80</td></tr>
+          <tr><td>Coconut cream (full fat)</td><td>200ml</td><td class="cost-col">$0.60</td></tr>
+          <tr><td>Fresh orange juice</td><td>100ml</td><td class="cost-col">$0.35</td></tr>
+          <tr><td>Caster sugar (to taste)</td><td>30–50g</td><td class="cost-col">$0.04</td></tr>
+          <tr><td>Small sago pearls</td><td>80g dry</td><td class="cost-col">$0.22</td></tr>
+          <tr><td>Fresh mango (fine dice, garnish)</td><td>200g</td><td class="cost-col">$1.60</td></tr>
+          <tr><td>Pomelo segments (peeled)</td><td>150g</td><td class="cost-col">$1.20</td></tr>
+          <tr><td>Fresh mint (garnish)</td><td>8 sprigs</td><td class="cost-col">$0.24</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Chef's Quality Notes</h4>
+        <div class="intro-box" style="margin-top:0;">
+          <strong>Mango selection is everything.</strong> This dish lives or dies on mango quality. Use Ataulfo (Champagne) mangoes for their fibre-free, intensely sweet flesh. Avoid Tommy Atkins — too fibrous and acidic. The mango must be at peak ripeness: fragrant at the stem, yielding to gentle pressure, no green remaining.<br><br>
+          <strong>Pomelo prep:</strong> Remove all white pith — it is intensely bitter and will ruin the dish. Work section by section, peel each individual membrane. The clean pomelo flesh should be translucent and juicy.<br><br>
+          <strong>Sugar adjustment:</strong> Taste the mango base before adding any sugar. Ripe Ataulfo may need zero additional sugar — or up to 50g if underripe. Always taste, never assume.
+        </div>
+      </div>
+    </div>
+
+    <h4>Method — Sago Pearls</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Bring a large pot of water (minimum 3L per 80g sago) to a rolling boil. Add sago in a thin stream, stirring immediately to prevent clumping. Cook over medium-high heat, stirring every 2 minutes, for <strong>12–15 minutes</strong> until pearls are 95% translucent with a tiny white dot remaining in the centre.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Remove from heat. Cover and stand <strong>5 minutes</strong> — residual heat finishes cooking. The white dot will disappear. Drain through a fine sieve. Rinse under cold running water until pearls are completely cold and no longer sticky. Transfer to a container with cold water to cover. Refrigerate. <strong>Use within 24 hours — sago hardens and becomes grainy beyond this.</strong></div></div>
+    </div>
+
+    <h4>Method — Mango Base & Assembly</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Blend 600g mango flesh until completely smooth. Pass through a fine sieve — this removes any fibrous strands for a silky texture. Add coconut cream and orange juice. Blend briefly. Taste, adjust sugar if needed. Chill minimum <strong>2 hours — serve ice cold at 4°C / 39°F</strong>.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Per serve: drain <strong>40g sago</strong> from water, add to a pre-chilled glass bowl. Ladle <strong>180ml cold mango base</strong> over sago. Top with <strong>25g diced fresh mango and 18g pomelo segments</strong>. Finish with a sprig of fresh mint. Serve immediately — this dessert cannot wait.</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> Batch the mango base daily — do not make ahead by more than 24 hours as it oxidises and loses its vibrant colour. If service volume is high, keep mango base in an ice bath on the pass. This is your highest-margin dessert. At $9.99 with under $1.70 ingredient cost, push it on every table.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total batch cost (8 portions)</span><span>$9.05</span></div>
+      <div class="cost-row"><span>Cost per portion</span><span>$1.13</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$9.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>11.3% — OUTSTANDING MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Coconut (tree nut)</span><span class="allergen">None other</span></div>
+  </div>
+</div>
+
+<!-- RECIPE 9: HK MILK TEA CREME BRULEE -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-title">HK Milk Tea Crème Brûlée</div>
+    <div class="recipe-subtitle">Strong-brew Ceylon tea custard • Caramelised sugar crust • East-meets-West signature</div>
+    <div class="recipe-meta">
+      <span class="rmeta">Yield: 10 ramekins</span>
+      <span class="rmeta">Prep: 20 min</span>
+      <span class="rmeta">Bake: 35–40 min</span>
+      <span class="rmeta">Sell Price: $10.99</span>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="photo-box">
+      <div class="photo-label">📸 Photo Placeholder</div>
+      <div class="photo-search">Unsplash search: "crème brûlée caramelised sugar crack spoon" — close-up of sugar crack, warm amber colour, tea cup presentation</div>
+    </div>
+    <table class="ing-table">
+      <tr><th>Ingredient</th><th>Weight</th><th class="cost-col">Cost</th></tr>
+      <tr><td>Heavy cream (35% fat)</td><td>500ml</td><td class="cost-col">$2.20</td></tr>
+      <tr><td>Full fat milk</td><td>200ml</td><td class="cost-col">$0.22</td></tr>
+      <tr><td>Strong Ceylon / Assam tea leaves (or bags)</td><td>25g / 6 bags</td><td class="cost-col">$0.35</td></tr>
+      <tr><td>Egg yolks (large)</td><td>8 × 18g</td><td class="cost-col">$1.12</td></tr>
+      <tr><td>Caster sugar (custard)</td><td>90g</td><td class="cost-col">$0.08</td></tr>
+      <tr><td>Sweetened condensed milk</td><td>60ml</td><td class="cost-col">$0.30</td></tr>
+      <tr><td>Pure vanilla extract</td><td>5ml</td><td class="cost-col">$0.12</td></tr>
+      <tr><td>Fine sea salt</td><td>1g</td><td class="cost-col">—</td></tr>
+      <tr><td>Caster sugar (brûlée crust, per serve)</td><td>8g</td><td class="cost-col">$0.01</td></tr>
+    </table>
+
+    <h4>Method</h4>
+    <div class="method-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Steep the tea hard.</strong> Combine cream, milk, and tea leaves. Heat to <span class="temp-badge">85°C / 185°F</span> — do not boil (boiling cream creates a skin and alters flavour). Steep covered for <strong>12 minutes</strong>. The infusion should be deeply amber and strong — this is HK milk tea, not afternoon tea. Strain through a fine sieve, pressing leaves firmly. Discard leaves. Stir in condensed milk while still warm.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Whisk egg yolks and caster sugar until pale and slightly thickened — <strong>2 minutes</strong>. Do not create foam — air bubbles in the custard surface will cause pitting after baking. Add vanilla and salt.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Temper the hot cream mixture into egg yolks: add in a slow, thin stream while whisking constantly. If added too fast, yolks will scramble. <strong>Strain through a fine sieve twice.</strong> Skim any surface foam with a spoon or blowtorch briefly.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Preheat oven to <span class="temp-badge">150°C / 302°F fan-off</span>. Pour custard into ramekins — fill to <strong>5mm below the rim</strong>. Place ramekins in a deep roasting tray. Pour hot water into the tray to reach <strong>halfway up the ramekins</strong>. Cover tray loosely with foil.</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">Bake <strong>35–40 minutes</strong>. Custard is set when the edges are firm but the centre has a <strong>2–3cm wobble</strong> when gently shaken. Internal temp at set: <span class="temp-badge safe">72°C / 162°F</span>. Remove from water bath immediately. Cool to room temperature, then refrigerate minimum <strong>4 hours, ideally overnight.</strong></div></div>
+      <div class="step"><div class="step-num">6</div><div class="step-text">To serve: blot surface dry with a paper towel if any condensation present. Sprinkle an even layer of <strong>8g caster sugar</strong> across surface. Caramelise with a blowtorch in a circular motion, keeping torch <strong>5–7cm from surface</strong>, until an even amber crust forms with no burnt spots. Serve within <strong>3 minutes</strong> — the crust softens quickly from the cold custard beneath.</div></div>
+    </div>
+
+    <div class="tip-row"><strong>⚡ Chef's Tip:</strong> The water bath (bain-marie) is non-negotiable — it moderates oven temperature and ensures the custard sets gently and evenly. Direct oven heat produces curdled, grainy custard. The foil cover prevents a skin forming on top. If your crème brûlée develops surface bubbles, your oven was too hot or you added the cream too quickly to the yolks. Both issues show up at baking — fix them at prep.</div>
+
+    <div class="cost-summary">
+      <div class="cost-row"><span>Total batch cost (10 portions)</span><span>$4.40</span></div>
+      <div class="cost-row"><span>Cost per portion</span><span>$0.44</span></div>
+      <div class="cost-row"><span>Sell price</span><span>$10.99</span></div>
+      <div class="cost-row"><span>Food Cost %</span><span>4.0% — EXCEPTIONAL MARGIN</span></div>
+    </div>
+    <div class="allergen-row"><span class="allergen">Dairy</span><span class="allergen">Egg</span></div>
+  </div>
+</div>
+
+<!-- OPERATIONS SECTION -->
+<h2><span class="section-num">4</span>Kitchen Brigade & Staff Forecast</h2>
+
+<div class="intro-box">
+  <strong>Chef's Note:</strong> A well-structured brigade is the difference between a chaotic kitchen and a profitable one. Every role below has a defined responsibility. Cross-training is mandatory — a kitchen that cannot function when one person calls in sick is a kitchen with a structural problem, not a staffing problem.
+</div>
+
+<table class="ing-table">
+  <tr><th>Position</th><th>Responsibility</th><th>Service</th><th>Rate/hr</th><th>Daily Cost</th></tr>
+  <tr><td><strong>Head Chef</strong></td><td>Menu consistency, ordering, quality control, team management</td><td>All day</td><td>$32–40</td><td>$256–320</td></tr>
+  <tr><td><strong>Sous Chef / 2nd Cook</strong></td><td>Wok station, proteins, sauce control during service</td><td>Lunch + Dinner</td><td>$24–28</td><td>$144–168</td></tr>
+  <tr><td><strong>Prep Cook</strong></td><td>Mise en place — wontons, fillings, sauces, butchery</td><td>Morning only</td><td>$17–20</td><td>$85–100</td></tr>
+  <tr><td><strong>Pastry / Bakery Cook</strong></td><td>Egg tarts, buns, desserts — 5am start</td><td>Morning only</td><td>$20–24</td><td>$80–96</td></tr>
+  <tr><td><strong>FOH Manager</strong></td><td>Table management, upselling, complaint resolution</td><td>All day</td><td>$22–26</td><td>$176–208</td></tr>
+  <tr><td><strong>Wait Staff × 2</strong></td><td>Table service, beverage, dessert push</td><td>Peak only</td><td>$16–18</td><td>$192–216</td></tr>
+  <tr><td><strong>Runner / Cashier</strong></td><td>Food delivery, POS, takeaway orders</td><td>Peak only</td><td>$15–17</td><td>$75–85</td></tr>
+  <tr><td colspan="4"><strong>Total Daily Labour</strong></td><td><strong>$1,008–$1,193</strong></td></tr>
+</table>
+
+<div class="tip-row"><strong>💡 Scheduling Rule:</strong> Labour should not exceed <strong>28% of daily revenue</strong>. At a target daily revenue of $8,000–$12,000 (fine dining level), your labour ceiling is $2,240–$3,360. The above brigade at $1,008–$1,193 sits at approximately <strong>10–15% labour cost</strong> — exceptional. Protect this by cross-training your prep cook to cover FOH on quiet days, and your sous chef to cover head chef on days off.</div>
+
+<h2><span class="section-num">5</span>Realistic Revenue Model — Fine Dining HK Format</h2>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">45</div><div class="kpi-lbl">Covers (seats)</div></div>
+  <div class="kpi"><div class="kpi-val">2.2×</div><div class="kpi-lbl">Table Turns/Day</div></div>
+  <div class="kpi"><div class="kpi-val">$95</div><div class="kpi-lbl">Avg Spend/Head</div></div>
+  <div class="kpi"><div class="kpi-val">$9,400</div><div class="kpi-lbl">Target Daily Rev</div></div>
+</div>
+
+<table class="ing-table">
+  <tr><th>Revenue Driver</th><th>Daily Volume</th><th>Avg Ticket</th><th>Daily Revenue</th></tr>
+  <tr><td>Lunch service (11:30am–2:30pm)</td><td>45 covers</td><td>$65</td><td>$2,925</td></tr>
+  <tr><td>Dinner service (5:30pm–9:30pm)</td><td>55 covers</td><td>$110</td><td>$6,050</td></tr>
+  <tr><td>Beverages (HK milk tea, juice, cocktails)</td><td>90 orders</td><td>$9</td><td>$810</td></tr>
+  <tr><td>Dessert add-ons</td><td>40 orders</td><td>$9.50</td><td>$380</td></tr>
+  <tr><td colspan="3"><strong>Total Daily Revenue</strong></td><td><strong>$10,165</strong></td></tr>
+</table>
+
+<div class="cost-summary">
+  <div class="cost-row"><span>Daily Revenue</span><span>$10,165</span></div>
+  <div class="cost-row"><span>Food Cost (28%)</span><span>−$2,846</span></div>
+  <div class="cost-row"><span>Labour (12%)</span><span>−$1,220</span></div>
+  <div class="cost-row"><span>Overhead — rent, utilities, insurance (22%)</span><span>−$2,236</span></div>
+  <div class="cost-row"><span><strong>Net Daily Profit (38%)</strong></span><span><strong>$3,863</strong></span></div>
+  <div class="cost-row"><span><strong>Monthly Net (25 trading days)</strong></span><span><strong>≈ $96,575</strong></span></div>
+</div>
+
+<div class="tip-row"><strong>💡 Beverage is your silent profit engine.</strong> HK milk tea at $8.50 costs $0.70 to produce — <strong>8% food cost</strong>. Train every server to offer a second beverage at every table. Achieving 1.8 beverages per cover vs 1.0 adds approximately <strong>$620/day in near-pure profit</strong>. This single habit is worth $186,000 annually.</div>
+
+<h2><span class="section-num">6</span>Kitchen Layout Principles</h2>
+
+<div class="two-col">
+  <div>
+    <h4>🔥 Hot Kitchen — Non-Negotiable Equipment</h4>
+    <ul style="padding-left:16px;line-height:2.2;font-size:12px;">
+      <li><strong>2× commercial wok burners</strong> — minimum 120,000 BTU each. Do not compromise on this. Consumer or semi-commercial woks cannot achieve wok hei.</li>
+      <li><strong>1× flat top grill</strong> — pork chops, eggs, bread</li>
+      <li><strong>1× commercial deep fryer</strong> — 18L minimum. Separate baskets for spring rolls and other items (flavour transfer).</li>
+      <li><strong>1× 6-burner range</strong> — broth maintenance, sauce work</li>
+      <li><strong>3× commercial rice cookers</strong> — run in rotation: one cooking, one holding, one on standby</li>
+      <li><strong>1× salamander / overhead grill</strong> — Portuguese chicken rice finishing</li>
+      <li><strong>Pass with heat lamps</strong> — minimum 90 seconds hold time without quality loss</li>
+    </ul>
+  </div>
+  <div>
+    <h4>❄️ Cold Kitchen & Pastry</h4>
+    <ul style="padding-left:16px;line-height:2.2;font-size:12px;">
+      <li><strong>Dedicated pastry bench</strong> — marble preferred (stays cold for pastry work)</li>
+      <li><strong>Deck oven or convection</strong> — egg tarts, pineapple buns</li>
+      <li><strong>Blast chiller</strong> — cool cooked proteins and fillings to safe temp rapidly. Mandatory for food safety compliance.</li>
+      <li><strong>Reach-in prep fridge</strong> — mise en place storage at point of use</li>
+      <li><strong>Wonton folding station</strong> — dedicated bench, away from heat</li>
+      <li><strong>Dessert display fridge</strong> — crème brûlée, chia pots visible to FOH</li>
+    </ul>
+    <div class="tip-row" style="margin-top:8px;"><strong>Flow principle:</strong> Raw proteins → prep bench → cooking station → pass. Never cross raw and cooked pathways. Design your kitchen walk-through before signing any lease.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Hong Kong Café — Professional Recipe & Operations Guide • US Market Edition</span>
+  <span>© Chef's Restaurant Blueprint Series • $29.99 • Unauthorized reproduction prohibited</span>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Indian Chai House — Operations Guide v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111111;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.page{background:#111111;max-width:210mm;margin:0 auto;padding:16mm 14mm;min-height:297mm;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;}
+h2{color:#ff9500;font-size:1.3rem;margin:28px 0 14px;border-bottom:2px solid rgba(255,149,0,0.3);padding-bottom:6px;}
+h3{color:#e8e8e8;font-size:1.05rem;margin:16px 0 8px;}
+.cover{background:#111111;padding:40px 14mm;min-height:297mm;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #ff9500;}
+.cover-eye{color:#ff9500;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{color:#ff9500;font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+.cover-tag{color:#999;font-style:italic;font-size:1rem;margin-bottom:40px;}
+.kpi-row{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;}
+.kpi{background:#1a1a1a;border:1px solid #ff9500;border-radius:8px;padding:16px 20px;flex:1;min-width:120px;}
+.kpi-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;}
+.kpi-label{color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.recipe{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;margin:20px 0;overflow:hidden;}
+.recipe-color-block{background:linear-gradient(135deg,#ff9500,#0a0a0a);height:80px;display:flex;align-items:center;justify-content:center;}
+.recipe-color-block span{color:#000;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;}
+.rh{background:#1a0e00;padding:14px 18px;border-bottom:1px solid #2a2a2a;}
+.rh-title{color:#ff9500;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;}
+.rh-meta{color:#999;font-family:'DM Mono',monospace;font-size:0.78rem;margin-top:4px;}
+.rm{padding:14px 18px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.85rem;}
+th{background:#ff9500;color:#000;padding:8px 10px;text-align:left;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;}
+tr:nth-child(even){background:#141414;}tr:nth-child(odd){background:#1a1a1a;}
+td{padding:7px 10px;border-bottom:1px solid #222;color:#e8e8e8;}
+.fc-box{background:#1a0e00;border:1px solid #ff9500;border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:20px;flex-wrap:wrap;}
+.fc-item{text-align:center;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;}
+.fc-lbl{color:#999;font-size:0.7rem;text-transform:uppercase;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+<style>
+.steps{margin:10px 0;}
+.step{display:flex;gap:12px;margin:8px 0;align-items:flex-start;}
+.sn{background:#ff9500;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.st{color:#e8e8e8;font-size:0.88rem;}
+.temp{background:#1e1e0a;border:1px solid #ffd700;border-radius:4px;padding:2px 7px;font-family:'DM Mono',monospace;font-size:0.78rem;color:#ffd700;display:inline-block;}
+.chef-tip{background:#1a1500;border-left:3px solid #ffd700;padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:0.85rem;color:#e8c84d;}
+.lens-card{background:#1a1a1a;border-left:4px solid #ff9500;border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0;}
+.lens-title{color:#ff9500;font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.lens-text{color:#ccc;font-size:0.9rem;line-height:1.75;}
+.lens-closer{color:#ff9500;font-weight:600;margin-top:10px;font-size:0.9rem;}
+.drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.drink-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;overflow:hidden;}
+.drink-color{background:linear-gradient(135deg,#ff9500,#1a0e00);height:8px;}
+.drink-body{padding:12px 14px;}
+.drink-name{color:#e8e8e8;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;}
+.drink-price{color:#ffd700;font-family:'DM Mono',monospace;font-size:0.85rem;margin-top:2px;}
+.script-box{background:#1a1a1a;border-left:3px solid #ff9500;padding:14px 18px;margin:12px 0;border-radius:0 8px 8px 0;}
+.script-label{color:#ff9500;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.script-text{color:#ccc;font-style:italic;font-size:0.88rem;line-height:1.6;}
+.rev-table{width:100%;border-collapse:collapse;margin:12px 0;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.rev-table th{background:#ff9500;color:#000;padding:8px 12px;text-align:left;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #222;}
+.rev-table .profit-row td{background:#0f1a0f;color:#ffd700;font-weight:700;}
+.prep-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:12px 0;}
+.prep-table th{background:#ff9500;color:#000;padding:7px 10px;}
+.prep-table td{padding:7px 10px;border-bottom:1px solid #222;background:#1a1a1a;}
+.safety{background:#1a0e00;border:1px solid #ff9500;border-radius:8px;padding:14px 18px;margin:12px 0;}
+.al{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.a{background:#1a0e00;border:1px solid #ff9500;border-radius:4px;padding:3px 8px;font-size:0.75rem;color:#ffcc88;font-family:'DM Mono',monospace;}
+footer{text-align:center;color:#555;font-size:0.72rem;font-family:'DM Mono',monospace;margin-top:40px;padding-top:16px;border-top:1px solid #2a2a2a;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eye">Operations Guide · v6 · 2026</div>
+  <h1>Modern Indian<br>Chai House</h1>
+  <div class="cover-tag">Bombay street food. Properly brewed chai. Modern café format.</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">40</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$35</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-label">Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">$22K</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What a Michelin-trained chef sees in Indian cooking</div>
+    <div class="lens-text">Indian spice work is architecture. The sequence in which spices enter a dish determines the flavour as much as the spices themselves. Whole spices bloomed in hot oil release fat-soluble aromatics that ground spices cannot. The tadka — the tempering of mustard seeds, curry leaves and dried chili in hot oil that is poured over a finished dal — is not garnish. It is a second cooking stage that adds volatile aromatics lost in the initial cook. Masala chai brewed properly — whole spices simmered in water before milk is added, then boiled again together — produces a depth that a tea bag steeped in hot water cannot approach. The difference is chemistry. This guide teaches the chemistry.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">Indian food in America has been trapped in butter chicken and naan for thirty years. The operator who brings Bombay street food — vada pav, masala dosa, properly brewed chai — to a modern café format is entering a market with almost no direct competition. The food cost on masala chai is 11%. At 60 cups a day, that is a $266 daily gross margin on one drink.</div>
+    <div class="lens-closer">This guide is the blueprint for the café that captures that market.</div>
+  </div>
+</div>
+<!-- ENTRÉES PAGE -->
+<div class="page">
+  <h2>Entrées</h2>
+  <table>
+    <tr><th>#</th><th>Dish</th><th>Time</th><th>Food Cost</th><th>Notes</th></tr>
+    <tr><td>1</td><td>Pani Puri</td><td>5 min</td><td>12%</td><td>Interactive — fill &amp; eat in one bite</td></tr>
+    <tr><td>2</td><td>Samosa — Punjabi Style</td><td>6 min</td><td>14%</td><td>Contains gluten</td></tr>
+    <tr><td>3</td><td>Chaat — Papdi Chaat</td><td>5 min</td><td>13%</td><td>Cold assembly dish</td></tr>
+    <tr><td>4</td><td>Vada Pav — Bombay Street Slider</td><td>6 min</td><td>15%</td><td>Signature street item</td></tr>
+    <tr><td>5</td><td>Dahi Vada</td><td>4 min</td><td>11%</td><td>Contains dairy</td></tr>
+    <tr><td>6</td><td>Aloo Tikki — Spiced Potato Patty</td><td>7 min</td><td>12%</td><td>Pan-fried to order</td></tr>
+  </table>
+
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Pani Puri</span></div>
+    <div class="rh">
+      <div class="rh-title">Pani Puri — Mumbai Street Style</div>
+      <div class="rh-meta">Prep: 5 min · FC: 12% · Gluten (shells) · Serves: 6 pieces</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Arrange 6 hollow semolina shells on serving tray. Ensure shells are crisp — discard any soft ones.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Fill two small ramekins: one with tamarind-date chutney, one with spiced mint-coriander water (pani).</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Prepare filling: spiced chickpeas + boiled potato, seasoned with chaat masala, cumin, black salt.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Present to table with verbal instruction: fill shell, add pani, eat in one bite.</div></div>
+      </div>
+      <div class="chef-tip">💡 The pani temperature matters. Serve chilled — 4–6°C. The cold pani against room-temp shell creates the textural contrast the dish depends on.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Samosa — Punjabi Style</div>
+      <div class="rh-meta">Prep: 6 min · FC: 14% · Contains: Gluten · Pre-assembled, fried to order</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Pre-assembled samosas held refrigerated. Fry at <span class="temp">175°C</span> for 4–5 min until golden and blistered.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Drain on rack 60 seconds. Do not paper-towel — steam softens the pastry.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Plate with green chutney and tamarind chutney. Dust with chaat masala.</div></div>
+      </div>
+      <div class="chef-tip">💡 The Punjabi samosa is larger and more heavily spiced than the South Indian version. Filling: potato, peas, cumin, coriander, garam masala, dried mango powder (amchur).</div>
+    </div>
+  </div>
+</div>
+<!-- MAINS PAGE -->
+<div class="page">
+  <h2>Mains</h2>
+  <table>
+    <tr><th>#</th><th>Dish</th><th>Time</th><th>FC</th><th>Notes</th></tr>
+    <tr><td>1</td><td>Butter Chicken Bowl</td><td>10 min</td><td>19%</td><td>Contains dairy</td></tr>
+    <tr><td>2</td><td>Dal Makhani</td><td>12 min</td><td>13%</td><td>⭐ Signature — 18hr cook</td></tr>
+    <tr><td>3</td><td>Chole Bhature</td><td>10 min</td><td>16%</td><td>Fried bread, pressure-cooked chickpeas</td></tr>
+    <tr><td>4</td><td>Masala Dosa</td><td>12 min</td><td>14%</td><td>GF — rice/lentil batter</td></tr>
+    <tr><td>5</td><td>Palak Paneer</td><td>10 min</td><td>17%</td><td>Contains dairy</td></tr>
+    <tr><td>6</td><td>Biryani — Chicken Dum</td><td>15 min</td><td>20%</td><td>May contain nuts</td></tr>
+    <tr><td>7</td><td>Aloo Paratha</td><td>8 min</td><td>12%</td><td>Griddle-cooked stuffed flatbread</td></tr>
+    <tr><td>8</td><td>Rajma Chawal</td><td>8 min</td><td>13%</td><td>Kidney bean curry + rice</td></tr>
+    <tr><td>9</td><td>Pav Bhaji</td><td>8 min</td><td>14%</td><td>Spiced veg mash on butter rolls</td></tr>
+    <tr><td>10</td><td>Egg Bhurji</td><td>7 min</td><td>11%</td><td>Indian scrambled eggs</td></tr>
+  </table>
+
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Dal Makhani — Signature</span></div>
+    <div class="rh">
+      <div class="rh-title">Dal Makhani — 18-Hour Black Lentil</div>
+      <div class="rh-meta">Prep: 12 min (day-of) · Total cook: 18 hrs · FC: 13% · Contains: Dairy · ⭐ House Signature</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st"><strong>Night before (17:00):</strong> Soak whole black lentils (urad dal) + kidney beans 8 hrs. Pressure cook 45 min.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Transfer to heavy-bottomed pot. Add tomato purée, ginger-garlic paste, whole spices (cardamom, clove, bay). Simmer overnight on lowest heat — 10–12 hrs.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st"><strong>Morning check (06:00):</strong> Stir, check consistency. Lentils should be completely broken down and silky. Add butter and cream.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Continue slow simmer until service. Finish each portion to order: ladle into bowl, finish with <span class="temp">1 tsp butter</span>, swirl of cream, dust of garam masala.</div></div>
+      </div>
+      <div class="chef-tip">💡 The 18-hour cook is the product. Do not attempt to shortcut it. The Maillard reaction on the lentil proteins during the overnight simmer creates compounds that a 2-hour cook cannot replicate. This is your signature — protect it.</div>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">13%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">18hr</div><div class="fc-lbl">Cook Time</div></div>
+        <div class="fc-item"><div class="fc-val">#1</div><div class="fc-lbl">Best Seller</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Masala Dosa — South Indian Crepe</div>
+      <div class="rh-meta">Prep: 12 min · FC: 14% · Gluten-Free (rice/lentil batter) · Batter fermented overnight</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st"><strong>Batter check (08:00):</strong> Fermented overnight rice-lentil batter should be aerated and slightly sour. Adjust consistency with water.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Heat cast iron griddle to <span class="temp">220°C</span>. Wipe with oil-soaked cloth. Pour 150ml batter, spread in outward spiral to thin crepe.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add spiced potato filling (masala) to centre. Drizzle ghee around edges. Cook until underside is golden-crisp.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Fold, plate with sambar (lentil broth) and three chutneys: coconut, tomato, green.</div></div>
+      </div>
+      <div class="chef-tip">💡 The fermentation is non-negotiable. It provides the sour flavour and the bubbles that create the dosa's characteristic crisp-lacy texture. 8-hour minimum, 12-hour optimal.</div>
+    </div>
+  </div>
+</div>
+<!-- MORE MAINS + DESSERTS -->
+<div class="page">
+  <h2>Mains — Continued</h2>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Biryani — Chicken Dum</div>
+      <div class="rh-meta">Prep: 15 min · FC: 20% · May contain nuts · Dum cooking method</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st"><strong>Prep (11:00):</strong> Marinate chicken in yogurt, spices, saffron 2+ hrs. Par-cook basmati rice to 70% done.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Layer: chicken masala base → par-cooked rice → fried onions → mint → saffron milk → ghee.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Seal pot with dough or foil. Dum cook at <span class="temp">160°C</span> 25 min. Hold in oven. Portion to order.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Serve with raita and mirchi ka salan (chili gravy). Garnish: fried onions, boiled egg.</div></div>
+      </div>
+      <div class="chef-tip">💡 Dum means "breath" — the sealed steam cook. The dough seal is traditional and keeps all aromatics inside. The first lift of the lid at the table is the theatre.</div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Pav Bhaji — Bombay Spiced Veg Mash</div>
+      <div class="rh-meta">Prep: 8 min · FC: 14% · Vegan base (butter optional)</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Hold bhaji (spiced potato-vegetable mash) in bain-marie. Order: ladle onto flat griddle, heat through with butter knob.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Griddle-toast pav buns with generous butter until golden-crisp on cut side.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Plate bhaji topped with raw onion, coriander, lemon wedge, butter curl. Buns alongside.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Desserts</h2>
+  <table>
+    <tr><th>#</th><th>Dish</th><th>Time</th><th>FC</th><th>Notes</th></tr>
+    <tr><td>1</td><td>Gulab Jamun</td><td>3 min</td><td>9%</td><td>Dairy, Gluten — best with masala chai</td></tr>
+    <tr><td>2</td><td>Kulfi — Indian Ice Cream</td><td>2 min</td><td>11%</td><td>Dairy, Nuts</td></tr>
+    <tr><td>3</td><td>Mango Shrikhand</td><td>3 min</td><td>10%</td><td>Dairy — strained yogurt, mango</td></tr>
+    <tr><td>4</td><td>Phirni — Rose Rice Pudding</td><td>3 min</td><td>10%</td><td>Dairy — serve chilled</td></tr>
+  </table>
+
+  <div class="recipe">
+    <div class="rh">
+      <div class="rh-title">Gulab Jamun — Sugar Syrup Dumplings</div>
+      <div class="rh-meta">Prep: 3 min · FC: 9% · Contains: Dairy, Gluten · Pairs: Masala Chai</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Hold gulab jamun in warm rose-cardamom sugar syrup <span class="temp">60°C</span>. Do not boil — syrup will crystallise.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Plate 3 pieces per portion. Drizzle with syrup. Optional: small scoop of malai (clotted cream) alongside.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Always offer masala chai pairing. Use script: "The gulab jamun is best with the masala chai."</div></div>
+      </div>
+      <div class="chef-tip">💡 FC 9% on a dessert is exceptional. At an average $6 sell price, gross margin per portion is $5.46. Push this dish at every dessert pitch.</div>
+    </div>
+  </div>
+</div>
+<!-- DRINKS PAGE -->
+<div class="page">
+  <h2>Drinks Menu</h2>
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Masala Chai — House Spiced Tea</div>
+        <div class="drink-price">$4.99 · FC: 11%</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Mango Lassi</div>
+        <div class="drink-price">$6.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Rose Lassi</div>
+        <div class="drink-price">$6.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Nimbu Pani — Indian Lemonade</div>
+        <div class="drink-price">$4.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Thandai — Spiced Almond Milk</div>
+        <div class="drink-price">$5.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Filter Coffee — South Indian</div>
+        <div class="drink-price">$4.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Jaljeera — Cumin-Tamarind Soda</div>
+        <div class="drink-price">$4.99</div>
+      </div>
+    </div>
+    <div class="drink-card">
+      <div class="drink-color"></div>
+      <div class="drink-body">
+        <div class="drink-name">Aam Panna — Raw Mango Cooler</div>
+        <div class="drink-price">$5.99</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <div class="recipe-color-block"><span>Masala Chai — House Method</span></div>
+    <div class="rh">
+      <div class="rh-title">Masala Chai — Brewed In-House</div>
+      <div class="rh-meta">$4.99 · FC: 11% · 60 cups/day = $266 daily gross margin</div>
+    </div>
+    <div class="rm">
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st"><strong>Spice base (07:00):</strong> Crush whole spices: green cardamom, black pepper, cinnamon stick, cloves, ginger (fresh). Toast dry 90 seconds.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">Simmer crushed spices in water <span class="temp">95°C</span> for 20 minutes. Add Assam tea leaves. Simmer 3 minutes more.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">Add full-fat milk. Bring to boil, watching carefully — milk boils fast. Reduce, simmer 2 min.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Strain through fine mesh. Add sugar to taste. Serve in small steel cup (cutting chai style) or ceramic.</div></div>
+      </div>
+      <div class="chef-tip">💡 This is not tea with milk added. The second boil after milk is critical — it extracts different compounds and rounds the spice profile. A bag steeped in hot water and splashed with milk is a different product entirely. Train staff to explain this distinction.</div>
+      <div class="fc-box">
+        <div class="fc-item"><div class="fc-val">11%</div><div class="fc-lbl">Food Cost</div></div>
+        <div class="fc-item"><div class="fc-val">$266</div><div class="fc-lbl">Daily Margin @60</div></div>
+        <div class="fc-item"><div class="fc-val">$7,980</div><div class="fc-lbl">Monthly Chai Margin</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SERVICE SCRIPTS PAGE -->
+<div class="page">
+  <h2>Service Scripts</h2>
+  <p style="color:#999;font-size:0.85rem;margin-bottom:16px;">These scripts are trained dialogue — not verbatim reads. Deliver naturally. The goal is to add context that makes the dish worth more to the guest.</p>
+
+  <div class="script-box">
+    <div class="script-label">Script 01 — Welcome + Masala Chai Pitch</div>
+    <div class="script-text">"The chai is brewed in-house — whole spices simmered 20 minutes before the milk goes in. $4.99. It's not a bag in hot water. You'll taste the difference."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Script 02 — Pani Puri Table Experience</div>
+    <div class="script-text">"The pani puri is interactive — we bring six hollow crisp shells and two chutneys, you fill them yourself and eat in one bite. It's street food the way it's eaten in Mumbai."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Script 03 — Dal Makhani Explanation</div>
+    <div class="script-text">"The dal has been cooking since yesterday. 18 hours. Black lentils, butter, cream, tomato — it needs that time for the lentils to break down and absorb the spices. It's our best dish."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Script 04 — Dessert + Chai Pairing</div>
+    <div class="script-text">"The gulab jamun is best with the masala chai — the sugar syrup and the spiced milk are made for each other. That's how it's served at weddings in India."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Script 05 — Return Visit</div>
+    <div class="script-text">"Saturday mornings we do a full Bombay street breakfast — pav bhaji, vada pav, cutting chai. Different menu, different vibe. Worth coming back for."</div>
+  </div>
+
+  <div class="chef-tip">💡 Script 02 (pani puri) and Script 03 (dal makhani) are your highest-value upsell moments. The interactive experience justifies a premium order. The 18-hour cook story converts first-timers into regulars — they return to verify the story is real.</div>
+</div>
+<!-- PREP SCHEDULE PAGE -->
+<div class="page">
+  <h2>Daily Prep Schedule</h2>
+  <table class="prep-table">
+    <tr><th>Time</th><th>Task</th><th>Owner</th><th>Notes</th></tr>
+    <tr><td>06:00</td><td>Dal makhani overnight check</td><td>Head Chef</td><td>Check consistency, stir, adjust heat</td></tr>
+    <tr><td>07:00</td><td>Chai spice base prep</td><td>Chai station</td><td>20-min spice simmer — do not skip</td></tr>
+    <tr><td>08:00</td><td>Dosa batter check</td><td>Grill station</td><td>Fermented overnight — check aeration &amp; sourness</td></tr>
+    <tr><td>09:00</td><td>Samosa assembly</td><td>Prep cook</td><td>Assemble &amp; refrigerate — fry to order</td></tr>
+    <tr><td>10:00</td><td>Chole pressure cook</td><td>Prep cook</td><td>Chickpeas 45 min, then masala base</td></tr>
+    <tr><td>11:00</td><td>Biryani dum prep</td><td>Head Chef</td><td>Layer &amp; seal — dum at 160°C for service</td></tr>
+    <tr><td>12:00</td><td>🍽 Lunch service opens</td><td>All stations</td><td>Full menu available</td></tr>
+    <tr><td>15:00</td><td>Afternoon reset</td><td>All</td><td>Restock, clean stations, prep dinner mise</td></tr>
+    <tr><td>17:00</td><td>Second dal batch</td><td>Head Chef</td><td>Overnight batch for next day — start now</td></tr>
+    <tr><td>18:30</td><td>🍽 Dinner service opens</td><td>All stations</td><td>Full menu + dinner specials</td></tr>
+    <tr><td>22:00</td><td>Close</td><td>All</td><td>Clean down, set overnight dal, prep notes</td></tr>
+  </table>
+
+  <div class="safety">
+    <h3 style="color:#ff9500;margin-bottom:10px;">⚠ Allergen Matrix</h3>
+    <table>
+      <tr><th>Dish</th><th>Allergens</th></tr>
+      <tr><td>Samosa</td><td><span class="a">GLUTEN</span></td></tr>
+      <tr><td>Pani Puri</td><td><span class="a">GLUTEN</span></td></tr>
+      <tr><td>Dahi Vada</td><td><span class="a">DAIRY</span></td></tr>
+      <tr><td>Butter Chicken</td><td><span class="a">DAIRY</span></td></tr>
+      <tr><td>Dal Makhani</td><td><span class="a">DAIRY</span></td></tr>
+      <tr><td>Masala Dosa</td><td><span class="a">GF — RICE/LENTIL</span></td></tr>
+      <tr><td>Biryani — Chicken Dum</td><td><span class="a">MAY CONTAIN NUTS</span></td></tr>
+      <tr><td>Gulab Jamun</td><td><span class="a">DAIRY</span> <span class="a">GLUTEN</span></td></tr>
+      <tr><td>Kulfi</td><td><span class="a">DAIRY</span> <span class="a">NUTS</span></td></tr>
+    </table>
+  </div>
+</div>
+<!-- P&L PAGE -->
+<div class="page">
+  <h2>P&amp;L Overview</h2>
+  <table class="rev-table">
+    <tr><th>Period</th><th>Revenue</th></tr>
+    <tr><td>Daily</td><td>~$2,800</td></tr>
+    <tr><td>Weekly</td><td>~$16,800</td></tr>
+    <tr><td>Monthly</td><td>~$72,800</td></tr>
+  </table>
+
+  <table class="rev-table">
+    <tr><th>Cost Category</th><th>%</th><th>Monthly (~)</th></tr>
+    <tr><td>Food Cost</td><td>22%</td><td>~$16,016</td></tr>
+    <tr><td>Labour</td><td>28%</td><td>~$20,384</td></tr>
+    <tr><td>Overheads</td><td>15%</td><td>~$10,920</td></tr>
+    <tr class="profit-row"><td>Net Profit</td><td>~35%</td><td>~$25,480/month</td></tr>
+  </table>
+
+  <div class="fc-box">
+    <div class="fc-item"><div class="fc-val">$72,800</div><div class="fc-lbl">Monthly Revenue</div></div>
+    <div class="fc-item"><div class="fc-val">22%</div><div class="fc-lbl">Food Cost</div></div>
+    <div class="fc-item"><div class="fc-val">35%</div><div class="fc-lbl">Net Margin</div></div>
+    <div class="fc-item"><div class="fc-val">$25,480</div><div class="fc-lbl">Monthly Net</div></div>
+  </div>
+
+  <h3>Chai Economics</h3>
+  <table class="rev-table">
+    <tr><th>Metric</th><th>Value</th></tr>
+    <tr><td>Sell Price</td><td>$4.99</td></tr>
+    <tr><td>Food Cost %</td><td>11%</td></tr>
+    <tr><td>Cost per Cup</td><td>~$0.55</td></tr>
+    <tr><td>Gross Margin per Cup</td><td>~$4.44</td></tr>
+    <tr><td>Daily @ 60 cups</td><td>~$266 gross margin</td></tr>
+    <tr class="profit-row"><td>Monthly @ 60/day</td><td>~$7,980 from chai alone</td></tr>
+  </table>
+
+  <div class="chef-tip">💡 The masala chai is your highest-margin product per unit. It should be the first thing every guest is offered, and the last. Staff who consistently upsell chai add thousands per month to the bottom line with a single sentence at each table.</div>
+
+  <div class="lens-card">
+    <div class="lens-title">// Operator's Advantage</div>
+    <div class="lens-text">The 35% net margin is achievable because Indian street food has naturally low food costs — legumes, rice, flour, spices are cheap. The premium comes from technique, knowledge, and execution. You are not competing with Indian buffets at $13.99 all-you-can-eat. You are competing with modern café formats, and winning on margin, authenticity, and story.</div>
+  </div>
+
+  <footer>
+    Modern Indian Chai House · Operations Guide v6 · Confidential · &copy; 2026<br>
+    40 Seats · $35 Avg Spend · 22% Food Cost · Masala Chai: $4.99 · Dal Makhani: 18 Hours
+  </footer>
+</div>
+
+</body>
+</html>

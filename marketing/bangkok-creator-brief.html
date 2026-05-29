@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder — Bangkok Creator Brief</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;background:#FAFAF8;color:#1C1C1C;font-size:14px;line-height:1.7;}
+.cover{background:linear-gradient(160deg,#7A0000 0%,#C62828 60%,#8B0000 100%);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px;position:relative;overflow:hidden;page-break-after:always;}
+.cover::before{content:'KF';position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-size:320px;color:rgba(255,255,255,0.04);font-family:'Arial Black',Arial,sans-serif;font-weight:900;line-height:1;}
+.kf-label{color:#FFCDD2;font-family:'Courier New',monospace;font-size:12px;letter-spacing:5px;text-transform:uppercase;margin-bottom:28px;}
+.cover-title{color:#FAFAF8;font-size:52px;font-weight:900;line-height:1.05;margin-bottom:14px;font-family:'Arial Black',Arial,sans-serif;text-transform:uppercase;}
+.cover-title span{color:#FFCDD2;}
+.cover-sub{color:#FFCDD2;font-size:18px;font-weight:700;margin-bottom:28px;letter-spacing:2px;text-transform:uppercase;font-family:'Arial Black',Arial,sans-serif;}
+.cover-desc{color:rgba(255,255,255,0.8);font-size:15px;font-style:italic;max-width:540px;line-height:1.7;margin-bottom:48px;}
+.cover-meta{display:flex;gap:32px;flex-wrap:wrap;}
+.cover-item{border-top:2px solid #FFCDD2;padding-top:12px;min-width:120px;}
+.cover-item-val{color:#FFCDD2;font-size:15px;font-weight:700;font-family:'Courier New',monospace;}
+.cover-item-label{color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.container{max-width:860px;margin:0 auto;padding:48px 40px;}
+h2{font-family:'Arial Black',Arial,sans-serif;font-size:18px;color:#C62828;text-transform:uppercase;letter-spacing:2px;border-bottom:3px solid #C62828;padding-bottom:8px;margin:40px 0 20px;}
+h3{font-family:'Arial Black',Arial,sans-serif;font-size:14px;color:#1C1C1C;text-transform:uppercase;letter-spacing:1px;margin:24px 0 10px;}
+h4{font-family:'Arial Black',Arial,sans-serif;font-size:12px;color:#C62828;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;}
+.badge{display:inline-block;background:#C62828;color:#fff;font-family:'Courier New',monospace;font-size:10px;padding:2px 8px;border-radius:2px;margin-right:6px;margin-bottom:4px;vertical-align:middle;}
+.info-box{background:#fff8f8;border-left:4px solid #C62828;padding:14px 18px;margin:16px 0;font-size:13px;color:#444;line-height:1.6;border-radius:0 4px 4px 0;}
+.info-box strong{color:#C62828;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0;}
+.box{background:#fff;border:1px solid #e8e0e0;border-radius:6px;padding:16px;page-break-inside:avoid;}
+.box h4{margin-top:0;}
+.box ul{padding-left:16px;font-size:13px;line-height:1.7;}
+.box ul li{margin-bottom:4px;}
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{background:#C62828;color:#fff;padding:8px 12px;text-align:left;font-family:'Courier New',monospace;font-size:11px;letter-spacing:1px;}
+td{padding:8px 12px;border-bottom:1px solid #f0e8e8;vertical-align:top;}
+tr:nth-child(even) td{background:#fff8f8;}
+.pillar{border:1px solid #e8e0e0;border-radius:6px;margin-bottom:16px;overflow:hidden;page-break-inside:avoid;}
+.pillar-head{background:#C62828;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+.pillar-title{color:#fff;font-family:'Arial Black',Arial,sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:1px;}
+.pillar-freq{color:#FFCDD2;font-family:'Courier New',monospace;font-size:11px;}
+.pillar-body{padding:14px 16px;font-size:13px;color:#444;line-height:1.6;}
+.pillar-body ul{padding-left:16px;}
+.pillar-purpose{color:#C62828;font-size:11px;font-style:italic;margin-bottom:8px;font-family:'Courier New',monospace;}
+.script-box{border:1px solid #f0c8c8;border-radius:6px;margin-bottom:20px;overflow:hidden;page-break-inside:avoid;}
+.script-num{background:#1C1C1C;color:#FFCDD2;font-family:'Courier New',monospace;font-size:11px;padding:7px 14px;letter-spacing:2px;}
+.script-title{background:#C62828;color:#fff;font-family:'Arial Black',Arial,sans-serif;font-size:13px;padding:8px 14px;text-transform:uppercase;}
+.script-section{padding:10px 14px;font-size:13px;border-bottom:1px solid #f0e8e8;}
+.script-section:last-child{border-bottom:none;}
+.script-label{font-family:'Courier New',monospace;font-size:10px;color:#C62828;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.script-text{color:#333;font-style:italic;line-height:1.6;}
+.step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
+.step-num{background:#C62828;color:#fff;font-size:11px;font-family:'Courier New',monospace;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-text{font-size:13px;color:#333;line-height:1.6;}
+.week-box{background:#fff;border:1px solid #e8e0e0;border-radius:6px;margin-bottom:16px;overflow:hidden;page-break-inside:avoid;}
+.week-head{background:#1C1C1C;color:#FAFAF8;padding:8px 14px;font-family:'Arial Black',Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;}
+.week-goal{color:#FFCDD2;font-family:'Courier New',monospace;font-size:11px;}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;}
+.kpi-card{background:#fff8f8;border:1px solid #f0c8c8;border-radius:4px;padding:12px;text-align:center;}
+.kpi-val{color:#C62828;font-size:22px;font-weight:900;font-family:'Courier New',monospace;}
+.kpi-label{color:#888;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.contact-box{background:#1C1C1C;color:#FAFAF8;border-radius:6px;padding:20px;margin:16px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.contact-item{text-align:center;}
+.contact-icon{font-size:22px;margin-bottom:4px;}
+.contact-label{color:#FFCDD2;font-family:'Courier New',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.contact-val{color:#fff;font-size:14px;font-weight:700;margin-top:2px;}
+footer{text-align:center;padding:32px;font-family:'Courier New',monospace;font-size:11px;color:#aaa;letter-spacing:1px;border-top:1px solid #e8e0e0;margin-top:40px;}
+@media print{
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .pillar,.script-box,.week-box,.box{page-break-inside:avoid;}
+  h2{page-break-after:avoid;}
+}
+</style>
+</head>
+<body>
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="kf-label">KitchenFounder · Staff Brief v1.0 · May 2026</div>
+  <div class="cover-title">Bangkok<br><span>Content</span><br>Creator Brief</div>
+  <div class="cover-sub">Your Complete Workflow Guide</div>
+  <div class="cover-desc">Everything you need to create content for KitchenFounder — your role, daily workflow, filming locations, content calendar, video scripts, and 3-month plan. Read this once, keep it as your reference.</div>
+  <div class="cover-meta">
+    <div class="cover-item"><div class="cover-item-val">20+</div><div class="cover-item-label">Videos / Month</div></div>
+    <div class="cover-item"><div class="cover-item-val">฿9,000</div><div class="cover-item-label">Monthly Pay</div></div>
+    <div class="cover-item"><div class="cover-item-val">5</div><div class="cover-item-label">Content Pillars</div></div>
+    <div class="cover-item"><div class="cover-item-val">3 Months</div><div class="cover-item-label">Campaign Plan</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ABOUT KITCHENFOUND -->
+<h2>About KitchenFounder</h2>
+<div class="info-box">
+  <strong>KitchenFounder</strong> sells restaurant operations guides to first-time restaurant owners in the US market. Each guide has recipes, food cost models, service training, staff workflows, and P&amp;L projections — everything a chef needs to know before opening.<br><br>
+  <strong>Products:</strong> Restaurant PDF Guides ($29.99 each) · Food Cost Calculator App ($19.99) · Free Restaurant Opening Checklist<br>
+  <strong>Platforms:</strong> @kitchenfounder on Instagram, TikTok, YouTube Shorts, Pinterest<br>
+  <strong>Store:</strong> kitchen-founder.myshopify.com · kitchenfounder.etsy.com<br>
+  <strong>Target audience:</strong> 25–35 year olds in the US who want to open their first restaurant — passionate, have some savings, leaving 9-5.
+</div>
+
+<h3>Brand Voice</h3>
+<div class="info-box">Professional but human. Chef authority. Educational without being academic. <strong>Think: your most knowledgeable chef friend — not a textbook.</strong> Never corporate. Never boring. Always real kitchen experience.</div>
+
+<!-- ROLES -->
+<h2>Your Role vs Mothy's Role</h2>
+<div class="two-col">
+  <div class="box">
+    <h4>✅ YOU Are Responsible For</h4>
+    <ul>
+      <li>Film raw video and photo content in Bangkok daily</li>
+      <li>Edit finished videos in CapCut (captions, music, branding, CTA)</li>
+      <li>Upload finished content to Google Drive</li>
+      <li>Follow the weekly content calendar</li>
+      <li>Minimum <strong>20 finished videos per month</strong></li>
+      <li>Weekly performance report every Sunday</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>📱 MOTHY Handles</h4>
+    <ul>
+      <li>Final approval of all content before posting</li>
+      <li>Posting to platforms (or you post after approval)</li>
+      <li>Product creation, store management</li>
+      <li>Brand strategy and direction</li>
+      <li>Payment on the 1st of each month</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-box">
+  <div class="contact-item"><div class="contact-icon">💬</div><div class="contact-label">Primary Contact</div><div class="contact-val">Telegram (fastest)</div></div>
+  <div class="contact-item"><div class="contact-icon">📁</div><div class="contact-label">File Delivery</div><div class="contact-val">Google Drive</div></div>
+  <div class="contact-item"><div class="contact-icon">⏱</div><div class="contact-label">Mothy Reviews Within</div><div class="contact-val">24 hours</div></div>
+  <div class="contact-item"><div class="contact-icon">📅</div><div class="contact-label">Weekly Check-In</div><div class="contact-val">Every Sunday</div></div>
+</div>
+
+<!-- EQUIPMENT -->
+<h2>Equipment &amp; Apps</h2>
+<div class="two-col">
+  <div class="box">
+    <h4>📷 Phone Camera Settings</h4>
+    <ul>
+      <li><strong>Standard content:</strong> 4K at 30fps</li>
+      <li><strong>Action/movement:</strong> 1080p at 60fps</li>
+      <li>Always film <strong>vertical 9:16</strong> — never horizontal</li>
+      <li>Clean lens before every shoot</li>
+      <li>Best light: Bangkok 3–5pm golden hour</li>
+      <li>Avoid fluorescent overhead lighting (looks green)</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>📲 Apps to Install</h4>
+    <ul>
+      <li><strong>CapCut</strong> — main video editor (free)</li>
+      <li><strong>Higgsfield</strong> (higgsfield.ai) — AI cinematic b-roll</li>
+      <li><strong>Kling</strong> (klingai.com) — AI food/kitchen video</li>
+      <li><strong>InShot</strong> — quick mobile edits (Pro login from Mothy)</li>
+      <li><strong>Google Drive</strong> — file delivery to Mothy</li>
+      <li><strong>Telegram</strong> — communication</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Google Drive Folder Structure</h3>
+<div class="info-box" style="font-family:'Courier New',monospace;font-size:12px;line-height:1.9;">
+KitchenFounder Content/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── RAW footage/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── Finished videos — for approval/ &nbsp;← <strong>Upload here</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── Approved — ready to post/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── Posted/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── Assets (logos, fonts, brand kit)/
+</div>
+
+<!-- VIDEO STANDARDS -->
+<h2>Video Format Standards</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Element</th><th>Standard</th></tr>
+<tr><td><strong>Dimensions</strong></td><td>9:16 vertical (1080 × 1920px)</td></tr>
+<tr><td><strong>TikTok length</strong></td><td>15–60 seconds (sweet spot: 30–45 sec)</td></tr>
+<tr><td><strong>Instagram Reels</strong></td><td>15–90 seconds</td></tr>
+<tr><td><strong>YouTube Shorts</strong></td><td>Up to 60 seconds</td></tr>
+<tr><td><strong>Captions</strong></td><td>Always — auto-generate in CapCut, then review and fix</td></tr>
+<tr><td><strong>CTA</strong></td><td>Last 3 seconds — ALWAYS include</td></tr>
+<tr><td><strong>Brand watermark</strong></td><td>"KitchenFounder" bottom left, white text, small</td></tr>
+<tr><td><strong>Music</strong></td><td>CapCut trending audio OR royalty-free only</td></tr>
+<tr><td><strong>Hook</strong></td><td>First 3 seconds MUST stop the scroll</td></tr>
+</table>
+</div>
+
+<div class="two-col">
+  <div class="box">
+    <h4>🪝 Hook Examples (first 3 sec)</h4>
+    <ul>
+      <li><em>"Most restaurant owners lose money on this dish without knowing it..."</em></li>
+      <li><em>"The birria secret no Western chef knows..."</em></li>
+      <li><em>"I've been a chef for 10 years — here's what I wish I knew at 25..."</em></li>
+      <li><em>"This Bangkok market ingredient is about to blow up in US restaurants..."</em></li>
+      <li><em>"90% of restaurants fail in year 1. Here's the real reason..."</em></li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>📣 CTA Examples (last 3 sec)</h4>
+    <ul>
+      <li><em>"Full guide in bio — kitchen-founder.myshopify.com"</em></li>
+      <li><em>"Free checklist in bio — link in bio"</em></li>
+      <li><em>"Follow for more kitchen business tips"</em></li>
+      <li><em>"Comment 'GUIDE' and I'll send you the link"</em></li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTENT PILLARS -->
+<h2>Content Pillars</h2>
+
+<div class="pillar">
+  <div class="pillar-head"><div class="pillar-title">Pillar 1 — Kitchen Knowledge / Business Tips</div><div class="pillar-freq">2× per week</div></div>
+  <div class="pillar-body">
+    <div class="pillar-purpose">Purpose: Educate, establish authority, highest reach</div>
+    <ul><li>Food cost % explained</li><li>How to price a dish</li><li>Menu engineering (Star/Plow Horse/Puzzle/Dog)</li><li>Why restaurants fail</li><li>How to hire kitchen staff</li><li>Reading a P&amp;L as a chef</li></ul>
+  </div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-head"><div class="pillar-title">Pillar 2 — Recipe Process / Technique</div><div class="pillar-freq">1–2× per week</div></div>
+  <div class="pillar-body">
+    <div class="pillar-purpose">Purpose: Visual appeal, shareable, food lovers</div>
+    <ul><li>Thai cooking techniques</li><li>Knife skills</li><li>Plating tips</li><li>Street food cooking process</li><li>Professional kitchen hacks</li></ul>
+  </div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-head"><div class="pillar-title">Pillar 3 — Bangkok Food Culture</div><div class="pillar-freq">1× per week</div></div>
+  <div class="pillar-body">
+    <div class="pillar-purpose">Purpose: Authentic, unique content only YOU can make</div>
+    <ul><li>Or Tor Kor Market visits</li><li>Yaowarat Chinatown street food</li><li>Bangkok restaurant openings</li><li>Thai ingredient deep dives</li><li>Market vendor stories</li></ul>
+  </div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-head"><div class="pillar-title">Pillar 4 — Product Feature</div><div class="pillar-freq">1× per week</div></div>
+  <div class="pillar-body">
+    <div class="pillar-purpose">Purpose: Direct sales driver</div>
+    <ul><li>Guide walkthroughs (show inside the PDF on screen)</li><li>Food Cost Calculator demo</li><li>Free checklist promotion</li><li>Bundle deals</li></ul>
+  </div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-head"><div class="pillar-title">Pillar 5 — Personal Story / Behind the Scenes</div><div class="pillar-freq">1× per week</div></div>
+  <div class="pillar-body">
+    <div class="pillar-purpose">Purpose: Trust building, brand connection</div>
+    <ul><li>Behind the scenes of content creation</li><li>Your journey as a creator</li><li>Bangkok hospitality culture</li><li>Why KitchenFounder matters</li></ul>
+  </div>
+</div>
+
+<!-- DAILY WORKFLOW -->
+<h2>Daily Workflow</h2>
+<div class="box" style="margin-bottom:16px;">
+  <div class="step"><div class="step-num">AM</div><div class="step-text"><strong>Morning (9–10am Bangkok time)</strong> — Check content calendar for today's content type. Review any feedback from Mothy on yesterday's content. Plan shoot location and setup.</div></div>
+  <div class="step"><div class="step-num">PM</div><div class="step-text"><strong>Afternoon (1–5pm)</strong> — Film content. Aim for 3–5 raw clips per day. Bangkok afternoon light is best from 3–5pm. Film more than you need — you can always cut, you can't add.</div></div>
+  <div class="step"><div class="step-num">🌙</div><div class="step-text"><strong>Evening (6–9pm)</strong> — Edit in CapCut: add captions, music, CTA, KitchenFounder watermark. Export and upload to Google Drive "Finished — for approval" folder. Send Telegram to Mothy: <em>"2 videos uploaded for approval."</em></div></div>
+  <div class="step"><div class="step-num">✅</div><div class="step-text"><strong>Mothy reviews within 24 hours</strong> — Approved → moves to "Approved — ready to post." Changes requested → specific feedback given. Re-edit and re-upload.</div></div>
+</div>
+
+<!-- WEEKLY CALENDAR -->
+<h2>Weekly Content Calendar</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Day</th><th>Platform</th><th>Content Pillar</th><th>Length</th></tr>
+<tr><td><strong>Monday</strong></td><td>TikTok + Reels</td><td>Kitchen Knowledge / Business Tip</td><td>30–45 sec</td></tr>
+<tr><td><strong>Tuesday</strong></td><td>TikTok + Reels</td><td>Recipe Process / Technique</td><td>20–40 sec</td></tr>
+<tr><td><strong>Wednesday</strong></td><td>TikTok + Reels</td><td>Bangkok Food Culture</td><td>30–60 sec</td></tr>
+<tr><td><strong>Thursday</strong></td><td>TikTok + Reels</td><td>Kitchen Knowledge / Business Tip</td><td>30–45 sec</td></tr>
+<tr><td><strong>Friday</strong></td><td>TikTok + Reels + Shorts</td><td>Product Feature</td><td>30–60 sec</td></tr>
+<tr><td><strong>Saturday</strong></td><td>TikTok + Reels</td><td>Personal Story / Behind Scenes</td><td>45–90 sec</td></tr>
+<tr><td><strong>Sunday</strong></td><td colspan="3" style="color:#888;font-style:italic;">REST DAY</td></tr>
+</table>
+</div>
+<div class="info-box"><strong>Posting time:</strong> Best for US audience = 6–9am EST or 7–10pm EST. Bangkok time is +11 hours from EST. Post TikTok and Instagram Reels at the same time. Upload YouTube Shorts separately (same video).</div>
+
+<!-- FILMING LOCATIONS -->
+<h2>Bangkok Filming Locations</h2>
+<div class="table-wrap">
+<table>
+<tr><th>#</th><th>Location</th><th>What to Film</th><th>Pillar</th></tr>
+<tr><td>1</td><td><strong>Or Tor Kor Market</strong> (Chatuchak)</td><td>Premium fresh produce, exotic Thai ingredients, vendor interactions</td><td>Bangkok Culture</td></tr>
+<tr><td>2</td><td><strong>Yaowarat (Chinatown)</strong></td><td>Night street food, wok cooking, crowds, neon lights</td><td>Bangkok Culture</td></tr>
+<tr><td>3</td><td><strong>Chatuchak Weekend Market</strong></td><td>Food stalls, Thai snacks, market atmosphere</td><td>Bangkok Culture</td></tr>
+<tr><td>4</td><td><strong>Silom/Sathorn restaurant district</strong></td><td>Modern restaurants, fine dining plating, open kitchens</td><td>Product Feature b-roll</td></tr>
+<tr><td>5</td><td><strong>Local Thai home kitchen</strong></td><td>Authentic home cooking, mortar and pestle, traditional techniques</td><td>Recipe Process</td></tr>
+<tr><td>6</td><td><strong>Bangkok rooftop restaurant</strong></td><td>Cityscape + food, premium atmosphere</td><td>Personal Story</td></tr>
+<tr><td>7</td><td><strong>Street vendor cooking</strong></td><td>Pad thai wok, satay grill, mango sticky rice prep</td><td>Recipe Process</td></tr>
+<tr><td>8</td><td><strong>Talad Rot Fai (Train Market)</strong></td><td>Night market, food culture, young Bangkok crowd</td><td>Bangkok Culture</td></tr>
+<tr><td>9</td><td><strong>Thai dessert vendor</strong></td><td>Kanom krok, tub tim grob, mango sticky rice visuals</td><td>Recipe Process</td></tr>
+<tr><td>10</td><td><strong>Modern Bangkok cafe/bistro</strong></td><td>Contemporary Thai-fusion, latte art, brunch culture</td><td>Bangkok Culture</td></tr>
+</table>
+</div>
+
+
+<!-- 3-MONTH PLAN -->
+<h2>3-Month Content Plan</h2>
+
+<div class="week-box">
+  <div class="week-head"><span>MONTH 1 — Foundation (Weeks 1–4)</span><span class="week-goal">Target: 500 followers</span></div>
+  <div style="padding:14px 16px;">
+    <div class="info-box" style="margin-top:0;">Goal: Establish brand presence, test content types, find what resonates</div>
+    <h4>Week 1 — Brand Introduction</h4>
+    <div class="table-wrap"><table>
+    <tr><th>#</th><th>Title</th><th>Pillar</th></tr>
+    <tr><td>1</td><td>"What is KitchenFounder?"</td><td>Personal Story</td></tr>
+    <tr><td>2</td><td>"Why 90% of restaurants fail"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>3</td><td>Or Tor Kor Market tour</td><td>Bangkok Culture</td></tr>
+    <tr><td>4</td><td>"The one number every chef must know"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>5</td><td>Thai street food technique</td><td>Recipe Process</td></tr>
+    </table></div>
+    <h4>Week 2 — Kitchen Knowledge Focus</h4>
+    <div class="table-wrap"><table>
+    <tr><th>#</th><th>Title</th><th>Pillar</th></tr>
+    <tr><td>6</td><td>"How to price a dish — the right way"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>7</td><td>Pad thai wok technique</td><td>Recipe Process</td></tr>
+    <tr><td>8</td><td>"Menu engineering in 60 seconds"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>9</td><td>Yaowarat night market tour</td><td>Bangkok Culture</td></tr>
+    <tr><td>10</td><td>"What head chefs look for when hiring"</td><td>Kitchen Knowledge</td></tr>
+    </table></div>
+    <h4>Week 3 — Bangkok Food Culture Focus</h4>
+    <div class="table-wrap"><table>
+    <tr><th>#</th><th>Title</th><th>Pillar</th></tr>
+    <tr><td>11</td><td>Or Tor Kor — ingredient deep dive</td><td>Bangkok Culture</td></tr>
+    <tr><td>12</td><td>"This Thai ingredient is about to blow up in US restaurants"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>13</td><td>Street vendor cooking — satay grill</td><td>Recipe Process</td></tr>
+    <tr><td>14</td><td>"Bangkok vs US restaurant culture — 3 differences"</td><td>Personal Story</td></tr>
+    <tr><td>15</td><td>Thai dessert vendor</td><td>Bangkok Culture</td></tr>
+    </table></div>
+    <h4>Week 4 — Recipe Process Focus</h4>
+    <div class="table-wrap"><table>
+    <tr><th>#</th><th>Title</th><th>Pillar</th></tr>
+    <tr><td>16</td><td>Som tam (papaya salad) technique</td><td>Recipe Process</td></tr>
+    <tr><td>17</td><td>"3 Thai sauces every Western chef needs to know"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>18</td><td>Bangkok rooftop restaurant BTS</td><td>Personal Story</td></tr>
+    <tr><td>19</td><td>Mango sticky rice prep</td><td>Recipe Process</td></tr>
+    <tr><td>20</td><td>Month 1 recap — "What I learned"</td><td>Personal Story</td></tr>
+    </table></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-val">20+</div><div class="kpi-label">Videos posted</div></div>
+      <div class="kpi-card"><div class="kpi-val">500+</div><div class="kpi-label">Followers target</div></div>
+      <div class="kpi-card"><div class="kpi-val">500+</div><div class="kpi-label">Avg views/video</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="week-box">
+  <div class="week-head"><span>MONTH 2 — Growth (Weeks 5–8)</span><span class="week-goal">Target: 1,000 followers</span></div>
+  <div style="padding:14px 16px;">
+    <div class="info-box" style="margin-top:0;">Goal: Double down on what worked in Month 1, introduce product features, first Shopify traffic</div>
+    <h4>Weeks 5–6 — Scale What Worked</h4>
+    <ul style="padding-left:16px;font-size:13px;line-height:1.7;margin-bottom:12px;">
+      <li>Identify top 3 performing content types from Month 1</li>
+      <li>Produce 2× more of those types</li>
+      <li>Introduce <strong>Higgsfield AI b-roll</strong> to enhance production quality</li>
+      <li>Use AI-generated cinematic food clips as intro/outro or transitions</li>
+    </ul>
+    <h4>Week 7 — Product Feature Introduction</h4>
+    <div class="table-wrap"><table>
+    <tr><th>#</th><th>Title</th><th>Pillar</th></tr>
+    <tr><td>1</td><td>Thai Street Food Guide — "What's inside" walkthrough</td><td>Product Feature</td></tr>
+    <tr><td>2</td><td>"I built a restaurant guide — here's why"</td><td>Personal Story</td></tr>
+    <tr><td>3</td><td>Food Cost Calculator demo — live on screen</td><td>Product Feature</td></tr>
+    <tr><td>4</td><td>"How much does it cost to open a Thai restaurant in the US?"</td><td>Kitchen Knowledge</td></tr>
+    <tr><td>5</td><td>Free checklist promo — "Get this free"</td><td>Product Feature</td></tr>
+    </table></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-val">20+</div><div class="kpi-label">Videos posted</div></div>
+      <div class="kpi-card"><div class="kpi-val">1,000+</div><div class="kpi-label">Followers target</div></div>
+      <div class="kpi-card"><div class="kpi-val">50+</div><div class="kpi-label">Shopify clicks</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="week-box">
+  <div class="week-head"><span>MONTH 3 — Conversion (Weeks 9–12)</span><span class="week-goal">Target: 2,000 followers + 10 sales</span></div>
+  <div style="padding:14px 16px;">
+    <div class="info-box" style="margin-top:0;">Goal: Convert audience to buyers, build email list, establish authority</div>
+    <h4>Weeks 9–10 — Conversion Push</h4>
+    <ul style="padding-left:16px;font-size:13px;line-height:1.7;margin-bottom:12px;">
+      <li>2× product feature videos per week</li>
+      <li>Free checklist push: "Comment FREE and I'll send it"</li>
+      <li>Show testimonials or results if available</li>
+      <li>"Last chance" style urgency content</li>
+    </ul>
+    <h4>Week 11 — Brand Story Series (3-part)</h4>
+    <div class="table-wrap"><table>
+    <tr><th>#</th><th>Title</th></tr>
+    <tr><td>1</td><td>"Why I left a Novotel head chef career to build this"</td></tr>
+    <tr><td>2</td><td>"How KitchenFounder was built in Bangkok"</td></tr>
+    <tr><td>3</td><td>"What KitchenFounder will look like in 3 years"</td></tr>
+    </table></div>
+    <h4>Week 12 — Community &amp; Collab</h4>
+    <ul style="padding-left:16px;font-size:13px;line-height:1.7;margin-bottom:12px;">
+      <li>Reach out to 5 F&amp;B creators for collab or shoutout swap</li>
+      <li>"What our customers are saying" content</li>
+      <li>Month 3 recap + what's coming next</li>
+    </ul>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-val">20+</div><div class="kpi-label">Videos posted</div></div>
+      <div class="kpi-card"><div class="kpi-val">2,000+</div><div class="kpi-label">Followers target</div></div>
+      <div class="kpi-card"><div class="kpi-val">10+</div><div class="kpi-label">Guide sales</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- VIDEO SCRIPTS -->
+<h2>Video Scripts — First 10 Videos</h2>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 01</div>
+  <div class="script-title">"What is KitchenFounder?"</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">"I've been a head chef for 10 years. Now I'm building something different."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–40 sec)</div><div class="script-text">"KitchenFounder is a series of restaurant operations guides — built by real chefs, for people who want to open their first restaurant. Every guide has recipes, food costs, service scripts, staff workflows, and a P&amp;L model. Everything you need to know before you spend a single dollar on rent. We cover Thai, Japanese, Korean, Brazilian, Mexican — and we're just getting started."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Link in bio. First guide is $29.99. Less than one bad shift's worth of food waste."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 02</div>
+  <div class="script-title">"Why 90% of Restaurants Fail"</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">"90% of restaurants fail in the first year. Here's the real reason — and it's not what you think."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–45 sec)</div><div class="script-text">"Most people think restaurants fail because the food is bad. Wrong. They fail because the operator doesn't know their numbers. Food cost too high. Labour too high. Rent negotiated wrong. Menu priced by feeling, not by formula. I've seen it happen over and over in 10 years of professional kitchens. The food is great. The passion is real. But the business side kills it. That's why I built KitchenFounder — so the passionate people actually make it."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Free restaurant checklist in bio. Download it before you sign a lease."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 03</div>
+  <div class="script-title">Or Tor Kor Market Tour</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">[Walking into Or Tor Kor] "This is the best food market in Bangkok — and most tourists have never heard of it."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–50 sec)</div><div class="script-text">"Or Tor Kor is where Bangkok's top chefs shop. Look at this — fresh galangal, Thai basil, kaffir lime leaves, lemongrass. These are the ingredients in our Thai Street Food guide. In the US you can source all of these from any Asian grocery. But understanding where they come from — what they look like fresh, how they smell — that's the difference between a chef who cooks Thai food and a chef who understands it."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Thai Street Food guide in bio — $29.99, instant download."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 04</div>
+  <div class="script-title">"The One Number Every Chef Must Know"</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">"There is one number that determines if your restaurant lives or dies. Most chefs don't know it."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–40 sec)</div><div class="script-text">"It's your food cost percentage. Ingredient cost divided by selling price, times 100. If your chicken dish costs $4 to make and you sell it for $20, your food cost is 20%. That's excellent. If it costs $8 and you sell it for $20, that's 40%. You're losing money before labour, rent, and utilities. Every dish on your menu should sit between 22 and 32 percent. Go above that consistently and your restaurant will fail no matter how full it is."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Free food cost calculator in bio — works in any browser, no install needed."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 05</div>
+  <div class="script-title">Thai Street Food Technique — Wok Hei</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">[Wok over high flame] "This is why Thai food tastes different when you cook it at home."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–45 sec)</div><div class="script-text">"Wok hei. The smoky, slightly charred flavour from a Thai street food stall. You can't replicate it on a home stove — a street vendor's wok burner runs at 50,000 BTU. Your home stove runs at 10,000. The solution for a restaurant kitchen: cast iron wok, burner on maximum, small batches, fast movement. Never overcrowd the wok. One portion at a time. The moment you add too much food, the temperature drops and you're steaming, not frying."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Full Thai Street Food guide in bio — 28 recipes with exact techniques."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 06</div>
+  <div class="script-title">"How to Price a Dish"</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">"Stop pricing your menu by what feels right. Here's the formula."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–40 sec)</div><div class="script-text">"Step one: calculate your ingredient cost exactly — weigh everything, cost every gram. Step two: decide your target food cost percentage (25–30% for most casual concepts). Step three: divide ingredient cost by your target percentage. That's your minimum sell price. If your dish costs $5 to make and you want 25% food cost, your sell price is $20. It's math, not guesswork. Then check: does $20 feel right for this dish in your market? If yes, done."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Food cost calculator in bio — free download, works instantly."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 07</div>
+  <div class="script-title">Thai Street Food Guide — Walkthrough</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">[Hold up the PDF on screen] "This is what 10 years of professional kitchen experience looks like as a $29.99 PDF."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–50 sec)</div><div class="script-text">[Scroll through the guide on screen] "28 recipes — 6 entrées, 10 mains, 4 desserts, 8 drinks. Every recipe has the ingredient cost in US dollars, the food cost percentage, step-by-step technique, and a chef's tip. Plus service training scripts, staff workflow, weekly prep schedule, SMS retention system, and a full P&amp;L model for a 60-seat Thai restaurant. Projected net profit: $287,000 a year. It's $29.99. One dinner out costs more."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Link in bio — instant download, yours forever."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 08</div>
+  <div class="script-title">Yaowarat Night Market Tour</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">[Night market footage, neon lights] "Bangkok's Chinatown at 9pm — this is where the real food is."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–50 sec)</div><div class="script-text">"Yaowarat Road is one of the greatest food streets in the world. Roast duck in windows. Seafood grilled on the street. Bird's nest soup from shophouses that have been here 80 years. This is the food culture that inspired our guides. What you see here — the flavours, the techniques, the hospitality — this is what we translate into operations systems that work in US restaurants."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Thai Street Food Guide in bio. Bring Bangkok to your restaurant."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 09</div>
+  <div class="script-title">"Menu Engineering in 60 Seconds"</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">"Every dish on your menu fits into one of four categories. Most chefs only know two of them."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–45 sec)</div><div class="script-text">"Stars: high margin, high popularity — protect these, never remove them. Plow Horses: low margin, high popularity — raise the price or reduce the cost. Puzzles: high margin, low popularity — reposition on the menu, train servers to recommend them. Dogs: low margin, low popularity — remove them. Our food cost calculator app plots all your dishes automatically."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Free calculator in bio — menu engineering matrix included."</div></div>
+</div>
+
+<div class="script-box">
+  <div class="script-num">SCRIPT 10</div>
+  <div class="script-title">"Why KitchenFounder Exists"</div>
+  <div class="script-section"><div class="script-label">🪝 Hook (0–3 sec)</div><div class="script-text">"I spent 10 years in professional kitchens watching passionate people fail at something they loved. I decided to do something about it."</div></div>
+  <div class="script-section"><div class="script-label">💡 Value (3–60 sec)</div><div class="script-text">"Every restaurant that closes was someone's dream. Someone who saved for years, who learned to cook, who believed in their food. And then the business side — the food costs, the staffing, the margins, the systems — nobody taught them that. Not culinary school. Not their chef mentor. Not YouTube. KitchenFounder exists to close that gap. If you have the passion and the recipe, we give you the business system. For $29.99. Because your dream deserves more than a guess."</div></div>
+  <div class="script-section"><div class="script-label">📣 CTA (last 3 sec)</div><div class="script-text">"Link in bio. Let's build something real."</div></div>
+</div>
+
+<!-- PERFORMANCE TRACKING -->
+<h2>Performance Tracking</h2>
+<h3>Weekly Report — Send to Mothy Every Sunday</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Metric</th><th>This Week</th><th>Last Week</th><th>Change</th></tr>
+<tr><td>TikTok followers</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td></td></tr>
+<tr><td>Instagram followers</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td></td></tr>
+<tr><td>YouTube Shorts subscribers</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td></td></tr>
+<tr><td>Best performing video (views)</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td></td></tr>
+<tr><td>Total videos posted this week</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td></td></tr>
+<tr><td>Shopify clicks (if trackable)</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td style="background:#fff;color:#aaa;font-style:italic;">fill in</td><td></td></tr>
+</table>
+</div>
+
+<div class="two-col">
+  <div class="box">
+    <h4>📉 If a video underperforms (&lt;200 views)</h4>
+    <ul>
+      <li>Check the hook — did it grab attention in 3 sec?</li>
+      <li>Check the length — was it too long?</li>
+      <li>Check posting time — right time for US audience?</li>
+      <li>Note what didn't work. Don't repeat it.</li>
+      <li><strong>Do NOT delete</strong> — algorithm can still pick it up later</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>🚀 If a video goes viral (&gt;10,000 views)</h4>
+    <ul>
+      <li><strong>Immediately notify Mothy via Telegram</strong></li>
+      <li>Identify exactly what made it work</li>
+      <li>Make 3 more on same topic/format within 48 hours</li>
+      <li>Reply to every comment within first 24 hours</li>
+      <li>Pin the video to profile if possible</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PAYMENT -->
+<h2>Payment &amp; Deliverables</h2>
+<div class="info-box">
+  <strong>Monthly payment:</strong> ฿9,000 — paid on the 1st of each month<br>
+  <strong>Minimum deliverables:</strong> 20 finished, approved videos per month<br>
+  <strong>Delivery method:</strong> Google Drive shared folder<br>
+  <strong>Monthly review:</strong> Video call with Mothy — last Sunday of each month<br>
+  <strong>Review topics:</strong> Performance, what worked, what didn't, next month plan
+</div>
+<div class="info-box">
+  <strong>If deliverables are not met:</strong><br>
+  Under 15 videos → discuss and agree catch-up plan<br>
+  Under 10 videos → payment adjusted proportionally<br>
+  <em>Communication is key — always message Mothy if you're behind schedule.</em>
+</div>
+
+<footer>
+  KitchenFounder Bangkok Creator Brief v1.0 · May 2026<br>
+  Prepared by Timothy Susanto (Mothy) · kitchen-founder.myshopify.com · @kitchenfounder<br>
+  Print: Chrome → Ctrl+P / Cmd+P → Save as PDF → A4 · Background graphics ON
+</footer>
+</div>
+</body>
+</html>

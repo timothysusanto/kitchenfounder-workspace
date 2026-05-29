@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thai Street Food · KitchenFounder Operations Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { background:#111111; color:#e8e8e8; font-family:'Inter',system-ui,sans-serif; font-size:14px; line-height:1.6; }
+.page { background:#111111; max-width:210mm; margin:0 auto; padding:16mm 14mm; min-height:297mm; }
+h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; }
+h2 { color:#ff4d6d; font-size:1.3rem; margin:28px 0 14px; border-bottom:2px solid rgba(255,77,109,0.3); padding-bottom:6px; }
+h3 { color:#e8e8e8; font-size:1.05rem; margin:16px 0 8px; }
+.cover { background:#111111; padding:40px 14mm; min-height:297mm; display:flex; flex-direction:column; justify-content:center; border-left:4px solid #ff4d6d; }
+.cover-eye { color:#ff4d6d; font-family:'DM Mono',monospace; font-size:0.75rem; letter-spacing:4px; text-transform:uppercase; margin-bottom:16px; }
+.cover h1 { color:#ff4d6d; font-size:3rem; font-weight:700; line-height:1.1; margin-bottom:12px; }
+.cover-tag { color:#999; font-style:italic; font-size:1rem; margin-bottom:40px; }
+.kpi-row { display:flex; gap:12px; margin:24px 0; flex-wrap:wrap; }
+.kpi { background:#1a1a1a; border:1px solid #ff4d6d; border-radius:8px; padding:16px 20px; flex:1; min-width:120px; }
+.kpi-val { color:#ffd700; font-family:'DM Mono',monospace; font-size:1.6rem; font-weight:700; }
+.kpi-label { color:#999; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+.recipe { background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; margin:20px 0; overflow:hidden; }
+.recipe-color-block { background:linear-gradient(135deg,#ff4d6d,#0a0a0a); height:8px; }
+.recipe-color-block span { display:none; }
+.rh { background:#1e1010; padding:14px 18px; border-bottom:1px solid #2a2a2a; }
+.rh-title { color:#ff4d6d; font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; }
+.rh-meta { color:#999; font-family:'DM Mono',monospace; font-size:0.78rem; margin-top:4px; }
+.rm { padding:14px 18px; }
+table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85rem; }
+th { background:#ff4d6d; color:#000; padding:8px 10px; text-align:left; font-family:'Space Grotesk',sans-serif; font-size:0.8rem; }
+tr:nth-child(even) { background:#141414; }
+tr:nth-child(odd) { background:#1a1a1a; }
+td { padding:7px 10px; border-bottom:1px solid #222; color:#e8e8e8; }
+.fc-box { background:#0f1a0f; border:1px solid #ff4d6d; border-radius:8px; padding:12px 16px; margin:12px 0; display:flex; gap:20px; flex-wrap:wrap; }
+.fc-item { text-align:center; }
+.fc-val { color:#ffd700; font-family:'DM Mono',monospace; font-size:1.2rem; font-weight:700; }
+.fc-lbl { color:#999; font-size:0.7rem; text-transform:uppercase; }
+.steps { margin:10px 0; }
+.step { display:flex; gap:12px; margin:8px 0; align-items:flex-start; }
+.sn { background:#ff4d6d; color:#000; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:0.75rem; font-weight:700; flex-shrink:0; margin-top:2px; }
+.st { color:#e8e8e8; font-size:0.88rem; }
+.temp { background:#1e1e0a; border:1px solid #ffd700; border-radius:4px; padding:2px 7px; font-family:'DM Mono',monospace; font-size:0.78rem; color:#ffd700; display:inline-block; }
+.chef-tip { background:#1a1500; border-left:3px solid #ffd700; padding:10px 14px; margin:10px 0; border-radius:0 6px 6px 0; font-size:0.85rem; color:#e8c84d; }
+.lens-card { background:#1a1a1a; border-left:4px solid #ff4d6d; border-radius:0 10px 10px 0; padding:20px 24px; margin:20px 0; }
+.lens-title { color:#ff4d6d; font-family:'DM Mono',monospace; font-size:0.85rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.lens-text { color:#ccc; font-size:0.9rem; line-height:1.75; }
+.lens-closer { color:#ff4d6d; font-weight:600; margin-top:10px; font-size:0.9rem; }
+.drink-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px 0; }
+.drink-card { background:#1a1a1a; border:1px solid #2a2a2a; border-radius:8px; overflow:hidden; }
+.drink-color { background:linear-gradient(135deg,#ff4d6d,#330010); height:8px; }
+.drink-body { padding:12px 14px; }
+.drink-name { color:#e8e8e8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.95rem; }
+.drink-price { color:#ffd700; font-family:'DM Mono',monospace; font-size:0.85rem; margin-top:2px; }
+.drink-fc { color:#999; font-size:0.78rem; }
+.script-box { background:#1a1a1a; border-left:3px solid #ff4d6d; padding:14px 18px; margin:12px 0; border-radius:0 8px 8px 0; }
+.script-label { color:#ff4d6d; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+.script-text { color:#ccc; font-style:italic; font-size:0.88rem; line-height:1.6; }
+.rev-table { width:100%; border-collapse:collapse; margin:12px 0; font-family:'DM Mono',monospace; font-size:0.85rem; }
+.rev-table th { background:#ff4d6d; color:#000; padding:8px 12px; text-align:left; }
+.rev-table td { padding:8px 12px; border-bottom:1px solid #222; }
+.rev-table .profit-row td { background:#0f1a0f; color:#ffd700; font-weight:700; }
+.prep-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:12px 0; }
+.prep-table th { background:#ff4d6d; color:#000; padding:7px 10px; }
+.prep-table td { padding:7px 10px; border-bottom:1px solid #222; background:#1a1a1a; }
+.safety { background:#1a0a0a; border:1px solid #ff4d6d; border-radius:8px; padding:14px 18px; margin:12px 0; }
+.al { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+.a { background:#2a0a0a; border:1px solid #ff4d6d; border-radius:4px; padding:3px 8px; font-size:0.75rem; color:#ff9999; font-family:'DM Mono',monospace; }
+footer { text-align:center; color:#555; font-size:0.72rem; font-family:'DM Mono',monospace; margin-top:40px; padding-top:16px; border-top:1px solid #2a2a2a; }
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="page cover">
+  <div class="cover-eye">KitchenFounder · Operations Guide v6</div>
+  <h1>Thai Street Food<br>Café</h1>
+  <div class="cover-tag">The complete operator blueprint — recipes, costs, service, P&amp;L</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">18–22%</div><div class="kpi-label">Target Food Cost</div></div>
+    <div class="kpi"><div class="kpi-val">$12–17</div><div class="kpi-label">Avg Entrée Price</div></div>
+    <div class="kpi"><div class="kpi-val">6+2+4</div><div class="kpi-label">Entrées+Drinks+Desserts</div></div>
+    <div class="kpi"><div class="kpi-val">$29.99</div><div class="kpi-label">Guide Price</div></div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">36</div><div class="kpi-label">Seats</div></div>
+    <div class="kpi"><div class="kpi-val">$36</div><div class="kpi-label">Avg Spend</div></div>
+    <div class="kpi"><div class="kpi-val">$84,240</div><div class="kpi-label">Est. Monthly Revenue</div></div>
+    <div class="kpi"><div class="kpi-val">$42,907</div><div class="kpi-label">Est. Monthly Net</div></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT PAGE -->
+<div class="page">
+
+<!-- CHEF'S LENS -->
+<div class="lens-card">
+  <div class="lens-title">// What a Michelin-trained chef sees in Thai cooking</div>
+  <div class="lens-text">Thai cooking is technically one of the most demanding cuisines in the world. The balance of sweet, sour, salt, heat and umami — achieved simultaneously in a single dish — is not a formula. It is a calibration that happens in real time, in a mortar, over a wok, at temperature. Som tum is not a salad. It is a percussion instrument. The som tum cook bruises, crushes and builds flavour with pressure and timing. The food cost is 15%. The skill behind it took a decade to develop — and this guide compresses that knowledge into a format you can execute on day one.</div>
+</div>
+<div class="lens-card">
+  <div class="lens-title">// What this guide does</div>
+  <div class="lens-text">The moment it clicks is the P&amp;L page. Not the recipes — the numbers. When you see a $2.18 food cost against a $13.99 sell price on som tum, something shifts. The dream stops being romantic and starts being a plan. Thai street food is not a trend. It is one of the most commercially durable café formats in the US market.</div>
+  <div class="lens-closer">This guide is the blueprint.</div>
+</div>
+
+<!-- SECTION 1: ENTRÉES -->
+<h2>Section 1 — Entrées</h2>
+
+<!-- Recipe 1: Tod Mun Pla -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>TOD MUN PLA</span></div>
+  <div class="rh">
+    <div class="rh-title">Tod Mun Pla — Thai Fish Cakes</div>
+    <div class="rh-meta">Kaffir lime fish cakes, sweet chili dipping sauce, cucumber relish &nbsp;·&nbsp; Sell: $12.99 &nbsp;·&nbsp; ⏱ 8 min &nbsp;·&nbsp; Target FC: 16%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>White fish (cod/tilapia), minced</td><td>180g</td><td>$1.44</td></tr>
+      <tr><td>Red curry paste (house)</td><td>20g</td><td>$0.22</td></tr>
+      <tr><td>Kaffir lime leaves (chiffonade)</td><td>4 leaves</td><td>$0.08</td></tr>
+      <tr><td>Fish sauce</td><td>10ml</td><td>$0.04</td></tr>
+      <tr><td>Egg</td><td>1 × 55g</td><td>$0.35</td></tr>
+      <tr><td>Long beans (sliced thin)</td><td>30g</td><td>$0.08</td></tr>
+      <tr><td>Sweet chili sauce (batch)</td><td>40ml</td><td>$0.12</td></tr>
+      <tr><td>Cucumber relish (batch)</td><td>60g</td><td>$0.14</td></tr>
+      <tr><td><strong>Total cost (6 cakes)</strong></td><td></td><td><strong>$2.47</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.47</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$12.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">19.0%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$10.52</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Mince fish in a food processor to a smooth paste — not chunky. The smooth paste gives tod mun its characteristic bouncy, dense Q texture. Add curry paste, kaffir lime leaves, fish sauce, egg. Process briefly to combine. Fold in sliced long beans by hand.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Form into flat discs, 30g each, 1cm thick. Wet hands prevent sticking. The flat disc shape ensures even cooking.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Shallow fry in oil at <span class="temp">175°C / 347°F</span> for 2–3 minutes per side until deep golden. Internal temp: <span class="temp">70°C / 158°F</span>. Drain briefly. Crispy exterior, springy dense interior.</div></div>
+      <div class="step"><div class="sn">4</div><div class="st">Cucumber relish (ajat): rice vinegar + sugar + salt + water, warm to dissolve. Add diced cucumber, shallot, fresh chili, cilantro. Serve sharp and cold to contrast the hot fish cakes.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Kaffir lime leaves are irreplaceable — their floral, citrusy intensity is what makes tod mun smell and taste Thai. Buy fresh or frozen from Asian grocery suppliers. Dried kaffir lime leaves have almost no flavour.</div>
+    <div class="al"><span class="a">FISH</span><span class="a">EGGS</span><span class="a">SHELLFISH (fish sauce may contain)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 2: Som Tum -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>SOM TUM</span></div>
+  <div class="rh">
+    <div class="rh-title">Som Tum — Green Papaya Salad</div>
+    <div class="rh-meta">Shredded green papaya, chili, lime, fish sauce, peanuts &nbsp;·&nbsp; Sell: $12.99 &nbsp;·&nbsp; ⏱ 6 min &nbsp;·&nbsp; Target FC: 14%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Green papaya (shredded)</td><td>150g</td><td>$0.54</td></tr>
+      <tr><td>Thai bird's eye chilies</td><td>3–5 pieces</td><td>$0.06</td></tr>
+      <tr><td>Garlic cloves</td><td>2 cloves / 8g</td><td>$0.04</td></tr>
+      <tr><td>Cherry tomatoes (halved)</td><td>40g</td><td>$0.24</td></tr>
+      <tr><td>Long beans (cut 3cm)</td><td>30g</td><td>$0.08</td></tr>
+      <tr><td>Fish sauce + palm sugar</td><td>15ml + 8g</td><td>$0.08</td></tr>
+      <tr><td>Fresh lime juice</td><td>30ml</td><td>$0.12</td></tr>
+      <tr><td>Roasted peanuts (crushed)</td><td>20g</td><td>$0.14</td></tr>
+      <tr><td>Dried shrimp (optional)</td><td>5g</td><td>$0.08</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.38</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$1.38</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$12.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">10.6%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$11.61</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Som tum is made in a mortar and pestle — non-negotiable. A food processor creates a wet uniform mash. The mortar bruises and crushes ingredients while maintaining textural integrity.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Pound garlic and chilies first until roughly broken. Add palm sugar, pound to dissolve. Add long beans and tomatoes — pound gently (bruised, not destroyed). Add shredded papaya. Pound and mix simultaneously. Fish sauce and lime juice added last.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Flavour balance is the entire skill: spicy + sweet + sour + salty must all be present and in balance. Taste after every addition. Adjust with individual components.</div></div>
+      <div class="step"><div class="sn">4</div><div class="st">Serve immediately — the papaya releases liquid quickly and the salad becomes soggy within 20 minutes. Transfer from mortar directly to the plate. Scatter crushed peanuts at service.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Spice level is the most important guest interaction. Ask every table: "How spicy? Thai-spicy means 5–7 bird's eye chilies. Mild means 1–2." Never assume. Thai bird's eye chilies are among the hottest commercially available chilies.</div>
+    <div class="al"><span class="a">FISH (fish sauce)</span><span class="a">SHELLFISH (dried shrimp)</span><span class="a">NUTS (peanuts)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 3: Satay -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>SATAY</span></div>
+  <div class="rh">
+    <div class="rh-title">Satay — Grilled Chicken Skewers</div>
+    <div class="rh-meta">Turmeric chicken skewers, peanut sauce, ajat &nbsp;·&nbsp; Sell: $13.99 (4 skewers) &nbsp;·&nbsp; ⏱ 10 min &nbsp;·&nbsp; Target FC: 18%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Chicken thigh (boneless, sliced thin)</td><td>160g</td><td>$1.13</td></tr>
+      <tr><td>Turmeric + coriander + cumin</td><td>3g + 3g + 2g</td><td>$0.06</td></tr>
+      <tr><td>Lemongrass (minced)</td><td>10g</td><td>$0.08</td></tr>
+      <tr><td>Coconut milk + palm sugar</td><td>30ml + 5g</td><td>$0.14</td></tr>
+      <tr><td>Fish sauce</td><td>8ml</td><td>$0.03</td></tr>
+      <tr><td>Peanut sauce (batch)</td><td>60ml</td><td>$0.36</td></tr>
+      <tr><td>Cucumber relish (ajat)</td><td>60g</td><td>$0.14</td></tr>
+      <tr><td><strong>Total cost (4 skewers)</strong></td><td></td><td><strong>$1.94</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$1.94</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$13.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">13.9%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$12.05</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Slice chicken thigh thinly — 5mm strips — and thread onto soaked bamboo skewers in a ribbon/wave pattern. This threading keeps the meat flat against the grill for maximum contact and caramelisation.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Marinade: lemongrass + turmeric + coriander + cumin + coconut milk + palm sugar + fish sauce. Marinate minimum 2 hours. Turmeric gives the golden colour; lemongrass gives the aromatic identity.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Grill on very hot grill — <span class="temp">220°C / 428°F</span>. Turn once after 3 minutes. 2–3 minutes more. Internal: <span class="temp">74°C / 165°F</span>. Brush with remaining coconut milk marinade during grilling for gloss.</div></div>
+      <div class="step"><div class="sn">4</div><div class="st">Peanut sauce (batch): fry red curry paste in oil 2 minutes. Add coconut milk, simmer. Add peanut butter, palm sugar, fish sauce, tamarind. Simmer until thick and glossy.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Satay is your entry-level item — familiar to guests with minimal Thai experience, beloved by everyone who knows it. It is also your most versatile cross-sell: "Start with the satay while you wait for your pad thai." This framing turns satay into a table-management tool and increases average spend.</div>
+    <div class="al"><span class="a">POULTRY</span><span class="a">NUTS (peanuts)</span><span class="a">FISH (fish sauce)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 4: Tom Yum Soup -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>TOM YUM SOUP</span></div>
+  <div class="rh">
+    <div class="rh-title">Tom Yum Soup</div>
+    <div class="rh-meta">Lemongrass prawn broth, galangal, kaffir lime, mushroom &nbsp;·&nbsp; Sell: $13.99 &nbsp;·&nbsp; ⏱ 8 min &nbsp;·&nbsp; Target FC: 18%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Tiger prawns (shell-on, 3 per serve)</td><td>120g</td><td>$2.16</td></tr>
+      <tr><td>Tom yum broth (batch)</td><td>350ml</td><td>$0.48</td></tr>
+      <tr><td>Straw mushrooms / oyster mushrooms</td><td>50g</td><td>$0.36</td></tr>
+      <tr><td>Fresh lime juice</td><td>20ml</td><td>$0.08</td></tr>
+      <tr><td>Fish sauce</td><td>10ml</td><td>$0.04</td></tr>
+      <tr><td>Bird's eye chilies (sliced)</td><td>3 pieces</td><td>$0.04</td></tr>
+      <tr><td>Cilantro + scallion (garnish)</td><td>8g + 5g</td><td>$0.06</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$3.22</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$3.22</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$13.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">23.0%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$10.77</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Tom yum broth (large batch — make daily): simmer prawn heads/shells in water 20 minutes. Add bruised lemongrass, sliced galangal (not ginger), kaffir lime leaves, Thai chilies. Simmer 15 minutes. Add fish sauce, lime juice, and nam prik pao (roasted chili paste) for the characteristic red-orange colour and smoky depth.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Service: bring broth to a boil. Add mushrooms, cook 2 minutes. Add prawns — cook just until pink and curled, 2–3 minutes maximum. Overcooked prawns in hot soup become rubbery within minutes.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Final seasoning: add fresh lime juice and fish sauce after removing from heat. Fresh lime must be added off heat — boiled lime juice loses its bright volatile citrus character.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Brief FOH: "The lemongrass pieces and the round ginger-like pieces are for flavour only — just move them to the side." This prevents the complaint "I bit into something hard and inedible."</div>
+    <div class="al"><span class="a">SHELLFISH (prawns)</span><span class="a">FISH (fish sauce, prawn stock)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 5: Miang Kham -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>MIANG KHAM</span></div>
+  <div class="rh">
+    <div class="rh-title">Miang Kham — Leaf Wraps</div>
+    <div class="rh-meta">Wild betel leaves, toasted coconut, shrimp, ginger, peanut, lime &nbsp;·&nbsp; Sell: $11.99 &nbsp;·&nbsp; ⏱ 5 min &nbsp;·&nbsp; Target FC: 14%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Wild betel / spinach leaves (sub)</td><td>8 leaves</td><td>$0.24</td></tr>
+      <tr><td>Toasted shredded coconut</td><td>20g</td><td>$0.12</td></tr>
+      <tr><td>Dried shrimp</td><td>10g</td><td>$0.16</td></tr>
+      <tr><td>Fresh ginger (tiny dice)</td><td>15g</td><td>$0.06</td></tr>
+      <tr><td>Shallot (tiny dice)</td><td>15g</td><td>$0.04</td></tr>
+      <tr><td>Lime (quartered, tiny)</td><td>¼ lime</td><td>$0.05</td></tr>
+      <tr><td>Roasted peanuts</td><td>15g</td><td>$0.11</td></tr>
+      <tr><td>Miang sauce (batch)</td><td>30ml</td><td>$0.16</td></tr>
+      <tr><td><strong>Total cost (8 pieces)</strong></td><td></td><td><strong>$0.94</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$0.94</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$11.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">7.8%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$11.05</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Miang kham is one of the great Thai one-bite experiences. Miang sauce: palm sugar + fish sauce + shrimp paste + water + grated coconut, cooked to a thick, dark, intensely sweet-savoury sauce. This sauce is the flavour anchor.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Each component is placed in its own small pile on the presentation board: coconut, dried shrimp, ginger, shallot, peanuts, tiny lime wedges. The guest assembles their own wrap — a small amount of each ingredient in a leaf, drizzled with miang sauce, folded and eaten whole.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">The explosion of flavours in one bite — sweet, sour, spicy, salty, crunchy — is one of the most complex single bites in Southeast Asian cuisine. Brief every table on the assembly — it is part of the experience.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> If wild betel leaves are unavailable, use large spinach leaves or cha-plu leaves. The leaf is just the delivery mechanism — the components and miang sauce are the non-negotiables.</div>
+    <div class="al"><span class="a">SHELLFISH (dried shrimp)</span><span class="a">FISH (fish sauce, shrimp paste)</span><span class="a">NUTS (peanuts)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 6: Gai Hor Bai Toey -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>GAI HOR BAI TOEY</span></div>
+  <div class="rh">
+    <div class="rh-title">Gai Hor Bai Toey — Pandan Chicken</div>
+    <div class="rh-meta">Pandan-wrapped chicken parcels, sesame soy dip &nbsp;·&nbsp; Sell: $12.99 (4 pieces) &nbsp;·&nbsp; ⏱ 10 min &nbsp;·&nbsp; Target FC: 16%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Chicken thigh (diced 2cm)</td><td>160g</td><td>$1.13</td></tr>
+      <tr><td>Pandan leaves (fresh/frozen)</td><td>8 long leaves</td><td>$0.16</td></tr>
+      <tr><td>Oyster sauce + soy + sesame oil</td><td>10ml + 5ml + 3ml</td><td>$0.10</td></tr>
+      <tr><td>Garlic + coriander root</td><td>5g + 3g</td><td>$0.04</td></tr>
+      <tr><td>Sesame soy dipping sauce</td><td>30ml</td><td>$0.10</td></tr>
+      <tr><td><strong>Total cost (4 parcels)</strong></td><td></td><td><strong>$1.53</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$1.53</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$12.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">11.8%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$11.46</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Marinate diced chicken in oyster sauce, soy, sesame oil, pounded garlic and coriander root. Rest 2 hours. Coriander root is a Thai pantry essential — its flavour is earthier and more intense than the leaf.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Wrap each chicken piece in a pandan leaf — fold into a neat package and secure with a toothpick if needed. The pandan perfumes the chicken subtly, creates a dramatic presentation, and protects the chicken from direct oil contact.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Deep fry at <span class="temp">175°C / 347°F</span> for 5–6 minutes until the pandan leaf is dark green and slightly charred at the edges and the chicken is cooked through. The glossy green parcels look elegant and distinctive.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Pandan chicken is your most visually distinctive appetiser — the deep green glossy parcels look elegant and unusual. Guests invariably ask what they are when they see them at a neighbouring table. This is your silent marketing item. Always run it and place it at visible tables.</div>
+    <div class="al"><span class="a">POULTRY</span><span class="a">FISH (oyster sauce)</span><span class="a">SESAME</span><span class="a">GLUTEN (oyster/soy sauce)</span></div>
+  </div>
+</div>
+
+<!-- SECTION 2: MAINS -->
+<h2>Section 2 — Mains</h2>
+
+<!-- Recipe 7: Pad Thai -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>PAD THAI</span></div>
+  <div class="rh">
+    <div class="rh-title">Pad Thai</div>
+    <div class="rh-meta">Rice noodles, egg, bean sprouts, tamarind, peanuts &nbsp;·&nbsp; Sell: $17.99 &nbsp;·&nbsp; ⏱ 8 min &nbsp;·&nbsp; Target FC: 18%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Rice noodles (3mm, soaked)</td><td>100g dry</td><td>$0.30</td></tr>
+      <tr><td>Shrimp (peeled) or tofu</td><td>80g</td><td>$1.44</td></tr>
+      <tr><td>Eggs</td><td>2 × 55g</td><td>$0.70</td></tr>
+      <tr><td>Pad thai sauce (batch)</td><td>40ml</td><td>$0.20</td></tr>
+      <tr><td>Bean sprouts</td><td>50g</td><td>$0.10</td></tr>
+      <tr><td>Dried shrimp + preserved radish</td><td>5g + 10g</td><td>$0.12</td></tr>
+      <tr><td>Shallots (sliced)</td><td>15g</td><td>$0.04</td></tr>
+      <tr><td>Roasted peanuts (crushed)</td><td>20g</td><td>$0.14</td></tr>
+      <tr><td>Lime wedge + chili flakes + scallion</td><td>—</td><td>$0.08</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$3.12</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$3.12</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$17.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">17.3%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$14.87</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Pad thai sauce (batch): tamarind paste + fish sauce + palm sugar (3:2:2 ratio). Simmer until palm sugar dissolves. Balance simultaneously sour (tamarind), salty (fish sauce), sweet (palm sugar). Jarred sauce is an inferior shortcut.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Wok hei is the goal. Use maximum heat. Stir-fry shallots, dried shrimp, preserved radish briefly. Push to side. Add shrimp, cook 60 seconds. Push to side. Add noodles and sauce — toss rapidly. Push everything to side, crack eggs into the empty pan centre, scramble partially, fold through noodles.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Add bean sprouts at the last 30 seconds — they should still have crunch. Toss once more. Plate immediately. The entire cook takes 4–5 minutes maximum.</div></div>
+      <div class="step"><div class="sn">4</div><div class="st">Serve with condiment tray: chili flakes, fish sauce, white sugar, white vinegar. This is standard Thai restaurant service — it communicates authenticity and lets guests season to their own taste.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> One wok, one portion at a time. Pad thai made in batches has no wok hei — the temperature drops and everything steams. Your wok station should produce one pad thai every 5 minutes during peak service.</div>
+    <div class="al"><span class="a">SHELLFISH (shrimp)</span><span class="a">FISH (fish sauce, dried shrimp)</span><span class="a">EGGS</span><span class="a">NUTS (peanuts)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 8: Green Curry -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>GAENG KEOW WAN</span></div>
+  <div class="rh">
+    <div class="rh-title">Green Curry — Gaeng Keow Wan</div>
+    <div class="rh-meta">House green curry paste, chicken, Thai eggplant, coconut milk &nbsp;·&nbsp; Sell: $18.99 &nbsp;·&nbsp; ⏱ 12 min &nbsp;·&nbsp; Target FC: 20%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Chicken thigh (sliced)</td><td>160g</td><td>$1.13</td></tr>
+      <tr><td>Green curry paste (house)</td><td>30g</td><td>$0.36</td></tr>
+      <tr><td>Coconut milk (full fat)</td><td>250ml</td><td>$0.75</td></tr>
+      <tr><td>Thai eggplant (quartered)</td><td>60g</td><td>$0.24</td></tr>
+      <tr><td>Fish sauce + palm sugar</td><td>15ml + 8g</td><td>$0.08</td></tr>
+      <tr><td>Kaffir lime leaves (torn)</td><td>4 leaves</td><td>$0.08</td></tr>
+      <tr><td>Thai basil</td><td>10g</td><td>$0.08</td></tr>
+      <tr><td>Jasmine rice (side)</td><td>180g cooked</td><td>$0.32</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$3.04</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$3.04</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$18.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">16.0%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$15.95</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">House green curry paste (batch — 10+ portions): pound in mortar — green bird's eye chilies, lemongrass, galangal, kaffir lime zest, coriander root, garlic, shallot, shrimp paste, cumin, coriander seeds, white pepper. The mortar releases volatile oils that blending does not.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Fry curry paste in the coconut cream (top layer of unshaken coconut milk) over medium heat until fragrant and oil separates (3–4 minutes). "Cracking the coconut cream" is essential — un-fried paste produces a flat curry.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Add remaining coconut milk, bring to simmer. Add chicken and eggplant. Cook 8–10 minutes until chicken is cooked through (<span class="temp">74°C / 165°F</span>) and eggplant is tender. Season with fish sauce and palm sugar. Add torn kaffir lime leaves and Thai basil off heat.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> A house-made paste is vivid emerald green. Jarred paste is olive drab. The colour difference is visible from across the room and justifies the price premium to any guest who notices.</div>
+    <div class="al"><span class="a">POULTRY</span><span class="a">FISH (fish sauce, shrimp paste)</span><span class="a">SHELLFISH (shrimp paste)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 9: Massaman Curry -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>MASSAMAN CURRY</span></div>
+  <div class="rh">
+    <div class="rh-title">Massaman Curry</div>
+    <div class="rh-meta">Slow-braised beef, potato, peanut, tamarind, coconut &nbsp;·&nbsp; Sell: $19.99 &nbsp;·&nbsp; ⏱ 10 min service (batch) &nbsp;·&nbsp; Target FC: 22%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Beef chuck (braised, batch)</td><td>180g cooked</td><td>$2.61</td></tr>
+      <tr><td>Massaman paste (batch)</td><td>25g</td><td>$0.28</td></tr>
+      <tr><td>Coconut milk (full fat)</td><td>200ml</td><td>$0.60</td></tr>
+      <tr><td>Potato (cubed)</td><td>80g</td><td>$0.14</td></tr>
+      <tr><td>Roasted peanuts</td><td>20g</td><td>$0.14</td></tr>
+      <tr><td>Tamarind paste + palm sugar</td><td>10g + 8g</td><td>$0.10</td></tr>
+      <tr><td>Fish sauce</td><td>10ml</td><td>$0.04</td></tr>
+      <tr><td>Jasmine rice</td><td>180g cooked</td><td>$0.32</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$4.23</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$4.23</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$19.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">21.2%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$15.76</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Massaman is a slow-cook curry — it cannot be made to order. Braise beef chuck (2cm cubes) in massaman paste + coconut milk + water at <span class="temp">150°C / 302°F</span> for 2.5–3 hours until completely tender. Extended braising dissolves connective tissue into gelatin, creating the silky sauce.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Massaman paste: dried red chilies, roasted shallots, roasted garlic, lemongrass, galangal, coriander seeds, cumin, cloves, cinnamon, nutmeg, shrimp paste. The warm spice profile (cloves, cinnamon, nutmeg) reflects the Muslim-influenced Southern Thai heritage.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Add potatoes for the final 30 minutes — they absorb the curry sauce deeply. Add peanuts. Adjust: tamarind for acidity, palm sugar for sweetness, fish sauce for salt. Massaman should be rich, slightly sweet, gently spiced, and deeply savoury.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Massaman was ranked the world's best food by CNN Travel in 2011. Use this: "This is the curry CNN called the best food in the world." It is a genuine reference and frames the dish as worth ordering.</div>
+    <div class="al"><span class="a">BEEF</span><span class="a">FISH (fish sauce, shrimp paste)</span><span class="a">NUTS (peanuts)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 10: Pad Kra Pao -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>PAD KRA PAO</span></div>
+  <div class="rh">
+    <div class="rh-title">Pad Kra Pao — Thai Basil Stir-Fry</div>
+    <div class="rh-meta">Minced pork, holy basil, fish sauce, fried egg, jasmine rice &nbsp;·&nbsp; Sell: $15.99 &nbsp;·&nbsp; ⏱ 8 min &nbsp;·&nbsp; Target FC: 16%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Minced pork (or chicken)</td><td>180g</td><td>$1.26</td></tr>
+      <tr><td>Holy basil (Thai, not sweet)</td><td>15g</td><td>$0.10</td></tr>
+      <tr><td>Garlic + bird's eye chili (minced)</td><td>10g + 5 chilies</td><td>$0.08</td></tr>
+      <tr><td>Oyster sauce + soy + fish sauce</td><td>15ml + 5ml + 5ml</td><td>$0.12</td></tr>
+      <tr><td>Dark soy sauce + sugar</td><td>3ml + 3g</td><td>$0.02</td></tr>
+      <tr><td>Fried egg (crispy edges)</td><td>1 × 55g</td><td>$0.35</td></tr>
+      <tr><td>Jasmine rice</td><td>180g cooked</td><td>$0.32</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.25</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.25</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$15.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">14.1%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$13.74</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Pound garlic and bird's eye chilies coarsely in a mortar. Heat wok to maximum. Oil. Add garlic-chili paste — cook 30 seconds, stirring rapidly (do not burn the garlic).</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Add minced pork — stir-fry on maximum heat, breaking up clumps. Cook until fully cooked and beginning to caramelise at the edges. Add oyster sauce, soy, fish sauce, dark soy, sugar. Stir to coat.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Add holy basil at the very last moment — toss 3–4 times and immediately plate. Holy basil loses its distinctive peppery, anise-like flavour within 20 seconds of heat exposure.</div></div>
+      <div class="step"><div class="sn">4</div><div class="st">The fried egg: deep fry in about 1cm of hot oil — pour oil over the top while frying to cook the white while edges crisp and blister. When the runny yolk breaks over the basil pork, it creates a sauce.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Pad kra pao is the most-eaten dish in Thailand — the national comfort food. Holy basil (kra pao) is not the same as sweet Italian basil. Source holy basil from Asian grocers or grow it yourself. This dish made with sweet basil is not pad kra pao.</div>
+    <div class="al"><span class="a">PORK</span><span class="a">FISH (fish sauce)</span><span class="a">EGGS</span><span class="a">GLUTEN (oyster/soy)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 11: Khao Man Gai -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>KHAO MAN GAI</span></div>
+  <div class="rh">
+    <div class="rh-title">Khao Man Gai — Poached Chicken Rice</div>
+    <div class="rh-meta">Silky poached chicken, ginger-garlic rice, clear broth, dipping sauces &nbsp;·&nbsp; Sell: $16.99 &nbsp;·&nbsp; ⏱ 8 min service (batch) &nbsp;·&nbsp; Target FC: 18%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Chicken breast (poached)</td><td>160g</td><td>$1.44</td></tr>
+      <tr><td>Chicken fat rice (cooked in stock)</td><td>180g cooked</td><td>$0.36</td></tr>
+      <tr><td>Clear chicken broth (side)</td><td>150ml</td><td>$0.18</td></tr>
+      <tr><td>Ginger-garlic dipping sauce</td><td>30ml</td><td>$0.14</td></tr>
+      <tr><td>Fermented soybean sauce</td><td>15ml</td><td>$0.08</td></tr>
+      <tr><td>Cucumber (sliced)</td><td>40g</td><td>$0.08</td></tr>
+      <tr><td>Cilantro + fried garlic</td><td>5g + 3g</td><td>$0.06</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.34</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.34</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$16.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">13.8%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$14.65</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Poach whole chicken breasts in aromatic stock (ginger, garlic, lemongrass, salt) at <span class="temp">82°C / 180°F</span> — below a boil. Boiling causes proteins to contract violently, producing tough stringy chicken. Sub-boil gentle poaching produces silky, juicy chicken.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Chicken fat rice: render chicken fat from the poaching liquid surface with garlic and ginger. Toast jasmine rice in this fat 2 minutes. Cook in poaching stock 1:1.5 ratio. The rice absorbs the poaching liquid's flavour — savoury, silky, deeply complex.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Slice chicken cold (against the grain). Arrange on rice. Serve with clear broth, ginger-garlic sauce, fermented soybean sauce, cucumber slices, cilantro, fried garlic. The multiple dipping sauces are part of the eating ritual.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Khao man gai is the most underrepresented great dish in Thai restaurants outside Thailand. In Bangkok, entire restaurants serve only this dish all day. Guests who have eaten it in Thailand will specifically seek it out.</div>
+    <div class="al"><span class="a">POULTRY</span><span class="a">FISH (soy sauce)</span><span class="a">SESAME</span><span class="a">GLUTEN (soy)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 12: Tom Kha Gai -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>TOM KHA GAI</span></div>
+  <div class="rh">
+    <div class="rh-title">Tom Kha Gai — Coconut Galangal Soup</div>
+    <div class="rh-meta">Chicken in coconut broth, galangal, lemongrass, mushroom &nbsp;·&nbsp; Sell: $14.99 &nbsp;·&nbsp; ⏱ 10 min &nbsp;·&nbsp; Target FC: 16%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Chicken thigh (sliced)</td><td>120g</td><td>$0.85</td></tr>
+      <tr><td>Coconut milk (full fat)</td><td>300ml</td><td>$0.90</td></tr>
+      <tr><td>Galangal (sliced rounds)</td><td>20g</td><td>$0.12</td></tr>
+      <tr><td>Lemongrass (bruised, sliced)</td><td>2 stalks</td><td>$0.08</td></tr>
+      <tr><td>Kaffir lime leaves</td><td>4 leaves</td><td>$0.08</td></tr>
+      <tr><td>Oyster mushrooms</td><td>50g</td><td>$0.36</td></tr>
+      <tr><td>Fish sauce + lime juice</td><td>15ml + 20ml</td><td>$0.10</td></tr>
+      <tr><td>Bird's eye chili + cilantro</td><td>2 + 8g</td><td>$0.06</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.55</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.55</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$14.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">17.0%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$12.44</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Bring coconut milk to a gentle simmer — never boil coconut milk rapidly, it separates. Add galangal, lemongrass, kaffir lime leaves. Simmer 5 minutes to infuse. Add chicken and mushrooms. Cook 6–8 minutes at a gentle simmer. Internal chicken: <span class="temp">74°C / 165°F</span>.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Season with fish sauce. Add fresh lime juice off the heat. The soup should be creamy, mildly spicy, intensely aromatic, with a gentle sweetness balanced by lime tartness and fish sauce depth.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Finish with torn cilantro and sliced bird's eye chili. Brief FOH: the galangal, lemongrass, and kaffir lime are aromatics — there to flavour and present, not to eat.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Tom kha and tom yum are the two essential Thai soups — offer both. Tom yum is spicy-sour; tom kha is creamy-aromatic. Guests uncertain about spice often choose tom kha — it is the gentler introduction to Thai broth.</div>
+    <div class="al"><span class="a">POULTRY</span><span class="a">FISH (fish sauce)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 13: Pad See Ew -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>PAD SEE EW</span></div>
+  <div class="rh">
+    <div class="rh-title">Pad See Ew — Wide Noodle Stir-Fry</div>
+    <div class="rh-meta">Wide rice noodles, soy, Chinese broccoli, egg, your choice of protein &nbsp;·&nbsp; Sell: $16.99 &nbsp;·&nbsp; ⏱ 8 min &nbsp;·&nbsp; Target FC: 18%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Fresh wide rice noodles (sen yai)</td><td>180g</td><td>$0.72</td></tr>
+      <tr><td>Chicken thigh (sliced)</td><td>120g</td><td>$0.85</td></tr>
+      <tr><td>Chinese broccoli (gai lan)</td><td>80g</td><td>$0.32</td></tr>
+      <tr><td>Eggs</td><td>2 × 55g</td><td>$0.70</td></tr>
+      <tr><td>Dark soy + light soy + oyster sauce</td><td>15ml + 5ml + 10ml</td><td>$0.14</td></tr>
+      <tr><td>Sugar + white pepper</td><td>5g + 1g</td><td>$0.02</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.75</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.75</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$16.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">16.2%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$14.24</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Pad see ew requires the hottest possible wok heat for the characteristic charred soy flavour. Separate fresh wide rice noodles gently by hand before cooking — they clump in the package and will tear if not handled carefully.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Sear chicken in screaming-hot wok. Add noodles — press flat against the wok surface with a spatula and leave 30 seconds to char. The dark soy caramelises against the hot wok, creating charred slightly bitter sweetness that defines pad see ew. Then toss. Add sauces and sugar.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Push aside, scramble eggs in the wok centre, fold through noodles. Add gai lan stems (1 minute), then leaves (30 seconds). Season with white pepper. Chinese broccoli should be bright green with crunch. Serve immediately.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> The dark caramelised colour — almost black in spots — is the visual signal of quality. A pale pad see ew was not cooked on a hot enough wok. Get the heat right and the colour follows.</div>
+    <div class="al"><span class="a">POULTRY</span><span class="a">EGGS</span><span class="a">FISH (oyster sauce)</span><span class="a">GLUTEN (soy)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 14: Khao Pad -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>KHAO PAD</span></div>
+  <div class="rh">
+    <div class="rh-title">Khao Pad — Thai Fried Rice</div>
+    <div class="rh-meta">Day-old jasmine rice, egg, tomato, scallion, fish sauce, lime &nbsp;·&nbsp; Sell: $14.99 &nbsp;·&nbsp; ⏱ 6 min &nbsp;·&nbsp; Target FC: 14%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Day-old jasmine rice</td><td>220g cooked</td><td>$0.40</td></tr>
+      <tr><td>Eggs</td><td>2 × 55g</td><td>$0.70</td></tr>
+      <tr><td>Protein choice (shrimp/chicken/tofu)</td><td>80g</td><td>$1.00</td></tr>
+      <tr><td>Tomato (wedged)</td><td>40g</td><td>$0.14</td></tr>
+      <tr><td>White onion</td><td>30g</td><td>$0.06</td></tr>
+      <tr><td>Fish sauce + soy sauce</td><td>10ml + 5ml</td><td>$0.06</td></tr>
+      <tr><td>Cucumber + lime + scallion</td><td>30g + wedge + 8g</td><td>$0.10</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.46</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.46</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$14.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">16.4%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$12.53</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Thai fried rice is lighter and less soy-forward than Chinese fried rice — the seasonings are fish sauce + a little soy + a touch of sugar. The character is lighter and more fragrant. Day-old jasmine rice is mandatory — dry, slightly sticky texture fries without clumping.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Wok hot, oil, protein first, set aside. Oil again, crack eggs directly into wok, scramble briefly then add rice immediately — the semi-liquid egg coats the rice grains as they fry together. Fish sauce and soy added. Toss rapidly for 2 minutes over maximum heat.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Add tomato wedges last — just 30 seconds. Thai fried rice always has tomato for brightness and acidity. Return protein. Toss once. Serve with fresh cucumber slices, lime wedge, and a small side of fish sauce with chili.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Khao pad is your fastest high-margin item — 6 minutes, $2.46 food cost, $14.99 sell price. It is also the dish that converts uncertain guests into regulars. Run it as "khao pad with your choice of protein" to maximise inclusivity and reduce ordering friction.</div>
+    <div class="al"><span class="a">EGGS</span><span class="a">FISH (fish sauce)</span><span class="a">GLUTEN (soy)</span></div>
+  </div>
+</div>
+
+<!-- SECTION 3: DESSERTS -->
+<h2>Section 3 — Desserts</h2>
+
+<!-- Recipe 15: Mango Sticky Rice -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>KHAO NIEW MAMUANG</span></div>
+  <div class="rh">
+    <div class="rh-title">Mango Sticky Rice — Khao Niew Mamuang</div>
+    <div class="rh-meta">Coconut sticky rice, fresh mango, coconut cream sauce &nbsp;·&nbsp; Sell: $9.99 &nbsp;·&nbsp; ⏱ 3 min service (batch) &nbsp;·&nbsp; Target FC: 16%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Glutinous rice (cooked, coconut)</td><td>120g cooked</td><td>$0.36</td></tr>
+      <tr><td>Ripe mango (Nam Dok Mai preferred)</td><td>150g sliced</td><td>$0.84</td></tr>
+      <tr><td>Coconut cream sauce (batch)</td><td>60ml</td><td>$0.36</td></tr>
+      <tr><td>Toasted sesame seeds</td><td>3g</td><td>$0.04</td></tr>
+      <tr><td>Mung beans (toasted, optional)</td><td>5g</td><td>$0.04</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.64</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$1.64</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$9.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">16.4%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$8.35</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Coconut sticky rice (batch): soak glutinous rice 4 hours. Steam 25–30 minutes until cooked through and translucent. While hot, mix with warm coconut milk + sugar + salt. The hot rice absorbs the coconut milk completely. Cover and rest 20 minutes.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Coconut cream sauce (batch): reduce coconut cream + sugar + salt + a little rice flour to a slightly thickened, glossy sauce. This sauce adds richness and makes the dish immediately photographable.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Plate: mold sticky rice into a neat cylinder or dome. Slice mango alongside (Nam Dok Mai preferred — its sweetness and smooth texture are superior). Pour coconut cream sauce over rice. Scatter sesame seeds.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Mango sticky rice is one of the top 5 most Instagrammed Thai dishes globally. The golden mango against white coconut rice with cream sauce is inherently photogenic. Specify the mango variety when it is Nam Dok Mai — the specificity signals quality.</div>
+    <div class="al"><span class="a">TREE NUTS (coconut)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 16: Tub Tim Grob -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>TUB TIM GROB</span></div>
+  <div class="rh">
+    <div class="rh-title">Tub Tim Grob — Water Chestnuts in Coconut Milk</div>
+    <div class="rh-meta">Rubied water chestnuts, jasmine coconut milk, crushed ice &nbsp;·&nbsp; Sell: $7.99 &nbsp;·&nbsp; ⏱ 3 min service (batch) &nbsp;·&nbsp; Target FC: 12%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Water chestnuts (diced, coated)</td><td>80g</td><td>$0.40</td></tr>
+      <tr><td>Tapioca starch + red food colouring</td><td>30g + trace</td><td>$0.08</td></tr>
+      <tr><td>Sweetened coconut milk (batch)</td><td>200ml</td><td>$0.48</td></tr>
+      <tr><td>Crushed ice</td><td>100g</td><td>$0.02</td></tr>
+      <tr><td>Jackfruit (canned, shredded)</td><td>20g</td><td>$0.12</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.10</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$1.10</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$7.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">13.8%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$6.89</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Toss diced water chestnuts in red food colouring until deeply stained. Coat thoroughly in tapioca starch. Blanch in boiling water 1–2 minutes — the tapioca coating turns translucent and glossy, creating the characteristic "jewel" effect (tub tim = rubies). The water chestnut inside remains crunchy.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Sweetened coconut milk: warm coconut milk with sugar, pandan leaf, and a pinch of salt. The pandan infusion gives a green-tinged jasmine-floral note. Strain, chill completely. Must be served cold — this is an iced dessert.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Assemble: crushed ice in a bowl or glass. Add water chestnut rubies. Pour cold coconut milk over. Add shredded jackfruit. The colour from the water chestnuts bleeds beautifully into the coconut milk, creating a pink-tinged visually striking presentation.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Tub tim grob is uniquely Thai — there is no equivalent in any other cuisine. Describe it as "water chestnuts coated in translucent tapioca and served in iced coconut milk" — the description alone is intriguing enough to convert orders.</div>
+    <div class="al"><span class="a">TREE NUTS (coconut)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 17: Kluay Tod -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>KLUAY TOD</span></div>
+  <div class="rh">
+    <div class="rh-title">Kluay Tod — Fried Banana</div>
+    <div class="rh-meta">Crispy coconut-battered banana, coconut ice cream, palm sugar caramel &nbsp;·&nbsp; Sell: $8.99 &nbsp;·&nbsp; ⏱ 6 min &nbsp;·&nbsp; Target FC: 14%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Lady finger or Cavendish banana</td><td>2 pieces / 120g</td><td>$0.24</td></tr>
+      <tr><td>Coconut batter (rice flour + coconut + sesame)</td><td>60g</td><td>$0.16</td></tr>
+      <tr><td>Coconut ice cream (scoop)</td><td>60ml</td><td>$0.48</td></tr>
+      <tr><td>Palm sugar caramel (batch)</td><td>30ml</td><td>$0.18</td></tr>
+      <tr><td>Toasted sesame + coconut flakes</td><td>3g + 3g</td><td>$0.06</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.12</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$1.12</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$8.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">12.5%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$7.87</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Coconut batter: rice flour + plain flour (50:50) + desiccated coconut + sesame seeds + sugar + cold water + coconut milk. Mix to a smooth, slightly thick batter. The coconut and sesame create a crunchy, nutty, golden exterior.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Halve bananas lengthwise. Coat in batter. Fry at <span class="temp">175°C / 347°F</span> for 3–4 minutes until golden and crispy. The banana inside should be hot, soft, and caramelising at the edges. Serve immediately — fried banana loses crispiness within 4 minutes.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Plate: fried banana, scoop of coconut ice cream alongside (cold against hot is the contrast), drizzle palm sugar caramel over everything, scatter toasted coconut flakes and sesame. The melting ice cream and warm caramel create a sauce as the dessert is eaten.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Price it just under $10 so the decision is easy. Pre-sell it at the main course stage: "We do a fried banana with coconut ice cream — 6 minutes if you want it at the end." Almost everyone says yes.</div>
+    <div class="al"><span class="a">GLUTEN (flour)</span><span class="a">SESAME</span><span class="a">TREE NUTS (coconut)</span><span class="a">DAIRY (ice cream)</span></div>
+  </div>
+</div>
+
+<!-- Recipe 18: Sangkaya -->
+<div class="recipe">
+  <div class="recipe-color-block"><span>SANGKAYA</span></div>
+  <div class="rh">
+    <div class="rh-title">Sangkaya — Thai Egg Custard</div>
+    <div class="rh-meta">Steamed pandan coconut custard, served warm in a pumpkin &nbsp;·&nbsp; Sell: $8.99 &nbsp;·&nbsp; ⏱ 3 min service (batch, steam 40 min) &nbsp;·&nbsp; Target FC: 12%</div>
+  </div>
+  <div class="rm">
+    <table>
+      <tr><th>Ingredient</th><th>Weight</th><th>Cost</th></tr>
+      <tr><td>Mini pumpkin (kabocha)</td><td>1 × 200g</td><td>$0.60</td></tr>
+      <tr><td>Eggs</td><td>3 × 55g</td><td>$1.05</td></tr>
+      <tr><td>Coconut milk</td><td>100ml</td><td>$0.30</td></tr>
+      <tr><td>Palm sugar</td><td>40g</td><td>$0.16</td></tr>
+      <tr><td>Pandan juice (fresh blended)</td><td>15ml</td><td>$0.06</td></tr>
+      <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.17</strong></td></tr>
+    </table>
+    <div class="fc-box">
+      <div class="fc-item"><div class="fc-val">$2.17</div><div class="fc-lbl">Cost / Serve</div></div>
+      <div class="fc-item"><div class="fc-val">$8.99</div><div class="fc-lbl">Sell Price</div></div>
+      <div class="fc-item"><div class="fc-val">24.1%</div><div class="fc-lbl">Food Cost %</div></div>
+      <div class="fc-item"><div class="fc-val">$6.82</div><div class="fc-lbl">Contribution</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">Cut the top off small kabocha pumpkins, scoop out seeds. Custard: whisk eggs + coconut milk + palm sugar + pandan juice (fresh pandan leaves blended with water, strained) until smooth. The pandan juice gives the custard its emerald green colour and jasmine fragrance.</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">Pour custard into the hollowed pumpkin. Replace lid. Steam at medium heat for 35–40 minutes until custard is fully set and pumpkin flesh is cooked through. Cool slightly. Can be made 1–2 days ahead. Reheat gently (steamer, 10 minutes) before service.</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">Slice the pumpkin into wedges — the custard and pumpkin flesh together form the dessert. Each wedge shows the green custard against the orange pumpkin — a visually stunning cross-section.</div></div>
+    </div>
+    <div class="chef-tip"><strong>Chef's Tip:</strong> Sangkaya in pumpkin is one of the most visually dramatic Thai desserts. The reveal when you slice through a whole mini pumpkin to show the green custard inside is genuinely impressive — do it at the pass where guests can see if possible.</div>
+    <div class="al"><span class="a">EGGS</span><span class="a">TREE NUTS (coconut)</span></div>
+  </div>
+</div>
+
+<!-- SECTION 4: DRINKS -->
+<h2>Section 4 — Drinks Menu</h2>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Thai Iced Tea — Cha Yen</div>
+  <div class="rh-meta">Strong-brewed Thai tea, condensed milk, evaporated milk pour, crushed ice · Sell: $5.99 · FC 9.0%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Thai tea leaves (Pantai or Number One brand)</td><td>15g per batch litre</td><td>$0.12</td></tr>
+  <tr><td>Sweetened condensed milk</td><td>40ml</td><td>$0.24</td></tr>
+  <tr><td>Evaporated milk (top pour)</td><td>30ml</td><td>$0.12</td></tr>
+  <tr><td>Sugar syrup</td><td>15ml</td><td>$0.04</td></tr>
+  <tr><td>Ice (crushed)</td><td>200g</td><td>$0.02</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.54</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$0.54</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$5.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">9.0%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$5.45</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Brew the base:</strong> Steep 15g Thai tea leaves in 1 litre of boiling water for 5 minutes. Strain immediately through a fine mesh — do not over-steep or it becomes bitter. The natural orange colour comes from food-grade annatto in the tea blend. Sweeten with sugar syrup while hot. Cool and refrigerate. This base keeps 3 days refrigerated.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Build the drink:</strong> Fill a tall glass with crushed ice. Pour 200ml cold tea base over ice. Add 40ml sweetened condensed milk — stir or leave as a swirl. At service, pour 30ml evaporated milk slowly over the back of a spoon so it floats on top. The layered orange-to-white gradient is the visual signature of this drink.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Service note:</strong> Serve with a long spoon and a wide straw. The guest stirs to combine — the mixing moment is part of the experience. Pre-batched base means each drink assembles in under 60 seconds during service rush. Push this at every table — it is your highest-frequency beverage sale.</div></div>
+  <div class="al"><span class="a">DAIRY (condensed milk, evaporated milk)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Butterfly Pea Flower Tea — Dok Anchan</div>
+  <div class="rh-meta">Cold-steeped butterfly pea flower, colour-changes blue to purple on lime squeeze · Sell: $5.99 · FC 6.7%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Dried butterfly pea flowers</td><td>8g per litre batch</td><td>$0.18</td></tr>
+  <tr><td>Lychee syrup or simple syrup</td><td>20ml</td><td>$0.08</td></tr>
+  <tr><td>Fresh lime wedge (tableside)</td><td>1 wedge</td><td>$0.06</td></tr>
+  <tr><td>Ice</td><td>200g</td><td>$0.02</td></tr>
+  <tr><td>Lemongrass stalk (garnish)</td><td>1 stalk</td><td>$0.06</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.40</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$0.40</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$5.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">6.7%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$5.59</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Cold steep:</strong> Steep 8g dried butterfly pea flowers in 1 litre cold water overnight in the refrigerator — minimum 8 hours. Cold steeping extracts the vivid indigo-blue anthocyanin pigment without the slight grassy notes that hot steeping can produce. Strain and sweeten lightly. The base holds 4 days refrigerated.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Build and serve:</strong> Fill a tall glass with ice. Pour 200ml deep-blue butterfly pea tea. Garnish with a lemongrass stalk. Place a fresh lime wedge on the rim — do NOT squeeze it in the kitchen. The entire value of this drink is the colour-change moment at the table.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>The reveal script:</strong> Server says: "Squeeze the lime in and watch what happens." The acid triggers a pH reaction in the anthocyanins — the drink shifts from indigo-blue to violet-purple in real time. Every table within eyeline will notice. This drink sells itself visually — always demonstrate table-side. Zero alcohol, zero caffeine.</div></div>
+  <div class="al"><span class="a">None — naturally allergen-free</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Lemongrass Ginger Cooler</div>
+  <div class="rh-meta">Cold-steeped lemongrass and ginger syrup, soda, lemongrass stalk garnish · Sell: $5.99 · FC 8.0%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Fresh lemongrass stalks</td><td>3 stalks per litre batch</td><td>$0.24</td></tr>
+  <tr><td>Fresh ginger</td><td>30g per litre batch</td><td>$0.09</td></tr>
+  <tr><td>Sugar syrup (batch)</td><td>30ml per serve</td><td>$0.06</td></tr>
+  <tr><td>Soda water</td><td>100ml</td><td>$0.04</td></tr>
+  <tr><td>Lime juice</td><td>15ml</td><td>$0.06</td></tr>
+  <tr><td>Ice + lemongrass stalk garnish</td><td>—</td><td>$0.03</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.52</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$0.52</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$5.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">8.7%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$5.47</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Make the syrup base:</strong> Bruise lemongrass stalks (smash with the back of a knife — releases the aromatic oils from the fibrous cells). Slice ginger thin, no need to peel. Combine with equal parts sugar and water, bring to a simmer for 8 minutes. Remove from heat, steep 20 more minutes. Strain. This syrup holds 2 weeks refrigerated and is the base for multiple drinks and dessert sauces.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Build the drink:</strong> 30ml lemongrass-ginger syrup in a tall glass, add fresh lime juice, fill with ice, top with chilled soda water. Stir gently once. The carbonation carries the aromatics — do not over-stir or you lose the effervescence that makes this drink bright and refreshing.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Garnish and serve:</strong> Trim a fresh lemongrass stalk to 15cm, score lightly and use as both straw and garnish. The visual is striking — a drink with a lemongrass stalk coming out of it communicates freshness and craft immediately. Instagram-worthy on every serve.</div></div>
+  <div class="al"><span class="a">None — naturally allergen-free</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Pandan Coconut Latte</div>
+  <div class="rh-meta">Fresh pandan extract, steamed coconut milk foam, served hot or iced · Sell: $6.50 · FC 11.1%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Fresh pandan leaves (blended + strained)</td><td>4 leaves → 30ml extract</td><td>$0.22</td></tr>
+  <tr><td>Coconut milk (full fat, for steaming)</td><td>180ml</td><td>$0.38</td></tr>
+  <tr><td>Sugar syrup</td><td>15ml</td><td>$0.04</td></tr>
+  <tr><td>Ice (iced version)</td><td>150g</td><td>$0.01</td></tr>
+  <tr><td>Toasted coconut flakes (garnish)</td><td>3g</td><td>$0.07</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$0.72</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$0.72</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$6.50</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">11.1%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$5.78</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Extract the pandan:</strong> Blend 4 fresh pandan leaves with 60ml cold water. Strain through cheesecloth, squeezing hard — you want deep emerald green extract. The colour comes from chlorophyll in the pandan leaf. Fresh extract has a fragrant, jasmine-vanilla-like aroma. Bottled pandan flavouring is an inferior substitute — always use fresh leaves.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Steam the coconut milk:</strong> Full-fat coconut milk froths well in an espresso machine steam wand — treat it exactly like dairy milk. Steam to 65°C and a microfoam texture. Do not over-steam or the coconut oil separates. The result is rich, slightly sweet, creamy coconut foam.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Assemble:</strong> Pour 30ml pandan extract into the cup, add sugar syrup. Pour steamed coconut milk in — the vivid green pandan will streak through the white coconut milk creating a striking marbled pattern. Garnish with toasted coconut flakes. For iced version: shake pandan extract + coconut milk + ice, pour over glass of ice, foam on top.</div></div>
+  <div class="al"><span class="a">TREE NUTS (coconut)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Thai Basil Mojito</div>
+  <div class="rh-meta">White rum, holy basil, lime, bird's eye chili sugar, soda water · Sell: $12.99 · FC 14.8%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>White rum (Bacardi or similar)</td><td>45ml</td><td>$0.90</td></tr>
+  <tr><td>Fresh holy basil (krapao) leaves</td><td>8 leaves</td><td>$0.06</td></tr>
+  <tr><td>Fresh lime juice</td><td>30ml (2 limes)</td><td>$0.30</td></tr>
+  <tr><td>Bird's eye chili sugar syrup (batch)</td><td>20ml</td><td>$0.14</td></tr>
+  <tr><td>Soda water</td><td>60ml</td><td>$0.04</td></tr>
+  <tr><td>Ice + lime wheel garnish</td><td>—</td><td>$0.04</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.48</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$1.48</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$12.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">11.4%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$11.51</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Chili sugar syrup:</strong> Make a batch — simmer equal parts sugar and water with 3–4 sliced bird's eye chilies for 5 minutes. Strain out the chili (leave the heat level behind). This is a foundational Thai cocktail ingredient — sweet, fruity heat without the chili pieces. Adjust chili quantity to your heat preference. Holds 2 weeks refrigerated.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Muddle gently:</strong> Place holy basil leaves in the glass. Add chili syrup. Muddle gently with the back of a spoon — just press and twist once or twice. Holy basil is more fragile than mint — hard muddling produces bitter, over-extracted green flavour. The goal is bruised and fragrant, not pulverised.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Build:</strong> Add rum, fresh lime juice, fill with ice. Top with soda water. Stir once from the bottom. Garnish with a lime wheel and a fresh holy basil sprig. The peppery, slightly anise character of holy basil paired with chili heat creates a cocktail that tastes distinctly Thai — nothing like a standard mojito.</div></div>
+  <div class="al"><span class="a">SULPHITES (rum may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Tamarind Whisky Sour</div>
+  <div class="rh-meta">Bourbon, house tamarind syrup, lime, egg white foam · Sell: $13.99 · FC 16.0%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Bourbon (Buffalo Trace or similar)</td><td>45ml</td><td>$1.35</td></tr>
+  <tr><td>Tamarind paste + sugar (batch syrup)</td><td>25ml</td><td>$0.18</td></tr>
+  <tr><td>Fresh lime juice</td><td>20ml</td><td>$0.20</td></tr>
+  <tr><td>Egg white</td><td>1 white (30ml)</td><td>$0.35</td></tr>
+  <tr><td>Angostura bitters (garnish)</td><td>2 drops</td><td>$0.02</td></tr>
+  <tr><td>Ice</td><td>—</td><td>$0.02</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$2.12</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$2.12</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$13.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">15.2%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$11.87</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Make tamarind syrup:</strong> Dissolve tamarind paste in warm water (2:1 water to paste ratio). Add equal weight of sugar. Simmer 3 minutes, strain. The result is thick, complex, sweet-sour with a slight funkiness that is unique to tamarind. This syrup replaces simple syrup in multiple cocktails — make it in large batches.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Dry shake first:</strong> Combine bourbon, tamarind syrup, lime juice, and egg white in a shaker WITHOUT ice. Shake hard for 15 seconds — the dry shake emulsifies the egg white proteins into a stable, silky foam without dilution. This step is non-negotiable for proper foam texture.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Wet shake and strain:</strong> Add ice to the shaker. Shake again for 10 seconds. Double-strain into a coupe or rocks glass over a large ice cube. The foam will float on top naturally. Garnish with 2 drops of Angostura bitters on the foam — drag a toothpick through for a feather pattern. A sophisticated cocktail that tells the Thai story through flavour.</div></div>
+  <div class="al"><span class="a">EGGS (egg white)</span><span class="a">SULPHITES (bourbon may contain)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Young Coconut Water</div>
+  <div class="rh-meta">Fresh young coconut, served in the shell with a wide straw · Sell: $6.99 · FC 20.0%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Young coconut (whole, green or white)</td><td>1 coconut ~400ml water</td><td>$1.20</td></tr>
+  <tr><td>Fresh lime wedge</td><td>1 wedge</td><td>$0.06</td></tr>
+  <tr><td>Mint sprig (garnish)</td><td>2 sprigs</td><td>$0.04</td></tr>
+  <tr><td>Wide bamboo straw</td><td>1 straw</td><td>$0.10</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.40</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$1.40</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$6.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">20.0%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$5.59</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Prepare the coconut:</strong> Young coconuts arrive pre-trimmed into a cylindrical shape from most Asian suppliers. Using a cleaver or the back of a heavy knife, score a small square into the top and lever out the cap. This requires practice — 3–4 firm strikes in a square pattern, then lever. Never use a glass or container — the coconut IS the vessel.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>Serve immediately:</strong> Insert a wide bamboo straw. Add a lime wedge and mint sprig as garnish — both functional (squeeze lime in to brighten the flavour) and visual. The whole coconut on the table is one of the most powerful authenticity signals in Thai food service. Guests photograph it. Every table around them notices.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>After drinking:</strong> When the water is finished, offer to crack the coconut open so the guest can eat the jelly-flesh inside with a spoon. Young coconut flesh is thin, tender, and sweet. This is a free bonus that takes 30 seconds and generates a disproportionate positive reaction. It also signals that your team knows the product intimately.</div></div>
+  <div class="al"><span class="a">TREE NUTS (coconut)</span></div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Singha Beer</div>
+  <div class="rh-meta">Thai lager, served cold in the bottle with a frosted glass · Sell: $7.99 · FC 20.0%</div>
+</div>
+<div class="rm">
+  <table><tr><th>Ingredient</th><th>Amount</th><th>Cost</th></tr>
+  <tr><td>Singha Beer 330ml bottle</td><td>1 bottle</td><td>$1.45</td></tr>
+  <tr><td>Frosted pilsner glass</td><td>1 glass (stored in freezer)</td><td>$0.05</td></tr>
+  <tr><td>Lime wedge</td><td>1 wedge</td><td>$0.06</td></tr>
+  <tr><td>Bottle opener + napkin</td><td>—</td><td>$0.04</td></tr>
+  <tr><td><strong>Total cost per serve</strong></td><td></td><td><strong>$1.60</strong></td></tr></table>
+  <div class="fc-box"><div class="fc-item"><div class="fc-val">$1.60</div><div class="fc-lbl">Cost</div></div><div class="fc-item"><div class="fc-val">$7.99</div><div class="fc-lbl">Sell</div></div><div class="fc-item"><div class="fc-val">20.0%</div><div class="fc-lbl">FC%</div></div><div class="fc-item"><div class="fc-val">$6.39</div><div class="fc-lbl">Margin</div></div></div>
+  <div class="step"><div class="sn">1</div><div class="st"><strong>Temperature matters:</strong> Store Singha at 2–4°C. Beer served too warm loses carbonation rapidly and tastes flat. Keep beer fridge stocked and below 4°C at all times during service. A beer thermometer is a worthwhile $10 investment to verify serving temp.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st"><strong>The frosted glass:</strong> Store pilsner glasses in the freezer. A frosted glass dramatically extends the cold-drinking window — the thermal mass of the frozen glass keeps the first pour cold for 3–4 minutes longer than a room-temperature glass. This is a detail guests notice without knowing why their beer tastes better.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st"><strong>Serve and suggest:</strong> Present the bottle unopened with the frosted glass and a lime wedge. Open at the table — the hiss of the bottle opening is a sensory moment. Suggest pairing: "Singha cuts through the heat in the green curry and the massaman beautifully." Singha and Chang are cultural markers — guests who know Thailand will order by name. The brand communicates authenticity.</div></div>
+  <div class="al"><span class="a">GLUTEN (barley malt)</span></div>
+</div>
+</div>
+
+<h2>Section 5 — Service Training Module</h2>
+
+<div class="script-box">
+  <div class="script-label">Script 1 — The Tea Opening</div>
+  <div class="script-text">"Can I get you a Thai iced tea while you look at the menu? We brew it strong with the traditional Thai tea leaves — it's sweet, slightly spiced, orange. Or the butterfly pea flower tea — it's blue until you put lime in it and it turns purple. $5.99 each."</div>
+  <p style="color:#666;font-size:0.78rem;margin-top:8px;"><strong style="color:#ff4d6d;">Why it works:</strong> The butterfly pea tea colour change is the most reliably effective drink sell in Thai food. The chemistry demo converts almost every table that hears it.</p>
+</div>
+
+<div class="script-box">
+  <div class="script-label">Script 2 — The Spice Conversation</div>
+  <div class="script-text">"Before I take your order — how spicy do you like things? Thai spicy means bird's eye chilies, which are legitimately hot. Medium means 2–3. Thai means 5–7. I always ask because the gap between medium and Thai is significant."</div>
+  <p style="color:#666;font-size:0.78rem;margin-top:8px;"><strong style="color:#ff4d6d;">Why it works:</strong> Proactive spice management prevents complaints, creates a collaborative dynamic, and demonstrates that you know your product. Guests who feel informed don't complain even if it's spicier than expected.</p>
+</div>
+
+<div class="script-box">
+  <div class="script-label">Script 3 — The Som Tum Mortar</div>
+  <div class="script-text">"The som tum is made in the mortar — we make each one fresh to order. 6 minutes. The heat level is completely adjustable. $12.99 and it's probably the most flavourful $13 you'll spend today."</div>
+  <p style="color:#666;font-size:0.78rem;margin-top:8px;"><strong style="color:#ff4d6d;">Why it works:</strong> The mortar detail communicates authenticity immediately. "Made fresh to order" is both honest and a quality signal. "Most flavourful $13 you'll spend today" is a confident, memorable line.</p>
+</div>
+
+<div class="script-box">
+  <div class="script-label">Script 4 — The Massaman Story</div>
+  <div class="script-text">"The massaman — CNN called it the best food in the world a few years back. It's a slow-braised beef curry, Southern Thai, Muslim-influenced, so it has warm spices — cloves, cinnamon, nutmeg — rather than just chili heat. It's not aggressively spicy. $19.99 with jasmine rice."</div>
+  <p style="color:#666;font-size:0.78rem;margin-top:8px;"><strong style="color:#ff4d6d;">Why it works:</strong> The CNN reference is a genuine, memorable fact. Explaining the Muslim Southern Thai influence adds cultural depth. "Not aggressively spicy" removes the barrier for spice-uncertain guests.</p>
+</div>
+
+<div class="script-box">
+  <div class="script-label">Script 5 — The Fried Banana Pre-Sell</div>
+  <div class="script-text">"One thing worth knowing — the fried banana with coconut ice cream is 6 minutes if you want it at the end. I'll put it on when I bring your mains so it times right. $8.99. The batter has coconut and sesame in it — it's not like a funfair doughnut."</div>
+  <p style="color:#666;font-size:0.78rem;margin-top:8px;"><strong style="color:#ff4d6d;">Why it works:</strong> Pre-ordering removes the "too full" barrier. The coconut-sesame batter detail distinguishes it from cheap fried desserts. Timing it with the mains is a genuine service act that guests appreciate.</p>
+</div>
+
+<h3>Table Timing Guide</h3>
+<table class="prep-table">
+  <tr><th>Time</th><th>Action</th></tr>
+  <tr><td>0:00</td><td>Welcome and seat. Butterfly pea tea or Thai iced tea pitch immediately (Script 1). Small bowl of prawn crackers — free, $0.15, signals hospitality, Thai restaurant standard.</td></tr>
+  <tr><td>1:30</td><td>Spice conversation (Script 2) before they order anything. Drink order taken.</td></tr>
+  <tr><td>4:00</td><td>Full food order. Scripts 3, 4 as relevant. Fried banana pre-sell (Script 5). Note dietary requirements — fish sauce is in almost every dish.</td></tr>
+  <tr><td>10:00</td><td>Entrées arrive. Brief introduction: "The satay peanut sauce — dip the cucumber relish too, not just the skewers." One tip per dish that improves the eating experience.</td></tr>
+  <tr><td>20:00</td><td>Mains arrive. Place condiment tray: fish sauce + chili flakes + sugar + white vinegar. Brief: "Season to your taste — these are how every Thai restaurant in Bangkok serves it."</td></tr>
+  <tr><td>30:00</td><td>Dessert prompt — mango sticky rice, tub tim grob, sangkaya all instant. Fried banana 6 min (already fired if pre-sold). Thai iced tea refill offered.</td></tr>
+  <tr><td>45:00</td><td>Bill. "Come back on a weekend — we sometimes run regional Thai specials." Creates return intent and communicates depth of knowledge.</td></tr>
+</table>
+
+<h3>Complaint Handling</h3>
+<div class="script-box">
+  <div class="script-label">Complaint — Too Spicy</div>
+  <div class="script-text">"I'm sorry about that — I should have been clearer on the spice scale. Let me bring you some jasmine rice to temper it, and I'll have the kitchen make you a fresh one at a lower level. That's on us."</div>
+</div>
+<div class="script-box">
+  <div class="script-label">Complaint — Galangal/Lemongrass in Soup</div>
+  <div class="script-text">"Those pieces are the aromatics — they're there to flavour the broth, not to eat. I should have mentioned that when the soup arrived. My apologies. Just move them to the side — the broth and everything else is absolutely for eating."</div>
+</div>
+<div class="script-box">
+  <div class="script-label">Upsell — Beverage Top-Up</div>
+  <div class="script-text">"Can I get you another Thai iced tea? The spice in the green curry is going to build — having something cold and sweet helps balance it. Or I can bring you the coconut water — it's the most hydrating thing we have."</div>
+</div>
+
+<h2>Section 6 — 8-Hour Kitchen Prep Flow</h2>
+<table class="prep-table">
+<tr><th>Time</th><th>Cook 1 (Head Cook)</th><th>Cook 2 (Line Cook)</th><th>Steward</th></tr>
+<tr><td>07:00–07:30</td><td>Temp check all units — fridge must read <strong style="color:#ff4d6d;">1–4°C</strong>. Start tom yum broth — simmer aromatics 30 min. Taste yesterday's massaman curry and adjust seasoning. Check curry paste freshness and quantity.</td><td>Set up wok stations. Soak rice noodles for pad thai. Pre-soak glutinous rice (if not done overnight). Check day-old rice for khao pad — dry enough? Portion fish cake mixture from cold storage.</td><td>Sanitise all surfaces. Brew Thai iced tea base (strong, hot — cool and refrigerate). Prepare lemongrass ginger syrup batch. Steep butterfly pea flower tea cold. Slice and juice limes for full service.</td></tr>
+<tr><td>07:30–09:00</td><td>Make green and red curry paste batches if running low — pound in mortar, no shortcuts. Taste against previous batch. Prepare miang kham sauce. Check satay marinades and set up grill station. Steam sangkaya for service.</td><td>Cook coconut sticky rice (steam 30 min). Make pad thai sauce batch. Prep all satay skewers. Shred green papaya for som tum — prep just before service as it oxidises. Slice and portion all proteins.</td><td>Prepare ajat (cucumber relish) for tod mun and satay. Make peanut sauce batch. Portion mango sticky rice components. Check ice supply for cold drinks service. Set up condiment trays for all tables.</td></tr>
+<tr><td>09:00–11:00<br><em style="color:#999;">Breakfast / Early</em></td><td>Run the pass. Fire tod mun pla (8 min). Satay grill to order (10 min). Monitor tom yum broth holding temperature — maintain <strong style="color:#ff4d6d;">≥74°C</strong>.</td><td>Executes all entrées to order. Som tum made to order in mortar — confirm spice level with server before making. Miang kham assembled to order at pass.</td><td>Thai iced tea on every table from opening. Butterfly pea tea demo at every table: "Squeeze the lime and watch it change colour." Push this at every sitting — it converts.</td></tr>
+<tr><td>11:00–14:30<br><em style="color:#999;">Lunch Push</em></td><td>Full wok push. Pad thai: one portion per wok, maximum heat, 4–5 min. Pad kra pao (8 min). Pad see ew (8 min). Massaman reheated gently. Green curry to order (12 min).</td><td>Khao man gai — slice to order and assemble. Khao pad (6 min). Tom kha gai (10 min). Fried banana to order (6 min — pre-sell with every main course for timing).</td><td>Full service speed. Singha beer suggested with all spicy dishes. Pre-sell desserts: mango sticky rice (instant), tub tim grob (instant), sangkaya (instant), fried banana (6 min). Thai iced tea refills every 15 min.</td></tr>
+<tr><td>14:30–17:00<br><em style="color:#999;">Break / Dinner Prep</em></td><td>Reduce all curry bases, cool rapidly. Store curry pastes airtight. Restock proteins. Write dinner prep additions based on lunch volume. Rest 30–40 min.</td><td>Break down lunch wok station. Clean and season woks. Store day-old rice for tomorrow's khao pad. Drain noodle soak water and refrigerate. Begin dinner protein prep.</td><td>Full clean between services. Restock drinks, ice, condiment trays. Brew fresh Thai iced tea batch for dinner service. Check fridge temps — log in food safety book.</td></tr>
+<tr><td>17:00–21:30<br><em style="color:#999;">Dinner Service</em></td><td>Full dinner service — same wok protocols. Monitor all broth temps. Massaman reheated from second batch. Dessert pass. Last order management and portion tracking.</td><td>Entrées + mains execution. Dinner tends toward larger tables — batch where safe. Maintain one-portion pad thai rule without compromise. Brief FOH on 86'd items as they go.</td><td>Dinner beverage service — cocktails, beer, Thai teas. Dessert pre-sells. Monitor floor pacing with FOH team. Final checks: fridge temps, waste log, mise en place reset for morning.</td></tr>
+<tr><td>21:30–22:00<br><em style="color:#999;">Close</em></td><td>Final fridge temp log — all units <strong style="color:#ff4d6d;">1–4°C</strong>. Secure all raw proteins. Write tomorrow's full prep list based on today's covers. Initial curry paste for overnight marinating if needed.</td><td>Full wok and station breakdown. Season woks with oil before racking. Label and date all stored prep. Drain noodle water, refrigerate portioned proteins.</td><td>Deep clean all surfaces. Empty and sanitise ice bins. Set butterfly pea tea to steep overnight. Prep Thai iced tea base ready for 7am. Final bin and floor. Lock refrigeration log.</td></tr>
+</table>
+
+<h2>Section 7 — Financial Model &amp; P&amp;L</h2>
+<p style="color:#999;font-size:0.85rem;margin-bottom:16px;">Based on 80-seat venue, 2 services/day, 6 days/week · US market pricing 2025</p>
+<table class="rev-table">
+<tr><th>Service</th><th>Covers</th><th>Avg Spend</th><th>Daily</th><th>Weekly</th><th>Monthly</th></tr>
+<tr><td>Lunch (11am–3pm)</td><td>80</td><td>$38</td><td>$3,040</td><td>$18,240</td><td>$79,040</td></tr>
+<tr><td>Dinner (5:30pm–9:30pm)</td><td>64</td><td>$52</td><td>$3,328</td><td>$19,968</td><td>$86,528</td></tr>
+<tr><td style="color:#ff9999;font-weight:700;">Beverage Mix (1.8 drinks/guest)</td><td>144 guests</td><td>$8.50</td><td>$1,224</td><td>$7,344</td><td>$31,824</td></tr>
+<tr style="background:#222;font-weight:700;"><td>TOTAL REVENUE</td><td>144 covers/day</td><td>—</td><td><strong>$7,592</strong></td><td><strong>$45,552</strong></td><td><strong>$197,392</strong></td></tr>
+</table>
+<table class="rev-table" style="margin-top:14px;">
+<tr><th>Cost Category</th><th>Daily</th><th>Weekly</th><th>Monthly</th></tr>
+<tr><td>Food &amp; Beverage Cost (20%)</td><td>$1,518</td><td>$9,110</td><td>$39,478</td></tr>
+<tr><td>Labour — HC + LC + Steward + FOH ×3 (30%)</td><td>$2,278</td><td>$13,666</td><td>$59,218</td></tr>
+<tr><td>Rent + Utilities + Misc (16%)</td><td>$1,215</td><td>$7,288</td><td>$31,583</td></tr>
+<tr><td style="font-weight:700;">Total Costs</td><td><strong>$5,011</strong></td><td><strong>$30,064</strong></td><td><strong>$130,279</strong></td></tr>
+<tr class="profit-row"><td>NET PROFIT (est.)</td><td>$2,581</td><td>$15,488</td><td>$67,113</td></tr>
+</table>
+<p style="color:#999;font-size:0.82rem;margin-top:8px;">Food cost target: 18–22% · Labour: 28–32% · Overheads: 15–18% · Net margin target: 18–22%</p>
+<div style="background:#0f1a0f;border:1px solid #1a4a1a;border-radius:8px;padding:14px 18px;margin:14px 0;font-size:0.85rem;color:#99cc99;">
+<strong style="color:#ffd700;">3-Month Ramp:</strong> Month 1 (55% capacity) ~$25,000 net · Month 2 (75%) ~$41,000 net · Month 3 (100%) ~$67,113 net · Break-even requires ~$5,000/day revenue across both services. The beverage mix is critical — target 1.8 drinks per guest across both services to hit these numbers.
+</div>
+
+<h2>Section 8 — Food Safety &amp; Allergens</h2>
+<div class="safety">
+<h3 style="color:#ff4d6d;margin-bottom:10px;">Critical Temperature Points</h3>
+<table class="rev-table" style="margin:8px 0;">
+<tr><th>Item</th><th>Target</th><th>Action if Out of Range</th></tr>
+<tr><td>Refrigeration (all units)</td><td style="color:#ff9999;font-weight:700;">1–4°C / 34–39°F</td><td>Log, correct immediately. Do not use ingredients held above 4°C for over 2 hours.</td></tr>
+<tr><td>Poultry (chicken) — cooked through</td><td style="color:#ff9999;font-weight:700;">≥74°C / 165°F</td><td>Probe before plating. Return to heat if not reached. No exceptions.</td></tr>
+<tr><td>Beef (massaman braising)</td><td style="color:#ff9999;font-weight:700;">≥74°C / 165°F internal</td><td>Braise minimum 2.5 hrs at 150°C / 302°F. Probe batch before service.</td></tr>
+<tr><td>Fish / seafood — prawns, fish cakes</td><td style="color:#ff9999;font-weight:700;">≥63°C / 145°F</td><td>Prawns: pink and curled, max 3 min in hot broth. Fish cake: probe centre.</td></tr>
+<tr><td>Deep fry oil temperature</td><td style="color:#ff9999;font-weight:700;">175°C / 347°F</td><td>Check with thermometer every 45 min during service. Change oil if dark or smoking low.</td></tr>
+<tr><td>Broth / hot-hold (tom yum, tom kha)</td><td style="color:#ff9999;font-weight:700;">≥74°C / 165°F</td><td>Monitor every 30 min on the pass. Do not hold below 63°C.</td></tr>
+<tr><td>Rapid cool (curries, broths)</td><td style="color:#ff9999;font-weight:700;">From 74°C → 4°C in &lt;2 hours</td><td>Use ice bath + shallow containers. Never cool large volumes in deep pots at room temp.</td></tr>
+</table>
+<p style="color:#999;font-size:0.8rem;margin-top:8px;">Log all fridge temps at 07:00 (open) and 21:30–22:00 (close). Keep logs on-site for minimum 90 days. Report any unit failure to management immediately — do not serve product from a failed unit.</p>
+</div>
+
+<h3 style="margin-top:20px;color:#e8e8e8;">Allergen Reference</h3>
+<p style="color:#999;font-size:0.83rem;margin-bottom:10px;">Fish sauce is present in <strong style="color:#ff9999;">almost every dish</strong> on this menu. Guests requesting vegetarian or fish-free must be flagged to the kitchen — specific substitutions required. When in doubt, confirm with the head cook before serving.</p>
+<table class="rev-table" style="margin-bottom:12px;">
+<tr><th>Dish</th><th>Allergens Present</th></tr>
+<tr><td>Tod Mun Pla — Fish Cakes</td><td><div class="al"><span class="a">FISH</span><span class="a">EGGS</span><span class="a">SHELLFISH (fish sauce may contain)</span></div></td></tr>
+<tr><td>Som Tum — Green Papaya Salad</td><td><div class="al"><span class="a">FISH (fish sauce)</span><span class="a">SHELLFISH (dried shrimp)</span><span class="a">NUTS (peanuts)</span></div></td></tr>
+<tr><td>Satay — Chicken Skewers</td><td><div class="al"><span class="a">POULTRY</span><span class="a">NUTS (peanuts)</span><span class="a">FISH (fish sauce)</span></div></td></tr>
+<tr><td>Tom Yum Goong — Prawn Soup</td><td><div class="al"><span class="a">SHELLFISH (prawns)</span><span class="a">FISH (fish sauce, prawn stock)</span></div></td></tr>
+<tr><td>Miang Kham — Betel Leaf Wraps</td><td><div class="al"><span class="a">SHELLFISH (dried shrimp)</span><span class="a">FISH (fish sauce, shrimp paste)</span><span class="a">NUTS (peanuts)</span></div></td></tr>
+<tr><td>Gai Hor Bai Toey — Pandan Chicken</td><td><div class="al"><span class="a">POULTRY</span><span class="a">FISH (oyster sauce)</span><span class="a">SESAME</span><span class="a">GLUTEN (oyster/soy sauce)</span></div></td></tr>
+<tr><td>Pad Thai — Rice Noodles</td><td><div class="al"><span class="a">SHELLFISH (shrimp)</span><span class="a">FISH (fish sauce, dried shrimp)</span><span class="a">EGGS</span><span class="a">NUTS (peanuts)</span></div></td></tr>
+<tr><td>Gaeng Keow Wan — Green Curry</td><td><div class="al"><span class="a">POULTRY</span><span class="a">FISH (fish sauce, shrimp paste)</span><span class="a">SHELLFISH (shrimp paste)</span></div></td></tr>
+<tr><td>Massaman Neua — Beef Curry</td><td><div class="al"><span class="a">BEEF</span><span class="a">FISH (fish sauce, shrimp paste)</span><span class="a">NUTS (peanuts)</span></div></td></tr>
+<tr><td>Pad Kra Pao — Basil Pork</td><td><div class="al"><span class="a">PORK</span><span class="a">FISH (fish sauce)</span><span class="a">EGGS</span><span class="a">GLUTEN (oyster/soy)</span></div></td></tr>
+<tr><td>Khao Man Gai — Poached Chicken Rice</td><td><div class="al"><span class="a">POULTRY</span><span class="a">FISH (soy sauce)</span><span class="a">SESAME</span><span class="a">GLUTEN (soy)</span></div></td></tr>
+<tr><td>Tom Kha Gai — Coconut Soup</td><td><div class="al"><span class="a">POULTRY</span><span class="a">FISH (fish sauce)</span></div></td></tr>
+<tr><td>Pad See Ew — Stir-Fried Noodles</td><td><div class="al"><span class="a">POULTRY</span><span class="a">EGGS</span><span class="a">FISH (oyster sauce)</span><span class="a">GLUTEN (soy)</span></div></td></tr>
+<tr><td>Khao Pad — Thai Fried Rice</td><td><div class="al"><span class="a">EGGS</span><span class="a">FISH (fish sauce)</span><span class="a">GLUTEN (soy)</span></div></td></tr>
+<tr><td>Mango Sticky Rice</td><td><div class="al"><span class="a">TREE NUTS (coconut)</span><span class="a">SESAME</span></div></td></tr>
+<tr><td>Tub Tim Grob — Water Chestnuts</td><td><div class="al"><span class="a">TREE NUTS (coconut)</span></div></td></tr>
+<tr><td>Kluay Tod — Fried Banana</td><td><div class="al"><span class="a">GLUTEN (rice flour batter)</span><span class="a">TREE NUTS (coconut)</span><span class="a">SESAME</span><span class="a">DAIRY (coconut ice cream — confirm supplier)</span></div></td></tr>
+</table>
+
+<footer>KitchenFounder · Thai Street Food Operations Guide v6 · kitchenfounder.com</footer>
+</div>
+</body>
+</html>

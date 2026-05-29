@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder — Food Cost Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#FAFAF8;color:#1C1C1C;min-height:100vh;display:flex;flex-direction:column;}
+/* HEADER */
+.header{background:#1C1C1C;color:#fff;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.header-logo{font-size:1.1rem;font-weight:700;letter-spacing:-0.02em;}
+.header-logo span{color:#C0392B;}
+.header-sub{font-size:0.75rem;color:#888;margin-left:12px;font-weight:400;}
+.header-right{display:flex;gap:12px;align-items:center;}
+.btn{padding:8px 18px;border-radius:6px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;transition:all 0.15s;}
+.btn-primary{background:#C0392B;color:#fff;}
+.btn-primary:hover{background:#a93226;}
+.btn-secondary{background:#fff;color:#1C1C1C;border:1.5px solid #e0e0e0;}
+.btn-secondary:hover{border-color:#1C1C1C;}
+.btn-ghost{background:transparent;color:#888;border:1.5px solid #444;}
+.btn-ghost:hover{color:#fff;border-color:#fff;}
+.btn-danger{background:#fef2f2;color:#E74C3C;border:1.5px solid #fca5a5;}
+.btn-danger:hover{background:#E74C3C;color:#fff;}
+.btn-sm{padding:5px 12px;font-size:0.75rem;}
+.btn-xs{padding:3px 9px;font-size:0.72rem;}
+/* LAYOUT */
+.app-body{display:flex;flex:1;}
+.sidebar{width:260px;background:#1C1C1C;color:#fff;padding:24px 20px;flex-shrink:0;min-height:calc(100vh - 56px);}
+.sidebar h3{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#666;margin-bottom:12px;margin-top:24px;}
+.sidebar h3:first-child{margin-top:0;}
+.benchmark-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a2a2a;font-size:0.8rem;}
+.benchmark-item:last-child{border-bottom:none;}
+.benchmark-label{color:#aaa;}
+.benchmark-val{color:#C0392B;font-weight:600;font-size:0.75rem;}
+.nav-btn{width:100%;text-align:left;padding:10px 14px;border-radius:6px;background:transparent;color:#aaa;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.82rem;margin-bottom:4px;transition:all 0.15s;display:flex;align-items:center;gap:8px;}
+.nav-btn:hover,.nav-btn.active{background:#2a2a2a;color:#fff;}
+.nav-btn .dot{width:6px;height:6px;border-radius:50%;background:#C0392B;}
+/* MAIN */
+.main{flex:1;padding:32px;overflow-y:auto;}
+.page{display:none;}
+.page.active{display:block;}
+/* DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;}
+.dash-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.07);border:1px solid #f0f0f0;}
+.dash-card .label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#999;margin-bottom:6px;}
+.dash-card .value{font-size:1.6rem;font-weight:700;color:#1C1C1C;}
+.dash-card .value.green{color:#27AE60;}
+.dash-card .value.red{color:#E74C3C;}
+.dash-card .value.yellow{color:#F39C12;}
+.dash-card .sub{font-size:0.75rem;color:#aaa;margin-top:4px;}
+/* RECIPE CARDS */
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.section-title{font-size:1.1rem;font-weight:700;}
+.recipe-card{background:#fff;border-radius:10px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.07);border:1px solid #f0f0f0;margin-bottom:20px;}
+.recipe-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.recipe-name-input{font-size:1rem;font-weight:600;border:none;border-bottom:2px solid #f0f0f0;padding:4px 0;width:60%;font-family:'Inter',sans-serif;color:#1C1C1C;background:transparent;}
+.recipe-name-input:focus{outline:none;border-bottom-color:#C0392B;}
+.recipe-meta{display:flex;gap:16px;align-items:center;}
+.fc-badge{padding:6px 14px;border-radius:20px;font-size:0.82rem;font-weight:700;}
+.fc-badge.green{background:#f0fdf4;color:#27AE60;border:1.5px solid #86efac;}
+.fc-badge.yellow{background:#fffbeb;color:#F39C12;border:1.5px solid #fcd34d;}
+.fc-badge.red{background:#fef2f2;color:#E74C3C;border:1.5px solid #fca5a5;}
+/* INGREDIENT TABLE */
+.ing-table{width:100%;border-collapse:collapse;margin-bottom:12px;}
+.ing-table th{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:#999;padding:8px 10px;text-align:left;border-bottom:1.5px solid #f0f0f0;}
+.ing-table td{padding:6px 10px;border-bottom:1px solid #f9f9f9;vertical-align:middle;}
+.ing-table input{border:1px solid #e8e8e8;border-radius:5px;padding:5px 8px;font-family:'Inter',sans-serif;font-size:0.82rem;width:100%;color:#1C1C1C;}
+.ing-table input:focus{outline:none;border-color:#C0392B;}
+.ing-table select{border:1px solid #e8e8e8;border-radius:5px;padding:5px 8px;font-family:'Inter',sans-serif;font-size:0.82rem;color:#1C1C1C;background:#fff;}
+.ing-table .cost-cell{font-weight:600;color:#1C1C1C;font-size:0.82rem;text-align:right;}
+/* RECIPE FOOTER */
+.recipe-footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1.5px solid #f0f0f0;flex-wrap:wrap;gap:12px;}
+.recipe-totals{display:flex;gap:24px;align-items:center;}
+.total-item{text-align:center;}
+.total-item .tl{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:#999;}
+.total-item .tv{font-size:1.1rem;font-weight:700;}
+.sell-input-wrap{display:flex;align-items:center;gap:8px;}
+.sell-input-wrap label{font-size:0.78rem;color:#666;white-space:nowrap;}
+.sell-input{border:1.5px solid #e8e8e8;border-radius:6px;padding:7px 12px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;width:110px;color:#1C1C1C;}
+.sell-input:focus{outline:none;border-color:#C0392B;}
+/* MATRIX */
+.matrix-wrap{background:#fff;border-radius:10px;padding:28px;box-shadow:0 1px 4px rgba(0,0,0,0.07);border:1px solid #f0f0f0;}
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:400px;margin-top:16px;border:2px solid #e0e0e0;border-radius:8px;overflow:hidden;}
+.quadrant{padding:16px;position:relative;overflow:hidden;}
+.q-star{background:#f0fdf4;}
+.q-puzzle{background:#eff6ff;}
+.q-horse{background:#fffbeb;}
+.q-dog{background:#fafafa;}
+.q-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;opacity:0.5;}
+.q-star .q-label{color:#27AE60;}
+.q-puzzle .q-label{color:#3B82F6;}
+.q-horse .q-label{color:#F39C12;}
+.q-dog .q-label{color:#999;}
+.q-icon{font-size:1.4rem;margin-bottom:4px;}
+.dish-chip{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.72rem;font-weight:600;margin:3px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
+.matrix-axis{display:flex;justify-content:space-between;font-size:0.7rem;color:#aaa;margin-top:6px;padding:0 2px;}
+.matrix-note{font-size:0.75rem;color:#aaa;margin-top:10px;}
+/* WEEKLY COVERS INPUT */
+.covers-row{display:flex;align-items:center;gap:8px;margin-top:8px;}
+.covers-row label{font-size:0.78rem;color:#666;white-space:nowrap;}
+.covers-input{border:1.5px solid #e8e8e8;border-radius:6px;padding:5px 10px;font-family:'Inter',sans-serif;font-size:0.85rem;width:80px;color:#1C1C1C;}
+.covers-input:focus{outline:none;border-color:#C0392B;}
+/* PRINT */
+@media print{
+  .header,.sidebar,.btn,.recipe-card-header .btn-danger{display:none!important;}
+  .app-body{display:block;}
+  .main{padding:0;}
+  .page{display:block!important;}
+  body{background:#fff;}
+}
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:#aaa;}
+.empty-state .big{font-size:2.5rem;margin-bottom:12px;}
+.empty-state p{font-size:0.9rem;}
+</style>
+</head>
+<body>
+<div class="header">
+  <div style="display:flex;align-items:center;">
+    <div class="header-logo">Kitchen<span>Founder</span></div>
+    <div class="header-sub">Food Cost Calculator</div>
+  </div>
+  <div class="header-right">
+    <button class="btn btn-ghost btn-sm" onclick="window.print()">🖨️ Print Report</button>
+    <button class="btn btn-primary btn-sm" onclick="addRecipe()">+ Add Recipe</button>
+  </div>
+</div>
+<div class="app-body">
+  <div class="sidebar">
+    <h3>Navigate</h3>
+    <button class="nav-btn active" id="nav-recipes" onclick="showPage('recipes')"><span class="dot"></span>Recipes</button>
+    <button class="nav-btn" id="nav-dashboard" onclick="showPage('dashboard')"><span class="dot"></span>Dashboard</button>
+    <button class="nav-btn" id="nav-matrix" onclick="showPage('matrix')"><span class="dot"></span>Menu Matrix</button>
+    <h3>FC% Benchmarks</h3>
+    <div class="benchmark-item"><span class="benchmark-label">Fine Dining</span><span class="benchmark-val">25–35%</span></div>
+    <div class="benchmark-item"><span class="benchmark-label">Casual Dining</span><span class="benchmark-val">28–32%</span></div>
+    <div class="benchmark-item"><span class="benchmark-label">Fast Casual</span><span class="benchmark-val">22–28%</span></div>
+    <div class="benchmark-item"><span class="benchmark-label">Taqueria / Street</span><span class="benchmark-val">18–24%</span></div>
+    <div class="benchmark-item"><span class="benchmark-label">Bakery / Cafe</span><span class="benchmark-val">28–35%</span></div>
+    <h3>FC% Guide</h3>
+    <div class="benchmark-item"><span class="benchmark-label" style="color:#27AE60;">● Under 20%</span><span class="benchmark-val" style="color:#27AE60;">Excellent</span></div>
+    <div class="benchmark-item"><span class="benchmark-label" style="color:#F39C12;">● 20–30%</span><span class="benchmark-val" style="color:#F39C12;">Good</span></div>
+    <div class="benchmark-item"><span class="benchmark-label" style="color:#E74C3C;">● Over 30%</span><span class="benchmark-val" style="color:#E74C3C;">Review</span></div>
+  </div>
+  <div class="main">
+    <!-- RECIPES PAGE -->
+    <div class="page active" id="page-recipes">
+      <div class="section-header">
+        <div class="section-title">Your Recipes</div>
+        <button class="btn btn-primary" onclick="addRecipe()">+ Add Recipe</button>
+      </div>
+      <div id="recipes-container">
+        <div class="empty-state" id="empty-state">
+          <div class="big">🍽️</div>
+          <p>No recipes yet. Click <strong>+ Add Recipe</strong> to get started.</p>
+        </div>
+      </div>
+    </div>
+    <!-- DASHBOARD PAGE -->
+    <div class="page" id="page-dashboard">
+      <div class="section-header">
+        <div class="section-title">Dashboard Summary</div>
+        <button class="btn btn-secondary btn-sm" onclick="refreshDashboard()">↻ Refresh</button>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card"><div class="label">Total Recipes</div><div class="value" id="d-total">0</div></div>
+        <div class="dash-card"><div class="label">Avg Food Cost %</div><div class="value" id="d-avgfc">—</div><div class="sub">across all recipes</div></div>
+        <div class="dash-card"><div class="label">Weekly Revenue Est.</div><div class="value green" id="d-rev">$0</div><div class="sub">based on covers entered</div></div>
+        <div class="dash-card"><div class="label">Weekly Food Cost</div><div class="value yellow" id="d-fc">$0</div></div>
+        <div class="dash-card"><div class="label">Best Margin Dish</div><div class="value green" id="d-best" style="font-size:1rem;">—</div></div>
+        <div class="dash-card"><div class="label">Needs Review</div><div class="value red" id="d-worst" style="font-size:1rem;">—</div></div>
+      </div>
+    </div>
+    <!-- MATRIX PAGE -->
+    <div class="page" id="page-matrix">
+      <div class="section-header">
+        <div class="section-title">Menu Engineering Matrix</div>
+        <button class="btn btn-secondary btn-sm" onclick="refreshMatrix()">↻ Refresh</button>
+      </div>
+      <div class="matrix-wrap">
+        <p style="font-size:0.82rem;color:#666;margin-bottom:4px;">Each dish is plotted by <strong>contribution margin</strong> (sell price − cost) vs <strong>weekly popularity</strong> (covers sold). Enter weekly covers on each recipe card to populate this matrix.</p>
+        <div class="matrix-grid">
+          <div class="quadrant q-puzzle" style="border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">
+            <div class="q-icon">🧩</div><div class="q-label">Puzzle — High Margin, Low Pop</div>
+            <div id="q-puzzle"></div>
+          </div>
+          <div class="quadrant q-star" style="border-bottom:1px solid #e0e0e0;">
+            <div class="q-icon">⭐</div><div class="q-label">Star — High Margin, High Pop</div>
+            <div id="q-star"></div>
+          </div>
+          <div class="quadrant q-dog" style="border-right:1px solid #e0e0e0;">
+            <div class="q-icon">🐕</div><div class="q-label">Dog — Low Margin, Low Pop</div>
+            <div id="q-dog"></div>
+          </div>
+          <div class="quadrant q-horse">
+            <div class="q-icon">🐎</div><div class="q-label">Plow Horse — Low Margin, High Pop</div>
+            <div id="q-horse"></div>
+          </div>
+        </div>
+        <div class="matrix-axis"><span>← Low Popularity</span><span>High Popularity →</span></div>
+        <div class="matrix-note">💡 <strong>Stars</strong> = promote heavily. <strong>Puzzles</strong> = reposition or rename. <strong>Plow Horses</strong> = reduce cost or raise price. <strong>Dogs</strong> = consider removing.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// ── STATE ──────────────────────────────────────────────
+let recipes = [];
+let recipeCounter = 0;
+
+// ── NAVIGATION ─────────────────────────────────────────
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  if (page === 'dashboard') refreshDashboard();
+  if (page === 'matrix') refreshMatrix();
+}
+
+// ── ADD RECIPE ─────────────────────────────────────────
+function addRecipe() {
+  recipeCounter++;
+  const id = recipeCounter;
+  recipes.push({ id: id, name: 'Recipe ' + id, ingredients: [], sellPrice: 0, covers: 0 });
+  renderRecipe(id);
+  document.getElementById('empty-state') && (document.getElementById('empty-state').style.display = 'none');
+}
+
+function renderRecipe(id) {
+  const container = document.getElementById('recipes-container');
+  const card = document.createElement('div');
+  card.className = 'recipe-card';
+  card.id = 'recipe-card-' + id;
+  card.innerHTML = `
+    <div class="recipe-card-header">
+      <input class="recipe-name-input" type="text" placeholder="Recipe name..." value="Recipe ${id}"
+        oninput="updateRecipeName(${id}, this.value)" />
+      <div class="recipe-meta">
+        <span class="fc-badge green" id="fc-badge-${id}">FC: —</span>
+        <button class="btn btn-danger btn-sm" onclick="deleteRecipe(${id})">✕ Delete</button>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead>
+        <tr>
+          <th style="width:32%">Ingredient</th>
+          <th style="width:14%">Qty</th>
+          <th style="width:14%">Unit</th>
+          <th style="width:18%">Unit Cost ($)</th>
+          <th style="width:14%">Line Cost</th>
+          <th style="width:8%"></th>
+        </tr>
+      </thead>
+      <tbody id="ing-body-${id}"></tbody>
+    </table>
+    <button class="btn btn-secondary btn-sm" onclick="addIngredient(${id})" style="margin-bottom:8px;">+ Add Ingredient</button>
+    <div class="recipe-footer">
+      <div class="recipe-totals">
+        <div class="total-item">
+          <div class="tl">Ingredient Cost</div>
+          <div class="tv" id="total-cost-${id}">$0.00</div>
+        </div>
+        <div class="total-item">
+          <div class="tl">Margin</div>
+          <div class="tv" id="margin-${id}">$0.00</div>
+        </div>
+        <div class="total-item">
+          <div class="tl">Food Cost %</div>
+          <div class="tv" id="fc-pct-${id}">—</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+        <div class="sell-input-wrap">
+          <label>Sell Price $</label>
+          <input class="sell-input" type="number" min="0" step="0.01" placeholder="0.00"
+            oninput="updateSellPrice(${id}, this.value)" />
+        </div>
+        <div class="covers-row">
+          <label>Weekly Covers</label>
+          <input class="covers-input" type="number" min="0" placeholder="0"
+            oninput="updateCovers(${id}, this.value)" />
+        </div>
+      </div>
+    </div>
+  `;
+  container.appendChild(card);
+  addIngredient(id);
+}
+
+// ── INGREDIENT ROWS ────────────────────────────────────
+function addIngredient(recipeId) {
+  const recipe = recipes.find(r => r.id === recipeId);
+  if (!recipe) return;
+  if (recipe.ingredients.length >= 20) { alert('Max 20 ingredients per recipe.'); return; }
+  const ingId = Date.now();
+  recipe.ingredients.push({ id: ingId, name: '', qty: 0, unit: 'g', unitCost: 0 });
+  const tbody = document.getElementById('ing-body-' + recipeId);
+  const tr = document.createElement('tr');
+  tr.id = 'ing-row-' + ingId;
+  tr.innerHTML = `
+    <td><input type="text" placeholder="e.g. Chicken thigh" oninput="updateIngName(${recipeId},${ingId},this.value)" /></td>
+    <td><input type="number" min="0" step="0.01" placeholder="100" oninput="updateIngQty(${recipeId},${ingId},this.value)" /></td>
+    <td>
+      <select onchange="updateIngUnit(${recipeId},${ingId},this.value)">
+        <option value="g">g</option>
+        <option value="kg">kg</option>
+        <option value="oz">oz</option>
+        <option value="lb">lb</option>
+        <option value="ml">ml</option>
+        <option value="L">L</option>
+        <option value="each">each</option>
+        <option value="tbsp">tbsp</option>
+        <option value="tsp">tsp</option>
+        <option value="cup">cup</option>
+      </select>
+    </td>
+    <td><input type="number" min="0" step="0.001" placeholder="0.00" oninput="updateIngCost(${recipeId},${ingId},this.value)" /></td>
+    <td class="cost-cell" id="line-cost-${ingId}">$0.00</td>
+    <td><button class="btn btn-danger btn-xs" onclick="removeIngredient(${recipeId},${ingId})">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function removeIngredient(recipeId, ingId) {
+  const recipe = recipes.find(r => r.id === recipeId);
+  if (!recipe) return;
+  recipe.ingredients = recipe.ingredients.filter(i => i.id !== ingId);
+  const row = document.getElementById('ing-row-' + ingId);
+  if (row) row.remove();
+  calcRecipe(recipeId);
+}
+
+// ── UPDATE FUNCTIONS ───────────────────────────────────
+function updateRecipeName(recipeId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (r) r.name = val || 'Unnamed';
+}
+
+function updateSellPrice(recipeId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (r) { r.sellPrice = parseFloat(val) || 0; calcRecipe(recipeId); }
+}
+
+function updateCovers(recipeId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (r) r.covers = parseInt(val) || 0;
+}
+
+function updateIngName(recipeId, ingId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (!r) return;
+  const ing = r.ingredients.find(i => i.id === ingId);
+  if (ing) ing.name = val;
+}
+
+function updateIngQty(recipeId, ingId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (!r) return;
+  const ing = r.ingredients.find(i => i.id === ingId);
+  if (ing) { ing.qty = parseFloat(val) || 0; calcLineCost(recipeId, ingId); calcRecipe(recipeId); }
+}
+
+function updateIngUnit(recipeId, ingId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (!r) return;
+  const ing = r.ingredients.find(i => i.id === ingId);
+  if (ing) { ing.unit = val; calcLineCost(recipeId, ingId); calcRecipe(recipeId); }
+}
+
+function updateIngCost(recipeId, ingId, val) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (!r) return;
+  const ing = r.ingredients.find(i => i.id === ingId);
+  if (ing) { ing.unitCost = parseFloat(val) || 0; calcLineCost(recipeId, ingId); calcRecipe(recipeId); }
+}
+
+// ── CALCULATIONS ───────────────────────────────────────
+function calcLineCost(recipeId, ingId) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (!r) return;
+  const ing = r.ingredients.find(i => i.id === ingId);
+  if (!ing) return;
+  const lineCost = ing.qty * ing.unitCost;
+  const cell = document.getElementById('line-cost-' + ingId);
+  if (cell) cell.textContent = '$' + lineCost.toFixed(3);
+}
+
+function calcRecipe(recipeId) {
+  const r = recipes.find(r => r.id === recipeId);
+  if (!r) return;
+  const totalCost = r.ingredients.reduce((sum, ing) => sum + (ing.qty * ing.unitCost), 0);
+  const sell = r.sellPrice;
+  const margin = sell - totalCost;
+  const fcPct = sell > 0 ? (totalCost / sell) * 100 : null;
+
+  // Update totals
+  const costEl = document.getElementById('total-cost-' + recipeId);
+  const marginEl = document.getElementById('margin-' + recipeId);
+  const fcEl = document.getElementById('fc-pct-' + recipeId);
+  const badge = document.getElementById('fc-badge-' + recipeId);
+
+  if (costEl) costEl.textContent = '$' + totalCost.toFixed(2);
+  if (marginEl) {
+    marginEl.textContent = '$' + margin.toFixed(2);
+    marginEl.style.color = margin >= 0 ? '#27AE60' : '#E74C3C';
+  }
+
+  if (fcPct !== null) {
+    const pctStr = fcPct.toFixed(1) + '%';
+    if (fcEl) fcEl.textContent = pctStr;
+    if (badge) {
+      badge.textContent = 'FC: ' + pctStr;
+      badge.className = 'fc-badge ' + (fcPct < 20 ? 'green' : fcPct <= 30 ? 'yellow' : 'red');
+    }
+  } else {
+    if (fcEl) fcEl.textContent = '—';
+    if (badge) { badge.textContent = 'FC: —'; badge.className = 'fc-badge green'; }
+  }
+}
+
+// ── DELETE RECIPE ──────────────────────────────────────
+function deleteRecipe(id) {
+  recipes = recipes.filter(r => r.id !== id);
+  const card = document.getElementById('recipe-card-' + id);
+  if (card) card.remove();
+  if (recipes.length === 0) {
+    const es = document.getElementById('empty-state');
+    if (es) es.style.display = '';
+  }
+}
+
+// ── DASHBOARD ──────────────────────────────────────────
+function refreshDashboard() {
+  const total = recipes.length;
+  document.getElementById('d-total').textContent = total;
+
+  if (total === 0) {
+    document.getElementById('d-avgfc').textContent = '—';
+    document.getElementById('d-rev').textContent = '$0';
+    document.getElementById('d-fc').textContent = '$0';
+    document.getElementById('d-best').textContent = '—';
+    document.getElementById('d-worst').textContent = '—';
+    return;
+  }
+
+  let totalFcPct = 0, validFc = 0;
+  let weeklyRev = 0, weeklyFC = 0;
+  let bestMargin = -Infinity, worstMargin = Infinity;
+  let bestName = '—', worstName = '—';
+
+  recipes.forEach(r => {
+    const cost = r.ingredients.reduce((s, i) => s + i.qty * i.unitCost, 0);
+    const margin = r.sellPrice - cost;
+    const fcPct = r.sellPrice > 0 ? (cost / r.sellPrice) * 100 : null;
+    if (fcPct !== null) { totalFcPct += fcPct; validFc++; }
+    weeklyRev += r.sellPrice * r.covers;
+    weeklyFC += cost * r.covers;
+    if (margin > bestMargin) { bestMargin = margin; bestName = r.name + ' ($' + margin.toFixed(2) + ')'; }
+    if (margin < worstMargin && r.sellPrice > 0) { worstMargin = margin; worstName = r.name; }
+  });
+
+  const avgFc = validFc > 0 ? (totalFcPct / validFc) : null;
+  const avgEl = document.getElementById('d-avgfc');
+  if (avgFc !== null) {
+    avgEl.textContent = avgFc.toFixed(1) + '%';
+    avgEl.className = 'value ' + (avgFc < 20 ? 'green' : avgFc <= 30 ? 'yellow' : 'red');
+  } else {
+    avgEl.textContent = '—';
+  }
+  document.getElementById('d-rev').textContent = '$' + weeklyRev.toFixed(0);
+  document.getElementById('d-fc').textContent = '$' + weeklyFC.toFixed(0);
+  document.getElementById('d-best').textContent = bestMargin > -Infinity ? bestName : '—';
+  document.getElementById('d-worst').textContent = worstMargin < Infinity ? worstName : '—';
+}
+
+// ── MATRIX ─────────────────────────────────────────────
+function refreshMatrix() {
+  const qStar = document.getElementById('q-star');
+  const qPuzzle = document.getElementById('q-puzzle');
+  const qHorse = document.getElementById('q-horse');
+  const qDog = document.getElementById('q-dog');
+  qStar.innerHTML = qPuzzle.innerHTML = qHorse.innerHTML = qDog.innerHTML = '';
+
+  if (recipes.length === 0) {
+    qDog.innerHTML = '<p style="font-size:0.78rem;color:#aaa;margin-top:8px;">Add recipes to see them plotted here.</p>';
+    return;
+  }
+
+  // Calculate medians for thresholds
+  const margins = recipes.map(r => r.sellPrice - r.ingredients.reduce((s, i) => s + i.qty * i.unitCost, 0));
+  const covers = recipes.map(r => r.covers);
+  const medMargin = median(margins);
+  const medCovers = median(covers);
+
+  recipes.forEach(r => {
+    const cost = r.ingredients.reduce((s, i) => s + i.qty * i.unitCost, 0);
+    const margin = r.sellPrice - cost;
+    const highMargin = margin >= medMargin;
+    const highPop = r.covers >= medCovers;
+    const name = r.name || 'Unnamed';
+    const chip = `<span class="dish-chip">${name}</span>`;
+    if (highMargin && highPop) qStar.innerHTML += chip;
+    else if (highMargin && !highPop) qPuzzle.innerHTML += chip;
+    else if (!highMargin && highPop) qHorse.innerHTML += chip;
+    else qDog.innerHTML += chip;
+  });
+}
+
+function median(arr) {
+  if (!arr.length) return 0;
+  const s = [...arr].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m-1] + s[m]) / 2;
+}
+</script>
+</body>
+</html>

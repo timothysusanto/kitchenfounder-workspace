@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Izakaya — Operations Guide v6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e8e8;font-size:12.5px;line-height:1.7;}
+.page{width:210mm;margin:0 auto;padding:16mm 18mm;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#00d4ff;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#00d4ff;margin:22px 0 11px;border-bottom:2px solid rgba(0,212,255,0.3);padding-bottom:5px;}
+h3{font-size:15px;font-weight:700;color:#e8e8e8;margin:16px 0 8px;}
+h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#00d4ff;margin:10px 0 5px;}
+.cover{border-left:4px solid #00d4ff;padding:32px 24px 24px;background:#111111;border-radius:0 8px 8px 0;margin-bottom:24px;}
+.cover h1{color:#00d4ff;}
+.cover-line{width:60px;height:3px;background:#00d4ff;margin:16px 0;}
+.kpi-row{display:flex;gap:10px;margin:16px 0;}
+.kpi{flex:1;background:#111111;border:1px solid #00d4ff;border-radius:6px;padding:10px;text-align:center;}
+.kpi-val{font-size:18px;font-weight:700;color:#ffd700;font-family:'DM Mono',monospace;}
+.kpi-lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;opacity:0.85;margin-top:2px;color:#e8e8e8;}
+.info-box{background:#111111;border-left:4px solid #00d4ff;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:12px;color:#e8e8e8;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#00d4ff;margin-bottom:12px;font-family:'DM Mono',monospace;">Profitable Cafe Operations Guide · v6</div>
+  <h1>Japanese Izakaya</h1>
+  <div class="cover-line"></div>
+  <div style="font-size:16px;color:#aaa;font-style:italic;margin-top:8px;">Breakfast &amp; Lunch · 7:00am to 3:00pm</div>
+  <div style="font-size:13px;color:#888;margin-top:8px;">Full Recipe Cards · US Market Food Costing · Kitchen Prep Flow · Financial Forecast</div>
+  <div style="margin-top:20px;font-size:11px;color:#aaa;">The art of Japanese comfort food — from smoky yakitori to silky tonkotsu. Izakaya dining is convivial, share-plate culture at its finest: small dishes, cold beer, warm sake, great conversation.</div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-val">38</div><div class="kpi-lbl">Seats</div></div>
+  <div class="kpi"><div class="kpi-val">$40</div><div class="kpi-lbl">Avg Spend</div></div>
+  <div class="kpi"><div class="kpi-val">22%</div><div class="kpi-lbl">Food Cost Target</div></div>
+  <div class="kpi"><div class="kpi-val">$50,036</div><div class="kpi-lbl">Est. Monthly Net</div></div>
+</div>
+
+<!-- CHEF'S LENS -->
+<style>
+.lens-card{background:#111111;border-left:4px solid #00d4ff;border-radius:0 8px 8px 0;padding:22px 24px;margin-bottom:18px;}
+.lens-title{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#00d4ff;margin-bottom:12px;}
+.lens-text{font-size:12.5px;line-height:1.8;color:#e8e8e8;}
+.lens-closer{font-size:13px;font-weight:700;color:#00d4ff;margin-top:14px;font-family:'Space Grotesk',sans-serif;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+
+<div style="margin:28px 0 20px;">
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#00d4ff;margin-bottom:16px;font-family:'DM Mono',monospace;">Chef's Lens</div>
+  <div class="lens-card">
+    <div class="lens-title">// What a Michelin-trained chef sees in Japanese izakaya cooking</div>
+    <div class="lens-text">Japanese cuisine operates on a philosophy of subtraction. Every ingredient that doesn't belong is removed. What remains is precise. Dashi — the foundational stock of Japanese cooking — is made from kombu and bonito, steeped at exactly 60°C, never boiled. Boiling makes it bitter. The difference between a great dashi and a mediocre one is 10 degrees. That level of precision runs through every technique in this guide. The food cost on edamame is 12%. The philosophy behind it took centuries to develop.</div>
+  </div>
+  <div class="lens-card">
+    <div class="lens-title">// What this guide does</div>
+    <div class="lens-text">The izakaya format works in the US because it solves a problem Americans didn't know they had: a place to drink well and eat exceptionally at the same time, without the formality of a restaurant. Sharing plates, high-margin sake and whisky, a kitchen that runs efficiently on small portions. When readers reach the financial model, the reaction is consistent: the numbers are better than expected.</div>
+    <div class="lens-closer">This guide is why.</div>
+  </div>
+</div>
+
+<!-- CSS FOR RECIPES AND SHARED COMPONENTS -->
+<style>
+.recipe{border:1px solid #222;border-radius:8px;margin-bottom:24px;overflow:hidden;background:#111111;}
+.recipe-color-block{background:linear-gradient(135deg,#00d4ff,#001a1a);height:8px;width:100%;}
+.rh{background:#001a1e;padding:14px 16px;}
+.rh-title{font-size:17px;font-weight:700;font-family:'Space Grotesk',sans-serif;color:#00d4ff;}
+.rh-sub{font-size:10px;opacity:0.75;margin-top:3px;color:#e8e8e8;}
+.rh-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.rm{background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.4);border-radius:10px;padding:2px 9px;font-size:9px;color:#00d4ff;}
+.rb{padding:16px 18px;background:#111111;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.it{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11px;}
+.it th{background:#00d4ff;color:#000;padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #00d4ff;}
+.it td{padding:5px 10px;border-bottom:1px solid #1e1e1e;color:#e8e8e8;}
+.cc{text-align:right;color:#aaa;}
+.it tr.total-row td{font-weight:700;background:#0d0d0d;border-top:2px solid #333;color:#e8e8e8;}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.sn{background:#00d4ff;color:#000;border-radius:50%;width:24px;height:24px;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px;}
+.sn2{background:#00d4ff;color:#000;border-radius:50%;width:27px;height:27px;min-width:27px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:9px;}
+.st{font-size:12px;line-height:1.75;color:#e8e8e8;}
+.temp{background:#1a1a1a;color:#00d4ff;border-radius:3px;padding:1px 7px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;}
+.temp.ok{background:#0a2a0a;color:#4dff4d;}
+.tb{background:#001a1e;border-left:3px solid #00d4ff;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:11.5px;color:#e8e8e8;}
+.fc-box{background:#001a1a;border-radius:6px;padding:12px 16px;margin-top:12px;border:1px solid #00d4ff;}
+.fc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #003333;font-size:12px;color:#e8e8e8;}
+.fc-row:last-child{border-bottom:none;font-weight:700;color:#e8e8e8;font-size:13px;}
+.fc-val{color:#ffd700;font-family:'DM Mono',monospace;}
+.al{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.a{background:#1a1a1a;border:1px solid #333;color:#aaa;border-radius:10px;padding:2px 8px;font-size:9px;font-weight:700;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+
+<h2><span class="sn2">1</span> Entrées</h2>
+
+<!-- ENTREE 1: EDAMAME -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Edamame — Salted Steamed Soybeans</div>
+  <div class="rh-sub">Sea salt, togarashi, sesame oil finish · Sell: $6.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 6 min</span><span class="rm">🌿 Entrée</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Frozen edamame (in pod)</td><td>180g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Sea salt (cooking + finish)</td><td>4g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Togarashi (seven-spice blend)</td><td>1g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Sesame oil (finishing)</td><td>2ml</td><td class="cc">$0.03</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$0.47</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.47</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$6.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">6.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$6.52</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Bring a large pot of heavily salted water to a rolling boil — salt level should taste noticeably salty, approximately 1 tablespoon per litre. This is not just seasoning the edamame; the salt actually penetrates the pod wall during cooking, seasoning the beans from the outside in. Under-salted water produces bland edamame no matter how much you finish them after.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Add frozen edamame directly to boiling water — do not thaw first. Frozen edamame dropped into boiling water experiences rapid surface blanching that sets a bright vibrant green colour before the interior has time to soften excessively. Boil exactly 4 minutes. Overcooking turns them grey and mushy; undercooked beans are starchy and chalky.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Drain immediately and toss while hot in a bowl with fine sea salt and togarashi. The residual heat opens the pores of the pod skin slightly, allowing the seasoning to adhere. The togarashi provides subtle heat and citrus from the yuzu peel component — a step above plain salted edamame.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Finish with a single small drizzle of sesame oil — less than 2ml. This is aromatic, not a coating. Serve immediately in a small wooden bowl or ceramic dish with an empty bowl beside it for discarded pods. This two-bowl presentation signals respect for the guest's comfort.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Edamame is your highest-margin item on the menu. It should land on every table within 3 minutes of seating — offered as a complimentary snack or charged as part of an izakaya cover charge. Never let a table sit for more than 5 minutes without something in front of them.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">SESAME</span></div>
+</div>
+</div>
+
+<!-- ENTREE 2: AGEDASHI TOFU -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Agedashi Tofu — Deep-Fried Silken Tofu in Dashi Broth</div>
+  <div class="rh-sub">Silken tofu, light katakuriko crust, dashi-soy broth, daikon, ginger · Sell: $10.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🟢 Entrée</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (3 pieces)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Silken tofu</td><td>200g</td><td class="cc">$0.55</td></tr>
+        <tr><td>Katakuriko (potato starch)</td><td>25g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Dashi stock</td><td>180ml</td><td class="cc">$0.15</td></tr>
+        <tr><td>Soy sauce</td><td>15ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Mirin</td><td>10ml</td><td class="cc">$0.04</td></tr>
+        <tr><td>Daikon (grated)</td><td>30g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Fresh ginger (grated)</td><td>5g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Scallion (sliced)</td><td>5g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Neutral oil (frying, usage)</td><td>approx.</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.01</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.01</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$10.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">9.2%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$9.98</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Press silken tofu gently between paper towels for 20 minutes before service prep — silken tofu holds more water than firm, and surface moisture causes violent oil spattering and prevents the starch crust from adhering. The pressing must be gentle; silken tofu breaks easily.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Cut into 5cm cubes. Dust completely in katakuriko (potato starch) — not cornstarch, not flour. Potato starch creates an extremely thin, translucent, almost ethereal crust when fried correctly. It becomes slightly glossy in the broth rather than soggy, which is the signature characteristic of proper agedashi. Shake off excess starch.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Fry in oil at <span class="temp">180°C / 356°F</span> for 2–3 minutes until the crust is set and just beginning to colour — pale golden, not deep golden. You are setting the crust, not browning the tofu. The interior must remain custardy and cool.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Broth (tsuyu): combine dashi, soy sauce, and mirin; bring to a gentle simmer. Pour warm broth into a deep bowl (~2cm depth), place tofu gently in broth, top with grated daikon, a dot of ginger, and sliced scallion. Serve immediately.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Train servers to deliver this dish immediately and tell guests: "Eat this one first — it's best right now." This creates urgency and demonstrates knowledge. That interaction builds loyalty.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">GLUTEN-FREE (check dashi brand)</span><span class="a">VEGAN (check dashi)</span></div>
+</div>
+</div>
+
+<!-- ENTREE 3: YAKITORI -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Yakitori — Grilled Chicken Skewers (3 skewers)</div>
+  <div class="rh-sub">Binchotan-style charcoal chicken thigh, tare glaze or shio salt · Sell: $12.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🟢 Entrée</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (3 skewers)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken thigh (boneless, skinless)</td><td>150g</td><td class="cc">$1.06</td></tr>
+        <tr><td>Soy sauce (tare base)</td><td>20ml</td><td class="cc">$0.07</td></tr>
+        <tr><td>Mirin (tare base)</td><td>15ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sake (tare base)</td><td>10ml</td><td class="cc">$0.11</td></tr>
+        <tr><td>Sugar (tare balance)</td><td>5g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Scallion (as skewer filler / garnish)</td><td>20g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Sea salt (shio option)</td><td>1g</td><td class="cc">$0.01</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost (3 skewers)</strong></td><td class="cc"><strong>$1.35</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.35</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$12.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">10.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$11.64</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Cut chicken thigh into 2.5cm chunks — never use breast for yakitori. Thigh has higher fat content which self-bastes during grilling, prevents drying, and provides the characteristic juicy chew. Thread onto thin bamboo skewers alternating with 2cm scallion pieces for negi-ma style.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Tare (たれ) glaze: combine soy sauce, mirin, sake, and sugar in a small saucepan. Simmer over low heat for 8–10 minutes until reduced by a third and slightly syrupy. The tare is the heart of yakitori — make it fresh daily and keep warm. Never use bottled teriyaki sauce as a substitute.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Grill over high heat at <span class="temp">230°C / 446°F</span>. Turn every 90 seconds. At the halfway point, brush with tare — it will caramelise immediately. Apply tare twice more. Total cook time: 6–8 minutes. Internal temp: <span class="temp ok">74°C / 165°F</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Serve immediately on a long rectangular plate with a small dish of extra tare for dipping. Offer the guest a choice: tare (sweet-soy glaze) or shio (sea salt + lemon). This choice is traditional and personalises the experience.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Your tare improves every day you use it. Add the grill drippings back into the pot each service — old yakitori chefs call this the "mother tare." Tell this story to guests. It creates fascination and differentiates your yakitori from the competition.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">GLUTEN (soy sauce)</span><span class="a">POULTRY</span></div>
+</div>
+</div>
+
+<!-- ENTREE 4: GYOZA -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Gyoza — Pan-Fried Pork Dumplings (6 pieces)</div>
+  <div class="rh-sub">Pork &amp; cabbage filling, crispy lattice bottom, ponzu dipping sauce · Sell: $11.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🥟 Entrée</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (6 pieces)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Pork belly / shoulder (ground)</td><td>80g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Napa cabbage (salted &amp; squeezed)</td><td>60g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Garlic (minced)</td><td>5g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Fresh ginger (grated)</td><td>5g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Sesame oil</td><td>5ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Soy sauce</td><td>8ml</td><td class="cc">$0.03</td></tr>
+        <tr><td>Gyoza wrappers (round)</td><td>6 sheets</td><td class="cc">$0.18</td></tr>
+        <tr><td>Ponzu sauce (dipping)</td><td>30ml</td><td class="cc">$0.10</td></tr>
+        <tr><td>Chili oil (drizzle)</td><td>2ml</td><td class="cc">$0.03</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost (6 pieces)</strong></td><td class="cc"><strong>$0.91</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.91</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$11.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">7.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$11.08</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Salt the shredded napa cabbage (1 tsp per 200g) and let stand 10 minutes, then wring out vigorously in a cloth. Cabbage is 90% water — that water will release during cooking, making your filling watery and preventing the crispy bottom from forming. Combine with ground pork, garlic, ginger, sesame oil, and soy sauce. Mix in one direction only.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Place 1 teaspoon filling in the centre of each wrapper. Wet the edge, fold in half, and pleat 5–6 folds along one side while the other side stays smooth. The pleats create multiple layers of dough that provide structure and a thicker chew on the top edge.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Heat a flat-bottomed pan to medium-high with thin oil. Place gyoza flat-side down in a tight single layer. Fry undisturbed 2 minutes until golden. Add 60ml water and immediately cover with a lid. The yaki-mushi (fry-steam) technique cooks the filling and top of wrapper simultaneously.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">When water has evaporated (~3 minutes), remove lid and add a few drops of sesame oil. Allow to fry 60 more seconds until bottom is deeply golden. Invert the gyoza onto the plate so the crispy bottom faces up. Serve with ponzu and chili oil.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> The lattice (hanetsuki gyoza) is a signature technique. Mix 1 tsp flour into 60ml water before adding to the pan — the flour creates a connected lacy crust across all 6 pieces when inverted. It photographs beautifully and guests consistently photograph it. Free social media marketing every service.</div>
+  <div class="al"><span class="a">GLUTEN (wrappers)</span><span class="a">SOY</span><span class="a">SESAME</span><span class="a">PORK</span></div>
+</div>
+</div>
+
+<!-- ENTREE 5: KARAAGE -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Karaage Chicken — Japanese Fried Chicken</div>
+  <div class="rh-sub">Soy-ginger marinated thigh, double-fried, kewpie mayo, lemon · Sell: $13.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🍗 Entrée</span><span class="rm">Target FC: 19%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve ~200g)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken thigh (boneless, skin-on)</td><td>200g</td><td class="cc">$1.42</td></tr>
+        <tr><td>Soy sauce (marinade)</td><td>20ml</td><td class="cc">$0.07</td></tr>
+        <tr><td>Sake (marinade)</td><td>15ml</td><td class="cc">$0.16</td></tr>
+        <tr><td>Fresh ginger (grated, marinade)</td><td>8g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Garlic (grated, marinade)</td><td>4g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Potato starch (katakuriko)</td><td>30g</td><td class="cc">$0.07</td></tr>
+        <tr><td>Kewpie mayonnaise</td><td>20g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Lemon wedge</td><td>1 wedge</td><td class="cc">$0.05</td></tr>
+        <tr><td>Neutral frying oil (usage)</td><td>—</td><td class="cc">$0.10</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.04</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$2.04</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$13.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">14.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$11.95</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Cut chicken thigh into 4–5cm chunks, skin on. Marinate in soy sauce, sake, grated ginger, and garlic for minimum 2 hours (overnight is better). The sake begins to denature the chicken proteins gently before cooking, tenderising the interior. The ginger has proteolytic enzymes that further tenderise. This double enzymatic softening is what makes karaage's interior impossibly moist even after being fried twice.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Remove chicken from marinade; pat lightly with a paper towel — you want to remove pooled liquid but not the marinade coating. Toss in potato starch until each piece is evenly coated. Do not use flour for classical karaage. Potato starch creates a thinner, crispier, more delicate shell and stays crispy longer.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">First fry: oil at <span class="temp">160°C / 320°F</span> for 4 minutes. Remove and rest on a rack for 3 minutes. This lower-temperature first fry cooks the interior through without burning the crust. The rest period allows residual heat to finish the centre and lets surface moisture escape.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Second fry: oil at <span class="temp">185°C / 365°F</span> for 90 seconds. This high-heat flash creates the shattering, deeply golden exterior. Internal temp: <span class="temp ok">74°C / 165°F</span>. Drain briefly, serve immediately with kewpie mayo and lemon.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Kewpie mayo is not a substitute for regular mayo — it's made with egg yolks only, rice vinegar, and MSG. The result is richer, more umami, and tangier. It's the essential dipping companion for karaage. If you don't stock Kewpie, your karaage is missing its partner.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">GLUTEN (soy sauce)</span><span class="a">EGGS (mayo)</span><span class="a">POULTRY</span></div>
+</div>
+</div>
+
+<!-- ENTREE 6: TAKOYAKI -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Takoyaki — Octopus Balls (6 pieces)</div>
+  <div class="rh-sub">Dashi batter, octopus, bonito flakes, takoyaki sauce, kewpie · Sell: $11.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 14 min</span><span class="rm">🐙 Entrée</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (6 pieces)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>All-purpose flour</td><td>50g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Dashi stock</td><td>180ml</td><td class="cc">$0.15</td></tr>
+        <tr><td>Egg</td><td>1 × 55g</td><td class="cc">$0.35</td></tr>
+        <tr><td>Soy sauce</td><td>5ml</td><td class="cc">$0.02</td></tr>
+        <tr><td>Cooked octopus (diced 1.5cm)</td><td>60g</td><td class="cc">$0.90</td></tr>
+        <tr><td>Scallion (sliced fine)</td><td>10g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Pickled ginger (beni shoga)</td><td>10g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Takoyaki sauce (batch/bottle)</td><td>20g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Kewpie mayo</td><td>15g</td><td class="cc">$0.09</td></tr>
+        <tr><td>Katsuobushi (bonito flakes)</td><td>2g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Aonori (dried green seaweed)</td><td>1g</td><td class="cc">$0.04</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost (6 pieces)</strong></td><td class="cc"><strong>$1.83</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.83</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$11.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">15.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$10.16</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Batter: whisk flour, dashi, egg, and soy sauce until smooth and lump-free. The batter should be very thin — thinner than pancake batter, almost the consistency of cream. The high dashi ratio gives savoury, deeply flavoured batter. Rest batter 10 minutes before using; this relaxes gluten and produces a lighter texture.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Heat a cast-iron takoyaki pan over medium-high. Brush generously with oil — every cavity. Fill each cavity with batter to just overflowing. Place one piece of octopus, a pinch of scallion, and beni shoga in each. The slightly overfilled cavity is intentional: the excess batter will be folded back in during turning to create the spherical shape.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">After 2–3 minutes (when edges set), use a takoyaki pick to rotate each ball 90 degrees, tucking the overflowing batter underneath. Rotate again 90 degrees after another 2 minutes. The goal is a perfect sphere with a golden, evenly coloured surface. Total cook time: 8–10 minutes. The interior should be liquid-centre for authentic takoyaki.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Transfer immediately to a boat-shaped plate. Drizzle generously with takoyaki sauce, zigzag kewpie mayo, top with waving katsuobushi bonito flakes (they move in the heat — a dramatic, memorable effect), and finish with aonori. The bonito flakes "dancing" on the hot balls is one of the most photographed food moments in Japanese cuisine.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> A live takoyaki station, visible from the dining room, is one of the best marketing tools you have. The smell, the turning technique, the dancing bonito flakes — it draws stares from every table. Consider positioning your takoyaki station where guests can watch. The performance is the brand.</div>
+  <div class="al"><span class="a">GLUTEN</span><span class="a">EGGS</span><span class="a">SOY</span><span class="a">FISH (dashi, bonito)</span><span class="a">SHELLFISH (octopus)</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">2</span> Mains</h2>
+
+<!-- MAIN 1: TONKOTSU RAMEN -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Tonkotsu Ramen — Rich Pork Bone Broth</div>
+  <div class="rh-sub">18-hour pork bone broth, chashu pork, soft egg, nori, menma · Sell: $17.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min service</span><span class="rm">🍜 Main</span><span class="rm">Target FC: 22%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 bowl)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Tonkotsu broth (batch, 18-hour)</td><td>400ml</td><td class="cc">$0.90</td></tr>
+        <tr><td>Fresh ramen noodles (thin)</td><td>1 portion = 110g</td><td class="cc">$0.45</td></tr>
+        <tr><td>Chashu pork belly (2 slices)</td><td>60g</td><td class="cc">$0.30</td></tr>
+        <tr><td>Ajitsuke tamago (marinated egg)</td><td>1 egg</td><td class="cc">$0.35</td></tr>
+        <tr><td>Menma (bamboo shoots)</td><td>20g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Nori (toasted)</td><td>1 sheet</td><td class="cc">$0.15</td></tr>
+        <tr><td>Scallion (sliced)</td><td>10g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Sesame seeds + sesame oil</td><td>2g + 3ml</td><td class="cc">$0.04</td></tr>
+        <tr><td>Tare (seasoning concentrate)</td><td>20ml</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per bowl</strong></td><td class="cc"><strong>$2.39</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$2.39</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$17.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">13.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$15.60</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Tonkotsu broth (batch): blanch pork bones (trotters + neck bones) in boiling water 10 minutes, discard water. Transfer to fresh cold water, bring to a rolling boil, maintain that vigorous boil for 18 hours. The rolling boil is the secret: it emulsifies the collagen and fat into a creamy, opaque white broth. A simmer produces a clear, lighter broth. Tonkotsu requires violence. Final broth should coat a spoon.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Chashu pork belly (batch): roll pork belly tightly with butcher's twine. Sear all sides until golden. Braise in soy sauce, mirin, sake, sugar, ginger, garlic for 2.5 hours covered. Cool in braising liquid overnight — the liquid becomes tare. Slice 1cm thick per service, torch or pan-sear to order.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Ajitsuke tamago: soft-boil eggs exactly 6 minutes 30 seconds in boiling water, transfer immediately to ice bath. Peel and marinate in chashu braising liquid diluted 1:1 with water for minimum 4 hours. A 7-minute egg has a fully set yolk and loses its magic entirely.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Assembly: warm serving bowl with hot water (dump before use). Add tare to bowl. Ladle 400ml hot broth. Cook noodles in separate boiling water exactly 90 seconds. Drain, shake, add to bowl. Top with 2 chashu slices, halved soft egg, menma, nori pressed against bowl edge, scallion, sesame. Finish with sesame oil.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> One batch (20 litres) serves approximately 50 bowls. Never run out of broth mid-service — make batches every 2 days, keep a minimum 24-hour buffer. Running out of tonkotsu mid-Saturday is a reputation-damaging event.</div>
+  <div class="al"><span class="a">GLUTEN (noodles, soy)</span><span class="a">SOY</span><span class="a">EGGS</span><span class="a">PORK</span><span class="a">SESAME</span></div>
+</div>
+</div>
+
+<!-- MAIN 2: CHICKEN TERIYAKI DON -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Chicken Teriyaki Don — Teriyaki Rice Bowl</div>
+  <div class="rh-sub">Grilled teriyaki chicken thigh over steamed rice, shredded cabbage, pickles · Sell: $15.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🍱 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 bowl)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken thigh (boneless, skin-on)</td><td>180g</td><td class="cc">$1.28</td></tr>
+        <tr><td>Soy sauce (teriyaki glaze)</td><td>25ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Mirin (teriyaki glaze)</td><td>20ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Sake (teriyaki glaze)</td><td>15ml</td><td class="cc">$0.16</td></tr>
+        <tr><td>Sugar (glaze)</td><td>5g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Short grain rice (cooked)</td><td>200g cooked</td><td class="cc">$0.24</td></tr>
+        <tr><td>Shredded cabbage</td><td>40g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Pickled ginger + scallion</td><td>10g + 5g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sesame seeds</td><td>2g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per bowl</strong></td><td class="cc"><strong>$1.98</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.98</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$15.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">12.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$14.01</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Score the chicken thigh skin with a sharp knife in a crosshatch pattern — 3–4 cuts each direction, 3mm deep. This allows the fat underneath the skin to render out as the chicken cooks and allows the teriyaki glaze to penetrate and caramelise into the skin surface rather than just coating the top.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Pan-fry skin-side down in a dry pan over medium heat for 6–7 minutes. Starting in a barely warm pan allows the fat to render gradually before browning begins. Flip and cook 3 minutes more. Internal temp: <span class="temp ok">74°C / 165°F</span>.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Pour teriyaki sauce (soy, mirin, sake, sugar) into the pan around the chicken — not over it. Allow to bubble and reduce, tilting the pan and spooning the sauce over the chicken repeatedly. The sauce should reduce to about half its original volume and coat a spoon before the chicken is considered done.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Slice the chicken thigh at 45° angle. Fan the slices over a bed of steamed rice. Place shredded cabbage to the side, a mound of pickled ginger, scallion, and sesame seeds. Drizzle remaining pan glaze over the top of the chicken slices.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Use Japanese-style short grain rice (Calrose or similar) cooked with a 1:1.1 water ratio. Never use long grain for Japanese rice bowls — the stickiness of short grain is what allows the sauce and protein to bind to it. Invest in a commercial rice cooker that holds rice for up to 4 hours without drying out.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">GLUTEN (soy sauce)</span><span class="a">POULTRY</span><span class="a">SESAME</span></div>
+</div>
+</div>
+
+<!-- MAIN 3: BEEF YAKINIKU -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Beef Yakiniku — Japanese BBQ Beef Platter</div>
+  <div class="rh-sub">Thin-sliced beef, sesame-soy yakiniku tare, garlic, shiso leaf · Sell: $19.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min</span><span class="rm">🥩 Main</span><span class="rm">Target FC: 24%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve ~200g)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Thin-sliced beef (shabu-style)</td><td>200g</td><td class="cc">$3.97</td></tr>
+        <tr><td>Soy sauce (yakiniku tare)</td><td>25ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Mirin (tare)</td><td>15ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sake (tare)</td><td>10ml</td><td class="cc">$0.11</td></tr>
+        <tr><td>Sesame oil (tare)</td><td>5ml</td><td class="cc">$0.05</td></tr>
+        <tr><td>Garlic (tare, grated)</td><td>4g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Asian pear or apple (tare, grated)</td><td>15g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Shiso leaves (perilla)</td><td>4 leaves</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sesame seeds</td><td>2g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Short grain rice (side portion)</td><td>160g cooked</td><td class="cc">$0.19</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$4.60</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$4.60</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$19.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">23.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$15.39</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Yakiniku tare (batch): combine soy sauce, mirin, sake, sesame oil, grated garlic, and grated Asian pear. Simmer 5 minutes. The Asian pear contains natural fruit enzymes (protease) that tenderise the beef even during brief marination. Pear enzymes begin working within 20 minutes; don't marinate longer than 2 hours or the texture becomes mushy.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">For kitchen-served yakiniku: heat a cast-iron grill plate or skillet to smoking point — <span class="temp">250°C / 482°F</span>. Thin-sliced beef cooks in 60–90 seconds total at this temperature. The brief violent heat creates caramelisation on the exterior while leaving the centre rare to medium.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Grill beef slices in small batches — never crowd the pan. Each slice needs direct contact with the hot surface. Cook 45 seconds per side, no more. Rest briefly off heat. The carryover heat in thin-sliced beef is significant: remove from heat while still slightly underdone at the thickest part.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Plate on a warm plate with shiso leaves as a bed, sesame seeds scattered over the beef, with tare in a small dipping dish. Serve rice separately. Instruct guests: wrap beef in shiso with a dip of tare — the shiso cuts the richness and adds freshness.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Source your thin-sliced beef from a Korean or Japanese grocery supplier — they stock beef pre-sliced to 1–2mm on a commercial slicer. This thickness is impossible to achieve with a home knife and is essential for the correct cook time and texture.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">GLUTEN (soy sauce)</span><span class="a">SESAME</span><span class="a">BEEF</span></div>
+</div>
+</div>
+
+<!-- MAIN 4: SABA SHIOYAKI -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Saba Shioyaki — Salt-Grilled Mackerel</div>
+  <div class="rh-sub">Whole mackerel fillet, sea salt cure, grated daikon, soy, lemon · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 12 min</span><span class="rm">🐟 Main</span><span class="rm">Target FC: 20%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Atlantic mackerel fillet (skin-on)</td><td>180g</td><td class="cc">$1.20</td></tr>
+        <tr><td>Sea salt (curing + grilling)</td><td>6g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Daikon (grated, oroshi)</td><td>40g</td><td class="cc">$0.05</td></tr>
+        <tr><td>Soy sauce (dipping)</td><td>10ml</td><td class="cc">$0.03</td></tr>
+        <tr><td>Lemon wedge</td><td>1 wedge</td><td class="cc">$0.05</td></tr>
+        <tr><td>Short grain rice (side)</td><td>160g cooked</td><td class="cc">$0.19</td></tr>
+        <tr><td>Miso soup (accompaniment)</td><td>200ml</td><td class="cc">$0.22</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.75</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.75</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">10.3%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$15.24</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Salt the mackerel fillet generously (~1% salt by weight) 30–45 minutes before grilling. This short cure draws out excess surface moisture via osmosis and seasons the flesh throughout. If you salt immediately before cooking, the salt creates steam during cooking. If you salt more than 2 hours before, the texture becomes too firm. The 30–45 minute window is precise and important.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Pat the cured fillet dry with paper towels before grilling — removing the surface moisture is what achieves the crispy skin. Score the skin in 3 diagonal cuts (prevents curling and allows heat to penetrate evenly through the thick fillet). Brush skin-side with a tiny amount of oil.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Grill skin-side up first at <span class="temp">220°C / 428°F</span> for 4 minutes, then flip and grill skin-side down for 6–8 minutes until skin is blistered, golden, and completely crispy. A mackerel with flabby skin is a failure. The flesh should be just cooked through at the thickest point — <span class="temp ok">63°C / 145°F</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Plate the mackerel skin up on a long rectangular plate. Mound grated daikon (oroshi daikon) beside it — the daikon provides enzymatic freshness that literally digests the fish oils as you eat it, making an oily fish feel lighter and cleaner. Lemon wedge, rice, and miso soup complete the teishoku presentation.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Grated daikon is not optional garnish; it's a functional digestive aid. When a server can explain why daikon accompanies fatty fish — that's service education that guests remember and repeat to friends.</div>
+  <div class="al"><span class="a">FISH</span><span class="a">SOY</span><span class="a">GLUTEN (soy sauce)</span></div>
+</div>
+</div>
+
+<!-- MAIN 5: CHICKEN KATSU CURRY -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Chicken Katsu Curry — Crispy Chicken, Japanese Curry</div>
+  <div class="rh-sub">Panko-crumbed chicken, rich Japanese curry sauce, steamed rice, pickles · Sell: $16.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🍛 Main</span><span class="rm">Target FC: 21%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Chicken breast (butterflied, 1cm)</td><td>180g</td><td class="cc">$1.15</td></tr>
+        <tr><td>Panko breadcrumbs</td><td>60g</td><td class="cc">$0.19</td></tr>
+        <tr><td>Egg (breading)</td><td>1 × 55g</td><td class="cc">$0.35</td></tr>
+        <tr><td>All-purpose flour (breading)</td><td>20g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Japanese curry sauce (batch)</td><td>150ml</td><td class="cc">$0.40</td></tr>
+        <tr><td>Short grain rice (cooked)</td><td>200g cooked</td><td class="cc">$0.24</td></tr>
+        <tr><td>Fukujinzuke pickles</td><td>20g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Neutral frying oil (usage)</td><td>—</td><td class="cc">$0.12</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.55</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$2.55</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$16.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">15.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$14.44</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Japanese curry sauce (batch, 20 serves): fry diced onion in butter over medium-low for 20 minutes until deeply caramelised and amber. Add grated apple and carrot, cook 5 more minutes. Add Japanese curry roux (S&amp;B Golden Curry or house-made), chicken or vegetable stock, soy sauce. Simmer 20 minutes. The caramelised onion is not optional — it's what gives Japanese curry its characteristic sweetness.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Butterfly chicken breast to even 1cm thickness — critical for katsu. Pound with a meat mallet to uniform thickness if needed. Season lightly. Bread in the classic three-stage sequence: flour → egg wash → panko. Each stage must be thorough and complete.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Fry in oil at <span class="temp">170°C / 338°F</span> for 4–5 minutes until the panko is deeply golden and crispy all over. Drain on a rack (not paper towels — the steam from paper towels softens the bottom of the crust). Internal temp: <span class="temp ok">74°C / 165°F</span>.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Slice katsu at 45° into 2cm strips. Arrange sliced katsu over rice on a half-covered plate (curry poured on the rice side, katsu on the dry side — this keeps the crust crispy at the table). Place fukujinzuke pickles for visual pop and palate contrast.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Katsu curry is your ambassador dish — the food that converts newcomers to regulars. A first-time guest who orders katsu curry and loves it will come back and order ramen or yakitori on the next visit.</div>
+  <div class="al"><span class="a">GLUTEN (panko, flour, soy)</span><span class="a">EGGS</span><span class="a">POULTRY</span><span class="a">DAIRY (butter in curry base)</span></div>
+</div>
+</div>
+
+<!-- MAIN 6: MISO GLAZED SALMON -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Miso Glazed Salmon — Nobu-Style</div>
+  <div class="rh-sub">White miso &amp; mirin marinated salmon, broiled, sesame broccolini · Sell: $18.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🐟 Main</span><span class="rm">Target FC: 21%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Salmon fillet (skin-on, 6oz)</td><td>170g</td><td class="cc">$3.57</td></tr>
+        <tr><td>White miso paste (shiro miso)</td><td>30g</td><td class="cc">$0.13</td></tr>
+        <tr><td>Mirin (glaze)</td><td>20ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Sake (glaze)</td><td>15ml</td><td class="cc">$0.16</td></tr>
+        <tr><td>Sugar (glaze balance)</td><td>5g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Broccolini (side)</td><td>80g</td><td class="cc">$0.32</td></tr>
+        <tr><td>Sesame oil + sesame seeds</td><td>3ml + 2g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Short grain rice (side)</td><td>160g cooked</td><td class="cc">$0.19</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$4.50</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$4.50</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$18.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">23.7%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$14.49</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Miso marinade: combine white miso, mirin, sake, and sugar. Whisk until completely smooth. White (shiro) miso is preferred over red miso because its lower salt content and higher sugar content caramelises more beautifully without burning. This is why Nobu's original recipe specifically calls for white miso.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Coat salmon evenly on all sides with miso marinade. Marinate minimum 24 hours — 48 hours is ideal. The miso enzymes and sake alcohol denature and tenderise the salmon protein over time, while the sugars begin to dry on the surface creating a lacquer-like coating. The time investment is what creates the signature result.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Before cooking: wipe off excess miso marinade with a paper towel. Thick excess miso will burn in the broiler before the salmon is cooked. You want a thin, even layer remaining. Broil at <span class="temp">220°C / 428°F</span> for 8–10 minutes, watching closely. The glaze should be blistered and deeply golden. Internal: <span class="temp ok">57°C / 135°F</span> for medium.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">While salmon broils, blanch broccolini in salted boiling water 2 minutes. Toss with sesame oil and sesame seeds. Plate salmon on a slightly elevated mound of rice with broccolini beside it. The caramelised miso glaze should be visibly glossy and golden. Finish with extra sesame seeds. No sauce needed — the glaze is the sauce.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> This is your prestige dish. The 48-hour marinade is your competitive advantage — any competitor can make grilled salmon; almost none will do the 2-day miso cure. This is the detail that justifies the price and creates genuine differentiation.</div>
+  <div class="al"><span class="a">FISH</span><span class="a">SOY (miso)</span><span class="a">GLUTEN (check miso brand)</span><span class="a">SESAME</span></div>
+</div>
+</div>
+
+<!-- MAIN 7: GYUDON -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Gyudon — Beef &amp; Onion Rice Bowl</div>
+  <div class="rh-sub">Thin-sliced beef, caramelised onion, sweet-soy broth, pickled ginger, soft egg · Sell: $15.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min</span><span class="rm">🍚 Main</span><span class="rm">Target FC: 21%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 bowl)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Thin-sliced beef (chuck or rib)</td><td>150g</td><td class="cc">$2.98</td></tr>
+        <tr><td>Yellow onion (sliced thin)</td><td>80g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Dashi stock</td><td>100ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Soy sauce</td><td>20ml</td><td class="cc">$0.07</td></tr>
+        <tr><td>Mirin</td><td>15ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Sake</td><td>15ml</td><td class="cc">$0.16</td></tr>
+        <tr><td>Sugar</td><td>5g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Short grain rice (cooked)</td><td>200g cooked</td><td class="cc">$0.24</td></tr>
+        <tr><td>Pickled ginger (beni shoga)</td><td>15g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Soft-boiled egg (optional)</td><td>1 egg</td><td class="cc">$0.35</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per bowl</strong></td><td class="cc"><strong>$4.07</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$4.07</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$15.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">25.5%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$11.92</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Combine dashi, soy sauce, mirin, sake, and sugar in a wide shallow pan. Bring to a simmer. Add sliced onion first and simmer 4–5 minutes until translucent and beginning to caramelise at edges. The onion is as important as the beef in gyudon — do not rush this step.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Add thin-sliced beef in a single layer over the onions — do not stir immediately. Let the beef sit undisturbed in the simmering broth for 60 seconds before gently folding. The gentle simmer (not boil) keeps the thin beef tender rather than tough.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">The beef needs only 2–3 minutes total — it is thin and overcooks very quickly. Remove from heat the moment it's cooked through. Season the broth — taste it. It should be sweet-savoury with depth from dashi. If flat, add a few drops of soy. If too salty, add a touch more mirin.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Mound hot rice in a deep bowl. Ladle the beef and onion mixture over the rice, including plenty of the sweet broth. Place pickled ginger to the side. Halve the soft-boiled egg and place on top. The yolk should run slightly into the broth when broken.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Gyudon is Japan's most democratic comfort food. Position it as a cultural touchstone: "This is what Tokyo businesspeople eat for lunch every day." That narrative transforms a simple rice bowl into a cultural experience worth $15.99.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">GLUTEN (soy sauce)</span><span class="a">BEEF</span><span class="a">EGGS (optional)</span></div>
+</div>
+</div>
+
+<!-- MAIN 8: YAKISOBA -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Yakisoba — Stir-Fried Wheat Noodles</div>
+  <div class="rh-sub">Pan-fried noodles, pork belly, cabbage, Worcestershire-style sauce, beni shoga · Sell: $14.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 8 min</span><span class="rm">🍜 Main</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Yakisoba noodles (pre-cooked)</td><td>150g</td><td class="cc">$0.45</td></tr>
+        <tr><td>Pork belly (sliced thin)</td><td>80g</td><td class="cc">$0.40</td></tr>
+        <tr><td>Napa cabbage (rough chop)</td><td>60g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Carrot (julienned)</td><td>30g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Yakisoba sauce (Worcestershire + soy + ketchup)</td><td>30ml</td><td class="cc">$0.06</td></tr>
+        <tr><td>Neutral oil</td><td>10ml</td><td class="cc">$0.03</td></tr>
+        <tr><td>Beni shoga (red pickled ginger)</td><td>15g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Aonori (dried seaweed flakes)</td><td>1g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Katsuobushi (bonito flakes)</td><td>2g</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.21</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.21</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$14.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">8.1%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$13.78</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Yakisoba requires high heat — a very hot wok or flat-top griddle at <span class="temp">240°C / 464°F</span>. The Japanese concept of <em>yakitsuke</em> — sticking the noodles briefly to the hot surface — creates a slightly charred, nutty flavour on the noodle exterior that is impossible to replicate at lower temperatures. Preheat your cooking surface for minimum 3 minutes before starting.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Cook pork belly first in oil, 90 seconds until beginning to caramelise. Add carrot and cabbage, stir-fry 60 seconds. Add noodles — spread them across the hot surface and do not touch for 30 seconds. This "no-touch" period allows direct contact to create the <em>yakitsuke</em> char. Then toss.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Add yakisoba sauce around the edges of the wok, not directly onto the noodles — the sizzle of sauce hitting the hot metal vaporises some of the liquid instantly, concentrating the flavour before it contacts the noodles. Toss vigorously to coat. Total cook time: 4–5 minutes.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Plate on a flat plate. Mound in the centre. Top with a bright mound of beni shoga (the red pickled ginger is not optional — its sharp acidity and vivid crimson colour are the signature garnish of yakisoba), dust with aonori, and scatter bonito flakes. The bonito flakes will wave in the heat from the noodles.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Yakisoba is your fastest-cooking main dish and your second-highest margin item. On a busy service when you're behind, it's your speed play. A yakisoba station with pre-portioned noodle bags, pre-cut vegetables, and sauce pre-measured is a service line that doesn't choke under pressure.</div>
+  <div class="al"><span class="a">GLUTEN (noodles, soy, Worcestershire)</span><span class="a">SOY</span><span class="a">PORK</span><span class="a">FISH (bonito, Worcestershire)</span></div>
+</div>
+</div>
+
+<!-- MAIN 9: OCHAZUKE -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Ochazuke — Green Tea Poured Over Rice</div>
+  <div class="rh-sub">Hot sencha, rice, salmon flakes, nori, wasabi, sesame, umeboshi · Sell: $12.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 5 min</span><span class="rm">🍵 Breakfast / Main</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 bowl)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Short grain rice (cooked)</td><td>150g cooked</td><td class="cc">$0.18</td></tr>
+        <tr><td>Sencha green tea (brewed strong)</td><td>200ml</td><td class="cc">$0.12</td></tr>
+        <tr><td>Grilled salmon flakes (prep batch)</td><td>30g</td><td class="cc">$0.63</td></tr>
+        <tr><td>Nori (cut in strips)</td><td>1 sheet</td><td class="cc">$0.15</td></tr>
+        <tr><td>Umeboshi (pickled plum)</td><td>1 piece = 10g</td><td class="cc">$0.15</td></tr>
+        <tr><td>Wasabi (fresh grated or tube)</td><td>3g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Sesame seeds</td><td>2g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Scallion (sliced)</td><td>5g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per bowl</strong></td><td class="cc"><strong>$1.35</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.35</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$12.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">10.4%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$11.64</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Brew a strong sencha at precisely <span class="temp">80°C / 176°F</span>, not boiling. Boiling water on green tea extracts bitter tannins and catechins. At 80°C, the tea is sweet, vegetal, and clean. Brew for 60–90 seconds. The tea is not a background element — it is the liquid the dish is named after, and its quality determines the entire experience.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Prepare salmon flakes (batch prep): season salmon with salt and sake, grill or bake until cooked through, then flake into small irregular pieces 5–10mm. The irregular size is important — large rough flakes catch between rice grains and create bursts of flavour. Store up to 3 days refrigerated.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Place warm cooked rice in a deep ceramic bowl. Arrange toppings in distinct sections: salmon flakes in the centre, nori strips fanned to one side, umeboshi to the other side, wasabi as a small mound, scallion and sesame scattered. Never pre-pour the tea before service; the bowl should arrive dry with toppings arranged.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Pour the hot sencha at the table, or serve in a small teapot alongside the bowl and let the guest pour. Pouring at the table is the ritual — it transforms a simple rice bowl into a ceremony. The sound of tea pouring, the rising steam, the smell of green tea mixing with sesame and nori — serve it quietly. It doesn't need narration.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Ochazuke is your most culturally authentic breakfast item and your highest-margin dish on the menu. Even non-Japanese guests are often surprised and moved by it. Market it as "the Japanese equivalent of porridge — comfort, warmth, simplicity."</div>
+  <div class="al"><span class="a">FISH (salmon)</span><span class="a">SOY (potential in wasabi brands)</span><span class="a">SESAME</span></div>
+</div>
+</div>
+
+<!-- MAIN 10: NATTO GOHAN -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Natto Gohan — Fermented Soybean Rice Bowl</div>
+  <div class="rh-sub">Fermented natto, rice, raw egg yolk, scallion, soy, karashi mustard · Sell: $11.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min</span><span class="rm">🌱 Breakfast Main</span><span class="rm">Target FC: 13%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 bowl)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Natto (fermented soybeans, 1 pack)</td><td>45g pack</td><td class="cc">$0.55</td></tr>
+        <tr><td>Short grain rice (cooked)</td><td>200g cooked</td><td class="cc">$0.24</td></tr>
+        <tr><td>Egg yolk (raw, pasteurised)</td><td>1 yolk</td><td class="cc">$0.20</td></tr>
+        <tr><td>Soy sauce</td><td>8ml</td><td class="cc">$0.03</td></tr>
+        <tr><td>Karashi mustard (Japanese)</td><td>3g</td><td class="cc">$0.03</td></tr>
+        <tr><td>Scallion (sliced fine)</td><td>10g</td><td class="cc">$0.02</td></tr>
+        <tr><td>Nori (small strip)</td><td>½ sheet</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per bowl</strong></td><td class="cc"><strong>$1.15</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.15</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$11.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">9.6%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$10.84</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Remove natto from the freezer the day before service — move to refrigerator to thaw overnight. Never serve frozen or partially frozen natto. Never serve warm natto from a microwave — the enzymes and probiotic cultures that give natto its health benefits are destroyed above 50°C. Natto should be cold to room temperature when served.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">The natto stirring ritual: stir natto vigorously with chopsticks in one direction, 40–50 times. This develops the characteristic sticky strings (hikiwari) and incorporates air, lightening the texture and mellowing the strong ammonia aroma. Add soy sauce and karashi mustard and stir 10 more times. This is the correct preparation sequence.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Place hot steamed rice in a deep bowl. Spoon the seasoned natto over the rice. The temperature contrast — cold/room temperature natto over hot rice — is traditional and intentional. Create a small well in the centre and place a raw pasteurised egg yolk in it. Use pasteurised eggs for food safety compliance in a commercial kitchen — non-negotiable.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Garnish with sliced scallion and a strip of nori. The nori sheet beside the bowl allows the guest to wrap rice and natto in it — the classic Japanese eating style. Serve with a pair of chopsticks. The complete dish is meant to be mixed by the guest at the table — the yolk enriches the natto strings and mellows the strong flavour.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Position natto with honesty and respect: "Japan's most beloved health food — fermented soybeans with a strong flavour and famously sticky texture. Described as an acquired taste, loved passionately by millions." This transparency builds trust and creates curiosity.</div>
+  <div class="al"><span class="a">SOY</span><span class="a">EGGS</span><span class="a">GLUTEN (soy sauce)</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">3</span> Desserts</h2>
+
+<!-- DESSERT 1: MATCHA ICE CREAM -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Matcha Ice Cream — House-Made Ceremonial Grade</div>
+  <div class="rh-sub">Ceremonial matcha, egg yolk custard base, served in waffle cone or mochi skin · Sell: $7.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 2 min service</span><span class="rm">🍦 Dessert</span><span class="rm">Target FC: 16%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve / 2 scoops)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Whole milk</td><td>200ml</td><td class="cc">$0.18</td></tr>
+        <tr><td>Heavy cream</td><td>100ml</td><td class="cc">$0.22</td></tr>
+        <tr><td>Egg yolks</td><td>3 yolks = 45g</td><td class="cc">$0.60</td></tr>
+        <tr><td>Sugar</td><td>60g</td><td class="cc">$0.04</td></tr>
+        <tr><td>Ceremonial matcha powder</td><td>8g</td><td class="cc">$2.24</td></tr>
+        <tr><td>Black sesame wafer (garnish)</td><td>1 piece</td><td class="cc">$0.08</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost (per 2-scoop serve)</strong></td><td class="cc"><strong>$1.28 batch avg</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve (batch avg)</span><span class="fc-val">$1.28</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$7.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">16.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$6.71</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Sift ceremonial-grade matcha powder before any contact with liquid — never add unsifted matcha directly to warm milk. Sift into a small bowl, then whisk into 30ml of the warm milk (60°C) to form a smooth paste before incorporating into the custard. This two-step hydration method is used by professional pastry chefs for all matcha applications.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Classic crème anglaise base: heat milk and cream to 80°C. Whisk egg yolks and sugar until pale. Temper hot cream into yolks gradually. Return to low heat, stir constantly until custard reaches <span class="temp">83°C / 181°F</span>. Remove from heat immediately — above this temperature the yolks curdle. Strain through a fine sieve. Add matcha paste and whisk until completely incorporated.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Chill custard completely in an ice bath (minimum 4 hours in refrigerator, overnight preferred). Ice cream churned from warm custard produces a coarser texture because the fat has not had time to crystallise properly. Churn in an ice cream machine for typically 20–25 minutes.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Transfer to a freezer-safe container and harden for minimum 4 hours before service. The matcha ice cream should be vibrant deep green — if it's pale, your matcha quality is insufficient. Garnish with a black sesame wafer for colour and textural contrast.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Matcha quality is everything. At $28 per 100g, ceremonial matcha adds $2.24 per serve in matcha cost alone — but this is what produces the vivid colour and complex, slightly sweet, umami-rich flavour that makes guests order it again. Do not compromise on matcha grade.</div>
+  <div class="al"><span class="a">DAIRY</span><span class="a">EGGS</span><span class="a">GLUTEN (wafer)</span></div>
+</div>
+</div>
+
+<!-- DESSERT 2: DORAYAKI -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Dorayaki — Honey Pancake Sandwich with Red Bean</div>
+  <div class="rh-sub">Honey castella pancakes, sweet azuki red bean paste, optional cream filling · Sell: $7.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 10 min</span><span class="rm">🥞 Dessert</span><span class="rm">Target FC: 15%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve / 1 dorayaki)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>All-purpose flour</td><td>100g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Eggs</td><td>2 × 55g</td><td class="cc">$0.70</td></tr>
+        <tr><td>Sugar</td><td>80g</td><td class="cc">$0.06</td></tr>
+        <tr><td>Honey</td><td>20g</td><td class="cc">$0.10</td></tr>
+        <tr><td>Mirin</td><td>10ml</td><td class="cc">$0.04</td></tr>
+        <tr><td>Baking powder</td><td>3g</td><td class="cc">$0.01</td></tr>
+        <tr><td>Tsubu-an (sweet azuki bean paste)</td><td>60g</td><td class="cc">$0.18</td></tr>
+        <tr><td>Matcha powder (dusting)</td><td>1g</td><td class="cc">$0.28</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.20 batch avg</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve (batch avg)</span><span class="fc-val">$1.20</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$7.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">15.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$6.79</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Dorayaki batter: whisk eggs and sugar until pale and thick (ribbon stage). Add honey and mirin — the honey gives the characteristic golden colour and slightly chewy texture. Sift flour and baking powder and fold gently. Do not over-mix. The batter should fall off the spoon in a thick ribbon. Rest batter 15 minutes before cooking to allow gluten to relax.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Cook on a flat surface (griddle or flat pan) over precisely medium-low heat — <span class="temp">160°C / 320°F</span>. Dorayaki pancakes are made without oil on the surface. Pour batter in a precise circle using a ladle from 10cm above — this creates a neat circle from the force of the pour. Cook until bubbles form evenly and edges are set (about 2 minutes).</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Flip gently and cook 30 more seconds. The underside should be a deep, even honey-brown. Pancakes should be slightly domed in the centre. Remove and cool on a rack — never stack warm dorayaki or they steam and become soggy. The pancakes can be made in batches and held at room temperature for up to 4 hours.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Assemble to order: spread a generous layer of tsubu-an (chunky azuki red bean paste) on the flat side of one pancake. Press a second pancake flat-side down gently. Dust the top with a light snowfall of matcha powder. Serve on a small plate. A perfect dorayaki holds together when lifted but yields when bitten.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Train servers to offer dorayaki at the time of ordering: "Our dorayaki takes about 10 minutes — shall I put that in now so it's ready after your main?" This technique increases dessert attachment rate from an industry average of 22% to over 40%.</div>
+  <div class="al"><span class="a">GLUTEN</span><span class="a">EGGS</span><span class="a">SOY (check azuki paste brands)</span></div>
+</div>
+</div>
+
+<!-- DESSERT 3: MOCHI ICE CREAM -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Mochi Ice Cream — 3 Flavours</div>
+  <div class="rh-sub">Matcha, strawberry &amp; black sesame ice cream wrapped in mochi skin · Sell: $8.99 (3 pieces)</div>
+  <div class="rh-meta"><span class="rm">⏱ 2 min service</span><span class="rm">🍡 Dessert</span><span class="rm">Target FC: 18%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (3-piece serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Shiratamako (glutinous rice flour)</td><td>100g per batch</td><td class="cc">$0.15</td></tr>
+        <tr><td>Sugar</td><td>40g per batch</td><td class="cc">$0.03</td></tr>
+        <tr><td>Water</td><td>120ml per batch</td><td class="cc">$0.00</td></tr>
+        <tr><td>Matcha powder (skin flavour 1)</td><td>4g per batch</td><td class="cc">$1.12</td></tr>
+        <tr><td>Black sesame paste (skin flavour 3)</td><td>8g per batch</td><td class="cc">$0.06</td></tr>
+        <tr><td>Ice cream (matcha/strawberry/sesame)</td><td>3 × 25ml scoops</td><td class="cc">$0.45</td></tr>
+        <tr><td>Katakuriko (dusting, anti-stick)</td><td>10g</td><td class="cc">$0.02</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per 3-piece serve</strong></td><td class="cc"><strong>$1.62</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$1.62</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$8.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">18.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$7.37</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Pre-form ice cream balls (batch prep): scoop each ice cream flavour into 25ml balls, place on parchment paper on a tray, and freeze until rock-hard — minimum 2 hours, overnight preferred. The ice cream must be completely frozen solid before wrapping in mochi. This pre-freeze step is the foundation of efficient mochi ice cream service.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Mochi skin: combine shiratamako, sugar, water (and matcha paste or sesame paste for flavoured skins) in a microwave-safe bowl. Microwave 1 minute, stir; microwave 1 more minute, stir again. The mochi should be translucent, sticky, and stretchy. The texture should be like a very soft, elastic clay — warm and pliable.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Work quickly with warm mochi — it firms as it cools. Dust a surface with katakuriko. Roll a portion of mochi into a circle approximately 8cm diameter, 3mm thick. Place a frozen ice cream ball in the centre. Bring the mochi edges up and around the ice cream, pinching and sealing at the bottom. You have approximately 30 seconds per piece before the mochi becomes too firm. Speed is the skill.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Transfer sealed mochi ice cream pieces seal-side down onto parchment and return to freezer immediately. Serve directly from freezer — mochi ice cream softens quickly at room temperature. Present 3 pieces on a slate board or ceramic plate — one of each flavour: green (matcha), pink (strawberry), grey-black (sesame). No further garnish needed — the colours are the presentation.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Mochi ice cream is the most photographed dessert in modern Japanese restaurants. Make sure the mochi skin is 3mm thick. A too-thick skin tastes gummy; the right thickness creates a delicate, chewy wrapper that enhances rather than dominates the ice cream inside.</div>
+  <div class="al"><span class="a">DAIRY (ice cream)</span><span class="a">EGGS (ice cream base)</span><span class="a">SESAME (black sesame variety)</span></div>
+</div>
+</div>
+
+<!-- DESSERT 4: ANMITSU -->
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh">
+  <div class="rh-title">Anmitsu — Traditional Japanese Agar Jelly Dessert</div>
+  <div class="rh-sub">Kanten agar cubes, sweet azuki beans, mochi, seasonal fruit, black mitsu syrup · Sell: $8.99</div>
+  <div class="rh-meta"><span class="rm">⏱ 3 min service</span><span class="rm">🍮 Dessert</span><span class="rm">Target FC: 14%</span></div>
+</div>
+<div class="rb">
+  <div class="two-col">
+    <div>
+      <h4>Ingredients (1 serve)</h4>
+      <table class="it">
+        <tr><th>Ingredient</th><th>Weight</th><th class="cc">Cost</th></tr>
+        <tr><td>Kanten (agar agar powder)</td><td>4g per batch</td><td class="cc">$0.06</td></tr>
+        <tr><td>Tsubu-an (sweet azuki beans)</td><td>40g</td><td class="cc">$0.12</td></tr>
+        <tr><td>Small mochi balls (shiratama)</td><td>3 pieces = 30g</td><td class="cc">$0.08</td></tr>
+        <tr><td>Seasonal fresh fruit (mango, strawberry)</td><td>40g</td><td class="cc">$0.20</td></tr>
+        <tr><td>Mitsu (black sugar syrup, batch)</td><td>20ml</td><td class="cc">$0.08</td></tr>
+        <tr><td>Vanilla ice cream (optional add-on)</td><td>1 scoop</td><td class="cc">$0.18</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$0.72</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="fc-box">
+        <div class="fc-row"><span>Cost per serve</span><span class="fc-val">$0.72</span></div>
+        <div class="fc-row"><span>Sell price</span><span class="fc-val">$8.99</span></div>
+        <div class="fc-row"><span>Food cost %</span><span class="fc-val">8.0%</span></div>
+        <div class="fc-row"><span>Contribution margin</span><span class="fc-val">$8.27</span></div>
+      </div>
+    </div>
+  </div>
+  <h4>Method</h4>
+  <div class="step"><div class="sn">1</div><div class="st">Kanten (agar) jelly (batch, makes ~20 serves): dissolve 4g agar powder in 500ml water with 2 tablespoons sugar. Bring to a full boil while stirring — agar requires reaching boiling point to activate. Pour into a shallow tray and refrigerate until set (30–45 minutes). Cut into 2cm cubes. Agar jelly sets firmer than gelatin and remains stable at room temperature — it will not melt on the plate.</div></div>
+  <div class="step"><div class="sn">2</div><div class="st">Shiratama mochi balls (batch prep): mix shiratamako with cold water to a soft dough. Roll into small balls (~1.5cm diameter). Boil in water until they float (2–3 minutes), then transfer to cold water. Shiratama have a distinctive silky, bouncy texture. Store in cold water in the refrigerator for up to 2 days. Drain and use to order.</div></div>
+  <div class="step"><div class="sn">3</div><div class="st">Mitsu (black sugar syrup, batch): combine Okinawan black sugar (kokuto) with equal weight water in a small saucepan. Heat gently until sugar is completely dissolved and syrup is smooth and glossy. Cool. Black sugar has a deeper, more molasses-like flavour than white sugar — it is the traditional sweetener for anmitsu. Store refrigerated up to 2 weeks.</div></div>
+  <div class="step"><div class="sn">4</div><div class="st">Assembly (to order, 2 minutes): place agar cubes in a glass bowl or deep ceramic dish. Add azuki beans, shiratama mochi, and fresh fruit arranged artfully. Place one scoop of vanilla ice cream on top if the guest wants "anmitsu cream" (upsell at +$1.50). Pour mitsu syrup over the entire bowl at the table for a ceremony-like effect.</div></div>
+  <div class="tb"><strong>Chef's Tip:</strong> Anmitsu is your most culturally authentic dessert. Describe it as "Japan's answer to parfait — layered textures and flavours in one bowl, sweetened at the table with black sugar syrup." Your lowest food cost dessert at 8% — push it proactively.</div>
+  <div class="al"><span class="a">DAIRY (ice cream option)</span><span class="a">EGGS (ice cream option)</span><span class="a">VEGAN (without ice cream)</span><span class="a">GLUTEN-FREE</span></div>
+</div>
+</div>
+
+<h2><span class="sn2">4</span> Drinks</h2>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Sapporo Draft Beer</div><div class="rh-meta">Japanese lager on tap, frosted mug · Sell: $7.99 / pint · FC 20%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Sapporo keg (avg per pint)</td><td>473ml</td><td class="cc">$1.42</td></tr>
+<tr><td>CO2 + line maintenance (per pint)</td><td>—</td><td class="cc">$0.12</td></tr>
+<tr><td>Frosted mug (stored in freezer)</td><td>1</td><td class="cc">$0.06</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.60</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$1.60</span></div><div class="fc-row"><span>Sell</span><span>$7.99</span></div><div class="fc-row"><span>FC%</span><span>20.0%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$6.39</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Keg setup:</strong> Store keg at 2–4°C. Set CO2 pressure to 12–14 PSI for Sapporo. Run lines cold — a warm beer line produces excessive foam and inconsistent pours. Flush lines at opening if first pour of the day runs warm.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>The frosted mug:</strong> Store pint glasses in the freezer at all times during service. A frosted glass extends the cold-drinking window significantly — guests notice beer staying cold longer without knowing why. This is the single biggest beer quality upgrade at zero cost.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Pour technique:</strong> Tilt glass 45°, open tap fully, straighten as glass fills. 2cm foam head — not more. The foam cap seals in carbonation and aroma. Serve immediately. Japanese lager is the izakaya opener — suggest it with every first order at every table.</div></div>
+<div class="al"><span class="a">GLUTEN (barley malt)</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">House Sake — Warm or Cold</div><div class="rh-meta">Junmai sake, tokkuri flask, two ochoko cups · Sell: $9.99 / tokkuri · FC 18%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Junmai sake (per 100ml pour)</td><td>100ml</td><td class="cc">$1.60</td></tr>
+<tr><td>Tokkuri ceramic flask (amortised)</td><td>1</td><td class="cc">$0.10</td></tr>
+<tr><td>Two ochoko cups (amortised)</td><td>2</td><td class="cc">$0.10</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.80</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$1.80</span></div><div class="fc-row"><span>Sell</span><span>$9.99</span></div><div class="fc-row"><span>FC%</span><span>18.0%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$8.19</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Choosing your house sake:</strong> Select a clean junmai (pure rice) style — no added alcohol. Junmai has balanced umami, mild sweetness, and pairs with everything on the menu. Avoid ginjo/daiginjo for house pour — the delicate floral notes are lost on most tables and the cost is unjustified.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Warm sake (atsukan):</strong> Heat in a sake warmer or bain marie to 45–50°C — never microwave, which creates hot spots and burns off aroma compounds. The warmth opens up the umami depth and rice character. Serve in a ceramic tokkuri. For cold (reishu): serve at fridge temperature, 8–10°C.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Service ritual:</strong> Present the tokkuri with two ochoko cups. Pour for your guest first — pouring for others before yourself is Japanese hospitality protocol. If a guest pours for you, receive with both hands. This cultural detail, explained briefly, creates a memorable dining moment.</div></div>
+<div class="al"><span class="a">GLUTEN (rice, trace)</span><span class="a">SULPHITES</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Yuzu Sour</div><div class="rh-meta">Shochu, yuzu juice, simple syrup, egg white foam · Sell: $12.99 · FC 16.9%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Shochu (or vodka)</td><td>45ml</td><td class="cc">$0.90</td></tr>
+<tr><td>Yuzu juice (bottled, Kikkoman or similar)</td><td>30ml</td><td class="cc">$0.66</td></tr>
+<tr><td>Simple syrup</td><td>15ml</td><td class="cc">$0.04</td></tr>
+<tr><td>Egg white</td><td>30ml</td><td class="cc">$0.35</td></tr>
+<tr><td>Yuzu zest (rim garnish)</td><td>pinch</td><td class="cc">$0.15</td></tr>
+<tr><td>Ice</td><td>—</td><td class="cc">$0.10</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.20</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$2.20</span></div><div class="fc-row"><span>Sell</span><span>$12.99</span></div><div class="fc-row"><span>FC%</span><span>16.9%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$10.79</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Dry shake first:</strong> Combine shochu, yuzu juice, syrup, and egg white in a shaker WITHOUT ice. Shake hard 15 seconds — the dry shake emulsifies egg white proteins into stable foam. This step cannot be skipped. Without the dry shake, the foam is thin and collapses within 60 seconds of serving.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Wet shake:</strong> Add ice, shake again 10 seconds. Double strain into a coupe glass. The foam rises naturally on top. Do not tap or disturb — the foam needs 30 seconds to stabilise after pouring.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Garnish and serve:</strong> Microplane a small amount of yuzu zest over the foam. The yuzu aroma — floral, tart, unlike any Western citrus — hits the guest before the first sip. For most American guests, yuzu is a discovery moment. Train staff to say: "Yuzu is a Japanese citrus — imagine lemon, lime and grapefruit had a child."</div></div>
+<div class="al"><span class="a">EGGS (egg white)</span><span class="a">SULPHITES</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Japanese Whisky Highball</div><div class="rh-meta">Japanese blended whisky, chilled sparkling water, lemon twist · Sell: $13.99 · FC 17.9%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Japanese blended whisky (Suntory Toki or similar)</td><td>45ml</td><td class="cc">$1.80</td></tr>
+<tr><td>Chilled sparkling water (Fever-Tree or similar)</td><td>120ml</td><td class="cc">$0.55</td></tr>
+<tr><td>Large ice cube (2-inch, clear)</td><td>1</td><td class="cc">$0.10</td></tr>
+<tr><td>Lemon twist (garnish)</td><td>1 strip</td><td class="cc">$0.05</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$2.50</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$2.50</span></div><div class="fc-row"><span>Sell</span><span>$13.99</span></div><div class="fc-row"><span>FC%</span><span>17.9%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$11.49</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>The Japanese highball philosophy:</strong> In Japan, the highball (haibol) is a precise drink, not a casual mix. The whisky-to-water ratio is 1:3 to 1:4 — lighter than Western standards. The result is refreshing, low-alcohol, and pairs with food rather than competing with it. This is why it is Japan's most popular bar drink.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Build cold:</strong> Chill the highball glass first — store in freezer or fill with ice and discard. Place one large clear ice cube. Pour 45ml whisky over the ice. Add chilled (never room temperature) sparkling water by pouring down the side of the glass — this preserves carbonation. Do not stir vigorously.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Express the lemon:</strong> Cut a wide strip of lemon peel. Hold over the glass and snap to express the citrus oils onto the surface of the drink. Run the peel around the rim. Drop in. The lemon oil creates a fragrant layer on the nose before the first sip — this is the whisky highball's signature sensory moment.</div></div>
+<div class="al"><span class="a">SULPHITES</span><span class="a">GLUTEN (whisky, trace)</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Ceremonial Matcha Latte</div><div class="rh-meta">Ceremonial grade matcha, steamed whole milk or oat milk · Sell: $6.99 · FC 15%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Ceremonial grade matcha powder</td><td>3g</td><td class="cc">$0.84</td></tr>
+<tr><td>Hot water (for whisking)</td><td>30ml at 80°C</td><td class="cc">$0.01</td></tr>
+<tr><td>Whole milk or oat milk (steamed)</td><td>220ml</td><td class="cc">$0.18</td></tr>
+<tr><td>Honey (optional)</td><td>5ml</td><td class="cc">$0.02</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.05</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$1.05</span></div><div class="fc-row"><span>Sell</span><span>$6.99</span></div><div class="fc-row"><span>FC%</span><span>15.0%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$5.94</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Water temperature is critical:</strong> Boiling water (100°C) destroys the L-theanine and delicate amino acids that give ceremonial matcha its smooth, umami-forward flavour and produce its calm-alert effect. Use water at exactly 75–80°C. Never use boiling water for matcha. A variable-temperature kettle is the single most important equipment piece for matcha service.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Sift and whisk:</strong> Sift 3g matcha through a fine sieve directly into a matcha bowl or cup — sifting prevents clumping. Add 30ml hot water. Whisk in a rapid W or M motion (not circular) with a bamboo chasen until a smooth, frothy paste forms with no lumps. This is the matcha base.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Steam and combine:</strong> Steam milk to 65°C with microfoam texture — same as a latte. Pour steamed milk over the matcha base. The vivid green matcha will streak through the white milk. Serve immediately — matcha oxidises and the colour dulls within 10 minutes. For iced: shake matcha base with cold milk and ice.</div></div>
+<div class="al"><span class="a">DAIRY (milk option)</span><span class="a">TREE NUTS (oat milk option)</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Umeshu — Japanese Plum Wine on the Rocks</div><div class="rh-meta">Choya umeshu, large ice cube, optional soda top · Sell: $9.99 · FC 16%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Choya Umeshu (per 60ml pour)</td><td>60ml</td><td class="cc">$1.44</td></tr>
+<tr><td>Large clear ice cube</td><td>1</td><td class="cc">$0.10</td></tr>
+<tr><td>Soda water (optional top)</td><td>30ml</td><td class="cc">$0.06</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$1.60</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$1.60</span></div><div class="fc-row"><span>Sell</span><span>$9.99</span></div><div class="fc-row"><span>FC%</span><span>16.0%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$8.39</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>What is umeshu:</strong> Umeshu is made by steeping unripe ume plums in shochu with sugar for 6–12 months. The result is a liqueur with deep plum sweetness, gentle tartness, and a complex fruity aroma unlike any Western liqueur. Choya is the most recognisable brand in the US market — the bottle with the whole plum is an immediate visual cue.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Serve on the rocks:</strong> Place one large clear ice cube in a heavy-bottomed rocks glass. Pour 60ml umeshu over the ice. For umeshu soda: add 30ml chilled sparkling water gently to preserve carbonation. The plum at the bottom of the Choya bottle can be placed in the glass as garnish — guests love eating it at the end.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Position it correctly:</strong> Umeshu is the gateway Japanese alcohol for guests who don't drink beer or whisky. At 15% ABV it is approachable, sweet, and distinctly Japanese. Train staff to suggest it to guests who say "I'm not sure" about alcohol — it converts almost every time and adds $10 to the average spend.</div></div>
+<div class="al"><span class="a">SULPHITES</span><span class="a">TREE FRUIT (plum)</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Mugicha — Cold Roasted Barley Tea</div><div class="rh-meta">Cold-brewed roasted barley, served over ice, caffeine-free · Sell: $4.99 · FC 4.4%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Roasted barley tea bags</td><td>2 bags per litre</td><td class="cc">$0.12</td></tr>
+<tr><td>Cold water (cold steep)</td><td>1 litre batch</td><td class="cc">$0.01</td></tr>
+<tr><td>Ice</td><td>200g</td><td class="cc">$0.02</td></tr>
+<tr><td>Glass pitcher (table serve option)</td><td>—</td><td class="cc">$0.07</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$0.22</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.22</span></div><div class="fc-row"><span>Sell</span><span>$4.99</span></div><div class="fc-row"><span>FC%</span><span>4.4%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$4.77</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>Cold steep overnight:</strong> Place 2 mugicha tea bags in 1 litre cold water. Refrigerate overnight minimum 8 hours. Cold steeping produces a clean, smooth, toasty flavour without bitterness. The roasted barley character — earthy, slightly nutty, vaguely like roasted grain — is Japan's most popular summer household drink. Zero caffeine.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Serve and offer as table water:</strong> Mugicha can be offered as a complimentary table drink instead of water — this is common practice in Japanese restaurants in Japan. The cost is $0.22 per serve. The goodwill generated by offering something culturally authentic and free at the table is worth multiples of that cost in perceived hospitality value.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>Upsell opportunity:</strong> "Would you like mugicha — our cold roasted barley tea? It's Japan's most popular summer drink, caffeine-free, pairs with everything. $4.99 or we can include a small glass complimentary while you look at the menu." The complimentary small glass converts tables to a full order more often than not.</div></div>
+<div class="al"><span class="a">GLUTEN (barley)</span></div>
+</div></div>
+
+<div class="recipe">
+<div class="recipe-color-block"></div>
+<div class="rh"><div class="rh-title">Calpico Soda</div><div class="rh-meta">Japanese lactic acid concentrate, sparkling water, over ice · Sell: $4.99 · FC 9%</div></div>
+<div class="rb">
+<div class="two-col">
+<div><table class="it"><tr><th>Item</th><th>Amount</th><th class="cc">Cost</th></tr>
+<tr><td>Calpico concentrate</td><td>45ml</td><td class="cc">$0.30</td></tr>
+<tr><td>Sparkling water</td><td>150ml</td><td class="cc">$0.09</td></tr>
+<tr><td>Ice</td><td>150g</td><td class="cc">$0.02</td></tr>
+<tr><td>Lemon slice (garnish)</td><td>1 slice</td><td class="cc">$0.04</td></tr>
+<tr class="total-row"><td colspan="2"><strong>Total cost per serve</strong></td><td class="cc"><strong>$0.45</strong></td></tr></table></div>
+<div><div class="fc-box"><div class="fc-row"><span>Cost</span><span>$0.45</span></div><div class="fc-row"><span>Sell</span><span>$4.99</span></div><div class="fc-row"><span>FC%</span><span>9.0%</span></div><div class="fc-row"><span>Margin</span><span class="fc-val">$4.54</span></div></div></div>
+</div>
+<div class="step"><div class="sn">1</div><div class="st"><strong>What is Calpico:</strong> Calpico (Calpis in Japan) is a non-carbonated soft drink concentrate made with water, nonfat dry milk, and lactic acid. The flavour is mild, creamy, slightly tangy — unlike anything in Western soft drink culture. It has been Japan's most iconic soft drink since 1919. First-time guests are always surprised by how approachable and light it tastes.</div></div>
+<div class="step"><div class="sn">2</div><div class="st"><strong>Build ratio:</strong> The standard ratio is 1 part Calpico to 3–4 parts sparkling water. Adjust to taste — some guests prefer it stronger (sweeter, more concentrated) or lighter. Fill glass with ice first, add Calpico, top with cold sparkling water. Stir once. The drink should be pale white, slightly creamy in appearance.</div></div>
+<div class="step"><div class="sn">3</div><div class="st"><strong>The discovery sell:</strong> "Have you had Calpico before? It's Japan's most famous soft drink — it's been around since 1919. Mild, creamy, slightly tangy. A lot of guests who try it for the first time order it every visit after that." This script positions the drink as a discovery experience, not just a soft drink. Converts well for non-drinkers and children's tables.</div></div>
+<div class="al"><span class="a">DAIRY (milk derivatives)</span></div>
+</div></div>
+
+<h2><span class="sn2">5</span> Service Training</h2>
+<div class="info-box">Izakaya service is warm, knowledgeable, and unhurried. Guests should feel like they're being guided by a friend who knows the food deeply — not sold to. These scripts are starting points. Personalise them to your voice.</div>
+
+<style>
+.script-box{background:#0d0d0d;border-left:3px solid #00d4ff;padding:12px 16px;margin:10px 0;font-size:12px;border-radius:0 4px 4px 0;color:#e8e8e8;}
+.script-label{font-weight:700;font-size:10px;color:#00d4ff;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;font-family:'DM Mono',monospace;}
+.schedule-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.schedule-table th{background:#00d4ff;color:#000;padding:7px 10px;text-align:left;font-size:10px;font-weight:700;}
+.schedule-table td{padding:6px 10px;border-bottom:1px solid #1e1e1e;color:#e8e8e8;}
+.schedule-table tr:nth-child(even) td{background:#0d0d0d;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+
+<h3>Script 1 — The Izakaya Format Explanation</h3>
+<div class="script-box">
+  <span class="script-label">When: First table contact, after welcoming guests and presenting menus</span>
+  <p>"Welcome to [Name]. Before you dive into the menu — our food is izakaya style, which means everything comes as it's ready rather than in courses. It's meant for sharing, so we recommend ordering 2–3 dishes at a time and adding more as you go. If you'd like to start with something while you decide, our edamame and yakitori are usually the first things out of the kitchen. What can I bring you to drink first?"</p>
+</div>
+
+<h3>Script 2 — The Yakitori Story</h3>
+<div class="script-box">
+  <span class="script-label">When: Guest asks about yakitori or shows interest in it</span>
+  <p>"Our yakitori is grilled over a very hot grill and glazed with our tare — that's the house sauce we simmer every day and build up over time. The longer we cook, the deeper it gets. You have two options: tare, which is the sweet-savoury glaze, or shio, which is just sea salt and lemon — that's actually the version yakitori purists prefer because you taste the chicken itself. First time here, I'd do half and half — try both and see which you prefer."</p>
+</div>
+
+<h3>Script 3 — The Ramen Timing Script</h3>
+<div class="script-box">
+  <span class="script-label">When: Guest orders tonkotsu ramen or asks about it</span>
+  <p>"Excellent choice — the tonkotsu takes about 8 minutes because we cook the noodles fresh to order. Would you like me to put in some yakitori or gyoza while you wait? They'll land at your table in about 4–5 minutes, so you'll have something to eat while the ramen is coming. [Pause.] Also — one thing with our ramen: we recommend eating it right away when it arrives. The noodles continue cooking in the hot broth, so the sooner you start, the better the texture."</p>
+</div>
+
+<h3>Script 4 — The Sake Introduction</h3>
+<div class="script-box">
+  <span class="script-label">When: Guest is undecided on drinks, or asks about sake</span>
+  <p>"If you've never tried sake with food before, this is a great place to start. Our house sake is a junmai — that means it's pure rice wine, nothing added, clean and slightly umami. We serve it in the traditional way: a small flask called a tokkuri, with two ceramic cups. You can choose warm or cold — warm sake is more aromatic and a little gentler; cold sake is crisper and pairs really well with the yakitori and karaage. Both are $9.99 for the flask. It pairs beautifully with everything we have."</p>
+</div>
+
+<h3>Script 5 — The Dorayaki Pre-Sell</h3>
+<div class="script-box">
+  <span class="script-label">When: Taking food orders at the table</span>
+  <p>"One thing I'll mention before you finish ordering — our dorayaki takes about 10 minutes to make fresh. It's our Japanese pancake sandwich with sweet red bean paste — very traditional, really popular. If you think you might want dessert, it's worth putting in now so it's ready around the time you're finishing your mains. Shall I add it? [Pause.] If you change your mind it's easy to cancel."</p>
+</div>
+
+<h3>Table Timing Guide</h3>
+<table class="schedule-table">
+  <tr><th>Time</th><th>Action</th><th>Notes</th></tr>
+  <tr><td><strong>0:00</strong></td><td>Guests seat</td><td>Menus placed, water poured within 60 seconds of arrival. "Welcome, I'll be right with you."</td></tr>
+  <tr><td><strong>1:30</strong></td><td>Server greets, takes drinks order</td><td>Deliver izakaya format explanation. Ask about sharing preference. Offer edamame as immediate start.</td></tr>
+  <tr><td><strong>3:00</strong></td><td>Drinks delivered. Take food order.</td><td>Edamame arrives with drinks. Pre-sell dorayaki at order time. Confirm any allergies.</td></tr>
+  <tr><td><strong>5:00</strong></td><td>First dishes arrive</td><td>Yakitori, gyoza, or edamame. Describe each item as it lands: "This is the tare yakitori..."</td></tr>
+  <tr><td><strong>10:00</strong></td><td>Check-in</td><td>Visit table: "How is everything? Can I bring anything else?" — timing for top-up drinks order.</td></tr>
+  <tr><td><strong>18:00</strong></td><td>Mains arrive</td><td>Clear entrée plates before mains land if possible. Ramen bowl gets napkin tucked and chopstick realignment.</td></tr>
+  <tr><td><strong>28:00</strong></td><td>Dessert push</td><td>If dorayaki not pre-ordered, offer now: "Would you like to see our dessert menu? Our matcha ice cream and mochi are both available right now."</td></tr>
+  <tr><td><strong>38:00</strong></td><td>Final drinks check</td><td>"Can I top up your sake / bring another beer?" Last revenue opportunity before bill request.</td></tr>
+  <tr><td><strong>45:00</strong></td><td>Bill &amp; farewell</td><td>Present bill promptly when requested. Thank guests specifically: "Thank you — I hope you enjoyed the tonkotsu." A specific reference shows attention.</td></tr>
+</table>
+
+<h2><span class="sn2">6</span> Kitchen Prep Schedule — 7:00am to 3:00pm</h2>
+<div class="info-box">The prep flow is the engine of the operation. A well-executed prep schedule means zero scrambling at service. Each role has specific ownership — Head Cook (HC), Line Cook (LC), and Steward (ST) each have defined lanes that do not overlap unless required.</div>
+
+<style>
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.prep-table th{background:#00d4ff;color:#000;padding:8px 12px;text-align:left;font-size:10px;font-weight:700;}
+.prep-table td{padding:8px 12px;border-bottom:1px solid #1e1e1e;vertical-align:top;color:#e8e8e8;}
+.prep-table tr:nth-child(even) td{background:#0d0d0d;}
+.prep-table .time-col{font-weight:700;color:#00d4ff;white-space:nowrap;font-family:'DM Mono',monospace;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+
+<table class="prep-table">
+  <tr>
+    <th style="width:14%">Time Block</th>
+    <th style="width:30%">Head Cook (HC)</th>
+    <th style="width:30%">Line Cook (LC)</th>
+    <th style="width:26%">Steward (ST)</th>
+  </tr>
+  <tr>
+    <td class="time-col">7:00–8:00am<br><em style="font-size:9px;color:#555;">Opening</em></td>
+    <td>Ignite rice cooker (2 batches short grain). Portion chashu from overnight brine — slice, torch, hold warm. Check ramen broth temp and season tare. Confirm yakitori tare integrity.</td>
+    <td>Set up fryer — pre-heat to 160°C. Portion karaage and gyoza from fridge. Stage takoyaki batter and fillings. Portion edamame (weigh and bag per serve).</td>
+    <td>Receive deliveries, check temps. Sanitise all surfaces. Fill side station with serving ware. Stock chopstick sets. Pre-fold paper napkins. Fill water pitchers.</td>
+  </tr>
+  <tr>
+    <td class="time-col">8:00–9:30am<br><em style="font-size:9px;color:#555;">Breakfast Prep</em></td>
+    <td>Make dorayaki pancake batch (20 pieces). Prepare ochazuke salmon flakes — grill and flake. Portion natto packs and marinate eggs. Stage matcha ice cream scoops in freezer.</td>
+    <td>Cut and portion all proteins: mackerel (score, salt, refrigerate 30min), chicken thighs (teriyaki, yakitori, karaage). Julienne vegetables for yakisoba mise. Cut scallion, daikon, garnishes.</td>
+    <td>Brew mugicha cold batch. Portion dipping sauces (ponzu, tare, kewpie). Fill condiment station. Set tables — place settings for first seating. Pre-heat serving bowls with hot water.</td>
+  </tr>
+  <tr>
+    <td class="time-col">9:30–11:00am<br><em style="font-size:9px;color:#555;">Final Breakfast Prep</em></td>
+    <td>Taste and adjust ramen broth — season with tare. Pre-heat miso soup base. Cook gyudon beef and onion batch (hold in bain marie). Assemble anmitsu components — check agar set.</td>
+    <td>Prepare takoyaki batter — rest 10 min before service. Bread chicken katsu portions (flour → egg → panko), lay on tray. Stage yakisoba noodles — pre-portioned bags. Check fry oil temperature and quality.</td>
+    <td>Polish glasses and ceramics. Fill sake service sets (tokkuri flasks + ochoko cups). Ice beer mugs in freezer. Pre-portion fukujinzuke pickles. Confirm table numbers and POS system.</td>
+  </tr>
+  <tr>
+    <td class="time-col">11:00am–2:30pm<br><em style="font-size:9px;color:#555;">Lunch Service</em></td>
+    <td>Expedite all mains — call tickets, plate controls. Grill yakitori to order (90 sec × 3 turns). Execute ramen bowls — noodle to plate under 90 seconds. Oversee protein temperatures across line.</td>
+    <td>Fry station: karaage (double-fry), gyoza (fry-steam), katsu, takoyaki. Wok: yakisoba and stir-fry items. Monitor oil temperature and quality. Communicate timing with HC at all times.</td>
+    <td>Run food from pass to tables. Clear dishes every 3–4 minutes. Replenish water and tea. Process bills, reset tables within 4 minutes of guests leaving. Restock condiments continuously.</td>
+  </tr>
+  <tr>
+    <td class="time-col">2:30–3:00pm<br><em style="font-size:9px;color:#555;">Closedown</em></td>
+    <td>Cool ramen broth safely — transfer to shallow containers in ice bath, refrigerate within 2 hours. Discard any chashu held over 4 hours. Label all prep containers (item + date + time).</td>
+    <td>Drain and filter fry oil (check for quality — change if darkened or off-smell). Clean fryer. Wrap and refrigerate all opened proteins. Store leftover takoyaki batter (discard if older than 24h).</td>
+    <td>Full sanitise all surfaces, equipment, and floor. Wash, dry, and stack all ceramics. Complete waste log and FIFO check of refrigerators. Report any stock shortages to HC before leaving.</td>
+  </tr>
+</table>
+
+<h2><span class="sn2">7</span> Financial Forecast &amp; P&amp;L</h2>
+
+<style>
+.rev-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.rev-table th{background:#00d4ff;color:#000;padding:9px 12px;text-align:left;font-weight:700;}
+.rev-table td{padding:8px 12px;border-bottom:1px solid #1e1e1e;color:#e8e8e8;}
+.rev-table .total-row td{font-weight:700;background:#0d0d0d;}
+.rev-table .net-row td{font-weight:700;color:#ffd700;background:#0a1a00;font-family:'DM Mono',monospace;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+
+<h3>Daily Revenue Breakdown</h3>
+<table class="rev-table">
+  <tr><th>Service</th><th>Time</th><th>Covers</th><th>Avg Spend</th><th>Daily Revenue</th></tr>
+  <tr><td>Breakfast</td><td>7:00am – 11:00am</td><td>38</td><td>$32.00</td><td>$1,216</td></tr>
+  <tr><td>Lunch</td><td>11:30am – 2:30pm</td><td>54</td><td>$46.00</td><td>$2,484</td></tr>
+  <tr class="total-row"><td colspan="4"><strong>Total Daily Revenue</strong></td><td><strong>$3,700</strong></td></tr>
+</table>
+
+<h3>Monthly P&amp;L Projection (26 Trading Days)</h3>
+<table class="rev-table">
+  <tr><th>Line Item</th><th>Amount</th><th>% of Revenue</th><th>Notes</th></tr>
+  <tr><td>Gross Revenue</td><td>$96,200</td><td>100.0%</td><td>$3,700 × 26 days</td></tr>
+  <tr><td>Food Cost</td><td>($21,164)</td><td>22.0%</td><td>Target 22% blended</td></tr>
+  <tr><td>Labour Cost</td><td>($18,800)</td><td>19.5%</td><td>HC + LC + ST + FOH</td></tr>
+  <tr><td>Rent &amp; Utilities</td><td>($6,200)</td><td>6.4%</td><td>Includes gas, electric, water</td></tr>
+  <tr class="total-row"><td colspan="2"><strong>Total Operating Costs</strong></td><td><strong>47.9%</strong></td><td><strong>($46,164)</strong></td></tr>
+  <tr class="net-row"><td colspan="2"><strong>Est. Monthly Net Profit</strong></td><td><strong>52.0%</strong></td><td><strong>$50,036</strong></td></tr>
+</table>
+
+<h3>3-Month Revenue Ramp</h3>
+<table class="rev-table">
+  <tr><th>Month</th><th>Capacity %</th><th>Est. Monthly Net</th><th>Key Driver</th></tr>
+  <tr><td>Month 1 — Launch</td><td>55%</td><td>~$9,500</td><td>Brand awareness building, soft launch specials, social media launch</td></tr>
+  <tr><td>Month 2 — Growth</td><td>75%</td><td>~$25,000</td><td>Word-of-mouth established, lunch regulars developing, drinks attach rate improving</td></tr>
+  <tr><td>Month 3 — Full Capacity</td><td>100%</td><td>~$50,036</td><td>Full seat utilisation, staff speed optimised, repeat customer base solid</td></tr>
+</table>
+
+<div class="info-box"><strong>Key Profitability Drivers:</strong> (1) <strong>Drinks attach rate</strong> — every table that orders 1 alcoholic drink adds ~$9–14 to the average spend. Target: 65% of lunch covers. (2) <strong>Ramen throughput</strong> — the ramen bowl has the highest contribution margin ($15.60) on the menu. A full lunch service where 40% of tables order ramen adds ~$300 net margin per day. (3) <strong>Food cost discipline</strong> — the 22% target is achievable because your high-margin items (edamame, yakisoba, natto gohan, ochazuke) blended with the slightly higher-cost proteins (salmon, beef yakiniku) average out well below target.</div>
+
+<h2><span class="sn2">8</span> Safety &amp; Allergens</h2>
+
+<style>
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.safety-card{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;padding:14px 16px;}
+.safety-title{font-size:12px;font-weight:700;color:#00d4ff;margin-bottom:8px;font-family:'Space Grotesk',sans-serif;}
+.safety-badge{background:#0a2a0a;color:#4dff4d;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;margin-bottom:8px;}
+.safety-warn{background:#2a1a00;color:#ffa500;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;display:inline-block;margin-bottom:8px;}
+.allergen-matrix{width:100%;border-collapse:collapse;margin:14px 0;font-size:10.5px;}
+.allergen-matrix th{background:#00d4ff;color:#000;padding:6px 8px;text-align:center;font-size:9px;font-weight:700;}
+.allergen-matrix td{padding:5px 8px;border-bottom:1px solid #1e1e1e;text-align:center;color:#e8e8e8;}
+.allergen-matrix .dish-col{text-align:left;font-weight:700;color:#e8e8e8;}
+.allergen-matrix tr:nth-child(even) td{background:#0d0d0d;}
+.check{color:#ffd700;font-weight:700;}
+.clear{color:#333;}
+@media print{html,body{background:#111111 !important;color:#e8e8e8 !important;}.page{background:#111111 !important;}}</style>
+
+<div class="info-box"><strong>Food Safety Overview:</strong> All kitchen staff must be certified in food safety handling. Temperature logging is mandatory for all proteins and cooked items. Cross-contamination prevention protocols are in force at all stations. Review allergen information with FOH staff at every service briefing.</div>
+
+<h3>Critical Temperature Control</h3>
+<div class="safety-grid">
+  <div class="safety-card">
+    <div class="safety-badge">✓ SAFE SERVING TEMPS</div>
+    <div class="safety-title">Protein Safe Temperatures</div>
+    <ul style="font-size:11px;color:#e8e8e8;padding-left:16px;line-height:2;">
+      <li>Poultry (chicken thigh, breast): <strong style="color:#ffd700;">74°C / 165°F</strong></li>
+      <li>Pork belly, chashu: <strong style="color:#ffd700;">74°C / 165°F</strong></li>
+      <li>Ground pork (gyoza filling): <strong style="color:#ffd700;">74°C / 165°F</strong></li>
+      <li>Fish (mackerel, salmon): <strong style="color:#ffd700;">63°C / 145°F</strong></li>
+      <li>Miso salmon (medium preferred): <strong style="color:#ffd700;">57°C / 135°F</strong></li>
+      <li>Beef (yakiniku, thin-sliced): served to preference</li>
+      <li>Eggs (soft-boiled ramen egg): pasteurised</li>
+    </ul>
+  </div>
+  <div class="safety-card">
+    <div class="safety-warn">⚠ HOLD &amp; DISCARD RULES</div>
+    <div class="safety-title">Time &amp; Temperature Management</div>
+    <ul style="font-size:11px;color:#e8e8e8;padding-left:16px;line-height:2;">
+      <li>Hot hold (soups, broths): minimum <strong style="color:#ffd700;">60°C / 140°F</strong></li>
+      <li>Cold hold (all proteins): maximum <strong style="color:#ffd700;">4°C / 40°F</strong></li>
+      <li>Ramen broth: cool to 21°C within 2 hours, 4°C within 4 hours</li>
+      <li>Fried proteins (karaage, katsu): discard after 2 hours held</li>
+      <li>Chashu pork (sliced): discard after 4 hours held</li>
+      <li>Natto: never reheat above 50°C — serve cold or room temp</li>
+      <li>Takoyaki batter: discard after 24 hours refrigerated</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Allergen Quick-Reference Matrix</h3>
+<table class="allergen-matrix">
+  <tr>
+    <th class="dish-col" style="text-align:left;">Dish</th>
+    <th>GLUTEN</th>
+    <th>SOY</th>
+    <th>EGGS</th>
+    <th>DAIRY</th>
+    <th>FISH</th>
+    <th>SHELLFISH</th>
+    <th>SESAME</th>
+    <th>PORK</th>
+    <th>BEEF</th>
+  </tr>
+  <tr><td class="dish-col">Edamame</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Agedashi Tofu</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Yakitori</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Gyoza</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Karaage Chicken</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Takoyaki</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Tonkotsu Ramen</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Chicken Teriyaki Don</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Beef Yakiniku</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="check">●</td></tr>
+  <tr><td class="dish-col">Saba Shioyaki</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Chicken Katsu Curry</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Miso Glazed Salmon</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Gyudon</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td></tr>
+  <tr><td class="dish-col">Yakisoba</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Ochazuke</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Natto Gohan</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Matcha Ice Cream</td><td class="check">●</td><td class="clear">—</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Dorayaki</td><td class="check">●</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Mochi Ice Cream</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td></tr>
+  <tr><td class="dish-col">Anmitsu</td><td class="clear">—</td><td class="clear">—</td><td class="check">●</td><td class="check">●</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td><td class="clear">—</td></tr>
+</table>
+
+<div class="info-box" style="margin-top:14px;"><strong>Staff Allergen Protocol:</strong> Every server must be able to identify the top 9 allergens in every dish without consulting the menu. This matrix should be memorised during onboarding and tested at the 30-day review. Guests with declared allergies must be directed to the manager or head cook — do not guess. When in doubt, default to the safe answer: "Let me confirm that with our chef before I put your order in." This single protocol prevents the majority of serious allergen incidents.</div>
+
+<!-- FOOTER -->
+<div style="margin-top:36px;padding-top:16px;border-top:1px solid #00d4ff;display:flex;justify-content:space-between;font-size:9px;color:#555;letter-spacing:1px;font-family:'DM Mono',monospace;">
+  <div>KitchenFounder · Japanese Izakaya Operations Guide v6 · kitchenfounder.com</div>
+  <div>US Market Edition · 2025 Wholesale Pricing</div>
+  <div>© KitchenFounder Systems</div>
+</div>
+
+</div><!-- end .page -->
+</body>
+</html>
