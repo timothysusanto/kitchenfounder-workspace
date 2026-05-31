@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Temperature Log</title>
+<style>
+:root{--bg:#FAFAF8;--surface:#fff;--border:#E8E4DC;--text:#1C1C1C;--muted:#6B6B6B;--accent:#C8A97E;--accent-dark:#A8895E;--blue:#264653;--green:#2a9d8f;--amber:#e9c46a;--red:#e76f51;--shadow:0 2px 12px rgba(0,0,0,0.06);--radius:8px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;}
+.app-header{background:var(--blue);color:white;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.app-header h1{font-size:1.05rem;font-weight:700;}.app-header .sub{font-size:0.73rem;opacity:0.7;margin-top:2px;}
+.badge{background:var(--accent);color:white;padding:3px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;}
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;overflow-x:auto;}
+.tab-btn{padding:11px 16px;border:none;background:none;color:var(--muted);font-size:0.83rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;}
+.tab-btn.active{color:var(--accent-dark);border-bottom-color:var(--accent);font-weight:700;}
+.tab-panel{display:none;padding:20px;}.tab-panel.active{display:block;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow);}
+.card-title{font-size:0.88rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr;}}
+.field{margin-bottom:10px;}.field label{display:block;font-size:0.69rem;font-weight:700;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.05em;}
+.field input,.field select{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:5px;font-size:0.87rem;background:var(--bg);color:var(--text);}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+.btn{padding:7px 16px;border:none;border-radius:5px;font-size:0.83rem;font-weight:600;cursor:pointer;}
+.btn-primary{background:var(--accent);color:white;}.btn-primary:hover{background:var(--accent-dark);}
+.btn-secondary{background:var(--border);color:var(--text);}
+.btn-danger{background:#fee2e2;color:var(--red);font-size:0.72rem;padding:3px 8px;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.metric-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;}
+.metric-card .ml{font-size:0.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
+.metric-card .mv{font-size:1.2rem;font-weight:800;}.metric-card .ms{font-size:0.67rem;color:var(--muted);margin-top:2px;}
+.metric-card.green .mv{color:var(--green);}.metric-card.amber .mv{color:#c09200;}.metric-card.red .mv{color:var(--red);}.metric-card.blue .mv{color:var(--blue);}
+.temp-table{width:100%;border-collapse:collapse;font-size:0.78rem;}
+.temp-table th{background:var(--blue);color:white;padding:7px 9px;text-align:left;font-size:0.69rem;font-weight:600;white-space:nowrap;}
+.temp-table td{padding:6px 8px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.temp-table tr:hover td{background:#f9f6f0;}
+.temp-table input,.temp-table select{width:100%;padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:0.8rem;background:white;}
+.pass-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.72rem;font-weight:700;}
+.pass{background:#d4edda;color:#155724;}.fail{background:#f8d7da;color:#721c24;}.warn{background:#fff3cd;color:#856404;}
+.haccp-ref{background:#f0ece4;border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 6px 6px 0;font-size:0.78rem;margin-bottom:10px;}
+.haccp-ref strong{color:var(--blue);}
+@media print{.app-header,.tabs,.btn,.btn-row,.no-print{display:none!important;}.tab-panel{display:block!important;padding:0;}body{background:white;}}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div><h1>🌡️ KitchenFounder Temperature Log</h1>
+  <div class="sub">HACCP-compliant digital temp logging · Pass/Fail alerts · Print-ready records</div></div>
+  <span class="badge">FREE TOOL</span>
+</header>
+<div class="tabs">
+  <button class="tab-btn active" data-tab="log">🌡️ Log Temps</button>
+  <button class="tab-btn" data-tab="equipment">🧊 Equipment Setup</button>
+  <button class="tab-btn" data-tab="report">📄 HACCP Report</button>
+</div>
+
+<!-- LOG TAB -->
+<div id="panel-log" class="tab-panel active">
+  <div class="card">
+    <div class="card-title"><span>➕</span> Record Temperature</div>
+    <div class="grid-4">
+      <div class="field"><label>Date</label><input type="date" id="t-date"></div>
+      <div class="field"><label>Time</label><input type="time" id="t-time"></div>
+      <div class="field"><label>Check Type</label>
+        <select id="t-type">
+          <option value="fridge">🧊 Fridge / Cool Room</option>
+          <option value="freezer">❄️ Freezer</option>
+          <option value="hothold">🔥 Hot Hold</option>
+          <option value="cooking">🍳 Cooking (core temp)</option>
+          <option value="receiving">📦 Receiving</option>
+          <option value="cooling">🌀 Cooling</option>
+        </select>
+      </div>
+      <div class="field"><label>Equipment / Item</label>
+        <select id="t-equipment">
+          <option>Walk-in Fridge 1</option>
+          <option>Walk-in Fridge 2</option>
+          <option>Reach-in Fridge</option>
+          <option>Freezer 1</option>
+          <option>Hot Bain Marie</option>
+          <option>Soup Pot</option>
+          <option>Grill / Pan</option>
+          <option>Custom...</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="field"><label>Temperature (°C)</label><input type="number" id="t-temp" placeholder="e.g. 4.2" step="0.1"></div>
+      <div class="field"><label>Recorded By</label><input type="text" id="t-staff" placeholder="Staff name"></div>
+      <div class="field"><label>Corrective Action (if fail)</label><input type="text" id="t-action" placeholder="e.g. Adjusted thermostat"></div>
+      <div class="field"><label>Notes</label><input type="text" id="t-notes" placeholder="Optional"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="addTempEntry()">➕ Record Temperature</button>
+      <button class="btn btn-secondary" onclick="loadSampleTemps()">📋 Load Sample Data</button>
+    </div>
+  </div>
+
+  <div class="grid-4" style="margin-bottom:14px">
+    <div class="metric-card green"><div class="ml">Pass</div><div class="mv" id="sum-pass">0</div><div class="ms">within range</div></div>
+    <div class="metric-card red"><div class="ml">Fail</div><div class="mv" id="sum-fail">0</div><div class="ms">out of range</div></div>
+    <div class="metric-card amber"><div class="ml">Warning</div><div class="mv" id="sum-warn">0</div><div class="ms">near limit</div></div>
+    <div class="metric-card blue"><div class="ml">Total Checks</div><div class="mv" id="sum-total">0</div><div class="ms">recorded</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📋</span> Temperature Log</div>
+    <div style="overflow-x:auto">
+      <table class="temp-table">
+        <thead><tr>
+          <th>Date</th><th>Time</th><th>Type</th><th>Equipment</th>
+          <th>Temp °C</th><th>Safe Range</th><th>Status</th>
+          <th>Staff</th><th>Corrective Action</th><th class="no-print"></th>
+        </tr></thead>
+        <tbody id="temp-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📘</span> HACCP Temperature Reference (US/International)</div>
+    <div class="grid-2">
+      <div>
+        <div class="haccp-ref"><strong>🧊 Cold Storage:</strong> Fridge ≤ 4°C (40°F) · Freezer ≤ -18°C (0°F)</div>
+        <div class="haccp-ref"><strong>🔥 Hot Holding:</strong> ≥ 63°C (145°F) — never below this</div>
+        <div class="haccp-ref"><strong>🍳 Cooking — Poultry:</strong> Core temp ≥ 74°C (165°F)</div>
+        <div class="haccp-ref"><strong>🍳 Cooking — Ground beef:</strong> Core temp ≥ 71°C (160°F)</div>
+      </div>
+      <div>
+        <div class="haccp-ref"><strong>🍳 Cooking — Whole beef/pork:</strong> Core temp ≥ 63°C (145°F)</div>
+        <div class="haccp-ref"><strong>🍳 Cooking — Fish/Seafood:</strong> Core temp ≥ 63°C (145°F)</div>
+        <div class="haccp-ref"><strong>🌀 Cooling:</strong> 60°C → 20°C within 2h · 20°C → 4°C within 4h</div>
+        <div class="haccp-ref"><strong>📦 Receiving:</strong> Chilled ≤ 5°C · Frozen ≤ -15°C</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EQUIPMENT SETUP TAB -->
+<div id="panel-equipment" class="tab-panel">
+  <div class="card">
+    <div class="card-title"><span>🧊</span> Equipment Monitoring Schedule</div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:14px">Set which equipment you check and how often — this becomes your daily compliance schedule.</p>
+    <div id="equipment-list"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="addEquipmentRow()">+ Add Equipment</button>
+    </div>
+  </div>
+</div>
+
+<!-- REPORT TAB -->
+<div id="panel-report" class="tab-panel">
+  <div class="card" id="print-report">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;border-bottom:2px solid var(--accent);padding-bottom:12px">
+      <div>
+        <div style="font-size:1rem;font-weight:800;color:var(--blue)">HACCP Temperature Log</div>
+        <div style="font-size:0.75rem;color:var(--muted)" id="rpt-range">—</div>
+      </div>
+      <div style="text-align:right;font-size:0.7rem;color:var(--muted)">
+        <div style="font-weight:700;color:var(--blue)">KitchenFounder</div>
+        <div id="rpt-compliance-badge"></div>
+      </div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:8px;text-transform:uppercase">Compliance Summary</div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.82rem"><span>Total checks</span><span id="rpt-total">0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.82rem"><span>Pass</span><span id="rpt-pass" style="color:var(--green);font-weight:700">0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.82rem"><span>Fail (corrective action required)</span><span id="rpt-fail" style="color:var(--red);font-weight:700">0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.82rem"><span>Compliance rate</span><span id="rpt-rate" style="font-weight:700">—</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:8px;text-transform:uppercase">All Temperature Records</div>
+      <table class="temp-table" id="rpt-table">
+        <thead><tr><th>Date</th><th>Time</th><th>Type</th><th>Equipment</th><th>Temp °C</th><th>Status</th><th>Staff</th><th>Corrective Action</th></tr></thead>
+        <tbody id="rpt-tbody"></tbody>
+      </table>
+    </div>
+    <div style="padding:10px;background:#f5f0e8;border-radius:6px;font-size:0.68rem;color:var(--muted);text-align:center">
+      KitchenFounder Temperature Log · kitchenfounder.com<br>
+      This record satisfies HACCP documentation requirements. Keep records for minimum 3 months.
+    </div>
+  </div>
+  <div class="btn-row no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn btn-secondary" onclick="renderAll()">🔄 Refresh</button>
+  </div>
+</div>
+
+<script>
+let tempLog = [];
+const TYPE_RANGES = {
+  fridge:   { min:-Infinity, max:4,   warn:5,  label:'Fridge',   icon:'🧊' },
+  freezer:  { min:-Infinity, max:-15, warn:-12,label:'Freezer',  icon:'❄️' },
+  hothold:  { min:63,  max:Infinity,  warn:65, label:'Hot Hold',  icon:'🔥' },
+  cooking:  { min:63,  max:Infinity,  warn:65, label:'Cooking',   icon:'🍳' },
+  receiving:{ min:-Infinity, max:5,   warn:6,  label:'Receiving', icon:'📦' },
+  cooling:  { min:-Infinity, max:20,  warn:22, label:'Cooling',   icon:'🌀' }
+};
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const now=new Date();
+  document.getElementById('t-date').valueAsDate=now;
+  document.getElementById('t-time').value=now.toTimeString().substr(0,5);
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+btn.dataset.tab)?.classList.add('active');
+      renderAll();
+    });
+  });
+  renderEquipment();
+  loadSampleTemps();
+});
+
+function uid(){return 't_'+Date.now()+'_'+Math.random().toString(36).substr(2,4);}
+function gv(id,def=0){const e=document.getElementById(id);return e?(parseFloat(e.value)||def):def;}
+function gt(id,def=''){const e=document.getElementById(id);return e?(e.value||def):def;}
+function st(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+
+function getStatus(type, temp){
+  const r=TYPE_RANGES[type];if(!r)return 'pass';
+  if(type==='hothold'||type==='cooking'){
+    if(temp<r.min)return 'fail';
+    if(temp<r.warn)return 'warn';
+    return 'pass';
+  } else {
+    if(temp>r.warn)return 'fail';
+    if(temp>r.max)return 'warn';
+    return 'pass';
+  }
+}
+function getSafeRange(type){
+  const r=TYPE_RANGES[type];if(!r)return '—';
+  if(type==='hothold'||type==='cooking')return '≥ '+r.min+'°C';
+  if(type==='freezer')return '≤ -15°C';
+  if(type==='receiving')return '≤ 5°C';
+  return '≤ '+r.max+'°C';
+}
+
+function addTempEntry(){
+  const type=gt('t-type','fridge');
+  const temp=gv('t-temp',0);
+  const status=getStatus(type,temp);
+  tempLog.push({
+    id:uid(),date:gt('t-date'),time:gt('t-time'),
+    type,equipment:gt('t-equipment','Walk-in Fridge 1'),
+    temp,status,staff:gt('t-staff',''),
+    action:gt('t-action',''),notes:gt('t-notes','')
+  });
+  document.getElementById('t-temp').value='';
+  document.getElementById('t-action').value='';
+  document.getElementById('t-notes').value='';
+  renderAll();
+}
+
+function removeEntry(id){tempLog=tempLog.filter(e=>e.id!==id);renderAll();}
+
+function loadSampleTemps(){
+  tempLog=[];
+  const today=new Date();
+  const samples=[
+    {date:0,time:'07:00',type:'fridge',equipment:'Walk-in Fridge 1',temp:3.8,staff:'Alex',action:''},
+    {date:0,time:'07:05',type:'freezer',equipment:'Freezer 1',temp:-20.2,staff:'Alex',action:''},
+    {date:0,time:'07:10',type:'fridge',equipment:'Reach-in Fridge',temp:4.1,staff:'Alex',action:''},
+    {date:0,time:'11:30',type:'hothold',equipment:'Hot Bain Marie',temp:68.5,staff:'Jamie',action:''},
+    {date:0,time:'12:00',type:'cooking',equipment:'Grill / Pan',temp:75.2,staff:'Jamie',action:''},
+    {date:0,time:'14:00',type:'fridge',equipment:'Walk-in Fridge 1',temp:4.6,staff:'Sam',action:'Checked door seal'},
+    {date:-1,time:'07:00',type:'fridge',equipment:'Walk-in Fridge 1',temp:3.5,staff:'Alex',action:''},
+    {date:-1,time:'07:05',type:'freezer',equipment:'Freezer 1',temp:-18.9,staff:'Alex',action:''},
+    {date:-1,time:'11:00',type:'hothold',equipment:'Hot Bain Marie',temp:61.0,staff:'Taylor',action:'Reheated to 70°C immediately'},
+    {date:-1,time:'15:00',type:'receiving',equipment:'Grill / Pan',temp:4.2,staff:'Jordan',action:''},
+  ];
+  samples.forEach(s=>{
+    const d=new Date(today);d.setDate(today.getDate()+s.date);
+    const status=getStatus(s.type,s.temp);
+    tempLog.push({id:uid(),date:d.toISOString().split('T')[0],time:s.time,type:s.type,
+      equipment:s.equipment,temp:s.temp,status,staff:s.staff,action:s.action,notes:''});
+  });
+  renderAll();
+}
+
+function renderAll(){
+  const sorted=[...tempLog].sort((a,b)=>b.date+b.time<a.date+a.time?-1:1);
+  const passes=tempLog.filter(e=>e.status==='pass').length;
+  const fails=tempLog.filter(e=>e.status==='fail').length;
+  const warns=tempLog.filter(e=>e.status==='warn').length;
+  st('sum-pass',passes);st('sum-fail',fails);st('sum-warn',warns);st('sum-total',tempLog.length);
+
+  const TYPE_LABELS={fridge:'🧊 Fridge',freezer:'❄️ Freezer',hothold:'🔥 Hot Hold',cooking:'🍳 Cooking',receiving:'📦 Receiving',cooling:'🌀 Cooling'};
+  const tb=document.getElementById('temp-tbody');
+  if(tb) tb.innerHTML=sorted.map(e=>{
+    const statusClass=e.status==='pass'?'pass':e.status==='fail'?'fail':'warn';
+    const statusLabel=e.status==='pass'?'✅ PASS':e.status==='fail'?'❌ FAIL':'⚠️ WARN';
+    return `<tr>
+      <td>${e.date}</td><td>${e.time}</td>
+      <td>${TYPE_LABELS[e.type]||e.type}</td>
+      <td>${e.equipment}</td>
+      <td style="font-weight:700;text-align:center;color:${e.status==='fail'?'var(--red)':e.status==='warn'?'#c09200':'var(--green)'}">${e.temp}°C</td>
+      <td style="font-size:0.72rem;color:var(--muted)">${getSafeRange(e.type)}</td>
+      <td><span class="pass-badge ${statusClass}">${statusLabel}</span></td>
+      <td>${e.staff}</td>
+      <td style="font-size:0.75rem;color:${e.action?'var(--red)':'var(--muted)'}">${e.action||'—'}</td>
+      <td><button class="btn btn-danger no-print" onclick="removeEntry('${e.id}')">✕</button></td>
+    </tr>`;
+  }).join('');
+
+  // Report
+  const dates=tempLog.map(e=>e.date).sort();
+  const range=dates.length?dates[0]+' to '+dates[dates.length-1]:'No entries';
+  st('rpt-range',range);
+  st('rpt-total',tempLog.length);
+  st('rpt-pass',passes);
+  st('rpt-fail',fails);
+  const rate=tempLog.length?Math.round((passes/tempLog.length)*100):0;
+  st('rpt-rate',rate+'%');
+
+  const badge=document.getElementById('rpt-compliance-badge');
+  if(badge){
+    if(fails===0)badge.innerHTML='<span style="background:#d4edda;color:#155724;padding:3px 10px;border-radius:20px;font-size:0.72rem;font-weight:700">✅ Compliant</span>';
+    else badge.innerHTML=`<span style="background:#f8d7da;color:#721c24;padding:3px 10px;border-radius:20px;font-size:0.72rem;font-weight:700">❌ ${fails} Fail(s)</span>`;
+  }
+
+  const rtb=document.getElementById('rpt-tbody');
+  if(rtb) rtb.innerHTML=sorted.map(e=>{
+    const statusLabel=e.status==='pass'?'✅ PASS':e.status==='fail'?'❌ FAIL':'⚠️ WARN';
+    return `<tr>
+      <td>${e.date}</td><td>${e.time}</td>
+      <td>${TYPE_LABELS[e.type]||e.type}</td>
+      <td>${e.equipment}</td>
+      <td style="text-align:center;font-weight:700">${e.temp}°C</td>
+      <td><span class="pass-badge ${e.status==='pass'?'pass':e.status==='fail'?'fail':'warn'}">${statusLabel}</span></td>
+      <td>${e.staff}</td>
+      <td style="font-size:0.75rem">${e.action||'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+let equipmentList=[
+  {name:'Walk-in Fridge 1',freq:'2x daily',type:'fridge'},
+  {name:'Freezer 1',freq:'1x daily',type:'freezer'},
+  {name:'Reach-in Fridge',freq:'2x daily',type:'fridge'},
+  {name:'Hot Bain Marie',freq:'Every 2h during service',type:'hothold'},
+];
+function renderEquipment(){
+  const el=document.getElementById('equipment-list');if(!el)return;
+  el.innerHTML=equipmentList.map((eq,i)=>`
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;align-items:center;margin-bottom:8px;padding:8px;background:#f9f6f0;border-radius:6px">
+      <input type="text" value="${eq.name}" onchange="equipmentList[${i}].name=this.value" style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem">
+      <input type="text" value="${eq.freq}" onchange="equipmentList[${i}].freq=this.value" style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem" placeholder="Check frequency">
+      <select onchange="equipmentList[${i}].type=this.value" style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82rem">
+        <option ${eq.type==='fridge'?'selected':''} value="fridge">Fridge</option>
+        <option ${eq.type==='freezer'?'selected':''} value="freezer">Freezer</option>
+        <option ${eq.type==='hothold'?'selected':''} value="hothold">Hot Hold</option>
+        <option ${eq.type==='cooking'?'selected':''} value="cooking">Cooking</option>
+      </select>
+      <button class="btn btn-danger" onclick="equipmentList.splice(${i},1);renderEquipment()">✕</button>
+    </div>`).join('');
+}
+function addEquipmentRow(){ equipmentList.push({name:'',freq:'1x daily',type:'fridge'}); renderEquipment(); }
+</script>
+</body>
+</html>

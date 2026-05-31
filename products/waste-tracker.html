@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Waste Tracker</title>
+<style>
+:root{--bg:#FAFAF8;--surface:#fff;--border:#E8E4DC;--text:#1C1C1C;--muted:#6B6B6B;--accent:#C8A97E;--accent-dark:#A8895E;--blue:#264653;--green:#2a9d8f;--amber:#e9c46a;--red:#e76f51;--shadow:0 2px 12px rgba(0,0,0,0.06);--radius:8px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;}
+.app-header{background:var(--blue);color:white;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.app-header h1{font-size:1.05rem;font-weight:700;}.app-header .sub{font-size:0.73rem;opacity:0.7;margin-top:2px;}
+.badge{background:var(--accent);color:white;padding:3px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;}
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;overflow-x:auto;}
+.tab-btn{padding:11px 16px;border:none;background:none;color:var(--muted);font-size:0.83rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;}
+.tab-btn.active{color:var(--accent-dark);border-bottom-color:var(--accent);font-weight:700;}
+.tab-panel{display:none;padding:20px;}.tab-panel.active{display:block;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow);}
+.card-title{font-size:0.88rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr;}}
+.field{margin-bottom:10px;}.field label{display:block;font-size:0.69rem;font-weight:700;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.05em;}
+.field input,.field select,.field textarea{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:5px;font-size:0.87rem;background:var(--bg);color:var(--text);}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+.btn{padding:7px 16px;border:none;border-radius:5px;font-size:0.83rem;font-weight:600;cursor:pointer;}
+.btn-primary{background:var(--accent);color:white;}.btn-primary:hover{background:var(--accent-dark);}
+.btn-secondary{background:var(--border);color:var(--text);}
+.btn-danger{background:#fee2e2;color:var(--red);font-size:0.72rem;padding:3px 8px;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.metric-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;}
+.metric-card .ml{font-size:0.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
+.metric-card .mv{font-size:1.2rem;font-weight:800;}.metric-card .ms{font-size:0.67rem;color:var(--muted);margin-top:2px;}
+.metric-card.green .mv{color:var(--green);}.metric-card.amber .mv{color:#c09200;}.metric-card.red .mv{color:var(--red);}.metric-card.blue .mv{color:var(--blue);}
+.waste-table{width:100%;border-collapse:collapse;font-size:0.78rem;}
+.waste-table th{background:var(--blue);color:white;padding:7px 9px;text-align:left;font-size:0.69rem;font-weight:600;white-space:nowrap;}
+.waste-table td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.waste-table tr:hover td{background:#f9f6f0;}
+.waste-table input,.waste-table select{width:100%;padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:0.8rem;background:white;}
+.bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:4px;}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.3s;}
+.reason-badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.68rem;font-weight:700;}
+.r-over{background:#fce4ec;color:#b71c1c;}
+.r-exp{background:#fff3e0;color:#e65100;}
+.r-drop{background:#e8f5e9;color:#2e7d32;}
+.r-spoil{background:#ede7f6;color:#4527a0;}
+.r-other{background:#f5f5f5;color:#424242;}
+@media print{.app-header,.tabs,.btn,.btn-row,.no-print{display:none!important;}.tab-panel{display:block!important;padding:0;}body{background:white;}}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div><h1>🗑️ KitchenFounder Waste Tracker</h1>
+  <div class="sub">Log waste · See cost impact instantly · Find the leaks in your kitchen</div></div>
+  <span class="badge">FREE TOOL</span>
+</header>
+<div class="tabs">
+  <button class="tab-btn active" data-tab="log">📝 Log Waste</button>
+  <button class="tab-btn" data-tab="analysis">📊 Analysis</button>
+  <button class="tab-btn" data-tab="report">📄 Report</button>
+</div>
+
+<!-- LOG TAB -->
+<div id="panel-log" class="tab-panel active">
+  <div class="card">
+    <div class="card-title"><span>➕</span> Log New Waste Entry</div>
+    <div class="grid-4">
+      <div class="field"><label>Date</label><input type="date" id="entry-date"></div>
+      <div class="field"><label>Item / Ingredient</label><input type="text" id="entry-item" placeholder="e.g. Chicken breast"></div>
+      <div class="field"><label>Section</label>
+        <select id="entry-section">
+          <option>Kitchen</option><option>Bar</option><option>Pastry</option><option>Front of House</option><option>Storage</option>
+        </select>
+      </div>
+      <div class="field"><label>Reason</label>
+        <select id="entry-reason">
+          <option value="over">Over-production</option>
+          <option value="exp">Expired / Spoiled</option>
+          <option value="drop">Dropped / Damaged</option>
+          <option value="spoil">Improper storage</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="field"><label>Quantity Wasted</label><input type="number" id="entry-qty" value="1" min="0" step="0.1"></div>
+      <div class="field"><label>Unit</label>
+        <select id="entry-unit">
+          <option>kg</option><option>g</option><option>L</option><option>mL</option><option>pcs</option><option>portions</option>
+        </select>
+      </div>
+      <div class="field"><label>Cost per Unit ($)</label><input type="number" id="entry-cost" value="0" min="0" step="0.01" placeholder="e.g. 8.50"></div>
+      <div class="field"><label>Notes</label><input type="text" id="entry-notes" placeholder="Optional notes"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="addWasteEntry()">➕ Add Entry</button>
+      <button class="btn btn-secondary" onclick="loadSampleWaste()">📋 Load Sample Data</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📋</span> Waste Log</div>
+    <div style="overflow-x:auto">
+      <table class="waste-table">
+        <thead><tr>
+          <th>Date</th><th>Item</th><th>Section</th><th>Reason</th>
+          <th>Qty</th><th>Unit</th><th>Cost/Unit</th><th>Total Cost</th><th class="no-print"></th>
+        </tr></thead>
+        <tbody id="waste-tbody"></tbody>
+        <tfoot><tr style="background:#f0ece4;font-weight:700">
+          <td colspan="7" style="padding:6px 8px;font-size:0.78rem">TOTAL WASTE COST</td>
+          <td id="total-waste-cost" style="padding:6px 8px;font-size:0.82rem;color:var(--red)">$0.00</td>
+          <td class="no-print"></td>
+        </tr></tfoot>
+      </table>
+    </div>
+    <div class="btn-row no-print">
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear All</button>
+    </div>
+  </div>
+</div>
+
+<!-- ANALYSIS TAB -->
+<div id="panel-analysis" class="tab-panel">
+  <div class="grid-4" style="margin-bottom:14px">
+    <div class="metric-card red"><div class="ml">Total Waste Cost</div><div class="mv" id="ana-total">$0</div><div class="ms">logged period</div></div>
+    <div class="metric-card amber"><div class="ml">Top Waste Reason</div><div class="mv" id="ana-top-reason" style="font-size:0.9rem">—</div><div class="ms">by cost</div></div>
+    <div class="metric-card blue"><div class="ml">Top Waste Item</div><div class="mv" id="ana-top-item" style="font-size:0.9rem">—</div><div class="ms">by cost</div></div>
+    <div class="metric-card"><div class="ml">Annualised Impact</div><div class="mv" id="ana-annual">$0</div><div class="ms">if trend continues</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span>📊</span> Waste by Reason</div>
+      <div id="reason-breakdown"></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span>🏪</span> Waste by Section</div>
+      <div id="section-breakdown"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>🥩</span> Top 10 Waste Items (by cost)</div>
+    <div id="top-items-breakdown"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>💡</span> Action Points</div>
+    <div id="action-points" style="font-size:0.83rem;line-height:1.8"></div>
+  </div>
+</div>
+
+<!-- REPORT TAB -->
+<div id="panel-report" class="tab-panel">
+  <div class="card" id="print-report">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;border-bottom:2px solid var(--accent);padding-bottom:12px">
+      <div>
+        <div style="font-size:1rem;font-weight:800;color:var(--blue)">Kitchen Waste Report</div>
+        <div style="font-size:0.75rem;color:var(--muted)" id="rpt-date-range">—</div>
+      </div>
+      <div style="text-align:right;font-size:0.7rem;color:var(--muted)"><div style="font-weight:700;color:var(--blue)">KitchenFounder</div><div>Waste Tracker</div></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:8px;text-transform:uppercase">Summary</div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.82rem"><span>Total entries</span><span id="rpt-entries">0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.82rem"><span>Total waste cost</span><span id="rpt-total" style="color:var(--red);font-weight:700">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.82rem"><span>Annualised impact</span><span id="rpt-annual">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.82rem"><span>Top waste category</span><span id="rpt-top-reason">—</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:8px;text-transform:uppercase">All Entries</div>
+      <table class="waste-table" id="rpt-table">
+        <thead><tr><th>Date</th><th>Item</th><th>Section</th><th>Reason</th><th>Qty</th><th>Unit</th><th>Total Cost</th></tr></thead>
+        <tbody id="rpt-tbody"></tbody>
+      </table>
+    </div>
+    <div style="padding:10px;background:#f5f0e8;border-radius:6px;font-size:0.68rem;color:var(--muted);text-align:center">Generated by KitchenFounder Waste Tracker · kitchenfounder.com</div>
+  </div>
+  <div class="btn-row no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn btn-secondary" onclick="renderAll()">🔄 Refresh</button>
+  </div>
+</div>
+
+<script>
+let wasteLog = [];
+const REASON_LABELS={over:'Over-production',exp:'Expired / Spoiled',drop:'Dropped / Damaged',spoil:'Improper storage',other:'Other'};
+const REASON_CLASS={over:'r-over',exp:'r-exp',drop:'r-drop',spoil:'r-spoil',other:'r-other'};
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('entry-date').valueAsDate=new Date();
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+btn.dataset.tab)?.classList.add('active');
+      renderAll();
+    });
+  });
+  loadSampleWaste();
+});
+
+function uid(){return 'w_'+Date.now()+'_'+Math.random().toString(36).substr(2,4);}
+function fmt(n){return '$'+parseFloat(n).toFixed(2);}
+function gv(id,def=0){const e=document.getElementById(id);return e?(parseFloat(e.value)||def):def;}
+function gt(id,def=''){const e=document.getElementById(id);return e?(e.value||def):def;}
+function st(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+
+function addWasteEntry(){
+  const qty=gv('entry-qty',1);
+  const cost=gv('entry-cost',0);
+  wasteLog.push({
+    id:uid(),
+    date:gt('entry-date'),
+    item:gt('entry-item','Unknown item'),
+    section:gt('entry-section','Kitchen'),
+    reason:gt('entry-reason','over'),
+    qty,unit:gt('entry-unit','kg'),
+    costPerUnit:cost,totalCost:qty*cost,
+    notes:gt('entry-notes','')
+  });
+  document.getElementById('entry-item').value='';
+  document.getElementById('entry-qty').value='1';
+  document.getElementById('entry-cost').value='0';
+  document.getElementById('entry-notes').value='';
+  renderAll();
+}
+
+function removeEntry(id){wasteLog=wasteLog.filter(e=>e.id!==id);renderAll();}
+function clearAll(){if(confirm('Clear all waste entries?')){wasteLog=[];renderAll();}}
+
+function loadSampleWaste(){
+  wasteLog=[];
+  const today=new Date();
+  const days=[0,0,1,1,2,2,3,4,4,5];
+  const samples=[
+    {item:'Chicken breast',section:'Kitchen',reason:'over',qty:1.2,unit:'kg',costPerUnit:8.50},
+    {item:'Salmon portions',section:'Kitchen',reason:'exp',qty:0.8,unit:'kg',costPerUnit:14.00},
+    {item:'Mixed greens',section:'Kitchen',reason:'spoil',qty:0.5,unit:'kg',costPerUnit:6.00},
+    {item:'Dessert plate (dropped)',section:'Pastry',reason:'drop',qty:2,unit:'portions',costPerUnit:4.50},
+    {item:'House red wine',section:'Bar',reason:'over',qty:0.75,unit:'L',costPerUnit:8.00},
+    {item:'Beef patties',section:'Kitchen',reason:'over',qty:0.6,unit:'kg',costPerUnit:12.00},
+    {item:'Cream sauce',section:'Kitchen',reason:'exp',qty:1,unit:'L',costPerUnit:5.00},
+    {item:'Bread rolls',section:'Front of House',reason:'over',qty:12,unit:'pcs',costPerUnit:0.60},
+    {item:'Mango sorbet',section:'Pastry',reason:'spoil',qty:0.4,unit:'kg',costPerUnit:9.00},
+    {item:'Lemon tart (cracked)',section:'Pastry',reason:'drop',qty:3,unit:'pcs',costPerUnit:3.50},
+  ];
+  samples.forEach((s,i)=>{
+    const d=new Date(today);d.setDate(today.getDate()-days[i]);
+    wasteLog.push({id:uid(),date:d.toISOString().split('T')[0],...s,totalCost:s.qty*s.costPerUnit,notes:''});
+  });
+  renderAll();
+}
+
+function renderAll(){
+  // Waste log table
+  const tb=document.getElementById('waste-tbody');if(!tb)return;
+  const sorted=[...wasteLog].sort((a,b)=>b.date.localeCompare(a.date));
+  tb.innerHTML=sorted.map(e=>`<tr>
+    <td>${e.date}</td><td style="font-weight:600">${e.item}</td><td>${e.section}</td>
+    <td><span class="reason-badge ${REASON_CLASS[e.reason]}">${REASON_LABELS[e.reason]}</span></td>
+    <td style="text-align:center">${e.qty}</td><td>${e.unit}</td>
+    <td style="text-align:center">$${e.costPerUnit.toFixed(2)}</td>
+    <td style="text-align:center;font-weight:700;color:var(--red)">$${e.totalCost.toFixed(2)}</td>
+    <td><button class="btn btn-danger no-print" onclick="removeEntry('${e.id}')">✕</button></td>
+  </tr>`).join('');
+  const total=wasteLog.reduce((a,e)=>a+e.totalCost,0);
+  st('total-waste-cost','$'+total.toFixed(2));
+
+  // Analysis
+  const days=wasteLog.length>0?(new Set(wasteLog.map(e=>e.date))).size:1;
+  const annualised=total/days*365;
+  st('ana-total','$'+Math.round(total));
+  st('ana-annual','$'+Math.round(annualised).toLocaleString());
+
+  // By reason
+  const byReason={};
+  wasteLog.forEach(e=>{if(!byReason[e.reason])byReason[e.reason]=0;byReason[e.reason]+=e.totalCost;});
+  const topReason=Object.entries(byReason).sort((a,b)=>b[1]-a[1])[0];
+  st('ana-top-reason',topReason?REASON_LABELS[topReason[0]]:'—');
+  const rb=document.getElementById('reason-breakdown');
+  if(rb){
+    const maxR=Math.max(...Object.values(byReason),1);
+    rb.innerHTML=Object.entries(byReason).sort((a,b)=>b[1]-a[1]).map(([r,v])=>`
+      <div style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:3px">
+          <span><span class="reason-badge ${REASON_CLASS[r]}">${REASON_LABELS[r]}</span></span>
+          <span style="font-weight:700;color:var(--red)">$${v.toFixed(2)}</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(v/maxR*100).toFixed(0)}%;background:var(--red);opacity:0.7"></div></div>
+      </div>`).join('') || '<div style="color:var(--muted);font-size:0.8rem">No data yet</div>';
+  }
+
+  // By section
+  const bySection={};
+  wasteLog.forEach(e=>{if(!bySection[e.section])bySection[e.section]=0;bySection[e.section]+=e.totalCost;});
+  const sb=document.getElementById('section-breakdown');
+  if(sb){
+    const maxS=Math.max(...Object.values(bySection),1);
+    sb.innerHTML=Object.entries(bySection).sort((a,b)=>b[1]-a[1]).map(([s,v])=>`
+      <div style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:3px">
+          <span style="font-weight:600">${s}</span>
+          <span style="font-weight:700;color:var(--red)">$${v.toFixed(2)}</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(v/maxS*100).toFixed(0)}%;background:var(--amber)"></div></div>
+      </div>`).join('') || '<div style="color:var(--muted);font-size:0.8rem">No data yet</div>';
+  }
+
+  // Top items
+  const byItem={};
+  wasteLog.forEach(e=>{if(!byItem[e.item])byItem[e.item]=0;byItem[e.item]+=e.totalCost;});
+  const topItems=Object.entries(byItem).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  st('ana-top-item',topItems[0]?topItems[0][0]:'—');
+  const ti=document.getElementById('top-items-breakdown');
+  if(ti){
+    const maxI=topItems[0]?topItems[0][1]:1;
+    ti.innerHTML=topItems.map(([item,v],i)=>`
+      <div style="margin-bottom:8px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:0.7rem;font-weight:700;color:var(--muted);width:18px">${i+1}</span>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:2px">
+            <span style="font-weight:600">${item}</span>
+            <span style="font-weight:700;color:var(--red)">$${v.toFixed(2)}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:${(v/maxI*100).toFixed(0)}%;background:var(--blue);opacity:0.6"></div></div>
+        </div>
+      </div>`).join('') || '<div style="color:var(--muted);font-size:0.8rem">No data yet</div>';
+  }
+
+  // Action points
+  const ap=document.getElementById('action-points');
+  if(ap){
+    const actions=[];
+    if(byReason['over']>0) actions.push(`<strong>Over-production ($${byReason['over'].toFixed(2)}):</strong> Tighten daily prep quantities using expected covers. Use the Daily Prep Sheet to scale recipes. Over-production is the #1 controllable waste category.`);
+    if(byReason['exp']>0) actions.push(`<strong>Expired / Spoiled ($${byReason['exp'].toFixed(2)}):</strong> Review FIFO labelling. Ensure all deliveries are dated on arrival. Reduce order quantities on slow-moving items.`);
+    if(byReason['drop']>0) actions.push(`<strong>Dropped / Damaged ($${byReason['drop'].toFixed(2)}):</strong> Check plating station setup and traffic flow. Brief staff on handle-with-care items during pre-service.`);
+    if(byReason['spoil']>0) actions.push(`<strong>Improper Storage ($${byReason['spoil'].toFixed(2)}):</strong> Review fridge temperature logs. Check storage containers for sealing. Staff training on proper wrapping and labelling.`);
+    if(annualised>10000) actions.push(`<strong>🔴 High impact:</strong> At current rates, waste costs you ~$${Math.round(annualised).toLocaleString()}/year. A 30% reduction saves $${Math.round(annualised*0.3).toLocaleString()} — enough to hire a part-time prep cook.`);
+    ap.innerHTML=actions.length?actions.map(a=>`<p style="margin-bottom:10px">• ${a}</p>`).join(''):'<p style="color:var(--muted)">Log some waste entries to see action points.</p>';
+  }
+
+  // Report
+  const dates=wasteLog.map(e=>e.date).sort();
+  st('rpt-date-range', dates.length?dates[0]+' to '+dates[dates.length-1]:'No entries');
+  st('rpt-entries',wasteLog.length);
+  st('rpt-total','$'+total.toFixed(2));
+  st('rpt-annual','$'+Math.round(annualised).toLocaleString()+'/year');
+  st('rpt-top-reason',topReason?REASON_LABELS[topReason[0]]:'—');
+  const rtb=document.getElementById('rpt-tbody');
+  if(rtb) rtb.innerHTML=sorted.map(e=>`<tr>
+    <td>${e.date}</td><td>${e.item}</td><td>${e.section}</td>
+    <td>${REASON_LABELS[e.reason]}</td><td>${e.qty} ${e.unit}</td>
+    <td style="text-align:right;font-weight:700;color:var(--red)">$${e.totalCost.toFixed(2)}</td>
+  </tr>`).join('');
+}
+</script>
+</body>
+</html>

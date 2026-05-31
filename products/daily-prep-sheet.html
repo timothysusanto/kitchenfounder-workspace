@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Daily Prep Sheet Generator</title>
+<style>
+:root {
+  --bg:#FAFAF8;--surface:#fff;--border:#E8E4DC;--text:#1C1C1C;--muted:#6B6B6B;
+  --accent:#C8A97E;--accent-dark:#A8895E;--blue:#264653;--green:#2a9d8f;--amber:#e9c46a;--red:#e76f51;
+  --shadow:0 2px 12px rgba(0,0,0,0.06);--radius:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;}
+.app-header{background:var(--blue);color:white;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.app-header h1{font-size:1.05rem;font-weight:700;}.app-header .sub{font-size:0.73rem;opacity:0.7;margin-top:2px;}
+.badge{background:var(--accent);color:white;padding:3px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;}
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;overflow-x:auto;}
+.tab-btn{padding:11px 16px;border:none;background:none;color:var(--muted);font-size:0.83rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;}
+.tab-btn.active{color:var(--accent-dark);border-bottom-color:var(--accent);font-weight:700;}
+.tab-panel{display:none;padding:20px;}.tab-panel.active{display:block;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow);}
+.card-title{font-size:0.88rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr;}}
+.field{margin-bottom:10px;}.field label{display:block;font-size:0.69rem;font-weight:700;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.05em;}
+.field input,.field select,.field textarea{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:5px;font-size:0.87rem;background:var(--bg);color:var(--text);}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+.btn{padding:7px 16px;border:none;border-radius:5px;font-size:0.83rem;font-weight:600;cursor:pointer;}
+.btn-primary{background:var(--accent);color:white;}.btn-primary:hover{background:var(--accent-dark);}
+.btn-secondary{background:var(--border);color:var(--text);}
+.btn-danger{background:#fee2e2;color:var(--red);font-size:0.72rem;padding:3px 8px;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.metric-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;}
+.metric-card .ml{font-size:0.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
+.metric-card .mv{font-size:1.2rem;font-weight:800;}.metric-card .ms{font-size:0.67rem;color:var(--muted);margin-top:2px;}
+.metric-card.green .mv{color:var(--green);}.metric-card.amber .mv{color:#c09200;}.metric-card.red .mv{color:var(--red);}.metric-card.blue .mv{color:var(--blue);}
+/* Prep table */
+.prep-table{width:100%;border-collapse:collapse;font-size:0.78rem;}
+.prep-table th{background:var(--blue);color:white;padding:7px 9px;text-align:left;font-size:0.69rem;font-weight:600;white-space:nowrap;}
+.prep-table td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.prep-table tr:hover td{background:#f9f6f0;}
+.prep-table input,.prep-table select{width:100%;padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:0.8rem;background:white;}
+.section-row td{background:#f0ece4;font-weight:700;font-size:0.74rem;color:var(--blue);text-transform:uppercase;letter-spacing:0.03em;}
+.status-chip{display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.68rem;font-weight:700;}
+.chip-todo{background:#f0ece4;color:var(--muted);}
+.chip-inprogress{background:#fff3cd;color:#856404;}
+.chip-done{background:#d4edda;color:#155724;}
+/* Print */
+@media print{.app-header,.tabs,.btn,.btn-row,.no-print{display:none!important;}.tab-panel{display:block!important;padding:0;}body{background:white;}}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div><h1>📋 KitchenFounder Daily Prep Sheet Generator</h1>
+  <div class="sub">Auto-scale prep quantities to expected covers · Track completion live</div></div>
+  <span class="badge">FREE TOOL</span>
+</header>
+<div class="tabs">
+  <button class="tab-btn active" data-tab="setup">⚙️ Setup</button>
+  <button class="tab-btn" data-tab="prep">📋 Prep Sheet</button>
+  <button class="tab-btn" data-tab="print">🖨️ Print View</button>
+</div>
+
+<!-- SETUP TAB -->
+<div id="panel-setup" class="tab-panel active">
+  <div class="card">
+    <div class="card-title"><span>🏪</span> Service Details</div>
+    <div class="grid-3">
+      <div class="field"><label>Restaurant Name</label><input type="text" id="resto-name" value="My Restaurant"></div>
+      <div class="field"><label>Date</label><input type="date" id="prep-date"></div>
+      <div class="field"><label>Service Type</label>
+        <select id="service-type">
+          <option>Breakfast</option><option selected>Lunch + Dinner</option><option>Dinner Only</option><option>Brunch</option><option>All Day</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="field"><label>Expected Covers</label><input type="number" id="expected-covers" value="80" min="1" oninput="calculateAll()"><div style="font-size:0.67rem;color:var(--muted);margin-top:2px">Total for the day</div></div>
+      <div class="field"><label>Base Recipe (covers)</label><input type="number" id="base-covers" value="50" min="1" oninput="calculateAll()"><div style="font-size:0.67rem;color:var(--muted);margin-top:2px">Your recipe is written for</div></div>
+      <div class="field"><label>Waste Buffer %</label><input type="number" id="waste-buffer" value="10" min="0" max="30" oninput="calculateAll()"></div>
+      <div class="field"><label>Head Chef / Sous</label><input type="text" id="chef-name" value=""></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>🥩</span> Prep Items
+      <button class="btn btn-secondary no-print" style="margin-left:auto;font-size:0.75rem" onclick="loadSamplePrep()">📋 Load Sample</button>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="prep-table">
+        <thead><tr>
+          <th style="min-width:140px">Item / Ingredient</th>
+          <th>Section</th>
+          <th>Base Qty</th>
+          <th>Unit</th>
+          <th>Scaled Qty</th>
+          <th>+Buffer</th>
+          <th>Priority</th>
+          <th>Assigned To</th>
+          <th>Status</th>
+          <th class="no-print"></th>
+        </tr></thead>
+        <tbody id="prep-tbody"></tbody>
+      </table>
+    </div>
+    <div class="btn-row no-print">
+      <button class="btn btn-primary" onclick="addPrepItem()">+ Add Item</button>
+      <button class="btn btn-secondary" onclick="loadSamplePrep()">📋 Load Sample Menu</button>
+      <button class="btn btn-secondary" onclick="calculateAll()">🔄 Recalculate</button>
+    </div>
+  </div>
+</div>
+
+<!-- PREP SHEET TAB -->
+<div id="panel-prep" class="tab-panel">
+  <div class="grid-4" style="margin-bottom:14px">
+    <div class="metric-card blue"><div class="ml">Expected Covers</div><div class="mv" id="sum-covers">0</div><div class="ms">today</div></div>
+    <div class="metric-card"><div class="ml">Total Prep Items</div><div class="mv" id="sum-items">0</div><div class="ms">tasks</div></div>
+    <div class="metric-card green"><div class="ml">Completed</div><div class="mv" id="sum-done">0</div><div class="ms">tasks</div></div>
+    <div class="metric-card amber"><div class="ml">To Do</div><div class="mv" id="sum-todo">0</div><div class="ms">tasks remaining</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span>📋</span> Live Prep Tracker</div>
+    <div style="overflow-x:auto">
+      <table class="prep-table">
+        <thead><tr>
+          <th>Item</th><th>Section</th><th>Required Qty</th><th>Unit</th><th>Priority</th><th>Assigned</th><th>Status</th>
+        </tr></thead>
+        <tbody id="live-tbody"></tbody>
+      </table>
+    </div>
+    <div class="btn-row no-print">
+      <button class="btn btn-primary" onclick="markAllDone()">✅ Mark All Done</button>
+      <button class="btn btn-secondary" onclick="resetAll()">🔄 Reset All</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT VIEW TAB -->
+<div id="panel-print" class="tab-panel">
+  <div class="card" id="print-area">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;border-bottom:2px solid var(--accent);padding-bottom:12px">
+      <div>
+        <div style="font-size:1rem;font-weight:800;color:var(--blue)" id="print-resto">My Restaurant</div>
+        <div style="font-size:0.8rem;color:var(--muted)" id="print-date-service"></div>
+        <div style="font-size:0.78rem;margin-top:2px" id="print-covers-chef"></div>
+      </div>
+      <div style="text-align:right;font-size:0.7rem;color:var(--muted)">
+        <div style="font-weight:700;color:var(--blue)">DAILY PREP SHEET</div>
+        <div>KitchenFounder</div>
+      </div>
+    </div>
+    <table class="prep-table" id="print-table">
+      <thead><tr>
+        <th>Item / Ingredient</th><th>Section</th><th>Required Qty</th><th>Unit</th><th>Priority</th><th>Assigned To</th>
+        <th style="width:80px">✓ Done</th>
+      </tr></thead>
+      <tbody id="print-tbody"></tbody>
+    </table>
+    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:0.78rem">
+      <div><div style="font-weight:700;margin-bottom:4px">Head Chef Sign-off:</div><div style="border-bottom:1px solid #999;height:28px"></div></div>
+      <div><div style="font-weight:700;margin-bottom:4px">Sous Chef:</div><div style="border-bottom:1px solid #999;height:28px"></div></div>
+      <div><div style="font-weight:700;margin-bottom:4px">Time Completed:</div><div style="border-bottom:1px solid #999;height:28px"></div></div>
+    </div>
+  </div>
+  <div class="btn-row no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn btn-secondary" onclick="calculateAll()">🔄 Refresh</button>
+  </div>
+</div>
+
+<script>
+let prepItems = [];
+const SECTIONS = ['Mise en Place','Sauces','Proteins','Veg Prep','Garnishes','Pastry','Drinks','Other'];
+const PRIORITIES = ['🔴 Critical','🟡 High','🟢 Normal','⚪ Low'];
+const STATUSES = ['To Do','In Progress','Done'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const d = new Date(); document.getElementById('prep-date').valueAsDate = d;
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+btn.dataset.tab)?.classList.add('active');
+      calculateAll();
+    });
+  });
+  loadSamplePrep();
+});
+
+function uid(){ return 'p_'+Date.now()+'_'+Math.random().toString(36).substr(2,4); }
+function gv(id,def=0){ const e=document.getElementById(id); return e?(parseFloat(e.value)||def):def; }
+function gt(id,def=''){ const e=document.getElementById(id); return e?(e.value||def):def; }
+function st(id,v){ const e=document.getElementById(id); if(e) e.textContent=v; }
+
+function addPrepItem(data={}){
+  prepItems.push({ id:uid(), name:data.name||'', section:data.section||'Mise en Place',
+    baseQty:data.baseQty||1, unit:data.unit||'kg', priority:data.priority||'🟢 Normal',
+    assigned:data.assigned||'', status:'To Do' });
+  renderSetupTable(); calculateAll();
+}
+
+function removePrepItem(id){ prepItems=prepItems.filter(i=>i.id!==id); renderSetupTable(); calculateAll(); }
+
+function loadSamplePrep(){
+  prepItems=[];
+  const s=[
+    {name:'Chicken thigh marinade',section:'Proteins',baseQty:5,unit:'kg',priority:'🔴 Critical'},
+    {name:'Beef burger patties',section:'Proteins',baseQty:3,unit:'kg',priority:'🔴 Critical'},
+    {name:'Salmon portions',section:'Proteins',baseQty:2.5,unit:'kg',priority:'🔴 Critical'},
+    {name:'Tomato concassé',section:'Mise en Place',baseQty:2,unit:'kg',priority:'🟡 High'},
+    {name:'Onion brunoise',section:'Mise en Place',baseQty:1.5,unit:'kg',priority:'🟡 High'},
+    {name:'Garlic confit',section:'Mise en Place',baseQty:0.5,unit:'kg',priority:'🟡 High'},
+    {name:'House sauce',section:'Sauces',baseQty:3,unit:'L',priority:'🔴 Critical'},
+    {name:'Aioli',section:'Sauces',baseQty:1,unit:'L',priority:'🟡 High'},
+    {name:'Demi-glace',section:'Sauces',baseQty:2,unit:'L',priority:'🟢 Normal'},
+    {name:'Mixed leaf salad',section:'Veg Prep',baseQty:2,unit:'kg',priority:'🟡 High'},
+    {name:'Roasted vegetables',section:'Veg Prep',baseQty:3,unit:'kg',priority:'🟢 Normal'},
+    {name:'French fries',section:'Veg Prep',baseQty:5,unit:'kg',priority:'🟡 High'},
+    {name:'Microherbs',section:'Garnishes',baseQty:0.1,unit:'kg',priority:'⚪ Low'},
+    {name:'Dessert garnish set',section:'Pastry',baseQty:50,unit:'pcs',priority:'🟢 Normal'},
+    {name:'Lemon tart shells',section:'Pastry',baseQty:30,unit:'pcs',priority:'🟡 High'},
+  ];
+  s.forEach(d=>{ prepItems.push({id:uid(),...d,assigned:'',status:'To Do'}); });
+  renderSetupTable(); calculateAll();
+}
+
+function renderSetupTable(){
+  const tb=document.getElementById('prep-tbody'); if(!tb) return;
+  const scale=gv('expected-covers',80)/gv('base-covers',50);
+  const buf=1+gv('waste-buffer',10)/100;
+  tb.innerHTML=prepItems.map((item,idx)=>{
+    const scaled=(item.baseQty*scale).toFixed(2);
+    const withBuf=(item.baseQty*scale*buf).toFixed(2);
+    return `<tr>
+      <td><input type="text" value="${item.name}" placeholder="Ingredient / task"
+        onchange="prepItems[${idx}].name=this.value;calculateAll()"></td>
+      <td><select onchange="prepItems[${idx}].section=this.value;calculateAll()">
+        ${SECTIONS.map(s=>`<option ${item.section===s?'selected':''}>${s}</option>`).join('')}
+      </select></td>
+      <td><input type="number" value="${item.baseQty}" min="0" step="0.1"
+        onchange="prepItems[${idx}].baseQty=parseFloat(this.value)||0;renderSetupTable();calculateAll()"></td>
+      <td><input type="text" value="${item.unit}" style="width:60px"
+        onchange="prepItems[${idx}].unit=this.value"></td>
+      <td style="font-weight:700;text-align:center">${withBuf}</td>
+      <td style="text-align:center;font-size:0.75rem;color:var(--muted)">${scaled}</td>
+      <td><select onchange="prepItems[${idx}].priority=this.value;calculateAll()">
+        ${PRIORITIES.map(p=>`<option ${item.priority===p?'selected':''}>${p}</option>`).join('')}
+      </select></td>
+      <td><input type="text" value="${item.assigned}" placeholder="Name"
+        onchange="prepItems[${idx}].assigned=this.value" style="width:90px"></td>
+      <td><select onchange="prepItems[${idx}].status=this.value;calculateAll()">
+        ${STATUSES.map(s=>`<option ${item.status===s?'selected':''}>${s}</option>`).join('')}
+      </select></td>
+      <td><button class="btn btn-danger no-print" onclick="removePrepItem('${item.id}')">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function calculateAll(){
+  renderSetupTable();
+  const scale=gv('expected-covers',80)/gv('base-covers',50);
+  const buf=1+gv('waste-buffer',10)/100;
+  const done=prepItems.filter(i=>i.status==='Done').length;
+  st('sum-covers',gv('expected-covers',80));
+  st('sum-items',prepItems.length);
+  st('sum-done',done);
+  st('sum-todo',prepItems.length-done);
+
+  // Live tracker
+  const lt=document.getElementById('live-tbody'); if(!lt) return;
+  const priorityOrder={'🔴 Critical':0,'🟡 High':1,'🟢 Normal':2,'⚪ Low':3};
+  const sorted=[...prepItems].sort((a,b)=>(priorityOrder[a.priority]||3)-(priorityOrder[b.priority]||3));
+  lt.innerHTML=sorted.map((item,idx)=>{
+    const withBuf=(item.baseQty*scale*buf).toFixed(2);
+    const chipClass=item.status==='Done'?'chip-done':item.status==='In Progress'?'chip-inprogress':'chip-todo';
+    return `<tr>
+      <td style="font-weight:600">${item.name}</td>
+      <td>${item.section}</td>
+      <td style="text-align:center;font-weight:700">${withBuf}</td>
+      <td>${item.unit}</td>
+      <td>${item.priority}</td>
+      <td>${item.assigned||'—'}</td>
+      <td>
+        <select onchange="prepItems.find(i=>i.id==='${item.id}').status=this.value;calculateAll()"
+          style="width:100%;padding:3px 5px;border-radius:4px;border:1px solid var(--border);background:white;font-size:0.78rem">
+          ${STATUSES.map(s=>`<option ${item.status===s?'selected':''}>${s}</option>`).join('')}
+        </select>
+      </td>
+    </tr>`;
+  }).join('');
+
+  // Print view
+  const date=gt('prep-date');
+  const dateStr=date?new Date(date+'T00:00:00').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'—';
+  st('print-resto',gt('resto-name','My Restaurant'));
+  const el=document.getElementById('print-date-service');
+  if(el) el.textContent=dateStr+' · '+gt('service-type','Lunch + Dinner');
+  const el2=document.getElementById('print-covers-chef');
+  if(el2) el2.textContent='Expected covers: '+gv('expected-covers',80)+' · '+gt('chef-name','');
+
+  const pt=document.getElementById('print-tbody'); if(!pt) return;
+  pt.innerHTML=sorted.map(item=>{
+    const withBuf=(item.baseQty*scale*buf).toFixed(2);
+    return `<tr>
+      <td>${item.name}</td><td>${item.section}</td>
+      <td style="text-align:center;font-weight:700">${withBuf}</td>
+      <td>${item.unit}</td><td>${item.priority}</td>
+      <td>${item.assigned||''}</td>
+      <td style="text-align:center;border:1px solid #999;font-size:1.1rem">${item.status==='Done'?'✓':''}</td>
+    </tr>`;
+  }).join('');
+}
+
+function markAllDone(){ prepItems.forEach(i=>i.status='Done'); calculateAll(); }
+function resetAll(){ prepItems.forEach(i=>i.status='To Do'); calculateAll(); }
+</script>
+</html>

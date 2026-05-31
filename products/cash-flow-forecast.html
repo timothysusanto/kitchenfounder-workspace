@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Cash Flow Forecast</title>
+<style>
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --border: #E8E4DC;
+  --text: #1C1C1C;
+  --muted: #6B6B6B;
+  --accent: #C8A97E;
+  --accent-dark: #A8895E;
+  --green: #2a9d8f;
+  --amber: #f4a261;
+  --red: #e76f51;
+  --red-dark: #c0392b;
+  --blue: #264653;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --radius: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui,-apple-system,sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+
+.app-header {
+  background: var(--blue); color: white; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.app-header h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; }
+.app-header .sub { font-size: 0.75rem; opacity: 0.7; margin-top: 2px; }
+.badge { background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; }
+
+.tabs { display: flex; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; overflow-x: auto; }
+.tab-btn { padding: 12px 20px; border: none; background: none; color: var(--muted); font-size: 0.85rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+.tab-btn.active { color: var(--accent-dark); border-bottom-color: var(--accent); font-weight: 700; }
+.tab-panel { display: none; padding: 24px; }
+.tab-panel.active { display: block; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.card-title span { font-size: 1.1rem; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.grid-6 { display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; }
+@media(max-width:600px) { .grid-2,.grid-3,.grid-4,.grid-6 { grid-template-columns: 1fr 1fr; } }
+
+.field { margin-bottom: 12px; }
+.field label { display: block; font-size: 0.72rem; font-weight: 600; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.field input, .field select { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; color: var(--text); background: var(--bg); }
+.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+.field .tip { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+
+.metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-align: center; }
+.metric-card .ml { font-size: 0.68rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+.metric-card .mv { font-size: 1.3rem; font-weight: 800; }
+.metric-card .ms { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+.metric-card.green .mv { color: var(--green); }
+.metric-card.amber .mv { color: var(--amber); }
+.metric-card.red .mv { color: var(--red); }
+.metric-card.blue .mv { color: var(--blue); }
+
+.status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; }
+.sb-green { background: #d4edda; color: #155724; }
+.sb-amber { background: #fff3cd; color: #856404; }
+.sb-red { background: #f8d7da; color: #721c24; }
+
+.btn { padding: 8px 18px; border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-secondary { background: var(--border); color: var(--text); }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+/* CASHFLOW TABLE */
+.cf-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; min-width: 900px; }
+.cf-table th { background: var(--blue); color: white; padding: 8px 8px; text-align: right; font-size: 0.7rem; font-weight: 600; }
+.cf-table th.row-label { text-align: left; min-width: 160px; }
+.cf-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: right; }
+.cf-table td.row-label { text-align: left; font-size: 0.78rem; }
+.cf-table tr.section-header td { background: #f0ece4; font-weight: 700; font-size: 0.75rem; color: var(--blue); text-transform: uppercase; letter-spacing: 0.03em; }
+.cf-table tr.subtotal td { background: #f9f6f0; font-weight: 700; }
+.cf-table tr.total-row td { background: var(--blue); color: white; font-weight: 800; font-size: 0.82rem; }
+.cf-table tr.balance-row td { font-weight: 700; font-size: 0.82rem; }
+.positive { color: var(--green); }
+.negative { color: var(--red); }
+.cf-table tr:hover td { background: #f5f0e8; }
+.cf-table tr.total-row:hover td, .cf-table tr.section-header:hover td { background: inherit; }
+
+/* CHART BARS */
+.chart-container { overflow-x: auto; margin-top: 8px; }
+.chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 140px; padding-bottom: 24px; position: relative; min-width: 600px; }
+.chart-bar-group { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.chart-bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 2px; transition: height 0.4s ease; }
+.chart-bar-label { font-size: 0.65rem; color: var(--muted); margin-top: 4px; text-align: center; }
+.chart-bar-val { font-size: 0.62rem; font-weight: 700; text-align: center; }
+
+.divider { display: flex; align-items: center; gap: 12px; margin: 20px 0 16px; }
+.divider span { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.alert-box { padding: 12px 16px; border-radius: 6px; margin: 12px 0; font-size: 0.82rem; }
+.alert-green { background: #d4edda; color: #155724; border-left: 4px solid var(--green); }
+.alert-amber { background: #fff3cd; color: #856404; border-left: 4px solid var(--amber); }
+.alert-red { background: #f8d7da; color: #721c24; border-left: 4px solid var(--red); }
+
+@media print {
+  .app-header, .tabs, .btn, .btn-row { display: none !important; }
+  .tab-panel { display: block !important; padding: 0; }
+  body { background: white; }
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div>
+    <h1>💵 KitchenFounder Cash Flow Forecast</h1>
+    <div class="sub">90-Day Survival Tool · Month-by-Month · Opening Capital Planning</div>
+  </div>
+  <span class="badge">FREE TOOL</span>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="setup">⚙️ Setup</button>
+  <button class="tab-btn" data-tab="revenue">📈 Revenue</button>
+  <button class="tab-btn" data-tab="costs">💸 Costs</button>
+  <button class="tab-btn" data-tab="forecast">📊 Forecast</button>
+  <button class="tab-btn" data-tab="runway">🛫 Runway</button>
+  <button class="tab-btn" data-tab="report">📄 Report</button>
+</div>
+
+<!-- TAB 1: SETUP -->
+<div id="panel-setup" class="tab-panel active">
+  <div class="card">
+    <div class="card-title"><span>🏪</span> Restaurant Setup</div>
+    <div class="grid-3">
+      <div class="field"><label>Restaurant Name</label><input type="text" id="resto-name" value="My Restaurant" placeholder="e.g. The Poke Bar"></div>
+      <div class="field"><label>Concept Type</label>
+        <select id="concept-type">
+          <option>Fast Casual</option><option>Casual Dining</option><option>Fine Casual</option>
+          <option>Café / Bar</option><option>Food Truck</option><option>Pop-Up</option>
+        </select>
+      </div>
+      <div class="field"><label>Opening Month</label><input type="month" id="open-month"></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Seating Capacity</label><input type="number" id="seats" value="50" min="1"></div>
+      <div class="field"><label>Days Open Per Week</label><input type="number" id="days-week" value="6" min="1" max="7"></div>
+      <div class="field"><label>Hours Open Per Day</label><input type="number" id="hours-day" value="12" min="1" max="24"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>💰</span> Opening Capital</div>
+    <div class="grid-3">
+      <div class="field"><label>Your Cash Investment ($)</label><input type="number" id="cash-invest" value="150000" min="0"><div class="tip">Your own money going in</div></div>
+      <div class="field"><label>Bank Loan / SBA Loan ($)</label><input type="number" id="loan-amount" value="100000" min="0"></div>
+      <div class="field"><label>Other Funding ($)</label><input type="number" id="other-funding" value="0" min="0"><div class="tip">Investors, grants, family</div></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Monthly Loan Repayment ($)</label><input type="number" id="loan-repay" value="2200" min="0"></div>
+      <div class="field"><label>Opening Expenses ($)</label><input type="number" id="open-expenses" value="180000" min="0"><div class="tip">Fit-out, equipment, licenses, deposits</div></div>
+      <div class="field"><label>Working Capital Reserve ($)</label><input type="number" id="working-cap" value="30000" min="0"><div class="tip">Cash buffer for first 3 months</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📅</span> Ramp-Up Profile</div>
+    <div class="grid-3">
+      <div class="field"><label>Month 1 Occupancy (%)</label><input type="number" id="ramp-m1" value="30" min="1" max="100"><div class="tip">First month — soft opening, word of mouth</div></div>
+      <div class="field"><label>Month 2 Occupancy (%)</label><input type="number" id="ramp-m2" value="45" min="1" max="100"></div>
+      <div class="field"><label>Month 3 Occupancy (%)</label><input type="number" id="ramp-m3" value="60" min="1" max="100"></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Month 4 Occupancy (%)</label><input type="number" id="ramp-m4" value="72" min="1" max="100"></div>
+      <div class="field"><label>Month 5 Occupancy (%)</label><input type="number" id="ramp-m5" value="82" min="1" max="100"></div>
+      <div class="field"><label>Month 6+ Occupancy (%)</label><input type="number" id="ramp-m6" value="90" min="1" max="100"><div class="tip">Stabilised trading level</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: REVENUE -->
+<div id="panel-revenue" class="tab-panel">
+  <div class="card">
+    <div class="card-title"><span>📈</span> Revenue Inputs</div>
+    <div class="grid-3">
+      <div class="field"><label>Average Check Per Cover ($)</label><input type="number" id="avg-check" value="38" min="1" step="0.5"><div class="tip">Food + drinks per person</div></div>
+      <div class="field"><label>Table Turns Per Day</label><input type="number" id="turns-day" value="2.5" min="0.5" step="0.1"></div>
+      <div class="field"><label>Covers Per Turn</label><input type="number" id="covers-turn" value="40" min="1"><div class="tip">Typically 70-80% of seats</div></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Takeaway / Delivery % of Revenue</label><input type="number" id="delivery-pct" value="15" min="0" max="80"><div class="tip">Add-on revenue beyond dine-in</div></div>
+      <div class="field"><label>Catering / Events % of Revenue</label><input type="number" id="events-pct" value="5" min="0" max="50"></div>
+      <div class="field"><label>Other Revenue ($/month)</label><input type="number" id="other-rev" value="0" min="0"><div class="tip">Merchandise, cooking classes, etc.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>🍽️</span> Revenue Mix</div>
+    <div class="grid-4">
+      <div class="field"><label>Food Revenue (%)</label><input type="number" id="food-mix" value="65" min="1" max="100"></div>
+      <div class="field"><label>Beverage Revenue (%)</label><input type="number" id="bev-mix" value="30" min="0" max="100"></div>
+      <div class="field"><label>Food Cost %</label><input type="number" id="food-cost-pct" value="30" min="1" max="60"><div class="tip">Target: 28-32%</div></div>
+      <div class="field"><label>Beverage Cost %</label><input type="number" id="bev-cost-pct" value="22" min="1" max="50"><div class="tip">Target: 18-25%</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📊</span> Revenue Preview (at full occupancy)</div>
+    <div class="grid-4">
+      <div class="metric-card blue"><div class="ml">Covers/Day</div><div class="mv" id="prev-covers-day">0</div><div class="ms">at 100% occ.</div></div>
+      <div class="metric-card"><div class="ml">Daily Revenue</div><div class="mv" id="prev-daily-rev">$0</div><div class="ms">dine-in only</div></div>
+      <div class="metric-card green"><div class="ml">Monthly Revenue</div><div class="mv" id="prev-monthly-rev">$0</div><div class="ms">all channels</div></div>
+      <div class="metric-card amber"><div class="ml">Annual Revenue</div><div class="mv" id="prev-annual-rev">$0</div><div class="ms">projected</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: COSTS -->
+<div id="panel-costs" class="tab-panel">
+  <div class="card">
+    <div class="card-title"><span>📌</span> Fixed Monthly Costs</div>
+    <div class="grid-3">
+      <div class="field"><label>Rent / Lease ($/month)</label><input type="number" id="cost-rent" value="8000" min="0"></div>
+      <div class="field"><label>Utilities ($/month)</label><input type="number" id="cost-utilities" value="1800" min="0"><div class="tip">Gas, electric, water</div></div>
+      <div class="field"><label>Insurance ($/month)</label><input type="number" id="cost-insurance" value="600" min="0"></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Equipment Lease ($/month)</label><input type="number" id="cost-equip-lease" value="500" min="0"></div>
+      <div class="field"><label>POS / Software ($/month)</label><input type="number" id="cost-software" value="250" min="0"><div class="tip">POS, reservation, payroll software</div></div>
+      <div class="field"><label>Loan Repayment ($/month)</label><input type="number" id="cost-loan-display" value="2200" min="0" readonly style="background:#f0ece4;font-weight:700"></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Accounting / Legal ($/month)</label><input type="number" id="cost-accounting" value="400" min="0"></div>
+      <div class="field"><label>Marketing ($/month)</label><input type="number" id="cost-marketing" value="800" min="0"></div>
+      <div class="field"><label>Other Fixed ($/month)</label><input type="number" id="cost-other-fixed" value="300" min="0"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📊</span> Variable Cost Rates</div>
+    <div class="grid-4">
+      <div class="field"><label>Labour % of Revenue</label><input type="number" id="labour-pct-cf" value="32" min="1" max="60"><div class="tip">Include all on-costs (use Labour Planner)</div></div>
+      <div class="field"><label>Packaging / Disposables (%)</label><input type="number" id="packaging-pct" value="2" min="0" max="10"></div>
+      <div class="field"><label>Credit Card Fees (%)</label><input type="number" id="cc-fees-pct" value="2.5" min="0" max="5"></div>
+      <div class="field"><label>Delivery Platform Fees (%)</label><input type="number" id="delivery-fees-pct" value="15" min="0" max="35"><div class="tip">Uber Eats / DoorDash: 15-30%</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>🆘</span> One-Time & Pre-Opening Costs</div>
+    <div class="grid-3">
+      <div class="field"><label>Fit-Out / Renovation ($)</label><input type="number" id="fitout-cost" value="80000" min="0"></div>
+      <div class="field"><label>Equipment Purchase ($)</label><input type="number" id="equip-cost" value="45000" min="0"></div>
+      <div class="field"><label>Licenses & Permits ($)</label><input type="number" id="license-cost" value="8000" min="0"></div>
+    </div>
+    <div class="grid-3">
+      <div class="field"><label>Initial Inventory ($)</label><input type="number" id="inventory-cost" value="12000" min="0"></div>
+      <div class="field"><label>Staff Training ($)</label><input type="number" id="training-cost" value="5000" min="0"></div>
+      <div class="field"><label>Marketing Launch ($)</label><input type="number" id="launch-marketing" value="8000" min="0"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📊</span> Cost Summary</div>
+    <div class="grid-4">
+      <div class="metric-card blue"><div class="ml">Total Fixed/Month</div><div class="mv" id="sum-fixed">$0</div><div class="ms">before variable</div></div>
+      <div class="metric-card amber"><div class="ml">Total Pre-Opening</div><div class="mv" id="sum-preopening">$0</div><div class="ms">one-time costs</div></div>
+      <div class="metric-card"><div class="ml">Break-Even Revenue</div><div class="mv" id="sum-be-rev">$0</div><div class="ms">per month</div></div>
+      <div class="metric-card green"><div class="ml">Contribution Margin</div><div class="mv" id="sum-contrib">0%</div><div class="ms">after variable costs</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: FORECAST -->
+<div id="panel-forecast" class="tab-panel">
+  <div class="grid-4" style="margin-bottom:16px">
+    <div class="metric-card blue"><div class="ml">Opening Capital</div><div class="mv" id="fc-total-capital">$0</div><div class="ms">total available</div></div>
+    <div class="metric-card amber"><div class="ml">Pre-Opening Spend</div><div class="mv" id="fc-preopening-spend">$0</div><div class="ms">before day 1</div></div>
+    <div class="metric-card" id="fc-start-cash-card"><div class="ml">Cash on Day 1</div><div class="mv" id="fc-start-cash">$0</div><div class="ms">opening balance</div></div>
+    <div class="metric-card" id="fc-end-cash-card"><div class="ml">Cash at Month 12</div><div class="mv" id="fc-end-cash">$0</div><div class="ms">year-end balance</div></div>
+  </div>
+
+  <div id="fc-alert-box" class="alert-box alert-amber" style="display:none"></div>
+
+  <div class="card">
+    <div class="card-title"><span>📊</span> 12-Month Cash Flow Forecast</div>
+    <div style="overflow-x:auto">
+      <table class="cf-table" id="cf-table">
+        <thead>
+          <tr>
+            <th class="row-label">Line Item</th>
+            <th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
+            <th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th>
+            <th style="background:#1a3545">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody id="cf-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>📈</span> Cash Position Chart</div>
+    <div class="chart-container">
+      <div class="chart-bars" id="cash-chart"></div>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:8px;font-size:0.72rem;flex-wrap:wrap">
+      <span><span style="display:inline-block;width:12px;height:12px;background:var(--green);border-radius:2px;margin-right:4px"></span>Positive cash</span>
+      <span><span style="display:inline-block;width:12px;height:12px;background:var(--red);border-radius:2px;margin-right:4px"></span>Negative cash (danger zone)</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: RUNWAY -->
+<div id="panel-runway" class="tab-panel">
+
+  <div class="grid-4" style="margin-bottom:16px">
+    <div class="metric-card" id="runway-months-card">
+      <div class="ml">Cash Runway</div>
+      <div class="mv" id="runway-months">0 months</div>
+      <div class="ms">before cash runs out</div>
+    </div>
+    <div class="metric-card" id="runway-breakeven-card">
+      <div class="ml">Break-Even Month</div>
+      <div class="mv" id="runway-breakeven">—</div>
+      <div class="ms">first profitable month</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="ml">Min Cash Required</div>
+      <div class="mv" id="runway-min-cash">$0</div>
+      <div class="ms">to survive 6 months</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="ml">Total Year 1 Net</div>
+      <div class="mv" id="runway-yr1-net">$0</div>
+      <div class="ms">profit or loss</div>
+    </div>
+  </div>
+
+  <div id="runway-alert" class="alert-box alert-amber"></div>
+
+  <div class="card">
+    <div class="card-title"><span>🎯</span> Survival Scenarios</div>
+    <div id="scenarios-grid" class="grid-3">
+      <div class="metric-card">
+        <div class="ml">🐻 Bear Case (−20% revenue)</div>
+        <div class="mv" id="sc-bear-profit">$0</div>
+        <div class="ms" id="sc-bear-label">Year 1</div>
+      </div>
+      <div class="metric-card">
+        <div class="ml">📊 Base Case</div>
+        <div class="mv" id="sc-base-profit">$0</div>
+        <div class="ms" id="sc-base-label">Year 1</div>
+      </div>
+      <div class="metric-card">
+        <div class="ml">🚀 Bull Case (+20% revenue)</div>
+        <div class="mv" id="sc-bull-profit">$0</div>
+        <div class="ms" id="sc-bull-label">Year 1</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>💡</span> KitchenFounder Survival Rules</div>
+    <div style="font-size:0.84rem;line-height:1.8">
+      <p style="margin-bottom:8px"><strong>Rule 1 — The 6-Month Rule:</strong> You need enough capital to cover 6 months of fixed costs BEFORE revenue stabilises. Most restaurants fail in months 2–4, not because the food is bad, but because they ran out of cash during the ramp-up.</p>
+      <p style="margin-bottom:8px"><strong>Rule 2 — True Labour Cost:</strong> Never budget base wages only. Add FICA (7.65%) + SUTA + Workers Comp + Health. True cost is typically 18–25% higher than base wages. Use the Labour Planner for exact numbers.</p>
+      <p style="margin-bottom:8px"><strong>Rule 3 — The 30% Food Cost Ceiling:</strong> If your blended food cost exceeds 30%, your margins compress fast. Monitor weekly. A 2% food cost blowout on $100K monthly revenue = $2,000 straight off your profit.</p>
+      <p style="margin-bottom:8px"><strong>Rule 4 — Delivery Fees Kill Margins:</strong> A 25% delivery platform fee on a $20 dish means you net $15. After food cost (30%) = $6. After labour (32%) = nothing. Build delivery pricing separately from dine-in.</p>
+      <p><strong>Rule 5 — Cash ≠ Profit:</strong> You can be profitable on paper and still run out of cash. Track your bank balance weekly. Set a minimum cash floor (e.g. $20K) — if you go below it, cut costs immediately.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: REPORT -->
+<div id="panel-report" class="tab-panel">
+  <div class="card" id="print-report">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+      <div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--blue)" id="rpt-resto-name">My Restaurant</div>
+        <div style="font-size:0.8rem;color:var(--muted)" id="rpt-concept">Fast Casual</div>
+        <div style="font-size:0.75rem;color:var(--muted)" id="rpt-open-month">Opening: —</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase">KitchenFounder</div>
+        <div style="font-size:0.7rem;color:var(--muted)">Cash Flow Forecast</div>
+        <div id="rpt-status-badge" style="margin-top:6px"></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.82rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:6px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.04em">💰 Capital Summary</div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Total Opening Capital</span><span id="rpt-capital">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Pre-Opening Expenses</span><span id="rpt-preopening">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Opening Cash Balance</span><span id="rpt-open-cash">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:2px solid var(--text);font-size:0.84rem;font-weight:700"><span>Closing Cash (Month 12)</span><span id="rpt-close-cash">$0</span></div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.82rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:6px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.04em">📊 Year 1 P&L Summary</div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Total Revenue</span><span id="rpt-total-rev">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Total Variable Costs</span><span id="rpt-total-var">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Total Fixed Costs</span><span id="rpt-total-fixed">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:2px solid var(--text);font-size:0.84rem;font-weight:700"><span>Net Profit / Loss</span><span id="rpt-net-profit">$0</span></div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.82rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:6px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.04em">🛫 Runway Analysis</div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Cash Runway</span><span id="rpt-runway">0 months</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Break-Even Month</span><span id="rpt-be-month">—</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.84rem"><span>Minimum Capital Needed (6-month rule)</span><span id="rpt-min-capital">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;font-size:0.84rem"><span>Labour % of Revenue</span><span id="rpt-labour-pct">0%</span></div>
+    </div>
+
+    <div id="rpt-advisory-box" class="alert-box alert-amber" style="margin-bottom:16px"></div>
+
+    <div style="padding:12px;background:#f5f0e8;border-radius:6px">
+      <div style="font-size:0.7rem;color:var(--muted);text-align:center">
+        Generated by KitchenFounder Cash Flow Forecast · kitchenfounder.com<br>
+        Projections are estimates based on inputs provided. Actual results will vary. Consult a financial advisor before making investment decisions.
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn btn-secondary" onclick="calculateAll()">🔄 Refresh</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// KitchenFounder Cash Flow Forecast — JS Engine
+// ============================================================
+
+const MONTHS = ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Set default open month to next month
+  const d = new Date(); d.setMonth(d.getMonth() + 1);
+  document.getElementById('open-month').value =
+    d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+
+  // Sync loan repayment display
+  const loanRepay = document.getElementById('loan-repay');
+  const loanDisplay = document.getElementById('cost-loan-display');
+  if (loanRepay && loanDisplay) {
+    loanRepay.addEventListener('input', () => { loanDisplay.value = loanRepay.value; });
+  }
+
+  // Bind all inputs
+  document.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('input', calculateAll);
+    el.addEventListener('change', calculateAll);
+  });
+
+  // Bind tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = document.getElementById('panel-' + btn.dataset.tab);
+      if (panel) panel.classList.add('active');
+      calculateAll();
+    });
+  });
+
+  calculateAll();
+});
+
+function gv(id, def=0) {
+  const el = document.getElementById(id);
+  return el ? (parseFloat(el.value) || def) : def;
+}
+function gt(id, def='') {
+  const el = document.getElementById(id);
+  return el ? (el.value || def) : def;
+}
+function st(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+function fmtPct(n) { return n.toFixed(1) + '%'; }
+
+function calculateAll() {
+  // ---- INPUTS ----
+  const seats        = gv('seats', 50);
+  const daysWeek     = gv('days-week', 6);
+  const avgCheck     = gv('avg-check', 38);
+  const turnsDay     = gv('turns-day', 2.5);
+  const coversTurn   = gv('covers-turn', 40);
+  const deliveryPct  = gv('delivery-pct', 15) / 100;
+  const eventsPct    = gv('events-pct', 5) / 100;
+  const otherRev     = gv('other-rev', 0);
+  const foodMix      = gv('food-mix', 65) / 100;
+  const bevMix       = gv('bev-mix', 30) / 100;
+  const foodCostPct  = gv('food-cost-pct', 30) / 100;
+  const bevCostPct   = gv('bev-cost-pct', 22) / 100;
+
+  const cashInvest   = gv('cash-invest', 150000);
+  const loanAmt      = gv('loan-amount', 100000);
+  const otherFunding = gv('other-funding', 0);
+  const loanRepay    = gv('loan-repay', 2200);
+  const openExpenses = gv('open-expenses', 180000);
+  const workingCap   = gv('working-cap', 30000);
+
+  const rampPcts = [
+    gv('ramp-m1',30), gv('ramp-m2',45), gv('ramp-m3',60),
+    gv('ramp-m4',72), gv('ramp-m5',82), gv('ramp-m6',90)
+  ];
+
+  // Fixed costs
+  const fixedRent    = gv('cost-rent', 8000);
+  const fixedUtils   = gv('cost-utilities', 1800);
+  const fixedInsure  = gv('cost-insurance', 600);
+  const fixedEquip   = gv('cost-equip-lease', 500);
+  const fixedSoft    = gv('cost-software', 250);
+  const fixedAcct    = gv('cost-accounting', 400);
+  const fixedMktg    = gv('cost-marketing', 800);
+  const fixedOther   = gv('cost-other-fixed', 300);
+  const totalFixed   = fixedRent + fixedUtils + fixedInsure + fixedEquip +
+                       fixedSoft + fixedAcct + fixedMktg + fixedOther + loanRepay;
+
+  // Variable cost rates
+  const labourPct    = gv('labour-pct-cf', 32) / 100;
+  const packagingPct = gv('packaging-pct', 2) / 100;
+  const ccFeesPct    = gv('cc-fees-pct', 2.5) / 100;
+  const delivFeesPct = gv('delivery-fees-pct', 15) / 100;
+
+  // Blended COGS
+  const blendedCogs  = (foodMix * foodCostPct) + (bevMix * bevCostPct);
+  const totalVarPct  = blendedCogs + labourPct + packagingPct + ccFeesPct;
+  const contribMargin = 1 - totalVarPct;
+
+  // Pre-opening costs
+  const fitout    = gv('fitout-cost', 80000);
+  const equip     = gv('equip-cost', 45000);
+  const licenses  = gv('license-cost', 8000);
+  const inventory = gv('inventory-cost', 12000);
+  const training  = gv('training-cost', 5000);
+  const launchMkt = gv('launch-marketing', 8000);
+  const totalPreOpening = fitout + equip + licenses + inventory + training + launchMkt;
+
+  // Revenue at full occupancy
+  const dineInCoversDay    = coversTurn * turnsDay;
+  const dineInDailyRev     = dineInCoversDay * avgCheck;
+  const dineInMonthlyRev   = dineInDailyRev * daysWeek * 4.33;
+  const totalMonthlyRevFull = dineInMonthlyRev * (1 + deliveryPct + eventsPct) + otherRev;
+
+  // Break-even
+  const beRevMonth = contribMargin > 0 ? totalFixed / contribMargin : 0;
+
+  // Capital
+  const totalCapital = cashInvest + loanAmt + otherFunding;
+  const openingCash  = totalCapital - totalPreOpening;
+
+  // Update setup/revenue/cost previews
+  st('prev-covers-day', Math.round(dineInCoversDay));
+  st('prev-daily-rev', fmt(dineInDailyRev));
+  st('prev-monthly-rev', fmt(totalMonthlyRevFull));
+  st('prev-annual-rev', fmt(totalMonthlyRevFull * 12));
+  st('sum-fixed', fmt(totalFixed));
+  st('sum-preopening', fmt(totalPreOpening));
+  st('sum-be-rev', fmt(beRevMonth));
+  st('sum-contrib', fmtPct(contribMargin * 100));
+
+  // Sync loan display
+  const loanDisp = document.getElementById('cost-loan-display');
+  if (loanDisp) loanDisp.value = loanRepay;
+
+  // ---- 12-MONTH FORECAST ----
+  const months = [];
+  let cashBalance = openingCash;
+
+  for (let m = 0; m < 12; m++) {
+    const rampFactor = m < 6 ? rampPcts[m] / 100 : rampPcts[5] / 100;
+    const monthRev   = totalMonthlyRevFull * rampFactor;
+    const delivRev   = monthRev * deliveryPct / (1 + deliveryPct + eventsPct);
+    const cogs       = monthRev * blendedCogs;
+    const labour     = monthRev * labourPct;
+    const packaging  = monthRev * packagingPct;
+    const ccFees     = monthRev * ccFeesPct;
+    const delivFees  = delivRev * delivFeesPct;
+    const totalVar   = cogs + labour + packaging + ccFees + delivFees;
+    const grossProfit = monthRev - totalVar;
+    const netProfit  = grossProfit - totalFixed;
+    const prevBal    = cashBalance;
+    cashBalance      = cashBalance + netProfit;
+
+    months.push({
+      m: m+1, rev: monthRev, cogs, labour, packaging, ccFees, delivFees,
+      totalVar, grossProfit, fixed: totalFixed, netProfit,
+      openBal: prevBal, closeBal: cashBalance, rampFactor
+    });
+  }
+
+  // Summary metrics
+  const totalRev  = months.reduce((a,m) => a + m.rev, 0);
+  const totalVar  = months.reduce((a,m) => a + m.totalVar, 0);
+  const totalFix  = months.reduce((a,m) => a + m.fixed, 0);
+  const totalNet  = months.reduce((a,m) => a + m.netProfit, 0);
+  const minCash   = Math.min(...months.map(m => m.closeBal));
+  const beMonth   = months.findIndex(m => m.netProfit > 0);
+  const runway    = months.filter(m => m.closeBal > 0).length;
+
+  // Opening/closing cards
+  st('fc-total-capital', fmt(totalCapital));
+  st('fc-preopening-spend', fmt(totalPreOpening));
+  st('fc-start-cash', fmt(openingCash));
+  st('fc-end-cash', fmt(cashBalance));
+
+  const startCard = document.getElementById('fc-start-cash-card');
+  const endCard   = document.getElementById('fc-end-cash-card');
+  if (startCard) startCard.className = 'metric-card ' + (openingCash > 0 ? 'green' : 'red');
+  if (endCard)   endCard.className   = 'metric-card ' + (cashBalance > 0 ? 'green' : 'red');
+
+  // Alert box
+  const alertBox = document.getElementById('fc-alert-box');
+  if (alertBox) {
+    if (minCash < 0) {
+      alertBox.style.display = 'block';
+      alertBox.className = 'alert-box alert-red';
+      alertBox.innerHTML = `<strong>🔴 Cash runs out in Month ${months.findIndex(m=>m.closeBal<0)+1}.</strong> Your projections show negative cash balance. You need more opening capital, lower fixed costs, or a faster ramp-up. Minimum capital needed: ${fmt(totalPreOpening + totalFixed * 6)}.`;
+    } else if (cashBalance < totalFixed * 2) {
+      alertBox.style.display = 'block';
+      alertBox.className = 'alert-box alert-amber';
+      alertBox.innerHTML = `<strong>⚠️ Low cash buffer at year end.</strong> You have ${fmt(cashBalance)} left at Month 12 — less than 2 months of fixed costs. Consider building your working capital reserve.`;
+    } else {
+      alertBox.style.display = 'block';
+      alertBox.className = 'alert-box alert-green';
+      alertBox.innerHTML = `<strong>✅ Cash flow looks healthy.</strong> You end Year 1 with ${fmt(cashBalance)} in cash. Break-even reached in Month ${beMonth + 1}.`;
+    }
+  }
+
+  // Render forecast table
+  renderForecastTable(months, totalRev, totalVar, totalFix, totalNet, openingCash, cashBalance);
+  renderCashChart(months);
+
+  // Runway tab
+  st('runway-months', runway + ' months');
+  st('runway-breakeven', beMonth >= 0 ? 'Month ' + (beMonth+1) : 'Not in Year 1');
+  st('runway-min-cash', fmt(totalPreOpening + totalFixed * 6));
+  st('runway-yr1-net', fmt(totalNet));
+
+  const runwayCard = document.getElementById('runway-months-card');
+  if (runwayCard) runwayCard.className = 'metric-card ' + (runway >= 12 ? 'green' : runway >= 9 ? 'amber' : 'red');
+
+  const beCard = document.getElementById('runway-breakeven-card');
+  if (beCard) beCard.className = 'metric-card ' + (beMonth <= 3 ? 'green' : beMonth <= 6 ? 'amber' : 'red');
+
+  // Scenarios
+  const runScenario = (adj) => {
+    let bal = openingCash, net = 0;
+    for (let m = 0; m < 12; m++) {
+      const r = months[m].rev * adj;
+      const v = r * totalVarPct;
+      const p = r - v - totalFixed;
+      net += p; bal += p;
+    }
+    return { net, bal };
+  };
+  const bear = runScenario(0.8);
+  const base = runScenario(1.0);
+  const bull = runScenario(1.2);
+  st('sc-bear-profit', fmt(bear.net));
+  st('sc-base-profit', fmt(base.net));
+  st('sc-bull-profit', fmt(bull.net));
+
+  const bearEl = document.querySelector('#sc-bear-profit')?.closest('.metric-card');
+  const baseEl = document.querySelector('#sc-base-profit')?.closest('.metric-card');
+  const bullEl = document.querySelector('#sc-bull-profit')?.closest('.metric-card');
+  if (bearEl) bearEl.className = 'metric-card ' + (bear.net > 0 ? 'green' : 'red');
+  if (baseEl) baseEl.className = 'metric-card ' + (base.net > 0 ? 'green' : 'amber');
+  if (bullEl) bullEl.className = 'metric-card ' + (bull.net > 0 ? 'green' : 'amber');
+
+  const runwayAlert = document.getElementById('runway-alert');
+  if (runwayAlert) {
+    if (openingCash < totalFixed * 3) {
+      runwayAlert.className = 'alert-box alert-red';
+      runwayAlert.innerHTML = `<strong>🔴 Critical:</strong> Your opening cash (${fmt(openingCash)}) covers less than 3 months of fixed costs (${fmt(totalFixed * 3)}). This is extremely high risk. Raise more capital before opening.`;
+    } else if (openingCash < totalFixed * 6) {
+      runwayAlert.className = 'alert-box alert-amber';
+      runwayAlert.innerHTML = `<strong>⚠️ Warning:</strong> Your opening cash covers ${Math.floor(openingCash / totalFixed)} months of fixed costs. The KitchenFounder 6-Month Rule recommends ${fmt(totalFixed * 6)} minimum. Consider raising an additional ${fmt(totalFixed * 6 - openingCash)}.`;
+    } else {
+      runwayAlert.className = 'alert-box alert-green';
+      runwayAlert.innerHTML = `<strong>✅ Well capitalised:</strong> Your opening cash covers ${Math.floor(openingCash / totalFixed)} months of fixed costs — above the 6-month minimum. You have a solid buffer for the ramp-up period.`;
+    }
+  }
+
+  // Report tab
+  updateReport(totalCapital, totalPreOpening, openingCash, cashBalance,
+    totalRev, totalVar, totalFix, totalNet, runway, beMonth, totalFixed, labourPct);
+}
+
+function renderForecastTable(months, totalRev, totalVar, totalFix, totalNet, openBal, closeBal) {
+  const tbody = document.getElementById('cf-tbody');
+  if (!tbody) return;
+
+  const rows = [
+    { label: '📈 REVENUE', isHeader: true },
+    { label: 'Dine-In Revenue', key: 'rev', factor: 1/(1 + gv('delivery-pct',15)/100 + gv('events-pct',5)/100) },
+    { label: 'Delivery / Takeaway', key: 'rev', factor: (gv('delivery-pct',15)/100)/(1 + gv('delivery-pct',15)/100 + gv('events-pct',5)/100) },
+    { label: 'Total Revenue', key: 'rev', isSubtotal: true },
+    { label: '💸 VARIABLE COSTS', isHeader: true },
+    { label: 'Food & Beverage Cost', key: 'cogs' },
+    { label: 'Labour (incl. on-costs)', key: 'labour' },
+    { label: 'Packaging & Supplies', key: 'packaging' },
+    { label: 'CC + Platform Fees', key: 'ccFees' },
+    { label: 'Total Variable Costs', key: 'totalVar', isSubtotal: true },
+    { label: 'GROSS PROFIT', key: 'grossProfit', isTotal: true },
+    { label: '📌 FIXED COSTS', isHeader: true },
+    { label: 'Total Fixed Costs', key: 'fixed', isSubtotal: true },
+    { label: '💵 NET PROFIT / LOSS', key: 'netProfit', isTotal: true },
+    { label: '🏦 CASH POSITION', isHeader: true },
+    { label: 'Opening Cash Balance', key: 'openBal', isBalance: true },
+    { label: 'Closing Cash Balance', key: 'closeBal', isBalance: true },
+  ];
+
+  const totals = {
+    rev: totalRev, cogs: months.reduce((a,m)=>a+m.cogs,0),
+    labour: months.reduce((a,m)=>a+m.labour,0),
+    packaging: months.reduce((a,m)=>a+m.packaging,0),
+    ccFees: months.reduce((a,m)=>a+m.ccFees+m.delivFees,0),
+    totalVar, grossProfit: totalRev - totalVar,
+    fixed: totalFix, netProfit: totalNet,
+    openBal: openBal, closeBal
+  };
+
+  tbody.innerHTML = rows.map(row => {
+    if (row.isHeader) {
+      return `<tr class="section-header"><td class="row-label" colspan="14">${row.label}</td></tr>`;
+    }
+    const vals = months.map(m => {
+      let v;
+      if (row.factor !== undefined) v = m[row.key] * row.factor;
+      else v = m[row.key];
+      const cls = v < 0 ? 'negative' : (row.isTotal && v > 0 ? 'positive' : '');
+      return `<td class="${cls}">${fmt(v)}</td>`;
+    }).join('');
+    const total = row.factor !== undefined
+      ? totals[row.key] * row.factor
+      : (row.key === 'openBal' ? openBal : (row.key === 'closeBal' ? closeBal : totals[row.key]));
+    const totalCls = total < 0 ? 'negative' : (row.isTotal && total > 0 ? 'positive' : '');
+    const trClass = row.isTotal ? 'total-row' : row.isSubtotal ? 'subtotal' : row.isBalance ? 'balance-row' : '';
+    return `<tr class="${trClass}"><td class="row-label">${row.label}</td>${vals}<td class="${totalCls}">${fmt(total)}</td></tr>`;
+  }).join('');
+}
+
+function renderCashChart(months) {
+  const container = document.getElementById('cash-chart');
+  if (!container) return;
+  const maxAbs = Math.max(...months.map(m => Math.abs(m.closeBal)), 1);
+  container.innerHTML = months.map(m => {
+    const h = Math.abs(m.closeBal) / maxAbs * 120;
+    const color = m.closeBal >= 0 ? 'var(--green)' : 'var(--red)';
+    const val = m.closeBal >= 0 ? '+' + fmt(m.closeBal) : fmt(m.closeBal);
+    return `<div class="chart-bar-group">
+      <div class="chart-bar-val" style="color:${color};font-size:0.58rem">${val}</div>
+      <div class="chart-bar" style="height:${h.toFixed(0)}px;background:${color}"></div>
+      <div class="chart-bar-label">M${m.m}</div>
+    </div>`;
+  }).join('');
+}
+
+function updateReport(capital, preopening, openCash, closeCash,
+  totalRev, totalVar, totalFix, totalNet, runway, beMonth, monthlyFixed, labourPct) {
+  st('rpt-resto-name', gt('resto-name', 'My Restaurant'));
+  st('rpt-concept', gt('concept-type', 'Fast Casual'));
+  const om = document.getElementById('open-month');
+  st('rpt-open-month', om && om.value ? 'Opening: ' + new Date(om.value+'-01').toLocaleDateString('en-US',{month:'long',year:'numeric'}) : 'Opening: —');
+  st('rpt-capital', fmt(capital));
+  st('rpt-preopening', fmt(preopening));
+  st('rpt-open-cash', fmt(openCash));
+  st('rpt-close-cash', fmt(closeCash));
+  st('rpt-total-rev', fmt(totalRev));
+  st('rpt-total-var', fmt(totalVar));
+  st('rpt-total-fixed', fmt(totalFix));
+  st('rpt-net-profit', fmt(totalNet));
+  st('rpt-runway', runway + ' months');
+  st('rpt-be-month', beMonth >= 0 ? 'Month ' + (beMonth+1) : 'Not in Year 1');
+  st('rpt-min-capital', fmt(preopening + monthlyFixed * 6));
+  st('rpt-labour-pct', fmtPct(labourPct * 100));
+
+  const badge = document.getElementById('rpt-status-badge');
+  if (badge) {
+    if (closeCash > 0 && totalNet > 0) badge.innerHTML = '<span class="status-badge sb-green">✅ Viable</span>';
+    else if (closeCash > 0) badge.innerHTML = '<span class="status-badge sb-amber">⚠️ Marginal</span>';
+    else badge.innerHTML = '<span class="status-badge sb-red">🔴 At Risk</span>';
+  }
+
+  const adv = document.getElementById('rpt-advisory-box');
+  if (adv) {
+    if (closeCash < 0) {
+      adv.className = 'alert-box alert-red';
+      adv.innerHTML = `<strong>Critical:</strong> This plan runs out of cash. Increase capital, reduce fixed costs, or accelerate ramp-up.`;
+    } else if (totalNet < 0) {
+      adv.className = 'alert-box alert-amber';
+      adv.innerHTML = `<strong>Caution:</strong> Year 1 shows a net loss of ${fmt(Math.abs(totalNet))}. This is common for new restaurants — but ensure you have enough reserves to reach break-even in Month ${beMonth >= 0 ? beMonth+1 : '?'}.`;
+    } else {
+      adv.className = 'alert-box alert-green';
+      adv.innerHTML = `<strong>On track:</strong> Year 1 net profit of ${fmt(totalNet)}. Break-even reached in Month ${beMonth >= 0 ? beMonth+1 : '?'}. Closing cash balance: ${fmt(closeCash)}.`;
+    }
+  }
+}
+</script>
+</body>
+</html>

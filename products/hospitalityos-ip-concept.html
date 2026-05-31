@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HospitalityOS — IP Concept Document</title>
+<style>
+:root {
+  --bg: #0A0E1A;
+  --surface: #111827;
+  --surface2: #1a2235;
+  --border: #1e2d45;
+  --text: #F0F4FF;
+  --muted: #8899BB;
+  --accent: #00D4FF;
+  --accent2: #7C3AED;
+  --accent3: #F59E0B;
+  --green: #10B981;
+  --red: #EF4444;
+  --gradient1: linear-gradient(135deg, #00D4FF 0%, #7C3AED 100%);
+  --gradient2: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+  --gradient3: linear-gradient(135deg, #10B981 0%, #00D4FF 100%);
+  --radius: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'SF Pro Display', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 40px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 70%), radial-gradient(ellipse at 80% 80%, rgba(124,58,237,0.10) 0%, transparent 60%), var(--bg); }
+.hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; }
+.hero-title { font-size: clamp(2.8rem, 8vw, 6rem); font-weight: 900; line-height: 1.05; margin-bottom: 24px; }
+.hero-title .grad1 { background: var(--gradient1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-title .grad2 { background: var(--gradient2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 1.2rem; color: var(--muted); max-width: 680px; margin: 0 auto 40px; line-height: 1.7; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 48px; }
+.chip { padding: 6px 18px; border-radius: 40px; font-size: 0.78rem; font-weight: 700; border: 1px solid; }
+.chip-blue { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,0.08); }
+.chip-purple { border-color: var(--accent2); color: #a78bfa; background: rgba(124,58,237,0.08); }
+.chip-amber { border-color: var(--accent3); color: var(--accent3); background: rgba(245,158,11,0.08); }
+.chip-green { border-color: var(--green); color: var(--green); background: rgba(16,185,129,0.08); }
+.confidential { display: inline-block; padding: 8px 24px; border: 1px solid rgba(239,68,68,0.4); border-radius: 40px; font-size: 0.72rem; font-weight: 700; color: #f87171; letter-spacing: 0.1em; background: rgba(239,68,68,0.06); }
+
+/* SECTIONS */
+.section { padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
+.section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.section-body { font-size: 0.95rem; color: #c8d8f0; line-height: 1.85; }
+.section-body p { margin-bottom: 16px; }
+.section-body strong { color: var(--text); }
+
+/* DIVIDER */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 40px; }
+
+/* PROBLEM CARDS */
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
+.problem-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.problem-card .icon { font-size: 2rem; margin-bottom: 12px; }
+.problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.problem-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+.problem-card .cost { font-size: 1.1rem; font-weight: 800; color: var(--red); margin-top: 10px; }
+
+/* MODULE CARDS */
+.module-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; position: relative; overflow: hidden; }
+.module-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.module-card.blue::before { background: var(--gradient1); }
+.module-card.purple::before { background: linear-gradient(90deg, var(--accent2), #a78bfa); }
+.module-card.amber::before { background: var(--gradient2); }
+.module-card.green::before { background: var(--gradient3); }
+.module-card.pink::before { background: linear-gradient(90deg, #EC4899, #F43F5E); }
+.module-card.teal::before { background: linear-gradient(90deg, #14B8A6, #06B6D4); }
+.module-number { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.module-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+.module-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 20px; }
+.module-features { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+.feature-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.83rem; color: #c8d8f0; }
+.feature-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+.dot-blue { background: var(--accent); }
+.dot-purple { background: #a78bfa; }
+.dot-amber { background: var(--accent3); }
+.dot-green { background: var(--green); }
+.dot-pink { background: #EC4899; }
+.dot-teal { background: #14B8A6; }
+.oneclick-box { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 14px 18px; font-size: 0.83rem; color: var(--accent); }
+.oneclick-box strong { color: var(--accent); }
+@media(max-width:600px){.module-features{grid-template-columns:1fr;}}
+
+/* FLOW DIAGRAM */
+.flow { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+.flow-row { display: flex; align-items: center; gap: 12px; padding: 14px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 4px; }
+.flow-icon { font-size: 1.4rem; width: 40px; flex-shrink: 0; text-align: center; }
+.flow-text { flex: 1; }
+.flow-text strong { font-size: 0.88rem; display: block; }
+.flow-text span { font-size: 0.76rem; color: var(--muted); }
+.flow-arrow { color: var(--accent); font-size: 1.2rem; text-align: center; padding: 4px 0; }
+.flow-badge { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); color: var(--accent); padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+
+/* TAM TABLE */
+.tam-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+.tam-table th { background: var(--surface2); color: var(--muted); padding: 10px 14px; text-align: left; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+.tam-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.tam-table tr:hover td { background: var(--surface2); }
+.tam-number { font-weight: 800; color: var(--accent3); }
+
+/* PRICING */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 32px; }
+.pricing-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; text-align: center; }
+.pricing-card.featured { border-color: var(--accent); background: rgba(0,212,255,0.04); }
+.pricing-tier { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 8px; }
+.pricing-price { font-size: 2rem; font-weight: 900; margin-bottom: 4px; }
+.pricing-price .curr { font-size: 1rem; font-weight: 500; vertical-align: top; margin-top: 6px; display: inline-block; }
+.pricing-sub { font-size: 0.75rem; color: var(--muted); margin-bottom: 16px; }
+.pricing-features { text-align: left; font-size: 0.8rem; color: #c8d8f0; }
+.pricing-features li { padding: 4px 0; list-style: none; padding-left: 16px; position: relative; }
+.pricing-features li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 0.75rem; }
+
+/* TIMELINE */
+.timeline { margin-top: 32px; }
+.tl-row { display: grid; grid-template-columns: 120px 1fr; gap: 20px; margin-bottom: 28px; align-items: start; }
+.tl-date { font-size: 0.78rem; font-weight: 800; color: var(--accent); text-align: right; padding-top: 4px; }
+.tl-content { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; border-left: 3px solid var(--accent); }
+.tl-content h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+.tl-content p { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+.tl-rev { font-size: 0.82rem; font-weight: 700; color: var(--green); margin-top: 6px; }
+
+/* FOOTER */
+.ip-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px; text-align: center; }
+.ip-footer p { font-size: 0.78rem; color: var(--muted); line-height: 1.8; max-width: 700px; margin: 0 auto; }
+.ip-footer strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Intellectual Property Concept Document · Confidential</div>
+  <h1 class="hero-title">
+    <span class="grad1">HospitalityOS</span><br>
+    <span style="font-size:0.55em;color:var(--muted);-webkit-text-fill-color:var(--muted)">The World's First AI-Native<br>Hospitality Operating System</span>
+  </h1>
+  <p class="hero-sub">One platform. One click. Supply chain, rostering, financial reporting, and AI-powered restaurant discovery — unified under a single intelligence layer for the modern hospitality operator.</p>
+  <div class="hero-chips">
+    <span class="chip chip-blue">📸 AI Supply Chain</span>
+    <span class="chip chip-purple">👥 Smart Rostering</span>
+    <span class="chip chip-amber">💰 Financial Intelligence</span>
+    <span class="chip chip-green">🍽️ Restaurant Discovery</span>
+    <span class="chip chip-blue">🥽 AR / Meta Glass</span>
+    <span class="chip chip-purple">📱 TikTok + Instagram Booking</span>
+  </div>
+  <span class="confidential">🔒 CONFIDENTIAL — IP OWNED BY TIMOTHY SUSANTO — MAY 30, 2026</span>
+</div>
+
+<div class="divider"></div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section">
+  <div class="section-label">Executive Summary</div>
+  <div class="section-title">The Problem With Hospitality Software Today</div>
+  <div class="section-body">
+    <p>The global hospitality industry runs on <strong>fragmented, outdated, manual technology</strong>. A hotel's purchasing team uses one platform (PurchasePlus, FutureLog, Ivalua). Their HR team uses another (Zambion, Deputy, Humanforce). Their finance team uses a third (MYOB, Xero, SAP). Their marketing team posts on TikTok and Instagram manually. None of these systems talk to each other.</p>
+    <p>The result: <strong>a Head Chef in Sydney orders produce at stale catalogue prices, over-staffs on a slow Tuesday because the roster isn't connected to the booking system, gets surprised by a labour blowout because the rostering tool doesn't show true on-costs, and has no single view of whether this week is profitable.</strong></p>
+    <p>HospitalityOS solves all of this. <strong>One AI-native platform. One click per action. Every system connected.</strong></p>
+    <p>This is not an incremental improvement on existing tools. This is a ground-up reimagining of how hospitality operations run — built with AI at the core, not bolted on after.</p>
+  </div>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="icon">📋</div>
+      <h3>Stale Supplier Prices</h3>
+      <p>Produce prices move daily. PurchasePlus catalogues are updated weekly at best. Invoice surprises are routine. A $1.50/kg error on a 50kg order = $75 gone before service starts.</p>
+      <div class="cost">Industry loss: $2.3B/year globally</div>
+    </div>
+    <div class="problem-card">
+      <div class="icon">👥</div>
+      <h3>Roster-Reality Gap</h3>
+      <p>Rosters built without cover forecasts. Labour cost shown as base wages only — true on-costs (FICA, super, workers comp) hidden. Budget blowouts discovered at month end, not shift start.</p>
+      <div class="cost">Avg overspend: 8-12% of labour budget</div>
+    </div>
+    <div class="problem-card">
+      <div class="icon">💰</div>
+      <h3>No Real-Time P&L</h3>
+      <p>Financial reports arrive 2-3 weeks after the period closes. By then the decisions are made. Operators fly blind every service, every week.</p>
+      <div class="cost">72% of operators lack live P&L visibility</div>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🍽️</div>
+      <h3>Booking Disconnected from Operations</h3>
+      <p>OpenTable, TheFork, Google — bookings land in one silo. The kitchen gets a cover count print-out. There is zero automated connection between bookings, prep planning, and staffing.</p>
+      <div class="cost">20-30% over/under-prep waste per service</div>
+    </div>
+    <div class="problem-card">
+      <div class="icon">📱</div>
+      <h3>Social Media ≠ Booking</h3>
+      <p>Gen Z and millennials discover restaurants on TikTok and Instagram. But booking still requires leaving the app, finding the website, and using a third-party form. Conversion lost at every step.</p>
+      <div class="cost">67% booking intent abandonment rate</div>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🥽</div>
+      <h3>Zero Pre-Visit Experience</h3>
+      <p>You book a restaurant based on 5 photos and 23 reviews. No spatial sense of the room. No idea if your table is next to the toilet. No way to see what the food actually looks like in 3D.</p>
+      <div class="cost">$0 technology investment in this space today</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ONE CLICK PHILOSOPHY -->
+<div class="section">
+  <div class="section-label">Core Design Philosophy</div>
+  <div class="section-title">The One-Click Principle</div>
+  <div class="section-body">
+    <p>Every feature in HospitalityOS is designed around a single rule: <strong>the end user should never need to do more than one meaningful action.</strong> AI handles everything else — reading, processing, routing, calculating, alerting.</p>
+    <p>Old technology asks the user to input data, then process it, then interpret it, then act on it. HospitalityOS inverts this. The AI observes, understands context, prepares the action, and presents a single decision point: <strong>Confirm or Edit.</strong></p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-icon">📸</div>
+      <div class="flow-text"><strong>Supplier photographs price board</strong><span>One tap to open camera in the HospitalityOS Supplier App</span></div>
+      <div class="flow-badge">1 CLICK</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-icon">🤖</div>
+      <div class="flow-text"><strong>AI reads every item and price</strong><span>GPT-4 Vision / Google Cloud Vision extracts SKU, name, unit, price in &lt;3 seconds</span></div>
+      <div class="flow-badge">AI AUTO</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-icon">✅</div>
+      <div class="flow-text"><strong>Supplier confirms or edits</strong><span>Pre-filled form. Tap Confirm. Done.</span></div>
+      <div class="flow-badge">1 CLICK</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-icon">🔄</div>
+      <div class="flow-text"><strong>Prices push live to all connected venues</strong><span>PurchasePlus API / HospitalityOS catalogue updated instantly</span></div>
+      <div class="flow-badge">AI AUTO</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-icon">📊</div>
+      <div class="flow-text"><strong>Financial model re-calculates food cost %</strong><span>Every connected venue sees updated COGS in their live P&L instantly</span></div>
+      <div class="flow-badge">AI AUTO</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-icon">🚨</div>
+      <div class="flow-text"><strong>Alert fires if price spike exceeds threshold</strong><span>Head Chef notified: "Salmon up 18% — consider menu adjustment or alternative supplier"</span></div>
+      <div class="flow-badge">AI AUTO</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- THE 6 MODULES -->
+<div class="section">
+  <div class="section-label">Platform Architecture</div>
+  <div class="section-title">Six Integrated AI Modules</div>
+  <div class="section-body">
+    <p>HospitalityOS is built as six deeply integrated modules sharing a single data layer. Every module feeds every other module in real time. No exports. No manual re-entry. No silos.</p>
+  </div>
+
+  <!-- MODULE 1 -->
+  <div class="module-card blue" style="margin-top:32px">
+    <div class="module-number">Module 01</div>
+    <div class="module-title">📸 SupplySnap — AI Supply Chain Intelligence</div>
+    <div class="module-sub">Real-time supplier price updates via camera AI · Market benchmarking · Automated PO management</div>
+    <div class="module-features">
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>Camera AI reads supplier price boards, invoices, delivery dockets in &lt;3 seconds</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>GPT-4 Vision + OCR extracts SKU, item name, unit, price automatically</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>Live market price benchmarking (Sydney Markets, USDA, Bangkok wholesale)</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>Auto-alerts when supplier price deviates &gt;10% from market rate</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>PurchasePlus API integration — pushes prices direct, no manual entry</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>Supplier scorecard — on-time delivery, price accuracy, quality rating</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>AI suggests alternative suppliers when price exceeds threshold</span></div>
+      <div class="feature-item"><div class="feature-dot dot-blue"></div><span>Auto-generates PO based on par levels + forecasted covers</span></div>
+    </div>
+    <div class="oneclick-box"><strong>One-Click Action:</strong> Supplier photographs price board → AI reads all prices → Confirm → Live in system. Total time: 8 seconds.</div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module-card purple">
+    <div class="module-number">Module 02</div>
+    <div class="module-title">👥 RosterIQ — AI-Powered Labour Intelligence</div>
+    <div class="module-sub">Cover-forecast-driven rostering · True on-cost calculation · Real-time labour % monitoring</div>
+    <div class="module-features">
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>AI reads booking data → forecasts covers per session → suggests roster</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>True labour cost engine: base wage + FICA/Super + workers comp + health + leave</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>Labour % vs revenue alert fires when threshold breached</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>Integrates with Zambion, Deputy, Humanforce via API</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>AI learns from history — "last 4 Saturdays averaged 120 covers, roster for 125"</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>Shift handover auto-generated from operational data</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>Skills-based matching — right person, right role, right session</span></div>
+      <div class="feature-item"><div class="feature-dot dot-purple"></div><span>Multi-property rostering for hotel groups (Accor, IHG, Marriott)</span></div>
+    </div>
+    <div class="oneclick-box"><strong>One-Click Action:</strong> AI sees next week's bookings → generates draft roster with true cost → Manager taps Approve. Done.</div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module-card amber">
+    <div class="module-number">Module 03</div>
+    <div class="module-title">💰 ProfitPulse — Live Financial Intelligence</div>
+    <div class="module-sub">Real-time P&L · Daily food cost tracking · Weekly finance report in one tap</div>
+    <div class="module-features">
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Live revenue feed from POS (Square, Toast, Lightspeed, Opera)</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Real-time COGS updated as SupplySnap prices change</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Live labour cost from RosterIQ — true cost, not base wages</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Live P&L dashboard: Revenue − COGS − Labour − Fixed = Net</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Weekly finance report auto-generated every Monday morning</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>AI variance analysis: "Food cost up 2.3% this week — salmon price spike"</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Cash flow forecast updated daily based on actuals + bookings pipeline</span></div>
+      <div class="feature-item"><div class="feature-dot dot-amber"></div><span>Integrates with Xero, MYOB, QuickBooks, SAP</span></div>
+    </div>
+    <div class="oneclick-box"><strong>One-Click Action:</strong> Tap "Weekly Report" → AI compiles revenue, COGS, labour, fixed costs → PDF report ready in 4 seconds. Email to owner automatically.</div>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module-card green">
+    <div class="module-number">Module 04</div>
+    <div class="module-title">🍽️ TableFlow — Social-Native Restaurant Booking</div>
+    <div class="module-sub">TikTok + Instagram native booking · No app switch · Booking feeds directly into operations</div>
+    <div class="module-features">
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>TikTok native booking — "Book Now" button inside TikTok video</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>Instagram booking via DM AI — user DMs "book Saturday 7pm 2 pax" → confirmed automatically</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>Google Maps, LINE (Thailand), WhatsApp booking integration</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>Booking instantly feeds RosterIQ → updates cover forecast → adjusts prep sheet</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>Dietary preferences captured at booking → flagged to kitchen automatically</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>Guest history AI — "returning guest, last visited March, ordered wagyu"</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>AI waitlist management — auto-fills cancellations from waitlist</span></div>
+      <div class="feature-item"><div class="feature-dot dot-green"></div><span>Bangkok-first launch: LINE OA + TikTok TH + Google Maps Thai</span></div>
+    </div>
+    <div class="oneclick-box"><strong>One-Click Action:</strong> Guest sees TikTok video → taps "Book" → selects date/time/pax → confirmed. Never leaves TikTok. Booking appears in kitchen in real time.</div>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="module-card pink">
+    <div class="module-number">Module 05</div>
+    <div class="module-title">🥽 ImmerseDine — AR Restaurant Preview (Meta Glass + Mobile)</div>
+    <div class="module-sub">3D restaurant tours · Food in AR before you order · Spatial dining decisions</div>
+    <div class="module-features">
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>Meta Quest 3 / Ray-Ban Meta Glass integration — walk through the restaurant in AR before booking</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>iPhone / Android WebAR — no app download, link opens 3D tour in browser</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>3D food visualisation — see the dish on the table in real scale before ordering</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>AI-generated 3D models from standard food photography (no studio needed)</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>Table selector in 3D — choose your exact seat from a bird's-eye floor plan</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>Ambient preview — see what the restaurant looks like at dinner service lighting</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>Chef intro video embedded in AR space — "Hi, I'm Chef Timothy, welcome to..."</span></div>
+      <div class="feature-item"><div class="feature-dot dot-pink"></div><span>TikTok-shareable AR experience — guests share their table preview as a TikTok</span></div>
+    </div>
+    <div class="oneclick-box"><strong>One-Click Action:</strong> Tap "Preview in AR" from Instagram/TikTok → WebAR opens → 30-second restaurant tour → "Book This Table" → confirmed. World's first social-to-AR-to-booking funnel.</div>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="module-card teal">
+    <div class="module-number">Module 06</div>
+    <div class="module-title">🧠 ChefBrain — The AI Operations Co-Pilot</div>
+    <div class="module-sub">Cross-module AI intelligence layer · Proactive alerts · Natural language commands</div>
+    <div class="module-features">
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Natural language dashboard — ask "how did last week go?" → full summary in plain English</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Proactive daily brief — 7am push notification: "Today: 85 covers, labour budget $1,200, watch salmon cost"</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Cross-module anomaly detection — "Waste up 40% this week, correlates with new prep cook starting Monday"</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Menu engineering AI — weekly analysis of what to push, fix, or 86</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Seasonal demand forecasting — 30-day cover and revenue projections</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Supplier negotiation intelligence — "Your beef supplier is 22% above market average. Here's the ask."</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>Voice command mode — chef speaks to the system hands-free during service</span></div>
+      <div class="feature-item"><div class="feature-dot dot-teal"></div><span>WhatsApp / LINE integration — ChefBrain sends daily briefs to phone</span></div>
+    </div>
+    <div class="oneclick-box"><strong>One-Click Action:</strong> Chef asks ChefBrain: "Should I roster an extra line cook Saturday?" → AI responds: "85 covers booked, 12 more on waitlist, Saturday last 4 weeks averaged 98 — yes, add one."</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DATA LAYER -->
+<div class="section">
+  <div class="section-label">Technical Architecture</div>
+  <div class="section-title">The Unified Data Layer</div>
+  <div class="section-body">
+    <p>Every module in HospitalityOS shares a <strong>single operational data layer</strong>. This is the core architectural innovation — not just connecting APIs, but building a unified hospitality data model where supply, labour, financial, and guest data are all first-class citizens of the same schema.</p>
+    <p>When a booking arrives from TikTok, it immediately updates the cover forecast in RosterIQ, which adjusts the labour cost projection in ProfitPulse, which updates the cash flow forecast, which triggers a prep sheet update in SupplySnap. All of this happens in <strong>under 500 milliseconds</strong>, automatically, without any human action.</p>
+    <p><strong>AI Stack:</strong> GPT-4 Vision (image reading) · Whisper (voice commands) · Custom fine-tuned model on hospitality data · Google Cloud Vision fallback · Embedding-based anomaly detection</p>
+    <p><strong>Integration Layer:</strong> PurchasePlus API · Zambion/Deputy webhooks · Square/Toast/Lightspeed POS · Xero/MYOB/QuickBooks · TikTok Business API · Instagram Graph API · Meta Spatial SDK · LINE Messaging API</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MARKET + PRICING -->
+<div class="section">
+  <div class="section-label">Market Opportunity</div>
+  <div class="section-title">Total Addressable Market</div>
+
+  <table class="tam-table">
+    <thead><tr><th>Segment</th><th>Target</th><th>Unit Economics</th><th>TAM</th></tr></thead>
+    <tbody>
+      <tr><td>Independent restaurants (US)</td><td>500,000 venues</td><td>$99/mo</td><td class="tam-number">$594M ARR</td></tr>
+      <tr><td>Hotel F&B (global)</td><td>50,000 properties</td><td>$499/mo</td><td class="tam-number">$299M ARR</td></tr>
+      <tr><td>Fresh produce suppliers</td><td>20,000 suppliers</td><td>$49/mo</td><td class="tam-number">$11.8M ARR</td></tr>
+      <tr><td>Restaurant groups (5+ venues)</td><td>10,000 groups</td><td>$299/mo</td><td class="tam-number">$35.9M ARR</td></tr>
+      <tr><td>Bangkok / SEA restaurants</td><td>100,000 venues</td><td>฿990/mo</td><td class="tam-number">$35M ARR</td></tr>
+      <tr style="font-weight:700"><td>Total TAM</td><td colspan="2"></td><td class="tam-number" style="font-size:1.1rem">$976M ARR</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">Starter</div>
+      <div class="pricing-price"><span class="curr">$</span>49</div>
+      <div class="pricing-sub">per month · single venue</div>
+      <ul class="pricing-features">
+        <li>SupplySnap (up to 3 suppliers)</li>
+        <li>Basic P&L dashboard</li>
+        <li>TableFlow booking (50 covers/mo)</li>
+        <li>ChefBrain daily brief</li>
+        <li>Up to 10 staff (RosterIQ)</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-tier" style="color:var(--accent)">Pro · Most Popular</div>
+      <div class="pricing-price" style="color:var(--accent)"><span class="curr" style="color:var(--accent)">$</span>99</div>
+      <div class="pricing-sub">per month · single venue</div>
+      <ul class="pricing-features">
+        <li>SupplySnap (unlimited suppliers)</li>
+        <li>RosterIQ (unlimited staff)</li>
+        <li>ProfitPulse live P&L</li>
+        <li>TableFlow (unlimited bookings)</li>
+        <li>ImmerseDine AR (mobile WebAR)</li>
+        <li>ChefBrain full AI co-pilot</li>
+        <li>Weekly auto-report</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Business</div>
+      <div class="pricing-price"><span class="curr">$</span>299</div>
+      <div class="pricing-sub">per month · up to 5 venues</div>
+      <ul class="pricing-features">
+        <li>All Pro features</li>
+        <li>Multi-venue P&L consolidation</li>
+        <li>ImmerseDine Meta Glass support</li>
+        <li>Custom integrations</li>
+        <li>API access</li>
+        <li>Dedicated onboarding</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Enterprise</div>
+      <div class="pricing-price"><span class="curr">$</span>499</div>
+      <div class="pricing-sub">per month · per property</div>
+      <ul class="pricing-features">
+        <li>All Business features</li>
+        <li>PurchasePlus / Ivalua integration</li>
+        <li>Zambion / Deputy sync</li>
+        <li>SAP / Oracle finance export</li>
+        <li>White-label option</li>
+        <li>Accor / IHG / Marriott ready</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BANGKOK LAUNCH STRATEGY -->
+<div class="section">
+  <div class="section-label">Go-To-Market</div>
+  <div class="section-title">Bangkok First — The SEA Beachhead</div>
+  <div class="section-body">
+    <p>Bangkok is the ideal launch market. <strong>10,000+ restaurants</strong> in the greater metro. TikTok penetration among 18–35 year olds exceeding 85%. LINE dominates messaging (52M Thai users). The restaurant dining culture is intensely social — food is photographed before eaten, restaurants are discovered on TikTok, and the AR preview experience will go viral naturally in this market.</p>
+    <p>Tim Savetsomphob's IHG Sukhumvit opening (July 2026) provides the first enterprise anchor client. Timothy Susanto's 10+ years of F&B operations experience provides operational credibility. Bangkok's lower developer cost base ($2,500/mo senior dev vs $12,000 in Sydney) extends the runway.</p>
+    <p><strong>Phase 1 target:</strong> 20 Bangkok premium restaurants on TableFlow + ImmerseDine within 6 months of launch. Each one a TikTok content opportunity. Each one proves the model for the next.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">Q3 2026</div>
+      <div class="tl-content">
+        <h4>🌱 MVP — TableFlow Bangkok</h4>
+        <p>TikTok + Instagram + LINE booking for 20 Bangkok restaurants. No AR yet. Simple booking flow. Prove the social-to-table concept. Hire 2 Bangkok developers.</p>
+        <div class="tl-rev">Target: 20 venues · ฿990/mo = ฿19,800/mo (~$550)</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Q4 2026</div>
+      <div class="tl-content">
+        <h4>📸 SupplySnap Beta</h4>
+        <p>Launch to 10 Bangkok produce suppliers. Camera AI price update. Prove the one-click supply chain concept. Connect to IHG Sukhumvit as first hotel enterprise client.</p>
+        <div class="tl-rev">Target: $5K MRR · First enterprise deal</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Q1 2027</div>
+      <div class="tl-content">
+        <h4>🥽 ImmerseDine AR Launch</h4>
+        <p>WebAR food + restaurant previews. TikTok viral campaign — "See your table before you book." Bangkok food influencer seeding. Meta Glass pilot with 3 premium venues.</p>
+        <div class="tl-rev">Target: $25K MRR · Series Seed raise begins</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Q2 2027</div>
+      <div class="tl-content">
+        <h4>💰 RosterIQ + ProfitPulse</h4>
+        <p>Full operations suite launched. Rostering + financial intelligence connected to booking data. Sydney and Melbourne pilot with 5 independent restaurants.</p>
+        <div class="tl-rev">Target: $75K MRR · Seed round close $1.5M</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Q4 2027</div>
+      <div class="tl-content">
+        <h4>🏨 Enterprise — Accor / IHG SEA</h4>
+        <p>Full HospitalityOS enterprise pitch to Accor NSW/ACT, IHG SEA. Timothy Susanto as proof case — "I built this while running Novotel Sydney Olympic Park." Close 3 hotel groups.</p>
+        <div class="tl-rev">Target: $250K MRR · $3M ARR run rate</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2028–2029</div>
+      <div class="tl-content">
+        <h4>🌏 SEA + Australia Scale</h4>
+        <p>Expand to Singapore, Kuala Lumpur, Jakarta, Sydney, Melbourne. Series A raise. Technical team of 20. Begin US market entry through KitchenFounder brand audience.</p>
+        <div class="tl-rev">Target: $10M ARR · Series A $8–15M</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2030–2032</div>
+      <div class="tl-content">
+        <h4>🌍 Global Platform + Acquisition Target</h4>
+        <p>Full global hospitality OS. 10,000+ venues. Potential acquisition by PurchasePlus parent, Accor Digital, or Toast/Lightspeed at $500M–$1B valuation.</p>
+        <div class="tl-rev">Target: $50M+ ARR · $500M–$1B valuation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMPETITIVE MOAT -->
+<div class="section">
+  <div class="section-label">Competitive Advantage</div>
+  <div class="section-title">Why This Can't Be Easily Copied</div>
+  <div class="section-body">
+    <p><strong>1. Insider Operational Knowledge.</strong> This platform was designed by a working Head Chef with 10+ years of F&B consulting experience across Accor properties. Every feature solves a real operational pain that existing software has failed to address. You can't replicate this insight from a boardroom.</p>
+    <p><strong>2. The Network Effect.</strong> Every supplier who joins SupplySnap makes the platform more valuable for every connected venue. Every restaurant on TableFlow creates more social content that drives more diners to the platform. This is a two-sided marketplace with compounding defensibility.</p>
+    <p><strong>3. The AI Data Moat.</strong> After 12 months of operation, HospitalityOS will have the world's most detailed real-time dataset of hospitality supply prices, cover patterns, labour efficiency ratios, and dining behaviour. This dataset becomes a proprietary asset that gets more valuable with every venue added — and impossible to replicate from scratch.</p>
+    <p><strong>4. Social-Native First-Mover.</strong> No existing restaurant booking platform has native TikTok or Instagram booking. OpenTable is a 1998 paradigm with a 2024 coat of paint. We build for where the customer already is — their phone, their feed, their favourite app.</p>
+    <p><strong>5. The AR Preview Barrier.</strong> Building food and restaurant AR at scale requires AI-generated 3D modelling, deep meta SDK integration, and extensive content operations. This is an 18–24 month technical lead that cannot be closed quickly by incumbents.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- IP DECLARATION -->
+<div class="section">
+  <div class="section-label">Intellectual Property Declaration</div>
+  <div class="section-title">IP Ownership & Concept Origin</div>
+  <div class="section-body">
+    <p>The HospitalityOS concept, architecture, module design, naming, business model, go-to-market strategy, and all associated intellectual property described in this document was conceived and authored by <strong>Timothy Susanto</strong> on <strong>May 30, 2026</strong>.</p>
+    <p>The concept originated from Timothy Susanto's direct operational experience as Head Chef at Novotel Sydney Olympic Park (Accor NSW/ACT), observing the gap between PurchasePlus catalogue prices and actual supplier invoice prices, and recognising the downstream impact on rostering, financial forecasting, and guest acquisition strategy.</p>
+    <p>The six-module architecture (SupplySnap, RosterIQ, ProfitPulse, TableFlow, ImmerseDine, ChefBrain) and the "One-Click Principle" design philosophy are original concepts developed collaboratively between Timothy Susanto and his AI development partner (OpenClaw, May 30, 2026).</p>
+    <p><strong>This document serves as a timestamped record of concept origination.</strong> Timothy Susanto retains all commercial rights to develop, license, sell, or assign this concept. No part of this document may be reproduced or used commercially without written permission from Timothy Susanto.</p>
+  </div>
+
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-top:28px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;text-align:center">
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Concept Author</div>
+        <div style="font-size:1rem;font-weight:800;color:var(--text)">Timothy Susanto</div>
+        <div style="font-size:0.78rem;color:var(--muted)">Head Chef, Novotel Sydney Olympic Park</div>
+      </div>
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Date of Origin</div>
+        <div style="font-size:1rem;font-weight:800;color:var(--accent)">May 30, 2026</div>
+        <div style="font-size:0.78rem;color:var(--muted)">Sydney, Australia</div>
+      </div>
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Development Partner</div>
+        <div style="font-size:1rem;font-weight:800;color:var(--text)">OpenClaw AI</div>
+        <div style="font-size:0.78rem;color:var(--muted)">KitchenFounder Platform</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ip-footer">
+  <p><strong>CONFIDENTIAL — HospitalityOS IP Concept Document</strong><br>
+  © 2026 Timothy Susanto · All Rights Reserved<br>
+  Concept originated May 30, 2026 · Sydney, Australia<br>
+  This document is a timestamped intellectual property record. Unauthorised reproduction or commercial use is prohibited.<br>
+  <em>Built with KitchenFounder · kitchenfounder.com</em></p>
+</div>
+
+</body>
+</html>
