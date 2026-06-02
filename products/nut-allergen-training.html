@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nut Allergen Training — Australia</title>
+<style>
+:root {
+  --bg: #FAFAF8; --surface: #fff; --border: #E8E4DC;
+  --text: #1C1C1C; --muted: #6B6B6B; --accent: #C8A97E;
+  --red: #C0392B; --amber: #E67E22; --green: #1A7A6E; --blue: #1A3C5E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Arial', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.5; }
+.page { max-width: 210mm; margin: 0 auto; padding: 16mm 18mm; background: white; min-height: 297mm; }
+
+/* HEADER */
+.header { border-bottom: 4px solid var(--red); padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+.header-left h1 { font-size: 1.3rem; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: 0.03em; }
+.header-left h2 { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-top: 2px; }
+.header-right { text-align: right; font-size: 0.68rem; color: var(--muted); }
+.header-right .badge { background: var(--red); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; display: inline-block; margin-bottom: 4px; }
+
+/* ALERT BOX */
+.alert { background: #FFF0F0; border: 2px solid var(--red); border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; display: flex; gap: 12px; align-items: flex-start; }
+.alert-icon { font-size: 1.6rem; flex-shrink: 0; }
+.alert-text { font-size: 0.82rem; }
+.alert-text strong { color: var(--red); font-size: 0.88rem; display: block; margin-bottom: 3px; }
+
+/* SECTION */
+.section { margin-bottom: 14px; }
+.section-title { background: var(--blue); color: white; padding: 5px 12px; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 4px; margin-bottom: 8px; }
+.section-title.amber { background: var(--amber); }
+.section-title.green { background: var(--green); }
+.section-title.red { background: var(--red); }
+
+/* NUT GRID */
+.nut-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; }
+.nut-card { border: 1px solid var(--border); border-radius: 5px; padding: 7px 8px; text-align: center; background: #FFF8F0; }
+.nut-card .nut-icon { font-size: 1.3rem; }
+.nut-card .nut-name { font-size: 0.7rem; font-weight: 700; margin-top: 3px; }
+.nut-card .nut-note { font-size: 0.6rem; color: var(--muted); margin-top: 2px; }
+
+/* TWO COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+/* LISTS */
+.check-list { list-style: none; padding: 0; }
+.check-list li { padding: 3px 0; font-size: 0.8rem; padding-left: 18px; position: relative; }
+.check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.cross-list { list-style: none; padding: 0; }
+.cross-list li { padding: 3px 0; font-size: 0.8rem; padding-left: 18px; position: relative; }
+.cross-list li::before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+
+/* HIDDEN SOURCES TABLE */
+.hidden-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+.hidden-table th { background: var(--blue); color: white; padding: 5px 8px; text-align: left; font-weight: 700; }
+.hidden-table td { padding: 4px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.hidden-table tr:nth-child(even) td { background: #f5f0e8; }
+
+/* EMERGENCY BOX */
+.emergency { background: var(--red); color: white; border-radius: 6px; padding: 12px 16px; margin-bottom: 12px; }
+.emergency h3 { font-size: 0.9rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.emergency .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.emergency .step { background: rgba(255,255,255,0.15); border-radius: 4px; padding: 7px; text-align: center; }
+.emergency .step .num { font-size: 1.1rem; font-weight: 900; }
+.emergency .step .label { font-size: 0.62rem; margin-top: 3px; line-height: 1.3; }
+
+/* SIGN OFF */
+.signoff { border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+.signoff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin-top: 8px; }
+.sign-field { font-size: 0.72rem; }
+.sign-field .label { color: var(--muted); margin-bottom: 4px; }
+.sign-field .line { border-bottom: 1px solid #999; height: 22px; }
+
+/* FOOTER */
+.footer { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--muted); }
+
+/* INFO BOX */
+.info-box { background: #EFF9F8; border-left: 3px solid var(--green); border-radius: 0 5px 5px 0; padding: 8px 12px; font-size: 0.78rem; line-height: 1.6; }
+.warn-box { background: #FFF8EE; border-left: 3px solid var(--amber); border-radius: 0 5px 5px 0; padding: 8px 12px; font-size: 0.78rem; line-height: 1.6; }
+
+@media print {
+  body { background: white; }
+  .page { padding: 12mm 14mm; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>⚠️ Nut Allergen Awareness Training</h1>
+      <h2>Food Safety Training Module · Australian Standards (FSANZ Food Standards Code)</h2>
+    </div>
+    <div class="header-right">
+      <div class="badge">MANDATORY TRAINING</div>
+      <div>Issue Date: June 2026</div>
+      <div>Review: June 2027</div>
+      <div>Standard: FSANZ 1.2.3</div>
+    </div>
+  </div>
+
+  <!-- ALERT -->
+  <div class="alert">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-text">
+      <strong>Nut allergies can be life-threatening. There is no cure — only prevention.</strong>
+      In Australia, anaphylaxis from food allergy affects approximately 1 in 70 children and 1 in 150 adults. Tree nuts and peanuts are among the most common triggers. A trace amount — even residue on a shared utensil — can trigger a severe reaction. Every team member is responsible for keeping our guests safe.
+    </div>
+  </div>
+
+  <!-- NUT TYPES -->
+  <div class="section">
+    <div class="section-title">🥜 Know Your Nuts — Declare All of These</div>
+    <div class="nut-grid">
+      <div class="nut-card"><div class="nut-icon">🥜</div><div class="nut-name">Peanut</div><div class="nut-note">Legume — not tree nut. High risk.</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Cashew</div><div class="nut-note">Common in Asian dishes</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Almond</div><div class="nut-note">Flour, milk, oil, marzipan</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Walnut</div><div class="nut-note">Salads, baked goods, pesto</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Pistachio</div><div class="nut-note">Ice cream, Middle Eastern</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Hazelnut</div><div class="nut-note">Chocolate spreads, praline</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Macadamia</div><div class="nut-note">Native to Australia</div></div>
+      <div class="nut-card"><div class="nut-icon">🌰</div><div class="nut-name">Pecan · Brazil · Pine</div><div class="nut-note">All must be declared</div></div>
+    </div>
+    <div class="warn-box">⚠️ <strong>Important:</strong> Peanuts are a LEGUME (not a tree nut) but are among the most dangerous allergens in Australia. Always treat peanut and tree nut allergies as equally life-threatening. A guest with a peanut allergy may NOT be allergic to tree nuts — always ask specifically which nuts they are allergic to.</div>
+  </div>
+
+  <!-- TWO COLUMN: HIDDEN SOURCES + SYMPTOMS -->
+  <div class="two-col">
+
+    <div class="section">
+      <div class="section-title amber">🕵️ Hidden Sources in Your Kitchen</div>
+      <table class="hidden-table">
+        <thead><tr><th>Product</th><th>Hidden Nut Risk</th></tr></thead>
+        <tbody>
+          <tr><td>Satay sauce</td><td>Peanuts</td></tr>
+          <tr><td>Mole sauce</td><td>Peanuts, almonds</td></tr>
+          <tr><td>Pesto</td><td>Pine nuts</td></tr>
+          <tr><td>Praline / nougat</td><td>Hazelnuts, almonds</td></tr>
+          <tr><td>Marzipan / frangipane</td><td>Almonds</td></tr>
+          <tr><td>Nutella / choc spread</td><td>Hazelnuts</td></tr>
+          <tr><td>Some curries / rendang</td><td>Peanuts, cashews</td></tr>
+          <tr><td>Dukkah / za'atar blend</td><td>Hazelnuts, almonds</td></tr>
+          <tr><td>Almond meal / flour</td><td>Almonds — in GF baking</td></tr>
+          <tr><td>Asian stir-fry oils</td><td>May contain peanut oil</td></tr>
+          <tr><td>Vegetarian "meat" products</td><td>May contain nuts</td></tr>
+          <tr><td>Bread / rolls</td><td>Walnut bread, nut toppings</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div class="section">
+        <div class="section-title red">🆘 Anaphylaxis Symptoms — Act Fast</div>
+        <div class="three-col" style="gap:6px;margin-bottom:8px">
+          <div style="background:#FFF0F0;border:1px solid #f5c6cb;border-radius:4px;padding:6px;text-align:center;font-size:0.72rem">
+            <div style="font-size:1rem">😮</div>
+            <strong>Mild</strong>
+            <div>Tingling lips, hives, runny nose, stomach pain</div>
+          </div>
+          <div style="background:#FFE8E0;border:1px solid var(--amber);border-radius:4px;padding:6px;text-align:center;font-size:0.72rem">
+            <div style="font-size:1rem">😰</div>
+            <strong>Moderate</strong>
+            <div>Swelling face/tongue, vomiting, dizziness, wheeze</div>
+          </div>
+          <div style="background:#FFF0F0;border:2px solid var(--red);border-radius:4px;padding:6px;text-align:center;font-size:0.72rem">
+            <div style="font-size:1rem">😱</div>
+            <strong style="color:var(--red)">SEVERE</strong>
+            <div>Throat closure, breathing difficulty, collapse, loss of consciousness</div>
+          </div>
+        </div>
+        <div class="warn-box" style="font-size:0.74rem">⚠️ Symptoms can appear within <strong>minutes</strong> of exposure or be delayed up to 2 hours. Do not wait — act at the first sign of a reaction.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title green">✅ When a Guest Declares a Nut Allergy</div>
+        <ul class="check-list">
+          <li>Inform the kitchen <strong>immediately</strong> — verbal + written</li>
+          <li>Check ALL components of the dish including garnish, sauce, dressing, oil</li>
+          <li>Use <strong>clean utensils and separate boards</strong> — never reuse</li>
+          <li>Change gloves before preparing the allergen-free dish</li>
+          <li>Prepare on a <strong>clean, sanitised surface</strong></li>
+          <li>Plate separately — never on the same pass as other dishes</li>
+          <li>Deliver directly to the guest — confirm with them before serving</li>
+          <li>Document the allergy request and which staff member handled it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMERGENCY RESPONSE -->
+  <div class="emergency">
+    <h3>🚨 Emergency Response — Suspected Anaphylaxis</h3>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="label">Lay guest flat. Do NOT let them stand or walk.</div></div>
+      <div class="step"><div class="num">2</div><div class="label">Use EpiPen if available. Outer thigh. Hold 3 seconds.</div></div>
+      <div class="step"><div class="num">3</div><div class="label">Call 000 immediately. Say "anaphylaxis".</div></div>
+      <div class="step"><div class="num">4</div><div class="label">Stay with guest. Monitor breathing until ambulance arrives.</div></div>
+      <div class="step"><div class="num">5</div><div class="label">Notify manager. Document the incident. Preserve the food.</div></div>
+    </div>
+  </div>
+
+  <!-- WHAT NOT TO DO + LEGAL -->
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title red">✗ Never Do This</div>
+      <ul class="cross-list">
+        <li>Say "I think it's fine" without checking</li>
+        <li>Remove nuts from a dish that already contains them</li>
+        <li>Use the same tongs/spoon after touching nuts</li>
+        <li>Assume cooking destroys the allergen (it does NOT)</li>
+        <li>Tell a guest "just a little bit won't hurt"</li>
+        <li>Ignore a guest's allergy declaration</li>
+        <li>Allow cross-contamination in storage (store nuts in sealed, labelled containers, away from other ingredients)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">⚖️ Legal Obligations — Australia</div>
+      <div class="info-box">
+        <strong>FSANZ Food Standards Code Standard 1.2.3</strong> requires all packaged food to declare the presence of peanuts and tree nuts. For <strong>unpackaged / menu items</strong>, the Food Act in each state requires that allergen information be provided on request — and staff must be able to accurately answer.<br><br>
+        <strong>Penalties:</strong> Failure to disclose allergens that causes serious injury can result in prosecution under Australian Consumer Law and state food safety legislation. Venue and individual staff can be held liable.<br><br>
+        <strong>Best practice:</strong> Treat every allergen declaration as a legal obligation, not a preference.
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN OFF -->
+  <div class="signoff">
+    <div style="font-size:0.78rem;font-weight:700;margin-bottom:4px">📝 Staff Training Sign-Off — I have read, understood, and will apply this training in my daily work.</div>
+    <div class="signoff-grid">
+      <div class="sign-field"><div class="label">Full Name</div><div class="line"></div></div>
+      <div class="sign-field"><div class="label">Role / Department</div><div class="line"></div></div>
+      <div class="sign-field"><div class="label">Signature</div><div class="line"></div></div>
+      <div class="sign-field"><div class="label">Date</div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Nut Allergen Awareness Training · Australian Standards (FSANZ Food Standards Code Standard 1.2.3) · June 2026</span>
+    <span>Keep on file for minimum 3 years · Review annually or when menu changes</span>
+  </div>
+
+</div>
+</body>
+</html>
