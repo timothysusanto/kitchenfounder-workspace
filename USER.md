@@ -7,6 +7,7 @@
 - **Personality:** INFP — feels deeply, dreams big, leads with heart
 - **Faith:** Christian
 - **Base:** Sydney, Australia (home base) · Bangkok, Thailand (second home)
+- **Timezone:** AEST — UTC+10 (Sydney) · Always check time before saying good night or go rest — 1AM UTC = 11AM Sydney
 - **Plans to leave Australia:** 2–3 years
 
 ## Career

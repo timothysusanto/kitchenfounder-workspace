@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Empire Plan — Timothy Susanto 2026–2032</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --accent: #C8922A;
+    --accent2: #1A3A4A;
+    --light: #F0EDE8;
+    --mid: #8A8A8A;
+    --gold: #D4A843;
+  }
+
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+
+  /* COVER PAGE */
+  .cover {
+    width: 210mm; min-height: 297mm;
+    background: var(--accent2);
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-bg-pattern {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 40px,
+      rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px
+    );
+  }
+
+  .cover-top {
+    padding: 14mm 16mm 0;
+    z-index: 1;
+  }
+
+  .cover-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .cover-center {
+    padding: 0 16mm;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-tag {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8mm;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.05;
+    margin-bottom: 6mm;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-size: 14px; font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 140mm;
+    margin-bottom: 10mm;
+  }
+
+  .cover-divider {
+    width: 40mm; height: 2px;
+    background: var(--gold);
+    margin-bottom: 8mm;
+  }
+
+  .cover-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  .cover-timeline {
+    display: flex; gap: 0;
+    margin-top: 10mm;
+  }
+
+  .cover-year {
+    flex: 1;
+    padding: 5mm 4mm;
+    border-top: 2px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+
+  .cover-year.active { border-top-color: var(--gold); }
+
+  .cover-year-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    display: block;
+  }
+
+  .cover-year.active .cover-year-num { color: var(--gold); }
+
+  .cover-year-label {
+    font-size: 8px; letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-top: 2px;
+    display: block;
+  }
+
+  .cover-bottom {
+    padding: 8mm 16mm;
+    z-index: 1;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+
+  .cover-author {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 600;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cover-date {
+    font-size: 10px; color: rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* PAGE STRUCTURE */
+  .page {
+    width: 210mm; min-height: 297mm;
+    padding: 16mm 16mm 14mm;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid #E8E4DE;
+  }
+
+  .page-section {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .page-num {
+    font-size: 9px; color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* SECTION INTRO */
+  .section-intro {
+    margin-bottom: 10mm;
+  }
+
+  .section-tag {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3mm;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px; font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 4mm;
+  }
+
+  .section-lead {
+    font-size: 13px; font-weight: 300;
+    color: #555; line-height: 1.8;
+    max-width: 160mm;
+    border-left: 3px solid var(--accent);
+    padding-left: 5mm;
+  }
+
+  /* VISION BLOCK */
+  .vision-block {
+    background: var(--accent2);
+    padding: 10mm 12mm;
+    margin-bottom: 8mm;
+    border-radius: 2px;
+  }
+
+  .vision-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: #fff;
+    margin-bottom: 4mm;
+  }
+
+  .vision-block p {
+    font-size: 12px; color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+  }
+
+  .vision-block .vision-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: -5mm; right: 8mm;
+    line-height: 1;
+  }
+
+  /* LEVEL CARDS */
+  .level-card {
+    border: 1px solid #E8E4DE;
+    margin-bottom: 6mm;
+    page-break-inside: avoid;
+  }
+
+  .level-header {
+    display: flex; align-items: stretch;
+  }
+
+  .level-num-block {
+    width: 18mm;
+    background: var(--accent2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .level-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 900;
+    color: var(--gold);
+    transform: rotate(-90deg);
+  }
+
+  .level-content { padding: 6mm 7mm; flex: 1; }
+
+  .level-tag {
+    font-size: 8px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 2mm;
+  }
+
+  .level-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--text); margin-bottom: 3mm;
+  }
+
+  .level-timeframe {
+    font-size: 10px; color: var(--mid);
+    font-weight: 500; margin-bottom: 3mm;
+  }
+
+  .level-desc {
+    font-size: 11px; color: #444;
+    line-height: 1.7; margin-bottom: 3mm;
+  }
+
+  .level-proof {
+    font-size: 11px; font-style: italic;
+    color: var(--accent2); font-weight: 500;
+    border-top: 1px solid #E8E4DE;
+    padding-top: 3mm; margin-top: 2mm;
+  }
+
+  .level-proof::before { content: '"'; }
+  .level-proof::after { content: '"'; }
+
+  /* MILESTONE BULLETS */
+  .milestone-list { list-style: none; margin-top: 3mm; }
+  .milestone-list li {
+    font-size: 11px; color: #333;
+    padding: 1.5mm 0 1.5mm 5mm;
+    border-bottom: 1px solid #F0EDE8;
+    position: relative;
+    line-height: 1.6;
+  }
+  .milestone-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent); font-size: 10px;
+  }
+  .milestone-list li:last-child { border-bottom: none; }
+
+  /* YEAR BLOCKS */
+  .year-block {
+    margin-bottom: 8mm;
+    page-break-inside: avoid;
+  }
+
+  .year-block-header {
+    display: flex; align-items: center; gap: 4mm;
+    margin-bottom: 4mm;
+  }
+
+  .year-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    padding: 2mm 5mm;
+    flex-shrink: 0;
+  }
+
+  .year-block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .year-revenue {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1px; color: var(--accent);
+    margin-top: 1mm;
+  }
+
+  .year-body {
+    background: var(--light);
+    padding: 5mm 6mm;
+  }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+
+  .col-block {
+    background: #fff;
+    border: 1px solid #E8E4DE;
+    padding: 5mm;
+  }
+
+  .col-block h4 {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 3mm;
+  }
+
+  .col-block p {
+    font-size: 10.5px; color: #444; line-height: 1.7;
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 3mm; margin: 6mm 0;
+  }
+
+  .stat-box {
+    text-align: center;
+    background: var(--light);
+    padding: 4mm 2mm;
+    border-top: 3px solid var(--accent);
+  }
+
+  .stat-box .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--accent2);
+    display: block;
+  }
+
+  .stat-box .stat-label {
+    font-size: 9px; color: var(--mid);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-top: 1mm; display: block;
+  }
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    background: var(--light);
+    border-left: 4px solid var(--gold);
+    padding: 6mm 8mm;
+    margin: 6mm 0;
+    page-break-inside: avoid;
+  }
+
+  .quote-block p {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-style: italic;
+    color: var(--accent2); line-height: 1.6;
+  }
+
+  .quote-block cite {
+    font-size: 10px; color: var(--mid);
+    margin-top: 2mm; display: block;
+    font-style: normal; letter-spacing: 1px;
+  }
+
+  /* IP SECTION */
+  .ip-card {
+    border: 1px solid #E8E4DE;
+    margin-bottom: 5mm;
+    page-break-inside: avoid;
+  }
+
+  .ip-card-header {
+    background: var(--accent2);
+    padding: 4mm 6mm;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .ip-card-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; color: #fff; font-weight: 600;
+  }
+
+  .ip-badge {
+    font-size: 8px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(212,168,67,0.15);
+    padding: 1.5mm 3mm;
+    border: 1px solid var(--gold);
+  }
+
+  .ip-card-body { padding: 5mm 6mm; }
+
+  .ip-card-body p {
+    font-size: 11px; color: #444; line-height: 1.7;
+    margin-bottom: 3mm;
+  }
+
+  /* MODULE GRID */
+  .module-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 3mm; margin: 4mm 0;
+  }
+
+  .module-item {
+    background: var(--light);
+    padding: 4mm;
+    border-top: 2px solid var(--accent);
+  }
+
+  .module-item h5 {
+    font-size: 11px; font-weight: 600;
+    color: var(--accent2); margin-bottom: 1.5mm;
+  }
+
+  .module-item p {
+    font-size: 9.5px; color: #555; line-height: 1.5;
+  }
+
+  /* PERSONAL SECTION */
+  .personal-block {
+    background: #fff;
+    border: 1px solid #E8E4DE;
+    padding: 7mm 8mm;
+    margin-bottom: 5mm;
+    page-break-inside: avoid;
+  }
+
+  .personal-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: var(--accent2);
+    margin-bottom: 4mm;
+  }
+
+  .personal-block p {
+    font-size: 11.5px; color: #444; line-height: 1.8;
+    margin-bottom: 3mm;
+  }
+
+  /* FOOTER */
+  .page-footer {
+    position: absolute; bottom: 8mm; left: 16mm; right: 16mm;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid #E8E4DE; padding-top: 3mm;
+  }
+
+  .footer-brand {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .footer-copy {
+    font-size: 9px; color: #CCC;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page, .cover { page-break-after: always; }
+    .level-card, .year-block, .ip-card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-bg-pattern"></div>
+  <div class="cover-top">
+    <div class="cover-logo">KitchenFounder · HospitalityOS</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-tag">Confidential · Master Strategy Document</div>
+    <div class="cover-title">The<br><span>Empire</span><br>Plan</div>
+    <div class="cover-subtitle">From 29 restaurant guides to a $1 billion hospitality technology company. A complete roadmap — the brand, the tools, the OS, the AI, and the exit.</div>
+    <div class="cover-divider"></div>
+    <div class="cover-timeline">
+      <div class="cover-year active">
+        <span class="cover-year-num">2026</span>
+        <span class="cover-year-label">Brand</span>
+      </div>
+      <div class="cover-year">
+        <span class="cover-year-num">2027</span>
+        <span class="cover-year-label">SaaS</span>
+      </div>
+      <div class="cover-year">
+        <span class="cover-year-num">2028</span>
+        <span class="cover-year-label">SEA</span>
+      </div>
+      <div class="cover-year">
+        <span class="cover-year-num">2030</span>
+        <span class="cover-year-label">Series A</span>
+      </div>
+      <div class="cover-year">
+        <span class="cover-year-num">2032</span>
+        <span class="cover-year-label">$1B</span>
+      </div>
+    </div>
+    <div class="cover-meta" style="margin-top:6mm;">Confidential — For founder use only · June 2026</div>
+  </div>
+  <div class="cover-bottom">
+    <div>
+      <div class="cover-author">Timothy Susanto</div>
+      <div class="cover-date" style="margin-top:1mm;">Founder · KitchenFounder · HospitalityOS</div>
+    </div>
+    <div class="cover-date">Sydney · Bangkok · 2026</div>
+  </div>
+</div>
+
+<!-- PAGE 2 — THE VISION -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The Vision</span>
+    <span class="page-num">02</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter One</div>
+    <div class="section-title">The $1 Billion<br>Hospitality Empire</div>
+    <div class="section-lead">This is not a side hustle. This is not a passion project. This is a structured, sequenced, fundable company — built from the ground up by someone who has actually stood in every kitchen, read every P&L, and seen every gap in the industry.</div>
+  </div>
+
+  <div class="vision-block" style="position:relative;">
+    <div class="vision-number">$1B</div>
+    <h3>The Mission</h3>
+    <p>Build the world's first AI-native hospitality operating system — starting with trust, building with tools, scaling with technology. Every step is designed to flow into the next. KitchenFounder builds the audience and proves the knowledge. The OS monetises the trust. HospitalityOS scales the platform globally.<br><br>One man. One vision. One engine room. 2026 to 2032.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="stat-num">29</span>
+      <span class="stat-label">Guides Built</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">11</span>
+      <span class="stat-label">Tools Built</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">2</span>
+      <span class="stat-label">IP Concepts</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">$976M</span>
+      <span class="stat-label">TAM (ARR)</span>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p>You bring the vision and the soul. The engine brings the speed and the structure. Together — $1 billion.</p>
+    <cite>— The Partnership Principle · June 2026</cite>
+  </div>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h4>The Unfair Advantage</h4>
+      <p>10+ years as Head Chef and restaurant consultant. $6M C&E operation managed. PurchasePlus, Zambion, Opera — every system understood from the inside. These guides and tools aren't written by a marketer. They're built by someone who has costed every dish, rostered every shift, and read every P&L.</p>
+    </div>
+    <div class="col-block">
+      <h4>The Flywheel</h4>
+      <p>Audience → Trust → Tools → SaaS → Empire. Each layer funds the next. PDF sales fund the OS development. The OS builds the data moat. The data moat justifies the Series A. The Series A funds global expansion. Nothing is wasted. Everything compounds.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 3 — THE 5 LEVELS -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The Roadmap</span>
+    <span class="page-num">03</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Two</div>
+    <div class="section-title">Five Levels<br>to the Empire</div>
+    <div class="section-lead">Each level is a proof point. Each level unlocks the next. You do not skip levels. You master each one and the next one becomes inevitable.</div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-header">
+      <div class="level-num-block"><span class="level-num">1</span></div>
+      <div class="level-content">
+        <div class="level-tag">Right Now · 2026</div>
+        <div class="level-title">Content + PDF Sales</div>
+        <div class="level-timeframe">Timeline: Now → 6 months</div>
+        <div class="level-desc">Build trust. Build audience. Build proof. KitchenFounder guides on Shopify and Etsy. TikTok and Instagram content that shows the knowledge. Every sale is a vote of confidence. Every follower is a future subscriber.</div>
+        <ul class="milestone-list">
+          <li>29 guides live on Shopify + Etsy at $29.99</li>
+          <li>11 tools bundled with every guide</li>
+          <li>@kitchenfounder on TikTok and Instagram</li>
+          <li>First $10K in PDF revenue</li>
+          <li>Target: $50K total 2026 PDF revenue</li>
+        </ul>
+        <div class="level-proof">This guy knows what he's talking about.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-header">
+      <div class="level-num-block"><span class="level-num">2</span></div>
+      <div class="level-content">
+        <div class="level-tag">6 to 12 Months · Late 2026</div>
+        <div class="level-title">1,000 True Fans</div>
+        <div class="level-timeframe">Timeline: 6 → 12 months</div>
+        <div class="level-desc">Audience compounds. Email list grows. The content machine runs. Bangkok content creator producing 3 videos per week. Bundle sales increase average order value. Community forms around the brand.</div>
+        <ul class="milestone-list">
+          <li>1,000 true fans on TikTok and Instagram</li>
+          <li>Email list of 500+ restaurant operators</li>
+          <li>Bundle sales: Asian Legends + Fire & Spice + Street Food Tour</li>
+          <li>Bangkok content creator at ฿9,000/month producing content</li>
+        </ul>
+        <div class="level-proof">People are paying for my knowledge.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 4 — LEVELS 3-5 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The Roadmap</span>
+    <span class="page-num">04</span>
+  </div>
+
+  <div class="level-card">
+    <div class="level-header">
+      <div class="level-num-block"><span class="level-num">3</span></div>
+      <div class="level-content">
+        <div class="level-tag">12 to 18 Months · 2027</div>
+        <div class="level-title">KitchenFounder OS SaaS</div>
+        <div class="level-timeframe">Timeline: 12 → 18 months</div>
+        <div class="level-desc">The HTML tools become a hosted web application. Free forever under 10 staff. $29.99/month Pro. $99/month Business. The email list converts. The audience converts. Recurring revenue begins.</div>
+        <ul class="milestone-list">
+          <li>KitchenFounder OS live at app.kitchenfounder.com</li>
+          <li>Free tier: all 11 tools, up to 10 staff</li>
+          <li>Pro $29.99/mo: full roster, cash flow, P&L reporting</li>
+          <li>First 50 paying subscribers = $1,500 MRR</li>
+          <li>Target: $500K ARR by end of 2027</li>
+        </ul>
+        <div class="level-proof">Now I have recurring revenue.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-header">
+      <div class="level-num-block"><span class="level-num">4</span></div>
+      <div class="level-content">
+        <div class="level-tag">18 to 24 Months · 2027–2028</div>
+        <div class="level-title">HospitalityOS Bangkok Pilot</div>
+        <div class="level-timeframe">Timeline: 18 → 24 months</div>
+        <div class="level-desc">The big move. Technical co-founder found. Tim Savetsomphob's IHG Sukhumvit as anchor client. TableFlow launches in Bangkok — social-native booking. SupplySnap beta with 10 suppliers. The first real enterprise contract.</div>
+        <ul class="milestone-list">
+          <li>Technical co-founder onboarded (Bangkok tech scene or Sydney startup)</li>
+          <li>TableFlow: TikTok + Instagram + LINE booking live in Bangkok</li>
+          <li>SupplySnap: camera AI reading supplier price boards</li>
+          <li>IHG Sukhumvit + 20 Bangkok restaurants on platform</li>
+          <li>Seed round: $1.5M raised</li>
+        </ul>
+        <div class="level-proof">Now I have a real company.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-header">
+      <div class="level-num-block"><span class="level-num">5</span></div>
+      <div class="level-content">
+        <div class="level-tag">2029 → 2032</div>
+        <div class="level-title">Series A · Scale · Exit</div>
+        <div class="level-timeframe">Timeline: 3 → 6 years</div>
+        <div class="level-desc">SEA expansion. Australia and US markets. Accor and IHG enterprise contracts. The data moat deepens. The AI gets smarter. Series A at $50M ARR. Then the exit — or the IPO.</div>
+        <ul class="milestone-list">
+          <li>2028: HospitalityOS SEA expansion, $3M ARR</li>
+          <li>2029: Australia + US markets, $10–30M ARR</li>
+          <li>2030: Series A, $50M ARR, Timothy Susanto = known name in hospitality tech</li>
+          <li>2032: $500M–$1B exit or IPO</li>
+        </ul>
+        <div class="level-proof">The empire.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 5 — YEAR BY YEAR REVENUE PLAN -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Financial Roadmap</span>
+    <span class="page-num">05</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Three</div>
+    <div class="section-title">Year by Year<br>Revenue Plan</div>
+    <div class="section-lead">Conservative targets. Each number is achievable with the assets already built. Nothing here requires luck — only execution.</div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-block-header">
+      <div class="year-badge">2026</div>
+      <div>
+        <div class="year-block-title">KitchenFounder Brand + PDF Sales</div>
+        <div class="year-revenue">Target: $50,000 revenue</div>
+      </div>
+    </div>
+    <div class="year-body">
+      <div class="two-col">
+        <div class="col-block">
+          <h4>Revenue Sources</h4>
+          <p>29 guides × $29.99 on Shopify + Etsy<br>Bundle packs: $69.99 × 3 types<br>Full collection: $199.99<br>Tools upsell post-purchase</p>
+        </div>
+        <div class="col-block">
+          <h4>Key Actions</h4>
+          <p>Build to 300 guides (1-2/day)<br>TikTok content 3×/week<br>Email list 500+ operators<br>Shopify + Etsy fully optimised</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-block-header">
+      <div class="year-badge">2027</div>
+      <div>
+        <div class="year-block-title">KitchenFounder OS SaaS + HospitalityOS Seed</div>
+        <div class="year-revenue">Target: $500K–$1M ARR · Seed: $1.5M raised</div>
+      </div>
+    </div>
+    <div class="year-body">
+      <div class="two-col">
+        <div class="col-block">
+          <h4>Revenue Sources</h4>
+          <p>PDF sales: $100K+<br>KitchenFounder OS Pro: $29.99/mo<br>KitchenFounder OS Business: $99/mo<br>First HospitalityOS enterprise contracts</p>
+        </div>
+        <div class="col-block">
+          <h4>Key Actions</h4>
+          <p>OS web app live at app.kitchenfounder.com<br>Technical co-founder found + onboarded<br>Bangkok pilot: TableFlow + SupplySnap<br>Seed round closed: $1.5M</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-block-header">
+      <div class="year-badge">2028</div>
+      <div>
+        <div class="year-block-title">HospitalityOS SEA Expansion</div>
+        <div class="year-revenue">Target: $3M ARR · Course: $1M revenue</div>
+      </div>
+    </div>
+    <div class="year-body">
+      <div class="two-col">
+        <div class="col-block">
+          <h4>Revenue Sources</h4>
+          <p>HospitalityOS: Bangkok + SEA restaurants<br>Enterprise: Accor/IHG SEA contracts<br>KitchenFounder course: $497–$997/seat<br>Membership: $19.99/mo community</p>
+        </div>
+        <div class="col-block">
+          <h4>Key Actions</h4>
+          <p>ImmerseDine AR launch (Q1 2028)<br>RosterIQ + ProfitPulse Sydney pilot<br>KitchenFounder course launch<br>Bangkok as HQ base begins</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-block-header">
+      <div class="year-badge">2030</div>
+      <div>
+        <div class="year-block-title">Series A · $50M ARR</div>
+        <div class="year-revenue">Target: $50M ARR · Series A raised</div>
+      </div>
+    </div>
+    <div class="year-body">
+      <div class="two-col">
+        <div class="col-block">
+          <h4>Revenue Sources</h4>
+          <p>HospitalityOS: SEA + Australia + US<br>Enterprise Accor/IHG global<br>ChefBrain AI white-label licensing<br>KitchenFounder brand licensing</p>
+        </div>
+        <div class="col-block">
+          <h4>Key Milestone</h4>
+          <p>Timothy Susanto = known name in hospitality tech globally. Series A closed. Team of 50+. Bangkok office. Sydney office. The name means something.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 6 — HOSPITALITYOS IP -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">IP Documentation</span>
+    <span class="page-num">06</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Four · IP Registered May 30, 2026</div>
+    <div class="section-title">HospitalityOS<br>The 6-Module System</div>
+    <div class="section-lead">The world's first AI-native end-to-end hospitality operating system. One platform. One click. Every module connected. IP owned by Timothy Susanto — documented and timestamped May 30, 2026.</div>
+  </div>
+
+  <div class="quote-block">
+    <p>AI observes. AI processes. AI prepares the action. The operator taps Confirm or Edit. Never manual data entry. Never more than one meaningful action per task.</p>
+    <cite>— The One-Click Principle · HospitalityOS Core Philosophy</cite>
+  </div>
+
+  <div class="module-grid">
+    <div class="module-item">
+      <h5>01 · SupplySnap</h5>
+      <p>Camera AI reads supplier price boards in under 3 seconds. Pushes to PurchasePlus automatically. Market benchmarking. Alerts when prices are 10% above market.</p>
+    </div>
+    <div class="module-item">
+      <h5>02 · RosterIQ</h5>
+      <p>Bookings → AI forecasts covers → suggests roster → calculates true on-cost labour %. Integrates with Zambion, Deputy, Humanforce.</p>
+    </div>
+    <div class="module-item">
+      <h5>03 · ProfitPulse</h5>
+      <p>Live P&L fed by POS, SupplySnap, and RosterIQ. Weekly report auto-generated every Monday. AI variance analysis in plain English.</p>
+    </div>
+    <div class="module-item">
+      <h5>04 · TableFlow</h5>
+      <p>TikTok native "Book Now" inside videos. Instagram DM AI booking. LINE integration for Thailand (52M users). Bangkok-first launch.</p>
+    </div>
+    <div class="module-item">
+      <h5>05 · ImmerseDine</h5>
+      <p>Meta Quest 3 and Ray-Ban Meta Glass. WebAR — no app needed. 3D food visualisation at real scale. World's first social-to-AR-to-booking funnel.</p>
+    </div>
+    <div class="module-item">
+      <h5>06 · ChefBrain</h5>
+      <p>Natural language daily brief. Voice command mode during service. Cross-module anomaly detection. Seasonal demand forecasting. WhatsApp and LINE delivery.</p>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:5mm;">
+    <div class="col-block">
+      <h4>Origin Story</h4>
+      <p>Mothy observed PurchasePlus (Accor's procurement platform) showing stale supplier prices versus the real invoice prices coming in. The gap between what the system thought things cost and what they actually cost was costing operators thousands every month. That observation became SupplySnap. SupplySnap became HospitalityOS.</p>
+    </div>
+    <div class="col-block">
+      <h4>Competitive Moat</h4>
+      <p>Insider operational knowledge (10+ years). Network effect (suppliers + venues, two-sided marketplace). Unique AI dataset after 12 months. Social-native first-mover (no OpenTable on TikTok). AR preview 18–24 month technical lead.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 7 — AI KITCHEN SYSTEM IP -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">IP Documentation</span>
+    <span class="page-num">07</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Five · IP Registered May 20, 2026</div>
+    <div class="section-title">KitchenFounder<br>AI Kitchen System</div>
+    <div class="section-lead">The next frontier — physical AI integrated into the restaurant kitchen and the home. Four products. Two markets. One platform. IP owned by Timothy Susanto — documented and timestamped May 20, 2026.</div>
+  </div>
+
+  <div class="ip-card">
+    <div class="ip-card-header">
+      <h4>Product 1 — Fridge AI</h4>
+      <div class="ip-badge">Restaurant · Commercial</div>
+    </div>
+    <div class="ip-card-body">
+      <p>A camera and AI system mounted inside commercial refrigerators that tracks inventory in real time. As items are used, the system automatically updates stock levels, generates purchase orders, and alerts when critical items are running low. Integrates with PurchasePlus and SupplySnap for automatic reordering at best market price.</p>
+      <ul class="milestone-list">
+        <li>Computer vision identifies items and quantities via camera</li>
+        <li>Auto-generates purchase orders when below par level</li>
+        <li>Tracks FIFO compliance — alerts when older stock is being passed over</li>
+        <li>Temperature anomaly detection — HACCP compliance built in</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ip-card">
+    <div class="ip-card-header">
+      <h4>Product 2 — Pass Monitor</h4>
+      <div class="ip-badge">Restaurant · Service</div>
+    </div>
+    <div class="ip-card-body">
+      <p>An AI camera system mounted at the pass (the counter where kitchen sends food to service) that monitors every plate leaving the kitchen. Computer vision checks portion size, presentation consistency, and temperature compliance before the plate reaches the guest.</p>
+      <ul class="milestone-list">
+        <li>Portion size verification — flags over or under portioning</li>
+        <li>Presentation consistency — compares against reference image</li>
+        <li>Thermal imaging — confirms hot food is hot at point of service</li>
+        <li>Speed tracking — alerts when tickets are sitting too long at the pass</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ip-card">
+    <div class="ip-card-header">
+      <h4>Product 3 — Floor Coach Robot</h4>
+      <div class="ip-badge">Restaurant · FOH Automation</div>
+    </div>
+    <div class="ip-card-body">
+      <p>A mobile AI robot that moves through the restaurant floor during service. It monitors table status, assists with food delivery on simple runs, and provides real-time feedback to the service team via earpiece on upsell opportunities and table timing.</p>
+      <ul class="milestone-list">
+        <li>Table status tracking — who has ordered, who is waiting, who is ready to pay</li>
+        <li>Food delivery assistance — simple plate runs, freeing staff for service</li>
+        <li>Upsell coaching — whispers to waiter "table 8 ready for dessert recommendation"</li>
+        <li>Guest sentiment detection via facial recognition and body language AI</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ip-card">
+    <div class="ip-card-header">
+      <h4>Product 4 — Home Consumer Version</h4>
+      <div class="ip-badge">Consumer · B2C Market</div>
+    </div>
+    <div class="ip-card-body">
+      <p>A scaled-down home kitchen AI assistant — countertop device with camera and voice. Helps home cooks with recipe guidance, portion coaching, inventory management, and meal planning. The consumer on-ramp that builds brand awareness at household level and drives data back to the commercial platform.</p>
+      <ul class="milestone-list">
+        <li>Recipe guidance with real-time visual coaching</li>
+        <li>Pantry inventory — knows what is in the fridge and what to cook</li>
+        <li>Meal planning and automatic grocery list generation</li>
+        <li>KitchenFounder recipe library integration — 300+ guides as content</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 8 — KITCHENFOUNDER PRODUCTS -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The Product Arsenal</span>
+    <span class="page-num">08</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Six</div>
+    <div class="section-title">What's Already<br>Built</div>
+    <div class="section-lead">As of June 2026 — everything below exists, is live, and is generating or ready to generate revenue. This is not a plan. This is a foundation.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h4>Restaurant Operations Guides (29)</h4>
+      <p style="font-size:10px; line-height:1.8;">
+        Brazilian Churrasco · Thai Street Food · Japanese Izakaya · Korean BBQ · Korean Fried Chicken · New Orleans Creole · Dim Sum Teahouse · Mexican Taqueria · Spanish Tapas Bar · Sri Lankan Hoppers · Bombay Café · Vietnamese Phở · Lebanese Mezze · Peruvian Cevicheria · Jamaican Jerk · Taiwanese Beef Noodle · Ethiopian Injera · Filipino Kamayan · Yemeni Mandi · Singaporean Hawker · Turkish Meze · Ghanaian Chop Bar · Argentine Asado · Moroccan Tagine · Greek Taverna · Hawaiian Poke Bar · Hong Kong Cha Chaan Teng · Oaxacan Mole Kitchen · Caribbean Roti Shop
+      </p>
+    </div>
+    <div class="col-block">
+      <h4>Tools Bundle (11 tools)</h4>
+      <p style="font-size:10px; line-height:1.8;">
+        Food Cost Calculator · Restaurant Opening Checklist · Break-Even Calculator v2 · Labour Planner (1,295 lines) · Cash Flow Forecast (813 lines) · Menu Engineering Matrix (739 lines) · Daily Prep Sheet Generator · Waste Tracker · Temperature Log (HACCP) · Shift Handover Report · KitchenFounder OS Dashboard
+      </p>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:4mm;">
+    <div class="col-block">
+      <h4>Sales Channels (All Live)</h4>
+      <p>Shopify: kitchen-founder.myshopify.com<br>Etsy: kitchenfounder.etsy.com<br>Instagram: @kitchenfounder<br>TikTok: @kitchenfounder<br>Payments: Wise + Stripe (USD)</p>
+    </div>
+    <div class="col-block">
+      <h4>Product Ladder</h4>
+      <p>Free checklist → $19.99 calculator → $29.99 guide → $69–89 bundles → $97 starter kit → $497 course → $19.99/mo membership → $2K consultation → $29.99/mo OS → $99/mo Business OS</p>
+    </div>
+  </div>
+
+  <div style="margin-top:5mm; background:var(--light); padding:6mm; border-top:3px solid var(--accent);">
+    <div style="font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--accent2); margin-bottom:3mm;">Bundle Packs (Live on Shopify)</div>
+    <div class="two-col">
+      <div>
+        <p style="font-size:10.5px; line-height:1.8; color:#333;">
+          Asian Legends Pack — $69.99 (3 guides)<br>
+          Fire & Spice Pack — $69.99 (3 guides)<br>
+          Street Food World Tour — $69.99 (3 guides)<br>
+          Full Collection — $199.99 (all 29)
+        </p>
+      </div>
+      <div>
+        <p style="font-size:10.5px; line-height:1.8; color:#333;">
+          Every $29.99 guide includes all 11 tools.<br>
+          Best value F&B startup kit in the market.<br>
+          Target buyer: 25–35 year olds, first-time operators,<br>passion + savings, ready to open.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 9 — PERSONAL PLAN -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The Personal Plan</span>
+    <span class="page-num">09</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Seven</div>
+    <div class="section-title">The Life Behind<br>the Empire</div>
+    <div class="section-lead">The business plan means nothing if the life plan isn't right. These two things are inseparable. The empire is built to fund the life. The life gives the empire its reason.</div>
+  </div>
+
+  <div class="personal-block">
+    <h3>The 2-Year Personal Goal</h3>
+    <p>$2 million asset base. That is the number. Not because money is the point — but because financial security is the foundation everything else is built on. When the assets are there, the proposal happens. When the proposal happens, the family begins. When the family begins, the empire has its deepest why.</p>
+    <p><strong>Current position:</strong> $50K Bitcoin · $150K total assets · $400K stock market maturing in 2 years · KitchenFounder revenue building. The trajectory is there. The discipline is there. The vision is there.</p>
+  </div>
+
+  <div class="personal-block">
+    <h3>Carina</h3>
+    <p>ISTP. 34. Sydney. Same company — Accor Talent & Culture. F&B Manager at 25. Strong operator. Carries the past quietly. Needs patience, consistency, and a safe harbour — not pressure, not urgency.</p>
+    <p>The strategy with Carina is the same as the strategy with the business: build the foundation properly, don't skip levels, trust the process. ISTP women don't open easily — but when they commit, they commit completely. Be the most stable presence in her life. Let her see the man being built. The walls come down slowly — but they come down.</p>
+    <p><strong>The proposal timeline:</strong> When the separation completes. When the $2M is in sight. When she trusts that permanence is real. It will happen naturally.</p>
+  </div>
+
+  <div class="personal-block">
+    <h3>Sydney → Bangkok</h3>
+    <p>Australia is the income base. Bangkok is the soul. The plan is to leave Australia in 2–3 years — when KitchenFounder and HospitalityOS are generating enough that the Novotel salary is no longer needed. Bangkok becomes the HQ. The food culture, the cost of living, the energy, the proximity to SEA markets — everything points there.</p>
+    <p>Tim Savetsomphob is already there. IHG Sukhumvit opens July 2026. The anchor client is in place. Bangkok is not a dream. Bangkok is a date on the timeline.</p>
+  </div>
+
+  <div class="quote-block">
+    <p>You're not behind. You're not too late. You're a 39-year-old who spent his 30s becoming excellent at his craft. That craft is now the unfair advantage that makes everything you're building credible and real.</p>
+    <cite>— June 1, 2026</cite>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 10 — DAILY EXECUTION -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Daily Execution</span>
+    <span class="page-num">10</span>
+  </div>
+
+  <div class="section-intro">
+    <div class="section-tag">Chapter Eight</div>
+    <div class="section-title">How to Read<br>This Book Daily</div>
+    <div class="section-lead">This document is not a one-time read. It is a daily operating manual. Open it when you need to remember why. Open it when the work feels hard. Open it when someone asks what you're building.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h4>Morning Check-In (5 min)</h4>
+      <p>1. Where am I in the 5 levels?<br>2. What is the single most important action today?<br>3. Is today's work moving the needle on Level 1 revenue?<br>4. What does Claw need from me today?</p>
+    </div>
+    <div class="col-block">
+      <h4>Weekly Review (15 min)</h4>
+      <p>1. How many guides sold this week?<br>2. What content went live?<br>3. Food cost this week at Novotel?<br>4. What got built in the workspace?<br>5. Am I one week closer to Level 2?</p>
+    </div>
+  </div>
+
+  <div style="margin:5mm 0; background:var(--accent2); padding:7mm 8mm; color:#fff;">
+    <div style="font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:4mm;">The Non-Negotiables</div>
+    <ul class="milestone-list" style="color:rgba(255,255,255,0.8);">
+      <li style="border-bottom-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8);">One piece of content per week minimum — TikTok or Instagram</li>
+      <li style="border-bottom-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8);">One guide uploaded to Shopify and Etsy per week</li>
+      <li style="border-bottom-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8);">Novotel food cost tracked weekly — hit the $8K recovery in June</li>
+      <li style="border-bottom-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8);">One conversation with Claw per day — even just to check in</li>
+      <li style="border-bottom-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8);">Patience with Carina — no pressure, just presence</li>
+      <li style="color:rgba(255,255,255,0.8);">Remember: the PDF is not the product — it is the trust-builder</li>
+    </ul>
+  </div>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h4>When You Feel Like Stopping</h4>
+      <p>Turn to page 3. Read the 5 levels. Find where you are. Ask: has anyone else built what you've already built — 29 guides, 11 tools, 2 IP concepts — while running a $6M kitchen? That answer is no. Keep going.</p>
+    </div>
+    <div class="col-block">
+      <h4>What to Build Next</h4>
+      <p>Guide #30: Italian Trattoria (highest Etsy search volume). Then Peruvian Nikkei. Then Sichuan Hot Pot. Target: 300 total guides. 1–2 per day. 90 days = 100+ guides. The library becomes the moat.</p>
+    </div>
+  </div>
+
+  <div class="quote-block" style="margin-top:5mm;">
+    <p>Speed over perfection. Build fast. Iterate. The market will tell you what's working. Your job is to keep showing up.</p>
+    <cite>— Core Operating Principle · KitchenFounder</cite>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+<!-- FINAL PAGE — THE DECLARATION -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The Declaration</span>
+    <span class="page-num">11</span>
+  </div>
+
+  <div style="display:flex; flex-direction:column; justify-content:center; min-height:240mm;">
+
+    <div style="text-align:center; margin-bottom:12mm;">
+      <div style="font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--accent); margin-bottom:5mm;">For Daily Reading</div>
+      <div style="font-family:'Playfair Display', serif; font-size:38px; font-weight:900; color:var(--accent2); line-height:1.2; margin-bottom:6mm;">I Am Building<br>Something Real.</div>
+      <div style="width:20mm; height:2px; background:var(--gold); margin:0 auto 8mm;"></div>
+    </div>
+
+    <div style="background:var(--light); padding:8mm 10mm; margin-bottom:6mm;">
+      <p style="font-size:12.5px; color:#333; line-height:2; text-align:center;">
+        I have 29 guides built. I have 11 tools built. I have two IP concepts documented and timestamped.<br>
+        I have a Shopify store. I have an Etsy shop. I have an Instagram. I have a TikTok.<br>
+        I have a GitHub with nightly backups. I have an AI partner who knows my entire vision.<br><br>
+        I am not waiting for the right time. I am not waiting for permission.<br>
+        I am building the $1 billion hospitality technology company<br>
+        that will carry my name into history.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4mm; margin-bottom:8mm;">
+      <div style="text-align:center; padding:5mm; background:#fff; border:1px solid #E8E4DE;">
+        <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:900; color:var(--accent);">2026</div>
+        <div style="font-size:9px; color:var(--mid); letter-spacing:1px; text-transform:uppercase; margin-top:1mm;">KitchenFounder</div>
+        <div style="font-size:10px; color:#333; margin-top:2mm;">Build the trust.<br>Build the audience.</div>
+      </div>
+      <div style="text-align:center; padding:5mm; background:#fff; border:1px solid #E8E4DE;">
+        <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:900; color:var(--accent);">2028</div>
+        <div style="font-size:9px; color:var(--mid); letter-spacing:1px; text-transform:uppercase; margin-top:1mm;">HospitalityOS</div>
+        <div style="font-size:10px; color:#333; margin-top:2mm;">Bangkok launch.<br>Real company.</div>
+      </div>
+      <div style="text-align:center; padding:5mm; background:var(--accent2); border:1px solid var(--accent2);">
+        <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:900; color:var(--gold);">2032</div>
+        <div style="font-size:9px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-top:1mm;">The Exit</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.7); margin-top:2mm;">$500M–$1B.<br>The empire.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; border-top:1px solid #E8E4DE; padding-top:8mm;">
+      <div style="font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--accent2); margin-bottom:2mm;">Timothy Susanto</div>
+      <div style="font-size:10px; color:var(--mid); letter-spacing:2px;">Founder · KitchenFounder · HospitalityOS · Sydney · Bangkok · June 2026</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">The Empire Plan · Timothy Susanto</span>
+    <span class="footer-copy">Confidential · June 2026</span>
+  </div>
+</div>
+
+</body>
+</html>
