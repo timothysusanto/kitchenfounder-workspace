@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Polo World Cup 2026 — Menu Programme</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #FAFAF8; --text: #1C1C1C; --accent: #1B4F8A; --gold: #C8922A;
+    --light: #F0EDE8; --mid: #8A8A8A; --dark: #0D2B4E; --green: #2E7D32;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+
+  /* COVER */
+  .cover { width:210mm; min-height:297mm; background: var(--dark); display:flex; flex-direction:column; justify-content:space-between; padding:0; page-break-after:always; position:relative; overflow:hidden; }
+  .cover-wave { position:absolute; bottom:0; left:0; right:0; height:90mm; background: linear-gradient(180deg, transparent 0%, rgba(27,79,138,0.25) 100%); }
+  .cover-top { padding:14mm 16mm 0; z-index:1; }
+  .cover-logo { font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .cover-center { padding:0 16mm; z-index:1; flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .cover-tag { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:6mm; }
+  .cover-title { font-family:'Playfair Display',serif; font-size:52px; font-weight:900; color:#fff; line-height:1.05; margin-bottom:5mm; }
+  .cover-title span { color:var(--gold); }
+  .cover-sub { font-size:12px; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.9; margin-bottom:8mm; }
+  .cover-divider { width:40mm; height:2px; background:var(--gold); margin-bottom:8mm; }
+  .cover-pills { display:flex; flex-wrap:wrap; gap:3mm; margin-bottom:6mm; }
+  .cover-pill { border:1px solid rgba(200,146,42,0.4); padding:2mm 4mm; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+  .cover-bottom { padding:8mm 16mm; z-index:1; border-top:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:flex-end; }
+  .cover-author { font-family:'Playfair Display',serif; font-size:14px; color:rgba(255,255,255,0.65); }
+  .cover-date { font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:1px; }
+
+  /* PAGES */
+  .page { width:210mm; min-height:297mm; padding:14mm 16mm 18mm; page-break-after:always; position:relative; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8mm; padding-bottom:3mm; border-bottom:1px solid #E8E4DE; }
+  .page-section { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mid); }
+  .page-num { font-size:9px; color:var(--mid); }
+  .page-footer { position:absolute; bottom:8mm; left:16mm; right:16mm; display:flex; justify-content:space-between; border-top:1px solid #E8E4DE; padding-top:3mm; }
+  .footer-brand { font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--mid); }
+  .footer-copy { font-size:9px; color:#CCC; }
+
+  .section-tag { font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--accent); margin-bottom:2mm; }
+  .section-title { font-family:'Playfair Display',serif; font-size:30px; font-weight:700; color:var(--text); line-height:1.15; margin-bottom:4mm; }
+  .section-lead { font-size:11.5px; font-weight:300; color:#555; line-height:1.85; border-left:3px solid var(--accent); padding-left:4mm; margin-bottom:5mm; }
+
+  /* DAY CARDS */
+  .day-card { border:1px solid #E8E4DE; margin-bottom:4mm; page-break-inside:avoid; }
+  .day-header { background:var(--accent); padding:3mm 5mm; display:flex; justify-content:space-between; align-items:center; }
+  .day-title { font-family:'Playfair Display',serif; font-size:15px; font-weight:700; color:#fff; }
+  .day-date { font-size:10px; color:rgba(255,255,255,0.65); letter-spacing:1px; }
+  .day-body { padding:4mm 5mm; }
+
+  .meal-section { margin-bottom:2mm; }
+  .meal-label { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:2mm; display:flex; justify-content:space-between; }
+  .meal-label span { color:var(--gold); }
+
+  .menu-grid { display:grid; grid-template-columns:1fr 1fr; gap:2mm; }
+  .menu-item { font-size:10.5px; color:#333; padding:1.5mm 0; border-bottom:1px dotted #E8E4DE; line-height:1.5; }
+  .menu-item:last-child { border-bottom:none; }
+  .menu-item strong { color:var(--dark); font-weight:600; display:block; margin-top:1.5mm; }
+
+  /* SURPRISE ELEMENT */
+  .surprise-item { background:#FFF8EE; border-left:3px solid var(--gold); padding:2.5mm 4mm; font-size:10.5px; color:#3D2B00; margin-top:3mm; line-height:1.7; }
+  .surprise-item .s-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:1mm; }
+
+  /* BEVERAGE STATION */
+  .beverage-block { background:var(--dark); color:#fff; padding:4mm 5mm; margin-bottom:4mm; }
+  .beverage-block h4 { font-family:'Playfair Display',serif; font-size:14px; color:var(--gold); margin-bottom:3mm; }
+  .bev-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; }
+  .bev-col h5 { font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:2mm; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1mm; }
+  .bev-col p { font-size:10.5px; color:rgba(255,255,255,0.7); line-height:1.8; }
+
+  /* NOTES */
+  .food-safe-note { background:#E8F5E9; border-left:3px solid var(--green); padding:2.5mm 4mm; font-size:10px; color:#1B5E20; margin-top:2.5mm; }
+  .inclusive-note { background:#EEF4FF; border-left:3px solid var(--accent); padding:2.5mm 4mm; font-size:10px; color:#0D2B4E; margin-top:2.5mm; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box { background:var(--dark); padding:6mm; margin:4mm 0; color:#fff; }
+  .highlight-box h4 { font-family:'Playfair Display',serif; font-size:16px; color:var(--gold); margin-bottom:3mm; }
+  .highlight-box p { font-size:11.5px; color:rgba(255,255,255,0.75); line-height:1.8; }
+
+  .surprise-philosophy { background:var(--light); border-top:3px solid var(--gold); padding:5mm 6mm; margin:4mm 0; }
+  .surprise-philosophy h4 { font-family:'Playfair Display',serif; font-size:15px; color:var(--dark); margin-bottom:3mm; }
+  .surprise-philosophy p { font-size:11px; color:#444; line-height:1.85; }
+
+  /* INCLUSIVITY PAGE */
+  .incl-grid { display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin:4mm 0; }
+  .incl-card { border:1px solid #E8E4DE; padding:4mm; }
+  .incl-card h4 { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:2.5mm; }
+  .incl-card p, .incl-card li { font-size:10.5px; color:#444; line-height:1.75; }
+  .incl-card ul { padding-left:4mm; }
+  .incl-card .badge { display:inline-block; font-size:8px; font-weight:700; letter-spacing:1px; padding:1mm 2mm; margin-right:1mm; margin-bottom:1mm; }
+  .badge-gf  { background:#E8F5E9; color:#2E7D32; }
+  .badge-v   { background:#F3E5F5; color:#6A1B9A; }
+  .badge-vg  { background:#E0F7FA; color:#006064; }
+  .badge-hal { background:#FFF3E0; color:#E65100; }
+  .badge-df  { background:#FCE4EC; color:#880E4F; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .col-block { background:#fff; border:1px solid #E8E4DE; padding:4mm; }
+  .col-block h4 { font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:3mm; }
+  .col-block ul { padding-left:4mm; }
+  .col-block li { font-size:10.5px; color:#444; line-height:1.75; }
+
+  /* SANDWICH STATION */
+  .sandwich-block { background:#F5F3EF; border:1px solid #DDD9D3; border-left:3px solid var(--accent); padding:3mm 4mm; margin-top:3mm; }
+  .sandwich-block .sb-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:2mm; }
+  .sandwich-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2mm; }
+  .sandwich-grid div { font-size:10px; color:#444; line-height:1.7; }
+  .sandwich-grid div strong { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--dark); display:block; margin-bottom:1mm; }
+
+    @media print {
+    body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page, .cover { page-break-after:always; }
+    .day-card { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-wave"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Novotel Ibis · Sydney Olympic Park</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-tag">Premium Event Catering · Official Menu Programme · v4</div>
+    <div class="cover-title">Water Polo<br><span>World Cup</span><br>2026</div>
+    <div class="cover-sub">
+      8-Day High-Performance Buffet Programme<br>
+      Lunch &amp; Dinner · Ballroom Pre-Function Area<br>
+      350–400 Athletes &amp; Officials · 16 Nations
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-pills">
+      <div class="cover-pill">100% Nut Free</div>
+      <div class="cover-pill">Halal Available</div>
+      <div class="cover-pill">Gluten Free Options</div>
+      <div class="cover-pill">Vegan Options</div>
+      <div class="cover-pill">Dairy Free Options</div>
+      <div class="cover-pill">19–26 July 2026</div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div>
+      <div class="cover-author">Timothy Susanto · Head Chef</div>
+      <div class="cover-date" style="margin-top:1mm;">Novotel Ibis Sydney Olympic Park</div>
+    </div>
+    <div class="cover-date">World Aquatics · Sydney</div>
+  </div>
+</div>
+
+<!-- PAGE 2 — PHILOSOPHY + BEVERAGES + INCLUSIVITY -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Menu Philosophy &amp; Beverage Programme</span>
+    <span class="page-num">02</span>
+  </div>
+
+  <div class="section-tag">The Michelin Catering Principle</div>
+  <div class="section-title">Food They Will<br>Never Forget</div>
+
+  <div class="surprise-philosophy">
+    <h4>The Surprise Philosophy</h4>
+    <p>At Michelin level, the greatest restaurants are remembered not for the menu alone — but for the <em>moment</em>. The unexpected flavour. The gesture that says: <em>we saw you, we thought of you.</em><br><br>
+    We have 8 days and 16 services to give 400 athletes from 16 nations something they will talk about long after the medals are awarded. Every dinner holds one surprise element — a dish, a presentation, a touch of theatre — that nobody saw coming. That is the edge that separates a good event from an unforgettable one.</p>
+  </div>
+
+  <!-- BEVERAGE STATION -->
+  <div class="beverage-block">
+    <h4>☕ Beverage Station — Included All Services</h4>
+    <div class="bev-grid">
+      <div class="bev-col">
+        <h5>Tea &amp; Coffee</h5>
+        <p>
+          Freshly brewed filter coffee<br>
+          Espresso &amp; flat white on request<br>
+          English Breakfast tea<br>
+          Green tea<br>
+          Peppermint herbal tea<br>
+          Chamomile herbal tea<br>
+          Ginger &amp; lemon tea<br>
+          Milk · Oat milk · Soy milk
+        </p>
+      </div>
+      <div class="bev-col">
+        <h5>Juice Station</h5>
+        <p>
+          Freshly squeezed orange juice<br>
+          Cold-pressed apple juice<br>
+          Watermelon juice (seasonal)<br>
+          Pineapple juice<br>
+          Mango juice<br>
+          Mixed berry smoothie (GF/V)<br>
+          Green smoothie — spinach, cucumber, apple (GF/V)
+        </p>
+      </div>
+      <div class="bev-col">
+        <h5>Hydration &amp; Recovery</h5>
+        <p>
+          Sparkling water · Still water<br>
+          Electrolyte water<br>
+          Coconut water (GF/V)<br>
+          Lemon &amp; mint infused water<br>
+          Cucumber &amp; basil water<br>
+          Sports recovery drink<br>
+          Hot chocolate (dairy &amp; oat milk)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h4>Athlete Nutrition Standards</h4>
+      <ul>
+        <li>Hot quality protein minimum 2 sources per service</li>
+        <li>Complex carbohydrates at every service</li>
+        <li>Maximum 3 salads per dinner — quality over quantity</li>
+        <li>Fresh fruit as primary dessert — athlete-focused</li>
+        <li>Winter soup at every dinner — warmth &amp; recovery</li>
+        <li>Live beverage station all services</li>
+        <li>Sandwich station at every lunch — build-your-own, athlete-customisable</li>
+        <li>Allergen info displayed at every station</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <h4>Food Safety — Non-Negotiable</h4>
+      <ul>
+        <li>100% NUT FREE — all 16 services, no exceptions</li>
+        <li>No cold/cured meats — food poisoning risk eliminated</li>
+        <li>No raw protein — no tartare, no sushi</li>
+        <li>All hot food above 63°C throughout service</li>
+        <li>Max 2-hour buffet window — replaced, never topped up</li>
+        <li>Temperature log completed every service</li>
+        <li>Head Chef or Sous Chef present entire service</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+<!-- PAGE 3 — DAYS 1 & 2 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">8-Day Menu Programme</span>
+    <span class="page-num">03</span>
+  </div>
+  <div class="section-title" style="font-size:22px; margin-bottom:4mm;">Days 1 &amp; 2 — Arrival &amp; Rest</div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 1 — Sunday 19 July · Arrival</span>
+      <span class="day-date">Welcome Dinner Only · First Impression</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">WELCOME DINNER BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">Roasted garlic &amp; tomato bisque — herb oil, warm sourdough</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Heirloom tomato — buffalo mozzarella, aged balsamic, basil</div>
+            <div class="menu-item">Roasted pumpkin — goat cheese, pepitas, honey dressing</div>
+            <div class="menu-item">Garden salad — mixed leaves, cucumber, house vinaigrette</div>
+            <div class="menu-item">Bread station — sourdough, dinner rolls, whipped butter</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Slow-roasted chicken — rosemary jus, confit garlic</div>
+            <div class="menu-item">Braised beef cheeks — red wine, gremolata</div>
+            <div class="menu-item">Baked barramundi — lemon beurre blanc, capers, dill</div>
+            <div class="menu-item">Pappardelle — slow-cooked ragu · napolitana option (V)</div>
+            <div class="menu-item">Roasted seasonal vegetables — EVOO, thyme (V/GF)</div>
+            <div class="menu-item">Dauphinoise potato · Steamed jasmine rice</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Seasonal fruit platter — perfectly ripe, beautifully sliced</div>
+            <div class="menu-item">Citrus fruit salad — orange blossom, mint</div>
+            <div class="menu-item">Yoghurt — honey, berry compote (GF)</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 1</span>
+          Head Chef Timothy carves the braised beef cheeks live at the pass. Every athlete sees the person cooking for them — name, face, craft. The first night sets the standard. They will never forget who stood at that carving station.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · No cold meats · All hot proteins above 63°C · Beverage station: coffee, tea, juice, water</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 2 — Monday 20 July · Rest Day</span>
+      <span class="day-date">Recovery Focus · Lunch &amp; Dinner</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">LUNCH BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Asian slaw — sesame, ginger dressing, no nuts</div>
+            <div class="menu-item">Caprese — bocconcini, heirloom tomato, basil oil</div>
+            <div class="menu-item">Quinoa tabbouleh — herbs, lemon (GF/V)</div>
+            <div class="menu-item">Bread rolls · Whipped butter · Hummus &amp; crackers</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Chicken schnitzel — house sauce, lemon</div>
+            <div class="menu-item">Slow-cooked beef &amp; vegetable stew — steamed rice (GF)</div>
+            <div class="menu-item">Pumpkin &amp; ricotta frittata (V/GF)</div>
+            <div class="menu-item">Steamed rice · Crispy roast potatoes</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh seasonal fruit platter · Yoghurt (GF)</div>
+          </div>
+        </div>
+      </div>
+              <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+      <div class="meal-section" style="margin-top:3mm; border-top:1px solid #E8E4DE; padding-top:3mm;">
+        <div class="meal-label">DINNER BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">Wild mushroom velouté — crème fraîche, chive oil, warm roll</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Rocket, pear &amp; parmesan — aged balsamic (no nuts)</div>
+            <div class="menu-item">Roasted beetroot — goat cheese, no nuts</div>
+            <div class="menu-item">Greek salad — feta, olive, capsicum, oregano</div>
+            <div class="menu-item">Bread station — sourdough, whipped butter</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Slow-roasted lamb shoulder — mint &amp; rosemary jus</div>
+            <div class="menu-item">Pan-seared salmon — caper butter, asparagus, dill</div>
+            <div class="menu-item">Chicken supreme — Marsala, wild mushroom cream</div>
+            <div class="menu-item">Rigatoni — slow-cooked napolitana, basil (V)</div>
+            <div class="menu-item">Steamed broccolini · Roasted potatoes</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Citrus salad · Yoghurt (GF)</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 2</span>
+          The mushroom velouté arrives in a teacup at each seat before athletes reach the buffet. A warm, silent gesture — like a Michelin restaurant. Nobody expected soup in a teacup at a World Cup. They will talk about it at breakfast the next morning.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Soup served in teacups — Michelin pre-service touch · Beverage station all services</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+<!-- PAGE 4 — DAYS 3 & 4 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">8-Day Menu Programme</span>
+    <span class="page-num">04</span>
+  </div>
+  <div class="section-title" style="font-size:22px; margin-bottom:4mm;">Days 3 &amp; 4 — Pre-Competition &amp; Game Day 1</div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 3 — Tuesday 21 July · Rest Day</span>
+      <span class="day-date">Pre-Competition Load · Italian Night</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">LUNCH BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Pasta salad — sun-dried tomato, basil, olives</div>
+            <div class="menu-item">Mixed leaf — cucumber, radish, vinaigrette</div>
+            <div class="menu-item">Chickpea &amp; roasted capsicum — cumin dressing (V/GF)</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">BBQ chicken pieces — smoky paprika marinade</div>
+            <div class="menu-item">Beef &amp; mushroom bolognese — penne, parmesan</div>
+            <div class="menu-item">Vegetable &amp; lentil curry — steamed rice (V/GF)</div>
+            <div class="menu-item">Steamed rice · Garlic bread</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Yoghurt (GF)</div>
+          </div>
+        </div>
+      </div>
+              <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+      <div class="meal-section" style="margin-top:3mm; border-top:1px solid #E8E4DE; padding-top:3mm;">
+        <div class="meal-label">DINNER BUFFET — ITALIAN NIGHT</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">Minestrone — seasonal vegetables, cannellini, parmesan</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Panzanella — heirloom tomato, torn sourdough, basil (V)</div>
+            <div class="menu-item">Shaved fennel &amp; orange — EVOO (no nuts)</div>
+            <div class="menu-item">Garden salad — house vinaigrette</div>
+            <div class="menu-item">Bread station — ciabatta, focaccia, whipped ricotta</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Slow-roasted pork belly — apple &amp; fennel jus, crackling</div>
+            <div class="menu-item">Grilled salmon — lemon herb butter, caponata</div>
+            <div class="menu-item">Chicken cacciatore — Sicilian olives, capers, tomato</div>
+            <div class="menu-item">Hand-rolled gnocchi — sage brown butter, parmesan (V)</div>
+            <div class="menu-item">Roasted root vegetables · Steamed rice</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Blood orange salad · Yoghurt (GF)</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 3</span>
+          Warm whipped ricotta served at the bread station — soft, fresh, extraordinary. Italian athletes will recognise it immediately. Chinese and Australian athletes discover something they didn't expect. Shared at the same table. That is the Michelin moment.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Italian Night · Whipped ricotta surprise at bread station</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 4 — Wednesday 22 July · Competition Day 1</span>
+      <span class="day-date">Performance Fuel · Asian Night</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">LUNCH BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Couscous — roasted vegetables, herbs, lemon (V)</div>
+            <div class="menu-item">Caesar salad — cos, croutons, parmesan</div>
+            <div class="menu-item">Lentil &amp; baby spinach — red wine vinaigrette (V/GF)</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Chicken &amp; mushroom pot pie — buttery pastry lid</div>
+            <div class="menu-item">Baked barramundi — lemon herb crust, salsa verde</div>
+            <div class="menu-item">Cheese &amp; spinach cannelloni — napolitana, parmesan (V)</div>
+            <div class="menu-item">Steamed rice · Chips</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Yoghurt (GF)</div>
+          </div>
+        </div>
+      </div>
+              <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+      <div class="meal-section" style="margin-top:3mm; border-top:1px solid #E8E4DE; padding-top:3mm;">
+        <div class="meal-label">DINNER BUFFET — ASIAN NIGHT</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">Tom kha gai — coconut, galangal, lemongrass, mushroom</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Asian slaw — sesame, lime, coriander, no nuts</div>
+            <div class="menu-item">Cucumber &amp; radish — rice vinegar, ginger (GF/V)</div>
+            <div class="menu-item">Edamame, corn &amp; spring onion (V/GF)</div>
+            <div class="menu-item">Jasmine rice · Bread station</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Beef rendang — slow-cooked 6 hours, jasmine rice</div>
+            <div class="menu-item">Teriyaki salmon — glazed, bok choy, sesame</div>
+            <div class="menu-item">Honey soy chicken — five spice, steamed rice</div>
+            <div class="menu-item">Tofu &amp; vegetable stir fry — oyster sauce (V)</div>
+            <div class="menu-item">Wok-fried Asian greens · Fried rice</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh mango platter · Tropical fruit salad · Yoghurt</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 4</span>
+          Tom kha gai served from a clay pot at the table, ladled individually — the aroma fills the room before anyone tastes it. Athletes from China, Croatia, Georgia react completely differently — but every single one takes a photo. The clay pot goes on Instagram.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Tom kha from clay pot — table theatre · Sesame listed on allergen board</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+<!-- PAGE 5 — DAYS 5 & 6 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">8-Day Menu Programme</span>
+    <span class="page-num">05</span>
+  </div>
+  <div class="section-title" style="font-size:22px; margin-bottom:4mm;">Days 5 &amp; 6 — Competition Days 2 &amp; Semi-Finals</div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 5 — Thursday 23 July · Competition Day 2</span>
+      <span class="day-date">Mediterranean Theme · Greek Day &amp; Middle Eastern Night</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">LUNCH BUFFET — GREEK DAY</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Greek salad — feta, olive, tomato, cucumber, oregano</div>
+            <div class="menu-item">Roasted capsicum &amp; feta — EVOO (V/GF)</div>
+            <div class="menu-item">Mixed green — house vinaigrette</div>
+            <div class="menu-item">Pita bread · Tzatziki · Hummus</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Lamb kofta — chargrilled, tzatziki, flatbread</div>
+            <div class="menu-item">Slow-baked moussaka — béchamel, beef &amp; eggplant</div>
+            <div class="menu-item">Spanakopita — spinach, feta, crispy filo (V)</div>
+            <div class="menu-item">Steamed rice · Roasted chat potatoes with oregano</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Greek yoghurt with honey</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 5 Lunch</span>
+          Greek yoghurt served in individual terracotta pots with a single drizzle of Australian honey. No nuts. Pure flavour. Greek athletes feel at home. Australian athletes taste something they didn't expect. Five seconds of silence before the spoon goes in.
+        </div>
+      </div>
+              <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+      <div class="meal-section" style="margin-top:3mm; border-top:1px solid #E8E4DE; padding-top:3mm;">
+        <div class="meal-label">DINNER BUFFET — MIDDLE EASTERN NIGHT</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">Red lentil &amp; cumin soup — lemon oil, warm flatbread</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Fattoush — crispy bread, sumac, pomegranate molasses</div>
+            <div class="menu-item">Tabbouleh — parsley, bulgur, lemon (V)</div>
+            <div class="menu-item">Cucumber &amp; tomato — mint, olive oil (V/GF)</div>
+            <div class="menu-item">Bread station · Hummus &amp; pita · Baba ghanoush</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Slow-roasted leg of lamb — pomegranate glaze, mint jus</div>
+            <div class="menu-item">Chicken shawarma — roasted, garlic sauce, pickles</div>
+            <div class="menu-item">Baked barramundi — chermoula, preserved lemon</div>
+            <div class="menu-item">Vegetable tagine — couscous, harissa (V/GF)</div>
+            <div class="menu-item">Roasted chat potatoes · Steamed rice</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Orange blossom fruit salad · Yoghurt (GF)</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 5 Dinner</span>
+          Baba ghanoush made fresh that afternoon — served warm with flatbread still from the oven. The smoke fills the room. Georgian, Spanish and Italian athletes recognise the depth immediately. Nothing like what they expected from a hotel buffet.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Terracotta yoghurt pots at lunch · Warm flatbread from oven at dinner</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 6 — Friday 24 July · Semi-Finals</span>
+      <span class="day-date">High Performance Day · Premium Night</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">LUNCH BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Panzanella — tomato, torn bread, basil (V)</div>
+            <div class="menu-item">Rocket &amp; parmesan — lemon dressing</div>
+            <div class="menu-item">Bean, corn &amp; capsicum — house dressing (V/GF)</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Grilled chicken breast — salsa verde, lemon</div>
+            <div class="menu-item">Barramundi fish &amp; chips — tartare, lemon wedge</div>
+            <div class="menu-item">Margherita pizza — San Marzano, fior di latte (V)</div>
+            <div class="menu-item">Steamed rice · Garlic bread</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Yoghurt (GF)</div>
+          </div>
+        </div>
+      </div>
+              <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+      <div class="meal-section" style="margin-top:3mm; border-top:1px solid #E8E4DE; padding-top:3mm;">
+        <div class="meal-label">DINNER BUFFET — PREMIUM NIGHT</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">Roasted pumpkin bisque — cream swirl, chive oil, warm roll</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Burrata — heirloom tomato, basil oil, flaked sea salt</div>
+            <div class="menu-item">Prawn &amp; avocado — Marie Rose, lemon (GF)</div>
+            <div class="menu-item">Mixed leaf — house vinaigrette</div>
+            <div class="menu-item">Bread station — sourdough, baguette</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Carved beef striploin — café de Paris butter, red wine jus</div>
+            <div class="menu-item">Whole baked barramundi — lemon, EVOO, herbs</div>
+            <div class="menu-item">Chicken piccata — lemon, capers, white wine sauce</div>
+            <div class="menu-item">Fettuccine — wild mushroom &amp; thyme cream (V)</div>
+            <div class="menu-item">Grilled asparagus · Dauphinoise potato</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Citrus fruit salad · Yoghurt (GF)</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 6</span>
+          The burrata arrives whole at the salad station — a team member breaks it open tableside. The cream flows. The room reacts. Every athlete with a phone takes a photo. By the time they post it, your kitchen is famous.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Burrata broken tableside — visual theatre · Carved beef at live station</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+<!-- PAGE 6 — DAYS 7 & 8 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">8-Day Menu Programme</span>
+    <span class="page-num">06</span>
+  </div>
+  <div class="section-title" style="font-size:22px; margin-bottom:4mm;">Days 7 &amp; 8 — Finals &amp; Farewell</div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 7 — Saturday 25 July · Finals Day</span>
+      <span class="day-date">Gold &amp; Bronze · The Celebration Dinner</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">FINALS LUNCH BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Niçoise — tuna, egg, green beans, olive (GF)</div>
+            <div class="menu-item">Heirloom tomato — basil, EVOO (V/GF)</div>
+            <div class="menu-item">Coleslaw — apple, caraway, no nuts (V)</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Hot Mains</strong></div>
+            <div class="menu-item">Pulled pork roll — apple slaw, brioche bun</div>
+            <div class="menu-item">Grilled salmon fillet — herb butter, lemon</div>
+            <div class="menu-item">Mac &amp; cheese — three-cheese gruyère crust (V)</div>
+            <div class="menu-item">Steamed rice · Chips</div>
+            <div class="menu-item"><strong>Desserts</strong></div>
+            <div class="menu-item">Fresh fruit platter · Yoghurt (GF)</div>
+          </div>
+        </div>
+      </div>
+              <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+      <div class="meal-section" style="margin-top:3mm; border-top:1px solid #E8E4DE; padding-top:3mm;">
+        <div class="meal-label">🏆 CHAMPIONSHIP CELEBRATION DINNER</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Soup</strong></div>
+            <div class="menu-item">French onion soup — gruyère crouton, warm roll</div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Smoked salmon — crème fraîche, capers, blini, dill</div>
+            <div class="menu-item">Roasted beetroot — whipped goat cheese, no nuts</div>
+            <div class="menu-item">Garden salad — house dressing</div>
+            <div class="menu-item">Bread station — sourdough, baguette, whipped butter</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>Premium Hot Mains</strong></div>
+            <div class="menu-item">Carved beef striploin — horseradish cream, red wine jus</div>
+            <div class="menu-item">Whole roasted chicken — truffle butter, pan jus</div>
+            <div class="menu-item">Baked salmon — saffron cream, capers, asparagus</div>
+            <div class="menu-item">Wild mushroom &amp; truffle risotto (V/GF)</div>
+            <div class="menu-item">Truffle mashed potato · Roasted seasonal vegetables</div>
+            <div class="menu-item"><strong>Celebration Desserts</strong></div>
+            <div class="menu-item">Pavlova — fresh berries, cream (GF)</div>
+            <div class="menu-item">Seasonal fruit platter — premium, beautifully presented</div>
+            <div class="menu-item">Yoghurt station — honey, berry compote</div>
+          </div>
+        </div>
+        <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Finals Night</span>
+          Every team receives a personalised flag card at their table — their nation's flag, handwritten: <em>"Thank you for competing at Sydney Olympic Park."</em> The truffle risotto is plated live by the Head Chef and sous chefs at a finishing station. On Finals night, the kitchen comes to the dining room. Champions remember who fed them.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Nation flag cards · Live truffle risotto finish station · Pavlova = single celebration sweet</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-title">Day 8 — Sunday 26 July · Departure</span>
+      <span class="day-date">🇦🇺 Australian Farewell Lunch · No Dinner Service</span>
+    </div>
+    <div class="day-body">
+      <div class="meal-section">
+        <div class="meal-label">FAREWELL LUNCH BUFFET</div>
+        <div class="menu-grid">
+          <div>
+            <div class="menu-item"><strong>Salads (3)</strong></div>
+            <div class="menu-item">Caesar salad — cos, croutons, parmesan</div>
+            <div class="menu-item">Roasted pumpkin — pepitas, honey (V/GF)</div>
+            <div class="menu-item">Greek salad — feta, olive, oregano</div>
+            <div class="menu-item">Bread station · Dips &amp; crackers</div>
+          </div>
+          <div>
+            <div class="menu-item"><strong>🇦🇺 Australian Farewell Mains</strong></div>
+            <div class="menu-item">Australian lamb cutlets — rosemary jus</div>
+            <div class="menu-item">Honey soy chicken — steamed jasmine rice</div>
+            <div class="menu-item">Baked barramundi — lemon butter, capers</div>
+            <div class="menu-item">Penne napolitana (V) · Roasted vegetables · Chips</div>
+            <div class="menu-item"><strong>Farewell Desserts</strong></div>
+            <div class="menu-item">Pavlova — berries, cream (GF) · Fresh fruit platter · Yoghurt</div>
+          </div>
+        </div>
+        <div class="sandwich-block">
+          <span class="sb-label">🥪 Sandwich Station — All Lunches</span>
+          <div class="sandwich-grid">
+            <div><strong>Breads</strong>Sourdough slices<br>Ciabatta rolls<br>Wholegrain loaf<br>Gluten-free wrap (GF)</div>
+            <div><strong>Fillings</strong>Carved chicken breast — pesto mayo<br>Roast beef — horseradish cream<br>Smoked salmon — cream cheese, dill<br>Egg salad — chives, mustard (V)</div>
+            <div><strong>Accompaniments</strong>Sliced cheddar · Swiss cheese<br>Cos lettuce · Tomato · Cucumber<br>Avocado · Pickles · Jalapeños<br>Dijon mustard · House mayo · Hot sauce</div>
+          </div>
+        </div>
+                <div class="surprise-item">
+          <span class="s-label">✨ Surprise Element — Day 8</span>
+          A handwritten postcard from the kitchen team at every place setting — <em>"Safe travels. Come back to Sydney."</em> Signed by the team. Cost: the price of a card. Memory: permanent. This is hospitality at its highest form.
+        </div>
+      </div>
+      <div class="food-safe-note">✅ NUT FREE · Handwritten farewell cards — the final Michelin moment · Reduced team from 2pm</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+<!-- PAGE 7 — SURPRISE ELEMENTS SUMMARY -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">The 8 Surprise Elements</span>
+    <span class="page-num">07</span>
+  </div>
+
+  <div class="section-tag">The Michelin Principle — Applied to World Cup Catering</div>
+  <div class="section-title">Eight Moments<br>They Will Never Forget</div>
+  <div class="section-lead">Every great restaurant is remembered for a moment — not a menu. These eight elements cost very little to execute but create memories that last a lifetime. Athletes will tell this story for years.</div>
+
+  <table style="width:100%; border-collapse:collapse; font-size:10.5px; margin-bottom:5mm;">
+    <tr>
+      <th style="background:var(--dark); color:#fff; padding:3mm 4mm; text-align:left; font-size:9px; letter-spacing:1px; width:12%;">Day</th>
+      <th style="background:var(--dark); color:#fff; padding:3mm 4mm; text-align:left; width:20%;">Service</th>
+      <th style="background:var(--dark); color:#fff; padding:3mm 4mm; text-align:left; width:36%;">The Surprise</th>
+      <th style="background:var(--dark); color:#fff; padding:3mm 4mm; text-align:left; width:32%;">Why It Works</th>
+    </tr>
+    <tr style="background:#FFF8EE;">
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 1</strong><br><span style="color:#999; font-size:9px;">Sun 19 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Welcome Dinner</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Head Chef Timothy carves beef cheeks live at the pass</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">First night sets the tone. Athletes see who is cooking for them. Instant respect and connection.</td>
+    </tr>
+    <tr>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 2</strong><br><span style="color:#999; font-size:9px;">Mon 20 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Dinner</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Mushroom velouté served in teacups at each seat before buffet opens</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Nobody expects a pre-service soup at a World Cup. Michelin warmth. Winter. Unforgettable.</td>
+    </tr>
+    <tr style="background:#FFF8EE;">
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 3</strong><br><span style="color:#999; font-size:9px;">Tue 21 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Italian Night</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Warm whipped ricotta at the bread station</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Italian athletes feel seen. Australian athletes discover something new. Shared at the same table.</td>
+    </tr>
+    <tr>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 4</strong><br><span style="color:#999; font-size:9px;">Wed 22 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Asian Night</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Tom kha gai from a clay pot, ladled individually at the table</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">The aroma fills the room. Tableside theatre. The clay pot photograph goes on Instagram.</td>
+    </tr>
+    <tr style="background:#FFF8EE;">
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 5</strong><br><span style="color:#999; font-size:9px;">Thu 23 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Lunch + Dinner</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Terracotta yoghurt pots with Australian honey (lunch) · Warm baba ghanoush with oven-fresh flatbread (dinner)</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Tactile memory. Sensory memory. Both are free to produce. Both are priceless to receive.</td>
+    </tr>
+    <tr>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 6</strong><br><span style="color:#999; font-size:9px;">Fri 24 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Semi-Finals Dinner</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Burrata broken open tableside — cream flows in front of the room</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Visual. Photographic. Every phone in the room comes out. The kitchen goes viral.</td>
+    </tr>
+    <tr style="background:#FFF8EE;">
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Day 7</strong><br><span style="color:#999; font-size:9px;">Sat 25 Jul</span></td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Finals Celebration</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Nation flag cards at every table + live truffle risotto finished by Head Chef &amp; sous chefs</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Personalisation is the highest form of hospitality. Champions remember who fed them.</td>
+    </tr>
+    <tr>
+      <td style="padding:2.5mm 4mm;"><strong>Day 8</strong><br><span style="color:#999; font-size:9px;">Sun 26 Jul</span></td>
+      <td style="padding:2.5mm 4mm;">Farewell Lunch</td>
+      <td style="padding:2.5mm 4mm;">Handwritten postcard from the kitchen team at every place setting</td>
+      <td style="padding:2.5mm 4mm; color:#555;">"Safe travels. Come back to Sydney." Cost: a card. Memory: permanent.</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box">
+    <h4>What This Menu Stands For</h4>
+    <p>
+      We are not feeding 400 athletes. We are hosting 400 ambassadors of the world's greatest water polo nations — and we have 8 days to show them what Australian hospitality looks like at its finest.<br><br>
+      This menu is built on three principles: <strong>inclusivity</strong> — every nation, every dietary need, every faith tradition is welcomed at this table; <strong>performance</strong> — every dish is designed to fuel elite athletes competing at the highest level; and <strong>memory</strong> — every service carries one moment of unexpected beauty that turns a meal into a story.<br><br>
+      The food will fuel them. The moments will define us.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+<!-- PAGE 8 — INCLUSIVITY & DIETARY -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Inclusivity &amp; Dietary Programme</span>
+    <span class="page-num">08</span>
+  </div>
+
+  <div class="section-tag">Every Nation · Every Athlete · Every Need</div>
+  <div class="section-title">A Table for<br>All 16 Nations</div>
+  <div class="section-lead">True hospitality means nobody feels like an afterthought. Whether an athlete eats halal, avoids gluten, follows a plant-based diet, or keeps kosher — they will find food made with the same care and skill as everything on this menu. No separate table. No inferior option. Just good food for everyone.</div>
+
+  <div class="incl-grid">
+    <div class="incl-card">
+      <h4>🕌 Halal</h4>
+      <span class="badge badge-hal">HALAL</span>
+      <p>Halal protein options available at every service. Available on 48-hour pre-notification through team managers. All halal proteins sourced from certified Sydney suppliers, prepared on separate equipment, served with dedicated utensils and clear station labelling.</p>
+    </div>
+    <div class="incl-card">
+      <h4>✡️ Kosher</h4>
+      <span class="badge" style="background:#FFF8DC; color:#8B6914;">KOSHER</span>
+      <p>Kosher meals prepared by an approved certified Sydney supplier and delivered sealed. Available on 72-hour pre-notification through team managers. Served with original sealed packaging and a plated presentation — not a compromise, a commitment.</p>
+    </div>
+    <div class="incl-card">
+      <h4>🌾 Gluten Free</h4>
+      <span class="badge badge-gf">GF</span>
+      <p>Gluten-free options available at every service — clearly labelled. Includes: grilled proteins, roasted vegetables, rice, fresh fruit, yoghurt, salads without croutons. Cross-contamination precautions taken at prep stage. GF bread available on request.</p>
+    </div>
+    <div class="incl-card">
+      <h4>🥗 Vegetarian &amp; Vegan</h4>
+      <span class="badge badge-v">V</span><span class="badge badge-vg">VG</span>
+      <p>Vegetarian option at every service. Vegan option on 24-hour pre-notification. All plant-based dishes are substantive — not sides dressed as mains. Includes: gnocchi, tofu stir fry, vegetable tagine, frittata, pasta napolitana, cannelloni, curry, and more.</p>
+    </div>
+    <div class="incl-card">
+      <h4>🥛 Dairy Free</h4>
+      <span class="badge badge-df">DF</span>
+      <p>Dairy-free options available at every service. Oat milk, soy milk, and coconut milk available at the beverage station. Clearly labelled options throughout the buffet. Athletes with dairy intolerance will never feel limited at this table.</p>
+    </div>
+    <div class="incl-card">
+      <h4>🚫 Nut Free (All Services)</h4>
+      <span class="badge" style="background:#FFEBEE; color:#B71C1C;">NUT FREE</span>
+      <p>Zero nuts in any form across all 16 services — no exceptions. No peanuts, tree nuts, nut oils, nut-based sauces. All recipes reviewed. All suppliers confirmed. All kitchen team briefed. Allergen boards at every station. This is a non-negotiable commitment.</p>
+    </div>
+    <div class="incl-card">
+      <h4>🐟 Low FODMAP &amp; High Protein</h4>
+      <span class="badge" style="background:#E8F5E9; color:#1B5E20;">ATHLETE</span>
+      <p>The entire menu is designed around high-protein, complex carbohydrate principles for elite athletic performance. Athletes with specific dietary protocols — low FODMAP, high-protein targets — can meet team nutrition managers to pre-arrange customised plates.</p>
+    </div>
+    <div class="incl-card">
+      <h4>🌍 Cultural Menus</h4>
+      <span class="badge" style="background:#E3F2FD; color:#0D47A1;">16 NATIONS</span>
+      <p>The 8-day rotation intentionally moves through Western, Italian, Asian, Greek, and Middle Eastern themes — so every nation encounters at least one night of familiar flavour. No one is a guest at someone else's dinner. Every team is the guest of honour.</p>
+    </div>
+  </div>
+
+  <div class="inclusive-note">
+    <strong>Pre-Event Dietary Registration:</strong> Team managers are requested to submit dietary requirements (halal, kosher, vegan, GF, dairy-free, other medical needs) at least 72 hours before arrival via the event coordinator. Every request is treated as a priority — not an exception. Our kitchen will prepare with the same care and skill for all. No athlete should ever feel like an afterthought at this table.
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-brand">Water Polo World Cup 2026 · Novotel Ibis SOP</span>
+    <span class="footer-copy">Head Chef Timothy Susanto · v4</span>
+  </div>
+</div>
+
+</body>
+</html>
