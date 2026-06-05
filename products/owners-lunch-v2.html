@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owners Lunch — Final Menu 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #FAFAF8; --text: #1C1C1C; --gold: #C8922A; --dark: #1C1C1C;
+    --french: #8B1A1A; --spanish: #1B4F8A; --light: #F0EDE8; --mid: #8A8A8A;
+  }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; }
+
+  .cover { width:210mm; min-height:297mm; background:#1C1C1C; display:flex; flex-direction:column; justify-content:space-between; page-break-after:always; position:relative; overflow:hidden; }
+  .cover-accent { position:absolute; top:0; right:0; width:60mm; height:100%; background:linear-gradient(270deg, rgba(200,146,42,0.08) 0%, transparent 100%); }
+  .cover-top { padding:14mm 16mm 0; z-index:1; }
+  .cover-logo { font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+  .cover-center { padding:0 16mm; flex:1; display:flex; flex-direction:column; justify-content:center; z-index:1; }
+  .cover-eyebrow { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:5mm; }
+  .cover-title { font-family:'Playfair Display',serif; font-size:46px; font-weight:900; color:#fff; line-height:1.05; margin-bottom:5mm; }
+  .cover-title span { color:var(--gold); }
+  .cover-sub { font-size:11px; font-weight:300; color:rgba(255,255,255,0.45); line-height:2.1; margin-bottom:8mm; }
+  .cover-divider { width:40mm; height:1px; background:var(--gold); margin-bottom:8mm; }
+  .course-list { list-style:none; }
+  .course-list li { font-size:11px; color:rgba(255,255,255,0.6); padding:2mm 0; border-bottom:1px solid rgba(255,255,255,0.06); display:flex; gap:4mm; }
+  .course-list li .ci { color:var(--gold); font-weight:600; font-size:9px; letter-spacing:2px; text-transform:uppercase; width:20mm; flex-shrink:0; margin-top:0.5mm; }
+  .cover-bottom { padding:8mm 16mm; border-top:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:flex-end; z-index:1; }
+  .cover-chef { font-family:'Playfair Display',serif; font-size:13px; color:rgba(255,255,255,0.5); }
+  .cover-detail { font-size:9px; color:rgba(255,255,255,0.25); letter-spacing:1px; text-align:right; line-height:1.9; }
+
+  .page { width:210mm; min-height:297mm; padding:13mm 16mm 18mm; page-break-after:always; position:relative; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:7mm; padding-bottom:3mm; border-bottom:1px solid #E8E4DE; }
+  .page-section { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mid); }
+  .page-num { font-size:9px; color:var(--mid); }
+  .page-footer { position:absolute; bottom:8mm; left:16mm; right:16mm; display:flex; justify-content:space-between; border-top:1px solid #E8E4DE; padding-top:3mm; }
+  .footer-l { font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--mid); }
+  .footer-r { font-size:9px; color:#CCC; }
+
+  /* DISH HEADER */
+  .dish-eyebrow { font-size:8.5px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:1mm; }
+  .dish-title { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--dark); line-height:1.1; margin-bottom:1.5mm; }
+  .dish-sub { font-size:11px; color:var(--mid); font-style:italic; margin-bottom:5mm; }
+  .dish-divider { height:2px; margin-bottom:5mm; }
+
+  /* RECIPE SECTIONS */
+  .recipe-two-col { display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-bottom:4mm; }
+  .r-block { }
+  .r-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid); margin-bottom:2.5mm; display:block; border-bottom:1px solid #E8E4DE; padding-bottom:1.5mm; }
+  .ingredient-row { display:flex; justify-content:space-between; font-size:10.5px; color:#333; padding:1.5mm 0; border-bottom:1px dotted #EDEBE6; line-height:1.5; }
+  .ingredient-row:last-child { border-bottom:none; }
+  .qty { color:var(--mid); font-size:10px; white-space:nowrap; margin-left:3mm; flex-shrink:0; }
+  .method-step { display:flex; gap:3mm; padding:1.5mm 0; border-bottom:1px dotted #EDEBE6; font-size:10.5px; color:#333; line-height:1.6; }
+  .method-step:last-child { border-bottom:none; }
+  .step-num { color:var(--gold); font-weight:700; font-size:9px; width:5mm; flex-shrink:0; margin-top:0.5mm; }
+
+  /* SPECIAL BOXES */
+  .plating-box { border-left:3px solid var(--dark); background:var(--light); padding:3.5mm 5mm; margin-bottom:3mm; }
+  .plating-box .box-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--dark); display:block; margin-bottom:1.5mm; }
+  .plating-box p { font-size:10.5px; color:#444; line-height:1.75; font-style:italic; }
+
+  .condiment-box { border-left:3px solid var(--gold); background:#FFF8EE; padding:3.5mm 5mm; margin-bottom:3mm; }
+  .condiment-box .box-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:1.5mm; }
+  .condiment-grid { display:grid; grid-template-columns:1fr 1fr; gap:2mm; }
+  .condiment-item { font-size:10.5px; color:#444; padding:1mm 0; display:flex; align-items:flex-start; gap:2mm; line-height:1.5; }
+  .condiment-item::before { content:'—'; color:var(--gold); flex-shrink:0; }
+
+  .chef-note { background:#1C1C1C; color:#fff; padding:3.5mm 5mm; margin-bottom:3mm; }
+  .chef-note .box-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:1.5mm; }
+  .chef-note p { font-size:10.5px; color:rgba(255,255,255,0.7); line-height:1.75; }
+
+  .badge-row { display:flex; gap:2mm; flex-wrap:wrap; margin-top:2mm; }
+  .badge { font-size:9px; font-weight:600; padding:1mm 3mm; background:var(--light); color:var(--dark); }
+  .badge.gold { background:var(--gold); color:#fff; }
+
+  /* BUFFET PAGE */
+  .buffet-section { margin-bottom:5mm; }
+  .buffet-label { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:2.5mm 4mm; margin-bottom:3mm; color:#fff; }
+  .buffet-label.carving { background:var(--dark); }
+  .buffet-label.sides { background:var(--french); }
+  .buffet-label.dessert { background:var(--gold); }
+  .buffet-grid { display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+  .buffet-card { border:1px solid #E8E4DE; padding:3.5mm 4mm; }
+  .buffet-card h4 { font-family:'Playfair Display',serif; font-size:13px; color:var(--dark); margin-bottom:1mm; }
+  .buffet-card .bc-sub { font-size:9.5px; color:var(--mid); font-style:italic; margin-bottom:2mm; }
+  .buffet-card p { font-size:10px; color:#444; line-height:1.75; }
+  .buffet-card .bc-note { font-size:9px; color:var(--gold); font-weight:600; margin-top:2mm; }
+
+  .station-hero { background:var(--dark); padding:5mm 6mm; margin-bottom:4mm; }
+  .station-hero h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); margin-bottom:2mm; }
+  .station-hero p { font-size:11px; color:rgba(255,255,255,0.65); line-height:1.8; }
+  .station-hero .wagyu-badge { display:inline-block; background:var(--gold); color:#1C1C1C; font-size:10px; font-weight:700; padding:1.5mm 4mm; margin-top:3mm; letter-spacing:1px; }
+
+  @media print {
+    body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page, .cover { page-break-after:always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-accent"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Novotel Ibis · Sydney Olympic Park · Owners Lunch</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-eyebrow">Fine Dining · 12 Covers · June 2026</div>
+    <div class="cover-title">Owners<br><span>Lunch</span></div>
+    <div class="cover-sub">
+      3 Alternate Drop Mains · 4 plates each<br>
+      Live Carving Buffet · A9 Wagyu Sirloin<br>
+      Plated Lunch · Ballroom Pre-Function
+    </div>
+    <div class="cover-divider"></div>
+    <ul class="course-list">
+      <li><span class="ci">Plate 01</span>Saffron Arroz Negro — Prawn Bisque · King Prawns · Alioli</li>
+      <li><span class="ci">Plate 02</span>Lamb Rack — Persillade Crust · White Bean Purée · Jus</li>
+      <li><span class="ci">Plate 03</span>Chicken Ballotine — Porcini Cream · Truffle · Condiments</li>
+      <li><span class="ci">Buffet</span>Live Carving · A9 Wagyu Sirloin · Elevated Sides</li>
+      <li><span class="ci">Dessert</span>Petit Gâteau · Mignardises · Cheese &amp; Honey</li>
+    </ul>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-chef">Timothy Susanto · Head Chef</div>
+    <div class="cover-detail">Novotel Ibis Sydney Olympic Park<br>June 2026 · 12 Owners</div>
+  </div>
+</div>
+
+<!-- PAGE 2 — PLATE 01: SAFFRON ARROZ NEGRO -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Alternate Drop · Plate 01 of 03 · Seafood</span>
+    <span class="page-num">02</span>
+  </div>
+
+  <div class="dish-eyebrow" style="color:var(--spanish);">🦐 Seafood · Spanish Influence · 4 Portions</div>
+  <div class="dish-title">Saffron Arroz Negro</div>
+  <div class="dish-sub">King prawn bisque · Bomba rice · Two king prawns · Saffron alioli · Served in a warm pasta bowl</div>
+  <div class="dish-divider" style="background:var(--spanish);"></div>
+
+  <div class="recipe-two-col">
+    <div class="r-block">
+      <span class="r-label">Ingredients — 4 Portions</span>
+      <div class="ingredient-row">Bomba rice <span class="qty">240g</span></div>
+      <div class="ingredient-row">Squid ink sachets <span class="qty">2 sachets (8g)</span></div>
+      <div class="ingredient-row">King prawns (U8, shell-on) <span class="qty">8 pcs</span></div>
+      <div class="ingredient-row">Prawn shells (bisque base) <span class="qty">500g</span></div>
+      <div class="ingredient-row">White onion, finely diced <span class="qty">1 large</span></div>
+      <div class="ingredient-row">Garlic cloves, minced <span class="qty">4 cloves</span></div>
+      <div class="ingredient-row">Roma tomatoes, grated <span class="qty">3 pcs</span></div>
+      <div class="ingredient-row">White wine, dry <span class="qty">150ml</span></div>
+      <div class="ingredient-row">Prawn bisque (see below) <span class="qty">700ml</span></div>
+      <div class="ingredient-row">Saffron threads <span class="qty">0.5g</span></div>
+      <div class="ingredient-row">EVOO <span class="qty">60ml</span></div>
+      <div class="ingredient-row">Smoked paprika (pimentón) <span class="qty">5g</span></div>
+      <div class="ingredient-row">Flat parsley, lemon <span class="qty">garnish</span></div>
+      <div class="ingredient-row" style="margin-top:2mm; font-weight:600; color:var(--dark);">— Saffron Alioli —</div>
+      <div class="ingredient-row">Egg yolks <span class="qty">2</span></div>
+      <div class="ingredient-row">EVOO <span class="qty">150ml</span></div>
+      <div class="ingredient-row">Garlic (1 clove), lemon juice <span class="qty">as needed</span></div>
+      <div class="ingredient-row">Saffron (bloomed in 10ml warm water) <span class="qty">pinch</span></div>
+    </div>
+    <div class="r-block">
+      <span class="r-label">Prawn Bisque — Make Day Before</span>
+      <div class="method-step"><span class="step-num">1.</span>Roast prawn shells in EVOO until deep red and fragrant — high heat, don't rush</div>
+      <div class="method-step"><span class="step-num">2.</span>Add onion, garlic, tomato paste, pimentón — cook 5 min</div>
+      <div class="method-step"><span class="step-num">3.</span>Deglaze with brandy (if available) then white wine — reduce</div>
+      <div class="method-step"><span class="step-num">4.</span>Cover with water, simmer 30 min, pass through fine sieve — press hard</div>
+      <div class="method-step"><span class="step-num">5.</span>Reduce bisque to intense, sweet, deep orange stock — approx 700ml. Season well.</div>
+      <span class="r-label" style="margin-top:3mm;">Arroz Negro — Service Day</span>
+      <div class="method-step"><span class="step-num">1.</span>Sofrito: low-slow cook onion in EVOO 20 min until melted and sweet. Add garlic, grated tomato, pimentón — cook further 10 min</div>
+      <div class="method-step"><span class="step-num">2.</span>Add bomba rice, toast in sofrito 2 min — each grain coated</div>
+      <div class="method-step"><span class="step-num">3.</span>Add squid ink + white wine — stir until absorbed</div>
+      <div class="method-step"><span class="step-num">4.</span>Add hot prawn bisque ladle by ladle — no stirring after first addition. Medium heat.</div>
+      <div class="method-step"><span class="step-num">5.</span>Cook 16–18 min. Allow socarrat (crust) to form on base — listen for the crackle</div>
+      <div class="method-step"><span class="step-num">6.</span>Rest off heat 3 min covered</div>
+      <span class="r-label" style="margin-top:3mm;">King Prawns — To Order</span>
+      <div class="method-step"><span class="step-num">1.</span>Peel prawns leaving tail on. Butterfly the back, devein</div>
+      <div class="method-step"><span class="step-num">2.</span>Season with salt, smoked paprika, EVOO</div>
+      <div class="method-step"><span class="step-num">3.</span>Sear in smoking hot dry pan — 60 seconds each side only. Char marks essential.</div>
+      <span class="r-label" style="margin-top:3mm;">Saffron Alioli</span>
+      <div class="method-step"><span class="step-num">1.</span>Bloom saffron in warm water 10 min — deep gold colour</div>
+      <div class="method-step"><span class="step-num">2.</span>Hand whisk egg yolks with garlic and lemon — drizzle EVOO very slowly to emulsify</div>
+      <div class="method-step"><span class="step-num">3.</span>Fold in saffron water — golden, thick, fragrant</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="box-label">🍽️ Plating — Warm Pasta Bowl</span>
+    <p>Warm a deep wide pasta bowl — heat is essential for this dish. Spoon arroz negro into the centre, building height slightly. Two king prawns placed on top, tails up and crossed elegantly — one facing each direction. A generous quenelle of saffron alioli to the right side of the bowl, gold against the jet black rice. Three drops of smoked EVOO around the edge. Flat parsley leaf and a quarter lemon wedge, skin trimmed clean. The bowl does the work — let the contrast of black rice and gold alioli be the presentation.</p>
+  </div>
+
+  <div class="condiment-box">
+    <span class="box-label">🍋 Condiments &amp; Table Accompaniments</span>
+    <div class="condiment-grid">
+      <div class="condiment-item">Saffron alioli — served in the bowl</div>
+      <div class="condiment-item">Lemon wedge — trimmed, no pith</div>
+      <div class="condiment-item">Extra alioli on side if requested</div>
+      <div class="condiment-item">Smoked EVOO drops — tableside finish</div>
+      <div class="condiment-item">Pimentón de la Vera — pinch at table</div>
+      <div class="condiment-item">Warm crusty bread — absorb the bisque</div>
+    </div>
+  </div>
+
+  <div class="chef-note">
+    <span class="box-label">Chef's Note</span>
+    <p>The socarrat — the caramelised rice crust on the bottom — is what separates arroz negro from every other rice dish. When owners scoop to the bottom and hear the scrape, they know. Make the bisque the day before. The depth of flavour you get from properly roasted prawn shells overnight is what makes this dish taste like it came from a restaurant in Barcelona.</p>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">4 Portions</span>
+    <span class="badge">Bisque: Day before</span>
+    <span class="badge">Service time: 12 min</span>
+    <span class="badge">GF · DF</span>
+    <span class="badge">Seafood option</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · June 2026 · 12 Covers</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 3 — PLATE 02: LAMB RACK -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Alternate Drop · Plate 02 of 03 · Lamb</span>
+    <span class="page-num">03</span>
+  </div>
+
+  <div class="dish-eyebrow" style="color:var(--french);">🥩 Lamb · French Technique · 4 Portions</div>
+  <div class="dish-title">Lamb Rack — Persillade Crust</div>
+  <div class="dish-sub">White bean &amp; rosemary purée · Sauce paloise · Ratatouille niçoise · Tapenade</div>
+  <div class="dish-divider" style="background:var(--french);"></div>
+
+  <div class="recipe-two-col">
+    <div class="r-block">
+      <span class="r-label">Ingredients — 4 Portions</span>
+      <div class="ingredient-row">Lamb rack (3 cutlets per person) <span class="qty">2 full racks</span></div>
+      <div class="ingredient-row">Dijon mustard <span class="qty">40g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Persillade Crust —</div>
+      <div class="ingredient-row">Sourdough breadcrumbs, fresh <span class="qty">120g</span></div>
+      <div class="ingredient-row">Flat parsley, finely chopped <span class="qty">1 bunch</span></div>
+      <div class="ingredient-row">Garlic, minced <span class="qty">2 cloves</span></div>
+      <div class="ingredient-row">Lemon zest, EVOO <span class="qty">1 lemon / 30ml</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— White Bean Purée (replaces potato) —</div>
+      <div class="ingredient-row">Cannellini beans, soaked overnight <span class="qty">300g dry</span></div>
+      <div class="ingredient-row">Garlic (2 cloves), bay leaf, thyme <span class="qty">as needed</span></div>
+      <div class="ingredient-row">Good quality EVOO <span class="qty">80ml</span></div>
+      <div class="ingredient-row">Lemon juice, white truffle oil <span class="qty">to taste</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Sauce Paloise —</div>
+      <div class="ingredient-row">Egg yolks <span class="qty">3</span></div>
+      <div class="ingredient-row">Clarified butter, warm <span class="qty">200g</span></div>
+      <div class="ingredient-row">Fresh mint (not tarragon — paloise) <span class="qty">1 bunch</span></div>
+      <div class="ingredient-row">White wine vinegar, shallots <span class="qty">30ml / 2</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Ratatouille Niçoise —</div>
+      <div class="ingredient-row">Zucchini, eggplant, capsicum, tomato <span class="qty">150g each</span></div>
+      <div class="ingredient-row">Garlic, EVOO, thyme, basil <span class="qty">as needed</span></div>
+      <div class="ingredient-row">Kalamata olive tapenade <span class="qty">60g</span></div>
+    </div>
+    <div class="r-block">
+      <span class="r-label">White Bean Purée — Make Morning Of</span>
+      <div class="method-step"><span class="step-num">1.</span>Cook soaked cannellini beans with garlic, bay, thyme until very tender — 45 min. No salt until cooked or skins toughen.</div>
+      <div class="method-step"><span class="step-num">2.</span>Drain, reserving cooking liquid. Blitz in blender with EVOO, lemon, truffle oil — add cooking liquid to reach silky, flowing consistency</div>
+      <div class="method-step"><span class="step-num">3.</span>Pass through fine sieve. Season. Keep warm in bain-marie. This is your carb — it must be luxurious.</div>
+
+      <span class="r-label" style="margin-top:3mm;">Sauce Paloise (Mint Béarnaise)</span>
+      <div class="method-step"><span class="step-num">1.</span>Reduction: simmer shallots, white wine vinegar, crushed peppercorns until 1 tbsp remains. Strain.</div>
+      <div class="method-step"><span class="step-num">2.</span>Whisk yolks with reduction over bain-marie until ribbon stage — slow and patient</div>
+      <div class="method-step"><span class="step-num">3.</span>Drizzle warm clarified butter very slowly whisking constantly. Emulsify.</div>
+      <div class="method-step"><span class="step-num">4.</span>Finish with fresh mint chiffonade (not tarragon — this is paloise, the mint version). Keep warm.</div>
+
+      <span class="r-label" style="margin-top:3mm;">Ratatouille Niçoise</span>
+      <div class="method-step"><span class="step-num">1.</span>Dice all vegetables uniform 1cm. Cook each separately in EVOO with garlic — never together or they turn to mush</div>
+      <div class="method-step"><span class="step-num">2.</span>Combine when cooked, add tomato concassé, thyme, torn basil. Season.</div>
+
+      <span class="r-label" style="margin-top:3mm;">Lamb Rack — Service</span>
+      <div class="method-step"><span class="step-num">1.</span>Persillade: combine parsley, garlic, breadcrumbs, lemon zest, EVOO — should be vivid green and hold together</div>
+      <div class="method-step"><span class="step-num">2.</span>Season rack, sear hard on all sides in cast iron — deep crust, 3 min total</div>
+      <div class="method-step"><span class="step-num">3.</span>Brush bones and meat with Dijon. Press persillade firmly onto meat side.</div>
+      <div class="method-step"><span class="step-num">4.</span>Roast 200°C — 9 min for medium rare. Internal 57°C. Rest 5 min minimum.</div>
+      <div class="method-step"><span class="step-num">5.</span>Portion: 3 cutlets each, cut between bones with a clean decisive stroke</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="box-label">🍽️ Plating</span>
+    <p>Spoon white bean purée in a generous flowing pool to the left of the plate — use the back of a warm spoon to sweep it into an elegant arc, not a blob. Spoon ratatouille niçoise in a tight mound at centre. Rest three lamb cutlets upright against the ratatouille, bones pointing skyward — each cutlet leaning slightly for height and architecture. Small quenelle of olive tapenade behind the cutlets. Sauce paloise in a small warm jug poured tableside. Finish with a single sprig of fresh thyme and fleur de sel on the crust.</p>
+  </div>
+
+  <div class="condiment-box">
+    <span class="box-label">🌿 Condiments &amp; Table Service</span>
+    <div class="condiment-grid">
+      <div class="condiment-item">Sauce paloise — poured tableside in warm jug</div>
+      <div class="condiment-item">Olive tapenade quenelle — on the plate</div>
+      <div class="condiment-item">Fleur de sel — on the crust at plate-up</div>
+      <div class="condiment-item">Extra sauce paloise in jug at table</div>
+      <div class="condiment-item">Herb EVOO — 3 drops around the purée</div>
+      <div class="condiment-item">Warm crusty bread — for the sauce</div>
+    </div>
+  </div>
+
+  <div class="chef-note">
+    <span class="box-label">Chef's Note — Why White Bean Purée Instead of Potato</span>
+    <p>White bean purée with EVOO and a whisper of truffle oil is the more sophisticated choice for a fine dining context. It carries the lamb differently to potato — lighter on the palate, higher in protein (which owners notice), and it echoes the Provençal theme of the ratatouille. The sauce paloise (mint béarnaise) is Escoffier's recipe, made for lamb specifically. Every element on this plate has a reason to be there.</p>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">4 Portions</span>
+    <span class="badge">Sauce: made fresh day-of</span>
+    <span class="badge">Service time: 10 min</span>
+    <span class="badge">GF option (no breadcrumbs)</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · June 2026 · 12 Covers</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 4 — PLATE 03: CHICKEN BALLOTINE -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Alternate Drop · Plate 03 of 03 · Chicken</span>
+    <span class="page-num">04</span>
+  </div>
+
+  <div class="dish-eyebrow" style="color:var(--mid);">🍗 Chicken · French Technique · 4 Portions</div>
+  <div class="dish-title">Chicken Ballotine — Porcini Cream</div>
+  <div class="dish-sub">Truffle &amp; herb mousse stuffing · Sauce suprême · Porcini mushroom cream · Asparagus · Condiments</div>
+  <div class="dish-divider" style="background:#555;"></div>
+
+  <div class="recipe-two-col">
+    <div class="r-block">
+      <span class="r-label">Ingredients — 4 Portions</span>
+      <div class="ingredient-row">Free-range chicken breasts, skin on <span class="qty">4 large</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Truffle Mousse Stuffing —</div>
+      <div class="ingredient-row">Chicken thigh meat (mousse base) <span class="qty">200g</span></div>
+      <div class="ingredient-row">Thickened cream (cold) <span class="qty">80ml</span></div>
+      <div class="ingredient-row">Black truffle paste <span class="qty">20g</span></div>
+      <div class="ingredient-row">Fresh thyme, flat parsley <span class="qty">as needed</span></div>
+      <div class="ingredient-row">Egg white <span class="qty">1</span></div>
+      <div class="ingredient-row">Salt, white pepper <span class="qty">to season</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Porcini Cream —</div>
+      <div class="ingredient-row">Dried porcini mushrooms <span class="qty">40g</span></div>
+      <div class="ingredient-row">Fresh porcini or Swiss brown (if avail.) <span class="qty">200g</span></div>
+      <div class="ingredient-row">Shallots, finely diced <span class="qty">2</span></div>
+      <div class="ingredient-row">Garlic, thyme <span class="qty">as needed</span></div>
+      <div class="ingredient-row">Dry white wine <span class="qty">100ml</span></div>
+      <div class="ingredient-row">Thickened cream <span class="qty">250ml</span></div>
+      <div class="ingredient-row">Chicken stock <span class="qty">150ml</span></div>
+      <div class="ingredient-row">Unsalted butter <span class="qty">40g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Sauce Suprême —</div>
+      <div class="ingredient-row">Chicken stock, reduced <span class="qty">400ml</span></div>
+      <div class="ingredient-row">Cream, shallots, white wine <span class="qty">150ml / as needed</span></div>
+      <div class="ingredient-row">Cold unsalted butter (to mount) <span class="qty">80g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:2mm;">— Garnish —</div>
+      <div class="ingredient-row">Asparagus spears (pencil thin) <span class="qty">12 spears</span></div>
+      <div class="ingredient-row">Baby spinach or wilted watercress <span class="qty">100g</span></div>
+      <div class="ingredient-row">Truffle oil (finish) <span class="qty">a few drops</span></div>
+    </div>
+    <div class="r-block">
+      <span class="r-label">Chicken Mousse — Make Morning Of</span>
+      <div class="method-step"><span class="step-num">1.</span>Blitz cold chicken thigh, egg white, salt in food processor until smooth paste</div>
+      <div class="method-step"><span class="step-num">2.</span>With processor running, drizzle in very cold cream — stop as soon as combined. Overworking = grainy.</div>
+      <div class="method-step"><span class="step-num">3.</span>Fold in truffle paste, chopped herbs by hand. Keep cold at all times.</div>
+
+      <span class="r-label" style="margin-top:3mm;">Ballotine Assembly</span>
+      <div class="method-step"><span class="step-num">1.</span>Butterfly chicken breast: place flat, cut horizontally without separating — open like a book</div>
+      <div class="method-step"><span class="step-num">2.</span>Place a thin layer of mousse on the breast. Roll tight into a cylinder in clingfilm.</div>
+      <div class="method-step"><span class="step-num">3.</span>Twist ends tight like a bon-bon. Refrigerate minimum 2 hours to set shape.</div>
+      <div class="method-step"><span class="step-num">4.</span>Poach in 72°C water bath — exactly 18 minutes. Not 16. Not 20.</div>
+      <div class="method-step"><span class="step-num">5.</span>Remove clingfilm. Sear in foaming butter in hot pan — colour all sides, 2 min total. Rest 3 min.</div>
+
+      <span class="r-label" style="margin-top:3mm;">Porcini Cream — 1 Hour Before Service</span>
+      <div class="method-step"><span class="step-num">1.</span>Rehydrate dried porcini in 200ml warm water 20 min — reserve soaking liquid, strain carefully</div>
+      <div class="method-step"><span class="step-num">2.</span>Sauté shallots and garlic in butter until soft. Add fresh mushrooms — cook until deeply golden</div>
+      <div class="method-step"><span class="step-num">3.</span>Deglaze with white wine, add porcini soaking liquid (careful — strain well), add stock + cream</div>
+      <div class="method-step"><span class="step-num">4.</span>Reduce by one third. Add rehydrated porcini. Season — earthy, rich, deep. Not thin.</div>
+      <div class="method-step"><span class="step-num">5.</span>Finish with cold butter swirled off heat — gloss and body</div>
+
+      <span class="r-label" style="margin-top:3mm;">Sauce Suprême</span>
+      <div class="method-step"><span class="step-num">1.</span>Sweat shallots in butter, deglaze with white wine, reduce to almost nothing</div>
+      <div class="method-step"><span class="step-num">2.</span>Add reduced chicken stock + cream — simmer 10 min until nappe consistency (coats spoon)</div>
+      <div class="method-step"><span class="step-num">3.</span>Mount with cold butter off heat — velvety, ivory, elegant</div>
+
+      <span class="r-label" style="margin-top:3mm;">Asparagus — To Order</span>
+      <div class="method-step"><span class="step-num">1.</span>Blanch in boiling salted water 90 seconds — refresh immediately in ice water</div>
+      <div class="method-step"><span class="step-num">2.</span>To order: finish in foaming butter 1 min, season, lemon squeeze</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="box-label">🍽️ Plating</span>
+    <p>Slice ballotine on a slight bias — two rounds per plate, showing the truffle mousse cross-section inside. Place in the centre of a warm wide plate, cut side facing up so the truffle layer is visible. Spoon porcini cream generously to one side — let it pool naturally, don't fight it. Sauce suprême in a thin elegant arc on the other side. Three asparagus spears stacked in a tight bundle alongside. Three drops of truffle oil on the porcini cream. Finish with a single small watercress sprig and a shaving of truffle if available. The cross-section of the ballotine is your hero — let them see it.</p>
+  </div>
+
+  <div class="condiment-box">
+    <span class="box-label">🍄 Condiments &amp; Table Service</span>
+    <div class="condiment-grid">
+      <div class="condiment-item">Sauce suprême — in a small warm jug, poured tableside</div>
+      <div class="condiment-item">Porcini cream — generous pool on the plate</div>
+      <div class="condiment-item">Truffle oil drops — on the porcini cream only</div>
+      <div class="condiment-item">Fleur de sel — on the asparagus at plating</div>
+      <div class="condiment-item">Shaved truffle (optional) — if budget allows, magnificent</div>
+      <div class="condiment-item">Warm crusty bread — to absorb the sauce suprême</div>
+    </div>
+  </div>
+
+  <div class="chef-note">
+    <span class="box-label">Chef's Note — Why Porcini Over Morel</span>
+    <p>Porcini is the right call here. Dried porcini carries an intensity — earthy, woody, almost meaty — that morel doesn't have. More importantly, the porcini soaking liquid becomes part of your sauce base, building depth you can't buy from a bottle. When you combine it with sauce suprême (the mother sauce of French chicken cookery), you get something that tastes like it took days to make. It didn't. But they don't need to know that.</p>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">4 Portions</span>
+    <span class="badge">Mousse: morning of</span>
+    <span class="badge">Poach: 72°C / 18 min precise</span>
+    <span class="badge">Service time: 8 min</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · June 2026 · 12 Covers</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 5 — LIVE BUFFET STATION + DESSERT -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Live Carving Buffet Station &amp; Dessert Programme</span>
+    <span class="page-num">05</span>
+  </div>
+
+  <!-- WAGYU HERO -->
+  <div class="station-hero">
+    <h3>⚔️ Live Carving Station — A9 Wagyu Sirloin</h3>
+    <p>The chef stands at the pass. The wagyu arrives whole, rested, crushed. Sliced tableside to order — thin, generous, glistening with marble. This is the centrepiece of the buffet. Everything else on this table exists to support it.</p>
+    <div class="wagyu-badge">A9 WAGYU · HIGHEST MARBLE SCORE · CHEF CARVED TO ORDER</div>
+  </div>
+
+  <div class="buffet-section">
+    <div class="buffet-label carving">🔪 Live Carving Station</div>
+    <div class="buffet-grid">
+      <div class="buffet-card">
+        <h4>A9 Wagyu Sirloin</h4>
+        <div class="bc-sub">Whole roasted · Chef carved tableside</div>
+        <p>Season generously — salt and pepper only. Never mask the marble. Roast at 180°C to internal 52°C (rare-medium rare). Rest minimum 20 min under foil. Chef slices at station — 4–5mm slices, against the grain, per guest.</p>
+        <div class="bc-note">↑ The hero. Everything else is supporting cast.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Sauces at the Station</h4>
+        <div class="bc-sub">Three sauces · Guest choice</div>
+        <p><strong>Sauce Bordelaise</strong> — red wine, bone marrow, shallot. Classic.<br>
+        <strong>Wasabi cream</strong> — crème fraîche, fresh wasabi, lemon. Cuts the fat.<br>
+        <strong>Chimichurri verde</strong> — parsley, EVOO, sherry vinegar, garlic. Bright and sharp.</p>
+        <div class="bc-note">↑ Three sauces = three personalities. Let owners choose.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buffet-section">
+    <div class="buffet-label sides">🥗 Elevated Sides — Buffet Table</div>
+    <div class="buffet-grid">
+      <div class="buffet-card">
+        <h4>Pommes Dauphine</h4>
+        <div class="bc-sub">Crispy potato puffs · Chive crème fraîche</div>
+        <p>Choux pastry folded through duchess potato, piped and fried — light, airy, shatteringly crisp. A level above a roast potato. Served in a warm bowl with a side of chive crème fraîche for dipping.</p>
+        <div class="bc-note">↑ Nobody expects this at a hotel buffet. They will ask what it is.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Gratin Dauphinois</h4>
+        <div class="bc-sub">Slow-baked potato · Gruyère · Cream</div>
+        <p>Désirée potatoes sliced 3mm, layered with cream, garlic, thyme, gruyère. Baked covered 90 min, uncovered 20 min until golden and set. Portioned in individual cast iron dishes at the buffet — each guest gets their own.</p>
+        <div class="bc-note">↑ Individual cast iron = theatre + portion control.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Haricots Verts — Beurre Noisette</h4>
+        <div class="bc-sub">Fine green beans · Hazelnut butter · Almonds removed</div>
+        <p>Blanched fine beans finished in foaming beurre noisette with lemon juice and fleur de sel. Simple. Perfect. The nuttiness of the butter elevates a simple vegetable to something memorable.</p>
+        <div class="bc-note">NUT FREE — beurre noisette only, no almonds.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Heirloom Tomato &amp; Burrata</h4>
+        <div class="bc-sub">Whole burrata broken tableside · Aged balsamic</div>
+        <p>Arrange heirloom tomatoes in a cascade of colours. Burrata placed whole at the centre — chef or server breaks it open tableside before the first guest. Aged balsamic drizzle, Ligurian EVOO, fleur de sel, basil oil, micro basil.</p>
+        <div class="bc-note">↑ The visual moment of the buffet table.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Roasted Asparagus</h4>
+        <div class="bc-sub">Thick spears · Parmesan · Lemon zest</div>
+        <p>Roasted at high heat until charred tips and tender stalks. Shaved parmesan over the top while hot. Lemon zest and EVOO to finish. Laid on the platter in one direction — clean, elegant, visually strong.</p>
+        <div class="bc-note">↑ Simplest dish on the table. Best-looking one.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Bread Station</h4>
+        <div class="bc-sub">Artisan · Warm · Three butters</div>
+        <p>Sourdough loaf sliced to order. Baguette. Focaccia rosemary. Three butters: <strong>salted cultured</strong> · <strong>truffle butter</strong> (for the wagyu moment) · <strong>herb compound butter</strong>. Warm bread = the first impression of the buffet table.</p>
+        <div class="bc-note">↑ Truffle butter next to the wagyu carving = deliberate pairing.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · June 2026 · 12 Covers</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+<!-- PAGE 6 — DESSERT PROGRAMME -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Dessert Programme</span>
+    <span class="page-num">06</span>
+  </div>
+
+  <div class="dish-eyebrow" style="color:var(--gold);">🍮 Dessert · Three Acts · Owners Table</div>
+  <div class="dish-title">The Sweet Finish</div>
+  <div class="dish-sub">Petit gâteau · Cheese &amp; honey · Mignardises · Petit fours · Coffee service</div>
+  <div class="dish-divider" style="background:var(--gold);"></div>
+
+  <div class="buffet-section">
+    <div class="buffet-label" style="background:var(--gold);">ACT 1 — Plated Petit Gâteau (Individual, Served to Table)</div>
+    <div class="buffet-grid">
+      <div class="buffet-card">
+        <h4>Valrhona Chocolate Fondant</h4>
+        <div class="bc-sub">Warm · Liquid centre · Crème anglaise</div>
+        <p>70% Valrhona bittersweet chocolate. Baked to order — 10 min at 190°C. Centre must flow. Crème anglaise poured tableside from a warm jug. Cocoa dusted. Gold leaf optional. This is the dessert that stops a conversation.</p>
+        <div class="bc-note">↑ Bake-to-order = the kitchen showing real confidence.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Lemon Tart — Brûléed</h4>
+        <div class="bc-sub">Classic French · Sharp · Torched tableside</div>
+        <p>Pâte sablée blind-baked. Filling: lemon juice, zest, eggs, cream, butter — set to a wobble. Dusted with fine sugar, brûléed with a torch at the table. The crack of the sugar crust is the moment. Crème fraîche and candied lemon.</p>
+        <div class="bc-note">↑ Tableside torch = drama. The sound is part of the dish.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Panna Cotta — Seasonal Fruit</h4>
+        <div class="bc-sub">Vanilla · Set delicately · Fresh berry coulis</div>
+        <p>Vanilla bean panna cotta, barely set — should tremble when the plate moves. Turned out onto the plate, not in a glass. Fresh seasonal berry coulis. Micro mint. Clean, elegant, dairy-forward. Best option for non-chocolate guests.</p>
+        <div class="bc-note">GF · Light · Palate cleanser after rich mains.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buffet-section">
+    <div class="buffet-label" style="background:#555;">ACT 2 — Cheese &amp; Honey Station (Shared, Centre Table)</div>
+    <div class="buffet-grid">
+      <div class="buffet-card">
+        <h4>Artisan Cheese Selection</h4>
+        <div class="bc-sub">3–4 cheeses · Temperature-perfect</div>
+        <p><strong>Brillat-Savarin</strong> — triple cream, buttery, indulgent<br>
+        <strong>Comté 18-month</strong> — nutty, crystalline, aged<br>
+        <strong>Roquefort</strong> — blue, bold, for those who want it<br>
+        <strong>Aged cheddar</strong> — familiar anchor for less adventurous owners</p>
+        <div class="bc-note">↑ Serve at room temp. Cold cheese is wasted cheese.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Honey, Accompaniments &amp; Crackers</h4>
+        <div class="bc-sub">The supporting cast that elevates</div>
+        <p>Raw Australian honeycomb (the visual centrepiece). Fig jam. Quince paste. Candied walnuts (labelled — nut allergen board). Muscatels. Sourdough crackers. Water crackers. Sliced pear and apple — fresh, not oxidised.</p>
+        <div class="bc-note">↑ Honeycomb in its frame on the board = owners take a photo.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buffet-section">
+    <div class="buffet-label" style="background:#1B4F8A;">ACT 3 — Mignardises &amp; Coffee (Passed, End of Lunch)</div>
+    <div class="buffet-grid">
+      <div class="buffet-card">
+        <h4>Mignardises — Petit Fours</h4>
+        <div class="bc-sub">Passed on a tiered tray · One bite each</div>
+        <p><strong>Salted caramel chocolate truffle</strong> — Valrhona ganache, sea salt<br>
+        <strong>Citrus pâte de fruit</strong> — jewel-bright, sugar-dusted<br>
+        <strong>Financier</strong> — warm brown butter almond cake, one bite<br>
+        <strong>Candied orange peel</strong> dipped in dark chocolate</p>
+        <div class="bc-note">↑ Passed on a tiered tray — visual impact when it arrives at the table.</div>
+      </div>
+      <div class="buffet-card">
+        <h4>Coffee &amp; Tea Service</h4>
+        <div class="bc-sub">The final impression</div>
+        <p><strong>Espresso</strong> · <strong>Long black</strong> · <strong>Flat white</strong> — all made to order<br>
+        <strong>English Breakfast</strong> · <strong>Earl Grey</strong> · <strong>Green tea</strong><br>
+        <strong>Peppermint</strong> · <strong>Chamomile</strong><br>
+        Milk · Oat milk · Sugar. Served with one salted caramel truffle on the saucer.</p>
+        <div class="bc-note">↑ A truffle on the saucer. The detail that gets remembered.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chef-note" style="margin-top:4mm;">
+    <span class="box-label">Head Chef's Final Note</span>
+    <p>Three desserts, a cheese board, passed mignardises, and individually made coffee — that is not a hotel lunch. That is a restaurant experience that happens to take place in a hotel. The owners at that table will spend the afternoon talking about the food, not the agenda. That is the goal. That is the standard.<br><br>
+    <strong style="color:var(--gold);">Cook with your whole soul, Mothy. They will feel the difference.</strong></p>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · June 2026 · 12 Covers</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+</body>
+</html>

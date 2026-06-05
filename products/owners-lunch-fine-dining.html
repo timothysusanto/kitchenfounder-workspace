@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owners Lunch — Fine Dining Menu 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #FAFAF8; --text: #1C1C1C; --french: #8B1A1A; --spanish: #C8922A;
+    --light: #F0EDE8; --mid: #8A8A8A; --dark: #1C1C1C;
+  }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; }
+
+  .cover { width:210mm; min-height:297mm; background:#1C1C1C; display:flex; flex-direction:column; justify-content:space-between; padding:0; page-break-after:always; position:relative; overflow:hidden; }
+  .cover-top { padding:14mm 16mm 0; }
+  .cover-logo { font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); }
+  .cover-center { padding:0 16mm; flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .cover-eyebrow { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--spanish); margin-bottom:5mm; }
+  .cover-title { font-family:'Playfair Display',serif; font-size:48px; font-weight:900; color:#fff; line-height:1.05; margin-bottom:5mm; }
+  .cover-sub { font-size:12px; font-weight:300; color:rgba(255,255,255,0.5); line-height:2; margin-bottom:8mm; }
+  .cover-divider { width:40mm; height:1px; background:var(--spanish); margin-bottom:8mm; }
+  .cover-vs { display:flex; align-items:center; gap:6mm; }
+  .cover-country { text-align:center; }
+  .cover-country .flag { font-size:28px; display:block; margin-bottom:2mm; }
+  .cover-country .name { font-family:'Playfair Display',serif; font-size:14px; color:#fff; }
+  .cover-country .desc { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:1mm; }
+  .cover-vs-label { font-family:'Playfair Display',serif; font-size:22px; color:var(--spanish); font-weight:900; }
+  .cover-bottom { padding:8mm 16mm; border-top:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:flex-end; }
+  .cover-chef { font-family:'Playfair Display',serif; font-size:13px; color:rgba(255,255,255,0.5); }
+  .cover-detail { font-size:10px; color:rgba(255,255,255,0.25); letter-spacing:1px; text-align:right; line-height:1.8; }
+
+  .page { width:210mm; min-height:297mm; padding:14mm 16mm 18mm; page-break-after:always; position:relative; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8mm; padding-bottom:3mm; border-bottom:1px solid #E8E4DE; }
+  .page-section { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mid); }
+  .page-num { font-size:9px; color:var(--mid); }
+  .page-footer { position:absolute; bottom:8mm; left:16mm; right:16mm; display:flex; justify-content:space-between; border-top:1px solid #E8E4DE; padding-top:3mm; }
+  .footer-l { font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--mid); }
+  .footer-r { font-size:9px; color:#CCC; }
+
+  .cuisine-header { display:flex; align-items:center; gap:4mm; margin-bottom:6mm; padding-bottom:4mm; border-bottom:2px solid; }
+  .cuisine-header.french { border-color:var(--french); }
+  .cuisine-header.spanish { border-color:var(--spanish); }
+  .ch-flag { font-size:32px; }
+  .ch-text {}
+  .ch-eyebrow { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mid); }
+  .ch-title { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--dark); }
+  .ch-sub { font-size:11px; color:var(--mid); margin-top:1mm; font-style:italic; }
+
+  .recipe-card { border:1px solid #E8E4DE; margin-bottom:5mm; page-break-inside:avoid; }
+  .recipe-header { padding:3mm 5mm; display:flex; justify-content:space-between; align-items:center; }
+  .recipe-header.french { background:var(--french); }
+  .recipe-header.spanish { background:var(--spanish); }
+  .recipe-num { font-size:9px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,0.5); }
+  .recipe-name { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:#fff; }
+  .recipe-sub { font-size:10px; color:rgba(255,255,255,0.65); font-style:italic; }
+  .recipe-body { padding:4mm 5mm; }
+  .recipe-grid { display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+
+  .r-section-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid); margin-bottom:2mm; display:block; }
+  .ingredient-row { display:flex; justify-content:space-between; font-size:10px; color:#444; padding:1mm 0; border-bottom:1px dotted #E8E4DE; }
+  .ingredient-row:last-child { border-bottom:none; }
+  .ingredient-row .qty { color:var(--mid); font-weight:500; white-space:nowrap; margin-left:2mm; }
+
+  .method-list { list-style:none; }
+  .method-list li { font-size:10px; color:#444; padding:1.5mm 0; padding-left:4mm; position:relative; line-height:1.6; border-bottom:1px dotted #E8E4DE; }
+  .method-list li:last-child { border-bottom:none; }
+  .method-list li::before { content:attr(data-step); position:absolute; left:0; color:var(--mid); font-weight:700; font-size:9px; }
+
+  .plating-box { background:var(--light); border-left:3px solid var(--dark); padding:3mm 4mm; margin-top:3mm; }
+  .plating-box .pl-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--dark); display:block; margin-bottom:1.5mm; }
+  .plating-box p { font-size:10.5px; color:#444; line-height:1.7; font-style:italic; }
+
+  .chef-note { background:#FFF8EE; border-left:3px solid var(--spanish); padding:2.5mm 4mm; margin-top:2mm; font-size:10px; color:#3D2B00; line-height:1.7; }
+  .chef-note strong { display:block; font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:var(--spanish); margin-bottom:1mm; }
+
+  .cost-row { display:flex; gap:3mm; margin-top:3mm; flex-wrap:wrap; }
+  .cost-badge { font-size:9px; font-weight:600; padding:1mm 3mm; background:var(--light); color:var(--dark); }
+
+  @media print {
+    body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page, .cover { page-break-after:always; }
+    .recipe-card { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-logo">Novotel Ibis · Sydney Olympic Park · Owners Lunch</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-eyebrow">Fine Dining · Plated · 12 Covers</div>
+    <div class="cover-title">France<br>vs<br>Spain</div>
+    <div class="cover-sub">
+      5 French Fine Dining Mains · 5 Spanish Elevated Mains<br>
+      Plated Lunch · Owners Meeting · June 2026
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-vs">
+      <div class="cover-country">
+        <span class="flag">🇫🇷</span>
+        <div class="name">Cuisine Française</div>
+        <div class="desc">Classic · Technical · Refined</div>
+      </div>
+      <div class="cover-vs-label">VS</div>
+      <div class="cover-country">
+        <span class="flag">🇪🇸</span>
+        <div class="name">Cocina Española</div>
+        <div class="desc">Bold · Smoky · Soulful</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-chef">Timothy Susanto · Head Chef</div>
+    <div class="cover-detail">Novotel Ibis Sydney Olympic Park<br>June 2026 · 12 Covers</div>
+  </div>
+</div>
+
+<!-- PAGE 2 — FRENCH MAINS 1 & 2 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">French Fine Dining — 5 Mains</span>
+    <span class="page-num">02</span>
+  </div>
+
+  <div class="cuisine-header french">
+    <span class="ch-flag">🇫🇷</span>
+    <div class="ch-text">
+      <div class="ch-eyebrow">Cuisine Française</div>
+      <div class="ch-title">French Fine Dining</div>
+      <div class="ch-sub">Classic technique. Refined execution. The language of haute cuisine.</div>
+    </div>
+  </div>
+
+  <!-- FRENCH MAIN 1 -->
+  <div class="recipe-card">
+    <div class="recipe-header french">
+      <div>
+        <div class="recipe-num">FRENCH · MAIN 01</div>
+        <div class="recipe-name">Duck Confit — Pomme Sarladaise</div>
+      </div>
+      <div class="recipe-sub">Cherry jus · Wilted cavolo nero · Crispy skin</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Duck Marylands (200g each) <span class="qty">12 pcs</span></div>
+          <div class="ingredient-row">Duck fat <span class="qty">2kg</span></div>
+          <div class="ingredient-row">Fresh thyme, bay leaf, garlic <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Desiree potatoes <span class="qty">3kg</span></div>
+          <div class="ingredient-row">Shallots, sliced <span class="qty">300g</span></div>
+          <div class="ingredient-row">Cavolo nero <span class="qty">600g</span></div>
+          <div class="ingredient-row">Morello cherry jam <span class="qty">200g</span></div>
+          <div class="ingredient-row">Chicken stock, red wine <span class="qty">500ml each</span></div>
+          <div class="ingredient-row">Unsalted butter <span class="qty">150g</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Season duck, cure overnight with thyme, garlic, salt</li>
+            <li data-step="2.">Confit in duck fat at 85°C for 8–10 hours until tender</li>
+            <li data-step="3.">Pomme sarladaise: layer sliced potato, shallots, duck fat — roast 180°C 45 min</li>
+            <li data-step="4.">Cherry jus: reduce red wine, stock, cherry jam, mount with cold butter</li>
+            <li data-step="5.">Before service: crisp duck skin skin-side down in dry pan 4 min</li>
+            <li data-step="6.">Wilt cavolo nero in butter, season with lemon and fleur de sel</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Press pomme sarladaise into a round mould, centre plate. Rest duck confit on top, skin facing up — lacquered, burnished. Cascade cherry jus around the base. Place cavolo nero to the left. Finish with a single sprig of fresh thyme and fleur de sel on the skin.</p>
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~26%</span>
+        <span class="cost-badge">Prep: Day before</span>
+        <span class="cost-badge">Service: 8 min</span>
+        <span class="cost-badge">GF · DF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRENCH MAIN 2 -->
+  <div class="recipe-card">
+    <div class="recipe-header french">
+      <div>
+        <div class="recipe-num">FRENCH · MAIN 02</div>
+        <div class="recipe-name">Sole Meunière — Beurre Noisette</div>
+      </div>
+      <div class="recipe-sub">Capers · Lemon · Haricots verts · Pomme purée</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Sole fillets (180g) <span class="qty">12 pcs</span></div>
+          <div class="ingredient-row">Plain flour, seasoned <span class="qty">200g</span></div>
+          <div class="ingredient-row">Clarified butter <span class="qty">300g</span></div>
+          <div class="ingredient-row">Unsalted butter (noisette) <span class="qty">400g</span></div>
+          <div class="ingredient-row">Capers, lemon juice, parsley <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Haricots verts (fine beans) <span class="qty">600g</span></div>
+          <div class="ingredient-row">Désirée potatoes (purée) <span class="qty">2.5kg</span></div>
+          <div class="ingredient-row">Cream, butter (for purée) <span class="qty">400ml / 300g</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Pomme purée: boil potatoes, pass through tamis, fold in warm cream + cold butter — silky, not stiff</li>
+            <li data-step="2.">Blanch haricots verts in salted water, refresh, finish in butter to order</li>
+            <li data-step="3.">Dust sole lightly in seasoned flour, shake off excess</li>
+            <li data-step="4.">Cook in clarified butter, 2 min each side — golden, no more</li>
+            <li data-step="5.">Beurre noisette: foam unsalted butter until hazelnut aroma, add lemon juice, capers, parsley — pour tableside</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Quenelle of pomme purée to the left. Sole fillet laid across at an angle, skin-side up. Haricots verts stacked neatly beside. Beurre noisette poured from a small copper saucepan tableside — the aroma does the talking. Finish with a thin lemon wheel and micro parsley.</p>
+      </div>
+      <div class="chef-note">
+        <strong>Chef's Note</strong>
+        This is one of the most technically honest dishes in French cooking — nowhere to hide. The beurre noisette poured tableside is a moment of pure theatre. Owners will remember the smell before they remember the taste.
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~28%</span>
+        <span class="cost-badge">Service: 6 min</span>
+        <span class="cost-badge">Tableside pour</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · France vs Spain · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 3 — FRENCH MAINS 3, 4 & 5 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">French Fine Dining — Mains 3, 4 &amp; 5</span>
+    <span class="page-num">03</span>
+  </div>
+
+  <!-- FRENCH MAIN 3 -->
+  <div class="recipe-card">
+    <div class="recipe-header french">
+      <div>
+        <div class="recipe-num">FRENCH · MAIN 03</div>
+        <div class="recipe-name">Beef Tenderloin — Sauce Bordelaise</div>
+      </div>
+      <div class="recipe-sub">Pomme fondant · Gratin dauphinois · Bone marrow</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Beef tenderloin (200g portions) <span class="qty">12 pcs</span></div>
+          <div class="ingredient-row">Bone marrow, soaked <span class="qty">12 rounds</span></div>
+          <div class="ingredient-row">Red Bordeaux wine <span class="qty">750ml</span></div>
+          <div class="ingredient-row">Beef demi-glace <span class="qty">500ml</span></div>
+          <div class="ingredient-row">Shallots, thyme, bay <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Désirée potatoes (fondant) <span class="qty">12 rounds</span></div>
+          <div class="ingredient-row">Chicken stock (for fondant) <span class="qty">500ml</span></div>
+          <div class="ingredient-row">Butter, thyme, garlic <span class="qty">200g / as needed</span></div>
+          <div class="ingredient-row">Watercress (garnish) <span class="qty">1 bunch</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Bordelaise: sweat shallots, add Bordeaux, reduce by ¾, add demi-glace, reduce, strain, mount with cold butter</li>
+            <li data-step="2.">Pomme fondant: cylinder-cut potatoes, sear flat sides golden in clarified butter, add stock, thyme, garlic — roast 180°C until tender and glazed</li>
+            <li data-step="3.">Season and tie tenderloin, sear all sides in very hot cast iron — hard crust, rare inside</li>
+            <li data-step="4.">Rest 5 min minimum — non-negotiable</li>
+            <li data-step="5.">Bone marrow: poach in salted water 5 min, season with fleur de sel, parsley</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Tenderloin sliced on the bias, two pieces fanned slightly. Pomme fondant behind, standing tall. Bone marrow round resting on top of the beef — classical and imposing. Bordelaise poured in a clean arc around the plate. Three watercress leaves. Nothing more.</p>
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~32%</span>
+        <span class="cost-badge">Prep: Day before</span>
+        <span class="cost-badge">Service: 10 min</span>
+        <span class="cost-badge">GF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRENCH MAIN 4 -->
+  <div class="recipe-card">
+    <div class="recipe-header french">
+      <div>
+        <div class="recipe-num">FRENCH · MAIN 04</div>
+        <div class="recipe-name">Chicken Ballotine — Morel Cream</div>
+      </div>
+      <div class="recipe-sub">Truffle stuffing · Asparagus · Sauce suprême</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Free-range chicken breasts <span class="qty">12 pcs</span></div>
+          <div class="ingredient-row">Dried morel mushrooms <span class="qty">60g</span></div>
+          <div class="ingredient-row">Chicken mousse (breast + cream) <span class="qty">300g</span></div>
+          <div class="ingredient-row">Black truffle paste <span class="qty">40g</span></div>
+          <div class="ingredient-row">Asparagus spears <span class="qty">36 spears</span></div>
+          <div class="ingredient-row">Chicken stock, cream <span class="qty">500ml / 300ml</span></div>
+          <div class="ingredient-row">Shallots, tarragon, butter <span class="qty">as needed</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Butterfly chicken breast, fill with truffle mousse, roll tight in clingfilm</li>
+            <li data-step="2.">Poach ballotine at 72°C for 18 min — precise temperature, perfect result</li>
+            <li data-step="3.">Rehydrate morels in warm water, sauté in butter, add cream, reduce, finish with tarragon</li>
+            <li data-step="4.">Sauce suprême: reduce chicken stock with shallots, cream, mount with butter — velvety</li>
+            <li data-step="5.">Asparagus: blanch 90 seconds, finish in foaming butter, season</li>
+            <li data-step="6.">Sear ballotine in butter to colour before service</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Ballotine sliced on a bias — two rounds showing the truffle cross-section inside. Asparagus laid alongside in a tight bundle. Morel cream spooned generously to one side. Sauce suprême in a thin elegant pool. Finish with a shaving of fresh truffle if budget allows — or truffle oil drops.</p>
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~24%</span>
+        <span class="cost-badge">Wow factor: HIGH</span>
+        <span class="cost-badge">Prep: Morning of</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRENCH MAIN 5 -->
+  <div class="recipe-card">
+    <div class="recipe-header french">
+      <div>
+        <div class="recipe-num">FRENCH · MAIN 05</div>
+        <div class="recipe-name">Lamb Rack — Persillade Crust</div>
+      </div>
+      <div class="recipe-sub">Ratatouille niçoise · Lamb jus · Tapenade</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Lamb rack (3 cutlets/person) <span class="qty">4 racks</span></div>
+          <div class="ingredient-row">Dijon mustard <span class="qty">80g</span></div>
+          <div class="ingredient-row">Sourdough breadcrumbs <span class="qty">200g</span></div>
+          <div class="ingredient-row">Flat parsley, garlic, lemon zest <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Eggplant, zucchini, capsicum, tomato <span class="qty">300g each</span></div>
+          <div class="ingredient-row">Kalamata olive tapenade <span class="qty">150g</span></div>
+          <div class="ingredient-row">Lamb bones for jus <span class="qty">1kg</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Lamb jus: roast bones, deglaze, reduce with rosemary and thyme — deep and glossy</li>
+            <li data-step="2.">Ratatouille: dice vegetables uniform, cook separately, combine — never mushy</li>
+            <li data-step="3.">Persillade: blitz parsley, garlic, breadcrumbs, lemon zest, EVOO to bright green paste</li>
+            <li data-step="4.">Sear lamb rack hard on all sides. Brush with Dijon, press persillade crust</li>
+            <li data-step="5.">Roast 200°C for 8–10 min — internal 57°C for perfect pink</li>
+            <li data-step="6.">Rest 5 min, portion into 3-cutlet servings</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Ratatouille mounded in a ring mould, centre plate. Three lamb cutlets crossed and resting upright against the ratatouille, bones pointing skyward — elegant and architectural. Lamb jus in a clean pool. Tapenade quenelle to the side. Finish with micro basil and a thread of Provençal olive oil.</p>
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~30%</span>
+        <span class="cost-badge">Visual: Stunning</span>
+        <span class="cost-badge">Prep: Day before jus</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · France vs Spain · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 4 — SPANISH MAINS 1 & 2 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Spanish Fine Dining — 5 Mains</span>
+    <span class="page-num">04</span>
+  </div>
+
+  <div class="cuisine-header spanish">
+    <span class="ch-flag">🇪🇸</span>
+    <div class="ch-text">
+      <div class="ch-eyebrow">Cocina Española</div>
+      <div class="ch-title">Spanish Fine Dining</div>
+      <div class="ch-sub">Smoke. Saffron. Soul. The bold heart of the Mediterranean.</div>
+    </div>
+  </div>
+
+  <!-- SPANISH MAIN 1 -->
+  <div class="recipe-card">
+    <div class="recipe-header spanish">
+      <div>
+        <div class="recipe-num">SPANISH · MAIN 01</div>
+        <div class="recipe-name">Secreto Ibérico — Romesco</div>
+      </div>
+      <div class="recipe-sub">Smoked paprika · Padron peppers · Patatas bravas</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Pork secreto (shoulder cut, 180g) <span class="qty">12 portions</span></div>
+          <div class="ingredient-row">Smoked paprika (pimentón de la Vera) <span class="qty">30g</span></div>
+          <div class="ingredient-row">Roasted red capsicum <span class="qty">400g</span></div>
+          <div class="ingredient-row">Blanched almonds (romesco) <span class="qty">150g</span></div>
+          <div class="ingredient-row">Sourdough, sherry vinegar, garlic <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Padron peppers <span class="qty">36 pcs</span></div>
+          <div class="ingredient-row">Kipfler potatoes (bravas) <span class="qty">1.2kg</span></div>
+          <div class="ingredient-row">Bravas sauce: tomato, paprika, cayenne <span class="qty">300ml</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Romesco: blitz roasted capsicum, almonds, sourdough, sherry vinegar, garlic, pimentón — thick, textured</li>
+            <li data-step="2.">Marinate secreto in pimentón, garlic, EVOO 4 hours minimum</li>
+            <li data-step="3.">Grill secreto on very high heat — 3 min each side, rest 3 min. Medium-rare.</li>
+            <li data-step="4.">Patatas bravas: fry kipfler rounds until crispy, toss in bravas sauce</li>
+            <li data-step="5.">Padron peppers: blister in smoking olive oil, fleur de sel immediately</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Secreto sliced thinly against the grain, fanned across the plate. Romesco smeared boldly with a spoon to one side — rustic but deliberate. Bravas stacked in a tight pile. Three padron peppers resting across the meat. Finish with smoked olive oil drops and a pinch of flaky sea salt.</p>
+      </div>
+      <div class="chef-note">
+        <strong>Chef's Note</strong>
+        Secreto ibérico is Spain's most underrated cut — hidden between the shoulder blade and fat cap. It's what the Spanish keep for themselves. Owners who know food will recognise it immediately. Owners who don't will ask what it is — and that's the start of a great conversation.
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~26%</span>
+        <span class="cost-badge">GF · DF</span>
+        <span class="cost-badge">Service: 8 min</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPANISH MAIN 2 -->
+  <div class="recipe-card">
+    <div class="recipe-header spanish">
+      <div>
+        <div class="recipe-num">SPANISH · MAIN 02</div>
+        <div class="recipe-name">Arroz Negro — Saffron Alioli</div>
+      </div>
+      <div class="recipe-sub">Squid ink rice · Seared prawns · Aioli · Lemon</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Bomba rice <span class="qty">720g total</span></div>
+          <div class="ingredient-row">Squid ink sachets <span class="qty">4 sachets</span></div>
+          <div class="ingredient-row">Prawn bisque / fish stock <span class="qty">2L</span></div>
+          <div class="ingredient-row">King prawns (2 per person) <span class="qty">24 pcs</span></div>
+          <div class="ingredient-row">Squid, cleaned and scored <span class="qty">400g</span></div>
+          <div class="ingredient-row">Garlic, shallots, white wine <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Saffron threads <span class="qty">2g</span></div>
+          <div class="ingredient-row">Egg yolks, EVOO (alioli) <span class="qty">4 yolks / 300ml</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Saffron alioli: hand-emulsify egg yolk, saffron (bloomed in warm water), garlic, EVOO — thick and golden</li>
+            <li data-step="2.">Sofrito: slow-cook shallots, garlic, tomato 20 min — deep and sweet</li>
+            <li data-step="3.">Toast bomba rice in sofrito, add squid ink + hot stock in stages — paella style, no stirring</li>
+            <li data-step="4.">Cook until socarrat forms on bottom — the crispy layer is non-negotiable</li>
+            <li data-step="5.">Sear prawns and squid in smoking oil 90 seconds — charred, not rubbery</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Deep black rice in a warm shallow bowl — glossy, dramatic. Two king prawns crossed on top, tails up. Squid laid alongside. Saffron alioli in a quenelle to the side, bright gold against jet black. Lemon half. Micro herbs. The contrast is the presentation.</p>
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~28%</span>
+        <span class="cost-badge">Visual impact: MAXIMUM</span>
+        <span class="cost-badge">GF · DF</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · France vs Spain · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 5 — SPANISH MAINS 3, 4 & 5 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Spanish Fine Dining — Mains 3, 4 &amp; 5</span>
+    <span class="page-num">05</span>
+  </div>
+
+  <!-- SPANISH MAIN 3 -->
+  <div class="recipe-card">
+    <div class="recipe-header spanish">
+      <div>
+        <div class="recipe-num">SPANISH · MAIN 03</div>
+        <div class="recipe-name">Bacalao a la Vizcaína</div>
+      </div>
+      <div class="recipe-sub">Salt cod · Slow-cooked Basque red pepper sauce · Confit potato</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Salt cod, desalted 48hrs (180g) <span class="qty">12 portions</span></div>
+          <div class="ingredient-row">Choricero peppers (dried) <span class="qty">8 pcs</span></div>
+          <div class="ingredient-row">White onion, garlic, tomato <span class="qty">500g / as needed</span></div>
+          <div class="ingredient-row">Chicken stock, white wine <span class="qty">400ml each</span></div>
+          <div class="ingredient-row">Désirée potatoes (confit) <span class="qty">1.5kg</span></div>
+          <div class="ingredient-row">EVOO, parsley, fleur de sel <span class="qty">as needed</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Desalt cod 48 hours in cold water, changing water 3 times</li>
+            <li data-step="2.">Vizcaína sauce: rehydrate choricero peppers, scrape flesh. Slow-cook onion until melted (45 min), add tomato, pepper flesh, stock — deep red, silky</li>
+            <li data-step="3.">Confit potatoes: slice 5mm, submerge in EVOO with garlic and thyme — 90°C, 1 hour</li>
+            <li data-step="4.">Gently poach cod in EVOO at 55°C for 10 min — flaking, barely set</li>
+            <li data-step="5.">Layer potato in a ring mould, place cod on top, sauce around</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Confit potato stack in centre. Salt cod draped on top — white, glistening, just flaking. Deep red Vizcaína pooled around the base. Drizzle of grass-green EVOO. Flat parsley leaf. Simple. Ancient. Unforgettable.</p>
+      </div>
+      <div class="chef-note">
+        <strong>Chef's Note</strong>
+        This is Basque grandmother cooking elevated to fine dining. The patience of the sauce and the precision of the cod temperature are everything. Owners who have eaten in San Sebastián will recognise this immediately.
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~22%</span>
+        <span class="cost-badge">GF · DF</span>
+        <span class="cost-badge">Prep: 2 days ahead</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPANISH MAIN 4 -->
+  <div class="recipe-card">
+    <div class="recipe-header spanish">
+      <div>
+        <div class="recipe-num">SPANISH · MAIN 04</div>
+        <div class="recipe-name">Cochinillo Asado — Sherry Jus</div>
+      </div>
+      <div class="recipe-sub">Slow-roasted suckling pig · Apple purée · Pickled fennel</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Per Person</span>
+          <div class="ingredient-row">Suckling pig belly portions (200g) <span class="qty">12 pcs</span></div>
+          <div class="ingredient-row">Garlic, lard, thyme, rosemary <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Dry sherry (Fino or Manzanilla) <span class="qty">300ml</span></div>
+          <div class="ingredient-row">Chicken / pork stock <span class="qty">500ml</span></div>
+          <div class="ingredient-row">Granny Smith apples <span class="qty">6 pcs</span></div>
+          <div class="ingredient-row">Butter, cream (apple purée) <span class="qty">100g / 100ml</span></div>
+          <div class="ingredient-row">Fennel bulb, white wine vinegar <span class="qty">2 bulbs / 100ml</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Rub suckling pig portions with lard, garlic, salt — roast 160°C for 2.5 hours</li>
+            <li data-step="2.">Blast at 240°C final 10 min — crackling must shatter, not bend</li>
+            <li data-step="3.">Sherry jus: deglaze pan with sherry, add stock, reduce by half, mount with butter</li>
+            <li data-step="4.">Apple purée: cook peeled apple in butter until soft, blitz smooth with cream — pure white</li>
+            <li data-step="5.">Pickled fennel: slice paper thin on mandoline, brine in vinegar, sugar, salt 30 min</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating</span>
+        <p>Pork belly portion placed proudly — skin facing up, crackling unbroken. Apple purée swooped to the left in a long stroke. Sherry jus in a clean moat around. Pickled fennel draped across the crackling for acidity and drama. Micro thyme finish.</p>
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~28%</span>
+        <span class="cost-badge">Crackling: the hero</span>
+        <span class="cost-badge">Wow factor: HIGH</span>
+        <span class="cost-badge">GF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPANISH MAIN 5 -->
+  <div class="recipe-card">
+    <div class="recipe-header spanish">
+      <div>
+        <div class="recipe-num">SPANISH · MAIN 05</div>
+        <div class="recipe-name">Txuleta — Aged Beef Côte de Boeuf</div>
+      </div>
+      <div class="recipe-sub">Basque-style bone-in rib · Smoked salt · Piquillo pepper · Chimichurri verde</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-grid">
+        <div>
+          <span class="r-section-label">Ingredients · Shared (per 2 pax)</span>
+          <div class="ingredient-row">Aged côte de boeuf (700–800g) <span class="qty">6 pieces</span></div>
+          <div class="ingredient-row">Coarse sea salt, smoked salt <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Piquillo peppers (jarred) <span class="qty">24 pcs</span></div>
+          <div class="ingredient-row">Flat parsley, garlic, EVOO (verde) <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Sherry vinegar, dried chilli flakes <span class="qty">as needed</span></div>
+          <div class="ingredient-row">Baby gem lettuce, EVOO, lemon <span class="qty">6 heads</span></div>
+        </div>
+        <div>
+          <span class="r-section-label">Method</span>
+          <ol class="method-list">
+            <li data-step="1.">Bring côte de boeuf to room temp 1 hour. Season generously with coarse salt only.</li>
+            <li data-step="2.">Grill on charcoal (or griddle) on very high heat — 4 min each side for rare, build crust</li>
+            <li data-step="3.">Rest 8 min minimum — the resting IS the cooking</li>
+            <li data-step="4.">Chimichurri verde: blitz parsley, garlic, sherry vinegar, EVOO, chilli — keep texture</li>
+            <li data-step="5.">Char piquillo peppers briefly in dry pan. Baby gem: halve, char cut-side in smoking oil.</li>
+            <li data-step="6.">Slice at table — bone-in, generous, impressive</li>
+          </ol>
+        </div>
+      </div>
+      <div class="plating-box">
+        <span class="pl-label">🍽️ Plating — Shared Board</span>
+        <p>Serve the full bone-in côte on a warm wooden board, sliced tableside by the chef. Charred baby gem and piquillo arranged around. Chimichurri verde in a small clay pot on the side. Smoked salt in a pinch bowl. Let the owners serve themselves — shared food at a formal table is the most powerful move you can make.</p>
+      </div>
+      <div class="chef-note">
+        <strong>Chef's Note</strong>
+        The txuleta is Basque cattle country's answer to the perfect steak. No sauce. No distraction. Just aged beef, coarse salt, and fire. Serving it shared on a board turns the owners' table into a communal moment. They will talk about this meal differently after this dish.
+      </div>
+      <div class="cost-row">
+        <span class="cost-badge">Food Cost ~34%</span>
+        <span class="cost-badge">Tableside carve</span>
+        <span class="cost-badge">Shared board</span>
+        <span class="cost-badge">GF · DF</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · France vs Spain · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 6 — COMPARISON + HEAD CHEF RECOMMENDATION -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Comparison &amp; Head Chef Recommendation</span>
+    <span class="page-num">06</span>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-bottom:5mm;">
+    <div>
+      <div style="background:var(--french); padding:3mm 5mm; margin-bottom:3mm;">
+        <div style="font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1mm;">🇫🇷 Cuisine Française</div>
+        <div style="font-family:'Playfair Display',serif; font-size:16px; color:#fff; font-weight:700;">The Five French Mains</div>
+      </div>
+      <div style="border:1px solid #E8E4DE; padding:3mm 4mm; font-size:10.5px; color:#444; line-height:1.9;">
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--french); margin-bottom:2mm;">Main 01</strong>
+        Duck Confit — Pomme Sarladaise · Cherry Jus<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--french); margin:2mm 0 1mm;">Main 02</strong>
+        Sole Meunière — Beurre Noisette Tableside<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--french); margin:2mm 0 1mm;">Main 03</strong>
+        Beef Tenderloin — Bordelaise · Bone Marrow<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--french); margin:2mm 0 1mm;">Main 04</strong>
+        Chicken Ballotine — Morel Cream · Truffle<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--french); margin:2mm 0 1mm;">Main 05</strong>
+        Lamb Rack — Persillade Crust · Ratatouille
+      </div>
+      <div style="background:var(--light); padding:3mm 4mm; margin-top:2mm; font-size:10px; color:#555; line-height:1.7;">
+        <strong>Character:</strong> Technical precision. Classical sauces. Individual plated perfection. Every dish tells the story of a brigade that knows its craft.
+      </div>
+    </div>
+    <div>
+      <div style="background:var(--spanish); padding:3mm 5mm; margin-bottom:3mm;">
+        <div style="font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1mm;">🇪🇸 Cocina Española</div>
+        <div style="font-family:'Playfair Display',serif; font-size:16px; color:#fff; font-weight:700;">The Five Spanish Mains</div>
+      </div>
+      <div style="border:1px solid #E8E4DE; padding:3mm 4mm; font-size:10.5px; color:#444; line-height:1.9;">
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--spanish); margin-bottom:2mm;">Main 01</strong>
+        Secreto Ibérico — Romesco · Patatas Bravas<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--spanish); margin:2mm 0 1mm;">Main 02</strong>
+        Arroz Negro — Squid Ink · Prawns · Saffron Alioli<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--spanish); margin:2mm 0 1mm;">Main 03</strong>
+        Bacalao a la Vizcaína — Confit Potato<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--spanish); margin:2mm 0 1mm;">Main 04</strong>
+        Cochinillo Asado — Sherry Jus · Apple Purée<br>
+        <strong style="display:block; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--spanish); margin:2mm 0 1mm;">Main 05</strong>
+        Txuleta Côte de Boeuf — Shared Board · Chimichurri
+      </div>
+      <div style="background:var(--light); padding:3mm 4mm; margin-top:2mm; font-size:10px; color:#555; line-height:1.7;">
+        <strong>Character:</strong> Bold flavours. Smoke and saffron. Communal theatre. Food that carries the soul of an entire country in every bite.
+      </div>
+    </div>
+  </div>
+
+  <table style="width:100%; border-collapse:collapse; font-size:10.5px; margin-bottom:5mm;">
+    <tr>
+      <th style="background:#1C1C1C; color:#fff; padding:3mm 4mm; text-align:left; font-size:9px; letter-spacing:1px;">Attribute</th>
+      <th style="background:var(--french); color:#fff; padding:3mm 4mm; text-align:center; width:35%;">🇫🇷 France</th>
+      <th style="background:var(--spanish); color:#fff; padding:3mm 4mm; text-align:center; width:35%;">🇪🇸 Spain</th>
+    </tr>
+    <tr style="background:#F5F3EF;">
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Technique style</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">Classical brigade — precise</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">Rustic elevated — soulful</td>
+    </tr>
+    <tr>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Service moment</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">Beurre noisette tableside pour</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">Txuleta carved at the table</td>
+    </tr>
+    <tr style="background:#F5F3EF;">
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Avg food cost</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">~28%</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">~28%</td>
+    </tr>
+    <tr>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Prep complexity</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">High — day before essential</td>
+      <td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; text-align:center;">Medium-high — some 48hr prep</td>
+    </tr>
+    <tr style="background:#F5F3EF;">
+      <td style="padding:2.5mm 4mm;">Best for owners who...</td>
+      <td style="padding:2.5mm 4mm; text-align:center;">Appreciate classical mastery</td>
+      <td style="padding:2.5mm 4mm; text-align:center;">Want a talking point &amp; theatre</td>
+    </tr>
+  </table>
+
+  <div style="background:#1C1C1C; padding:6mm; color:#fff;">
+    <div style="font-family:'Playfair Display',serif; font-size:16px; color:var(--spanish); margin-bottom:3mm;">Head Chef Recommendation</div>
+    <p style="font-size:11px; color:rgba(255,255,255,0.75); line-height:1.85;">
+      For an owners' lunch, I recommend <strong style="color:#fff;">serving both</strong> — not as competing menus, but as a curated progression. Open with two French mains as the first course rotation — Sole Meunière and Chicken Ballotine — then transition to two Spanish mains — Arroz Negro and the Txuleta shared board — as the centrepiece.<br><br>
+      This structure gives owners the intellectual pleasure of the contrast, the visual drama of two very different plating philosophies, and the communal energy of the txuleta board as the finale. It also shows them the full range of what this kitchen is capable of.<br><br>
+      <strong style="color:var(--spanish);">France opens the meal. Spain closes it. Both are remembered.</strong>
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · France vs Spain · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+</body>
+</html>

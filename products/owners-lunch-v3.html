@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owners Lunch — Silver Service · June 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #FAFAF8; --text: #1C1C1C; --gold: #C8922A; --dark: #1C1C1C;
+    --silver: #8A8A8A; --light: #F0EDE8; --mid: #8A8A8A;
+    --c1: #1B4F8A; --c2: #8B1A1A; --c3: #2E5C2E; --c4: #4A2060;
+  }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; }
+
+  .cover { width:210mm; min-height:297mm; background:#1C1C1C; display:flex; flex-direction:column; justify-content:space-between; page-break-after:always; position:relative; overflow:hidden; }
+  .cover-stripe { position:absolute; top:0; left:0; width:3mm; height:100%; background:var(--gold); }
+  .cover-top { padding:14mm 16mm 0; z-index:1; }
+  .cover-logo { font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+  .cover-center { padding:0 16mm; flex:1; display:flex; flex-direction:column; justify-content:center; z-index:1; }
+  .cover-eyebrow { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:5mm; }
+  .cover-title { font-family:'Playfair Display',serif; font-size:50px; font-weight:900; color:#fff; line-height:1.0; margin-bottom:5mm; }
+  .cover-title span { color:var(--gold); }
+  .cover-sub { font-size:11px; font-weight:300; color:rgba(255,255,255,0.45); line-height:2.2; margin-bottom:8mm; }
+  .cover-divider { width:40mm; height:1px; background:var(--gold); margin-bottom:7mm; }
+  .course-table { width:100%; border-collapse:collapse; }
+  .course-table tr { border-bottom:1px solid rgba(255,255,255,0.06); }
+  .course-table td { padding:2.5mm 0; font-size:10.5px; }
+  .course-table .ct-num { color:var(--gold); font-weight:700; font-size:9px; letter-spacing:2px; text-transform:uppercase; width:22mm; }
+  .course-table .ct-name { color:#fff; }
+  .course-table .ct-style { color:rgba(255,255,255,0.3); font-size:9px; text-align:right; }
+  .cover-bottom { padding:8mm 16mm; border-top:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:flex-end; z-index:1; }
+  .cover-chef { font-family:'Playfair Display',serif; font-size:13px; color:rgba(255,255,255,0.5); }
+  .cover-detail { font-size:9px; color:rgba(255,255,255,0.25); letter-spacing:1px; text-align:right; line-height:1.9; }
+
+  .page { width:210mm; min-height:297mm; padding:13mm 16mm 18mm; page-break-after:always; position:relative; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:7mm; padding-bottom:3mm; border-bottom:1px solid #E8E4DE; }
+  .page-section { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mid); }
+  .page-num { font-size:9px; color:var(--mid); }
+  .page-footer { position:absolute; bottom:8mm; left:16mm; right:16mm; display:flex; justify-content:space-between; border-top:1px solid #E8E4DE; padding-top:3mm; }
+  .footer-l { font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--mid); }
+  .footer-r { font-size:9px; color:#CCC; }
+
+  /* COURSE HEADER */
+  .course-header { display:flex; align-items:stretch; margin-bottom:5mm; }
+  .course-num-block { width:14mm; flex-shrink:0; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); font-size:8px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#fff; }
+  .course-title-block { flex:1; padding:4mm 5mm; }
+  .course-title-block .ct-eyebrow { font-size:8.5px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1mm; }
+  .course-title-block .ct-main { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#fff; line-height:1.1; }
+  .course-title-block .ct-sub { font-size:10px; color:rgba(255,255,255,0.55); font-style:italic; margin-top:1mm; }
+  .course-title-block .ct-portions { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-top:2mm; }
+
+  .c1-head .course-num-block { background:var(--c1); }
+  .c1-head .course-title-block { background:var(--c1); }
+  .c2-head .course-num-block { background:var(--c2); }
+  .c2-head .course-title-block { background:var(--c2); }
+  .c3-head .course-num-block { background:var(--c3); }
+  .c3-head .course-title-block { background:var(--c3); }
+  .c4-head .course-num-block { background:var(--dark); }
+  .c4-head .course-title-block { background:var(--dark); }
+
+  /* RECIPE GRID */
+  .recipe-two-col { display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-bottom:4mm; }
+  .r-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid); margin-bottom:2mm; display:block; border-bottom:1px solid #E8E4DE; padding-bottom:1.5mm; }
+  .ingredient-row { display:flex; justify-content:space-between; font-size:10px; color:#333; padding:1.5mm 0; border-bottom:1px dotted #EDEBE6; line-height:1.5; }
+  .ingredient-row:last-child { border-bottom:none; }
+  .qty { color:var(--mid); font-size:9.5px; white-space:nowrap; margin-left:3mm; flex-shrink:0; }
+  .method-step { display:flex; gap:3mm; padding:1.5mm 0; border-bottom:1px dotted #EDEBE6; font-size:10px; color:#333; line-height:1.6; }
+  .method-step:last-child { border-bottom:none; }
+  .step-num { color:var(--gold); font-weight:700; font-size:9px; width:5mm; flex-shrink:0; margin-top:0.5mm; }
+
+  /* SILVER SERVICE BOX — the key addition */
+  .silver-service-box { border:2px solid var(--gold); padding:4mm 5mm; margin:3mm 0; }
+  .ss-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:2mm; }
+  .ss-order { display:grid; grid-template-columns:auto 1fr; gap:2mm 4mm; margin-bottom:3mm; }
+  .ss-step-num { font-weight:700; color:var(--gold); font-size:10px; white-space:nowrap; }
+  .ss-step-text { font-size:10.5px; color:#333; line-height:1.6; }
+  .ss-note { font-size:10px; color:#555; font-style:italic; margin-top:2mm; border-top:1px solid #E8E4DE; padding-top:2mm; }
+
+  /* PLATING BOX */
+  .plating-box { border-left:3px solid var(--dark); background:var(--light); padding:3.5mm 5mm; margin:3mm 0; }
+  .pb-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--dark); display:block; margin-bottom:1.5mm; }
+  .plating-box p { font-size:10.5px; color:#444; line-height:1.75; font-style:italic; }
+
+  /* CHEF NOTE */
+  .chef-note { background:#1C1C1C; color:#fff; padding:3.5mm 5mm; margin:3mm 0; }
+  .cn-label { font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:1.5mm; }
+  .chef-note p { font-size:10.5px; color:rgba(255,255,255,0.7); line-height:1.75; }
+
+  /* BADGE ROW */
+  .badge-row { display:flex; gap:2mm; flex-wrap:wrap; margin-top:3mm; }
+  .badge { font-size:9px; font-weight:600; padding:1mm 3mm; background:var(--light); color:var(--dark); }
+  .badge.gold { background:var(--gold); color:#fff; }
+
+  /* SIDES PAGE */
+  .sides-grid { display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-bottom:4mm; }
+  .side-card { border:1px solid #E8E4DE; padding:4mm; }
+  .side-card h4 { font-family:'Playfair Display',serif; font-size:14px; color:var(--dark); margin-bottom:1mm; }
+  .side-card .sc-sub { font-size:9px; color:var(--mid); font-style:italic; margin-bottom:2mm; }
+  .side-card p { font-size:10px; color:#444; line-height:1.7; }
+  .side-card .sc-note { font-size:9px; color:var(--gold); font-weight:600; margin-top:2mm; }
+
+  /* SEQUENCE TIMELINE */
+  .sequence-bar { display:flex; align-items:stretch; margin:5mm 0; border:1px solid #E8E4DE; overflow:hidden; }
+  .seq-item { flex:1; padding:3mm; text-align:center; border-right:1px solid #E8E4DE; }
+  .seq-item:last-child { border-right:none; }
+  .seq-num { font-size:8px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.6); display:block; margin-bottom:1mm; }
+  .seq-name { font-size:10px; font-weight:600; color:#fff; line-height:1.3; }
+  .seq-note { font-size:8px; color:rgba(255,255,255,0.45); margin-top:1mm; }
+
+  @media print {
+    body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page, .cover { page-break-after:always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Novotel Ibis · Sydney Olympic Park · Owners Lunch · June 2026</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-eyebrow">Silver Service · 12 Covers · Plated Lunch</div>
+    <div class="cover-title">Owners<br><span>Lunch</span><br>2026</div>
+    <div class="cover-sub">
+      4 Proteins · Platter to Guest · Silver Service<br>
+      Sharing Sides at Table · June 2026<br>
+      Ballroom Pre-Function · Novotel Ibis SOP
+    </div>
+    <div class="cover-divider"></div>
+    <table class="course-table">
+      <tr>
+        <td class="ct-num">Course 01</td>
+        <td class="ct-name">Chicken Ballotine — Porcini Cream · Truffle · Sauce Suprême</td>
+        <td class="ct-style">First · Light</td>
+      </tr>
+      <tr>
+        <td class="ct-num">Course 02</td>
+        <td class="ct-name">Lamb Rack — Persillade Crust · White Bean Purée · Sauce Paloise</td>
+        <td class="ct-style">Second · Medium</td>
+      </tr>
+      <tr>
+        <td class="ct-num">Course 03</td>
+        <td class="ct-name">Saffron Arroz Negro — Prawn Bisque · King Prawns · Alioli</td>
+        <td class="ct-style">Third · Bold</td>
+      </tr>
+      <tr>
+        <td class="ct-num">Course 04</td>
+        <td class="ct-name">A9 Wagyu Sirloin — Bordelaise · Chef Carved · Silver Platter</td>
+        <td class="ct-style">Last · The Crown</td>
+      </tr>
+      <tr>
+        <td class="ct-num">Sides</td>
+        <td class="ct-name">Sharing plates set on table — 4 dishes · Throughout mains</td>
+        <td class="ct-style">Table · Shared</td>
+      </tr>
+      <tr>
+        <td class="ct-num">Dessert</td>
+        <td class="ct-name">Chocolate Fondant · Cheese Board · Mignardises · Coffee</td>
+        <td class="ct-style">Sweet Finish</td>
+      </tr>
+    </table>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-chef">Timothy Susanto · Head Chef</div>
+    <div class="cover-detail">Silver Service · 12 Owners<br>June 2026</div>
+  </div>
+</div>
+
+<!-- PAGE 2 — SERVICE SEQUENCE + OVERVIEW -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Silver Service — Sequence &amp; Protocol</span>
+    <span class="page-num">02</span>
+  </div>
+
+  <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--dark); margin-bottom:2mm;">Service Sequence</div>
+  <div style="font-size:11px; color:#555; font-style:italic; margin-bottom:5mm; border-left:3px solid var(--gold); padding-left:4mm;">Silver service means the food travels from kitchen to guest on a platter — the service team serves individually at the table. Every movement deliberate. Every portion presented. The sequence below is the order of the four proteins, from lightest to the crown.</div>
+
+  <!-- SEQUENCE BAR -->
+  <div class="sequence-bar">
+    <div class="seq-item" style="background:var(--c1);">
+      <span class="seq-num">First</span>
+      <div class="seq-name">Chicken Ballotine</div>
+      <div class="seq-note">Light · Delicate · Opens the palate</div>
+    </div>
+    <div class="seq-item" style="background:var(--c2);">
+      <span class="seq-num">Second</span>
+      <div class="seq-name">Lamb Rack</div>
+      <div class="seq-note">Medium · Bold · Builds intensity</div>
+    </div>
+    <div class="seq-item" style="background:#1B6B6B;">
+      <span class="seq-num">Third</span>
+      <div class="seq-name">Arroz Negro</div>
+      <div class="seq-note">Seafood · Complex · Contrast</div>
+    </div>
+    <div class="seq-item" style="background:var(--dark);">
+      <span class="seq-num">Last · Crown</span>
+      <div class="seq-name">A9 Wagyu Sirloin</div>
+      <div class="seq-note">The finale · Nothing after it</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-bottom:5mm;">
+    <div style="border:1px solid #E8E4DE; padding:4mm;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:2mm;">Silver Service Rules — This Lunch</div>
+      <div style="font-size:10.5px; color:#333; line-height:1.85;">
+        ✦ Two service team members per platter — one holds, one serves<br>
+        ✦ Service always from the left of the guest<br>
+        ✦ Sauce poured or spooned from the right<br>
+        ✦ Ladies first, then clockwise around the table<br>
+        ✦ All 12 covers plated within 90 seconds of first guest<br>
+        ✦ Platter returns to pass — never left on the table<br>
+        ✦ Sides remain on the table as sharing plates throughout<br>
+        ✦ No verbal description unless guest asks — let the food speak
+      </div>
+    </div>
+    <div style="border:1px solid #E8E4DE; padding:4mm;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:2mm;">Platter Setup — Kitchen to Table</div>
+      <div style="font-size:10.5px; color:#333; line-height:1.85;">
+        ✦ All proteins portioned and plated on silver oval platter<br>
+        ✦ Platter garnished at the pass before leaving kitchen<br>
+        ✦ Sauce travels separately in a warm silver jug or sauceboat<br>
+        ✦ Service team receives platter at pass, walks in together<br>
+        ✦ One person at each end of the table — work toward centre<br>
+        ✦ Warm plates set before platter arrives — always<br>
+        ✦ Head Chef visible at pass for wagyu course — intentional
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--dark); padding:5mm 6mm; color:#fff;">
+    <div style="font-family:'Playfair Display',serif; font-size:15px; color:var(--gold); margin-bottom:2mm;">Why This Sequence</div>
+    <div style="font-size:10.5px; color:rgba(255,255,255,0.7); line-height:1.85;">
+      <strong style="color:#fff;">Chicken first</strong> — the most delicate protein. Clean flavours. The porcini cream and truffle open the palate without overwhelming it. Owners settle in.<br>
+      <strong style="color:#fff;">Lamb second</strong> — persillade crust and sauce paloise build intensity. The white bean purée anchors the course. Conversation is flowing by now.<br>
+      <strong style="color:#fff;">Arroz negro third</strong> — the contrast course. Seafood, ink, saffron. Different texture, different temperature, different colour. It resets the palate before the finale.<br>
+      <strong style="color:#fff;">Wagyu last</strong> — always last. Nothing competes with A9 marble score. The Head Chef at the pass for this course is intentional. It signals: this matters. The crown course deserves the crown chef.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 3 — COURSE 01: CHICKEN BALLOTINE -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Course 01 of 04 — First Protein · Lightest</span>
+    <span class="page-num">03</span>
+  </div>
+
+  <div class="course-header c1-head">
+    <div class="course-num-block">First</div>
+    <div class="course-title-block">
+      <div class="ct-eyebrow">Course 01 · French Technique · Chicken</div>
+      <div class="ct-main">Chicken Ballotine — Porcini Cream</div>
+      <div class="ct-sub">Truffle mousse stuffing · Sauce suprême · Asparagus · Truffle oil</div>
+      <div class="ct-portions">12 Portions · Silver Platter Service</div>
+    </div>
+  </div>
+
+  <div class="recipe-two-col">
+    <div>
+      <span class="r-label">Ingredients — 12 Portions</span>
+      <div class="ingredient-row">Free-range chicken breasts, large <span class="qty">12 pcs</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark);">— Truffle Mousse —</div>
+      <div class="ingredient-row">Chicken thigh meat (cold) <span class="qty">500g</span></div>
+      <div class="ingredient-row">Thickened cream (very cold) <span class="qty">200ml</span></div>
+      <div class="ingredient-row">Egg whites <span class="qty">2</span></div>
+      <div class="ingredient-row">Black truffle paste <span class="qty">50g</span></div>
+      <div class="ingredient-row">Flat parsley, fresh thyme <span class="qty">as needed</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Porcini Cream —</div>
+      <div class="ingredient-row">Dried porcini mushrooms <span class="qty">80g</span></div>
+      <div class="ingredient-row">Fresh Swiss brown mushrooms <span class="qty">400g</span></div>
+      <div class="ingredient-row">Shallots, garlic, thyme <span class="qty">3 / 2 cloves / as needed</span></div>
+      <div class="ingredient-row">Dry white wine <span class="qty">200ml</span></div>
+      <div class="ingredient-row">Thickened cream <span class="qty">500ml</span></div>
+      <div class="ingredient-row">Chicken stock <span class="qty">300ml</span></div>
+      <div class="ingredient-row">Cold unsalted butter (finish) <span class="qty">80g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Sauce Suprême —</div>
+      <div class="ingredient-row">Reduced chicken stock <span class="qty">600ml</span></div>
+      <div class="ingredient-row">Cream, shallots, white wine <span class="qty">200ml / 3 / 100ml</span></div>
+      <div class="ingredient-row">Cold butter (mount) <span class="qty">120g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Garnish —</div>
+      <div class="ingredient-row">Pencil asparagus spears <span class="qty">36 spears</span></div>
+      <div class="ingredient-row">Truffle oil, fleur de sel <span class="qty">to finish</span></div>
+    </div>
+    <div>
+      <span class="r-label">Method — Day Before: Mousse &amp; Ballotines</span>
+      <div class="method-step"><span class="step-num">1.</span>Blitz cold thigh meat, egg white, salt in food processor. Drizzle in cold cream slowly — stop the moment it's combined. Fold in truffle paste and herbs by hand. Keep ice-cold throughout.</div>
+      <div class="method-step"><span class="step-num">2.</span>Butterfly each breast open. Lay flat, spread mousse evenly, roll tight in clingfilm. Twist ends. Refrigerate overnight — shape sets perfectly.</div>
+      <div class="method-step"><span class="step-num">3.</span>Day of: Poach ballotines at exactly 72°C for 18 minutes. Remove, unwrap, sear in foaming butter until golden all over. Rest 3 min. Slice on bias — 2 rounds per person showing truffle cross-section.</div>
+      <span class="r-label" style="margin-top:3mm;">Porcini Cream — 1hr Before Service</span>
+      <div class="method-step"><span class="step-num">1.</span>Rehydrate dried porcini in 300ml warm water 25 min. Strain carefully — reserve liquid.</div>
+      <div class="method-step"><span class="step-num">2.</span>Sauté shallots and garlic in butter until soft. Add fresh mushrooms — cook until deeply golden, 8 min. Add rehydrated porcini.</div>
+      <div class="method-step"><span class="step-num">3.</span>Deglaze with wine, add strained porcini liquid + stock + cream. Reduce by one-third until coating consistency. Mount with cold butter. Season deeply.</div>
+      <span class="r-label" style="margin-top:3mm;">Sauce Suprême — Fresh Day Of</span>
+      <div class="method-step"><span class="step-num">1.</span>Sweat shallots, deglaze wine, reduce. Add stock and cream, simmer to nappe. Mount with cold butter — ivory, velvety, glossy.</div>
+      <span class="r-label" style="margin-top:3mm;">Asparagus — To Order</span>
+      <div class="method-step"><span class="step-num">1.</span>Blanch 90 sec in boiling salted water. Refresh in ice. Finish in foaming butter to order — lemon squeeze, fleur de sel.</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="pb-label">🍽️ Platter Setup — Kitchen Pass</span>
+    <p>Arrange 12 sets of 2 ballotine rounds on the oval silver platter, each set slightly overlapping to show the truffle cross-section. Spoon porcini cream beside each set — do not pour over, let the guest see the cut face. Three asparagus per person laid alongside. Garnish the platter with small thyme sprigs at each end. Keep warm under cloche. Sauce suprême travels in a separate warm silver sauceboat.</p>
+  </div>
+
+  <div class="silver-service-box">
+    <span class="ss-label">🤍 Silver Service Instructions — Course 01</span>
+    <div class="ss-order">
+      <span class="ss-step-num">Step 1</span><span class="ss-step-text">Warm plates set before platter leaves kitchen. Two service staff carry platter and sauceboat together.</span>
+      <span class="ss-step-num">Step 2</span><span class="ss-step-text">Enter from the right side of the room. First server begins at the host's right, works clockwise. Second server mirrors from opposite end of table.</span>
+      <span class="ss-step-num">Step 3</span><span class="ss-step-text">Use serving spoon and fork to place 2 ballotine rounds and asparagus on warm plate. Porcini cream spooned alongside from the platter.</span>
+      <span class="ss-step-num">Step 4</span><span class="ss-step-text">Third team member follows with sauceboat — asks "sauce, Mr/Ms [name]?" Pours from the right. One generous spoon — not flooding the plate.</span>
+      <span class="ss-step-num">Step 5</span><span class="ss-step-text">Once all 12 served, one server adds 3 drops of truffle oil to each plate tableside using a small dispenser. This is the finishing gesture for this course.</span>
+    </div>
+    <div class="ss-note">All 12 guests served within 75 seconds of first guest. Platter returns to kitchen. No cloche drama on this course — the truffle cross-section is the reveal.</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">Course 01 · First</span>
+    <span class="badge">12 portions</span>
+    <span class="badge">Mousse: day before</span>
+    <span class="badge">Poach 72°C / 18 min</span>
+    <span class="badge">Silver platter + sauceboat</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+<!-- PAGE 4 — COURSE 02: LAMB RACK -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Course 02 of 04 — Second Protein · Builds Intensity</span>
+    <span class="page-num">04</span>
+  </div>
+
+  <div class="course-header c2-head">
+    <div class="course-num-block">Second</div>
+    <div class="course-title-block">
+      <div class="ct-eyebrow">Course 02 · French Technique · Lamb</div>
+      <div class="ct-main">Lamb Rack — Persillade Crust</div>
+      <div class="ct-sub">White bean &amp; truffle purée · Sauce paloise · Ratatouille niçoise · Tapenade</div>
+      <div class="ct-portions">12 Portions · 3 Cutlets Per Person · Silver Platter Service</div>
+    </div>
+  </div>
+
+  <div class="recipe-two-col">
+    <div>
+      <span class="r-label">Ingredients — 12 Portions</span>
+      <div class="ingredient-row">Lamb racks (French trimmed) <span class="qty">4 full racks (8-bone)</span></div>
+      <div class="ingredient-row">Dijon mustard <span class="qty">100g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark);">— Persillade Crust —</div>
+      <div class="ingredient-row">Sourdough breadcrumbs, fresh <span class="qty">300g</span></div>
+      <div class="ingredient-row">Flat parsley (very finely chopped) <span class="qty">2 bunches</span></div>
+      <div class="ingredient-row">Garlic, minced <span class="qty">4 cloves</span></div>
+      <div class="ingredient-row">Lemon zest, EVOO <span class="qty">2 lemons / 60ml</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— White Bean &amp; Truffle Purée —</div>
+      <div class="ingredient-row">Cannellini beans, soaked overnight <span class="qty">700g dry</span></div>
+      <div class="ingredient-row">Garlic, bay, thyme (cooking) <span class="qty">as needed</span></div>
+      <div class="ingredient-row">Quality EVOO <span class="qty">160ml</span></div>
+      <div class="ingredient-row">White truffle oil (finish) <span class="qty">15ml</span></div>
+      <div class="ingredient-row">Lemon juice, salt, white pepper <span class="qty">to season</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Sauce Paloise (Mint Béarnaise) —</div>
+      <div class="ingredient-row">Egg yolks <span class="qty">8</span></div>
+      <div class="ingredient-row">Clarified butter, warm <span class="qty">500g</span></div>
+      <div class="ingredient-row">Fresh mint (not tarragon) <span class="qty">2 bunches</span></div>
+      <div class="ingredient-row">White wine vinegar, shallots, peppercorns <span class="qty">reduction</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Ratatouille · Tapenade —</div>
+      <div class="ingredient-row">Zucchini, eggplant, capsicum, tomato <span class="qty">350g each</span></div>
+      <div class="ingredient-row">Kalamata olive tapenade <span class="qty">120g</span></div>
+    </div>
+    <div>
+      <span class="r-label">Method</span>
+      <div class="method-step"><span class="step-num">1.</span><strong>Bean purée (day before):</strong> Cook soaked beans with garlic, bay, thyme until very tender. Drain, reserve liquid. Blitz with EVOO, truffle oil, lemon — add cooking liquid for silky consistency. Pass through sieve. Keep warm in bain-marie.</div>
+      <div class="method-step"><span class="step-num">2.</span><strong>Ratatouille:</strong> Dice all vegetables 1cm uniform. Cook each type separately in EVOO with garlic until just tender. Combine, season, add torn basil. Room temp is fine — reheat gently to serve.</div>
+      <div class="method-step"><span class="step-num">3.</span><strong>Persillade:</strong> Combine parsley, garlic, breadcrumbs, lemon zest, EVOO — vivid green, holds together when pressed.</div>
+      <div class="method-step"><span class="step-num">4.</span><strong>Lamb (service day):</strong> Season racks, sear hard on all sides in cast iron — 3–4 min total. Brush with Dijon. Press persillade firmly onto meat side.</div>
+      <div class="method-step"><span class="step-num">5.</span>Roast at 200°C — 9–10 min. Internal temp 57°C for perfect pink. Rest 6 min minimum under foil. Portion into 3-cutlet servings between the bones — clean decisive strokes.</div>
+      <div class="method-step"><span class="step-num">6.</span><strong>Sauce paloise (day of, hold warm):</strong> Reduction of vinegar, shallots, peppercorns. Whisk yolks over bain-marie to ribbon. Drizzle in warm clarified butter very slowly. Finish with fresh mint chiffonade. Hold at 55°C max.</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="pb-label">🍽️ Platter Setup — Kitchen Pass</span>
+    <p>On the silver platter: small swoosh of white bean purée for each set, ratatouille mound next to it. Three lamb cutlets placed standing upright against the ratatouille, bones pointing up — architectural and striking. Small tapenade quenelle at the base of each set. Garnish platter ends with fresh thyme and lemon zest curls. Sauce paloise travels in a warm silver sauceboat — never on the platter itself.</p>
+  </div>
+
+  <div class="silver-service-box">
+    <span class="ss-label">🤍 Silver Service Instructions — Course 02</span>
+    <div class="ss-order">
+      <span class="ss-step-num">Step 1</span><span class="ss-step-text">Clear Course 01 plates simultaneously — two staff, right side, no reaching across guests.</span>
+      <span class="ss-step-num">Step 2</span><span class="ss-step-text">Fresh warm plates set. Allow 3 minutes between courses — not rushed, not too long.</span>
+      <span class="ss-step-num">Step 3</span><span class="ss-step-text">Platter enters the room — two staff. The standing lamb cutlets are immediately visible. Let the room react before serving begins.</span>
+      <span class="ss-step-num">Step 4</span><span class="ss-step-text">Use spoon and fork: place bean purée swoosh first, ratatouille beside it, then stand the three cutlets upright. Tapenade last.</span>
+      <span class="ss-step-num">Step 5</span><span class="ss-step-text">Sauce paloise poured from the right in a controlled arc alongside — not over — the ratatouille. Ask first: "sauce paloise?" Some guests may decline.</span>
+      <span class="ss-step-num">Step 6</span><span class="ss-step-text">Fleur de sel finish on the persillade crust tableside — small pinch from a small bowl. This is the final touch. It makes the crust sing.</span>
+    </div>
+    <div class="ss-note">The standing cutlets will draw attention when the platter arrives. Pause two seconds at the entrance. Let owners see it. Then serve.</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">Course 02 · Second</span>
+    <span class="badge">12 portions · 3 cutlets each</span>
+    <span class="badge">Sear + 9 min roast + rest</span>
+    <span class="badge">Sauce: warm sauceboat</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 5 — COURSE 03: ARROZ NEGRO -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Course 03 of 04 — Third Protein · Contrast &amp; Drama</span>
+    <span class="page-num">05</span>
+  </div>
+
+  <div class="course-header" style="display:flex; align-items:stretch; margin-bottom:5mm;">
+    <div class="course-num-block" style="background:#1B6B6B; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); width:14mm; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.6);">Third</div>
+    <div class="course-title-block" style="background:#1B6B6B; flex:1; padding:4mm 5mm;">
+      <div class="ct-eyebrow" style="font-size:8.5px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1mm;">Course 03 · Spanish Soul · Seafood</div>
+      <div class="ct-main" style="font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#fff; line-height:1.1;">Saffron Arroz Negro</div>
+      <div class="ct-sub" style="font-size:10px; color:rgba(255,255,255,0.55); font-style:italic; margin-top:1mm;">King prawn bisque · Bomba rice · Two king prawns per person · Saffron alioli</div>
+      <div class="ct-portions" style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-top:2mm;">12 Portions · Served in Warm Pasta Bowl · Silver Service</div>
+    </div>
+  </div>
+
+  <div class="recipe-two-col">
+    <div>
+      <span class="r-label">Ingredients — 12 Portions</span>
+      <div class="ingredient-row">Bomba rice <span class="qty">720g</span></div>
+      <div class="ingredient-row">Squid ink sachets <span class="qty">5 sachets (20g)</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark);">— Prawn Bisque (Day Before) —</div>
+      <div class="ingredient-row">Prawn shells + heads <span class="qty">1.5kg</span></div>
+      <div class="ingredient-row">White onion, garlic, tomato paste <span class="qty">2 / 6 cloves / 80g</span></div>
+      <div class="ingredient-row">Pimentón de la Vera (smoked paprika) <span class="qty">20g</span></div>
+      <div class="ingredient-row">Brandy or dry sherry <span class="qty">100ml</span></div>
+      <div class="ingredient-row">White wine, water <span class="qty">300ml / 2L</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Sofrito —</div>
+      <div class="ingredient-row">White onion, finely diced <span class="qty">2 large</span></div>
+      <div class="ingredient-row">Garlic cloves <span class="qty">6</span></div>
+      <div class="ingredient-row">Roma tomatoes, grated <span class="qty">6 pcs</span></div>
+      <div class="ingredient-row">Pimentón, EVOO <span class="qty">15g / 80ml</span></div>
+      <div class="ingredient-row">White wine (for rice) <span class="qty">200ml</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— King Prawns —</div>
+      <div class="ingredient-row">King prawns U8, shell-on <span class="qty">24 pcs (2 per guest)</span></div>
+      <div class="ingredient-row">Smoked paprika, EVOO, garlic <span class="qty">as needed</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Saffron Alioli —</div>
+      <div class="ingredient-row">Egg yolks <span class="qty">6</span></div>
+      <div class="ingredient-row">EVOO <span class="qty">400ml</span></div>
+      <div class="ingredient-row">Garlic, lemon juice <span class="qty">3 cloves / 2 lemons</span></div>
+      <div class="ingredient-row">Saffron (bloomed in 30ml warm water) <span class="qty">1.5g</span></div>
+    </div>
+    <div>
+      <span class="r-label">Prawn Bisque — Day Before</span>
+      <div class="method-step"><span class="step-num">1.</span>Roast shells and heads in EVOO at high heat until deep red — press with spoon to extract maximum flavour. Don't rush this step.</div>
+      <div class="method-step"><span class="step-num">2.</span>Add onion, garlic, tomato paste, pimentón — cook 5 min. Deglaze with brandy/sherry, flambé if comfortable. Add wine then water.</div>
+      <div class="method-step"><span class="step-num">3.</span>Simmer 30 min. Pass through fine sieve, pressing hard. Reduce to 2.2L intense orange-red bisque. Season. Refrigerate overnight — the flavour deepens.</div>
+      <span class="r-label" style="margin-top:3mm;">Arroz Negro — Service Day (in batches)</span>
+      <div class="method-step"><span class="step-num">1.</span>Sofrito: cook onion very slowly in EVOO 20 min — must be sweet and melted. Add garlic, grated tomato, pimentón. Cook further 10 min until paste-like.</div>
+      <div class="method-step"><span class="step-num">2.</span>Add bomba rice, toast 2 min. Add squid ink + white wine — stir until absorbed. Then add hot bisque ladle by ladle without stirring.</div>
+      <div class="method-step"><span class="step-num">3.</span>Medium heat, 18 min. Allow socarrat to form — listen for the crackle at the base. This is not optional. Rest 3 min covered.</div>
+      <span class="r-label" style="margin-top:3mm;">King Prawns — Last 3 Minutes Before Service</span>
+      <div class="method-step"><span class="step-num">1.</span>Peel leaving tail on. Butterfly the back, devein completely. Season with paprika, EVOO.</div>
+      <div class="method-step"><span class="step-num">2.</span>Smoking hot dry pan — 60 seconds each side only. Char marks. No overcooking. Time this precisely against the platter assembly.</div>
+      <span class="r-label" style="margin-top:3mm;">Saffron Alioli — Make Morning Of</span>
+      <div class="method-step"><span class="step-num">1.</span>Bloom saffron in warm water 10 min — deep gold. Hand whisk yolks with garlic and lemon. Drizzle EVOO very slowly to emulsify. Fold in saffron water. Season.</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="pb-label">🍽️ Platter Setup — Warm Pasta Bowls</span>
+    <p>12 warm pasta bowls pre-set on the platter in two rows of six. Spoon arroz negro into each bowl — build gentle height, not flat. Two king prawns placed crossed on top, tails pointing up and out. Generous quenelle of saffron alioli to one side — gold against jet black. Three drops smoked EVOO around the edge. Flat parsley leaf and trimmed lemon quarter. The visual contrast of black rice and gold alioli is the presentation — the platter arriving at the table will stop the conversation.</p>
+  </div>
+
+  <div class="silver-service-box">
+    <span class="ss-label">🤍 Silver Service Instructions — Course 03</span>
+    <div class="ss-order">
+      <span class="ss-step-num">Step 1</span><span class="ss-step-text">This course is served in pre-filled warm pasta bowls — not plated at the table. The platter carries the bowls to the table, staff places each bowl in front of each guest.</span>
+      <span class="ss-step-num">Step 2</span><span class="ss-step-text">One staff member per side of the table — each carries a tray of 6 bowls on a folded service cloth. Place from the right of each guest.</span>
+      <span class="ss-step-num">Step 3</span><span class="ss-step-text">Extra saffron alioli travels in a small bowl at the centre — placed on the table for guests who want more. This is the one communal element of this course.</span>
+      <span class="ss-step-num">Step 4</span><span class="ss-step-text">Warm crusty bread offered from a separate basket as this course arrives — the bisque at the bottom of the bowl is for soaking. Let guests know.</span>
+    </div>
+    <div class="ss-note">The jet-black rice arriving in a pasta bowl is the most visually dramatic course. Time the entry — wait until all conversation has naturally paused, then enter. Let the colour do the work.</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">Course 03 · Third</span>
+    <span class="badge">12 pasta bowls</span>
+    <span class="badge">Bisque: day before</span>
+    <span class="badge">Prawns: last 3 min</span>
+    <span class="badge">GF · DF</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+<!-- PAGE 6 — COURSE 04: A9 WAGYU SIRLOIN -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Course 04 of 04 — The Crown · Last &amp; Finest</span>
+    <span class="page-num">06</span>
+  </div>
+
+  <div class="course-header c4-head">
+    <div class="course-num-block">Last</div>
+    <div class="course-title-block">
+      <div class="ct-eyebrow">Course 04 · The Crown · A9 Wagyu</div>
+      <div class="ct-main">A9 Wagyu Sirloin — Chef Carved</div>
+      <div class="ct-sub">Sauce bordelaise · Wasabi cream · Chimichurri verde · Head Chef at the pass</div>
+      <div class="ct-portions">12 Portions · Whole Roast · Silver Platter · Head Chef Present</div>
+    </div>
+  </div>
+
+  <div class="recipe-two-col">
+    <div>
+      <span class="r-label">Ingredients — 12 Portions</span>
+      <div class="ingredient-row">A9 Wagyu sirloin, whole (2.5–3kg) <span class="qty">1 whole piece</span></div>
+      <div class="ingredient-row">Coarse sea salt, cracked black pepper <span class="qty">generous — only seasoning</span></div>
+      <div class="ingredient-row">EVOO (sear only) <span class="qty">30ml</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Sauce Bordelaise —</div>
+      <div class="ingredient-row">Bordeaux / Shiraz wine <span class="qty">750ml</span></div>
+      <div class="ingredient-row">Beef demi-glace (good quality) <span class="qty">500ml</span></div>
+      <div class="ingredient-row">Shallots, thyme, bay leaf <span class="qty">6 / as needed</span></div>
+      <div class="ingredient-row">Bone marrow rounds, poached <span class="qty">12 rounds</span></div>
+      <div class="ingredient-row">Cold unsalted butter (mount) <span class="qty">100g</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Wasabi Cream —</div>
+      <div class="ingredient-row">Crème fraîche <span class="qty">200g</span></div>
+      <div class="ingredient-row">Fresh wasabi paste (or quality tube) <span class="qty">25g</span></div>
+      <div class="ingredient-row">Lemon juice, fleur de sel <span class="qty">to season</span></div>
+      <div class="ingredient-row" style="font-weight:600; color:var(--dark); margin-top:1mm;">— Chimichurri Verde —</div>
+      <div class="ingredient-row">Flat parsley, garlic <span class="qty">2 bunches / 4 cloves</span></div>
+      <div class="ingredient-row">EVOO, sherry vinegar <span class="qty">150ml / 40ml</span></div>
+      <div class="ingredient-row">Dried chilli flakes, fleur de sel <span class="qty">to taste</span></div>
+    </div>
+    <div>
+      <span class="r-label">Sauces — Day Before or Morning Of</span>
+      <div class="method-step"><span class="step-num">1.</span><strong>Bordelaise:</strong> Sweat shallots, add wine — reduce by ¾. Add demi-glace, thyme, bay — simmer 20 min. Strain. Bring to service temp, mount with cold butter and bone marrow rounds last minute. Deep, glossy, wine-forward.</div>
+      <div class="method-step"><span class="step-num">2.</span><strong>Wasabi cream:</strong> Fold wasabi into crème fraîche, season with lemon and fleur de sel. Make fresh morning of — flavour sharpens over time. Refrigerate.</div>
+      <div class="method-step"><span class="step-num">3.</span><strong>Chimichurri:</strong> Blitz parsley and garlic roughly — keep texture. Add EVOO, sherry vinegar, chilli. Season. Should be bright green and punchy. Make day of.</div>
+      <span class="r-label" style="margin-top:3mm;">A9 Wagyu Sirloin — The Centrepiece</span>
+      <div class="method-step"><span class="step-num">1.</span>Season generously with coarse salt and cracked pepper only. No marinade. No herbs. The marble is the flavour — respect it.</div>
+      <div class="method-step"><span class="step-num">2.</span>Bring to room temperature 1.5 hours before cooking. This is not negotiable for a piece this size.</div>
+      <div class="method-step"><span class="step-num">3.</span>Sear in very hot cast iron pan with minimal EVOO — hard crust on all sides, 4–5 min total. Don't move it.</div>
+      <div class="method-step"><span class="step-num">4.</span>Roast at 180°C. Internal temperature target: 52°C for rare-medium rare. A wagyu A9 needs no more — the fat is liquid at 52°C. That is the experience.</div>
+      <div class="method-step"><span class="step-num">5.</span>Rest minimum 20 minutes under foil, in a warm area. Do not skip. The carryover will bring it to 55°C.</div>
+      <div class="method-step"><span class="step-num">6.</span><strong>Head Chef carves at the pass</strong> — 4–5mm slices against the grain. The marble should glisten. Each slice fanned slightly on the platter. No hiding in the kitchen for this course.</div>
+    </div>
+  </div>
+
+  <div class="plating-box">
+    <span class="pb-label">🍽️ Platter Setup — The Crown Presentation</span>
+    <p>Large oval silver platter, warmed. Wagyu slices fanned across the platter in a single elegant row — 2–3 slices per person, showing the marble score clearly. Bone marrow rounds placed beside every second portion. The three sauces travel in separate silver sauceboats — bordelaise, wasabi cream, chimichurri — carried by three dedicated service staff, one per sauce. This course has the most staff on the floor simultaneously. It should feel like an event.</p>
+  </div>
+
+  <div class="silver-service-box">
+    <span class="ss-label">🤍 Silver Service Instructions — Course 04 · The Crown</span>
+    <div class="ss-order">
+      <span class="ss-step-num">Step 1</span><span class="ss-step-text">Head Chef Timothy visible at the pass as this platter is assembled. Owners can see him. This is the gesture — the chef shows himself for the most important course.</span>
+      <span class="ss-step-num">Step 2</span><span class="ss-step-text">Three staff enter together: platter carrier + two sauceboat carriers. Enter in single file. The room will notice.</span>
+      <span class="ss-step-num">Step 3</span><span class="ss-step-text">Platter carrier serves wagyu slices and bone marrow from the left. 2–3 slices per person — use spoon and fork, lay flat and slightly overlapping on the warm plate.</span>
+      <span class="ss-step-num">Step 4</span><span class="ss-step-text">First sauceboat: bordelaise. "Bordelaise sauce, Mr/Ms [name]?" Pour from right in a controlled arc. This is the classical choice.</span>
+      <span class="ss-step-num">Step 5</span><span class="ss-step-text">Second sauceboat: wasabi cream. Offered to each guest — some will want both. Allow it. Never rush a guest on this course.</span>
+      <span class="ss-step-num">Step 6</span><span class="ss-step-text">Third sauceboat: chimichurri. Placed on the table as a shared condiment — not individually poured. Guests help themselves throughout the course.</span>
+      <span class="ss-step-num">Step 7</span><span class="ss-step-text">Fleur de sel in a small pinch bowl placed on the table. This is the only course where the guest seasons themselves — wagyu deserves that autonomy.</span>
+    </div>
+    <div class="ss-note">Do not rush this course. It is the last protein. Owners should sit with it. Three staff, three sauces, one platter — this is the most choreographed moment of the lunch. Rehearse it once before service.</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge gold">Course 04 · The Crown · Last</span>
+    <span class="badge">A9 Wagyu</span>
+    <span class="badge">52°C internal · 20 min rest</span>
+    <span class="badge">3 sauces · 3 staff</span>
+    <span class="badge">Head Chef at the pass</span>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+
+<!-- PAGE 7 — SHARING SIDES + DESSERT -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Sharing Sides &amp; Dessert Programme</span>
+    <span class="page-num">07</span>
+  </div>
+
+  <div style="font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:1mm;">Sharing Sides — Set on the Table</div>
+  <div style="font-size:10.5px; color:#555; font-style:italic; margin-bottom:4mm; border-left:3px solid var(--gold); padding-left:4mm;">Four sharing plates set on the table before Course 01 arrives and remain throughout all four protein courses. Guests serve themselves. Replenished quietly without interruption.</div>
+
+  <div class="sides-grid">
+    <div class="side-card">
+      <h4>Gratin Dauphinois</h4>
+      <div class="sc-sub">Individual cast iron dishes · Gruyère · Cream</div>
+      <p>Désirée potatoes 3mm, layered with cream, garlic, thyme, gruyère. Baked 90 min covered, 20 min uncovered until golden and set. Each guest has their own small cast iron dish — placed in front of them when sides are set. Rich, comforting, classically French.</p>
+      <div class="sc-note">↑ Individual cast irons signal care and attention from the first moment.</div>
+    </div>
+    <div class="side-card">
+      <h4>Pommes Dauphine</h4>
+      <div class="sc-sub">Choux potato puffs · Chive crème fraîche</div>
+      <p>Duchess potato folded through choux pastry, piped into ovals, fried until shatteringly crisp and airy inside. Served in a warm silver bowl with a small pot of chive crème fraîche at the centre. Nobody expects this. Everyone remembers it.</p>
+      <div class="sc-note">↑ Replenish every course — they disappear fast.</div>
+    </div>
+    <div class="side-card">
+      <h4>Haricots Verts — Beurre Noisette</h4>
+      <div class="sc-sub">Fine green beans · Hazelnut butter · Lemon</div>
+      <p>Blanched fine green beans finished in foaming beurre noisette, lemon juice, fleur de sel. Served in a warm oval dish. The nuttiness of the butter elevates a simple vegetable to something memorable. Pairs perfectly with all four proteins.</p>
+      <div class="sc-note">NUT FREE — beurre noisette only, no added nuts.</div>
+    </div>
+    <div class="side-card">
+      <h4>Heirloom Tomato &amp; Burrata</h4>
+      <div class="sc-sub">Whole burrata broken tableside · Aged balsamic · Basil</div>
+      <p>A cascade of heirloom tomatoes in red, yellow, and green. Whole burrata placed at the centre — broken open by the service captain before Course 01 arrives. Aged balsamic, Ligurian EVOO, fleur de sel, micro basil. A visual statement that anchors the table from the start.</p>
+      <div class="sc-note">↑ The burrata breaking is the first visual moment of the lunch. Time it well.</div>
+    </div>
+  </div>
+
+  <div style="height:3mm;"></div>
+  <div style="font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:1mm;">Dessert — Three Acts</div>
+  <div style="font-size:10.5px; color:#555; font-style:italic; margin-bottom:4mm; border-left:3px solid var(--gold); padding-left:4mm;">Cleared after Course 04. Brief palate cleanser pause. Then the sweet finale in three acts.</div>
+
+  <div class="sides-grid">
+    <div class="side-card">
+      <h4>🍫 Valrhona Chocolate Fondant</h4>
+      <div class="sc-sub">Individual · Baked to order · Liquid centre</div>
+      <p>70% Valrhona bittersweet chocolate fondant baked to order — 10 min, 190°C. Centre must flow when cut. Crème anglaise poured tableside from a warm jug. Cocoa dusted. This is the individual plated dessert served silver service — same protocol as the mains.</p>
+      <div class="sc-note">↑ Bake-to-order shows real confidence. The flowing centre is the moment.</div>
+    </div>
+    <div class="side-card">
+      <h4>🧀 Artisan Cheese &amp; Honeycomb</h4>
+      <div class="sc-sub">Shared board · Centre table · After fondant</div>
+      <p>Brillat-Savarin (triple cream) · Comté 18-month · Roquefort · Aged cheddar. Raw Australian honeycomb as centrepiece. Fig jam · quince paste · muscatels · sourdough crackers · sliced pear and apple. Set at table as a shared centrepiece after the fondant plates are cleared.</p>
+      <div class="sc-note">↑ Honeycomb in its frame on the board = owners take a photo.</div>
+    </div>
+    <div class="side-card">
+      <h4>✨ Mignardises — Passed Tray</h4>
+      <div class="sc-sub">Four petit fours · Tiered tray · One bite each</div>
+      <p>Salted caramel chocolate truffle (Valrhona ganache) · Citrus pâte de fruit (jewel-bright, sugar-dusted) · Warm financier (brown butter, one bite) · Candied orange peel in dark chocolate. Passed on a tiered silver tray — the visual arrival of the tray is its own moment.</p>
+      <div class="sc-note">↑ Passed simultaneously with coffee service.</div>
+    </div>
+    <div class="side-card">
+      <h4>☕ Coffee &amp; Tea Service</h4>
+      <div class="sc-sub">Individual order · Salted truffle on saucer</div>
+      <p>Espresso · Long black · Flat white — made to order. English Breakfast · Earl Grey · Green tea · Peppermint · Chamomile. Milk · Oat milk · Sugar. Each cup arrives with one salted caramel truffle on the saucer. This detail costs almost nothing. It is what owners mention when they describe this lunch to others.</p>
+      <div class="sc-note">↑ One truffle on the saucer. The detail they remember.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+<!-- PAGE 8 — RUN SHEET -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-section">Kitchen Run Sheet &amp; Service Timeline</span>
+    <span class="page-num">08</span>
+  </div>
+
+  <div style="font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:4mm;">Day-Of Run Sheet</div>
+
+  <table style="width:100%; border-collapse:collapse; font-size:10.5px; margin-bottom:5mm;">
+    <tr>
+      <th style="background:var(--dark); color:#fff; padding:2.5mm 4mm; text-align:left; font-size:9px; letter-spacing:1px; width:18%;">Time</th>
+      <th style="background:var(--dark); color:#fff; padding:2.5mm 4mm; text-align:left; width:25%;">Task</th>
+      <th style="background:var(--dark); color:#fff; padding:2.5mm 4mm; text-align:left;">Detail</th>
+    </tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">–1 day</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Prawn bisque · Bean purée · Bordelaise · Ballotines</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">All prep-ahead components. Bisque deepens overnight. Ballotines set shape in fridge.</td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">7:00AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Kitchen opens · Sauces begin</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Sauce paloise reduction · Porcini cream · Saffron alioli · Chimichurri · Wasabi cream</td></tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">8:00AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Wagyu out of fridge</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Rest 1.5 hrs minimum before cooking. Season now.</td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">9:00AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Sides prep · Ratatouille · Gratin</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Gratin into oven 9:30AM. Ratatouille done by 10AM. Asparagus blanched and refreshed.</td></tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">10:00AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Ballotines poach · Prawns prep</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Poach at 72°C. Devein and butterfly prawns. Sofrito for arroz begin.</td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">11:00AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Wagyu sear · Oven in</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Hard sear all sides. Into oven 180°C. Target: pull at 52°C internal.</td></tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">11:30AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Wagyu rests · Arroz negro on</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Wagyu under foil, warm area. Arroz negro cooking begins — 18 min.</td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">11:45AM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Table set · Sides placed · Burrata broken</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Sharing sides set on table. Burrata broken by service captain. Gratin in individual irons placed.</td></tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">12:00PM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Guests seated · Welcome drinks</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Kitchen on standby. Course 01 platter assembly begins on signal.</td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">12:15PM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Course 01 — Chicken Ballotine</strong></td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Sear ballotines in butter. Assemble platter. Silver service to table.</td></tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">12:45PM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Course 02 — Lamb Rack</strong></td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Lamb out of oven, rest 6 min, portion. Platter to table.</td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">1:15PM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Course 03 — Arroz Negro</strong></td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Sear prawns last 3 min. Fill pasta bowls. Table service.</td></tr>
+    <tr style="background:#FFF8EE;"><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>1:45PM</strong></td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;"><strong>Course 04 — A9 Wagyu</strong></td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;"><strong>Head Chef at the pass. Three staff with platter + 3 sauceboats. The crown course.</strong></td></tr>
+    <tr><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">2:30PM</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE;">Dessert — Fondant bake · Cheese board</td><td style="padding:2.5mm 4mm; border-bottom:1px solid #E8E4DE; color:#555;">Fondant baked to order. Cheese board set at table. Mignardises tray prepared.</td></tr>
+    <tr style="background:#F5F3EF;"><td style="padding:2.5mm 4mm;">3:00PM</td><td style="padding:2.5mm 4mm;">Mignardises + Coffee service</td><td style="padding:2.5mm 4mm; color:#555;">Tiered tray passed. Coffee and tea to order. Truffle on every saucer.</td></tr>
+  </table>
+
+  <div class="chef-note">
+    <span class="cn-label">Head Chef's Final Word</span>
+    <p>Silver service is not just a style — it is a declaration that this guest matters enough to be served personally. Every movement the team makes in that room says something about this kitchen, this hotel, and this Head Chef. Rehearse the wagyu course entry once before service. Walk it through. The owners will feel the difference between a team that practiced and one that didn't.<br><br>
+    <strong style="color:var(--gold);">Four courses. Four proteins. One sequence. Cook with your whole soul — they will feel it.</strong></p>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-l">Owners Lunch · Silver Service · June 2026</span>
+    <span class="footer-r">Head Chef Timothy Susanto · Novotel Ibis SOP</span>
+  </div>
+</div>
+
+</body>
+</html>
