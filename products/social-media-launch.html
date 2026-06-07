@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Social Media Launch Playbook</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px;line-height:1.5}
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:1.1rem;font-weight:700}
+.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700;white-space:nowrap}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit;transition:all 0.2s}
+.tab:hover{color:#A8895E}
+.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px;max-width:1100px}
+.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;background:#FAFAF8;font-family:inherit}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.bp{background:#264653;color:#fff}.bp:hover{background:#1a3340}
+.ba{background:#2a9d8f;color:#fff}.ba:hover{background:#1e7d72}
+.bs{background:#E8E4DC;color:#1C1C1C}.bs:hover{background:#d4cfc6}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+
+/* CALENDAR GRID */
+.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.cal-header div{text-align:center;font-size:0.7rem;font-weight:700;color:#6B6B6B;text-transform:uppercase;padding:4px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-day{min-height:70px;background:#fff;border:1px solid #E8E4DC;border-radius:6px;padding:6px;cursor:pointer;transition:all 0.2s;position:relative}
+.cal-day:hover{border-color:#C8A97E;background:#fdfbf8}
+.cal-day.has-post{border-color:#2a9d8f;background:#f0fdf9}
+.cal-day.has-post:hover{border-color:#1e7d72}
+.cal-day .day-num{font-size:0.7rem;font-weight:700;color:#6B6B6B;margin-bottom:4px}
+.cal-day .post-pill{background:#2a9d8f;color:#fff;font-size:0.6rem;font-weight:700;padding:2px 6px;border-radius:20px;margin-bottom:2px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-day .post-pill.ig{background:#e1306c}
+.cal-day .post-pill.tt{background:#010101}
+.cal-day .post-pill.fb{background:#1877f2}
+.cal-day.empty{background:#f9f9f9;border-color:#f0f0f0;cursor:default}
+.cal-day.empty:hover{border-color:#f0f0f0;background:#f9f9f9}
+
+/* POST DETAIL MODAL */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:100;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:12px;padding:28px;max-width:580px;width:90%;max-height:85vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#6B6B6B}
+.modal h3{font-size:1rem;font-weight:700;margin-bottom:4px;color:#264653}
+.modal .plat-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;margin-bottom:14px}
+.modal .caption{background:#f9f7f4;border-left:3px solid #C8A97E;padding:14px;border-radius:0 6px 6px 0;font-size:0.85rem;line-height:1.8;white-space:pre-wrap;margin-bottom:12px}
+.modal .meta-row{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8rem;color:#6B6B6B;margin-bottom:12px}
+.modal .meta-row span strong{color:#1C1C1C}
+.modal .tip-box{background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;padding:10px 14px;font-size:0.82rem}
+.modal .tip-box strong{color:#0369a1}
+.copy-btn{background:#264653;color:#fff;border:none;border-radius:6px;padding:7px 16px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:inherit}
+.copy-btn:hover{background:#1a3340}
+.copy-btn.copied{background:#2a9d8f}
+
+/* PHASE LABELS */
+.phase-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:12px}
+.ph-pre{background:#fef3c7;color:#92400e}
+.ph-open{background:#d1fae5;color:#065f46}
+.ph-grow{background:#dbeafe;color:#1e40af}
+
+/* TEMPLATES */
+.tpl{background:#f9f7f4;border:1px solid #E8E4DC;border-radius:8px;padding:16px;margin-bottom:12px}
+.tpl h4{font-size:0.85rem;font-weight:700;margin-bottom:4px;color:#264653;display:flex;align-items:center;gap:8px}
+.tpl .body{font-size:0.83rem;line-height:1.75;color:#1C1C1C;white-space:pre-wrap;margin:10px 0}
+.tpl .vars{font-size:0.72rem;color:#6B6B6B;font-style:italic;margin-top:6px}
+
+/* HASHTAGS */
+.htag{background:#f0f4f8;border-radius:4px;padding:3px 9px;font-size:0.78rem;margin:3px 2px;display:inline-block;cursor:pointer;border:1px solid #E8E4DC;font-family:monospace}
+.htag:hover{background:#E8E4DC}
+.htag.banned{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+
+/* ANALYTICS */
+.metric-card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:14px;text-align:center}
+.metric-card .ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.metric-card .mv{font-size:1.2rem;font-weight:700;color:#264653}
+.kpi-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #f0ece4;font-size:0.85rem}
+.kpi-row:last-child{border:none}
+.kpi-row label{flex:1;font-weight:500}
+.kpi-input{width:90px;padding:5px 8px;border:1px solid #E8E4DC;border-radius:4px;text-align:center;font-size:0.85rem;font-family:inherit}
+.kpi-delta{width:65px;text-align:center;font-weight:700;font-size:0.8rem}
+.kpi-delta.up{color:#2a9d8f}.kpi-delta.dn{color:#e76f51}.kpi-delta.flat{color:#6B6B6B}
+.bar-wrap{background:#E8E4DC;border-radius:4px;height:8px;margin-top:4px;overflow:hidden}
+.bar-fill{height:8px;border-radius:4px;background:#264653;transition:width 0.4s}
+
+/* STRATEGY */
+.strat-card{border:2px solid #E8E4DC;border-radius:8px;padding:16px;cursor:pointer;transition:all 0.2s;margin-bottom:10px}
+.strat-card:hover{border-color:#C8A97E}
+.strat-card.sel{border-color:#264653;background:#f0f4f8}
+.strat-card h4{font-size:0.9rem;font-weight:700;margin-bottom:4px}
+.strat-card p{font-size:0.8rem;color:#6B6B6B}
+
+@media print{.hdr,.tabs,.btn,.brow,.modal-overlay{display:none!important}.panel{display:block!important;padding:12px}}
+@media(max-width:768px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}.cal-grid,.cal-header{grid-template-columns:repeat(7,1fr)}.cal-day{min-height:50px}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>📱 KitchenFounder Social Media Launch Playbook</h1><p>Built by a real social media manager — not a template generator</p></div>
+  <span class="badge">FREE TOOL</span>
+</div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('calendar',this)">📅 Content Calendar</button>
+  <button class="tab" onclick="ST('captions',this)">✍️ Caption Templates</button>
+  <button class="tab" onclick="ST('hashtags',this)">🏷️ Hashtag Strategy</button>
+  <button class="tab" onclick="ST('analytics',this)">📊 Analytics Tracker</button>
+  <button class="tab" onclick="ST('strategy',this)">🎯 Platform Strategy</button>
+</div>
+<!-- CALENDAR PANEL -->
+<div id="panel-calendar" class="panel">
+<div class="card">
+  <div class="ct">✏️ Set Your Launch Details</div>
+  <div class="g3">
+    <div class="f"><label>Restaurant Name</label><input id="rname" value="My Restaurant" onchange="buildCalendar()"></div>
+    <div class="f"><label>Cuisine Type</label><input id="cuisine" value="Modern American" onchange="buildCalendar()"></div>
+    <div class="f"><label>Opening Date</label><input type="date" id="opendate" onchange="buildCalendar()"></div>
+  </div>
+  <div class="g3">
+    <div class="f"><label>Your Instagram Handle</label><input id="ighandle" value="@myrestaurant" onchange="buildCalendar()"></div>
+    <div class="f"><label>Your City</label><input id="city" value="New York" onchange="buildCalendar()"></div>
+    <div class="f"><label>Signature Dish</label><input id="sigdish" value="House Burger" onchange="buildCalendar()"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px">
+    <div class="ct" style="margin:0">📅 30-Day Content Calendar</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:0.75rem">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#e1306c;display:inline-block"></span>Instagram</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#010101;display:inline-block"></span>TikTok</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#1877f2;display:inline-block"></span>Both</span>
+    </div>
+  </div>
+  <div class="cal-header">
+    <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+  </div>
+  <div class="cal-grid" id="cal-grid"></div>
+  <p style="font-size:0.75rem;color:#6B6B6B;margin-top:10px">Click any post to see the full caption, hook, and posting tips.</p>
+</div>
+
+<!-- Phase legend -->
+<div class="g3">
+  <div class="card" style="border-left:4px solid #f59e0b">
+    <div class="phase-label ph-pre">Phase 1 — Pre-Open (Days 1–14)</div>
+    <p style="font-size:0.83rem;color:#374151">Build anticipation before you open. Tease, reveal, and create FOMO. Goal: 200+ followers before day 1.</p>
+  </div>
+  <div class="card" style="border-left:4px solid #2a9d8f">
+    <div class="phase-label ph-open">Phase 2 — Launch Week (Days 15–21)</div>
+    <p style="font-size:0.83rem;color:#374151">Maximum output. Post every day. Stories all day on open day. Goal: first 50 Google reviews.</p>
+  </div>
+  <div class="card" style="border-left:4px solid #3b82f6">
+    <div class="phase-label ph-grow">Phase 3 — Build Momentum (Days 22–30)</div>
+    <p style="font-size:0.83rem;color:#374151">Deepen relationships. Show behind the scenes. Drive repeat visits and UGC. Goal: first viral post.</p>
+  </div>
+</div>
+</div>
+
+<!-- POST DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal(null)">✕</button>
+    <div id="modal-phase" class="phase-label" style="margin-bottom:8px"></div>
+    <h3 id="modal-title"></h3>
+    <div id="modal-plat" class="plat-tag"></div>
+    <div class="meta-row" id="modal-meta"></div>
+    <div style="margin-bottom:6px;font-size:0.75rem;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em">Caption</div>
+    <div class="caption" id="modal-caption"></div>
+    <button class="copy-btn" id="copy-btn" onclick="copyCaption()">📋 Copy Caption</button>
+    <div class="tip-box" style="margin-top:12px" id="modal-tip"></div>
+  </div>
+</div>
+<!-- CAPTIONS PANEL -->
+<div id="panel-captions" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">✍️ 15 Real-World Caption Templates</div>
+  <p style="font-size:0.85rem;color:#6B6B6B;margin-bottom:16px">Written the way a real social media manager writes — not corporate. Not generic. Adapt to your voice.</p>
+
+  <div class="tpl">
+    <h4>1. 🎉 Grand Opening Announcement <span style="font-size:0.7rem;background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:20px">High Priority</span></h4>
+    <div class="body">We're open.
+
+[Restaurant Name] is now serving at [address], [city].
+
+[2 sentences about what makes you different — not fluff, something real.]
+
+First week only: [offer — e.g. complimentary amuse-bouche / free dessert / house cocktail on us].
+
+Reservations: [link or phone]. Walk-ins welcome.
+
+See you tonight. 🔥</div>
+    <div class="vars">Post this at 7am, 12pm, and 6pm on Day 1. Use your best photo. Tag your location every time.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>2. 🍽️ Dish Feature (The Right Way)</h4>
+    <div class="body">The [Dish Name]. This one took [X] attempts to get right.
+
+[Protein/hero ingredient] — [how it's sourced or why it's special].
+[Technique] — [1 sentence on the cooking method].
+The result: [3 sensory words — e.g. smoky, rich, impossible to share].
+
+Available [lunch/dinner/daily] at [Restaurant Name].
+
+📍 [Address] | 📞 [Phone] | 🔗 Link in bio</div>
+    <div class="vars">One dish per post. Don't list the whole menu. Go deep on one thing.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>3. 🎬 Behind the Scenes (Performs Best on TikTok)</h4>
+    <div class="body">5pm. Two hours until service. This is what 80 covers of prep looks like.
+
+[Short video or carousel — mise en place, sauce reducing, bread baking]
+
+Every single element on that plate was touched by someone on this team today.
+
+Nothing came out of a packet. Nothing was rushed.
+
+That's the standard. Every service.
+
+📍 [Restaurant Name] — [City]
+#cheflife #behindthescenes #[city]food</div>
+    <div class="vars">This is your highest-performing content type. Film it raw — not polished. Authentic > aesthetic on BTS content.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>4. 👨‍🍳 Chef / Staff Spotlight</h4>
+    <div class="body">Meet [Name].
+
+[Their role] at [Restaurant Name]. [X] years in hospitality. Came up through [notable background].
+
+Ask them about [their signature move / favourite dish / something fun].
+
+They're the reason [specific dish or element] tastes the way it does.
+
+We're lucky. 🙏
+
+[Tag them if they have IG]</div>
+    <div class="vars">Staff content drives massive engagement. Your team has fans before they know it. Post one per week.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>5. 📸 Reposting a Customer Photo (UGC)</h4>
+    <div class="body">When guests do this, we don't take it for granted. 📸
+
+[Quote from their caption or review]
+
+Thank you [tag them] for sharing this. It genuinely means a lot to this team.
+
+If you've been in recently — post your shot and tag us. We'll feature it here.
+
+📍 [Restaurant Name] | [Address]</div>
+    <div class="vars">Always DM for permission before reposting. UGC is your most trusted content — never skip the ask.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>6. 🔥 Weekly Special / Limited Run</h4>
+    <div class="body">THIS WEEK ONLY: [Dish Name].
+
+[What makes it special — seasonal ingredient, special technique, one-time thing]
+
+[Price] per person. Available [days] only.
+
+Once it's gone, it's gone — we're not making more.
+
+[Photo of the dish]
+
+Book or walk in: [details]</div>
+    <div class="vars">Scarcity is real if you mean it. Don't fake "limited" — people notice. Only post this for genuinely limited items.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>7. ⭐ Responding to a 5-Star Review</h4>
+    <div class="body">[Guest name] — thank you for this.
+
+I'm showing this to the team at briefing tonight. They work hard and this is exactly the kind of feedback that makes it worth it.
+
+The [dish they mentioned] is [Chef's name]'s personal project — glad it landed.
+
+Come back soon. First round is on us. 🥂</div>
+    <div class="vars">Always respond within 24 hours. Personalise every single response. Copy-paste responses destroy trust.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>8. 😤 Responding to a Negative Review (Public)</h4>
+    <div class="body">Thank you for taking the time to write this.
+
+What you described is not the experience we want anyone to have here, and I'm genuinely sorry it went that way.
+
+I'd like to understand what happened and make it right. Please DM us or email [email] — I'll respond personally.
+
+Your feedback has already been shared with the team.</div>
+    <div class="vars">Never be defensive publicly. Never argue. The response isn't for the reviewer — it's for everyone else reading it.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>9. 📍 Local Collab / Neighbourhood Post</h4>
+    <div class="body">Shoutout to [local business name] — [one sentence about who they are].
+
+We [source our X from them / partner with them on Y / just love what they do].
+
+Supporting the people who support this neighbourhood matters to us.
+
+[Tag them] — worth a visit.
+
+📍 We're at [address] | They're at [address]</div>
+    <div class="vars">These posts get reshared by the business you tag = free reach into their audience. Do one per month minimum.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>10. 🎊 Milestone Post (100 guests / first month / first review)</h4>
+    <div class="body">[X] guests in [X] days. We didn't expect that.
+
+We opened on [date] with [X] staff, [X] seats, and more nerves than we'd like to admit.
+
+[X] services later — we're finding our rhythm.
+
+To everyone who's come in, left a review, or sent us a message: this team sees it and it means everything.
+
+We're just getting started. 🔥</div>
+    <div class="vars">Vulnerability performs. Don't fake confidence you don't have. Real > polished every time.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>11. ❓ Engagement Post (Ask a Question)</h4>
+    <div class="body">Hot take: [bold opinion about food/dining/your cuisine].
+
+Agree or disagree? 👇
+
+(We have a view on this. Drop yours in the comments and we'll reply to every one.)
+
+[Photo that matches the topic]</div>
+    <div class="vars">Engagement posts hack the algorithm. More comments = more reach. Your opinion needs to be bold enough to get a reaction.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>12. 📖 Origin Story (Post Once, Pin It)</h4>
+    <div class="body">Why I opened this restaurant. (Thread 🧵)
+
+[3-5 sentences on your real story — not the polished version. The struggle, the why, the moment you decided.]
+
+I've worked in hospitality for [X] years. I've watched people open restaurants and lose everything. I've also watched people build something that outlasts them.
+
+[Restaurant Name] is my version of that second story.
+
+Come find out if we got it right. 📍 [Address]</div>
+    <div class="vars">Pin this to your Instagram profile. This is the post that converts a viewer into a follower. Write it once, write it right.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>13. 🌙 End of Service Post</h4>
+    <div class="body">Service done. [X] covers. [X] hours.
+
+Tonight's highlight: [something specific — a table's reaction, a dish that flew, a team moment]
+
+Back tomorrow at [time].
+
+[Candid kitchen photo — team at end of service, clean pass, empty dining room]</div>
+    <div class="vars">Post these 3-4 times per week in the first month. They humanise the brand and create a narrative your followers follow like a TV show.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>14. 🎁 Giveaway / Competition</h4>
+    <div class="body">GIVEAWAY: Dinner for two at [Restaurant Name]. 🍽️
+
+To enter:
+1. Follow [Instagram handle]
+2. Like this post
+3. Tag the person you'd bring in the comments
+
+Winner announced [date]. Open to [city] residents only.
+
+[Best photo you have — make it worth entering for]</div>
+    <div class="vars">Run this in week 2-3. Don't run it before you've proven your food. The prize needs to mean something first.</div>
+  </div>
+
+  <div class="tpl">
+    <h4>15. 📱 Story CTA (Convert Followers to Guests)</h4>
+    <div class="body">Haven't been in yet?
+
+We've had [X] guests through the door in [X] weeks.
+
+Here's what people keep coming back for: [top 3 dishes with one line each]
+
+Book your table — link in bio. Or just walk in. We'll look after you.
+
+[Restaurant Name] — [Address] — Open [hours]</div>
+    <div class="vars">Post this as a Story with a link sticker. Do it every Friday and Sunday. It directly drives bookings.</div>
+  </div>
+</div>
+</div>
+<!-- HASHTAGS PANEL -->
+<div id="panel-hashtags" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">🏷️ How Hashtags Actually Work in 2025</div>
+  <div style="background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:14px;margin-bottom:16px;font-size:0.85rem">
+    <strong>⚠️ The truth most guides won't tell you:</strong> On Instagram, hashtags matter less than they used to. The algorithm now distributes content based on <strong>interest graphs</strong> — who engages with similar content — not just hashtags. But they still help for discoverability, especially local search. Use them smart, not spam.
+  </div>
+  <div class="g2">
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#264653">✅ Hashtag Best Practices</div>
+      <div style="font-size:0.83rem;line-height:1.9;color:#374151">
+        • Use <strong>5–10 hashtags max</strong> on Instagram (not 30 — that's 2019)<br>
+        • Mix: 2-3 broad + 3-4 niche + 2-3 local<br>
+        • Avoid hashtags with 100M+ posts — you drown<br>
+        • Sweet spot: <strong>50K–5M posts</strong> per hashtag<br>
+        • On TikTok: <strong>3–5 hashtags only</strong> — algorithm is content-first<br>
+        • Research what your top 5 competitors use<br>
+        • Rotate hashtag sets — don't use the same 10 every post<br>
+        • Local hashtags outperform generic ones for restaurants<br>
+        • Add hashtags in the caption, not comments (2025 best practice)
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#264653">🚫 Stop Using These</div>
+      <div style="font-size:0.83rem;color:#6B6B6B;margin-bottom:12px">Shadowbanned, oversaturated, or algorithmically penalised:</div>
+      <span class="htag banned">#food</span>
+      <span class="htag banned">#restaurant</span>
+      <span class="htag banned">#instafood</span>
+      <span class="htag banned">#foodie</span>
+      <span class="htag banned">#yummy</span>
+      <span class="htag banned">#delicious</span>
+      <span class="htag banned">#foodporn</span>
+      <span class="htag banned">#instagood</span>
+      <span class="htag banned">#follow</span>
+      <span class="htag banned">#like4like</span>
+      <div style="font-size:0.75rem;color:#991b1b;margin-top:8px">These have 100M–2B posts. Your content disappears in seconds.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">📸 Instagram Hashtag Sets (Copy & Paste)</div>
+  <p style="font-size:0.83rem;color:#6B6B6B;margin-bottom:16px">Click any set to copy it. Rotate between sets — don't use the same one every post.</p>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:0.82rem;font-weight:700;margin-bottom:8px;color:#264653">Set 1 — Grand Opening & Launch</div>
+    <div id="set1">
+      <span class="htag">#grandopening</span><span class="htag">#nowopen</span><span class="htag">#newrestaurant</span>
+      <span class="htag">#restaurantopening</span><span class="htag">#softlaunch</span><span class="htag">#openingsoon</span>
+      <span class="htag">#[city]restaurants</span><span class="htag">#[city]food</span><span class="htag">#localrestaurant</span>
+    </div>
+    <button class="copy-btn" style="margin-top:8px;font-size:0.72rem;padding:5px 12px" onclick="copySet('set1')">Copy Set</button>
+  </div>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:0.82rem;font-weight:700;margin-bottom:8px;color:#264653">Set 2 — Food Photography</div>
+    <div id="set2">
+      <span class="htag">#foodphotography</span><span class="htag">#foodstagram</span><span class="htag">#chefsofinstagram</span>
+      <span class="htag">#plating</span><span class="htag">#finedining</span><span class="htag">#cheflife</span>
+      <span class="htag">#[cuisine]food</span><span class="htag">#[city]eats</span><span class="htag">#eatlocal</span>
+    </div>
+    <button class="copy-btn" style="margin-top:8px;font-size:0.72rem;padding:5px 12px" onclick="copySet('set2')">Copy Set</button>
+  </div>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:0.82rem;font-weight:700;margin-bottom:8px;color:#264653">Set 3 — Behind The Scenes & Chef Content</div>
+    <div id="set3">
+      <span class="htag">#cheflife</span><span class="htag">#behindthescenes</span><span class="htag">#kitchenlife</span>
+      <span class="htag">#restaurantlife</span><span class="htag">#chefsofig</span><span class="htag">#culinary</span>
+      <span class="htag">#cookingvideo</span><span class="htag">#[city]chef</span><span class="htag">#smallbusiness</span>
+    </div>
+    <button class="copy-btn" style="margin-top:8px;font-size:0.72rem;padding:5px 12px" onclick="copySet('set3')">Copy Set</button>
+  </div>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:0.82rem;font-weight:700;margin-bottom:8px;color:#264653">Set 4 — Local & Community</div>
+    <div id="set4">
+      <span class="htag">#eatlocal</span><span class="htag">#shoplocal</span><span class="htag">#supportlocal</span>
+      <span class="htag">#[neighbourhood]eats</span><span class="htag">#[city]foodscene</span><span class="htag">#localfoodie</span>
+      <span class="htag">#[city]dining</span><span class="htag">#[city]nights</span><span class="htag">#communityeats</span>
+    </div>
+    <button class="copy-btn" style="margin-top:8px;font-size:0.72rem;padding:5px 12px" onclick="copySet('set4')">Copy Set</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">🎵 TikTok — Different Game, Different Rules</div>
+  <div class="g2">
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#264653">Top Restaurant TikTok Hooks</div>
+      <div style="background:#f9f7f4;border-radius:6px;padding:12px;font-size:0.83rem;line-height:2">
+        "POV: You're about to try the best [dish] in [city]..."<br>
+        "Things nobody tells you about opening a restaurant..."<br>
+        "Watch us prep [X] covers in 2 hours..."<br>
+        "I spent $[X] opening a restaurant. Here's week 1..."<br>
+        "Rating my competitor's menu so you don't have to..."<br>
+        "Day [X] of owning a restaurant — it went like this..."<br>
+        "The dish that sells out every single service..."<br>
+        "What $[price] gets you at [Restaurant Name]..."
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#264653">TikTok Posting Rules</div>
+      <div style="font-size:0.83rem;line-height:1.9;color:#374151">
+        • Post <strong>3–5 times/week</strong> minimum in launch month<br>
+        • First <strong>3 seconds = everything</strong> — hook hard and fast<br>
+        • <strong>7–15 second videos</strong> have highest completion rate<br>
+        • Add <strong>text overlay</strong> on every video (many watch on mute)<br>
+        • Use <strong>trending audio</strong> where it fits naturally<br>
+        • Post between <strong>6–10am or 7–11pm</strong> user local time<br>
+        • Reply to <strong>every comment</strong> in first hour (signals algorithm)<br>
+        • Hashtags: <strong>#restauranttok #cheflife #foodtok</strong> max 5<br>
+        • Don't delete low-performing videos — they can resurge
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">⏰ Best Posting Times (Research-Backed)</div>
+  <table style="width:100%;border-collapse:collapse;font-size:0.83rem">
+    <thead><tr style="background:#264653;color:#fff">
+      <th style="padding:10px;text-align:left">Platform</th>
+      <th style="padding:10px;text-align:left">Best Days</th>
+      <th style="padding:10px;text-align:left">Best Times</th>
+      <th style="padding:10px;text-align:left">Avoid</th>
+    </tr></thead>
+    <tbody>
+      <tr><td style="padding:9px;border-bottom:1px solid #E8E4DC"><strong>Instagram Feed</strong></td><td style="padding:9px;border-bottom:1px solid #E8E4DC">Tue, Wed, Thu</td><td style="padding:9px;border-bottom:1px solid #E8E4DC">11am–1pm · 7–9pm</td><td style="padding:9px;border-bottom:1px solid #E8E4DC">Monday morning, late night</td></tr>
+      <tr><td style="padding:9px;border-bottom:1px solid #E8E4DC"><strong>Instagram Stories</strong></td><td style="padding:9px;border-bottom:1px solid #E8E4DC">Daily</td><td style="padding:9px;border-bottom:1px solid #E8E4DC">7–9am · 5–7pm</td><td style="padding:9px;border-bottom:1px solid #E8E4DC">Post stories during service for real-time BTS</td></tr>
+      <tr><td style="padding:9px;border-bottom:1px solid #E8E4DC"><strong>TikTok</strong></td><td style="padding:9px;border-bottom:1px solid #E8E4DC">Tue, Thu, Fri, Sat</td><td style="padding:9px;border-bottom:1px solid #E8E4DC">7–9am · 12–3pm · 7–11pm</td><td style="padding:9px;border-bottom:1px solid #E8E4DC">Saturday afternoon</td></tr>
+      <tr><td style="padding:9px"><strong>Google Business</strong></td><td style="padding:9px">Any</td><td style="padding:9px">Respond to reviews within 24hrs</td><td style="padding:9px">Never leave a review unanswered</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- ANALYTICS PANEL -->
+<div id="panel-analytics" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">📊 Weekly KPI Tracker</div>
+  <p style="font-size:0.83rem;color:#6B6B6B;margin-bottom:16px">Enter this week's numbers. Growth % calculates automatically. Track every Monday.</p>
+  <div class="g3">
+    <div class="card" style="box-shadow:none">
+      <div style="font-weight:700;font-size:0.88rem;margin-bottom:12px;color:#e1306c">📸 Instagram</div>
+      <div style="font-size:0.72rem;display:flex;gap:8px;margin-bottom:6px;color:#6B6B6B;font-weight:600">
+        <span style="flex:1">Metric</span><span style="width:72px;text-align:center">Prev</span><span style="width:72px;text-align:center">Now</span><span style="width:55px;text-align:center">△</span>
+      </div>
+      <div id="ig-rows"></div>
+    </div>
+    <div class="card" style="box-shadow:none">
+      <div style="font-weight:700;font-size:0.88rem;margin-bottom:12px;color:#010101">🎵 TikTok</div>
+      <div style="font-size:0.72rem;display:flex;gap:8px;margin-bottom:6px;color:#6B6B6B;font-weight:600">
+        <span style="flex:1">Metric</span><span style="width:72px;text-align:center">Prev</span><span style="width:72px;text-align:center">Now</span><span style="width:55px;text-align:center">△</span>
+      </div>
+      <div id="tt-rows"></div>
+    </div>
+    <div class="card" style="box-shadow:none">
+      <div style="font-weight:700;font-size:0.88rem;margin-bottom:12px;color:#1877f2">🔍 Google Business</div>
+      <div style="font-size:0.72rem;display:flex;gap:8px;margin-bottom:6px;color:#6B6B6B;font-weight:600">
+        <span style="flex:1">Metric</span><span style="width:72px;text-align:center">Prev</span><span style="width:72px;text-align:center">Now</span><span style="width:55px;text-align:center">△</span>
+      </div>
+      <div id="gb-rows"></div>
+    </div>
+  </div>
+</div>
+
+<div class="g3">
+  <div class="card" style="border-top:3px solid #f59e0b">
+    <div style="font-size:0.72rem;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">30-Day Targets</div>
+    <div style="font-size:0.83rem;line-height:2;color:#374151">
+      Instagram: <strong>500 followers</strong><br>
+      TikTok: <strong>1,000 followers</strong><br>
+      Google reviews: <strong>15+</strong><br>
+      Total posts: <strong>20+</strong><br>
+      Story views avg: <strong>100+</strong>
+    </div>
+  </div>
+  <div class="card" style="border-top:3px solid #2a9d8f">
+    <div style="font-size:0.72rem;font-weight:700;color:#2a9d8f;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">60-Day Targets</div>
+    <div style="font-size:0.83rem;line-height:2;color:#374151">
+      Instagram: <strong>1,500 followers</strong><br>
+      TikTok: <strong>5,000 followers</strong><br>
+      Google reviews: <strong>30+</strong> (4.5★ avg)<br>
+      1 post with <strong>10K+ TikTok views</strong><br>
+      Website traffic from social: <strong>300+/mo</strong>
+    </div>
+  </div>
+  <div class="card" style="border-top:3px solid #264653">
+    <div style="font-size:0.72rem;font-weight:700;color:#264653;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">90-Day Targets</div>
+    <div style="font-size:0.83rem;line-height:2;color:#374151">
+      Instagram: <strong>3,000 followers</strong><br>
+      TikTok: <strong>10,000 followers</strong><br>
+      Google: <strong>4.5★ with 50+ reviews</strong><br>
+      Repeat visit rate: <strong>30%+</strong><br>
+      Social → bookings conversion visible
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">📐 The Metrics That Actually Matter</div>
+  <div class="g2">
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#264653">Track These</div>
+      <div style="font-size:0.83rem;line-height:2;color:#374151">
+        ✅ <strong>Story views</strong> — your real engaged audience size<br>
+        ✅ <strong>Profile visits</strong> — intent to learn more<br>
+        ✅ <strong>Website clicks from bio</strong> — direct conversion signal<br>
+        ✅ <strong>Google: direction requests</strong> — people coming to you<br>
+        ✅ <strong>TikTok watch time %</strong> — content quality signal<br>
+        ✅ <strong>Review count + average rating</strong> — trust signal<br>
+        ✅ <strong>Saves on Instagram</strong> — high-quality engagement
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#264653">Don't Obsess Over These</div>
+      <div style="font-size:0.83rem;line-height:2;color:#6B6B6B">
+        ❌ <strong>Likes</strong> — vanity metric, means little<br>
+        ❌ <strong>Follower count</strong> (in month 1) — too early to matter<br>
+        ❌ <strong>Impressions</strong> alone — without context meaningless<br>
+        ❌ <strong>Comments that are just emojis</strong> — not real engagement<br>
+        ❌ <strong>Comparing to accounts with 5+ years of growth</strong><br>
+        ❌ <strong>Going viral</strong> as a primary goal — it's luck, not strategy
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- STRATEGY PANEL -->
+<div id="panel-strategy" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">🎯 Platform-by-Platform Strategy (Real Talk)</div>
+
+  <div style="border:1px solid #E8E4DC;border-radius:8px;padding:16px;margin-bottom:12px;border-left:4px solid #e1306c">
+    <div style="font-size:0.9rem;font-weight:700;margin-bottom:8px;color:#e1306c">📸 Instagram — Your Brand Home</div>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>Who it's for:</strong> People who already know you or discovered you. It's a credibility check. Before anyone books a table, they check your Instagram first.</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>What to post:</strong> Beautiful food photos, staff stories, behind the scenes Reels, customer features. Aesthetic consistency matters here more than TikTok.</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151"><strong>Frequency:</strong> 4–5 feed posts/week + daily Stories. Stories are more important than feed for restaurants — they show the living, breathing version of your brand.</p>
+  </div>
+
+  <div style="border:1px solid #E8E4DC;border-radius:8px;padding:16px;margin-bottom:12px;border-left:4px solid #010101">
+    <div style="font-size:0.9rem;font-weight:700;margin-bottom:8px">🎵 TikTok — Your Discovery Engine</div>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>Who it's for:</strong> People who've never heard of you. TikTok's algorithm shows your content to strangers — even with zero followers. One video can bring 10,000 new people to your page overnight.</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>What to post:</strong> Raw, real, entertaining. Kitchen prep videos. Day-in-the-life. Opinion takes on food. "What $45 gets you at [restaurant]" style content. Don't make ads — make content.</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151"><strong>Frequency:</strong> 5–7 times/week in your first 60 days. The algorithm rewards consistency. Post even when you're tired. One video at midnight can go viral by morning.</p>
+  </div>
+
+  <div style="border:1px solid #E8E4DC;border-radius:8px;padding:16px;margin-bottom:12px;border-left:4px solid #1877f2">
+    <div style="font-size:0.9rem;font-weight:700;margin-bottom:8px;color:#1877f2">🔍 Google Business Profile — The Conversion Tool</div>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>Who it's for:</strong> People actively searching for somewhere to eat. They type "best burger [city]" — do you show up?</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>What to do:</strong> Claim and complete your profile 100%. Add photos weekly. Post updates monthly. Respond to every review within 24 hours. Ask every happy guest to leave a review.</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151"><strong>The truth:</strong> A restaurant with 50 Google reviews at 4.7★ beats a restaurant with 1,000 Instagram followers every single time. Google drives walk-in traffic. Instagram drives awareness. Both matter.</p>
+  </div>
+
+  <div style="border:1px solid #E8E4DC;border-radius:8px;padding:16px;border-left:4px solid #C8A97E">
+    <div style="font-size:0.9rem;font-weight:700;margin-bottom:8px;color:#C8A97E">📧 Email List — Your Most Valuable Asset</div>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151;margin-bottom:8px"><strong>Why it matters:</strong> Instagram can suspend your account tomorrow. TikTok could be banned. Your email list is yours — nobody can take it. It's also the highest-converting channel for restaurants.</p>
+    <p style="font-size:0.83rem;line-height:1.8;color:#374151"><strong>How to build it:</strong> QR code on table → "Join our VIP list for exclusive offers." Ask at checkout. Run a launch giveaway that requires email entry. Start building from day 1. Even 200 emails is powerful.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">💡 The Content Pillars Framework</div>
+  <p style="font-size:0.83rem;color:#6B6B6B;margin-bottom:16px">A real social media manager doesn't post randomly. They rotate through 5 content pillars. Aim for each pillar 1–2× per week.</p>
+  <div class="g3" style="gap:12px">
+    <div style="background:#fef9c3;border-radius:8px;padding:14px;border-top:3px solid #f59e0b">
+      <div style="font-weight:700;margin-bottom:6px;font-size:0.88rem">🍽️ Pillar 1: The Food</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.7">Hero dish shots. Process videos. Ingredient stories. What makes it different. How it's made.</div>
+    </div>
+    <div style="background:#d1fae5;border-radius:8px;padding:14px;border-top:3px solid #2a9d8f">
+      <div style="font-weight:700;margin-bottom:6px;font-size:0.88rem">👨‍🍳 Pillar 2: The People</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.7">Chef stories. Staff spotlights. Founder content. Team moments. The humans behind the brand.</div>
+    </div>
+    <div style="background:#dbeafe;border-radius:8px;padding:14px;border-top:3px solid #3b82f6">
+      <div style="font-weight:700;margin-bottom:6px;font-size:0.88rem">🎬 Pillar 3: Behind The Scenes</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.7">Prep footage. Delivery day. End of service. The unseen work. Real over polished.</div>
+    </div>
+    <div style="background:#ede9fe;border-radius:8px;padding:14px;border-top:3px solid #8b5cf6">
+      <div style="font-weight:700;margin-bottom:6px;font-size:0.88rem">❤️ Pillar 4: Social Proof</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.7">Customer photos. Review screenshots. Milestone posts. Testimonials. Let others sell for you.</div>
+    </div>
+    <div style="background:#fce7f3;border-radius:8px;padding:14px;border-top:3px solid #ec4899">
+      <div style="font-weight:700;margin-bottom:6px;font-size:0.88rem">💬 Pillar 5: Engagement</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.7">Opinion posts. Questions. Hot takes. Polls. Conversations that invite responses.</div>
+    </div>
+    <div style="background:#f0fdf4;border-radius:8px;padding:14px;border-top:3px solid #22c55e">
+      <div style="font-weight:700;margin-bottom:6px;font-size:0.88rem">📣 Pillar 6: Offers & CTAs</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.7">Specials. Events. Giveaways. Booking CTAs. Limited-time reasons to act now. Max 1–2× per week.</div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+// ── POSTS DATA ──────────────────────────────────────────────
+var posts = [
+  // Phase 1 — Pre-Open (days 1-14 before opening = calendar day 1-14)
+  {day:1, title:'The Teaser', plat:'ig', phase:'pre',
+   caption:'Something is coming to [City].\n\nWe\'re not ready to say what. Not yet.\n\nBut if you love [cuisine] done properly — follow along. You\'ll want to be first to know.\n\n📍 [Address] — opening [month]',
+   type:'Feed Photo',goal:'Start building curiosity',
+   tip:'Post a blurred or silhouetted image of your space. Mystery drives follows. Don\'t show your face or logo yet — hold that reveal.'},
+
+  {day:2, title:'Construction BTS', plat:'tt', phase:'pre',
+   caption:'POV: You\'re turning an empty space into a restaurant. Week [X] of fit-out.\n\nMost people only see the finished product.\n\nThis is what comes before.\n\n#restaurantopening #cheflife #[city]food',
+   type:'TikTok Video',goal:'Show the journey',
+   tip:'Film a 15-30 second walk-through of the space mid-construction. Lo-fi is fine. Trending audio helps. Caption: "Week X of building [Restaurant Name]"'},
+
+  {day:3, title:'Founder Story', plat:'ig', phase:'pre',
+   caption:'I\'ve worked in professional kitchens for [X] years.\n\nMost of that time, I was executing someone else\'s vision.\n\n[Restaurant Name] is mine.\n\nOpening [date/month] in [City]. This is the beginning of that story — and I\'m going to document all of it.\n\nFollow along if that sounds interesting to you.\n\n[Your photo — candid, in the kitchen or restaurant space]',
+   type:'Feed Photo + Caption',goal:'Build personal connection',
+   tip:'This post should feel personal and honest. Not polished. This is the post that converts a passer-by into a genuine follower. Pin it to your profile.'},
+
+  {day:5, title:'First Dish Reveal', plat:'both', phase:'pre',
+   caption:'Meet [Dish Name].\n\n[Protein/hero ingredient] — [how it\'s sourced].\n[Technique] — [1 sentence on the method].\nServed with [sides/sauce/garnish].\n\nThis one took [X] attempts to get right. It was worth it.\n\nAvailable from [date] at [Restaurant Name].\n\n📍 [Address]\n#[cuisine]food #newrestaurant #[city]eats',
+   type:'Hero Dish Photo',goal:'Create food desire',
+   tip:'This is your first impression of your food. Spend time on the photo. Natural light, clean background, real food (not a mockup). If you can\'t photograph it yourself, this is worth getting a professional shot.'},
+
+  {day:7, title:'Meet the Head Chef', plat:'ig', phase:'pre',
+   caption:'Meet [Chef Name].\n\nHead Chef at [Restaurant Name].\n[X] years in hospitality. Previously at [notable kitchen if applicable].\n\nAsk [him/her/them] about [signature technique / favourite ingredient / food philosophy].\n\nThe food you\'re about to eat — this is the person behind it.\n\n[Photo of chef in kitchen — candid, not posed stiffly]\n\n[Tag them if they have IG]',
+   type:'Staff Spotlight',goal:'Humanise the brand',
+   tip:'Chef content consistently outperforms pure food content. People want to know WHO is cooking their food. Video version of this on TikTok = even better.'},
+
+  {day:9, title:'Kit Arrival / Equipment', plat:'tt', phase:'pre',
+   caption:'The [oven / grill / custom [equipment]] just arrived.\n\nThis is the piece of kit that makes [signature dish] possible.\n\nWorth every dollar.\n\n#restaurant #kitchenequipment #cheflife',
+   type:'TikTok Video',goal:'Build anticipation',
+   tip:'Unboxing content works. Film yourself or your chef receiving the key piece of equipment. Show why it matters — how it relates to the food guests will eat.'},
+
+  {day:11, title:'Opening Date Reveal', plat:'both', phase:'pre',
+   caption:'WE OPEN ON [DATE]. 📅\n\nDoors open at [time]. [Address], [City].\n\nFirst [X] tables get [offer — e.g. complimentary amuse-bouche / cocktail on arrival / house dessert].\n\nReservations open now: [link or DM]\n\nTag someone you\'re bringing. 👇',
+   type:'Announcement Post',goal:'Drive reservations',
+   tip:'Post this at your peak engagement time. Add a countdown sticker in Stories. DM everyone who comments a direct booking link within 1 hour of posting.'},
+
+  {day:13, title:'The Menu Preview', plat:'ig', phase:'pre',
+   caption:'A few of the dishes you\'ll find at [Restaurant Name].\n\n[Dish 1] — [one line]\n[Dish 2] — [one line]\n[Dish 3] — [one line]\n\nFull menu available from [date].\n\nBook: [link] | Walk-ins welcome\n\n📍 [Address]',
+   type:'Carousel (3–5 images)',goal:'Show range, drive bookings',
+   tip:'Post a carousel of 3-5 of your best dishes. The first image is the hook — make it your absolute best shot. Caption sells the experience, not just the ingredients.'},
+
+  // Phase 2 — Opening Week (days 15-21)
+  {day:15, title:'WE ARE OPEN', plat:'both', phase:'open',
+   caption:'WE ARE OPEN.\n\n[Restaurant Name] is officially serving at [address], [city] from today.\n\nWe have been building toward this moment for [X] months.\n\nCome in, eat something you\'ll talk about, and let us know what you think.\n\nReservations: [link] | Walk-ins welcome\n\nOpen [days] from [time to time].\n\n📍 [Address]',
+   type:'Feed Photo — Best Shot',goal:'Maximum reach on day 1',
+   tip:'Post this at 7am, 12pm AND 6pm on Day 1 — three separate posts. Different photos. Use your absolute best image. Pin this post to your profile. Update your bio link to bookings today.'},
+
+  {day:16, title:'Day 1 in Stories', plat:'ig', phase:'open',
+   caption:'[All-day Stories content]\n\n8am: Kitchen prep in full swing\n11am: FOH team ready\n12pm: First guests arriving\n2pm: Kitchen at peak — full ticket rail\n5pm: Kitchen break before dinner service\n8pm: Full house — dining room shot\n10pm: "Service done. [X] covers. Thank you."\n\nEnd with: "See you tomorrow"',
+   type:'Instagram Stories All Day',goal:'Create FOMO in real time',
+   tip:'Stories on opening day are as important as your feed post. Document the whole day. Don\'t script it — keep it real. The chaos and energy are the content.'},
+
+  {day:17, title:'First Guest Reactions', plat:'tt', phase:'open',
+   caption:'We asked our first guests what they thought.\n\nHere\'s what they said. 🎤\n\n[Short clips of guests sharing their honest reaction — ask permission first]\n\n[Restaurant Name] — [address] — open now',
+   type:'TikTok Interview Video',goal:'Social proof on day 2',
+   tip:'Ask 3-5 tables if you can film a quick reaction. Keep it casual — "Can I grab 10 seconds of feedback?" People love being on camera. This is your most powerful early content.'},
+
+  {day:18, title:'Kitchen Tour', plat:'tt', phase:'open',
+   caption:'60-second kitchen tour. This is where the magic happens.\n\n[Video: walk through the kitchen narrated by Head Chef]\n\n[Station 1]: [what happens here]\n[Station 2]: [what happens here]\n[The pass]: [how it works]\n\nEvery plate that leaves this kitchen goes through the same standard. Every time.\n\n[Restaurant Name] — [address]',
+   type:'TikTok — Chef Narrated',goal:'Show the craft',
+   tip:'Film vertical. Keep it under 90 seconds. Let the chef talk naturally — don\'t script it. The imperfection is the charm. This content builds massive trust.'},
+
+  {day:19, title:'Sell-Out Dish of Week 1', plat:'ig', phase:'open',
+   caption:'This dish has sold out every service since we opened.\n\nThe [Dish Name].\n\n[2-3 sentence description — what makes it special, what the response has been]\n\nAvailable [days] only. We make [X] portions per service.\n\nBook to secure yours: [link]\n\n📍 [Address]',
+   type:'Feed Photo + Story',goal:'Drive urgency and bookings',
+   tip:'If something is genuinely selling out, shout it. Scarcity is a real driver. Only post this if it\'s true — never fabricate scarcity.'},
+
+  {day:21, title:'Week 1 Recap', plat:'both', phase:'open',
+   caption:'Week 1 done.\n\n[X] guests served. [X] services. [X] reviews already.\n\nThe dish nobody could stop ordering: [name].\nThe moment that made it worth everything: [1 genuine personal moment].\nThe thing we\'re fixing this week: [honest answer — shows you care about quality].\n\nThank you to everyone who walked through the door. We see every one of you.\n\nWeek 2 starts [day]. Come find us.\n\n📍 [Address]',
+   type:'Carousel or single image',goal:'Build narrative & community',
+   tip:'Vulnerability in this post is your superpower. Sharing "what we\'re fixing" shows confidence and integrity. Your followers become invested in your journey.'},
+
+  // Phase 3 — Build Momentum (days 22-30)
+  {day:23, title:'Menu Deep-Dive', plat:'ig', phase:'grow',
+   caption:'Let\'s talk about the [Dish Name].\n\nThe [hero ingredient] — [where it comes from, why you chose it].\nThe [technique] — [what makes it different].\nThe result — [sensory description: 3 words].\n\nThis is what [X hours/days] of testing looks like on a plate.\n\n$[price] | Available [when]\n\n📍 [Restaurant Name] — [Address]',
+   type:'Single dish photo',goal:'Educate and create desire',
+   tip:'Post one dish deep-dive per day for the first 2 weeks after opening. You have 28 menu items — that\'s 4 weeks of daily content already planned.'},
+
+  {day:25, title:'Staff Spotlight', plat:'ig', phase:'grow',
+   caption:'Meet [Name].\n\n[Role] at [Restaurant Name].\n\n[1-2 sentences about their background — where they came from, what they\'re known for]\n\nTheir favourite dish on the current menu: [dish name].\n\nTheir weirdest kitchen habit: [fun answer].\n\nThis team is why the food is what it is. Proud of every one of them.\n\n[Tag them if they have IG]',
+   type:'Portrait photo',goal:'Humanise brand, engage community',
+   tip:'Post one staff spotlight per week. Rotate kitchen and FOH. These posts get shared by the staff member to their own audience = free reach.'},
+
+  {day:27, title:'Customer Feature (UGC)', plat:'ig', phase:'grow',
+   caption:'📸 by [tag them — ask permission first]\n\n"[quote from their caption or a direct quote from their experience]"\n\nThis is exactly what we\'re here for.\n\nIf you\'ve been in recently, post your shot and tag us — we feature our favourites here every week.\n\n[Restaurant Name] | [Address] | Book: [link]',
+   type:'Repost customer photo',goal:'Social proof + encourage more UGC',
+   tip:'Always DM for permission before reposting. User-generated content is the highest-trust content you can share. Prioritise posts with genuine written reviews over just photos.'},
+
+  {day:29, title:'Hot Take / Opinion Post', plat:'both', phase:'grow',
+   caption:'Hot take: [Bold opinion about your cuisine, dining culture, or food philosophy].\n\nEveryone in [industry/food world] does [X]. We don\'t. Here\'s why.\n\n[3-4 sentences defending your position honestly]\n\nAgree? Disagree? Tell me below 👇\n\n(I reply to everyone in the first hour)',
+   type:'Opinion/Text-based post',goal:'Algorithmic engagement boost',
+   tip:'This content type generates the most comments. The opinion needs to be genuinely interesting — not safe. Controversial but not offensive. Reply to every comment in the first 60 minutes.'},
+
+  {day:30, title:'Month 1 Milestone', plat:'both', phase:'grow',
+   caption:'Month 1. Complete.\n\n[X] guests through the door.\n[X] Google reviews.\n[X] dishes that sold out.\n1 thing we got wrong that we\'ve already fixed.\n1 thing that surprised us about our guests.\n1 dish we\'re adding to the menu because of your feedback.\n\nThis is the beginning.\n\nThank you for being part of it from the start.\n\n[Restaurant Name] — [Address] 📍',
+   type:'Milestone post',goal:'Close the chapter, open the next',
+   tip:'This post gets saved and shared more than almost any other type. People love progress narratives. Be honest and specific — the numbers make it real.'}
+];
+
+var calPosts = {};
+posts.forEach(function(p){ calPosts[p.day] = p; });
+var currentPost = null;
+
+function ST(name, btn) {
+  var ps = document.getElementsByClassName('panel');
+  for (var i=0; i<ps.length; i++) ps[i].style.display = 'none';
+  var ts = document.getElementsByClassName('tab');
+  for (var i=0; i<ts.length; i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display = 'block';
+  if (btn) btn.classList.add('on');
+}
+
+function buildCalendar() {
+  var rname = document.getElementById('rname').value || 'My Restaurant';
+  var grid = document.getElementById('cal-grid');
+  if (!grid) return;
+  var html = '';
+  // Calculate offset for first day (make Mon = col 1)
+  // We'll just show a straight 30-day grid, 5 weeks, Mon-Sun
+  // Day 1 = first Monday slot
+  var cells = [];
+  var startOffset = 0; // Days 1-7 = week 1 Mon-Sun, etc.
+  // Fill with empties if needed for alignment
+  for (var i = 1; i <= 35; i++) {
+    var day = i - startOffset;
+    if (day < 1 || day > 30) {
+      cells.push('<div class="cal-day empty"></div>');
+    } else {
+      var p = calPosts[day];
+      var phase = day <= 14 ? 'pre' : (day <= 21 ? 'open' : 'grow');
+      var phBg = phase === 'pre' ? '#fff8e8' : (phase === 'open' ? '#f0fdf9' : '#eff6ff');
+      var content = '<div class="day-num">Day ' + day + '</div>';
+      if (p) {
+        var platCls = p.plat === 'ig' ? 'ig' : (p.plat === 'tt' ? 'tt' : 'fb');
+        var platLbl = p.plat === 'ig' ? 'IG' : (p.plat === 'tt' ? 'TT' : 'BOTH');
+        content += '<span class="post-pill ' + platCls + '">' + platLbl + ': ' + p.title + '</span>';
+      }
+      cells.push('<div class="cal-day' + (p?' has-post':'') + '" style="background:'+phBg+'" ' + (p?'onclick="openPost('+day+')"':'') + '>' + content + '</div>');
+    }
+  }
+  grid.innerHTML = cells.join('');
+}
+
+function openPost(day) {
+  var p = calPosts[day];
+  if (!p) return;
+  currentPost = p;
+  var rname = document.getElementById('rname').value || 'My Restaurant';
+  var city = document.getElementById('city').value || 'Your City';
+  var cuisine = document.getElementById('cuisine').value || 'Modern American';
+  var sigdish = document.getElementById('sigdish').value || 'House Burger';
+  var ig = document.getElementById('ighandle').value || '@myrestaurant';
+
+  var phLabel = p.phase === 'pre' ? 'Phase 1 — Pre-Open' : (p.phase === 'open' ? 'Phase 2 — Launch Week' : 'Phase 3 — Build Momentum');
+  var phCls = 'ph-' + p.phase;
+  var platColors = {ig:'#e1306c', tt:'#010101', both:'#1877f2'};
+  var platNames = {ig:'Instagram', tt:'TikTok', both:'Instagram + TikTok'};
+
+  document.getElementById('modal-phase').className = 'phase-label ' + phCls;
+  document.getElementById('modal-phase').textContent = phLabel;
+  document.getElementById('modal-title').textContent = 'Day ' + p.day + ': ' + p.title;
+  document.getElementById('modal-plat').textContent = platNames[p.plat];
+  document.getElementById('modal-plat').style.background = platColors[p.plat];
+  document.getElementById('modal-plat').style.color = '#fff';
+  document.getElementById('modal-meta').innerHTML =
+    '<span><strong>Format:</strong> ' + p.type + '</span>' +
+    '<span><strong>Goal:</strong> ' + p.goal + '</span>';
+
+  var cap = p.caption
+    .replace(/\[Restaurant Name\]/g, rname)
+    .replace(/\[City\]/g, city)
+    .replace(/\[cuisine\]/g, cuisine.toLowerCase())
+    .replace(/\[city\]/g, city.toLowerCase())
+    .replace(/Instagram handle\]/g, ig);
+  document.getElementById('modal-caption').textContent = cap;
+  document.getElementById('modal-tip').innerHTML = '<strong>💡 Posting Tip:</strong> ' + p.tip;
+  document.getElementById('copy-btn').textContent = '📋 Copy Caption';
+  document.getElementById('copy-btn').className = 'copy-btn';
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay')) return;
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+function copyCaption() {
+  var text = document.getElementById('modal-caption').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ Copied!';
+    btn.className = 'copy-btn copied';
+    setTimeout(function(){ btn.textContent = '📋 Copy Caption'; btn.className = 'copy-btn'; }, 2000);
+  }).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    var btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ Copied!'; btn.className = 'copy-btn copied';
+    setTimeout(function(){ btn.textContent = '📋 Copy Caption'; btn.className = 'copy-btn'; }, 2000);
+  });
+}
+
+function copySet(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var tags = el.querySelectorAll('.htag');
+  var text = Array.from(tags).map(function(t){ return t.textContent; }).join(' ');
+  navigator.clipboard.writeText(text).catch(function(){});
+  var btn = el.nextElementSibling;
+  if (btn) { btn.textContent = '✅ Copied!'; setTimeout(function(){ btn.textContent = 'Copy Set'; }, 2000); }
+}
+
+// Analytics rows
+var igMetrics = ['Followers','Post Reach (avg)','Story Views (avg)','Profile Visits','Website Clicks','Saves per post'];
+var ttMetrics = ['Followers','Total Video Views','Avg Watch Time %','Shares','Profile Visits','For You Page Reach'];
+var gbMetrics = ['Profile Views','Search Impressions','Direction Requests','Phone Call Clicks','Review Count','Star Rating (avg)'];
+
+function buildMetricRows(metrics, prefix, containerId) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = metrics.map(function(m, i) {
+    return '<div class="kpi-row">' +
+      '<label>' + m + '</label>' +
+      '<input class="kpi-input" type="number" id="' + prefix + 'p' + i + '" placeholder="0" onchange="calcDelta(\'' + prefix + '\',' + i + ')">' +
+      '<input class="kpi-input" type="number" id="' + prefix + 'c' + i + '" placeholder="0" onchange="calcDelta(\'' + prefix + '\'," + i + ")">' +
+      '<div class="kpi-delta flat" id="' + prefix + 'd' + i + '">—</div>' +
+    '</div>';
+  }).join('');
+}
+
+function calcDelta(prefix, i) {
+  var p = parseFloat(document.getElementById(prefix + 'p' + i).value) || 0;
+  var c = parseFloat(document.getElementById(prefix + 'c' + i).value) || 0;
+  var d = document.getElementById(prefix + 'd' + i);
+  if (!d) return;
+  if (!p || !c) { d.textContent = '—'; d.className = 'kpi-delta flat'; return; }
+  var pct = ((c - p) / p * 100).toFixed(1);
+  d.textContent = (pct > 0 ? '+' : '') + pct + '%';
+  d.className = 'kpi-delta ' + (pct > 0 ? 'up' : (pct < 0 ? 'dn' : 'flat'));
+}
+
+window.onload = function() {
+  // Set default opening date to next Friday
+  var d = new Date(); var day = d.getDay();
+  var daysUntilFri = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + daysUntilFri);
+  var od = document.getElementById('opendate');
+  if (od) od.value = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  buildCalendar();
+  buildMetricRows(igMetrics, 'ig', 'ig-rows');
+  buildMetricRows(ttMetrics, 'tt', 'tt-rows');
+  buildMetricRows(gbMetrics, 'gb', 'gb-rows');
+};
+</script>
+</body>
+</html>

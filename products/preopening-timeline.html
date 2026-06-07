@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder 90-Day Pre-Opening Timeline</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;min-height:100vh}
+.header{background:#264653;color:#fff;padding:28px 32px}
+.header h1{font-size:1.5rem;font-weight:700}
+.header p{color:#C8A97E;font-size:0.9rem;margin-top:4px}
+.tab-bar{display:flex;border-bottom:2px solid #E8E4DC;background:#fff;padding:0 32px}
+.tab{padding:14px 24px;cursor:pointer;font-size:0.9rem;font-weight:600;color:#666;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.15s;background:none;border-top:none;border-left:none;border-right:none}
+.tab:hover{color:#264653}
+.tab.on{color:#264653;border-bottom-color:#C8A97E}
+.panel{display:none;padding:32px;max-width:1200px;margin:0 auto}
+.overall-bar{background:#fff;border:1px solid #E8E4DC;border-radius:12px;padding:20px 24px;margin-bottom:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.big-num{font-size:2.5rem;font-weight:800;color:#264653;line-height:1}
+.big-label{font-size:0.8rem;color:#888;margin-top:4px}
+.bar-wrap{flex:1;min-width:200px}
+.bar-track{height:12px;background:#E8E4DC;border-radius:6px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#264653,#C8A97E);border-radius:6px;transition:width 0.4s}
+.bar-label{font-size:0.8rem;color:#666;margin-top:6px}
+.btn{background:#C8A97E;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:700}
+.btn:hover{background:#b8946a}
+.phase{margin-bottom:28px}
+.phase-hdr{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:14px 18px;background:#fff;border:1px solid #E8E4DC;border-radius:10px;flex-wrap:wrap}
+.phase-tag{background:#264653;color:#fff;font-size:0.75rem;font-weight:700;padding:4px 10px;border-radius:20px}
+.phase-tag.done80{background:#2d7a4f}
+.phase-name{font-weight:700;flex:1}
+.phase-ct{font-size:0.8rem;color:#888}
+.mini-track{width:80px;height:6px;background:#E8E4DC;border-radius:3px;overflow:hidden}
+.mini-fill{height:100%;background:#C8A97E;border-radius:3px;transition:width 0.4s}
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.item{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #E8E4DC;border-radius:8px;padding:11px 13px;cursor:pointer;transition:all 0.15s;user-select:none}
+.item:hover{border-color:#C8A97E}
+.item.done{background:#f0faf5;border-color:#a3d9b8}
+.item.done .itext{color:#2d7a4f;text-decoration:line-through;text-decoration-color:#7ec8a0}
+.chk{width:20px;height:20px;border:2px solid #ccc;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all 0.15s}
+.item.done .chk{background:#2d7a4f;border-color:#2d7a4f;color:#fff}
+.itext{font-size:0.85rem;line-height:1.4}
+.prog-card{background:#fff;border:1px solid #E8E4DC;border-radius:12px;padding:20px 24px;margin-bottom:14px}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-name{font-weight:700;font-size:0.95rem}
+.prog-pct{font-size:1.2rem;font-weight:800;color:#264653}
+.prog-track{height:14px;background:#E8E4DC;border-radius:7px;overflow:hidden}
+.prog-fill{height:100%;border-radius:7px;transition:width 0.4s}
+.p1c{background:linear-gradient(90deg,#264653,#3a7ca5)}
+.p2c{background:linear-gradient(90deg,#C8A97E,#e0c090)}
+.p3c{background:linear-gradient(90deg,#2d7a4f,#4db87a)}
+.p4c{background:linear-gradient(90deg,#C8A97E,#264653)}
+.prog-detail{display:flex;justify-content:space-between;font-size:0.78rem;color:#888;margin-top:6px}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.bdg{background:#fff;border:2px solid #E8E4DC;border-radius:12px;padding:16px;text-align:center;flex:1;min-width:110px}
+.bdg.earned{border-color:#C8A97E;background:#fffdf8}
+.bdg-icon{font-size:2rem;margin-bottom:6px}
+.bdg-name{font-size:0.8rem;font-weight:700;color:#264653}
+.bdg-sub{font-size:0.7rem;color:#888;margin-top:3px}
+.print-sec{background:#fff;border:1px solid #E8E4DC;border-radius:10px;padding:22px;margin-bottom:16px}
+.print-sec h3{font-size:0.95rem;font-weight:700;color:#264653;padding-bottom:10px;border-bottom:1px solid #E8E4DC;margin-bottom:12px}
+.print-row{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid #F5F2EC}
+.print-row:last-child{border-bottom:none}
+.pbox{width:14px;height:14px;border:1.5px solid #888;border-radius:3px;flex-shrink:0;margin-top:2px}
+.ptext{font-size:0.82rem;line-height:1.4}
+@media print{.tab-bar,.btn,.no-print{display:none!important}.panel{display:block!important;padding:16px}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🍴 KitchenFounder 90-Day Pre-Opening Timeline</h1>
+  <p>Track every critical task from concept to opening day</p>
+</div>
+<div class="tab-bar">
+  <button class="tab on" onclick="ST('timeline',this)">Timeline</button>
+  <button class="tab" onclick="ST('progress',this)">Progress</button>
+  <button class="tab" onclick="ST('print',this)">Print View</button>
+</div>
+
+<div id="panel-timeline" class="panel">
+  <div class="overall-bar">
+    <div><div class="big-num" id="tot-done">0</div><div class="big-label">of 90 complete</div></div>
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill" id="ov-fill" style="width:0%"></div></div>
+      <div class="bar-label" id="ov-lbl">0% complete — let's get started!</div>
+    </div>
+    <button class="btn" onclick="exportProg()">Export Summary</button>
+  </div>
+  <div id="phase-blocks"></div>
+</div>
+
+<div id="panel-progress" class="panel" style="display:none">
+  <div class="prog-card">
+    <div class="prog-top"><span class="prog-name">📐 Phase 1 — Foundation (Days 1–30)</span><span class="prog-pct" id="pp1-pct">0%</span></div>
+    <div class="prog-track"><div class="prog-fill p1c" id="pp1-bar" style="width:0%"></div></div>
+    <div class="prog-detail"><span id="pp1-done">0 of 30 complete</span><span id="pp1-left">30 remaining</span></div>
+  </div>
+  <div class="prog-card">
+    <div class="prog-top"><span class="prog-name">🔨 Phase 2 — Build (Days 31–60)</span><span class="prog-pct" id="pp2-pct">0%</span></div>
+    <div class="prog-track"><div class="prog-fill p2c" id="pp2-bar" style="width:0%"></div></div>
+    <div class="prog-detail"><span id="pp2-done">0 of 25 complete</span><span id="pp2-left">25 remaining</span></div>
+  </div>
+  <div class="prog-card">
+    <div class="prog-top"><span class="prog-name">👥 Phase 3 — Staff &amp; Systems (Days 61–80)</span><span class="prog-pct" id="pp3-pct">0%</span></div>
+    <div class="prog-track"><div class="prog-fill p3c" id="pp3-bar" style="width:0%"></div></div>
+    <div class="prog-detail"><span id="pp3-done">0 of 20 complete</span><span id="pp3-left">20 remaining</span></div>
+  </div>
+  <div class="prog-card">
+    <div class="prog-top"><span class="prog-name">🚀 Phase 4 — Launch (Days 81–90)</span><span class="prog-pct" id="pp4-pct">0%</span></div>
+    <div class="prog-track"><div class="prog-fill p4c" id="pp4-bar" style="width:0%"></div></div>
+    <div class="prog-detail"><span id="pp4-done">0 of 15 complete</span><span id="pp4-left">15 remaining</span></div>
+  </div>
+  <div class="badges">
+    <div class="bdg" id="bdg-1"><div class="bdg-icon">📐</div><div class="bdg-name">Foundation</div><div class="bdg-sub">0% (need 80%)</div></div>
+    <div class="bdg" id="bdg-2"><div class="bdg-icon">🔨</div><div class="bdg-name">Builder</div><div class="bdg-sub">0% (need 80%)</div></div>
+    <div class="bdg" id="bdg-3"><div class="bdg-icon">👥</div><div class="bdg-name">Team Ready</div><div class="bdg-sub">0% (need 80%)</div></div>
+    <div class="bdg" id="bdg-4"><div class="bdg-icon">🚀</div><div class="bdg-name">Launched!</div><div class="bdg-sub">0% (need 80%)</div></div>
+  </div>
+</div>
+
+<div id="panel-print" class="panel" style="display:none">
+  <div class="no-print" style="margin-bottom:20px">
+    <button class="btn" onclick="window.print()">🖨️ Print This Page</button>
+  </div>
+  <div id="print-body"></div>
+</div>
+
+<script>
+var PHASES = [
+  {n:1,label:"Foundation — Days 1–30",total:30,icon:"📐",items:[
+    "Finalise business structure (LLC/sole trader)",
+    "Open business bank account",
+    "Register business name",
+    "Apply for EIN (federal tax ID)",
+    "Secure commercial lease (signed)",
+    "Hire attorney to review lease",
+    "Get lease start date confirmed",
+    "Submit certificate of occupancy application",
+    "Apply for food service establishment permit",
+    "Apply for building permits (renovations)",
+    "Submit plans to health department",
+    "Open Shopify/Square for payments (research)",
+    "Choose and order POS system",
+    "Set up business email and Google Business Profile",
+    "Design logo and brand identity",
+    "Build website or landing page",
+    "Create Instagram and TikTok accounts",
+    "Set revenue and cover targets for year 1",
+    "Build 12-month P&L projection",
+    "Apply for business insurance (GL, property, workers comp)",
+    "Research liquor license requirements (if applicable)",
+    "Apply for liquor license (long lead time)",
+    "Begin contractor/builder conversations",
+    "Get 3 quotes for fit-out work",
+    "Sign fit-out contract",
+    "Order long-lead equipment (ovens, fridges, exhaust)",
+    "Research and shortlist suppliers (food, beverage, linen)",
+    "Begin menu development (concept locked)",
+    "Set opening date target",
+    "Create project tracker spreadsheet"
+  ]},
+  {n:2,label:"Build — Days 31–60",total:25,icon:"🔨",items:[
+    "Fit-out construction underway",
+    "Weekly site visits with builder",
+    "Finalise menu (all 28+ items costed)",
+    "Food cost all menu items (target <32%)",
+    "Write staff training manual outline",
+    "Create job descriptions for all roles",
+    "Post job ads (Indeed, Craigslist, local FB groups)",
+    "Begin interviewing candidates",
+    "Select POS system and place order",
+    "Order smallwares (plates, glassware, cutlery)",
+    "Order uniforms",
+    "Negotiate supplier terms (net 30, min orders)",
+    "Set up accounting software (QuickBooks/Xero)",
+    "Create supplier onboarding documents",
+    "Design printed menus",
+    "Create table numbers, signage, decor plan",
+    "Apply for music licence (ASCAP/BMI)",
+    "Set up reservations system (OpenTable/Resy)",
+    "Brief social media — start teaser content",
+    "Build email list landing page",
+    "Plan soft launch date and format",
+    "Create opening week schedule",
+    "Order gift cards",
+    "Set up loyalty program concept",
+    "Confirm equipment delivery dates"
+  ]},
+  {n:3,label:"Staff & Systems — Days 61–80",total:20,icon:"👥",items:[
+    "Complete fit-out and punch list",
+    "Deep clean entire space",
+    "Health inspection walkthrough (pre-inspection)",
+    "POS system installed and tested",
+    "All equipment tested and certified",
+    "Hire all kitchen staff (confirmed)",
+    "Hire all front-of-house staff (confirmed)",
+    "Complete staff induction — day 1",
+    "Kitchen training — mise en place and prep standards",
+    "FOH training — service sequence, table knowledge",
+    "Wine/beverage training",
+    "Full mock service (friends and family dry run)",
+    "Fix issues from mock service",
+    "Photograph all menu items (hero shots)",
+    "Update website with menu and photos",
+    "Set up Google, Yelp, TripAdvisor listings",
+    "Create opening day social media content bank (10+ posts)",
+    "Confirm all supplier deliveries for opening week",
+    "Brief entire team on opening night expectations",
+    "Create emergency contact list (plumber, electrician, pest)"
+  ]},
+  {n:4,label:"Launch — Days 81–90",total:15,icon:"🚀",items:[
+    "Final health department inspection",
+    "Receive certificate of occupancy",
+    "Confirm liquor license received (or BYOB plan B)",
+    "Soft launch — friends and family night",
+    "Review soft launch feedback — fix top 3 issues",
+    "Staff debrief after soft launch",
+    "Media/influencer night (invite 5-10 local food accounts)",
+    "Hard open — Day 1",
+    "Monitor online reviews (respond to all within 24hrs)",
+    "Daily debrief with kitchen and FOH leads",
+    "Track covers and revenue vs target daily",
+    "Adjust staffing if needed after week 1",
+    "Send opening email to list",
+    "Post opening recap on social media",
+    "Week 2 review — what's working, what needs fixing"
+  ]}
+];
+
+var S = {};
+var SK = 'kf_tl_v1';
+function load(){try{S=JSON.parse(localStorage.getItem(SK))||{};}catch(e){S={};}}
+function save(){try{localStorage.setItem(SK,JSON.stringify(S));}catch(e){}}
+function k(p,i){return 'p'+p+'_'+i;}
+function toggle(p,i){
+  var key=k(p,i); S[key]=!S[key]; save();
+  var el=document.getElementById('it-'+p+'-'+i);
+  if(S[key]){el.classList.add('done');el.querySelector('.chk').textContent='✓';}
+  else{el.classList.remove('done');el.querySelector('.chk').textContent='';}
+  upd();
+}
+function doneCount(p){
+  var c=0;
+  for(var i=0;i<PHASES[p-1].items.length;i++) if(S[k(p,i)]) c++;
+  return c;
+}
+function upd(){
+  var total=0;
+  for(var p=1;p<=4;p++){
+    var d=doneCount(p),t=PHASES[p-1].total,pct=Math.round(d/t*100);
+    total+=d;
+    document.getElementById('p'+p+'-ct').textContent=d+'/'+t;
+    document.getElementById('p'+p+'-mf').style.width=pct+'%';
+    var tag=document.getElementById('ptag-'+p);
+    if(pct>=80)tag.classList.add('done80'); else tag.classList.remove('done80');
+    document.getElementById('pp'+p+'-pct').textContent=pct+'%';
+    document.getElementById('pp'+p+'-bar').style.width=pct+'%';
+    document.getElementById('pp'+p+'-done').textContent=d+' of '+t+' complete';
+    document.getElementById('pp'+p+'-left').textContent=(t-d)+' remaining';
+    var bdg=document.getElementById('bdg-'+p);
+    if(pct>=80){bdg.classList.add('earned');bdg.querySelector('.bdg-sub').textContent='✓ Earned!';}
+    else{bdg.classList.remove('earned');bdg.querySelector('.bdg-sub').textContent=pct+'% (need 80%)';}
+  }
+  document.getElementById('tot-done').textContent=total;
+  var pct=Math.round(total/90*100);
+  document.getElementById('ov-fill').style.width=pct+'%';
+  var msg=pct===0?'0% — let\'s get started!':pct<30?pct+'% — building momentum!':pct<60?pct+'% — great progress!':pct<90?pct+'% — almost there!':'100% — READY TO OPEN!';
+  document.getElementById('ov-lbl').textContent=msg;
+  buildPrint();
+}
+function buildPrint(){
+  var html='';
+  PHASES.forEach(function(ph){
+    var d=doneCount(ph.n);
+    html+='<div class="print-sec"><h3>'+ph.icon+' '+ph.label+' — '+d+'/'+ph.total+'</h3>';
+    ph.items.forEach(function(tx,i){
+      var done=S[k(ph.n,i)];
+      html+='<div class="print-row"><div class="pbox" style="'+(done?'background:#2d7a4f;border-color:#2d7a4f':'')+'"></div><div class="ptext">'+tx+'</div></div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('print-body').innerHTML=html;
+}
+function buildUI(){
+  var html='';
+  PHASES.forEach(function(ph){
+    html+='<div class="phase"><div class="phase-hdr"><div class="phase-tag" id="ptag-'+ph.n+'">Phase '+ph.n+'</div><div class="phase-name">'+ph.icon+' '+ph.label+'</div><div class="phase-ct" id="p'+ph.n+'-ct">0/'+ph.total+'</div><div class="mini-track"><div class="mini-fill" id="p'+ph.n+'-mf" style="width:0%"></div></div></div><div class="items-grid">';
+    ph.items.forEach(function(tx,i){
+      var done=S[k(ph.n,i)];
+      html+='<div class="item'+(done?' done':'')+'" id="it-'+ph.n+'-'+i+'" onclick="toggle('+ph.n+','+i+')"><div class="chk">'+(done?'✓':'')+'</div><div class="itext">'+tx+'</div></div>';
+    });
+    html+='</div></div>';
+  });
+  document.getElementById('phase-blocks').innerHTML=html;
+}
+function exportProg(){
+  var lines=['KitchenFounder 90-Day Pre-Opening Timeline\n'];
+  var total=0;
+  PHASES.forEach(function(ph){
+    var d=doneCount(ph.n); total+=d;
+    lines.push(ph.label+' — '+d+'/'+ph.total+' ('+Math.round(d/ph.total*100)+'%)');
+    ph.items.forEach(function(tx,i){ lines.push('  ['+(S[k(ph.n,i)]?'X':' ')+'] '+tx); });
+    lines.push('');
+  });
+  lines.unshift('Total Progress: '+total+'/90 ('+Math.round(total/90*100)+'%)\n');
+  var a=document.createElement('a');
+  a.href='data:text/plain,'+encodeURIComponent(lines.join('\n'));
+  a.download='preopening-progress.txt'; a.click();
+}
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+}
+window.onload=function(){ load(); buildUI(); upd(); };
+</script>
+</body>
+</html>

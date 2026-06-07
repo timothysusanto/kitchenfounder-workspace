@@ -5,735 +5,401 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KitchenFounder Menu Engineering Matrix</title>
 <style>
-:root {
-  --bg: #FAFAF8;
-  --surface: #FFFFFF;
-  --border: #E8E4DC;
-  --text: #1C1C1C;
-  --muted: #6B6B6B;
-  --accent: #C8A97E;
-  --accent-dark: #A8895E;
-  --blue: #264653;
-  --green: #2a9d8f;
-  --amber: #e9c46a;
-  --red: #e76f51;
-  --star: #f4d03f;
-  --shadow: 0 2px 12px rgba(0,0,0,0.06);
-  --radius: 8px;
-
-  /* Quadrant colors */
-  --star-bg: #fff9e6;
-  --star-border: #f4d03f;
-  --plow-bg: #e8f5e9;
-  --plow-border: #2a9d8f;
-  --puzzle-bg: #fff3e0;
-  --puzzle-border: #e9c46a;
-  --dog-bg: #fce4ec;
-  --dog-border: #e76f51;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui,-apple-system,sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
-
-.app-header {
-  background: var(--blue); color: white; padding: 16px 24px;
-  display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.app-header h1 { font-size: 1.1rem; font-weight: 700; }
-.app-header .sub { font-size: 0.75rem; opacity: 0.7; margin-top: 2px; }
-.badge { background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; }
-
-.tabs { display: flex; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; overflow-x: auto; }
-.tab-btn { padding: 12px 18px; border: none; background: none; color: var(--muted); font-size: 0.85rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
-.tab-btn.active { color: var(--accent-dark); border-bottom-color: var(--accent); font-weight: 700; }
-.tab-panel { display: none; padding: 24px; }
-.tab-panel.active { display: block; }
-
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
-.card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
-@media(max-width:640px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr 1fr; } }
-
-.field { margin-bottom: 12px; }
-.field label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-.field input, .field select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.88rem; background: var(--bg); color: var(--text); }
-.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
-.field .tip { font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
-
-.metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-align: center; }
-.metric-card .ml { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-.metric-card .mv { font-size: 1.25rem; font-weight: 800; }
-.metric-card .ms { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
-.metric-card.green .mv { color: var(--green); }
-.metric-card.amber .mv { color: #c09200; }
-.metric-card.red .mv { color: var(--red); }
-.metric-card.blue .mv { color: var(--blue); }
-
-.btn { padding: 8px 18px; border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-.btn-primary { background: var(--accent); color: white; }
-.btn-primary:hover { background: var(--accent-dark); }
-.btn-secondary { background: var(--border); color: var(--text); }
-.btn-danger { background: #fee2e2; color: var(--red); font-size: 0.75rem; padding: 4px 10px; }
-.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-
-/* MENU ITEM TABLE */
-.menu-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; min-width: 800px; }
-.menu-table th { background: var(--blue); color: white; padding: 8px 10px; text-align: left; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
-.menu-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-.menu-table tr:hover td { background: #f9f6f0; }
-.menu-table input { width: 100%; padding: 4px 6px; border: 1px solid var(--border); border-radius: 4px; font-size: 0.82rem; background: white; }
-.menu-table select { width: 100%; padding: 4px 6px; border: 1px solid var(--border); border-radius: 4px; font-size: 0.8rem; background: white; }
-
-/* QUADRANT BADGES */
-.q-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
-.q-star    { background: var(--star-bg);   color: #b8860b; border: 1px solid var(--star-border); }
-.q-plow    { background: var(--plow-bg);   color: #1a7a70; border: 1px solid var(--plow-border); }
-.q-puzzle  { background: var(--puzzle-bg); color: #8a6800; border: 1px solid var(--puzzle-border); }
-.q-dog     { background: var(--dog-bg);    color: #b5451b; border: 1px solid var(--dog-border); }
-
-/* 2×2 MATRIX CHART */
-.matrix-grid {
-  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-  gap: 12px; min-height: 380px;
-}
-.quadrant {
-  border-radius: var(--radius); padding: 16px; position: relative; min-height: 160px;
-  border: 2px solid; overflow: hidden;
-}
-.quadrant.star    { background: var(--star-bg);   border-color: var(--star-border); }
-.quadrant.plow    { background: var(--plow-bg);   border-color: var(--plow-border); }
-.quadrant.puzzle  { background: var(--puzzle-bg); border-color: var(--puzzle-border); }
-.quadrant.dog     { background: var(--dog-bg);    border-color: var(--dog-border); }
-.quadrant-title { font-size: 0.82rem; font-weight: 800; margin-bottom: 4px; }
-.quadrant-sub   { font-size: 0.68rem; color: var(--muted); margin-bottom: 10px; }
-.quadrant-items { font-size: 0.78rem; line-height: 1.9; }
-.quadrant-icon  { font-size: 1.8rem; position: absolute; top: 10px; right: 14px; opacity: 0.25; }
-.axis-label-x { text-align: center; font-size: 0.72rem; font-weight: 700; color: var(--muted); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
-.axis-label-y { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; padding-right: 8px; }
-.matrix-outer { display: flex; gap: 0; }
-.matrix-wrap  { flex: 1; }
-
-/* SCATTER PLOT */
-.scatter-container { position: relative; width: 100%; padding-top: 70%; border: 1px solid var(--border); border-radius: 6px; background: white; overflow: hidden; }
-.scatter-inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
-.scatter-dot { position: absolute; border-radius: 50%; transform: translate(-50%,-50%); cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; color: white; }
-.scatter-dot:hover { transform: translate(-50%,-50%) scale(1.3); z-index: 10; }
-.scatter-label { position: absolute; font-size: 0.6rem; color: var(--text); white-space: nowrap; pointer-events: none; }
-.scatter-axis-x { position: absolute; bottom: 24px; left: 10%; right: 5%; height: 1px; background: #ccc; }
-.scatter-axis-y { position: absolute; left: 10%; top: 5%; bottom: 24px; width: 1px; background: #ccc; }
-.scatter-mid-h  { position: absolute; left: 10%; right: 5%; top: 50%; height: 1px; background: #ddd; border-top: 1px dashed #bbb; }
-.scatter-mid-v  { position: absolute; left: 55%; top: 5%; bottom: 24px; width: 1px; background: #ddd; border-left: 1px dashed #bbb; }
-.scatter-axis-label { position: absolute; font-size: 0.65rem; color: var(--muted); font-weight: 600; }
-
-/* RECOMMENDATION CARDS */
-.rec-card { border-radius: 6px; padding: 14px 16px; margin-bottom: 10px; border-left: 4px solid; }
-.rec-star   { background: var(--star-bg);   border-color: var(--star-border); }
-.rec-plow   { background: var(--plow-bg);   border-color: var(--plow-border); }
-.rec-puzzle { background: var(--puzzle-bg); border-color: var(--puzzle-border); }
-.rec-dog    { background: var(--dog-bg);    border-color: var(--dog-border); }
-.rec-title  { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
-.rec-body   { font-size: 0.8rem; line-height: 1.6; color: #333; }
-
-@media print {
-  .app-header, .tabs, .btn, .btn-row { display: none !important; }
-  .tab-panel { display: block !important; padding: 0; }
-  body { background: white; }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:1.1rem;font-weight:700}
+.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 18px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}
+.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px}
+.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.f{display:flex;flex-direction:column;gap:4px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;background:#FAFAF8;color:#1C1C1C;font-family:inherit}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#264653;color:#fff}.bp:hover{background:#1a3340}
+.ba{background:#2a9d8f;color:#fff}.ba:hover{background:#1e7d72}
+.bs{background:#E8E4DC;color:#1C1C1C}.bs:hover{background:#d4cfc6}
+.bd{background:#e76f51;color:#fff;padding:4px 10px;font-size:0.75rem}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:0.8rem}
+.tbl th{background:#264653;color:#fff;padding:9px 10px;text-align:left;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.04em}
+.tbl td{padding:7px 10px;border-bottom:1px solid #E8E4DC;vertical-align:middle}
+.tbl tr:hover td{background:#f5f1eb}
+.tbl input,.tbl select{padding:4px 6px;border:1px solid #E8E4DC;border-radius:4px;font-size:0.78rem;width:100%;background:#FAFAF8;font-family:inherit}
+.mc{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px;text-align:center}
+.ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.mv{font-size:1.3rem;font-weight:700;color:#264653}
+.mv.g{color:#2a9d8f}.mv.r{color:#e76f51}.mv.a{color:#C8A97E}
+/* QUADRANT BOXES */
+.qstar{background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:16px;margin-bottom:12px}
+.qplow{background:#d1fae5;border:1px solid #6ee7b7;border-radius:8px;padding:16px;margin-bottom:12px}
+.qpuzz{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:16px;margin-bottom:12px}
+.qdog {background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:16px;margin-bottom:12px}
+.qh{font-size:0.85rem;font-weight:700;margin-bottom:8px}
+.qi{font-size:0.8rem;padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.08)}
+/* SCATTER */
+.scwrap{position:relative;width:100%;padding-top:55%;background:#f9fafb;border:1px solid #E8E4DC;border-radius:8px;overflow:hidden}
+.scdot{position:absolute;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);cursor:pointer;transition:all 0.2s}
+.scdot:hover{transform:translate(-50%,-50%) scale(1.5)}
+.sclbl{position:absolute;font-size:0.58rem;white-space:nowrap;transform:translateX(-50%);color:#1C1C1C;pointer-events:none}
+.scaxis{position:absolute;font-size:0.65rem;color:#6B6B6B;font-weight:600}
+/* ACTION CARDS */
+.ac{border-radius:8px;padding:16px;margin-bottom:12px;border-left:4px solid}
+.ac-star{background:#fef9c3;border-color:#f59e0b}
+.ac-plow{background:#d1fae5;border-color:#10b981}
+.ac-puzz{background:#fef3c7;border-color:#f59e0b}
+.ac-dog {background:#fee2e2;border-color:#ef4444}
+.ac h4{font-size:0.85rem;font-weight:700;margin-bottom:6px}
+.ac p{font-size:0.8rem;color:#374151}
+/* REPORT */
+.rrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E4DC;font-size:0.85rem}
+.rsec{margin-bottom:20px}
+.rsec h3{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6B6B6B;margin-bottom:10px}
+.sbadge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700}
+.sg{background:#d1fae5;color:#065f46}.sa{background:#fef3c7;color:#92400e}.sr{background:#fee2e2;color:#991b1b}
+@media print{.hdr,.tabs,.btn,.brow{display:none!important}.panel{display:block!important;padding:12px}}
+@media(max-width:768px){.g3,.g4{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-
-<header class="app-header">
-  <div>
-    <h1>📊 KitchenFounder Menu Engineering Matrix</h1>
-    <div class="sub">Stars · Plowhorses · Puzzles · Dogs — Know what to push, fix, and kill</div>
-  </div>
+<div class="hdr">
+  <div><h1>📊 KitchenFounder Menu Engineering Matrix</h1><p>Classify · Optimise · Profit</p></div>
   <span class="badge">FREE TOOL</span>
-</header>
-
+</div>
 <div class="tabs">
-  <button class="tab-btn active" data-tab="items">🍽️ Menu Items</button>
-  <button class="tab-btn" data-tab="matrix">📊 Matrix</button>
-  <button class="tab-btn" data-tab="scatter">🎯 Plot</button>
-  <button class="tab-btn" data-tab="actions">💡 Actions</button>
-  <button class="tab-btn" data-tab="report">📄 Report</button>
+  <button class="tab on" onclick="ST('items',this)">🍽️ Menu Items</button>
+  <button class="tab" onclick="ST('matrix',this)">📊 Matrix</button>
+  <button class="tab" onclick="ST('scatter',this)">🎯 Plot</button>
+  <button class="tab" onclick="ST('actions',this)">💡 Actions</button>
+  <button class="tab" onclick="ST('report',this)">📄 Report</button>
+</div>
+<!-- ITEMS PANEL -->
+<div id="panel-items" class="panel">
+<div class="card"><div class="ct">⚙️ Settings</div>
+<div class="g3">
+  <div class="f"><label>Venue Name</label><input id="vname" value="My Restaurant" onchange="CA()"></div>
+  <div class="f"><label>Target Food Cost %</label><input type="number" id="tfc" value="30" min="10" max="60" onchange="CA()"></div>
+  <div class="f"><label>Weekly Cover Target</label><input type="number" id="tcovers" value="300" onchange="CA()"></div>
+</div></div>
+<div class="card"><div class="ct">🍽️ Menu Items <span id="item-badge" style="font-size:0.75rem;font-weight:400;color:#6B6B6B"></span></div>
+<div class="brow">
+  <button class="btn ba" onclick="addItem()">+ Add Item</button>
+  <button class="btn bs" onclick="loadSample()">📋 Load Sample Menu</button>
+  <button class="btn bp" onclick="CA()">🔄 Recalculate</button>
+</div>
+<div style="overflow-x:auto"><table class="tbl">
+<thead><tr>
+  <th>Item Name</th><th>Category</th><th>Sell Price ($)</th><th>Food Cost ($)</th>
+  <th>Weekly Portions</th><th>FC %</th><th>Contribution</th><th>Weekly Rev</th><th>Class</th><th>Remove</th>
+</tr></thead>
+<tbody id="items-tbody"></tbody>
+</table></div></div>
+<div class="card"><div class="ct">📊 Menu Overview</div>
+<div class="g4">
+  <div class="mc"><div class="ml">Total Items</div><div class="mv" id="ov-items">0</div></div>
+  <div class="mc"><div class="ml">Weekly Revenue</div><div class="mv a" id="ov-rev">$0</div></div>
+  <div class="mc"><div class="ml">Avg Food Cost %</div><div class="mv" id="ov-fc">0%</div></div>
+  <div class="mc"><div class="ml">Avg Contribution</div><div class="mv g" id="ov-cm">$0.00</div></div>
+</div></div>
 </div>
 
-<!-- TAB 1: MENU ITEMS -->
-<div id="panel-items" class="tab-panel active">
-
-  <div class="grid-4" style="margin-bottom:16px">
-    <div class="metric-card blue"><div class="ml">Total Items</div><div class="mv" id="sum-total">0</div><div class="ms">on menu</div></div>
-    <div class="metric-card"><div class="ml">Avg Food Cost %</div><div class="mv" id="sum-avg-cost">0%</div><div class="ms">blended</div></div>
-    <div class="metric-card green"><div class="ml">Avg Contribution</div><div class="mv" id="sum-avg-contrib">$0</div><div class="ms">per cover</div></div>
-    <div class="metric-card amber"><div class="ml">Menu Mix Score</div><div class="mv" id="sum-mix-score">—</div><div class="ms">profitability index</div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>🍽️</span> Menu Items
-      <span id="item-count-badge" style="font-size:0.72rem;font-weight:500;color:var(--muted);margin-left:4px"></span>
-    </div>
-    <div style="overflow-x:auto">
-      <table class="menu-table">
-        <thead>
-          <tr>
-            <th style="min-width:140px">Item Name</th>
-            <th>Category</th>
-            <th>Sell Price ($)</th>
-            <th>Food Cost ($)</th>
-            <th>Portions/Week</th>
-            <th>Food Cost %</th>
-            <th>Contribution $</th>
-            <th>Weekly Revenue</th>
-            <th>Classification</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="items-tbody"></tbody>
-      </table>
-    </div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="addItem()">+ Add Item</button>
-      <button class="btn btn-secondary" onclick="loadSampleMenu()">📋 Load Sample Menu</button>
-      <button class="btn btn-secondary" onclick="calculateAll()">🔄 Recalculate</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>⚙️</span> Settings</div>
-    <div class="grid-4">
-      <div class="field"><label>Target Food Cost %</label><input type="number" id="target-fc-pct" value="30" min="1" max="60"><div class="tip">Your ideal blended food cost</div></div>
-      <div class="field"><label>High Popularity Threshold</label><input type="number" id="popularity-threshold" value="70" min="1" max="100"><div class="tip">% of avg sales to be "popular"</div></div>
-      <div class="field"><label>High Contribution Threshold</label><input type="number" id="contrib-threshold" value="100" min="1" max="100"><div class="tip">% of avg contribution to be "high"</div></div>
-      <div class="field"><label>Restaurant Name</label><input type="text" id="resto-name" value="My Restaurant" placeholder="Enter name"></div>
-    </div>
-  </div>
+<!-- MATRIX PANEL -->
+<div id="panel-matrix" class="panel" style="display:none">
+<div class="g2">
+  <div class="qstar"><div class="qh">⭐ Stars — High CM · High Popularity</div><div id="q-star"></div></div>
+  <div class="qplow"><div class="qh">🐄 Plowhorses — Low CM · High Popularity</div><div id="q-plow"></div></div>
+</div>
+<div class="g2">
+  <div class="qpuzz"><div class="qh">❓ Puzzles — High CM · Low Popularity</div><div id="q-puzz"></div></div>
+  <div class="qdog"><div class="qh">🐕 Dogs — Low CM · Low Popularity</div><div id="q-dog"></div></div>
+</div>
+<div class="card"><div class="ct">📊 Classification Thresholds</div>
+<div class="g2">
+  <div class="rrow"><span>Average Contribution Margin</span><span id="th-cm">$0.00</span></div>
+  <div class="rrow"><span>Average Popularity (portions/wk)</span><span id="th-pop">0</span></div>
+</div></div>
 </div>
 
-<!-- TAB 2: MATRIX -->
-<div id="panel-matrix" class="tab-panel">
-  <div class="grid-4" style="margin-bottom:16px">
-    <div class="metric-card" style="background:var(--star-bg);border-color:var(--star-border)">
-      <div class="ml" style="color:#b8860b">⭐ Stars</div>
-      <div class="mv" id="count-star" style="color:#b8860b">0</div>
-      <div class="ms">High profit · High popularity</div>
-    </div>
-    <div class="metric-card" style="background:var(--plow-bg);border-color:var(--plow-border)">
-      <div class="ml" style="color:#1a7a70">🐄 Plowhorses</div>
-      <div class="mv" id="count-plow" style="color:#1a7a70">0</div>
-      <div class="ms">Low profit · High popularity</div>
-    </div>
-    <div class="metric-card" style="background:var(--puzzle-bg);border-color:var(--puzzle-border)">
-      <div class="ml" style="color:#8a6800">❓ Puzzles</div>
-      <div class="mv" id="count-puzzle" style="color:#8a6800">0</div>
-      <div class="ms">High profit · Low popularity</div>
-    </div>
-    <div class="metric-card" style="background:var(--dog-bg);border-color:var(--dog-border)">
-      <div class="ml" style="color:#b5451b">🐕 Dogs</div>
-      <div class="mv" id="count-dog" style="color:#b5451b">0</div>
-      <div class="ms">Low profit · Low popularity</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>📊</span> Menu Engineering Matrix</div>
-    <div class="matrix-outer">
-      <div class="axis-label-y">← Low Popularity &nbsp;&nbsp; High Popularity →</div>
-      <div class="matrix-wrap">
-        <div class="matrix-grid">
-          <!-- Top-left: Puzzle (high margin, low pop) -->
-          <div class="quadrant puzzle">
-            <div class="quadrant-icon">❓</div>
-            <div class="quadrant-title" style="color:#8a6800">❓ PUZZLE</div>
-            <div class="quadrant-sub">High profit · Low popularity — promote or reposition</div>
-            <div class="quadrant-items" id="q-puzzle-items"><em style="color:var(--muted);font-size:0.75rem">No items yet</em></div>
-          </div>
-          <!-- Top-right: Star (high margin, high pop) -->
-          <div class="quadrant star">
-            <div class="quadrant-icon">⭐</div>
-            <div class="quadrant-title" style="color:#b8860b">⭐ STAR</div>
-            <div class="quadrant-sub">High profit · High popularity — protect & feature</div>
-            <div class="quadrant-items" id="q-star-items"><em style="color:var(--muted);font-size:0.75rem">No items yet</em></div>
-          </div>
-          <!-- Bottom-left: Dog (low margin, low pop) -->
-          <div class="quadrant dog">
-            <div class="quadrant-icon">🐕</div>
-            <div class="quadrant-title" style="color:#b5451b">🐕 DOG</div>
-            <div class="quadrant-sub">Low profit · Low popularity — remove or rework</div>
-            <div class="quadrant-items" id="q-dog-items"><em style="color:var(--muted);font-size:0.75rem">No items yet</em></div>
-          </div>
-          <!-- Bottom-right: Plowhorse (low margin, high pop) -->
-          <div class="quadrant plow">
-            <div class="quadrant-icon">🐄</div>
-            <div class="quadrant-title" style="color:#1a7a70">🐄 PLOWHORSE</div>
-            <div class="quadrant-sub">Low profit · High popularity — reduce cost or upsell</div>
-            <div class="quadrant-items" id="q-plow-items"><em style="color:var(--muted);font-size:0.75rem">No items yet</em></div>
-          </div>
-        </div>
-        <div class="axis-label-x">← Low Contribution Margin &nbsp;&nbsp;&nbsp; High Contribution Margin →</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>📈</span> Revenue by Category</div>
-    <div id="category-breakdown"></div>
-  </div>
+<!-- SCATTER PANEL -->
+<div id="panel-scatter" class="panel" style="display:none">
+<div class="card"><div class="ct">🎯 Popularity vs Contribution Plot</div>
+<div id="scatter-wrap" class="scwrap"></div>
+<div style="display:flex;gap:24px;margin-top:12px;font-size:0.75rem;flex-wrap:wrap">
+  <span>⭐ <span style="color:#d97706">Star</span></span>
+  <span>🐄 <span style="color:#059669">Plowhorse</span></span>
+  <span>❓ <span style="color:#d97706">Puzzle</span></span>
+  <span>🐕 <span style="color:#dc2626">Dog</span></span>
+</div>
+<p style="font-size:0.75rem;color:#6B6B6B;margin-top:8px">X-axis = Weekly Portions · Y-axis = Contribution Margin ($) · Hover dot for item name</p>
+</div>
 </div>
 
-<!-- TAB 3: SCATTER PLOT -->
-<div id="panel-scatter" class="tab-panel">
-  <div class="card">
-    <div class="card-title"><span>🎯</span> Popularity vs Contribution Margin Plot</div>
-    <div class="scatter-container">
-      <div class="scatter-inner" id="scatter-inner">
-        <div class="scatter-axis-x"></div>
-        <div class="scatter-axis-y"></div>
-        <div class="scatter-mid-h"></div>
-        <div class="scatter-mid-v"></div>
-        <div class="scatter-axis-label" style="bottom:4px;left:50%;transform:translateX(-50%)">← Low Contribution &nbsp;&nbsp; High Contribution →</div>
-        <div class="scatter-axis-label" style="top:50%;left:1%;transform:rotate(-90deg) translateX(-50%);transform-origin:left center;writing-mode:vertical-rl;font-size:0.6rem">← Low Pop · High Pop →</div>
-        <!-- Quadrant labels -->
-        <div class="scatter-axis-label" style="top:8px;left:12%;color:#b5451b;font-size:0.65rem;font-weight:700">🐕 DOG</div>
-        <div class="scatter-axis-label" style="top:8px;right:6%;color:#b8860b;font-size:0.65rem;font-weight:700">⭐ STAR</div>
-        <div class="scatter-axis-label" style="bottom:30px;left:12%;color:#8a6800;font-size:0.65rem;font-weight:700">❓ PUZZLE</div>
-        <div class="scatter-axis-label" style="bottom:30px;right:6%;color:#1a7a70;font-size:0.65rem;font-weight:700">🐄 PLOW</div>
-        <!-- Dots rendered by JS -->
-        <div id="scatter-dots"></div>
-      </div>
-    </div>
-    <div style="display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;font-size:0.72rem">
-      <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--star-border);margin-right:4px"></span>Star</span>
-      <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--plow-border);margin-right:4px"></span>Plowhorse</span>
-      <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--puzzle-border);margin-right:4px"></span>Puzzle</span>
-      <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--dog-border);margin-right:4px"></span>Dog</span>
-      <span style="color:var(--muted)">• Dot size = weekly revenue</span>
-    </div>
-  </div>
+<!-- ACTIONS PANEL -->
+<div id="panel-actions" class="panel" style="display:none">
+<div id="actions-content">
+  <div class="ac ac-star"><h4>⭐ Stars — Keep & Promote</h4><p>These items are your profit engines. Protect their food cost, feature them prominently on the menu, and train staff to recommend them.</p></div>
+  <div id="act-star"></div>
+  <div class="ac ac-plow"><h4>🐄 Plowhorses — Increase Profitability</h4><p>Popular but thin margins. Consider a small price increase, reduce portion size slightly, or substitute a lower-cost ingredient.</p></div>
+  <div id="act-plow"></div>
+  <div class="ac ac-puzz"><h4>❓ Puzzles — Drive Volume</h4><p>Great margins but low volume. Reposition on the menu, create combos, or have staff recommend them to boost popularity.</p></div>
+  <div id="act-puzz"></div>
+  <div class="ac ac-dog"><h4>🐕 Dogs — Review or Remove</h4><p>Low margin and low volume. Consider removing, repricing, or rebranding these items. Every menu slot has an opportunity cost.</p></div>
+  <div id="act-dog"></div>
+</div>
 </div>
 
-<!-- TAB 4: ACTIONS -->
-<div id="panel-actions" class="tab-panel">
-  <div class="grid-4" style="margin-bottom:16px">
-    <div class="metric-card blue"><div class="ml">Weekly Revenue</div><div class="mv" id="act-weekly-rev">$0</div><div class="ms">current menu</div></div>
-    <div class="metric-card green"><div class="ml">Weekly Contribution</div><div class="mv" id="act-weekly-contrib">$0</div><div class="ms">gross profit</div></div>
-    <div class="metric-card amber"><div class="ml">Blended Food Cost</div><div class="mv" id="act-blended-fc">0%</div><div class="ms">actual</div></div>
-    <div class="metric-card"><div class="ml">Opportunity Value</div><div class="mv" id="act-opportunity">$0</div><div class="ms">if all items optimised</div></div>
+<!-- REPORT PANEL -->
+<div id="panel-report" class="panel" style="display:none">
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div><div style="font-size:1.1rem;font-weight:700" id="rpt-venue">My Restaurant</div>
+    <div style="font-size:0.8rem;color:#6B6B6B">Menu Engineering Analysis</div></div>
+    <div id="rpt-badge"></div>
   </div>
-
-  <div id="actions-container"></div>
-
-  <div class="card">
-    <div class="card-title"><span>📖</span> The Menu Engineering Playbook</div>
-    <div style="font-size:0.83rem;line-height:1.85">
-
-      <p style="font-weight:700;color:var(--blue);margin-bottom:6px;margin-top:4px">⭐ STARS — Protect & Feature</p>
-      <p style="margin-bottom:14px">Stars are your best performers — high margin, high demand. Never mess with a star without careful thought. Feature them prominently on the menu (top-right of page, photo, callout box). Train staff to recommend them. Use them as anchors for upsell ("that goes great with our house cocktail").</p>
-
-      <p style="font-weight:700;color:var(--blue);margin-bottom:6px">🐄 PLOWHORSES — Reduce Cost or Upsell</p>
-      <p style="margin-bottom:14px">Plowhorses pay the bills — guests love them but they don't make you rich. Your play: (1) Reduce portion size by 5–8% — most guests won't notice. (2) Find a cheaper supplier for a key ingredient. (3) Add a profitable side or upsell ("add a glass of wine for $12"). (4) Raise price by $1–2 and monitor demand — if it holds, you've turned a Plowhorse into a Star.</p>
-
-      <p style="font-weight:700;color:var(--blue);margin-bottom:6px">❓ PUZZLES — Promote or Reposition</p>
-      <p style="margin-bottom:14px">Puzzles make great money per plate but nobody orders them. Either the name is confusing, the description is flat, or staff aren't selling it. Fix: (1) Rename it — make it evocative. (2) Rewrite the description — add texture, emotion, origin story. (3) Run it as a special or "Chef's Feature" for 2 weeks. (4) Staff incentive: whoever sells the most Puzzles this week wins $20. If none of that works, it might be a Dog in disguise.</p>
-
-      <p style="font-weight:700;color:var(--blue);margin-bottom:6px">🐕 DOGS — Remove or Radically Rework</p>
-      <p style="margin-bottom:14px">Dogs drain your kitchen's time and cost you money. Be ruthless. (1) Remove it from the menu — most customers won't ask for it. (2) If it has sentimental value, keep it but stop promoting it. (3) Check if it shares ingredients with Stars — if yes, keep it for inventory efficiency. (4) Could it be a Bar Snack or Lunch Special at a lower price point where it finds an audience?</p>
-
-      <p style="font-weight:700;color:var(--blue);margin-bottom:6px">🧠 The 3 Golden Rules of Menu Engineering</p>
-      <ul style="margin-left:16px;margin-bottom:0">
-        <li style="margin-bottom:6px"><strong>Menu size matters:</strong> 7 ± 2 items per category is the sweet spot. More than that and guests can't decide. Decision fatigue = table time up = turns down.</li>
-        <li style="margin-bottom:6px"><strong>Price anchoring works:</strong> Put your most expensive item at the top of each section. Everything else looks reasonable by comparison. Your real money-maker is the second-cheapest item — that's where guests' eyes land.</li>
-        <li><strong>Run the matrix monthly:</strong> Seasons change, trends shift, suppliers reprice. A Star in January can become a Dog in July. This isn't a one-time exercise — it's a monthly discipline.</li>
-      </ul>
-    </div>
+  <div class="rsec"><h3>Menu Summary</h3>
+    <div class="rrow"><span>Total Menu Items</span><span id="rpt-items">0</span></div>
+    <div class="rrow"><span>Weekly Revenue Potential</span><span id="rpt-rev">$0</span></div>
+    <div class="rrow"><span>Average Food Cost %</span><span id="rpt-fc">0%</span></div>
+    <div class="rrow"><span>Average Contribution Margin</span><span id="rpt-cm">$0.00</span></div>
+    <div class="rrow"><span>Target Food Cost %</span><span id="rpt-tfc">30%</span></div>
+  </div>
+  <div class="rsec"><h3>Quadrant Breakdown</h3>
+    <div class="rrow"><span>⭐ Stars</span><span id="rpt-stars">0 items</span></div>
+    <div class="rrow"><span>🐄 Plowhorses</span><span id="rpt-plows">0 items</span></div>
+    <div class="rrow"><span>❓ Puzzles</span><span id="rpt-puzzles">0 items</span></div>
+    <div class="rrow"><span>🐕 Dogs</span><span id="rpt-dogs">0 items</span></div>
+  </div>
+  <div class="rsec"><h3>Top 5 by Revenue</h3><div id="rpt-top5"></div></div>
+  <div class="rsec"><h3>Items to Review</h3><div id="rpt-review"></div></div>
+  <div class="brow">
+    <button class="btn bp" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn bs" onclick="CA()">🔄 Refresh</button>
   </div>
 </div>
-
-<!-- TAB 5: REPORT -->
-<div id="panel-report" class="tab-panel">
-  <div class="card" id="print-report">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-      <div>
-        <div style="font-size:1.1rem;font-weight:800;color:var(--blue)" id="rpt-name">My Restaurant</div>
-        <div style="font-size:0.78rem;color:var(--muted)">Menu Engineering Analysis</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase">KitchenFounder</div>
-        <div id="rpt-badge" style="margin-top:6px"></div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:0.8rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">📊 Menu Overview</div>
-      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.83rem"><span>Total Items</span><span id="rpt-total-items">0</span></div>
-      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.83rem"><span>Weekly Revenue</span><span id="rpt-weekly-rev">$0</span></div>
-      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.83rem"><span>Weekly Contribution</span><span id="rpt-weekly-contrib">$0</span></div>
-      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.83rem"><span>Blended Food Cost %</span><span id="rpt-blended-fc">0%</span></div>
-      <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.83rem;font-weight:700"><span>Menu Mix Score</span><span id="rpt-mix-score">—</span></div>
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:0.8rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">📈 Classification Breakdown</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="rpt-classification"></div>
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:0.8rem;font-weight:700;color:var(--blue);border-bottom:2px solid var(--accent);padding-bottom:5px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">📋 Full Item List</div>
-      <div id="rpt-item-list"></div>
-    </div>
-
-    <div style="padding:10px;background:#f5f0e8;border-radius:6px;margin-top:8px">
-      <div style="font-size:0.68rem;color:var(--muted);text-align:center">
-        Generated by KitchenFounder Menu Engineering Matrix · kitchenfounder.com<br>
-        Based on the Kasavana & Smith Menu Engineering methodology (1982). Run monthly for best results.
-      </div>
-    </div>
-  </div>
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
-    <button class="btn btn-secondary" onclick="calculateAll()">🔄 Refresh</button>
-  </div>
 </div>
-
 <script>
-// ============================================================
-// KitchenFounder Menu Engineering Matrix — JS Engine
-// ============================================================
+var CATS = ['Starter','Main','Dessert','Drink','Snack','Special'];
+var QCOLS = {star:'#f59e0b',plow:'#10b981',puzz:'#f59e0b',dog:'#ef4444'};
+var menuItems = [];
 
-let menuItems = [];
+function ST(name, btn) {
+  var panels = ['items','matrix','scatter','actions','report'];
+  for (var i=0;i<panels.length;i++){
+    var p=document.getElementById('panel-'+panels[i]);
+    if(p) p.style.display='none';
+  }
+  var tabs=document.getElementsByClassName('tab');
+  for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+  CA();
+}
 
-const CATEGORIES = ['Starter','Main','Dessert','Drink','Side','Special'];
-const Q_COLORS = { star:'#f4d03f', plow:'#2a9d8f', puzzle:'#e9c46a', dog:'#e76f51' };
-const Q_LABELS = { star:'⭐ Star', plow:'🐄 Plowhorse', puzzle:'❓ Puzzle', dog:'🐕 Dog' };
+function gv(id,def){ var e=document.getElementById(id); return e?(parseFloat(e.value)||def||0):(def||0); }
+function gt(id,def){ var e=document.getElementById(id); return e?(e.value||(def||'')):(def||''); }
+function st(id,v)  { var e=document.getElementById(id); if(e) e.textContent=v; }
+function fm(n){ return '$'+Math.round(n).toLocaleString(); }
+function fp(n){ return n.toFixed(1)+'%'; }
+function fd(n){ return '$'+parseFloat(n).toFixed(2); }
+function uid(){ return 'm_'+Date.now()+'_'+Math.random().toString(36).substr(2,4); }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab)?.classList.add('active');
-      calculateAll();
-    });
-  });
-  document.querySelectorAll('#panel-items input, #panel-items select').forEach(el => {
-    el.addEventListener('change', calculateAll);
-  });
-  loadSampleMenu();
-});
-
-function uid() { return 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2,4); }
-function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
-function fmtD(n) { return '$' + parseFloat(n).toFixed(2); }
-function fmtPct(n) { return parseFloat(n).toFixed(1) + '%'; }
-function gv(id, def=0) { const e=document.getElementById(id); return e ? (parseFloat(e.value)||def) : def; }
-function gt(id, def='') { const e=document.getElementById(id); return e ? (e.value||def) : def; }
-function st(id, v) { const e=document.getElementById(id); if(e) e.textContent=v; }
-
-function addItem(data={}) {
-  const id = uid();
+function addItem(data) {
+  data = data || {};
   menuItems.push({
-    id,
-    name:       data.name       || '',
-    category:   data.category   || 'Main',
-    sellPrice:  data.sellPrice  || 0,
-    foodCost:   data.foodCost   || 0,
-    portions:   data.portions   || 0
+    id: uid(),
+    name: data.name||'',
+    category: data.category||'Main',
+    sellPrice: data.sellPrice||0,
+    foodCost: data.foodCost||0,
+    portions: data.portions||0
   });
-  renderTable();
-  calculateAll();
+  renderTable(); CA();
 }
 
 function removeItem(id) {
-  menuItems = menuItems.filter(i => i.id !== id);
-  renderTable();
-  calculateAll();
+  menuItems = menuItems.filter(function(m){ return m.id!==id; });
+  renderTable(); CA();
 }
 
-function loadSampleMenu() {
+function loadSample() {
   menuItems = [];
-  const samples = [
-    { name:'Chicken Wings',       category:'Starter', sellPrice:14, foodCost:4.20, portions:85 },
-    { name:'Calamari',            category:'Starter', sellPrice:16, foodCost:5.60, portions:42 },
-    { name:'Soup of the Day',     category:'Starter', sellPrice:9,  foodCost:2.10, portions:28 },
-    { name:'Grilled Salmon',      category:'Main',    sellPrice:36, foodCost:11.80,portions:55 },
-    { name:'Beef Burger',         category:'Main',    sellPrice:22, foodCost:6.80, portions:120 },
-    { name:'Penne Arrabiata',     category:'Main',    sellPrice:19, foodCost:4.20, portions:38 },
-    { name:'Chicken Schnitzel',   category:'Main',    sellPrice:28, foodCost:8.40, portions:92 },
-    { name:'Pork Ribs',           category:'Main',    sellPrice:38, foodCost:14.00,portions:45 },
-    { name:'Veg Stir Fry',        category:'Main',    sellPrice:18, foodCost:4.50, portions:18 },
-    { name:'Chocolate Lava Cake', category:'Dessert', sellPrice:12, foodCost:2.40, portions:62 },
-    { name:'Crème Brûlée',        category:'Dessert', sellPrice:13, foodCost:2.60, portions:30 },
-    { name:'Ice Cream (3 scoops)',category:'Dessert', sellPrice:8,  foodCost:2.00, portions:22 },
-    { name:'House Red Wine',      category:'Drink',   sellPrice:11, foodCost:2.20, portions:75 },
-    { name:'Craft Beer',          category:'Drink',   sellPrice:9,  foodCost:2.50, portions:110 },
-    { name:'Soft Drink',          category:'Drink',   sellPrice:5,  foodCost:0.60, portions:140 },
-    { name:'Sparkling Water',     category:'Drink',   sellPrice:6,  foodCost:0.50, portions:90 },
+  var items = [
+    {name:'Crispy Calamari',    category:'Starter', sellPrice:14, foodCost:4.5,  portions:45},
+    {name:'Beef Tacos (x3)',    category:'Starter', sellPrice:16, foodCost:5.2,  portions:38},
+    {name:'Soup of the Day',    category:'Starter', sellPrice:10, foodCost:2.8,  portions:55},
+    {name:'Chicken Caesar',     category:'Starter', sellPrice:13, foodCost:3.9,  portions:32},
+    {name:'Beef Burger',        category:'Main',    sellPrice:22, foodCost:7.0,  portions:80},
+    {name:'Grilled Salmon',     category:'Main',    sellPrice:28, foodCost:11.0, portions:42},
+    {name:'Mushroom Risotto',   category:'Main',    sellPrice:24, foodCost:6.5,  portions:35},
+    {name:'Chicken Schnitzel',  category:'Main',    sellPrice:20, foodCost:5.8,  portions:70},
+    {name:'Fish & Chips',       category:'Main',    sellPrice:18, foodCost:5.5,  portions:65},
+    {name:'Lamb Rack',          category:'Main',    sellPrice:38, foodCost:14.0, portions:20},
+    {name:'Pasta Carbonara',    category:'Main',    sellPrice:19, foodCost:4.8,  portions:52},
+    {name:'Chocolate Fondant',  category:'Dessert', sellPrice:12, foodCost:2.8,  portions:40},
+    {name:'Cheesecake',         category:'Dessert', sellPrice:10, foodCost:2.5,  portions:58},
+    {name:'Craft Beer',         category:'Drink',   sellPrice:9,  foodCost:2.0,  portions:120},
+    {name:'House Wine (glass)', category:'Drink',   sellPrice:11, foodCost:2.5,  portions:95},
+    {name:'Cocktail',           category:'Drink',   sellPrice:16, foodCost:3.5,  portions:45}
   ];
-  samples.forEach(s => {
-    const id = uid();
-    menuItems.push({ id, ...s });
-  });
-  renderTable();
-  calculateAll();
+  items.forEach(function(d){ addItem(d); });
 }
 
 function renderTable() {
-  const tbody = document.getElementById('items-tbody');
+  var tbody = document.getElementById('items-tbody');
   if (!tbody) return;
-  tbody.innerHTML = menuItems.map((item, idx) => {
-    const fc = item.sellPrice > 0 ? (item.foodCost / item.sellPrice * 100) : 0;
-    const contrib = item.sellPrice - item.foodCost;
-    const weeklyRev = item.sellPrice * item.portions;
-    return `<tr>
-      <td><input type="text" value="${item.name}" placeholder="Item name"
-        onchange="menuItems[${idx}].name=this.value;renderTable();calculateAll()"></td>
-      <td>
-        <select onchange="menuItems[${idx}].category=this.value;calculateAll()">
-          ${CATEGORIES.map(c=>`<option ${item.category===c?'selected':''}>${c}</option>`).join('')}
-        </select>
-      </td>
-      <td><input type="number" value="${item.sellPrice}" min="0" step="0.50"
-        onchange="menuItems[${idx}].sellPrice=parseFloat(this.value)||0;renderTable();calculateAll()"></td>
-      <td><input type="number" value="${item.foodCost}" min="0" step="0.10"
-        onchange="menuItems[${idx}].foodCost=parseFloat(this.value)||0;renderTable();calculateAll()"></td>
-      <td><input type="number" value="${item.portions}" min="0"
-        onchange="menuItems[${idx}].portions=parseInt(this.value)||0;calculateAll()"></td>
-      <td style="text-align:center;font-weight:700;color:${fc>gv('target-fc-pct',30)?'var(--red)':'var(--green)'}">${fmtPct(fc)}</td>
-      <td style="text-align:center;font-weight:700">${fmtD(contrib)}</td>
-      <td style="text-align:center;font-weight:700">${fmt(weeklyRev)}</td>
-      <td id="class-${item.id}" style="text-align:center">—</td>
-      <td><button class="btn btn-danger" onclick="removeItem('${item.id}')">✕</button></td>
-    </tr>`;
+  var tfcPct = gv('tfc',30);
+  tbody.innerHTML = menuItems.map(function(item,idx){
+    var fc = item.sellPrice>0 ? (item.foodCost/item.sellPrice*100) : 0;
+    var cm = item.sellPrice - item.foodCost;
+    var wrev = item.sellPrice * item.portions;
+    var fcCol = fc>tfcPct?'#e76f51':'#2a9d8f';
+    var catOpts = CATS.map(function(c){ return '<option'+(item.category===c?' selected':'')+'>'+c+'</option>'; }).join('');
+    return '<tr>'+
+      '<td><input type="text" value="'+item.name+'" placeholder="Item name" onchange="menuItems['+idx+'].name=this.value;renderTable();CA()"></td>'+
+      '<td><select onchange="menuItems['+idx+'].category=this.value;CA()">'+catOpts+'</select></td>'+
+      '<td><input type="number" value="'+item.sellPrice+'" min="0" step="0.50" style="width:70px" onchange="menuItems['+idx+'].sellPrice=parseFloat(this.value)||0;renderTable();CA()"></td>'+
+      '<td><input type="number" value="'+item.foodCost+'" min="0" step="0.10" style="width:70px" onchange="menuItems['+idx+'].foodCost=parseFloat(this.value)||0;renderTable();CA()"></td>'+
+      '<td><input type="number" value="'+item.portions+'" min="0" style="width:65px" onchange="menuItems['+idx+'].portions=parseInt(this.value)||0;CA()"></td>'+
+      '<td style="text-align:center;font-weight:700;color:'+fcCol+'">'+fp(fc)+'</td>'+
+      '<td style="text-align:center;font-weight:700">'+fd(cm)+'</td>'+
+      '<td style="text-align:center;font-weight:700">'+fm(wrev)+'</td>'+
+      '<td id="cls-'+item.id+'" style="text-align:center">—</td>'+
+      '<td><button class="btn bd" onclick="removeItem(\''+item.id+'\')">✕</button></td>'+
+    '</tr>';
   }).join('');
-  st('item-count-badge', `(${menuItems.length} items)`);
+  st('item-badge','('+menuItems.length+' items)');
 }
 
-function classifyItems() {
-  const popThreshold  = gv('popularity-threshold', 70) / 100;
-  const contribThresh = gv('contrib-threshold', 100) / 100;
-
-  // Calculate metrics
-  const items = menuItems.map(item => ({
-    ...item,
-    fcPct:   item.sellPrice > 0 ? item.foodCost / item.sellPrice : 0,
-    contrib: item.sellPrice - item.foodCost,
-    weeklyRev: item.sellPrice * item.portions,
-    weeklyContrib: (item.sellPrice - item.foodCost) * item.portions
-  }));
-
-  const totalPortions = items.reduce((a,i) => a + i.portions, 0);
-  const avgPortions   = totalPortions / (items.length || 1);
-  const avgContrib    = items.reduce((a,i) => a + i.contrib, 0) / (items.length || 1);
-
-  return items.map(item => {
-    const isHighPop    = item.portions >= avgPortions * popThreshold;
-    const isHighContrib = item.contrib >= avgContrib * contribThresh;
-    let quadrant;
-    if      (isHighPop && isHighContrib) quadrant = 'star';
-    else if (isHighPop && !isHighContrib) quadrant = 'plow';
-    else if (!isHighPop && isHighContrib) quadrant = 'puzzle';
-    else                                  quadrant = 'dog';
-    return { ...item, quadrant, isHighPop, isHighContrib, avgPortions, avgContrib };
+function classify(items) {
+  var avgCM = items.length>0 ? items.reduce(function(a,m){return a+(m.sellPrice-m.foodCost);},0)/items.length : 0;
+  var avgPop = items.length>0 ? items.reduce(function(a,m){return a+m.portions;},0)/items.length : 0;
+  return items.map(function(m){
+    var cm=m.sellPrice-m.foodCost, highCM=cm>=avgCM, highPop=m.portions>=avgPop;
+    var q = highCM&&highPop?'star':(!highCM&&highPop?'plow':(highCM&&!highPop?'puzz':'dog'));
+    return {item:m, cm:cm, q:q, avgCM:avgCM, avgPop:avgPop};
   });
 }
 
-function calculateAll() {
-  const classified = classifyItems();
+function CA() {
+  if (menuItems.length===0) return;
+  var tfcPct = gv('tfc',30);
+  var classified = classify(menuItems);
+  var avgCM = classified[0].avgCM, avgPop = classified[0].avgPop;
 
-  // Summary metrics
-  const totalItems    = classified.length;
-  const totalRev      = classified.reduce((a,i) => a + i.weeklyRev, 0);
-  const totalContrib  = classified.reduce((a,i) => a + i.weeklyContrib, 0);
-  const totalFoodCost = classified.reduce((a,i) => a + i.foodCost * i.portions, 0);
-  const blendedFC     = totalRev > 0 ? (totalFoodCost / totalRev * 100) : 0;
-  const starCount     = classified.filter(i=>i.quadrant==='star').length;
-  const plowCount     = classified.filter(i=>i.quadrant==='plow').length;
-  const puzzleCount   = classified.filter(i=>i.quadrant==='puzzle').length;
-  const dogCount      = classified.filter(i=>i.quadrant==='dog').length;
-  const mixScore      = totalItems > 0 ? Math.round(((starCount + puzzleCount) / totalItems) * 100) : 0;
+  // Overview
+  var totalRev = menuItems.reduce(function(a,m){return a+m.sellPrice*m.portions;},0);
+  var totalPorRev = menuItems.reduce(function(a,m){return a+m.sellPrice*m.portions;},0);
+  var wtFC = menuItems.reduce(function(a,m){
+    return a+(m.sellPrice>0?(m.foodCost/m.sellPrice*100)*m.portions:0);
+  },0) / (menuItems.reduce(function(a,m){return a+m.portions;},0)||1);
+  st('ov-items',menuItems.length);
+  st('ov-rev',fm(totalRev));
+  st('ov-fc',fp(wtFC));
+  st('ov-cm',fd(avgCM));
 
-  // Opportunity: if all dogs became plowhorses (avg contribution)
-  const avgContrib    = classified.length > 0 ? classified.reduce((a,i)=>a+i.contrib,0)/classified.length : 0;
-  const dogOpportunity = classified.filter(i=>i.quadrant==='dog').reduce((a,i) => a + (avgContrib - i.contrib) * i.portions, 0);
+  // Thresholds
+  st('th-cm',fd(avgCM)); st('th-pop',avgPop.toFixed(1));
 
-  // Summary cards
-  st('sum-total', totalItems);
-  st('sum-avg-cost', fmtPct(blendedFC));
-  st('sum-avg-contrib', fmtD(totalContrib / (totalItems || 1)));
-  st('sum-mix-score', mixScore + '%');
+  // Quadrant content
+  var qs={star:[],plow:[],puzz:[],dog:[]};
+  classified.forEach(function(c){ qs[c.q].push(c); });
 
-  st('count-star', starCount);
-  st('count-plow', plowCount);
-  st('count-puzzle', puzzleCount);
-  st('count-dog', dogCount);
-
-  st('act-weekly-rev', fmt(totalRev));
-  st('act-weekly-contrib', fmt(totalContrib));
-  st('act-blended-fc', fmtPct(blendedFC));
-  st('act-opportunity', fmt(Math.max(0, dogOpportunity)));
-
-  // Update classification badges in table
-  classified.forEach(item => {
-    const el = document.getElementById('class-' + item.id);
-    if (el) el.innerHTML = `<span class="q-badge q-${item.quadrant}">${Q_LABELS[item.quadrant]}</span>`;
-  });
-
-  // Matrix quadrant lists
-  ['star','plow','puzzle','dog'].forEach(q => {
-    const items = classified.filter(i => i.quadrant === q);
-    const el = document.getElementById('q-' + q + '-items');
-    if (el) {
-      el.innerHTML = items.length === 0
-        ? '<em style="color:var(--muted);font-size:0.75rem">No items</em>'
-        : items.map(i => `<div>• ${i.name} <span style="color:var(--muted);font-size:0.7rem">(${fmtD(i.contrib)}/cover · ${i.portions}/wk)</span></div>`).join('');
+  // Update class column in table
+  classified.forEach(function(c){
+    var el=document.getElementById('cls-'+c.item.id);
+    if(el){
+      var labels={star:'⭐',plow:'🐄',puzz:'❓',dog:'🐕'};
+      el.textContent=labels[c.q];
     }
   });
 
-  // Category breakdown
-  renderCategoryBreakdown(classified, totalRev);
+  // Matrix quadrants
+  function qHtml(list){
+    if(!list.length) return '<div class="qi" style="color:#6B6B6B;font-style:italic">No items</div>';
+    return list.map(function(c){
+      var fc=c.item.sellPrice>0?(c.item.foodCost/c.item.sellPrice*100):0;
+      return '<div class="qi">'+c.item.name+' — '+fd(c.cm)+' CM · '+fp(fc)+' FC · '+c.item.portions+' portions/wk</div>';
+    }).join('');
+  }
+  document.getElementById('q-star').innerHTML=qHtml(qs.star);
+  document.getElementById('q-plow').innerHTML=qHtml(qs.plow);
+  document.getElementById('q-puzz').innerHTML=qHtml(qs.puzz);
+  document.getElementById('q-dog').innerHTML=qHtml(qs.dog);
 
   // Scatter plot
-  renderScatter(classified);
+  var wrap=document.getElementById('scatter-wrap');
+  if(wrap){
+    var maxP=Math.max.apply(null,menuItems.map(function(m){return m.portions;}))||1;
+    var maxC=Math.max.apply(null,classified.map(function(c){return c.cm;}))||1;
+    var qColMap={star:'#f59e0b',plow:'#10b981',puzz:'#d97706',dog:'#ef4444'};
+    wrap.innerHTML='<div class="scaxis" style="bottom:8px;left:50%;transform:translateX(-50%)">← Popularity (weekly portions) →</div>'+
+      '<div class="scaxis" style="left:6px;top:50%;transform:translateY(-50%) rotate(-90deg)">← CM ($) →</div>'+
+      classified.map(function(c){
+        var x=5+(c.item.portions/maxP)*88, y=5+((maxC-c.cm)/maxC)*88;
+        return '<div class="scdot" title="'+c.item.name+' | '+fd(c.cm)+' CM | '+c.item.portions+' portions" '+
+          'style="left:'+x+'%;top:'+y+'%;background:'+qColMap[c.q]+'"></div>'+
+          '<div class="sclbl" style="left:'+x+'%;top:'+(y+4)+'%">'+c.item.name.split(' ')[0]+'</div>';
+      }).join('');
+  }
 
-  // Actions tab
-  renderActions(classified, blendedFC, totalRev, totalContrib, dogOpportunity);
+  // Action recommendations
+  function actItems(list,q){
+    var el=document.getElementById('act-'+q); if(!el) return;
+    if(!list.length){el.innerHTML='<p style="font-size:0.8rem;color:#6B6B6B;margin-bottom:12px">No items in this quadrant.</p>';return;}
+    el.innerHTML='<ul style="margin:0 0 12px 20px;font-size:0.8rem">'+list.map(function(c){
+      return '<li><strong>'+c.item.name+'</strong> — '+fd(c.cm)+' CM, '+c.item.portions+' portions/wk</li>';
+    }).join('')+'</ul>';
+  }
+  actItems(qs.star,'star');actItems(qs.plow,'plow');actItems(qs.puzz,'puzz');actItems(qs.dog,'dog');
 
-  // Report tab
-  updateReport(classified, totalItems, totalRev, totalContrib, blendedFC, mixScore,
-    starCount, plowCount, puzzleCount, dogCount);
-}
+  // Report
+  st('rpt-venue',gt('vname','My Restaurant'));
+  st('rpt-items',menuItems.length);
+  st('rpt-rev',fm(totalRev));
+  st('rpt-fc',fp(wtFC));
+  st('rpt-cm',fd(avgCM));
+  st('rpt-tfc',fp(tfcPct));
+  st('rpt-stars',qs.star.length+' items');
+  st('rpt-plows',qs.plow.length+' items');
+  st('rpt-puzzles',qs.puzz.length+' items');
+  st('rpt-dogs',qs.dog.length+' items');
 
-function renderCategoryBreakdown(classified, totalRev) {
-  const el = document.getElementById('category-breakdown');
-  if (!el) return;
-  const cats = {};
-  classified.forEach(i => {
-    if (!cats[i.category]) cats[i.category] = { rev:0, contrib:0, count:0, portions:0 };
-    cats[i.category].rev      += i.weeklyRev;
-    cats[i.category].contrib  += i.weeklyContrib;
-    cats[i.category].count    += 1;
-    cats[i.category].portions += i.portions;
+  var rbadge=document.getElementById('rpt-badge');
+  if(rbadge){
+    var dogs=qs.dog.length, stars=qs.star.length;
+    if(dogs===0&&stars>0) rbadge.innerHTML='<span class="sbadge sg">✅ Strong Menu</span>';
+    else if(dogs>stars) rbadge.innerHTML='<span class="sbadge sr">⚠️ Needs Work</span>';
+    else rbadge.innerHTML='<span class="sbadge sa">📊 Review Recommended</span>';
+  }
+
+  // Top 5
+  var top5=menuItems.slice().sort(function(a,b){return (b.sellPrice*b.portions)-(a.sellPrice*a.portions);}).slice(0,5);
+  var t5el=document.getElementById('rpt-top5');
+  if(t5el) t5el.innerHTML=top5.map(function(m,i){
+    return '<div class="rrow"><span>'+(i+1)+'. '+m.name+'</span><span>'+fm(m.sellPrice*m.portions)+'/wk</span></div>';
+  }).join('');
+
+  // Review items (dogs + high FC plows)
+  var review=classified.filter(function(c){
+    return c.q==='dog'||(c.q==='plow'&&c.item.sellPrice>0&&(c.item.foodCost/c.item.sellPrice*100)>tfcPct+5);
   });
-  const maxRev = Math.max(...Object.values(cats).map(c=>c.rev), 1);
-  el.innerHTML = Object.entries(cats).map(([cat, data]) => `
-    <div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:3px">
-        <span style="font-weight:700">${cat}</span>
-        <span style="color:var(--muted)">${data.count} items · ${fmt(data.rev)}/wk · ${fmtPct(data.rev/totalRev*100)} of revenue</span>
-      </div>
-      <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden">
-        <div style="height:100%;width:${(data.rev/maxRev*100).toFixed(1)}%;background:var(--accent);border-radius:4px"></div>
-      </div>
-    </div>
-  `).join('');
+  var rel=document.getElementById('rpt-review');
+  if(rel) rel.innerHTML=review.length?review.map(function(c){
+    var fc=c.item.sellPrice>0?(c.item.foodCost/c.item.sellPrice*100):0;
+    var labels={star:'⭐',plow:'🐄',puzz:'❓',dog:'🐕'};
+    return '<div class="rrow"><span>'+labels[c.q]+' '+c.item.name+'</span><span>FC: '+fp(fc)+' · CM: '+fd(c.cm)+'</span></div>';
+  }).join(''):'<div class="rrow"><span style="color:#6B6B6B">No items flagged for review — great menu!</span></div>';
 }
 
-function renderScatter(classified) {
-  const el = document.getElementById('scatter-dots');
-  if (!el) return;
-  const maxContrib  = Math.max(...classified.map(i=>i.contrib), 1);
-  const maxPortions = Math.max(...classified.map(i=>i.portions), 1);
-  const maxRev      = Math.max(...classified.map(i=>i.weeklyRev), 1);
-  // Plot area: x = 10%–95%, y = 5%–85% (inverted — high pop at top)
-  el.innerHTML = classified.map(item => {
-    const xPct = 10 + (item.contrib / maxContrib) * 85;
-    const yPct = 85 - (item.portions / maxPortions) * 80;  // invert for visual
-    const size = 12 + (item.weeklyRev / maxRev) * 22;
-    const color = Q_COLORS[item.quadrant];
-    const shortName = item.name.length > 10 ? item.name.substr(0,10)+'…' : item.name;
-    return `<div class="scatter-dot" style="left:${xPct.toFixed(1)}%;top:${yPct.toFixed(1)}%;width:${size.toFixed(0)}px;height:${size.toFixed(0)}px;background:${color};opacity:0.85"
-      title="${item.name} | ${Q_LABELS[item.quadrant]} | Contrib: ${fmtD(item.contrib)} | ${item.portions}/wk">
-      ${item.portions > maxPortions * 0.4 ? shortName : ''}
-    </div>`;
-  }).join('');
-}
-
-function renderActions(classified, blendedFC, totalRev, totalContrib, opportunity) {
-  const el = document.getElementById('actions-container');
-  if (!el) return;
-  const groups = { star:[], plow:[], puzzle:[], dog:[] };
-  classified.forEach(i => groups[i.quadrant].push(i));
-
-  const actionPlays = {
-    star: (items) => `<strong>These are your cash cows — protect them.</strong> Feature <em>${items.slice(0,2).map(i=>i.name).join(', ')}</em> prominently on the menu. Train staff to recommend them first. Never discount them. If supplier prices on these rise, raise your sell price — loyal guests will follow.`,
-    plow: (items) => {
-      const best = items.sort((a,b)=>b.portions-a.portions)[0];
-      return `<strong>Your highest sellers, but lowest margins.</strong> Focus on <em>${best?.name}</em> first — it's your top plowhorse. Try raising price by $${(best?.sellPrice*0.05).toFixed(0)} and monitor for 2 weeks. If demand holds, that's ${fmt((best?.sellPrice*0.05||0)*best?.portions*52)} in annual revenue. Also explore portion engineering or ingredient swaps.`;
-    },
-    puzzle: (items) => {
-      const best = items.sort((a,b)=>b.contrib-a.contrib)[0];
-      return `<strong>Diamonds in the rough — make people find them.</strong> <em>${best?.name}</em> is your most profitable puzzle item. Rewrite its description with flavour language. Run a "Chef's Pick" badge next to it for 30 days. Brief your floor staff to upsell it at every table. If it still doesn't move, it becomes a Dog.`;
-    },
-    dog: (items) => {
-      const worst = items.sort((a,b)=>a.weeklyRev-b.weeklyRev)[0];
-      return `<strong>Kill or rework — these drain kitchen time.</strong> Remove <em>${worst?.name}</em> first — it's the weakest performer. For the rest, check ingredient overlap with Stars before cutting (shared mise en place = no waste impact). Every Dog you remove simplifies your kitchen and focuses your prep team.`;
-    }
-  };
-
-  const recTitles = {
-    star:   '⭐ Stars — Protect & Feature',
-    plow:   '🐄 Plowhorses — Raise Price or Reduce Cost',
-    puzzle: '❓ Puzzles — Promote Hard',
-    dog:    '🐕 Dogs — Cut or Rework'
-  };
-
-  el.innerHTML = Object.entries(groups).map(([q, items]) => {
-    if (items.length === 0) return '';
-    return `<div class="rec-card rec-${q}">
-      <div class="rec-title">${recTitles[q]} (${items.length} item${items.length>1?'s':''})</div>
-      <div class="rec-body">${actionPlays[q](items)}</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:var(--muted)">
-        ${items.map(i=>`${i.name} · ${fmtD(i.contrib)}/cover · ${i.portions}/wk · ${fmt(i.weeklyRev)}/wk`).join('&nbsp;&nbsp;|&nbsp;&nbsp;')}
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function updateReport(classified, total, weeklyRev, weeklyContrib, blendedFC, mixScore,
-  starCount, plowCount, puzzleCount, dogCount) {
-  st('rpt-name', gt('resto-name', 'My Restaurant'));
-  st('rpt-total-items', total);
-  st('rpt-weekly-rev', fmt(weeklyRev));
-  st('rpt-weekly-contrib', fmt(weeklyContrib));
-  st('rpt-blended-fc', fmtPct(blendedFC));
-  st('rpt-mix-score', mixScore + '%');
-
-  const badge = document.getElementById('rpt-badge');
-  if (badge) {
-    const colour = mixScore >= 50 ? '#d4edda' : mixScore >= 30 ? '#fff3cd' : '#f8d7da';
-    const textC  = mixScore >= 50 ? '#155724' : mixScore >= 30 ? '#856404' : '#721c24';
-    const label  = mixScore >= 50 ? '✅ Strong Menu' : mixScore >= 30 ? '⚠️ Needs Work' : '🔴 Review Now';
-    badge.innerHTML = `<span style="background:${colour};color:${textC};padding:3px 10px;border-radius:20px;font-size:0.72rem;font-weight:700">${label}</span>`;
-  }
-
-  const classEl = document.getElementById('rpt-classification');
-  if (classEl) {
-    classEl.innerHTML = [
-      ['⭐ Stars', starCount, 'var(--star-bg)', '#b8860b'],
-      ['🐄 Plowhorses', plowCount, 'var(--plow-bg)', '#1a7a70'],
-      ['❓ Puzzles', puzzleCount, 'var(--puzzle-bg)', '#8a6800'],
-      ['🐕 Dogs', dogCount, 'var(--dog-bg)', '#b5451b']
-    ].map(([label, count, bg, color]) =>
-      `<div style="background:${bg};padding:10px;border-radius:6px;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:${color}">${label}</div>
-        <div style="font-size:1.4rem;font-weight:800;color:${color}">${count}</div>
-      </div>`
-    ).join('');
-  }
-
-  const itemListEl = document.getElementById('rpt-item-list');
-  if (itemListEl) {
-    itemListEl.innerHTML = classified.map(i =>
-      `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.8rem">
-        <span>${i.name} <span style="color:var(--muted);font-size:0.72rem">(${i.category})</span></span>
-        <span>${fmtD(i.contrib)}/cover · ${i.portions}/wk · <span class="q-badge q-${i.quadrant}" style="font-size:0.68rem;padding:1px 7px">${Q_LABELS[i.quadrant]}</span></span>
-      </div>`
-    ).join('');
-  }
+window.onload = function() { loadSample(); };
 </script>
-</body>
-</html>
+</body></html>

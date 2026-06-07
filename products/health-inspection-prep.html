@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KitchenFounder Health Inspection Prep</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}.hdr h1{font-size:1.1rem;font-weight:700}.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px}.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#264653;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}.ba{background:#2a9d8f;color:#fff}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.zone-title{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#264653;margin:20px 0 8px;padding-bottom:4px;border-bottom:2px solid #264653}
+.chk{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid #f0ece4;cursor:pointer}
+.chk:last-child{border:none}.chk input{margin-top:2px;width:16px;height:16px;cursor:pointer;accent-color:#2a9d8f;flex-shrink:0}
+.chk.done{background:#f0fdf4}.chk.done span{text-decoration:line-through;color:#999}
+.prog-bar{background:#E8E4DC;border-radius:8px;height:12px;margin-bottom:4px;overflow:hidden}
+.prog-fill{height:12px;border-radius:8px;background:#2a9d8f;transition:width 0.3s}
+.metric{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:14px;text-align:center}
+.ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.mv{font-size:1.3rem;font-weight:700;color:#264653}.mv.g{color:#2a9d8f}.mv.r{color:#e76f51}.mv.a{color:#f4a261}
+.viol-card{border-radius:8px;padding:16px;margin-bottom:12px;border-left:4px solid}
+.vc-crit{background:#fee2e2;border-color:#ef4444}.vc-major{background:#fef3c7;border-color:#f59e0b}.vc-minor{background:#f0fdf4;border-color:#86efac}
+.viol-card h4{font-size:0.88rem;font-weight:700;margin-bottom:6px}
+.viol-card p{font-size:0.82rem;color:#374151;line-height:1.6}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.68rem;font-weight:700;margin-right:6px}
+.tcrit{background:#fee2e2;color:#991b1b}.tmaj{background:#fef3c7;color:#92400e}.tmin{background:#d1fae5;color:#065f46}
+.mock-q{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:14px;margin-bottom:10px}
+.mock-q p{font-size:0.88rem;font-weight:600;margin-bottom:10px}
+.mock-btns{display:flex;gap:8px}
+.mock-btn{padding:7px 20px;border:2px solid #E8E4DC;border-radius:6px;cursor:pointer;font-size:0.82rem;font-weight:600;background:#fff;font-family:inherit;transition:all 0.2s}
+.mock-btn:hover{border-color:#264653}.mock-btn.yes{border-color:#2a9d8f;background:#d1fae5;color:#065f46}
+.mock-btn.no{border-color:#e76f51;background:#fee2e2;color:#991b1b}
+.mock-btn.na{border-color:#6B6B6B;background:#f5f5f5;color:#6B6B6B}
+.score-box{background:#264653;color:#fff;border-radius:12px;padding:24px;text-align:center;margin-top:20px}
+.score-box .grade{font-size:3rem;font-weight:700;margin-bottom:8px}
+.score-box .grade.A{color:#4ade80}.score-box .grade.B{color:#fbbf24}.score-box .grade.C{color:#f87171}.score-box .grade.F{color:#ef4444}
+@media print{.hdr,.tabs,.btn,.brow{display:none!important}.panel{display:block!important}}
+@media(max-width:768px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}}
+</style></head><body>
+<div class="hdr"><div><h1>🧼 KitchenFounder Health Inspection Prep</h1><p>Kitchen Checklist · Violations Guide · Mock Inspection</p></div><span class="badge">FREE TOOL</span></div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('checklist',this)">✅ Checklist</button>
+  <button class="tab" onclick="ST('violations',this)">⚠️ Violations</button>
+  <button class="tab" onclick="ST('mock',this)">🎯 Mock Inspection</button>
+</div>
+
+<div id="panel-checklist" class="panel">
+<div class="g4" style="margin-bottom:16px">
+  <div class="metric"><div class="ml">Total Items</div><div class="mv" id="total-items">0</div></div>
+  <div class="metric"><div class="ml">Completed</div><div class="mv g" id="done-items">0</div></div>
+  <div class="metric"><div class="ml">Remaining</div><div class="mv r" id="rem-items">0</div></div>
+  <div class="metric"><div class="ml">Score</div><div class="mv a" id="score-pct">0%</div></div>
+</div>
+<div class="card" style="margin-bottom:8px">
+<div class="prog-bar"><div class="prog-fill" id="main-prog" style="width:0%"></div></div>
+<div style="font-size:0.75rem;color:#6B6B6B;text-align:right" id="prog-lbl">0 / 0 complete</div>
+</div>
+<div class="brow">
+  <button class="btn bs" onclick="uncheckAll()">↺ Reset All</button>
+  <button class="btn bp" onclick="window.print()">🖨️ Print Checklist</button>
+</div>
+<div id="checklist-body"></div>
+</div>
+
+<div id="panel-violations" class="panel" style="display:none">
+<div class="card"><div class="ct">⚠️ Top 20 Most Common Violations</div>
+<div id="violations-list"></div>
+</div></div>
+
+<div id="panel-mock" class="panel" style="display:none">
+<div class="card"><div class="ct">🎯 Mock Inspection — 20 Questions</div>
+<p style="font-size:0.85rem;color:#6B6B6B;margin-bottom:16px">Answer honestly. This simulates what an inspector will check. Score 90%+ for an A grade.</p>
+<div class="brow"><button class="btn ba" onclick="startMock()">▶ Start New Inspection</button></div>
+<div id="mock-body"></div>
+<div id="mock-result" style="display:none"></div>
+</div></div>
+
+<script>
+var zones=[
+  {z:'🙋 Personal Hygiene',items:[
+    'All staff handwashing observed and logged at start of shift',
+    'Hair restraints (hat/net) worn by all kitchen staff',
+    'No jewellery except plain wedding band',
+    'Clean uniforms and aprons on all staff',
+    'No eating, drinking, or chewing gum in food prep areas',
+    'Sick staff policy posted — staff with illness not working food prep',
+    'Cuts covered with blue bandage AND disposable glove',
+    'Fingernails short, clean, and unpolished',
+    'Hand sanitiser stations stocked at all prep areas',
+    'Handwashing instruction poster displayed at each sink'
+  ]},
+  {z:'🥩 Food Storage',items:[
+    'Raw proteins stored BELOW ready-to-eat foods (never above)',
+    'Storage order top to bottom: RTE → beef → pork → poultry',
+    'All food containers labelled with content and prep date',
+    'FIFO rotation followed — oldest product at front',
+    'No food stored on floor — minimum 15cm (6 inch) clearance',
+    'Dry storage area clean, organised, and pest-free',
+    'Walk-in fridge temperature 1–4°C (34–39°F) — logged today',
+    'Freezer temperature -18°C (0°F) or below — logged today',
+    'Hot holding equipment above 60°C (140°F)',
+    'No damaged or dented cans in stock',
+    'Chemicals stored completely separately from food products',
+    'Allergen ingredients clearly labelled and physically separated',
+    'Opened packages resealed or transferred to covered food-grade containers',
+    'All containers food-grade approved and lidded',
+    'No expired products in storage — date check completed today'
+  ]},
+  {z:'🔪 Food Preparation',items:[
+    'Colour-coded cutting boards used by protein type (no cross-use)',
+    'Cutting boards clean, smooth, and not deeply scored or cracked',
+    'Probe thermometers available, calibrated, and sanitised',
+    'Internal cooking temperatures chart posted: beef 63°C, pork 63°C, poultry 74°C, fish 63°C',
+    'Thawing only in refrigerator, cold running water, or microwave — never at room temp',
+    'No cross-contamination risk during prep (work flow, surfaces, equipment)',
+    'Disposable gloves used for ready-to-eat foods — changed between tasks',
+    'Sanitiser solution at correct concentration (200ppm chlorine or as per product)',
+    'Food contact surfaces sanitised before and after each task',
+    'Raw meat never positioned above ready-to-eat foods during prep',
+    'Time/temperature control log completed for today',
+    'Cooling log completed for all batch-cooked items (60°C→21°C in 2hrs, 21°C→4°C in 4hrs)',
+    'Reheating to minimum 74°C (165°F) — checked with probe',
+    'Date labels on all prepped items — nothing undated in cold storage',
+    'Allergen protocol for special requests documented and communicated to kitchen'
+  ]},
+  {z:'⚙️ Equipment & Facilities',items:[
+    'Dishwasher final rinse at 82°C (180°F) minimum or chemical sanitise confirmed',
+    'All food contact equipment NSF certified and food-grade',
+    'Equipment surfaces clean top AND underside — checked today',
+    'Exhaust hood filters clean — no grease build-up',
+    'Grease traps serviced — not overflowing or blocked',
+    'Pest control service current — certificate on file and visible',
+    'No evidence of pests: droppings, gnaw marks, live insects',
+    'Floor drains clean, clear, and not blocked',
+    'Walls and ceiling clean — no mould, peeling paint, or water damage',
+    'Adequate lighting throughout kitchen — all bulbs working',
+    'Light covers intact — shatter protection in place',
+    'Hand sinks unobstructed, stocked with soap and paper towels',
+    'Three-compartment sink set up correctly: wash → rinse → sanitise',
+    'Waste bins covered and emptied — not overflowing',
+    'Back door sealed tight — no pest entry points'
+  ]},
+  {z:'📄 Documentation',items:[
+    'Food handler certifications current for all staff — copies on file',
+    'Manager food safety certification posted in kitchen',
+    'HACCP plan documented and available for inspection',
+    'Temperature logs current, complete, and signed',
+    'Pest control reports on file — most recent within 3 months',
+    'Equipment calibration records available',
+    'Supplier delivery receipts available (last 30 days)',
+    'Allergen menu documentation current and matches served menu',
+    'Opening and closing checklists being completed daily',
+    'Previous inspection report on file — all violations addressed'
+  ]}
+];
+var violations=[
+  {t:'Improper Cooling',risk:'crit',fine:'$500–$2,000',fix:'Use blast chiller or ice bath. Log every batch. Cooling from 60°C→21°C in 2 hours, then 21°C→4°C in 4 hours.'},
+  {t:'Improper Hot Holding Temperature',risk:'crit',fine:'$200–$1,000',fix:'All hot held foods must stay above 60°C (140°F). Check every 2 hours with calibrated probe.'},
+  {t:'Food Stored at Wrong Temperature',risk:'crit',fine:'$500–$2,000',fix:'Fridge 1–4°C, freezer -18°C. Log morning and evening. Replace thermometers that drift.'},
+  {t:'Cross-Contamination',risk:'crit',fine:'$500–$5,000',fix:'Colour-coded boards by protein. Strict storage hierarchy. Gloves for RTE foods. Clean surfaces between tasks.'},
+  {t:'Poor Personal Hygiene',risk:'crit',fine:'$200–$1,000',fix:'Handwashing log. Hair restraints. No jewellery. Remove sick staff. Daily inspection by manager.'},
+  {t:'No Food Handler Certification',risk:'major',fine:'$100–$500/staff',fix:'All food handlers must complete accredited food safety training. Keep certificates on site.'},
+  {t:'Pests Found',risk:'crit',fine:'$1,000–$5,000+',fix:'Licensed pest control contract. Monthly inspections. Seal all entry points. Report immediately.'},
+  {t:'Food Contact Surfaces Not Sanitised',risk:'major',fine:'$200–$800',fix:'Sanitiser solution at 200ppm. Test strips daily. Sanitise every surface before food prep.'},
+  {t:'Employee Handling Food While Sick',risk:'crit',fine:'$500–$2,000',fix:'Written sick leave policy. Paid sick days reduce presenteeism. No exceptions — ever.'},
+  {t:'Improper Thawing',risk:'major',fine:'$100–$500',fix:'Thaw in fridge (slow), cold running water (fast), or microwave (immediate use only). Never on bench.'},
+  {t:'No Date Labels on Food',risk:'major',fine:'$100–$500',fix:'Label everything the moment it\'s prepped. Date + contents + staff initials. Check daily.'},
+  {t:'Chemicals Stored Near Food',risk:'crit',fine:'$500–$2,000',fix:'Dedicated chemical storage area, locked, away from all food and food surfaces. Never in food fridges.'},
+  {t:'Handwashing Sink Blocked or Missing Soap',risk:'major',fine:'$200–$600',fix:'Hand sinks must be accessible, unobstructed, stocked with soap and paper towels at all times.'},
+  {t:'Food from Unapproved Source',risk:'crit',fine:'$500–$2,000',fix:'All suppliers must be licensed/approved. Keep delivery receipts. No home-produced or unlicensed product.'},
+  {t:'Allergen Cross-Contact',risk:'crit',fine:'$500–$5,000+',fix:'Dedicated allergen prep area, separate equipment, written protocol. Staff training mandatory.'},
+  {t:'Dirty Exhaust Hood',risk:'major',fine:'$200–$800',fix:'Professional cleaning every 3–6 months. Filter clean weekly. Grease is a fire hazard.'},
+  {t:'Cracked or Scored Cutting Boards',risk:'major',fine:'$100–$400',fix:'Replace when scored. Bacteria live in cuts. Colour-coded plastic boards, resurfaced or replaced regularly.'},
+  {t:'Equipment in Disrepair',risk:'major',fine:'$100–$500',fix:'Broken equipment must be removed or tagged out of service. Log all repairs and maintenance.'},
+  {t:'No HACCP Plan',risk:'major',fine:'$200–$1,000',fix:'Written HACCP plan required. Identify critical control points, monitoring procedures, and corrective actions.'},
+  {t:'Previous Violations Not Corrected',risk:'crit',fine:'$500–$5,000',fix:'Inspector returns to verify compliance. Repeat violations = immediate closure risk. Fix everything before re-inspection.'}
+];
+var mockQs=[
+  'Are all staff wearing hair restraints and have clean uniforms?',
+  'Is the walk-in fridge temperature between 1–4°C (34–39°F)?',
+  'Is the freezer at -18°C (0°F) or below?',
+  'Are all foods labelled with date and contents?',
+  'Is raw protein stored below ready-to-eat foods?',
+  'Are cutting boards colour-coded and free of deep scoring?',
+  'Are hand sinks unobstructed, with soap and paper towels?',
+  'Are probe thermometers available and calibrated?',
+  'Is the sanitiser solution at the correct concentration (200ppm)?',
+  'Are all food contact surfaces clean and sanitised?',
+  'Is there evidence of pests (droppings, gnaw marks, insects)?',
+  'Are chemicals stored completely separately from food areas?',
+  'Are all food handler certifications current and available?',
+  'Is there a documented HACCP plan available for inspection?',
+  'Are temperature logs complete and current?',
+  'Is the exhaust hood clean with no grease build-up?',
+  'Are all allergen ingredients labelled and physically separated?',
+  'Is the dishwasher reaching the correct sanitising temperature?',
+  'Is the cooling log completed for all batch-cooked items?',
+  'Are previous inspection violations corrected and documented?'
+];
+var answers={};
+var total=0,done=0;
+
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+}
+function buildChecklist(){
+  var body=document.getElementById('checklist-body');
+  var allItems=[];
+  var html=zones.map(function(z){
+    var items=z.items.map(function(item,i){
+      var gid='item_'+allItems.length;
+      allItems.push(gid);
+      return '<label class="chk" id="'+gid+'"><input type="checkbox" onchange="tickItem(this,\''+gid+'\')"><span>'+item+'</span></label>';
+    }).join('');
+    return '<div class="zone-title">'+z.z+'</div>'+items;
+  }).join('');
+  body.innerHTML=html;
+  total=allItems.length;
+  document.getElementById('total-items').textContent=total;
+  updProgress();
+}
+function tickItem(el,id){
+  var l=document.getElementById(id);
+  if(l) l.classList.toggle('done',el.checked);
+  done=document.querySelectorAll('.chk.done').length;
+  updProgress();
+}
+function updProgress(){
+  var pct=total>0?Math.round(done/total*100):0;
+  document.getElementById('done-items').textContent=done;
+  document.getElementById('rem-items').textContent=total-done;
+  document.getElementById('score-pct').textContent=pct+'%';
+  var pf=document.getElementById('main-prog');
+  if(pf) pf.style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=done+' / '+total+' complete';
+}
+function uncheckAll(){
+  document.querySelectorAll('.chk input').forEach(function(cb){cb.checked=false;cb.closest('.chk').classList.remove('done');});
+  done=0;updProgress();
+}
+function buildViolations(){
+  var vl=document.getElementById('violations-list');
+  if(!vl) return;
+  vl.innerHTML=violations.map(function(v,i){
+    var cls='vc-'+(v.risk==='crit'?'crit':(v.risk==='major'?'major':'minor'));
+    var tag='t'+(v.risk==='crit'?'crit':(v.risk==='major'?'maj':'min'));
+    var rl=v.risk==='crit'?'🔴 Critical':(v.risk==='major'?'🟡 Major':'🟢 Minor');
+    return '<div class="viol-card '+cls+'"><h4>'+(i+1)+'. '+v.t+' <span class="tag '+tag+'">'+rl+'</span></h4>'+
+      '<p><strong>Typical fine range:</strong> '+v.fine+'<br><strong>How to fix it:</strong> '+v.fix+'</p></div>';
+  }).join('');
+}
+function startMock(){
+  answers={};
+  var mb=document.getElementById('mock-body');
+  var mr=document.getElementById('mock-result');
+  if(mr) mr.style.display='none';
+  var shuffled=mockQs.slice();
+  mb.innerHTML=shuffled.map(function(q,i){
+    return '<div class="mock-q" id="mq'+i+'"><p>'+(i+1)+'. '+q+'</p>'+
+      '<div class="mock-btns">'+
+        '<button class="mock-btn" id="y'+i+'" onclick="answerMock('+i+',\'yes\')">✅ Yes</button>'+
+        '<button class="mock-btn" id="n'+i+'" onclick="answerMock('+i+',\'no\')">❌ No</button>'+
+        '<button class="mock-btn" id="a'+i+'" onclick="answerMock('+i+',\'na\')">N/A</button>'+
+      '</div></div>';
+  }).join('')+'<button class="btn bp" style="margin-top:12px" onclick="scoreMock()">📊 Get My Score</button>';
+}
+function answerMock(i,ans){
+  answers[i]=ans;
+  ['y','n','a'].forEach(function(p){var e=document.getElementById(p+i);if(e) e.className='mock-btn';});
+  var cls=ans==='yes'?'yes':(ans==='no'?'no':'na');
+  var el=document.getElementById((ans==='yes'?'y':(ans==='no'?'n':'a'))+i);
+  if(el) el.className='mock-btn '+cls;
+}
+function scoreMock(){
+  var total=mockQs.length, yes=0, no=0, na=0;
+  for(var i=0;i<total;i++){
+    var a=answers[i];
+    if(a==='yes') yes++;
+    else if(a==='no') no++;
+    else if(a==='na') na++;
+  }
+  var scored=yes+no, pct=scored>0?Math.round(yes/scored*100):0;
+  var grade=pct>=90?'A':(pct>=80?'B':(pct>=70?'C':'F'));
+  var msg=grade==='A'?'Excellent! You are inspection-ready. Keep this standard every day.':(grade==='B'?'Good, but review the items you answered No to before your inspection.':(grade==='C'?'Needs attention. Focus on your No answers — these are your risk areas. Do not open for inspection yet.':'Significant issues found. Do not invite an inspection until all No items are corrected. Review the Violations Guide.'));
+  var mr=document.getElementById('mock-result');
+  mr.style.display='block';
+  mr.innerHTML='<div class="score-box"><div class="grade '+grade+'">'+grade+'</div><div style="font-size:1.1rem;font-weight:700;margin-bottom:8px">'+pct+'% — '+yes+'/'+scored+' pass criteria met</div><div style="font-size:0.88rem;opacity:0.9">'+msg+'</div></div>';
+  mr.scrollIntoView({behavior:'smooth'});
+}
+window.onload=function(){buildChecklist();buildViolations();};
+</script></body></html>

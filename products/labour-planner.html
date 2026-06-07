@@ -5,1291 +5,517 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KitchenFounder Labour Planner</title>
 <style>
-:root {
-  --bg: #FAFAF8;
-  --surface: #FFFFFF;
-  --border: #E8E4DC;
-  --text: #1C1C1C;
-  --text-muted: #6B6B6B;
-  --accent: #C8A97E;
-  --accent-dark: #A8895E;
-  --green: #2a9d8f;
-  --amber: #f4a261;
-  --red: #e76f51;
-  --red-dark: #c0392b;
-  --blue: #264653;
-  --shadow: 0 2px 12px rgba(0,0,0,0.06);
-  --radius: 8px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
 /* HEADER */
-.app-header {
-  background: var(--blue);
-  color: white;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.app-header h1 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-.app-header .subtitle {
-  font-size: 0.75rem;
-  opacity: 0.7;
-  margin-top: 2px;
-}
-.free-badge {
-  background: var(--accent);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:1.1rem;font-weight:700}
+.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700;white-space:nowrap}
 /* TABS */
-.tabs {
-  display: flex;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
-  overflow-x: auto;
-}
-.tab-btn {
-  padding: 12px 20px;
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-  transition: all 0.2s;
-}
-.tab-btn.active {
-  color: var(--accent-dark);
-  border-bottom-color: var(--accent);
-  font-weight: 700;
-}
-.tab-panel { display: none; padding: 24px; }
-.tab-panel.active { display: block; }
-
-/* CARDS */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: var(--shadow);
-}
-.card-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card-title span { font-size: 1.1rem; }
-
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}
+.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+/* PANELS */
+.panel{padding:24px}
+/* CARD */
+.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
 /* GRID */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-@media (max-width: 600px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
-}
-
-/* FORM ELEMENTS */
-.field { margin-bottom: 12px; }
-.field label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.field input, .field select {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  color: var(--text);
-  background: var(--bg);
-  transition: border-color 0.2s;
-}
-.field input:focus, .field select:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-/* METRIC CARDS */
-.metric-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  text-align: center;
-}
-.metric-card .metric-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-}
-.metric-card .metric-value {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--text);
-}
-.metric-card .metric-sub {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-.metric-card.green .metric-value { color: var(--green); }
-.metric-card.amber .metric-value { color: var(--amber); }
-.metric-card.red .metric-value { color: var(--red); }
-.metric-card.blue .metric-value { color: var(--blue); }
-
-/* STATUS BADGE */
-.status-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-.status-green { background: #d4edda; color: #155724; }
-.status-amber { background: #fff3cd; color: #856404; }
-.status-red { background: #f8d7da; color: #721c24; }
-
-/* STAFF TABLE */
-.staff-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.82rem;
-}
-.staff-table th {
-  background: var(--blue);
-  color: white;
-  padding: 8px 10px;
-  text-align: left;
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.staff-table td {
-  padding: 7px 10px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-.staff-table tr:hover td { background: #f5f0e8; }
-.staff-table input, .staff-table select {
-  width: 100%;
-  padding: 5px 8px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 0.82rem;
-  background: white;
-}
-.staff-table input:focus, .staff-table select:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-/* ROSTER GRID */
-.roster-grid {
-  overflow-x: auto;
-  margin-top: 12px;
-}
-.roster-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.78rem;
-  min-width: 700px;
-}
-.roster-table th {
-  background: var(--blue);
-  color: white;
-  padding: 8px 6px;
-  text-align: center;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-.roster-table th.name-col { text-align: left; min-width: 130px; }
-.roster-table td {
-  padding: 4px 4px;
-  border: 1px solid var(--border);
-  text-align: center;
-}
-.roster-table td.name-cell {
-  text-align: left;
-  padding: 4px 8px;
-  font-weight: 600;
-  font-size: 0.78rem;
-  background: #f9f6f0;
-}
-.roster-table td.dept-cell {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  background: #f9f6f0;
-}
-.roster-table select {
-  width: 100%;
-  padding: 3px 4px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  font-size: 0.72rem;
-  background: white;
-}
-.shift-OFF { background: #f8f8f8; color: #aaa; }
-.shift-OPEN { background: #e8f5e9; color: #2e7d32; }
-.shift-MID { background: #e3f2fd; color: #1565c0; }
-.shift-CLOSE { background: #fce4ec; color: #880e4f; }
-.shift-SPLIT { background: #fff8e1; color: #e65100; }
-.shift-RDO { background: #f3e5f5; color: #6a1b9a; }
-
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+/* FIELD */
+.f{display:flex;flex-direction:column;gap:4px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;background:#FAFAF8;color:#1C1C1C;font-family:inherit}
+.f input:focus,.f select:focus{outline:none;border-color:#C8A97E}
 /* BUTTONS */
-.btn {
-  padding: 8px 18px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.btn-primary { background: var(--accent); color: white; }
-.btn-primary:hover { background: var(--accent-dark); }
-.btn-secondary { background: var(--border); color: var(--text); }
-.btn-secondary:hover { background: #d0cbc0; }
-.btn-danger { background: var(--red); color: white; font-size: 0.75rem; padding: 4px 10px; }
-.btn-danger:hover { background: var(--red-dark); }
-.btn-add { background: var(--green); color: white; }
-.btn-add:hover { background: #218f82; }
-.btn-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
-
-/* BAR CHART */
-.bar-wrap { margin: 6px 0; }
-.bar-label-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  margin-bottom: 3px;
-}
-.bar-track {
-  height: 10px;
-  background: var(--border);
-  border-radius: 5px;
-  overflow: hidden;
-}
-.bar-fill {
-  height: 100%;
-  border-radius: 5px;
-  transition: width 0.4s ease;
-}
-
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#264653;color:#fff}.bp:hover{background:#1a3340}
+.ba{background:#2a9d8f;color:#fff}.ba:hover{background:#1e7d72}
+.bs{background:#E8E4DC;color:#1C1C1C}.bs:hover{background:#d4cfc6}
+.bd{background:#e76f51;color:#fff;padding:4px 10px;font-size:0.75rem}.bd:hover{background:#c0392b}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:0.8rem}
+.tbl th{background:#264653;color:#fff;padding:9px 10px;text-align:left;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.04em}
+.tbl td{padding:7px 10px;border-bottom:1px solid #E8E4DC;vertical-align:middle}
+.tbl tr:hover td{background:#f5f1eb}
+.tbl input,.tbl select{padding:4px 6px;border:1px solid #E8E4DC;border-radius:4px;font-size:0.78rem;width:100%;background:#FAFAF8;font-family:inherit}
+/* METRIC */
+.mc{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px;text-align:center}
+.ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.mv{font-size:1.3rem;font-weight:700;color:#264653}
+.mv.g{color:#2a9d8f}.mv.r{color:#e76f51}.mv.a{color:#f4a261}
+/* SHIFT COLOURS */
+.sOFF{background:#f5f5f5;color:#999}
+.sOPEN{background:#d1fae5;color:#065f46}
+.sMID{background:#fef3c7;color:#92400e}
+.sCLOSE{background:#dbeafe;color:#1e40af}
+.sSPLIT{background:#ede9fe;color:#5b21b6}
+.sRDO{background:#fee2e2;color:#991b1b}
+.ssel{padding:4px 6px;border:1px solid #E8E4DC;border-radius:4px;font-size:0.75rem;font-weight:600;width:100%;font-family:inherit}
+/* BAR */
+.bar-track{background:#E8E4DC;border-radius:4px;height:10px;margin:4px 0}
+.bar-fill{height:10px;border-radius:4px;background:#264653;transition:width 0.3s}
 /* REPORT */
-.report-section { margin-bottom: 20px; }
-.report-section h3 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--blue);
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.report-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.85rem;
-}
-.report-row.total {
-  font-weight: 700;
-  font-size: 0.9rem;
-  border-top: 2px solid var(--text);
-  border-bottom: none;
-  margin-top: 4px;
-  padding-top: 8px;
-}
-
-/* UPGRADE BANNER */
-.upgrade-banner {
-  background: linear-gradient(135deg, var(--blue), #1a3545);
-  color: white;
-  border-radius: var(--radius);
-  padding: 20px;
-  text-align: center;
-  margin: 16px 0;
-}
-.upgrade-banner h3 { font-size: 1rem; margin-bottom: 8px; }
-.upgrade-banner p { font-size: 0.82rem; opacity: 0.85; margin-bottom: 12px; }
-.upgrade-banner .price { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
-
-/* SECTION DIVIDER */
-.section-divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 20px 0 16px;
-}
-.section-divider span {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-.section-divider::before, .section-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-/* TOOLTIP */
-.tooltip {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-top: 3px;
-}
-
-/* PRINT */
-@media print {
-  .app-header, .tabs, .btn, .btn-row, .upgrade-banner { display: none !important; }
-  .tab-panel { display: block !important; padding: 0; }
-  body { background: white; }
-}
+.rrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E4DC;font-size:0.85rem}
+.rsec{margin-bottom:20px}
+.rsec h3{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6B6B6B;margin-bottom:10px}
+.sbadge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700}
+.sg{background:#d1fae5;color:#065f46}.sa{background:#fef3c7;color:#92400e}.sr{background:#fee2e2;color:#991b1b}
+/* ADVISORY */
+.adv{padding:14px 16px;border-radius:8px;background:#f0f9ff;border:1px solid #bae6fd;font-size:0.85rem;margin-top:12px}
+/* UPGRADE */
+.upg{background:linear-gradient(135deg,#C8A97E,#A8895E);color:#fff;padding:12px 20px;border-radius:8px;margin-bottom:16px;font-size:0.85rem;font-weight:600}
+@media print{.hdr,.tabs,.btn,.brow,.upg{display:none!important}.panel{display:block!important;padding:12px}}
+@media(max-width:768px){.g3,.g4{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-
-<header class="app-header">
-  <div>
-    <h1>👥 KitchenFounder Labour Planner</h1>
-    <div class="subtitle">Staff Roster · True Labour Cost · Finance Report</div>
-  </div>
-  <span class="free-badge">FREE — up to 10 staff</span>
-</header>
-
+<div class="hdr">
+  <div><h1>👥 KitchenFounder Labour Planner</h1><p>Staff Roster · True Labour Cost · Finance Report</p></div>
+  <span class="badge">FREE — up to 10 staff</span>
+</div>
 <div class="tabs">
-  <button class="tab-btn active" data-tab="setup">⚙️ Setup</button>
-  <button class="tab-btn" data-tab="staff">👤 Staff</button>
-  <button class="tab-btn" data-tab="roster">📅 Roster</button>
-  <button class="tab-btn" data-tab="costs">💰 True Cost</button>
-  <button class="tab-btn" data-tab="report">📊 Report</button>
+  <button class="tab on" onclick="ST('setup',this)">⚙️ Setup</button>
+  <button class="tab" onclick="ST('staff',this)">👤 Staff</button>
+  <button class="tab" onclick="ST('roster',this)">📅 Roster</button>
+  <button class="tab" onclick="ST('costs',this)">💰 True Cost</button>
+  <button class="tab" onclick="ST('report',this)">📊 Report</button>
+</div>
+<!-- SETUP PANEL -->
+<div id="panel-setup" class="panel">
+<div class="card"><div class="ct">🏪 Venue & Week</div>
+<div class="g3">
+  <div class="f"><label>Venue Name</label><input id="vname" value="My Restaurant" onchange="CA()"></div>
+  <div class="f"><label>Week Starting</label><input type="date" id="wstart" onchange="CA()"></div>
+  <div class="f"><label>State</label>
+    <select id="sstate" onchange="CA()">
+      <option>TX</option><option>CA</option><option>NY</option><option>FL</option><option>IL</option>
+      <option>WA</option><option>CO</option><option>GA</option><option>AZ</option><option>Other</option>
+    </select>
+  </div>
+</div></div>
+<div class="card"><div class="ct">💰 Revenue & Labour Target</div>
+<div class="g3">
+  <div class="f"><label>Weekly Revenue Target ($)</label><input type="number" id="revtgt" value="25000" onchange="CA()"></div>
+  <div class="f"><label>Labour % Target</label><input type="number" id="labtgt" value="32" min="20" max="60" onchange="CA()"></div>
+  <div class="f"><label>Days Open This Week</label><input type="number" id="daysopen" value="7" min="1" max="7" onchange="CA()"></div>
+</div></div>
+<div class="card"><div class="ct">⏱️ Shift Hours</div>
+<div class="g4">
+  <div class="f"><label>OPEN Shift (hrs)</label><input type="number" id="hrs-open" value="8" min="1" max="16" step="0.5" onchange="CA()"></div>
+  <div class="f"><label>MID Shift (hrs)</label><input type="number" id="hrs-mid" value="6" min="1" max="12" step="0.5" onchange="CA()"></div>
+  <div class="f"><label>CLOSE Shift (hrs)</label><input type="number" id="hrs-close" value="8" min="1" max="16" step="0.5" onchange="CA()"></div>
+  <div class="f"><label>SPLIT Shift (hrs)</label><input type="number" id="hrs-split" value="10" min="1" max="16" step="0.5" onchange="CA()"></div>
+</div></div>
+<div class="card"><div class="ct">📊 On-Cost Rates (USA)</div>
+<div class="g4">
+  <div class="f"><label>FICA / SS (%)</label><input type="number" id="fica" value="7.65" step="0.01" onchange="CA()"></div>
+  <div class="f"><label>SUTA (%)</label><input type="number" id="suta" value="3.5" step="0.01" onchange="CA()"></div>
+  <div class="f"><label>Workers Comp (%)</label><input type="number" id="wcomp" value="4.0" step="0.01" onchange="CA()"></div>
+  <div class="f"><label>Health ($/wk FT)</label><input type="number" id="health" value="45" onchange="CA()"></div>
+</div>
+<div class="g2" style="margin-top:12px">
+  <div class="f"><label>Sick Accrual ($/hr)</label><input type="number" id="sick" value="0.5" step="0.1" onchange="CA()"></div>
+  <div class="f"><label>Vacation Accrual ($/hr)</label><input type="number" id="vac" value="0.75" step="0.1" onchange="CA()"></div>
+</div></div>
 </div>
 
-<!-- TAB 1: SETUP -->
-<div id="panel-setup" class="tab-panel active">
-
-  <div class="card">
-    <div class="card-title"><span>🏪</span> Venue & Week Setup</div>
-    <div class="grid-3">
-      <div class="field">
-        <label>Venue Name</label>
-        <input type="text" id="venue-name" placeholder="e.g. The Poke Bar" value="My Restaurant">
-      </div>
-      <div class="field">
-        <label>Week Starting</label>
-        <input type="date" id="week-start">
-      </div>
-      <div class="field">
-        <label>State (US)</label>
-        <select id="state-select">
-          <option value="CA">California</option>
-          <option value="NY">New York</option>
-          <option value="TX" selected>Texas</option>
-          <option value="FL">Florida</option>
-          <option value="IL">Illinois</option>
-          <option value="WA">Washington</option>
-          <option value="CO">Colorado</option>
-          <option value="GA">Georgia</option>
-          <option value="OTHER">Other State</option>
-        </select>
-      </div>
-    </div>
-    <div class="grid-3">
-      <div class="field">
-        <label>Weekly Revenue Target ($)</label>
-        <input type="number" id="revenue-target" value="25000" min="0">
-      </div>
-      <div class="field">
-        <label>Labour % Target</label>
-        <input type="number" id="labour-target-pct" value="32" min="1" max="60">
-        <div class="tooltip">Industry standard: 28–35% for full service</div>
-      </div>
-      <div class="field">
-        <label>Days Open This Week</label>
-        <input type="number" id="days-open" value="6" min="1" max="7">
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>💲</span> US On-Cost Rates</div>
-    <div class="tooltip" style="margin-bottom:12px">These are automatically added on top of base wages to calculate TRUE labour cost</div>
-    <div class="grid-4">
-      <div class="field">
-        <label>FICA — Employer (%)</label>
-        <input type="number" id="fica-rate" value="7.65" step="0.01">
-        <div class="tooltip">Social Security 6.2% + Medicare 1.45%</div>
-      </div>
-      <div class="field">
-        <label>SUTA / FUTA (%)</label>
-        <input type="number" id="suta-rate" value="3.5" step="0.01">
-        <div class="tooltip">State unemployment. CA=3.4%, TX=2.7%, NY=4.1%</div>
-      </div>
-      <div class="field">
-        <label>Workers Comp (%)</label>
-        <input type="number" id="wcomp-rate" value="4.0" step="0.01">
-        <div class="tooltip">Restaurant workers: typically 3–6%</div>
-      </div>
-      <div class="field">
-        <label>Health Insurance ($/week/person)</label>
-        <input type="number" id="health-rate" value="45" step="1">
-        <div class="tooltip">Employer contribution per FT employee. 0 = not offering</div>
-      </div>
-    </div>
-    <div class="grid-3">
-      <div class="field">
-        <label>Sick Leave Accrual (hrs/week)</label>
-        <input type="number" id="sick-accrual" value="0.5" step="0.1">
-        <div class="tooltip">CA/NY: ~1hr per 30hrs worked. Approx 0.5hr/week</div>
-      </div>
-      <div class="field">
-        <label>Vacation Accrual (hrs/week)</label>
-        <input type="number" id="vac-accrual" value="0.75" step="0.1">
-        <div class="tooltip">Typical: 1 week/year = ~0.5hr/week. 2 weeks = ~1hr/week</div>
-      </div>
-      <div class="field">
-        <label>Total On-Cost Loading</label>
-        <input type="text" id="total-oncost-display" readonly style="background:#f0ece4;font-weight:700;color:var(--accent-dark)">
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>🕐</span> Shift Hours Reference</div>
-    <div class="grid-4">
-      <div class="field"><label>OPEN Shift (hrs)</label><input type="number" id="hrs-open" value="8" min="1" max="16"></div>
-      <div class="field"><label>MID Shift (hrs)</label><input type="number" id="hrs-mid" value="6" min="1" max="16"></div>
-      <div class="field"><label>CLOSE Shift (hrs)</label><input type="number" id="hrs-close" value="8" min="1" max="16"></div>
-      <div class="field"><label>SPLIT Shift (hrs)</label><input type="number" id="hrs-split" value="10" min="1" max="16"></div>
-    </div>
-  </div>
-
+<!-- STAFF PANEL -->
+<div id="panel-staff" class="panel" style="display:none">
+<div id="staff-limit-warn" class="upg" style="display:none">⚠️ Free plan limit: 10 staff. Upgrade to add more.</div>
+<div class="card"><div class="ct">👤 Staff List <span id="staff-badge" style="font-size:0.75rem;font-weight:400;color:#6B6B6B"></span></div>
+<div class="brow">
+  <button class="btn ba" onclick="addStaff('kitchen')">+ Add Kitchen Staff</button>
+  <button class="btn bp" style="background:#2c6e8f" onclick="addStaff('service')">+ Add Service Staff</button>
+  <button class="btn bs" onclick="loadSample()">📋 Load Sample Team</button>
 </div>
-<!-- END SETUP TAB -->
-
-<!-- TAB 2: STAFF -->
-<div id="panel-staff" class="tab-panel">
-
-  <div class="card">
-    <div class="card-title"><span>👤</span> Staff List <span id="staff-count-badge" style="font-size:0.75rem;font-weight:400;color:var(--text-muted)"></span></div>
-    <div id="staff-limit-warning" style="display:none" class="upgrade-banner">
-      <h3>🔒 Free Plan Limit Reached</h3>
-      <p>You've reached 10 staff — the maximum for the free plan.<br>Upgrade to KitchenFounder OS to roster unlimited staff.</p>
-      <div class="price">$29.99/month</div>
-      <div style="margin-top:8px;font-size:0.78rem;opacity:0.8">Includes unlimited staff · cloud save · clock in/out · payroll export</div>
-    </div>
-    <table class="staff-table" id="staff-table">
-      <thead>
-        <tr>
-          <th style="width:140px">Name</th>
-          <th style="width:110px">Department</th>
-          <th style="width:120px">Role</th>
-          <th style="width:90px">Type</th>
-          <th style="width:85px">Base Rate ($/hr)</th>
-          <th style="width:70px">Hrs/Week</th>
-          <th style="width:60px">Remove</th>
-        </tr>
-      </thead>
-      <tbody id="staff-tbody"></tbody>
-    </table>
-    <div class="btn-row">
-      <button class="btn btn-add" onclick="addStaff('kitchen')">+ Add Kitchen Staff</button>
-      <button class="btn btn-add" style="background:#2c6e8f" onclick="addStaff('service')">+ Add Service Staff</button>
-      <button class="btn btn-secondary" onclick="loadSampleStaff()">Load Sample Team (10)</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>📊</span> Team Summary</div>
-    <div class="grid-4" id="team-summary-grid">
-      <div class="metric-card blue">
-        <div class="metric-label">Total Staff</div>
-        <div class="metric-value" id="sum-total-staff">0</div>
-        <div class="metric-sub">max 10 free</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Kitchen Team</div>
-        <div class="metric-value" id="sum-kitchen-staff">0</div>
-        <div class="metric-sub">staff</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Service Team</div>
-        <div class="metric-value" id="sum-service-staff">0</div>
-        <div class="metric-sub">staff</div>
-      </div>
-      <div class="metric-card amber">
-        <div class="metric-label">Avg Base Rate</div>
-        <div class="metric-value" id="sum-avg-rate">$0</div>
-        <div class="metric-sub">per hour</div>
-      </div>
-    </div>
-  </div>
-
+<table class="tbl"><thead><tr>
+  <th>Name</th><th>Dept</th><th>Role</th><th>Type</th><th>Base Rate ($/hr)</th><th>Hrs/Wk</th><th>Remove</th>
+</tr></thead><tbody id="staff-tbody"></tbody></table></div>
+<div class="card"><div class="ct">📊 Team Summary</div>
+<div class="g4">
+  <div class="mc"><div class="ml">Total Staff</div><div class="mv" id="s-total">0</div></div>
+  <div class="mc"><div class="ml">Kitchen</div><div class="mv" id="s-kitch">0</div></div>
+  <div class="mc"><div class="ml">Service</div><div class="mv" id="s-serv">0</div></div>
+  <div class="mc"><div class="ml">Avg Rate</div><div class="mv a" id="s-avgrate">$0.00</div></div>
+</div></div>
 </div>
-<!-- END STAFF TAB -->
 
-<!-- TAB 3: ROSTER -->
-<div id="panel-roster" class="tab-panel">
-
-  <div class="card">
-    <div class="card-title"><span>📅</span> Weekly Roster</div>
-    <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
-      <div style="font-size:0.78rem;color:var(--text-muted)">
-        <strong>Shift legend:</strong>
-        <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:4px;margin:0 3px">OPEN</span>
-        <span style="background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:4px;margin:0 3px">MID</span>
-        <span style="background:#fce4ec;color:#880e4f;padding:2px 8px;border-radius:4px;margin:0 3px">CLOSE</span>
-        <span style="background:#fff8e1;color:#e65100;padding:2px 8px;border-radius:4px;margin:0 3px">SPLIT</span>
-        <span style="background:#f3e5f5;color:#6a1b9a;padding:2px 8px;border-radius:4px;margin:0 3px">RDO</span>
-        <span style="background:#f8f8f8;color:#aaa;padding:2px 8px;border-radius:4px;margin:0 3px">OFF</span>
-      </div>
-    </div>
-    <div class="roster-grid">
-      <table class="roster-table" id="roster-table">
-        <thead>
-          <tr>
-            <th class="name-col">Staff Member</th>
-            <th>Dept</th>
-            <th id="day-header-0">Mon</th>
-            <th id="day-header-1">Tue</th>
-            <th id="day-header-2">Wed</th>
-            <th id="day-header-3">Thu</th>
-            <th id="day-header-4">Fri</th>
-            <th id="day-header-5">Sat</th>
-            <th id="day-header-6">Sun</th>
-            <th>Hrs</th>
-            <th>Base $</th>
-          </tr>
-        </thead>
-        <tbody id="roster-tbody"></tbody>
-        <tfoot id="roster-tfoot"></tfoot>
-      </table>
-    </div>
-    <div class="btn-row">
-      <button class="btn btn-secondary" onclick="setAllShifts('OPEN')">Set All → OPEN</button>
-      <button class="btn btn-secondary" onclick="setAllShifts('OFF')">Set All → OFF</button>
-      <button class="btn btn-primary" onclick="calculateAll()">🔄 Recalculate</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>📈</span> Roster Summary</div>
-    <div class="grid-4">
-      <div class="metric-card blue">
-        <div class="metric-label">Total Rostered Hours</div>
-        <div class="metric-value" id="roster-total-hrs">0</div>
-        <div class="metric-sub">this week</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Kitchen Hours</div>
-        <div class="metric-value" id="roster-kitchen-hrs">0</div>
-        <div class="metric-sub">hrs</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Service Hours</div>
-        <div class="metric-value" id="roster-service-hrs">0</div>
-        <div class="metric-sub">hrs</div>
-      </div>
-      <div class="metric-card amber">
-        <div class="metric-label">Base Wages</div>
-        <div class="metric-value" id="roster-base-wages">$0</div>
-        <div class="metric-sub">before on-costs</div>
-      </div>
-    </div>
-  </div>
-
+<!-- ROSTER PANEL -->
+<div id="panel-roster" class="panel" style="display:none">
+<div class="card"><div class="ct">📅 Weekly Roster</div>
+<div class="brow">
+  <button class="btn bs" onclick="setAll('OPEN')">All → OPEN</button>
+  <button class="btn bs" onclick="setAll('OFF')">All → OFF</button>
+  <button class="btn bp" onclick="CA()">🔄 Recalculate</button>
 </div>
-<!-- END ROSTER TAB -->
-
-<!-- TAB 4: TRUE COST -->
-<div id="panel-costs" class="tab-panel">
-
-  <div class="grid-4" style="margin-bottom:16px">
-    <div class="metric-card blue">
-      <div class="metric-label">Base Wages</div>
-      <div class="metric-value" id="cost-base-wages">$0</div>
-      <div class="metric-sub">hours × rate</div>
-    </div>
-    <div class="metric-card amber">
-      <div class="metric-label">On-Cost Loading</div>
-      <div class="metric-value" id="cost-oncost-total">$0</div>
-      <div class="metric-sub">FICA + SUTA + WComp + Health</div>
-    </div>
-    <div class="metric-card red">
-      <div class="metric-label">TRUE Labour Cost</div>
-      <div class="metric-value" id="cost-true-total">$0</div>
-      <div class="metric-sub">what you actually pay</div>
-    </div>
-    <div class="metric-card" id="labour-pct-card">
-      <div class="metric-label">Labour % of Revenue</div>
-      <div class="metric-value" id="cost-labour-pct">0%</div>
-      <div class="metric-sub" id="labour-pct-status">vs target</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>💲</span> On-Cost Breakdown</div>
-    <div id="oncost-breakdown">
-      <div class="bar-wrap">
-        <div class="bar-label-row"><span>Base Wages</span><span id="bar-base-val">$0</span></div>
-        <div class="bar-track"><div class="bar-fill" id="bar-base" style="width:0%;background:#264653"></div></div>
-      </div>
-      <div class="bar-wrap">
-        <div class="bar-label-row"><span>FICA (Employer 7.65%)</span><span id="bar-fica-val">$0</span></div>
-        <div class="bar-track"><div class="bar-fill" id="bar-fica" style="width:0%;background:#e76f51"></div></div>
-      </div>
-      <div class="bar-wrap">
-        <div class="bar-label-row"><span>SUTA / FUTA</span><span id="bar-suta-val">$0</span></div>
-        <div class="bar-track"><div class="bar-fill" id="bar-suta" style="width:0%;background:#f4a261"></div></div>
-      </div>
-      <div class="bar-wrap">
-        <div class="bar-label-row"><span>Workers Compensation</span><span id="bar-wcomp-val">$0</span></div>
-        <div class="bar-track"><div class="bar-fill" id="bar-wcomp" style="width:0%;background:#e9c46a"></div></div>
-      </div>
-      <div class="bar-wrap">
-        <div class="bar-label-row"><span>Health Insurance</span><span id="bar-health-val">$0</span></div>
-        <div class="bar-track"><div class="bar-fill" id="bar-health" style="width:0%;background:#2a9d8f"></div></div>
-      </div>
-      <div class="bar-wrap">
-        <div class="bar-label-row"><span>Leave Accrual (Sick + Vacation)</span><span id="bar-leave-val">$0</span></div>
-        <div class="bar-track"><div class="bar-fill" id="bar-leave" style="width:0%;background:#8ecae6"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>🏪</span> Cost by Department</div>
-    <div class="grid-2">
-      <div>
-        <div class="section-divider"><span>🍳 Kitchen Team</span></div>
-        <div class="report-row"><span>Base Wages</span><span id="dept-kitchen-base">$0</span></div>
-        <div class="report-row"><span>On-Costs</span><span id="dept-kitchen-oncost">$0</span></div>
-        <div class="report-row total"><span>Kitchen True Cost</span><span id="dept-kitchen-total">$0</span></div>
-      </div>
-      <div>
-        <div class="section-divider"><span>🛎️ Service Team</span></div>
-        <div class="report-row"><span>Base Wages</span><span id="dept-service-base">$0</span></div>
-        <div class="report-row"><span>On-Costs</span><span id="dept-service-oncost">$0</span></div>
-        <div class="report-row total"><span>Service True Cost</span><span id="dept-service-total">$0</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span>🎯</span> Labour % vs Target</div>
-    <div class="grid-3">
-      <div class="metric-card">
-        <div class="metric-label">Revenue Target</div>
-        <div class="metric-value" id="tgt-revenue">$0</div>
-        <div class="metric-sub">this week</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Labour $ Target</div>
-        <div class="metric-value" id="tgt-labour-dollar">$0</div>
-        <div class="metric-sub" id="tgt-labour-pct-label">at 32%</div>
-      </div>
-      <div class="metric-card" id="tgt-variance-card">
-        <div class="metric-label">Variance</div>
-        <div class="metric-value" id="tgt-variance">$0</div>
-        <div class="metric-sub" id="tgt-variance-label">vs budget</div>
-      </div>
-    </div>
-    <div style="margin-top:16px">
-      <div class="bar-label-row" style="margin-bottom:6px">
-        <span style="font-size:0.8rem;font-weight:600">Labour % of Revenue</span>
-        <span id="labour-pct-gauge-label" style="font-size:0.8rem;font-weight:700">0%</span>
-      </div>
-      <div class="bar-track" style="height:16px;border-radius:8px">
-        <div class="bar-fill" id="labour-pct-gauge" style="width:0%;background:var(--green);border-radius:8px;height:100%"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text-muted);margin-top:4px">
-        <span>0%</span><span>Target</span><span>50%</span>
-      </div>
-    </div>
-    <div style="margin-top:12px;padding:12px;background:#f5f0e8;border-radius:6px">
-      <div id="labour-advisory" style="font-size:0.82rem"></div>
-    </div>
-  </div>
-
+<div style="overflow-x:auto"><table class="tbl">
+<thead><tr>
+  <th style="min-width:130px">Staff</th><th>Role</th>
+  <th id="dh0">Mon</th><th id="dh1">Tue</th><th id="dh2">Wed</th>
+  <th id="dh3">Thu</th><th id="dh4">Fri</th><th id="dh5">Sat</th><th id="dh6">Sun</th>
+  <th>Hrs</th><th>Base $</th>
+</tr></thead>
+<tbody id="roster-tbody"></tbody>
+<tfoot id="roster-tfoot"></tfoot>
+</table></div></div>
+<div class="card"><div class="ct">📈 Roster Summary</div>
+<div class="g4">
+  <div class="mc"><div class="ml">Total Hours</div><div class="mv" id="r-hrs">0</div></div>
+  <div class="mc"><div class="ml">Kitchen Hrs</div><div class="mv" id="r-khrs">0</div></div>
+  <div class="mc"><div class="ml">Service Hrs</div><div class="mv" id="r-shrs">0</div></div>
+  <div class="mc"><div class="ml">Base Wages</div><div class="mv a" id="r-base">$0</div></div>
+</div></div>
 </div>
-<!-- END COSTS TAB -->
-
-<!-- TAB 5: REPORT -->
-<div id="panel-report" class="tab-panel">
-
-  <div class="card" id="finance-report">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-      <div>
-        <div style="font-size:1.1rem;font-weight:800;color:var(--blue)" id="report-venue-name">My Restaurant</div>
-        <div style="font-size:0.8rem;color:var(--text-muted)" id="report-week-label">Week of —</div>
-        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px" id="report-state-label">State: TX</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:0.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase">KitchenFounder</div>
-        <div style="font-size:0.7rem;color:var(--text-muted)">Labour Planner</div>
-        <div id="report-status-badge" style="margin-top:6px"></div>
-      </div>
-    </div>
-
-    <div class="report-section">
-      <h3>📊 Weekly Labour Summary</h3>
-      <div class="report-row"><span>Total Staff Rostered</span><span id="rpt-staff">0</span></div>
-      <div class="report-row"><span>Total Hours Worked</span><span id="rpt-hours">0 hrs</span></div>
-      <div class="report-row"><span>Revenue Target</span><span id="rpt-revenue">$0</span></div>
-      <div class="report-row"><span>Labour % Target</span><span id="rpt-labour-target">0%</span></div>
-    </div>
-
-    <div class="report-section">
-      <h3>💲 True Labour Cost Breakdown</h3>
-      <div class="report-row"><span>Base Wages</span><span id="rpt-base">$0</span></div>
-      <div class="report-row"><span>FICA — Employer (7.65%)</span><span id="rpt-fica">$0</span></div>
-      <div class="report-row"><span>SUTA / FUTA</span><span id="rpt-suta">$0</span></div>
-      <div class="report-row"><span>Workers Compensation</span><span id="rpt-wcomp">$0</span></div>
-      <div class="report-row"><span>Health Insurance</span><span id="rpt-health">$0</span></div>
-      <div class="report-row"><span>Leave Accrual (Sick + Vacation)</span><span id="rpt-leave">$0</span></div>
-      <div class="report-row total"><span>TRUE LABOUR COST</span><span id="rpt-true-total">$0</span></div>
-    </div>
-
-    <div class="report-section">
-      <h3>🏪 By Department</h3>
-      <div class="report-row"><span>Kitchen Team — Hours</span><span id="rpt-kitchen-hrs">0 hrs</span></div>
-      <div class="report-row"><span>Kitchen Team — True Cost</span><span id="rpt-kitchen-cost">$0</span></div>
-      <div class="report-row"><span>Service Team — Hours</span><span id="rpt-service-hrs">0 hrs</span></div>
-      <div class="report-row"><span>Service Team — True Cost</span><span id="rpt-service-cost">$0</span></div>
-    </div>
-
-    <div class="report-section">
-      <h3>📈 Performance vs Budget</h3>
-      <div class="report-row"><span>Labour % of Revenue</span><span id="rpt-labour-pct">0%</span></div>
-      <div class="report-row"><span>Labour Budget (at target %)</span><span id="rpt-labour-budget">$0</span></div>
-      <div class="report-row"><span>Variance (over/under budget)</span><span id="rpt-variance">$0</span></div>
-      <div class="report-row"><span>On-Cost Loading Total</span><span id="rpt-oncost-pct">0%</span></div>
-      <div class="report-row"><span>True Cost vs Base Wages</span><span id="rpt-true-vs-base">0%</span></div>
-    </div>
-
-    <div class="report-section">
-      <h3>👥 Staff Detail</h3>
-      <div id="rpt-staff-detail"></div>
-    </div>
-
-    <div style="padding:12px;background:#f5f0e8;border-radius:6px;margin-top:8px">
-      <div style="font-size:0.72rem;color:var(--text-muted);text-align:center">
-        Generated by KitchenFounder Labour Planner · kitchenfounder.com<br>
-        For information purposes only. Consult a licensed payroll provider for compliance advice.
-      </div>
-    </div>
-  </div>
-
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
-    <button class="btn btn-secondary" onclick="calculateAll()">🔄 Refresh Report</button>
-  </div>
-
+<!-- COSTS PANEL -->
+<div id="panel-costs" class="panel" style="display:none">
+<div class="card"><div class="ct">💰 True Labour Cost Breakdown</div>
+<div class="g4" style="margin-bottom:20px">
+  <div class="mc"><div class="ml">Base Wages</div><div class="mv" id="c-base">$0</div></div>
+  <div class="mc"><div class="ml">Total On-Costs</div><div class="mv r" id="c-oncost">$0</div></div>
+  <div class="mc"><div class="ml">TRUE Total</div><div class="mv" style="color:#264653" id="c-true">$0</div></div>
+  <div class="mc" id="c-pct-card"><div class="ml">Labour %</div><div class="mv" id="c-pct">0%</div></div>
 </div>
-<!-- END REPORT TAB -->
+<div style="margin-bottom:16px">
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px"><span>Base Wages</span><span id="bv-base">$0</span></div>
+  <div class="bar-track"><div class="bar-fill" id="bfill-base" style="width:0%;background:#264653"></div></div>
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin:8px 0 4px"><span>FICA / Social Security</span><span id="bv-fica">$0</span></div>
+  <div class="bar-track"><div class="bar-fill" id="bfill-fica" style="width:0%;background:#2a9d8f"></div></div>
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin:8px 0 4px"><span>SUTA (State Unemployment)</span><span id="bv-suta">$0</span></div>
+  <div class="bar-track"><div class="bar-fill" id="bfill-suta" style="width:0%;background:#f4a261"></div></div>
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin:8px 0 4px"><span>Workers Compensation</span><span id="bv-wcomp">$0</span></div>
+  <div class="bar-track"><div class="bar-fill" id="bfill-wcomp" style="width:0%;background:#e76f51"></div></div>
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin:8px 0 4px"><span>Health Insurance</span><span id="bv-health">$0</span></div>
+  <div class="bar-track"><div class="bar-fill" id="bfill-health" style="width:0%;background:#9b59b6"></div></div>
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin:8px 0 4px"><span>Sick + Vacation Accrual</span><span id="bv-leave">$0</span></div>
+  <div class="bar-track"><div class="bar-fill" id="bfill-leave" style="width:0%;background:#3498db"></div></div>
+</div></div>
+<div class="card"><div class="ct">🏪 By Department</div>
+<table class="tbl"><thead><tr><th>Dept</th><th>Base Wages</th><th>On-Costs</th><th>TRUE Total</th></tr></thead>
+<tbody>
+<tr><td>🍳 Kitchen</td><td id="dk-base">$0</td><td id="dk-oc">$0</td><td id="dk-true">$0</td></tr>
+<tr><td>🛎️ Service</td><td id="ds-base">$0</td><td id="ds-oc">$0</td><td id="ds-true">$0</td></tr>
+</tbody></table></div>
+<div class="card"><div class="ct">🎯 Target vs Actual</div>
+<div class="g4" style="margin-bottom:16px">
+  <div class="mc"><div class="ml">Revenue Target</div><div class="mv" id="tg-rev">$0</div></div>
+  <div class="mc"><div class="ml">Labour Budget</div><div class="mv g" id="tg-bud">$0</div></div>
+  <div class="mc" id="tg-var-card"><div class="ml" id="tg-var-lbl">Variance</div><div class="mv" id="tg-var">—</div></div>
+  <div class="mc"><div class="ml">Labour %</div><div class="mv" id="tg-pct">0%</div></div>
+</div>
+<div style="margin-bottom:6px;font-size:0.8rem;font-weight:600">Labour % Gauge</div>
+<div class="bar-track" style="height:16px;border-radius:8px"><div id="gauge-fill" style="height:16px;border-radius:8px;width:0%;background:#2a9d8f;transition:width 0.3s"></div></div>
+<div style="font-size:0.75rem;color:#6B6B6B;margin-top:4px" id="gauge-lbl">0%</div>
+<div class="adv" id="advisory">Add staff and build your roster to see labour analysis.</div>
+</div>
+</div>
 
+<!-- REPORT PANEL -->
+<div id="panel-report" class="panel" style="display:none">
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div><div style="font-size:1.1rem;font-weight:700" id="rpt-venue">My Restaurant</div>
+    <div style="font-size:0.8rem;color:#6B6B6B" id="rpt-week">Week of —</div>
+    <div style="font-size:0.8rem;color:#6B6B6B" id="rpt-state">State: TX</div></div>
+    <div id="rpt-badge"></div>
+  </div>
+  <div class="rsec"><h3>Overview</h3>
+    <div class="rrow"><span>Total Staff Rostered</span><span id="rpt-staff">0</span></div>
+    <div class="rrow"><span>Total Hours</span><span id="rpt-hours">0 hrs</span></div>
+    <div class="rrow"><span>Weekly Revenue Target</span><span id="rpt-rev">$0</span></div>
+    <div class="rrow"><span>Labour % Target</span><span id="rpt-tgt">0%</span></div>
+  </div>
+  <div class="rsec"><h3>Cost Breakdown</h3>
+    <div class="rrow"><span>Base Wages</span><span id="rpt-base">$0</span></div>
+    <div class="rrow"><span>FICA</span><span id="rpt-fica">$0</span></div>
+    <div class="rrow"><span>SUTA</span><span id="rpt-suta">$0</span></div>
+    <div class="rrow"><span>Workers Comp</span><span id="rpt-wcomp">$0</span></div>
+    <div class="rrow"><span>Health Insurance</span><span id="rpt-health">$0</span></div>
+    <div class="rrow"><span>Leave Accrual</span><span id="rpt-leave">$0</span></div>
+    <div class="rrow" style="font-weight:700"><span>TRUE Labour Total</span><span id="rpt-true">$0</span></div>
+  </div>
+  <div class="rsec"><h3>By Department</h3>
+    <div class="rrow"><span>🍳 Kitchen — Hours</span><span id="rpt-khrs">0 hrs</span></div>
+    <div class="rrow"><span>🍳 Kitchen — True Cost</span><span id="rpt-kcost">$0</span></div>
+    <div class="rrow"><span>🛎️ Service — Hours</span><span id="rpt-shrs">0 hrs</span></div>
+    <div class="rrow"><span>🛎️ Service — True Cost</span><span id="rpt-scost">$0</span></div>
+  </div>
+  <div class="rsec"><h3>Budget Analysis</h3>
+    <div class="rrow"><span>Actual Labour %</span><span id="rpt-pct">0%</span></div>
+    <div class="rrow"><span>Labour Budget</span><span id="rpt-bud">$0</span></div>
+    <div class="rrow"><span>Variance</span><span id="rpt-var">—</span></div>
+  </div>
+  <div class="rsec"><h3>👥 Staff Detail</h3><div id="rpt-detail"></div></div>
+  <div class="brow">
+    <button class="btn bp" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn bs" onclick="CA()">🔄 Refresh</button>
+  </div>
+</div>
+</div>
 <script>
-// ============================================================
-// KitchenFounder Labour Planner — Full JS Engine
-// ============================================================
+// ─── CONSTANTS ───────────────────────────────────────────────
+var MAX = 10;
+var DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+var SHIFTS = ['OFF','OPEN','MID','CLOSE','SPLIT','RDO'];
+var staffList = [];
+var rosterData = {};
 
-const MAX_FREE_STAFF = 10;
-const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-const SHIFTS = ['OFF','OPEN','MID','CLOSE','SPLIT','RDO'];
-let staffList = [];
-let rosterData = {}; // rosterData[staffId][dayIndex] = shift
-
-// ---- INIT ----
-document.addEventListener('DOMContentLoaded', () => {
-  // Set today's Monday as default week start
-  const today = new Date();
-  const day = today.getDay();
-  const monday = new Date(today);
-  monday.setDate(today.getDate() - (day === 0 ? 6 : day - 1));
-  document.getElementById('week-start').valueAsDate = monday;
-
-  // Bind all setup inputs
-  const setupIds = ['venue-name','week-start','state-select','revenue-target',
-    'labour-target-pct','days-open','fica-rate','suta-rate','wcomp-rate',
-    'health-rate','sick-accrual','vac-accrual','hrs-open','hrs-mid','hrs-close','hrs-split'];
-  setupIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('change', () => calculateAll());
-  });
-
-  // Bind tabs
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      const panel = document.getElementById('panel-' + btn.dataset.tab);
-      if (panel) panel.classList.add('active');
-      if (btn.dataset.tab === 'roster') renderRoster();
-      if (btn.dataset.tab !== 'staff') calculateAll();
-    });
-  });
-
-  loadSampleStaff();
-});
-
-// ---- HELPERS ----
-function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
-function fmtD(n) { return '$' + n.toFixed(2); }
-function fmtPct(n) { return n.toFixed(1) + '%'; }
-function getVal(id, def = 0) {
-  const el = document.getElementById(id);
-  return el ? (parseFloat(el.value) || def) : def;
-}
-function getText(id, def = '') {
-  const el = document.getElementById(id);
-  return el ? (el.value || def) : def;
-}
-function setText(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = val;
-}
-
-function getShiftHours(shift) {
-  switch(shift) {
-    case 'OPEN':  return getVal('hrs-open', 8);
-    case 'MID':   return getVal('hrs-mid', 6);
-    case 'CLOSE': return getVal('hrs-close', 8);
-    case 'SPLIT': return getVal('hrs-split', 10);
-    case 'RDO':   return 0;
-    case 'OFF':   return 0;
-    default:      return 0;
+// ─── TAB SWITCHING ───────────────────────────────────────────
+function ST(name, btn) {
+  var panels = ['setup','staff','roster','costs','report'];
+  for (var i=0; i<panels.length; i++) {
+    var p = document.getElementById('panel-'+panels[i]);
+    if (p) p.style.display = 'none';
   }
+  var tabs = document.getElementsByClassName('tab');
+  for (var i=0; i<tabs.length; i++) tabs[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display = 'block';
+  if (btn) btn.classList.add('on');
+  if (name === 'roster') renderRoster();
+  if (name !== 'staff') CA();
 }
 
-function uniqueId() {
-  return 'staff_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
+// ─── HELPERS ─────────────────────────────────────────────────
+function gv(id, def) { var e=document.getElementById(id); return e ? (parseFloat(e.value)||def||0) : (def||0); }
+function gt(id, def) { var e=document.getElementById(id); return e ? (e.value||(def||'')) : (def||''); }
+function st(id, v)   { var e=document.getElementById(id); if(e) e.textContent=v; }
+function fm(n)  { return '$'+Math.round(n).toLocaleString(); }
+function fp(n)  { return n.toFixed(1)+'%'; }
+function fd(n)  { return '$'+n.toFixed(2); }
+function uid()  { return 's_'+Date.now()+'_'+Math.random().toString(36).substr(2,4); }
+
+function shiftHrs(s) {
+  if (s==='OPEN')  return gv('hrs-open',8);
+  if (s==='MID')   return gv('hrs-mid',6);
+  if (s==='CLOSE') return gv('hrs-close',8);
+  if (s==='SPLIT') return gv('hrs-split',10);
+  return 0;
 }
 
-// ---- STAFF MANAGEMENT ----
+// ─── STAFF ───────────────────────────────────────────────────
 function addStaff(dept) {
-  if (staffList.length >= MAX_FREE_STAFF) {
-    document.getElementById('staff-limit-warning').style.display = 'block';
-    return;
+  if (staffList.length >= MAX) {
+    document.getElementById('staff-limit-warn').style.display = 'block'; return;
   }
-  const id = uniqueId();
-  staffList.push({
-    id, name: '', dept: dept, role: dept === 'kitchen' ? 'Cook' : 'Wait Staff',
-    type: 'Casual', rate: dept === 'kitchen' ? 18 : 15, contracted: 38
-  });
+  var id = uid();
+  staffList.push({id:id, name:'', dept:dept, role:dept==='kitchen'?'Cook':'Wait Staff', type:'Casual', rate:dept==='kitchen'?18:15});
   rosterData[id] = {};
-  DAYS.forEach((d, i) => { rosterData[id][i] = 'OPEN'; });
-  renderStaffTable();
-  calculateAll();
+  for (var i=0; i<7; i++) rosterData[id][i] = 'OPEN';
+  renderStaff(); CA();
 }
 
 function removeStaff(id) {
-  staffList = staffList.filter(s => s.id !== id);
+  staffList = staffList.filter(function(s){return s.id!==id;});
   delete rosterData[id];
-  renderStaffTable();
-  renderRoster();
-  calculateAll();
+  renderStaff(); renderRoster(); CA();
 }
 
-function loadSampleStaff() {
-  staffList = [];
-  rosterData = {};
-  const samples = [
-    { name:'Alex Martinez', dept:'kitchen', role:'Head Chef', type:'Full-time', rate:25, contracted:40 },
-    { name:'Jamie Chen', dept:'kitchen', role:'Line Cook', type:'Full-time', rate:19, contracted:40 },
-    { name:'Sam Torres', dept:'kitchen', role:'Line Cook', type:'Part-time', rate:18, contracted:25 },
-    { name:'Riley Kim', dept:'kitchen', role:'Prep Cook', type:'Casual', rate:16, contracted:30 },
-    { name:'Jordan Lee', dept:'kitchen', role:'Steward', type:'Casual', rate:14, contracted:30 },
-    { name:'Taylor Nguyen', dept:'service', role:'Floor Manager', type:'Full-time', rate:22, contracted:40 },
-    { name:'Morgan Davis', dept:'service', role:'Wait Staff', type:'Full-time', rate:15, contracted:38 },
-    { name:'Casey Wilson', dept:'service', role:'Wait Staff', type:'Part-time', rate:14, contracted:24 },
-    { name:'Drew Patel', dept:'service', role:'Bartender', type:'Casual', rate:17, contracted:30 },
-    { name:'Quinn Brown', dept:'service', role:'Runner', type:'Casual', rate:13, contracted:20 }
+function loadSample() {
+  staffList = []; rosterData = {};
+  var data = [
+    {name:'Alex Martinez', dept:'kitchen', role:'Head Chef',     type:'Full-time', rate:25},
+    {name:'Jamie Chen',    dept:'kitchen', role:'Line Cook',     type:'Full-time', rate:19},
+    {name:'Sam Torres',    dept:'kitchen', role:'Line Cook',     type:'Part-time', rate:18},
+    {name:'Riley Kim',     dept:'kitchen', role:'Prep Cook',     type:'Casual',    rate:16},
+    {name:'Jordan Lee',    dept:'kitchen', role:'Steward',       type:'Casual',    rate:14},
+    {name:'Taylor Nguyen', dept:'service', role:'Floor Manager', type:'Full-time', rate:22},
+    {name:'Morgan Davis',  dept:'service', role:'Wait Staff',    type:'Full-time', rate:15},
+    {name:'Casey Wilson',  dept:'service', role:'Wait Staff',    type:'Part-time', rate:14},
+    {name:'Drew Patel',    dept:'service', role:'Bartender',     type:'Casual',    rate:17},
+    {name:'Quinn Brown',   dept:'service', role:'Runner',        type:'Casual',    rate:13}
   ];
-  const sampleRosters = [
+  var rosters = [
     [1,1,1,1,1,1,0],[1,1,1,1,1,1,0],[0,2,2,2,2,1,1],[0,0,2,2,2,1,1],[3,3,3,3,3,0,0],
     [1,1,1,1,1,1,0],[1,1,2,2,3,3,0],[0,2,2,3,3,0,0],[0,0,1,1,3,3,4],[3,3,0,0,1,1,1]
   ];
-  const shiftMap = {0:'OFF',1:'OPEN',2:'MID',3:'CLOSE',4:'SPLIT',5:'RDO'};
-  samples.forEach((s, idx) => {
-    const id = uniqueId();
-    staffList.push({ id, ...s });
+  var sm = ['OFF','OPEN','MID','CLOSE','SPLIT'];
+  data.forEach(function(d,idx){
+    var id = uid();
+    staffList.push({id:id, name:d.name, dept:d.dept, role:d.role, type:d.type, rate:d.rate});
     rosterData[id] = {};
-    DAYS.forEach((d, i) => { rosterData[id][i] = shiftMap[sampleRosters[idx][i]] || 'OFF'; });
+    for (var i=0; i<7; i++) rosterData[id][i] = sm[rosters[idx][i]]||'OFF';
   });
-  renderStaffTable();
-  renderRoster();
-  calculateAll();
+  renderStaff(); renderRoster(); CA();
 }
 
-function renderStaffTable() {
-  const tbody = document.getElementById('staff-tbody');
+function renderStaff() {
+  var tbody = document.getElementById('staff-tbody');
   if (!tbody) return;
-  const warning = document.getElementById('staff-limit-warning');
-  if (warning) warning.style.display = staffList.length >= MAX_FREE_STAFF ? 'block' : 'none';
-
-  tbody.innerHTML = staffList.map((s, idx) => `
-    <tr>
-      <td><input type="text" value="${s.name}" placeholder="Staff name"
-        onchange="staffList[${idx}].name=this.value;updateRosterNames();calculateAll()"></td>
-      <td>
-        <select onchange="staffList[${idx}].dept=this.value;calculateAll()">
-          <option value="kitchen" ${s.dept==='kitchen'?'selected':''}>🍳 Kitchen</option>
-          <option value="service" ${s.dept==='service'?'selected':''}>🛎️ Service</option>
-        </select>
-      </td>
-      <td>
-        <select onchange="staffList[${idx}].role=this.value;calculateAll()">
-          ${['Head Chef','Sous Chef','Line Cook','Prep Cook','Pastry Chef','Steward',
-             'Floor Manager','Supervisor','Wait Staff','Bartender','Runner','Host'].map(r =>
-            `<option ${s.role===r?'selected':''}>${r}</option>`).join('')}
-        </select>
-      </td>
-      <td>
-        <select onchange="staffList[${idx}].type=this.value;calculateAll()">
-          <option ${s.type==='Full-time'?'selected':''}>Full-time</option>
-          <option ${s.type==='Part-time'?'selected':''}>Part-time</option>
-          <option ${s.type==='Casual'?'selected':''}>Casual</option>
-        </select>
-      </td>
-      <td><input type="number" value="${s.rate}" min="7" max="100" step="0.5"
-        onchange="staffList[${idx}].rate=parseFloat(this.value)||0;calculateAll()"></td>
-      <td style="text-align:center;font-weight:600" id="staff-hrs-${s.id}">—</td>
-      <td style="text-align:center">
-        <button class="btn btn-danger" onclick="removeStaff('${s.id}')">✕</button>
-      </td>
-    </tr>
-  `).join('');
-
-  // Update summary
-  const total = staffList.length;
-  const kitchen = staffList.filter(s => s.dept === 'kitchen').length;
-  const service = staffList.filter(s => s.dept === 'service').length;
-  const avgRate = total > 0 ? staffList.reduce((a,s) => a + s.rate, 0) / total : 0;
-  setText('sum-total-staff', total);
-  setText('sum-kitchen-staff', kitchen);
-  setText('sum-service-staff', service);
-  setText('sum-avg-rate', '$' + avgRate.toFixed(2));
-  setText('staff-count-badge', `(${total} / ${MAX_FREE_STAFF} free)`);
+  var warn = document.getElementById('staff-limit-warn');
+  if (warn) warn.style.display = staffList.length>=MAX ? 'block':'none';
+  var roles = ['Head Chef','Sous Chef','Line Cook','Prep Cook','Pastry Chef','Steward','Floor Manager','Supervisor','Wait Staff','Bartender','Runner','Host'];
+  tbody.innerHTML = staffList.map(function(s,idx){
+    var roleOpts = roles.map(function(r){ return '<option'+(s.role===r?' selected':'')+'>'+r+'</option>'; }).join('');
+    return '<tr>'+
+      '<td><input type="text" value="'+s.name+'" placeholder="Name" onchange="staffList['+idx+'].name=this.value;updateNames();CA()"></td>'+
+      '<td><select onchange="staffList['+idx+'].dept=this.value;CA()">'+
+        '<option value="kitchen"'+(s.dept==='kitchen'?' selected':'')+'>🍳 Kitchen</option>'+
+        '<option value="service"'+(s.dept==='service'?' selected':'')+'>🛎️ Service</option>'+
+      '</select></td>'+
+      '<td><select onchange="staffList['+idx+'].role=this.value;CA()">'+roleOpts+'</select></td>'+
+      '<td><select onchange="staffList['+idx+'].type=this.value;CA()">'+
+        '<option'+(s.type==='Full-time'?' selected':'')+'>Full-time</option>'+
+        '<option'+(s.type==='Part-time'?' selected':'')+'>Part-time</option>'+
+        '<option'+(s.type==='Casual'?' selected':'')+'>Casual</option>'+
+      '</select></td>'+
+      '<td><input type="number" value="'+s.rate+'" min="7" max="100" step="0.5" style="width:70px" onchange="staffList['+idx+'].rate=parseFloat(this.value)||0;CA()"></td>'+
+      '<td style="text-align:center;font-weight:600" id="shrs-'+s.id+'">—</td>'+
+      '<td style="text-align:center"><button class="btn bd" onclick="removeStaff(\''+s.id+'\')">✕</button></td>'+
+    '</tr>';
+  }).join('');
+  var total=staffList.length, k=staffList.filter(function(s){return s.dept==='kitchen';}).length;
+  var sv=staffList.filter(function(s){return s.dept==='service';}).length;
+  var avg=total>0?staffList.reduce(function(a,s){return a+s.rate;},0)/total:0;
+  st('s-total',total); st('s-kitch',k); st('s-serv',sv); st('s-avgrate',fd(avg));
+  st('staff-badge','('+total+'/'+MAX+' free)');
 }
 
-function updateRosterNames() {
-  staffList.forEach(s => {
-    const cell = document.getElementById('roster-name-' + s.id);
-    if (cell) cell.textContent = s.name || '(unnamed)';
+function updateNames() {
+  staffList.forEach(function(s){
+    var c=document.getElementById('rn-'+s.id); if(c) c.textContent=s.name||(s.name||'(unnamed)');
   });
 }
 
-// ---- ROSTER ----
+// ─── ROSTER ──────────────────────────────────────────────────
 function renderRoster() {
-  const tbody = document.getElementById('roster-tbody');
-  const tfoot = document.getElementById('roster-tfoot');
+  var tbody = document.getElementById('roster-tbody');
+  var tfoot = document.getElementById('roster-tfoot');
   if (!tbody) return;
-
   // Update day headers
-  const weekStart = document.getElementById('week-start').valueAsDate;
-  DAYS.forEach((d, i) => {
-    const header = document.getElementById('day-header-' + i);
-    if (header) {
-      if (weekStart) {
-        const date = new Date(weekStart);
-        date.setDate(weekStart.getDate() + i);
-        header.textContent = d + ' ' + (date.getMonth()+1) + '/' + date.getDate();
-      } else {
-        header.textContent = d;
-      }
+  var ws = document.getElementById('wstart');
+  var wsDate = ws && ws.value ? new Date(ws.value+'T00:00:00') : null;
+  for (var i=0; i<7; i++) {
+    var h = document.getElementById('dh'+i);
+    if (h && wsDate) {
+      var d2 = new Date(wsDate); d2.setDate(wsDate.getDate()+i);
+      h.textContent = DAYS[i]+' '+(d2.getMonth()+1)+'/'+ d2.getDate();
     }
-  });
-
-  tbody.innerHTML = staffList.map(s => {
-    const hrs = DAYS.reduce((a, d, i) => a + getShiftHours(rosterData[s.id]?.[i] || 'OFF'), 0);
-    const base = hrs * s.rate;
-    const deptIcon = s.dept === 'kitchen' ? '🍳' : '🛎️';
-    const dayCells = DAYS.map((d, i) => {
-      const shift = rosterData[s.id]?.[i] || 'OFF';
-      return `<td class="shift-${shift}">
-        <select onchange="rosterData['${s.id}'][${i}]=this.value;calculateAll()" class="shift-select">
-          ${SHIFTS.map(sh => `<option ${shift===sh?'selected':''}>${sh}</option>`).join('')}
-        </select>
-      </td>`;
+  }
+  tbody.innerHTML = staffList.map(function(s){
+    var hrs=0; for(var i=0;i<7;i++) hrs+=shiftHrs(rosterData[s.id]?rosterData[s.id][i]:'OFF');
+    var base=hrs*s.rate;
+    var deptIcon=s.dept==='kitchen'?'🍳':'🛎️';
+    var cells=DAYS.map(function(d,i){
+      var sh=(rosterData[s.id]&&rosterData[s.id][i])?rosterData[s.id][i]:'OFF';
+      var opts=SHIFTS.map(function(x){return '<option'+(sh===x?' selected':'')+'>'+x+'</option>';}).join('');
+      return '<td class="s'+sh+'"><select class="ssel s'+sh+'" onchange="rosterData[\''+s.id+'\']['+i+']=this.value;this.className=\'ssel s\'+this.value;CA()">'+opts+'</select></td>';
     }).join('');
-    return `<tr>
-      <td class="name-cell" id="roster-name-${s.id}">${s.name || '(unnamed)'}</td>
-      <td class="dept-cell">${deptIcon} ${s.role}</td>
-      ${dayCells}
-      <td style="text-align:center;font-weight:700">${hrs}</td>
-      <td style="text-align:center;font-weight:700">${fmt(base)}</td>
-    </tr>`;
+    return '<tr><td id="rn-'+s.id+'">'+(s.name||'(unnamed)')+'</td><td>'+deptIcon+' '+s.role+'</td>'+cells+'<td style="text-align:center;font-weight:700">'+hrs+'</td><td style="text-align:center;font-weight:700">'+fm(base)+'</td></tr>';
   }).join('');
-
-  // Footer totals
-  const dayTotals = DAYS.map((d, i) => {
-    const hrs = staffList.reduce((a, s) => a + getShiftHours(rosterData[s.id]?.[i] || 'OFF'), 0);
-    return `<td style="text-align:center;font-weight:700;background:#f0ece4">${hrs}h</td>`;
+  // Footer
+  var dayTotals=DAYS.map(function(d,i){
+    var h=staffList.reduce(function(a,s){return a+shiftHrs(rosterData[s.id]?rosterData[s.id][i]:'OFF');},0);
+    return '<td style="text-align:center;font-weight:700;background:#f0ece4">'+h+'h</td>';
   }).join('');
-  const totalHrs = staffList.reduce((a, s) =>
-    a + DAYS.reduce((b, d, i) => b + getShiftHours(rosterData[s.id]?.[i] || 'OFF'), 0), 0);
-  const totalBase = staffList.reduce((a, s) =>
-    a + DAYS.reduce((b, d, i) => b + getShiftHours(rosterData[s.id]?.[i] || 'OFF'), 0) * s.rate, 0);
-  tfoot.innerHTML = `<tr>
-    <td colspan="2" style="font-weight:700;background:#f0ece4;padding:6px 8px">TOTALS</td>
-    ${dayTotals}
-    <td style="text-align:center;font-weight:700;background:#f0ece4">${totalHrs}</td>
-    <td style="text-align:center;font-weight:700;background:#f0ece4">${fmt(totalBase)}</td>
-  </tr>`;
+  var tHrs=staffList.reduce(function(a,s){var h=0;for(var i=0;i<7;i++)h+=shiftHrs(rosterData[s.id]?rosterData[s.id][i]:'OFF');return a+h;},0);
+  var tBase=staffList.reduce(function(a,s){var h=0;for(var i=0;i<7;i++)h+=shiftHrs(rosterData[s.id]?rosterData[s.id][i]:'OFF');return a+h*s.rate;},0);
+  tfoot.innerHTML='<tr><td colspan="2" style="font-weight:700;background:#f0ece4;padding:6px 10px">TOTALS</td>'+dayTotals+'<td style="text-align:center;font-weight:700;background:#f0ece4">'+tHrs+'</td><td style="text-align:center;font-weight:700;background:#f0ece4">'+fm(tBase)+'</td></tr>';
 }
 
-function setAllShifts(shift) {
-  staffList.forEach(s => {
-    DAYS.forEach((d, i) => { rosterData[s.id][i] = shift; });
-  });
-  renderRoster();
-  calculateAll();
+function setAll(shift) {
+  staffList.forEach(function(s){ for(var i=0;i<7;i++) rosterData[s.id][i]=shift; });
+  renderRoster(); CA();
 }
 
-// ---- MAIN CALCULATE ----
-function calculateAll() {
-  const ficaRate    = getVal('fica-rate', 7.65) / 100;
-  const sutaRate    = getVal('suta-rate', 3.5) / 100;
-  const wcompRate   = getVal('wcomp-rate', 4.0) / 100;
-  const healthPPW   = getVal('health-rate', 45);
-  const sickAccrual = getVal('sick-accrual', 0.5);
-  const vacAccrual  = getVal('vac-accrual', 0.75);
-  const revTarget   = getVal('revenue-target', 25000);
-  const labTargetPct = getVal('labour-target-pct', 32) / 100;
+// ─── MAIN CALCULATE ──────────────────────────────────────────
+function CA() {
+  var ficaR=gv('fica',7.65)/100, sutaR=gv('suta',3.5)/100, wcompR=gv('wcomp',4.0)/100;
+  var hlth=gv('health',45), sickR=gv('sick',0.5), vacR=gv('vac',0.75);
+  var rev=gv('revtgt',25000), labTgtPct=gv('labtgt',32)/100;
+  var tBase=0,tFICA=0,tSUTA=0,tWC=0,tH=0,tL=0,kBase=0,sBase=0,kHrs=0,sHrs=0;
 
-  // Total on-cost loading %
-  const totalOnCostPct = ficaRate + sutaRate + wcompRate;
-  const el = document.getElementById('total-oncost-display');
-  if (el) el.value = (totalOnCostPct * 100).toFixed(2) + '% + health + leave';
-
-  let totalBase = 0, totalFICA = 0, totalSUTA = 0, totalWComp = 0;
-  let totalHealth = 0, totalLeave = 0;
-  let kitchenBase = 0, serviceBase = 0;
-  let kitchenHrs = 0, serviceHrs = 0;
-
-  staffList.forEach(s => {
-    const hrs = DAYS.reduce((a, d, i) => a + getShiftHours(rosterData[s.id]?.[i] || 'OFF'), 0);
-    const base = hrs * s.rate;
-    const fica  = base * ficaRate;
-    const suta  = base * sutaRate;
-    const wcomp = base * wcompRate;
-    const health = s.type === 'Full-time' ? healthPPW : (s.type === 'Part-time' ? healthPPW * 0.5 : 0);
-    const leaveAmt = (sickAccrual + vacAccrual) * s.rate;
-
-    totalBase  += base;
-    totalFICA  += fica;
-    totalSUTA  += suta;
-    totalWComp += wcomp;
-    totalHealth += health;
-    totalLeave  += leaveAmt;
-
-    if (s.dept === 'kitchen') { kitchenBase += base; kitchenHrs += hrs; }
-    else { serviceBase += base; serviceHrs += hrs; }
-
-    // Update staff hours in staff tab
-    const hrsEl = document.getElementById('staff-hrs-' + s.id);
-    if (hrsEl) hrsEl.textContent = hrs + 'h';
+  staffList.forEach(function(s){
+    var hrs=0; for(var i=0;i<7;i++) hrs+=shiftHrs(rosterData[s.id]?rosterData[s.id][i]:'OFF');
+    var base=hrs*s.rate;
+    var fica=base*ficaR, suta=base*sutaR, wc=base*wcompR;
+    var h=s.type==='Full-time'?hlth:(s.type==='Part-time'?hlth*0.5:0);
+    var lv=(sickR+vacR)*s.rate;
+    tBase+=base; tFICA+=fica; tSUTA+=suta; tWC+=wc; tH+=h; tL+=lv;
+    if(s.dept==='kitchen'){kBase+=base;kHrs+=hrs;}else{sBase+=base;sHrs+=hrs;}
+    var she=document.getElementById('shrs-'+s.id); if(she) she.textContent=hrs+'h';
   });
 
-  const totalOnCost = totalFICA + totalSUTA + totalWComp + totalHealth + totalLeave;
-  const trueTotal = totalBase + totalOnCost;
-  const labourPct = revTarget > 0 ? (trueTotal / revTarget) * 100 : 0;
-  const labourBudget = revTarget * labTargetPct;
-  const variance = labourBudget - trueTotal;
+  var tOC=tFICA+tSUTA+tWC+tH+tL, tTrue=tBase+tOC;
+  var labPct=rev>0?(tTrue/rev)*100:0, labBud=rev*labTgtPct, variance=labBud-tTrue;
+  var ocRatio=tBase>0?tOC/tBase:0;
 
-  // Dept on-costs (proportional)
-  const onCostRatio = totalBase > 0 ? totalOnCost / totalBase : 0;
-  const kitchenTrue = kitchenBase * (1 + onCostRatio);
-  const serviceTrue = serviceBase * (1 + onCostRatio);
-
-  // Roster summary
-  const totalHrs = kitchenHrs + serviceHrs;
-  setText('roster-total-hrs', totalHrs);
-  setText('roster-kitchen-hrs', kitchenHrs);
-  setText('roster-service-hrs', serviceHrs);
-  setText('roster-base-wages', fmt(totalBase));
+  // Roster tab
+  st('r-hrs',kHrs+sHrs); st('r-khrs',kHrs); st('r-shrs',sHrs); st('r-base',fm(tBase));
 
   // Cost tab
-  setText('cost-base-wages', fmt(totalBase));
-  setText('cost-oncost-total', fmt(totalOnCost));
-  setText('cost-true-total', fmt(trueTotal));
-  setText('cost-labour-pct', fmtPct(labourPct));
-
-  // Status colouring
-  const pctCard = document.getElementById('labour-pct-card');
-  if (pctCard) {
-    pctCard.className = 'metric-card ' + (labourPct <= labTargetPct*100 ? 'green' : labourPct <= labTargetPct*100*1.1 ? 'amber' : 'red');
-  }
+  st('c-base',fm(tBase)); st('c-oncost',fm(tOC)); st('c-true',fm(tTrue)); st('c-pct',fp(labPct));
 
   // Bars
-  const maxBar = trueTotal || 1;
-  const bars = [
-    ['bar-base', totalBase], ['bar-fica', totalFICA], ['bar-suta', totalSUTA],
-    ['bar-wcomp', totalWComp], ['bar-health', totalHealth], ['bar-leave', totalLeave]
-  ];
-  const vals = [
-    ['bar-base-val', totalBase], ['bar-fica-val', totalFICA], ['bar-suta-val', totalSUTA],
-    ['bar-wcomp-val', totalWComp], ['bar-health-val', totalHealth], ['bar-leave-val', totalLeave]
-  ];
-  bars.forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (el) el.style.width = Math.min(100, (val / maxBar) * 100).toFixed(1) + '%';
-  });
-  vals.forEach(([id, val]) => setText(id, fmt(val)));
+  var mx=tTrue||1;
+  function setBar(id,val,col){
+    var e=document.getElementById('bfill-'+id); if(e){e.style.width=Math.min(100,(val/mx)*100).toFixed(1)+'%';e.style.background=col;}
+    st('bv-'+id,fm(val));
+  }
+  setBar('base',tBase,'#264653');setBar('fica',tFICA,'#2a9d8f');setBar('suta',tSUTA,'#f4a261');
+  setBar('wcomp',tWC,'#e76f51');setBar('health',tH,'#9b59b6');setBar('leave',tL,'#3498db');
 
-  // Dept breakdown
-  setText('dept-kitchen-base', fmt(kitchenBase));
-  setText('dept-kitchen-oncost', fmt(kitchenBase * onCostRatio));
-  setText('dept-kitchen-total', fmt(kitchenTrue));
-  setText('dept-service-base', fmt(serviceBase));
-  setText('dept-service-oncost', fmt(serviceBase * onCostRatio));
-  setText('dept-service-total', fmt(serviceTrue));
+  // Dept
+  st('dk-base',fm(kBase));st('dk-oc',fm(kBase*ocRatio));st('dk-true',fm(kBase*(1+ocRatio)));
+  st('ds-base',fm(sBase));st('ds-oc',fm(sBase*ocRatio));st('ds-true',fm(sBase*(1+ocRatio)));
 
-  // Target section
-  setText('tgt-revenue', fmt(revTarget));
-  setText('tgt-labour-dollar', fmt(labourBudget));
-  setText('tgt-labour-pct-label', 'at ' + (labTargetPct*100).toFixed(0) + '% target');
-  setText('tgt-variance', (variance >= 0 ? '+' : '') + fmt(variance));
-  const varCard = document.getElementById('tgt-variance-card');
-  if (varCard) varCard.className = 'metric-card ' + (variance >= 0 ? 'green' : 'red');
-  setText('tgt-variance-label', variance >= 0 ? 'under budget ✅' : 'over budget ⚠️');
+  // Target
+  st('tg-rev',fm(rev));st('tg-bud',fm(labBud));
+  st('tg-var',(variance>=0?'+':'')+fm(variance)); st('tg-pct',fp(labPct));
+  var vc=document.getElementById('tg-var-card'); if(vc) vc.className='mc '+(variance>=0?'g':'r');
+  st('tg-var-lbl',variance>=0?'under budget ✅':'over budget ⚠️');
 
   // Gauge
-  const gaugeEl = document.getElementById('labour-pct-gauge');
-  const gaugeLbl = document.getElementById('labour-pct-gauge-label');
-  if (gaugeEl) {
-    gaugeEl.style.width = Math.min(100, labourPct).toFixed(1) + '%';
-    gaugeEl.style.background = labourPct <= labTargetPct*100 ? 'var(--green)' : labourPct <= labTargetPct*100*1.1 ? 'var(--amber)' : 'var(--red)';
-  }
-  if (gaugeLbl) gaugeLbl.textContent = fmtPct(labourPct);
+  var gf=document.getElementById('gauge-fill');
+  if(gf){gf.style.width=Math.min(100,labPct).toFixed(1)+'%';gf.style.background=labPct<=labTgtPct*100?'#2a9d8f':(labPct<=labTgtPct*110?'#f4a261':'#e76f51');}
+  st('gauge-lbl',fp(labPct));
 
   // Advisory
-  const advisory = document.getElementById('labour-advisory');
-  if (advisory) {
-    if (labourPct === 0) {
-      advisory.innerHTML = '<strong>ℹ️</strong> Add staff and build your roster to see labour cost analysis.';
-    } else if (labourPct <= labTargetPct * 100) {
-      advisory.innerHTML = `<strong style="color:var(--green)">✅ On target.</strong> Your true labour cost is ${fmtPct(labourPct)} of revenue — within your ${fmtPct(labTargetPct*100)} target. You have ${fmt(Math.abs(variance))} of labour budget remaining.`;
-    } else if (labourPct <= labTargetPct * 100 * 1.1) {
-      advisory.innerHTML = `<strong style="color:var(--amber)">⚠️ Slightly over target.</strong> Your true labour cost is ${fmtPct(labourPct)} vs your ${fmtPct(labTargetPct*100)} target — ${fmt(Math.abs(variance))} over budget. Consider reducing casual shifts or adjusting revenue target.`;
-    } else {
-      advisory.innerHTML = `<strong style="color:var(--red)">🔴 Over budget.</strong> Your true labour cost is ${fmtPct(labourPct)} — ${fmt(Math.abs(variance))} over your ${fmtPct(labTargetPct*100)} target. Review staffing levels, shift lengths, or set a higher revenue target.`;
-    }
+  var adv=document.getElementById('advisory');
+  if(adv){
+    if(labPct===0) adv.innerHTML='Add staff and build your roster to see labour analysis.';
+    else if(labPct<=labTgtPct*100) adv.innerHTML='<strong style="color:#2a9d8f">✅ On target.</strong> Labour cost is '+fp(labPct)+' of revenue — within your '+fp(labTgtPct*100)+' target. You have '+fm(Math.abs(variance))+' of labour budget remaining.';
+    else if(labPct<=labTgtPct*110) adv.innerHTML='<strong style="color:#f4a261">⚠️ Slightly over.</strong> Labour is '+fp(labPct)+' vs your '+fp(labTgtPct*100)+' target — '+fm(Math.abs(variance))+' over budget. Consider reducing casual shifts.';
+    else adv.innerHTML='<strong style="color:#e76f51">🔴 Over budget.</strong> Labour is '+fp(labPct)+' — '+fm(Math.abs(variance))+' over your '+fp(labTgtPct*100)+' target. Review staffing levels or set a higher revenue target.';
   }
 
-  // Update report tab
-  updateReport(totalBase, totalFICA, totalSUTA, totalWComp, totalHealth, totalLeave,
-    trueTotal, totalOnCost, labourPct, labourBudget, variance, revTarget, labTargetPct,
-    totalHrs, kitchenHrs, serviceHrs, kitchenTrue, serviceTrue, onCostRatio);
+  // Report
+  var vn=gt('vname','My Restaurant'), ws=document.getElementById('wstart');
+  var wlbl=ws&&ws.value?'Week of '+new Date(ws.value+'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}):'Week of —';
+  st('rpt-venue',vn); st('rpt-week',wlbl); st('rpt-state','State: '+gt('sstate','TX'));
+  st('rpt-staff',staffList.length); st('rpt-hours',(kHrs+sHrs)+' hrs');
+  st('rpt-rev',fm(rev)); st('rpt-tgt',fp(labTgtPct*100));
+  st('rpt-base',fm(tBase)); st('rpt-fica',fm(tFICA)); st('rpt-suta',fm(tSUTA));
+  st('rpt-wcomp',fm(tWC)); st('rpt-health',fm(tH)); st('rpt-leave',fm(tL)); st('rpt-true',fm(tTrue));
+  st('rpt-khrs',kHrs+' hrs'); st('rpt-kcost',fm(kBase*(1+ocRatio)));
+  st('rpt-shrs',sHrs+' hrs'); st('rpt-scost',fm(sBase*(1+ocRatio)));
+  st('rpt-pct',fp(labPct)); st('rpt-bud',fm(labBud));
+  st('rpt-var',(variance>=0?'+':'')+fm(variance));
+  var rbadge=document.getElementById('rpt-badge');
+  if(rbadge){
+    if(labPct===0) rbadge.innerHTML='<span class="sbadge sa">⏳ No data</span>';
+    else if(labPct<=labTgtPct*100) rbadge.innerHTML='<span class="sbadge sg">✅ On Target</span>';
+    else rbadge.innerHTML='<span class="sbadge sr">⚠️ Review</span>';
+  }
+  var det=document.getElementById('rpt-detail');
+  if(det) det.innerHTML=staffList.map(function(s){
+    var hrs=0;for(var i=0;i<7;i++)hrs+=shiftHrs(rosterData[s.id]?rosterData[s.id][i]:'OFF');
+    var base=hrs*s.rate, tc=base*(1+(gv('fica',7.65)+gv('suta',3.5)+gv('wcomp',4.0))/100);
+    return '<div class="rrow"><span>'+(s.name||'(unnamed)')+' — '+s.role+' ('+(s.dept==='kitchen'?'🍳':'🛎️')+')</span><span>'+hrs+'h · '+fm(base)+' base · '+fm(tc)+' true</span></div>';
+  }).join('')||'<div class="rrow"><span style="color:#6B6B6B">No staff added yet.</span></div>';
 }
 
-function updateReport(base, fica, suta, wcomp, health, leave,
-  trueTotal, onCost, labPct, labBudget, variance, revTarget, labTargetPct,
-  totalHrs, kitchenHrs, serviceHrs, kitchenTrue, serviceTrue, onCostRatio) {
-
-  const venue = getText('venue-name', 'My Restaurant');
-  const state = getText('state-select', 'TX');
-  const weekEl = document.getElementById('week-start');
-  const weekLabel = weekEl && weekEl.value ?
-    'Week of ' + new Date(weekEl.value + 'T00:00:00').toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) : 'Week of —';
-
-  setText('report-venue-name', venue);
-  setText('report-week-label', weekLabel);
-  setText('report-state-label', 'State: ' + state);
-  setText('rpt-staff', staffList.length);
-  setText('rpt-hours', totalHrs + ' hrs');
-  setText('rpt-revenue', fmt(revTarget));
-  setText('rpt-labour-target', fmtPct(labTargetPct * 100));
-  setText('rpt-base', fmt(base));
-  setText('rpt-fica', fmt(fica));
-  setText('rpt-suta', fmt(suta));
-  setText('rpt-wcomp', fmt(wcomp));
-  setText('rpt-health', fmt(health));
-  setText('rpt-leave', fmt(leave));
-  setText('rpt-true-total', fmt(trueTotal));
-  setText('rpt-kitchen-hrs', kitchenHrs + ' hrs');
-  setText('rpt-kitchen-cost', fmt(kitchenTrue));
-  setText('rpt-service-hrs', serviceHrs + ' hrs');
-  setText('rpt-service-cost', fmt(serviceTrue));
-  setText('rpt-labour-pct', fmtPct(labPct));
-  setText('rpt-labour-budget', fmt(labBudget));
-  setText('rpt-variance', (variance >= 0 ? '+' : '') + fmt(variance));
-  setText('rpt-oncost-pct', fmtPct(base > 0 ? (onCost / base) * 100 : 0) + ' above base wages');
-  setText('rpt-true-vs-base', base > 0 ? fmtPct((trueTotal / base - 1) * 100) + ' more than base wages' : '—');
-
-  const badge = document.getElementById('report-status-badge');
-  if (badge) {
-    if (labPct === 0) {
-      badge.innerHTML = '<span class="status-badge status-amber">⏳ No data</span>';
-    } else if (labPct <= labTargetPct * 100) {
-      badge.innerHTML = '<span class="status-badge status-green">✅ On Target</span>';
-    } else if (labPct <= labTargetPct * 100 * 1.1) {
-      badge.innerHTML = '<span class="status-badge status-amber">⚠️ Over Budget</span>';
-    } else {
-      badge.innerHTML = '<span class="status-badge status-red">🔴 Review Needed</span>';
-    }
-  }
-
-  // Staff detail in report
-  const detail = document.getElementById('rpt-staff-detail');
-  if (detail) {
-    detail.innerHTML = staffList.map(s => {
-      const hrs = DAYS.reduce((a, d, i) => a + getShiftHours(rosterData[s.id]?.[i] || 'OFF'), 0);
-      const base = hrs * s.rate;
-      const trueCost = base * (1 + (getVal('fica-rate',7.65) + getVal('suta-rate',3.5) + getVal('wcomp-rate',4.0)) / 100);
-      return `<div class="report-row">
-        <span>${s.name || '(unnamed)'} — ${s.role} (${s.dept === 'kitchen' ? '🍳' : '🛎️'})</span>
-        <span>${hrs}h · ${fmt(base)} base · ${fmt(trueCost)} true</span>
-      </div>`;
-    }).join('') || '<div class="report-row"><span style="color:var(--text-muted)">No staff added yet</span></div>';
-  }
+// ─── INIT ────────────────────────────────────────────────────
+window.onload = function() {
+  var today=new Date(), day=today.getDay();
+  var mon=new Date(today); mon.setDate(today.getDate()-(day===0?6:day-1));
+  var ws=document.getElementById('wstart');
+  if(ws) ws.value=mon.getFullYear()+'-'+String(mon.getMonth()+1).padStart(2,'0')+'-'+String(mon.getDate()).padStart(2,'0');
+  loadSample();
+};
 </script>
-</body>
-</html>
+</body></html>

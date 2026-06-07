@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KitchenFounder — Liquor License Roadmap</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#FAFAF8;font-family:system-ui,-apple-system,sans-serif;color:#1C1C1C;}
+.header{background:#264653;color:#FAFAF8;padding:32px 40px;}
+.header-eye{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C8A97E;margin-bottom:8px;}
+.header-title{font-size:32px;font-weight:800;line-height:1.1;margin-bottom:6px;}
+.header-sub{font-size:14px;opacity:0.75;}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px;}
+.tabs{display:flex;gap:0;border-bottom:2px solid #E8E4DC;margin-bottom:28px;}
+.tab{padding:12px 24px;font-size:14px;font-weight:600;cursor:pointer;border:none;background:none;color:#888;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.15s;}
+.tab:hover{color:#1C1C1C;}
+.tab.on{color:#264653;border-bottom-color:#C8A97E;}
+.panel{display:none;}
+.card{background:#FFFFFF;border:1px solid #E8E4DC;border-radius:8px;padding:24px;margin-bottom:20px;}
+.card-title{font-size:18px;font-weight:700;color:#264653;margin-bottom:4px;}
+.card-sub{font-size:13px;color:#888;margin-bottom:16px;}
+.state-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:640px){.state-grid{grid-template-columns:1fr;}}
+.state-card{background:#FAFAF8;border:1px solid #E8E4DC;border-radius:8px;padding:20px;}
+.state-name{font-size:16px;font-weight:800;color:#264653;margin-bottom:2px;}
+.state-badge{display:inline-block;font-size:11px;background:#264653;color:#FAFAF8;padding:2px 8px;border-radius:20px;margin-bottom:10px;}
+.fee-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #E8E4DC;font-size:13px;}
+.fee-row:last-child{border-bottom:none;}
+.fee-label{color:#555;}
+.fee-val{font-weight:700;color:#1C1C1C;}
+.tip-box{background:#FFF8F0;border-left:3px solid #C8A97E;padding:10px 14px;margin-top:12px;border-radius:0 6px 6px 0;font-size:13px;color:#555;}
+.tip-box strong{color:#1C1C1C;}
+.timeline{position:relative;padding-left:40px;}
+.timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:2px;background:#E8E4DC;}
+.tl-item{position:relative;margin-bottom:24px;}
+.tl-dot{position:absolute;left:-30px;top:4px;width:14px;height:14px;background:#C8A97E;border-radius:50%;border:3px solid #FAFAF8;box-shadow:0 0 0 2px #C8A97E;}
+.tl-month{font-size:11px;font-weight:700;color:#C8A97E;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;}
+.tl-tasks{list-style:none;}
+.tl-tasks li{font-size:14px;padding:3px 0;color:#1C1C1C;}
+.tl-tasks li::before{content:'→ ';color:#C8A97E;}
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+@media(max-width:640px){.doc-grid{grid-template-columns:1fr;}}
+.doc-item{display:flex;align-items:center;gap:10px;background:#FAFAF8;border:1px solid #E8E4DC;border-radius:6px;padding:10px 14px;font-size:13px;}
+.doc-icon{font-size:16px;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:640px){.calc-grid{grid-template-columns:1fr;}}
+.form-group{margin-bottom:14px;}
+.form-label{font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;display:block;}
+select,input[type=number]{width:100%;padding:10px 12px;border:1px solid #E8E4DC;border-radius:6px;font-size:14px;background:#FAFAF8;color:#1C1C1C;font-family:inherit;}
+select:focus,input:focus{outline:none;border-color:#C8A97E;}
+.btn{display:inline-block;padding:12px 28px;background:#264653;color:#FAFAF8;font-size:14px;font-weight:700;border:none;border-radius:6px;cursor:pointer;font-family:inherit;transition:background 0.15s;}
+.btn:hover{background:#1a3340;}
+.result-box{background:#264653;color:#FAFAF8;border-radius:8px;padding:24px;margin-top:20px;}
+.result-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;}
+.result-row:last-child{border-bottom:none;font-size:18px;font-weight:800;}
+.result-label{opacity:0.8;}
+.result-val{font-weight:700;color:#C8A97E;}
+.rec-box{background:#FFF8F0;border:1px solid #C8A97E;border-radius:8px;padding:16px;margin-top:16px;}
+.rec-title{font-size:13px;font-weight:700;color:#C8A97E;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.rec-text{font-size:14px;color:#1C1C1C;line-height:1.6;}
+h3{font-size:15px;font-weight:700;color:#264653;margin:16px 0 8px;}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-eye">KitchenFounder · Legal Resources</div>
+  <div class="header-title">Liquor License Roadmap</div>
+  <div class="header-sub">State-by-state guide · Timeline · Cost Calculator</div>
+</div>
+<div class="wrap">
+  <div class="tabs">
+    <button class="tab on" onclick="ST('state',this)">By State</button>
+    <button class="tab" onclick="ST('timeline',this)">Timeline</button>
+    <button class="tab" onclick="ST('calc',this)">Cost Calculator</button>
+  </div>
+
+  <!-- BY STATE -->
+  <div id="panel-state" class="panel">
+    <div class="card">
+      <div class="card-title">State-by-State Liquor License Guide</div>
+      <div class="card-sub">Fees, timelines, and tips for 8 major states. Always consult a licensed attorney for your specific situation.</div>
+      <div class="state-grid">
+
+        <div class="state-card">
+          <div class="state-name">🗽 New York</div>
+          <div class="state-badge">4–6 Months</div>
+          <div class="fee-row"><span class="fee-label">State Fee (Full)</span><span class="fee-val">$4,352</span></div>
+          <div class="fee-row"><span class="fee-label">Attorney Fees</span><span class="fee-val">$1,500–$4,000</span></div>
+          <div class="fee-row"><span class="fee-label">NYC CB Approval</span><span class="fee-val">+2–4 months</span></div>
+          <div class="fee-row"><span class="fee-label">Restaurant Wine License</span><span class="fee-val">Cheaper option</span></div>
+          <div class="tip-box"><strong>Tips:</strong> File early — NYC Community Board approval adds months. Hire a liquor license attorney. Attend CB meeting prepared with floor plans and sound mitigation plan.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🌴 California</div>
+          <div class="state-badge">3–6 Months</div>
+          <div class="fee-row"><span class="fee-label">Type 47 State Fee</span><span class="fee-val">$13,800</span></div>
+          <div class="fee-row"><span class="fee-label">Attorney Fees</span><span class="fee-val">$3,000–$8,000</span></div>
+          <div class="fee-row"><span class="fee-label">Public Protest Period</span><span class="fee-val">30 days</span></div>
+          <div class="fee-row"><span class="fee-label">Existing License Purchase</span><span class="fee-val">$50K–$200K</span></div>
+          <div class="tip-box"><strong>Tips:</strong> ABC (Alcoholic Beverage Control) handles all licenses. Check if an existing license is available for purchase — can be faster than new application in saturated areas.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🤠 Texas</div>
+          <div class="state-badge">60–90 Days</div>
+          <div class="fee-row"><span class="fee-label">TABC License Fee</span><span class="fee-val">$1,500–$3,000</span></div>
+          <div class="fee-row"><span class="fee-label">Attorney Fees</span><span class="fee-val">$1,500–$3,000</span></div>
+          <div class="fee-row"><span class="fee-label">License Type</span><span class="fee-val">Mixed Beverage Permit</span></div>
+          <div class="fee-row"><span class="fee-label">Distance Rule</span><span class="fee-val">300ft from schools/churches</span></div>
+          <div class="tip-box"><strong>Tips:</strong> Background check required for all principals. Need city/county approval. Verify distance restrictions early — can kill an application.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🌞 Florida</div>
+          <div class="state-badge">45–90 Days</div>
+          <div class="fee-row"><span class="fee-label">SRX License (Annual)</span><span class="fee-val">$1,820/year</span></div>
+          <div class="fee-row"><span class="fee-label">Food Revenue Requirement</span><span class="fee-val">51% must be food</span></div>
+          <div class="fee-row"><span class="fee-label">Authority</span><span class="fee-val">Div. of Alcoholic Beverages</span></div>
+          <div class="tip-box"><strong>Tips:</strong> Relatively straightforward process. SRX (restaurant) license requires you derive 51%+ revenue from food sales — keep documentation of food vs alcohol split.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🏙️ Illinois</div>
+          <div class="state-badge">3–4 Months</div>
+          <div class="fee-row"><span class="fee-label">Total Cost</span><span class="fee-val">$2,000–$5,000</span></div>
+          <div class="fee-row"><span class="fee-label">BASSET Certification</span><span class="fee-val">Required all servers</span></div>
+          <div class="fee-row"><span class="fee-label">Chicago (extra)</span><span class="fee-val">+60–90 days</span></div>
+          <div class="fee-row"><span class="fee-label">Cook County License</span><span class="fee-val">Separate required</span></div>
+          <div class="tip-box"><strong>Tips:</strong> Chicago has its own process on top of state. BASSET (Beverage Alcohol Sellers and Servers Education and Training) required for all staff who serve alcohol.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🌲 Washington</div>
+          <div class="state-badge">60–90 Days</div>
+          <div class="fee-row"><span class="fee-label">Spirits/Beer/Wine License</span><span class="fee-val">$2,500/year</span></div>
+          <div class="fee-row"><span class="fee-label">Authority</span><span class="fee-val">WSLCB</span></div>
+          <div class="fee-row"><span class="fee-label">Background Check</span><span class="fee-val">Required</span></div>
+          <div class="fee-row"><span class="fee-label">Local Approval</span><span class="fee-val">Required</span></div>
+          <div class="tip-box"><strong>Tips:</strong> Washington State Liquor and Cannabis Board handles licensing. Local government approval is required — start local conversations early.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🏔️ Colorado</div>
+          <div class="state-badge">90–120 Days</div>
+          <div class="fee-row"><span class="fee-label">State License Fee</span><span class="fee-val">$500</span></div>
+          <div class="fee-row"><span class="fee-label">Local License</span><span class="fee-val">Additional required</span></div>
+          <div class="fee-row"><span class="fee-label">Authority</span><span class="fee-val">Liquor Enforcement Division</span></div>
+          <div class="fee-row"><span class="fee-label">Bottleneck</span><span class="fee-val">Local government approval</span></div>
+          <div class="tip-box"><strong>Tips:</strong> Hotel and Restaurant License is the most common type. Low state fee but local approval is the main bottleneck — allow 90–120 days minimum.</div>
+        </div>
+
+        <div class="state-card">
+          <div class="state-name">🍑 Georgia</div>
+          <div class="state-badge">60 Days (ATL)</div>
+          <div class="fee-row"><span class="fee-label">Atlanta Pouring License</span><span class="fee-val">$1,610/year</span></div>
+          <div class="fee-row"><span class="fee-label">County Approval</span><span class="fee-val">Critical factor</span></div>
+          <div class="fee-row"><span class="fee-label">Dry Counties</span><span class="fee-val">Some counties prohibit</span></div>
+          <div class="tip-box"><strong>Tips:</strong> County-level approval is critical — some Georgia counties are "dry" (no alcohol sales). Atlanta is relatively easy. Rural Georgia can be significantly harder or impossible.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div id="panel-timeline" class="panel">
+    <div class="card">
+      <div class="card-title">6-Month License Timeline</div>
+      <div class="card-sub">A typical path from decision to license in hand. Timelines vary by state.</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-month">Month 1</div>
+          <ul class="tl-tasks">
+            <li>Determine which license type you need for your concept</li>
+            <li>Hire a liquor license attorney in your state</li>
+            <li>Begin gathering all required documents</li>
+            <li>Research local zoning restrictions and distance rules</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-month">Month 2</div>
+          <ul class="tl-tasks">
+            <li>Submit state application with all supporting documents</li>
+            <li>Submit local/city application simultaneously</li>
+            <li>Attend Community Board meeting if required (NY)</li>
+            <li>Post public notice if required by your state</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-month">Month 3</div>
+          <ul class="tl-tasks">
+            <li>Background check processing for all principals</li>
+            <li>Public protest/notice period (30 days in CA)</li>
+            <li>Respond promptly to any objections filed</li>
+            <li>Follow up with attorney on application status</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-month">Month 4</div>
+          <ul class="tl-tasks">
+            <li>Follow up with state licensing authority</li>
+            <li>Local/city approval expected this month</li>
+            <li>Prepare staff training materials (responsible service)</li>
+            <li>Arrange surety bond if required by your state</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-month">Month 5</div>
+          <ul class="tl-tasks">
+            <li>State approval expected — confirm with attorney</li>
+            <li>Receive temporary permit if available in your state</li>
+            <li>Begin ordering alcohol inventory under temp permit</li>
+            <li>Train all staff on responsible service laws</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-month">Month 6</div>
+          <ul class="tl-tasks">
+            <li>Full license received — display prominently at premises</li>
+            <li>Complete all required server certification (BASSET/RBS/TABC)</li>
+            <li>Set up compliance calendar for renewal dates</li>
+            <li>Open your bar — you made it!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Documents Checklist</div>
+      <div class="card-sub">Gather these before filing — missing documents cause costly delays.</div>
+      <div class="doc-grid">
+        <div class="doc-item"><span class="doc-icon">📄</span>Signed lease or proof of ownership</div>
+        <div class="doc-item"><span class="doc-icon">📐</span>Floor plan (to scale, showing bar area)</div>
+        <div class="doc-item"><span class="doc-icon">🏢</span>Business entity documents (LLC / articles)</div>
+        <div class="doc-item"><span class="doc-icon">🔢</span>EIN confirmation letter</div>
+        <div class="doc-item"><span class="doc-icon">👤</span>Background check consent forms (all owners)</div>
+        <div class="doc-item"><span class="doc-icon">💰</span>Personal financial statements (owners >10%)</div>
+        <div class="doc-item"><span class="doc-icon">🍽️</span>Menu showing food service</div>
+        <div class="doc-item"><span class="doc-icon">📸</span>Photos of premises (interior + exterior)</div>
+        <div class="doc-item"><span class="doc-icon">🏗️</span>Certificate of occupancy (or applied for)</div>
+        <div class="doc-item"><span class="doc-icon">🔐</span>Surety bond (some states required)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COST CALCULATOR -->
+  <div id="panel-calc" class="panel">
+    <div class="card">
+      <div class="card-title">Liquor License Cost Calculator</div>
+      <div class="card-sub">Estimate your total licensing cost including opportunity cost of delays.</div>
+      <div class="calc-grid">
+        <div>
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <select id="cc-state" onchange="calcLiquor()">
+              <option value="">— Select State —</option>
+              <option value="ny">New York</option>
+              <option value="ca">California</option>
+              <option value="tx">Texas</option>
+              <option value="fl">Florida</option>
+              <option value="il">Illinois</option>
+              <option value="wa">Washington</option>
+              <option value="co">Colorado</option>
+              <option value="ga">Georgia</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Estimated State Fee ($)</label>
+            <input type="number" id="cc-state-fee" oninput="calcLiquor()" placeholder="Auto-filled by state">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Attorney Fees ($)</label>
+            <input type="number" id="cc-attorney" oninput="calcLiquor()" placeholder="Auto-filled by state">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Local / City Fees ($)</label>
+            <input type="number" id="cc-local" oninput="calcLiquor()" value="500">
+          </div>
+        </div>
+        <div>
+          <div class="form-group">
+            <label class="form-label">Other Costs (signage, bond, etc.) ($)</label>
+            <input type="number" id="cc-other" oninput="calcLiquor()" value="500">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Monthly Revenue from Alcohol ($)</label>
+            <input type="number" id="cc-monthly-rev" oninput="calcLiquor()" value="15000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Months of Delay (opportunity cost)</label>
+            <input type="number" id="cc-delay" oninput="calcLiquor()" value="2" min="0" max="12">
+          </div>
+          <div class="form-group">
+            <label class="form-label">License Period (years)</label>
+            <input type="number" id="cc-period" oninput="calcLiquor()" value="1" min="1" max="5">
+          </div>
+        </div>
+      </div>
+      <div id="calc-results" style="display:none;">
+        <div class="result-box">
+          <div class="result-row"><span class="result-label">State License Fee</span><span class="result-val" id="r-state-fee">—</span></div>
+          <div class="result-row"><span class="result-label">Attorney Fees (mid estimate)</span><span class="result-val" id="r-attorney">—</span></div>
+          <div class="result-row"><span class="result-label">Local / City Fees</span><span class="result-val" id="r-local">—</span></div>
+          <div class="result-row"><span class="result-label">Other Costs</span><span class="result-val" id="r-other">—</span></div>
+          <div class="result-row"><span class="result-label">Opportunity Cost of Delay</span><span class="result-val" id="r-delay">—</span></div>
+          <div class="result-row"><span class="result-label">Total All-In Cost</span><span class="result-val" id="r-total">—</span></div>
+          <div class="result-row"><span class="result-label">Monthly Amortised Cost</span><span class="result-val" id="r-monthly">—</span></div>
+        </div>
+        <div class="rec-box">
+          <div class="rec-title">💡 Recommendation</div>
+          <div class="rec-text" id="r-rec">Select a state to see recommendations.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var stateData = {
+  ny: {fee:4352, attorney:2750, local:800, rec:"New York requires patience. In NYC, hire an attorney who specialises in Community Board appearances. The process adds 2–4 months in NYC. Consider a Restaurant Wine license first if you only plan to serve wine and beer — it's significantly cheaper and faster."},
+  ca: {fee:13800, attorney:5500, local:1200, rec:"California's Type 47 license is one of the most expensive in the nation. Check if an existing license is available for transfer in your area — it can be faster even if it costs $50K–$200K. The ABC public protest period adds 30 days minimum."},
+  tx: {fee:2250, attorney:2250, local:600, rec:"Texas is one of the more affordable states for liquor licensing. Verify the 300ft rule from schools and churches before signing your lease — this can't be waived. Start city/county approval simultaneously with TABC filing."},
+  fl: {fee:1820, attorney:1500, local:400, rec:"Florida's SRX license is straightforward but you must maintain 51% food revenue. Track your food vs alcohol sales split carefully. The Division of Alcoholic Beverages has regional offices — use the one closest to your location."},
+  il: {fee:3500, attorney:2000, local:900, rec:"Chicago has its own local licensing process on top of the state. Allow 3–4 months minimum. All servers must complete BASSET training before serving — schedule this early so you're ready to serve on opening day."},
+  wa: {fee:2500, attorney:1800, local:600, rec:"WSLCB (Washington State Liquor and Cannabis Board) manages licensing. Local government approval is required — reach out to your city/county council early in the process. Background checks for all principals are thorough."},
+  co: {fee:500, attorney:1500, local:1000, rec:"Colorado has one of the lowest state fees, but local government approval is the main bottleneck. The Hotel and Restaurant License is most common. Allow 90–120 days and expect the local approval hearing to be the critical path."},
+  ga: {fee:1610, attorney:1200, local:400, rec:"Georgia liquor licensing is county-controlled. Verify your county is not 'dry' before signing a lease — some counties prohibit alcohol sales entirely. Atlanta city licensing is relatively straightforward. Rural Georgia adds complexity."}
+};
+
+function fmtCurrency(n) {
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function calcLiquor() {
+  var state = document.getElementById('cc-state').value;
+  if(state && stateData[state]) {
+    var d = stateData[state];
+    if(!document.getElementById('cc-state-fee').dataset.manual) {
+      document.getElementById('cc-state-fee').value = d.fee;
+    }
+    if(!document.getElementById('cc-attorney').dataset.manual) {
+      document.getElementById('cc-attorney').value = d.attorney;
+    }
+  }
+  var stateFee = parseFloat(document.getElementById('cc-state-fee').value)||0;
+  var attorney = parseFloat(document.getElementById('cc-attorney').value)||0;
+  var local = parseFloat(document.getElementById('cc-local').value)||0;
+  var other = parseFloat(document.getElementById('cc-other').value)||0;
+  var monthlyRev = parseFloat(document.getElementById('cc-monthly-rev').value)||0;
+  var delay = parseFloat(document.getElementById('cc-delay').value)||0;
+  var period = parseFloat(document.getElementById('cc-period').value)||1;
+  var oppCost = monthlyRev * delay;
+  var totalLicensing = stateFee + attorney + local + other;
+  var totalAllIn = totalLicensing + oppCost;
+  var monthlyAmort = totalLicensing / (period * 12);
+  document.getElementById('r-state-fee').textContent = fmtCurrency(stateFee);
+  document.getElementById('r-attorney').textContent = fmtCurrency(attorney);
+  document.getElementById('r-local').textContent = fmtCurrency(local);
+  document.getElementById('r-other').textContent = fmtCurrency(other);
+  document.getElementById('r-delay').textContent = fmtCurrency(oppCost);
+  document.getElementById('r-total').textContent = fmtCurrency(totalAllIn);
+  document.getElementById('r-monthly').textContent = fmtCurrency(monthlyAmort) + '/month';
+  if(state && stateData[state]) {
+    document.getElementById('r-rec').textContent = stateData[state].rec;
+  }
+  document.getElementById('calc-results').style.display = 'block';
+}
+
+function ST(name, btn) {
+  var panels = document.getElementsByClassName('panel');
+  for (var i=0; i<panels.length; i++) panels[i].style.display='none';
+  var tabs = document.getElementsByClassName('tab');
+  for (var i=0; i<tabs.length; i++) tabs[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+}
+
+window.onload = function() {
+  ST('state', document.querySelector('.tab.on'));
+};
+</script>
+</body>
+</html>

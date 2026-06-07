@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KitchenFounder Staff Onboarding Pack</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}.hdr h1{font-size:1.1rem;font-weight:700}.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px}.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f textarea,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;background:#FAFAF8;font-family:inherit;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#264653;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chk{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0ece4}
+.chk:last-child{border:none}.chk input{margin-top:2px;width:16px;height:16px;cursor:pointer;accent-color:#2a9d8f;flex-shrink:0}
+.chk.done span{text-decoration:line-through;color:#999}
+.item{padding:10px 0;border-bottom:1px solid #f0ece4;font-size:0.85rem}
+.item:last-child{border:none}
+.script-box{background:#f0f9f6;border:1px solid #a7f3d0;border-radius:8px;padding:16px;margin-bottom:12px}
+.script-box h4{font-size:0.85rem;font-weight:700;color:#065f46;margin-bottom:8px}
+.script-box p{font-size:0.83rem;color:#1C1C1C;line-height:1.7;font-style:italic}
+.compliance-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0ece4;font-size:0.85rem}
+.compliance-row:last-child{border:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.68rem;font-weight:700}
+.tf{background:#fee2e2;color:#991b1b}.tn{background:#d1fae5;color:#065f46}.ts{background:#fef3c7;color:#92400e}
+.wage-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+.wage-table th{background:#264653;color:#fff;padding:8px 10px;text-align:left}
+.wage-table td{padding:7px 10px;border-bottom:1px solid #E8E4DC}
+.wage-table tr:hover td{background:#f5f1eb}
+@media print{.hdr,.tabs,.btn,.brow{display:none!important}.panel{display:block!important}}
+@media(max-width:768px){.g2,.g3{grid-template-columns:1fr}}
+</style></head><body>
+<div class="hdr"><div><h1>👥 KitchenFounder Staff Onboarding Pack</h1><p>Welcome · HR Compliance · Training · Service Scripts</p></div><span class="badge">FREE TOOL</span></div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('welcome',this)">🤝 Welcome</button>
+  <button class="tab" onclick="ST('hr',this)">📋 HR Compliance</button>
+  <button class="tab" onclick="ST('training',this)">✅ Training</button>
+  <button class="tab" onclick="ST('scripts',this)">💬 Scripts</button>
+</div>
+
+<div id="panel-welcome" class="panel">
+<div class="card"><div class="ct">🏪 Customise Your Onboarding Pack</div>
+<div class="g3">
+  <div class="f"><label>Restaurant Name</label><input id="rname" value="My Restaurant" oninput="updateWelcome()"></div>
+  <div class="f"><label>Head Chef / Manager Name</label><input id="mgr" value="Chef Alex" oninput="updateWelcome()"></div>
+  <div class="f"><label>Opening Date / Year</label><input id="yr" value="2025" oninput="updateWelcome()"></div>
+</div></div>
+<div class="card"><div class="ct">📄 Welcome Letter</div>
+<div id="welcome-letter" style="background:#f9f7f4;border:1px solid #E8E4DC;border-radius:8px;padding:20px;font-size:0.88rem;line-height:1.8;white-space:pre-wrap"></div>
+<button class="btn bp" style="margin-top:12px" onclick="window.print()">🖨️ Print Welcome Letter</button>
+</div>
+<div class="card"><div class="ct">🌟 What We Expect From You</div>
+<div class="g2"><div>
+  <div class="item">🕐 Arrive 10 minutes before your shift — not on time, early</div>
+  <div class="item">👔 Full uniform, clean and pressed, every shift</div>
+  <div class="item">📵 Phone away during service — always</div>
+  <div class="item">🤝 Treat every guest as if they're a first-time visitor</div>
+  <div class="item">🧠 Know the menu — ingredients, allergens, how it's cooked</div>
+  <div class="item">🗣️ Communicate openly — tell us if something's wrong</div>
+  <div class="item">🧹 Leave your station cleaner than you found it</div>
+  <div class="item">🙋 Ask for help before making an error</div>
+  <div class="item">🔄 Adaptability — no two days are the same in hospitality</div>
+  <div class="item">❤️ Care about the food and the guest — not just the paycheck</div>
+</div><div>
+  <div style="font-weight:700;margin-bottom:8px;font-size:0.85rem">What You Can Expect From Us</div>
+  <div class="item">💰 Pay on time, every time — no exceptions</div>
+  <div class="item">📅 Roster published at least 7 days in advance</div>
+  <div class="item">🗣️ Clear feedback — we'll tell you how you're doing</div>
+  <div class="item">📈 Opportunities to grow if you show up and perform</div>
+  <div class="item">🤝 Respect — regardless of your role</div>
+  <div class="item">🧑‍🍳 Training and development — we invest in our team</div>
+  <div class="item">🛡️ A safe work environment — zero tolerance for bullying</div>
+  <div class="item">🎉 Recognition when you do great work</div>
+  <div class="item">🔓 Honest conversations — open door policy</div>
+  <div class="item">🏆 A team that takes pride in what we do</div>
+</div></div></div></div>
+
+<div id="panel-hr" class="panel" style="display:none">
+<div class="card"><div class="ct">📋 Federal Requirements (USA)</div>
+<div class="compliance-row"><span><strong>I-9 (Employment Eligibility)</strong> — Verify identity and work authorisation</span><span class="tag tf">Required Day 1</span></div>
+<div class="compliance-row"><span><strong>W-4 (Federal Tax Withholding)</strong> — Employee completes before first paycheck</span><span class="tag tf">Required</span></div>
+<div class="compliance-row"><span><strong>E-Verify</strong> — Online I-9 verification (required in some states)</span><span class="tag ts">Check Your State</span></div>
+<div class="compliance-row"><span><strong>FLSA Notice</strong> — Inform employees of wage and hour rights</span><span class="tag tf">Required</span></div>
+<div class="compliance-row"><span><strong>Workers Comp Insurance</strong> — Required in all states</span><span class="tag tf">Required</span></div>
+<div class="compliance-row"><span><strong>FMLA Notice</strong> — For employers with 50+ employees</span><span class="tag tn">50+ staff only</span></div>
+</div>
+<div class="card"><div class="ct">💵 Minimum Wage by State (2025)</div>
+<table class="wage-table"><thead><tr><th>State</th><th>Min Wage/hr</th><th>Tipped Min Wage</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Federal</td><td>$7.25</td><td>$2.13</td><td>Floor — state may be higher</td></tr>
+<tr><td>New York</td><td>$16.00</td><td>$10.65</td><td>NYC $17.00; tip credit applies</td></tr>
+<tr><td>California</td><td>$16.50</td><td>$16.50</td><td>No tip credit — full min wage</td></tr>
+<tr><td>Texas</td><td>$7.25</td><td>$2.13</td><td>Federal rate applies</td></tr>
+<tr><td>Florida</td><td>$13.00</td><td>$9.98</td><td>Increases annually</td></tr>
+<tr><td>Illinois</td><td>$14.00</td><td>$8.40</td><td>Chicago may be higher</td></tr>
+<tr><td>Washington</td><td>$16.66</td><td>$16.66</td><td>No tip credit</td></tr>
+<tr><td>Colorado</td><td>$14.42</td><td>$11.40</td><td>CPI indexed annually</td></tr>
+<tr><td>Georgia</td><td>$7.25</td><td>$2.13</td><td>Federal rate applies</td></tr>
+<tr><td>Arizona</td><td>$14.35</td><td>$11.35</td><td>CPI indexed annually</td></tr>
+</tbody></table></div>
+<div class="card"><div class="ct">🍽️ Tip Pooling Rules</div>
+<div class="compliance-row"><span><strong>Federal (FLSA):</strong> Tip pools allowed between tipped employees. Managers/owners cannot participate.</span><span class="tag tf">Key Rule</span></div>
+<div class="compliance-row"><span><strong>New York:</strong> Tip pooling allowed among front-of-house. Kitchen staff can be included only if employer pays full min wage (no tip credit).</span></div>
+<div class="compliance-row"><span><strong>California:</strong> No tip credit. Tip pooling allowed among employees who customarily receive tips. No management.</span></div>
+<div class="compliance-row"><span><strong>Texas:</strong> Tip pooling allowed. Employers using tip credit cannot include back-of-house.</span></div>
+<div class="compliance-row"><span><strong>Washington:</strong> No tip credit. Service charges (mandatory) are NOT tips — belong to employer unless designated.</span></div>
+</div>
+<div class="card"><div class="ct">⏰ Overtime Rules (FLSA)</div>
+<div class="compliance-row"><span>Non-exempt employees must be paid 1.5× rate for hours over 40/week</span><span class="tag tf">Federal Law</span></div>
+<div class="compliance-row"><span>California: overtime after 8 hours/day AND 40 hours/week</span><span class="tag ts">CA Only</span></div>
+<div class="compliance-row"><span>NY Fair Workweek Act: predictive scheduling for fast food (10+ locations)</span><span class="tag ts">NYC Only</span></div>
+<div class="compliance-row"><span>Required posters: FLSA, OSHA, EEOC, FMLA, USERRA — must be displayed in workplace</span><span class="tag tf">Required</span></div>
+</div></div>
+
+<div id="panel-training" class="panel" style="display:none">
+<div class="card"><div class="ct">📅 Day 1 Checklist</div>
+<div id="day1-list"></div></div>
+<div class="g2">
+<div class="card"><div class="ct">🍳 Week 1 — Kitchen Training</div><div id="kitchen-list"></div></div>
+<div class="card"><div class="ct">🛎️ Week 1 — FOH Training</div><div id="foh-list"></div></div>
+</div>
+<div class="card"><div class="ct">📝 30-Day Review Template</div>
+<div class="g2">
+  <div class="f"><label>Employee Name</label><input id="emp-name" placeholder="Staff member name"></div>
+  <div class="f"><label>Role</label><input id="emp-role" placeholder="e.g. Line Cook"></div>
+</div>
+<div class="f"><label>Strengths observed in first 30 days</label><textarea id="emp-strengths" rows="3" placeholder="What are they doing well?"></textarea></div>
+<div class="f"><label>Areas for improvement</label><textarea id="emp-improve" rows="3" placeholder="What needs to develop?"></textarea></div>
+<div class="f"><label>Goals for next 30 days</label><textarea id="emp-goals" rows="3" placeholder="Specific targets to hit"></textarea></div>
+<div class="g2">
+  <div class="f"><label>Trainer Signature</label><input placeholder="Sign or type name"></div>
+  <div class="f"><label>Employee Signature</label><input placeholder="Sign or type name"></div>
+</div>
+<button class="btn bp" onclick="window.print()">🖨️ Print Review</button>
+</div></div>
+
+<div id="panel-scripts" class="panel" style="display:none">
+<div class="card"><div class="ct">💬 Service Scripts — Word For Word</div>
+<div class="script-box"><h4>1. Greeting a Table</h4>
+<p>"Good [evening], welcome to [Restaurant Name]. My name is [Name] and I'll be looking after you tonight. Can I start you with some still or sparkling water while you look through the menu?"</p></div>
+<div class="script-box"><h4>2. Taking an Order Professionally</h4>
+<p>"Are you ready to order, or would you like a few more minutes? ... Excellent choice. And how would you like the [steak/fish] cooked? ... Any dietary requirements I should let the kitchen know about? Perfect, I'll get that in for you right away."</p></div>
+<div class="script-box"><h4>3. Handling a Complaint (LAST Method)</h4>
+<p><strong>Listen:</strong> "I'm so sorry to hear that — tell me exactly what happened."<br><strong>Apologise:</strong> "That's completely unacceptable and I sincerely apologise."<br><strong>Solve:</strong> "I'm going to [replace the dish / speak to the chef / remove this from your bill] right now."<br><strong>Thank:</strong> "Thank you for letting us know — your feedback helps us get better."</p></div>
+<div class="script-box"><h4>4. Upselling Without Being Pushy</h4>
+<p>"The [dish] is really popular tonight — the kitchen has done something special with the sauce. A lot of guests have been pairing it with [wine recommendation]... if you're into that style."</p></div>
+<div class="script-box"><h4>5. Describing a Dish (Sensory Language)</h4>
+<p>"The wagyu burger is made with 200g of Marble Score 5 beef, grilled medium-rare, served with house-made aioli on a brioche bun. It's rich and juicy — it's been our best-seller since we opened."</p></div>
+<div class="script-box"><h4>6. Handling an Allergen Request</h4>
+<p>"Absolutely, thank you for letting me know. I'll go and check with the kitchen right now to confirm what's safe for you. I won't guess — I'll get you a confirmed answer. One moment please." [Check with chef. Return with clear yes/no — never a maybe.]</p></div>
+<div class="script-box"><h4>7. Closing a Table and Asking for Feedback</h4>
+<p>"I hope you had a wonderful evening. Before you go — is there anything we could have done even better for you tonight? ... Thank you so much. We'd love to see you again. If you get a chance to leave us a Google review, it means the world to a small team like ours."</p></div>
+<div class="script-box"><h4>8. Handling a No-Show Reservation</h4>
+<p>[Phone call to guest, 15 minutes after booking time:] "Hi, this is [Name] from [Restaurant]. I'm just calling to check on your reservation for [time] tonight — we have your table ready for you. Let me know if your plans have changed and I can hold it a little longer or release it for another guest. No worries either way — just give us a quick call back. Thank you!"</p></div>
+</div></div>
+
+<script>
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+}
+function updateWelcome(){
+  var rn=document.getElementById('rname').value||'[Restaurant Name]';
+  var mg=document.getElementById('mgr').value||'[Manager]';
+  var yr=document.getElementById('yr').value||'2025';
+  document.getElementById('welcome-letter').textContent=
+    'Welcome to '+rn+'.\n\n'+
+    'We are so glad you are here. You have joined a team that genuinely cares — about the food we make, the guests we serve, and each other.\n\n'+
+    'This is not just a job. Every plate that leaves our kitchen, every guest interaction, every shift — it adds up to something. We are building a reputation, one service at a time, and you are now a part of that.\n\n'+
+    'This pack will walk you through everything you need to know to get started — from how we work, to what we expect, to the scripts and checklists that will set you up for success.\n\n'+
+    'If you ever have questions, my door is always open.\n\n'+
+    'Welcome to the team.\n\n'+mg+'\n'+rn+' · '+yr;
+}
+var d1=['Complete all HR paperwork (I-9, W-4, direct deposit)','Receive and sign employment agreement','Tour of the full property — kitchen, FOH, storage, bathrooms','Introduced to every team member','Uniform issued and fitted','Locker assigned','Review allergen and dietary policy','Shadow a senior team member for full shift','Read and sign staff handbook acknowledgement','Health and safety induction completed'];
+var kl=['Knife handling and safety — basic techniques','Mise en place standards — how we prep, label, store','Temperature log — how to record correctly','Allergen awareness — our 14 major allergens','HACCP basics — time/temperature control','Cleaning schedule — daily tasks by station','How to receive a delivery — check and record','Stock rotation — FIFO method explained','Communication in the kitchen — ticket system','Presentation standards — every plate identical','Waste reduction — our targets and methods','End of shift kitchen clean — full standard','Equipment care — ovens, fryers, slicers','How to escalate a food safety issue','Your first solo prep shift with supervisor sign-off'];
+var fl=['Table layout and numbering — know the floor','POS system training — enter orders, modifications, split bills','Menu knowledge test — all items, key ingredients','Service sequence — greet, order, food, dessert, bill','Allergen script — word for word, as trained','Upsell targets — 3 items to recommend this week','How to carry plates — 2-plate carry standard','How to describe our top 5 dishes','Handling a complaint — LAST method practised','Closing a table — feedback ask and thank you','Opening side duties','Closing side duties','Reservation system — how to check and manage','How to process payments — cash and card','Shadow a senior FOH team member for 3 full services'];
+function buildLists(){
+  document.getElementById('day1-list').innerHTML=d1.map(function(t,i){return '<label class="chk" id="d1'+i+'"><input type="checkbox" onchange="this.closest(\'.chk\').classList.toggle(\'done\',this.checked)"><span>'+t+'</span></label>';}).join('');
+  document.getElementById('kitchen-list').innerHTML=kl.map(function(t,i){return '<label class="chk" id="kl'+i+'"><input type="checkbox" onchange="this.closest(\'.chk\').classList.toggle(\'done\',this.checked)"><span>'+t+'</span></label>';}).join('');
+  document.getElementById('foh-list').innerHTML=fl.map(function(t,i){return '<label class="chk" id="fl'+i+'"><input type="checkbox" onchange="this.closest(\'.chk\').classList.toggle(\'done\',this.checked)"><span>'+t+'</span></label>';}).join('');
+  updateWelcome();
+}
+window.onload=function(){buildLists();};
+</script></body></html>

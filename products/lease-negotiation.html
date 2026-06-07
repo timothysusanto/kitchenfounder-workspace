@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Lease Negotiation Cheat Sheet</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;min-height:100vh}
+.header{background:#264653;color:#fff;padding:28px 32px}
+.header h1{font-size:1.5rem;font-weight:700}
+.header p{color:#C8A97E;font-size:0.9rem;margin-top:4px}
+.tab-bar{display:flex;border-bottom:2px solid #E8E4DC;background:#fff;padding:0 32px}
+.tab{padding:14px 24px;cursor:pointer;font-size:0.9rem;font-weight:600;color:#666;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;background:none;transition:all 0.15s}
+.tab:hover{color:#264653}
+.tab.on{color:#264653;border-bottom-color:#C8A97E}
+.panel{display:none;padding:32px;max-width:1200px;margin:0 auto}
+.section-intro{background:#fff;border:1px solid #E8E4DC;border-radius:10px;padding:18px 22px;margin-bottom:24px;font-size:0.9rem;line-height:1.6;color:#555}
+.section-intro strong{color:#264653}
+.flags-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.flag-card{background:#fff;border:1.5px solid #E8E4DC;border-radius:12px;padding:18px 20px;position:relative;transition:box-shadow 0.15s}
+.flag-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.flag-num{position:absolute;top:14px;right:14px;background:#264653;color:#fff;font-size:0.7rem;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.flag-icon{font-size:1.4rem;margin-bottom:8px}
+.flag-title{font-size:0.95rem;font-weight:700;color:#1C1C1C;margin-bottom:8px;padding-right:28px}
+.flag-action{background:#FFF8F0;border-left:3px solid #C8A97E;padding:10px 12px;border-radius:0 6px 6px 0;font-size:0.82rem;line-height:1.5;color:#5a4830}
+.flag-action strong{color:#264653}
+.flag-risk{display:inline-block;background:#fee2e2;color:#b91c1c;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:8px}
+.scripts-list{display:flex;flex-direction:column;gap:20px}
+.script-card{background:#fff;border:1px solid #E8E4DC;border-radius:12px;overflow:hidden}
+.script-header{background:#264653;color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px}
+.script-num{background:#C8A97E;color:#fff;font-size:0.75rem;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.script-title{font-size:0.95rem;font-weight:700}
+.script-body{padding:20px}
+.script-context{font-size:0.82rem;color:#888;font-style:italic;margin-bottom:12px}
+.script-text{background:#F8F6F0;border-radius:8px;padding:16px;font-size:0.88rem;line-height:1.7;color:#2c2c2c;border-left:3px solid #C8A97E;white-space:pre-line}
+.script-tip{margin-top:12px;font-size:0.8rem;color:#264653;background:#EDF4F6;padding:8px 12px;border-radius:6px}
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.gloss-card{background:#fff;border:1px solid #E8E4DC;border-radius:10px;padding:16px 18px}
+.gloss-term{font-size:0.95rem;font-weight:700;color:#264653;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.gloss-abbr{background:#264653;color:#C8A97E;font-size:0.7rem;padding:2px 7px;border-radius:4px;font-weight:700}
+.gloss-def{font-size:0.83rem;line-height:1.55;color:#555}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📋 KitchenFounder Lease Negotiation Cheat Sheet</h1>
+  <p>Know what to fight for before you sign anything</p>
+</div>
+<div class="tab-bar">
+  <button class="tab on" onclick="ST('flags',this)">🚩 Red Flags</button>
+  <button class="tab" onclick="ST('scripts',this)">💬 Negotiation Scripts</button>
+  <button class="tab" onclick="ST('glossary',this)">📖 Glossary</button>
+</div>
+
+<div id="panel-flags" class="panel">
+  <div class="section-intro"><strong>⚠️ Watch for these 15 red flags</strong> before you sign. Each one can cost you tens of thousands — or trap you in a bad deal. Knowing them is your leverage.</div>
+  <div class="flags-grid">
+
+    <div class="flag-card">
+      <div class="flag-num">1</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">Personal Guarantee with No Cap</div>
+      <div class="flag-action"><strong>Demand:</strong> Cap at 12 months rent max. Unlimited personal liability means your house, savings, and future are on the line if the business fails.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">2</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">No Rent-Free Fit-Out Period</div>
+      <div class="flag-action"><strong>Standard:</strong> 3–6 months rent-free while you build out. If not offered, negotiate it. You can't open in week one — don't pay for a shell.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">3</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">Triple Net (NNN) with No Cap</div>
+      <div class="flag-action"><strong>Demand:</strong> Cap CAM (Common Area Maintenance) increases at 5% per year max. Uncapped NNN = unpredictable costs that can spike 20–30% in one year.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">4</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">Short Initial Term (Under 5 Years)</div>
+      <div class="flag-action"><strong>Minimum:</strong> 5 years to recoup fit-out investment. 5+5 option is ideal. A 2-year lease with no option means you can be removed after spending $200K on fit-out.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">5</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">No Assignment Clause</div>
+      <div class="flag-action"><strong>Must have:</strong> Right to sell/transfer the lease when you sell the business. Without it, your business is worth far less — or unsellable.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">6</div>
+      <div class="flag-risk">MEDIUM RISK</div>
+      <div class="flag-title">No Exclusivity Clause</div>
+      <div class="flag-action"><strong>Add it:</strong> Prevent the landlord leasing adjacent space to a direct competitor. Defines your cuisine/concept category so a burger place can't open next door.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">7</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">Demolition Clause</div>
+      <div class="flag-action"><strong>Walk away:</strong> This lets the landlord terminate with 6 months notice for redevelopment. You lose everything with minimal compensation. Non-negotiable dealbreaker.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">8</div>
+      <div class="flag-risk">MEDIUM RISK</div>
+      <div class="flag-title">Keep-Open Clause</div>
+      <div class="flag-action"><strong>Negotiate out:</strong> Forced to stay open certain hours or days. Bad for restaurants — you need flexibility to close for private events, slow periods, or staff emergencies.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">9</div>
+      <div class="flag-risk">MEDIUM RISK</div>
+      <div class="flag-title">Percentage Rent Above Natural Breakpoint</div>
+      <div class="flag-action"><strong>Check the math:</strong> Only fair if base rent is significantly below market rate. Above natural breakpoint means the landlord profits disproportionately when you succeed.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">10</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">No Build-Out Allowance (TI)</div>
+      <div class="flag-action"><strong>Standard US:</strong> $50–$150 per sqft Tenant Improvement allowance. Fight for it. If they won't move, ask for rent abatement to offset your fit-out spend.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">11</div>
+      <div class="flag-risk">HIGH RISK</div>
+      <div class="flag-title">Restoration Clause</div>
+      <div class="flag-action"><strong>Remove it:</strong> Required to return to original condition = $50K+ demo cost at the end. Negotiate that your fit-out can remain — it adds value to the landlord's asset.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">12</div>
+      <div class="flag-risk">MEDIUM RISK</div>
+      <div class="flag-title">Below-Market Options, No Rent Control</div>
+      <div class="flag-action"><strong>Cap the increases:</strong> Option periods must have fixed rent increase caps — CPI or a fixed % (3–5%). Open-ended options let landlords set any price at renewal.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">13</div>
+      <div class="flag-risk">MEDIUM RISK</div>
+      <div class="flag-title">Joint and Several Liability (Partners)</div>
+      <div class="flag-action"><strong>Structure carefully:</strong> Each partner is liable for the full rent, not just their share. If a partner exits, you're exposed. Consider a holding entity (LLC) as the tenant.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">14</div>
+      <div class="flag-risk">LOW RISK</div>
+      <div class="flag-title">Insurance Requirements Too High</div>
+      <div class="flag-action"><strong>Standard is $1M GL.</strong> If they want $3M, push back — this triples your premium. If they insist, negotiate it into the rent-free period or TI allowance as offset.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-num">15</div>
+      <div class="flag-risk">MEDIUM RISK</div>
+      <div class="flag-title">No Co-Tenancy Clause</div>
+      <div class="flag-action"><strong>Add it:</strong> If the anchor tenant (e.g. grocery store, big box) leaves, your foot traffic drops 40%. A co-tenancy clause gives you rent reduction or exit rights if they leave.</div>
+    </div>
+
+  </div>
+</div>
+
+<div id="panel-scripts" class="panel" style="display:none">
+  <div class="section-intro"><strong>💬 Use these scripts word-for-word</strong> or adapt them to your voice. The goal: stay professional, stay firm, always leave room for a counteroffer.</div>
+  <div class="scripts-list">
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">1</div><div class="script-title">Opening Counter on Rent</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: You've received their asking rent and it's above your budget.</div>
+        <div class="script-text">"Thank you for sending the lease terms. We're very interested in the space — it fits our concept well.
+
+That said, I've done the numbers, and to make this work at the level of investment we're both expecting, we need to come in at $[your number] per sqft/month rather than $[their number].
+
+I want to be transparent: this isn't about being difficult. At $[their number], our break-even is [X covers/night], which carries more risk than either of us wants. At $[your number], we can invest confidently in the fit-out and build something that becomes a genuine anchor for this block.
+
+Can we get on a call to work through this together?"</div>
+        <div class="script-tip">💡 Always frame your counter around mutual benefit. The landlord wants a strong, stable tenant — use that.</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">2</div><div class="script-title">Asking for Rent-Free Fit-Out Period</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: The lease has no rent-free period and you're building from scratch.</div>
+        <div class="script-text">"We'd like to discuss the commencement date for rent. Our fit-out is projected to take [3–4] months, and we won't generate any revenue until we open.
+
+Industry standard for a full build-out of this type is 3–6 months rent-free from lease execution. We're asking for [X months] rent-free to align our cash flow with our ability to pay.
+
+We're committing to a [5+5 year] term — that's [X years] of reliable tenancy and a fully fitted space at our expense that adds value to your asset. The rent-free period de-risks the start for both of us.
+
+What can you do on this?"</div>
+        <div class="script-tip">💡 Emphasise the long-term commitment and your investment in the space as leverage.</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">3</div><div class="script-title">Negotiating TI (Tenant Improvement) Allowance</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: There's no TI offered in a cold shell space.</div>
+        <div class="script-text">"We've reviewed the space and our build-out is estimated at $[X]. For a restaurant in a cold shell, that's within the standard range of $150–$300/sqft for full commercial kitchen fit-out.
+
+We're asking for a TI allowance of $[X] — which is $[X]/sqft — to offset the cost of improvements that become permanent fixtures and add value to your property.
+
+Alternatively, if TI isn't feasible, we'd consider a rent abatement of $[Y/month] for the first [12] months to achieve a similar economic outcome.
+
+We want to make this work. What's the appetite here?"</div>
+        <div class="script-tip">💡 Always offer an alternative structure (rent abatement) so they can say yes in a different way.</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">4</div><div class="script-title">Pushing Back on Personal Guarantee</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: They want a full-term personal guarantee with no cap.</div>
+        <div class="script-text">"We understand you need security, and we're happy to provide a personal guarantee. However, an unlimited full-term guarantee isn't something we can sign — and frankly, it's not standard for a lease of this size.
+
+What we're proposing is a personal guarantee capped at 12 months' base rent. This is the industry norm and gives you meaningful security if things go wrong, while not exposing us to unlimited personal liability for a business venture.
+
+We're also happy to discuss a security deposit of [1–2 months] as additional comfort.
+
+Would a 12-month capped guarantee with a cash deposit work for your team?"</div>
+        <div class="script-tip">💡 Offering a cash deposit alongside a capped guarantee gives the landlord two layers of security and makes it easier to say yes.</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">5</div><div class="script-title">Requesting Exclusivity Clause</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: There are other vacant units in the same centre/building.</div>
+        <div class="script-text">"We'd like to include an exclusivity clause covering our concept category — specifically [full-service dining / casual Asian dining / etc.] — within the [centre/building/block].
+
+We're investing heavily in fit-out and marketing to drive foot traffic to this location. That investment also benefits you and the other tenants. The least we'd ask in return is protection from a direct competitor opening next door.
+
+We're not asking for broad exclusivity — just protection within our core category for the term of the lease. This is standard in most commercial leases and costs nothing for landlords to grant."</div>
+        <div class="script-tip">💡 Keep exclusivity narrow and specific — "no other full-service Asian restaurant" is easier to get than "no food at all."</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">6</div><div class="script-title">Asking for Assignment Rights</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: The lease is silent on assignment or requires landlord consent with no timeline.</div>
+        <div class="script-text">"We need the lease to include a clear assignment clause that allows us to transfer the lease to a qualified buyer when we sell the business.
+
+We understand you want to approve the incoming tenant — that's reasonable. What we're asking for is that your consent cannot be unreasonably withheld, and that you respond within 30 days of a written request with a qualified buyer's financials.
+
+Without this, our business is effectively unsellable — it's a major issue for us and reduces the overall value of what we're building here. This is standard language and protects both parties."</div>
+        <div class="script-tip">💡 The key phrase is "cannot be unreasonably withheld" — landlords can still protect themselves without blocking your exit.</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">7</div><div class="script-title">Negotiating Lease Term and Options</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: They're offering a short initial term or no option periods.</div>
+        <div class="script-text">"We'd like to discuss the lease structure. Our fit-out investment requires a minimum 5-year initial term to achieve a return — anything shorter creates a financial mismatch we can't accept.
+
+We're proposing an initial term of 5 years with two further options of 5 years each — a 5+5+5 structure. Rent increases on options to be capped at CPI or 3%, whichever is lower.
+
+This gives you a 15-year anchor tenant commitment with a proven operator. That's an extremely valuable outcome for any commercial landlord and will be reflected in your property valuation.
+
+Can we get the 5+5+5 structure with capped option increases on the table?"</div>
+        <div class="script-tip">💡 Long terms are a genuine win for landlords — position it as a benefit, not just a demand.</div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header"><div class="script-num">8</div><div class="script-title">Responding to "Take It or Leave It"</div></div>
+      <div class="script-body">
+        <div class="script-context">Use when: The landlord or agent claims the terms are non-negotiable.</div>
+        <div class="script-text">"I appreciate the directness, and I want to be equally direct: we're serious about this space and want to make it work. But a lease at these terms as-is isn't something we can sign responsibly.
+
+We're not asking for the world — we're asking for [list your 2–3 key items]. These are industry-standard requests from any experienced operator.
+
+If these are genuinely immovable, I'd need to go back to our board/investors, and I'd also want to understand why comparable spaces in [area] are offering [X]. I don't want to walk away from this — but I also can't sign something I know is wrong.
+
+What's the one thing you have the most flexibility on? Let's start there."</div>
+        <div class="script-tip">💡 "Take it or leave it" is almost always a negotiating position, not a final answer. Stay calm, stay professional, and narrow to one issue at a time.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="panel-glossary" class="panel" style="display:none">
+  <div class="section-intro"><strong>📖 20 key lease terms</strong> in plain English. Don't let jargon blindside you in the negotiation room.</div>
+  <div class="glossary-grid">
+    <div class="gloss-card"><div class="gloss-term"><span class="gloss-abbr">NNN</span> Triple Net Lease</div><div class="gloss-def">You pay base rent PLUS your share of property taxes, building insurance, and maintenance. Costs can be unpredictable. Always cap annual increases.</div></div>
+    <div class="gloss-card"><div class="gloss-term"><span class="gloss-abbr">CAM</span> Common Area Maintenance</div><div class="gloss-def">Your share of maintaining shared spaces — parking lots, lobbies, landscaping. Charged on top of base rent in NNN leases. Demand a cap on annual increases (5% max).</div></div>
+    <div class="gloss-card"><div class="gloss-term"><span class="gloss-abbr">TI</span> Tenant Improvement Allowance</div><div class="gloss-def">Money the landlord gives you to build out the space. Standard in cold shell leases: $50–$150/sqft. Negotiate hard — every dollar they give saves you from borrowing it.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Base Rent</div><div class="gloss-def">The core rent amount, before CAM, taxes, or insurance. Usually expressed as $/sqft/year or $/month. This is your anchor number in negotiations.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Percentage Rent</div><div class="gloss-def">When you pay a % of gross revenue above a certain threshold on top of base rent. Can be fair if base rent is low. Always check the natural breakpoint before agreeing.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Natural Breakpoint</div><div class="gloss-def">The revenue level at which percentage rent kicks in, calculated as: Base Rent ÷ Percentage Rate. If your breakpoint is $500K and you do $600K, you pay % on the extra $100K.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Option Period</div><div class="gloss-def">Your right (not obligation) to extend the lease at the end of the initial term. Always negotiate renewal options with capped rent increases. Without them, the landlord can price you out.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Assignment</div><div class="gloss-def">Transferring your lease obligations to a new tenant (usually when you sell the business). Landlords can require approval — but ensure consent cannot be unreasonably withheld.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Subletting</div><div class="gloss-def">Renting part or all of your space to another party while you retain the lease. Different from assignment — you're still responsible if the subtenant defaults. Often restricted.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Personal Guarantee</div><div class="gloss-def">You personally guarantee the lease obligations. If your LLC fails, the landlord can pursue your personal assets. Always cap this — 12 months rent is standard and defensible.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Certificate of Occupancy</div><div class="gloss-def">A government document certifying your space is safe and legally approved for its intended use (food service). You can't legally open without it. Budget 4–8 weeks to obtain.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Permitted Use</div><div class="gloss-def">What you're legally allowed to do in the space under the lease. Make sure it covers your concept fully — "restaurant and bar" vs "cafe only" matters enormously. Get it wide.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Exclusivity</div><div class="gloss-def">A clause preventing the landlord from leasing nearby space to a direct competitor. Define your category carefully and narrowly so it's enforceable without being overbroad.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Co-Tenancy Clause</div><div class="gloss-def">Protects you if a key anchor tenant (a major store that drives foot traffic) leaves the centre. Gives you rent reduction or early exit rights. Critical in shopping centres or malls.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Demolition Clause</div><div class="gloss-def">Landlord's right to terminate the lease early for redevelopment. Typically 6 months notice. This is a dealbreaker — avoid it, or negotiate substantial compensation (2+ years rent).</div></div>
+    <div class="gloss-card"><div class="gloss-term">Force Majeure</div><div class="gloss-def">Suspends lease obligations during unforeseeable events (pandemics, natural disasters). COVID made this famous. Ensure it's in your lease and covers cessation of trading, not just property damage.</div></div>
+    <div class="gloss-card"><div class="gloss-term">HVAC</div><div class="gloss-def">Heating, Ventilation, and Air Conditioning systems. Who maintains them? Who replaces them when they fail? Clarify in the lease — a failed HVAC unit can cost $15,000+. Negotiate landlord responsibility.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Gross Lease</div><div class="gloss-def">You pay one fixed amount; the landlord covers all operating expenses. Predictable but typically higher base rent. Less common in commercial — more in office buildings.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Modified Gross Lease</div><div class="gloss-def">You pay base rent plus some (not all) operating expenses. Landlord and tenant split the responsibilities. The most negotiable structure — define exactly what each party pays.</div></div>
+    <div class="gloss-card"><div class="gloss-term">Net Lease</div><div class="gloss-def">You pay base rent plus one or more of: property taxes, insurance, maintenance. Single Net = taxes. Double Net = taxes + insurance. Triple Net (NNN) = all three. Each adds cost and unpredictability.</div></div>
+  </div>
+</div>
+
+<script>
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+}
+window.onload=function(){ST('flags',document.querySelector('.tab.on'));};
+</script>
+</body>
+</html>

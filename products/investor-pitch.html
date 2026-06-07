@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KitchenFounder Investor Pitch Template</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}.hdr h1{font-size:1.1rem;font-weight:700}.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px}.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f textarea,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;background:#FAFAF8;font-family:inherit;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#264653;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}.ba{background:#2a9d8f;color:#fff}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.slide{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:24px;margin-bottom:16px;border-left:4px solid #264653}
+.slide-num{font-size:0.7rem;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
+.slide-title{font-size:1rem;font-weight:700;color:#264653;margin-bottom:12px}
+.slide-content{font-size:0.85rem;color:#374151;line-height:1.7}
+.metric{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px;text-align:center}
+.ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.mv{font-size:1.2rem;font-weight:700;color:#264653}.mv.g{color:#2a9d8f}.mv.a{color:#C8A97E}
+.rrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E4DC;font-size:0.85rem}
+.rrow:last-child{border:none}
+.tip{background:#f0f9f6;border:1px solid #a7f3d0;border-radius:8px;padding:12px 16px;margin-bottom:10px;font-size:0.84rem}
+.tip strong{color:#065f46}
+.onepager{background:#fff;border:2px solid #264653;border-radius:12px;padding:32px;max-width:700px;margin:0 auto}
+.onepager h2{color:#264653;font-size:1.3rem;margin-bottom:4px}
+.onepager .sub{color:#6B6B6B;font-size:0.85rem;margin-bottom:20px}
+.op-section{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #E8E4DC}
+.op-section:last-child{border:none}
+.op-section h3{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#C8A97E;margin-bottom:6px}
+@media print{.hdr,.tabs,.btn,.brow{display:none!important}.panel{display:block!important}}
+@media(max-width:768px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}}
+</style></head><body>
+<div class="hdr"><div><h1>💰 KitchenFounder Investor Pitch Template</h1><p>Pitch Deck · Financial Summary · One-Pager · Tips</p></div><span class="badge">FREE TOOL</span></div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('deck',this)">📊 Pitch Deck</button>
+  <button class="tab" onclick="ST('finance',this)">💵 Financials</button>
+  <button class="tab" onclick="ST('onepager',this)">📄 One-Pager</button>
+  <button class="tab" onclick="ST('tips',this)">💡 Tips</button>
+</div>
+
+<div id="panel-deck" class="panel">
+<div class="card"><div class="ct">✏️ Customise Your Pitch</div>
+<div class="g3">
+  <div class="f"><label>Restaurant Name</label><input id="p-name" value="My Restaurant" oninput="upd()"></div>
+  <div class="f"><label>Concept Tagline</label><input id="p-tag" value="Modern dining, bold flavours" oninput="upd()"></div>
+  <div class="f"><label>Founder Name</label><input id="p-founder" value="[Your Name]" oninput="upd()"></div>
+</div>
+<div class="g3">
+  <div class="f"><label>City / Neighbourhood</label><input id="p-city" value="New York, NY" oninput="upd()"></div>
+  <div class="f"><label>Cuisine Type</label><input id="p-cuisine" value="Modern American" oninput="upd()"></div>
+  <div class="f"><label>Format</label><select id="p-format" onchange="upd()"><option>Casual Dining</option><option>Fine Dining</option><option>Fast Casual</option><option>Café / Bistro</option><option>Bar & Grill</option></select></div>
+</div></div>
+<div id="slide-container"></div>
+</div>
+
+<div id="panel-finance" class="panel" style="display:none">
+<div class="card"><div class="ct">💵 Financial Inputs</div>
+<div class="g4">
+  <div class="f"><label>Total Raise ($)</label><input type="number" id="f-raise" value="300000" onchange="calcFin()"></div>
+  <div class="f"><label>Equity Offered (%)</label><input type="number" id="f-equity" value="20" min="1" max="100" onchange="calcFin()"></div>
+  <div class="f"><label>Avg Check ($)</label><input type="number" id="f-check" value="45" onchange="calcFin()"></div>
+  <div class="f"><label>Daily Cover Target</label><input type="number" id="f-covers" value="80" onchange="calcFin()"></div>
+</div>
+<div class="g4">
+  <div class="f"><label>Days Open / Year</label><input type="number" id="f-days" value="330" onchange="calcFin()"></div>
+  <div class="f"><label>Food Cost %</label><input type="number" id="f-fc" value="30" onchange="calcFin()"></div>
+  <div class="f"><label>Labour %</label><input type="number" id="f-lab" value="32" onchange="calcFin()"></div>
+  <div class="f"><label>Annual Rent ($)</label><input type="number" id="f-rent" value="120000" onchange="calcFin()"></div>
+</div>
+<div class="g3">
+  <div class="f"><label>Fit-Out Cost ($)</label><input type="number" id="f-fitout" value="180000" onchange="calcFin()"></div>
+  <div class="f"><label>Equipment Cost ($)</label><input type="number" id="f-equip" value="60000" onchange="calcFin()"></div>
+  <div class="f"><label>Working Capital ($)</label><input type="number" id="f-wc" value="40000" onchange="calcFin()"></div>
+</div></div>
+<div class="card"><div class="ct">📊 Financial Summary</div>
+<div class="g4" style="margin-bottom:16px">
+  <div class="metric"><div class="ml">Annual Revenue</div><div class="mv a" id="fs-rev">$0</div></div>
+  <div class="metric"><div class="ml">Monthly Revenue</div><div class="mv" id="fs-mrev">$0</div></div>
+  <div class="metric"><div class="ml">Annual EBITDA</div><div class="mv g" id="fs-ebitda">$0</div></div>
+  <div class="metric"><div class="ml">EBITDA Margin</div><div class="mv" id="fs-em">0%</div></div>
+</div>
+<div class="g4" style="margin-bottom:16px">
+  <div class="metric"><div class="ml">Break-Even Covers/Day</div><div class="mv" id="fs-be">0</div></div>
+  <div class="metric"><div class="ml">Payback Period</div><div class="mv" id="fs-pb">0 months</div></div>
+  <div class="metric"><div class="ml">Company Value (5× EBITDA)</div><div class="mv a" id="fs-val">$0</div></div>
+  <div class="metric"><div class="ml">Investor Return (5× EBITDA)</div><div class="mv g" id="fs-ret">$0</div></div>
+</div>
+<div class="card" style="background:#f0f9f6;border-color:#a7f3d0"><div class="ct">📅 3-Year Projection</div>
+<table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+<thead><tr style="background:#264653;color:#fff"><th style="padding:8px">Year</th><th style="padding:8px">Revenue</th><th style="padding:8px">Food Cost</th><th style="padding:8px">Labour</th><th style="padding:8px">Rent</th><th style="padding:8px">EBITDA</th></tr></thead>
+<tbody id="proj-table"></tbody></table>
+</div></div></div>
+
+<div id="panel-onepager" class="panel" style="display:none">
+<div class="brow"><button class="btn bp" onclick="window.print()">🖨️ Print One-Pager</button></div>
+<div class="onepager" id="one-pager-content">
+  <h2 id="op-name">My Restaurant</h2>
+  <div class="sub" id="op-tag">Modern dining, bold flavours · New York, NY</div>
+  <div class="op-section"><h3>The Opportunity</h3>
+    <p id="op-opp">A [Modern American] [Casual Dining] concept in [New York, NY] targeting the underserved market of quality-focused diners who want a premium experience without fine-dining pricing. The local market has a clear gap for this positioning.</p></div>
+  <div class="op-section"><h3>The Ask</h3>
+    <div class="g2">
+      <div><div style="font-size:1.4rem;font-weight:700;color:#264653" id="op-raise">$300,000</div><div style="font-size:0.8rem;color:#6B6B6B">Investment Sought</div></div>
+      <div><div style="font-size:1.4rem;font-weight:700;color:#C8A97E" id="op-equity">20%</div><div style="font-size:0.8rem;color:#6B6B6B">Equity Offered</div></div>
+    </div></div>
+  <div class="op-section"><h3>Key Financials</h3>
+    <div class="g2">
+      <div class="rrow"><span>Projected Annual Revenue</span><span id="op-rev">—</span></div>
+      <div class="rrow"><span>Projected EBITDA</span><span id="op-ebitda">—</span></div>
+      <div class="rrow"><span>Break-Even (covers/day)</span><span id="op-be">—</span></div>
+      <div class="rrow"><span>Payback Period</span><span id="op-pb">—</span></div>
+    </div></div>
+  <div class="op-section"><h3>Use of Funds</h3><div id="op-funds" style="font-size:0.85rem"></div></div>
+  <div class="op-section"><h3>The Team</h3>
+    <p id="op-team">[Founder Name] — [X] years in hospitality operations. Previously [Role] at [Property]. Track record of [achievement].</p></div>
+  <div class="op-section"><h3>Contact</h3>
+    <p id="op-contact">[Your Name] · [email@example.com] · [+1 000 000 0000]</p></div>
+</div></div>
+
+<div id="panel-tips" class="panel" style="display:none">
+<div class="card"><div class="ct">💡 15 Tips for Pitching Investors</div>
+<div class="tip"><strong>1. Lead with the customer, not the food.</strong> Investors fund businesses, not menus. Start with: "There are 2.3M people in [city] who want [X] and nobody is serving them well."</div>
+<div class="tip"><strong>2. Know your numbers cold.</strong> Revenue, food cost %, labour %, break-even. If you hesitate on any of these, you lose credibility instantly.</div>
+<div class="tip"><strong>3. Don't oversell the market.</strong> "The global restaurant industry is $3 trillion" means nothing. Show the opportunity in your specific city, neighbourhood, and format.</div>
+<div class="tip"><strong>4. Show proof of concept.</strong> Pop-up, catering gig, supper club — anything that proves people will pay for your food. No track record = higher perceived risk.</div>
+<div class="tip"><strong>5. Have a clear use of funds breakdown.</strong> Fit-out 60%, equipment 20%, working capital 13%, marketing 7%. Vague answers here kill deals.</div>
+<div class="tip"><strong>6. Know your comparables.</strong> What did a similar concept in your city raise? What are they valued at? Show you've done the research.</div>
+<div class="tip"><strong>7. Name your unfair advantage.</strong> Why you? Why this location? Why now? Could be: supplier relationships, a cult following, a format that doesn't exist locally, a team that's done it before.</div>
+<div class="tip"><strong>8. Address the risk head-on.</strong> "The biggest risk is X, and here's how we've mitigated it." Investors respect founders who see clearly, not founders who pretend there are no risks.</div>
+<div class="tip"><strong>9. Leave a one-pager behind.</strong> Every meeting, every time. They'll show it to their partner/spouse/accountant. Your pitch continues after you leave the room.</div>
+<div class="tip"><strong>10. Follow up within 24 hours.</strong> Email recap, key figures, next step. Most founders don't do this. It sets you apart immediately.</div>
+<div class="tip"><strong>11. Bank pitch vs angel pitch are different.</strong> Banks want security (lease, assets, personal guarantee). Angels want upside (equity, growth story, exit). Tailor each version.</div>
+<div class="tip"><strong>12. SBA loan requirements.</strong> Personal credit 680+, 10-20% down, 2 years business plan, personal financial statement. Takes 60-90 days. Start early.</div>
+<div class="tip"><strong>13. What investors actually worry about.</strong> In order: operator experience, location, competition, lease terms, your personal financial commitment. Address all five.</div>
+<div class="tip"><strong>14. Red flags that kill deals.</strong> No experience, no skin in the game (you're investing nothing), no market research, unrealistic financial projections, bad location rationale.</div>
+<div class="tip"><strong>15. The close.</strong> Don't ask for the money on first contact. Ask for a second meeting. "I'd love 30 minutes to walk you through the full numbers — when works for you this week?"</div>
+</div></div>
+
+<script>
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+  if(name==='finance'||name==='onepager') calcFin();
+}
+function gv(id,def){var e=document.getElementById(id);return e?(parseFloat(e.value)||def||0):(def||0);}
+function gt(id,def){var e=document.getElementById(id);return e?(e.value||(def||'')):(def||'');}
+function st(id,v){var e=document.getElementById(id);if(e) e.textContent=v;}
+function fm(n){return '$'+Math.round(n).toLocaleString();}
+function fp(n){return n.toFixed(1)+'%';}
+function upd(){
+  var name=gt('p-name','My Restaurant'), tag=gt('p-tag','Modern dining, bold flavours');
+  var founder=gt('p-founder','[Your Name]'), city=gt('p-city','New York, NY');
+  var cuisine=gt('p-cuisine','Modern American'), format=gt('p-format','Casual Dining');
+  var slides=[
+    {n:'Slide 1',t:'🏠 Cover',c:name+'\n"'+tag+'"\n\nPresented by: '+founder+'\n'+city+' · '+new Date().getFullYear()},
+    {n:'Slide 2',t:'🎯 The Opportunity',c:'The '+city+' dining market has a clear gap for a quality '+cuisine+' '+format.toLowerCase()+' concept.\n\nTarget customer: 28-42 year olds seeking quality and value.\nNo direct competitor currently serving this positioning in our target neighbourhood.'},
+    {n:'Slide 3',t:'🍽️ The Concept',c:name+' — '+cuisine+' · '+format+' · '+city+'\n\nOur differentiator: [What makes you different — sourcing, technique, experience, price point]\nCapacity: [X] covers · [Lunch/Dinner/Both] service\n"'+tag+'"'},
+    {n:'Slide 4',t:'📊 Market Size',c:'Total Addressable Market ('+city+'): $[X]M annually\nServiceable: [Your neighbourhood] population [X], dining out [X]× per month\nTarget: [X] covers/day at $[avg check] = $[annual revenue] Year 1 revenue'},
+    {n:'Slide 5',t:'💰 Revenue Model',c:'Average check: $[X] · Daily covers target: [X] · Days open: 330\nYear 1 projected revenue: $[X]\nYear 2 (ramping): $[X] (+[X]%)\nYear 3 (stabilised): $[X]\nPrivate dining / events: additional $[X]/year'},
+    {n:'Slide 6',t:'👥 The Team',c:founder+' — [X] years in F&B operations. Previously [Role] at [Property].\n[Chef Name] — Head Chef. [X] years experience. Previously [Restaurant].\nAdvisory: [Name] — [background, why relevant]'},
+    {n:'Slide 7',t:'📈 Financial Projections',c:'Year 1: Revenue $[X] · Food Cost [X]% · Labour [X]% · EBITDA $[X]\nYear 2: Revenue $[X] · EBITDA $[X] · Margin [X]%\nYear 3: Revenue $[X] · EBITDA $[X] · Margin [X]%\n\n[Use the Financial Summary tab for exact numbers]'},
+    {n:'Slide 8',t:'💵 The Ask',c:'We are seeking $[X] for [X]% equity in '+name+'.\n\nUse of funds:\n• Fit-out & construction: [X]%\n• Equipment & FF&E: [X]%\n• Working capital: [X]%\n• Marketing & launch: [X]%'},
+    {n:'Slide 9',t:'📦 Use of Funds',c:'[See financial summary tab for breakdown]\n\nEvery dollar accounted for. No surprises.\nFit-out based on 3 contractor quotes.\nEquipment based on confirmed supplier pricing.\nWorking capital covers 6 months operating costs.'},
+    {n:'Slide 10',t:'🏆 The Return',c:'At 5× EBITDA multiple (industry standard for profitable independent restaurants):\nYear 3 EBITDA: $[X] → Company value: $[X]\n[X]% equity → Investor value: $[X]\nImplied return: [X]× on invested capital\n\nAlternative: annual dividend from Year 2 profitability'}
+  ];
+  var sc=document.getElementById('slide-container');
+  sc.innerHTML=slides.map(function(s){return '<div class="slide"><div class="slide-num">'+s.n+'</div><div class="slide-title">'+s.t+'</div><div class="slide-content" style="white-space:pre-wrap">'+s.c+'</div></div>';}).join('');
+  st('op-name',name); st('op-tag',tag+' · '+city);
+  document.getElementById('op-opp').textContent='A '+cuisine+' '+format.toLowerCase()+' concept in '+city+' targeting quality-focused diners. The local market has a clear gap for this positioning.';
+  document.getElementById('op-team').textContent=founder+' — [X] years in hospitality operations. Previously [Role] at [Property]. Track record of [achievement].';
+}
+function calcFin(){
+  var raise=gv('f-raise',300000), eq=gv('f-equity',20)/100;
+  var check=gv('f-check',45), covers=gv('f-covers',80), days=gv('f-days',330);
+  var fc=gv('f-fc',30)/100, lab=gv('f-lab',32)/100, rent=gv('f-rent',120000);
+  var fitout=gv('f-fitout',180000), equip=gv('f-equip',60000), wc=gv('f-wc',40000);
+  var annRev=check*covers*days;
+  var foodCostAmt=annRev*fc, labAmt=annRev*lab;
+  var otherOH=annRev*0.08; // utilities, marketing, misc ~8%
+  var ebitda=annRev-foodCostAmt-labAmt-rent-otherOH;
+  var ebitdaMargin=annRev>0?(ebitda/annRev)*100:0;
+  var dailyFixed=(rent+otherOH)/days;
+  var varMargin=check*(1-fc-lab);
+  var beCovers=varMargin>0?Math.ceil(dailyFixed/varMargin):0;
+  var totalInvest=fitout+equip+wc;
+  var monthlyEbitda=ebitda/12;
+  var pb=monthlyEbitda>0?Math.ceil(totalInvest/monthlyEbitda):999;
+  var compVal=ebitda*5, invReturn=compVal*eq;
+  st('fs-rev',fm(annRev)); st('fs-mrev',fm(annRev/12));
+  st('fs-ebitda',fm(ebitda)); st('fs-em',fp(ebitdaMargin));
+  st('fs-be',beCovers); st('fs-pb',pb>120?'36+ months':pb+' months');
+  st('fs-val',fm(compVal)); st('fs-ret',fm(invReturn));
+  // 3-year projection
+  var pt=document.getElementById('proj-table');
+  if(pt){
+    var rows=['','',''].map(function(_,i){
+      var mult=i===0?1:(i===1?1.2:1.35);
+      var r=annRev*mult, f=r*fc, l=r*lab, eb=r-f-l-rent-otherOH;
+      return '<tr><td style="padding:8px;font-weight:600">Year '+(i+1)+'</td>'+
+        '<td style="padding:8px">'+fm(r)+'</td>'+
+        '<td style="padding:8px">'+fm(f)+' ('+fp(fc*100)+')</td>'+
+        '<td style="padding:8px">'+fm(l)+' ('+fp(lab*100)+')</td>'+
+        '<td style="padding:8px">'+fm(rent)+'</td>'+
+        '<td style="padding:8px;font-weight:700;color:'+(eb>0?'#2a9d8f':'#e76f51')+'">'+fm(eb)+'</td></tr>';
+    }).join('');
+    pt.innerHTML=rows;
+  }
+  // One-pager
+  st('op-raise',fm(raise)); st('op-equity',fp(eq*100));
+  st('op-rev',fm(annRev)); st('op-ebitda',fm(ebitda));
+  st('op-be',beCovers+' covers'); st('op-pb',pb+' months');
+  var totalRaise=raise;
+  document.getElementById('op-funds').innerHTML=
+    '• Fit-out & construction: '+fm(fitout)+' ('+Math.round(fitout/totalRaise*100)+'%)<br>'+
+    '• Equipment & FF&E: '+fm(equip)+' ('+Math.round(equip/totalRaise*100)+'%)<br>'+
+    '• Working capital: '+fm(wc)+' ('+Math.round(wc/totalRaise*100)+'%)<br>'+
+    '• Marketing & contingency: '+fm(totalRaise-fitout-equip-wc)+' ('+Math.round((totalRaise-fitout-equip-wc)/totalRaise*100)+'%)';
+}
+window.onload=function(){upd();calcFin();};
+</script></body></html>

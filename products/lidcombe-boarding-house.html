@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lidcombe Boarding House — Financial Model</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px;line-height:1.5}
+.hdr{background:#1a2e3b;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:1.1rem;font-weight:700}.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700;white-space:nowrap}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px;max-width:1100px}
+.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.88rem;background:#FAFAF8;font-family:inherit}
+.f input:focus,.f select:focus{outline:none;border-color:#C8A97E}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.btn{padding:8px 18px;border:none;border-radius:6px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#1a2e3b;color:#fff}.ba{background:#2a9d8f;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}
+.metric{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px;text-align:center}
+.ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.mv{font-size:1.25rem;font-weight:700;color:#1a2e3b}
+.mv.g{color:#2a9d8f}.mv.r{color:#e76f51}.mv.a{color:#f4a261}.mv.b{color:#3b82f6}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece4;font-size:0.88rem}
+.result-row:last-child{border:none}
+.result-row.total{font-weight:700;font-size:0.95rem;padding-top:12px;border-top:2px solid #1a2e3b;border-bottom:none}
+.result-row .lbl{color:#374151}
+.result-row .val{font-weight:600;color:#1a2e3b}
+.result-row .val.g{color:#2a9d8f}.result-row .val.r{color:#e76f51}
+.scenario-btn{padding:10px 18px;border:2px solid #E8E4DC;border-radius:8px;cursor:pointer;font-size:0.82rem;font-weight:600;background:#fff;font-family:inherit;transition:all 0.2s;text-align:left}
+.scenario-btn:hover{border-color:#1a2e3b}
+.scenario-btn.sel{border-color:#1a2e3b;background:#f0f4f8}
+.scenario-btn .sc-name{font-size:0.88rem;font-weight:700;margin-bottom:2px}
+.scenario-btn .sc-desc{font-size:0.75rem;color:#6B6B6B}
+.highlight-box{border-radius:8px;padding:16px;margin-bottom:12px}
+.hb-g{background:#d1fae5;border:1px solid #6ee7b7}
+.hb-a{background:#fef3c7;border:1px solid #fcd34d}
+.hb-r{background:#fee2e2;border:1px solid #fca5a5}
+.hb-b{background:#dbeafe;border:1px solid #93c5fd}
+.stage-card{border:2px solid #E8E4DC;border-radius:8px;padding:18px;margin-bottom:12px;position:relative}
+.stage-card h4{font-size:0.9rem;font-weight:700;margin-bottom:6px;color:#1a2e3b}
+.stage-num{position:absolute;top:-12px;left:16px;background:#1a2e3b;color:#fff;font-size:0.72rem;font-weight:700;padding:3px 12px;border-radius:20px}
+.yr-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-top:8px}
+.yr-cell{flex-shrink:0;width:110px;background:#f9f7f4;border:1px solid #E8E4DC;border-radius:6px;padding:10px;text-align:center}
+.yr-cell .yr{font-size:0.7rem;font-weight:700;color:#6B6B6B;text-transform:uppercase;margin-bottom:4px}
+.yr-cell .yv{font-size:1rem;font-weight:700;color:#1a2e3b}
+.yr-cell .yl{font-size:0.7rem;color:#6B6B6B;margin-top:2px}
+.range-wrap{margin:8px 0}
+.range-wrap input[type=range]{width:100%;accent-color:#1a2e3b}
+.range-wrap .range-val{text-align:right;font-size:0.8rem;font-weight:700;color:#1a2e3b;margin-top:2px}
+.tax-row{display:flex;justify-content:space-between;padding:7px 12px;font-size:0.83rem;border-radius:4px;margin-bottom:4px}
+.tax-row.hdr-row{background:#1a2e3b;color:#fff;font-weight:700;border-radius:6px}
+.tax-row:not(.hdr-row):nth-child(odd){background:#f9f7f4}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>🏘️ Lidcombe Boarding House — Financial Model</h1><p>20-Room Investment Scenario · Sydney NSW · Built for Mothy</p></div>
+  <span class="badge">PERSONAL MODEL</span>
+</div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('inputs',this)">⚙️ Inputs</button>
+  <button class="tab" onclick="ST('cashflow',this)">💰 Cash Flow</button>
+  <button class="tab" onclick="ST('tax',this)">🧾 Tax Structure</button>
+  <button class="tab" onclick="ST('scenarios',this)">📊 Scenarios</button>
+  <button class="tab" onclick="ST('roadmap',this)">🗺️ Roadmap</button>
+</div>
+<!-- INPUTS PANEL -->
+<div id="panel-inputs" class="panel">
+<div class="g2">
+  <div class="card">
+    <div class="ct">🏠 Property Purchase</div>
+    <div class="f"><label>Purchase Price ($AUD)</label><input type="number" id="pp" value="3200000" onchange="calc()"></div>
+    <div class="f"><label>Deposit % (your equity)</label>
+      <div class="range-wrap"><input type="range" id="dep" min="10" max="50" value="30" step="5" oninput="updRange('dep','dep-val','%');calc()"><div class="range-val" id="dep-val">30%</div></div>
+    </div>
+    <div class="f"><label>Interest Rate % p.a.</label>
+      <div class="range-wrap"><input type="range" id="ir" min="4" max="9" value="6.5" step="0.1" oninput="updRange('ir','ir-val','%');calc()"><div class="range-val" id="ir-val">6.5%</div></div>
+    </div>
+    <div class="f"><label>Loan Term (years)</label>
+      <div class="range-wrap"><input type="range" id="lt" min="15" max="30" value="25" step="5" oninput="updRange('lt','lt-val',' yrs');calc()"><div class="range-val" id="lt-val">25 yrs</div></div>
+    </div>
+    <div class="f"><label>Renovation / Fit-out Cost ($)</label><input type="number" id="reno" value="450000" onchange="calc()"></div>
+    <div class="f"><label>Stamp Duty + Legal ($)</label><input type="number" id="stamp" value="140000" onchange="calc()"></div>
+  </div>
+  <div class="card">
+    <div class="ct">🛏️ Rooms & Revenue</div>
+    <div class="f"><label>Number of Rooms</label>
+      <div class="range-wrap"><input type="range" id="rooms" min="5" max="25" value="20" step="1" oninput="updRange('rooms','rooms-val',' rooms');calc()"><div class="range-val" id="rooms-val">20 rooms</div></div>
+    </div>
+    <div class="f"><label>Weekly Rent per Room ($)</label>
+      <div class="range-wrap"><input type="range" id="rent" min="150" max="400" value="250" step="10" oninput="updRange('rent','rent-val','');calc()"><div class="range-val" id="rent-val">$250</div></div>
+    </div>
+    <div class="f"><label>Vacancy Rate %</label>
+      <div class="range-wrap"><input type="range" id="vac" min="0" max="30" value="10" step="1" oninput="updRange('vac','vac-val','%');calc()"><div class="range-val" id="vac-val">10%</div></div>
+    </div>
+    <div class="f"><label>Your Salary as Property Manager ($)</label>
+      <div class="range-wrap"><input type="range" id="sal" min="50000" max="120000" value="75000" step="5000" oninput="updRangeDollar('sal','sal-val');calc()"><div class="range-val" id="sal-val">$75,000</div></div>
+    </div>
+    <div class="f"><label>Annual Rent Growth % (projection)</label>
+      <div class="range-wrap"><input type="range" id="rg" min="0" max="8" value="3" step="0.5" oninput="updRange('rg','rg-val','%');calc()"><div class="range-val" id="rg-val">3%</div></div>
+    </div>
+    <div class="f"><label>Property Value Growth % p.a.</label>
+      <div class="range-wrap"><input type="range" id="pg" min="0" max="10" value="4" step="0.5" oninput="updRange('pg','pg-val','%');calc()"><div class="range-val" id="pg-val">4%</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">💸 Annual Operating Expenses</div>
+  <div class="g3">
+    <div class="f"><label>Council Rates ($)</label><input type="number" id="rates" value="4500" onchange="calc()"></div>
+    <div class="f"><label>Water ($)</label><input type="number" id="water" value="5500" onchange="calc()"></div>
+    <div class="f"><label>Electricity / Gas ($)</label><input type="number" id="elec" value="8000" onchange="calc()"></div>
+    <div class="f"><label>Insurance — Landlord ($)</label><input type="number" id="ins" value="4500" onchange="calc()"></div>
+    <div class="f"><label>Repairs & Maintenance ($)</label><input type="number" id="repairs" value="12000" onchange="calc()"></div>
+    <div class="f"><label>Compliance / Registration ($)</label><input type="number" id="comp" value="2000" onchange="calc()"></div>
+    <div class="f"><label>Accounting / Legal ($)</label><input type="number" id="acct" value="3500" onchange="calc()"></div>
+    <div class="f"><label>Internet / Common Area ($)</label><input type="number" id="internet" value="2400" onchange="calc()"></div>
+    <div class="f"><label>Cleaning / Maintenance Staff ($)</label><input type="number" id="clean" value="18000" onchange="calc()"></div>
+  </div>
+</div>
+
+<!-- SUMMARY METRICS -->
+<div class="g4" id="summary-metrics" style="margin-bottom:0"></div>
+</div>
+<!-- CASH FLOW PANEL -->
+<div id="panel-cashflow" class="panel" style="display:none">
+<div class="g2">
+  <div class="card">
+    <div class="ct">📥 Annual Revenue</div>
+    <div id="rev-rows"></div>
+  </div>
+  <div class="card">
+    <div class="ct">📤 Annual Expenses</div>
+    <div id="exp-rows"></div>
+  </div>
+</div>
+<div class="card">
+  <div class="ct">📈 10-Year Cash Flow Projection</div>
+  <div class="yr-row" id="yr-row"></div>
+  <p style="font-size:0.75rem;color:#6B6B6B;margin-top:10px">* Pre-tax cash flow after all operating expenses and mortgage repayments, before your salary. Green = positive. Red = negative gearing (still tax-advantageous).</p>
+</div>
+<div class="card">
+  <div class="ct">🏦 Funding Breakdown</div>
+  <div id="funding-rows"></div>
+</div>
+</div>
+
+<!-- TAX PANEL -->
+<div id="panel-tax" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">🧾 Structure Comparison — Personal vs Company</div>
+  <div class="g2">
+    <div>
+      <div style="font-weight:700;font-size:0.88rem;margin-bottom:10px;color:#e76f51">❌ Option A — Personal / Sole Trader</div>
+      <div id="tax-personal"></div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.88rem;margin-bottom:10px;color:#2a9d8f">✅ Option B — Pty Ltd Company (Recommended)</div>
+      <div id="tax-company"></div>
+    </div>
+  </div>
+  <div class="highlight-box hb-g" style="margin-top:16px">
+    <div style="font-weight:700;margin-bottom:4px">💡 Annual Tax Saving with Company Structure</div>
+    <div id="tax-saving" style="font-size:1.1rem;font-weight:700;color:#065f46"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">📋 Company Structure — How It Works</div>
+  <div style="font-size:0.85rem;line-height:1.9;color:#374151">
+    <strong>Step 1:</strong> Register a Pty Ltd company (e.g. "Lidcombe Property Management Pty Ltd") — ~$500 via ASIC<br>
+    <strong>Step 2:</strong> Company owns/operates the boarding house (or enters a management agreement)<br>
+    <strong>Step 3:</strong> You are employed by the company as "Property Manager" at market salary<br>
+    <strong>Step 4:</strong> Company pays 25% tax (small business rate) on remaining profit<br>
+    <strong>Step 5:</strong> Retained profit can be reinvested, distributed as dividends (franked), or used to acquire more property<br><br>
+    <strong>Key deductions you can claim:</strong> Your salary, mortgage interest, all operating costs, depreciation on fit-out (Div 40 &amp; 43), repairs, insurance, accounting fees, vehicle (if used for property management), home office component<br><br>
+    <strong>⚠️ Get an accountant:</strong> Company setup and property tax is specialist territory. Budget ~$3,500–$5,000/year for a good property accountant. It pays for itself.
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">📊 Australian Tax Brackets 2024–25 (for reference)</div>
+  <div class="tax-row hdr-row"><span>Taxable Income</span><span>Tax Rate</span><span>Tax on Income</span></div>
+  <div class="tax-row"><span>$0 – $18,200</span><span>0%</span><span>Nil</span></div>
+  <div class="tax-row"><span>$18,201 – $45,000</span><span>16%</span><span>Up to $4,288</span></div>
+  <div class="tax-row"><span>$45,001 – $135,000</span><span>30%</span><span>Up to $31,288</span></div>
+  <div class="tax-row"><span>$135,001 – $190,000</span><span>37%</span><span>Up to $51,638</span></div>
+  <div class="tax-row"><span>$190,001+</span><span>45%</span><span>45c per $1 over $190K</span></div>
+  <div style="font-size:0.75rem;color:#6B6B6B;margin-top:8px">Plus 2% Medicare Levy on all income. Company rate: 25% (small business, turnover &lt;$50M).</div>
+</div>
+</div>
+
+<!-- SCENARIOS PANEL -->
+<div id="panel-scenarios" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">📊 Three Scenarios — Conservative / Base / Aggressive</div>
+  <div class="g3" style="margin-bottom:16px">
+    <button class="scenario-btn sel" id="sc-cons" onclick="loadScenario('cons',this)">
+      <div class="sc-name">🐢 Conservative</div>
+      <div class="sc-desc">$3.2M property · 18 rooms · $220/week · 15% vacancy · 5% interest</div>
+    </button>
+    <button class="scenario-btn" id="sc-base" onclick="loadScenario('base',this)">
+      <div class="sc-name">🎯 Base Case</div>
+      <div class="sc-desc">$3.2M property · 20 rooms · $250/week · 10% vacancy · 6.5% interest</div>
+    </button>
+    <button class="scenario-btn" id="sc-aggr" onclick="loadScenario('aggr',this)">
+      <div class="sc-name">🚀 Aggressive</div>
+      <div class="sc-desc">$2.8M property · 20 rooms · $280/week · 5% vacancy · 6% interest</div>
+    </button>
+  </div>
+  <div id="scenario-output"></div>
+</div>
+
+<div class="card">
+  <div class="ct">🔑 Key Investment Metrics</div>
+  <div id="invest-metrics"></div>
+</div>
+</div>
+
+<!-- ROADMAP PANEL -->
+<div id="panel-roadmap" class="panel" style="display:none">
+<div class="card">
+  <div class="ct">🗺️ Mothy's Property Empire Roadmap</div>
+  <div class="stage-card" style="border-color:#f59e0b">
+    <div class="stage-num">STAGE 1 — NOW TO 2 YEARS</div>
+    <h4>💰 Build the Capital Base</h4>
+    <div style="font-size:0.84rem;line-height:1.8;color:#374151;margin-top:8px">
+      <strong>Current position:</strong> $150K liquid · $400K stocks maturing · $50K Bitcoin · Novotel salary<br>
+      <strong>Target:</strong> $2M asset base to propose to Carina + enough deposit for boarding house<br><br>
+      <strong>Actions:</strong><br>
+      • Keep building KitchenFounder PDF income ($29.99 × volume)<br>
+      • Hold Bitcoin — don't sell below $150K<br>
+      • $400K stocks mature in ~2 years — this is your deposit weapon<br>
+      • Research Lidcombe/Auburn/Berala zoned properties now (no commitment — just intelligence)<br>
+      • Speak to a mortgage broker about commercial/investment lending capacity<br>
+      • Set up Pty Ltd company structure BEFORE purchase (cheap now, expensive to restructure later)
+    </div>
+  </div>
+
+  <div class="stage-card" style="border-color:#2a9d8f;margin-top:24px">
+    <div class="stage-num">STAGE 2 — YEAR 2–3</div>
+    <h4>🏠 Entry Point — 4-6 Room Test Property</h4>
+    <div style="font-size:0.84rem;line-height:1.8;color:#374151;margin-top:8px">
+      <strong>Why start small:</strong> Validates the model, builds your reputation as a landlord, generates cash flow to service debt, teaches you the tenant management reality<br><br>
+      <strong>Target property:</strong> 4–5 bedroom house in Lidcombe/Auburn/Berala · $1.2M–$1.6M · R2 zoned<br>
+      <strong>Deposit needed:</strong> $240K–$320K (20% to avoid LMI)<br>
+      <strong>Funding source:</strong> $400K stocks maturity → deposit + reno buffer<br><br>
+      <strong>Revenue model (5 rooms × $240/week × 50 weeks):</strong><br>
+      Gross: $60,000/year · Net after costs: ~$25,000–$35,000/year<br>
+      This covers part of the mortgage and proves the concept.<br><br>
+      <strong>Note:</strong> Under 5 residents = no boarding house registration required in NSW
+    </div>
+  </div>
+
+  <div class="stage-card" style="border-color:#3b82f6;margin-top:24px">
+    <div class="stage-num">STAGE 3 — YEAR 3–5</div>
+    <h4>🏘️ The 20-Room Play</h4>
+    <div style="font-size:0.84rem;line-height:1.8;color:#374151;margin-top:8px">
+      <strong>By this point you have:</strong> Proven cash flow from Stage 2 · Track record as landlord · Company structure in place · Bangkok plan clarified<br><br>
+      <strong>Target property:</strong> Large older building or purpose-convertible property near Lidcombe station<br>
+      <strong>Price range:</strong> $2.8M–$3.5M + $400K–$600K reno<br>
+      <strong>Total capital required:</strong> ~$1.1M–$1.4M (deposit + reno + costs)<br>
+      <strong>Funding:</strong> Equity from Stage 2 + KitchenFounder income + possible partner/investor<br><br>
+      <strong>The key move:</strong> DA approval first — confirm zoning allows 20-room boarding house BEFORE buying. This is non-negotiable. Get a town planner involved early (~$5,000–$10,000 for DA prep — worth every dollar).
+    </div>
+  </div>
+
+  <div class="stage-card" style="border-color:#8b5cf6;margin-top:24px">
+    <div class="stage-num">STAGE 4 — YEAR 5+</div>
+    <h4>🌏 Bangkok + Scale</h4>
+    <div style="font-size:0.84fem;line-height:1.8;color:#374151;margin-top:8px;font-size:0.84rem">
+      <strong>The vision:</strong> By Year 5, Sydney boarding house runs itself (manager in place). You're in Bangkok building HospitalityOS with Tim Savetsomphob. Passive income from Sydney funds the startup runway.<br><br>
+      <strong>Asset stack at Year 5 (modelled):</strong><br>
+      • Stage 2 property equity: ~$300K–$500K (appreciated)<br>
+      • Stage 3 boarding house equity: ~$500K–$800K (paid down + appreciation)<br>
+      • KitchenFounder: $50K–$200K/year revenue<br>
+      • HospitalityOS: early revenue or funded<br>
+      • Total asset base: <strong>$3M–$5M+</strong><br><br>
+      <strong>This is the $1B path.</strong> Property funds the lifestyle. Hospitality tech builds the empire.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">⚠️ Risks & How to Mitigate</div>
+  <div class="g2">
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#e76f51">Top Risks</div>
+      <div style="font-size:0.83rem;line-height:2;color:#374151">
+        🔴 <strong>DA rejected</strong> — zoning doesn't permit boarding house<br>
+        🔴 <strong>Interest rate spike</strong> — 8%+ crushes cash flow<br>
+        🔴 <strong>High vacancy</strong> — problem tenants or bad location<br>
+        🟡 <strong>Renovation blowout</strong> — always add 20% contingency<br>
+        🟡 <strong>Management burden</strong> — 20 people = 20 problems<br>
+        🟡 <strong>Legislative change</strong> — NSW boarding house rules evolving<br>
+        🟢 <strong>Currency risk</strong> — if you move to Bangkok, AUD fluctuates
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.85rem;font-weight:700;margin-bottom:10px;color:#2a9d8f">Mitigations</div>
+      <div style="font-size:0.83rem;line-height:2;color:#374151">
+        ✅ Town planner due diligence BEFORE purchase<br>
+        ✅ Fixed-rate portion on mortgage (hedge rate risk)<br>
+        ✅ Strong tenant screening process from day 1<br>
+        ✅ 20% reno contingency built into budget<br>
+        ✅ Hire a live-in site manager (reduce rent for 1 room)<br>
+        ✅ Property lawyer reviews all agreements annually<br>
+        ✅ Company structure = AUD income stays in company
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+function updRange(id, lblId, suffix) {
+  var v = document.getElementById(id).value;
+  document.getElementById(lblId).textContent = (suffix === '' ? '$' : '') + v + suffix;
+}
+function updRangeDollar(id, lblId) {
+  var v = parseInt(document.getElementById(id).value);
+  document.getElementById(lblId).textContent = '$' + v.toLocaleString();
+}
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+function fmtN(n) { return (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function pct(n) { return n.toFixed(1) + '%'; }
+
+function getInputs() {
+  return {
+    pp: parseFloat(document.getElementById('pp').value) || 3200000,
+    dep: parseFloat(document.getElementById('dep').value) / 100,
+    ir: parseFloat(document.getElementById('ir').value) / 100,
+    lt: parseFloat(document.getElementById('lt').value),
+    reno: parseFloat(document.getElementById('reno').value) || 450000,
+    stamp: parseFloat(document.getElementById('stamp').value) || 140000,
+    rooms: parseFloat(document.getElementById('rooms').value) || 20,
+    rent: parseFloat(document.getElementById('rent').value) || 250,
+    vac: parseFloat(document.getElementById('vac').value) / 100,
+    sal: parseFloat(document.getElementById('sal').value) || 75000,
+    rg: parseFloat(document.getElementById('rg').value) / 100,
+    pg: parseFloat(document.getElementById('pg').value) / 100,
+    rates: parseFloat(document.getElementById('rates').value) || 4500,
+    water: parseFloat(document.getElementById('water').value) || 5500,
+    elec: parseFloat(document.getElementById('elec').value) || 8000,
+    ins: parseFloat(document.getElementById('ins').value) || 4500,
+    repairs: parseFloat(document.getElementById('repairs').value) || 12000,
+    comp: parseFloat(document.getElementById('comp').value) || 2000,
+    acct: parseFloat(document.getElementById('acct').value) || 3500,
+    internet: parseFloat(document.getElementById('internet').value) || 2400,
+    clean: parseFloat(document.getElementById('clean').value) || 18000
+  };
+}
+
+function calcMortgage(principal, rate, years) {
+  var r = rate / 12;
+  var n = years * 12;
+  if (r === 0) return principal / n * 12;
+  return (principal * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1) * 12;
+}
+
+function calcInterestYear1(principal, rate) {
+  return principal * rate;
+}
+
+function calcModel(inp) {
+  var loan = inp.pp * (1 - inp.dep);
+  var deposit = inp.pp * inp.dep;
+  var totalIn = deposit + inp.reno + inp.stamp;
+  var mortgage = calcMortgage(loan, inp.ir, inp.lt);
+  var interest1 = calcInterestYear1(loan, inp.ir);
+
+  var grossRent = inp.rooms * inp.rent * 52;
+  var netRent = grossRent * (1 - inp.vac);
+
+  var opex = inp.rates + inp.water + inp.elec + inp.ins + inp.repairs + inp.comp + inp.acct + inp.internet + inp.clean + inp.sal;
+  var ebitda = netRent - opex;
+  var cashFlowPreTax = ebitda - mortgage;
+  var yield_ = (netRent / inp.pp) * 100;
+
+  // Tax: company
+  var companyProfit = ebitda - interest1; // EBIT after interest (not full mortgage, just interest portion)
+  var companyTax = Math.max(0, companyProfit * 0.25);
+  var companyAfterTax = companyProfit - companyTax;
+
+  // Tax: personal (all rental income added to salary)
+  var personalIncome = netRent - (opex - inp.sal) - interest1; // net rental profit
+  var totalPersonalIncome = personalIncome + inp.sal;
+  var personalTax = calcPersonalTax(totalPersonalIncome);
+  var salaryTax = calcPersonalTax(inp.sal);
+  var taxSaving = personalTax - (companyTax + salaryTax);
+
+  return {
+    loan, deposit, totalIn, mortgage, interest1,
+    grossRent, netRent, opex, ebitda, cashFlowPreTax, yield_,
+    companyProfit, companyTax, companyAfterTax,
+    totalPersonalIncome, personalTax, salaryTax, taxSaving,
+    inp
+  };
+}
+
+function calcPersonalTax(income) {
+  if (income <= 18200) return 0;
+  if (income <= 45000) return (income - 18200) * 0.19 + income * 0.02;
+  if (income <= 135000) return 5092 + (income - 45000) * 0.325 + income * 0.02;
+  if (income <= 190000) return 29467 + (income - 135000) * 0.37 + income * 0.02;
+  return 49967 + (income - 190000) * 0.45 + income * 0.02;
+}
+
+function calc() {
+  var inp = getInputs();
+  var m = calcModel(inp);
+
+  // Summary metrics
+  var sm = document.getElementById('summary-metrics');
+  if (sm) sm.innerHTML =
+    metricCard('Gross Yield', pct(m.yield_), m.yield_ >= 6 ? 'g' : (m.yield_ >= 4 ? 'a' : 'r')) +
+    metricCard('Annual Gross Revenue', fmt(m.grossRent), 'g') +
+    metricCard('Net Revenue (after vacancy)', fmt(m.netRent), 'g') +
+    metricCard('Total Cash In Required', fmt(m.totalIn), 'b') +
+    metricCard('Annual Mortgage', fmt(m.mortgage), 'r') +
+    metricCard('Pre-tax Cash Flow', fmtN(m.cashFlowPreTax), m.cashFlowPreTax >= 0 ? 'g' : 'r') +
+    metricCard('Company After-tax Profit', fmtN(m.companyAfterTax), m.companyAfterTax >= 0 ? 'g' : 'r') +
+    metricCard('Annual Tax Saving (Co. vs Personal)', fmt(Math.max(0, m.taxSaving)), 'g');
+
+  // Revenue rows
+  var rr = document.getElementById('rev-rows');
+  if (rr) rr.innerHTML =
+    rRow('Gross Annual Rent (' + inp.rooms + ' rooms × $' + inp.rent + '/wk × 52)', fmt(m.grossRent)) +
+    rRow('Less: Vacancy (' + pct(inp.vac * 100) + ')', '-' + fmt(m.grossRent - m.netRent), 'r') +
+    rRow('Net Rental Revenue', fmt(m.netRent), 'g', true);
+
+  // Expense rows
+  var er = document.getElementById('exp-rows');
+  if (er) er.innerHTML =
+    rRow('Council Rates', fmt(inp.rates)) +
+    rRow('Water', fmt(inp.water)) +
+    rRow('Electricity / Gas', fmt(inp.elec)) +
+    rRow('Insurance', fmt(inp.ins)) +
+    rRow('Repairs & Maintenance', fmt(inp.repairs)) +
+    rRow('Compliance / Registration', fmt(inp.comp)) +
+    rRow('Accounting / Legal', fmt(inp.acct)) +
+    rRow('Internet / Common Areas', fmt(inp.internet)) +
+    rRow('Cleaning / Maintenance Staff', fmt(inp.clean)) +
+    rRow('Your Salary', fmt(inp.sal)) +
+    rRow('Mortgage Repayments', fmt(m.mortgage), 'r') +
+    rRow('Total Outgoings', fmt(m.opex + m.mortgage), 'r', true);
+
+  // Funding
+  var fr = document.getElementById('funding-rows');
+  if (fr) fr.innerHTML =
+    rRow('Purchase Price', fmt(inp.pp)) +
+    rRow('Deposit (' + pct(inp.dep * 100) + ')', fmt(m.deposit)) +
+    rRow('Loan Amount', fmt(m.loan)) +
+    rRow('Renovation / Fit-out', fmt(inp.reno)) +
+    rRow('Stamp Duty + Legal', fmt(inp.stamp)) +
+    rRow('TOTAL CASH REQUIRED', fmt(m.totalIn), 'r', true);
+
+  // 10-year projection
+  var yr = document.getElementById('yr-row');
+  if (yr) {
+    var html = '';
+    var rentNow = inp.rent;
+    var loanBal = m.loan;
+    var propVal = inp.pp;
+    for (var y = 1; y <= 10; y++) {
+      rentNow = rentNow * (1 + inp.rg);
+      propVal = propVal * (1 + inp.pg);
+      var gRent = inp.rooms * rentNow * 52;
+      var nRent = gRent * (1 - inp.vac);
+      var opexY = inp.rates + inp.water + inp.elec + inp.ins + inp.repairs + inp.comp + inp.acct + inp.internet + inp.clean + inp.sal;
+      var cf = nRent - opexY - m.mortgage;
+      var equity = propVal - loanBal;
+      var col = cf >= 0 ? '#d1fae5' : '#fee2e2';
+      var tcol = cf >= 0 ? '#065f46' : '#991b1b';
+      html += '<div class="yr-cell" style="background:'+col+'"><div class="yr">Year '+y+'</div>' +
+        '<div class="yv" style="color:'+tcol+'">' + fmtN(cf) + '</div>' +
+        '<div class="yl">Cash flow</div>' +
+        '<div class="yv" style="font-size:0.75rem;margin-top:4px;color:#1a2e3b">' + fmt(equity) + '</div>' +
+        '<div class="yl">Equity</div></div>';
+    }
+    yr.innerHTML = html;
+  }
+
+  // Tax comparison
+  var tp = document.getElementById('tax-personal');
+  if (tp) tp.innerHTML =
+    rRow('Net Rental Profit', fmt(m.netRent - (m.opex - inp.sal) - m.interest1)) +
+    rRow('Your Salary', fmt(inp.sal)) +
+    rRow('Total Taxable Income', fmt(m.totalPersonalIncome)) +
+    rRow('Tax + Medicare (personal rates)', fmt(m.personalTax), 'r', true);
+
+  var tc = document.getElementById('tax-company');
+  if (tc) tc.innerHTML =
+    rRow('Company Net Profit (after interest + your salary)', fmt(m.companyProfit)) +
+    rRow('Company Tax @ 25%', fmt(m.companyTax), 'r') +
+    rRow('Your Salary Tax (personal)', fmt(m.salaryTax), 'r') +
+    rRow('Total Tax (company + your salary)', fmt(m.companyTax + m.salaryTax), 'r', true);
+
+  var ts = document.getElementById('tax-saving');
+  if (ts) ts.textContent = 'You save approximately ' + fmt(Math.max(0, m.taxSaving)) + ' per year by using a company structure.';
+
+  // Investment metrics
+  var im = document.getElementById('invest-metrics');
+  if (im) {
+    var cocReturn = (m.ebitda - m.mortgage) / m.totalIn * 100;
+    var capRate = m.ebitda / inp.pp * 100;
+    im.innerHTML =
+      '<div class="g4">' +
+      metricCard('Gross Yield', pct(m.yield_), m.yield_ >= 6 ? 'g' : 'a') +
+      metricCard('Cap Rate (NOI/Price)', pct(capRate), capRate >= 5 ? 'g' : 'a') +
+      metricCard('Cash-on-Cash Return', pct(cocReturn), cocReturn >= 5 ? 'g' : (cocReturn >= 0 ? 'a' : 'r')) +
+      metricCard('Break-even Occupancy', pct(((m.opex + m.mortgage) / (inp.rooms * inp.rent * 52)) * 100), 'b') +
+      '</div>';
+  }
+}
+
+function metricCard(label, value, cls) {
+  return '<div class="metric"><div class="ml">' + label + '</div><div class="mv ' + (cls||'') + '">' + value + '</div></div>';
+}
+function rRow(label, value, cls, bold) {
+  return '<div class="result-row' + (bold ? ' total' : '') + '"><span class="lbl">' + label + '</span><span class="val ' + (cls||'') + '">' + value + '</span></div>';
+}
+
+function loadScenario(type, btn) {
+  var scenarios = {
+    cons: {pp:3200000, dep:30, ir:6.5, lt:25, reno:500000, stamp:145000, rooms:18, rent:220, vac:15, sal:75000, rg:2, pg:3},
+    base: {pp:3200000, dep:30, ir:6.5, lt:25, reno:450000, stamp:140000, rooms:20, rent:250, vac:10, sal:75000, rg:3, pg:4},
+    aggr: {pp:2800000, dep:35, ir:6.0, lt:25, reno:400000, stamp:125000, rooms:20, rent:280, vac:5, sal:80000, rg:4, pg:5}
+  };
+  var s = scenarios[type];
+  document.getElementById('pp').value = s.pp;
+  document.getElementById('dep').value = s.dep; document.getElementById('dep-val').textContent = s.dep + '%';
+  document.getElementById('ir').value = s.ir; document.getElementById('ir-val').textContent = s.ir + '%';
+  document.getElementById('lt').value = s.lt; document.getElementById('lt-val').textContent = s.lt + ' yrs';
+  document.getElementById('reno').value = s.reno;
+  document.getElementById('stamp').value = s.stamp;
+  document.getElementById('rooms').value = s.rooms; document.getElementById('rooms-val').textContent = s.rooms + ' rooms';
+  document.getElementById('rent').value = s.rent; document.getElementById('rent-val').textContent = '$' + s.rent;
+  document.getElementById('vac').value = s.vac; document.getElementById('vac-val').textContent = s.vac + '%';
+  document.getElementById('sal').value = s.sal; document.getElementById('sal-val').textContent = '$' + s.sal.toLocaleString();
+  document.getElementById('rg').value = s.rg; document.getElementById('rg-val').textContent = s.rg + '%';
+  document.getElementById('pg').value = s.pg; document.getElementById('pg-val').textContent = s.pg + '%';
+
+  var btns = document.querySelectorAll('.scenario-btn');
+  btns.forEach(function(b){ b.classList.remove('sel'); });
+  btn.classList.add('sel');
+
+  var m = calcModel(getInputs());
+  var inp = getInputs();
+  var so = document.getElementById('scenario-output');
+  if (so) {
+    var labels = {cons:'🐢 Conservative', base:'🎯 Base Case', aggr:'🚀 Aggressive'};
+    so.innerHTML =
+      '<div class="highlight-box ' + (m.cashFlowPreTax >= 0 ? 'hb-g' : 'hb-a') + '" style="margin-bottom:12px">' +
+      '<div style="font-size:1rem;font-weight:700;margin-bottom:8px">' + labels[type] + '</div>' +
+      '<div class="g4">' +
+      metricCard('Annual Revenue', fmt(m.netRent), 'g') +
+      metricCard('Total Cash In', fmt(m.totalIn), 'b') +
+      metricCard('Cash Flow/Year', fmtN(m.cashFlowPreTax), m.cashFlowPreTax >= 0 ? 'g' : 'r') +
+      metricCard('Co. After-Tax Profit', fmtN(m.companyAfterTax), m.companyAfterTax >= 0 ? 'g' : 'r') +
+      '</div></div>';
+  }
+  calc();
+}
+
+function ST(name, btn) {
+  var ps = document.getElementsByClassName('panel');
+  for (var i=0; i<ps.length; i++) ps[i].style.display = 'none';
+  var ts = document.getElementsByClassName('tab');
+  for (var i=0; i<ts.length; i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display = 'block';
+  if (btn) btn.classList.add('on');
+}
+
+window.onload = function() { calc(); loadScenario('base', document.getElementById('sc-base')); };
+</script>
+</body>
+</html>

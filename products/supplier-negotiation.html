@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Supplier Negotiation Scripts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;min-height:100vh}
+.header{background:#264653;color:#fff;padding:28px 32px}
+.header h1{font-size:1.5rem;font-weight:700}
+.header p{color:#C8A97E;font-size:0.9rem;margin-top:4px}
+.tab-bar{display:flex;border-bottom:2px solid #E8E4DC;background:#fff;padding:0 32px}
+.tab{padding:14px 24px;cursor:pointer;font-size:0.9rem;font-weight:600;color:#666;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;background:none;transition:all 0.15s}
+.tab:hover{color:#264653}
+.tab.on{color:#264653;border-bottom-color:#C8A97E}
+.panel{display:none;padding:32px;max-width:1100px;margin:0 auto}
+.intro{background:#fff;border:1px solid #E8E4DC;border-radius:10px;padding:16px 20px;margin-bottom:22px;font-size:0.88rem;line-height:1.6;color:#555}
+.intro strong{color:#264653}
+.scripts{display:flex;flex-direction:column;gap:18px}
+.sc{background:#fff;border:1px solid #E8E4DC;border-radius:12px;overflow:hidden}
+.sc-head{background:#264653;color:#fff;padding:13px 20px;display:flex;align-items:center;gap:10px}
+.sc-num{background:#C8A97E;color:#fff;font-size:0.72rem;font-weight:700;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.sc-title{font-weight:700;font-size:0.92rem}
+.sc-body{padding:18px 20px}
+.sc-ctx{font-size:0.8rem;color:#888;font-style:italic;margin-bottom:10px}
+.sc-txt{background:#F8F6F0;border-radius:8px;padding:14px 16px;font-size:0.86rem;line-height:1.75;color:#2c2c2c;border-left:3px solid #C8A97E;white-space:pre-line}
+.sc-tip{margin-top:10px;font-size:0.78rem;color:#264653;background:#EDF4F6;padding:7px 11px;border-radius:6px}
+.tactics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.tactic{background:#fff;border:1.5px solid #E8E4DC;border-radius:12px;padding:18px 20px;transition:box-shadow 0.15s}
+.tactic:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07)}
+.tactic-num{background:#C8A97E;color:#fff;font-size:0.72rem;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.tactic-title{font-size:0.92rem;font-weight:700;margin-bottom:8px;color:#264653}
+.tactic-body{font-size:0.83rem;line-height:1.55;color:#555}
+.scorecard-wrap{background:#fff;border:1px solid #E8E4DC;border-radius:12px;padding:24px}
+.sc-controls{display:flex;gap:10px;margin-bottom:20px;align-items:center;flex-wrap:wrap}
+.input-name{border:1.5px solid #E8E4DC;border-radius:8px;padding:9px 12px;font-size:0.88rem;font-family:inherit;flex:1;min-width:160px}
+.input-name:focus{outline:none;border-color:#264653}
+.btn{background:#264653;color:#fff;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:700}
+.btn:hover{background:#1e3a45}
+.btn-clear{background:#888}
+.btn-clear:hover{background:#666}
+.sc-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.sc-table th{background:#264653;color:#fff;padding:10px 12px;text-align:left;font-size:0.8rem;font-weight:600}
+.sc-table td{padding:10px 12px;border-bottom:1px solid #E8E4DC;vertical-align:middle}
+.sc-table tr:last-child td{border-bottom:none}
+.sc-table tr:nth-child(even) td{background:#FAFAF8}
+.score-sel{border:1.5px solid #E8E4DC;border-radius:6px;padding:4px 8px;font-family:inherit;font-size:0.82rem;cursor:pointer}
+.score-sel:focus{outline:none;border-color:#264653}
+.total-score{font-weight:700;font-size:0.95rem}
+.rec-keep{color:#2d7a4f;font-weight:700;font-size:0.82rem}
+.rec-review{color:#d97706;font-weight:700;font-size:0.82rem}
+.rec-replace{color:#dc2626;font-weight:700;font-size:0.82rem}
+.rank-badge{background:#264653;color:#C8A97E;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
+.del-btn{background:none;border:none;cursor:pointer;color:#dc2626;font-size:1rem;padding:2px 6px}
+.del-btn:hover{background:#fee2e2;border-radius:4px}
+.empty-state{text-align:center;padding:40px;color:#888;font-size:0.9rem}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🤝 KitchenFounder Supplier Negotiation Scripts</h1>
+  <p>Word-for-word scripts, tactics, and a supplier scorecard</p>
+</div>
+<div class="tab-bar">
+  <button class="tab on" onclick="ST('scripts',this)">💬 Scripts</button>
+  <button class="tab" onclick="ST('tactics',this)">🎯 Pricing Tactics</button>
+  <button class="tab" onclick="ST('scorecard',this)">📊 Supplier Scorecard</button>
+</div>
+
+<div id="panel-scripts" class="panel">
+  <div class="intro"><strong>10 word-for-word scripts</strong> for every supplier conversation. Adapt the numbers — keep the structure. Confidence comes from knowing what to say before the call starts.</div>
+  <div class="scripts">
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">1</div><div class="sc-title">First Call with a New Supplier</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Introducing yourself and requesting pricing for the first time.</div>
+        <div class="sc-txt">"Hi [Name], this is [Your Name] — I'm the owner/head chef at [Restaurant Name], opening in [Location] in [Month].
+
+I've been referred to you by [name/found you through X] and wanted to reach out about becoming an account.
+
+We're a [concept — e.g. 60-seat casual dining restaurant] projecting around $[X] in weekly revenue from day one, with strong growth targets. We'll be ordering [categories — meat, produce, dry goods] on a [2–3 times weekly] basis.
+
+Can you put together a pricing list for my core items so I can compare it against my current quotes? I'm looking to finalise my supplier relationships in the next 2 weeks.
+
+I'd also like to discuss account terms — we're looking for net 30 from day one, given the volume we're bringing."</div>
+        <div class="sc-tip">💡 Lead with volume and timeline — you're a serious buyer, not a tyre-kicker. This changes how they respond.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">2</div><div class="sc-title">Asking for a Volume Discount</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: You've been ordering consistently and want to formalise a better rate.</div>
+        <div class="sc-txt">"Hi [Name], I wanted to touch base on our pricing. We've been ordering [amount] weekly for [X months] — consistently, on time, and growing.
+
+Looking at our spend, we're at around $[X] per month with you. I'd like to formalise that into a volume commitment in exchange for a tiered discount.
+
+If we commit to $[X+] per month, what can you do on price across our top 5 SKUs? I'm not asking for a huge move — even 3–5% makes a real difference when you're managing food cost at this level.
+
+Can we put something in writing? I want to give you certainty on our volumes, and I'd like certainty on pricing in return."</div>
+        <div class="sc-tip">💡 A written volume commitment is valuable to suppliers — they can forecast. That's real leverage.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">3</div><div class="sc-title">Negotiating Payment Terms (Net 30 vs COD)</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Supplier wants COD or net 7; you need net 30 for cash flow.</div>
+        <div class="sc-txt">"I want to talk about payment terms. You've currently got us on COD/net 7, which creates real cash flow pressure — we're paying for product before we've even sold it.
+
+We're asking to move to net 30. Here's our case: we've been ordering for [X months] without a single late or missed payment. That's a track record worth something.
+
+If you want additional security, I'm happy to set up a direct debit on day 30 — automatic, no chasing. We just need the breathing room that net 30 provides.
+
+What would it take to get there?"</div>
+        <div class="sc-tip">💡 Offering auto-pay removes their risk of late payment — this is usually the deciding factor.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">4</div><div class="sc-title">Handling a Price Increase Notification</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Supplier notifies you of an upcoming price increase.</div>
+        <div class="sc-txt">"Thanks for the heads up on the price increase. I want to work through this with you rather than just absorb it.
+
+A [X]% increase across the board isn't something I can pass on to customers right now — it directly eats into our margin on [specific items].
+
+Can we look at this item by item? There are probably some I can accept and some where I'd need to push back or look at alternatives.
+
+Also — on the items where the increase is significant, is there a way to lock in today's price for 60–90 days while I adjust my menu costing? I want to keep you as my primary supplier, but I need to manage this carefully."</div>
+        <div class="sc-tip">💡 Never accept a blanket price increase without reviewing it line by line. Some items will have valid cost pressures; others won't.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">5</div><div class="sc-title">Requesting a Credit Account</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Opening a new account and requesting credit rather than COD.</div>
+        <div class="sc-txt">"I'd like to set up a credit account rather than trading on COD. Here's what I can provide to support that application:
+
+— Trade references from [2–3 suppliers] who can confirm my payment history
+— Our opening balance sheet / projected revenue for year 1
+— Personal guarantee from the director if required
+
+We're projecting $[X] monthly spend with you, growing to $[X] by month 6. I want to build a long-term relationship here, and a credit account is part of how I'd like to do that.
+
+What's the credit application process and what's the standard limit you'd offer a new account at our volume?"</div>
+        <div class="sc-tip">💡 Come prepared with references and financials — suppliers respect operators who treat this like a professional transaction.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">6</div><div class="sc-title">Getting Priority Allocation on High-Demand Items</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Supply of key items (wagyu, lobster, specific produce) is inconsistent.</div>
+        <div class="sc-txt">"I want to discuss allocation on [specific item]. We've had a few weeks where stock was limited and we had to 86 it — that's a problem for our menu and our guest experience.
+
+We're committed to [X kg/units] per week, consistently. In exchange, I'd like to be a priority account — meaning when allocation is tight, we're protected before it goes to other customers.
+
+What would it take to get that priority status? Is it a volume commitment, a prepayment arrangement, or something else? I want to solve this properly rather than keep dealing with shorts."</div>
+        <div class="sc-tip">💡 Suppliers love predictable volume — a weekly commitment in writing often unlocks priority allocation without any extra cost.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">7</div><div class="sc-title">Pushing Back on Minimum Order Quantities</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: MOQs are too high for your operation size.</div>
+        <div class="sc-txt">"I want to talk about your minimum order quantities. At [X], the MOQ on [item] is higher than what I can use in a week without risking quality or wastage — and I'm not willing to sacrifice either.
+
+I understand MOQs exist for logistics reasons. Here's what I can offer: I'll commit to ordering [Y — above their threshold over a longer period] per month, but split across [2] deliveries. The total volume is there, just spread differently.
+
+Alternatively, can we look at your MOQs as a monthly rolling total rather than per delivery? That might solve the problem for both of us."</div>
+        <div class="sc-tip">💡 Reframe MOQs as a monthly commitment — suppliers care about total volume, not necessarily per-order size.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">8</div><div class="sc-title">Quality Complaint + Credit Request</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: You've received substandard product and need a credit or replacement.</div>
+        <div class="sc-txt">"Hi [Name], I need to flag an issue with today's delivery. [Describe: X kg of beef/the salmon/the produce] arrived [describe condition — over temp / visually poor / wrong spec / damaged], and I've had to reject/discard it.
+
+I've taken photos which I'll send through now. This isn't something I can put in front of my customers.
+
+I'm requesting a full credit of $[X] on the affected items, and a replacement delivery today/tomorrow if possible.
+
+I want to be clear — this isn't about the relationship, it's about standards. I know you can do better than this and I'd rather fix it quickly and move on. Can you confirm the credit today?"</div>
+        <div class="sc-tip">💡 Photos are critical. Document every quality issue immediately upon delivery — this is non-negotiable discipline.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">9</div><div class="sc-title">Threatening to Switch Suppliers (Leverage)</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Pricing has drifted or service has deteriorated and you need to reset the relationship.</div>
+        <div class="sc-txt">"I want to be straight with you because I value this relationship. I've had [competitor supplier] come to me with pricing that's [X]% lower on my core items, and their service proposal is competitive.
+
+I don't want to switch. You know my operation, you know my quality standards, and there's real value in that continuity. But I can't justify staying if there's a meaningful price gap I'm not addressing.
+
+What can we do in the next 48 hours to close that gap? I need to make a decision before the end of the week."</div>
+        <div class="sc-tip">💡 Only use this if you're genuinely willing to switch. Empty threats destroy credibility. Have the competitor quote in hand before this conversation.</div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-head"><div class="sc-num">10</div><div class="sc-title">End of Year Rebate Negotiation</div></div>
+      <div class="sc-body">
+        <div class="sc-ctx">Use when: Year-end and you want to formalise a rebate structure for next year.</div>
+        <div class="sc-txt">"As we close out the year, I want to talk about our commercial arrangement for next year. We've spent $[X] with you over the last 12 months — that's significant volume, and I'd like that recognised.
+
+I'm proposing a volume rebate structure: if we hit $[X] in spend, we receive a [2–3]% rebate paid quarterly. This incentivises us to consolidate more spend with you and gives you a committed growth customer.
+
+I'd also like to lock in pricing on my top 10 SKUs for Q1 — I'm happy to sign a letter of intent committing to [volume] in exchange for price certainty.
+
+Can you take this to your commercial team and come back to me before [date]?"</div>
+        <div class="sc-tip">💡 Rebates are standard in food service at volume. If your supplier hasn't offered one, ask — they almost certainly have the mechanism to do it.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="panel-tactics" class="panel" style="display:none">
+  <div class="intro"><strong>10 pricing tactics</strong> every food operator should know. These are the plays that separate operators who control their food cost from those who wonder where the margin went.</div>
+  <div class="tactics-grid">
+    <div class="tactic"><div class="tactic-num">1</div><div class="tactic-title">Always Get 3 Quotes</div><div class="tactic-body">Never commit to a supplier without at least 3 competitive quotes for your core items. Even if you're loyal to one supplier, having current market pricing is your only real leverage. Run a quote process every 6 months minimum.</div></div>
+    <div class="tactic"><div class="tactic-num">2</div><div class="tactic-title">Bundle Categories for Better Terms</div><div class="tactic-body">Buy meat AND seafood from one supplier instead of splitting them. The combined volume unlocks better pricing, fewer deliveries (lower overhead for them), and stronger relationship leverage. Bundling is worth 3–5% off the total.</div></div>
+    <div class="tactic"><div class="tactic-num">3</div><div class="tactic-title">Lock In Prices on Volatile Items</div><div class="tactic-body">Beef, seafood, and premium produce can swing 20–40% in a season. Ask your supplier to lock in a monthly price on your highest-volume items. Most will do it to secure your commitment. Protects your food cost budget.</div></div>
+    <div class="tactic"><div class="tactic-num">4</div><div class="tactic-title">Use Market Price Transparency</div><div class="tactic-body">Share competitor quotes openly — don't bluff. If Supplier B has beef at $18/kg and you're paying $21, showing Supplier A that quote is your strongest play. It's not confrontational, it's market information.</div></div>
+    <div class="tactic"><div class="tactic-num">5</div><div class="tactic-title">Leverage Volume Commitments</div><div class="tactic-body">A written commitment to order X per week is worth money to suppliers — they can plan production and logistics. Turn your commitment into a price concession. A letter of intent committing to volume should always be exchanged for a price guarantee.</div></div>
+    <div class="tactic"><div class="tactic-num">6</div><div class="tactic-title">On-Time Payment = Leverage</div><div class="tactic-body">Most restaurants pay late. If you always pay on time, you're a top-tier customer. Use this explicitly: "We've never missed a payment in [X months]. I'd like that recognised in our pricing." It works more often than you'd think.</div></div>
+    <div class="tactic"><div class="tactic-num">7</div><div class="tactic-title">Negotiate at End of Month</div><div class="tactic-body">Supplier reps have monthly targets. The last week of the month is when they're most flexible on price to close volume. Time your major negotiations to coincide with this window whenever possible.</div></div>
+    <div class="tactic"><div class="tactic-num">8</div><div class="tactic-title">Free Delivery Above Minimum Order</div><div class="tactic-body">Delivery fees add up fast. Negotiate free delivery above a minimum order threshold — typically 50–70% of your average order value. This also nudges your ordering discipline (consolidate orders rather than calling daily).</div></div>
+    <div class="tactic"><div class="tactic-num">9</div><div class="tactic-title">Request Samples Before Committing</div><div class="tactic-body">Never commit to a new product line without tasting it first. Request samples as a condition of any new arrangement. Reputable suppliers will always provide them — if they won't, that tells you something about their confidence in the product.</div></div>
+    <div class="tactic"><div class="tactic-num">10</div><div class="tactic-title">Annual Review Clause in Every Agreement</div><div class="tactic-body">Build an annual review clause into every supplier relationship. This isn't just about renegotiating price — it's about formally reviewing quality, reliability, and terms. Puts both parties on notice that the relationship is performance-based, not automatic.</div></div>
+  </div>
+</div>
+
+<div id="panel-scorecard" class="panel" style="display:none">
+  <div class="intro"><strong>📊 Supplier Scorecard</strong> — Rate your suppliers across 5 dimensions. Total out of 25. Auto-ranked so you know who to keep, review, or replace.</div>
+  <div class="scorecard-wrap">
+    <div class="sc-controls">
+      <input type="text" class="input-name" id="sup-name" placeholder="Supplier name (e.g. City Meats Co.)" maxlength="40">
+      <button class="btn" onclick="addSupplier()">+ Add Supplier</button>
+      <button class="btn btn-clear" onclick="clearAll()">Clear All</button>
+    </div>
+    <div id="sc-table-wrap">
+      <div class="empty-state" id="sc-empty">No suppliers added yet. Add up to 10 suppliers above.</div>
+      <table class="sc-table" id="sc-table" style="display:none">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Supplier</th>
+            <th>Price <small>(1–5)</small></th>
+            <th>Quality <small>(1–5)</small></th>
+            <th>Reliability <small>(1–5)</small></th>
+            <th>Service <small>(1–5)</small></th>
+            <th>Terms <small>(1–5)</small></th>
+            <th>Total</th>
+            <th>Result</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="sc-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+var suppliers = [];
+var SK2 = 'kf_sup_sc_v1';
+function loadSC(){try{suppliers=JSON.parse(localStorage.getItem(SK2))||[];}catch(e){suppliers=[];}}
+function saveSC(){try{localStorage.setItem(SK2,JSON.stringify(suppliers));}catch(e){}}
+
+function addSupplier(){
+  var name=document.getElementById('sup-name').value.trim();
+  if(!name) return alert('Please enter a supplier name.');
+  if(suppliers.length>=10) return alert('Maximum 10 suppliers.');
+  suppliers.push({name:name,scores:[3,3,3,3,3]});
+  document.getElementById('sup-name').value='';
+  saveSC(); renderSC();
+}
+
+function removeSupplier(i){
+  suppliers.splice(i,1); saveSC(); renderSC();
+}
+
+function updateScore(i,dim,val){
+  suppliers[i].scores[dim]=parseInt(val); saveSC(); renderSC();
+}
+
+function clearAll(){
+  if(confirm('Clear all suppliers?')){suppliers=[];saveSC();renderSC();}
+}
+
+function getRec(total){
+  if(total>=20) return '<span class="rec-keep">✓ Keep</span>';
+  if(total>=13) return '<span class="rec-review">⚠ Review</span>';
+  return '<span class="rec-replace">✗ Replace</span>';
+}
+
+function renderSC(){
+  var tbody=document.getElementById('sc-tbody');
+  var empty=document.getElementById('sc-empty');
+  var table=document.getElementById('sc-table');
+  if(suppliers.length===0){empty.style.display='block';table.style.display='none';return;}
+  empty.style.display='none';table.style.display='table';
+  var sorted=suppliers.map(function(s,i){return{idx:i,s:s,total:s.scores.reduce(function(a,b){return a+b;},0)};}).sort(function(a,b){return b.total-a.total;});
+  var dims=['Price','Quality','Reliability','Service','Terms'];
+  var html='';
+  sorted.forEach(function(row,rank){
+    var i=row.idx;
+    html+='<tr><td><span class="rank-badge">#'+(rank+1)+'</span></td><td><strong>'+row.s.name+'</strong></td>';
+    row.s.scores.forEach(function(v,d){
+      html+='<td><select class="score-sel" onchange="updateScore('+i+','+d+',this.value)">';
+      for(var x=1;x<=5;x++) html+='<option value="'+x+'"'+(v===x?' selected':'')+'>'+(x===1?'1 ★':x===5?'5 ★★★★★':x+' ★')+'</option>';
+      html+='</select></td>';
+    });
+    html+='<td><span class="total-score">'+row.total+'/25</span></td><td>'+getRec(row.total)+'</td><td><button class="del-btn" onclick="removeSupplier('+i+')" title="Remove">✕</button></td></tr>';
+  });
+  tbody.innerHTML=html;
+}
+
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+}
+
+window.onload=function(){loadSC();renderSC();ST('scripts',document.querySelector('.tab.on'));};
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KitchenFounder Competitor Analysis Framework</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
+.hdr{background:#264653;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}.hdr h1{font-size:1.1rem;font-weight:700}.hdr p{font-size:0.75rem;opacity:0.7;margin-top:2px}
+.badge{background:#C8A97E;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 24px;overflow-x:auto}
+.tab{padding:12px 20px;border:none;background:none;color:#6B6B6B;font-size:0.85rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab:hover{color:#A8895E}.tab.on{color:#A8895E;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:24px}.card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.ct{font-size:0.9rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.f label{font-size:0.72rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f textarea,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;background:#FAFAF8;font-family:inherit}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#264653;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}.ba{background:#2a9d8f;color:#fff}.bd{background:#e76f51;color:#fff;padding:4px 10px;font-size:0.75rem}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.comp-card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px;margin-bottom:12px}
+.comp-name{font-size:1rem;font-weight:700;margin-bottom:12px;color:#264653}
+.star-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:0.82rem}
+.star-row label{width:180px;flex-shrink:0}
+.stars{display:flex;gap:4px}
+.star{cursor:pointer;font-size:1.1rem;color:#E8E4DC;transition:color 0.1s}
+.star.lit{color:#f59e0b}
+.score-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-left:8px}
+.sa{background:#d1fae5;color:#065f46}.sb{background:#fef3c7;color:#92400e}.sc{background:#fee2e2;color:#991b1b}
+.metric{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px;text-align:center}
+.ml{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.mv{font-size:1.2rem;font-weight:700;color:#264653}
+.gap-card{border-radius:8px;padding:14px;margin-bottom:10px;border-left:4px solid}
+.gap-opp{background:#d1fae5;border-color:#10b981}.gap-thr{background:#fee2e2;border-color:#ef4444}
+.obs-item{padding:8px 0;border-bottom:1px solid #f0ece4;font-size:0.85rem;display:flex;gap:8px}
+.obs-item:last-child{border:none}.obs-item::before{content:"👁️";flex-shrink:0}
+.pos-option{border:2px solid #E8E4DC;border-radius:8px;padding:12px;cursor:pointer;margin-bottom:8px;transition:all 0.2s}
+.pos-option:hover{border-color:#C8A97E}.pos-option.sel{border-color:#264653;background:#f0f4f8}
+.pos-option h4{font-size:0.85rem;font-weight:700;margin-bottom:4px}
+.pos-option p{font-size:0.78rem;color:#6B6B6B}
+.statement-box{background:#f0f9f6;border:1px solid #a7f3d0;border-radius:8px;padding:16px;font-size:0.9rem;line-height:1.7;font-style:italic;margin-top:12px}
+@media print{.hdr,.tabs,.btn,.brow{display:none!important}.panel{display:block!important}}
+@media(max-width:768px){.g2,.g3{grid-template-columns:1fr}}
+</style></head><body>
+<div class="hdr"><div><h1>🔍 KitchenFounder Competitor Analysis</h1><p>Site Visit Scorecard · Gap Analysis · Strategy Builder</p></div><span class="badge">FREE TOOL</span></div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('scorecard',this)">📊 Scorecard</button>
+  <button class="tab" onclick="ST('report',this)">📈 Analysis</button>
+  <button class="tab" onclick="ST('strategy',this)">🎯 Strategy</button>
+</div>
+
+<div id="panel-scorecard" class="panel">
+<div class="card"><div class="ct">👁️ What to Observe During a Site Visit</div>
+<div class="g2">
+  <div>
+    <div class="obs-item">Count covers per hour: tables × estimated turns</div>
+    <div class="obs-item">Estimate average check from menu + what you see ordered</div>
+    <div class="obs-item">Count staff vs covers — what's the ratio?</div>
+    <div class="obs-item">Watch what comes out of the kitchen — what's selling?</div>
+    <div class="obs-item">Listen for complaints or hesitations from guests</div>
+  </div>
+  <div>
+    <div class="obs-item">How do they handle the bill — speed, technology?</div>
+    <div class="obs-item">Note busiest vs quietest times — when do they fill?</div>
+    <div class="obs-item">What are they doing better than your current plan?</div>
+    <div class="obs-item">What's clearly missing or frustrating guests?</div>
+    <div class="obs-item">Check their Google reviews — top complaints?</div>
+  </div>
+</div></div>
+<div class="card"><div class="ct">⭐ Competitor Scorecard <span style="font-size:0.75rem;font-weight:400;color:#6B6B6B" id="comp-count">(0 competitors)</span></div>
+<div class="brow">
+  <button class="btn ba" onclick="addComp()">+ Add Competitor</button>
+  <button class="btn bp" onclick="renderReport()">📊 Generate Analysis</button>
+</div>
+<div id="comp-list"></div>
+</div></div>
+
+<div id="panel-report" class="panel" style="display:none">
+<div id="report-content"><div style="color:#6B6B6B;text-align:center;padding:40px">Add competitors in the Scorecard tab and click "Generate Analysis"</div></div>
+</div>
+
+<div id="panel-strategy" class="panel" style="display:none">
+<div class="card"><div class="ct">🎯 Positioning Strategy Builder</div>
+<div class="f"><label>Step 1 — Your Positioning</label></div>
+<div id="pos-options"></div>
+<div class="card" style="margin-top:16px"><div class="ct">Step 2 — Your Top 3 Differentiators</div>
+<div class="f"><label>Differentiator 1</label><input id="d1" placeholder="e.g. Only restaurant in area with live fire cooking" oninput="buildStatement()"></div>
+<div class="f"><label>Differentiator 2</label><input id="d2" placeholder="e.g. All proteins sourced within 100 miles" oninput="buildStatement()"></div>
+<div class="f"><label>Differentiator 3</label><input id="d3" placeholder="e.g. 90-minute guaranteed lunch service" oninput="buildStatement()"></div>
+</div>
+<div class="card"><div class="ct">Step 3 — Target Customer</div>
+<div class="g3">
+  <div class="f"><label>Age Range</label><input id="t-age" placeholder="e.g. 28-42" oninput="buildStatement()"></div>
+  <div class="f"><label>Income Level</label><select id="t-income" onchange="buildStatement()"><option>Middle income ($50-100K)</option><option>Upper middle ($100-150K)</option><option>High income ($150K+)</option><option>Budget conscious</option></select></div>
+  <div class="f"><label>Primary Occasion</label><select id="t-occ" onchange="buildStatement()"><option>Casual weeknight dinner</option><option>Weekend special occasion</option><option>Business lunch</option><option>Family dining</option><option>Date night</option><option>Quick lunch</option></select></div>
+</div></div>
+<div class="card"><div class="ct">Step 4 — Pricing Strategy</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+  <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="radio" name="price" value="below" onchange="buildStatement()"> <span>10% below market (volume play)</span></label>
+  <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="radio" name="price" value="at" checked onchange="buildStatement()"> <span>At market (compete on quality)</span></label>
+  <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="radio" name="price" value="above" onchange="buildStatement()"> <span>10% above market (quality premium)</span></label>
+  <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="radio" name="price" value="premium" onchange="buildStatement()"> <span>Premium pricing (experience-led)</span></label>
+</div></div>
+<div class="card"><div class="ct">📄 Your Positioning Statement</div>
+<div class="statement-box" id="pos-statement">Fill in the fields above to generate your positioning statement.</div>
+<button class="btn bp" style="margin-top:12px" onclick="window.print()">🖨️ Print Strategy</button>
+</div></div>
+
+<script>
+var competitors=[];
+var CRITERIA=['Location & Foot Traffic','Ambiance & Décor','Menu Breadth','Food Quality','Service Quality','Value Perception','Marketing Presence','Technology'];
+var selectedPos='';
+
+function ST(name,btn){
+  var ps=document.getElementsByClassName('panel');
+  for(var i=0;i<ps.length;i++) ps[i].style.display='none';
+  var ts=document.getElementsByClassName('tab');
+  for(var i=0;i<ts.length;i++) ts[i].classList.remove('on');
+  document.getElementById('panel-'+name).style.display='block';
+  if(btn) btn.classList.add('on');
+  if(name==='strategy') buildPosOptions();
+}
+function uid(){return 'c_'+Date.now()+'_'+Math.random().toString(36).substr(2,4);}
+function addComp(){
+  competitors.push({id:uid(),name:'Competitor '+(competitors.length+1),scores:CRITERIA.map(function(){return 0;})});
+  renderScorecard();
+}
+function removeComp(id){
+  competitors=competitors.filter(function(c){return c.id!==id;});
+  renderScorecard();
+}
+function setScore(compId,critIdx,score){
+  var c=competitors.find(function(x){return x.id===compId;});
+  if(c) c.scores[critIdx]=score;
+  updateStars(compId,critIdx,score);
+  updateTotal(compId);
+}
+function updateStars(compId,critIdx,score){
+  for(var s=1;s<=5;s++){
+    var el=document.getElementById('star-'+compId+'-'+critIdx+'-'+s);
+    if(el) el.className='star'+(s<=score?' lit':'');
+  }
+}
+function updateTotal(compId){
+  var c=competitors.find(function(x){return x.id===compId;});
+  if(!c) return;
+  var total=c.scores.reduce(function(a,b){return a+b;},0);
+  var max=CRITERIA.length*5;
+  var pct=Math.round(total/max*100);
+  var el=document.getElementById('total-'+compId);
+  if(el){
+    var cls=pct>=75?'sa':(pct>=55?'sb':'sc');
+    el.innerHTML='<span class="score-badge '+cls+'">'+total+'/'+max+' ('+pct+'%)</span>';
+  }
+}
+function renderScorecard(){
+  var cl=document.getElementById('comp-list');
+  if(!cl) return;
+  document.getElementById('comp-count').textContent='('+competitors.length+' competitors)';
+  cl.innerHTML=competitors.map(function(c){
+    var rows=CRITERIA.map(function(cr,ci){
+      var stars=[1,2,3,4,5].map(function(s){return '<span class="star" id="star-'+c.id+'-'+ci+'-'+s+'" onclick="setScore(\''+c.id+'\','+ci+','+s+')">★</span>';}).join('');
+      return '<div class="star-row"><label>'+cr+'</label><div class="stars">'+stars+'</div></div>';
+    }).join('');
+    return '<div class="comp-card">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">'+
+        '<input value="'+c.name+'" style="font-size:1rem;font-weight:700;border:none;border-bottom:1px solid #E8E4DC;background:transparent;color:#264653;padding:2px 0;width:200px" onchange="competitors.find(function(x){return x.id===\''+c.id+'\';}).name=this.value">'+
+        '<div style="display:flex;align-items:center;gap:8px"><span id="total-'+c.id+'"><span class="score-badge sc">0/40</span></span>'+
+        '<button class="btn bd" onclick="removeComp(\''+c.id+'\')">Remove</button></div>'+
+      '</div>'+rows+'</div>';
+  }).join('');
+}
+function renderReport(){
+  if(competitors.length===0){alert('Add at least one competitor first.');return;}
+  ST('report',document.querySelector('.tab:nth-child(2)'));
+  var sorted=competitors.slice().sort(function(a,b){
+    return b.scores.reduce(function(x,y){return x+y;},0)-a.scores.reduce(function(x,y){return x+y;},0);
+  });
+  var avgScores=CRITERIA.map(function(_,ci){
+    return competitors.reduce(function(a,c){return a+c.scores[ci];},0)/competitors.length;
+  });
+  var gaps=CRITERIA.map(function(cr,ci){return {cr:cr,avg:avgScores[ci],ci:ci};}).sort(function(a,b){return a.avg-b.avg;});
+  var strengths=gaps.slice().reverse().slice(0,3);
+  var opps=gaps.slice(0,3);
+  var rc=document.getElementById('report-content');
+  var rankHTML=sorted.map(function(c,i){
+    var total=c.scores.reduce(function(a,b){return a+b;},0);
+    var pct=Math.round(total/(CRITERIA.length*5)*100);
+    var cls=pct>=75?'sa':(pct>=55?'sb':'sc');
+    return '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E4DC;font-size:0.85rem">'+
+      '<span>'+(i+1)+'. '+c.name+'</span><span class="score-badge '+cls+'">'+pct+'% strength</span></div>';
+  }).join('');
+  var oppHTML=opps.map(function(g){
+    return '<div class="gap-card gap-opp"><strong>'+g.cr+'</strong> — Average competitor score: '+g.avg.toFixed(1)+'/5. <strong>Opportunity:</strong> Competitors are weak here. Build your advantage in this area.</div>';
+  }).join('');
+  var thrHTML=strengths.map(function(g){
+    return '<div class="gap-card gap-thr"><strong>'+g.cr+'</strong> — Average competitor score: '+g.avg.toFixed(1)+'/5. <strong>Threat:</strong> Competitors are strong here. You must match or exceed this standard to compete.</div>';
+  }).join('');
+  rc.innerHTML='<div class="card"><div class="ct">🏆 Competitor Rankings</div>'+rankHTML+'</div>'+
+    '<div class="card"><div class="ct">✅ Your Biggest Opportunities (Competitor Weaknesses)</div>'+oppHTML+'</div>'+
+    '<div class="card"><div class="ct">⚠️ Your Biggest Threats (Competitor Strengths)</div>'+thrHTML+'</div>';
+}
+var posData=[
+  {id:'premium',icon:'👑',title:'Premium Quality',desc:'Best ingredients, best technique, best experience. Price reflects it. You compete on excellence, not value.'},
+  {id:'value',icon:'💰',title:'Value Leader',desc:'Same quality at lower price, or more quantity for the money. You win on perceived value and volume.'},
+  {id:'niche',icon:'🎯',title:'Niche Specialist',desc:'Best-in-class for one cuisine or format. The go-to for a specific community or food style.'},
+  {id:'experience',icon:'✨',title:'Experience First',desc:'The meal is theatre. Atmosphere, service, storytelling — guests pay for the whole experience, not just food.'},
+  {id:'convenience',icon:'⚡',title:'Convenience Leader',desc:'Fastest, easiest, most accessible. Location, speed, ordering technology, delivery.'}
+];
+function buildPosOptions(){
+  var po=document.getElementById('pos-options');
+  if(!po||po.innerHTML) return;
+  po.innerHTML=posData.map(function(p){
+    return '<div class="pos-option" id="po-'+p.id+'" onclick="selectPos(\''+p.id+'\')">'+
+      '<h4>'+p.icon+' '+p.title+'</h4><p>'+p.desc+'</p></div>';
+  }).join('');
+}
+function selectPos(id){
+  selectedPos=id;
+  posData.forEach(function(p){var el=document.getElementById('po-'+p.id);if(el)el.classList.toggle('sel',p.id===id);});
+  buildStatement();
+}
+function buildStatement(){
+  var pos=posData.find(function(p){return p.id===selectedPos;});
+  var d1=document.getElementById('d1').value;
+  var d2=document.getElementById('d2').value;
+  var d3=document.getElementById('d3').value;
+  var age=document.getElementById('t-age').value||'25-40 year olds';
+  var income=document.getElementById('t-income').value;
+  var occ=document.getElementById('t-occ').value;
+  var priceEl=document.querySelector('input[name="price"]:checked');
+  var price=priceEl?priceEl.value:'at';
+  var priceStr=price==='below'?'accessible price point':(price==='at'?'competitive price point':(price==='above'?'premium price point':'luxury price point'));
+  if(!pos||!d1){document.getElementById('pos-statement').textContent='Fill in all fields above to generate your positioning statement.';return;}
+  var diffs=[d1,d2,d3].filter(function(d){return d.trim();});
+  var stmt='[Your restaurant] is a '+pos.title.toLowerCase()+' concept targeting '+age+', '+income.toLowerCase()+' guests seeking '+occ.toLowerCase()+'. '+
+    'We differentiate through '+diffs.join(', ')+'. '+
+    'Our pricing strategy is '+priceStr+', positioning us to capture the customer who values '+pos.desc.split('.')[0].toLowerCase()+'. '+
+    'No direct competitor in our market currently delivers this combination at our price point.';
+  document.getElementById('pos-statement').textContent=stmt;
+}
+window.onload=function(){};
+</script></body></html>
