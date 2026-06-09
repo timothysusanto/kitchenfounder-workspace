@@ -2,628 +2,567 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KitchenFounder OS — Restaurant Operating System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<!-- PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KF OS">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0F1117">
+<meta name="description" content="KitchenFounder OS — 21 professional restaurant tools for F&B operators. Free under 12 staff.">
+<link rel="manifest" href="manifest.json">
+<!-- Apple touch icons (inline SVG data URIs for portability) -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230F1117'/><text x='90' y='125' font-size='100' text-anchor='middle'>🍴</text></svg>">
+<!-- Apple splash screens -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>KitchenFounder OS</title>
 <style>
-:root {
-  --bg: #0F1117;
-  --surface: #1A1D27;
-  --surface2: #222638;
-  --border: #2A2F45;
-  --text: #F0F2FF;
-  --muted: #7A85A8;
-  --accent: #C8A97E;
-  --accent-dark: #A8895E;
-  --accent-glow: rgba(200,169,126,0.15);
-  --green: #10B981;
-  --amber: #F59E0B;
-  --red: #EF4444;
-  --blue: #3B82F6;
-  --purple: #8B5CF6;
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+:root{
+  --bg:#0F1117;--surf:#1A1D27;--surf2:#222638;--border:#2A2F45;
+  --text:#F0F2FF;--muted:#7A85A8;--accent:#C8A97E;--accent2:#A8895E;
+  --green:#10B981;--amber:#F59E0B;--red:#EF4444;--blue:#3B82F6;--purple:#8B5CF6;
+  --nav-h:72px;--top-h:56px;
+  --sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui,-apple-system,sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif;background:var(--bg);color:var(--text);max-width:430px;margin:0 auto;position:relative;display:flex;flex-direction:column}
 
-/* LAYOUT */
-.layout { display: flex; min-height: 100vh; }
-.sidebar { width: 240px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; overflow-y: auto; }
-.main { margin-left: 240px; flex: 1; min-height: 100vh; }
+/* SPLASH SCREEN */
+#splash{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s ease}
+#splash.hide{opacity:0;pointer-events:none}
+.splash-icon{font-size:5rem;margin-bottom:20px;animation:pulse 1.5s ease-in-out infinite}
+.splash-name{font-size:1.6rem;font-weight:900;color:var(--accent);letter-spacing:-0.03em;margin-bottom:6px}
+.splash-sub{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:40px}
+.splash-loader{width:48px;height:4px;background:var(--border);border-radius:4px;overflow:hidden}
+.splash-fill{height:4px;background:var(--accent);border-radius:4px;animation:load 1.8s ease forwards}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes load{0%{width:0}100%{width:100%}}
 
-/* SIDEBAR */
-.sidebar-logo { padding: 20px 20px 16px; border-bottom: 1px solid var(--border); }
-.logo-mark { font-size: 1.1rem; font-weight: 900; color: var(--accent); letter-spacing: -0.02em; }
-.logo-sub { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
-.sidebar-section { padding: 12px 12px 4px; font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-.nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; margin: 1px 8px; border-radius: 8px; cursor: pointer; font-size: 0.82rem; color: var(--muted); transition: all 0.15s; text-decoration: none; border: none; background: none; width: calc(100% - 16px); text-align: left; }
-.nav-item:hover { background: var(--surface2); color: var(--text); }
-.nav-item.active { background: var(--accent-glow); color: var(--accent); font-weight: 600; }
-.nav-item .icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
-.nav-badge { margin-left: auto; background: var(--accent); color: #1a1400; font-size: 0.6rem; font-weight: 800; padding: 1px 6px; border-radius: 10px; }
-.nav-badge.green { background: var(--green); color: white; }
-.sidebar-footer { margin-top: auto; padding: 16px; border-top: 1px solid var(--border); }
-.plan-badge { background: var(--accent-glow); border: 1px solid rgba(200,169,126,0.3); border-radius: 8px; padding: 10px 12px; }
-.plan-name { font-size: 0.75rem; font-weight: 700; color: var(--accent); }
-.plan-desc { font-size: 0.67rem; color: var(--muted); margin-top: 2px; }
-.upgrade-btn { display: block; width: 100%; padding: 8px; background: var(--accent); color: #1a1400; border: none; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; text-align: center; margin-top: 8px; }
-.upgrade-btn:hover { background: var(--accent-dark); }
+/* INSTALL BANNER */
+#install-banner{display:none;position:fixed;bottom:calc(var(--nav-h) + 12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:398px;background:var(--surf);border:1px solid rgba(200,169,126,0.4);border-radius:16px;padding:14px 16px;z-index:90;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+.ib-row{display:flex;align-items:center;gap:12px}
+.ib-icon{font-size:2rem;flex-shrink:0}
+.ib-text{flex:1}
+.ib-title{font-size:0.85rem;font-weight:700;color:var(--accent);margin-bottom:2px}
+.ib-desc{font-size:0.72rem;color:var(--muted);line-height:1.4}
+.ib-btns{display:flex;gap:8px;margin-top:10px}
+.ib-install{background:var(--accent);color:#1a1400;border:none;border-radius:10px;padding:8px 20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;flex:1}
+.ib-dismiss{background:var(--surf2);color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:0.8rem;cursor:pointer;font-family:inherit}
+/* iOS install instructions */
+#ios-install{display:none;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:var(--surf);border-top:1px solid var(--border);border-radius:20px 20px 0 0;padding:24px 20px;z-index:95;box-shadow:0 -8px 40px rgba(0,0,0,0.6)}
+#ios-install.on{display:block}
+.ios-step{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.ios-num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#1a1400;font-size:0.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ios-text{font-size:0.84rem;line-height:1.5;color:var(--text)}
+.ios-close{width:100%;background:var(--surf2);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:12px;font-size:0.85rem;font-weight:600;cursor:pointer;margin-top:6px;font-family:inherit}
 
 /* TOPBAR */
-.topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
-.topbar-title { font-size: 1rem; font-weight: 700; }
-.topbar-sub { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
-.topbar-right { display: flex; align-items: center; gap: 12px; }
-.topbar-chip { padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
-.chip-green { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
-.chip-amber { background: rgba(245,158,11,0.15); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
-.chip-red { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+.topbar{flex-shrink:0;height:calc(var(--top-h) + env(safe-area-inset-top));background:rgba(15,17,23,0.96);border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;padding:0 18px 12px;padding-top:calc(12px + env(safe-area-inset-top));position:relative;z-index:80}
+.topbar-logo{font-size:1rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em}
+.topbar-sub{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.plan-chip{background:rgba(200,169,126,0.15);border:1px solid rgba(200,169,126,0.3);color:var(--accent);font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:20px}
+.offline-chip{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:var(--red);font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:20px;display:none}
+#offline-chip.show{display:inline-block}
 
-/* PANELS */
-.panel { display: none; padding: 28px; }
-.panel.active { display: block; }
+/* SCREEN CONTAINER */
+.screens{flex:1;overflow:hidden;position:relative}
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:16px 16px calc(var(--nav-h) + env(safe-area-inset-bottom) + 16px);display:none;-webkit-overflow-scrolling:touch}
+.screen.on{display:block}
+.screen::-webkit-scrollbar{display:none}
 
-/* CARDS */
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
-.card-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; color: var(--text); }
-.card-title .ct-icon { font-size: 1.1rem; }
+/* BOTTOM NAV */
+.bottom-nav{flex-shrink:0;height:calc(var(--nav-h) + env(safe-area-inset-bottom));background:rgba(26,29,39,0.98);border-top:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-around;padding:8px 8px 0;padding-bottom:env(safe-area-inset-bottom);position:relative;z-index:80}
+.nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px;border:none;background:none;color:var(--muted);font-size:0.6rem;font-weight:600;cursor:pointer;border-radius:12px;transition:all 0.2s;min-width:56px;font-family:inherit}
+.nav-btn .nb-icon{font-size:1.3rem;line-height:1;transition:transform 0.2s}
+.nav-btn.on{color:var(--accent)}
+.nav-btn.on .nb-icon{transform:scale(1.15);filter:drop-shadow(0 0 8px rgba(200,169,126,0.5))}
+.nav-btn:active .nb-icon{transform:scale(0.9)}
 
-/* GRID */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
-@media(max-width:900px){ .grid-4{grid-template-columns:1fr 1fr;} .grid-3{grid-template-columns:1fr 1fr;} }
-@media(max-width:600px){ .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;} .sidebar{display:none;} .main{margin-left:0;} }
+/* SECTION TITLE */
+.sec-title{font-size:1.3rem;font-weight:800;margin-bottom:3px}
+.sec-sub{font-size:0.78rem;color:var(--muted);margin-bottom:18px}
 
-/* METRIC CARDS */
-.metric { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-.metric-label { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
-.metric-value { font-size: 1.4rem; font-weight: 800; }
-.metric-sub { font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
-.metric.green .metric-value { color: var(--green); }
-.metric.amber .metric-value { color: var(--amber); }
-.metric.red .metric-value { color: var(--red); }
-.metric.blue .metric-value { color: var(--blue); }
-.metric.accent .metric-value { color: var(--accent); }
+/* METRIC ROW */
+.metrics-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.m-card{background:var(--surf);border:1px solid var(--border);border-radius:14px;padding:14px;position:relative;overflow:hidden}
+.m-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.m-card.mg::before{background:var(--green)}.m-card.ma::before{background:var(--amber)}.m-card.mb::before{background:var(--blue)}.m-card.mp::before{background:var(--purple)}
+.m-lbl{font-size:0.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
+.m-val{font-size:1.35rem;font-weight:800}
+.m-card.mg .m-val{color:var(--green)}.m-card.ma .m-val{color:var(--amber)}.m-card.mb .m-val{color:var(--blue)}.m-card.mp .m-val{color:var(--purple)}
+.m-hint{font-size:0.62rem;color:var(--muted);margin-top:2px}
 
-/* TOOL CARDS */
-.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 14px; }
-.tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
-.tool-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
-.tool-card.c-amber::before { background: linear-gradient(90deg, var(--accent), var(--amber)); }
-.tool-card.c-green::before { background: linear-gradient(90deg, var(--green), #06B6D4); }
-.tool-card.c-blue::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
-.tool-card.c-red::before { background: linear-gradient(90deg, var(--red), #F97316); }
-.tool-card.c-purple::before { background: linear-gradient(90deg, var(--purple), #EC4899); }
-.tool-card:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-2px); box-shadow: var(--shadow); }
-.tool-icon { font-size: 1.8rem; margin-bottom: 10px; }
-.tool-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
-.tool-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
-.tool-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.62rem; font-weight: 700; margin-top: 10px; background: rgba(200,169,126,0.12); color: var(--accent); border: 1px solid rgba(200,169,126,0.25); }
+/* CARD */
+.card{background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px}
+.card-hdr{font-size:0.82rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px}
 
-/* PROGRESS BAR */
-.progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 6px; }
-.progress-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+/* QA GRID */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qa-btn{background:var(--surf2);border:none;border-radius:12px;padding:13px 10px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;transition:all 0.15s;width:100%}
+.qa-btn:active{transform:scale(0.94);opacity:0.8}
+.qa-icon{font-size:1.45rem}
+.qa-lbl{font-size:0.68rem;font-weight:600;color:var(--text);text-align:center;line-height:1.3}
 
-/* ACTIVITY FEED */
-.activity-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
-.activity-item:last-child { border-bottom: none; }
-.activity-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-.activity-text { font-size: 0.82rem; color: var(--text); line-height: 1.4; }
-.activity-time { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+/* TOOL ROWS */
+.tool-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity 0.15s;user-select:none}
+.tool-row:last-child{border:none}
+.tool-row:active{opacity:0.6}
+.tool-icon-wrap{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.ti-amber{background:rgba(200,169,126,0.15)}.ti-green{background:rgba(16,185,129,0.15)}.ti-blue{background:rgba(59,130,246,0.15)}.ti-purple{background:rgba(139,92,246,0.15)}.ti-red{background:rgba(239,68,68,0.15)}
+.tool-info{flex:1;min-width:0}
+.tool-name{font-size:0.84rem;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tool-desc{font-size:0.68rem;color:var(--muted);line-height:1.4}
+.tool-arrow{color:var(--muted);font-size:1rem;flex-shrink:0}
+.tool-tag-sm{font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:8px;display:inline-block;margin-top:3px}
+.tt-ops{background:rgba(245,158,11,0.15);color:var(--amber)}
+.tt-fin{background:rgba(16,185,129,0.15);color:var(--green)}
+.tt-menu{background:rgba(59,130,246,0.15);color:var(--blue)}
+.tt-launch{background:rgba(139,92,246,0.15);color:var(--purple)}
+.tt-pro{background:rgba(200,169,126,0.15);color:var(--accent)}
+.s-div{font-size:0.63rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;padding:14px 0 8px}
 
-/* HEALTH SCORE */
-.health-ring { text-align: center; padding: 20px 0; }
-.health-score { font-size: 3rem; font-weight: 900; }
-.health-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.health-items { margin-top: 16px; }
-.health-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; }
-.health-row:last-child { border-bottom: none; }
+/* HEALTH */
+.health-wrap{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.score-circle{width:68px;height:68px;border-radius:50%;border:3px solid var(--amber);display:flex;align-items:center;justify-content:center;flex-direction:column;flex-shrink:0}
+.score-num{font-size:1.3rem;font-weight:900;color:var(--amber);line-height:1}
+.score-lbl{font-size:0.48rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px}
+.health-list{flex:1}
+.h-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:0.74rem;border-bottom:1px solid var(--border)}
+.h-row:last-child{border:none}
+.prog-bar{height:5px;background:var(--border);border-radius:3px;margin-top:6px;overflow:hidden}
+.prog-fill{height:5px;border-radius:3px}
 
-/* COMING SOON OVERLAY */
-.locked { position: relative; }
-.locked-overlay { position: absolute; inset: 0; background: rgba(15,17,23,0.85); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(2px); z-index: 10; }
-.locked-overlay .lock-icon { font-size: 2rem; margin-bottom: 8px; }
-.locked-overlay .lock-text { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
-.locked-overlay .lock-sub { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+/* INSIGHT */
+.insight{background:var(--surf2);border-radius:12px;padding:13px;margin-bottom:10px;border-left:3px solid}
+.insight.ig{border-color:var(--green)}.insight.ia{border-color:var(--amber)}.insight.ib{border-color:var(--blue)}
+.insight-title{font-size:0.78rem;font-weight:700;margin-bottom:3px}
+.insight-body{font-size:0.72rem;color:var(--muted);line-height:1.6}
 
-/* QUICK ACTIONS */
-.qa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.qa-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; cursor: pointer; font-size: 0.8rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; transition: all 0.15s; }
-.qa-btn:hover { border-color: var(--accent); color: var(--accent); }
+/* PLAN */
+.plan-card{border:2px solid var(--border);border-radius:18px;padding:18px;margin-bottom:12px;position:relative}
+.plan-card.featured{border-color:var(--accent)}
+.plan-badge-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#1a1400;font-size:0.6rem;font-weight:800;padding:2px 14px;border-radius:20px;white-space:nowrap}
+.plan-price{font-size:1.8rem;font-weight:900;margin:8px 0 4px}
+.plan-price span{font-size:0.85rem;font-weight:400;color:var(--muted)}
+.plan-feat{font-size:0.76rem;line-height:2;color:var(--muted);list-style:none}
 
-/* IFRAME MODAL */
-.tool-modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.85); }
-.tool-modal.open { display: flex; flex-direction: column; }
-.modal-topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
-.modal-title { font-size: 0.9rem; font-weight: 700; }
-.modal-close { background: var(--border); border: none; color: var(--text); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 600; }
-.modal-iframe { flex: 1; border: none; width: 100%; }
+/* NOTIFY */
+.notify-form{display:flex;gap:8px;margin-top:10px}
+.notify-input{flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surf2);color:var(--text);font-size:0.83rem;font-family:inherit}
+.notify-btn{background:var(--accent);color:#1a1400;border:none;border-radius:10px;padding:10px 14px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit}
 
-/* FIELD */
-.field { margin-bottom: 12px; }
-.field label { display: block; font-size: 0.68rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-.field input, .field select { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.87rem; background: var(--surface2); color: var(--text); }
-.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+/* AVATAR */
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--amber));display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;color:#1a1400;flex-shrink:0}
 
-.btn { padding: 8px 18px; border: none; border-radius: 6px; font-size: 0.83rem; font-weight: 600; cursor: pointer; }
-.btn-accent { background: var(--accent); color: #1a1400; }
-.btn-accent:hover { background: var(--accent-dark); }
-.btn-ghost { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+/* TOOL MODAL */
+.tool-modal{display:none;position:fixed;inset:0;z-index:200;background:var(--bg);flex-direction:column;max-width:430px;left:50%;transform:translateX(-50%)}
+.tool-modal.on{display:flex}
+.tool-topbar{flex-shrink:0;height:calc(var(--top-h) + env(safe-area-inset-top));background:var(--surf);border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;padding:0 16px 12px;padding-top:calc(12px + env(safe-area-inset-top))}
+.tool-title-text{font-size:0.88rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.tool-close-btn{background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:10px;font-size:0.76rem;font-weight:600;cursor:pointer;font-family:inherit;flex-shrink:0}
+.tool-fullscreen-btn{background:rgba(200,169,126,0.15);border:1px solid rgba(200,169,126,0.3);color:var(--accent);padding:6px 12px;border-radius:10px;font-size:0.76rem;font-weight:600;cursor:pointer;font-family:inherit;flex-shrink:0;margin-right:8px}
+.tool-iframe{flex:1;border:none;width:100%}
 
-/* SCROLLBAR */
-::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+/* PROFILE */
+.profile-avatar-big{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--amber));display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#1a1400;flex-shrink:0}
+.link-row{display:flex;align-items:center;gap:10px;padding:11px 12px;background:var(--surf2);border-radius:12px;margin-bottom:8px;cursor:pointer;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:600}
+.link-row:active{opacity:0.7}
 </style>
 </head>
 <body>
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-icon">🍴</div>
+  <div class="splash-name">KitchenFounder OS</div>
+  <div class="splash-sub">Restaurant Operating System</div>
+  <div class="splash-loader"><div class="splash-fill"></div></div>
+</div>
 
-<div class="layout">
+<!-- iOS INSTALL GUIDE -->
+<div id="ios-install">
+  <div style="font-size:0.9rem;font-weight:800;margin-bottom:16px;color:var(--accent)">📲 Add to Home Screen</div>
+  <div class="ios-step"><div class="ios-num">1</div><div class="ios-text">Tap the <strong>Share button</strong> (□↑) at the bottom of your Safari browser</div></div>
+  <div class="ios-step"><div class="ios-num">2</div><div class="ios-text">Scroll down and tap <strong>"Add to Home Screen"</strong></div></div>
+  <div class="ios-step"><div class="ios-num">3</div><div class="ios-text">Tap <strong>"Add"</strong> in the top right — the app icon appears on your home screen</div></div>
+  <div style="font-size:0.74rem;color:var(--muted);margin:10px 0 14px;line-height:1.6">✅ Works offline · No App Store needed · Feels like a native app</div>
+  <button class="ios-close" onclick="document.getElementById('ios-install').classList.remove('on')">Got it ✓</button>
+</div>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-mark">KitchenFounder OS</div>
-    <div class="logo-sub">Restaurant Operating System</div>
-  </div>
-
-  <div class="sidebar-section">Overview</div>
-  <button class="nav-item active" onclick="showPanel('dashboard')">
-    <span class="icon">🏠</span> Dashboard
-  </button>
-  <button class="nav-item" onclick="showPanel('tools')">
-    <span class="icon">🧰</span> All Tools
-    <span class="nav-badge">11</span>
-  </button>
-
-  <div class="sidebar-section">Operations</div>
-  <button class="nav-item" onclick="openTool('labour-planner.html','👥 Labour Planner')">
-    <span class="icon">👥</span> Labour Planner
-  </button>
-  <button class="nav-item" onclick="openTool('daily-prep-sheet.html','📋 Prep Sheet')">
-    <span class="icon">📋</span> Daily Prep Sheet
-  </button>
-  <button class="nav-item" onclick="openTool('shift-handover.html','🔄 Shift Handover')">
-    <span class="icon">🔄</span> Shift Handover
-  </button>
-  <button class="nav-item" onclick="openTool('temp-log.html','🌡️ Temp Log')">
-    <span class="icon">🌡️</span> Temperature Log
-  </button>
-  <button class="nav-item" onclick="openTool('waste-tracker.html','🗑️ Waste Tracker')">
-    <span class="icon">🗑️</span> Waste Tracker
-  </button>
-
-  <div class="sidebar-section">Finance</div>
-  <button class="nav-item" onclick="openTool('cash-flow-forecast.html','💵 Cash Flow Forecast')">
-    <span class="icon">💵</span> Cash Flow Forecast
-  </button>
-  <button class="nav-item" onclick="openTool('break-even-calculator-v2.html','🔢 Break-Even Calc')">
-    <span class="icon">🔢</span> Break-Even Calc
-  </button>
-  <button class="nav-item" onclick="openTool('food-cost-calculator-app.html','🧮 Food Cost Calc')">
-    <span class="icon">🧮</span> Food Cost Calc
-  </button>
-
-  <div class="sidebar-section">Menu</div>
-  <button class="nav-item" onclick="openTool('menu-engineering-matrix.html','📊 Menu Matrix')">
-    <span class="icon">📊</span> Menu Engineering
-  </button>
-
-  <div class="sidebar-section">Setup</div>
-  <button class="nav-item" onclick="openTool('restaurant-opening-checklist.html','📋 Opening Checklist')">
-    <span class="icon">✅</span> Opening Checklist
-  </button>
-  <button class="nav-item" onclick="openTool('labour-planner.html','👥 Labour Planner')">
-    <span class="icon">📈</span> Labour Cost Planner
-  </button>
-
-  <div class="sidebar-footer">
-    <div class="plan-badge">
-      <div class="plan-name">✨ Free Plan</div>
-      <div class="plan-desc">All 11 tools · Up to 10 staff</div>
-    </div>
-    <button class="upgrade-btn" onclick="showPanel('upgrade')">⬆️ Upgrade to Pro</button>
-  </div>
-</aside>
-
-<!-- MAIN CONTENT -->
-<div class="main">
-
-  <!-- TOPBAR -->
-  <div class="topbar" id="topbar">
-    <div>
-      <div class="topbar-title" id="topbar-title">Dashboard</div>
-      <div class="topbar-sub" id="topbar-sub">Welcome back — here's your operation at a glance</div>
-    </div>
-    <div class="topbar-right">
-      <span class="topbar-chip chip-green" id="topbar-status">● All Systems Active</span>
-      <span style="font-size:0.78rem;color:var(--muted)" id="topbar-date"></span>
+<!-- INSTALL BANNER (Android/Chrome) -->
+<div id="install-banner">
+  <div class="ib-row">
+    <div class="ib-icon">🍴</div>
+    <div class="ib-text">
+      <div class="ib-title">Install KitchenFounder OS</div>
+      <div class="ib-desc">Add to home screen — works offline, no App Store needed</div>
     </div>
   </div>
+  <div class="ib-btns">
+    <button class="ib-install" id="install-btn">Install App</button>
+    <button class="ib-dismiss" onclick="document.getElementById('install-banner').style.display='none'">Later</button>
+  </div>
+</div>
 
-  <!-- DASHBOARD PANEL -->
-  <div id="panel-dashboard" class="panel active">
+<!-- TOPBAR -->
+<div class="topbar">
+  <div>
+    <div class="topbar-logo">KitchenFounder OS</div>
+    <div class="topbar-sub">Restaurant Operating System</div>
+  </div>
+  <div class="topbar-right">
+    <span id="offline-chip" class="offline-chip">● Offline</span>
+    <span class="plan-chip">FREE</span>
+    <div class="avatar">M</div>
+  </div>
+</div>
 
-    <!-- Quick metrics -->
-    <div class="grid-4" style="margin-bottom:20px">
-      <div class="metric accent">
-        <div class="metric-label">Tools Available</div>
-        <div class="metric-value">11</div>
-        <div class="metric-sub">all included free</div>
-      </div>
-      <div class="metric green">
-        <div class="metric-label">Restaurant Guides</div>
-        <div class="metric-value">29</div>
-        <div class="metric-sub">cuisines in library</div>
-      </div>
-      <div class="metric amber">
-        <div class="metric-label">Your Plan</div>
-        <div class="metric-value" style="font-size:1rem">Free</div>
-        <div class="metric-sub">upgrade for Pro features</div>
-      </div>
-      <div class="metric blue">
-        <div class="metric-label">Bundle Value</div>
-        <div class="metric-value">$29.99</div>
-        <div class="metric-sub">complete toolkit</div>
-      </div>
-    </div>
+<!-- SCREENS -->
+<div class="screens">
 
-    <div class="grid-2">
-      <!-- Quick Launch -->
-      <div class="card">
-        <div class="card-title"><span class="ct-icon">⚡</span> Quick Launch</div>
-        <div class="qa-grid">
-          <button class="qa-btn" onclick="openTool('daily-prep-sheet.html','📋 Prep Sheet')">📋 Today's Prep Sheet</button>
-          <button class="qa-btn" onclick="openTool('shift-handover.html','🔄 Shift Handover')">🔄 Shift Handover</button>
-          <button class="qa-btn" onclick="openTool('temp-log.html','🌡️ Temp Log')">🌡️ Log Temperature</button>
-          <button class="qa-btn" onclick="openTool('waste-tracker.html','🗑️ Waste Tracker')">🗑️ Log Waste</button>
-          <button class="qa-btn" onclick="openTool('labour-planner.html','👥 Labour Planner')">👥 Build Roster</button>
-          <button class="qa-btn" onclick="openTool('menu-engineering-matrix.html','📊 Menu Matrix')">📊 Menu Analysis</button>
-        </div>
-      </div>
+<!-- HOME -->
+<div id="scr-home" class="screen on">
+  <div class="sec-title" id="home-greeting">Good morning 👋</div>
+  <div class="sec-sub">Your kitchen at a glance</div>
 
-      <!-- Restaurant Health Score -->
-      <div class="card">
-        <div class="card-title"><span class="ct-icon">💚</span> KitchenFounder Health Score</div>
-        <div class="health-ring">
-          <div class="health-score" style="color:var(--amber)">72</div>
-          <div class="health-label">Restaurant Health Score</div>
-          <div style="font-size:0.72rem;color:var(--muted);margin-top:4px">Complete your setup to improve your score</div>
-        </div>
-        <div class="health-items">
-          <div class="health-row">
-            <span>✅ Opening checklist</span>
-            <span style="color:var(--green);font-size:0.8rem;font-weight:700">Done</span>
-          </div>
-          <div class="health-row">
-            <span>✅ Food cost tracked</span>
-            <span style="color:var(--green);font-size:0.8rem;font-weight:700">Done</span>
-          </div>
-          <div class="health-row">
-            <span>⚠️ Cash flow forecast</span>
-            <span style="color:var(--amber);font-size:0.8rem;font-weight:700">Set up</span>
-          </div>
-          <div class="health-row">
-            <span>⚠️ Labour cost modelled</span>
-            <span style="color:var(--amber);font-size:0.8rem;font-weight:700">Set up</span>
-          </div>
-          <div class="health-row">
-            <span>❌ Menu engineering done</span>
-            <span style="color:var(--red);font-size:0.8rem;font-weight:700">To do</span>
-          </div>
-          <div class="health-row">
-            <span>❌ Temp log active</span>
-            <span style="color:var(--red);font-size:0.8rem;font-weight:700">To do</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Activity Feed + Finance snapshot -->
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title"><span class="ct-icon">📰</span> KitchenFounder Tips</div>
-        <div class="activity-item">
-          <div class="activity-dot" style="background:var(--green)"></div>
-          <div>
-            <div class="activity-text"><strong>Food Cost Rule:</strong> If your blended food cost exceeds 32% two weeks in a row — it's not bad luck. It's a system problem. Check your top 5 items in the Food Cost Calculator.</div>
-            <div class="activity-time">Operations Insight</div>
-          </div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-dot" style="background:var(--amber)"></div>
-          <div>
-            <div class="activity-text"><strong>Labour Truth:</strong> Most operators budget base wages. Your true labour cost is 18–25% higher when you add FICA, workers comp, and health insurance. Use the Labour Planner to see the real number.</div>
-            <div class="activity-time">Finance Insight</div>
-          </div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-dot" style="background:var(--blue)"></div>
-          <div>
-            <div class="activity-text"><strong>Menu Engineering:</strong> The average restaurant menu has 3–4 "Dogs" costing the kitchen time and money. Run the Menu Matrix monthly. Kill one Dog per quarter.</div>
-            <div class="activity-time">Menu Insight</div>
-          </div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-dot" style="background:var(--purple)"></div>
-          <div>
-            <div class="activity-text"><strong>Cash Survival:</strong> The 6-Month Rule — you need cash to cover 6 months of fixed costs before revenue stabilises. Most restaurants fail in months 2–4, not because the food is bad, but because they ran out of cash.</div>
-            <div class="activity-time">Cash Flow Insight</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="ct-icon">🎯</span> Your Setup Progress</div>
-        <div style="font-size:0.82rem;color:var(--muted);margin-bottom:16px">Complete these steps to get the most from KitchenFounder OS</div>
-
-        <div style="margin-bottom:14px">
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
-            <span>Operations Setup</span><span style="color:var(--green);font-weight:700">60%</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--green)"></div></div>
-        </div>
-        <div style="margin-bottom:14px">
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
-            <span>Finance Modelled</span><span style="color:var(--amber);font-weight:700">40%</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:40%;background:var(--amber)"></div></div>
-        </div>
-        <div style="margin-bottom:14px">
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
-            <span>Menu Optimised</span><span style="color:var(--red);font-weight:700">0%</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--red)"></div></div>
-        </div>
-        <div style="margin-bottom:14px">
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
-            <span>HACCP Compliance</span><span style="color:var(--red);font-weight:700">0%</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--red)"></div></div>
-        </div>
-
-        <div style="margin-top:16px;padding:12px;background:var(--surface2);border-radius:8px;font-size:0.8rem">
-          <div style="font-weight:700;color:var(--accent);margin-bottom:6px">Next recommended action:</div>
-          <div style="color:var(--muted)">Run the <strong style="color:var(--text)">Cash Flow Forecast</strong> to model your first 12 months before opening or planning next season.</div>
-          <button class="btn btn-accent" style="margin-top:10px;font-size:0.75rem;padding:6px 14px" onclick="openTool('cash-flow-forecast.html','💵 Cash Flow Forecast')">Open Cash Flow Forecast →</button>
-        </div>
-      </div>
-    </div>
-
+  <div class="metrics-row">
+    <div class="m-card mg"><div class="m-lbl">Tools</div><div class="m-val">21</div><div class="m-hint">all free</div></div>
+    <div class="m-card ma"><div class="m-lbl">Plan</div><div class="m-val" style="font-size:0.95rem;padding-top:5px">Free</div><div class="m-hint">up to 12 staff</div></div>
+    <div class="m-card mb"><div class="m-lbl">Guides</div><div class="m-val">29</div><div class="m-hint">cuisines</div></div>
+    <div class="m-card mp"><div class="m-lbl">Value</div><div class="m-val" style="font-size:0.95rem;padding-top:5px">$29.99</div><div class="m-hint">full toolkit</div></div>
   </div>
 
-  <!-- ALL TOOLS PANEL -->
-  <div id="panel-tools" class="panel">
-    <div style="margin-bottom:20px">
-      <div style="font-size:1.1rem;font-weight:800;margin-bottom:4px">All Tools</div>
-      <div style="font-size:0.82rem;color:var(--muted)">11 professional tools included · Click any card to open</div>
-    </div>
-
-    <div style="font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">⚙️ Operations</div>
-    <div class="tool-grid" style="margin-bottom:24px">
-      <div class="tool-card c-amber" onclick="openTool('daily-prep-sheet.html','📋 Daily Prep Sheet')">
-        <div class="tool-icon">📋</div>
-        <div class="tool-name">Daily Prep Sheet Generator</div>
-        <div class="tool-desc">Auto-scales prep quantities to expected covers. Live completion tracker. Print-ready.</div>
-        <span class="tool-tag">Operations</span>
-      </div>
-      <div class="tool-card c-green" onclick="openTool('waste-tracker.html','🗑️ Waste Tracker')">
-        <div class="tool-icon">🗑️</div>
-        <div class="tool-name">Waste Tracker</div>
-        <div class="tool-desc">Log waste by item and reason. See cost impact instantly. Annualised projection.</div>
-        <span class="tool-tag">Operations</span>
-      </div>
-      <div class="tool-card c-blue" onclick="openTool('temp-log.html','🌡️ Temperature Log')">
-        <div class="tool-icon">🌡️</div>
-        <div class="tool-name">Temperature Log (HACCP)</div>
-        <div class="tool-desc">HACCP-compliant digital temp logging. Pass/Fail alerts. Print for health inspector.</div>
-        <span class="tool-tag">Compliance</span>
-      </div>
-      <div class="tool-card c-purple" onclick="openTool('shift-handover.html','🔄 Shift Handover')">
-        <div class="tool-icon">🔄</div>
-        <div class="tool-name">Shift Handover Report</div>
-        <div class="tool-desc">What happened, what's left, priority flags. Sign-off sheet. Print and pass on.</div>
-        <span class="tool-tag">Operations</span>
+  <div class="card">
+    <div class="card-hdr">💚 Kitchen Health Score</div>
+    <div class="health-wrap">
+      <div class="score-circle"><div class="score-num">72</div><div class="score-lbl">score</div></div>
+      <div class="health-list">
+        <div class="h-row"><span>✅ Opening checklist</span><span style="color:var(--green);font-weight:700;font-size:0.7rem">Done</span></div>
+        <div class="h-row"><span>✅ Food cost tracked</span><span style="color:var(--green);font-weight:700;font-size:0.7rem">Done</span></div>
+        <div class="h-row"><span>⚠️ Cash flow</span><span style="color:var(--amber);font-weight:700;font-size:0.7rem">Set up</span></div>
+        <div class="h-row"><span>⚠️ Labour modelled</span><span style="color:var(--amber);font-weight:700;font-size:0.7rem">Set up</span></div>
+        <div class="h-row"><span>❌ Temp log active</span><span style="color:var(--red);font-weight:700;font-size:0.7rem">To do</span></div>
       </div>
     </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:72%;background:var(--amber)"></div></div>
+    <div style="font-size:0.68rem;color:var(--muted);margin-top:5px">Complete setup to reach 100</div>
+  </div>
 
-    <div style="font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">💰 Finance</div>
-    <div class="tool-grid" style="margin-bottom:24px">
-      <div class="tool-card c-amber" onclick="openTool('cash-flow-forecast.html','💵 Cash Flow Forecast')">
-        <div class="tool-icon">💵</div>
-        <div class="tool-name">Cash Flow Forecast</div>
-        <div class="tool-desc">12-month projection. Runway analysis. Bear/Base/Bull scenarios. The #1 survival tool.</div>
-        <span class="tool-tag">Finance</span>
-      </div>
-      <div class="tool-card c-green" onclick="openTool('break-even-calculator-v2.html','🔢 Break-Even Calculator')">
-        <div class="tool-icon">🔢</div>
-        <div class="tool-name">Break-Even Calculator v2</div>
-        <div class="tool-desc">How many covers to break even? Daily, weekly, monthly targets. Full P&L engine.</div>
-        <span class="tool-tag">Finance</span>
-      </div>
-      <div class="tool-card c-blue" onclick="openTool('food-cost-calculator-app.html','🧮 Food Cost Calculator')">
-        <div class="tool-icon">🧮</div>
-        <div class="tool-name">Food Cost Calculator</div>
-        <div class="tool-desc">Recipe costing, portion cost, food cost %, menu price suggester. Per ingredient breakdown.</div>
-        <span class="tool-tag">Finance</span>
-      </div>
-      <div class="tool-card c-purple" onclick="openTool('labour-planner.html','👥 Labour Planner')">
-        <div class="tool-icon">👥</div>
-        <div class="tool-name">Labour Planner & Roster</div>
-        <div class="tool-desc">True labour cost with FICA + on-costs. Weekly roster builder. Labour % vs revenue alert.</div>
-        <span class="tool-tag">Finance · HR</span>
-      </div>
-    </div>
-
-    <div style="font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">🍽️ Menu</div>
-    <div class="tool-grid" style="margin-bottom:24px">
-      <div class="tool-card c-amber" onclick="openTool('menu-engineering-matrix.html','📊 Menu Engineering Matrix')">
-        <div class="tool-icon">📊</div>
-        <div class="tool-name">Menu Engineering Matrix</div>
-        <div class="tool-desc">Stars, Plowhorses, Puzzles, Dogs. Scatter plot. Action recommendations per item.</div>
-        <span class="tool-tag">Menu</span>
-      </div>
-      <div class="tool-card c-green" onclick="openTool('restaurant-opening-checklist.html','✅ Opening Checklist')">
-        <div class="tool-icon">✅</div>
-        <div class="tool-name">Restaurant Opening Checklist</div>
-        <div class="tool-desc">300+ item checklist. Grouped by category. Track progress to opening day.</div>
-        <span class="tool-tag">Setup</span>
-      </div>
-    </div>
-
-    <div style="font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">🔒 Coming Soon — Pro Features</div>
-    <div class="tool-grid">
-      <div class="tool-card c-amber locked" style="opacity:0.5;cursor:default">
-        <div class="tool-icon">🧠</div>
-        <div class="tool-name">ChefBrain AI Co-Pilot</div>
-        <div class="tool-desc">Ask your AI: "How did last week go?" Natural language operations briefing.</div>
-        <span class="tool-tag">Pro</span>
-        <div class="locked-overlay">
-          <div class="lock-icon">🔒</div>
-          <div class="lock-text">Pro Feature</div>
-          <div class="lock-sub">Coming Q3 2026</div>
-        </div>
-      </div>
-      <div class="tool-card c-blue locked" style="opacity:0.5;cursor:default">
-        <div class="tool-icon">📈</div>
-        <div class="tool-name">Live P&L Dashboard</div>
-        <div class="tool-desc">Real-time revenue vs COGS vs labour. Live net profit every service.</div>
-        <span class="tool-tag">Pro</span>
-        <div class="locked-overlay">
-          <div class="lock-icon">🔒</div>
-          <div class="lock-text">Pro Feature</div>
-          <div class="lock-sub">Coming Q3 2026</div>
-        </div>
-      </div>
-      <div class="tool-card c-purple locked" style="opacity:0.5;cursor:default">
-        <div class="tool-icon">📸</div>
-        <div class="tool-name">SupplySnap</div>
-        <div class="tool-desc">Photo your supplier price board. AI reads prices. One-tap update.</div>
-        <span class="tool-tag">Pro</span>
-        <div class="locked-overlay">
-          <div class="lock-icon">🔒</div>
-          <div class="lock-text">Pro Feature</div>
-          <div class="lock-sub">Coming Q4 2026</div>
-        </div>
-      </div>
-      <div class="tool-card c-green locked" style="opacity:0.5;cursor:default">
-        <div class="tool-icon">🍽️</div>
-        <div class="tool-name">TableFlow Booking</div>
-        <div class="tool-desc">TikTok + Instagram native restaurant booking. Feeds into roster automatically.</div>
-        <span class="tool-tag">Pro</span>
-        <div class="locked-overlay">
-          <div class="lock-icon">🔒</div>
-          <div class="lock-text">Pro Feature</div>
-          <div class="lock-sub">Coming 2027</div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-hdr">⚡ Quick Launch</div>
+    <div class="qa-grid">
+      <button class="qa-btn" onclick="openTool('daily-prep-sheet.html','📋 Daily Prep Sheet')"><div class="qa-icon">📋</div><div class="qa-lbl">Today's Prep Sheet</div></button>
+      <button class="qa-btn" onclick="openTool('shift-handover.html','🔄 Shift Handover')"><div class="qa-icon">🔄</div><div class="qa-lbl">Shift Handover</div></button>
+      <button class="qa-btn" onclick="openTool('temp-log.html','🌡️ Temp Log')"><div class="qa-icon">🌡️</div><div class="qa-lbl">Log Temperature</div></button>
+      <button class="qa-btn" onclick="openTool('waste-tracker.html','🗑️ Waste Tracker')"><div class="qa-icon">🗑️</div><div class="qa-lbl">Log Waste</div></button>
+      <button class="qa-btn" onclick="openTool('roster-builder.html','👥 Roster Builder')><div class="qa-icon">👥</div><div class="qa-lbl">Build Roster</div></button>
+      <button class="qa-btn" onclick="openTool('food-cost-calculator-app.html','🧮 Food Cost')"><div class="qa-icon">🧮</div><div class="qa-lbl">Food Cost Calc</div></button>
     </div>
   </div>
 
-  <!-- UPGRADE PANEL -->
-  <div id="panel-upgrade" class="panel">
-    <div style="max-width:680px;margin:0 auto;text-align:center;padding:40px 0">
-      <div style="font-size:2.5rem;margin-bottom:16px">⬆️</div>
-      <div style="font-size:1.6rem;font-weight:900;margin-bottom:12px">Upgrade to <span style="color:var(--accent)">KitchenFounder Pro</span></div>
-      <div style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin-bottom:32px">Unlock the full power of HospitalityOS — AI co-pilot, live P&L, SupplySnap supply chain intelligence, and social-native booking integration.</div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;margin-bottom:32px">
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px">
-          <div style="font-size:0.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Free Forever</div>
-          <div style="font-size:2rem;font-weight:900;margin-bottom:4px">$0</div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-bottom:16px">All 11 tools included</div>
-          <ul style="font-size:0.8rem;color:var(--muted);list-style:none">
-            <li style="padding:4px 0">✅ All 11 operational tools</li>
-            <li style="padding:4px 0">✅ Up to 10 staff (Labour Planner)</li>
-            <li style="padding:4px 0">✅ Unlimited print reports</li>
-            <li style="padding:4px 0">✅ All 29 cuisine guides</li>
-            <li style="padding:4px 0">✅ Cash flow + break-even</li>
-          </ul>
-        </div>
-        <div style="background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:24px;position:relative">
-          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#1a1400;font-size:0.68rem;font-weight:800;padding:2px 12px;border-radius:10px">COMING SOON</div>
-          <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Pro</div>
-          <div style="font-size:2rem;font-weight:900;color:var(--accent);margin-bottom:4px">$29.99<span style="font-size:1rem;font-weight:500;color:var(--muted)">/mo</span></div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-bottom:16px">Full HospitalityOS suite</div>
-          <ul style="font-size:0.8rem;list-style:none">
-            <li style="padding:4px 0">✅ Everything in Free</li>
-            <li style="padding:4px 0">✅ Unlimited staff roster</li>
-            <li style="padding:4px 0">✅ 🧠 ChefBrain AI co-pilot</li>
-            <li style="padding:4px 0">✅ 📈 Live P&L dashboard</li>
-            <li style="padding:4px 0">✅ 📸 SupplySnap camera AI</li>
-            <li style="padding:4px 0">✅ 🍽️ TableFlow booking</li>
-            <li style="padding:4px 0">✅ Multi-venue support</li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:24px">
-        <div style="font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:8px">🔔 Get notified when Pro launches</div>
-        <div style="display:flex;gap:10px;max-width:400px;margin:0 auto">
-          <input type="email" placeholder="your@email.com" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);color:var(--text);font-size:0.85rem">
-          <button class="btn btn-accent" onclick="alert('Thanks! We\'ll notify you when Pro launches.')">Notify Me</button>
-        </div>
-      </div>
-
-      <div style="font-size:0.78rem;color:var(--muted)">Built by a working Head Chef · 10+ years F&B operations · Novotel Sydney Olympic Park</div>
-    </div>
+  <div class="card">
+    <div class="card-hdr">💡 Operator Insights</div>
+    <div class="insight ig"><div class="insight-title">Food Cost Rule</div><div class="insight-body">Food cost over 32% two weeks running? It's a system problem, not bad luck. Check your top 5 items in the Food Cost Calculator.</div></div>
+    <div class="insight ia"><div class="insight-title">Labour Truth</div><div class="insight-body">Base wages aren't your real cost. Add FICA, workers comp, and leave accrual — you're 18–25% higher. The Labour Planner shows the real number.</div></div>
+    <div class="insight ib"><div class="insight-title">Menu Engineering</div><div class="insight-body">The average restaurant menu has 3–4 Dogs costing kitchen time and money. Run the Menu Matrix monthly. Kill one Dog per quarter.</div></div>
   </div>
 
-</div><!-- end main -->
-</div><!-- end layout -->
+  <div id="pwa-install-card" class="card" style="display:none;border-color:rgba(200,169,126,0.4)">
+    <div class="card-hdr" style="color:var(--accent)">📲 Install as App</div>
+    <div style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;line-height:1.6">Add KitchenFounder OS to your home screen. Works offline. No App Store needed.</div>
+    <button onclick="triggerInstall()" style="background:var(--accent);color:#1a1400;border:none;border-radius:12px;padding:11px 20px;font-size:0.83rem;font-weight:700;cursor:pointer;width:100%;font-family:inherit">📲 Add to Home Screen</button>
+  </div>
+</div>
+<!-- TOOLS SCREEN -->
+<div id="scr-tools" class="screen">
+  <div class="sec-title">All 21 Tools</div>
+  <div class="sec-sub">Tap any tool to open it</div>
+
+  <div class="s-div">⚙️ Daily Operations</div>
+  <div class="card" style="padding:4px 16px">
+    <div class="tool-row" onclick="openTool('roster-builder.html','👥 Roster Builder')"><div class="tool-icon-wrap ti-green">👥</div><div class="tool-info"><div class="tool-name">Roster Builder + WhatsApp Export</div><div class="tool-desc">Build weekly roster → one tap sends to staff WhatsApp group.</div><span class="tool-tag-sm tt-ops">Operations · NEW</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('daily-prep-sheet.html','📋 Daily Prep Sheet')"><div class="tool-icon-wrap ti-amber">📋</div><div class="tool-info"><div class="tool-name">Daily Prep Sheet Generator</div><div class="tool-desc">Auto-scales to your covers. Print-ready.</div><span class="tool-tag-sm tt-ops">Operations</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('waste-tracker.html','🗑️ Waste Tracker')"><div class="tool-icon-wrap ti-green">🗑️</div><div class="tool-info"><div class="tool-name">Waste Tracker</div><div class="tool-desc">Log waste by item. See cost impact instantly.</div><span class="tool-tag-sm tt-ops">Operations</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('temp-log.html','🌡️ Temperature Log')"><div class="tool-icon-wrap ti-blue">🌡️</div><div class="tool-info"><div class="tool-name">Temperature Log (HACCP)</div><div class="tool-desc">HACCP-compliant. Pass/Fail alerts.</div><span class="tool-tag-sm tt-ops">Compliance</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('shift-handover.html','🔄 Shift Handover')"><div class="tool-icon-wrap ti-purple">🔄</div><div class="tool-info"><div class="tool-name">Shift Handover Report</div><div class="tool-desc">What happened, what's left, priority flags.</div><span class="tool-tag-sm tt-ops">Operations</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('health-inspection-prep.html','🧼 Health Inspection')"><div class="tool-icon-wrap ti-red">🧼</div><div class="tool-info"><div class="tool-name">Health Inspection Prep</div><div class="tool-desc">Checklist + mock inspection + violations guide.</div><span class="tool-tag-sm tt-ops">Compliance</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('nut-allergen-training.html','🥜 Allergen Training')"><div class="tool-icon-wrap ti-amber">🥜</div><div class="tool-info"><div class="tool-name">Allergen Training Module</div><div class="tool-desc">Nut allergen staff training with pass/fail quiz.</div><span class="tool-tag-sm tt-ops">Compliance</span></div><div class="tool-arrow">›</div></div>
+  </div>
+
+  <div class="s-div">💰 Finance & Planning</div>
+  <div class="card" style="padding:4px 16px">
+    <div class="tool-row" onclick="openTool('food-cost-calculator-app.html','🧮 Food Cost Calculator')"><div class="tool-icon-wrap ti-amber">🧮</div><div class="tool-info"><div class="tool-name">Food Cost Calculator</div><div class="tool-desc">Recipe costing, portion cost, menu price suggester.</div><span class="tool-tag-sm tt-fin">Finance</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('break-even-calculator-v2.html','🔢 Break-Even Calculator')"><div class="tool-icon-wrap ti-green">🔢</div><div class="tool-info"><div class="tool-name">Break-Even Calculator v2</div><div class="tool-desc">Covers needed to break even. Full P&L engine.</div><span class="tool-tag-sm tt-fin">Finance</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('cash-flow-forecast.html','💵 Cash Flow Forecast')"><div class="tool-icon-wrap ti-blue">💵</div><div class="tool-info"><div class="tool-name">Cash Flow Forecast</div><div class="tool-desc">12-month projection. Bear/Base/Bull scenarios.</div><span class="tool-tag-sm tt-fin">Finance</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('labour-planner.html','👥 Labour Planner')"><div class="tool-icon-wrap ti-purple">👥</div><div class="tool-info"><div class="tool-name">Labour Planner & Roster</div><div class="tool-desc">True on-costs. Weekly roster builder. % vs revenue.</div><span class="tool-tag-sm tt-fin">Finance · HR</span></div><div class="tool-arrow">›</div></div>
+  </div>
+
+  <div class="s-div">🍽️ Menu</div>
+  <div class="card" style="padding:4px 16px">
+    <div class="tool-row" onclick="openTool('menu-engineering-matrix.html','📊 Menu Engineering')"><div class="tool-icon-wrap ti-amber">📊</div><div class="tool-info"><div class="tool-name">Menu Engineering Matrix</div><div class="tool-desc">Stars, Plowhorses, Puzzles, Dogs. Action items.</div><span class="tool-tag-sm tt-menu">Menu</span></div><div class="tool-arrow">›</div></div>
+  </div>
+
+  <div class="s-div">🚀 Launch Toolkit</div>
+  <div class="card" style="padding:4px 16px">
+    <div class="tool-row" onclick="openTool('restaurant-opening-checklist.html','✅ Opening Checklist')"><div class="tool-icon-wrap ti-green">✅</div><div class="tool-info"><div class="tool-name">Restaurant Opening Checklist</div><div class="tool-desc">300+ items. Track progress to opening day.</div><span class="tool-tag-sm tt-launch">Launch</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('preopening-timeline.html','📅 Pre-Opening Timeline')"><div class="tool-icon-wrap ti-blue">📅</div><div class="tool-info"><div class="tool-name">90-Day Pre-Opening Timeline</div><div class="tool-desc">Day-by-day plan from lease sign to opening night.</div><span class="tool-tag-sm tt-launch">Launch</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('lease-negotiation.html','🏢 Lease Negotiation')"><div class="tool-icon-wrap ti-purple">🏢</div><div class="tool-info"><div class="tool-name">Lease Negotiation Cheat Sheet</div><div class="tool-desc">Clauses to fight for. Red flags. Sample scripts.</div><span class="tool-tag-sm tt-launch">Launch</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('supplier-negotiation.html','🤝 Supplier Negotiation')"><div class="tool-icon-wrap ti-amber">🤝</div><div class="tool-info"><div class="tool-name">Supplier Negotiation Scripts</div><div class="tool-desc">Proven scripts + scorecard for first meeting.</div><span class="tool-tag-sm tt-launch">Launch</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('opening-week-runsheet.html','🗓️ Opening Week Run Sheet')"><div class="tool-icon-wrap ti-green">🗓️</div><div class="tool-info"><div class="tool-name">Opening Week Run Sheet</div><div class="tool-desc">Hour-by-hour plan for your first 7 days.</div><span class="tool-tag-sm tt-launch">Launch</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('staff-onboarding.html','🎓 Staff Onboarding')"><div class="tool-icon-wrap ti-blue">🎓</div><div class="tool-info"><div class="tool-name">Staff Onboarding Pack</div><div class="tool-desc">Day 1–90 onboarding flow. Sign-off sheets.</div><span class="tool-tag-sm tt-launch">HR</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('liquor-license-guide.html','🍺 Liquor License Roadmap')"><div class="tool-icon-wrap ti-red">🍺</div><div class="tool-info"><div class="tool-name">Liquor License Roadmap</div><div class="tool-desc">8 US states. Timeline + cost + requirements.</div><span class="tool-tag-sm tt-launch">Legal</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('investor-pitch.html','💰 Investor Pitch')"><div class="tool-icon-wrap ti-purple">💰</div><div class="tool-info"><div class="tool-name">Investor Pitch Template</div><div class="tool-desc">Deck structure + financial asks. Ready to adapt.</div><span class="tool-tag-sm tt-launch">Finance</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('competitor-analysis.html','🔍 Competitor Analysis')"><div class="tool-icon-wrap ti-amber">🔍</div><div class="tool-info"><div class="tool-name">Competitor Analysis Framework</div><div class="tool-desc">Score 5 competitors. Find your white space.</div><span class="tool-tag-sm tt-launch">Strategy</span></div><div class="tool-arrow">›</div></div>
+    <div class="tool-row" onclick="openTool('social-media-launch.html','📱 Social Media Launch')"><div class="tool-icon-wrap ti-blue">📱</div><div class="tool-info"><div class="tool-name">Social Media Launch Playbook</div><div class="tool-desc">30-day calendar. 15 captions. Hashtag strategy.</div><span class="tool-tag-sm tt-launch">Marketing</span></div><div class="tool-arrow">›</div></div>
+  </div>
+
+  <div class="s-div">🔒 Coming Soon — Pro</div>
+  <div class="card" style="padding:4px 16px;opacity:0.55">
+    <div class="tool-row"><div class="tool-icon-wrap ti-amber">🧠</div><div class="tool-info"><div class="tool-name">ChefBrain AI Co-Pilot</div><div class="tool-desc">Natural language operations briefing.</div><span class="tool-tag-sm tt-pro">Pro · Q3 2026</span></div><div class="tool-arrow" style="color:var(--accent)">🔒</div></div>
+    <div class="tool-row"><div class="tool-icon-wrap ti-green">📈</div><div class="tool-info"><div class="tool-name">Live P&L Dashboard</div><div class="tool-desc">Real-time revenue vs COGS vs labour.</div><span class="tool-tag-sm tt-pro">Pro · Q3 2026</span></div><div class="tool-arrow" style="color:var(--accent)">🔒</div></div>
+    <div class="tool-row"><div class="tool-icon-wrap ti-purple">📸</div><div class="tool-info"><div class="tool-name">SupplySnap</div><div class="tool-desc">Photo supplier price board. AI reads prices.</div><span class="tool-tag-sm tt-pro">Pro · Q4 2026</span></div><div class="tool-arrow" style="color:var(--accent)">🔒</div></div>
+    <div class="tool-row"><div class="tool-icon-wrap ti-blue">🍽️</div><div class="tool-info"><div class="tool-name">TableFlow Booking</div><div class="tool-desc">TikTok + Instagram native restaurant booking.</div><span class="tool-tag-sm tt-pro">Pro · 2027</span></div><div class="tool-arrow" style="color:var(--accent)">🔒</div></div>
+  </div>
+</div>
+<!-- GUIDES SCREEN -->
+<div id="scr-guides" class="screen">
+  <div class="sec-title">Your Guides</div>
+  <div class="sec-sub">29 cuisines in your library</div>
+  <div class="card" style="padding:4px 16px"><div id="guides-list"></div></div>
+</div>
+
+<!-- UPGRADE SCREEN -->
+<div id="scr-upgrade" class="screen">
+  <div class="sec-title">Upgrade to Pro</div>
+  <div class="sec-sub">Unlock the full KitchenFounder OS</div>
+  <div class="plan-card">
+    <div style="font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Free Forever</div>
+    <div class="plan-price">$0</div>
+    <div style="font-size:0.72rem;color:var(--muted);margin-bottom:12px">21 tools · Under 12 staff</div>
+    <ul class="plan-feat"><li>✅ All 21 operational tools</li><li>✅ Up to 12 staff</li><li>✅ Unlimited print reports</li><li>✅ All 29 cuisine guides</li><li>✅ Full launch toolkit</li></ul>
+  </div>
+  <div class="plan-card featured">
+    <div class="plan-badge-tag">COMING Q3 2026</div>
+    <div style="font-size:0.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;margin-top:8px">Pro</div>
+    <div class="plan-price" style="color:var(--accent)">$29.99<span>/mo</span></div>
+    <div style="font-size:0.72rem;color:var(--muted);margin-bottom:12px">Unlimited staff · Desktop included</div>
+    <ul class="plan-feat"><li>✅ Everything in Free</li><li>✅ <strong style="color:var(--text)">Unlimited staff</strong></li><li>✅ <strong style="color:var(--text)">Desktop version</strong></li><li>✅ 🧠 ChefBrain AI Co-Pilot</li><li>✅ 📈 Live P&L Dashboard</li><li>✅ 📸 SupplySnap camera AI</li><li>✅ 🍽️ TableFlow booking</li><li>✅ Multi-venue support</li></ul>
+  </div>
+  <div class="card">
+    <div class="card-hdr">🔔 Get early access</div>
+    <div style="font-size:0.78rem;color:var(--muted);margin-bottom:8px">Be first. Early access pricing for waitlist members.</div>
+    <div class="notify-form">
+      <input class="notify-input" type="email" placeholder="your@email.com" id="notify-email">
+      <button class="notify-btn" onclick="notifyMe()">Notify Me</button>
+    </div>
+    <div id="notify-confirm" style="display:none;font-size:0.75rem;color:var(--green);margin-top:8px;font-weight:600">✅ You're on the list!</div>
+  </div>
+  <div style="text-align:center;padding:12px 0 24px;font-size:0.72rem;color:var(--muted)">Built by a working Head Chef · 10+ years F&B<br>Novotel Sydney Olympic Park · @kitchenfounder</div>
+</div>
+
+<!-- PROFILE SCREEN -->
+<div id="scr-profile" class="screen">
+  <div class="sec-title">Profile</div>
+  <div class="sec-sub">Your KitchenFounder account</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+      <div class="profile-avatar-big">M</div>
+      <div><div style="font-size:1rem;font-weight:700">My Restaurant</div><div style="font-size:0.75rem;color:var(--muted)">Free Plan · 21 tools active</div><div style="font-size:0.65rem;color:var(--green);font-weight:600;margin-top:2px">● Active</div></div>
+    </div>
+    <div style="background:var(--surf2);border-radius:10px;padding:12px;font-size:0.78rem;line-height:2;color:var(--muted)">
+      <div>📦 <strong style="color:var(--text)">Bundle:</strong> $29.99 guide + 21 tools</div>
+      <div>🔑 <strong style="color:var(--text)">Plan:</strong> Free (up to 12 staff)</div>
+      <div>📅 <strong style="color:var(--text)">Member since:</strong> 2026</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-hdr">📊 Setup Progress</div>
+    <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:0.76rem;margin-bottom:4px"><span>Kitchen health score</span><span style="color:var(--amber)">72/100</span></div><div class="prog-bar"><div class="prog-fill" style="width:72%;background:var(--amber)"></div></div></div>
+    <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:0.76rem;margin-bottom:4px"><span>Operations setup</span><span style="color:var(--green)">60%</span></div><div class="prog-bar"><div class="prog-fill" style="width:60%;background:var(--green)"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-size:0.76rem;margin-bottom:4px"><span>Finance modelled</span><span style="color:var(--blue)">40%</span></div><div class="prog-bar"><div class="prog-fill" style="width:40%;background:var(--blue)"></div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-hdr">🔗 KitchenFounder</div>
+    <a href="https://kitchen-founder.myshopify.com" target="_blank" class="link-row">🛒 Shopify Store <span style="margin-left:auto;color:var(--muted)">›</span></a>
+    <a href="https://www.instagram.com/kitchenfounder" target="_blank" class="link-row">📸 @kitchenfounder <span style="margin-left:auto;color:var(--muted)">›</span></a>
+    <a href="https://www.tiktok.com/@kitchenfounder" target="_blank" class="link-row">🎵 TikTok @kitchenfounder <span style="margin-left:auto;color:var(--muted)">›</span></a>
+  </div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:6px">Ready for more?</div>
+    <div style="font-size:0.75rem;color:var(--muted);margin-bottom:12px">Upgrade to Pro when it launches — unlimited staff, desktop version, AI features.</div>
+    <button onclick="showScr('scr-upgrade')" style="background:var(--accent);color:#1a1400;border:none;border-radius:12px;padding:12px;font-size:0.83rem;font-weight:700;cursor:pointer;width:100%;font-family:inherit">⬆️ Upgrade to Pro</button>
+  </div>
+</div>
+
+</div><!-- end screens -->
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button class="nav-btn on" id="nb-home" onclick="showScr('scr-home',this)"><div class="nb-icon">🏠</div>Home</button>
+  <button class="nav-btn" id="nb-tools" onclick="showScr('scr-tools',this)"><div class="nb-icon">🧰</div>Tools</button>
+  <button class="nav-btn" id="nb-guides" onclick="showScr('scr-guides',this)"><div class="nb-icon">📖</div>Guides</button>
+  <button class="nav-btn" id="nb-upgrade" onclick="showScr('scr-upgrade',this)"><div class="nb-icon">⬆️</div>Upgrade</button>
+  <button class="nav-btn" id="nb-profile" onclick="showScr('scr-profile',this)"><div class="nb-icon">👤</div>Profile</button>
+</div>
 
 <!-- TOOL MODAL -->
 <div class="tool-modal" id="tool-modal">
-  <div class="modal-topbar">
-    <div class="modal-title" id="modal-title">Tool</div>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost" onclick="window.open(currentToolUrl,'_blank')">↗ Open Full Screen</button>
-      <button class="modal-close" onclick="closeTool()">✕ Close</button>
+  <div class="tool-topbar">
+    <div class="tool-title-text" id="tool-modal-title">Tool</div>
+    <div style="display:flex;gap:6px">
+      <button class="tool-fullscreen-btn" onclick="openFullscreen()">↗ Full</button>
+      <button class="tool-close-btn" onclick="closeTool()">✕ Close</button>
     </div>
   </div>
-  <iframe class="modal-iframe" id="modal-iframe" src="about:blank"></iframe>
+  <iframe class="tool-iframe" id="tool-iframe" src="about:blank"></iframe>
 </div>
-
 <script>
-let currentToolUrl = '';
+// ── GUIDES DATA ──
+var guides=[
+  ['Brazilian Churrasco','brazilian-churrasco','🔥'],['Thai Street Food','thai-street-food','🌶️'],
+  ['Japanese Izakaya','japanese-izakaya','🍶'],['Korean BBQ','korean-bbq','🥩'],
+  ['Korean Fried Chicken','korean-fried-chicken','🍗'],['New Orleans Creole','new-orleans-creole','🦞'],
+  ['Dim Sum Teahouse','dim-sum-teahouse','🥟'],['Mexican Taqueria','mexican-taqueria','🌮'],
+  ['Spanish Tapas Bar','spanish-tapas-bar','🥘'],['Sri Lankan Hoppers','sri-lankan-hoppers','🍛'],
+  ['Bombay Café','bombay-cafe','☕'],['Vietnamese Phở','vietnamese-pho','🍜'],
+  ['Lebanese Mezze','lebanese-mezze','🧆'],['Peruvian Cevicheria','peruvian-cevicheria','🐟'],
+  ['Jamaican Jerk Kitchen','jamaican-jerk','🌿'],['Taiwanese Beef Noodle','taiwanese-beef-noodle','🥣'],
+  ['Ethiopian Injera House','ethiopian-injera','🧇'],['Filipino Kamayan','filipino-kamayan','🍌'],
+  ['Yemeni Mandi Table','yemeni-mandi','🍖'],['Singaporean Hawker Centre','singaporean-hawker','🍜'],
+  ['Turkish Meze Bar','turkish-meze','🫙'],['Ghanaian Chop Bar','ghana-chop-bar','🥗'],
+  ['Argentine Asado','argentine-asado','🔥'],['Moroccan Tagine Kitchen','moroccan-tagine','🫕'],
+  ['Greek Taverna','greek-taverna','🧀'],['Hawaiian Poke Bar','hawaiian-poke-bar','🌺'],
+  ['Hong Kong Cha Chaan Teng','hk-cha-chaan-teng','🫖'],['Oaxacan Mole Kitchen','oaxacan-mole','🌿'],
+  ['Caribbean Roti Shop','caribbean-roti','🫓']
+];
 
-function showPanel(name) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-' + name)?.classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-  const titles = {
-    dashboard: ['Dashboard', 'Welcome back — here\'s your operation at a glance'],
-    tools: ['All Tools', '11 professional tools · Click any card to open'],
-    upgrade: ['Upgrade to Pro', 'Unlock AI features and live operations intelligence']
-  };
-  if (titles[name]) {
-    document.getElementById('topbar-title').textContent = titles[name][0];
-    document.getElementById('topbar-sub').textContent = titles[name][1];
+function buildGuides(){
+  var el=document.getElementById('guides-list');
+  if(!el) return;
+  el.innerHTML=guides.map(function(g){
+    return '<div class="tool-row" onclick="openGuide(\''+g[1]+'\',\''+g[0]+'\')">' +
+      '<div class="tool-icon-wrap ti-amber" style="font-size:1.1rem">'+g[2]+'</div>' +
+      '<div class="tool-info"><div class="tool-name">'+g[0]+'</div>' +
+      '<div class="tool-desc">28 recipes · Service training · Kitchen design · P&L model</div></div>' +
+      '<div class="tool-arrow">›</div></div>';
+  }).join('');
+}
+
+// ── NAVIGATION ──
+var screens=['scr-home','scr-tools','scr-guides','scr-upgrade','scr-profile'];
+var navBtns=['nb-home','nb-tools','nb-guides','nb-upgrade','nb-profile'];
+function showScr(id){
+  screens.forEach(function(s){var el=document.getElementById(s);if(el)el.classList.remove('on');});
+  navBtns.forEach(function(n){var el=document.getElementById(n);if(el)el.classList.remove('on');});
+  var el=document.getElementById(id);if(el)el.classList.add('on');
+  var idx=screens.indexOf(id);
+  if(idx>=0){var nb=document.getElementById(navBtns[idx]);if(nb)nb.classList.add('on');}
+  var sc=document.getElementById(id);if(sc)sc.scrollTop=0;
+}
+
+// ── TOOL MODAL ──
+var currentToolUrl='';
+function openTool(file,title){
+  currentToolUrl=file;
+  document.getElementById('tool-modal-title').textContent=title;
+  document.getElementById('tool-iframe').src=file;
+  document.getElementById('tool-modal').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function openGuide(file,title){
+  openTool('../restaurant-pdfs/v7/'+file+'.html',title+' Guide');
+}
+function closeTool(){
+  document.getElementById('tool-modal').classList.remove('on');
+  document.getElementById('tool-iframe').src='about:blank';
+  document.body.style.overflow='';
+  currentToolUrl='';
+}
+function openFullscreen(){if(currentToolUrl)window.open(currentToolUrl,'_blank');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTool();});
+
+// ── GREETING ──
+function setGreeting(){
+  var h=new Date().getHours();
+  var g=h<12?'Good morning':(h<17?'Good afternoon':'Good evening');
+  var el=document.getElementById('home-greeting');
+  if(el)el.textContent=g+' 👋';
+}
+
+// ── NOTIFY ──
+function notifyMe(){
+  var e=document.getElementById('notify-email').value;
+  if(e&&e.includes('@')){
+    document.getElementById('notify-confirm').style.display='block';
+    document.getElementById('notify-email').value='';
+  } else { alert('Please enter a valid email.'); }
+}
+
+// ── PWA INSTALL ──
+var deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('install-banner').style.display='block';
+  document.getElementById('pwa-install-card').style.display='block';
+});
+function triggerInstall(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(r){
+      deferredPrompt=null;
+      document.getElementById('install-banner').style.display='none';
+      document.getElementById('pwa-install-card').style.display='none';
+    });
+  } else {
+    // iOS — show instructions
+    document.getElementById('ios-install').classList.add('on');
   }
 }
-
-function openTool(filename, title) {
-  currentToolUrl = filename;
-  document.getElementById('modal-title').textContent = title;
-  document.getElementById('modal-iframe').src = filename;
-  document.getElementById('tool-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeTool() {
-  document.getElementById('tool-modal').classList.remove('open');
-  document.getElementById('modal-iframe').src = 'about:blank';
-  document.body.style.overflow = '';
-  currentToolUrl = '';
-}
-
-// Close modal on Escape
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTool(); });
-
-// Set date
-document.addEventListener('DOMContentLoaded', () => {
-  const now = new Date();
-  document.getElementById('topbar-date').textContent = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric', year:'numeric'});
+document.getElementById('install-btn').addEventListener('click',triggerInstall);
+window.addEventListener('appinstalled',function(){
+  document.getElementById('install-banner').style.display='none';
+  document.getElementById('pwa-install-card').style.display='none';
 });
+
+// ── OFFLINE INDICATOR ──
+function updateOnline(){
+  var chip=document.getElementById('offline-chip');
+  if(chip)chip.classList.toggle('show',!navigator.onLine);
+}
+window.addEventListener('online',updateOnline);
+window.addEventListener('offline',updateOnline);
+
+// ── SERVICE WORKER ──
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('SW registered');
+    }).catch(function(err){
+      console.log('SW failed:',err);
+    });
+  });
+}
+
+// ── SPLASH HIDE ──
+window.onload=function(){
+  setGreeting();
+  buildGuides();
+  updateOnline();
+  // Check if iOS and not standalone
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone=window.navigator.standalone===true;
+  if(isIOS&&!isStandalone&&!localStorage.getItem('ios-hint-shown')){
+    setTimeout(function(){
+      document.getElementById('pwa-install-card').style.display='block';
+    },3000);
+  }
+  setTimeout(function(){
+    var splash=document.getElementById('splash');
+    if(splash){splash.classList.add('hide');setTimeout(function(){splash.style.display='none';},500);}
+  },1800);
+};
 </script>
 </body>
 </html>

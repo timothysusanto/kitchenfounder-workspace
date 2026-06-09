@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder — Weekly Roster</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:14px}
+/* APP UI */
+.hdr{background:#1a2e3b;color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:1rem;font-weight:700}.hdr p{font-size:0.7rem;opacity:0.65;margin-top:1px}
+.badge{background:#C8A97E;color:#fff;padding:3px 12px;border-radius:20px;font-size:0.68rem;font-weight:700;white-space:nowrap}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #E8E4DC;padding:0 20px;overflow-x:auto}
+.tab{padding:11px 18px;border:none;background:none;color:#6B6B6B;font-size:0.83rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:inherit}
+.tab.on{color:#1a2e3b;border-bottom-color:#C8A97E;font-weight:700}
+.panel{padding:20px;display:none}.panel.on{display:block}
+.card{background:#fff;border:1px solid #E8E4DC;border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.ct{font-size:0.88rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.f{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}
+.f label{font-size:0.68rem;font-weight:600;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em}
+.f input,.f select{padding:8px 10px;border:1px solid #E8E4DC;border-radius:6px;font-size:0.85rem;font-family:inherit;background:#FAFAF8}
+.f input:focus,.f select:focus{outline:none;border-color:#C8A97E}
+.btn{padding:8px 16px;border:none;border-radius:7px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bp{background:#1a2e3b;color:#fff}.ba{background:#2a9d8f;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}.br{background:#e76f51;color:#fff}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+/* STAFF TABLE */
+.staff-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:12px}
+.staff-table th{background:#1a2e3b;color:#fff;padding:9px 10px;text-align:left;font-size:0.72rem;font-weight:700;letter-spacing:0.04em}
+.staff-table td{padding:8px 10px;border-bottom:1px solid #f0ece4;vertical-align:middle}
+.staff-table tr:hover td{background:#fdfbf8}
+.staff-table input{border:1px solid #E8E4DC;border-radius:5px;padding:5px 7px;font-size:0.8rem;font-family:inherit;width:100%;background:#FAFAF8}
+.staff-table input:focus{outline:none;border-color:#C8A97E}
+.staff-table select{border:1px solid #E8E4DC;border-radius:5px;padding:5px 7px;font-size:0.78rem;font-family:inherit;width:100%;background:#FAFAF8}
+.del-btn{background:none;border:none;cursor:pointer;color:#e76f51;font-size:1rem;padding:2px 6px}
+.pos-pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.68rem;font-weight:700}
+.pos-chef{background:#fef3c7;color:#92400e}
+.pos-foh{background:#dbeafe;color:#1e40af}
+.pos-bar{background:#f3e8ff;color:#6b21a8}
+.pos-host{background:#d1fae5;color:#065f46}
+.pos-mgr{background:#fee2e2;color:#991b1b}
+.pos-kp{background:#f1f5f9;color:#475569}
+/* SHIFT CELLS */
+.shift-cell{min-width:80px}
+.shift-input{width:100%;border:1px solid #E8E4DC;border-radius:4px;padding:4px 6px;font-size:0.72rem;text-align:center;font-family:inherit;background:#FAFAF8}
+.shift-input:focus{outline:none;border-color:#C8A97E}
+.shift-input.off{background:#fee2e2;color:#991b1b;border-color:#fca5a5}
+.shift-input.ros{background:#d1fae5;color:#065f46;border-color:#6ee7b7}
+/* METRICS ROW */
+.metric-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.ms-card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:12px;text-align:center}
+.ms-lbl{font-size:0.62rem;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.ms-val{font-size:1.1rem;font-weight:800;color:#1a2e3b}
+.ms-val.g{color:#2a9d8f}.ms-val.r{color:#e76f51}.ms-val.a{color:#f4a261}
+
+/* ═══════════════════════════════════════════
+   PRINT ROSTER — the shareable output
+═══════════════════════════════════════════ */
+#print-roster{display:none;background:#fff;font-family:-apple-system,system-ui,sans-serif}
+.pr-hdr{background:#1a2e3b;color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.pr-logo{font-size:1rem;font-weight:800;letter-spacing:-0.02em}
+.pr-week{font-size:0.85rem;font-weight:600;opacity:0.85}
+.pr-venue{font-size:0.75rem;opacity:0.6;margin-top:2px}
+.pr-notice{background:#C8A97E;color:#1a1400;text-align:center;padding:6px;font-size:0.75rem;font-weight:700;letter-spacing:0.04em}
+/* Day columns */
+.pr-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.pr-table th{background:#f0ece4;color:#1a2e3b;padding:8px 6px;font-size:0.68rem;font-weight:800;text-align:center;border:1px solid #E8E4DC;text-transform:uppercase;letter-spacing:0.05em}
+.pr-table th.name-col{text-align:left;min-width:110px;background:#1a2e3b;color:#fff}
+.pr-table td{padding:7px 6px;border:1px solid #E8E4DC;text-align:center;vertical-align:middle;font-size:0.75rem}
+.pr-table td.name-td{text-align:left;font-weight:600;background:#fdfbf8;padding-left:10px}
+.pr-table td.name-td .pos{font-size:0.62rem;font-weight:700;margin-top:1px}
+.shift-on{background:#d1fae5;color:#065f46;font-weight:700;border-radius:4px;padding:3px 5px;display:inline-block;white-space:nowrap;font-size:0.72rem}
+.shift-off{background:#f9f9f9;color:#9CA3AF;font-size:0.68rem}
+.pr-total-row td{background:#1a2e3b;color:#fff;font-weight:700;font-size:0.75rem;padding:8px 6px}
+.pr-total-row td.name-td{background:#0f1f2a;color:#C8A97E}
+/* Summary below */
+.pr-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid #1a2e3b}
+.pr-sum-cell{padding:12px;text-align:center;border-right:1px solid #E8E4DC}
+.pr-sum-cell:last-child{border:none}
+.pr-sum-lbl{font-size:0.62rem;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.pr-sum-val{font-size:1.1rem;font-weight:800;color:#1a2e3b}
+.pr-footer{background:#f9f7f4;border-top:1px solid #E8E4DC;padding:10px 20px;display:flex;justify-content:space-between;align-items:center}
+.pr-footer-l{font-size:0.7rem;color:#6B6B6B}
+.pr-footer-r{font-size:0.7rem;color:#6B6B6B;text-align:right}
+/* Colour coding legend */
+.legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 20px;background:#fff;border-top:1px solid #E8E4DC;font-size:0.7rem}
+.leg-item{display:flex;align-items:center;gap:5px}
+.leg-dot{width:10px;height:10px;border-radius:3px}
+
+@media print{
+  .hdr,.tabs,.panel:not(#print-panel){display:none!important}
+  #print-panel{display:block!important;padding:0!important}
+  #print-roster{display:block!important}
+  .brow,.card:not(#roster-output-card){display:none!important}
+  #roster-output-card{box-shadow:none;border:none;padding:0}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>👥 KitchenFounder Roster Builder</h1><p>Build · Export · Share via WhatsApp</p></div>
+  <span class="badge">FREE TOOL</span>
+</div>
+<div class="tabs">
+  <button class="tab on" onclick="ST('setup',this)">⚙️ Setup</button>
+  <button class="tab" onclick="ST('roster',this)">📋 Build Roster</button>
+  <button class="tab" onclick="ST('export',this)">📤 Export & Share</button>
+</div>
+<!-- SETUP PANEL -->
+<div id="panel-setup" class="panel on">
+  <div class="card">
+    <div class="ct">🏪 Venue Details</div>
+    <div class="g2">
+      <div class="f"><label>Venue / Restaurant Name</label><input id="venue" value="My Restaurant" oninput="updateRoster()"></div>
+      <div class="f"><label>Manager / Head Chef</label><input id="manager" value="Head Chef" oninput="updateRoster()"></div>
+    </div>
+    <div class="g3">
+      <div class="f"><label>Week Starting (Monday)</label><input type="date" id="week-start" oninput="updateRoster()"></div>
+      <div class="f"><label>Currency</label><select id="currency" onchange="updateRoster()"><option value="$">$ USD</option><option value="A$">A$ AUD</option><option value="£">£ GBP</option><option value="€">€ EUR</option><option value="฿">฿ THB</option></select></div>
+      <div class="f"><label>Weekly Labour Budget</label><input type="number" id="labour-budget" value="8000" oninput="updateRoster()"></div>
+    </div>
+    <div class="f"><label>Roster Note (appears on exported roster)</label><input id="roster-note" value="Please confirm your shifts by replying to this message. Swaps must be approved 48hrs in advance." oninput="updateRoster()"></div>
+  </div>
+
+  <div class="card">
+    <div class="ct">👤 Staff List</div>
+    <div class="brow">
+      <button class="btn bp" onclick="addStaff()">+ Add Staff Member</button>
+      <button class="btn bs" onclick="loadSampleStaff()">Load Sample Team</button>
+    </div>
+    <table class="staff-table" id="staff-table">
+      <thead><tr>
+        <th style="width:160px">Name</th>
+        <th style="width:120px">Role / Position</th>
+        <th style="width:90px">Hourly Rate</th>
+        <th style="width:80px">Contract Hrs/wk</th>
+        <th style="width:40px"></th>
+      </tr></thead>
+      <tbody id="staff-tbody"></tbody>
+    </table>
+    <div style="font-size:0.75rem;color:#6B6B6B;margin-top:4px">Add all your staff here first, then build the roster in the next tab.</div>
+  </div>
+
+  <div class="card">
+    <div class="ct">⚙️ Default Shifts</div>
+    <div style="font-size:0.83rem;color:#6B6B6B;margin-bottom:12px">Set common shift codes. These appear as suggestions when building the roster.</div>
+    <div class="g3">
+      <div class="f"><label>Breakfast / Opening</label><input id="shift-am" value="7:00-15:00"></div>
+      <div class="f"><label>Split / Lunch-Dinner</label><input id="shift-split" value="11:00-22:00"></div>
+      <div class="f"><label>Dinner / Closing</label><input id="shift-pm" value="16:00-24:00"></div>
+      <div class="f"><label>Short Shift</label><input id="shift-short" value="10:00-15:00"></div>
+      <div class="f"><label>Weekend / Event</label><input id="shift-event" value="9:00-21:00"></div>
+      <div class="f"><label>Day Off Code</label><input id="shift-off" value="OFF"></div>
+    </div>
+  </div>
+</div>
+<!-- ROSTER PANEL -->
+<div id="panel-roster" class="panel">
+  <div class="metric-strip" id="metrics-strip">
+    <div class="ms-card"><div class="ms-lbl">Total Staff</div><div class="ms-val" id="m-staff">0</div></div>
+    <div class="ms-card"><div class="ms-lbl">Total Shifts</div><div class="ms-val g" id="m-shifts">0</div></div>
+    <div class="ms-card"><div class="ms-lbl">Total Hours</div><div class="ms-val" id="m-hours">0</div></div>
+    <div class="ms-card"><div class="ms-lbl">Est. Labour Cost</div><div class="ms-val a" id="m-cost">$0</div></div>
+    <div class="ms-card"><div class="ms-lbl">vs Budget</div><div class="ms-val" id="m-budget">—</div></div>
+  </div>
+
+  <div class="brow">
+    <button class="btn bp" onclick="autoFillRoster()">⚡ Auto-Fill All</button>
+    <button class="btn bs" onclick="clearRoster()">↺ Clear All</button>
+    <button class="btn ba" onclick="ST('export',document.querySelectorAll(\'.tab\')[2])">📤 Export →</button>
+  </div>
+
+  <div style="overflow-x:auto">
+    <table class="staff-table" id="roster-table" style="min-width:720px">
+      <thead>
+        <tr>
+          <th style="min-width:130px">Staff Member</th>
+          <th style="min-width:85px" id="th-mon">Mon</th>
+          <th style="min-width:85px" id="th-tue">Tue</th>
+          <th style="min-width:85px" id="th-wed">Wed</th>
+          <th style="min-width:85px" id="th-thu">Thu</th>
+          <th style="min-width:85px" id="th-fri">Fri</th>
+          <th style="min-width:85px" id="th-sat">Sat</th>
+          <th style="min-width:85px" id="th-sun">Sun</th>
+          <th style="min-width:60px">Hours</th>
+          <th style="min-width:70px">Cost</th>
+        </tr>
+      </thead>
+      <tbody id="roster-tbody"></tbody>
+    </table>
+  </div>
+  <div id="no-staff-msg" style="text-align:center;padding:32px;color:#6B6B6B;font-size:0.88rem">
+    Add staff members in the Setup tab first, then come back here to build the roster.
+  </div>
+</div>
+
+<!-- EXPORT PANEL -->
+<div id="panel-export" class="panel">
+  <div class="brow">
+    <button class="btn bp" onclick="buildPrintRoster()">🔄 Generate Roster</button>
+    <button class="btn ba" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn bs" onclick="copyWhatsApp()">📱 Copy WhatsApp Message</button>
+  </div>
+
+  <div class="card" id="roster-output-card">
+    <!-- PRINT ROSTER OUTPUT -->
+    <div id="print-roster">
+      <div class="pr-hdr">
+        <div>
+          <div class="pr-logo" id="pr-logo">🍴 My Restaurant</div>
+          <div class="pr-venue" id="pr-venue">Weekly Roster</div>
+        </div>
+        <div style="text-align:right">
+          <div class="pr-week" id="pr-week">Week of —</div>
+          <div style="font-size:0.7rem;opacity:0.65;margin-top:2px" id="pr-issued">Issued by —</div>
+        </div>
+      </div>
+      <div class="pr-notice" id="pr-notice">Please confirm your shifts. Swaps require manager approval 48hrs in advance.</div>
+
+      <div style="overflow-x:auto">
+        <table class="pr-table" id="pr-table">
+          <thead id="pr-thead"></thead>
+          <tbody id="pr-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="pr-summary" id="pr-summary"></div>
+
+      <div class="legend" id="pr-legend">
+        <div class="leg-item"><div class="leg-dot" style="background:#d1fae5"></div><span>Working</span></div>
+        <div class="leg-item"><div class="leg-dot" style="background:#fee2e2"></div><span>Day Off</span></div>
+      </div>
+
+      <div class="pr-footer">
+        <div class="pr-footer-l" id="pr-footer-l">KitchenFounder Roster Tool · kitchenfounder.com</div>
+        <div class="pr-footer-r" id="pr-footer-r"></div>
+      </div>
+    </div>
+
+    <div id="roster-placeholder" style="text-align:center;padding:40px;color:#6B6B6B">
+      <div style="font-size:2.5rem;margin-bottom:12px">📋</div>
+      <div style="font-size:0.9rem;font-weight:600;margin-bottom:6px">No roster generated yet</div>
+      <div style="font-size:0.8rem">Click "Generate Roster" to build the shareable version</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">📱 WhatsApp Message Preview</div>
+    <div id="wa-preview" style="background:#f0f9f0;border:1px solid #86efac;border-radius:8px;padding:14px;font-size:0.82rem;line-height:1.9;white-space:pre-wrap;font-family:monospace;color:#1C1C1C;max-height:400px;overflow-y:auto">Click "Copy WhatsApp Message" to generate</div>
+    <button class="btn ba" style="margin-top:10px" onclick="copyWhatsApp()">📋 Copy to Clipboard</button>
+  </div>
+</div>
+<script>
+var days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+var positions=['Head Chef','Sous Chef','CDP','Cook','Kitchen Hand','Floor Manager','Waiter/Waitress','Bartender','Host/Hostess','Barista'];
+var posCls={'Head Chef':'pos-mgr','Sous Chef':'pos-mgr','CDP':'pos-chef','Cook':'pos-chef','Kitchen Hand':'pos-kp','Floor Manager':'pos-foh','Waiter/Waitress':'pos-foh','Bartender':'pos-bar','Host/Hostess':'pos-host','Barista':'pos-bar'};
+var staff=[];
+var roster={};
+var sid=0;
+
+function ST(name,btn){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+  document.getElementById('panel-'+name).classList.add('on');
+  if(btn) btn.classList.add('on');
+  if(name==='roster') buildRosterTable();
+  if(name==='export') buildPrintRoster();
+}
+
+function addStaff(name,pos,rate,hrs){
+  var id='s'+(sid++);
+  staff.push({id:id,name:name||'',pos:pos||'Cook',rate:parseFloat(rate)||18,hrs:parseFloat(hrs)||38});
+  roster[id]={};
+  days.forEach(function(d){roster[id][d]='';});
+  renderStaffTable();
+  buildRosterTable();
+}
+function removeStaff(id){
+  staff=staff.filter(function(s){return s.id!==id;});
+  delete roster[id];
+  renderStaffTable();
+  buildRosterTable();
+}
+function renderStaffTable(){
+  var tb=document.getElementById('staff-tbody');
+  if(!tb) return;
+  if(staff.length===0){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:#6B6B6B;padding:16px;font-size:0.82rem">No staff added yet</td></tr>';return;}
+  tb.innerHTML=staff.map(function(s){
+    var cls=posCls[s.pos]||'pos-chef';
+    var opts=positions.map(function(p){return '<option'+(p===s.pos?' selected':'')+'>'+p+'</option>';}).join('');
+    return '<tr>'+
+      '<td><input value="'+s.name+'" placeholder="Staff name" onchange="updateStaff(\''+s.id+'\',\'name\',this.value)"></td>'+
+      '<td><select onchange="updateStaff(\''+s.id+'\',\'pos\',this.value)">'+opts+'</select></td>'+
+      '<td><input type="number" value="'+s.rate+'" min="0" step="0.5" onchange="updateStaff(\''+s.id+'\',\'rate\',this.value)" style="width:80px"></td>'+
+      '<td><input type="number" value="'+s.hrs+'" min="0" max="60" onchange="updateStaff(\''+s.id+'\',\'hrs\',this.value)" style="width:70px"></td>'+
+      '<td><button class="del-btn" onclick="removeStaff(\''+s.id+'\')">✕</button></td>'+
+    '</tr>';
+  }).join('');
+}
+function updateStaff(id,field,val){
+  var s=staff.find(function(x){return x.id===id;});
+  if(!s) return;
+  if(field==='rate'||field==='hrs') s[field]=parseFloat(val)||0;
+  else s[field]=val;
+  buildRosterTable();
+}
+function loadSampleStaff(){
+  staff=[];roster={};sid=0;
+  var sample=[
+    ['Alex Chen','Head Chef',28,45],['Maria Santos','Sous Chef',24,40],['James Kim','CDP',22,38],
+    ['Priya Patel','Cook',20,38],['Tom Walsh','Cook',19,38],['Lily Zhang','Kitchen Hand',17,30],
+    ['Sarah O\'Brien','Floor Manager',26,40],['Marco Rossi','Waiter/Waitress',18,35],
+    ['Aisha Diallo','Waiter/Waitress',18,35],['Ben Carter','Bartender',21,38]
+  ];
+  sample.forEach(function(s){addStaff(s[0],s[1],s[2],s[3]);});
+}
+function buildRosterTable(){
+  var tb=document.getElementById('roster-tbody');
+  var nm=document.getElementById('no-staff-msg');
+  if(!tb) return;
+  if(staff.length===0){if(nm)nm.style.display='block';tb.innerHTML='';updateMetrics();return;}
+  if(nm)nm.style.display='none';
+  // Update day headers with dates
+  var ws=getWeekStart();
+  days.forEach(function(d,i){
+    var th=document.getElementById('th-'+d.toLowerCase());
+    if(th&&ws){
+      var dt=new Date(ws);dt.setDate(dt.getDate()+i);
+      th.textContent=d+' '+dt.getDate()+'/'+('0'+(dt.getMonth()+1)).slice(-2);
+    }
+  });
+  tb.innerHTML=staff.map(function(s){
+    if(!roster[s.id]){roster[s.id]={};days.forEach(function(d){roster[s.id][d]='';});}
+    var dayInputs=days.map(function(d){
+      var v=roster[s.id][d]||'';
+      var isOff=v.toUpperCase()==='OFF'||v==='';
+      var cls='shift-input'+(v.toUpperCase()==='OFF'?' off':(v?' ros':''));
+      return '<td class="shift-cell"><input class="'+cls+'" value="'+v+'" placeholder="—" '+
+        'onchange="setShift(\''+s.id+'\',\''+d+'\',this.value);styleShiftInput(this)" '+
+        'onclick="showShiftPicker(this,\''+s.id+'\',\''+d+'\')" readonly></td>';
+    }).join('');
+    var hrs=calcHours(s.id);
+    var cost=hrs*s.rate;
+    var cls=posCls[s.pos]||'pos-chef';
+    return '<tr>'+
+      '<td><strong>'+s.name+'</strong><br><span class="pos-pill '+cls+'">'+s.pos+'</span></td>'+
+      dayInputs+
+      '<td style="font-weight:700;color:#2a9d8f">'+hrs+'h</td>'+
+      '<td style="font-weight:700;color:#1a2e3b">'+getCurrency()+Math.round(cost).toLocaleString()+'</td>'+
+    '</tr>';
+  }).join('');
+  updateMetrics();
+}
+function styleShiftInput(el){
+  el.classList.remove('off','ros');
+  if(el.value.toUpperCase()==='OFF') el.classList.add('off');
+  else if(el.value) el.classList.add('ros');
+}
+function setShift(id,day,val){
+  if(!roster[id]) roster[id]={};
+  roster[id][day]=val;
+  updateMetrics();
+}
+
+// Shift Picker Dropdown
+var pickerActive=null;
+function showShiftPicker(input,id,day){
+  // Remove any existing picker
+  var old=document.getElementById('shift-picker');
+  if(old) old.remove();
+  pickerActive={id:id,day:day,input:input};
+  var shifts=[
+    document.getElementById('shift-am').value,
+    document.getElementById('shift-split').value,
+    document.getElementById('shift-pm').value,
+    document.getElementById('shift-short').value,
+    document.getElementById('shift-event').value,
+    document.getElementById('shift-off').value
+  ];
+  var labels=['🌅 Opening','🔄 Split','🌙 Dinner','⚡ Short','🎉 Event/Weekend','❌ Day Off'];
+  var picker=document.createElement('div');
+  picker.id='shift-picker';
+  picker.style.cssText='position:fixed;background:#fff;border:1px solid #E8E4DC;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.15);z-index:200;min-width:160px;overflow:hidden';
+  picker.innerHTML='<div style="background:#1a2e3b;color:#fff;padding:8px 12px;font-size:0.72rem;font-weight:700;display:flex;justify-content:space-between;align-items:center">Select Shift<span onclick="document.getElementById(\'shift-picker\').remove()" style="cursor:pointer;opacity:0.7">✕</span></div>'+
+    shifts.map(function(s,i){
+      return '<div onclick="pickShift(\''+s+'\')" style="padding:9px 14px;font-size:0.8rem;cursor:pointer;border-bottom:1px solid #f0ece4;display:flex;align-items:center;gap:8px;transition:background 0.1s" onmouseover="this.style.background=\'#f9f7f4\'" onmouseout="this.style.background=\'#fff\'">'+
+        '<span>'+labels[i]+'</span><span style="margin-left:auto;color:#6B6B6B;font-size:0.72rem">'+s+'</span></div>';
+    }).join('')+
+    '<div style="padding:8px 12px"><input id="custom-shift" placeholder="Type custom shift..." style="width:100%;border:1px solid #E8E4DC;border-radius:6px;padding:6px 8px;font-size:0.8rem;font-family:inherit" onkeydown="if(event.key===\'Enter\'){pickShift(this.value)}"></div>';
+  // Position near input
+  var rect=input.getBoundingClientRect();
+  picker.style.top=Math.min(rect.bottom+4,window.innerHeight-280)+'px';
+  picker.style.left=Math.max(4,Math.min(rect.left,window.innerWidth-170))+'px';
+  document.body.appendChild(picker);
+  setTimeout(function(){document.addEventListener('click',closePicker);},100);
+}
+function closePicker(e){
+  var p=document.getElementById('shift-picker');
+  if(p&&!p.contains(e.target)){p.remove();document.removeEventListener('click',closePicker);}
+}
+function pickShift(val){
+  if(!pickerActive||!val.trim()) return;
+  var input=pickerActive.input;
+  input.value=val;
+  setShift(pickerActive.id,pickerActive.day,val);
+  styleShiftInput(input);
+  var p=document.getElementById('shift-picker');if(p)p.remove();
+  document.removeEventListener('click',closePicker);
+  buildRosterTable();
+}
+
+function calcHours(id){
+  var total=0;
+  if(!roster[id]) return 0;
+  days.forEach(function(d){
+    var v=roster[id][d]||'';
+    if(!v||v.toUpperCase()==='OFF') return;
+    var m=v.match(/(\d{1,2}):?(\d{0,2})\s*[-–]\s*(\d{1,2}):?(\d{0,2})/);
+    if(m){
+      var start=parseInt(m[1])+(parseInt(m[2]||0)/60);
+      var end=parseInt(m[3])+(parseInt(m[4]||0)/60);
+      if(end<start) end+=24;
+      total+=(end-start);
+    }
+  });
+  return Math.round(total*10)/10;
+}
+function calcTotalHours(){return staff.reduce(function(a,s){return a+calcHours(s.id);},0);}
+function calcTotalCost(){return staff.reduce(function(a,s){return a+(calcHours(s.id)*s.rate);},0);}
+function calcTotalShifts(){
+  var count=0;
+  staff.forEach(function(s){
+    days.forEach(function(d){
+      var v=roster[s.id]&&roster[s.id][d]||'';
+      if(v&&v.toUpperCase()!=='OFF') count++;
+    });
+  });
+  return count;
+}
+function updateMetrics(){
+  var totalCost=calcTotalCost();
+  var budget=parseFloat(document.getElementById('labour-budget').value)||8000;
+  var diff=budget-totalCost;
+  document.getElementById('m-staff').textContent=staff.length;
+  document.getElementById('m-shifts').textContent=calcTotalShifts();
+  document.getElementById('m-hours').textContent=Math.round(calcTotalHours())+'h';
+  document.getElementById('m-cost').textContent=getCurrency()+Math.round(totalCost).toLocaleString();
+  var bEl=document.getElementById('m-budget');
+  if(totalCost===0){bEl.textContent='—';bEl.className='ms-val';return;}
+  bEl.textContent=(diff>=0?'Under '+getCurrency():'-'+getCurrency())+Math.abs(Math.round(diff)).toLocaleString();
+  bEl.className='ms-val '+(diff>=0?'g':'r');
+}
+function getCurrency(){return document.getElementById('currency').value||'$';}
+function getWeekStart(){var v=document.getElementById('week-start').value;return v?new Date(v+'T00:00:00'):null;}
+function autoFillRoster(){
+  var am=document.getElementById('shift-am').value;
+  var pm=document.getElementById('shift-pm').value;
+  var off=document.getElementById('shift-off').value;
+  staff.forEach(function(s,i){
+    if(!roster[s.id]) roster[s.id]={};
+    days.forEach(function(d,j){
+      if(j===i%7) roster[s.id][d]=off;
+      else roster[s.id][d]=(j>=5)?pm:am;
+    });
+  });
+  buildRosterTable();
+}
+function clearRoster(){
+  staff.forEach(function(s){roster[s.id]={};days.forEach(function(d){roster[s.id][d]='';});});
+  buildRosterTable();
+}
+function updateRoster(){buildRosterTable();}
+
+function buildPrintRoster(){
+  var placeholder=document.getElementById('roster-placeholder');
+  var pr=document.getElementById('print-roster');
+  if(staff.length===0){if(placeholder)placeholder.style.display='block';pr.style.display='none';return;}
+  if(placeholder)placeholder.style.display='none';
+  pr.style.display='block';
+  // Header
+  var venue=document.getElementById('venue').value||'My Restaurant';
+  var manager=document.getElementById('manager').value||'Manager';
+  var note=document.getElementById('roster-note').value||'';
+  var ws=getWeekStart();
+  var weekLabel='Week of ';
+  if(ws){
+    var we=new Date(ws);we.setDate(we.getDate()+6);
+    weekLabel='Week '+ws.getDate()+'/'+(ws.getMonth()+1)+' – '+we.getDate()+'/'+(we.getMonth()+1)+'/'+(we.getFullYear()%100);
+  }
+  document.getElementById('pr-logo').textContent='🍴 '+venue;
+  document.getElementById('pr-venue').textContent='Weekly Staff Roster';
+  document.getElementById('pr-week').textContent=weekLabel;
+  document.getElementById('pr-issued').textContent='Issued by: '+manager+' · '+new Date().toLocaleDateString('en-AU');
+  document.getElementById('pr-notice').textContent=note;
+
+  // Table header
+  var thead=document.getElementById('pr-thead');
+  var dayHeaders=days.map(function(d,i){
+    var label=d;
+    if(ws){var dt=new Date(ws);dt.setDate(dt.getDate()+i);label=d+'<br><span style="font-size:0.62rem;font-weight:400">'+dt.getDate()+'/'+(dt.getMonth()+1)+'</span>';}
+    return '<th>'+label+'</th>';
+  }).join('');
+  thead.innerHTML='<tr><th class="name-col">Staff Member</th>'+dayHeaders+'<th>Hours</th><th>Cost</th></tr>';
+
+  // Table body
+  var tbody=document.getElementById('pr-tbody');
+  var totalHrs=0,totalCost=0;
+  var dayTotals={};days.forEach(function(d){dayTotals[d]=0;});
+  tbody.innerHTML=staff.map(function(s){
+    var cls=posCls[s.pos]||'pos-chef';
+    var hrs=calcHours(s.id);
+    var cost=hrs*s.rate;
+    totalHrs+=hrs;totalCost+=cost;
+    var cells=days.map(function(d){
+      var v=roster[s.id]&&roster[s.id][d]||'';
+      var offCode=document.getElementById('shift-off').value||'OFF';
+      var isOff=!v||v.toUpperCase()===offCode.toUpperCase();
+      if(isOff) return '<td><span class="shift-off">'+offCode+'</span></td>';
+      // Count staffed per day
+      dayTotals[d]=(dayTotals[d]||0)+1;
+      return '<td><span class="shift-on">'+v+'</span></td>';
+    }).join('');
+    return '<tr><td class="name-td">'+s.name+'<br><div class="pos pos-pill '+cls+'">'+s.pos+'</div></td>'+cells+'<td style="font-weight:700;color:#2a9d8f;text-align:center">'+hrs+'h</td><td style="font-weight:700;text-align:center">'+getCurrency()+Math.round(cost).toLocaleString()+'</td></tr>';
+  }).join('');
+  // Totals row
+  var dayTotalCells=days.map(function(d){return '<td style="text-align:center">'+dayTotals[d]+' staff</td>';}).join('');
+  tbody.innerHTML+='<tr class="pr-total-row"><td class="name-td">TOTALS</td>'+dayTotalCells+'<td style="text-align:center">'+Math.round(totalHrs)+'h</td><td style="text-align:center">'+getCurrency()+Math.round(totalCost).toLocaleString()+'</td></tr>';
+
+  // Summary
+  var budget=parseFloat(document.getElementById('labour-budget').value)||0;
+  var diff=budget-totalCost;
+  var psum=document.getElementById('pr-summary');
+  psum.innerHTML=
+    '<div class="pr-sum-cell"><div class="pr-sum-lbl">Total Staff</div><div class="pr-sum-val">'+staff.length+'</div></div>'+
+    '<div class="pr-sum-cell"><div class="pr-sum-lbl">Total Hours</div><div class="pr-sum-val">'+Math.round(totalHrs)+'h</div></div>'+
+    '<div class="pr-sum-cell"><div class="pr-sum-lbl">Labour Cost</div><div class="pr-sum-val">'+getCurrency()+Math.round(totalCost).toLocaleString()+'</div></div>'+
+    '<div class="pr-sum-cell"><div class="pr-sum-lbl">vs Budget</div><div class="pr-sum-val" style="color:'+(diff>=0?'#2a9d8f':'#e76f51')+'">'+(diff>=0?'✅ Under':'⚠️ Over')+'<br><span style="font-size:0.75rem">'+getCurrency()+Math.abs(Math.round(diff)).toLocaleString()+'</span></div></div>';
+
+  document.getElementById('pr-footer-r').textContent='Total labour: '+getCurrency()+Math.round(totalCost).toLocaleString()+' / Budget: '+getCurrency()+budget.toLocaleString();
+  buildWhatsApp();
+}
+
+function buildWhatsApp(){
+  var venue=document.getElementById('venue').value||'My Restaurant';
+  var ws=getWeekStart();
+  var weekLabel='this week';
+  if(ws){var we=new Date(ws);we.setDate(we.getDate()+6);weekLabel=ws.getDate()+'/'+(ws.getMonth()+1)+' – '+we.getDate()+'/'+(we.getMonth()+1);}
+  var note=document.getElementById('roster-note').value||'';
+  var lines=['📋 *'+venue+' — Weekly Roster*','📅 Week: '+weekLabel,''];
+  staff.forEach(function(s){
+    if(!roster[s.id]) return;
+    var shifts=days.map(function(d){
+      var v=roster[s.id][d]||'OFF';
+      return d+': '+(v||'OFF');
+    }).join(' | ');
+    var hrs=calcHours(s.id);
+    lines.push('*'+s.name+'* ('+s.pos+') — '+hrs+'h');
+    lines.push(shifts);
+    lines.push('');
+  });
+  if(note){lines.push('ℹ️ '+note);lines.push('');}
+  lines.push('Sent via KitchenFounder OS 🍴');
+  var wa=document.getElementById('wa-preview');
+  if(wa) wa.textContent=lines.join('\n');
+}
+
+function copyWhatsApp(){
+  buildWhatsApp();
+  var text=document.getElementById('wa-preview').textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('✅ Copied! Paste directly into your WhatsApp staff group.');
+  }).catch(function(){
+    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    alert('✅ Copied! Paste directly into your WhatsApp staff group.');
+  });
+}
+
+window.onload=function(){
+  // Default week start = next Monday
+  var d=new Date();var day=d.getDay();
+  var daysUntilMon=(1-day+7)%7||7;
+  d.setDate(d.getDate()+daysUntilMon);
+  document.getElementById('week-start').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  renderStaffTable();
+};
+</script>
+</body>
+</html>
