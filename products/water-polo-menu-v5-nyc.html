@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Polo World Cup 2026 — NYC-Level Menu Programme</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--text:#1C1C1C;--accent:#1B2D4F;--gold:#C8922A;
+  --light:#F0EDE8;--mid:#8A8A8A;--dark:#0D1F3C;--green:#1B5E20;
+  --red:#B71C1C;--teal:#004D40;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+/* COVER */
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-texture{position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(200,146,42,0.03) 0px,rgba(200,146,42,0.03) 1px,transparent 1px,transparent 12px)}
+.cover-top{padding:14mm 16mm 0;z-index:1;display:flex;justify-content:space-between;align-items:flex-start}
+.cover-logo{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.cover-nyc{font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:right}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:5mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:4mm}
+.cover-title .gold{color:var(--gold)}
+.cover-title .thin{font-weight:400;font-size:40px}
+.cover-rule{width:50mm;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:5mm 0}
+.cover-lead{font-size:11px;font-weight:300;color:rgba(255,255,255,0.5);line-height:2;margin-bottom:6mm;max-width:120mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(200,146,42,0.35);color:rgba(200,146,42,0.7);font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-chef{font-family:'Playfair Display',serif;font-size:13px;color:rgba(255,255,255,0.6)}
+.cover-sub-text{font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-top:1mm}
+/* PAGES */
+.page{width:210mm;min-height:297mm;padding:14mm 16mm 18mm;page-break-after:always;position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8mm;padding-bottom:3mm;border-bottom:1px solid #E8E4DE}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--mid)}
+.page-num{font-size:9px;color:var(--mid)}
+.page-footer{position:absolute;bottom:8mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid #E8E4DE;padding-top:3mm}
+.pf-brand{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--mid)}
+.pf-copy{font-size:8px;color:#CCC}
+/* HEADINGS */
+.eyebrow{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm}
+.big-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);line-height:1.15;margin-bottom:4mm}
+.lead{font-size:11px;font-weight:300;color:#555;line-height:1.9;border-left:3px solid var(--gold);padding-left:4mm;margin-bottom:5mm}
+/* PHILOSOPHY BOX */
+.phil-box{background:var(--dark);color:#fff;padding:6mm;margin-bottom:5mm}
+.phil-box h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);margin-bottom:3mm}
+.phil-box p{font-size:10.5px;color:rgba(255,255,255,0.72);line-height:1.85}
+.phil-box .phil-companies{font-size:9px;color:rgba(200,146,42,0.7);margin-top:3mm;font-style:italic;letter-spacing:0.5px}
+/* DAY CARDS */
+.day-card{border:1px solid #E8E4DE;margin-bottom:4mm;page-break-inside:avoid}
+.day-hdr{background:var(--accent);padding:3mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.day-hdr.alt{background:var(--dark)}
+.day-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff}
+.day-date{font-size:9px;color:rgba(255,255,255,0.55);letter-spacing:1px}
+.day-body{padding:4mm 5mm}
+/* STATION CONCEPT */
+.station{background:#fff;border:1px solid #E8E4DE;border-top:3px solid var(--gold);padding:3.5mm 4.5mm;margin-bottom:3mm;page-break-inside:avoid}
+.station-name{font-size:8.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm;display:flex;justify-content:space-between;align-items:center}
+.station-concept{font-size:9px;color:var(--gold);font-style:italic;margin-bottom:2.5mm}
+.station-items{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm}
+.si{font-size:10px;color:#333;padding:1mm 0;border-bottom:1px dotted #E8E4DE;line-height:1.5}
+.si:last-child{border:none}
+.si strong{color:var(--dark);font-weight:600;display:block}
+.si .note{font-size:8.5px;color:#777;font-style:italic}
+/* SIGNATURE DISH */
+.sig-dish{background:#FFF8EE;border-left:3px solid var(--gold);padding:3mm 4mm;margin-top:3mm;page-break-inside:avoid}
+.sig-label{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5mm}
+.sig-title{font-family:'Playfair Display',serif;font-size:13px;color:var(--dark);margin-bottom:1.5mm}
+.sig-desc{font-size:10px;color:#444;line-height:1.75;font-style:italic}
+/* NYC DIFFERENCE TABLE */
+.diff-table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:4mm}
+.diff-table th{background:var(--dark);color:#fff;padding:2.5mm 3.5mm;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:left}
+.diff-table td{padding:2.5mm 3.5mm;border-bottom:1px solid #E8E4DE;line-height:1.6;vertical-align:top}
+.diff-table tr:nth-child(even) td{background:#fdfbf8}
+.diff-table td:first-child{color:#999;font-style:italic}
+.diff-table td:last-child{color:var(--dark);font-weight:500}
+.diff-table td:last-child strong{color:var(--gold)}
+/* STATION GRID */
+.station-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm}
+/* NOTES */
+.food-safe{background:#E8F5E9;border-left:3px solid var(--green);padding:2.5mm 4mm;font-size:9.5px;color:#1B5E20;margin-top:2.5mm}
+.allergy-note{background:#EEF4FF;border-left:3px solid var(--accent);padding:2.5mm 4mm;font-size:9.5px;color:#0D2B4E;margin-top:2.5mm}
+/* BEVERAGE */
+.bev-block{background:var(--dark);color:#fff;padding:4mm 5mm;margin-bottom:4mm}
+.bev-block h4{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold);margin-bottom:3mm}
+.bev-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm}
+.bev-col h5{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2mm;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:1mm}
+.bev-col p{font-size:10px;color:rgba(255,255,255,0.65);line-height:1.85}
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm}
+.sum-card{background:#fff;border:1px solid #E8E4DE;padding:4mm}
+.sum-card h4{font-size:8.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2.5mm}
+.sum-card ul{list-style:none;padding:0}
+.sum-card li{font-size:10px;color:#444;line-height:1.85}
+.sum-card li::before{content:'→  ';color:var(--gold);font-weight:700}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.page,.cover{page-break-after:always}.day-card,.station,.sig-dish{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-texture"></div>
+<div class="cover-top">
+  <div class="cover-logo">Novotel Ibis · Sydney Olympic Park</div>
+  <div class="cover-nyc">NYC Standard · v5 Proposal</div>
+</div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Premium Event Catering · 16 Nations · 400 Athletes</div>
+  <div class="cover-title">Water Polo<br><span class="gold">World</span><br><span class="thin">Cup 2026</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">An 8-day culinary programme built to the standard of New York's finest event caterers — Great Performances, Constellation Culinary, Pinch Food Design. Station-driven. Theatre-forward. Globally inspired.<br><br>This is not Australian stadium catering. This is world-class hospitality.</div>
+  <div class="cover-tags">
+    <span class="ctag">100% Nut Free</span><span class="ctag">Halal Available</span>
+    <span class="ctag">GF Options</span><span class="ctag">Vegan Options</span>
+    <span class="ctag">Station Service</span><span class="ctag">19–26 July 2026</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div><div class="cover-chef">Timothy Susanto · Head Chef</div><div class="cover-sub-text">Novotel Ibis Sydney Olympic Park</div></div>
+  <div style="text-align:right"><div class="cover-sub-text">World Aquatics · Sydney</div><div class="cover-sub-text" style="margin-top:1mm">Menu Programme v5 · NYC Standard</div></div>
+</div>
+</div>
+<!-- PAGE 2 — NYC STANDARD PHILOSOPHY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">The NYC Standard</span><span class="page-num">02</span></div>
+
+<div class="eyebrow">The Benchmark</div>
+<div class="big-title">What NYC-Level<br>Event Catering Looks Like</div>
+<div class="lead">Great Performances, Constellation Culinary, Abigail Kirsch, and Pinch Food Design service the US Open, the Met Gala, and major international sports events from Madison Square Garden to Yankee Stadium. This is the standard we are benchmarking against.</div>
+
+<div class="phil-box">
+  <h3>The 5 Principles of NYC-Level Event Catering</h3>
+  <p>
+    <strong style="color:var(--gold)">1. Stations, Not Buffets.</strong> Food is served from interactive stations with a chef present. Guests choose. Chefs plate. The energy is theatrical, not institutional.<br><br>
+    <strong style="color:var(--gold)">2. Global Flavour Without Apology.</strong> NYC caterers do not water down cuisine for a broad audience. They trust that food-literate guests — which athletes at a World Cup are — can handle real flavour.<br><br>
+    <strong style="color:var(--gold)">3. One Signature Moment Per Service.</strong> Every meal has one dish or presentation that is unexpected. Not gimmicky — genuinely considered. Something that earns a photograph.<br><br>
+    <strong style="color:var(--gold)">4. Visual Architecture.</strong> Everything is plated or displayed with intention. No chafing dish lids left open. No beige trays. Every station looks like it was styled for editorial photography.<br><br>
+    <strong style="color:var(--gold)">5. Athlete Intelligence.</strong> NYC sports caterers understand high-performance nutrition is non-negotiable. Clean protein, complex carbs, anti-inflammatory ingredients, minimal ultra-processed food. Flavour and function coexist.
+  </p>
+  <div class="phil-companies">Reference: Great Performances NYC · Constellation Culinary · Pinch Food Design · Abigail Kirsch · Haute Cuisine Group</div>
+</div>
+
+<table class="diff-table">
+  <thead><tr><th>Australian Stadium Catering</th><th>NYC-Level Event Catering <strong style="color:var(--gold)">← This Menu</strong></th></tr></thead>
+  <tbody>
+    <tr><td>Chafing dishes, lids open, food sitting</td><td>Live stations — chef plates in front of the guest</td></tr>
+    <tr><td>Roast + three veg</td><td>Carved proteins at action stations with chef interaction</td></tr>
+    <tr><td>Generic salad bar</td><td>Custom salad builds: grain base → greens → protein → 3 dressings → toppings chef</td></tr>
+    <tr><td>Bread rolls in baskets</td><td>Artisan flatbreads made to order at stone station</td></tr>
+    <tr><td>Soup of the day</td><td>Signature broths with tableside pour — different every service</td></tr>
+    <tr><td>Dessert tray from central kitchen</td><td>Plated dessert with one component finished to order</td></tr>
+    <tr><td>Soft drink jugs</td><td>Infused water stations + pressed juice bar + kombucha on tap</td></tr>
+    <tr><td>GF = missing ingredients from regular dish</td><td>GF and vegan stations built with the same culinary ambition as the main menu</td></tr>
+  </tbody>
+</table>
+
+<div class="page-footer"><span class="pf-brand">Novotel Ibis · Sydney Olympic Park</span><span class="pf-copy">Water Polo World Cup 2026 · NYC Standard v5</span></div>
+</div>
+<!-- PAGE 3 — LUNCH PROGRAMME DAYS 1-4 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Lunch Programme · Days 1–4 · Station Service</span><span class="page-num">03</span></div>
+<div class="lead">Lunch is served as 4 live stations. Each station has a chef present. Athletes build their own plate. Maximum variety, minimum wait time. 45-minute service window.</div>
+
+<!-- DAY 1 LUNCH -->
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 1 Lunch · Sunday 19 July</div><div class="day-date">Opening Day · Welcome Service</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station">
+    <div class="station-name">Station 1 — The Grill <span style="font-size:8px;color:#999">Action Station</span></div>
+    <div class="station-concept">Hardwood charcoal grill · chef carves to order</div>
+    <div class="station-items">
+      <div class="si"><strong>Chimichurri Bavette Steak</strong><div class="note">Grain-fed, 200g portion, carved tableside</div></div>
+      <div class="si"><strong>Herb-Marinated Chicken Thigh</strong><div class="note">Sumac, lemon, garlic, flat iron grill</div></div>
+      <div class="si"><strong>Miso-Glazed King Oyster Mushroom</strong><div class="note">GF · VG · served on stone slate</div></div>
+      <div class="si"><strong>Housemade Chimichurri</strong><div class="note">+ harissa + tahini green + chilli oil</div></div>
+    </div>
+  </div>
+  <div class="station">
+    <div class="station-name">Station 2 — Grain Bowl Build <span style="font-size:8px;color:#999">Self-Service</span></div>
+    <div class="station-concept">Athletes build their own performance bowl</div>
+    <div class="station-items">
+      <div class="si"><strong>Bases (choose 1–2)</strong><div class="note">Forbidden rice · farro · roasted sweet potato</div></div>
+      <div class="si"><strong>Greens</strong><div class="note">Lacinato kale · baby spinach · shaved fennel</div></div>
+      <div class="si"><strong>Proteins</strong><div class="note">Poached chicken · falafels · marinated tempeh</div></div>
+      <div class="si"><strong>Chef's Dressings</strong><div class="note">Tahini lemon · miso ginger · pomegranate molasses</div></div>
+    </div>
+  </div>
+  <div class="station">
+    <div class="station-name">Station 3 — Soup &amp; Bread <span style="font-size:8px;color:#999">Tableside Pour</span></div>
+    <div class="station-concept">Broth poured tableside at the station</div>
+    <div class="station-items">
+      <div class="si"><strong>Tuscan White Bean Ribollita</strong><div class="note">GF · VG · tableside pour from copper pot</div></div>
+      <div class="si"><strong>Spiced Lamb Shorba</strong><div class="note">Halal · warming winter soup</div></div>
+      <div class="si"><strong>Sourdough + Pita + GF Flatbread</strong><div class="note">Baked in-house · served warm</div></div>
+      <div class="si"><strong>Cultured Butter + Whipped Feta</strong><div class="note">VG · house-made</div></div>
+    </div>
+  </div>
+  <div class="station">
+    <div class="station-name">Station 4 — Dessert &amp; Fruit <span style="font-size:8px;color:#999">Self-Service</span></div>
+    <div class="station-concept">Performance-first desserts</div>
+    <div class="station-items">
+      <div class="si"><strong>Seasonal Whole Fruit Basket</strong><div class="note">GF · VG · primary dessert</div></div>
+      <div class="si"><strong>Dark Chocolate Pots de Crème</strong><div class="note">GF · individual cups · 70% Valrhona</div></div>
+      <div class="si"><strong>Chia Seed Pudding</strong><div class="note">GF · VG · mango coconut</div></div>
+      <div class="si"><strong>Greek Yoghurt + Honey + Granola Bar</strong><div class="note">GF · athlete recovery station</div></div>
+    </div>
+  </div>
+</div>
+<div class="sig-dish"><span class="sig-label">Signature Moment · Day 1 Lunch</span><div class="sig-title">Chimichurri Bavette — Carved Tableside</div><div class="sig-desc">Opening day sets the tone. A hardwood charcoal grill station with a chef carving grain-fed bavette to order in front of every athlete is the single most impactful first impression. The smell alone changes the energy of the room. This is how Great Performances opens events at Madison Square Garden.</div></div>
+</div></div>
+
+<!-- DAY 2 LUNCH -->
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 2 Lunch · Monday 20 July</div><div class="day-date">Competition Day 1</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Station 1 — Korean BBQ <span style="font-size:8px;color:#999">Action Station</span></div><div class="station-concept">Seoul-inspired · tabletop grill energy</div><div class="station-items"><div class="si"><strong>Bulgogi Beef Short Rib</strong><div class="note">Halal · char-grilled, soy-sesame</div></div><div class="si"><strong>Spicy Gochujang Chicken Thigh</strong><div class="note">Boneless · grilled to order</div></div><div class="si"><strong>Tofu Ssam Wraps</strong><div class="note">VG · GF · lettuce cups + kimchi</div></div><div class="si"><strong>Banchan Bar</strong><div class="note">Pickled daikon · sesame spinach · cucumber</div></div></div></div>
+  <div class="station"><div class="station-name">Station 2 — Congee &amp; Rice <span style="font-size:8px;color:#999">Comfort Station</span></div><div class="station-concept">Recovery carbs done with intention</div><div class="station-items"><div class="si"><strong>Jasmine Rice + Steamed Fragrant Rice</strong><div class="note">GF · VG</div></div><div class="si"><strong>Slow-Cooked Congee</strong><div class="note">GF · with ginger, spring onion, fried shallot</div></div><div class="si"><strong>Roasted Vegetable Medley</strong><div class="note">GF · VG · anti-inflammatory</div></div><div class="si"><strong>House Pickles</strong><div class="note">Daikon · cucumber · carrot</div></div></div></div>
+  <div class="station"><div class="station-name">Station 3 — Noodle Bar <span style="font-size:8px;color:#999">Made to Order</span></div><div class="station-concept">Inspired by Momofuku NYC's approach</div><div class="station-items"><div class="si"><strong>Ramen Broth (Tonkotsu-style)</strong><div class="note">Halal version available</div></div><div class="si"><strong>Udon Noodles + Rice Noodles</strong><div class="note">GF option available</div></div><div class="si"><strong>Toppings Bar</strong><div class="note">Soft egg · nori · mushrooms · spring onion</div></div><div class="si"><strong>Chilli Oil + Black Garlic Tare</strong><div class="note">House-made condiments</div></div></div></div>
+  <div class="station"><div class="station-name">Station 4 — Dessert <span style="font-size:8px;color:#999">Self-Service</span></div><div class="station-concept">Asian-inspired sweets</div><div class="station-items"><div class="si"><strong>Seasonal Fruit + Coconut Cream</strong><div class="note">GF · VG</div></div><div class="si"><strong>Matcha Panna Cotta</strong><div class="note">GF · Japanese green tea</div></div><div class="si"><strong>Mango Sticky Rice Cups</strong><div class="note">VG · individual portions</div></div><div class="si"><strong>House Granola Bars</strong><div class="note">GF opt. · athlete snack</div></div></div></div>
+</div></div></div>
+
+<div class="page-footer"><span class="pf-brand">Novotel Ibis · Sydney Olympic Park</span><span class="pf-copy">Water Polo World Cup 2026 · NYC Standard v5</span></div>
+</div>
+<!-- PAGE 4 — LUNCH DAYS 3-4 + DINNER PROGRAMME INTRO -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Lunch Programme · Days 3–4 + Dinner Philosophy</span><span class="page-num">04</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 3 Lunch · Tuesday 21 July</div><div class="day-date">Competition Day 2</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Station 1 — Mediterranean Mezze <span style="font-size:8px;color:#999">Action Station</span></div><div class="station-concept">Levant-inspired · anti-inflammatory · athlete approved</div><div class="station-items"><div class="si"><strong>Lamb Kofta — Grilled to Order</strong><div class="note">Halal · harissa yoghurt · flatbread</div></div><div class="si"><strong>Za'atar Roasted Chicken</strong><div class="note">Sumac-lemon · olive oil</div></div><div class="si"><strong>Stuffed Peppers (VG)</strong><div class="note">Herbed freekeh · pomegranate · pine nut</div></div><div class="si"><strong>Mezze Spread</strong><div class="note">Hummus · baba ghanoush · tabbouleh · fattoush</div></div></div></div>
+  <div class="station"><div class="station-name">Station 2 — Poke + Ceviche Bar <span style="font-size:8px;color:#999">Self-Build</span></div><div class="station-concept">Clean, cold, vibrant — inspired by NYC poke concepts</div><div class="station-items"><div class="si"><strong>Sashimi-Grade Tuna Poke</strong><div class="note">GF · soy-sesame · avocado</div></div><div class="si"><strong>Citrus Barramundi Ceviche</strong><div class="note">GF · lime · coriander · jalapeño</div></div><div class="si"><strong>Edamame Poke (VG)</strong><div class="note">GF · VG · mango · cucumber</div></div><div class="si"><strong>Toppings Bar</strong><div class="note">Crispy shallots · pickled ginger · sesame</div></div></div></div>
+  <div class="station"><div class="station-name">Station 3 — Pasta Station <span style="font-size:8px;color:#999">Made to Order</span></div><div class="station-concept">Carb loading done the right way</div><div class="station-items"><div class="si"><strong>House-Made Pappardelle</strong><div class="note">Slow beef ragù · grana padano</div></div><div class="si"><strong>Rigatoni Arrabbiata (VG)</strong><div class="note">San Marzano · basil · chilli</div></div><div class="si"><strong>GF Rice Pasta option</strong><div class="note">Same sauces · chef plated</div></div><div class="si"><strong>Garlic Bread + GF Focaccia</strong><div class="note">Baked in-house</div></div></div></div>
+  <div class="station"><div class="station-name">Station 4 — Dessert <span style="font-size:8px;color:#999">Self-Service</span></div><div class="station-concept">Mediterranean-inspired sweets</div><div class="station-items"><div class="si"><strong>Seasonal Fruit Platter</strong><div class="note">GF · VG</div></div><div class="si"><strong>Orange Blossom Panna Cotta</strong><div class="note">GF · honey · pistachio</div></div><div class="si"><strong>Baklava (NF)</strong><div class="note">Nut-free version · syrup-soaked</div></div><div class="si"><strong>Yoghurt + Honey + Seeds</strong><div class="note">GF · athlete recovery</div></div></div></div>
+</div></div></div>
+
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 4 Lunch · Wednesday 22 July</div><div class="day-date">Competition Day 3 · Midpoint</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Station 1 — Mexican Taqueria <span style="font-size:8px;color:#999">Action Station</span></div><div class="station-concept">Street taco energy — chef assembles to order</div><div class="station-items"><div class="si"><strong>Slow-Braised Chipotle Beef</strong><div class="note">Halal · pulled · avocado crema</div></div><div class="si"><strong>Grilled Achiote Chicken</strong><div class="note">Halal · pickled red onion</div></div><div class="si"><strong>Roasted Cauliflower Taco (VG)</strong><div class="note">GF · black bean · salsa verde</div></div><div class="si"><strong>Build Your Own Bar</strong><div class="note">Corn tortillas · flour tortillas · GF option</div></div></div></div>
+  <div class="station"><div class="station-name">Station 2 — Salad Architecture <span style="font-size:8px;color:#999">Self-Build</span></div><div class="station-concept">Anti-inflammatory · performance nutrition</div><div class="station-items"><div class="si"><strong>Charred Corn + Black Bean Salad</strong><div class="note">GF · VG · cumin-lime</div></div><div class="si"><strong>Roasted Beet + Quinoa</strong><div class="note">GF · VG · citrus dressing</div></div><div class="si"><strong>Grilled Broccolini + Lemon</strong><div class="note">GF · VG · nutritional powerhouse</div></div><div class="si"><strong>Crispy Chickpeas + Seeds</strong><div class="note">GF · VG · protein boost</div></div></div></div>
+  <div class="station"><div class="station-name">Station 3 — Soup + Flatbread <span style="font-size:8px;color:#999">Tableside Pour</span></div><div class="station-concept">Latin-inspired warmth</div><div class="station-items"><div class="si"><strong>Black Bean &amp; Epazote Soup</strong><div class="note">GF · VG · crema · jalapeño</div></div><div class="si"><strong>Chicken Pozole Verde</strong><div class="note">GF · Halal · hominy · avocado</div></div><div class="si"><strong>House Corn Tortillas</strong><div class="note">GF · made fresh</div></div><div class="si"><strong>Salsa Roja + Verde + Chipotle Mayo</strong><div class="note">House-made · tableside</div></div></div></div>
+  <div class="station"><div class="station-name">Station 4 — Dessert <span style="font-size:8px;color:#999">Self-Service</span></div><div class="station-concept">Latin American inspiration</div><div class="station-items"><div class="si"><strong>Seasonal Fruit</strong><div class="note">GF · VG · primary dessert</div></div><div class="si"><strong>Tres Leches Cake (individual)</strong><div class="note">Milk-soaked · whipped cream</div></div><div class="si"><strong>Churro Bites + Dark Chocolate Dip</strong><div class="note">Cinnamon sugar · 70% Valrhona</div></div><div class="si"><strong>Coconut Lime Granita</strong><div class="note">GF · VG · palate cleanser</div></div></div></div>
+</div></div></div>
+
+<div class="page-footer"><span class="pf-brand">Novotel Ibis · Sydney Olympic Park</span><span class="pf-copy">Water Polo World Cup 2026 · NYC Standard v5</span></div>
+</div>
+<!-- PAGE 5 — DINNER PROGRAMME DAYS 1-4 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Dinner Programme · Days 1–4 · Signature Service</span><span class="page-num">05</span></div>
+<div class="lead">Dinner is where we go full NYC. Each service has a defined culinary identity, a signature moment, and at least one dish that no other event caterer in Australia is serving. Plated dessert. Tableside theatre. Chef-attended stations.</div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 1 Dinner · Sunday 19 July</div><div class="day-date">Opening Night · Make It Count</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Station 1 — Prime Rib Action <span style="font-size:8px;color:#999">Carved Tableside</span></div><div class="station-concept">The statement piece. NYC carving station standard.</div><div class="station-items"><div class="si"><strong>Slow-Roasted Standing Rib Roast</strong><div class="note">Carved to order · red wine jus · horseradish cream</div></div><div class="si"><strong>Roasted Garlic Mashed Potato</strong><div class="note">GF · French-style · butter-enriched</div></div><div class="si"><strong>Gratin Dauphinois</strong><div class="note">GF · cream · thyme · gruyère</div></div><div class="si"><strong>Honey-Glazed Heirloom Carrots</strong><div class="note">GF · VG · anti-inflammatory</div></div></div></div>
+  <div class="station"><div class="station-name">Station 2 — Global Salad Bar <span style="font-size:8px;color:#999">Build Your Own</span></div><div class="station-concept">Great Performances-style abundance table</div><div class="station-items"><div class="si"><strong>Heirloom Tomato + Burrata</strong><div class="note">GF · basil oil · Maldon salt</div></div><div class="si"><strong>Fattoush with Sumac Chicken</strong><div class="note">Halal · crispy pita</div></div><div class="si"><strong>Roasted Beet + Whipped Ricotta</strong><div class="note">GF · VG · walnuts removed · pumpkin seeds</div></div><div class="si"><strong>Charred Broccolini + Anchovy Dressing</strong><div class="note">GF · umami-forward</div></div></div></div>
+  <div class="station"><div class="station-name">Station 3 — Soup Service <span style="font-size:8px;color:#999">Tableside Pour · Winter Warmth</span></div><div class="station-concept">Theatre in a pot. Poured tableside.</div><div class="station-items"><div class="si"><strong>French Onion — Tableside Pour</strong><div class="note">Rich beef consommé · poured over crouton + gruyère</div></div><div class="si"><strong>Roasted Tomato Bisque (VG)</strong><div class="note">GF · cream swirl · basil oil</div></div><div class="si"><strong>Sourdough Loaf + GF Rolls</strong><div class="note">Baked in-house · served warm from oven</div></div><div class="si"><strong>Cultured Butter</strong><div class="note">House-churned · sea salt</div></div></div></div>
+  <div class="station"><div class="station-name">Station 4 — Plated Dessert <span style="font-size:8px;color:#999">Chef Finishes to Order</span></div><div class="station-concept">One element plated in front of the guest</div><div class="station-items"><div class="si"><strong>Dark Chocolate Fondant</strong><div class="note">70% Valrhona · liquid centre · vanilla bean ice cream</div></div><div class="si"><strong>Crème Brûlée</strong><div class="note">GF · torched tableside · orange zest</div></div><div class="si"><strong>Pavlova (Individual)</strong><div class="note">GF · fresh berries · passionfruit curd</div></div><div class="si"><strong>Seasonal Fruit</strong><div class="note">GF · VG · always available</div></div></div></div>
+</div>
+<div class="sig-dish"><span class="sig-label">Signature Moment · Opening Night</span><div class="sig-title">French Onion Soup — Tableside Pour</div><div class="sig-desc">A bowl arrives with a crouton and melted gruyère. The chef pours the hot consommé tableside from a copper pot. The smell. The steam. The theatre. One gesture, 400 people experience it simultaneously. This is the moment that gets photographed and talked about. Zero additional cost — it's soup and a pouring vessel. Maximum impact.</div></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 2 Dinner · Monday 20 July</div><div class="day-date">Competition Day 1 Evening</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Station 1 — Whole Roasted Salmon <span style="font-size:8px;color:#999">Platter Carve</span></div><div class="station-concept">Omega-3 forward · athlete recovery focus</div><div class="station-items"><div class="si"><strong>Whole Side Atlantic Salmon</strong><div class="note">GF · Halal · herb-crusted · lemon butter</div></div><div class="si"><strong>Dill Crème Fraîche</strong><div class="note">GF · house-made</div></div><div class="si"><strong>Smashed New Potatoes + Herbs</strong><div class="note">GF · VG · crispy edges</div></div><div class="si"><strong>Roasted Asparagus + Lemon</strong><div class="note">GF · VG · anti-inflammatory</div></div></div></div>
+  <div class="station"><div class="station-name">Station 2 — Indian Feast <span style="font-size:8px;color:#999">Curry Station</span></div><div class="station-concept">Mumbai hotel-level richness</div><div class="station-items"><div class="si"><strong>Butter Chicken (Halal)</strong><div class="note">GF · tomato-cream · fenugreek</div></div><div class="si"><strong>Dal Makhani (VG)</strong><div class="note">GF · 24-hour slow-cooked lentils</div></div><div class="si"><strong>Saag Paneer (VG)</strong><div class="note">GF · wilted spinach · fresh cheese</div></div><div class="si"><strong>Naan + Basmati + Raita</strong><div class="note">Made to order · GF rice option</div></div></div></div>
+  <div class="station"><div class="station-name">Station 3 — Soup + Bread <span style="font-size:8px;color:#999">Tableside</span></div><div class="station-concept">South Asian warmth</div><div class="station-items"><div class="si"><strong>Mulligatawny Soup</strong><div class="note">GF · Halal · lentil · coconut · turmeric</div></div><div class="si"><strong>Roasted Pumpkin Soup (VG)</strong><div class="note">GF · coconut cream · chilli oil</div></div><div class="si"><strong>Peshwari Naan + GF Flatbread</strong><div class="note">Baked in-house</div></div><div class="si"><strong>Mint Chutney + Tamarind</strong><div class="note">House-made condiments</div></div></div></div>
+  <div class="station"><div class="station-name">Station 4 — Plated Dessert <span style="font-size:8px;color:#999">Chef Finishes</span></div><div class="station-concept">Indian-inspired luxury</div><div class="station-items"><div class="si"><strong>Gulab Jamun (warm)</strong><div class="note">Rose syrup · cardamom · served from copper pot</div></div><div class="si"><strong>Mango Kulfi Semifreddo</strong><div class="note">GF · saffron · pistachio dust</div></div><div class="si"><strong>Cardamom Rice Pudding</strong><div class="note">GF · VG · rosewater · gold leaf</div></div><div class="si"><strong>Seasonal Fruit Platter</strong><div class="note">GF · VG</div></div></div></div>
+</div>
+<div class="sig-dish"><span class="sig-label">Signature Moment · Day 2 Dinner</span><div class="sig-title">Gulab Jamun — Served Hot from Copper Pot</div><div class="sig-desc">Warm, syrup-soaked milk dumplings served directly from a traditional copper pot at the dessert station. The cardamom and rose water aroma fills the room. Nobody at this event has ever seen this at a catered event in Australia. Great Performances would serve this at a UN Gala. We serve it on Day 2. That is the standard.</div></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-brand">Novotel Ibis · Sydney Olympic Park</span><span class="pf-copy">Water Polo World Cup 2026 · NYC Standard v5</span></div>
+</div>
+<!-- PAGE 6 — DINNER DAYS 3-8 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Dinner Programme · Days 3–8 · Signature Service</span><span class="page-num">06</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 3 Dinner · Tuesday 21 July</div><div class="day-date">Hump Day · Morale Service</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Station 1 — Japanese Yakitori <span style="font-size:8px;color:#999">Grill Station</span></div><div class="station-concept">Binchōtan charcoal · chef skewers to order</div><div class="station-items"><div class="si"><strong>Chicken Thigh Yakitori (Tare + Shio)</strong><div class="note">GF · Halal · binchōtan-grilled</div></div><div class="si"><strong>Wagyu Beef Skewers</strong><div class="note">GF · Halal · tare glaze</div></div><div class="si"><strong>Miso-Glazed Eggplant (VG)</strong><div class="note">GF · white miso · sesame</div></div><div class="si"><strong>Steamed Rice + Pickles + Miso Soup</strong><div class="note">GF · complete Japanese set</div></div></div></div>
+  <div class="station"><div class="station-name">Station 2 — West African Feast <span style="font-size:8px;color:#999">Stew Station</span></div><div class="station-concept">Honouring the 16 nations — African teams represented</div><div class="station-items"><div class="si"><strong>Jollof Rice (VG)</strong><div class="note">GF · tomato-pepper · party rice</div></div><div class="si"><strong>Peanut-Free Piri Piri Chicken</strong><div class="note">GF · Halal · chilli-lemon</div></div><div class="si"><strong>Egusi Spinach Stew (VG)</strong><div class="note">GF · seed-based · no nuts</div></div><div class="si"><strong>Fried Plantain</strong><div class="note">GF · VG · caramelised · crowd pleaser</div></div></div></div>
+  <div class="station"><div class="station-name">Station 3 — Miso Soup Bar <span style="font-size:8px;color:#999">Tableside</span></div><div class="station-concept">Japanese recovery · electrolytes</div><div class="station-items"><div class="si"><strong>White Miso Broth (VG)</strong><div class="note">GF · tofu · wakame · spring onion</div></div><div class="si"><strong>Dashi Broth with Udon</strong><div class="note">Halal · kombu-based</div></div><div class="si"><strong>Japanese Milk Bread</strong><div class="note">Shokupan · served warm</div></div><div class="si"><strong>Sesame + Nori + Pickled Ginger</strong><div class="note">Condiments tableside</div></div></div></div>
+  <div class="station"><div class="station-name">Station 4 — Plated Dessert <span style="font-size:8px;color:#999">Chef Finishes</span></div><div class="station-concept">Japanese-African fusion sweet</div><div class="station-items"><div class="si"><strong>Matcha Tiramisu</strong><div class="note">Green tea · mascarpone · cocoa</div></div><div class="si"><strong>Tamarind-Caramel Tart</strong><div class="note">Sweet-sour · West African influence</div></div><div class="si"><strong>Coconut Mochi (GF)</strong><div class="note">GF · VG · glutinous rice</div></div><div class="si"><strong>Seasonal Fruit</strong><div class="note">GF · VG</div></div></div></div>
+</div>
+<div class="sig-dish"><span class="sig-label">Signature Moment · Day 3 Dinner</span><div class="sig-title">Fried Plantain — Sweet, Caramelised, No One Expected It</div><div class="sig-desc">Athletes from African nations will recognise it instantly. Athletes from Europe and the Americas will taste it for the first time. It costs almost nothing. It delivers joy, memory, and a bridge between cultures. That is the point. Pinch Food Design builds entire events around one ingredient moment like this.</div></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Days 4–6 Dinners · Wed–Fri 22–24 July</div><div class="day-date">Peak Competition Phase</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Day 4 — Peruvian Ceviche Night</div><div class="station-concept">Lima's La Mar meets Sydney Olympic Park</div><div class="station-items"><div class="si"><strong>Tiger's Milk Ceviche Station</strong><div class="note">GF · fresh lime · chilli · coriander</div></div><div class="si"><strong>Anticucho Chicken Skewers</strong><div class="note">GF · Halal · Peruvian spice</div></div><div class="si"><strong>Lomo Saltado Stir-Fry</strong><div class="note">Halal · soy-tomato · chips</div></div><div class="si"><strong>Sig: Leche de Tigre Shooter</strong><div class="note">🍋 Tableside pour · citrus-tiger's milk · celery</div></div></div></div>
+  <div class="station"><div class="station-name">Day 5 — Middle Eastern Night</div><div class="station-concept">Levant abundance table</div><div class="station-items"><div class="si"><strong>Slow Lamb Shoulder (Halal)</strong><div class="note">Pulled tableside · 8-hour oven</div></div><div class="si"><strong>Mansaf-Style Rice</strong><div class="note">GF · Halal · saffron · yoghurt sauce</div></div><div class="si"><strong>Mezze Abundance Table</strong><div class="note">7 salads · 3 dips · fresh bread</div></div><div class="si"><strong>Sig: Whole Lamb Shoulder Reveal</strong><div class="note">🍖 Brought to the station whole · carved in front of guests</div></div></div></div>
+  <div class="station"><div class="station-name">Day 6 — Brazilian Churrasco</div><div class="station-concept">São Paulo rodizio spirit</div><div class="station-items"><div class="si"><strong>Picanha + Fraldinha</strong><div class="note">Halal · rotating spit · chef carves tableside</div></div><div class="si"><strong>Farofa + Pão de Queijo</strong><div class="note">GF · cheese bread · toasted cassava</div></div><div class="si"><strong>Caipirinha-Glazed Pineapple (VG)</strong><div class="note">GF · grilled · brown sugar · mint</div></div><div class="si"><strong>Sig: Tableside Picanha Carve</strong><div class="note">🔥 Skewered beef carved onto guests' plates at the table</div></div></div></div>
+  <div class="station"><div class="station-name">Days 4–6 Dessert</div><div class="station-concept">Plated with one tableside element</div><div class="station-items"><div class="si"><strong>Day 4: Alfajor with Dulce de Leche</strong><div class="note">Tableside sauce pour</div></div><div class="si"><strong>Day 5: Knafeh (warm)</strong><div class="note">Shredded pastry · orange blossom · cheese</div></div><div class="si"><strong>Day 6: Brigadeiro Truffles (VG)</strong><div class="note">Brazilian chocolate · rolled to order</div></div><div class="si"><strong>All: Seasonal Fruit always available</strong><div class="note">GF · VG</div></div></div></div>
+</div></div></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Days 7–8 · Sat–Sun 25–26 July</div><div class="day-date">Semi-Finals + Final · Closing Services</div></div>
+<div class="day-body">
+<div class="station-grid">
+  <div class="station"><div class="station-name">Day 7 — Pan-Asian Celebration</div><div class="station-concept">Asia-Pacific nations · final push energy</div><div class="station-items"><div class="si"><strong>Peking Duck Pancakes (Halal)</strong><div class="note">Chef folds at station · hoisin · cucumber</div></div><div class="si"><strong>Laksa Station</strong><div class="note">GF · Halal · coconut · lemongrass</div></div><div class="si"><strong>Kung Pao Cauliflower (VG)</strong><div class="note">GF · Sichuan pepper · no peanuts</div></div><div class="si"><strong>Sig: Peking Duck Carve</strong><div class="note">🦆 Whole duck carved tableside · pancakes rolled to order</div></div></div></div>
+  <div class="station"><div class="station-name">Day 8 — Grand Final Closing Feast</div><div class="station-concept">The meal they will remember forever</div><div class="station-items"><div class="si"><strong>48-Hour Wagyu Short Rib</strong><div class="note">GF · Halal · sous vide → seared · red wine jus</div></div><div class="si"><strong>Whole Roasted Barramundi</strong><div class="note">GF · Halal · native herbs · bush tomato</div></div><div class="si"><strong>Indigenous Ingredients Table</strong><div class="note">Lemon myrtle · Davidson plum · wattleseed</div></div><div class="si"><strong>Sig: Australia on a Plate</strong><div class="note">🇦🇺 The closing meal celebrates the host nation properly</div></div></div></div>
+  <div class="station"><div class="station-name">Day 8 — Final Night Dessert Theatre</div><div class="station-concept">Abigail Kirsch-level closing moment</div><div class="station-items"><div class="si"><strong>Pavlova — Tableside Assembly</strong><div class="note">GF · chef layers cream + berries + passionfruit in front of guest</div></div><div class="si"><strong>Lamington Truffles</strong><div class="note">Chocolate coconut · Australian farewell gift</div></div><div class="si"><strong>Tim Tam Affogato Shot</strong><div class="note">Espresso · vanilla ice cream · Tim Tam stir stick</div></div><div class="si"><strong>Seasonal Fruit</strong><div class="note">GF · VG · always</div></div></div></div>
+  <div class="station"><div class="station-name">Final Night Beverage Upgrade</div><div class="station-concept">Close the event in style</div><div class="station-items"><div class="si"><strong>Sparkling Wine Toast</strong><div class="note">Non-alcoholic option alongside</div></div><div class="si"><strong>Cold Press Juice Bar</strong><div class="note">GF · VG · recovery focus</div></div><div class="si"><strong>Kombucha on Tap</strong><div class="note">GF · VG · gut health</div></div><div class="si"><strong>Hot Chocolate Station</strong><div class="note">70% Valrhona · winter closing</div></div></div></div>
+</div>
+<div class="sig-dish"><span class="sig-label">Signature Moment · Closing Night</span><div class="sig-title">Australia on a Plate — Barramundi + Native Ingredients</div><div class="sig-desc">The final meal closes the loop. We opened with chimichurri bavette — fire and international energy. We close with whole roasted Australian barramundi, native lemon myrtle, Davidson plum jus, and wattleseed dust. 400 athletes from 16 nations leave having experienced Australian food culture at its finest. This is the Novotel SOP standard. This is the standard that makes them choose Sydney again in 2030.</div></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-brand">Novotel Ibis · Sydney Olympic Park</span><span class="pf-copy">Water Polo World Cup 2026 · NYC Standard v5</span></div>
+</div>
+<!-- PAGE 7 — BEVERAGE PROGRAMME + DIETARY + CLOSING -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Beverage Programme · Dietary Standards · Operational Notes</span><span class="page-num">07</span></div>
+
+<div class="bev-block">
+  <h4>☕ Beverage Programme — All Services</h4>
+  <div class="bev-grid">
+    <div class="bev-col"><h5>Hot Beverages</h5><p>Barista espresso bar<br>Flat white · latte · cappuccino<br>Long black · macchiato<br>English Breakfast · Earl Grey<br>Green tea · Peppermint<br>Chamomile · Ginger lemon<br>Decaf espresso available</p></div>
+    <div class="bev-col"><h5>Cold Beverages</h5><p>Still + sparkling water<br>Freshly pressed OJ<br>Watermelon + mint agua fresca<br>Cucumber + lemon infused water<br>Cold press carrot-ginger<br>Kombucha on tap (final 2 days)<br>Sugar-free electrolyte shots</p></div>
+    <div class="bev-col"><h5>Performance Station</h5><p>Electrolyte recovery drinks<br>Protein smoothie bar (Days 5–8)<br>Beetroot + ginger shots<br>Turmeric latte option<br>Bone broth cups (winter warmth)<br>High-protein chocolate milk<br>Coconut water recovery</p></div>
+  </div>
+</div>
+
+<div class="eyebrow" style="margin-top:5mm">Dietary Standards</div>
+<div class="big-title" style="font-size:20px;margin-bottom:4mm">Every Athlete Eats Well</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:5mm">
+  <div class="sum-card"><h4>Gluten Free</h4><ul><li>All soups GF by default</li><li>GF pasta option every lunch</li><li>GF flatbread at every bread station</li><li>GF dessert option every service</li><li>All grain bowls GF by default</li></ul></div>
+  <div class="sum-card"><h4>Halal</h4><ul><li>All proteins Halal-certified</li><li>Pork completely absent from all menus</li><li>Alcohol removed from all cooking</li><li>Halal certification available on request</li><li>Separate serving utensils throughout</li></ul></div>
+  <div class="sum-card"><h4>Vegan / Vegetarian</h4><ul><li>Minimum 2 VG protein options per service</li><li>VG stations clearly labelled</li><li>No cross-contamination with meat stations</li><li>VG desserts every service</li><li>Plant-based milk at beverage station</li></ul></div>
+  <div class="sum-card"><h4>100% Nut Free</h4><ul><li>Zero nuts in any dish across all 16 services</li><li>Pumpkin seeds replace pine nuts</li><li>Sunflower seeds replace almonds</li><li>All suppliers confirmed NF-facility</li><li>NF signage on all stations</li></ul></div>
+</div>
+
+<div class="eyebrow">NYC vs Standard — The Operational Difference</div>
+<table class="diff-table" style="margin-top:2mm">
+  <thead><tr><th>Standard Australian Catering</th><th>This Programme (NYC Standard)</th></tr></thead>
+  <tbody>
+    <tr><td>Buffet line, one queue, 400 people waiting</td><td>4 stations simultaneously — no queue over 8 people</td></tr>
+    <tr><td>Food sits in chafing dishes losing quality</td><td>Action stations — food cooked or plated to order</td></tr>
+    <tr><td>Same dessert every night</td><td>Plated dessert with tableside element — different every service</td></tr>
+    <tr><td>Soup = pour from pot into bowl</td><td>Tableside pour into a prepared bowl with garnish — theatre</td></tr>
+    <tr><td>GF = same dish without the carb</td><td>GF dishes designed from the ground up to be GF</td></tr>
+    <tr><td>No culinary narrative across 8 days</td><td>8 distinct culinary identities — journey around the world</td></tr>
+    <tr><td>Dessert = slice of cake on a tray</td><td>Tableside assembly or pour — one element done in front of the guest</td></tr>
+  </tbody>
+</table>
+
+<div class="phil-box" style="margin-top:4mm">
+  <h3>The Closing Statement</h3>
+  <p>Great Performances has catered at Carnegie Hall since 1980. They don't serve roast chicken from a chafing dish. They build culinary experiences that honour the event, the guest, and the craft.<br><br>
+  This programme is what Novotel Sydney Olympic Park serves when we decide the standard isn't "good enough for a sports event." It's the standard that gets us the next World Cup. The next FIFA delegation. The next Commonwealth Games tender.<br><br>
+  This is the menu that makes them come back.<br><br>
+  <strong style="color:var(--gold)">19–26 July 2026. Sydney Olympic Park. 16 Nations. 400 Athletes. 8 Days. Zero compromise.</strong></p>
+</div>
+
+<div style="margin-top:5mm;padding-top:4mm;border-top:1px solid #E8E4DE;display:flex;justify-content:space-between;align-items:flex-end">
+  <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--dark)">Timothy Susanto</div><div style="font-size:9px;color:var(--mid);margin-top:1mm">Head Chef · Novotel Ibis Sydney Olympic Park</div><div style="font-size:9px;color:var(--mid)">Timothy.SUSANTO@accor.com</div></div>
+  <div style="text-align:right"><div style="font-size:8px;color:var(--mid);letter-spacing:1px">WATER POLO WORLD CUP 2026</div><div style="font-size:8px;color:var(--mid)">Menu Programme v5 · NYC Standard · June 2026</div></div>
+</div>
+
+<div class="page-footer"><span class="pf-brand">Novotel Ibis · Sydney Olympic Park</span><span class="pf-copy">Water Polo World Cup 2026 · NYC Standard v5</span></div>
+</div>
+
+</body>
+</html>

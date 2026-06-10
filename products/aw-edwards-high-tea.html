@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AW Edwards — High Tea Package | Novotel Sydney Olympic Park</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Georgia',serif;background:#FAFAF8;color:#1C1C1C;font-size:14px;line-height:1.6}
+/* HEADER */
+.hdr{background:#1a2e3b;color:#fff;padding:32px 40px;display:flex;justify-content:space-between;align-items:flex-start}
+.hdr-logo{font-size:1.1rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-family:system-ui,sans-serif}
+.hdr-sub{font-size:0.72rem;opacity:0.6;letter-spacing:0.12em;text-transform:uppercase;font-family:system-ui,sans-serif}
+.hdr-right{text-align:right}
+.hdr-doc{font-size:0.7rem;opacity:0.6;letter-spacing:0.1em;text-transform:uppercase;font-family:system-ui,sans-serif;margin-bottom:4px}
+.hdr-ref{font-size:0.85rem;font-weight:700;color:#C8A97E;font-family:system-ui,sans-serif}
+/* GOLD BAND */
+.gold-band{background:#C8A97E;color:#fff;padding:8px 40px;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;font-family:system-ui,sans-serif;display:flex;justify-content:space-between}
+/* CONTENT */
+.content{max-width:900px;margin:0 auto;padding:32px 40px}
+/* CLIENT BLOCK */
+.client-block{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;padding:24px;background:#fff;border:1px solid #E8E4DC;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.cb-label{font-size:0.62rem;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;font-family:system-ui,sans-serif}
+.cb-val{font-size:0.92rem;font-weight:600;font-family:system-ui,sans-serif}
+.cb-val.accent{color:#C8A97E}
+/* SECTION */
+.section{margin-bottom:32px}
+.sec-title{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#C8A97E;border-bottom:2px solid #C8A97E;padding-bottom:6px;margin-bottom:18px;font-family:system-ui,sans-serif}
+/* HIGH TEA MENU */
+.ht-course{margin-bottom:22px}
+.ht-course-title{font-size:0.88rem;font-weight:700;color:#1a2e3b;margin-bottom:10px;font-family:system-ui,sans-serif;display:flex;align-items:center;gap:8px}
+.ht-course-title::before{content:'';display:inline-block;width:24px;height:2px;background:#C8A97E}
+.ht-items{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ht-item{padding:8px 12px;border-bottom:1px solid #f0ece4;font-size:0.85rem;display:flex;align-items:flex-start;gap:8px}
+.ht-item:nth-child(even){background:#fdfbf8}
+.ht-item-dot{color:#C8A97E;font-size:0.7rem;margin-top:4px;flex-shrink:0}
+.ht-item-name{font-weight:600}
+.ht-item-desc{font-size:0.75rem;color:#6B6B6B;margin-top:1px;font-style:italic}
+/* ALLERGEN TAGS */
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.6rem;font-weight:700;margin-left:6px;vertical-align:middle;font-family:system-ui,sans-serif}
+.tgf{background:#d1fae5;color:#065f46}
+.tvg{background:#dbeafe;color:#1e40af}
+.tdf{background:#fef3c7;color:#92400e}
+/* PRICING TABLE */
+.price-table{width:100%;border-collapse:collapse;font-family:system-ui,sans-serif}
+.price-table th{background:#1a2e3b;color:#fff;padding:10px 14px;text-align:left;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.price-table th:last-child{text-align:right}
+.price-table td{padding:10px 14px;border-bottom:1px solid #f0ece4;font-size:0.85rem;vertical-align:top}
+.price-table tr:nth-child(even) td{background:#fdfbf8}
+.price-table td:last-child{text-align:right;font-weight:700;color:#1a2e3b}
+.price-table tr.subtotal td{background:#f0ece4;font-weight:700;border-top:2px solid #E8E4DC}
+.price-table tr.total td{background:#1a2e3b;color:#fff;font-weight:800;font-size:0.92rem}
+.price-table tr.total td:last-child{color:#C8A97E}
+.price-desc{font-size:0.75rem;color:#6B6B6B;margin-top:2px}
+/* CANAPE NOTE */
+.info-box{background:#fff;border:1px solid #E8E4DC;border-left:4px solid #C8A97E;border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:16px}
+.info-box h4{font-size:0.82rem;font-weight:700;margin-bottom:6px;font-family:system-ui,sans-serif;color:#1a2e3b}
+.info-box p{font-size:0.82rem;color:#374151;line-height:1.7}
+/* NOTES */
+.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.note-card{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:16px}
+.note-card h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#1a2e3b;margin-bottom:8px;font-family:system-ui,sans-serif}
+.note-card ul{list-style:none;font-size:0.8rem;color:#374151;line-height:1.9}
+.note-card ul li::before{content:'✓  ';color:#C8A97E;font-weight:700}
+/* SIGNATURE */
+.sig-block{background:#1a2e3b;color:#fff;padding:24px 32px;border-radius:8px;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;font-family:system-ui,sans-serif}
+.sig-line{border-bottom:1px solid rgba(255,255,255,0.2);margin-top:24px;height:1px}
+.sig-label{font-size:0.65rem;opacity:0.5;text-transform:uppercase;letter-spacing:0.1em;margin-top:4px}
+/* FOOTER */
+.footer{text-align:center;padding:20px 40px;border-top:1px solid #E8E4DC;font-size:0.72rem;color:#6B6B6B;font-family:system-ui,sans-serif;margin-top:16px}
+/* PRINT */
+@media print{body{background:#fff}.content{padding:20px 32px}.hdr{padding:24px 32px}.gold-band{padding:6px 32px}}
+/* SCREEN-ONLY */
+.screen-only{font-family:system-ui,sans-serif}
+.btn{padding:8px 18px;border:none;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;margin-right:8px}
+.bp{background:#1a2e3b;color:#fff}.bs{background:#E8E4DC;color:#1C1C1C}
+.toolbar{background:#fff;border-bottom:1px solid #E8E4DC;padding:12px 40px;display:flex;align-items:center;gap:8px}
+@media print{.toolbar,.screen-only{display:none!important}}
+</style>
+</head>
+<body>
+
+<div class="toolbar screen-only">
+  <button class="btn bp" onclick="window.print()">🖨️ Print / Save PDF</button>
+  <button class="btn bs" onclick="window.close()">✕ Close</button>
+  <span style="font-size:0.75rem;color:#6B6B6B;margin-left:8px">Save as PDF → Background graphics ON → A4</span>
+</div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <div class="hdr-logo">Novotel Sydney Olympic Park</div>
+    <div class="hdr-sub">Olympic Boulevard, Sydney Olympic Park NSW 2127</div>
+    <div class="hdr-sub" style="margin-top:4px">T: (02) 9763 1111 · events@novotelolympicpark.com.au</div>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-doc">Catering Proposal</div>
+    <div class="hdr-ref">AW-EDWARDS-2026</div>
+    <div style="font-size:0.72rem;opacity:0.5;margin-top:4px;font-family:system-ui">Prepared: June 2026</div>
+  </div>
+</div>
+<div class="gold-band">
+  <span>High Tea + Canapé Package · Conference &amp; Events</span>
+  <span>Valid 14 days from issue</span>
+</div>
+
+<div class="content">
+
+  <!-- CLIENT BLOCK -->
+  <div class="client-block">
+    <div>
+      <div class="cb-label">Client / Company</div>
+      <div class="cb-val">AW Edwards</div>
+    </div>
+    <div>
+      <div class="cb-label">Event Date Options</div>
+      <div class="cb-val accent">Thursday 30 July 2026 or Thursday 13 August 2026</div>
+    </div>
+    <div>
+      <div class="cb-label">Venue</div>
+      <div class="cb-val">Freshwater 1 &amp; 2, Novotel Sydney Olympic Park</div>
+    </div>
+    <div>
+      <div class="cb-label">Guest Numbers</div>
+      <div class="cb-val">120 pax (confirmed)</div>
+    </div>
+    <div>
+      <div class="cb-label">Catering Format</div>
+      <div class="cb-val">High Tea (during presentations) + Canapé Package + Beverages on Consumption</div>
+    </div>
+    <div>
+      <div class="cb-label">Prepared By</div>
+      <div class="cb-val">Timothy Susanto, Head Chef</div>
+    </div>
+  </div>
+
+  <!-- HIGH TEA MENU -->
+  <div class="section">
+    <div class="sec-title">High Tea Menu — Set Per Table During Presentations</div>
+
+    <div style="font-size:0.82rem;color:#6B6B6B;margin-bottom:18px;font-style:italic;font-family:system-ui,sans-serif">
+      Served as a tiered presentation per table of 10. All items presented simultaneously at commencement of presentations. Dietary options available with 7 days' notice.
+    </div>
+
+    <div class="ht-course">
+      <div class="ht-course-title">Mini Sandwiches <span style="font-size:0.72rem;color:#6B6B6B;font-weight:400">(3 varieties per table, 4 pieces each = 12 pieces per table)</span></div>
+      <div class="ht-items">
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Smoked Salmon &amp; Cream Cheese<span class="tag tdf">DF opt.</span></div><div class="ht-item-desc">Pumpernickel, dill crème fraîche, capers, micro herbs</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Free Range Egg &amp; Chive<span class="tag tvg">VG</span></div><div class="ht-item-desc">Brioche bread, whole egg mayo, watercress, sea salt</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Shaved Honey Ham &amp; Swiss</div><div class="ht-item-desc">White sourdough, grain mustard butter, cornichon</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Roasted Pumpkin &amp; Feta<span class="tag tvg">VG</span><span class="tag tgf">GF opt.</span></div><div class="ht-item-desc">Multigrain, baby rocket, sun-dried tomato pesto</div></div></div>
+      </div>
+    </div>
+
+    <div class="ht-course">
+      <div class="ht-course-title">Savoury Quiches <span style="font-size:0.72rem;color:#6B6B6B;font-weight:400">(2 varieties per table, 5 pieces each = 10 pieces per table)</span></div>
+      <div class="ht-items">
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Caramelised Onion, Gruyère &amp; Thyme<span class="tag tvg">VG</span></div><div class="ht-item-desc">Shortcrust pastry, crème fraîche custard, fresh thyme</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Smoked Bacon, Leek &amp; Cheddar</div><div class="ht-item-desc">Butter pastry, free range egg custard, chive oil</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Roasted Capsicum &amp; Ricotta<span class="tag tvg">VG</span><span class="tag tgf">GF</span></div><div class="ht-item-desc">Gluten-free shell, basil oil, parmesan</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Smoked Salmon &amp; Asparagus<span class="tag tgf">GF opt.</span></div><div class="ht-item-desc">Dill custard, lemon zest, crème fraîche</div></div></div>
+      </div>
+    </div>
+
+    <div class="ht-course">
+      <div class="ht-course-title">Sweet Selections <span style="font-size:0.72rem;color:#6B6B6B;font-weight:400">(4 varieties per table, 3 pieces each = 12 pieces per table)</span></div>
+      <div class="ht-items">
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Classic Scones<span class="tag tvg">VG</span></div><div class="ht-item-desc">Served warm with double cream, strawberry preserve, lemon curd</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Raspberry &amp; White Chocolate Macarons<span class="tag tgf">GF</span><span class="tag tvg">VG</span></div><div class="ht-item-desc">French meringue, white chocolate ganache, freeze-dried raspberry</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Lemon Tart <span class="tag tvg">VG</span></div><div class="ht-item-desc">Pâte sucrée, lemon curd, Italian meringue torched to order</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Chocolate &amp; Salted Caramel Éclair<span class="tag tvg">VG</span></div><div class="ht-item-desc">Choux pastry, caramel crème patissière, dark chocolate glaze</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Fresh Berry Pavlova<span class="tag tgf">GF</span><span class="tag tvg">VG</span></div><div class="ht-item-desc">Individual meringue, Chantilly cream, seasonal berries, mint</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Petit Fours Assortment<span class="tag tvg">VG</span></div><div class="ht-item-desc">House truffles, almond financiers, candied citrus peel</div></div></div>
+      </div>
+    </div>
+
+    <div class="ht-course">
+      <div class="ht-course-title">Beverages — High Tea Service</div>
+      <div class="ht-items">
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Freshly Brewed Tea Selection</div><div class="ht-item-desc">T2 English Breakfast, Earl Grey, Green Jasmine, Peppermint, Chamomile</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Freshly Brewed Coffee</div><div class="ht-item-desc">Barista-served flat white, latte, cappuccino, long black, decaf available</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Still &amp; Sparkling Water</div><div class="ht-item-desc">Served throughout the session</div></div></div>
+        <div class="ht-item"><div class="ht-item-dot">◆</div><div><div class="ht-item-name">Fresh Orange Juice</div><div class="ht-item-desc">Freshly pressed, served in jugs at each table</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section">
+    <div class="sec-title">Pricing Summary — 120 Pax</div>
+    <table class="price-table">
+      <thead><tr><th style="width:40%">Item</th><th>Details</th><th>Per Person</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>High Tea Package</strong><div class="price-desc">Set per table during presentations · Tea, coffee &amp; juice included · All items above</div></td>
+          <td>120 pax × full menu</td>
+          <td>$68.00</td>
+          <td>$8,160.00</td>
+        </tr>
+        <tr>
+          <td><strong>Canapé Package</strong><div class="price-desc">As per C&amp;E Kit · 5 pieces per person · 2 cold, 2 hot, 1 substantial</div></td>
+          <td>120 pax × 5 pieces</td>
+          <td>$38.00</td>
+          <td>$4,560.00</td>
+        </tr>
+        <tr>
+          <td><strong>Beverages — Consumption</strong><div class="price-desc">Beer, wine, soft drink, water · Estimated 3hrs service · Est. 3–4 drinks/person</div></td>
+          <td>Est. 120 pax × ~$28</td>
+          <td>$28.00 est.</td>
+          <td>$3,360.00 est.</td>
+        </tr>
+        <tr>
+          <td><strong>Room Hire — Freshwater 1 &amp; 2</strong><div class="price-desc">Full day room hire including AV, staging, standard linen</div></td>
+          <td>Freshwater 1 &amp; 2 combined</td>
+          <td>—</td>
+          <td>$2,200.00</td>
+        </tr>
+        <tr>
+          <td><strong>Staffing</strong><div class="price-desc">1 Head Waiter + 4 service staff + 1 barista for High Tea service</div></td>
+          <td>Included in package</td>
+          <td>—</td>
+          <td>Included</td>
+        </tr>
+        <tr class="subtotal">
+          <td colspan="3">Subtotal (excl. GST)</td>
+          <td>$18,280.00</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="font-size:0.8rem;color:#6B6B6B">GST (10%)</td>
+          <td style="color:#6B6B6B">$1,828.00</td>
+        </tr>
+        <tr class="total">
+          <td colspan="3"><strong>TOTAL ESTIMATE (incl. GST)</strong><div style="font-size:0.7rem;opacity:0.65;margin-top:2px;font-weight:400">Beverages billed on actual consumption post-event</div></td>
+          <td><strong>$20,108.00</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.75rem;color:#6B6B6B;margin-top:10px;font-family:system-ui,sans-serif;font-style:italic">
+      * Beverage total is an estimate based on 3-hour consumption service at average consumption. Final billed on actuals.<br>
+      * Minimum spend of $15,000 applies to Freshwater 1 &amp; 2 combined on selected dates.
+    </div>
+  </div>
+
+  <!-- CANAPE INFO -->
+  <div class="section">
+    <div class="sec-title">Canapé Package — C&amp;E Kit Reference</div>
+    <div class="info-box">
+      <h4>Standard Canapé Package — 5 Pieces Per Person</h4>
+      <p>As detailed in the Novotel SOP Conference &amp; Events Kit. Package includes 2 cold canapés, 2 hot canapés, and 1 substantial canapé. Chef's selection based on seasonality and dietary requirements of your group. Full canapé menu available on request. Minimum 72 hours notice for dietary modifications.</p>
+    </div>
+    <div class="info-box" style="border-left-color:#2a9d8f">
+      <h4>Why Novotel SOP Over Pullman Sydney Hyde Park</h4>
+      <p>Given AW Edwards' construction sites are predominantly near Sydney Olympic Park, Novotel SOP provides significantly easier access for delegates — avoiding CBD traffic and parking constraints. Ample complimentary parking on-site, direct train access via Olympic Park Station (15 min from CBD), and purpose-built conference infrastructure in Freshwater 1 &amp; 2.</p>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section">
+    <div class="notes-grid">
+      <div class="note-card">
+        <h4>What's Included</h4>
+        <ul>
+          <li>Full High Tea tiered presentation per table</li>
+          <li>Tea, coffee &amp; juice service</li>
+          <li>Canapé package (as per C&amp;E Kit)</li>
+          <li>Beverages on consumption</li>
+          <li>Freshwater 1 &amp; 2 room hire</li>
+          <li>Standard AV (screen, projector, microphone)</li>
+          <li>White linen tablecloths &amp; napkins</li>
+          <li>Dedicated event service staff</li>
+          <li>On-site parking for all guests</li>
+        </ul>
+      </div>
+      <div class="note-card">
+        <h4>Key Details &amp; Terms</h4>
+        <ul>
+          <li>Final numbers confirmed 5 business days prior</li>
+          <li>Dietary requirements 7 days prior</li>
+          <li>25% deposit to confirm booking</li>
+          <li>Balance due 7 days post-event</li>
+          <li>Cancellation within 14 days — 50% fee applies</li>
+          <li>Both 30 July and 13 Aug tentatively available</li>
+          <li>Quote valid 14 days from issue</li>
+          <li>All prices include GST</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE BLOCK -->
+  <div class="sig-block">
+    <div>
+      <div style="font-size:0.72rem;opacity:0.5;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Prepared By</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#C8A97E">Timothy Susanto</div>
+      <div style="font-size:0.78rem;opacity:0.75;margin-top:2px">Head Chef, Novotel Sydney Olympic Park</div>
+      <div style="font-size:0.72rem;opacity:0.5;margin-top:2px">Timothy.SUSANTO@accor.com</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature &amp; Date</div>
+    </div>
+    <div>
+      <div style="font-size:0.72rem;opacity:0.5;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Client Acceptance</div>
+      <div style="font-size:0.88rem;font-weight:600">AW Edwards</div>
+      <div style="font-size:0.78rem;opacity:0.6;margin-top:2px">Authorised Representative</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature, Name &amp; Date</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Novotel Sydney Olympic Park · Olympic Boulevard, Sydney Olympic Park NSW 2127 · (02) 9763 1111<br>
+  This proposal is confidential and prepared exclusively for AW Edwards. Valid for 14 days from date of issue.
+</div>
+
+</body>
+</html>
