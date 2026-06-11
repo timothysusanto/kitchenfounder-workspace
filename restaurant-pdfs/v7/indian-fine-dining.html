@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #36 — Indian Fine Dining NYC Dinner Standard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --accent: #7B1F00;
+    --gold: #C8922A;
+    --light: #F3EEE8;
+    --muted: #6B6B6B;
+    --border: #D9CFC0;
+    --white: #FFFFFF;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6; }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+  /* PAGE LAYOUT */
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto 20px; position: relative; background: var(--bg); page-break-after: always; display: flex; flex-direction: column; }
+  @media print { .page { margin: 0; page-break-after: always; } body { background: #fff; } }
+
+  /* FOOTER */
+  .footer { margin-top: auto; border-top: 1px solid var(--border); padding: 8px 20px; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); background: var(--bg); }
+
+  /* COVER PAGE */
+  .cover { background: linear-gradient(160deg, #7B1F00 0%, #A0300A 30%, #C8922A 70%, #8B4513 100%); color: #fff; min-height: 297mm; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .cover-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 18px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+  .cover h1 { font-size: 52px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .cover .subtitle { font-size: 18px; font-weight: 300; letter-spacing: 1px; opacity: 0.9; margin-bottom: 8px; }
+  .cover .tagline { font-size: 13px; opacity: 0.75; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+  .cover-divider { width: 80px; height: 2px; background: rgba(255,255,255,0.5); margin: 24px auto; }
+  .cover-meta { display: flex; gap: 40px; justify-content: center; margin-top: 20px; }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-item .num { font-size: 28px; font-weight: 700; font-family: 'Playfair Display', serif; }
+  .cover-meta-item .label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.75; }
+  .cover-restaurants { margin-top: 32px; font-size: 10px; opacity: 0.65; letter-spacing: 1px; max-width: 400px; line-height: 2; }
+  .cover-version { position: absolute; bottom: 24px; right: 24px; font-size: 10px; opacity: 0.5; letter-spacing: 1px; }
+  .cover-guide-num { position: absolute; top: 24px; left: 24px; font-size: 10px; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase; }
+  .cover-ornament { font-size: 48px; margin-bottom: 16px; opacity: 0.6; }
+  .nut-free-badge { background: rgba(200,146,42,0.3); border: 1px solid rgba(200,146,42,0.6); border-radius: 12px; padding: 5px 14px; font-size: 10px; letter-spacing: 1px; margin-top: 16px; display: inline-block; }
+
+  /* CONTENT PAGES */
+  .page-inner { padding: 24px 28px 16px; flex: 1; }
+  .page-header { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .page-header h2 { font-size: 22px; color: var(--accent); }
+  .page-header .page-num { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+  /* SECTION TITLES */
+  .section-title { font-size: 16px; color: var(--accent); border-left: 4px solid var(--gold); padding-left: 10px; margin: 18px 0 12px; }
+  .sub-title { font-size: 13px; font-weight: 600; color: var(--text); margin: 14px 0 8px; }
+
+  /* RECIPE CARD */
+  .recipe-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; page-break-inside: avoid; }
+  .recipe-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .recipe-name { font-size: 16px; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--accent); }
+  .recipe-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .temp-badge { background: var(--accent); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 600; }
+  .cost-badge { background: var(--gold); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 600; }
+  .yield-badge { background: var(--light); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-size: 10px; }
+
+  /* INGREDIENTS TABLE */
+  .ing-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 10px; }
+  .ing-table th { background: var(--accent); color: #fff; padding: 4px 8px; text-align: left; font-weight: 600; }
+  .ing-table td { padding: 3px 8px; border-bottom: 1px solid var(--border); }
+  .ing-table tr:nth-child(even) td { background: var(--light); }
+
+  /* METHOD STEPS */
+  .method-steps { font-size: 11px; padding-left: 16px; margin-bottom: 10px; }
+  .method-steps li { margin-bottom: 4px; }
+
+  /* CHEF TIP */
+  .chef-tip { background: linear-gradient(90deg, var(--light), var(--bg)); border-left: 3px solid var(--gold); padding: 6px 10px; font-size: 11px; color: var(--muted); margin-bottom: 8px; border-radius: 0 4px 4px 0; }
+  .chef-tip strong { color: var(--gold); }
+
+  /* ALLERGEN ROW */
+  .allergen-row { background: #FFF8F0; border: 1px solid #FFD580; border-radius: 4px; padding: 4px 10px; font-size: 10px; color: #7B5500; }
+  .allergen-row strong { color: var(--accent); }
+
+  /* INFO BOXES */
+  .info-box { background: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 14px; page-break-inside: avoid; }
+  .info-box h4 { color: var(--accent); margin-bottom: 8px; font-size: 13px; }
+
+  /* COMPARISON TABLE */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 14px; }
+  .comp-table th { background: var(--accent); color: #fff; padding: 6px 8px; text-align: left; }
+  .comp-table td { padding: 5px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .comp-table tr:nth-child(even) td { background: var(--light); }
+  .comp-table .highlight { color: var(--accent); font-weight: 600; }
+
+  /* GRID LAYOUTS */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  /* P&L TABLE */
+  .pl-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 12px; }
+  .pl-table th { background: #1C1C1C; color: #fff; padding: 5px 8px; text-align: left; }
+  .pl-table td { padding: 4px 8px; border-bottom: 1px solid var(--border); }
+  .pl-table .total-row td { background: var(--accent); color: #fff; font-weight: 700; }
+  .pl-table .subtotal-row td { background: var(--light); font-weight: 600; }
+
+  /* SIGNATURE MOMENT */
+  .signature-box { background: linear-gradient(135deg, #7B1F00, #A0300A); color: #fff; border-radius: 8px; padding: 14px; margin-bottom: 14px; }
+  .signature-box h4 { color: var(--gold); margin-bottom: 6px; }
+  .signature-box p { font-size: 11px; opacity: 0.9; }
+
+  /* SCHEDULE TABLE */
+  .schedule-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .schedule-table th { background: var(--text); color: #fff; padding: 5px 8px; }
+  .schedule-table td { padding: 4px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .schedule-table tr:nth-child(even) td { background: var(--light); }
+  .time-col { color: var(--accent); font-weight: 600; white-space: nowrap; }
+
+  /* SMALL TAGS */
+  .tag { display: inline-block; background: var(--light); border: 1px solid var(--border); border-radius: 3px; padding: 1px 6px; font-size: 10px; margin: 2px; }
+  .tag-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .tag-gold { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  /* KITCHEN DIAGRAM */
+  .kitchen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+  .kitchen-station { background: var(--white); border: 2px solid var(--border); border-radius: 6px; padding: 10px 8px; text-align: center; font-size: 10px; }
+  .kitchen-station.hero { border-color: var(--accent); background: linear-gradient(135deg, #7B1F00, #A0300A); color: #fff; }
+  .kitchen-station.hero .station-icon { font-size: 22px; }
+  .station-icon { font-size: 18px; margin-bottom: 4px; }
+  .station-name { font-weight: 600; font-size: 10px; }
+
+  ul.bullet-list { padding-left: 16px; font-size: 11px; }
+  ul.bullet-list li { margin-bottom: 4px; }
+  .gold-text { color: var(--gold); font-weight: 600; }
+  .accent-text { color: var(--accent); font-weight: 600; }
+  .small { font-size: 10px; color: var(--muted); }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-guide-num">KITCHENFODUNDER · GUIDE SERIES</div>
+    <div class="cover-ornament">🪔</div>
+    <div class="cover-badge">Guide #36 · v7 · 2025</div>
+    <h1>Indian Fine<br>Dining</h1>
+    <div class="subtitle">NYC Dinner Standard</div>
+    <div class="tagline">Tandoor · Dum Pukht · Spice Mastery · Tableside Theatre</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><div class="num">28</div><div class="label">Recipes</div></div>
+      <div class="cover-meta-item"><div class="num">10</div><div class="label">Pages</div></div>
+      <div class="cover-meta-item"><div class="num">70</div><div class="label">Seats</div></div>
+      <div class="cover-meta-item"><div class="num">$65</div><div class="label">Avg Spend</div></div>
+    </div>
+    <div class="nut-free-badge">🌿 100% NUT-FREE VERSIONS AVAILABLE · Pumpkin Seeds Replace Cashews</div>
+    <div class="cover-restaurants">
+      Benchmarked against NYC's finest:<br>
+      Junoon · Tamarind · Benares · Adda · Rahi · Babu Ji · Dhamaka · Sahib · Aska · Bombay Bread Bar
+    </div>
+    <div class="cover-version">v7</div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: GUIDE BIBLE ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>Guide Bible — Indian Fine Dining NYC</h2>
+      <span class="page-num">PAGE 01</span>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">The Concept</div>
+        <div class="info-box">
+          <h4>Philosophy</h4>
+          <p style="font-size:11px">Indian fine dining in NYC is the fastest-growing upscale segment — not curry houses, not buffets. This is <strong>composed, regional cuisine</strong> with French-level technique applied to Indian depth. Every plate tells a story from a specific region, caste tradition, or Mughal court. The guest doesn't just eat — they travel.</p>
+        </div>
+        <div class="info-box">
+          <h4>The Four Pillars</h4>
+          <ul class="bullet-list">
+            <li><strong class="gold-text">Tandoor Theatre:</strong> Visible clay oven, 700°F+, char-kissed meats and breads that arrive smoking</li>
+            <li><strong class="gold-text">Dum Pukht:</strong> Slow-sealed cooking — biryani opened tableside, aroma first</li>
+            <li><strong class="gold-text">Regional Specificity:</strong> Not "Indian food" — Goan, Kerala, Hyderabadi, Rajasthani, Bengali</li>
+            <li><strong class="gold-text">Spice Intelligence:</strong> Staff trained to guide guests through heat levels and flavour profiles</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>Target Guest</h4>
+          <ul class="bullet-list">
+            <li>Adventurous NYC diner, 28–55</li>
+            <li>Indian diaspora celebrating milestones</li>
+            <li>Corporate entertaining with international clients</li>
+            <li>Food media and influencer crowd</li>
+            <li>Date-night couples seeking theatrical dining</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">Operating Standards</div>
+        <div class="info-box">
+          <h4>Dining Room Standards</h4>
+          <ul class="bullet-list">
+            <li>70 seats · 6 nights/week (Tue–Sun)</li>
+            <li>Two turns on Fri/Sat: 6pm + 8:30pm</li>
+            <li>Average cover: $65 food + $22 beverage = $87 total</li>
+            <li>Reservations required: Resy platform</li>
+            <li>Music: Tabla/sitar jazz at 62 dB max</li>
+            <li>Candles: Brass diyas, replaced every service</li>
+            <li>Linen: Cream/ivory, pressed, no synthetic blends</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>Nut-Free Protocol</h4>
+          <p style="font-size:11px;margin-bottom:6px">All dishes have nut-free versions. Kitchen is <strong>not nut-free by default</strong> — notify team of nut allergy on booking and ticket.</p>
+          <ul class="bullet-list">
+            <li>Pumpkin seeds replace cashews in all korma/makhani sauces</li>
+            <li>Dedicated nut-free prep board (green label)</li>
+            <li>All sauces available in nut-free batch — label clearly</li>
+            <li>Alert whole team from host to expeditor</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>Brand Voice</h4>
+          <ul class="bullet-list">
+            <li>Never say "mild/medium/hot" — use regional names</li>
+            <li>"Laal Maas has the Rajasthani desert heat" not "it's spicy"</li>
+            <li>Describe texture first, spice second, aroma third</li>
+            <li>Train staff on 5 key regional stories</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="signature-box">
+      <h4>✨ The Four Signature Moments (Non-Negotiable)</h4>
+      <div class="three-col" style="margin-top:8px">
+        <div><strong>1. Biryani Dum Open</strong><br><span style="font-size:10px">Sealed with dough, cracked tableside by server. Saffron steam billows. Guest inhales first.</span></div>
+        <div><strong>2. Copper Pot Gulab Jamun</strong><br><span style="font-size:10px">Dessert brought to table in small copper pot with ladle. Server portions warm. Rose water mist optional.</span></div>
+        <div><strong>3. Tableside Masala Chai</strong><br><span style="font-size:10px">Chai brewed on induction trolley beside table. Poured from height into glass tumbler. Theatric close.</span></div>
+      </div>
+      <div style="margin-top:8px"><strong>4. Tandoor Visibility:</strong> <span style="font-size:10px">Open kitchen or window shows the tandoor at all times. Orange glow, char smell, chef in whites. This is your $0 marketing moment — every guest photographs it.</span></div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: STARTERS ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>Starters Menu — 6 Dishes</h2>
+      <span class="page-num">PAGE 02</span>
+    </div>
+
+    <div class="two-col">
+
+      <!-- SAMOSA CHAAT -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Samosa Chaat</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Warm · 140°F</span>
+            <span class="cost-badge">FC: 22%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th></tr>
+          <tr><td>Samosa (house-made)</td><td>2 pcs</td><td>$0.45 ea</td></tr>
+          <tr><td>Chole (spiced chickpeas)</td><td>3 oz</td><td>$0.18</td></tr>
+          <tr><td>Tamarind chutney</td><td>1 oz</td><td>$0.12</td></tr>
+          <tr><td>Green mint chutney</td><td>1 oz</td><td>$0.10</td></tr>
+          <tr><td>Whipped yogurt</td><td>2 oz</td><td>$0.14</td></tr>
+          <tr><td>Sev (chickpea noodles)</td><td>0.5 oz</td><td>$0.08</td></tr>
+          <tr><td>Pomegranate seeds</td><td>0.3 oz</td><td>$0.15</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Fry samosas to order at 350°F — 3 min from frozen. Drain on rack.</li>
+          <li>Warm chole with cumin tadka. Season with chaat masala.</li>
+          <li>Break samosas slightly, place in warm bowl.</li>
+          <li>Layer chole, both chutneys, yogurt dollops.</li>
+          <li>Finish: sev, pomegranate, micro cilantro. Serve immediately.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Break samosa at table for drama — crispy shards visible through yogurt.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Gluten (pastry), Dairy (yogurt) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- LAMB SEEKH KEBAB -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Lamb Seekh Kebab</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Tandoor · 165°F IT</span>
+            <span class="cost-badge">FC: 28%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th></tr>
+          <tr><td>Ground lamb (80/20)</td><td>5 oz</td><td>$1.65</td></tr>
+          <tr><td>Ginger-garlic paste</td><td>0.5 oz</td><td>$0.08</td></tr>
+          <tr><td>Green chilli, minced</td><td>1 pc</td><td>$0.05</td></tr>
+          <tr><td>Garam masala</td><td>0.3 tsp</td><td>$0.04</td></tr>
+          <tr><td>Chilli flakes</td><td>0.2 tsp</td><td>$0.03</td></tr>
+          <tr><td>Chickpea flour (binder)</td><td>1 tsp</td><td>$0.04</td></tr>
+          <tr><td>Mint chutney</td><td>1.5 oz</td><td>$0.12</td></tr>
+          <tr><td>Pickled onion</td><td>1 oz</td><td>$0.08</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Combine lamb, paste, chilli, spices, flour. Mix vigorously — develop bind.</li>
+          <li>Season, rest 30 min refrigerated. Portion 2.5 oz each onto metal skewer.</li>
+          <li>Tandoor at 700°F for 5–6 min, turning once at 3 min.</li>
+          <li>Rest 1 min off skewer. Char marks essential — do not steam.</li>
+          <li>Plate on leaf, pickled onion, wedge, chutney beside.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Fat content is non-negotiable — under 20% fat and kebabs crack on skewer.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Gluten (chickpea flour trace), Sesame (chutney) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- PANEER TIKKA -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Paneer Tikka</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Tandoor · 165°F</span>
+            <span class="cost-badge">FC: 24%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th></tr>
+          <tr><td>Paneer, 1-inch cubes</td><td>5 oz</td><td>$1.10</td></tr>
+          <tr><td>Full-fat yogurt</td><td>2 oz</td><td>$0.14</td></tr>
+          <tr><td>Tikka masala paste</td><td>1 oz</td><td>$0.18</td></tr>
+          <tr><td>Kashmiri chilli powder</td><td>0.5 tsp</td><td>$0.04</td></tr>
+          <tr><td>Mustard oil</td><td>1 tsp</td><td>$0.06</td></tr>
+          <tr><td>Bell pepper, capsicum</td><td>1 oz</td><td>$0.10</td></tr>
+          <tr><td>Red onion, chunked</td><td>1 oz</td><td>$0.06</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Mix marinade: yogurt, tikka paste, Kashmiri chilli, mustard oil. Season.</li>
+          <li>Marinate paneer, pepper, onion 4 hrs minimum, overnight preferred.</li>
+          <li>Skewer alternating paneer / pepper / onion.</li>
+          <li>Tandoor 4 min — paneer should blister but not dry. Pull at char edges.</li>
+          <li>Plate with mint chutney, chaat masala dust, micro greens.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Kashmiri chilli gives colour without burn — never substitute with cayenne for colour.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (paneer, yogurt) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- PAPDI CHAAT -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Papdi Chaat</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Room Temp</span>
+            <span class="cost-badge">FC: 18%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th></tr>
+          <tr><td>Papdi (crisp wafers)</td><td>6 pcs</td><td>$0.22</td></tr>
+          <tr><td>Boiled potato, diced</td><td>2 oz</td><td>$0.08</td></tr>
+          <tr><td>Boiled chickpeas</td><td>1.5 oz</td><td>$0.10</td></tr>
+          <tr><td>Tamarind chutney</td><td>1 oz</td><td>$0.12</td></tr>
+          <tr><td>Green chutney</td><td>0.5 oz</td><td>$0.08</td></tr>
+          <tr><td>Whipped yogurt, sweetened</td><td>2 oz</td><td>$0.14</td></tr>
+          <tr><td>Chaat masala, sev</td><td>to finish</td><td>$0.10</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Arrange papdi on wide plate. Spoon potato and chickpea mixture over.</li>
+          <li>Drizzle both chutneys — tamarind first (darker), green over top.</li>
+          <li>Dollop sweetened yogurt in three spots.</li>
+          <li>Dust chaat masala. Top with sev. Serve within 90 seconds (or papdi softens).</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Pre-component everything at mis en place — assembly is 45 seconds, zero margin for delay.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Gluten (papdi), Dairy (yogurt) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: STARTERS CONT + NORTH INDIAN MAINS ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>Starters (cont.) + North Indian Mains</h2>
+      <span class="page-num">PAGE 03</span>
+    </div>
+
+    <div class="two-col">
+
+      <!-- DAL SOUP -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Mulligatawny / Dal Shorba</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Soup · 165°F</span>
+            <span class="cost-badge">FC: 14%</span>
+            <span class="yield-badge">Yield: 8 oz cup</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th></tr>
+          <tr><td>Red lentils (masoor dal)</td><td>3 oz</td><td>$0.18</td></tr>
+          <tr><td>Onion, sliced</td><td>2 oz</td><td>$0.06</td></tr>
+          <tr><td>Tomato, chopped</td><td>2 oz</td><td>$0.10</td></tr>
+          <tr><td>Cumin, coriander, turmeric</td><td>1 tsp ea</td><td>$0.06</td></tr>
+          <tr><td>Coconut cream</td><td>1 oz</td><td>$0.14</td></tr>
+          <tr><td>Chicken stock</td><td>8 oz</td><td>$0.20</td></tr>
+          <tr><td>Crispy shallot garnish</td><td>0.3 oz</td><td>$0.08</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Tadka: heat ghee, bloom cumin seeds until pop. Add onion — caramelise 8 min.</li>
+          <li>Add garlic-ginger, tomato, dry spices. Cook 4 min until jammy.</li>
+          <li>Add rinsed lentils and stock. Simmer 20 min until lentils collapse.</li>
+          <li>Blitz smooth, pass through fine sieve. Adjust consistency with stock.</li>
+          <li>Finish with coconut cream. Cup service: crispy shallot, dill oil drop.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Coconut cream stirred in off-heat — never boil or it splits the silkiness.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (ghee) | <strong>Nut-Free:</strong> ✅ Coconut is not a tree nut allergen — verify per guest</div>
+      </div>
+
+      <!-- CHICKEN TIKKA -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Chicken Tikka</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Tandoor · 165°F IT</span>
+            <span class="cost-badge">FC: 26%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th></tr>
+          <tr><td>Chicken thigh, boneless</td><td>6 oz</td><td>$1.20</td></tr>
+          <tr><td>First marinade: lemon+salt</td><td>—</td><td>$0.04</td></tr>
+          <tr><td>Yogurt (full-fat)</td><td>2 oz</td><td>$0.14</td></tr>
+          <tr><td>Tikka masala blend</td><td>1.5 tsp</td><td>$0.08</td></tr>
+          <tr><td>Kashmiri chilli paste</td><td>1 tsp</td><td>$0.06</td></tr>
+          <tr><td>Ghee baste</td><td>0.5 oz</td><td>$0.10</td></tr>
+          <tr><td>Lemon wedge, chutney</td><td>—</td><td>$0.08</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>First marinade: lemon + salt on scored chicken, 30 min.</li>
+          <li>Second marinade: yogurt, tikka blend, Kashmiri paste. 6 hrs minimum.</li>
+          <li>Skewer and tandoor at 700°F — 6–7 min, basting with ghee at 4 min mark.</li>
+          <li>Internal temp 165°F. Rest 2 min off skewer — juices reabsorb.</li>
+          <li>Slice on board, plate fanned. Lemon, raw onion ring, green chutney.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Thigh over breast every time — moisture survives the tandoor. Breast is a liability.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (yogurt, ghee) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+    </div>
+
+    <div class="section-title">North Indian Mains — 5 Classics</div>
+
+    <!-- BUTTER CHICKEN -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div class="recipe-name">Murgh Makhani — Butter Chicken</div>
+        <div class="recipe-meta">
+          <span class="temp-badge">Sauce · 165°F IT</span>
+          <span class="cost-badge">FC: 26%</span>
+          <span class="yield-badge">Yield: 1 portion (12 oz)</span>
+        </div>
+      </div>
+      <div class="two-col" style="gap:10px">
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Chicken tikka (pre-cooked)</td><td>5 oz</td><td>$1.30</td></tr>
+          <tr><td>Makhani sauce (batch)</td><td>6 oz</td><td>$0.85</td></tr>
+          <tr><td>Butter, cold</td><td>0.5 oz</td><td>$0.12</td></tr>
+          <tr><td>Heavy cream</td><td>1 oz</td><td>$0.16</td></tr>
+          <tr><td>Fenugreek (kasuri methi)</td><td>pinch</td><td>$0.02</td></tr>
+          <tr><td>Naan bread (house-made)</td><td>1 pc</td><td>$0.45</td></tr>
+        </table>
+        <div>
+          <ol class="method-steps">
+            <li>Makhani sauce base: caramelise onion, tomato, cashew-free (pumpkin seed) paste. Blitz, pass, season.</li>
+            <li>Heat sauce to simmer. Add tikka pieces — 3 min to integrate flavour.</li>
+            <li>Off heat: mount cold butter in cubes. Swirl — do not stir aggressively.</li>
+            <li>Cream in last. Crush kasuri methi between palms — oils release.</li>
+            <li>Serve in copper karahi. Naan from tandoor served hot alongside.</li>
+          </ol>
+          <div class="chef-tip"><strong>Chef Tip:</strong> Nut-free version — roast pumpkin seeds and blitz into paste with onion. Identical creaminess.</div>
+        </div>
+      </div>
+      <div class="allergen-row"><strong>Allergens:</strong> Dairy (butter, cream), Gluten (naan) | <strong>Nut-Free version:</strong> ✅ Pumpkin seed paste (label batch separately)</div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: NORTH INDIAN MAINS CONTINUED ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>North Indian Mains (cont.) + Biryani</h2>
+      <span class="page-num">PAGE 04</span>
+    </div>
+
+    <div class="two-col">
+
+      <!-- ROGAN JOSH -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Rogan Josh — Kashmiri Lamb</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Braise · 195°F</span>
+            <span class="cost-badge">FC: 30%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Lamb shoulder, 1.5" cubes</td><td>6 oz</td><td>$2.10</td></tr>
+          <tr><td>Mustard oil</td><td>1 tbsp</td><td>$0.08</td></tr>
+          <tr><td>Whole spices (bay, cardamom, clove)</td><td>mix</td><td>$0.06</td></tr>
+          <tr><td>Ratanjot / Kashmiri chilli paste</td><td>1 oz</td><td>$0.14</td></tr>
+          <tr><td>Fennel powder, ginger powder</td><td>1 tsp ea</td><td>$0.06</td></tr>
+          <tr><td>Whole-milk yogurt</td><td>2 oz</td><td>$0.14</td></tr>
+          <tr><td>Saffron water</td><td>0.5 oz</td><td>$0.22</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Smoke mustard oil until wisps appear. Bloom whole spices 30 sec.</li>
+          <li>Sear lamb in batches — deep mahogany on all sides. Remove.</li>
+          <li>Fry chilli paste 2 min. Add fennel, ginger powder, asafoetida.</li>
+          <li>Return lamb. Add beaten yogurt in 3 additions — stir constantly to prevent splitting.</li>
+          <li>Braise 1.5 hrs low heat. Finish with saffron water. Garnish: crispy shallot.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Authentic rogan josh has NO onion or tomato — Kashmiri Brahmin style. The red colour is Ratanjot bark, not tomato.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (yogurt) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- DAL MAKHANI -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Dal Makhani — Black Lentil</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Slow · 12hr Cook</span>
+            <span class="cost-badge">FC: 16%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Black urad dal (whole)</td><td>3 oz</td><td>$0.22</td></tr>
+          <tr><td>Kidney beans (rajma)</td><td>1 oz</td><td>$0.10</td></tr>
+          <tr><td>Tomato purée</td><td>3 oz</td><td>$0.20</td></tr>
+          <tr><td>Butter</td><td>1 oz</td><td>$0.20</td></tr>
+          <tr><td>Heavy cream</td><td>1 oz</td><td>$0.16</td></tr>
+          <tr><td>Ginger julienne garnish</td><td>0.2 oz</td><td>$0.06</td></tr>
+          <tr><td>Kasuri methi</td><td>pinch</td><td>$0.02</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Soak dal 8 hrs. Boil until outer skin breaks, 90 min. Partial mash.</li>
+          <li>Add tomato purée, ginger-garlic, spices. Slow cook 10–12 hrs on lowest heat.</li>
+          <li>Finish service: heat portion, mount with butter, swirl in cream.</li>
+          <li>Plate in small copper bowl. Cream swirl, ginger julienne, charcoal oil drop.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> The 12-hour cook is the recipe. Dal Makhani is not a quick dish — shortcuts are immediately detectable.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (butter, cream) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- SAAG PANEER -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Saag Paneer — Spinach & Cheese</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Sauté · 165°F</span>
+            <span class="cost-badge">FC: 22%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Baby spinach, blanched</td><td>4 oz</td><td>$0.40</td></tr>
+          <tr><td>Mustard greens (sarson)</td><td>2 oz</td><td>$0.22</td></tr>
+          <tr><td>Paneer, pan-fried cubes</td><td>4 oz</td><td>$0.88</td></tr>
+          <tr><td>Ghee</td><td>0.5 oz</td><td>$0.10</td></tr>
+          <tr><td>Garlic + ginger paste</td><td>1 tsp</td><td>$0.06</td></tr>
+          <tr><td>Cumin + coriander powder</td><td>0.5 tsp ea</td><td>$0.04</td></tr>
+          <tr><td>Makki ki roti (corn bread)</td><td>1 pc</td><td>$0.30</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Blanch and shock spinach + mustard greens. Blitz coarse — not smooth.</li>
+          <li>Pan-fry paneer in ghee until golden on 2 sides. Set aside.</li>
+          <li>Tadka: ghee, cumin seeds, garlic-ginger, dry spices. 90 sec.</li>
+          <li>Add greens purée. Simmer 5 min. Fold in paneer gently.</li>
+          <li>Serve in iron skillet with makki ki roti. Small ghee pour at table.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Mustard greens add bitterness that balances the fat — all-spinach version is too sweet and flat.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (paneer, ghee), Gluten (roti) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+    </div>
+
+    <!-- BIRYANI - Signature Dish -->
+    <div class="recipe-card" style="border: 2px solid var(--gold);">
+      <div class="recipe-header">
+        <div class="recipe-name" style="color: var(--gold);">⭐ Dum Pukht Biryani — Tableside Seal Break</div>
+        <div class="recipe-meta">
+          <span class="temp-badge">Dum · 180°F</span>
+          <span class="cost-badge">FC: 29%</span>
+          <span class="yield-badge">Yield: 1 portion (serves 1–2)</span>
+        </div>
+      </div>
+      <div class="two-col" style="gap:10px">
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Basmati rice (aged 2yr)</td><td>5 oz dry</td><td>$0.45</td></tr>
+          <tr><td>Lamb/chicken (marinated)</td><td>6 oz</td><td>$2.10</td></tr>
+          <tr><td>Fried onion (beresta)</td><td>1 oz</td><td>$0.18</td></tr>
+          <tr><td>Saffron milk</td><td>1 oz</td><td>$0.28</td></tr>
+          <tr><td>Whole garam masala</td><td>mix</td><td>$0.08</td></tr>
+          <tr><td>Rose water</td><td>1 tsp</td><td>$0.06</td></tr>
+          <tr><td>Dough seal (atta)</td><td>2 oz</td><td>$0.08</td></tr>
+          <tr><td>Raita (accompaniment)</td><td>3 oz</td><td>$0.20</td></tr>
+        </table>
+        <div>
+          <ol class="method-steps">
+            <li>Marinate protein in yogurt, spices, 6 hrs. Par-cook separately.</li>
+            <li>Parboil rice 70% — firm centre, 7 min in salted water with whole spices.</li>
+            <li>Layer in copper deg: protein base, rice over, saffron milk, rose water, beresta.</li>
+            <li>Seal pot edge with atta dough rope. Oven 300°F × 25 min dum.</li>
+            <li>🌟 TABLESIDE: Server cracks seal with knife. Saffron steam escapes. Guest inhales.</li>
+          </ol>
+          <div class="signature-box" style="margin-top:8px;padding:10px">
+            <h4>✨ Tableside Script</h4>
+            <p>"The biryani has been sealed since morning. The steam inside holds all the saffron and rose water. Would you like to break the seal?" [hand knife to guest or crack yourself — guest watches]</p>
+          </div>
+        </div>
+      </div>
+      <div class="allergen-row"><strong>Allergens:</strong> Dairy (yogurt, ghee), Gluten (dough seal — removed before eating) | <strong>Nut-Free:</strong> ✅ No nuts in recipe</div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 6: REGIONAL MAINS ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>Regional Mains — 5 Dishes</h2>
+      <span class="page-num">PAGE 05</span>
+    </div>
+
+    <div class="two-col">
+
+      <!-- GOAN FISH CURRY -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Goan Fish Curry — Ambot Tik</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Simmer · 145°F</span>
+            <span class="cost-badge">FC: 31%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Black sea bass / striped bass</td><td>6 oz</td><td>$2.40</td></tr>
+          <tr><td>Kokum (dried sour fruit)</td><td>3 pcs</td><td>$0.18</td></tr>
+          <tr><td>Coconut milk</td><td>4 oz</td><td>$0.28</td></tr>
+          <tr><td>Goan masala paste (dried chilli)</td><td>1.5 oz</td><td>$0.20</td></tr>
+          <tr><td>Onion, shallots</td><td>2 oz</td><td>$0.08</td></tr>
+          <tr><td>Basmati rice (steamed)</td><td>4 oz</td><td>$0.22</td></tr>
+          <tr><td>Mustard seeds, curry leaf</td><td>tadka</td><td>$0.06</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Rehydrate kokum in warm water 15 min. Kokum is the sour agent — no tamarind.</li>
+          <li>Sauté shallots until golden. Add Goan masala paste. Fry 3 min — deep red.</li>
+          <li>Add coconut milk + kokum water. Simmer 5 min. Season — sour-spicy balance.</li>
+          <li>Slide fish in gently. Cover. 4–5 min at gentle simmer, no vigorous boil.</li>
+          <li>Tadka finish: mustard + curry leaf in coconut oil over curry. Serve with rice.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Kokum (not tamarind) is what makes it authentically Goan — source from Indian grocery or Amazon, worth it.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Fish | <strong>Nut-Free:</strong> ✅ Coconut is not a tree nut allergen in most contexts — verify per guest</div>
+      </div>
+
+      <!-- KERALA PRAWN -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Kerala Prawn Moilee</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Simmer · 145°F</span>
+            <span class="cost-badge">FC: 33%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>U-15 tiger prawns, peeled</td><td>5 oz</td><td>$2.50</td></tr>
+          <tr><td>Coconut milk (first press)</td><td>5 oz</td><td>$0.35</td></tr>
+          <tr><td>Green chilli, slit</td><td>2 pcs</td><td>$0.06</td></tr>
+          <tr><td>Turmeric, ginger</td><td>0.5 tsp ea</td><td>$0.04</td></tr>
+          <tr><td>Curry leaves (fresh)</td><td>8 leaves</td><td>$0.06</td></tr>
+          <tr><td>Appam (fermented rice pancake)</td><td>2 pcs</td><td>$0.35</td></tr>
+          <tr><td>Mustard oil drizzle</td><td>0.5 tsp</td><td>$0.04</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Moilee is a pale golden curry — gentle, fragrant. No browning of onions.</li>
+          <li>Sweat shallots, green chilli, ginger in coconut oil until soft — no colour.</li>
+          <li>Add turmeric, coconut milk. Gentle simmer 3 min — sauce turns gold.</li>
+          <li>Prawns in last — cook 2 min only. Overcooked prawn is a cardinal sin.</li>
+          <li>Serve in shallow bowl. Appam on side (fermented — order ahead). Curry leaf float.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Moilee is about coconut purity — use first-press coconut milk only, never the tin with preservatives if avoidable.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Shellfish (prawn) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- HYDERABADI HALEEM -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Hyderabadi Haleem</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Slow Cook · 8hr</span>
+            <span class="cost-badge">FC: 27%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Goat / lamb shoulder</td><td>5 oz</td><td>$1.85</td></tr>
+          <tr><td>Broken wheat (dalia)</td><td>2 oz</td><td>$0.12</td></tr>
+          <tr><td>Mixed lentils (3-dal blend)</td><td>1.5 oz</td><td>$0.14</td></tr>
+          <tr><td>Fried onion (beresta)</td><td>1 oz</td><td>$0.18</td></tr>
+          <tr><td>Haleem masala</td><td>1.5 tsp</td><td>$0.10</td></tr>
+          <tr><td>Ghee, lemon, cilantro</td><td>garnish</td><td>$0.14</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Soak wheat and lentils separately 2 hrs. Pressure cook lentils until mushy.</li>
+          <li>Slow cook goat/lamb with haleem masala, whole spices, 6–8 hrs until fibres pull.</li>
+          <li>Combine meat, wheat, lentils. Stir vigorously (bhunna) to develop porridge texture.</li>
+          <li>The pounding/stirring is the technique — creates homogenous, sticky richness.</li>
+          <li>Serve in bowl: ghee drop, beresta, julienne ginger, lemon wedge, mint.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Haleem should stretch — like a thick porridge. If it pours like soup, cook longer and stir more.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Gluten (wheat), Dairy (ghee) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- RAJASTHANI LAAL MAAS -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Rajasthani Laal Maas</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Braise · 195°F</span>
+            <span class="cost-badge">FC: 30%</span>
+            <span class="yield-badge">Yield: 1 portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Lamb ribs / bone-in shoulder</td><td>7 oz</td><td>$2.20</td></tr>
+          <tr><td>Mathania dried red chilli</td><td>8 pcs</td><td>$0.22</td></tr>
+          <tr><td>Mustard oil</td><td>1.5 tbsp</td><td>$0.10</td></tr>
+          <tr><td>Whole spices + garlic</td><td>mix</td><td>$0.10</td></tr>
+          <tr><td>Yogurt (whisked)</td><td>2 oz</td><td>$0.14</td></tr>
+          <tr><td>Baati (baked wheat ball)</td><td>2 pcs</td><td>$0.30</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Laal Maas = "red meat." Colour from Mathania chilli, not standard red chilli.</li>
+          <li>Smoke mustard oil. Fry whole spices + garlic until nutty. Add soaked Mathania chilli paste.</li>
+          <li>Sear lamb deeply — the fat from bone-in is the flavour.</li>
+          <li>Whisk yogurt in spoon by spoon. Braise 90 min until meat pulls off bone.</li>
+          <li>Serve with baati — traditional baked wheat balls in ghee. Fire note: this is HOT.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Mathania chilli from Rajasthan is essential — it has fruitiness under the heat. Substitute cayenne only in emergency.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (yogurt, ghee), Gluten (baati) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+    </div>
+
+    <!-- BENGALI MUSTARD FISH -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div class="recipe-name">Bengali Shorshe Maach — Mustard Fish</div>
+        <div class="recipe-meta">
+          <span class="temp-badge">Steam/Bake · 145°F</span>
+          <span class="cost-badge">FC: 29%</span>
+          <span class="yield-badge">Yield: 1 portion</span>
+        </div>
+      </div>
+      <div class="two-col" style="gap:10px">
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Striped bass fillet, skin-on</td><td>6 oz</td><td>$2.40</td></tr>
+          <tr><td>Black mustard seeds</td><td>1 tbsp</td><td>$0.08</td></tr>
+          <tr><td>Yellow mustard seeds</td><td>1 tbsp</td><td>$0.08</td></tr>
+          <tr><td>Green chilli paste</td><td>1 tsp</td><td>$0.06</td></tr>
+          <tr><td>Turmeric, mustard oil</td><td>—</td><td>$0.08</td></tr>
+          <tr><td>Rice, steamed basmati</td><td>4 oz</td><td>$0.22</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Grind black + yellow mustard with water and green chilli into paste (shorshe bata).</li>
+          <li>Marinate fish: turmeric + salt + mustard oil 20 min.</li>
+          <li>Coat fish in mustard paste. Place in banana leaf packet (or parchment).</li>
+          <li>Steam 10 min or bake 400°F × 12 min. Mustard paste should set firm.</li>
+          <li>Open packet tableside. Drizzle raw mustard oil. Serve immediately with rice.</li>
+        </ol>
+      </div>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Both black AND yellow mustard seeds — black for bite, yellow for paste body. Single variety gives flat flavour.</div>
+      <div class="allergen-row"><strong>Allergens:</strong> Fish, Mustard | <strong>Nut-Free:</strong> ✅ Always</div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 7: DESSERTS + DRINKS ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>Desserts + Drinks</h2>
+      <span class="page-num">PAGE 06</span>
+    </div>
+
+    <div class="section-title">Desserts — 4 Dishes</div>
+    <div class="two-col">
+
+      <!-- GULAB JAMUN -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">⭐ Gulab Jamun — Copper Pot Service</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Warm · 110°F syrup</span>
+            <span class="cost-badge">FC: 20%</span>
+            <span class="yield-badge">Yield: 3 pcs/portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Khoya (reduced whole milk)</td><td>3 oz</td><td>$0.60</td></tr>
+          <tr><td>All-purpose flour</td><td>1 tbsp</td><td>$0.03</td></tr>
+          <tr><td>Baking soda</td><td>pinch</td><td>$0.01</td></tr>
+          <tr><td>Rose water syrup</td><td>4 oz</td><td>$0.18</td></tr>
+          <tr><td>Cardamom powder</td><td>pinch</td><td>$0.02</td></tr>
+          <tr><td>Saffron strands</td><td>4–5</td><td>$0.10</td></tr>
+          <tr><td>Vanilla ice cream (optional)</td><td>1 scoop</td><td>$0.28</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Knead khoya, flour, baking soda into smooth dough. No cracks — or balls split in oil.</li>
+          <li>Roll into smooth balls. Fry in ghee at 285°F — LOW temp. Slow golden over 8 min.</li>
+          <li>Syrup: 1:1 sugar water + rose water + saffron + cardamom. Warm, not hot.</li>
+          <li>Transfer fried balls to warm syrup immediately. Soak minimum 30 min.</li>
+          <li>🌟 SERVICE: Present warm in small copper pot with ladle. Server ladles 3 into guest's bowl.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Temperature of oil is everything — too hot and outside burns before centre cooks. Use a thermometer every time.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (khoya), Gluten (flour) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+
+      <!-- KULFI -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Malai Kulfi — Rose & Pistachio (NF: Rose & Pumpkin Seed)</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Frozen · -10°F</span>
+            <span class="cost-badge">FC: 22%</span>
+            <span class="yield-badge">Yield: 1 mould</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Full-fat milk, reduced 50%</td><td>6 oz</td><td>$0.40</td></tr>
+          <tr><td>Condensed milk</td><td>1.5 oz</td><td>$0.22</td></tr>
+          <tr><td>Rose water</td><td>1 tsp</td><td>$0.04</td></tr>
+          <tr><td>Cardamom powder</td><td>pinch</td><td>$0.02</td></tr>
+          <tr><td>Pumpkin seeds, toasted (NF)</td><td>0.3 oz</td><td>$0.12</td></tr>
+          <tr><td>Dried rose petals</td><td>garnish</td><td>$0.08</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Reduce full-fat milk to 50% volume over low heat, stirring frequently — 45 min.</li>
+          <li>Stir in condensed milk, rose water, cardamom. Cool completely.</li>
+          <li>Fold in toasted pumpkin seeds (NF version). Pour into conical kulfi moulds.</li>
+          <li>Freeze minimum 6 hours or overnight. Unmould in warm water 10 sec.</li>
+          <li>Plate on chilled plate. Saffron threads, dried rose petals, fennel sugar dust.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Kulfi is denser than ice cream — no air churned in. The density is the point. Never whip the mixture.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy | <strong>Nut-Free version:</strong> ✅ Pumpkin seeds (label separately — use separate batch)</div>
+      </div>
+
+      <!-- KHEER -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Saffron Kheer — Rice Pudding</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Warm or Chilled</span>
+            <span class="cost-badge">FC: 15%</span>
+            <span class="yield-badge">Yield: 6 oz cup</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Basmati rice</td><td>1 oz dry</td><td>$0.08</td></tr>
+          <tr><td>Full-fat milk</td><td>8 oz</td><td>$0.36</td></tr>
+          <tr><td>Sugar</td><td>1 oz</td><td>$0.06</td></tr>
+          <tr><td>Saffron milk</td><td>0.5 oz</td><td>$0.12</td></tr>
+          <tr><td>Cardamom, rose water</td><td>—</td><td>$0.06</td></tr>
+          <tr><td>Pumpkin seed praline (NF)</td><td>garnish</td><td>$0.10</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Rinse rice. Simmer in milk on low, uncovered, 45 min — stir every 10 min.</li>
+          <li>Rice should be fully broken down, milk thickened to coating consistency.</li>
+          <li>Add sugar off heat. Stir in saffron milk, cardamom, rose water.</li>
+          <li>Chill or serve warm in small silver bowl or earthen pot.</li>
+          <li>Garnish: pumpkin seed praline (NF), saffron strands, silver varq if budget allows.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> The starch from the broken rice is the thickener — no cornstarch ever. Patience is the recipe.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy | <strong>Nut-Free:</strong> ✅ Always (pumpkin seed garnish)</div>
+      </div>
+
+      <!-- GAJAR HALWA -->
+      <div class="recipe-card">
+        <div class="recipe-header">
+          <div class="recipe-name">Gajar Ka Halwa — Carrot Pudding</div>
+          <div class="recipe-meta">
+            <span class="temp-badge">Warm · 140°F</span>
+            <span class="cost-badge">FC: 18%</span>
+            <span class="yield-badge">Yield: 4 oz portion</span>
+          </div>
+        </div>
+        <table class="ing-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Red Delhi carrots (or orange)</td><td>6 oz</td><td>$0.30</td></tr>
+          <tr><td>Full-fat milk</td><td>4 oz</td><td>$0.18</td></tr>
+          <tr><td>Ghee</td><td>0.5 oz</td><td>$0.10</td></tr>
+          <tr><td>Sugar</td><td>1 oz</td><td>$0.06</td></tr>
+          <tr><td>Cardamom powder</td><td>pinch</td><td>$0.02</td></tr>
+          <tr><td>Khoya (garnish)</td><td>0.5 oz</td><td>$0.10</td></tr>
+          <tr><td>Pumpkin seeds, toasted (NF)</td><td>0.2 oz</td><td>$0.08</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Grate carrots fine. Cook in ghee 10 min until softened and fragrant.</li>
+          <li>Add milk. Simmer uncovered, stirring, until milk fully absorbed — 20 min.</li>
+          <li>Add sugar + cardamom. Cook until halwa pulls away from pan sides.</li>
+          <li>Press into ring mould. Plate as cylinder or loose-rustic in copper bowl.</li>
+          <li>Garnish: khoya shavings, pumpkin seeds, gold leaf optional, serve with vanilla kulfi.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Delhi red carrots are sweeter and less bitter — worth sourcing. Standard orange needs more sugar to balance.</div>
+        <div class="allergen-row"><strong>Allergens:</strong> Dairy (milk, ghee, khoya) | <strong>Nut-Free:</strong> ✅ Always</div>
+      </div>
+    </div>
+
+    <div class="section-title">Drinks — 8 Selections</div>
+    <div class="three-col">
+      <div class="info-box" style="padding:10px">
+        <h4>🥭 Mango Lassi · $8</h4>
+        <p style="font-size:10px">Alphonso mango purée + whole-milk yogurt + touch of cardamom. Blended thick. FC: 18%.</p>
+        <div class="tag">Non-alcoholic</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>☕ Masala Chai · $6</h4>
+        <p style="font-size:10px">Tableside brew — Assam tea, ginger, cardamom, clove, pepper. Poured from height. FC: 12%.</p>
+        <div class="tag tag-gold">Signature</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>🍋 Nimbu Pani · $7</h4>
+        <p style="font-size:10px">Fresh lime, black salt, cumin water, mint. Indian lemonade — subtle savouriness. FC: 14%.</p>
+        <div class="tag">Non-alcoholic</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>🍺 Indian Beer · $10</h4>
+        <p style="font-size:10px">Kingfisher Pint or Taj Mahal. Pair with tandoor starters. FC: 22%.</p>
+        <div class="tag">Beer</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>🍸 Chai Cocktail · $16</h4>
+        <p style="font-size:10px">Chai-infused bourbon + honey syrup + lemon + egg white. Signature cocktail. FC: 28%.</p>
+        <div class="tag tag-accent">Cocktail</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>🌹 Rose Sharbat · $8</h4>
+        <p style="font-size:10px">Rose syrup, lemon, sparkling water, basil seeds (sabja). Non-alcoholic. FC: 16%.</p>
+        <div class="tag">Non-alcoholic</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>💧 Still/Sparkling Water · $4</h4>
+        <p style="font-size:10px">Bisleri-branded still or house-bottled sparkling. Indian mineral water brand recognition. FC: 5%.</p>
+        <div class="tag">Water</div>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>☕ Digestif Chai · $5</h4>
+        <p style="font-size:10px">Post-meal: fennel seeds + cardamom + warm milk. Aids digestion. Offered complimentary on $80+ tabs. FC: 8%.</p>
+        <div class="tag tag-gold">Closer</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 8: NYC COMPARISON + KITCHEN DESIGN + SERVICE SCRIPTS ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>NYC Benchmark + Kitchen Design + Service Scripts</h2>
+      <span class="page-num">PAGE 07</span>
+    </div>
+
+    <div class="section-title">NYC Restaurant Comparison Table</div>
+    <table class="comp-table">
+      <tr>
+        <th>Restaurant</th><th>Avg Check</th><th>Seats</th><th>Positioning</th><th>Signature</th><th>Lesson for You</th>
+      </tr>
+      <tr>
+        <td class="highlight">Junoon</td><td>$90+</td><td>100</td><td>Michelin-level tasting</td><td>Modern Indian, wine program</td><td>Beverage drives premium — build a wine pairing menu</td>
+      </tr>
+      <tr>
+        <td class="highlight">Tamarind</td><td>$75</td><td>120</td><td>Business dining landmark</td><td>Regional menus by season</td><td>Longevity through consistency — same quality decade after decade</td>
+      </tr>
+      <tr>
+        <td class="highlight">Dhamaka</td><td>$65</td><td>60</td><td>Hyper-regional, bold</td><td>Bone-in, offal, unexpected cuts</td><td>Authenticity over polish — NYC press loves brave specificity</td>
+      </tr>
+      <tr>
+        <td class="highlight">Rahi</td><td>$70</td><td>55</td><td>Modern Indian-American</td><td>Creative fusion small plates</td><td>Instagram-first plating unlocks organic reach</td>
+      </tr>
+      <tr>
+        <td class="highlight">Adda</td><td>$55</td><td>50</td><td>Home-style, community</td><td>Dhaba dishes elevated</td><td>Comfort + honesty over formality — warmth wins loyalty</td>
+      </tr>
+      <tr>
+        <td class="highlight">Babu Ji</td><td>$50</td><td>45</td><td>Casual-upscale crossover</td><td>Indian street food refined</td><td>Entry-price accessibility builds base before going premium</td>
+      </tr>
+      <tr>
+        <td class="highlight">Bombay Bread Bar</td><td>$80</td><td>60</td><td>Chef-driven bar program</td><td>Bread-centric, cocktails</td><td>Bar integration with food pairings is the future of Indian dining</td>
+      </tr>
+      <tr>
+        <td class="highlight">Sahib</td><td>$65</td><td>70</td><td>Classic North Indian fine</td><td>Consistent, reliable tandoor</td><td>Reliability is its own USP — guests return when they trust you</td>
+      </tr>
+      <tr>
+        <td class="highlight">Benares</td><td>$60</td><td>65</td><td>Heritage Varanasi style</td><td>Vegetarian depth</td><td>Strong veg program expands market — vegetarian diners are loyal</td>
+      </tr>
+      <tr>
+        <td class="highlight">Aska</td><td>$120+</td><td>25</td><td>Nordic-Indian tasting</td><td>Omakase, avant-garde</td><td>Cross-cultural fine dining opens press doors unavailable to tradition alone</td>
+      </tr>
+    </table>
+    <div class="info-box">
+      <h4>Your Positioning vs Competitors</h4>
+      <p style="font-size:11px">At $65 avg spend, you sit alongside Dhamaka and Sahib. Differentiate on <strong>regional depth</strong> (5 distinct regional mains), <strong>tableside theatre</strong> (3 signature moments), and <strong>nut-free accessibility</strong>. These are under-invested by most NYC Indian competitors.</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">Kitchen Design — Tandoor Station Centrepiece</div>
+        <div class="kitchen-grid">
+          <div class="kitchen-station hero">
+            <div class="station-icon">🔥</div>
+            <div class="station-name">TANDOOR<br>700°F Clay Oven</div>
+            <div style="font-size:9px;margin-top:4px">Visible to dining room</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">🍳</div>
+            <div class="station-name">Sauce / Curry<br>Station</div>
+            <div style="font-size:9px;color:var(--muted)">4 burner + karahi</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">🥗</div>
+            <div class="station-name">Cold / Chaat<br>Station</div>
+            <div style="font-size:9px;color:var(--muted)">Garnish + assembly</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">🍚</div>
+            <div class="station-name">Rice / Biryani<br>Station</div>
+            <div style="font-size:9px;color:var(--muted)">Dum pots + steamer</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">🥘</div>
+            <div class="station-name">Dal / Slow<br>Cook Station</div>
+            <div style="font-size:9px;color:var(--muted)">12hr pots, Bain marie</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">🍮</div>
+            <div class="station-name">Pastry /<br>Dessert</div>
+            <div style="font-size:9px;color:var(--muted)">Kulfi moulds, kheer</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">🥤</div>
+            <div class="station-name">Beverages /<br>Chai Trolley</div>
+            <div style="font-size:9px;color:var(--muted)">Tableside brew unit</div>
+          </div>
+          <div class="kitchen-station">
+            <div class="station-icon">📋</div>
+            <div class="station-name">Expeditor /<br>Pass</div>
+            <div style="font-size:9px;color:var(--muted)">Heat lamps + garnish</div>
+          </div>
+        </div>
+        <div class="info-box" style="padding:10px">
+          <h4>Tandoor Notes</h4>
+          <ul class="bullet-list">
+            <li>Pre-heat 2 hrs before service — tandoor cannot rush</li>
+            <li>Clay lining replaced every 6–12 months depending on use</li>
+            <li>Position: visible from 40% of dining room minimum</li>
+            <li>Chef in whites + tongs = walking theatre</li>
+            <li>Exhaust + fire suppression: commercial-grade required by NYC code</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">Service Scripts</div>
+        <div class="info-box" style="padding:10px;margin-bottom:10px">
+          <h4>🌶️ Spice Level Conversation</h4>
+          <p style="font-size:10px;margin-bottom:6px"><strong>Never ask:</strong> "Do you want it mild, medium, or hot?"</p>
+          <p style="font-size:10px;margin-bottom:4px"><strong>Instead say:</strong></p>
+          <p style="font-size:10px;color:var(--accent);margin-bottom:4px"><em>"The Laal Maas has the desert heat of Rajasthan — it's meant to make you sweat. The Butter Chicken is warming but gentle. Where does your palate usually sit?"</em></p>
+          <p style="font-size:10px">Listen for: "I love spicy" vs "I enjoy flavour without too much heat." Then guide. Never let the guest self-rate on a 1–10 scale — they always underestimate.</p>
+        </div>
+        <div class="info-box" style="padding:10px;margin-bottom:10px">
+          <h4>🍛 Curry Pairing Script</h4>
+          <p style="font-size:10px;margin-bottom:4px"><em>"If you're choosing between the Rogan Josh and the Moilee — Rogan Josh is robust, bone-warming, built for bread. The Moilee is lighter, coconut-fragrant, better with rice. What feels right tonight?"</em></p>
+          <p style="font-size:10px">Guide every table toward: 1 tandoor starter + 1 main + 1 bread or rice. Upsell shared starters and add-on naan naturally.</p>
+        </div>
+        <div class="info-box" style="padding:10px">
+          <h4>☕ Chai Close Script</h4>
+          <p style="font-size:10px;margin-bottom:4px"><em>"Before you go — we brew our masala chai tableside. It takes three minutes and it's how every dinner should end. Can I bring the trolley over?"</em></p>
+          <p style="font-size:10px">This closes the meal emotionally. Chai = hospitality. It's not a $5 add-on — it's the thing they'll tell friends about. Comp it for parties of 4+ on first visit.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 9: OPERATIONS — PREP + RETENTION + STAFF + P&L ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>Daily Prep · Staff Forecast · Customer Retention</h2>
+      <span class="page-num">PAGE 08</span>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">Daily Prep Schedule</div>
+        <table class="schedule-table">
+          <tr><th>Time</th><th>Task</th><th>Who</th></tr>
+          <tr><td class="time-col">8:00 AM</td><td>Dal Makhani overnight check — stir, season, adjust</td><td>Sous Chef</td></tr>
+          <tr><td class="time-col">9:00 AM</td><td>Biryani meat marinade + dum pot assembly for dinner</td><td>Chef de Partie</td></tr>
+          <tr><td class="time-col">9:30 AM</td><td>Chicken + lamb tikka marinade (min 6hrs before service)</td><td>CDP</td></tr>
+          <tr><td class="time-col">10:00 AM</td><td>Makhani sauce batch — caramelise onion, blitz, pass</td><td>Sauce Cook</td></tr>
+          <tr><td class="time-col">10:30 AM</td><td>Chutney batch: mint + tamarind. Portion and refrigerate</td><td>Prep Cook</td></tr>
+          <tr><td class="time-col">11:00 AM</td><td>Kulfi demould check. Kheer batch (if low)</td><td>Pastry Cook</td></tr>
+          <tr><td class="time-col">11:30 AM</td><td>Haleem final stir + seasoning. Check consistency</td><td>Sous Chef</td></tr>
+          <tr><td class="time-col">12:00 PM</td><td>Mise en place: all garnish stations restocked</td><td>All Stations</td></tr>
+          <tr><td class="time-col">1:00 PM</td><td>Lunch family meal. Team brief: 86s, VIPs, allergy notes</td><td>Exec Chef</td></tr>
+          <tr><td class="time-col">2:00 PM</td><td>Naan dough prove. Samosa batch fry (hold in warmer)</td><td>Tandoor Cook</td></tr>
+          <tr><td class="time-col">3:00 PM</td><td>Biryani dum pots into oven for dinner</td><td>Chef de Partie</td></tr>
+          <tr><td class="time-col">4:00 PM</td><td>Tandoor light — pre-heat commences (2hr)</td><td>Tandoor Cook</td></tr>
+          <tr><td class="time-col">4:30 PM</td><td>BOH + FOH service brief. Specials, allergy guests named</td><td>Exec Chef + GM</td></tr>
+          <tr><td class="time-col">5:30 PM</td><td>Line check. All stations GO. Doors open 6:00 PM</td><td>Sous Chef</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">Staff Forecast — 70-Seat Dinner</div>
+        <table class="schedule-table">
+          <tr><th>Role</th><th>Count</th><th>$/hr</th><th>Hours/Week</th></tr>
+          <tr><td>Executive Chef</td><td>1</td><td>Salary</td><td>50 hrs</td></tr>
+          <tr><td>Sous Chef</td><td>1</td><td>$28</td><td>45 hrs</td></tr>
+          <tr><td>Tandoor Specialist</td><td>1</td><td>$26</td><td>36 hrs</td></tr>
+          <tr><td>Chef de Partie (×2)</td><td>2</td><td>$22</td><td>36 hrs ea</td></tr>
+          <tr><td>Prep Cooks (×2)</td><td>2</td><td>$18</td><td>30 hrs ea</td></tr>
+          <tr><td>Pastry Cook</td><td>1</td><td>$20</td><td>30 hrs</td></tr>
+          <tr><td>Dishwasher (×2)</td><td>2</td><td>$16</td><td>36 hrs ea</td></tr>
+          <tr><td>General Manager</td><td>1</td><td>Salary</td><td>50 hrs</td></tr>
+          <tr><td>Floor Manager</td><td>1</td><td>$25</td><td>36 hrs</td></tr>
+          <tr><td>Servers (×5)</td><td>5</td><td>$12 + tips</td><td>30 hrs ea</td></tr>
+          <tr><td>Food Runners (×2)</td><td>2</td><td>$16</td><td>30 hrs ea</td></tr>
+          <tr><td>Host</td><td>1</td><td>$18</td><td>25 hrs</td></tr>
+          <tr><td>Bartender</td><td>1</td><td>$14 + tips</td><td>30 hrs</td></tr>
+        </table>
+        <div class="info-box" style="margin-top:10px;padding:10px">
+          <h4>Tandoor Specialist Note</h4>
+          <p style="font-size:10px">The tandoor cook is a specialist role. Source from Indian communities in Jackson Heights (Queens) or via Indian hotel industry networks. This person must have worked tandoor minimum 3 years — the skewering technique and temperature reading are not teachable in weeks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Customer Retention System</div>
+    <div class="three-col">
+      <div class="info-box" style="padding:10px">
+        <h4>Visit 1: First Impression</h4>
+        <ul class="bullet-list">
+          <li>Complimentary digestif chai on tabs $80+</li>
+          <li>Manager visit every table</li>
+          <li>Leave card: "Your next biryani is waiting"</li>
+          <li>Add to Resy waitlist for prime slots</li>
+        </ul>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>Visit 2–4: Building Loyalty</h4>
+        <ul class="bullet-list">
+          <li>Remember their heat preference in Resy notes</li>
+          <li>Greet by name if they return within 60 days</li>
+          <li>Offer regional menu variation — "tried the Goan yet?"</li>
+          <li>Birthday/anniversary flag: complimentary gulab jamun</li>
+        </ul>
+      </div>
+      <div class="info-box" style="padding:10px">
+        <h4>VIP Program: Spice Circle</h4>
+        <ul class="bullet-list">
+          <li>8+ visits → Spice Circle member</li>
+          <li>Priority booking (48hr advance vs 72hr public)</li>
+          <li>Tasting menu access (chef's table, 8-course)</li>
+          <li>Invited to spice sourcing dinners / pop-ups</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 10: P&L MODEL + FINAL PAGE ==================== -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <h2>P&amp;L Model + 22-Tool Bundle</h2>
+      <span class="page-num">PAGE 09</span>
+    </div>
+
+    <div class="section-title">P&amp;L Model — 70-Seat Indian Fine Dining, NYC · $65 Avg Spend · 6 Nights/Week</div>
+
+    <div class="two-col">
+      <div>
+        <div class="sub-title">Monthly Revenue Projection</div>
+        <table class="pl-table">
+          <tr><th>Revenue Line</th><th>Calculation</th><th>Monthly</th></tr>
+          <tr><td>Food Revenue (Mon–Thu)</td><td>70 × $65 × 4 nights × 4.3wks × 0.80 occ</td><td>$63,700</td></tr>
+          <tr><td>Food Revenue (Fri–Sat)</td><td>70 × $65 × 2 turns × 2 nights × 4.3wks</td><td>$39,130</td></tr>
+          <tr><td>Beverage Revenue</td><td>25% of food revenue</td><td>$25,710</td></tr>
+          <tr><td>Private Dining / Events</td><td>2 events/month avg $3,500</td><td>$7,000</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>TOTAL MONTHLY REVENUE</strong></td><td><strong>$135,540</strong></td></tr>
+          <tr class="total-row"><td colspan="2"><strong>ANNUAL REVENUE</strong></td><td><strong>$1,626,480</strong></td></tr>
+        </table>
+
+        <div class="sub-title" style="margin-top:12px">Cost of Goods</div>
+        <table class="pl-table">
+          <tr><th>COGS Line</th><th>% Rev</th><th>Monthly</th></tr>
+          <tr><td>Food Cost (target 28%)</td><td>28%</td><td>$37,951</td></tr>
+          <tr><td>Beverage Cost (target 25%)</td><td>25%</td><td>$6,428</td></tr>
+          <tr class="subtotal-row"><td><strong>Total COGS</strong></td><td><strong>27.5%</strong></td><td><strong>$44,379</strong></td></tr>
+        </table>
+
+        <div class="sub-title" style="margin-top:12px">Labour</div>
+        <table class="pl-table">
+          <tr><th>Labour Line</th><th>% Rev</th><th>Monthly</th></tr>
+          <tr><td>BOH Labour (10 BOH staff)</td><td>—</td><td>$28,400</td></tr>
+          <tr><td>FOH Labour (7 FOH staff)</td><td>—</td><td>$16,200</td></tr>
+          <tr><td>Management Salaries</td><td>—</td><td>$18,500</td></tr>
+          <tr><td>Payroll Taxes (12%)</td><td>—</td><td>$7,572</td></tr>
+          <tr class="subtotal-row"><td><strong>Total Labour</strong></td><td><strong>52%</strong></td><td><strong>$70,672</strong></td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="sub-title">Fixed + Variable Overheads</div>
+        <table class="pl-table">
+          <tr><th>Overhead Line</th><th>Monthly</th></tr>
+          <tr><td>NYC Rent (70-seat Manhattan/BK prime)</td><td>$18,000</td></tr>
+          <tr><td>Utilities (gas-heavy for tandoor)</td><td>$4,200</td></tr>
+          <tr><td>Supplies + Linen</td><td>$2,800</td></tr>
+          <tr><td>Marketing + Resy + PR</td><td>$3,500</td></tr>
+          <tr><td>Insurance + Licensing</td><td>$2,200</td></tr>
+          <tr><td>Credit card fees (3.2%)</td><td>$4,337</td></tr>
+          <tr><td>Repairs + Maintenance</td><td>$1,200</td></tr>
+          <tr class="subtotal-row"><td><strong>Total Overheads</strong></td><td><strong>$36,237</strong></td></tr>
+        </table>
+
+        <div class="sub-title" style="margin-top:12px">Net Profit Summary</div>
+        <table class="pl-table">
+          <tr><th>Summary</th><th>Monthly</th><th>Annual</th></tr>
+          <tr><td>Total Revenue</td><td>$135,540</td><td>$1,626,480</td></tr>
+          <tr><td>Total COGS</td><td>($44,379)</td><td>($532,548)</td></tr>
+          <tr><td>Gross Profit</td><td>$91,161</td><td>$1,093,932</td></tr>
+          <tr><td>Total Labour</td><td>($70,672)</td><td>($848,064)</td></tr>
+          <tr><td>Total Overheads</td><td>($36,237)</td><td>($434,844)</td></tr>
+          <tr class="total-row"><td><strong>NET PROFIT</strong></td><td><strong>($15,748)</strong></td><td><strong>($189K)</strong></td></tr>
+        </table>
+        <div class="info-box" style="margin-top:8px;padding:10px">
+          <h4>⚡ Path to Profitability</h4>
+          <ul class="bullet-list">
+            <li>Increase avg check to $75 (+beverage focus) → adds $40K/mo revenue</li>
+            <li>Add Sunday brunch → +$18K/mo with existing staff</li>
+            <li>Private dining program → grow from $7K to $15K/mo</li>
+            <li>Labour optimisation at 45% → saves $8K/mo</li>
+            <li><strong class="accent-text">Target: Year 2 positive at $75 avg check + Sunday + events</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="signature-box" style="margin-top:10px">
+      <h4>🛠️ KitchenFounder 22-Tool Bundle — Included with Every Guide</h4>
+      <div class="three-col" style="margin-top:8px;font-size:10px">
+        <ul style="list-style:none;padding:0;line-height:1.8">
+          <li>✅ Recipe costing calculator (Excel)</li>
+          <li>✅ Food cost percentage tracker</li>
+          <li>✅ Menu engineering matrix</li>
+          <li>✅ Mise en place checklist templates</li>
+          <li>✅ Opening/closing procedures</li>
+          <li>✅ Staff schedule builder</li>
+          <li>✅ Labour cost calculator</li>
+          <li>✅ P&amp;L monthly dashboard</li>
+        </ul>
+        <ul style="list-style:none;padding:0;line-height:1.8">
+          <li>✅ Inventory management sheet</li>
+          <li>✅ Allergen matrix (all dishes)</li>
+          <li>✅ Supplier price comparison log</li>
+          <li>✅ Daily prep timeline template</li>
+          <li>✅ Reservation / turn tracker</li>
+          <li>✅ Training scripts (BOH + FOH)</li>
+          <li>✅ HACCP temperature log</li>
+          <li>✅ Waste tracking worksheet</li>
+        </ul>
+        <ul style="list-style:none;padding:0;line-height:1.8">
+          <li>✅ Social media caption library</li>
+          <li>✅ Review response templates</li>
+          <li>✅ Catering event proposal template</li>
+          <li>✅ Loyalty program framework</li>
+          <li>✅ Tandoor maintenance log</li>
+          <li>✅ Spice sourcing vendor list (NYC)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box" style="text-align:center;padding:12px;margin-top:10px;background:linear-gradient(90deg,var(--light),#fff,var(--light))">
+      <h3 style="color:var(--accent);font-size:16px">KitchenFounder · Guide #36</h3>
+      <p style="font-size:11px;color:var(--muted);margin-top:4px">Indian Fine Dining NYC Dinner Standard · v7 · 2025</p>
+      <p style="font-size:10px;margin-top:8px">28 recipes · 10 regional stories · 4 signature moments · 22-tool bundle</p>
+      <p style="font-size:10px;color:var(--gold);margin-top:4px">🌿 100% NUT-FREE versions available for all dishes</p>
+      <p style="font-size:9px;color:var(--muted);margin-top:8px">© 2025 KitchenFounder. For licensed restaurant operators only. Not for redistribution.</p>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #36</span>
+    <span>Indian Fine Dining · NYC Dinner Standard</span>
+  </div>
+</div>
+
+</body>
+</html>

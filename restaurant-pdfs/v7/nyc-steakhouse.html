@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #34 — NYC Steakhouse Dinner Standard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --accent: #1C1C1C;
+    --gold: #C8922A;
+    --gold-light: #E8B84B;
+    --cream: #F5F0E8;
+    --border: #D4C5A9;
+    --muted: #6B6560;
+    --charcoal: #2C2C2C;
+    --card-bg: #FFFFFF;
+    --red-wine: #722F37;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.6; }
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 14mm 14mm 18mm 14mm; position: relative; background: var(--bg); page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  /* ── FOOTER ── */
+  .footer { position: absolute; bottom: 8mm; left: 14mm; right: 14mm; display: flex; justify-content: space-between; font-size: 9px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 4px; font-family: 'Inter', sans-serif; letter-spacing: 0.04em; }
+
+  /* ── COVER ── */
+  .cover { background: linear-gradient(160deg, #1A1A18 0%, #2C2416 40%, #1C1C1C 100%); color: #F5F0E8; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 297mm; padding: 20mm; }
+  .cover-badge { border: 1px solid var(--gold); color: var(--gold); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 16px; margin-bottom: 24px; font-family: 'Inter', sans-serif; }
+  .cover-guide-num { font-size: 11px; color: rgba(200,146,42,0.7); letter-spacing: 0.3em; text-transform: uppercase; font-family: 'Inter', sans-serif; margin-bottom: 12px; }
+  .cover h1 { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 900; line-height: 1.05; letter-spacing: -0.01em; color: #F5F0E8; margin-bottom: 8px; }
+  .cover h1 span { color: var(--gold); }
+  .cover-sub { font-size: 16px; color: rgba(245,240,232,0.7); letter-spacing: 0.15em; text-transform: uppercase; font-family: 'Inter', sans-serif; font-weight: 300; margin-bottom: 36px; }
+  .cover-divider { width: 80px; height: 1px; background: var(--gold); margin: 0 auto 36px; }
+  .cover-desc { font-size: 13px; color: rgba(245,240,232,0.75); max-width: 360px; line-height: 1.8; margin-bottom: 40px; }
+  .cover-benchmarks { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; margin-bottom: 40px; max-width: 400px; }
+  .cover-benchmarks span { font-size: 9px; color: rgba(200,146,42,0.8); letter-spacing: 0.1em; text-transform: uppercase; }
+  .cover-meta { display: flex; gap: 32px; font-size: 10px; color: rgba(245,240,232,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+  .cover-steak-icon { font-size: 48px; margin-bottom: 20px; }
+  .cover-footer-line { position: absolute; bottom: 12mm; left: 20mm; right: 20mm; display: flex; justify-content: space-between; font-size: 9px; color: rgba(245,240,232,0.35); letter-spacing: 0.08em; border-top: 1px solid rgba(200,146,42,0.2); padding-top: 6px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header { margin-bottom: 18px; }
+  .section-tag { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.1; }
+  .section-title span { color: var(--gold); }
+  .section-rule { width: 40px; height: 2px; background: var(--gold); margin-top: 8px; }
+
+  /* ── RECIPE CARD ── */
+  .recipe-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; margin-bottom: 14px; page-break-inside: avoid; }
+  .recipe-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .recipe-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--text); }
+  .recipe-yield { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: flex-start; }
+  .badge { font-size: 8px; font-weight: 600; padding: 3px 8px; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .badge-temp { background: #FFF3E0; color: #E65100; border: 1px solid #FFB74D; }
+  .badge-cost { background: #E8F5E9; color: #2E7D32; border: 1px solid #81C784; }
+  .badge-gold { background: rgba(200,146,42,0.1); color: var(--gold); border: 1px solid rgba(200,146,42,0.3); }
+
+  /* ── INGREDIENTS TABLE ── */
+  .ing-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 11px; }
+  .ing-table th { background: var(--cream); color: var(--muted); font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; padding: 5px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+  .ing-table td { padding: 4px 8px; border-bottom: 1px solid rgba(212,197,169,0.4); vertical-align: top; }
+  .ing-table tr:last-child td { border-bottom: none; }
+  .ing-table .cost-col { text-align: right; color: var(--muted); font-size: 10px; }
+  .ing-table .total-row td { font-weight: 600; background: rgba(200,146,42,0.06); border-top: 1px solid var(--border); }
+
+  /* ── METHOD ── */
+  .method-title { font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; margin-top: 10px; }
+  .method-steps { list-style: none; counter-reset: steps; }
+  .method-steps li { counter-increment: steps; padding: 3px 0 3px 22px; position: relative; font-size: 11px; line-height: 1.5; border-bottom: 1px solid rgba(212,197,169,0.25); }
+  .method-steps li:last-child { border-bottom: none; }
+  .method-steps li::before { content: counter(steps); position: absolute; left: 0; top: 4px; width: 15px; height: 15px; background: var(--gold); color: white; border-radius: 50%; font-size: 8px; font-weight: 700; display: flex; align-items: center; justify-content: center; line-height: 1; }
+
+  /* ── CHEF TIP ── */
+  .chef-tip { background: rgba(200,146,42,0.07); border-left: 3px solid var(--gold); padding: 7px 10px; margin-top: 10px; font-size: 10px; font-style: italic; color: var(--charcoal); border-radius: 0 2px 2px 0; }
+  .chef-tip strong { font-style: normal; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 2px; }
+
+  /* ── ALLERGEN ROW ── */
+  .allergen-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; align-items: center; }
+  .allergen-label { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .allergen-tag { font-size: 8px; background: #FFF3F3; color: #C62828; border: 1px solid #FFCDD2; padding: 2px 6px; border-radius: 2px; font-weight: 500; }
+
+  /* ── TWO COLUMN ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+  /* ── INFO BOX ── */
+  .info-box { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 12px 14px; margin-bottom: 12px; page-break-inside: avoid; }
+  .info-box h4 { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+  .info-box p, .info-box li { font-size: 11px; line-height: 1.6; color: var(--charcoal); }
+  .info-box ul, .info-box ol { padding-left: 14px; }
+
+  /* ── TABLE GENERIC ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-bottom: 12px; }
+  .data-table th { background: var(--charcoal); color: #F5F0E8; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 8px; text-align: left; }
+  .data-table td { padding: 5px 8px; border-bottom: 1px solid rgba(212,197,169,0.4); vertical-align: top; }
+  .data-table tr:nth-child(even) td { background: rgba(245,240,232,0.5); }
+  .data-table .highlight td { background: rgba(200,146,42,0.1); font-weight: 600; }
+  .data-table .gold { color: var(--gold); font-weight: 600; }
+
+  /* ── BIBLE STAT GRID ── */
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+  .stat-card { background: var(--charcoal); color: #F5F0E8; padding: 12px; border-radius: 4px; text-align: center; }
+  .stat-card .val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .stat-card .lbl { font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.6); margin-top: 4px; }
+
+  /* ── SERVICE SCRIPT ── */
+  .script-block { background: #1C1C1C; color: #F5F0E8; border-radius: 4px; padding: 12px 14px; margin-bottom: 10px; page-break-inside: avoid; }
+  .script-block .script-label { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 600; }
+  .script-block .script-line { font-size: 11px; font-style: italic; line-height: 1.7; color: rgba(245,240,232,0.9); }
+  .script-block .script-note { font-size: 10px; color: rgba(200,146,42,0.8); margin-top: 6px; font-style: normal; }
+
+  /* ── SCHEDULE ── */
+  .schedule-row { display: grid; grid-template-columns: 70px 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(212,197,169,0.3); font-size: 11px; align-items: start; }
+  .schedule-row:last-child { border-bottom: none; }
+  .schedule-time { font-weight: 600; color: var(--gold); font-size: 10px; white-space: nowrap; }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-steak-icon">🥩</div>
+  <div class="cover-badge">KitchenFounder · Restaurant Operations Series</div>
+  <div class="cover-guide-num">Guide #34 · v7</div>
+  <h1>NYC<br><span>Steakhouse</span></h1>
+  <div class="cover-sub">Dinner Standard</div>
+  <div class="cover-divider"></div>
+  <p class="cover-desc">The complete operational playbook for opening and running a world-class New York City steakhouse — from dry-aged beef program to tableside theatre, kitchen design to $14.4M P&L model.</p>
+  <div class="cover-benchmarks">
+    <span>Peter Luger</span><span>·</span><span>Keens</span><span>·</span><span>Smith & Wollensky</span><span>·</span>
+    <span>The Capital Grille</span><span>·</span><span>Sparks</span><span>·</span><span>Gallagher's</span><span>·</span>
+    <span>Strip House</span><span>·</span><span>Quality Meats</span><span>·</span><span>Cote</span><span>·</span><span>Porter House</span>
+  </div>
+  <div class="cover-meta">
+    <span>100-Seat Format</span>
+    <span>·</span>
+    <span>$120 Avg Spend</span>
+    <span>·</span>
+    <span>US Market 2025</span>
+  </div>
+  <div class="cover-footer-line">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 2 — GUIDE BIBLE & NYC COMPARISON TABLE
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Guide #34 · Foundation</div>
+    <div class="section-title">The <span>Guide Bible</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="val">100</div><div class="lbl">Seats</div></div>
+    <div class="stat-card"><div class="val">$120</div><div class="lbl">Avg Spend</div></div>
+    <div class="stat-card"><div class="val">6</div><div class="lbl">Nights / Week</div></div>
+    <div class="stat-card"><div class="val">$14.4M</div><div class="lbl">Revenue Target</div></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:12px;">
+    <div class="info-box">
+      <h4>🎯 Concept DNA</h4>
+      <ul>
+        <li>Dry-aged USDA Prime beef — minimum 28 days</li>
+        <li>Tableside theatre: porterhouse carving, bone marrow, bananas foster flambé</li>
+        <li>Vintage steakhouse aesthetic — dark wood, leather, brass</li>
+        <li>Power-dining atmosphere — NYC financial/media crowd</li>
+        <li>The steak IS the experience; everything else amplifies it</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>💡 Operating Principles</h4>
+      <ul>
+        <li>Food cost target: 28–32% blended</li>
+        <li>Labor cost target: 30–33%</li>
+        <li>Beverage mix: 35% of total revenue</li>
+        <li>Table turn: 1.4x per night (90 min avg)</li>
+        <li>Dry-age cabinet front-of-house — visible to guests</li>
+        <li>Signature: Peter Luger-style porterhouse carved tableside</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:12px;">
+    <div class="info-box">
+      <h4>🥩 Beef Program</h4>
+      <ul>
+        <li><strong>Grade:</strong> USDA Prime, hormone-free, Angus or Wagyu blend</li>
+        <li><strong>Dry-age:</strong> 28-day minimum; 45-day for special cuts</li>
+        <li><strong>Butchery:</strong> In-house; full primal breakdown</li>
+        <li><strong>Display:</strong> Front-of-house aging cabinet (temp-controlled, 34–38°F)</li>
+        <li><strong>Waste protocol:</strong> Trim → burger / bone broth / staff meal</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🎭 Signature Moments</h4>
+      <ul>
+        <li><strong>Porterhouse:</strong> Chef carves tableside on wooden board (Peter Luger DNA)</li>
+        <li><strong>Bone Marrow:</strong> Presented tableside with toast points + sea salt</li>
+        <li><strong>Bananas Foster:</strong> Flambé at table — showstopper dessert</li>
+        <li><strong>Dry-age reveal:</strong> Sommelier walks guests past aging cabinet on arrival</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NYC COMPARISON TABLE -->
+  <div style="margin-top:4px;">
+    <div class="section-tag" style="margin-bottom:6px;">NYC Benchmark Comparison</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Signature Cut</th>
+          <th>Avg Check</th>
+          <th>Est. Seats</th>
+          <th>Known For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Peter Luger</strong></td><td>Porterhouse for 2</td><td>$130–160pp</td><td>180</td><td>Cash-only, 135-yr tradition, dry-age masters</td></tr>
+        <tr><td><strong>Keens Steakhouse</strong></td><td>Mutton Chop / Porterhouse</td><td>$120–150pp</td><td>200+</td><td>1885 est., pipe collection, clubhouse feel</td></tr>
+        <tr><td><strong>Smith & Wollensky</strong></td><td>Double-cut NY Strip</td><td>$110–140pp</td><td>220</td><td>USDA Prime, chophouse classic, multi-location</td></tr>
+        <tr><td><strong>The Capital Grille</strong></td><td>Bone-in Ribeye</td><td>$100–130pp</td><td>180</td><td>Dry-aged in-house, power dining, wine program</td></tr>
+        <tr><td><strong>Sparks</strong></td><td>NY Strip Sirloin</td><td>$100–130pp</td><td>350</td><td>1966 classic, infamous history, massive portions</td></tr>
+        <tr><td><strong>Gallagher's</strong></td><td>Porterhouse</td><td>$90–120pp</td><td>140</td><td>1927 est., street-facing meat locker, old NYC</td></tr>
+        <tr><td><strong>Strip House</strong></td><td>NY Strip</td><td>$100–130pp</td><td>120</td><td>Burlesque-inspired décor, truffle sides</td></tr>
+        <tr><td><strong>Quality Meats</strong></td><td>Dry-aged Ribeye</td><td>$100–125pp</td><td>100</td><td>Modern steakhouse, seasonal creative sides</td></tr>
+        <tr class="highlight"><td><strong>Cote</strong></td><td>Butcher's Feast (KBBQ)</td><td>$120–150pp</td><td>80</td><td>Korean BBQ × steakhouse, Michelin-starred</td></tr>
+        <tr><td><strong>Porter House NYC</strong></td><td>Porterhouse</td><td>$110–140pp</td><td>100</td><td>Columbus Circle, seasonal approach, panoramic views</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 3 — STARTERS: Shrimp Cocktail, Wedge, Oysters
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Menu · Starters — Page 1 of 2</div>
+    <div class="section-title">First <span>Course</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <!-- SHRIMP COCKTAIL -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div><div class="recipe-name">Classic Shrimp Cocktail</div><div class="recipe-yield">Yield: 1 portion · 5 jumbo shrimp</div></div>
+      <div class="badges"><span class="badge badge-temp">Served 38°F</span><span class="badge badge-cost">FC 24%</span><span class="badge badge-gold">Signature Starter</span></div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Line Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Jumbo shrimp U10, peeled & deveined</td><td>7 oz</td><td>$18/lb</td><td class="cost-col">$7.88</td></tr>
+        <tr><td>Horseradish, fresh grated</td><td>1 tbsp</td><td>$3.50/lb</td><td class="cost-col">$0.14</td></tr>
+        <tr><td>Heinz ketchup</td><td>2 oz</td><td>$2.20/lb</td><td class="cost-col">$0.28</td></tr>
+        <tr><td>Lemon, fresh</td><td>½ ea</td><td>$0.45/ea</td><td class="cost-col">$0.23</td></tr>
+        <tr><td>Worcestershire sauce</td><td>1 tsp</td><td>$0.02/tsp</td><td class="cost-col">$0.02</td></tr>
+        <tr><td>Tabasco + celery salt</td><td>to taste</td><td>—</td><td class="cost-col">$0.05</td></tr>
+        <tr><td>Crushed ice, lemon wedge, cocktail glass</td><td>service</td><td>—</td><td class="cost-col">$0.40</td></tr>
+        <tr class="total-row"><td colspan="3"><strong>Total Food Cost</strong></td><td class="cost-col"><strong>$9.00</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="method-title">Method</div>
+    <ol class="method-steps">
+      <li>Bring court bouillon (water, white wine, bay, peppercorn) to 185°F — poach shrimp 3–4 min until opaque.</li>
+      <li>Ice-shock immediately; hold on crushed ice at 38°F until service.</li>
+      <li>Mix cocktail sauce: ketchup + fresh horseradish + Worcestershire + Tabasco + lemon juice. Taste-adjust.</li>
+      <li>Fan 5 shrimp on chilled glass rim with crushed ice. Center sauce cup. Garnish lemon wedge.</li>
+    </ol>
+    <div class="chef-tip"><strong>Chef Tip</strong> Never overcook — U10 shrimp at 185°F need only 3 min. Flash-chill in ice water within 30 sec. Serve price point: $38.</div>
+    <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">SHELLFISH</span><span class="allergen-tag">SULFITES</span></div>
+  </div>
+
+  <div class="two-col">
+    <!-- WEDGE SALAD -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Iceberg Wedge Salad</div><div class="recipe-yield">Yield: 1 portion</div></div>
+        <div class="badges"><span class="badge badge-temp">Served Cold</span><span class="badge badge-cost">FC 18%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Line</th></tr></thead>
+        <tbody>
+          <tr><td>Iceberg lettuce, quartered</td><td>¼ head</td><td>$1.80/head</td><td class="cost-col">$0.45</td></tr>
+          <tr><td>Applewood bacon, crisp</td><td>2 strips</td><td>$7/lb</td><td class="cost-col">$0.88</td></tr>
+          <tr><td>Maytag blue cheese, crumbled</td><td>1.5 oz</td><td>$14/lb</td><td class="cost-col">$1.31</td></tr>
+          <tr><td>Cherry tomatoes, halved</td><td>4 ea</td><td>$3/pt</td><td class="cost-col">$0.30</td></tr>
+          <tr><td>Red onion, shaved</td><td>1 tbsp</td><td>$1.20/lb</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Blue cheese dressing</td><td>2 oz</td><td>—</td><td class="cost-col">$0.45</td></tr>
+          <tr class="total-row"><td colspan="3"><strong>Total</strong></td><td class="cost-col"><strong>$3.44</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Quarter iceberg; trim core, keep intact.</li>
+        <li>Pool blue cheese dressing on cold plate.</li>
+        <li>Place wedge, drizzle more dressing, layer bacon, tomatoes, onion, extra blue cheese crumble.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Chill plates. House-made blue cheese dressing = key differentiator. Serve price: $22.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">PORK</span></div>
+    </div>
+
+    <!-- OYSTERS -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">East Coast Oysters on Half Shell</div><div class="recipe-yield">Yield: 6 oysters</div></div>
+        <div class="badges"><span class="badge badge-temp">Served 34°F</span><span class="badge badge-cost">FC 29%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Line</th></tr></thead>
+        <tbody>
+          <tr><td>Bluepoint or Wellfleet oysters</td><td>6 ea</td><td>$1.40/ea</td><td class="cost-col">$8.40</td></tr>
+          <tr><td>Mignonette (shallot, champagne vinegar)</td><td>1 oz</td><td>—</td><td class="cost-col">$0.20</td></tr>
+          <tr><td>Lemon wedge</td><td>1 ea</td><td>$0.45/ea</td><td class="cost-col">$0.15</td></tr>
+          <tr><td>Tabasco, horseradish</td><td>service</td><td>—</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Crushed ice, seaweed garnish</td><td>service</td><td>—</td><td class="cost-col">$0.35</td></tr>
+          <tr class="total-row"><td colspan="3"><strong>Total</strong></td><td class="cost-col"><strong>$9.15</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Shuck to order; inspect for shell fragments, smell for freshness.</li>
+        <li>Nest on crushed ice with seaweed; lemon + mignonette + condiments.</li>
+        <li>Present on wooden board or silver tray tableside.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Source from same purveyor daily. Rotate variety by season. Price: $32 per 6.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">SHELLFISH</span><span class="allergen-tag">SULFITES</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 4 — STARTERS: Beef Tartare, Crab Cake, French Onion Soup
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Menu · Starters — Page 2 of 2</div>
+    <div class="section-title">First <span>Course</span> cont.</div>
+    <div class="section-rule"></div>
+  </div>
+
+  <!-- BEEF TARTARE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div><div class="recipe-name">Prime Beef Tartare</div><div class="recipe-yield">Yield: 1 portion · 4 oz dressed</div></div>
+      <div class="badges"><span class="badge badge-temp">Served 40°F</span><span class="badge badge-cost">FC 26%</span><span class="badge badge-gold">Chef Favourite</span></div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Line Cost</th></tr></thead>
+      <tbody>
+        <tr><td>USDA Prime beef tenderloin, hand-chopped</td><td>4 oz</td><td>$32/lb</td><td class="cost-col">$8.00</td></tr>
+        <tr><td>Dijon mustard</td><td>1 tsp</td><td>$0.04/tsp</td><td class="cost-col">$0.04</td></tr>
+        <tr><td>Capers, rinsed & chopped</td><td>1 tbsp</td><td>$4/jar</td><td class="cost-col">$0.15</td></tr>
+        <tr><td>Shallot, fine dice</td><td>1 tbsp</td><td>$3/lb</td><td class="cost-col">$0.10</td></tr>
+        <tr><td>Cornichons, minced</td><td>1 tbsp</td><td>$5/jar</td><td class="cost-col">$0.12</td></tr>
+        <tr><td>Egg yolk (quail egg preferred)</td><td>1 ea</td><td>$0.35/ea</td><td class="cost-col">$0.35</td></tr>
+        <tr><td>Worcestershire, Tabasco, olive oil</td><td>to taste</td><td>—</td><td class="cost-col">$0.10</td></tr>
+        <tr><td>Grilled sourdough crostini (3 pc)</td><td>3 slices</td><td>—</td><td class="cost-col">$0.45</td></tr>
+        <tr class="total-row"><td colspan="3"><strong>Total Food Cost</strong></td><td class="cost-col"><strong>$9.31</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="method-title">Method</div>
+    <ol class="method-steps">
+      <li>Hand-chop tenderloin to order (never grind) — maintain texture, not paste.</li>
+      <li>Mix with Dijon, capers, shallot, cornichons, Worcestershire, Tabasco, olive oil. Season aggressively.</li>
+      <li>Mold using ring mold; top with quail egg yolk, fleur de sel, microgreens.</li>
+      <li>Serve immediately with grilled crostini arranged alongside.</li>
+    </ol>
+    <div class="chef-tip"><strong>Chef Tip</strong> Use same-day butchery trim from tenderloin. Keep meat at 38°F until service. Plate on frozen stone or ice-chilled plate. Price: $36.</div>
+    <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">MUSTARD</span><span class="allergen-tag">GLUTEN</span><span class="allergen-tag">RAW BEEF</span></div>
+  </div>
+
+  <div class="two-col">
+    <!-- CRAB CAKE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Jumbo Lump Crab Cake</div><div class="recipe-yield">Yield: 1 cake · 5 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">165°F Internal</span><span class="badge badge-cost">FC 31%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Line</th></tr></thead>
+        <tbody>
+          <tr><td>Jumbo lump crab meat</td><td>4 oz</td><td>$38/lb</td><td class="cost-col">$9.50</td></tr>
+          <tr><td>Mayonnaise, Duke's</td><td>1.5 tbsp</td><td>—</td><td class="cost-col">$0.18</td></tr>
+          <tr><td>Old Bay seasoning</td><td>½ tsp</td><td>—</td><td class="cost-col">$0.03</td></tr>
+          <tr><td>Dijon, lemon, Worcestershire</td><td>to taste</td><td>—</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Panko breadcrumbs (binder only)</td><td>2 tbsp</td><td>—</td><td class="cost-col">$0.06</td></tr>
+          <tr><td>Remoulade sauce, 2 oz</td><td>2 oz</td><td>—</td><td class="cost-col">$0.45</td></tr>
+          <tr><td>Micro celery, lemon</td><td>garnish</td><td>—</td><td class="cost-col">$0.15</td></tr>
+          <tr class="total-row"><td colspan="3"><strong>Total</strong></td><td class="cost-col"><strong>$10.45</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Fold crab with mayo, Old Bay, Dijon, lemon, Worcestershire; minimal panko to bind.</li>
+        <li>Form 5 oz cake; refrigerate 30 min. Sear in clarified butter until golden. Oven-finish at 400°F 8 min.</li>
+        <li>Plate on remoulade pool; microgreens + lemon. Price: $34.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Minimal filler = maximum crab. "If you can see the breadcrumbs, it's wrong."</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">SHELLFISH</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">GLUTEN</span><span class="allergen-tag">MUSTARD</span></div>
+    </div>
+
+    <!-- FRENCH ONION SOUP -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">French Onion Soup Gratinée</div><div class="recipe-yield">Yield: 1 crock · 10 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">Served 185°F</span><span class="badge badge-cost">FC 16%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Line</th></tr></thead>
+        <tbody>
+          <tr><td>Yellow onions, caramelized (2hr)</td><td>6 oz</td><td>$1/lb</td><td class="cost-col">$0.38</td></tr>
+          <tr><td>Beef stock, house-made</td><td>8 oz</td><td>$0.40/qt</td><td class="cost-col">$0.20</td></tr>
+          <tr><td>Dry sherry / cognac</td><td>1 oz</td><td>$0.80/oz</td><td class="cost-col">$0.80</td></tr>
+          <tr><td>Gruyère cheese, grated</td><td>2 oz</td><td>$14/lb</td><td class="cost-col">$1.75</td></tr>
+          <tr><td>Sourdough crouton</td><td>1 thick slice</td><td>—</td><td class="cost-col">$0.25</td></tr>
+          <tr><td>Thyme, bay, butter</td><td>seasoning</td><td>—</td><td class="cost-col">$0.12</td></tr>
+          <tr class="total-row"><td colspan="3"><strong>Total</strong></td><td class="cost-col"><strong>$3.50</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Caramelize onions 2 hrs over low heat. Deglaze with sherry; add beef stock + thyme + bay. Simmer 20 min.</li>
+        <li>Ladle into oven-safe crock; float crouton; heap Gruyère.</li>
+        <li>Broil until cheese is bubbling and golden-brown. Serve immediately on cloth napkin. Price: $22.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Caramelize onions in batches of 10 lbs; hold refrigerated up to 5 days. Deep amber = flavour depth.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">GLUTEN</span><span class="allergen-tag">SULFITES</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 5 — MAINS: 5 STEAKS
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Menu · Mains — Steaks</div>
+    <div class="section-title">The <span>Beef Program</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="two-col">
+    <!-- PORTERHOUSE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Dry-Aged Porterhouse</div><div class="recipe-yield">Yield: 36–42 oz · serves 2</div></div>
+        <div class="badges"><span class="badge badge-temp">Internal 125°F (MR)</span><span class="badge badge-cost">FC 34%</span><span class="badge badge-gold">Tableside Carve</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>USDA Prime porterhouse, 28-day dry-aged</td><td>38 oz</td><td>$32/lb</td><td class="cost-col">$76.00</td></tr>
+          <tr><td>Kosher salt, cracked black pepper</td><td>generous</td><td>—</td><td class="cost-col">$0.15</td></tr>
+          <tr><td>Clarified butter for basting</td><td>2 oz</td><td>$8/lb</td><td class="cost-col">$1.00</td></tr>
+          <tr><td>Fresh thyme, garlic, rosemary</td><td>baste</td><td>—</td><td class="cost-col">$0.20</td></tr>
+          <tr class="total-row"><td colspan="3"><strong>Total</strong></td><td class="cost-col"><strong>$77.35</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Temper steak 45 min at room temp. Season aggressively with kosher salt both sides 15 min before cooking.</li>
+        <li>900°F broiler or cast-iron + char-grill: 4–5 min per side for MR. Baste with clarified butter, thyme, garlic last 2 min.</li>
+        <li>Rest on wooden board 8–10 min. <strong>Tableside:</strong> chef brings to table, carves strip from bone, slices on bias, fillet same. Present sliced, bone intact, in butter runoff.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Peter Luger serves sliced in its own butter. Don't skip the board rest — redistribute juices. Price: $145.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span></div>
+    </div>
+
+    <!-- T-BONE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">T-Bone Steak</div><div class="recipe-yield">Yield: 24 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">Internal 125–130°F</span><span class="badge badge-cost">FC 32%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>USDA Prime T-bone, dry-aged 28 days</td><td>24 oz</td><td>$30/lb</td><td class="cost-col">$45.00</td></tr>
+          <tr><td>Kosher salt, black pepper</td><td>generous</td><td>—</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Clarified butter, garlic, thyme</td><td>baste</td><td>—</td><td class="cost-col">$0.80</td></tr>
+          <tr><td>Compound herb butter (finish)</td><td>1 oz</td><td>$8/lb</td><td class="cost-col">$0.50</td></tr>
+          <tr class="total-row"><td colspan="3"><strong>Total</strong></td><td class="cost-col"><strong>$46.40</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Season 30 min prior; char-grill on high heat — 4 min per side for MR.</li>
+        <li>Baste with aromatic butter last 2 min. Rest 7 min.</li>
+        <li>Top with compound butter; serve on warm plate with steak knife. Price: $95.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> T-bone = strip side + small fillet. Cook strip side closer to heat. Don't over-cook the tenderloin side.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span></div>
+    </div>
+  </div>
+
+  <div class="three-col">
+    <!-- RIBEYE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Bone-in Ribeye</div><div class="recipe-yield">18 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">125°F MR</span><span class="badge badge-cost">FC 30%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Prime ribeye, bone-in</td><td>18 oz</td><td class="cost-col">$40.50</td></tr>
+          <tr><td>Salt, pepper, butter baste</td><td>—</td><td class="cost-col">$0.90</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$41.40</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>High heat sear 3–4 min per side; baste with butter + rosemary.</li>
+        <li>Rest 8 min. Serve on bone. Price: $88.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Ribeye fat cap = flavour. Score fat before grilling — renders properly.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span></div>
+    </div>
+
+    <!-- NY STRIP -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">NY Strip Sirloin</div><div class="recipe-yield">16 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">125–130°F</span><span class="badge badge-cost">FC 28%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Prime NY strip, dry-aged</td><td>16 oz</td><td class="cost-col">$32.00</td></tr>
+          <tr><td>Salt, pepper, butter</td><td>—</td><td class="cost-col">$0.70</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$32.70</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Sear fat cap vertical first, 2 min. Then flat sides 3 min each.</li>
+        <li>Baste finish; rest 6 min. Price: $72.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> NY strip = assertive beefy flavour. Trim fat cap to ¼ inch — flavour without excess.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span></div>
+    </div>
+
+    <!-- FILET MIGNON -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Filet Mignon</div><div class="recipe-yield">8 oz center-cut</div></div>
+        <div class="badges"><span class="badge badge-temp">130°F Medium</span><span class="badge badge-cost">FC 33%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Prime tenderloin center-cut</td><td>8 oz</td><td class="cost-col">$16.00</td></tr>
+          <tr><td>Bacon wrap, butter, truffle oil</td><td>—</td><td class="cost-col">$1.40</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$17.40</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Wrap in bacon; tie. Sear all sides on cast iron; oven-roast 450°F to temp.</li>
+        <li>Deglaze pan; mount butter sauce. Truffle finish. Price: $52.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Never beyond medium — filet mignon is butter-tender; well-done = tragedy.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">PORK</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 6 — MAINS: Sides & Accompaniments + Desserts
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Menu · Accompaniments &amp; Desserts</div>
+    <div class="section-title">The <span>Supporting Cast</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="three-col">
+    <!-- LOBSTER MAC -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Lobster Mac &amp; Cheese</div><div class="recipe-yield">Yield: 12 oz serving</div></div>
+        <div class="badges"><span class="badge badge-temp">165°F</span><span class="badge badge-cost">FC 30%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Lobster meat (claw + knuckle)</td><td>3 oz</td><td class="cost-col">$7.50</td></tr>
+          <tr><td>Cavatappi pasta, cooked</td><td>5 oz</td><td class="cost-col">$0.30</td></tr>
+          <tr><td>Gruyère + white cheddar béchamel</td><td>4 oz</td><td class="cost-col">$1.80</td></tr>
+          <tr><td>Panko crust, butter, truffle</td><td>—</td><td class="cost-col">$0.55</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$10.15</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Make Gruyère-cheddar béchamel. Fold in al dente pasta + lobster chunks.</li>
+        <li>Top with panko-butter-truffle crust; bake at 425°F until golden and bubbling.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Use whole lobster pieces — visible luxury. Price: $34.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">SHELLFISH</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">GLUTEN</span></div>
+    </div>
+
+    <!-- CREAMED SPINACH -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Steakhouse Creamed Spinach</div><div class="recipe-yield">Yield: 8 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">165°F</span><span class="badge badge-cost">FC 14%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Baby spinach, blanched &amp; chopped</td><td>8 oz raw</td><td class="cost-col">$1.00</td></tr>
+          <tr><td>Heavy cream, reduced</td><td>3 oz</td><td class="cost-col">$0.55</td></tr>
+          <tr><td>Butter, shallot, garlic</td><td>—</td><td class="cost-col">$0.30</td></tr>
+          <tr><td>Nutmeg, Parmesan, S&amp;P</td><td>—</td><td class="cost-col">$0.15</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$2.00</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Sweat shallot + garlic in butter; add cream + reduce 50%.</li>
+        <li>Fold in blanched chopped spinach; finish with nutmeg + Parmesan. Price: $14.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Classic steakhouse staple. Prep in bulk; finish à la minute. Nutmeg is the secret.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span></div>
+    </div>
+
+    <!-- HASH BROWNS -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Crispy Hash Browns</div><div class="recipe-yield">Yield: 1 patty · 6 oz</div></div>
+        <div class="badges"><span class="badge badge-temp">Served Hot</span><span class="badge badge-cost">FC 12%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Russet potato, grated</td><td>8 oz</td><td class="cost-col">$0.40</td></tr>
+          <tr><td>Clarified butter, S&amp;P, onion powder</td><td>—</td><td class="cost-col">$0.45</td></tr>
+          <tr><td>Chives, crème fraîche</td><td>garnish</td><td class="cost-col">$0.20</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$1.05</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Par-boil whole potato; cool, grate. Season. Press into ring mold.</li>
+        <li>Shallow-fry in clarified butter until deep golden both sides. Price: $9.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Peter Luger-style hash browns — thick, golden, crispy outside, creamy inside.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <!-- ONION RINGS -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Steakhouse Onion Rings</div><div class="recipe-yield">Yield: 6 rings · tower</div></div>
+        <div class="badges"><span class="badge badge-temp">350°F Oil</span><span class="badge badge-cost">FC 10%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Vidalia onion, sliced 1/2"</td><td>1 medium</td><td class="cost-col">$0.60</td></tr>
+          <tr><td>Seasoned buttermilk batter</td><td>4 oz</td><td class="cost-col">$0.40</td></tr>
+          <tr><td>Seasoned flour, Old Bay</td><td>—</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Chipotle dipping sauce</td><td>1.5 oz</td><td class="cost-col">$0.25</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$1.35</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Soak sliced onion rings in seasoned buttermilk 1 hr. Dredge in seasoned flour. Double-dip for thick coat.</li>
+        <li>Fry at 350°F, 3 min until golden. Stack tower-style; salt immediately. Serve with chipotle sauce. Price: $12.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Vidalia onions for sweetness — the Peter Luger signature. Always fry to order.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">GLUTEN</span><span class="allergen-tag">EGGS</span></div>
+    </div>
+
+    <!-- BONE MARROW -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Roasted Bone Marrow</div><div class="recipe-yield">Yield: 2 bones · tableside</div></div>
+        <div class="badges"><span class="badge badge-temp">Roast 450°F · 15 min</span><span class="badge badge-cost">FC 22%</span><span class="badge badge-gold">Tableside Moment</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Beef marrow bones, split lengthwise</td><td>2 halves</td><td class="cost-col">$4.00</td></tr>
+          <tr><td>Fleur de sel, cracked pepper</td><td>—</td><td class="cost-col">$0.10</td></tr>
+          <tr><td>Parsley-shallot gremolata</td><td>1 tbsp</td><td class="cost-col">$0.20</td></tr>
+          <tr><td>Sourdough toast points (4)</td><td>4 slices</td><td class="cost-col">$0.40</td></tr>
+          <tr><td>Capers, lemon</td><td>—</td><td class="cost-col">$0.15</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$4.85</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Season split bones; roast at 450°F 15 min until marrow jiggles and starts to melt.</li>
+        <li>Tableside: server presents on wooden board with marrow spoon, toast points, gremolata, sea salt, capers.</li>
+        <li>Guest self-scoops — interactive, memorable, Instagram-worthy. Price: $22.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Soak bones in salted ice water 24 hrs to purge blood — cleaner flavour, whiter presentation.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">GLUTEN</span><span class="allergen-tag">CELERY</span></div>
+    </div>
+  </div>
+
+  <!-- DESSERTS SECTION -->
+  <div class="section-header" style="margin-top:8px; margin-bottom:8px;">
+    <div class="section-tag">Menu · Desserts</div>
+    <div class="section-title" style="font-size:18px;">The <span>Sweet Finish</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="two-col">
+    <!-- NY CHEESECAKE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">New York Cheesecake</div><div class="recipe-yield">Yield: 1 slice (1/10 of 9" cake)</div></div>
+        <div class="badges"><span class="badge badge-temp">Served Chilled 40°F</span><span class="badge badge-cost">FC 15%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item (per cake)</th><th>Qty</th><th class="cost-col">Cost/slice</th></tr></thead>
+        <tbody>
+          <tr><td>Philadelphia cream cheese (4 blocks)</td><td>32 oz</td><td class="cost-col">$1.40</td></tr>
+          <tr><td>Sour cream, eggs, sugar, vanilla</td><td>—</td><td class="cost-col">$0.65</td></tr>
+          <tr><td>Graham cracker crust</td><td>—</td><td class="cost-col">$0.30</td></tr>
+          <tr><td>Fresh berry compote</td><td>1.5 oz</td><td class="cost-col">$0.45</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total/slice</strong></td><td class="cost-col"><strong>$2.80</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Beat cream cheese + sugar until smooth. Add eggs one at a time; fold in sour cream + vanilla.</li>
+        <li>Water-bath bake at 325°F, 60–70 min. Cool overnight in fridge. Slice cold. Price: $18.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> No cracks = proper technique. Water bath + no overbaking. Top with fresh strawberry compote à la minute.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">GLUTEN</span></div>
+    </div>
+
+    <!-- CHOCOLATE MOUSSE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Dark Chocolate Mousse</div><div class="recipe-yield">Yield: 6 oz ramekin</div></div>
+        <div class="badges"><span class="badge badge-temp">Served Cold 38°F</span><span class="badge badge-cost">FC 16%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Valrhona 70% dark chocolate</td><td>2 oz</td><td class="cost-col">$1.40</td></tr>
+          <tr><td>Heavy cream, whipped</td><td>3 oz</td><td class="cost-col">$0.55</td></tr>
+          <tr><td>Egg yolks + whites, sugar</td><td>2 ea</td><td class="cost-col">$0.35</td></tr>
+          <tr><td>Cocoa powder, fleur de sel</td><td>garnish</td><td class="cost-col">$0.10</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$2.40</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Melt chocolate; temper with yolks. Whip cream to soft peaks; whip whites with sugar.</li>
+        <li>Fold cream into chocolate, then whites — two-stage fold for airiness. Set 4 hrs. Price: $15.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> Valrhona only — quality chocolate = quality mousse. Fleur de sel on top right before service.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">SOYA</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 7 — DESSERTS cont. + DRINKS
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Menu · Desserts &amp; Bar Program</div>
+    <div class="section-title">Desserts &amp; <span>Drinks</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="two-col">
+    <!-- BANANAS FOSTER -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">Bananas Foster Flambé</div><div class="recipe-yield">Yield: 1 portion · tableside</div></div>
+        <div class="badges"><span class="badge badge-temp">Flambé Tableside</span><span class="badge badge-cost">FC 19%</span><span class="badge badge-gold">Signature Show</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Ripe banana, halved lengthwise</td><td>1 ea</td><td class="cost-col">$0.30</td></tr>
+          <tr><td>Unsalted butter</td><td>1.5 oz</td><td class="cost-col">$0.35</td></tr>
+          <tr><td>Brown sugar, dark rum</td><td>2 oz rum</td><td class="cost-col">$0.80</td></tr>
+          <tr><td>Banana liqueur, cinnamon, vanilla</td><td>1 oz</td><td class="cost-col">$0.55</td></tr>
+          <tr><td>Vanilla bean ice cream (2 scoops)</td><td>4 oz</td><td class="cost-col">$0.75</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$2.75</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Server wheels guéridon cart tableside. Melt butter + brown sugar in copper pan.</li>
+        <li>Add banana liqueur + cinnamon. Place banana halves; caramelize 2 min.</li>
+        <li>Add rum — tilt pan to FLAMBÉ. Let flames die naturally. Spoon over ice cream. Dramatic.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> NOLA tradition. Use Myers's dark rum for best flame. Brief the dining room — it's a show. Price: $20.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">ALCOHOL</span></div>
+    </div>
+
+    <!-- ICE CREAM SUNDAE -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div><div class="recipe-name">The Steakhouse Sundae</div><div class="recipe-yield">Yield: 1 portion</div></div>
+        <div class="badges"><span class="badge badge-temp">Served Frozen</span><span class="badge badge-cost">FC 13%</span></div>
+      </div>
+      <table class="ing-table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="cost-col">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Premium vanilla bean ice cream (3 scoops)</td><td>6 oz</td><td class="cost-col">$1.10</td></tr>
+          <tr><td>Hot fudge sauce, house-made</td><td>2 oz</td><td class="cost-col">$0.40</td></tr>
+          <tr><td>Caramel sauce</td><td>1 oz</td><td class="cost-col">$0.20</td></tr>
+          <tr><td>Whipped cream, maraschino cherry</td><td>—</td><td class="cost-col">$0.25</td></tr>
+          <tr><td>Candied walnuts, chocolate flake</td><td>—</td><td class="cost-col">$0.35</td></tr>
+          <tr class="total-row"><td colspan="2"><strong>Total</strong></td><td class="cost-col"><strong>$2.30</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="method-title">Method</div>
+      <ol class="method-steps">
+        <li>Chill glass sundae cup. 3 scoops vanilla; cascade hot fudge + caramel.</li>
+        <li>Crown with whipped cream, candied walnuts, chocolate shavings, cherry. Price: $18.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip</strong> The crowd-pleaser. House-made hot fudge with Valrhona elevates a simple dish into a memory.</div>
+      <div class="allergen-row"><span class="allergen-label">Allergens:</span><span class="allergen-tag">DAIRY</span><span class="allergen-tag">EGGS</span><span class="allergen-tag">NUTS</span><span class="allergen-tag">GLUTEN</span></div>
+    </div>
+  </div>
+
+  <!-- DRINKS SECTION -->
+  <div style="margin-top:4px;">
+    <div class="section-tag" style="margin-bottom:8px;">Bar Program — 8 Essentials</div>
+    <div class="three-col">
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Classic Martini</div>
+        <div class="recipe-yield">3 oz pour · shaken/stirred</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Hendricks or Tito's gin/vodka</td><td>2.5 oz</td><td class="cost-col">$1.80</td></tr>
+          <tr><td>Dry vermouth (Noilly Prat)</td><td>0.5 oz</td><td class="cost-col">$0.25</td></tr>
+          <tr><td>Olive / lemon twist</td><td>—</td><td class="cost-col">$0.10</td></tr>
+          <tr class="total-row"><td colspan="2">FC 18%</td><td class="cost-col"><strong>$2.15</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">ALCOHOL</span><span class="allergen-tag">SULFITES</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $18. Stir for gin; shake for vodka. Serve in frozen glass. Ask the question: "Dirty?"</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Manhattan</div>
+        <div class="recipe-yield">3 oz · stirred</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Rye whiskey (Bulleit or Rittenhouse)</td><td>2 oz</td><td class="cost-col">$2.00</td></tr>
+          <tr><td>Sweet vermouth (Carpano Antica)</td><td>1 oz</td><td class="cost-col">$0.80</td></tr>
+          <tr><td>Angostura bitters (2 dashes)</td><td>—</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Luxardo cherry</td><td>1 ea</td><td class="cost-col">$0.35</td></tr>
+          <tr class="total-row"><td colspan="2">FC 20%</td><td class="cost-col"><strong>$3.20</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">ALCOHOL</span><span class="allergen-tag">SULFITES</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $19. Stir 40+ times over large ice. Strain into coupe. Never shaken.</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Old Fashioned</div>
+        <div class="recipe-yield">2.5 oz · rocks</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Bourbon (Buffalo Trace / Maker's)</td><td>2 oz</td><td class="cost-col">$1.80</td></tr>
+          <tr><td>Simple syrup</td><td>0.5 oz</td><td class="cost-col">$0.08</td></tr>
+          <tr><td>Angostura bitters (2 dashes)</td><td>—</td><td class="cost-col">$0.05</td></tr>
+          <tr><td>Orange peel, ice sphere</td><td>—</td><td class="cost-col">$0.25</td></tr>
+          <tr class="total-row"><td colspan="2">FC 17%</td><td class="cost-col"><strong>$2.18</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">ALCOHOL</span><span class="allergen-tag">SULFITES</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $18. Build in glass; 1 large ice sphere. Express orange peel, rim glass.</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Single Malt Scotch</div>
+        <div class="recipe-yield">2 oz pour · neat or rocks</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Macallan 12 / Glenfiddich 12</td><td>2 oz</td><td class="cost-col">$4.50</td></tr>
+          <tr><td>Water back (spring water)</td><td>2 oz</td><td class="cost-col">$0.05</td></tr>
+          <tr class="total-row"><td colspan="2">FC 22%</td><td class="cost-col"><strong>$4.55</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">ALCOHOL</span><span class="allergen-tag">GLUTEN</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $22–85 depending on bottle. Always offer the pour-over — it's a ritual.</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Red Wine — By Glass</div>
+        <div class="recipe-yield">6 oz pour</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Napa Cabernet (house selection)</td><td>6 oz</td><td class="cost-col">$3.50</td></tr>
+          <tr><td>Reserve Cab / Bordeaux (premium)</td><td>6 oz</td><td class="cost-col">$7.00</td></tr>
+          <tr class="total-row"><td colspan="2">FC 25–28%</td><td class="cost-col"><strong>$3.50–7</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">ALCOHOL</span><span class="allergen-tag">SULFITES</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $16–$28. Cab Sauv is the steakhouse wine. Push 1.5L magnums tableside — upsell opportunity.</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Draft Beer</div>
+        <div class="recipe-yield">16 oz pint</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Local craft lager / IPA on tap</td><td>16 oz</td><td class="cost-col">$1.20</td></tr>
+          <tr><td>Guinness draught</td><td>16 oz</td><td class="cost-col">$1.40</td></tr>
+          <tr class="total-row"><td colspan="2">FC 20%</td><td class="cost-col"><strong>$1.20–1.40</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">ALCOHOL</span><span class="allergen-tag">GLUTEN</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $10–$12. 3 taps minimum. Rotate seasonal craft. Offer Guinness always — steakhouse staple.</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Non-Alcoholic — Seedlip Spritz</div>
+        <div class="recipe-yield">6 oz · rocks</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Seedlip Spice 94</td><td>1.5 oz</td><td class="cost-col">$1.20</td></tr>
+          <tr><td>Fever-Tree tonic / soda</td><td>4 oz</td><td class="cost-col">$0.65</td></tr>
+          <tr><td>Orange slice, fresh herbs</td><td>—</td><td class="cost-col">$0.15</td></tr>
+          <tr class="total-row"><td colspan="2">FC 22%</td><td class="cost-col"><strong>$2.00</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">NONE</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $12. Non-drinkers deserve a premium experience. House-made NA cocktail > Coke.</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-name" style="font-size:13px;">Espresso / Digestif</div>
+        <div class="recipe-yield">2 oz shot</div>
+        <table class="ing-table" style="margin-top:6px;">
+          <tr><td>Double espresso (La Marzocco)</td><td>2 oz</td><td class="cost-col">$0.60</td></tr>
+          <tr><td>Grappa / Amaro pairing option</td><td>1 oz</td><td class="cost-col">$1.50</td></tr>
+          <tr class="total-row"><td colspan="2">FC 16%</td><td class="cost-col"><strong>$0.60–2.10</strong></td></tr>
+        </table>
+        <div class="allergen-row"><span class="allergen-label">Contains:</span><span class="allergen-tag">CAFFEINE</span></div>
+        <div class="chef-tip" style="margin-top:6px;"><strong>Price</strong> $6–$18 with digestif pairing. Always offer after dessert — extends the table, increases check.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 8 — KITCHEN DESIGN + SERVICE SCRIPTS + DAILY PREP
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Operations</div>
+    <div class="section-title">Kitchen Design &amp; <span>Service Scripts</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:12px;">
+    <div class="info-box">
+      <h4>🔥 Kitchen Design — Grill Station Dominance</h4>
+      <ul style="margin-top:6px;">
+        <li><strong>Grill Station (Primary):</strong> 2× commercial char-broiler (900°F), cast-iron flat-top, salamander broiler. This is the heart — position facing expeditor.</li>
+        <li><strong>Cold Station:</strong> Directly adjacent — oyster shucking, tartare, chilled starters. Refrigerated rail at 38°F.</li>
+        <li><strong>Sauté Station:</strong> For sauces, sides finishes, lobster mac reheat. 6-burner range + tilt skillet.</li>
+        <li><strong>Dry-Age Cabinet:</strong> Front-of-house walk-in display window (glass-front, 34–38°F, humidity 80%). Guests see the aging program — it's marketing.</li>
+        <li><strong>Butchery:</strong> Separate room with band saw, walk-in cooler, vacuum sealer. Daily primal breakdown 2:00–4:00 PM.</li>
+        <li><strong>Expeditor:</strong> Central pass with heat lamps, steak temp probe station, verbal call system.</li>
+        <li><strong>Flambé/Guéridon:</strong> Side station near dining room entry — gas burner, copper pan, mise en place.</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>📋 Daily Prep Schedule</h4>
+      <div class="schedule-row"><span class="schedule-time">10:00 AM</span><span>Butchery: break down primals, portion steaks, vacuum-seal. Inspect dry-age cabinet temps.</span></div>
+      <div class="schedule-row"><span class="schedule-time">11:00 AM</span><span>Stocks: beef stock + bone broth on. Caramelize onion batch (10 lbs). Roast bones for marrow (refrigerate until service).</span></div>
+      <div class="schedule-row"><span class="schedule-time">12:00 PM</span><span>Cold prep: tartare mix prep (hold components separate until order). Wedge salads prepped, wrapped. Cocktail sauce made fresh.</span></div>
+      <div class="schedule-row"><span class="schedule-time">1:00 PM</span><span>Sauces: bordelaise, béarnaise, horseradish cream, truffle butter, compound butters. Portion and label all.</span></div>
+      <div class="schedule-row"><span class="schedule-time">2:00 PM</span><span>Desserts: set chocolate mousse, slice cheesecake, prep bananas foster mise en place (tableside cart stocked).</span></div>
+      <div class="schedule-row"><span class="schedule-time">3:00 PM</span><span>Sides: batch hash brown base, batter onion rings. Portion mac &amp; cheese into crocks, ready-to-bake.</span></div>
+      <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span>Final mise: all steak portions tempered. Grill lit + seasoned. Cold station stocked. Oysters received + inspected.</span></div>
+      <div class="schedule-row"><span class="schedule-time">5:00 PM</span><span>Pre-service huddle: chef reviews 86 list, specials, VIP notes, allergy flags. Stations confirmed ready.</span></div>
+      <div class="schedule-row"><span class="schedule-time">5:30 PM</span><span>Doors open. First reservations 5:45 PM.</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICE SCRIPTS -->
+  <div class="section-tag" style="margin-bottom:8px;">Service Scripts</div>
+  <div class="three-col">
+    <div class="script-block">
+      <div class="script-label">🥩 Steak Temperature Verification</div>
+      <div class="script-line">"Before I place your order — just to make sure we get your steak exactly right — are you preferring rare, medium-rare, medium, or beyond that? Chef likes to confirm, especially on the porterhouse."</div>
+      <div class="script-note">✓ Confirm at order · Re-confirm at delivery. "Medium-rare for you — beautiful colour, warm red centre. Enjoy."</div>
+    </div>
+    <div class="script-block">
+      <div class="script-label">🍷 Wine Upsell Script</div>
+      <div class="script-line">"The porterhouse is a serious piece of beef — it really sings with a bold Napa Cab. We have a Jordan Cab that's a house favourite, or if you're looking for something special, the Stag's Leap S.L.V. is extraordinary with dry-aged beef."</div>
+      <div class="script-note">✓ Always suggest bottle first. Offer magnum for table of 4+. Never say "cheap" — say "approachable."</div>
+    </div>
+    <div class="script-block">
+      <div class="script-label">🍮 Dessert Close Script</div>
+      <div class="script-line">"You've had a great meal — let me tempt you with our Bananas Foster. Our server does it right at the table — the whole room notices. And honestly, it's the best way to end a night like this."</div>
+      <div class="script-note">✓ Lead with the experience, not the dish. Mention the flambé as a reason to say yes. Offer to split.</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:10px;">
+    <div class="info-box">
+      <h4>👥 Staff Temperature Cadence</h4>
+      <ul>
+        <li><strong>On order:</strong> Server reads back temp; expo marks ticket</li>
+        <li><strong>On runner delivery:</strong> Confirm guest's name and steak temp aloud</li>
+        <li><strong>Two-minute check:</strong> "How is the temperature on your steak?" — not optional</li>
+        <li><strong>If wrong:</strong> Pull immediately; no argument. Chef priority remake. Comp one side dish.</li>
+        <li><strong>Manager visit:</strong> 100% table visits during steak course for parties of 2+</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🎯 Upsell Ladder (per table)</h4>
+      <ul>
+        <li><strong>Cocktail:</strong> Premium spirit → $4–8 upgrade</li>
+        <li><strong>Wine:</strong> Glass → Bottle → Magnum</li>
+        <li><strong>Steak:</strong> NY Strip → Ribeye → Porterhouse (for 2)</li>
+        <li><strong>Add-ons:</strong> Truffle butter (+$6), lobster (+$28)</li>
+        <li><strong>Sides:</strong> 2 minimum suggested per table</li>
+        <li><strong>Dessert:</strong> Bananas Foster (show) → cheesecake (easy)</li>
+        <li><strong>Target uplift:</strong> +$28–45 per person from upsell</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 9 — CUSTOMER RETENTION + STAFF FORECAST + P&L
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Business Model</div>
+    <div class="section-title">Retention, Staffing &amp; <span>P&amp;L</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:12px;">
+    <!-- CUSTOMER RETENTION -->
+    <div class="info-box">
+      <h4>❤️ Customer Retention System</h4>
+      <ul>
+        <li><strong>VIP Program:</strong> Track regulars in POS — birthday, anniversary, favourite cut, wine preferences, dietary needs. Use by name on arrival.</li>
+        <li><strong>Post-Visit:</strong> Personalised email 48 hrs after first visit. Invite back with "special tasting" event — dry-age reveal dinners quarterly.</li>
+        <li><strong>Birthday Protocol:</strong> Complimentary dessert + card signed by chef. Tag in reservation system 30 days out; brief staff night-of.</li>
+        <li><strong>Corporate Accounts:</strong> Preferred booking for regular companies. Direct billing, reserved tables, sommelier on call. Target: 15–20% of revenue from corp accounts.</li>
+        <li><strong>Loyalty Milestone:</strong> 5th visit → complimentary dry-aged tasting flight with chef. 10th visit → named on the "Wall of Regulars."</li>
+        <li><strong>Feedback Loop:</strong> Manager calls top 10 guests monthly. 48-hr complaint resolution. Never let a bad experience go unanswered.</li>
+      </ul>
+    </div>
+
+    <!-- STAFF FORECAST -->
+    <div class="info-box">
+      <h4>👩‍🍳 Staff Forecast — Per Dinner Service</h4>
+      <table class="data-table" style="margin-top:6px; margin-bottom:0;">
+        <thead><tr><th>Role</th><th>Count</th><th>Rate/hr</th><th>Hours</th><th>Cost/night</th></tr></thead>
+        <tbody>
+          <tr><td>Executive Chef</td><td>1</td><td>$38</td><td>10</td><td>$380</td></tr>
+          <tr><td>Sous Chef</td><td>1</td><td>$28</td><td>10</td><td>$280</td></tr>
+          <tr><td>Grill Cook (lead)</td><td>2</td><td>$22</td><td>9</td><td>$396</td></tr>
+          <tr><td>Sauté / Cold Cook</td><td>2</td><td>$20</td><td>9</td><td>$360</td></tr>
+          <tr><td>Butcher / Prep Cook</td><td>1</td><td>$20</td><td>8</td><td>$160</td></tr>
+          <tr><td>Dishwasher / Porter</td><td>2</td><td>$16</td><td>9</td><td>$288</td></tr>
+          <tr><td>Floor Manager / Sommelier</td><td>2</td><td>$28</td><td>9</td><td>$504</td></tr>
+          <tr><td>Senior Server</td><td>6</td><td>$12 + tips</td><td>7</td><td>$504</td></tr>
+          <tr><td>Runner / Busser</td><td>4</td><td>$14</td><td>7</td><td>$392</td></tr>
+          <tr><td>Host / Reservations</td><td>2</td><td>$18</td><td>7</td><td>$252</td></tr>
+          <tr><td>Bartender</td><td>2</td><td>$14 + tips</td><td>8</td><td>$224</td></tr>
+          <tr class="highlight"><td><strong>TOTAL</strong></td><td><strong>27</strong></td><td>—</td><td>—</td><td><strong>$3,740</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:10px; margin-top:6px; color:var(--muted);">* Tips not included in labor cost. 6 nights/week = ~$22,440 weekly labor (FOH+BOH). Monthly ≈ $97,240.</p>
+    </div>
+  </div>
+
+  <!-- P&L MODEL -->
+  <div class="section-tag" style="margin-bottom:6px;">P&amp;L Model — 100-Seat Steakhouse · $120 Avg Spend · Dinner 6 Nights/Week</div>
+  <div class="two-col">
+    <div>
+      <table class="data-table">
+        <thead><tr><th colspan="3">📈 REVENUE (Annual)</th></tr></thead>
+        <tbody>
+          <tr><td>Avg Seats Filled / Night</td><td>80 (80% occupancy)</td><td class="gold">—</td></tr>
+          <tr><td>Table Turns</td><td>1.4×</td><td class="gold">—</td></tr>
+          <tr><td>Covers/Night</td><td>112</td><td class="gold">—</td></tr>
+          <tr><td>Avg Spend / Head</td><td>$120</td><td class="gold">—</td></tr>
+          <tr><td>Nightly Revenue</td><td>$13,440</td><td class="gold">—</td></tr>
+          <tr><td>Nights / Week</td><td>6</td><td class="gold">—</td></tr>
+          <tr><td>Weekly Revenue</td><td>$80,640</td><td class="gold">—</td></tr>
+          <tr class="highlight"><td><strong>Annual Revenue</strong></td><td colspan="2"><strong class="gold">$4,193,280</strong></td></tr>
+          <tr><td>Beverage (35% of total)</td><td>$1,467,648</td><td class="gold">35%</td></tr>
+          <tr class="highlight"><td><strong>Total Revenue (incl. bev uplift)</strong></td><td colspan="2"><strong class="gold">~$5.2M</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:9px; color:var(--muted); margin-top:4px;">Note: Premium events + private dining room can push to $6–7M annually at full build-out.</p>
+    </div>
+
+    <div>
+      <table class="data-table">
+        <thead><tr><th colspan="3">💸 COSTS &amp; PROFIT (Annual)</th></tr></thead>
+        <tbody>
+          <tr><td>Food Cost (30% of food rev)</td><td>$1,117,000</td><td class="gold">30%</td></tr>
+          <tr><td>Beverage Cost (26% of bev rev)</td><td>$381,600</td><td class="gold">26%</td></tr>
+          <tr><td>Total COGS</td><td>$1,498,600</td><td class="gold">28.8%</td></tr>
+          <tr><td>Labor (FOH + BOH, 32%)</td><td>$1,664,000</td><td class="gold">32%</td></tr>
+          <tr><td>Rent / Occupancy (NYC prime)</td><td>$520,000</td><td class="gold">10%</td></tr>
+          <tr><td>Utilities</td><td>$180,000</td><td class="gold">3.5%</td></tr>
+          <tr><td>Marketing / PR</td><td>$104,000</td><td class="gold">2%</td></tr>
+          <tr><td>Insurance + Admin</td><td>$78,000</td><td class="gold">1.5%</td></tr>
+          <tr><td>Supplies + Linens</td><td>$52,000</td><td class="gold">1%</td></tr>
+          <tr><td>Total Operating Costs</td><td>$4,096,600</td><td class="gold">78.8%</td></tr>
+          <tr class="highlight"><td><strong>Net Operating Profit</strong></td><td><strong class="gold">$1,103,400</strong></td><td class="gold"><strong>21.2%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════
+     PAGE 10 — 22-TOOL BUNDLE + CLOSING
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-tag">Guide #34 · Complete Bundle</div>
+    <div class="section-title">The <span>22-Tool Bundle</span></div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="info-box" style="background: linear-gradient(135deg, #1C1C1C 0%, #2C2416 100%); border-color: var(--gold); color: #F5F0E8; margin-bottom:14px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+      <div style="font-size:28px;">🛠️</div>
+      <div>
+        <h4 style="color: var(--gold); font-size:16px; margin-bottom:2px;">KitchenFounder 22-Tool Operator Bundle</h4>
+        <p style="font-size:11px; color:rgba(245,240,232,0.7);">Everything you need to open, run, and scale a world-class NYC steakhouse operation.</p>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px 16px;">
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Beef Program SOP</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Dry-Age Cabinet Protocol</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Full Recipe Pack (28 recipes)</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Butchery Yield Calculator</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Food Cost Tracking Sheet</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Wine Program Builder</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Cocktail Menu Template</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Service Training Scripts</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Tableside Theatre Runbook</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Steak Temperature Guide</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Kitchen Design Blueprints</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Grill Station Training Video</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Staff Hiring Templates</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Pre-Service Checklist</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Allergen Management System</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ P&amp;L Financial Model (Excel)</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ NYC Vendor Directory</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Investor Pitch Deck Template</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Customer Retention Playbook</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Private Dining Room System</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Social Media Content Kit</div>
+      <div style="font-size:10px; color:rgba(245,240,232,0.85); padding:3px 0; border-bottom:1px solid rgba(200,146,42,0.2);">✓ Opening Week Countdown Plan</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:12px;">
+    <div class="info-box">
+      <h4>🗺️ Key Operational Reminders</h4>
+      <ul>
+        <li>Dry-age cabinet: temp log every 4 hrs. Variance &gt;2°F = investigate immediately.</li>
+        <li>Steak temps: zero tolerance policy on wrong temps. Every remake = comp analysis.</li>
+        <li>Tableside service: bananas foster + bone marrow + porterhouse carve = 3 core theatre moments. Train every service day.</li>
+        <li>Beef sourcing: maintain 2 vendors minimum. Never single-source USDA Prime.</li>
+        <li>Food cost review: weekly, not monthly. Beef price swings are rapid in 2025 market.</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>📊 Key Performance Indicators</h4>
+      <ul>
+        <li><strong>Steak as % of food revenue:</strong> Target &gt;55%</li>
+        <li><strong>Beverage attach rate:</strong> Target &gt;90% of tables</li>
+        <li><strong>Dessert close rate:</strong> Target &gt;45% of covers</li>
+        <li><strong>Return guest rate:</strong> Target &gt;35% monthly</li>
+        <li><strong>Avg check growth:</strong> +8–12% YoY via upsell</li>
+        <li><strong>TripAdvisor/Google:</strong> 4.5★ floor — respond to every review within 24 hrs</li>
+        <li><strong>Waste %:</strong> &lt;4% of food COGS</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FINAL SECTION -->
+  <div style="background: var(--cream); border: 2px solid var(--gold); border-radius:4px; padding:16px 18px; text-align:center; page-break-inside:avoid;">
+    <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--text); margin-bottom:6px;">Guide #34 Complete</div>
+    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">NYC Steakhouse · Dinner Standard · v7</div>
+    <p style="font-size:11px; color:var(--muted); max-width:460px; margin:0 auto 12px; line-height:1.7;">This guide covers the full operating blueprint for a world-class NYC steakhouse: 6 starters, 10 mains, 4 desserts, 8 drinks — all with food cost analysis, method, and chef tips. Kitchen design, service scripts, daily prep, retention system, staff model, and a $5.2M P&L. Built from the DNA of Peter Luger, Keens, Smith &amp; Wollensky, and 8 other NYC benchmarks.</p>
+    <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-size:10px; color:var(--muted);">
+      <span>🥩 5 Steaks</span>
+      <span>🍤 6 Starters</span>
+      <span>🥬 5 Sides</span>
+      <span>🍮 4 Desserts</span>
+      <span>🍸 8 Drinks</span>
+      <span>🛠️ 22 Tools</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>KitchenFounder · Guide #34</span>
+    <span>NYC Steakhouse · Dinner Standard</span>
+  </div>
+</div>
+
+</body>
+</html>

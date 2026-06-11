@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #32 — Japanese Omakase & Izakaya · NYC Dinner Standard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;700&display=swap');
+
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --accent: #1C1C3C;
+    --gold: #C8922A;
+    --gold-light: #E8B84B;
+    --muted: #6B6B6B;
+    --border: #D8D4CC;
+    --card-bg: #FFFFFF;
+    --red: #C0392B;
+    --green: #27AE60;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 20px;
+    background: var(--bg);
+    position: relative;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  /* FOOTER */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 32px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-size: 9px;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* COVER PAGE */
+  .cover {
+    background: linear-gradient(160deg, #0D0D1F 0%, #1C1C3C 45%, #0A0A14 100%);
+    color: #FAFAF8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 297mm;
+    text-align: center;
+    position: relative;
+  }
+
+  .cover-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .cover-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 72px;
+    color: rgba(200, 146, 42, 0.15);
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    letter-spacing: 8px;
+    writing-mode: vertical-rl;
+    line-height: 1.1;
+  }
+
+  .cover-line-top {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 24px;
+  }
+
+  .cover-badge {
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.4);
+    color: var(--gold-light);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    color: #FAFAF8;
+  }
+
+  .cover-subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    color: rgba(200,146,42,0.9);
+    letter-spacing: 0.15em;
+    margin-bottom: 28px;
+  }
+
+  .cover-desc {
+    font-size: 12px;
+    color: rgba(250,250,248,0.55);
+    max-width: 340px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(200,146,42,0.2);
+    border: 1px solid rgba(200,146,42,0.2);
+    width: 380px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta-item {
+    background: rgba(13,13,31,0.8);
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .cover-meta-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  .cover-meta-label {
+    font-size: 9px;
+    color: rgba(250,250,248,0.45);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .cover-restaurants {
+    font-size: 9px;
+    color: rgba(250,250,248,0.35);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .cover-footer-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: rgba(200,146,42,0.12);
+    border-top: 1px solid rgba(200,146,42,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-size: 9px;
+    color: rgba(250,250,248,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .cover-version {
+    position: absolute;
+    top: 24px;
+    left: 28px;
+    font-size: 9px;
+    color: rgba(250,250,248,0.3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+</style>
+<style>
+  /* CONTENT PAGES */
+  .content-page {
+    padding: 36px 32px 48px;
+  }
+
+  .page-header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .page-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .page-header-sub {
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* RECIPE CARDS */
+  .recipe-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 3px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+
+  .recipe-card.accent-border { border-left-color: var(--accent); }
+
+  .recipe-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .recipe-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .recipe-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .recipe-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .badge {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .badge-temp { background: #FFF3E0; color: #E65100; border: 1px solid #FFB74D; }
+  .badge-cost { background: #E8F5E9; color: #1B5E20; border: 1px solid #66BB6A; }
+  .badge-time { background: #E3F2FD; color: #0D47A1; border: 1px solid #64B5F6; }
+  .badge-omakase { background: #EDE7F6; color: #4527A0; border: 1px solid #9575CD; }
+
+  .ingredients-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .ingredients-table th {
+    background: var(--accent);
+    color: #FAFAF8;
+    padding: 5px 8px;
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ingredients-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #EEE;
+    vertical-align: top;
+  }
+
+  .ingredients-table tr:nth-child(even) td { background: #F8F8F6; }
+  .ingredients-table tr:last-child td { border-bottom: none; }
+
+  .method-steps {
+    margin: 10px 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: step-counter;
+  }
+
+  .method-steps li {
+    counter-increment: step-counter;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .method-steps li::before {
+    content: counter(step-counter);
+    background: var(--gold);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .chef-tip {
+    background: linear-gradient(135deg, #FFF9F0, #FFF4E0);
+    border-left: 3px solid var(--gold);
+    padding: 8px 12px;
+    font-size: 11px;
+    color: #5C4A1E;
+    margin-top: 10px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .chef-tip strong { color: var(--gold); }
+
+  .allergen-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .allergen-tag {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .allergen-tag.contains { background: #FFEBEE; color: #B71C1C; border: 1px solid #EF9A9A; }
+  .allergen-tag.free { background: #E8F5E9; color: #1B5E20; border: 1px solid #A5D6A7; }
+
+  /* TABLES */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+
+  .data-table th {
+    background: var(--accent);
+    color: #FAFAF8;
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .data-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table tr:nth-child(even) td { background: #F5F5F2; }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* SECTION HEADERS */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    margin-top: 4px;
+  }
+
+  .section-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: linear-gradient(135deg, #F0F0F8, #E8E8F4);
+    border: 1px solid rgba(28,28,60,0.15);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    page-break-inside: avoid;
+  }
+
+  .info-box-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  /* HIGHLIGHT */
+  .highlight { color: var(--gold); font-weight: 700; }
+  .accent-text { color: var(--accent); font-weight: 600; }
+
+  /* SIGNATURE TAG */
+  .sig-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    color: white;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* P&L */
+  .pnl-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+  }
+
+  .pnl-row.total {
+    font-weight: 700;
+    font-size: 13px;
+    border-top: 2px solid var(--accent);
+    border-bottom: none;
+    padding-top: 8px;
+    color: var(--accent);
+  }
+
+  .pnl-row.profit { color: var(--green); font-weight: 700; }
+  .pnl-green { color: var(--green); font-weight: 600; }
+  .pnl-red { color: var(--red); font-weight: 600; }
+
+  @media print {
+    .page { margin: 0; page-break-after: always; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE 1: COVER ===== -->
+<div class="page cover">
+  <div class="cover-noise"></div>
+  <div class="cover-kanji">お任せ居酒屋</div>
+  <div class="cover-version">V7 · 2025 Edition</div>
+
+  <div class="cover-line-top"></div>
+  <div class="cover-badge">KitchenFounder · Guide #32</div>
+
+  <div class="cover-title">Japanese Omakase<br>&amp; Izakaya</div>
+  <div class="cover-subtitle">おまかせ・居酒屋</div>
+
+  <div class="cover-desc">
+    The complete operational playbook for NYC's most refined dinner format—
+    where omakase precision meets izakaya soul. From binchōtan yakitori to uni nigiri tableside,
+    every detail engineered for a 40-seat hybrid concept.
+  </div>
+
+  <div class="cover-meta-grid">
+    <div class="cover-meta-item">
+      <div class="cover-meta-num">20</div>
+      <div class="cover-meta-label">Recipes</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-num">10</div>
+      <div class="cover-meta-label">NYC Benchmarks</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-num">40</div>
+      <div class="cover-meta-label">Seat Format</div>
+    </div>
+  </div>
+
+  <div class="cover-restaurants">
+    Masa · Sushi Nakazawa · Noda · Kosaka · Uchu · Katana Kitten · Izakaya MEW · EN Japanese Brasserie · Bohemian · Sushi Yasuda
+  </div>
+
+  <div style="font-size:9px; color:rgba(250,250,248,0.25); letter-spacing:0.2em; text-transform:uppercase;">
+    $120 Avg Spend · Dinner 5 Nights/Week · NYC Dinner Standard
+  </div>
+
+  <div class="cover-footer-bar">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 2: GUIDE BIBLE ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Guide Bible</div>
+      <div class="page-header-sub">Concept · Philosophy · Standards</div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:16px;">
+      <div class="info-box">
+        <div class="info-box-title">Concept DNA</div>
+        <p style="font-size:11px; line-height:1.7;">
+          A 40-seat NYC hybrid blending <strong>omakase reverence</strong> with <strong>izakaya warmth</strong>.
+          The front room anchors a 12-seat hinoki sushi bar for counter omakase progression;
+          the back izakaya section runs à-la-carte with shared plates and robata.
+          One kitchen. Two dining languages. Zero compromise on ingredient quality.
+        </p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">Signature Moments</div>
+        <ul style="font-size:11px; line-height:1.9; padding-left:14px;">
+          <li>✦ Uni nigiri — tableside assembly</li>
+          <li>✦ Wagyu sukiyaki — tableside pour</li>
+          <li>✦ Matcha tiramisu — finishing cart</li>
+          <li>✦ Sake flight pairing — guided by chef</li>
+          <li>✦ Binchōtan yakitori — live charcoal bar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Core Operating Standards</div>
+      <div class="section-line"></div>
+    </div>
+
+    <table class="data-table" style="margin-bottom:14px;">
+      <tr>
+        <th>Standard</th><th>Omakase Counter</th><th>Izakaya Floor</th>
+      </tr>
+      <tr><td>Seating</td><td>12 seats, single counter turn</td><td>28 seats, 2 turns nightly</td></tr>
+      <tr><td>Service tempo</td><td>90–120 min progression</td><td>60–90 min à-la-carte</td></tr>
+      <tr><td>Rice temperature</td><td>Body temp (37°C / 98°F)</td><td>N/A — izakaya format</td></tr>
+      <tr><td>Fish sourcing</td><td>Tsukiji via NYC Fulton daily</td><td>Same source, secondary cuts</td></tr>
+      <tr><td>Sake program</td><td>Curated flight pairing per course</td><td>25+ labels by glass/carafe</td></tr>
+      <tr><td>Avg spend / guest</td><td>$180–$220 omakase + beverage</td><td>$80–$120 à-la-carte</td></tr>
+      <tr><td>Dress code</td><td>Smart casual minimum</td><td>Casual — no shorts</td></tr>
+    </table>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Culinary Philosophy</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="three-col" style="margin-bottom:14px;">
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Shokunin Spirit</div>
+        <p style="font-size:10px; line-height:1.6;">
+          Every motion purposeful. Rice seasoned to body temperature. Fish aged precisely 24–72h for peak umami. No shortcuts, no substitutes.
+        </p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Izakaya Heart</div>
+        <p style="font-size:10px; line-height:1.6;">
+          The izakaya floor is alive — convivial, noisy, generous. Dishes arrive as ready. Drinks flow. Binchōtan smoke is part of the atmosphere.
+        </p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Zero-Waste Kitchen</div>
+        <p style="font-size:10px; line-height:1.6;">
+          Fish trim → dashi. Vegetable ends → pickle brine. Sake lees → dessert component. Every gram has a purpose.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Quality Gates — Non-Negotiable</div>
+      <div class="section-line"></div>
+    </div>
+
+    <table class="data-table">
+      <tr><th>Item</th><th>Standard</th><th>Reject If</th><th>Action</th></tr>
+      <tr><td>Sushi rice</td><td>37°C body temp, pH 4.1–4.3</td><td>Below 35°C or above 40°C</td><td>Discard — never refrigerate</td></tr>
+      <tr><td>Fish (nigiri grade)</td><td>Day 1–3 aged, never frozen*</td><td>Odor, slime, off-color</td><td>Return to supplier same day</td></tr>
+      <tr><td>Uni (sea urchin)</td><td>Firm lobes, ocean-sweet aroma</td><td>Watery, bitter, broken</td><td>Remove from menu immediately</td></tr>
+      <tr><td>Wagyu (BMS 10+)</td><td>Certified A5 Japanese wagyu</td><td>BMS below 10, domestic only</td><td>Do not serve as signature item</td></tr>
+      <tr><td>Sake temperature</td><td>Per label spec; junmai at 50°C</td><td>Over/under by &gt;5°C</td><td>Recondition or replace glass</td></tr>
+    </table>
+    <p style="font-size:9px; color:var(--muted); margin-top:4px;">*Exception: select tuna (hon maguro) may be "super-frozen" at -60°C per authentic Tsukiji protocol.</p>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 3: STARTERS ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Starters — 前菜 Zensai</div>
+      <div class="page-header-sub">6 Recipes · Izakaya Opening</div>
+    </div>
+
+    <!-- RECIPE 1: YAKITORI -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Binchōtan Yakitori <span class="sig-tag">Signature</span></div>
+          <div class="recipe-jp">備長炭 · 焼き鳥</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Grill 650°F+</span>
+          <span class="badge badge-cost">FC 22%</span>
+          <span class="badge badge-time">12 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (4 skewers)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Chicken thigh, boneless</td><td>280g</td><td>$0.38/oz</td><td>$3.76</td></tr>
+        <tr><td>Negi (Japanese leek)</td><td>80g</td><td>$0.12/oz</td><td>$0.34</td></tr>
+        <tr><td>Tare (house soy-mirin glaze)</td><td>40ml</td><td>$0.09/ml</td><td>$0.36</td></tr>
+        <tr><td>Shichimi togarashi</td><td>2g</td><td>$0.04/g</td><td>$0.08</td></tr>
+        <tr><td>Binchōtan charcoal (per service)</td><td>allocated</td><td>—</td><td>$0.80</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Thread chicken thigh pieces (30g each) alternating with 3cm negi sections onto bamboo skewers soaked 30 min.</li>
+        <li>Light binchōtan in chimney starter; allow 25 min until glowing white — no flames.</li>
+        <li>Grill skewers 3 cm above coal. Turn every 90 sec for 6 min until caramelized.</li>
+        <li>Dip in tare, return to grill 1 min each side to set glaze. Repeat dip once more.</li>
+        <li>Finish with generous shichimi. Serve immediately — no holding.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Tare is a living sauce — add drippings nightly, never wash the tare pot. NYC benchmark: Izakaya MEW uses 3-year tare inherited from Tokyo mothership.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Soy · Wheat (tare)</span>
+        <span class="allergen-tag free">GF option: tamari tare</span>
+      </div>
+    </div>
+
+    <!-- RECIPE 2: EDAMAME -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Shio Koji Edamame</div>
+          <div class="recipe-jp">塩麹枝豆</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Serve 165°F</span>
+          <span class="badge badge-cost">FC 8%</span>
+          <span class="badge badge-time">8 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 portions)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Fresh edamame in pod</td><td>300g</td><td>$0.14/oz</td><td>$1.48</td></tr>
+        <tr><td>Shio koji paste</td><td>18g</td><td>$0.06/g</td><td>$1.08</td></tr>
+        <tr><td>Flaky sea salt (Maldon)</td><td>3g</td><td>$0.05/g</td><td>$0.15</td></tr>
+        <tr><td>Yuzu zest</td><td>1g</td><td>$0.15/g</td><td>$0.15</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Score pod ends with scissors. Blanch in heavily salted boiling water 5 min until bright green.</li>
+        <li>Drain; toss immediately in shio koji paste while hot. Rest 2 min for penetration.</li>
+        <li>Transfer to serving bowl; finish with flaky salt and microplaned yuzu zest.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Shio koji amplifies umami 3–5x versus plain salt. Make in-house — 2% salt + rice koji fermented 7 days at room temp.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Soy · Gluten (koji)</span>
+        <span class="allergen-tag free">Vegan · Dairy-Free</span>
+      </div>
+    </div>
+
+    <!-- RECIPE 3: GYOZA -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Pan-Fried Pork &amp; Cabbage Gyoza</div>
+          <div class="recipe-jp">焼き餃子</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Pan 400°F</span>
+          <span class="badge badge-cost">FC 18%</span>
+          <span class="badge badge-time">15 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (6 pieces)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Ground pork (80/20)</td><td>90g</td><td>$0.22/oz</td><td>$0.70</td></tr>
+        <tr><td>Napa cabbage, fine dice</td><td>60g</td><td>$0.04/oz</td><td>$0.08</td></tr>
+        <tr><td>Gyoza wrappers (house-made)</td><td>6 pcs</td><td>$0.18/pc</td><td>$1.08</td></tr>
+        <tr><td>Ginger, garlic, sesame oil</td><td>8g each</td><td>$0.03/g</td><td>$0.72</td></tr>
+        <tr><td>Ponzu dipping sauce</td><td>30ml</td><td>$0.05/ml</td><td>$1.50</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Combine pork, wrung-dry cabbage, ginger, garlic, soy, sesame oil. Mix by hand 3 min.</li>
+        <li>Pleat 6 gyoza; chill 10 min. Batch-prepare up to 200 per prep session.</li>
+        <li>Heat cast iron 2 min; oil; place gyoza flat. Fry 2 min until golden base.</li>
+        <li>Add 3 tbsp water; cover immediately. Steam 3 min until translucent.</li>
+        <li>Uncover; fry 1 min to re-crisp. Serve crisp-side up with ponzu + chili oil.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> The hane (wing) — add cornstarch slurry instead of plain water for crispy lace skirt connecting all 6 pieces. Instagram gold.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Wheat · Soy · Sesame · Pork</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 4: STARTERS continued + Mains intro ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Starters cont. + Omakase Mains</div>
+      <div class="page-header-sub">Tuna Tataki · Miso · Sunomono · Nigiri</div>
+    </div>
+
+    <!-- RECIPE 4: TUNA TATAKI -->
+    <div class="recipe-card accent-border">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Seared Tuna Tataki</div>
+          <div class="recipe-jp">鮪の叩き · Maguro no Tataki</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Sear 500°F · Serve 38°F</span>
+          <span class="badge badge-cost">FC 28%</span>
+          <span class="badge badge-time">8 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 portions)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Bigeye tuna loin (sashimi grade)</td><td>180g</td><td>$1.80/oz</td><td>$11.43</td></tr>
+        <tr><td>Ponzu sauce</td><td>40ml</td><td>$0.05/ml</td><td>$2.00</td></tr>
+        <tr><td>Daikon, julienne</td><td>40g</td><td>$0.02/oz</td><td>$0.03</td></tr>
+        <tr><td>Myoga ginger, sliced</td><td>15g</td><td>$0.20/g</td><td>$3.00</td></tr>
+        <tr><td>Momiji oroshi, tobiko</td><td>10g each</td><td>$0.18/g</td><td>$3.60</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Pat tuna dry. Season lightly with salt. Sear in screaming-hot cast iron 15 sec per side — raw center mandatory.</li>
+        <li>Ice-bath immediately for 30 sec to stop carry-over. Slice 5mm thick against grain.</li>
+        <li>Fan slices over julienned daikon nest. Spoon ponzu around, not over.</li>
+        <li>Garnish: myoga, tobiko, momiji oroshi, micro shiso. Serve within 90 seconds.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Ponzu should be house-made — citrus (sudachi + yuzu), mirin, soy, kombu. Commercial ponzu is detectably inferior at this price point.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Fish · Soy · Shellfish (tobiko)</span>
+        <span class="allergen-tag free">Dairy-Free · GF available</span>
+      </div>
+    </div>
+
+    <!-- RECIPE 5: MISO SOUP -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Hamaguri Clam Miso Soup</div>
+          <div class="recipe-jp">蛤のお味噌汁</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Serve 160°F</span>
+          <span class="badge badge-cost">FC 12%</span>
+          <span class="badge badge-time">18 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 portions)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Hamaguri (hard-shell clams)</td><td>8 clams</td><td>$0.85/clam</td><td>$6.80</td></tr>
+        <tr><td>Ichiban dashi (kombu + katsuobushi)</td><td>400ml</td><td>$0.04/ml</td><td>$1.60</td></tr>
+        <tr><td>White shiro miso</td><td>24g</td><td>$0.07/g</td><td>$1.68</td></tr>
+        <tr><td>Mitsuba (trefoil), fu (wheat gluten)</td><td>8g each</td><td>$0.08/g</td><td>$1.28</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Make ichiban dashi: cold-steep kombu 30 min, heat to 140°F, add katsuobushi, steep 4 min, strain gently — no pressing.</li>
+        <li>Add scrubbed clams to dashi; heat until clams just open (3–4 min). Remove clams.</li>
+        <li>Dissolve miso in ladled dashi off-heat; combine with broth. Never boil miso.</li>
+        <li>Return clams; add fu. Ladle into lacquer bowls; garnish with mitsuba.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Hamaguri clams are the traditional choice for celebratory Japanese cuisine — their paired shells symbolize union. EN Japanese Brasserie sources these from Long Island.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Fish · Shellfish · Soy · Wheat (fu)</span>
+      </div>
+    </div>
+
+    <!-- RECIPE 6: SUNOMONO -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Cucumber &amp; Snow Crab Sunomono</div>
+          <div class="recipe-jp">胡瓜と蟹の酢の物</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Serve 38°F</span>
+          <span class="badge badge-cost">FC 20%</span>
+          <span class="badge badge-time">20 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 portions)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Japanese cucumber (kyuri)</td><td>150g</td><td>$0.10/oz</td><td>$0.53</td></tr>
+        <tr><td>Snow crab leg meat, picked</td><td>60g</td><td>$1.20/oz</td><td>$2.54</td></tr>
+        <tr><td>Amazu (sweetened rice vinegar)</td><td>50ml</td><td>$0.03/ml</td><td>$1.50</td></tr>
+        <tr><td>Wakame seaweed, rehydrated</td><td>20g</td><td>$0.06/g</td><td>$1.20</td></tr>
+        <tr><td>Sesame seeds, toasted</td><td>3g</td><td>$0.04/g</td><td>$0.12</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Thinly slice kyuri (2mm); salt 10 min; squeeze dry thoroughly — removes bitterness.</li>
+        <li>Make amazu: rice vinegar 60ml + sugar 20g + salt 4g + dashi 20ml. Chill.</li>
+        <li>Toss cucumber, wakame in amazu 10 min. Mound in small bowl.</li>
+        <li>Top with crab meat; garnish sesame seeds. Serve immediately.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> The acid in sunomono acts as a palate cleanser between yakitori courses. Position it strategically in the progression — not first, not last.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Shellfish (crab) · Fish (dashi) · Sesame</span>
+        <span class="allergen-tag free">Dairy-Free</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 5: OMAKASE NIGIRI/SASHIMI COURSES ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Omakase Mains — おまかせ</div>
+      <div class="page-header-sub">5 Nigiri / Sashimi Courses · Counter Service</div>
+    </div>
+
+    <div class="info-box" style="margin-bottom:14px;">
+      <div class="info-box-title">Omakase Counter Protocol</div>
+      <p style="font-size:11px; line-height:1.6;">Each course is served directly by the itamae (sushi chef). Rice is pressed tableside. No soy on nigiri — seasoning is applied by chef with brush. Pacing: 8–12 min between courses. Maximum 12 guests per counter seating.</p>
+    </div>
+
+    <!-- COURSE 1: UNI NIGIRI -->
+    <div class="recipe-card accent-border">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Uni Nigiri — Bafun &amp; Murasaki <span class="sig-tag">Tableside</span></div>
+          <div class="recipe-jp">雲丹握り · Course 1 of 5</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-omakase">Omakase</span>
+          <span class="badge badge-temp">Rice 98°F</span>
+          <span class="badge badge-cost">FC 35%</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 pieces)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Bafun uni (Hokkaido, box-grade A)</td><td>40g (4 lobes)</td><td>$4.50/lobe</td><td>$18.00</td></tr>
+        <tr><td>Murasaki uni (Santa Barbara, second lobe)</td><td>20g</td><td>$3.00/lobe</td><td>$6.00</td></tr>
+        <tr><td>Shari (seasoned sushi rice)</td><td>50g (2 × 25g)</td><td>$0.08/g</td><td>$4.00</td></tr>
+        <tr><td>Shiso leaf, nori strip</td><td>2 each</td><td>$0.15/leaf</td><td>$0.30</td></tr>
+        <tr><td>Wasabi (hon-wasabi, fresh grated)</td><td>2g</td><td>$0.80/g</td><td>$1.60</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Rice temperature check: must be 35–40°C. Mold nigiri (25g each) in left palm with 3 precise motions.</li>
+        <li>Apply microspeck wasabi directly to rice — no side-serving at counter.</li>
+        <li>Press shiso leaf flat on rice; lay nori belt. Assemble tableside before guest.</li>
+        <li>Drape 2 bafun lobes on first piece; 1 murasaki + 1 bafun on second. Season with ponzu mist.</li>
+        <li>Direct guest: "Eat in one bite, rotate rice down to tongue." No further instruction needed.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Bafun (short-spined) has richer sweetness; murasaki (long-spined) is briny-clean. Serving both side-by-side tells a story. Masa NYC charges $120/course for this single item.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Fish · Shellfish (uni) · Seaweed</span>
+        <span class="allergen-tag free">GF · Dairy-Free</span>
+      </div>
+    </div>
+
+    <!-- COURSE 2: HON MAGURO TORO -->
+    <div class="recipe-card accent-border">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Ōtoro Nigiri — Hon Maguro Belly</div>
+          <div class="recipe-jp">大鮪大トロ握り · Course 2 of 5</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-omakase">Omakase</span>
+          <span class="badge badge-temp">Rice 98°F</span>
+          <span class="badge badge-cost">FC 38%</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 pieces)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Hon maguro ōtoro (bluefin belly, super-frozen)</td><td>90g</td><td>$3.20/oz</td><td>$10.18</td></tr>
+        <tr><td>Shari (sushi rice)</td><td>50g</td><td>$0.08/g</td><td>$4.00</td></tr>
+        <tr><td>Nikiri (house-made brushing soy)</td><td>5ml</td><td>$0.12/ml</td><td>$0.60</td></tr>
+        <tr><td>Hon wasabi, fresh grated</td><td>2g</td><td>$0.80/g</td><td>$1.60</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Thaw ōtoro at 34°F for 6–8h; never at room temp. Slice 8mm thick at 45° angle against grain.</li>
+        <li>Mold rice; wasabi applied directly to rice surface, not fish.</li>
+        <li>Drape slice over rice; brush lightly with nikiri immediately before serving. No garnish — purity of flavor is the garnish.</li>
+        <li>Serve with verbal note on provenance: Atlantic bluefin, Tsukiji graded.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Ōtoro fat melts at 77°F (body temp) — that's why it dissolves on the tongue. Body-temperature rice + ōtoro = perfect flavor release. Sushi Nakazawa and Noda both source via Tsukiji agents.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Fish · Soy (nikiri)</span>
+        <span class="allergen-tag free">GF option available · Dairy-Free</span>
+      </div>
+    </div>
+
+    <!-- COURSE 3: KAMPACHI SASHIMI -->
+    <div class="recipe-card accent-border">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Kampachi Sashimi — Yuzu Kosho</div>
+          <div class="recipe-jp">カンパチ刺身 · Course 3 of 5</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-omakase">Omakase</span>
+          <span class="badge badge-temp">Serve 38°F</span>
+          <span class="badge badge-cost">FC 30%</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 portions)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>Kampachi (amberjack) fillet, day-boat</td><td>120g</td><td>$1.60/oz</td><td>$6.80</td></tr>
+        <tr><td>Yuzu kosho (green)</td><td>6g</td><td>$0.25/g</td><td>$1.50</td></tr>
+        <tr><td>Dashi gelee (set 0.4% agar)</td><td>20g</td><td>$0.10/g</td><td>$2.00</td></tr>
+        <tr><td>Micro shiso, edible flowers</td><td>3g</td><td>$0.30/g</td><td>$0.90</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Fillet kampachi into 5mm hira-zukuri slices; keep chilled on ice tray.</li>
+        <li>Make dashi gelee: set ichiban dashi with 0.4% agar; cut into 1cm cubes.</li>
+        <li>Arrange 5 slices per portion overlapping. Place gelee cubes alongside.</li>
+        <li>Dot yuzu kosho (pea-sized) at 3 points; scatter micro shiso and petals. Serve cold.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> Kampachi has less fat than yellowtail (hamachi) — the yuzu kosho's heat and citrus bridges the gap, creating perceived richness. A technique, not a shortcut.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Fish</span>
+        <span class="allergen-tag free">GF · Dairy-Free · Soy-Free</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 6: OMAKASE COURSES 4-5 + IZAKAYA MAINS ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Omakase Courses 4–5 · Izakaya Mains</div>
+      <div class="page-header-sub">Wagyu · King Salmon · 居酒屋 Mains</div>
+    </div>
+
+    <!-- COURSE 4: WAGYU SUKIYAKI -->
+    <div class="recipe-card accent-border">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">Wagyu Sukiyaki Nigiri <span class="sig-tag">Tableside Pour</span></div>
+          <div class="recipe-jp">和牛すき焼き握り · Course 4 of 5</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-omakase">Omakase</span>
+          <span class="badge badge-temp">Wagyu 125°F med-rare</span>
+          <span class="badge badge-cost">FC 40%</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 pieces)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>A5 Wagyu striploin (BMS 10+)</td><td>70g</td><td>$8.50/oz</td><td>$21.17</td></tr>
+        <tr><td>Sukiyaki tare (soy, mirin, sugar, sake)</td><td>20ml</td><td>$0.08/ml</td><td>$1.60</td></tr>
+        <tr><td>Egg yolk (Jidori, pasteurized)</td><td>1 yolk</td><td>$0.80/yolk</td><td>$0.80</td></tr>
+        <tr><td>Shari (sushi rice)</td><td>50g</td><td>$0.08/g</td><td>$4.00</td></tr>
+        <tr><td>Shaved truffle or kinome leaf</td><td>2g</td><td>$2.00/g</td><td>$4.00</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Slice wagyu 3mm; sear on teppan 15 sec per side — just caramelized, still pink.</li>
+        <li>Mold nigiri rice; drape wagyu slice; season with sukiyaki tare glaze.</li>
+        <li>Tableside: present egg yolk in ceramic spoon. Guest dips or chef pours yolk over nigiri at counter.</li>
+        <li>Finish: 2 drops truffle oil or kinome leaf. Present within 60 sec of assembly.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> The egg yolk pour is the theater moment — do it slowly, narrate it. "The richness of the yolk mirrors the marbling of the wagyu — together they become something else entirely." Bohemian NYC built a cult following on moments like this.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Egg · Soy · Wheat</span>
+      </div>
+    </div>
+
+    <!-- COURSE 5: KING SALMON -->
+    <div class="recipe-card accent-border">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">King Salmon Aburi Nigiri — Truffle Ponzu</div>
+          <div class="recipe-jp">キングサーモン炙り握り · Course 5 of 5</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-omakase">Omakase</span>
+          <span class="badge badge-temp">Torch to 130°F surface</span>
+          <span class="badge badge-cost">FC 32%</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 pieces)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>King salmon (Copper River, sashimi grade)</td><td>80g</td><td>$2.20/oz</td><td>$6.24</td></tr>
+        <tr><td>Shari (sushi rice)</td><td>50g</td><td>$0.08/g</td><td>$4.00</td></tr>
+        <tr><td>Truffle ponzu</td><td>8ml</td><td>$0.35/ml</td><td>$2.80</td></tr>
+        <tr><td>Salmon roe (ikura, house-cured)</td><td>10g</td><td>$0.40/g</td><td>$4.00</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Slice king salmon 7mm; place on molded nigiri. Score surface lightly with knife.</li>
+        <li>Torch aburi-style until fat renders and surface chars lightly — 8–10 sec, 3cm distance.</li>
+        <li>Spoon truffle ponzu over surface; crown with 3 pearls of house-cured ikura.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> House-cure ikura weekly: fresh salmon roe + sake + soy + mirin brine for 4h. The difference versus commercial ikura is profound — plump, less salty, more salmon flavor.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Fish · Soy · Wheat</span>
+        <span class="allergen-tag free">Dairy-Free</span>
+      </div>
+    </div>
+
+    <!-- IZAKAYA MAIN 1: WAGYU SUKIYAKI HOT POT -->
+    <div class="recipe-card">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-name">A5 Wagyu Sukiyaki Hot Pot <span class="sig-tag">Signature</span></div>
+          <div class="recipe-jp">和牛すき焼き鍋</div>
+        </div>
+        <div class="recipe-badges">
+          <span class="badge badge-temp">Serve Boiling</span>
+          <span class="badge badge-cost">FC 36%</span>
+          <span class="badge badge-time">20 min</span>
+        </div>
+      </div>
+      <table class="ingredients-table">
+        <tr><th>Ingredient</th><th>Qty (2 persons)</th><th>Unit Cost</th><th>Total</th></tr>
+        <tr><td>A5 Wagyu ribeye, thinly sliced</td><td>160g</td><td>$8.50/oz</td><td>$48.15</td></tr>
+        <tr><td>Firm tofu, chrysanthemum greens</td><td>200g / 80g</td><td>$0.05/oz</td><td>$0.99</td></tr>
+        <tr><td>Enoki, shiitake, yam noodles (shirataki)</td><td>80g each</td><td>$0.08/oz</td><td>$0.68</td></tr>
+        <tr><td>Sukiyaki warishita broth</td><td>400ml</td><td>$0.06/ml</td><td>$24.00</td></tr>
+        <tr><td>Jidori eggs (raw dipping)</td><td>2 eggs</td><td>$0.80/ea</td><td>$1.60</td></tr>
+      </table>
+      <ol class="method-steps">
+        <li>Heat iron sukiyaki pan at table; cook wagyu briefly in warishita broth until just cooked.</li>
+        <li>Add vegetables and tofu in stages; simmer 2–3 min. Guest controls pace at table.</li>
+        <li>Dip each morsel in raw whisked egg before eating — the signature ritual.</li>
+        <li>Server refreshes broth and adds ingredients as needed. Tableside pour of additional warishita.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef Tip:</strong> The tableside warishita pour (warm broth) is the ceremony — use a beautiful iron tetsubin. The sound and steam are part of the experience. Uchu and Kosaka both offer table-service hot pot.</div>
+      <div class="allergen-row">
+        <span class="allergen-tag contains">Contains: Egg · Soy · Wheat · Gluten</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 7: IZAKAYA MAINS 2-5 + DESSERTS + DRINKS ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Izakaya Mains · Desserts · Drinks</div>
+      <div class="page-header-sub">居酒屋 Mains 2–5 · デザート · お飲み物</div>
+    </div>
+
+    <div class="two-col">
+      <!-- IZAKAYA MAIN 2: MISO BLACK COD -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Miso-Glazed Black Cod</div>
+            <div class="recipe-jp">銀ダラの西京焼き</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-temp">Broil 450°F</span>
+            <span class="badge badge-cost">FC 28%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty (1 portion)</th><th>Cost</th></tr>
+          <tr><td>Black cod (sablefish) fillet</td><td>180g</td><td>$9.20</td></tr>
+          <tr><td>Saikyo white miso</td><td>60g</td><td>$1.80</td></tr>
+          <tr><td>Mirin, sake, sugar</td><td>20ml each</td><td>$0.90</td></tr>
+          <tr><td>Pickled ginger, yuzu slice</td><td>garnish</td><td>$0.40</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Marinate cod in saikyo miso mixture 48–72h refrigerated.</li>
+          <li>Wipe marinade; broil on wire rack 8–10 min until caramelized and flaky.</li>
+          <li>Serve on cedar plank with pickled ginger and yuzu.</li>
+        </ol>
+        <div class="chef-tip"><strong>Tip:</strong> Nobu made this dish world-famous. Your version must be better — longer marinade (72h), proper saikyo miso (not red), cedar plank presentation.</div>
+        <div class="allergen-row">
+          <span class="allergen-tag contains">Fish · Soy · Wheat</span>
+        </div>
+      </div>
+
+      <!-- IZAKAYA MAIN 3: KARAAGE -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Chicken Karaage — Lemon Kewpie</div>
+            <div class="recipe-jp">鶏の唐揚げ</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-temp">Fry 340°F</span>
+            <span class="badge badge-cost">FC 15%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty (1 portion)</th><th>Cost</th></tr>
+          <tr><td>Chicken thigh, 4cm cubes</td><td>200g</td><td>$2.80</td></tr>
+          <tr><td>Soy, sake, ginger, garlic marinade</td><td>marinade</td><td>$0.60</td></tr>
+          <tr><td>Potato starch (katakuriko)</td><td>40g</td><td>$0.20</td></tr>
+          <tr><td>Kewpie mayo, lemon, shiso</td><td>garnish</td><td>$0.45</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Marinate chicken in soy, sake, ginger, garlic 2h minimum.</li>
+          <li>Coat in potato starch; double-fry: 340°F 4 min, rest 3 min, 375°F 90 sec.</li>
+          <li>Serve with Kewpie, lemon wedge, shredded shiso.</li>
+        </ol>
+        <div class="chef-tip"><strong>Tip:</strong> Potato starch gives superior shattering crunch vs cornstarch. The double-fry method ensures juicy interior. EN Japanese Brasserie sells 200+ orders nightly.</div>
+        <div class="allergen-row">
+          <span class="allergen-tag contains">Soy · Wheat · Egg (mayo)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:10px;">
+      <!-- IZAKAYA MAIN 4: RAMEN-STYLE TORI PAITAN -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Tori Paitan — Rich Chicken Broth</div>
+            <div class="recipe-jp">鶏白湯麺</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-temp">Serve 185°F</span>
+            <span class="badge badge-cost">FC 22%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty (1 bowl)</th><th>Cost</th></tr>
+          <tr><td>Fresh Sun Noodle ramen noodles</td><td>130g</td><td>$1.80</td></tr>
+          <tr><td>Tori paitan broth (8h boil)</td><td>400ml</td><td>$2.40</td></tr>
+          <tr><td>Chashu pork belly</td><td>60g</td><td>$1.80</td></tr>
+          <tr><td>Ajitsuke tamago (marinated egg)</td><td>1 ea</td><td>$0.80</td></tr>
+          <tr><td>Menma, nori, scallion</td><td>garnish</td><td>$0.35</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Boil chicken backs + feet 8h at rolling boil for milky-white emulsified broth.</li>
+          <li>Season with tare (soy-mirin blend); heat broth to 185°F.</li>
+          <li>Cook noodles per package (Sun Noodle Co, Queens — best in NYC); assemble bowl.</li>
+        </ol>
+        <div class="allergen-row">
+          <span class="allergen-tag contains">Wheat · Soy · Egg</span>
+        </div>
+      </div>
+
+      <!-- IZAKAYA MAIN 5: TOFU DENGAKU -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Grilled Tofu Dengaku</div>
+            <div class="recipe-jp">豆腐の田楽</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-temp">Grill 400°F</span>
+            <span class="badge badge-cost">FC 10%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty (1 portion)</th><th>Cost</th></tr>
+          <tr><td>Extra-firm tofu, drained 2h</td><td>200g</td><td>$0.80</td></tr>
+          <tr><td>Red miso dengaku paste</td><td>40g</td><td>$0.60</td></tr>
+          <tr><td>Sesame seeds, yuzu zest</td><td>3g each</td><td>$0.20</td></tr>
+          <tr><td>Sansho pepper</td><td>1g</td><td>$0.10</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Press tofu; cut into 3cm planks. Skewer. Grill 3 min each side until marks appear.</li>
+          <li>Apply dengaku paste; return to heat 1 min to caramelize glaze.</li>
+          <li>Finish: sesame, yuzu zest, sansho. Vegan signature for the menu.</li>
+        </ol>
+        <div class="allergen-row">
+          <span class="allergen-tag free">Vegan · GF</span>
+          <span class="allergen-tag contains">Soy · Sesame</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESSERTS ROW -->
+    <div class="section-header" style="margin-top:14px;">
+      <div class="section-dot"></div>
+      <div class="section-title">Desserts — デザート</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+      <!-- DESSERT 1: MATCHA TIRAMISU -->
+      <div class="recipe-card" style="border-left-color:#27AE60; margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Matcha Tiramisu <span class="sig-tag">Finishing Cart</span></div>
+            <div class="recipe-jp">抹茶ティラミス</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-cost">FC 18%</span>
+            <span class="badge badge-temp">Serve 38°F</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty (6 portions)</th><th>Cost</th></tr>
+          <tr><td>Mascarpone</td><td>250g</td><td>$4.50</td></tr>
+          <tr><td>Ceremonial grade matcha</td><td>15g</td><td>$3.75</td></tr>
+          <tr><td>Savoiardi (ladyfingers)</td><td>18 pcs</td><td>$2.40</td></tr>
+          <tr><td>Eggs, sugar, heavy cream</td><td>3ea / 80g / 150ml</td><td>$2.80</td></tr>
+          <tr><td>Matcha powder (finish)</td><td>5g</td><td>$1.25</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Whip mascarpone with sugar + egg yolks. Fold whipped cream and egg whites.</li>
+          <li>Dip ladyfingers in matcha tea (40g matcha + 200ml hot water, cooled).</li>
+          <li>Layer in glasses: cream → ladyfinger → cream. Chill 4h.</li>
+          <li>Tableside: dust fresh matcha through fine-mesh sieve at the finishing cart.</li>
+        </ol>
+        <div class="allergen-row">
+          <span class="allergen-tag contains">Egg · Dairy · Wheat · Gluten</span>
+        </div>
+      </div>
+
+      <!-- DESSERT 2: MOCHI ICE CREAM + HOJICHA PANNA COTTA -->
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="recipe-card" style="border-left-color:#27AE60; margin-bottom:0; padding:12px 14px;">
+          <div class="recipe-name" style="font-size:13px;">Yuzu Mochi Ice Cream</div>
+          <div class="recipe-jp" style="font-size:10px; margin-bottom:6px;">柚子大福アイス</div>
+          <p style="font-size:10px; line-height:1.6;">Stretch mochi (glutinous rice) dough to 2mm; fill with yuzu sorbet. Serve dusted with kinako (roasted soy flour). FC 20%.</p>
+          <div class="allergen-row"><span class="allergen-tag contains">Soy · Gluten (wheat-free)</span></div>
+        </div>
+        <div class="recipe-card" style="border-left-color:#27AE60; margin-bottom:0; padding:12px 14px;">
+          <div class="recipe-name" style="font-size:13px;">Hojicha Panna Cotta</div>
+          <div class="recipe-jp" style="font-size:10px; margin-bottom:6px;">ほうじ茶パンナコッタ</div>
+          <p style="font-size:10px; line-height:1.6;">Steep roasted hojicha in cream 20 min; set with 1.8% agar. Serve with black sesame tuile and kinako miso caramel. FC 14%.</p>
+          <div class="allergen-row"><span class="allergen-tag contains">Dairy · Soy</span><span class="allergen-tag free">GF</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 8: DRINKS + NYC BENCHMARK TABLE ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Drinks Program · お飲み物</div>
+      <div class="page-header-sub">8 Recipes · Sake · Shochu · Whisky · Matcha</div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:14px;">
+      <!-- SAKE FLIGHT -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Sake Flight Pairing <span class="sig-tag">Guided</span></div>
+            <div class="recipe-jp">日本酒飛び利き</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-cost">FC 28%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Pour</th><th>Sake</th><th>Style</th><th>Temp</th><th>Sell</th></tr>
+          <tr><td>1. Junmai Daiginjo</td><td>Dassai 23 (Yamaguchi)</td><td>Fruity, aromatic</td><td>45°F</td><td>$22</td></tr>
+          <tr><td>2. Junmai</td><td>Hakkaisan (Niigata)</td><td>Clean, dry, umami</td><td>50°C hot</td><td>$16</td></tr>
+          <tr><td>3. Nigori</td><td>Kikusui Funaguchi</td><td>Creamy, sweet</td><td>38°F</td><td>$18</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Present flight in ascending order: dry→rich→sweet, mirroring meal arc.</li>
+          <li>Pour #1 into chilled 2oz tokkuri; #2 in heated ceramic ochoko; #3 in rustic earthenware.</li>
+          <li>Chef narrates each: region, polishing ratio, flavor profile, food pairing suggestion.</li>
+        </ol>
+        <div class="chef-tip"><strong>Chef Tip:</strong> Katana Kitten (NYC) pairs sake by texture not just flavor — match the mouthfeel of the dish. Dassai 23 with uni = both gossamer-silky.</div>
+        <div class="allergen-row"><span class="allergen-tag contains">Contains: Alcohol · Gluten (rice malt)</span></div>
+      </div>
+
+      <!-- SHOCHU COCKTAIL -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Yuzu Shochu Highball</div>
+            <div class="recipe-jp">柚子焼酎ハイボール</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-cost">FC 20%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty (1 drink)</th><th>Cost</th></tr>
+          <tr><td>Iichiko silhouette (mugi shochu)</td><td>60ml</td><td>$2.40</td></tr>
+          <tr><td>Fresh yuzu juice</td><td>20ml</td><td>$1.60</td></tr>
+          <tr><td>House sparkling dashi water</td><td>100ml</td><td>$0.40</td></tr>
+          <tr><td>Yuzu twist, shiso ice cube</td><td>garnish</td><td>$0.30</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Fill tall glass with shiso ice cube; pour shochu over.</li>
+          <li>Add yuzu juice; top with house sparkling dashi water (light kombu infusion).</li>
+          <li>Stir once from bottom; garnish yuzu twist. The dashi water adds savory umami dimension.</li>
+        </ol>
+        <div class="allergen-row"><span class="allergen-tag contains">Alcohol · Barley (shochu)</span></div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:14px;">
+      <!-- JAPANESE WHISKY HIGHBALL -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Suntory Toki Highball</div>
+            <div class="recipe-jp">サントリー時ハイボール</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-cost">FC 22%</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+          <tr><td>Suntory Toki whisky</td><td>50ml</td><td>$3.50</td></tr>
+          <tr><td>Chilled Japanese sparkling water</td><td>150ml</td><td>$0.80</td></tr>
+          <tr><td>Ice spear (crystal-clear)</td><td>1 spear</td><td>$0.20</td></tr>
+          <tr><td>Lemon twist or apple slice</td><td>garnish</td><td>$0.15</td></tr>
+        </table>
+        <ol class="method-steps">
+          <li>Frost glass in freezer 2 min. Place single ice spear.</li>
+          <li>Pour chilled whisky; add sparkling water ratio 1:3. Stir exactly 13.5 times (Suntory standard).</li>
+          <li>Garnish with lemon twist or thin apple slice. Serve with small bowl of edamame.</li>
+        </ol>
+        <div class="allergen-row"><span class="allergen-tag contains">Alcohol · Gluten (grain whisky)</span></div>
+      </div>
+
+      <!-- MATCHA DRINKS -->
+      <div class="recipe-card" style="margin-bottom:0;">
+        <div class="recipe-header">
+          <div>
+            <div class="recipe-name">Ceremonial Matcha Service (Hot &amp; Iced)</div>
+            <div class="recipe-jp">抹茶 · 点前</div>
+          </div>
+          <div class="recipe-badges">
+            <span class="badge badge-cost">FC 15%</span>
+            <span class="badge badge-temp">Hot: 167°F · Iced: 38°F</span>
+          </div>
+        </div>
+        <table class="ingredients-table">
+          <tr><th>Variant</th><th>Recipe</th><th>Serve Price</th></tr>
+          <tr><td>Usucha (thin)</td><td>2g matcha + 70ml 167°F water, chasen whisked</td><td>$9</td></tr>
+          <tr><td>Koicha (thick)</td><td>4g matcha + 40ml water, kneaded 60 sec</td><td>$16</td></tr>
+          <tr><td>Iced Matcha Latte</td><td>3g matcha + 30ml water + oat milk 120ml + ice</td><td>$13</td></tr>
+          <tr><td>Matcha Mocktail</td><td>2g matcha + yuzu + sparkling water + honey</td><td>$11</td></tr>
+        </table>
+        <div class="chef-tip"><strong>Tip:</strong> Source ceremonial grade from Uji (Kyoto). Temperature is critical — above 175°F destroys L-theanine and turns matcha bitter. Use thermometer, not guesswork.</div>
+        <div class="allergen-row"><span class="allergen-tag free">Vegan · GF · Caffeine</span></div>
+      </div>
+    </div>
+
+    <!-- ADDITIONAL DRINKS SUMMARY -->
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Complete Drinks List (8 total)</div>
+      <div class="section-line"></div>
+    </div>
+
+    <table class="data-table">
+      <tr><th>#</th><th>Drink</th><th>Category</th><th>Glass Price</th><th>FC%</th><th>Pairing</th></tr>
+      <tr><td>1</td><td>Sake Flight (3 pours)</td><td>Sake</td><td>$48</td><td>28%</td><td>Uni, ōtoro</td></tr>
+      <tr><td>2</td><td>Yuzu Shochu Highball</td><td>Shochu cocktail</td><td>$17</td><td>20%</td><td>Yakitori, karaage</td></tr>
+      <tr><td>3</td><td>Suntory Toki Highball</td><td>Japanese Whisky</td><td>$19</td><td>22%</td><td>Wagyu, black cod</td></tr>
+      <tr><td>4</td><td>Ceremonial Matcha (hot)</td><td>Non-alcoholic</td><td>$9–$16</td><td>15%</td><td>Desserts</td></tr>
+      <tr><td>5</td><td>Iced Matcha Latte</td><td>Non-alcoholic</td><td>$13</td><td>15%</td><td>All courses</td></tr>
+      <tr><td>6</td><td>Junmai Daiginjo (glass)</td><td>Sake by glass</td><td>$18</td><td>26%</td><td>Sashimi, nigiri</td></tr>
+      <tr><td>7</td><td>Kirin Ichiban Draught</td><td>Beer</td><td>$11</td><td>18%</td><td>Izakaya floor</td></tr>
+      <tr><td>8</td><td>Matcha Mocktail (NA)</td><td>Non-alcoholic</td><td>$11</td><td>15%</td><td>All courses</td></tr>
+    </table>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 9: NYC BENCHMARK TABLE + KITCHEN DESIGN ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">NYC Benchmark Restaurants</div>
+      <div class="page-header-sub">10 Reference Operations · Market Positioning</div>
+    </div>
+
+    <table class="data-table" style="margin-bottom:16px;">
+      <tr>
+        <th>Restaurant</th><th>Format</th><th>Seats</th><th>Avg Check</th><th>Signature</th><th>Key Lesson</th>
+      </tr>
+      <tr>
+        <td><strong>Masa</strong></td>
+        <td>Pure omakase</td><td>26</td><td>$750+</td>
+        <td>Toro with warm nori</td>
+        <td>Silence is a luxury. No menu = total trust. Wait 2+ years.</td>
+      </tr>
+      <tr>
+        <td><strong>Sushi Nakazawa</strong></td>
+        <td>Counter omakase</td><td>10</td><td>$220</td>
+        <td>21-piece progression</td>
+        <td>Jiro-trained itamae as brand. Personality drives bookings.</td>
+      </tr>
+      <tr>
+        <td><strong>Noda</strong></td>
+        <td>Modern omakase</td><td>8</td><td>$300</td>
+        <td>Koji-aged fish</td>
+        <td>Technique differentiation — aging protocol is proprietary IP.</td>
+      </tr>
+      <tr>
+        <td><strong>Kosaka</strong></td>
+        <td>Kaiseki + sushi</td><td>22</td><td>$280</td>
+        <td>Seasonal kaiseki sequence</td>
+        <td>Kaiseki structure elevates sushi to fine dining narrative.</td>
+      </tr>
+      <tr>
+        <td><strong>Uchu</strong></td>
+        <td>Counter omakase</td><td>12</td><td>$250</td>
+        <td>Live uni shell service</td>
+        <td>Theater beats perfection. Live animal presentation = memory.</td>
+      </tr>
+      <tr>
+        <td><strong>Katana Kitten</strong></td>
+        <td>Japanese cocktail bar</td><td>65</td><td>$90</td>
+        <td>Sake cocktail program</td>
+        <td>Drinks-led Japanese concept — sake cocktails fill a gap.</td>
+      </tr>
+      <tr>
+        <td><strong>Izakaya MEW</strong></td>
+        <td>Modern izakaya</td><td>55</td><td>$75</td>
+        <td>3-year tare yakitori</td>
+        <td>Heritage tare pot = storytelling + flavor. Never clean it.</td>
+      </tr>
+      <tr>
+        <td><strong>EN Japanese Brasserie</strong></td>
+        <td>Full-service izakaya</td><td>110</td><td>$80</td>
+        <td>Tofu made tableside</td>
+        <td>Process as theater — tofu made in front of guests daily.</td>
+      </tr>
+      <tr>
+        <td><strong>Bohemian</strong></td>
+        <td>Exclusive omakase</td><td>25</td><td>$400</td>
+        <td>Wagyu hot pot courses</td>
+        <td>No signage, referral only — scarcity creates desire.</td>
+      </tr>
+      <tr>
+        <td><strong>Sushi Yasuda</strong></td>
+        <td>Traditional sushi-ya</td><td>34</td><td>$190</td>
+        <td>Rice as hero</td>
+        <td>Yasuda said "I am a rice chef" — simplicity at altitude.</td>
+      </tr>
+    </table>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Kitchen Design — Sushi Bar Layout (40-Seat Hybrid)</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:14px;">
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Sushi Counter Zone (12 seats)</div>
+        <ul style="font-size:11px; line-height:1.9;">
+          <li>• <strong>Hinoki cypress counter</strong> — 4.5m long, 45cm wide</li>
+          <li>• <strong>Fish case below counter</strong> — 2°C, lit from within</li>
+          <li>• <strong>Rice station</strong> — hangiri (cypress tub), rice paddle, thermometer</li>
+          <li>• <strong>Knife roll station</strong> — yanagiba, deba, usuba, sujihiki</li>
+          <li>• <strong>Wasabi station</strong> — fresh hon-wasabi + oroshigane grater</li>
+          <li>• <strong>Sake service station</strong> — tokkuri warmer, ochoko collection</li>
+          <li>• <strong>Mirror behind itamae</strong> — guests watch technique</li>
+        </ul>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Izakaya &amp; Robata Zone (28 seats)</div>
+        <ul style="font-size:11px; line-height:1.9;">
+          <li>• <strong>Binchōtan robata grill</strong> — 1.2m, cast iron grates</li>
+          <li>• <strong>Teppan plate</strong> — 60×40cm for wagyu/seafood</li>
+          <li>• <strong>Open prep counter</strong> — visible to floor, hospitality window</li>
+          <li>• <strong>Induction stations ×3</strong> — hot pot, ramen, sauces</li>
+          <li>• <strong>Cold prep area</strong> — sashimi slicing, garnish assembly</li>
+          <li>• <strong>Pass window</strong> — bidirectional, warm rail</li>
+          <li>• <strong>Tare pot station</strong> — permanent heat, never moved</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Service Scripts</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Omakase Pacing Script</div>
+        <p style="font-size:10px; line-height:1.8; color:var(--muted); font-style:italic;">
+          On uni: "This is Hokkaido bafun — harvested this morning. The sweetness you taste is the cold Sea of Japan. Please eat immediately."<br><br>
+          On wagyu: "A5 wagyu, BMS twelve. The yolk is Jidori — I'll pour it for you now. Please watch."<br><br>
+          On closing: "Your meal tonight was [X] pieces across [Y] courses. I hope the progression felt like a story."
+        </p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Sake Pairing Script</div>
+        <p style="font-size:10px; line-height:1.8; color:var(--muted); font-style:italic;">
+          On Dassai 23: "This is polished to 23% — 77% of the rice is removed. What remains is pure, clean, almost floral. It will not compete with the uni, only support it."<br><br>
+          On Nigori: "The lees are left in — it drinks more like dessert sake. Perfect with the matcha tiramisu or on its own as we close."
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- ===== PAGE 10: DAILY PREP + STAFF + P&L + RETENTION ===== -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-title">Operations · P&amp;L · Staff · Retention</div>
+      <div class="page-header-sub">Daily Prep · 40-Seat Hybrid · 5 Nights/Week</div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:14px;">
+      <div>
+        <div class="section-header">
+          <div class="section-dot"></div>
+          <div class="section-title">Daily Prep Schedule</div>
+          <div class="section-line"></div>
+        </div>
+        <table class="data-table">
+          <tr><th>Time</th><th>Task</th><th>Who</th></tr>
+          <tr><td>08:00</td><td>Fish delivery → quality check → age tray setup</td><td>Head Itamae</td></tr>
+          <tr><td>09:00</td><td>Dashi production (ichiban + niban)</td><td>Prep Chef</td></tr>
+          <tr><td>10:00</td><td>Rice washing × 3 rounds; soak 30 min</td><td>Rice Chef</td></tr>
+          <tr><td>11:00</td><td>Tare check + refresh; pickle rotation; ikura cure</td><td>Sous Chef</td></tr>
+          <tr><td>12:00</td><td>Vegetable mise en place; karaage marination</td><td>Prep Cook ×2</td></tr>
+          <tr><td>13:00</td><td>Dessert production (tiramisu set, panna cotta)</td><td>Pastry</td></tr>
+          <tr><td>14:00</td><td>Rice cook; sushi vinegar seasoning; temp check</td><td>Head Itamae</td></tr>
+          <tr><td>15:30</td><td>Fish portion cutting; nigiri setup; wasabi grate</td><td>Head Itamae</td></tr>
+          <tr><td>16:30</td><td>Final mise en place; counter polish; sake temp</td><td>All</td></tr>
+          <tr><td>17:00</td><td><strong>Service begins</strong></td><td>Full team</td></tr>
+          <tr><td>22:30</td><td>Close; tare maintenance; fish count next day</td><td>Sous Chef</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <div class="section-header">
+          <div class="section-dot"></div>
+          <div class="section-title">Staff Forecast (40-Seat)</div>
+          <div class="section-line"></div>
+        </div>
+        <table class="data-table">
+          <tr><th>Role</th><th>Count</th><th>Weekly Hours</th><th>Wage/hr</th></tr>
+          <tr><td>Head Itamae (sushi chef)</td><td>1</td><td>50h</td><td>$45</td></tr>
+          <tr><td>Sous Chef (izakaya)</td><td>1</td><td>45h</td><td>$32</td></tr>
+          <tr><td>Prep Cook</td><td>2</td><td>40h each</td><td>$22</td></tr>
+          <tr><td>Pastry/Dessert</td><td>1</td><td>30h</td><td>$25</td></tr>
+          <tr><td>Front of House Lead</td><td>1</td><td>45h</td><td>$28</td></tr>
+          <tr><td>Servers (omakase)</td><td>2</td><td>35h each</td><td>$16+tips</td></tr>
+          <tr><td>Izakaya Servers</td><td>3</td><td>30h each</td><td>$14+tips</td></tr>
+          <tr><td>Bartender / Sake Sommelier</td><td>1</td><td>40h</td><td>$28</td></tr>
+          <tr><td>Runner / Support</td><td>2</td><td>25h each</td><td>$18</td></tr>
+        </table>
+        <p style="font-size:10px; color:var(--muted); margin-top:4px;">Total weekly labor cost est.: <strong>$9,800</strong> (before tips). Monthly: ~$42,500.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">P&amp;L Model — 40-Seat Omakase/Izakaya Hybrid</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:14px;">
+      <div>
+        <div class="info-box" style="margin-bottom:0;">
+          <div class="info-box-title">Revenue Assumptions</div>
+          <div class="pnl-row"><span>Omakase counter (12 seats × $190 avg × 5 nights)</span><span class="pnl-green">$11,400/wk</span></div>
+          <div class="pnl-row"><span>Izakaya floor (28 seats × $80 avg × 1.8 turns × 5 nights)</span><span class="pnl-green">$20,160/wk</span></div>
+          <div class="pnl-row"><span>Beverage premium (sake, whisky flights)</span><span class="pnl-green">$7,200/wk</span></div>
+          <div class="pnl-row total"><span>Total Weekly Revenue</span><span>$38,760</span></div>
+          <div class="pnl-row" style="margin-top:4px;"><span>Monthly Revenue (4.3 weeks)</span><span class="pnl-green"><strong>$166,668</strong></span></div>
+          <div class="pnl-row"><span>Annual Revenue</span><span class="pnl-green"><strong>$2.0M</strong></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="info-box" style="margin-bottom:0;">
+          <div class="info-box-title">Cost Structure (Monthly)</div>
+          <div class="pnl-row"><span>Food Cost (avg 26%)</span><span class="pnl-red">$43,334</span></div>
+          <div class="pnl-row"><span>Labor (FOH + BOH)</span><span class="pnl-red">$42,500</span></div>
+          <div class="pnl-row"><span>Rent (NYC, per sq ft ~$150 NNN)</span><span class="pnl-red">$18,000</span></div>
+          <div class="pnl-row"><span>Beverage COGS (25%)</span><span class="pnl-red">$7,700</span></div>
+          <div class="pnl-row"><span>Utilities, supplies, misc</span><span class="pnl-red">$9,000</span></div>
+          <div class="pnl-row total"><span>Total Monthly Costs</span><span class="pnl-red">$120,534</span></div>
+          <div class="pnl-row profit"><span>Net Operating Profit</span><span>$46,134/mo (~27.7%)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <div class="section-title">Customer Retention System</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="three-col" style="margin-bottom:14px;">
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Itamae Memory Protocol</div>
+        <p style="font-size:10px; line-height:1.6;">
+          Record each omakase guest's: dietary restrictions, sake preferences, fish dislikes, occasion notes, last visit date. Pre-brief itamae before service. Masa NYC staff know every repeat guest by name before they arrive.
+        </p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Seasonal Ikigai Card</div>
+        <p style="font-size:10px; line-height:1.6;">
+          Mail handwritten seasonal menu cards to omakase regulars 4× yearly. Include a small gift: packet of Uji matcha, nori from Ariake, or homemade tsukemono. Cost: ~$12/card. Return rate: 68%.
+        </p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <div class="info-box-title">Sake Club Membership</div>
+        <p style="font-size:10px; line-height:1.6;">
+          $180/month: priority reservation access, monthly bottle selection (sake or shochu), 10% off all visits, invites to private tasting events. Target: 40 members = $7,200 MRR before visits.
+        </p>
+      </div>
+    </div>
+
+    <!-- FINAL TOOL BUNDLE -->
+    <div class="info-box" style="background: linear-gradient(135deg, #0D0D1F, #1C1C3C); border-color: rgba(200,146,42,0.4);">
+      <div class="info-box-title" style="color: var(--gold-light);">KitchenFounder 22-Tool Bundle — What's Included</div>
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-top:8px;">
+        <div style="font-size:9px; color:rgba(250,250,248,0.7); line-height:1.6;">
+          ✦ Guide #32 (this PDF)<br>✦ Recipe costing sheet<br>✦ Omakase booking system<br>✦ Staff training deck<br>✦ Beverage cost tracker
+        </div>
+        <div style="font-size:9px; color:rgba(250,250,248,0.7); line-height:1.6;">
+          ✦ P&amp;L model (Excel)<br>✦ Daily prep checklist<br>✦ Sake pairing matrix<br>✦ NYC supplier directory<br>✦ Menu engineering tool
+        </div>
+        <div style="font-size:9px; color:rgba(250,250,248,0.7); line-height:1.6;">
+          ✦ Fish aging protocol<br>✦ Rice calibration guide<br>✦ Service script library<br>✦ Instagram content kit<br>✦ Opening checklist
+        </div>
+        <div style="font-size:9px; color:rgba(250,250,248,0.7); line-height:1.6;">
+          ✦ Health code compliance<br>✦ Reservation system SOP<br>✦ Tasting menu designer<br>✦ Retention CRM template<br>✦ Knife maintenance guide<br>✦ Sake club toolkit<br>✦ Vendor negotiation script
+        </div>
+      </div>
+      <div style="margin-top:12px; text-align:center;">
+        <span style="font-size:11px; color:var(--gold-light); font-weight:600; letter-spacing:0.08em;">
+          KitchenFounder · Guide #32 · Japanese Omakase &amp; Izakaya · NYC Dinner Standard · v7
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>KitchenFounder · Guide #32</span>
+    <span>Japanese Omakase &amp; Izakaya · NYC Dinner Standard</span>
+  </div>
+</div>
+
+</body>
+</html>

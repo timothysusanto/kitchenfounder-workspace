@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #37 — Modern Mexican NYC Dinner Standard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --accent: #5C1A00;
+    --gold: #C8922A;
+    --gold-light: #E8B84B;
+    --cream: #F5F0E8;
+    --border: #D4B896;
+    --muted: #6B5B4E;
+    --success: #2D6A4F;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; }
+  .page { width: 100%; max-width: 1100px; margin: 0 auto; padding: 48px 56px; position: relative; min-height: 100vh; page-break-after: always; }
+  .footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--accent); color: #F5E6D0; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; padding: 8px 56px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+  .footer-static { background: var(--accent); color: #F5E6D0; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; margin-top: 40px; }
+  h1 { font-family: 'Playfair Display', serif; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--accent); margin-bottom: 16px; border-bottom: 2px solid var(--gold); padding-bottom: 8px; }
+  h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--accent); margin-bottom: 10px; }
+  h4 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th { background: var(--accent); color: #F5E6D0; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  td { padding: 7px 12px; border-bottom: 1px solid #E8DDD0; vertical-align: top; }
+  tr:nth-child(even) td { background: #F5F0E8; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .badge-temp { background: var(--gold); color: #1C1C1C; }
+  .badge-cost { background: var(--accent); color: #F5E6D0; }
+  .badge-veg { background: var(--success); color: #fff; }
+  .badge-gf { background: #2C5F8A; color: #fff; }
+  .tip-box { background: #FFF8EC; border-left: 4px solid var(--gold); padding: 12px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .tip-box strong { color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .allergen-row { background: #FFF3E0; border: 1px solid #FFB74D; padding: 8px 12px; border-radius: 4px; font-size: 12px; margin-top: 8px; }
+  .allergen-row span { font-weight: 700; color: #E65100; }
+  .recipe-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 28px; page-break-inside: avoid; box-shadow: 0 2px 8px rgba(92,26,0,0.06); }
+  .recipe-title { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .recipe-title h3 { margin: 0; font-size: 20px; }
+  .method-steps { counter-reset: step; list-style: none; padding: 0; }
+  .method-steps li { counter-increment: step; padding: 6px 0 6px 36px; position: relative; border-bottom: 1px dotted #E8DDD0; font-size: 13px; }
+  .method-steps li::before { content: counter(step); position: absolute; left: 0; top: 6px; background: var(--accent); color: #fff; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .section-intro { color: var(--muted); font-size: 14px; margin-bottom: 20px; font-style: italic; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .info-box { background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
+  .info-box h4 { margin-bottom: 8px; }
+  .gold-bar { height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); margin: 20px 0; border-radius: 2px; }
+  .page-num { position: absolute; top: 20px; right: 56px; font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.1em; }
+  .tag { display: inline-block; background: var(--cream); border: 1px solid var(--border); border-radius: 3px; padding: 2px 8px; font-size: 11px; font-weight: 600; color: var(--accent); margin: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .script-box { background: #F9F5EF; border: 2px solid var(--gold); border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+  .script-box .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 6px; }
+  .script-box p { font-style: italic; font-family: 'Libre Baskerville', serif; font-size: 13px; line-height: 1.7; color: #3A2E24; }
+  .highlight-stat { text-align: center; padding: 16px; }
+  .highlight-stat .num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--accent); line-height: 1; }
+  .highlight-stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: COVER -->
+<!-- ============================================================ -->
+<div class="page" style="background: linear-gradient(135deg, #5C1A00 0%, #3A0E00 40%, #1A0500 70%, #2D1200 100%); color: #F5E6D0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px;">
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><circle cx=%2230%22 cy=%2230%22 r=%221%22 fill=%22%23C8922A%22 opacity=%220.3%22/></svg>'); opacity: 0.4;"></div>
+  <div style="position: relative; z-index: 1; max-width: 700px;">
+    <div style="border: 1px solid rgba(200,146,42,0.4); padding: 4px 20px; display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 24px;">KitchenFounder · Guide Series</div>
+    <div style="font-size: 72px; margin-bottom: 8px;">🌮</div>
+    <div style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 900; line-height: 1.1; color: #F5E6D0; margin-bottom: 8px;">Modern<br><span style="color: #C8922A;">Mexican</span></div>
+    <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: #E8C88A; margin-bottom: 32px; font-style: italic;">NYC Dinner Standard</div>
+    <div style="height: 2px; background: linear-gradient(90deg, transparent, #C8922A, transparent); margin: 0 auto 32px; width: 300px;"></div>
+    <div style="font-size: 13px; line-height: 1.9; color: #C8A878; max-width: 500px; margin: 0 auto 40px;">
+      From tableside guacamole in a molcajete to 24-hour mole negro — the complete operational blueprint for a 75-seat modern Mexican dinner restaurant in New York City.
+    </div>
+    <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+      <div style="text-align: center;"><div style="font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 900; color: #C8922A;">10</div><div style="font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #A08060;">Benchmark NYC<br>Restaurants</div></div>
+      <div style="text-align: center;"><div style="font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 900; color: #C8922A;">20</div><div style="font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #A08060;">Recipes with<br>Food Cost %</div></div>
+      <div style="text-align: center;"><div style="font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 900; color: #C8922A;">22</div><div style="font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #A08060;">Tool Bundle<br>Included</div></div>
+      <div style="text-align: center;"><div style="font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 900; color: #C8922A;">P&L</div><div style="font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #A08060;">$70 Avg Spend<br>Model Included</div></div>
+    </div>
+    <div style="border-top: 1px solid rgba(200,146,42,0.3); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #A08060; letter-spacing: 0.08em;">
+      <span>GUIDE #37</span>
+      <span style="color: #C8922A; font-weight: 700;">● v7</span>
+      <span>US MARKET 2025</span>
+    </div>
+  </div>
+</div>
+<div class="footer-static" style="margin-top: 0; background: #1A0500;">
+  <span>KitchenFounder · Guide #37</span>
+  <span>Modern Mexican · NYC Dinner Standard</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2: GUIDE BIBLE + NYC COMPARISON TABLE -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 2 · GUIDE BIBLE</div>
+  <h2>The KitchenFounder Guide Bible</h2>
+  <p class="section-intro">The philosophy, positioning, and non-negotiables that define a great modern Mexican dinner restaurant in New York City.</p>
+
+  <div class="two-col" style="margin-bottom: 24px;">
+    <div class="info-box">
+      <h4>🎯 Concept DNA</h4>
+      <p style="font-size: 13px;">Modern Mexican in NYC sits at the intersection of <strong>ancestral technique</strong> and <strong>New York ambition</strong>. Corn is sacred. Mole is theatre. Mezcal is storytelling. Every dish must have <em>terroir</em> — a story that your servers can tell with conviction.</p>
+    </div>
+    <div class="info-box">
+      <h4>💰 Financial Targets</h4>
+      <p style="font-size: 13px;"><strong>Avg Spend:</strong> $70 per cover<br><strong>Food Cost Target:</strong> 28–32%<br><strong>Labor Target:</strong> 30–33%<br><strong>Prime Cost Target:</strong> ≤ 62%<br><strong>EBITDA Target:</strong> 12–18%</p>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom: 24px;">
+    <div class="info-box">
+      <h4>🌽 The Three Pillars</h4>
+      <ul style="font-size: 13px; padding-left: 16px; line-height: 2;">
+        <li><strong>Corn:</strong> Heirloom masa, stone-ground in-house or sourced from Masienda</li>
+        <li><strong>Chiles:</strong> 12+ varieties; dried, fresh, smoked, fermented</li>
+        <li><strong>Fire:</strong> Wood-burning comal, charcoal grill, open flame finishing</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>✅ Non-Negotiables</h4>
+      <ul style="font-size: 13px; padding-left: 16px; line-height: 2;">
+        <li>Tableside guacamole in molcajete — every table</li>
+        <li>Mole negro made in-house, minimum 24h process</li>
+        <li>Mezcal list of 30+ expressions with server education</li>
+        <li>Seasonal chiles en nogada Sept–Nov only</li>
+        <li>Tortillas pressed to order, stone-ground masa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gold-bar"></div>
+  <h2 style="margin-top: 20px;">NYC Benchmark Restaurant Comparison</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Restaurant</th>
+        <th>Neighborhood</th>
+        <th>Positioning</th>
+        <th>Avg Spend</th>
+        <th>Signature</th>
+        <th>Key Differentiator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Cosme</strong></td><td>Flatiron</td><td>Upscale Modern</td><td>$120+</td><td>Corn husk meringue</td><td>Enrique Olvera's NYC flagship — refined tasting approach</td></tr>
+      <tr><td><strong>Oxomoco</strong></td><td>Greenpoint, BK</td><td>Wood-fire Casual</td><td>$65</td><td>Wood-fire tlayudas</td><td>James Beard nom'd; local sourcing, open kitchen</td></tr>
+      <tr><td><strong>Atla</strong></td><td>NoHo</td><td>Modern Café/Bar</td><td>$55</td><td>Pozole verde</td><td>All-day, natural wine, lighter modern Mexican</td></tr>
+      <tr><td><strong>La Esquina</strong></td><td>SoHo</td><td>Underground Brasserie</td><td>$75</td><td>Cochinita pibil tacos</td><td>Secret basement, theatrical entry experience</td></tr>
+      <tr><td><strong>Casa Enrique</strong></td><td>Long Island City</td><td>Regional Chiapas</td><td>$65</td><td>Caldo de res</td><td>Only Michelin-starred Mexican in NYC; authentic regional</td></tr>
+      <tr><td><strong>Empellón</strong></td><td>West Village</td><td>Chef-driven Creative</td><td>$95</td><td>Pastor taco</td><td>Alex Stupak's intellectual approach to Mexican cuisine</td></tr>
+      <tr><td><strong>Toloache</strong></td><td>Midtown/UWS</td><td>Approachable Upscale</td><td>$70</td><td>Huitlacoche quesadilla</td><td>Multiple locations, reliable quality, strong mezcal list</td></tr>
+      <tr><td><strong>Calle Dao</strong></td><td>Chelsea/UES</td><td>Chino-Latino Fusion</td><td>$60</td><td>Peking duck tacos</td><td>Unique Chino-Mexican crossover; bold flavors</td></tr>
+      <tr><td><strong>Maison Kasuga</strong></td><td>West Village</td><td>French-Mexican Hybrid</td><td>$90</td><td>Mole with foie gras</td><td>Michelin-starred; Franco-Mexican technique fusion</td></tr>
+      <tr><td><strong>El Atoradero</strong></td><td>Bronx/Brooklyn</td><td>Authentic Regional</td><td>$40</td><td>Barbacoa de borrego</td><td>True Poblano cooking; most authentic in NYC</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box" style="margin-top: 16px;">
+    <strong>🎯 Your Sweet Spot:</strong> Position between Oxomoco and Toloache — wood-fire technique, modern presentation, $65–75 avg spend. Better than casual, more accessible than Cosme. Mezcal education as genuine differentiator.
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3: STARTERS 1-3 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 3 · STARTERS I</div>
+  <h2>Starters — Part I</h2>
+  <p class="section-intro">Designed to arrive fast, create theatre, and set the tone. The guacamole is your opening handshake with every table.</p>
+
+  <!-- RECIPE 1: Guacamole Tableside -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Tableside Guacamole en Molcajete</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Ambient</span>
+          <span class="badge badge-cost">Food Cost: 18%</span>
+          <span class="badge badge-veg">Vegan · GF</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Signature tableside ritual. Server prepares at the table. Yield: 2 portions · Menu Price: $18</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Hass avocados (ripe)</td><td>3 each</td><td>$0.85</td><td>$2.55</td></tr>
+        <tr><td>White onion, fine dice</td><td>30g</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Serrano chile, minced</td><td>1 each</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Cilantro, chopped</td><td>10g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Lime juice, fresh</td><td>30ml</td><td>$0.12</td><td>$0.12</td></tr>
+        <tr><td>Kosher salt</td><td>3g</td><td>$0.01</td><td>$0.01</td></tr>
+        <tr><td>Tomato, fine dice</td><td>40g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Totopos (house fried)</td><td>80g</td><td>$0.24</td><td>$0.24</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$3.24</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Season molcajete tableside: grind salt, serrano, and ¼ onion to a paste using pestle.</li>
+      <li>Add avocado halves. Mash to desired texture — chunky is correct for this style.</li>
+      <li>Fold in remaining onion, tomato, cilantro. Squeeze lime over the top.</li>
+      <li>Taste and adjust salt. Serve immediately with totopos arranged around the molcajete.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Avocados should be at 60°F — remove from cooler 20 min before service. The serrano paste base is the flavour anchor; don't skip this step. Offer add-ons: pomegranate seeds, chapulines (grasshoppers), or cotija cheese.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> None (base). Add-ons: Dairy (cotija). Contains: Nightshades.</div>
+  </div>
+
+  <!-- RECIPE 2: Ceviche -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Ceviche Estilo Veracruz</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Cold 38°F</span>
+          <span class="badge badge-cost">Food Cost: 27%</span>
+          <span class="badge badge-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Citrus-cured halibut, green olives, capers, jalapeño. Yield: 1 portion · Menu Price: $22</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Halibut, sushi-grade, diced 1cm</td><td>120g</td><td>$0.28/g</td><td>$3.36</td></tr>
+        <tr><td>Lime juice, fresh</td><td>60ml</td><td>$0.18</td><td>$0.18</td></tr>
+        <tr><td>Orange juice, fresh</td><td>30ml</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Green Manzanilla olives, sliced</td><td>20g</td><td>$0.18</td><td>$0.18</td></tr>
+        <tr><td>Capers, rinsed</td><td>10g</td><td>$0.12</td><td>$0.12</td></tr>
+        <tr><td>Jalapeño, thin rings</td><td>15g</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Tomato, roma, seeded dice</td><td>40g</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Red onion, thin sliced, rinsed</td><td>20g</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td>Tostada shells (house)</td><td>2 each</td><td>$0.15</td><td>$0.30</td></tr>
+        <tr><td>Cilantro, micro or chopped</td><td>5g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$4.45</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Cure halibut in lime + orange juice with salt for 8–12 minutes (no longer — keeps texture).</li>
+      <li>Drain 90% of cure liquid. Fold in olives, capers, jalapeño, tomato, red onion.</li>
+      <li>Adjust acid and salt. Plate on chilled tostadas, garnish with cilantro and a drizzle of good olive oil.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Veracruz style means briny and acidic — the olives and capers are not garnish, they're essential. Use only sushi-grade halibut; cure time is critical — over 15 min goes rubbery.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Fish (halibut). Contains: Nightshades, Tree nuts if garnished.</div>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4: STARTERS 3-6 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 4 · STARTERS II</div>
+  <h2>Starters — Part II</h2>
+
+  <!-- RECIPE 3: Elote -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Elote en Vaso — Smoked Street Corn</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Hot 165°F</span>
+          <span class="badge badge-cost">Food Cost: 21%</span>
+          <span class="badge badge-veg">Vegetarian</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Charred corn, chipotle crema, cotija, chile piquín. Yield: 1 portion · Menu Price: $14</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Fresh corn, cut off cob</td><td>150g</td><td>$0.10/ear</td><td>$0.60</td></tr>
+        <tr><td>Mexican crema</td><td>40ml</td><td>$0.14</td><td>$0.14</td></tr>
+        <tr><td>Chipotle in adobo, puréed</td><td>8g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Cotija cheese, crumbled</td><td>25g</td><td>$0.22</td><td>$0.22</td></tr>
+        <tr><td>Chile piquín, ground</td><td>2g</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td>Lime, wedge</td><td>1 each</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Butter, unsalted</td><td>15g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Epazote leaves (fresh)</td><td>3g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$1.21</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Char corn kernels in cast iron with butter over high heat — 4 min, no stirring for color.</li>
+      <li>Mix crema with chipotle purée. Season with salt and lime zest.</li>
+      <li>Layer in cup: corn, chipotle crema, cotija, chile piquín. Garnish with epazote and lime wedge.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> The char is everything — don't stir. Deglaze pan with a splash of water to lift fond and add smokiness. Epazote adds an authentic earthy note most NYC spots skip. Use it.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Dairy (crema, butter, cotija). Contains: Corn.</div>
+  </div>
+
+  <!-- RECIPE 4: Tostadas -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Tostadas de Tinga de Pollo</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Warm 145°F</span>
+          <span class="badge badge-cost">Food Cost: 23%</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Chipotle-braised chicken, refried beans, avocado mousse. 2 pieces. Menu Price: $17</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Chicken thighs, braised &amp; shredded</td><td>90g</td><td>$0.18/g × 0.6 yield</td><td>$2.70</td></tr>
+        <tr><td>Chipotle tinga sauce (house)</td><td>50ml</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Black bean refritos (house)</td><td>60g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Avocado mousse (avo, lime, salt)</td><td>40g</td><td>$0.30</td><td>$0.30</td></tr>
+        <tr><td>House tostada shells</td><td>2 each</td><td>$0.12</td><td>$0.24</td></tr>
+        <tr><td>Pickled red onion</td><td>20g</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td>Queso fresco, crumbled</td><td>15g</td><td>$0.12</td><td>$0.12</td></tr>
+        <tr><td>Jalapeño crema, drizzle</td><td>15ml</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$3.64</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Braise chicken thighs in chipotle tinga sauce (tomatoes, chipotles, onion, oregano) 2h at 300°F.</li>
+      <li>Shred; sauté in tinga sauce over high heat until caramelized edges. Check seasoning.</li>
+      <li>Spread warm refritos on tostada. Top with tinga, avocado mousse, pickled onion, queso, crema drizzle.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Tinga braise batch on Sundays — reheat to order in a sauté pan with sauce for 90 seconds. The caramelized edges are the texture key. Never microwave.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Dairy (queso, crema). Contains: Poultry, Nightshades.</div>
+  </div>
+
+  <!-- RECIPE 5: Masa Soup -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Sopa de Masa — Corn Dumpling Broth</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Hot 180°F</span>
+          <span class="badge badge-cost">Food Cost: 22%</span>
+          <span class="badge badge-veg">Vegan · GF</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Ancho-pasilla consommé, masa dumplings, hoja santa. Menu Price: $16</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Ancho-pasilla consommé (house)</td><td>250ml</td><td>$0.18</td><td>$0.18</td></tr>
+        <tr><td>Masa harina (Masienda)</td><td>60g</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Epazote, fresh</td><td>5g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Hoja santa leaf</td><td>1 large</td><td>$0.15</td><td>$0.15</td></tr>
+        <tr><td>Chile morita, rehydrated &amp; sliced</td><td>5g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Squash blossom (seasonal)</td><td>2 each</td><td>$0.20</td><td>$0.20</td></tr>
+        <tr><td>Huitlacoche paste (optional)</td><td>10g</td><td>$0.12</td><td>$0.12</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$0.88</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Make masa dumplings: mix masa harina with warm water, salt, epazote. Roll into 12g balls, flatten slightly.</li>
+      <li>Simmer dumplings in consommé 6 min. They should float when done.</li>
+      <li>Serve in warm bowl, ladle consommé, place hoja santa as garnish, scatter morita slices and squash blossoms.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Hoja santa is the secret — it imparts anise-pepper notes. Float one leaf over the soup, never cook it. Consommé depth: roast vegetables with chilhuacle negro for color and complexity.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> None (base). GF if no wheat in consommé. Corn-based.</div>
+  </div>
+
+  <!-- RECIPE 6: Chiles Toreados -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Chiles Toreados — Blistered Serrano Skewers</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Hot 160°F</span>
+          <span class="badge badge-cost">Food Cost: 16%</span>
+          <span class="badge badge-veg">Vegan · GF</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Wood-fired serranos, soy-lime glaze, pickled vegetables. Menu Price: $13</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Serrano chiles (whole)</td><td>8 each</td><td>$0.08</td><td>$0.64</td></tr>
+        <tr><td>Soy sauce (Kikkoman)</td><td>20ml</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td>Lime juice</td><td>20ml</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Garlic, smashed</td><td>10g</td><td>$0.03</td><td>$0.03</td></tr>
+        <tr><td>Pickled carrots &amp; jalapeños</td><td>40g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Sesame oil, drop</td><td>3ml</td><td>$0.02</td><td>$0.02</td></tr>
+        <tr><td>Warm tortillas (2), house masa</td><td>2 each</td><td>$0.14</td><td>$0.14</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$1.01</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Char serranos whole on wood-fire comal or cast iron — 3 min per side, skin blistering and darkening.</li>
+      <li>Toss hot chiles in soy-lime-garlic glaze. The sizzle is part of the theatre — bring to table hot.</li>
+      <li>Serve with pickled vegetables and warm tortillas. Advise guests on heat level.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> The soy-lime glaze sounds untraditional but it's a Mexico City taqueria classic. The umami depth is addictive. Warn guests — these are HOT. That's the point. Price them as a shareable upsell.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Soy. Contains: Nightshades, Alliums. GF if using tamari.</div>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 5: MODERN MAINS 1-5 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 5 · MODERN MAINS</div>
+  <h2>Main Courses — Modern Plates</h2>
+  <p class="section-intro">Five modern compositions drawing on ancestral technique with contemporary plating and ingredient sourcing. These define your restaurant's identity.</p>
+
+  <!-- RECIPE 7: Duck Carnitas -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Duck Carnitas — Confit Duck, Black Bean Purée, Salsa Macha</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Duck: 165°F Internal</span>
+          <span class="badge badge-cost">Food Cost: 30%</span>
+          <span class="badge badge-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Duck legs confit in lard with Mexican spices, crisped to order. Yield: 1 portion · Menu Price: $38</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Duck leg, whole</td><td>280g</td><td>$0.036/g</td><td>$10.08</td></tr>
+        <tr><td>Black bean purée (house)</td><td>80g</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Salsa macha (house, oil-based)</td><td>30ml</td><td>$0.15</td><td>$0.15</td></tr>
+        <tr><td>Pickled tomatillos, halved</td><td>40g</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Micro cilantro / herbs</td><td>5g</td><td>$0.12</td><td>$0.12</td></tr>
+        <tr><td>Warm house tortillas</td><td>3 each</td><td>$0.14</td><td>$0.42</td></tr>
+        <tr><td>Lard &amp; spice confit base</td><td>share</td><td>$0.28</td><td>$0.28</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$11.25</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Cure duck legs 24h: salt, black pepper, dried thyme, cumin, dried ancho, garlic.</li>
+      <li>Confit submerged in lard at 200°F for 3.5–4 hours. Cool in fat. Holds 5 days refrigerated.</li>
+      <li>To order: crisp skin-down in cast iron, baste with duck fat, finish 3 min in 450°F oven.</li>
+      <li>Plate: swipe warm black bean purée, rest duck leg, dot salsa macha, scatter pickled tomatillos, micro herbs.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Salsa macha is a Veracruz chile oil — house-make with guajillo, morita, peanuts, sesame, and olive/vegetable oil. It elevates everything. Batch 2L weekly. The duck fat is revenue — use it for frying potatoes, beans, tortillas.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Peanuts (salsa macha), Sesame. Contains: Poultry, Nightshades.</div>
+  </div>
+
+  <!-- RECIPE 8: Black Mole -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Pollo en Mole Negro — Black Mole with Heritage Chicken</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">165°F Internal</span>
+          <span class="badge badge-cost">Food Cost: 28%</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">24-hour mole negro, heritage chicken breast, black sesame, pickled chayote. Menu Price: $42</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Heritage chicken breast</td><td>200g</td><td>$0.026/g</td><td>$5.20</td></tr>
+        <tr><td>Mole negro sauce (24h house)</td><td>120ml</td><td>$0.08/ml</td><td>$9.60</td></tr>
+        <tr><td>Black sesame seeds, toasted</td><td>8g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Pickled chayote</td><td>50g</td><td>$0.09</td><td>$0.09</td></tr>
+        <tr><td>White rice (arroz blanco)</td><td>100g cooked</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td>Mole story card (laminated)</td><td>1 each</td><td>$0.00</td><td>$0.00</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$14.98</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Mole negro: toast/char mulato, chilhuacle negro, pasilla, chipotle. Fry with spices, tomato, tomatillo, plantain, chocolate, sesame. Blend in stages. Cook 6h in lard. Total process: 24h.</li>
+      <li>Sear chicken breast in cast iron, finish in oven to 165°F. Rest 5 minutes.</li>
+      <li>Ladle warm mole in bowl base. Slice chicken, fan across mole. Scatter black sesame. Add pickled chayote for acid balance.</li>
+      <li>Server presents laminated mole story card at tableside.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Mole negro is your restaurant's soul. Make it twice weekly in large batches — it holds 2 weeks refrigerated and deepens with time. The char (burning the chiles to ash) is authentic and essential. Do not skip it.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Sesame, Tree nuts (peanuts possible). Contains: Poultry, Chocolate, Nightshades.</div>
+  </div>
+
+  <!-- RECIPE 9: Halibut Aguachile -->
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Halibut Aguachile Negro</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Served Cold 38°F</span>
+          <span class="badge badge-cost">Food Cost: 31%</span>
+          <span class="badge badge-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Sushi-grade halibut, dried chile aguachile negro, cucumber, red onion. Menu Price: $36</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Halibut, sushi-grade, thin sliced</td><td>140g</td><td>$0.28/g × 1.0</td><td>$3.92 → portion of $39.20/lb</td></tr>
+        <tr><td>Aguachile negro base (chile negro, lime, soy)</td><td>80ml</td><td>$0.18</td><td>$0.18</td></tr>
+        <tr><td>English cucumber, ribbons</td><td>60g</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Red onion, paper thin</td><td>20g</td><td>$0.03</td><td>$0.03</td></tr>
+        <tr><td>Jicama, matchstick</td><td>30g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Avocado, thin slice</td><td>40g</td><td>$0.18</td><td>$0.18</td></tr>
+        <tr><td>Dried hibiscus salt (rim)</td><td>2g</td><td>$0.03</td><td>$0.03</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$11.20</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Aguachile negro: blend dried negro/pasilla chiles (soaked), lime juice, soy, garlic, honey to a smooth thin sauce.</li>
+      <li>Slice halibut ¼ inch thick on chilled plate. Pour aguachile negro over fish — cure 3 minutes only.</li>
+      <li>Add cucumber ribbons, red onion, jicama, avocado. Finish with dried hibiscus salt and a drizzle of olive oil.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Aguachile negro is Sinaloa coastal cuisine — bolder and darker than classic aguachile. The soy is a modern addition from coastal Mexico taqueros. Plates must be pre-chilled in the freezer for 10 minutes before service.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Fish, Soy. Contains: Nightshades. Raw fish — advise guests.</div>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- RECIPE 10+11: Short Rib Barbacoa + Vegetarian Tamale -->
+<div class="page">
+  <div class="page-num">PAGE 6 · MODERN MAINS II + CLASSIC MAINS</div>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Short Rib Barbacoa — 18h Slow-Cooked Beef, Consommé</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">200°F Internal · Pull Tender</span>
+          <span class="badge badge-cost">Food Cost: 29%</span>
+          <span class="badge badge-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Bone-in short rib, achiote-chile marinade, consommé for dipping, charred salsa roja. Menu Price: $44</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Bone-in short rib</td><td>350g raw</td><td>$0.038/g</td><td>$13.30</td></tr>
+        <tr><td>Achiote paste</td><td>30g</td><td>$0.09</td><td>$0.09</td></tr>
+        <tr><td>Consommé de barbacoa (house)</td><td>120ml</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Charred salsa roja (house)</td><td>40ml</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Dried chiles (guajillo, ancho, chile de árbol)</td><td>15g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Fresh tortillas (3)</td><td>3 each</td><td>$0.14</td><td>$0.42</td></tr>
+        <tr><td>White onion, lime, cilantro (garnish)</td><td>set</td><td>$0.07</td><td>$0.07</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$14.12</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Marinate short ribs 12h: achiote, rehydrated guajillo/ancho/árbol paste, garlic, cumin, oregano, orange juice.</li>
+      <li>Wrap in banana leaf if available. Slow-cook at 275°F for 7–8h, or sous vide 155°F for 18h.</li>
+      <li>Rest 30 min. Remove bone. Sear briefly on comal for crust. Serve with warm consommé in side cup.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> The consommé dipping cup is the interactive element — guests dip their taco in the broth. This is traditional barbacoa service from Hidalgo. It builds perceived value and creates a memorable moment.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> None primary. Contains: Beef, Nightshades, Achiote. Corn (tortillas).</div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Vegetarian Corn Husk Tamale — Rajas con Crema, Requeson</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Steam: 200°F · Serve 165°F</span>
+          <span class="badge badge-cost">Food Cost: 22%</span>
+          <span class="badge badge-veg">Vegetarian · GF</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Stone-ground masa, poblano rajas, requeson, salsa verde. 2 tamales per order. Menu Price: $28</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Stone-ground masa (Masienda)</td><td>160g</td><td>$0.14</td><td>$0.14</td></tr>
+        <tr><td>Lard (or coconut oil for vegan)</td><td>40g</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Poblano chile, roasted, strips</td><td>60g</td><td>$0.12</td><td>$0.12</td></tr>
+        <tr><td>Mexican crema</td><td>30ml</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Requeson cheese</td><td>40g</td><td>$0.18</td><td>$0.18</td></tr>
+        <tr><td>Salsa verde tomatillo (house)</td><td>60ml</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Dried corn husks (soaked)</td><td>4 each</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td>Epazote, crema drizzle garnish</td><td>garnish</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$0.78 × share = $6.16</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Mix masa with lard, warm chicken/vegetable stock, salt until fluffy and spreadable. Test: masa should float in water.</li>
+      <li>Spread masa on soaked corn husks. Fill with rajas con crema and requeson. Fold and tie. Steam 45 min at full pressure.</li>
+      <li>To order: reheat in steamer 8 min. Plate with salsa verde, drizzle crema, scatter epazote.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Rajas con crema (roasted poblano strips in crema) is an iconic Mexico City filling. Requeson is Mexican ricotta — substitute with fresh ricotta if unavailable. The tamale float test is non-negotiable for perfect texture.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Dairy (crema, requeson). Contains: Corn, Nightshades. Make vegan with coconut oil + plant crema.</div>
+  </div>
+
+  <h2>Classic Elevated Mains</h2>
+  <p class="section-intro">Five regional classics executed at the highest level — the dishes that define Mexico's culinary heritage, elevated for NYC dinner service.</p>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Cochinita Pibil — Yucatan Citrus-Achiote Pork</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">195°F Internal · Pull Tender</span>
+          <span class="badge badge-cost">Food Cost: 24%</span>
+          <span class="badge badge-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Pork shoulder, sour orange-achiote, habanero-pickled onion. Menu Price: $36</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Pork shoulder, boneless</td><td>200g cooked portion</td><td>$0.014/g raw × 0.65 yield</td><td>$4.31</td></tr>
+        <tr><td>Achiote paste</td><td>25g</td><td>$0.09</td><td>$0.09</td></tr>
+        <tr><td>Sour orange (bitter orange) juice</td><td>60ml</td><td>$0.20</td><td>$0.20</td></tr>
+        <tr><td>Habanero-pickled red onion</td><td>50g</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Banana leaf (for wrapping)</td><td>1 piece</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Black beans (refritos)</td><td>80g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>House tortillas (3)</td><td>3 each</td><td>$0.14</td><td>$0.42</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$8.64</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Blend achiote, sour orange, garlic, cumin, oregano, black pepper into smooth paste. Coat pork shoulder entirely.</li>
+      <li>Wrap in banana leaf. Roast 325°F for 4.5h until completely pull-tender. Or pit-style oven overnight.</li>
+      <li>Shred, toss in cooking juices. Serve with habanero-pickled red onion, refritos, and warm tortillas.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Sour orange is the defining flavor of Yucatan — substitute 50/50 orange/grapefruit juice if unavailable. The habanero pickled onion is hot by default; train servers to mention heat level. Traditionally served only for Sunday brunch in Yucatan — make it special.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> None primary. Contains: Pork, Nightshades (habanero — HIGH HEAT), Corn.</div>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 7: CLASSIC MAINS 2-5 + DESSERTS -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 7 · CLASSIC MAINS + DESSERTS</div>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Carne Asada — Wood-Grilled Skirt Steak, Chimichurri Verde</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">130°F Medium-Rare</span>
+          <span class="badge badge-cost">Food Cost: 31%</span>
+          <span class="badge badge-gf">Gluten-Free</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Skirt steak, citrus-garlic marinade, chimichurri verde, grilled scallions. Menu Price: $46</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Skirt steak, outside cut</td><td>220g</td><td>$0.060/g</td><td>$13.20</td></tr>
+        <tr><td>Citrus-garlic marinade</td><td>50ml</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Chimichurri verde (house)</td><td>40ml</td><td>$0.10</td><td>$0.10</td></tr>
+        <tr><td>Grilled scallions (cebollitas)</td><td>3 each</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Charred salsa roja</td><td>40ml</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Warm tortillas (3)</td><td>3 each</td><td>$0.14</td><td>$0.42</td></tr>
+        <tr><td>Grilled nopal cactus</td><td>60g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$14.00</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Marinate skirt steak min 2h: lime, orange, garlic, cumin, fresh oregano, olive oil. Remove from cooler 30 min before service.</li>
+      <li>Grill over wood fire or highest heat. 3 min per side for medium-rare. Do not press.</li>
+      <li>Rest 3 min. Slice against grain thin. Plate with grilled scallions, nopal, chimichurri verde, salsa roja, tortillas.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Outside skirt has better flavor than inside — specify to your butcher. Nopal (cactus paddle) adds authentic earthy flavor and fiber — most NYC Mexican spots skip it. Don't skip it. It's a differentiator.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> None primary. Contains: Beef, Nightshades, Alliums.</div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>⭐ Chiles en Nogada — Seasonal Showpiece · Sep–Nov Only</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">Room Temp — Never Hot</span>
+          <span class="badge badge-cost">Food Cost: 32%</span>
+          <span class="badge badge-veg">Vegetarian Option</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Poblano chile stuffed with picadillo, walnut cream sauce (nogada), pomegranate, parsley. Menu Price: $52</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Large poblano chile (roasted, peeled)</td><td>1 each</td><td>$0.35</td><td>$0.35</td></tr>
+        <tr><td>Picadillo filling (pork/beef, fruit, spices)</td><td>150g</td><td>$0.052/g</td><td>$7.80</td></tr>
+        <tr><td>Walnuts (fresh, peeled = key)</td><td>40g</td><td>$0.45</td><td>$0.45</td></tr>
+        <tr><td>Mexican crema (for nogada)</td><td>60ml</td><td>$0.20</td><td>$0.20</td></tr>
+        <tr><td>Cream cheese (for nogada)</td><td>20g</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Pomegranate seeds (fresh)</td><td>30g</td><td>$0.28</td><td>$0.28</td></tr>
+        <tr><td>Fresh flat parsley, chopped</td><td>5g</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Sherry or fino sherry</td><td>10ml</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$16.62</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Picadillo: slow-cook minced pork/beef with diced peaches, pears, plantain, raisins, almonds, cinnamon, cloves, cumin, sherry. Must have sweet-savory balance.</li>
+      <li>Nogada: blend fresh peeled walnuts (blanch to peel), crema, cream cheese, sherry. Season with salt, white pepper. Should be thick and pale cream.</li>
+      <li>Stuff roasted, peeled poblano. Coat generously with cold nogada. Garnish with pomegranate seeds and flat parsley — green, white, red: Mexican flag.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Fresh walnuts (late summer) make or break this dish. Use dried walnuts and the nogada turns bitter. This dish is served cold — it is NOT a hot dish. The seasonal reveal is a signature moment: announce it at the table, tell its Sept 16 Independence Day origin story.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Dairy (crema, cream cheese), Tree nuts (walnuts, almonds). Contains: Pork/beef or vegetarian picadillo, Nightshades, Pomegranate.</div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Mole Negro Oaxaqueño — Pato en Mole Negro (Duck in Black Mole)</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">165°F Whole Duck Leg</span>
+          <span class="badge badge-cost">Food Cost: 30%</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Full Oaxacan mole negro service, duck leg, heirloom rice, black bean. Menu Price: $48</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Duck leg, roasted</td><td>300g</td><td>$0.035/g</td><td>$10.50</td></tr>
+        <tr><td>Oaxacan mole negro (house, 24h)</td><td>150ml</td><td>$0.07/ml</td><td>$10.50</td></tr>
+        <tr><td>Heirloom rice, steamed</td><td>120g</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td>Black bean broth, side</td><td>80ml</td><td>$0.05</td><td>$0.05</td></tr>
+        <tr><td>Sesame seeds &amp; herbs garnish</td><td>garnish</td><td>$0.04</td><td>$0.04</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$14.40</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Full mole negro process: 24h. Key ingredients: 5 dried chile types, charred tortilla, chocolate, spices, tomato, tomatillo. 6h simmer after blending.</li>
+      <li>Roast duck leg at 400°F for 25 min (from confit). Crisp skin fully.</li>
+      <li>Pool mole negro in wide bowl. Place duck leg, spoon additional mole over bird. Serve with rice and black bean broth on the side.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> The mole story card is placed on the table with this dish. Train servers to read from it naturally. The story of mole negro being born in a Oaxacan convent, taking 3 days — this narrative is part of the dish. Charge accordingly.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Sesame, Peanuts (check mole recipe). Contains: Poultry, Chocolate, Nightshades.</div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <div>
+        <h3>Birria de Res — Braised Beef, Consommé, Quesabirria</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span class="badge badge-temp">195°F / Fork Tender</span>
+          <span class="badge badge-cost">Food Cost: 27%</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-bottom:12px; font-style:italic;">Jalisco-style beef birria, 3 crispy quesabirria tacos, beef consommé for dipping. Menu Price: $38</p>
+    <table>
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Beef chuck/short rib mix</td><td>200g cooked</td><td>$0.022/g × 0.65 yield</td><td>$6.77</td></tr>
+        <tr><td>Birria chile paste (guajillo, ancho, árbol)</td><td>share</td><td>$0.15</td><td>$0.15</td></tr>
+        <tr><td>Beef consommé</td><td>150ml</td><td>$0.08</td><td>$0.08</td></tr>
+        <tr><td>Oaxacan cheese, quesillo</td><td>50g</td><td>$0.28</td><td>$0.28</td></tr>
+        <tr><td>Corn tortillas (dipped in fat)</td><td>3 each</td><td>$0.12</td><td>$0.36</td></tr>
+        <tr><td>White onion, cilantro, lime</td><td>garnish</td><td>$0.06</td><td>$0.06</td></tr>
+        <tr><td><strong>TOTAL FOOD COST</strong></td><td colspan="2"></td><td><strong>$10.26</strong></td></tr>
+      </tbody>
+    </table>
+    <ol class="method-steps">
+      <li>Braise beef in chile-spiced broth 8h at 275°F. Pull and shred. Reserve consommé — it's liquid gold.</li>
+      <li>Quesabirria: dip tortilla in fat/consommé, fry on comal, fill with birria and quesillo, fold and press until crispy.</li>
+      <li>Plate 3 quesabirria, pour hot consommé in side cup, garnish with diced onion, cilantro, lime wedge.</li>
+    </ol>
+    <div class="tip-box"><strong>🧑‍🍳 Chef Tip:</strong> Quesabirria is a social media magnet — the cheese pull photo is free marketing. Train servers to offer extra consommé. The fat-dipped tortilla is essential for crispiness; it must be done immediately before service.</div>
+    <div class="allergen-row"><span>⚠ Allergens:</span> Dairy (cheese). Contains: Beef, Nightshades, Corn.</div>
+  </div>
+
+  <h2>Desserts</h2>
+
+  <div class="two-col">
+    <div class="recipe-card">
+      <h3 style="font-size:16px; margin-bottom:8px;">Churros con Chocolate</h3>
+      <div style="margin-bottom:8px;"><span class="badge badge-temp">Served Hot</span> <span class="badge badge-cost">FC: 18%</span> <span class="badge badge-veg">Vegetarian</span></div>
+      <p style="font-size:12px; color:var(--muted);">Menu Price: $14 | Total Food Cost: $2.52</p>
+      <p style="font-size:12px; margin-top:6px;">Fresh-fried churros, cinnamon sugar, dark chocolate dipping sauce with chile ancho. Pipe dough to order. Fry 3 min at 375°F. Serve immediately — they wait for no one.</p>
+      <div class="allergen-row" style="margin-top:8px;"><span>⚠</span> Gluten, Dairy, Eggs.</div>
+    </div>
+    <div class="recipe-card">
+      <h3 style="font-size:16px; margin-bottom:8px;">Tres Leches de Piñón</h3>
+      <div style="margin-bottom:8px;"><span class="badge badge-temp">Served Cold</span> <span class="badge badge-cost">FC: 20%</span> <span class="badge badge-veg">Vegetarian</span></div>
+      <p style="font-size:12px; color:var(--muted);">Menu Price: $13 | Total Food Cost: $2.60</p>
+      <p style="font-size:12px; margin-top:6px;">Classic tres leches soaked sponge with piñón (pine nut) dust, whipped cream, fresh berries. Prep 24h ahead for full soak. Serves 8 from one pan — low labor, high margin.</p>
+      <div class="allergen-row" style="margin-top:8px;"><span>⚠</span> Dairy, Eggs, Gluten, Tree nuts (piñón).</div>
+    </div>
+  </div>
+  <div class="two-col" style="margin-top:16px;">
+    <div class="recipe-card">
+      <h3 style="font-size:16px; margin-bottom:8px;">Helado de Elote — Sweet Corn Ice Cream</h3>
+      <div style="margin-bottom:8px;"><span class="badge badge-temp">Served -10°F</span> <span class="badge badge-cost">FC: 22%</span> <span class="badge badge-veg">Vegetarian</span></div>
+      <p style="font-size:12px; color:var(--muted);">Menu Price: $12 | Total Food Cost: $2.64</p>
+      <p style="font-size:12px; margin-top:6px;">House-churned corn ice cream (roasted corn steep in cream), cajeta drizzle, toasted pepitas. Batch weekly. Corn ice cream = your most-photographed dessert.</p>
+      <div class="allergen-row" style="margin-top:8px;"><span>⚠</span> Dairy, Eggs, Corn. Nuts (pepitas = pumpkin seeds, technically seeds).</div>
+    </div>
+    <div class="recipe-card">
+      <h3 style="font-size:16px; margin-bottom:8px;">Pastel de Queso — Mexican Cheesecake</h3>
+      <div style="margin-bottom:8px;"><span class="badge badge-temp">Served Cold</span> <span class="badge badge-cost">FC: 21%</span> <span class="badge badge-veg">Vegetarian</span></div>
+      <p style="font-size:12px; color:var(--muted);">Menu Price: $13 | Total Food Cost: $2.73</p>
+      <p style="font-size:12px; margin-top:6px;">Light Mexican-style cheesecake, guava compote, hibiscus reduction. Bake in bain-marie; texture is cloud-light unlike NY cheesecake. Batch 2x/week. Guava + hibiscus = colors of the Mexican palette.</p>
+      <div class="allergen-row" style="margin-top:8px;"><span>⚠</span> Dairy, Eggs, Gluten (base crust).</div>
+    </div>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 8: DRINKS + KITCHEN DESIGN + SERVICE SCRIPTS -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 8 · DRINKS + KITCHEN DESIGN + SERVICE SCRIPTS</div>
+
+  <h2>Drinks Menu — 8 Signature Offerings</h2>
+  <table>
+    <thead>
+      <tr><th>Drink</th><th>Type</th><th>Menu Price</th><th>Food Cost</th><th>Key Ingredients</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Mezcal Negroni</strong></td><td>Cocktail</td><td>$18</td><td>22%</td><td>Reposado mezcal, Campari, sweet vermouth, orange peel</td><td>Serve over large ice sphere; mezcal swaps gin perfectly</td></tr>
+      <tr><td><strong>Spicy Mezcal Margarita</strong></td><td>Cocktail</td><td>$17</td><td>21%</td><td>Mezcal, lime, agave, serrano-infused salt rim, Tajín</td><td>Most ordered cocktail; prep serrano salt in batch</td></tr>
+      <tr><td><strong>Classic Margarita Clásica</strong></td><td>Cocktail</td><td>$15</td><td>20%</td><td>Blanco tequila, Cointreau, fresh lime, salt rim</td><td>Shaken not blended; quality tequila essential</td></tr>
+      <tr><td><strong>Agua Fresca de Temporada</strong></td><td>NA Mocktail</td><td>$9</td><td>15%</td><td>Rotating: hibiscus, watermelon, tamarind, cucumber-mint</td><td>High margin NA option; change weekly with season</td></tr>
+      <tr><td><strong>Horchata de Arroz</strong></td><td>NA</td><td>$8</td><td>12%</td><td>Long-grain rice, cinnamon, vanilla, almond milk</td><td>House-made; 10-min steep, blended smooth; crowd favorite</td></tr>
+      <tr><td><strong>Tamarindo Sour</strong></td><td>Cocktail</td><td>$17</td><td>22%</td><td>Tequila reposado, tamarind concentrate, lime, chili salt, egg white</td><td>Foamy, visually striking; tamarind concentrate in batch</td></tr>
+      <tr><td><strong>Mexican Craft Beer</strong></td><td>Beer</td><td>$10</td><td>25%</td><td>Rotating: Modelo, Pacifico, Cervecería Brooklyn local</td><td>Serve with lime and Tajín on request; pair with ceviche</td></tr>
+      <tr><td><strong>Hibiscus NA Spritz</strong></td><td>NA Cocktail</td><td>$11</td><td>16%</td><td>Hibiscus concentrate, lime, ginger beer, mint, pomegranate</td><td>Sober-curious option; vibrant color = table marketing</td></tr>
+      <tr><td><strong>Espresso de Olla</strong></td><td>Coffee</td><td>$7</td><td>18%</td><td>Mexican cinnamon coffee, piloncillo, espresso base</td><td>Traditional café de olla elevated with espresso; dessert pairing</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box" style="margin-bottom: 20px;">
+    <strong>🍹 Mezcal List Strategy:</strong> Maintain 30+ expressions organized by region: Oaxaca (tobaziche, espadín, tobalá), Guerrero (papalome), Durango (cenizo). Train every server to describe 3 house mezcals with tasting notes. Mezcal margin: ~70%. It is your highest-profit category.
+  </div>
+
+  <div class="gold-bar"></div>
+
+  <h2>Kitchen Design — Comal Station + Wood Fire</h2>
+  <div class="two-col" style="margin-bottom: 20px;">
+    <div class="info-box">
+      <h4>🔥 Wood-Fire Station</h4>
+      <ul style="font-size:13px; padding-left:16px; line-height:2;">
+        <li>Wood-burning hearth: primary for meats, chiles toreados, carne asada</li>
+        <li>Wood types: mesquite (beef), apple (duck/chicken), avocado (vegetables)</li>
+        <li>Fuel budget: $200–300/week; display wood stack in dining room for theatre</li>
+        <li>Install: floor drain, spark arrestor, Class II hood; NYC DOH clearance required</li>
+        <li>Position: open kitchen preferred — guests see the fire (instagrammable)</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🫔 Comal Station</h4>
+      <ul style="font-size:13px; padding-left:16px; line-height:2;">
+        <li>Two 20-inch cast iron comals minimum; one dedicated to tortillas</li>
+        <li>Gas comal for high-volume tortilla press-to-order service</li>
+        <li>Masa storage: hold at 50°F; replace after 4h for best texture</li>
+        <li>Tortilla output: 60–80 tortillas/hour minimum (dinner volume)</li>
+        <li>Elote, chiles toreados, quesabirria all use comal — sequence critical</li>
+      </ul>
+    </div>
+  </div>
+  <div class="three-col">
+    <div class="info-box">
+      <h4>🧊 Cold Station</h4>
+      <p style="font-size:12px;">Ceviche, aguachile, guacamole prep. 38°F work surface. Pre-chilled plates. Avocado holds (lime-treated, vacuum). No heat sources nearby.</p>
+    </div>
+    <div class="info-box">
+      <h4>🫙 Mole/Braise Station</h4>
+      <p style="font-size:12px;">8-quart tilting kettle for mole batches. Separate burner for birria/barbacoa holds. Immersion blender bay. Needs ventilation above.</p>
+    </div>
+    <div class="info-box">
+      <h4>🍦 Dessert Station</h4>
+      <p style="font-size:12px;">Churro fryer (375°F dedicated). Walk-in shelf for tres leches, cheesecake. Ice cream chest freezer (-10°F). Plating counter with garnish rail.</p>
+    </div>
+  </div>
+
+  <div class="gold-bar"></div>
+
+  <h2>Service Scripts — Signature Moments</h2>
+
+  <h4 style="margin-top: 12px; margin-bottom: 6px;">🥑 Tableside Guacamole Script</h4>
+  <div class="script-box">
+    <div class="label">Server Script — Tableside Guacamole Presentation</div>
+    <p>"Good evening, and welcome. Before I tell you about tonight's menu, I'd love to start you with our tableside guacamole — made right here in this molcajete, which is a volcanic stone mortar used in Mexican kitchens for over 2,000 years. [Begin preparation.] I'll ask — mild, medium, or spicy? [Adjusts serrano accordingly.] Our avocados are perfectly ripe today. [Mashes.] We finish with our house-made totopos — stone-ground corn, fried this afternoon. [Completes.] Enjoy — and let me take you through the rest of tonight's menu."</p>
+  </div>
+
+  <h4 style="margin-bottom: 6px;">🌿 Mole Negro Story Script</h4>
+  <div class="script-box">
+    <div class="label">Server Script — Mole Negro Presentation (with Story Card)</div>
+    <p>"This is our mole negro — our most important dish. The story begins 400 years ago in the convent of Santa Catalina de Siena in Oaxaca, where nuns were preparing a feast for the viceroy. Running out of time, they combined what they had: five types of chiles, dark chocolate, spices, and burnt tortilla. What they created is considered Mexico's greatest sauce. [Places card.] This mole takes us 24 hours to make. We think you'll taste every hour of it."</p>
+  </div>
+
+  <h4 style="margin-bottom: 6px;">🥃 Mezcal Education Script</h4>
+  <div class="script-box">
+    <div class="label">Server Script — Mezcal Introduction</div>
+    <p>"Can I interest you in exploring our mezcal list? Unlike tequila, which can only be made from blue agave, mezcal can be made from over 50 varieties of agave plant — and we carry expressions from seven of them. [Points to menu section.] My personal recommendation tonight would be our Del Maguey Espadín — it's smoky but not overwhelming, with notes of dried fruit and leather. Or if you're feeling adventurous, our tobalá is wild-harvested; it takes 15 years for that plant to mature — you're tasting 15 years of Oaxacan highland sun in one sip."</p>
+  </div>
+
+  <h4 style="margin-bottom: 6px;">🌶️ Chiles en Nogada Seasonal Reveal Script (Sep–Nov)</h4>
+  <div class="script-box">
+    <div class="label">Server Script — Chiles en Nogada Seasonal Announce</div>
+    <p>"I have wonderful news — our chiles en nogada are on the menu tonight. This dish is only available for six weeks a year, when fresh walnuts come into season in the Mexican highlands. The dish represents the Mexican flag: the green of parsley, the white of the walnut cream nogada, and the red of fresh pomegranate. It was first served on September 16th, 1821 — Mexican Independence Day — to honor Agustín de Iturbide. We only prepare twelve portions per evening. Shall I put one in for you?"</p>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 9: OPS — DAILY PREP + STAFF + RETENTION + P&L -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 9 · OPERATIONS</div>
+
+  <h2>Daily Prep Schedule</h2>
+  <table style="margin-bottom:20px;">
+    <thead><tr><th>Time</th><th>Task</th><th>Responsible</th><th>Priority</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>8:00 AM</td><td>Mole negro check — stir, taste, adjust seasoning</td><td>Sous Chef</td><td>🔴 Critical</td><td>Made Sun/Wed; hold at 140°F+</td></tr>
+      <tr><td>8:30 AM</td><td>Masa grind / hydration; tortilla test press</td><td>Line Cook I</td><td>🔴 Critical</td><td>Test texture at 9AM before service</td></tr>
+      <tr><td>9:00 AM</td><td>Braised meats check (barbacoa, birria, cochinita)</td><td>Sous Chef</td><td>🔴 Critical</td><td>Cook overnight if needed; portion for service</td></tr>
+      <tr><td>9:30 AM</td><td>Salsas batch: roja, verde, macha, chipotle crema</td><td>Line Cook II</td><td>🟠 High</td><td>6 salsas daily; label with time/date</td></tr>
+      <tr><td>10:00 AM</td><td>Avocado quality check; guacamole mise en place</td><td>Line Cook I</td><td>🟠 High</td><td>Pre-portion; lime-treat for service</td></tr>
+      <tr><td>10:30 AM</td><td>Fish delivery inspection; halibut for ceviche/aguachile</td><td>Exec Chef / Sous</td><td>🔴 Critical</td><td>Reject if not sushi-grade; call backup supplier</td></tr>
+      <tr><td>11:00 AM</td><td>Pickles: red onion, jalapeños, carrots, tomatillos</td><td>Prep Cook</td><td>🟡 Medium</td><td>Rotate FIFO; 48h brine minimum</td></tr>
+      <tr><td>12:00 PM</td><td>Dessert station setup; churro dough, tres leches portion</td><td>Pastry / Line</td><td>🟡 Medium</td><td>Ice cream scoop training; churro oil fresh</td></tr>
+      <tr><td>2:00 PM</td><td>Staff meal + service briefing</td><td>All Staff</td><td>🟠 High</td><td>Chef tastes all components; 86 list confirmed</td></tr>
+      <tr><td>3:00 PM</td><td>Mezcal list update; sommelier/server mezcal tasting</td><td>FOH Manager</td><td>🟡 Medium</td><td>Feature bottle of the week; server quiz</td></tr>
+      <tr><td>4:30 PM</td><td>Final line check; temps, labeling, portion weights</td><td>Exec Chef</td><td>🔴 Critical</td><td>Sign off before doors open at 5PM</td></tr>
+      <tr><td>5:00 PM</td><td>Doors open. First table greeted within 90 seconds.</td><td>FOH Lead</td><td>🔴 Critical</td><td>Guacamole stations ready; mezcal list at bar</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gold-bar"></div>
+  <h2>Staff Forecast — 75-Seat Dinner Service</h2>
+  <div class="two-col" style="margin-bottom:20px;">
+    <table>
+      <thead><tr><th>Role</th><th>Count</th><th>Hourly/Salary</th><th>Weekly Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Executive Chef</td><td>1</td><td>$90K salary</td><td>$1,731</td></tr>
+        <tr><td>Sous Chef</td><td>1</td><td>$65K salary</td><td>$1,250</td></tr>
+        <tr><td>Line Cook I (Mole/Braise)</td><td>2</td><td>$22/hr</td><td>$2,640</td></tr>
+        <tr><td>Line Cook II (Comal/Grill)</td><td>2</td><td>$20/hr</td><td>$2,400</td></tr>
+        <tr><td>Prep Cook</td><td>2</td><td>$17/hr</td><td>$2,040</td></tr>
+        <tr><td>Dishwasher / Porter</td><td>2</td><td>$16/hr</td><td>$1,920</td></tr>
+        <tr><td><strong>BOH Total</strong></td><td><strong>10</strong></td><td></td><td><strong>$11,981</strong></td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead><tr><th>Role</th><th>Count</th><th>Hourly + Tips</th><th>Weekly Cost</th></tr></thead>
+      <tbody>
+        <tr><td>FOH Manager / Sommelier</td><td>1</td><td>$55K salary</td><td>$1,058</td></tr>
+        <tr><td>Lead Server</td><td>2</td><td>$10/hr + tips</td><td>$720</td></tr>
+        <tr><td>Server</td><td>4</td><td>$10/hr + tips</td><td>$1,440</td></tr>
+        <tr><td>Busser / Food Runner</td><td>3</td><td>$14/hr</td><td>$2,520</td></tr>
+        <tr><td>Bartender</td><td>2</td><td>$12/hr + tips</td><td>$864</td></tr>
+        <tr><td>Host</td><td>1</td><td>$18/hr</td><td>$432</td></tr>
+        <tr><td><strong>FOH Total</strong></td><td><strong>13</strong></td><td></td><td><strong>$7,034</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip-box"><strong>📊 Total Weekly Labor:</strong> ~$19,015 | Annualized: ~$988K | As % of $70 avg × 75 seats × 6 nights × 2 turns = $4.7M revenue → Labor %: ~21%. Add tips in full-cost calculation. NYC minimum wage: $16/hr (2025).</div>
+
+  <div class="gold-bar"></div>
+  <h2>Customer Retention System</h2>
+  <div class="three-col" style="margin-bottom:20px;">
+    <div class="info-box">
+      <h4>📱 Digital</h4>
+      <ul style="font-size:12px; padding-left:14px; line-height:1.9;">
+        <li>OpenTable/Resy — require email at booking</li>
+        <li>Monthly newsletter: seasonal specials, mezcal education</li>
+        <li>Instagram: daily fire/comal content + plating</li>
+        <li>Google review protocol: QR code on check</li>
+        <li>SMS birthday promo: 20% off month of birthday</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🤝 In-Person</h4>
+      <ul style="font-size:12px; padding-left:14px; line-height:1.9;">
+        <li>Comp mezcal taste at bar for 3rd visit regulars</li>
+        <li>Seasonal chiles en nogada first-announcement list</li>
+        <li>Chef's counter (4 seats): weekly chef's menu experience</li>
+        <li>Molcajete as takeaway: sell them ($45) for brand loyalty</li>
+        <li>Mezcal club: quarterly flight events, $85/person</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🎯 Loyalty Metrics</h4>
+      <ul style="font-size:12px; padding-left:14px; line-height:1.9;">
+        <li>Target: 40% repeat diners within 90 days</li>
+        <li>Avg return visit frequency: 4x/year</li>
+        <li>Lifetime value target: $1,200/guest/year</li>
+        <li>Track: OpenTable visit history + spend</li>
+        <li>Wow moment: handwritten note from Chef on 5th visit</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gold-bar"></div>
+  <h2>P&L Model — 75-Seat Modern Mexican, NYC Dinner</h2>
+  <table style="margin-bottom:16px;">
+    <thead><tr><th>Category</th><th>Assumption</th><th>Monthly</th><th>Annual</th><th>% Revenue</th></tr></thead>
+    <tbody>
+      <tr><td colspan="5" style="background:#F5F0E8; font-weight:700; color:var(--accent);">REVENUE</td></tr>
+      <tr><td>Dinner Covers (75 seats × 2 turns × 6 nights × 4.3 wks)</td><td>3,870 covers/mo</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Food Revenue ($70 avg spend × 70% food split)</td><td>$49 food/cover</td><td>$189,630</td><td>$2,275,560</td><td>70%</td></tr>
+      <tr><td>Beverage Revenue ($70 avg spend × 30% bev split)</td><td>$21 bev/cover</td><td>$81,270</td><td>$975,240</td><td>30%</td></tr>
+      <tr><td><strong>TOTAL REVENUE</strong></td><td>$70/cover</td><td><strong>$270,900</strong></td><td><strong>$3,250,800</strong></td><td><strong>100%</strong></td></tr>
+      <tr><td colspan="5" style="background:#F5F0E8; font-weight:700; color:var(--accent);">COST OF GOODS SOLD</td></tr>
+      <tr><td>Food Cost (30% of food revenue)</td><td>30%</td><td>$56,889</td><td>$682,668</td><td>21%</td></tr>
+      <tr><td>Beverage Cost (22% of bev revenue)</td><td>22%</td><td>$17,879</td><td>$214,553</td><td>6.6%</td></tr>
+      <tr><td><strong>Total COGS</strong></td><td>27.3%</td><td><strong>$74,768</strong></td><td><strong>$897,221</strong></td><td><strong>27.6%</strong></td></tr>
+      <tr><td colspan="5" style="background:#F5F0E8; font-weight:700; color:var(--accent);">OPERATING EXPENSES</td></tr>
+      <tr><td>Labor (BOH + FOH, incl. benefits)</td><td>30%</td><td>$81,270</td><td>$975,240</td><td>30%</td></tr>
+      <tr><td>Rent (NYC prime location estimate)</td><td>—</td><td>$28,000</td><td>$336,000</td><td>10.3%</td></tr>
+      <tr><td>Utilities (gas/electric/water)</td><td>—</td><td>$8,500</td><td>$102,000</td><td>3.1%</td></tr>
+      <tr><td>Marketing &amp; PR</td><td>—</td><td>$4,500</td><td>$54,000</td><td>1.7%</td></tr>
+      <tr><td>Supplies &amp; Linens</td><td>—</td><td>$3,200</td><td>$38,400</td><td>1.2%</td></tr>
+      <tr><td>Insurance &amp; Permits</td><td>—</td><td>$2,800</td><td>$33,600</td><td>1.0%</td></tr>
+      <tr><td>Wood, fuel, comal maintenance</td><td>—</td><td>$1,500</td><td>$18,000</td><td>0.6%</td></tr>
+      <tr><td><strong>Total Operating Expenses</strong></td><td>—</td><td><strong>$129,770</strong></td><td><strong>$1,557,240</strong></td><td><strong>47.9%</strong></td></tr>
+      <tr><td colspan="5" style="background:#FFF8EC; font-weight:700;">EBITDA</td></tr>
+      <tr><td><strong>EBITDA</strong></td><td>—</td><td><strong>$66,362</strong></td><td><strong>$796,339</strong></td><td><strong>24.5%</strong></td></tr>
+      <tr><td>Depreciation / Amortization</td><td>—</td><td>$8,000</td><td>$96,000</td><td>3.0%</td></tr>
+      <tr><td><strong>Net Operating Income</strong></td><td>—</td><td><strong>$58,362</strong></td><td><strong>$700,339</strong></td><td><strong>21.5%</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="tip-box"><strong>📈 Key Levers:</strong> Mezcal upsell (+$8/cover = +$37K/year). Tasting menu Thursdays (30 covers × $95 = +$185K/year). Private dining room buyouts (10x/year × $8,000 = +$80K). Chiles en nogada scarcity pricing ($52 vs $38 avg main = +$4/cover Sept–Nov).</div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 10: FINAL PAGE — 22-TOOL BUNDLE + CLOSING -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-num">PAGE 10 · TOOLS + RESOURCES</div>
+
+  <h2>The KitchenFounder 22-Tool Bundle</h2>
+  <p class="section-intro">Every KitchenFounder guide ships with the 22-Tool Bundle — a complete operational toolkit covering everything from opening day checklists to year-three growth playbooks.</p>
+
+  <div class="three-col" style="margin-bottom: 24px;">
+    <div class="info-box">
+      <h4>📋 Planning Tools (1–7)</h4>
+      <ol style="font-size:12px; padding-left:16px; line-height:2.1;">
+        <li>Concept validation scorecard</li>
+        <li>Location scout checklist (NYC-specific)</li>
+        <li>Pre-opening timeline (180-day)</li>
+        <li>Liquor license roadmap (NYC SLA)</li>
+        <li>Health dept. inspection prep guide</li>
+        <li>Kitchen equipment procurement list</li>
+        <li>Opening week staff training framework</li>
+      </ol>
+    </div>
+    <div class="info-box">
+      <h4>💰 Financial Tools (8–14)</h4>
+      <ol start="8" style="font-size:12px; padding-left:16px; line-height:2.1;">
+        <li>Full P&L model (editable Excel)</li>
+        <li>Menu engineering matrix</li>
+        <li>Food cost calculator (per recipe)</li>
+        <li>Labor scheduling optimizer</li>
+        <li>Break-even analysis calculator</li>
+        <li>Investor pitch deck template</li>
+        <li>Cash flow forecasting tool (12-month)</li>
+      </ol>
+    </div>
+    <div class="info-box">
+      <h4>🎯 Operations Tools (15–22)</h4>
+      <ol start="15" style="font-size:12px; padding-left:16px; line-height:2.1;">
+        <li>Daily prep schedule template</li>
+        <li>HACCP temperature log sheets</li>
+        <li>Supplier negotiation playbook</li>
+        <li>Staff performance review system</li>
+        <li>Customer complaint resolution guide</li>
+        <li>Social media content calendar (90-day)</li>
+        <li>Press outreach template (NYC food media)</li>
+        <li>Year-1 → Year-3 growth roadmap</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="gold-bar"></div>
+
+  <h2>Quick Reference — Key Numbers</h2>
+  <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px;">
+    <div class="highlight-stat info-box"><div class="num">75</div><div class="label">Seats</div></div>
+    <div class="highlight-stat info-box"><div class="num">$70</div><div class="label">Avg Spend</div></div>
+    <div class="highlight-stat info-box"><div class="num">28%</div><div class="label">Food Cost Target</div></div>
+    <div class="highlight-stat info-box"><div class="num">30%</div><div class="label">Labor Target</div></div>
+    <div class="highlight-stat info-box"><div class="num">$3.25M</div><div class="label">Annual Revenue</div></div>
+    <div class="highlight-stat info-box"><div class="num">21%</div><div class="label">Net Operating</div></div>
+  </div>
+
+  <h2>Supplier Recommendations — NYC 2025</h2>
+  <div class="two-col" style="margin-bottom: 20px;">
+    <table>
+      <thead><tr><th>Category</th><th>Supplier</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Heirloom Masa</td><td>Masienda (masienda.com)</td><td>Gold standard; ships nationwide; 30+ varieties</td></tr>
+        <tr><td>Dried Chiles</td><td>Rancho Gordo; NYC Latin markets</td><td>La Marqueta, Fordham Road (Bronx) for bulk</td></tr>
+        <tr><td>Avocados</td><td>Sysco / Gordon Food Service</td><td>Order ripe-on-delivery; hold at 55°F</td></tr>
+        <tr><td>Heritage Chicken</td><td>D'Artagnan (NY-based)</td><td>Pastured; better flavor for mole applications</td></tr>
+        <tr><td>Sushi-Grade Fish</td><td>True World Foods NYC</td><td>Daily delivery; halibut, tuna, sea bass</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead><tr><th>Category</th><th>Supplier</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Mezcal</td><td>Boutique Spirits; T. Edwards Wines</td><td>Both strong on artisanal Oaxacan producers</td></tr>
+        <tr><td>Mexican Cheese</td><td>V&amp;V Supremo; Garcia Foods</td><td>Cotija, queso fresco, requeson, quesillo</td></tr>
+        <tr><td>Chocolate</td><td>Taza Chocolate; Valrhona 70%</td><td>Stone-ground Taza for authentic mole negro</td></tr>
+        <tr><td>Banana Leaf</td><td>International Grocery (Jackson Hts)</td><td>Frozen; blanch before use; order weekly</td></tr>
+        <tr><td>Wood (Mesquite)</td><td>Cutting Edge Firewood (ships)</td><td>Food-grade only; 15–20% moisture content</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #5C1A00, #3A0E00); color: #F5E6D0; border-radius: 10px; padding: 28px 32px; margin: 20px 0; text-align: center;">
+    <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #C8922A; margin-bottom: 8px;">KitchenFounder Guide #37</div>
+    <div style="font-size: 16px; margin-bottom: 12px; font-style: italic; color: #E8C88A;">Modern Mexican — NYC Dinner Standard</div>
+    <div style="height: 1px; background: rgba(200,146,42,0.3); margin: 14px auto; max-width: 400px;"></div>
+    <div style="font-size: 12px; color: #C8A878; line-height: 2; max-width: 600px; margin: 0 auto;">
+      This guide covers 20 recipes with full food cost analysis · NYC benchmark comparison of 10 restaurants · Complete P&L model for 75-seat dinner service · Kitchen design for wood-fire and comal stations · Service scripts for signature moments · Daily prep schedule · Staff forecast · Customer retention system · 22-tool operational bundle
+    </div>
+    <div style="margin-top: 16px; font-size: 11px; color: #A08060; letter-spacing: 0.1em;">
+      v7 · US Market Prices 2025 · kitchenfounder.com
+    </div>
+  </div>
+
+  <div style="border: 2px solid var(--gold); border-radius: 6px; padding: 14px 18px; margin: 16px 0; background: #FFF8EC;">
+    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 6px;">📌 Important Notes for the Operator</div>
+    <ul style="font-size: 12px; line-height: 1.9; padding-left: 16px; color: var(--text);">
+      <li>All food costs are based on <strong>US market prices Q1 2025</strong>. Recalculate quarterly as commodity prices shift.</li>
+      <li>NYC-specific: Confirm all liquor licensing (SLA), fire safety (FDNY), and DOH health permits before opening.</li>
+      <li>Wood-burning equipment requires <strong>NYC DOB approval</strong> and Class II ventilation systems — budget $40–80K for installation.</li>
+      <li>Chiles en nogada is a <strong>seasonal dish only</strong> — September to November when fresh walnuts are available. Do not substitute with dried walnuts.</li>
+      <li>Mole negro is your restaurant's identity — never compromise on time or ingredients. If you can't execute it properly, remove it rather than serve an inferior version.</li>
+      <li>Sushi-grade fish protocols for ceviche and aguachile must follow <strong>NYC DOH raw fish guidelines</strong> — consult your health consultant at opening.</li>
+    </ul>
+  </div>
+
+  <div class="footer-static">
+    <span>KitchenFounder · Guide #37</span>
+    <span>Modern Mexican · NYC Dinner Standard</span>
+  </div>
+</div>
+
+</body>
+</html>

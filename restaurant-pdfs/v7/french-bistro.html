@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #31 — French Bistro NYC Dinner Standard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#FAFAF8;--text:#1C1C1C;--navy:#1A3A5C;--gold:#C8922A;
+    --light:#F0EDE8;--mid:#6B6B6B;--white:#FFFFFF;
+    --red:#8B1A1A;--green:#2A5C1A;
+  }
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.6;}
+  .page{width:100%;max-width:960px;margin:0 auto;padding:40px 48px;min-height:100vh;position:relative;page-break-after:always;}
+  .page-footer{position:absolute;bottom:20px;left:48px;right:48px;display:flex;justify-content:space-between;
+    font-size:10px;color:var(--mid);border-top:1px solid #ddd;padding-top:8px;}
+
+  /* COVER PAGE */
+  .cover{background:linear-gradient(160deg,#0A1F35 0%,#1A3A5C 50%,#0D2840 100%);
+    color:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100vh;text-align:center;padding:60px 48px;}
+  .cover-badge{background:var(--gold);color:#fff;font-size:10px;font-weight:700;letter-spacing:3px;
+    text-transform:uppercase;padding:6px 18px;border-radius:2px;margin-bottom:24px;display:inline-block;}
+  .cover-sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.55);
+    margin-bottom:12px;font-family:'Inter',sans-serif;font-weight:300;}
+  .cover h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:900;line-height:1.05;
+    margin-bottom:16px;letter-spacing:-1px;}
+  .cover h1 em{color:var(--gold);font-style:normal;}
+  .cover-rule{width:80px;height:3px;background:var(--gold);margin:24px auto;}
+  .cover-desc{font-size:14px;color:rgba(255,255,255,0.7);max-width:480px;line-height:1.7;margin-bottom:32px;}
+  .cover-meta{display:flex;gap:40px;justify-content:center;margin-top:16px;}
+  .cover-meta-item{text-align:center;}
+  .cover-meta-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);font-weight:700;}
+  .cover-meta-item .lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+  .cover-bistro-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
+  .cover-bistro-tag{border:1px solid rgba(200,146,42,0.4);padding:4px 12px;font-size:9px;letter-spacing:2px;
+    text-transform:uppercase;color:rgba(255,255,255,0.6);border-radius:2px;}
+  .cover-version{position:absolute;top:28px;right:48px;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2px;}
+  .cover-guide-num{position:absolute;top:28px;left:48px;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2px;}
+  .fleur{font-size:36px;margin-bottom:8px;opacity:0.7;}
+
+  /* SHARED COMPONENTS */
+  h2.section-title{font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);margin-bottom:6px;font-weight:700;}
+  .section-rule{width:48px;height:3px;background:var(--gold);margin-bottom:20px;}
+  .section-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+  .tag-navy{background:var(--navy);color:#fff;}
+  .tag-gold{background:var(--gold);color:#fff;}
+  .tag-red{background:var(--red);color:#fff;}
+  .tag-green{background:var(--green);color:#fff;}
+
+  /* RECIPE CARD */
+  .recipe-card{background:#fff;border:1px solid #E8E4DE;border-radius:4px;padding:24px;margin-bottom:24px;
+    page-break-inside:avoid;break-inside:avoid;}
+  .recipe-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+  .recipe-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);font-weight:700;}
+  .recipe-subtitle{font-size:11px;color:var(--mid);margin-top:2px;font-style:italic;}
+  .recipe-badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+  .temp-badge{background:var(--navy);color:#fff;padding:3px 10px;border-radius:12px;font-size:9px;font-weight:700;}
+  .cost-badge{background:var(--gold);color:#fff;padding:3px 10px;border-radius:12px;font-size:9px;font-weight:700;}
+
+  .ing-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11px;}
+  .ing-table th{background:var(--navy);color:#fff;padding:5px 8px;text-align:left;font-weight:600;font-size:10px;letter-spacing:0.5px;}
+  .ing-table td{padding:4px 8px;border-bottom:1px solid #F0EDE8;}
+  .ing-table tr:nth-child(even) td{background:#FAFAF8;}
+  .ing-table .cost-col{text-align:right;color:var(--gold);font-weight:600;}
+
+  .method-steps{margin:12px 0;}
+  .method-steps ol{padding-left:18px;}
+  .method-steps li{margin-bottom:5px;font-size:11px;line-height:1.5;}
+  .method-steps li strong{color:var(--navy);}
+
+  .chef-tip{background:linear-gradient(135deg,#F7F3EC,#FDF9F2);border-left:3px solid var(--gold);
+    padding:8px 12px;margin-top:10px;font-size:11px;border-radius:0 3px 3px 0;}
+  .chef-tip strong{color:var(--gold);}
+
+  .allergen-row{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap;}
+  .allergen-row .label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid);}
+  .allergen-pill{background:#FFF0F0;border:1px solid #FFD0D0;color:var(--red);padding:2px 8px;
+    border-radius:10px;font-size:9px;font-weight:600;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .info-box{background:#fff;border:1px solid #E8E4DE;border-radius:4px;padding:16px;}
+  .info-box h4{font-family:'Playfair Display',serif;font-size:14px;color:var(--navy);margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-version">v7</div>
+  <div class="cover-guide-num">Guide #31</div>
+  <div class="fleur">⚜</div>
+  <div class="cover-badge">KitchenFounder</div>
+  <div class="cover-sub">Complete Restaurant Operations Guide</div>
+  <h1>French<br><em>Bistro</em></h1>
+  <div class="cover-rule"></div>
+  <div class="cover-desc">NYC Dinner Standard · Full recipe bible, service scripts, P&amp;L model, and operational systems for running a profitable French bistro in New York City.</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="num">20</div><div class="lbl">Recipes</div></div>
+    <div class="cover-meta-item"><div class="num">10</div><div class="lbl">NYC Benchmarks</div></div>
+    <div class="cover-meta-item"><div class="num">70</div><div class="lbl">Seat Model</div></div>
+    <div class="cover-meta-item"><div class="num">$75</div><div class="lbl">Avg Spend</div></div>
+  </div>
+  <div class="cover-bistro-row">
+    <span class="cover-bistro-tag">Balthazar</span>
+    <span class="cover-bistro-tag">Pastis</span>
+    <span class="cover-bistro-tag">Le Bernardin</span>
+    <span class="cover-bistro-tag">Buvette</span>
+    <span class="cover-bistro-tag">Raoul's</span>
+    <span class="cover-bistro-tag">L'Express</span>
+    <span class="cover-bistro-tag">Felix</span>
+    <span class="cover-bistro-tag">Lucien</span>
+    <span class="cover-bistro-tag">Montmartre</span>
+    <span class="cover-bistro-tag">Bar Boulud</span>
+  </div>
+</div>
+<!-- PAGE 2: GUIDE BIBLE -->
+<div class="page">
+  <div class="section-label">Page 2 of 10</div>
+  <h2 class="section-title">The Guide Bible</h2>
+  <div class="section-rule"></div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="info-box">
+      <h4>⚜ Concept DNA</h4>
+      <p style="font-size:11px;line-height:1.7;color:var(--mid);">A French bistro is not a brasserie, not a café, not a gastronomic restaurant. It is a neighbourhood room — intimate, a little worn, deeply hospitable. Think zinc bar, paper tablecloths, handwritten specials, a carafe of Côtes du Rhône at 7pm. The food is honest: butter-rich, technique-perfect, never overworked. NYC's best bistros (Balthazar, Pastis, Buvette) succeed because they sell a feeling before they sell a meal.</p>
+    </div>
+    <div class="info-box">
+      <h4>🎯 Target Guest</h4>
+      <ul style="font-size:11px;line-height:1.9;color:var(--mid);padding-left:14px;">
+        <li>Age 28–55, culturally aware, medium-high income</li>
+        <li>Date nights, business dinners, celebratory meals</li>
+        <li>Values authenticity over Instagram aesthetics</li>
+        <li>Spends $65–$95 per head including wine</li>
+        <li>Returns 3–6x per year if experience is right</li>
+        <li>Responds to French wine knowledge from staff</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="three-col" style="margin-bottom:20px;">
+    <div class="info-box">
+      <h4>📐 Format Rules</h4>
+      <ul style="font-size:11px;line-height:1.8;color:var(--mid);padding-left:14px;">
+        <li>70 seats maximum — intimacy is the product</li>
+        <li>Tables of 2 and 4 only; no large banquettes</li>
+        <li>Bar seating: 8–10 stools minimum</li>
+        <li>Turn tables max 1.5x per evening service</li>
+        <li>Reservations: 60% pre-booked, 40% walk-in</li>
+        <li>Noise level: convivial, never loud</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🍷 Beverage Philosophy</h4>
+      <ul style="font-size:11px;line-height:1.8;color:var(--mid);padding-left:14px;">
+        <li>Wine drives 30–35% of total revenue</li>
+        <li>French regions: Burgundy, Bordeaux, Rhône, Loire</li>
+        <li>House carafe (500ml) at $18–22 — key upsell</li>
+        <li>Aperitif: Kir, Pastis, Ricard, French 75</li>
+        <li>Digestif: Calvados, Armagnac, Chartreuse</li>
+        <li>Non-alcoholic: Perrier, Orangina, Limonade</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>💰 Economics at a Glance</h4>
+      <ul style="font-size:11px;line-height:1.8;color:var(--mid);padding-left:14px;">
+        <li>Food cost target: 28–32%</li>
+        <li>Beverage cost target: 22–26%</li>
+        <li>Labour cost target: 30–34%</li>
+        <li>Rent target: max 8–10% of revenue</li>
+        <li>EBITDA target: 12–18%</li>
+        <li>Break-even: ~$42K/week gross</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-bottom:20px;">
+    <h4>📋 Menu Architecture — The French Bistro Formula</h4>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:10px;">
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:3px;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:700;">6</div>
+        <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);">Starters<br>$14–$24</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:3px;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:700;">10</div>
+        <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);">Mains<br>$28–$58</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:3px;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:700;">4+</div>
+        <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);">Desserts<br>$12–$18</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:3px;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:700;">3–4</div>
+        <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);">Cheese<br>$18–$28</div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--bg);border-radius:3px;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:700;">8+</div>
+        <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);">Drinks<br>$12–$22</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h4>🏆 The 10 NYC Benchmark Restaurants You Must Know</h4>
+    <table style="width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;">
+      <thead>
+        <tr style="background:var(--navy);color:#fff;">
+          <th style="padding:6px 10px;text-align:left;">Restaurant</th>
+          <th style="padding:6px 10px;text-align:left;">Neighbourhood</th>
+          <th style="padding:6px 10px;text-align:left;">DNA / Signature</th>
+          <th style="padding:6px 10px;text-align:right;">Avg Check</th>
+          <th style="padding:6px 10px;text-align:left;">Lesson</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:5px 10px;border-bottom:1px solid #eee;">Balthazar</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">SoHo</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Grand brasserie energy, raw bar</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$95</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Scale + soul = institution</td></tr>
+        <tr style="background:#FAFAF8;"><td style="padding:5px 10px;border-bottom:1px solid #eee;">Pastis</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Meatpacking</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Steak frites, zinc bar, scene</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$88</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Ambiance is half the plate</td></tr>
+        <tr><td style="padding:5px 10px;border-bottom:1px solid #eee;">Le Bernardin</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Midtown W</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">3-star seafood temple, Sole Meunière</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$220</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Precision = trust</td></tr>
+        <tr style="background:#FAFAF8;"><td style="padding:5px 10px;border-bottom:1px solid #eee;">Buvette</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">West Village</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Gastrothèque, tiny & intimate</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$68</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Small format, high desire</td></tr>
+        <tr><td style="padding:5px 10px;border-bottom:1px solid #eee;">Raoul's</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">SoHo</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Dark, romantic, steak au poivre</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$82</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Mystery sells tables</td></tr>
+        <tr style="background:#FAFAF8;"><td style="padding:5px 10px;border-bottom:1px solid #eee;">L'Express</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Flatiron</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">24-hour bistro, moules, croque</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$52</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Accessibility = loyalty</td></tr>
+        <tr><td style="padding:5px 10px;border-bottom:1px solid #eee;">Felix</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">SoHo</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Classic bistro menu, terrace</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$72</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Consistency builds regulars</td></tr>
+        <tr style="background:#FAFAF8;"><td style="padding:5px 10px;border-bottom:1px solid #eee;">Lucien</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">East Village</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Neighbourhood gem, duck confit</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$65</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Neighbourhood trust = word of mouth</td></tr>
+        <tr><td style="padding:5px 10px;border-bottom:1px solid #eee;">Montmartre</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Chelsea</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Market-driven, natural wine</td><td style="padding:5px 10px;border-bottom:1px solid #eee;text-align:right;">$78</td><td style="padding:5px 10px;border-bottom:1px solid #eee;">Modern bistro = seasonal edge</td></tr>
+        <tr style="background:#FAFAF8;"><td style="padding:5px 10px;">Bar Boulud</td><td style="padding:5px 10px;">UWS</td><td style="padding:5px 10px;">Charcuterie, Lyonnaise cuisine</td><td style="padding:5px 10px;text-align:right;">$90</td><td style="padding:5px 10px;">Chef name carries premium</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 3: STARTERS RECIPES -->
+<div class="page">
+  <div class="section-label">Page 3 of 10 — Starters</div>
+  <h2 class="section-title">Les Entrées — Starters</h2>
+  <div class="section-rule"></div>
+
+  <!-- RECIPE 1: FRENCH ONION SOUP -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🧅 Soupe à l'Oignon Gratinée</div>
+        <div class="recipe-subtitle">French Onion Soup — tableside Gruyère crust · Serves 1 · Signature</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 180°F / 82°C serve</span>
+        <span class="cost-badge">Food Cost: 22%</span>
+        <span class="tag tag-navy">Vegetarian</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty (1 portion)</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Yellow onions, thinly sliced</td><td>360g / 3 medium</td><td>$0.80/lb</td><td class="cost-col">$0.64</td></tr>
+        <tr><td>Unsalted butter</td><td>30g</td><td>$5.20/lb</td><td class="cost-col">$0.34</td></tr>
+        <tr><td>Dry sherry or Cognac</td><td>30ml</td><td>$18/750ml</td><td class="cost-col">$0.72</td></tr>
+        <tr><td>Beef stock (house-made)</td><td>350ml</td><td>$1.20/qt</td><td class="cost-col">$0.44</td></tr>
+        <tr><td>Thyme sprig + bay leaf</td><td>1 each</td><td>$2.50/bunch</td><td class="cost-col">$0.10</td></tr>
+        <tr><td>Baguette crouton (2 slices)</td><td>40g</td><td>$3.50/loaf</td><td class="cost-col">$0.18</td></tr>
+        <tr><td>Gruyère, grated</td><td>80g</td><td>$12.50/lb</td><td class="cost-col">$2.20</td></tr>
+        <tr><td>Salt, pepper, Worcestershire</td><td>to taste</td><td>—</td><td class="cost-col">$0.08</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$4.70</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$21.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Caramelise:</strong> Melt butter over medium-low. Add sliced onions + pinch of salt. Cook 45–55 min, stirring every 5 min, until deep amber and jammy. Do not rush — colour = flavour.</li>
+      <li><strong>Deglaze:</strong> Add sherry/Cognac, scrape fond. Add stock, thyme, bay. Simmer 20 min. Season assertively with salt, pepper, Worcestershire.</li>
+      <li><strong>Assemble:</strong> Pour into oven-safe crock. Float 2 croutons. Pile Gruyère generously — edges should overhang crock.</li>
+      <li><strong>Gratinée:</strong> Broil on high 3–4 min until cheese bubbles, blisters, and turns golden-brown at edges. Serve immediately in the hot crock.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> The tableside ceremony matters — place the crock on a small wooden board, warn guests it's extremely hot, and let them lift the cheese crust themselves. That tactile moment is why people order it again.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Gluten</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Sulphites</span></div>
+  </div>
+
+  <!-- RECIPE 2: MOULES MARINIÈRES -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🦪 Moules Marinières</div>
+        <div class="recipe-subtitle">Steamed Mussels, white wine, shallot, parsley · Serves 1 starter or 1 main (adjust qty)</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 Serve immediately</span>
+        <span class="cost-badge">Food Cost: 26%</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty (starter)</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>PEI mussels, cleaned</td><td>400g</td><td>$4.50/lb</td><td class="cost-col">$3.97</td></tr>
+        <tr><td>Shallots, minced</td><td>40g (2 medium)</td><td>$2.80/lb</td><td class="cost-col">$0.25</td></tr>
+        <tr><td>Garlic cloves, sliced</td><td>2 cloves</td><td>$0.60/head</td><td class="cost-col">$0.10</td></tr>
+        <tr><td>Dry white wine (Muscadet)</td><td>120ml</td><td>$10/750ml</td><td class="cost-col">$1.60</td></tr>
+        <tr><td>Unsalted butter</td><td>40g</td><td>$5.20/lb</td><td class="cost-col">$0.46</td></tr>
+        <tr><td>Flat-leaf parsley, chopped</td><td>10g</td><td>$1.80/bunch</td><td class="cost-col">$0.12</td></tr>
+        <tr><td>Crème fraîche (optional finish)</td><td>20ml</td><td>$4.50/8oz</td><td class="cost-col">$0.23</td></tr>
+        <tr><td>Baguette, grilled (2 slices)</td><td>40g</td><td>$3.50/loaf</td><td class="cost-col">$0.18</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$6.91</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price (starter)</td><td class="cost-col">$26.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Purge:</strong> Soak mussels in cold salted water 20 min. Debeard and discard any open mussels that don't close when tapped.</li>
+      <li><strong>Aromatics:</strong> In a wide heavy pot over high heat, melt butter. Sauté shallots 2 min. Add garlic 30 sec.</li>
+      <li><strong>Steam:</strong> Add wine and mussels. Cover tightly. Cook 3–4 min, shaking pan once, until all mussels open.</li>
+      <li><strong>Finish:</strong> Swirl in cold butter, add crème fraîche if using, shower with parsley. Discard any mussels that didn't open.</li>
+      <li><strong>Serve:</strong> Pour into warm bowl with all the broth. Grilled baguette on the side for soaking.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> Order mussels daily — they must be live at delivery. The pot liquor (broth) is the dish. Train servers to tell guests "use the shell as a spoon."</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Shellfish</span><span class="allergen-pill">Gluten</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Sulphites</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 4: STARTERS CONTINUED -->
+<div class="page">
+  <div class="section-label">Page 4 of 10 — Starters Continued</div>
+  <h2 class="section-title">Les Entrées — Continued</h2>
+  <div class="section-rule"></div>
+
+  <!-- RECIPE 3: ESCARGOTS -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🐌 Escargots de Bourgogne</div>
+        <div class="recipe-subtitle">Burgundy Snails in Garlic-Herb Butter · 6 pieces per portion</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 Bake 200°C / 400°F</span>
+        <span class="cost-badge">Food Cost: 24%</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Canned Burgundy snails</td><td>6 pieces</td><td>$18/can (24ct)</td><td class="cost-col">$4.50</td></tr>
+        <tr><td>Unsalted butter, softened</td><td>60g</td><td>$5.20/lb</td><td class="cost-col">$0.69</td></tr>
+        <tr><td>Garlic, minced fine</td><td>4 cloves</td><td>$0.60/head</td><td class="cost-col">$0.15</td></tr>
+        <tr><td>Flat-leaf parsley, minced</td><td>15g</td><td>$1.80/bunch</td><td class="cost-col">$0.18</td></tr>
+        <tr><td>Shallot, minced fine</td><td>10g</td><td>$2.80/lb</td><td class="cost-col">$0.06</td></tr>
+        <tr><td>Cognac</td><td>5ml</td><td>$28/750ml</td><td class="cost-col">$0.19</td></tr>
+        <tr><td>Lemon zest + sea salt</td><td>pinch each</td><td>—</td><td class="cost-col">$0.05</td></tr>
+        <tr><td>Baguette, toasted soldiers</td><td>40g</td><td>$3.50/loaf</td><td class="cost-col">$0.18</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$6.00</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$24.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Beurre d'escargot:</strong> Blend softened butter with garlic, shallot, parsley, Cognac, lemon zest, salt. Pipe or press into snail shells or escargot dish wells.</li>
+      <li><strong>Fill:</strong> Place one snail in each well. Cover generously with herb butter — it should pool around the snail.</li>
+      <li><strong>Bake:</strong> In 400°F oven 8–10 min until butter is bubbling and slightly golden. Do not over-bake — snails toughen quickly.</li>
+      <li><strong>Serve:</strong> Immediately with snail tongs, tiny fork, and plenty of toasted baguette. The butter is the sauce.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> Pre-fill shells with snails and butter early in prep. Refrigerate on escargot plates. Fire to order — from cold to table in 12 minutes. Batch-prep is your friend here.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Gluten</span><span class="allergen-pill">Sulphites</span></div>
+  </div>
+
+  <!-- RECIPE 4: SALADE NIÇOISE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🥗 Salade Niçoise</div>
+        <div class="recipe-subtitle">Seared Tuna, haricots verts, olives, soft egg, anchovy vinaigrette · Serves 1</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 Tuna: 120°F / 49°C rare</span>
+        <span class="cost-badge">Food Cost: 28%</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Sushi-grade yellowfin tuna</td><td>120g / 4oz</td><td>$22/lb</td><td class="cost-col">$5.82</td></tr>
+        <tr><td>Haricots verts, blanched</td><td>80g</td><td>$3.50/lb</td><td class="cost-col">$0.62</td></tr>
+        <tr><td>Cherry tomatoes, halved</td><td>80g</td><td>$3.80/pint</td><td class="cost-col">$0.55</td></tr>
+        <tr><td>Niçoise olives</td><td>30g</td><td>$8.50/lb</td><td class="cost-col">$0.56</td></tr>
+        <tr><td>Soft-boiled egg</td><td>1 large</td><td>$0.55/egg</td><td class="cost-col">$0.55</td></tr>
+        <tr><td>Anchovy fillets</td><td>2 fillets</td><td>$5.50/tin</td><td class="cost-col">$0.46</td></tr>
+        <tr><td>Dijon, red wine vinegar, EVOO</td><td>dressing</td><td>—</td><td class="cost-col">$0.38</td></tr>
+        <tr><td>Capers, radish, butter lettuce</td><td>garnish</td><td>—</td><td class="cost-col">$0.28</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$9.22</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$32.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Eggs:</strong> 7-min boil from room temp, ice bath, peel and halve. Yolk should be jammy-set.</li>
+      <li><strong>Tuna:</strong> Pat dry, season. Sear in very hot cast iron 45 sec per side. Rest 2 min. Slice against grain.</li>
+      <li><strong>Dressing:</strong> Whisk Dijon with red wine vinegar, add anchovy (mashed), stream in EVOO. Season aggressively.</li>
+      <li><strong>Compose:</strong> Fan tuna, arrange beans, tomatoes, olives, egg artfully. Drizzle dressing. Finish with fleur de sel.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> Never toss a Niçoise — compose it. Each element should be visible. This is a beauty dish; how it arrives at the table is part of the $32 price tag.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Fish</span><span class="allergen-pill">Eggs</span><span class="allergen-pill">Mustard</span><span class="allergen-pill">Sulphites</span></div>
+  </div>
+
+  <!-- RECIPES 5-6 COMPACT -->
+  <div class="two-col">
+    <div class="recipe-card" style="margin-bottom:0;">
+      <div class="recipe-title" style="font-size:15px;margin-bottom:4px;">🥩 Steak Tartare</div>
+      <div class="recipe-subtitle" style="margin-bottom:8px;">Hand-cut beef, capers, Dijon, raw yolk · $24</div>
+      <div style="font-size:10px;color:var(--mid);line-height:1.7;">
+        <strong>Key ingredients:</strong> 140g hand-cut beef tenderloin ($8.40), shallot, capers, cornichons, Dijon, Tabasco, Worcestershire, raw egg yolk, chives. <strong>Cost: $11.50 | FC: 27%</strong><br>
+        <strong>Method:</strong> Hand-chop beef fine (never grind), mix cold ingredients, form with ring mould, top with raw yolk tableside. Serve with gaufrette chips.<br>
+        <strong>Temp:</strong> Serve 40°F/4°C — ice bowl under plate in summer.
+      </div>
+      <div class="allergen-row" style="margin-top:8px;"><span class="allergen-pill">Eggs</span><span class="allergen-pill">Mustard</span><span class="allergen-pill">Gluten</span></div>
+    </div>
+    <div class="recipe-card" style="margin-bottom:0;">
+      <div class="recipe-title" style="font-size:15px;margin-bottom:4px;">🥧 Pâté de Campagne</div>
+      <div class="recipe-subtitle" style="margin-bottom:8px;">Country terrine, cornichons, Dijon toast · $18</div>
+      <div style="font-size:10px;color:var(--mid);line-height:1.7;">
+        <strong>Key ingredients:</strong> 100g house terrine slice ($2.20), cornichons, Dijon, toasted baguette, micro greens, fleur de sel. <strong>Cost: $4.50 | FC: 25%</strong><br>
+        <strong>Method:</strong> Terrine made weekly — pork shoulder, pork fatback, chicken livers, thyme, bay, Cognac, pink salt. Press 24h. Slice 2cm thick to order.<br>
+        <strong>Tip:</strong> Make in a 2-loaf batch Sunday; holds refrigerated 7 days. Sell it hard — it's your lowest-cost starter.
+      </div>
+      <div class="allergen-row" style="margin-top:8px;"><span class="allergen-pill">Gluten</span><span class="allergen-pill">Sulphites</span><span class="allergen-pill">Pork</span></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 5: MAINS - CLASSIC BISTRO DISHES -->
+<div class="page">
+  <div class="section-label">Page 5 of 10 — Classic Bistro Mains</div>
+  <h2 class="section-title">Les Plats — Classic Bistro Mains</h2>
+  <div class="section-rule"></div>
+
+  <!-- STEAK FRITES -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🥩 Steak Frites <span style="font-size:12px;color:var(--gold);">— Pastis DNA</span></div>
+        <div class="recipe-subtitle">Hanger steak, hand-cut frites, maître d'hôtel butter · The quintessential bistro main · Serves 1</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 135°F / 57°C medium-rare</span>
+        <span class="cost-badge">Food Cost: 31%</span>
+        <span class="tag tag-gold">Signature</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Hanger steak (onglet), trimmed</td><td>220g / 8oz</td><td>$9.50/lb</td><td class="cost-col">$4.62</td></tr>
+        <tr><td>Russet potatoes for frites</td><td>300g</td><td>$0.55/lb</td><td class="cost-col">$0.36</td></tr>
+        <tr><td>Canola oil (fry)</td><td>1L / 20 portions</td><td>$4.50/gal</td><td class="cost-col">$0.25</td></tr>
+        <tr><td>Maître d'hôtel butter</td><td>30g</td><td>$5.20/lb + herbs</td><td class="cost-col">$0.42</td></tr>
+        <tr><td>Watercress salad + dressing</td><td>30g</td><td>$2.50/bunch</td><td class="cost-col">$0.28</td></tr>
+        <tr><td>Salt, pepper, canola for sear</td><td>—</td><td>—</td><td class="cost-col">$0.06</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$5.99</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$38.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Frites (double fry):</strong> Cut potatoes 1cm batons. First fry at 325°F / 165°C for 4–5 min (cook through, no colour). Drain. Second fry at 375°F / 190°C for 90 sec until golden and crisp. Salt immediately.</li>
+      <li><strong>Steak:</strong> Bring to room temp. Season generously. Sear in ripping-hot cast iron with canola — 3 min first side, 2 min second. Rest 4 min minimum.</li>
+      <li><strong>Maître d'hôtel butter:</strong> Combine softened butter, chopped parsley, lemon juice, salt. Roll in plastic, refrigerate. Slice 2 coins per order.</li>
+      <li><strong>Plate:</strong> Slice steak against the grain. Pile frites in a tall stack beside. Float butter coins on steak. Dress watercress lightly, place alongside.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> Hanger steak is non-negotiable for bistro DNA — it has the iron, beefy flavour that makes Paris bistros iconic. If unavailable, skirt steak works. Never substitute with sirloin — the texture is wrong. Batch first-fry frites in prep, finish to order.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Dairy</span></div>
+  </div>
+
+  <!-- DUCK CONFIT -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🦆 Confit de Canard</div>
+        <div class="recipe-subtitle">Duck leg slow-cooked in its own fat, lentilles du Puy, mustard jus · Serves 1 · Lucien DNA</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 175°F / 80°C confit; 400°F finish</span>
+        <span class="cost-badge">Food Cost: 29%</span>
+        <span class="tag tag-gold">Signature</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Duck leg, cured + confit</td><td>1 leg (~380g)</td><td>$6.80/leg</td><td class="cost-col">$6.80</td></tr>
+        <tr><td>Duck fat (confit medium)</td><td>shared / amortised</td><td>$12/lb</td><td class="cost-col">$0.45</td></tr>
+        <tr><td>Lentilles du Puy</td><td>80g dry</td><td>$4.50/lb</td><td class="cost-col">$0.79</td></tr>
+        <tr><td>Lardon (smoked bacon)</td><td>30g</td><td>$6.50/lb</td><td class="cost-col">$0.43</td></tr>
+        <tr><td>Carrot, celery, shallot (mirepoix)</td><td>60g</td><td>—</td><td class="cost-col">$0.22</td></tr>
+        <tr><td>Whole-grain mustard</td><td>15g</td><td>$5.50/jar</td><td class="cost-col">$0.16</td></tr>
+        <tr><td>Duck jus + red wine</td><td>80ml</td><td>$2.50/qt</td><td class="cost-col">$0.42</td></tr>
+        <tr><td>Fresh thyme, bay, parsley</td><td>garnish</td><td>—</td><td class="cost-col">$0.08</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$9.35</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$36.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Cure (day before):</strong> Rub duck legs with salt, thyme, garlic, bay. Refrigerate 12–24 hours.</li>
+      <li><strong>Confit:</strong> Rinse legs, submerge in rendered duck fat. Cook at 175°F / 80°C for 2.5–3 hours until meat pulls from bone but doesn't fall apart. Cool in fat. Holds refrigerated 2 weeks.</li>
+      <li><strong>To order:</strong> Remove from fat. Sear skin-side down in dry pan until crackling-crisp and deep brown (5–6 min). Flip 1 min. Transfer to 400°F oven 5 min to heat through.</li>
+      <li><strong>Lentils:</strong> Simmer lentils with mirepoix and lardon 25 min. Finish with mustard and a splash of red wine. Season boldly.</li>
+      <li><strong>Plate:</strong> Mound lentils. Duck leg on top, skin side up. Sauce around with duck jus. Fresh thyme garnish.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> The crunch of that duck skin is the money moment. If the skin isn't glass-crisp, you've failed. Pat legs completely dry before searing — any moisture steams instead of crisps. Train your team: duck skin = non-negotiable.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Mustard</span><span class="allergen-pill">Sulphites</span><span class="allergen-pill">Celery</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 6: MAINS CONTINUED - BOUILLABAISSE, BOEUF, SOLE + MORE -->
+<div class="page">
+  <div class="section-label">Page 6 of 10 — Mains Continued</div>
+  <h2 class="section-title">Les Plats — Continued</h2>
+  <div class="section-rule"></div>
+
+  <!-- BOUILLABAISSE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🐟 Bouillabaisse Provençale</div>
+        <div class="recipe-subtitle">Marseille seafood stew, saffron, rouille, grilled croutons · Serves 1 · Balthazar DNA</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 Serve at 170°F / 77°C</span>
+        <span class="cost-badge">Food Cost: 33%</span>
+        <span class="tag tag-gold">Signature</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Mixed seafood (shrimp, scallop, mussels, white fish)</td><td>240g total</td><td>avg $12/lb</td><td class="cost-col">$6.35</td></tr>
+        <tr><td>Saffron threads</td><td>0.2g pinch</td><td>$14/gram</td><td class="cost-col">$2.80</td></tr>
+        <tr><td>House fish stock (fumet)</td><td>350ml</td><td>$0.80/qt</td><td class="cost-col">$0.29</td></tr>
+        <tr><td>San Marzano tomatoes, crushed</td><td>80g</td><td>$3.20/28oz can</td><td class="cost-col">$0.30</td></tr>
+        <tr><td>Fennel, leek, shallot, garlic</td><td>mirepoix 80g</td><td>—</td><td class="cost-col">$0.35</td></tr>
+        <tr><td>Pastis / Pernod</td><td>20ml</td><td>$28/750ml</td><td class="cost-col">$0.75</td></tr>
+        <tr><td>Rouille (aioli w/ saffron, cayenne)</td><td>30g</td><td>$1.20/portion</td><td class="cost-col">$1.20</td></tr>
+        <tr><td>Grilled croutons + Gruyère</td><td>2 pieces</td><td>—</td><td class="cost-col">$0.30</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$12.34</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$46.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Base (prep):</strong> Sweat fennel, leek, shallot, garlic in EVOO. Add tomatoes, saffron, Pastis. Add fish stock. Simmer 20 min. Blend smooth. Season. This is your bouillabaisse base — make in batches.</li>
+      <li><strong>To order:</strong> Bring 350ml base to boil. Add seafood in order of cooking time: white fish first (3 min), scallops (2 min), shrimp and mussels (1–2 min).</li>
+      <li><strong>Rouille:</strong> Whisk egg yolk, garlic, saffron, cayenne, lemon into aioli. Spread on croutons, float in bowl.</li>
+      <li><strong>Plate:</strong> Serve in wide warm bowl. Arrange seafood so each type is visible. Float croutons. Offer extra rouille tableside.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> Saffron cost is your variable — buy Spanish saffron in 1g vials, not Iranian threads (counterfeiting risk). Bloom in warm Pastis before adding to base for maximum colour and flavour extraction.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Shellfish</span><span class="allergen-pill">Fish</span><span class="allergen-pill">Eggs</span><span class="allergen-pill">Gluten</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Sulphites</span></div>
+  </div>
+
+  <div class="two-col">
+    <!-- BEEF BOURGUIGNON -->
+    <div class="recipe-card" style="margin-bottom:0;">
+      <div class="recipe-title" style="font-size:16px;margin-bottom:2px;">🍷 Bœuf Bourguignon</div>
+      <div class="recipe-subtitle" style="margin-bottom:8px;">Braised beef, Burgundy wine, pearl onions, mushrooms · $38</div>
+      <div style="background:var(--bg);padding:8px;border-radius:3px;margin-bottom:8px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:10px;">
+          <div><strong>Beef chuck (200g)</strong> · $4.40</div><div><strong>Burgundy wine</strong> · $2.80</div>
+          <div><strong>Pearl onions (50g)</strong> · $0.45</div><div><strong>Cremini mushrooms</strong> · $0.65</div>
+          <div><strong>Lardon/bacon</strong> · $0.42</div><div><strong>Veal stock (150ml)</strong> · $0.55</div>
+          <div><strong>Carrots, celery</strong> · $0.18</div><div><strong>Bouquet garni</strong> · $0.08</div>
+        </div>
+        <div style="margin-top:6px;padding-top:6px;border-top:1px solid #ddd;font-size:10px;font-weight:600;">Total: $9.53 · FC: 25% · Price: $38</div>
+      </div>
+      <div style="font-size:10px;color:var(--mid);line-height:1.7;">
+        <strong>Method:</strong> Brown beef in batches. Build mirepoix. Deglaze with Burgundy. Add stock, bouquet garni. Braise 2.5h at 300°F / 150°C. Finish with sautéed mushrooms and pearl onions. Serve in deep bowl with pommes purée. The wine braising liquid becomes the sauce — reduce by half if needed.
+      </div>
+      <div class="chef-tip" style="margin-top:8px;"><strong>⚑ Tip:</strong> Always braise the day before and reheat — flavour improves overnight.</div>
+      <div class="allergen-row"><span class="allergen-pill">Sulphites</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Celery</span></div>
+    </div>
+
+    <!-- SOLE MEUNIERE -->
+    <div class="recipe-card" style="margin-bottom:0;">
+      <div class="recipe-title" style="font-size:16px;margin-bottom:2px;">🐟 Sole Meunière <span style="font-size:11px;color:var(--gold);">Le Bernardin DNA</span></div>
+      <div class="recipe-subtitle" style="margin-bottom:8px;">Dover sole, brown butter, lemon, capers · $52</div>
+      <div style="background:var(--bg);padding:8px;border-radius:3px;margin-bottom:8px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:10px;">
+          <div><strong>Dover sole (280g)</strong> · $11.20</div><div><strong>Unsalted butter (80g)</strong> · $0.92</div>
+          <div><strong>Capers (15g)</strong> · $0.28</div><div><strong>Lemon + parsley</strong> · $0.18</div>
+          <div><strong>Flour for dredge</strong> · $0.04</div><div><strong>EVOO for pan</strong> · $0.12</div>
+        </div>
+        <div style="margin-top:6px;padding-top:6px;border-top:1px solid #ddd;font-size:10px;font-weight:600;">Total: $12.74 · FC: 24% · Price: $52</div>
+      </div>
+      <div style="font-size:10px;color:var(--mid);line-height:1.7;">
+        <strong>Method:</strong> Season and lightly dredge sole in flour. Pan-fry in EVOO + butter 3 min per side until golden. Remove fish. Make beurre noisette: heat butter until hazelnut-brown and nutty. Add capers, squeeze lemon, pour over fish immediately. Finish with parsley. The beurre noisette must smoke slightly — that nuttiness is the dish.
+      </div>
+      <div class="chef-tip" style="margin-top:8px;"><strong>⚑ Tip:</strong> Dover sole is non-negotiable for this dish. Lemon sole or grey sole will not deliver the same delicate, sweet flavour. Source whole and fillet in-house to reduce cost.</div>
+      <div class="allergen-row"><span class="allergen-pill">Fish</span><span class="allergen-pill">Gluten</span><span class="allergen-pill">Dairy</span></div>
+    </div>
+  </div>
+
+  <!-- REMAINING 3 MAINS COMPACT -->
+  <div style="margin-top:20px;">
+    <div class="section-label" style="margin-bottom:8px;">Additional Mains</div>
+    <div class="three-col">
+      <div class="recipe-card" style="padding:16px;margin-bottom:0;">
+        <div class="recipe-title" style="font-size:14px;margin-bottom:4px;">🐔 Poulet Rôti</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;margin-bottom:6px;">Free-range half chicken, thyme jus, pommes dauphine · $34<br>FC: 27% | Temp: 165°F / 74°C</div>
+        <div style="font-size:10px;color:var(--text);line-height:1.7;">Dry-brine 24h. Roast at 425°F 35 min. Rest 10 min. Pommes dauphine made in batch prep. Jus from carcass stock.</div>
+        <div class="allergen-row" style="margin-top:6px;"><span class="allergen-pill">Dairy</span><span class="allergen-pill">Gluten</span></div>
+      </div>
+      <div class="recipe-card" style="padding:16px;margin-bottom:0;">
+        <div class="recipe-title" style="font-size:14px;margin-bottom:4px;">🐑 Agneau aux Herbes</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;margin-bottom:6px;">Herb-crusted lamb rack, flageolet beans, rosemary jus · $48<br>FC: 30% | Temp: 130°F / 54°C</div>
+        <div style="font-size:10px;color:var(--text);line-height:1.7;">Herb crust: breadcrumbs, Dijon, tarragon, parsley. Sear rack, apply crust, roast 18 min. Rest 5 min. Flageolet beans braised with garlic and thyme.</div>
+        <div class="allergen-row" style="margin-top:6px;"><span class="allergen-pill">Gluten</span><span class="allergen-pill">Mustard</span><span class="allergen-pill">Dairy</span></div>
+      </div>
+      <div class="recipe-card" style="padding:16px;margin-bottom:0;">
+        <div class="recipe-title" style="font-size:14px;margin-bottom:4px;">🐷 Pork Chop Normande</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;margin-bottom:6px;">Bone-in pork chop, Calvados cream sauce, apple · $32<br>FC: 26% | Temp: 145°F / 63°C</div>
+        <div style="font-size:10px;color:var(--text);line-height:1.7;">Thick-cut chop, sear 4 min per side. Flambé with Calvados tableside. Deglaze with cream and apple. Serve with pommes sautées and crisp sage.</div>
+        <div class="allergen-row" style="margin-top:6px;"><span class="allergen-pill">Dairy</span><span class="allergen-pill">Sulphites</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 7: DESSERTS + DRINKS -->
+<div class="page">
+  <div class="section-label">Page 7 of 10 — Desserts & Drinks</div>
+  <h2 class="section-title">Desserts &amp; Boissons</h2>
+  <div class="section-rule"></div>
+
+  <!-- CREME BRULEE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div>
+        <div class="recipe-title">🔥 Crème Brûlée Classique</div>
+        <div class="recipe-subtitle">Vanilla custard, torched demerara sugar — tableside theatre · Serves 1</div>
+      </div>
+      <div class="recipe-badges">
+        <span class="temp-badge">🌡 Bake 300°F / 150°C; serve cold custard</span>
+        <span class="cost-badge">Food Cost: 18%</span>
+        <span class="tag tag-gold">Tableside</span>
+      </div>
+    </div>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Qty</th><th>Unit Cost</th><th class="cost-col">Portion Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Heavy cream (35%)</td><td>200ml</td><td>$4.50/quart</td><td class="cost-col">$0.95</td></tr>
+        <tr><td>Egg yolks</td><td>4 yolks</td><td>$0.55/egg</td><td class="cost-col">$1.10</td></tr>
+        <tr><td>Caster sugar</td><td>50g</td><td>$0.80/lb</td><td class="cost-col">$0.09</td></tr>
+        <tr><td>Tahitian vanilla bean</td><td>1/2 bean</td><td>$3.50/bean</td><td class="cost-col">$1.75</td></tr>
+        <tr><td>Demerara sugar (crust)</td><td>15g</td><td>$1.20/lb</td><td class="cost-col">$0.04</td></tr>
+        <tr><td>Raspberry coulis + mint garnish</td><td>30ml + pinch</td><td>—</td><td class="cost-col">$0.28</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Total Portion Cost</td><td class="cost-col">$2.21</td></tr>
+        <tr style="background:#F7F3EC;font-weight:600;"><td colspan="3">Menu Price</td><td class="cost-col">$14.00</td></tr>
+      </tbody>
+    </table>
+    <div class="method-steps"><ol>
+      <li><strong>Custard:</strong> Infuse cream with split vanilla bean (heat to simmer, steep 20 min). Whisk yolks and sugar until pale. Temper warm cream into yolks. Strain through fine sieve.</li>
+      <li><strong>Bake:</strong> Pour into ramekins. Bake in bain-marie at 300°F / 150°C for 35–40 min until just set with slight wobble in center. Refrigerate minimum 4 hours (overnight preferred).</li>
+      <li><strong>Tableside brûlée:</strong> Dust cold custard with thin, even layer of demerara sugar. Torch tableside in front of guest — move torch in circles until amber caramel forms. No black spots — that's bitterness.</li>
+      <li><strong>Serve:</strong> Immediately after brûléeing — the contrast of hot cracking sugar and cold custard is the dish. Add raspberry coulis and mint alongside.</li>
+    </ol></div>
+    <div class="chef-tip"><strong>⚑ Chef Tip:</strong> The tableside torch is a $45,000/year revenue move. Train every server to torch confidently — it's theatre, not cooking. Batch custard on Monday and Thursday. You should never run out by Saturday.</div>
+    <div class="allergen-row"><span class="label">Allergens:</span><span class="allergen-pill">Eggs</span><span class="allergen-pill">Dairy</span></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <!-- TARTE TATIN -->
+    <div class="recipe-card" style="margin-bottom:0;">
+      <div class="recipe-title" style="font-size:15px;margin-bottom:4px;">🍎 Tarte Tatin</div>
+      <div class="recipe-subtitle" style="margin-bottom:8px;">Upside-down apple tart, crème fraîche · $13</div>
+      <div style="font-size:10px;color:var(--mid);line-height:1.7;margin-bottom:8px;">
+        <strong>Ingredients (1 portion):</strong> Granny Smith apple (160g) $0.55, puff pastry $0.45, butter $0.28, brown sugar $0.12, Calvados $0.38, crème fraîche $0.25 = <strong>$2.03 total (FC: 16%)</strong><br><br>
+        <strong>Method:</strong> Caramelise butter + brown sugar in cast iron. Arrange apple halves core-side up. Flambé with Calvados. Top with puff pastry circle, tuck edges. Bake 400°F 25 min. Invert onto plate to order. Serve warm with cold crème fraîche.
+      </div>
+      <div class="chef-tip" style="margin-bottom:8px;"><strong>⚑ Tip:</strong> Make as individual portions in small cast irons for tableside presentation impact.</div>
+      <div class="allergen-row"><span class="allergen-pill">Gluten</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Sulphites</span></div>
+    </div>
+    <!-- PROFITEROLES -->
+    <div class="recipe-card" style="margin-bottom:0;">
+      <div class="recipe-title" style="font-size:15px;margin-bottom:4px;">🍫 Profiteroles au Chocolat</div>
+      <div class="recipe-subtitle" style="margin-bottom:8px;">Choux puffs, vanilla ice cream, warm ganache · $13</div>
+      <div style="font-size:10px;color:var(--mid);line-height:1.7;margin-bottom:8px;">
+        <strong>Ingredients (3 puffs):</strong> Choux pastry batch-baked $0.38, vanilla ice cream 3 scoops $0.85, Valrhona dark chocolate 50g $1.80, heavy cream 40ml $0.19 = <strong>$3.22 (FC: 25%)</strong><br><br>
+        <strong>Method:</strong> Pipe and bake choux 375°F 25 min, cool. Fill with ice cream scoop to order. Warm ganache (70% chocolate + cream) poured tableside. Critical: ganache must be poured, not pre-plated.
+      </div>
+      <div class="allergen-row"><span class="allergen-pill">Gluten</span><span class="allergen-pill">Dairy</span><span class="allergen-pill">Eggs</span></div>
+    </div>
+  </div>
+
+  <!-- MOUSSE CHOCOLAT - compact -->
+  <div class="recipe-card" style="padding:16px;margin-bottom:20px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <div>
+        <div class="recipe-title" style="font-size:15px;">🍮 Mousse au Chocolat</div>
+        <div class="recipe-subtitle">Classic dark chocolate mousse, Chantilly · $12 · FC: 19%</div>
+      </div>
+      <span class="cost-badge">FC: 19%</span>
+    </div>
+    <div style="font-size:10px;color:var(--mid);line-height:1.7;">Melt 70% Valrhona ($1.85), fold into whisked egg yolks + sugar, fold in stiff egg whites + whipped cream. Chill minimum 4h. Serve in copper pot or tulip glass. Chantilly and chocolate shavings to finish. Batch on Sunday — holds 3 days. Your most profitable dessert.</div>
+    <div class="allergen-row" style="margin-top:6px;"><span class="allergen-pill">Eggs</span><span class="allergen-pill">Dairy</span></div>
+  </div>
+
+  <!-- DRINKS SECTION -->
+  <div class="section-label" style="margin-bottom:8px;">Boissons — 8 Signature Drinks</div>
+  <div class="two-col">
+    <div>
+      <table style="width:100%;border-collapse:collapse;font-size:11px;">
+        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:6px 8px;text-align:left;">Drink</th><th style="padding:6px 8px;text-align:left;">Description</th><th style="padding:6px 8px;text-align:right;">Price</th><th style="padding:6px 8px;text-align:right;">Cost</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>Kir Royale</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">Crémant de Loire, blackcurrant cassis</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$16</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">21%</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>French 75</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">Gin, lemon, sugar, Champagne</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$18</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">18%</td></tr>
+          <tr><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>Carafe Rouge</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">House Côtes du Rhône, 500ml carafe</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$22</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">22%</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>Carafe Blanc</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">House Muscadet, 500ml carafe</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$20</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">22%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table style="width:100%;border-collapse:collapse;font-size:11px;">
+        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:6px 8px;text-align:left;">Drink</th><th style="padding:6px 8px;text-align:left;">Description</th><th style="padding:6px 8px;text-align:right;">Price</th><th style="padding:6px 8px;text-align:right;">Cost</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>Pastis Ricard</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">Pastis, ice water served alongside</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$14</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">16%</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>Calvados Père Magloire</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">Apple Brandy digestif, neat or on ice</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$16</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">19%</td></tr>
+          <tr><td style="padding:5px 8px;border-bottom:1px solid #eee;"><strong>Armagnac XO</strong></td><td style="padding:5px 8px;border-bottom:1px solid #eee;">Armagnac Dartigalongue 10yr</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;">$22</td><td style="padding:5px 8px;border-bottom:1px solid #eee;text-align:right;color:var(--gold);">20%</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:5px 8px;"><strong>Orangina / Perrier</strong></td><td style="padding:5px 8px;">House non-alcoholic; Perrier sparkling</td><td style="padding:5px 8px;text-align:right;">$6</td><td style="padding:5px 8px;text-align:right;color:var(--gold);">15%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 8: SERVICE SCRIPTS + KITCHEN DESIGN + DAILY PREP -->
+<div class="page">
+  <div class="section-label">Page 8 of 10 — Operations</div>
+  <h2 class="section-title">Service Scripts &amp; Kitchen Design</h2>
+  <div class="section-rule"></div>
+
+  <!-- SERVICE SCRIPTS -->
+  <div class="info-box" style="margin-bottom:20px;border-left:4px solid var(--gold);">
+    <h4 style="color:var(--gold);margin-bottom:14px;">🎭 The Four Service Scripts — Memorise These</h4>
+    <div class="two-col">
+      <div style="border:1px solid #E8E4DE;border-radius:4px;padding:14px;background:var(--bg);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:6px;">Script 1: Aperitif Sell</div>
+        <div style="font-size:11px;line-height:1.8;color:var(--text);">
+          <em style="color:var(--mid);">[When seating guests, before handing menu]</em><br>
+          <strong>"Good evening! While you settle in — can I start you with something to drink? We have a lovely <span style="color:var(--navy);">Kir Royale</span> with crémant from the Loire, or if you're in the mood for something quintessentially Parisian, our <span style="color:var(--navy);">Pastis Ricard</span> is brilliant right now. The French 75 is also very popular this evening."</strong><br><br>
+          <em style="color:var(--mid);">Never say "just water?" — lead with the aperitif.</em>
+        </div>
+      </div>
+      <div style="border:1px solid #E8E4DE;border-radius:4px;padding:14px;background:var(--bg);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:6px;">Script 2: Wine Carafe Upsell</div>
+        <div style="font-size:11px;line-height:1.8;color:var(--text);">
+          <em style="color:var(--mid);">[When guests order wine by the glass or browse wine list]</em><br>
+          <strong>"If you're thinking of having a couple of glasses tonight, our <span style="color:var(--navy);">500ml carafe</span> is actually better value — it's about two and a half glasses and you get the wine at its best, breathing at the table. We have a Côtes du Rhône that goes beautifully with the steak and the duck tonight."</strong><br><br>
+          <em style="color:var(--mid);">Carafe = $4–6 more revenue with same pour cost.</em>
+        </div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:14px;">
+      <div style="border:1px solid #E8E4DE;border-radius:4px;padding:14px;background:var(--bg);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:6px;">Script 3: Cheese Course Close</div>
+        <div style="font-size:11px;line-height:1.8;color:var(--text);">
+          <em style="color:var(--mid);">[After clearing main courses, before dessert menu]</em><br>
+          <strong>"Before dessert — would you like to try our cheese course? We have a rotating selection of three French cheeses tonight: a young <span style="color:var(--navy);">Brie de Meaux</span>, an aged <span style="color:var(--navy);">Comté</span>, and a <span style="color:var(--navy);">Roquefort</span>. Served with honey, walnut bread, and seasonal fruit. It pairs really nicely with a small glass of Sauternes if you'd like."</strong>
+        </div>
+      </div>
+      <div style="border:1px solid #E8E4DE;border-radius:4px;padding:14px;background:var(--bg);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:6px;">Script 4: Digestif Offer</div>
+        <div style="font-size:11px;line-height:1.8;color:var(--text);">
+          <em style="color:var(--mid);">[After dessert plates are cleared, with coffee]</em><br>
+          <strong>"To finish your evening — can I tempt you with a digestif? We have a beautiful <span style="color:var(--navy);">Calvados</span> from Normandy — it's apple brandy, very smooth, wonderful after the duck. Or for something with more depth, our <span style="color:var(--navy);">Armagnac XO</span> is from a small producer in Gascony, aged 10 years. It's really special."</strong><br><br>
+          <em style="color:var(--mid);">Digestif sell adds $14–22 with zero kitchen cost.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY PREP SCHEDULE -->
+  <div class="two-col">
+    <div class="info-box">
+      <h4>⏰ Daily Prep Schedule — Dinner Service</h4>
+      <table style="width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;">
+        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:5px 8px;">Time</th><th style="padding:5px 8px;">Task</th><th style="padding:5px 8px;">Who</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">10:00</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Receive deliveries, check temps, mise-en-place start</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Sous Chef</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">11:00</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Stock reduction, braising starts (Bourguignon), sauces</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">CDP Sauces</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">12:00</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Protein prep: butcher, cure, portion, chill</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">CDP Meat</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">13:00</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Pastry: crème brûlée batch, mousse, choux</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Pastry</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">14:30</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Veg prep: frites cut + first-fry, garnishes, sides</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">CDP Veg</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">15:30</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Staff meal + pre-service briefing (specials, 86 list)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Head Chef</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">16:00</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Station setup, expo check, hot box temp check</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">All kitchen</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">17:00</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Doors open — first covers</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">All</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:600;color:var(--navy);">21:30</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">Last orders, prep for close</td><td style="padding:4px 8px;border-bottom:1px solid #eee;">All</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;font-weight:600;color:var(--navy);">23:00</td><td style="padding:4px 8px;">Close, clean, FIFO restock, temp logs</td><td style="padding:4px 8px;">Closing CDP</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box">
+      <h4>🍳 Kitchen Design — Line Layout</h4>
+      <div style="font-size:11px;line-height:1.8;color:var(--mid);margin-bottom:10px;">Optimal layout for a 70-seat French bistro: compact, efficient, classic French brigade structure.</div>
+      <div style="background:var(--bg);border:1px solid #ddd;padding:12px;font-family:monospace;font-size:10px;line-height:1.9;border-radius:3px;color:var(--text);">
+        ┌─────────────────────────────┐<br>
+        │  PASS / EXPO ←────────────  │<br>
+        ├──────────┬──────────────────┤<br>
+        │ GRILL    │  SAUTÉ (2 rings) │<br>
+        │ station  │  + French top    │<br>
+        ├──────────┼──────────────────┤<br>
+        │ FRYER    │  FISH station    │<br>
+        │ 2x tank  │  (sole, bouillab)│<br>
+        ├──────────┴──────────────────┤<br>
+        │  COLD LINE / GARDE MANGER   │<br>
+        │  (tartare, niçoise, pâté)   │<br>
+        ├─────────────────────────────┤<br>
+        │  PASTRY CORNER (separate)   │<br>
+        └─────────────────────────────┘
+      </div>
+      <div style="margin-top:10px;font-size:10px;color:var(--mid);line-height:1.8;">
+        <strong>Essential equipment:</strong> French top (plancha), 2× commercial range (6-burner), conveyor salamander for gratinée, 2-tank fryer (separate fry oils for fish and potato), blast chiller (mandatory for crème brûlée batches), induction burner at pass for tableside flamers, butane torches ×3.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 9: STAFF FORECAST + CUSTOMER RETENTION -->
+<div class="page">
+  <div class="section-label">Page 9 of 10 — Staff &amp; Retention</div>
+  <h2 class="section-title">Staff Forecast &amp; Customer Retention</h2>
+  <div class="section-rule"></div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="info-box">
+      <h4>👥 Staff Forecast — 70-Seat Bistro (Dinner Only)</h4>
+      <table style="width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;">
+        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:5px 8px;">Role</th><th style="padding:5px 8px;text-align:center;">Count</th><th style="padding:5px 8px;text-align:right;">$/hr avg</th><th style="padding:5px 8px;text-align:right;">Weekly Cost</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Head Chef</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">1</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$95K/yr salary</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$1,827</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;">Sous Chef</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">1</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$72K/yr</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$1,385</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Chef de Partie ×3</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">3</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$26/hr</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$3,120</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;">Pastry Cook (part-time)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">1</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$22/hr</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$660</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Kitchen Porter ×2</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">2</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$17/hr</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$1,360</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;">Floor Manager / Maître d'</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">1</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$62K/yr</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$1,192</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Servers ×4 (incl. tips)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">4</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$12 + tips</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$960 base</td></tr>
+          <tr style="background:#FAFAF8;"><td style="padding:4px 8px;border-bottom:1px solid #eee;">Barback / Runner ×2</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">2</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$14/hr</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$560</td></tr>
+          <tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Bartender</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;">1</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$18 + tips</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">$360 base</td></tr>
+          <tr style="background:var(--navy);color:#fff;font-weight:700;"><td style="padding:5px 8px;">Total Weekly Labour</td><td style="padding:5px 8px;text-align:center;">16</td><td style="padding:5px 8px;"></td><td style="padding:5px 8px;text-align:right;">~$11,424</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:8px;font-size:10px;color:var(--mid);line-height:1.7;">
+        <strong>Note:</strong> NYC tip credit laws apply. All wages verified at 2025 NYC minimum ($17.00/hr). Labour % of target $42K/wk revenue = <strong>27.2%</strong> — within 30–34% target. Scale servers up on Friday/Saturday with additional part-time staff.
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>💌 Customer Retention System</h4>
+      <div style="font-size:11px;line-height:1.8;color:var(--mid);margin-bottom:10px;">A French bistro lives and dies by its regulars. Here's your retention playbook:</div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:10px;margin-bottom:10px;">
+        <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Level 1 — First Visit</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;">Learn their names. Note dietary preferences in reservation system (Resy/OpenTable). Send personalised thank-you email within 24h with a menu note from the chef. Offer to book their next visit before they leave.</div>
+      </div>
+      <div style="border-left:3px solid var(--gold);padding-left:10px;margin-bottom:10px;">
+        <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Level 2 — Return Guests (2–3 visits)</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;">Maître d' greets by name. Preferred table pre-set. Complimentary amuse-bouche. Notify of seasonal menu changes. Invite to exclusive 'Soirée du Chef' quarterly dinners ($95/head, invite-only, 20 covers).</div>
+      </div>
+      <div style="border-left:3px solid var(--gold);padding-left:10px;margin-bottom:10px;">
+        <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Level 3 — Regulars (Monthly+)</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;">Your VIP inner circle. Comp a digestif on their birthday month. Chef visits the table. Send wine allocations from special orders. They are your word-of-mouth engine — treat them like family.</div>
+      </div>
+      <div style="border-left:3px solid var(--navy);padding-left:10px;margin-bottom:10px;">
+        <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Digital Touchpoints</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;">Email newsletter monthly (max 200 words — a seasonal recipe, a wine note, an event). Instagram: 4 posts/week (dish, behind-scenes, team, neighbourhood). Never auto-post — voice must be personal.</div>
+      </div>
+      <div style="border-left:3px solid var(--navy);padding-left:10px;">
+        <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Reservation Strategy</div>
+        <div style="font-size:10px;color:var(--mid);line-height:1.7;">60% pre-booked via Resy (captures guest data). 40% walk-in (creates energy and community feel). Hold 4 tables back each night for regulars calling same-day. Never overbook — a turned-away regular is a lost regular.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P&L MODEL -->
+  <div class="info-box" style="border-left:4px solid var(--navy);">
+    <h4>📊 P&amp;L Model — 70-Seat French Bistro, NYC · Dinner 5 Nights/Week</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Revenue Assumptions</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Seats</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">70</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Avg occupancy</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">85%</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Avg spend/cover</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">$75</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Turns/night</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">1.3×</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Covers/night</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">~78</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Revenue/night</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">$5,828</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Nights/week</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;font-weight:600;">5</td></tr>
+          <tr style="background:var(--navy);color:#fff;"><td style="padding:4px 6px;font-weight:700;border-radius:2px 0 0 2px;">Weekly Revenue</td><td style="padding:4px 6px;text-align:right;font-weight:700;border-radius:0 2px 2px 0;">$29,140</td></tr>
+          <tr style="color:var(--navy);font-weight:600;"><td style="padding:3px 0;">Monthly Revenue</td><td style="padding:3px 0;text-align:right;">$126,273</td></tr>
+          <tr style="color:var(--navy);font-weight:600;"><td style="padding:3px 0;">Annual Revenue</td><td style="padding:3px 0;text-align:right;">$1,515,280</td></tr>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Cost Structure (Monthly)</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Food Cost (30%)</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$37,882</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Beverage Cost (23%)</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$8,702</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Labour (32%)</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$40,407</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Rent (NYC, prime)</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$18,000</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Utilities + ops</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$5,500</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Marketing + tech</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$2,200</td></tr>
+          <tr><td style="padding:3px 0;border-bottom:1px solid #eee;">Contingency (2%)</td><td style="padding:3px 0;border-bottom:1px solid #eee;text-align:right;color:var(--red);">-$2,525</td></tr>
+          <tr style="background:var(--green);color:#fff;"><td style="padding:4px 6px;font-weight:700;border-radius:2px 0 0 2px;">Monthly EBITDA</td><td style="padding:4px 6px;text-align:right;font-weight:700;border-radius:0 2px 2px 0;">+$11,057</td></tr>
+          <tr style="color:var(--green);font-weight:700;"><td style="padding:3px 0;">EBITDA Margin</td><td style="padding:3px 0;text-align:right;">8.8%</td></tr>
+          <tr style="color:var(--navy);font-weight:600;"><td style="padding:3px 0;">Annual EBITDA</td><td style="padding:3px 0;text-align:right;">$132,684</td></tr>
+        </table>
+        <div style="margin-top:8px;padding:8px;background:#FFF8F0;border-radius:3px;font-size:10px;color:var(--mid);line-height:1.6;">
+          <strong>Scale to profitability:</strong> Add Sat/Sun brunch (+2 days) → Revenue jumps to $2.1M/yr → EBITDA to 14–16%. Brunch is your break-even accelerator.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+<!-- PAGE 10: FINAL PAGE - BUNDLE + CLOSING -->
+<div class="page">
+  <div class="section-label">Page 10 of 10 — Complete Toolkit</div>
+  <h2 class="section-title">The KitchenFounder 22-Tool Bundle</h2>
+  <div class="section-rule"></div>
+
+  <div style="background:linear-gradient(135deg,#0A1F35,#1A3A5C);border-radius:6px;padding:32px;color:#fff;margin-bottom:24px;text-align:center;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.8);margin-bottom:8px;">This guide is part of</div>
+    <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;margin-bottom:8px;">The Complete 22-Tool Bundle</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:20px;max-width:500px;margin-left:auto;margin-right:auto;">Every operational system you need to open, run, and grow a profitable restaurant in NYC — from concept to cash-flow positive.</div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <div style="background:rgba(200,146,42,0.15);border:1px solid rgba(200,146,42,0.3);padding:6px 14px;border-radius:3px;font-size:10px;letter-spacing:1px;text-transform:uppercase;">22 Tools</div>
+      <div style="background:rgba(200,146,42,0.15);border:1px solid rgba(200,146,42,0.3);padding:6px 14px;border-radius:3px;font-size:10px;letter-spacing:1px;text-transform:uppercase;">35+ Concepts</div>
+      <div style="background:rgba(200,146,42,0.15);border:1px solid rgba(200,146,42,0.3);padding:6px 14px;border-radius:3px;font-size:10px;letter-spacing:1px;text-transform:uppercase;">NYC + Global Benchmarks</div>
+    </div>
+  </div>
+
+  <div class="three-col" style="margin-bottom:20px;">
+    <div class="info-box">
+      <h4 style="color:var(--gold);font-size:13px;">📋 Tools 1–8: Foundations</h4>
+      <ul style="font-size:10px;line-height:1.9;color:var(--mid);padding-left:14px;margin-top:6px;">
+        <li>Tool 1: Concept Development Framework</li>
+        <li>Tool 2: Market Analysis & Competitor Map</li>
+        <li>Tool 3: Financial Modelling (P&L, cashflow)</li>
+        <li>Tool 4: Location Scoring Matrix</li>
+        <li>Tool 5: Equipment Planning & Spec Sheet</li>
+        <li>Tool 6: Licensing & Compliance Checklist</li>
+        <li>Tool 7: Staffing Plan & Org Chart</li>
+        <li>Tool 8: Brand Identity & Visual Standards</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4 style="color:var(--gold);font-size:13px;">🍽 Tools 9–15: Operations</h4>
+      <ul style="font-size:10px;line-height:1.9;color:var(--mid);padding-left:14px;margin-top:6px;">
+        <li>Tool 9: Recipe Bible Builder (this guide)</li>
+        <li>Tool 10: Menu Engineering & Pricing</li>
+        <li>Tool 11: Food Cost Calculator (live sheet)</li>
+        <li>Tool 12: Supplier Management System</li>
+        <li>Tool 13: HACCP & Food Safety Templates</li>
+        <li>Tool 14: Inventory Management System</li>
+        <li>Tool 15: Kitchen Training Programme</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4 style="color:var(--gold);font-size:13px;">📈 Tools 16–22: Growth</h4>
+      <ul style="font-size:10px;line-height:1.9;color:var(--mid);padding-left:14px;margin-top:6px;">
+        <li>Tool 16: Service Excellence Programme</li>
+        <li>Tool 17: Guest Feedback & Review System</li>
+        <li>Tool 18: Digital Marketing Playbook</li>
+        <li>Tool 19: Private Dining & Events Toolkit</li>
+        <li>Tool 20: Loyalty & CRM System</li>
+        <li>Tool 21: Expansion & Second Site Planning</li>
+        <li>Tool 22: Exit Strategy & Valuation Guide</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="info-box" style="margin-bottom:20px;border-left:4px solid var(--gold);">
+    <h4>⚜ Guide #31 — French Bistro Key Takeaways</h4>
+    <div class="two-col" style="margin-top:10px;">
+      <ul style="font-size:11px;line-height:1.9;color:var(--mid);padding-left:16px;">
+        <li><strong>Sell the feeling, not just the food.</strong> Balthazar at $95/cover is not selling better steak than L'Express at $52. It's selling more Paris.</li>
+        <li><strong>The carafe is your most profitable SKU.</strong> $22 for 500ml wine — 22% cost, no labour, 2.5 glass equivalent at $11/glass = $27.50 vs $22. Train staff to default to carafes.</li>
+        <li><strong>Tableside ritual is revenue.</strong> Crème brûlée torch, Calvados flambé, cheese presentation — each adds perceived value with no food cost increase.</li>
+        <li><strong>Regulars are your real business model.</strong> A guest who visits 8× per year at $75 is worth $600/year. Acquire and keep 200 regulars = $120K guaranteed annual revenue.</li>
+      </ul>
+      <ul style="font-size:11px;line-height:1.9;color:var(--mid);padding-left:16px;">
+        <li><strong>Hanger steak and duck confit are your economic anchors.</strong> High flavour, moderate cost, high perceived value. Menu them prominently.</li>
+        <li><strong>Bouillabaisse prints money at 33% FC</strong> — but only if you batch the base. Don't make it à la minute; make the base daily and it becomes a 4-minute ticket.</li>
+        <li><strong>Break even requires 5 nights/week.</strong> Add brunch (Sat/Sun) to reach 14–16% EBITDA. The bistro format is built for weekend brunch performance.</li>
+        <li><strong>Saffron is your most expensive ingredient.</strong> Buy in bulk from a trusted importer quarterly. Counterfeit saffron is common — source carefully.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- QUICK REFERENCE CARD -->
+  <div style="background:var(--navy);border-radius:4px;padding:20px;color:#fff;">
+    <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Quick Reference — Critical Numbers</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;text-align:center;">
+      <div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;">28–32%</div><div style="font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">Food Cost</div></div>
+      <div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;">22–26%</div><div style="font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">Bev Cost</div></div>
+      <div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;">30–34%</div><div style="font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">Labour</div></div>
+      <div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;">$75</div><div style="font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">Avg Spend</div></div>
+      <div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;">1.3×</div><div style="font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">Table Turns</div></div>
+      <div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;">14%+</div><div style="font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">EBITDA Target</div></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #ddd;">
+    <div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--navy);margin-bottom:4px;">KitchenFounder · Guide #31 · v7</div>
+    <div style="font-size:10px;color:var(--mid);">French Bistro · NYC Dinner Standard · © 2025 KitchenFounder. All rights reserved.</div>
+    <div style="font-size:10px;color:var(--mid);margin-top:4px;">For educational and operational planning purposes. Prices reflect US market 2025 estimates.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>KitchenFounder · Guide #31</span>
+    <span>French Bistro · NYC Dinner Standard</span>
+  </div>
+</div>
+
+</body>
+</html>
