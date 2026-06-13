@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promotion Business Case — Novotel Sydney Olympic Park Kitchen Team</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--accent:#1B2D4F;--gold:#C8922A;--light:#F0EDE8;--mid:#8A8A8A;--border:#E0D9D0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+.cover{width:210mm;min-height:297mm;background:var(--accent);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(200,146,42,0.2) 0%,transparent 60%)}
+.cover-top{padding:14mm 16mm 0;z-index:1;display:flex;justify-content:space-between}
+.cover-brand{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.8)}
+.cover-date{font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:1px}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:4mm}
+.cover-title .gold{color:var(--gold)}
+.cover-rule{width:50mm;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-sub{font-size:11px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm}
+.cstat{border:1px solid rgba(200,146,42,0.25);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7.5px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-from{font-family:'Playfair Display',serif;font-size:12px;color:rgba(255,255,255,0.6)}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.2);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:7mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+.case-card{background:#fff;border:1px solid var(--border);border-top:4px solid var(--accent);padding:5mm 6mm;margin-bottom:5mm;page-break-inside:avoid}
+.case-card.gold-top{border-top-color:var(--gold)}
+.case-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3mm;padding-bottom:3mm;border-bottom:1px solid var(--border)}
+.case-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent)}
+.case-promo{font-size:9px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-top:1mm}
+.case-badge{background:var(--accent);color:#fff;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2mm 3mm;text-align:center}
+.case-badge .rate{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);display:block;margin-top:1mm}
+.case-body{display:grid;grid-template-columns:1.2fr 0.8fr;gap:4mm}
+.case-section{margin-bottom:3mm}
+.case-section h4{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm;border-bottom:1px solid var(--border);padding-bottom:1mm}
+.case-section p{font-size:10px;color:#333;line-height:1.85}
+.case-section ul{list-style:none;padding:0}
+.case-section li{font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative}
+.case-section li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:8px}
+.salary-box{background:var(--light);border:1px solid var(--border);padding:3mm 4mm;margin-bottom:3mm}
+.salary-box h4{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm}
+.salary-row{display:flex;justify-content:space-between;align-items:center;padding:1.5mm 0;border-bottom:1px solid var(--border)}
+.salary-row:last-child{border:none;font-weight:700;color:var(--accent)}
+.salary-row span:first-child{font-size:9.5px;color:#555}
+.salary-row span:last-child{font-size:10px;font-weight:600;color:var(--text)}
+.salary-row.highlight span{color:var(--accent);font-weight:700}
+.salary-row.highlight span:last-child{color:var(--gold)}
+.risk-box{background:#FFF8EE;border-left:3px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm;font-size:9.5px;color:#444;line-height:1.7}
+.risk-box strong{color:var(--accent)}
+.context-box{background:var(--accent);color:#fff;padding:5mm 6mm;margin-bottom:5mm}
+.context-box h3{font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);margin-bottom:3mm}
+.context-box p{font-size:10px;color:rgba(255,255,255,0.75);line-height:1.85}
+.context-box ul{list-style:none;padding:0;margin-top:2mm}
+.context-box li{font-size:10px;color:rgba(255,255,255,0.75);line-height:1.9;padding-left:3mm;position:relative}
+.context-box li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+.summary-table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:4mm}
+.summary-table th{background:var(--accent);color:#fff;padding:2.5mm 3mm;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:left}
+.summary-table td{padding:2.5mm 3mm;border-bottom:1px solid var(--border);vertical-align:middle}
+.summary-table tr:nth-child(even) td{background:#F8F5F0}
+.summary-table td:last-child{font-weight:600;color:var(--gold)}
+.sign-block{margin-top:6mm;padding-top:4mm;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:10mm}
+.sign-line{border-bottom:1px solid var(--text);margin-bottom:1.5mm;height:8mm}
+.sign-label{font-size:8.5px;color:var(--mid)}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.page,.cover{page-break-after:always}.case-card{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-bg"></div>
+<div class="cover-top">
+  <div class="cover-brand">Novotel Sydney Olympic Park · F&amp;B Department</div>
+  <div class="cover-date">June 2026 · Confidential</div>
+</div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Human Resources · Internal Promotion</div>
+  <div class="cover-title">Staff Promotion<br><span class="gold">Business Case</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-sub">Four promotion proposals for the Novotel Kitchen Team — submitted in response to current staffing restructure, recent resignations, and the strategic need to retain and elevate key culinary talent ahead of the Water Polo World Cup 2026 and beyond.</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">4</div><div class="cstat-lbl">Promotions</div></div>
+    <div class="cstat"><div class="cstat-val">$2.9M</div><div class="cstat-lbl">Banquet Revenue</div></div>
+    <div class="cstat"><div class="cstat-val">5</div><div class="cstat-lbl">Staff Departures</div></div>
+    <div class="cstat"><div class="cstat-val">July '26</div><div class="cstat-lbl">World Cup</div></div>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div>
+    <div class="cover-from">Prepared by: Timothy Susanto</div>
+    <div class="cover-meta" style="text-align:left;margin-top:1mm">Head Chef · Novotel Ibis Sydney Olympic Park</div>
+    <div class="cover-meta" style="text-align:left">Timothy.SUSANTO@accor.com</div>
+  </div>
+  <div class="cover-meta">Submitted to: Joe Poovaiya<br>Director of Food &amp; Beverage · Accor<br>June 2026</div>
+</div>
+</div>
+
+<!-- PAGE 2 — CONTEXT + SUMMARY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Strategic Context &amp; Summary</span><span class="page-num">02</span></div>
+
+<div class="context-box">
+  <h3>Why These Promotions Are Business-Critical Right Now</h3>
+  <p>The Novotel Kitchen Team has experienced significant disruption in Q2 2026. Three staff members have resigned with effect and two further resignations are confirmed for end of June and early July 2026. This represents a total departure of five kitchen team members within a six-week window.</p>
+  <ul>
+    <li>The Water Polo World Cup (19–26 July 2026) requires a fully functional, experienced kitchen leadership structure</li>
+    <li>Banquet &amp; Conference Events generate $2.9M in annual revenue — this operation cannot run below leadership capacity</li>
+    <li>Internal promotion is the most cost-effective, lowest-risk staffing response to the current vacancy environment</li>
+    <li>Each candidate has demonstrated readiness through performance, tenure, and peer recognition</li>
+    <li>Promoting from within signals to the remaining team that loyalty and performance are rewarded — critical for morale stabilisation during a period of instability</li>
+  </ul>
+</div>
+
+<table class="summary-table">
+  <thead><tr><th>Staff Member</th><th>Current Role</th><th>Proposed Role</th><th>Current Rate</th><th>Proposed Rate</th><th>Annual Impact</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Praveen Dwaselaan</strong></td><td>Senior Cook</td><td>Junior Sous Chef — Banquet</td><td>$30.68/hr</td><td>$76,000/yr ($36.54/hr)</td><td>+$12,054/yr</td></tr>
+    <tr><td><strong>Jayal</strong></td><td>PT Kitchen Steward</td><td>PT Commis Chef</td><td>$25.85/hr</td><td>$28.12/hr</td><td>+$2.27/hr</td></tr>
+    <tr><td><strong>Mavis Ho</strong></td><td>PT Demi Chef</td><td>PT Chef de Partie</td><td>$29.88/hr</td><td>$30.68/hr</td><td>+$0.80/hr</td></tr>
+    <tr><td><strong>Cynthia Darmawanti</strong></td><td>PT Demi Chef</td><td>PT Chef de Partie</td><td>$29.88/hr</td><td>$30.68/hr</td><td>+$0.80/hr</td></tr>
+  </tbody>
+</table>
+
+<div class="risk-box">
+  <strong>Risk of Non-Approval:</strong> Without these promotions, the kitchen faces a leadership vacuum in three critical areas — Banquet operations, Breakfast team, and Larder/Grill. The cost of external recruitment for equivalent roles (agency fees, onboarding, training lag) significantly exceeds the salary differentials proposed. Internal promotion is the fiscally responsible decision.
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel F&amp;B · Promotion Business Case</span><span class="pf-r">June 2026 · Confidential</span></div>
+</div>
+
+<!-- PAGE 3 — PRAVEEN -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Case 1 of 4 — Junior Sous Chef · Banquet Kitchen</span><span class="page-num">03</span></div>
+
+<div class="case-card gold-top">
+<div class="case-header">
+  <div>
+    <div class="case-name">Praveen Dwaselaan</div>
+    <div class="case-promo">Proposed: Junior Sous Chef — Banquet Kitchen · Novotel</div>
+  </div>
+  <div class="case-badge">
+    PROPOSED SALARY
+    <span class="rate">$76,000 / year</span>
+    <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1mm">equiv. $36.54/hr</div>
+  </div>
+</div>
+
+<div class="case-body">
+<div>
+  <div class="case-section">
+    <h4>Position Background</h4>
+    <p>This proposal fills the vacant Junior Sous Chef position previously held by Ronald Caqui in the Banquet Kitchen at Novotel Sydney Olympic Park. The position has been vacant and the operational gap is directly impacting the quality and consistency of Banquet and Conference &amp; Events (C&amp;E) delivery. The Banquet Kitchen is responsible for generating approximately <strong>$2.9 million in annual revenue</strong> through corporate events, conferences, weddings, and major sporting hospitality. This revenue stream requires dedicated, experienced leadership at the Junior Sous Chef level to maintain operational standards and client satisfaction.</p>
+  </div>
+
+  <div class="case-section">
+    <h4>Why Praveen</h4>
+    <ul>
+      <li>Demonstrated ability to elevate the quality and presentation of C&amp;E food offerings through his distinct culinary approach and technical skill</li>
+      <li>Formally acknowledged by his peers and the broader F&amp;B team for raising the standard of Banquet and C&amp;E food quality</li>
+      <li>Received unsolicited compliments from visiting sports teams, which were shared publicly in the hotel WhatsApp group chat — a rare and genuine indicator of guest-facing impact</li>
+      <li>Has the temperament, work ethic, and kitchen presence required to lead a Banquet team during high-volume event days</li>
+      <li>Filling this role internally eliminates recruitment cost, onboarding time, and performance uncertainty</li>
+    </ul>
+  </div>
+
+  <div class="case-section">
+    <h4>Business Justification</h4>
+    <p>The Banquet Kitchen operates at its most critical during large-scale C&amp;E events, which can serve 300–600 covers in a single session. Without a Junior Sous Chef in the Banquet Kitchen, the Head Chef is required to absorb operational oversight that should be delegated — reducing strategic capacity and increasing execution risk on high-revenue event days. Praveen's promotion directly addresses this structural gap. His salary at $76,000 per year represents less than <strong>2.7% of the annual Banquet revenue</strong> this role is responsible for supporting.</p>
+  </div>
+</div>
+
+<div>
+  <div class="salary-box">
+    <h4>Salary Comparison</h4>
+    <div class="salary-row"><span>Current Rate</span><span>$30.68/hr</span></div>
+    <div class="salary-row"><span>Current Annual (est. 40hr)</span><span>$63,814/yr</span></div>
+    <div class="salary-row highlight"><span>Proposed Salary</span><span>$76,000/yr</span></div>
+    <div class="salary-row highlight"><span>Proposed Hourly Equiv.</span><span>$36.54/hr</span></div>
+    <div class="salary-row"><span>Annual Increase</span><span>+$12,186/yr</span></div>
+    <div class="salary-row"><span>% Increase</span><span>+19.1%</span></div>
+  </div>
+
+  <div class="salary-box">
+    <h4>Cost vs. External Hire</h4>
+    <div class="salary-row"><span>Agency fee (15–20% salary)</span><span>$11,400–$15,200</span></div>
+    <div class="salary-row"><span>Onboarding &amp; training lag</span><span>4–8 weeks</span></div>
+    <div class="salary-row"><span>Performance risk</span><span>Unknown</span></div>
+    <div class="salary-row highlight"><span>Internal promotion cost</span><span>$12,186/yr</span></div>
+    <div class="salary-row highlight"><span>Internal promotion risk</span><span>Very Low</span></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Timeline Urgency:</strong> Water Polo World Cup commences 19 July 2026. Banquet Kitchen requires confirmed leadership structure by 1 July at the latest to allow for event briefing and menu finalisation.
+  </div>
+</div>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel F&amp;B · Promotion Business Case</span><span class="pf-r">Praveen Dwaselaan · Junior Sous Chef</span></div>
+</div>
+
+<!-- PAGE 4 — JAYAL + MAVIS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Case 2 of 4 — Part Time Commis Chef · BB's Kitchen</span><span class="page-num">04</span></div>
+
+<div class="case-card">
+<div class="case-header">
+  <div>
+    <div class="case-name">Jayal</div>
+    <div class="case-promo">Current: Part Time Kitchen Steward → Proposed: Part Time Commis Chef</div>
+  </div>
+  <div class="case-badge">
+    NEW RATE
+    <span class="rate">$28.12/hr</span>
+    <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1mm">from $25.85/hr · +$2.27/hr</div>
+  </div>
+</div>
+
+<div class="case-body">
+<div>
+  <div class="case-section">
+    <h4>Background &amp; Readiness</h4>
+    <p>Jayal holds a formal culinary certificate, demonstrating a professional commitment to the trade that goes beyond his current Kitchen Steward classification. Over the past six months, Jayal has been proactively training as a Commis Chef alongside the kitchen team — working hands-on in both the Larder Section and the Grill Section at Brewery Bistro (BB's). This training has been conducted in addition to his steward duties, indicating personal initiative and a genuine desire to progress within the culinary team.</p>
+  </div>
+  <div class="case-section">
+    <h4>Proposed Structure &amp; Reporting</h4>
+    <ul>
+      <li>Assigned to BB's main kitchen team under the direct supervision of Chef JJ (Sekda) and Chef Ki-young Lee</li>
+      <li>Primary responsibilities: Larder Section and Grill Section at Brewery Bistro</li>
+      <li>Will work alongside experienced CDP and Sous Chef level mentors — structured development pathway</li>
+      <li>Part-time classification retained — no change to contracted hours</li>
+    </ul>
+  </div>
+  <div class="case-section">
+    <h4>Business Justification</h4>
+    <p>Jayal's reclassification from Kitchen Steward to Commis Chef accurately reflects the work he is already performing. Continuing to pay a Kitchen Steward rate for Commis Chef work creates both a pay equity issue and a retention risk. The $2.27/hr increase is a minimal cost that formalises an existing operational reality and rewards demonstrated commitment. With current team departures, retaining motivated, trained staff is essential.</p>
+  </div>
+</div>
+<div>
+  <div class="salary-box">
+    <h4>Salary Comparison</h4>
+    <div class="salary-row"><span>Current Rate (Steward)</span><span>$25.85/hr</span></div>
+    <div class="salary-row highlight"><span>Proposed Rate (Commis)</span><span>$28.12/hr</span></div>
+    <div class="salary-row"><span>Hourly Increase</span><span>+$2.27/hr</span></div>
+    <div class="salary-row"><span>Weekly (est. 20hr PT)</span><span>+$45.40/wk</span></div>
+    <div class="salary-row"><span>Annual Impact (est.)</span><span>+$2,360/yr</span></div>
+  </div>
+  <div class="risk-box">
+    <strong>Key Point:</strong> Jayal holds a culinary certificate and has been performing Commis Chef duties for 6 months. His current pay classification does not reflect his actual role. This promotion corrects that.
+  </div>
+</div>
+</div>
+</div>
+
+<div style="margin-top:5mm">
+<div class="page-hdr" style="margin-bottom:4mm"><span class="page-section">Case 3 of 4 — Part Time Chef de Partie · Breakfast Team</span><span class="page-num"></span></div>
+
+<div class="case-card gold-top">
+<div class="case-header">
+  <div>
+    <div class="case-name">Mavis Ho</div>
+    <div class="case-promo">Current: Part Time Demi Chef → Proposed: Part Time Chef de Partie · Breakfast</div>
+  </div>
+  <div class="case-badge">
+    NEW RATE
+    <span class="rate">$30.68/hr</span>
+    <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1mm">from $29.88/hr · +$0.80/hr</div>
+  </div>
+</div>
+
+<div class="case-body">
+<div>
+  <div class="case-section">
+    <h4>Background &amp; Tenure</h4>
+    <p>Mavis Ho has been a consistent and high-performing member of the Novotel Breakfast Team for two years. Her reliability, culinary skill, and team leadership have made her the de facto anchor of the Breakfast operation. She is widely regarded within the kitchen as a standout performer — described internally as a <em>"superstar on the Breakfast team."</em></p>
+  </div>
+  <div class="case-section">
+    <h4>Strategic Importance</h4>
+    <ul>
+      <li>Mavis will lead the Breakfast Team through the upcoming <strong>new Breakfast À La Carte menu</strong> — a significant operational undertaking requiring CDP-level ownership</li>
+      <li>She will be responsible for maintaining the <strong>Breakfast NISOP (Standard Operating Procedures)</strong> — ensuring consistency and quality standards are upheld long-term</li>
+      <li>Our current Full Time Breakfast Chef, Chef Min Gao, is senior in tenure and is progressively less able to execute the physical and creative demands of the breakfast vision. Mavis provides essential continuity and succession</li>
+      <li>CDP classification accurately reflects the leadership responsibility she is already carrying</li>
+    </ul>
+  </div>
+</div>
+<div>
+  <div class="salary-box">
+    <h4>Salary Comparison</h4>
+    <div class="salary-row"><span>Current Rate (Demi Chef)</span><span>$29.88/hr</span></div>
+    <div class="salary-row highlight"><span>Proposed Rate (CDP)</span><span>$30.68/hr</span></div>
+    <div class="salary-row"><span>Hourly Increase</span><span>+$0.80/hr</span></div>
+    <div class="salary-row"><span>Weekly (est. 20hr PT)</span><span>+$16/wk</span></div>
+    <div class="salary-row"><span>Annual Impact (est.)</span><span>+$832/yr</span></div>
+  </div>
+  <div class="risk-box">
+    <strong>Retention Risk:</strong> A 2-year performer carrying CDP responsibilities on Demi Chef pay is a flight risk. At $0.80/hr increase, this is the lowest-cost retention tool available.
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel F&amp;B · Promotion Business Case</span><span class="pf-r">Jayal · Mavis Ho</span></div>
+</div>
+
+<!-- PAGE 5 — CYNTHIA + SIGN OFF -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Case 4 of 4 — Part Time Chef de Partie · Multi-Outlet</span><span class="page-num">05</span></div>
+
+<div class="case-card gold-top">
+<div class="case-header">
+  <div>
+    <div class="case-name">Cynthia Darmawanti</div>
+    <div class="case-promo">Current: Part Time Demi Chef → Proposed: Part Time Chef de Partie · Multi-Outlet</div>
+  </div>
+  <div class="case-badge">
+    NEW RATE
+    <span class="rate">$30.68/hr</span>
+    <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1mm">from $29.88/hr · +$0.80/hr</div>
+  </div>
+</div>
+
+<div class="case-body">
+<div>
+  <div class="case-section">
+    <h4>Background &amp; Culinary Distinction</h4>
+    <p>Cynthia Darmawanti has demonstrated exceptional cooking skill that has been consistently recognised not just internally but by guests directly. She has received positive guest reviews and comments that specifically mention her by name — an uncommon achievement that speaks to the quality and care she brings to every service. This guest-facing recognition is a direct indicator of culinary standards that exceed her current Demi Chef classification.</p>
+  </div>
+  <div class="case-section">
+    <h4>Strategic Value — Multi-Outlet Flexibility</h4>
+    <ul>
+      <li>Cynthia has demonstrated the ability and willingness to work across <strong>both the Breakfast operation and Conference &amp; Events (C&amp;E) Function kitchen</strong> — a versatility that is exceptionally valuable during the current period of staffing instability</li>
+      <li>A multi-outlet CDP provides operational flexibility that a single-outlet staff member cannot — she can be deployed wherever the team needs her most</li>
+      <li>Her adaptability makes her a strategic asset during high-demand periods including the Water Polo World Cup (July 2026) and future large-scale C&amp;E events</li>
+      <li>Guest reviews mentioning her by name represent a brand asset — her continued presence and engagement with the team should be protected</li>
+    </ul>
+  </div>
+  <div class="case-section">
+    <h4>Business Justification</h4>
+    <p>Cynthia is performing CDP-level work across multiple outlets while receiving Demi Chef pay. The $0.80/hr increase to CDP classification corrects this misalignment. Her multi-outlet capability is particularly valuable at a time when the kitchen is managing multiple departures and needs flexible, experienced staff who can step up across different sections without supervision.</p>
+  </div>
+</div>
+<div>
+  <div class="salary-box">
+    <h4>Salary Comparison</h4>
+    <div class="salary-row"><span>Current Rate (Demi Chef)</span><span>$29.88/hr</span></div>
+    <div class="salary-row highlight"><span>Proposed Rate (CDP)</span><span>$30.68/hr</span></div>
+    <div class="salary-row"><span>Hourly Increase</span><span>+$0.80/hr</span></div>
+    <div class="salary-row"><span>Weekly (est. 20hr PT)</span><span>+$16/wk</span></div>
+    <div class="salary-row"><span>Annual Impact (est.)</span><span>+$832/yr</span></div>
+  </div>
+  <div class="risk-box">
+    <strong>Guest Recognition:</strong> Staff who receive positive guest reviews by name are rare and valuable. CDP classification is the appropriate recognition — and the minimum required to retain her.
+  </div>
+</div>
+</div>
+</div>
+
+<!-- TOTAL COST SUMMARY -->
+<div style="background:var(--light);border:1px solid var(--border);padding:4mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:3mm">Total Annual Investment — All 4 Promotions</div>
+  <table class="summary-table" style="margin-bottom:0">
+    <thead><tr><th>Staff Member</th><th>Promotion</th><th>Annual Cost Increase (est.)</th></tr></thead>
+    <tbody>
+      <tr><td>Praveen Dwaselaan</td><td>Senior Cook → Junior Sous Chef</td><td>+$12,186/yr</td></tr>
+      <tr><td>Jayal</td><td>Kitchen Steward → Commis Chef (PT)</td><td>+$2,360/yr</td></tr>
+      <tr><td>Mavis Ho</td><td>Demi Chef → CDP (PT)</td><td>+$832/yr</td></tr>
+      <tr><td>Cynthia Darmawanti</td><td>Demi Chef → CDP (PT)</td><td>+$832/yr</td></tr>
+      <tr style="font-weight:700"><td colspan="2"><strong>TOTAL ANNUAL INVESTMENT</strong></td><td><strong style="color:var(--gold)">+$16,210/yr</strong></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:9.5px;color:#555;margin-top:2.5mm;line-height:1.7">This total investment of $16,210 per year represents <strong>0.56% of the $2.9M annual Banquet revenue</strong> and <strong>0.13% of total F&amp;B revenue</strong>. It is the most cost-effective available response to the current staffing crisis and a direct investment in operational continuity for Water Polo World Cup 2026 and beyond.</div>
+</div>
+
+<!-- SIGN OFF -->
+<div style="background:#fff;border:1px solid var(--border);padding:4mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:3mm">Head Chef Recommendation</div>
+  <p style="font-size:10.5px;color:#333;line-height:1.9">I recommend the approval of all four promotions effective as soon as practicable in June 2026. Each candidate has earned their proposed classification through demonstrated performance, tenure, and contribution to the Novotel F&amp;B operation. The combined investment of $16,210 per year is significantly below the cost of external recruitment for equivalent positions, and the operational risk of not acting is substantially higher than the cost of acting.<br><br>
+  I am available to discuss any aspect of this proposal at your convenience.</p>
+</div>
+
+<div class="sign-block">
+  <div>
+    <div class="sign-line"></div>
+    <div class="sign-label">Timothy Susanto · Head Chef</div>
+    <div class="sign-label">Novotel Ibis Sydney Olympic Park</div>
+    <div class="sign-label">Date: ____________</div>
+  </div>
+  <div>
+    <div class="sign-line"></div>
+    <div class="sign-label">Joe Poovaiya · Director of Food &amp; Beverage</div>
+    <div class="sign-label">Accor NSW/ACT</div>
+    <div class="sign-label">Date: ____________</div>
+  </div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel F&amp;B · Promotion Business Case</span><span class="pf-r">Cynthia Darmawanti · Summary &amp; Sign-off</span></div>
+</div>
+
+<!-- PAGE 6 — STAFFING AGENCY PROPOSAL -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Supplementary Proposal — Staffing Agency Partnership</span><span class="page-num">06</span></div>
+
+<div class="context-box">
+  <h3>Moving Away from Sidekicker — A Case for Consistent Agency Partnership</h3>
+  <p>The current reliance on Sidekicker for casual kitchen labour has created inconsistency in staff quality, unpredictable skill levels on event days, and a lack of accountability that does not meet the standard required for a $2.9M banquet operation. A dedicated staffing agency relationship provides vetted, consistent, trained casual labour with accountability on both sides.</p>
+  <p style="margin-top:2mm">The <strong>Sheraton Grand Sydney Hyde Park</strong> operates an F&amp;B revenue of approximately <strong>$24 million per year</strong>. Their continuity of casual staffing quality — achieved through a formal agency partnership — is a benchmark we should be working toward. I am recommending we request a meeting with their F&amp;B leadership to understand their agency model and replicate it here.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm">
+<div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--accent);padding:4mm 5mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:3mm">Why Sidekicker Is Not Enough</div>
+  <ul style="list-style:none;padding:0">
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:#B71C1C">✗</span> No guaranteed repeat staff — different faces every shift</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:#B71C1C">✗</span> No culinary vetting — skill levels vary widely</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:#B71C1C">✗</span> No relationship with the worker — no accountability</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:#B71C1C">✗</span> App-based platform not designed for professional kitchen environments</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative"><span style="position:absolute;left:0;color:#B71C1C">✗</span> Cannot handle volume requirements of Water Polo World Cup</li>
+  </ul>
+</div>
+<div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:4mm 5mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:3mm">What a Dedicated Agency Provides</div>
+  <ul style="list-style:none;padding:0">
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Consistent pool of pre-vetted kitchen staff who know our operation</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Account manager relationship — direct escalation when issues arise</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Reference-checked, culinary-qualified candidates</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative;margin-bottom:1mm"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Volume capability for large events (50–100+ pax event days)</li>
+    <li style="font-size:10px;color:#333;line-height:1.85;padding-left:3mm;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Temp-to-perm pathway — agency staff can be assessed for permanent roles</li>
+  </ul>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:4mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:3mm">Sheraton Grand Sydney — Reference &amp; Benchmark Meeting</div>
+  <p style="font-size:10.5px;color:#333;line-height:1.9;margin-bottom:3mm">The Sheraton Grand Sydney Hyde Park operates a total F&amp;B revenue of approximately <strong>$24 million per year</strong>. Their ability to maintain consistent casual staffing standards across high-volume banquet and events operations is a model directly applicable to our context. I am requesting approval to:</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm">
+    <div style="background:var(--light);padding:3mm 4mm;border-left:3px solid var(--accent)">
+      <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm">Action 1</div>
+      <div style="font-size:10px;color:#333;line-height:1.7">Arrange a reference meeting with Sheraton Grand Sydney F&amp;B leadership to understand their agency staffing model and identify preferred partners</div>
+    </div>
+    <div style="background:var(--light);padding:3mm 4mm;border-left:3px solid var(--gold)">
+      <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm">Action 2</div>
+      <div style="font-size:10px;color:#333;line-height:1.7">Identify 2–3 specialist hospitality staffing agencies in Sydney (e.g. Trippas White Group suppliers, Pinnacle People, Allstaff) and request proposals</div>
+    </div>
+    <div style="background:var(--light);padding:3mm 4mm;border-left:3px solid var(--accent)">
+      <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm">Action 3</div>
+      <div style="font-size:10px;color:#333;line-height:1.7">Establish preferred agency by 30 June 2026 — in place and briefed before Water Polo World Cup commences 19 July 2026</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--accent);color:#fff;padding:4mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">Recommended Agencies for Initial Contact — Sydney Hospitality</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;font-size:10px;color:rgba(255,255,255,0.75);line-height:1.85">
+    <div>
+      <strong style="color:var(--gold)">Pinnacle People</strong><br>
+      Specialist hospitality staffing · Sydney · Used by major hotel groups including IHG and Marriott<br>
+      pinnaclepeople.com.au
+    </div>
+    <div>
+      <strong style="color:var(--gold)">Allstaff Hospitality</strong><br>
+      Kitchen-specialist casual and contract staffing · Sydney CBD and Olympic Park area<br>
+      allstaff.com.au
+    </div>
+    <div>
+      <strong style="color:var(--gold)">Trippas White Group</strong><br>
+      Premium hospitality group with staffing division · Major venue experience<br>
+      trippaswhitegroup.com.au
+    </div>
+    <div>
+      <strong style="color:var(--gold)">Sheraton Reference Contact</strong><br>
+      F&amp;B Director / Executive Chef · Sheraton Grand Sydney Hyde Park<br>
+      Arrange via Accor-IHG industry network · Request ASAP
+    </div>
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:4mm 5mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Requested Approval</div>
+  <p style="font-size:10.5px;color:#333;line-height:1.9">I am requesting approval to: (1) discontinue Sidekicker as our primary casual staffing platform, (2) initiate agency meetings with a minimum of two Sydney hospitality staffing agencies, and (3) arrange a reference meeting with Sheraton Grand Sydney F&amp;B leadership at the earliest available date. Target: preferred agency onboarded by 30 June 2026.</p>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel F&amp;B · Promotion Business Case</span><span class="pf-r">Staffing Agency Proposal · Supplementary</span></div>
+</div>
+
+</body>
+</html>

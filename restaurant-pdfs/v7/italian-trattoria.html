@@ -89,9 +89,16 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .chef-tip strong{color:var(--dark);font-style:normal}
 .allergen-row{display:flex;gap:1.5mm;flex-wrap:wrap;margin-top:1.5mm}
 .alg{font-size:7.5px;background:#FFF3E0;color:#E65100;padding:0.8mm 2mm;font-weight:600}
-@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.page,.cover{page-break-after:always}.recipe-card{page-break-inside:avoid}}
+@media print{
+  @page{size:A4;margin:0}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;margin:0;padding:0}
+  .cover,.page{page-break-after:always;page-break-inside:avoid;width:210mm;min-height:297mm;box-sizing:border-box}
+  .recipe-card,.bible-box,.nyc-table,.station,.day-card{page-break-inside:avoid}
+  .page-footer{position:fixed;bottom:0}
+  * {-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+}
 </style>
-<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
 </head>
 <body>
 
