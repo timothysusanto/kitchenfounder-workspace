@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Polo World Cup 2026 — Menu Programme v5</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--accent:#1B4F8A;--gold:#C8922A;--light:#F0EDE8;--mid:#8A8A8A;--dark:#0D2B4E;--green:#2E7D32;--border:#E0D9D0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-wave{position:absolute;bottom:0;left:0;right:0;height:90mm;background:linear-gradient(180deg,transparent 0%,rgba(27,79,138,0.25) 100%)}
+.cover-top{padding:14mm 16mm 0;z-index:1}
+.cover-logo{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:3mm}
+.cover-title .blue{color:#4A9EE0}
+.cover-rule{width:50mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.5);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-chef{font-family:'Playfair Display',serif;font-size:12px;color:rgba(255,255,255,0.55)}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.2);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+/* PRICE BANNER */
+.price-banner{background:var(--accent);color:#fff;padding:3mm 5mm;margin-bottom:5mm;display:flex;justify-content:space-between;align-items:center}
+.price-item{text-align:center}
+.price-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold)}
+.price-lbl{font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:2px;margin-top:1mm}
+/* DAY CARDS */
+.day-card{border:1px solid var(--border);margin-bottom:4mm;page-break-inside:avoid}
+.day-hdr{background:var(--accent);padding:3mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.day-hdr.alt{background:var(--dark)}
+.day-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff}
+.day-date{font-size:8.5px;color:rgba(255,255,255,0.5);letter-spacing:1px}
+.day-body{padding:3mm 5mm}
+.meal-section{margin-bottom:3mm}
+.meal-label{font-size:7.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm;display:flex;justify-content:space-between;align-items:center}
+.meal-price{background:var(--gold);color:var(--dark);font-size:8px;font-weight:700;padding:0.8mm 2.5mm}
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+.menu-col h5{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm;border-bottom:1px solid var(--border);padding-bottom:1mm}
+.menu-item{font-size:9.5px;color:#333;line-height:1.75;padding:0.5mm 0}
+.menu-item .note{font-size:8.5px;color:#888;font-style:italic}
+.divider{border:none;border-top:1px dashed var(--border);margin:2.5mm 0}
+/* DIETARY */
+.diet-bar{display:flex;gap:2mm;flex-wrap:wrap;margin-top:2mm}
+.dtag{font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:1mm 2mm}
+.dtag.nf{background:#E8F5E9;color:#1B5E20}
+.dtag.gf{background:#E3F2FD;color:#0D47A1}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A}
+.dtag.hal{background:#FFF8E1;color:#E65100}
+/* PRINCIPLES */
+.principle-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm}
+.principle{background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);padding:3mm 4mm}
+.principle h4{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm}
+.principle p{font-size:9.5px;color:#444;line-height:1.75}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:0}.page,.cover{page-break-after:always;width:210mm;min-height:297mm}.day-card{page-break-inside:avoid}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-wave"></div>
+<div class="cover-top"><div class="cover-logo">Novotel Ibis · Sydney Olympic Park</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">World Aquatics · 16 Nations · 400 Athletes</div>
+  <div class="cover-title">Water Polo<br><span class="blue">World</span><br>Cup 2026</div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">8-Day High-Performance Buffet Programme<br>Lunch &amp; Dinner · 19–26 July 2026 · Sydney Olympic Park</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">$45</div><div class="cstat-lbl">Lunch pp</div></div>
+    <div class="cstat"><div class="cstat-val">$65</div><div class="cstat-lbl">Dinner pp</div></div>
+    <div class="cstat"><div class="cstat-val">400</div><div class="cstat-lbl">Athletes</div></div>
+    <div class="cstat"><div class="cstat-val">16</div><div class="cstat-lbl">Nations</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">100% Nut Free</span>
+    <span class="ctag">Halal Available</span>
+    <span class="ctag">GF Options</span>
+    <span class="ctag">Vegan Options</span>
+    <span class="ctag">8 Days · 16 Services</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div><div class="cover-chef">Timothy Susanto · Head Chef</div><div style="font-size:8px;color:rgba(255,255,255,0.25);margin-top:1mm">Novotel Ibis Sydney Olympic Park</div></div>
+  <div class="cover-meta">Menu Programme v5 · June 2026<br>Simplified Budget Edition</div>
+</div>
+</div>
+
+<!-- PAGE 2 — PRINCIPLES + DAYS 1-2 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Menu Principles · Days 1 &amp; 2</span><span class="page-num">02</span></div>
+
+<div class="price-banner">
+  <div class="price-item"><div class="price-val">$45</div><div class="price-lbl">Lunch Per Person</div></div>
+  <div style="color:rgba(255,255,255,0.3);font-size:20px">·</div>
+  <div class="price-item"><div class="price-val">$65</div><div class="price-lbl">Dinner Per Person</div></div>
+  <div style="color:rgba(255,255,255,0.3);font-size:20px">·</div>
+  <div class="price-item"><div class="price-val">400</div><div class="price-lbl">Athletes · 16 Nations</div></div>
+  <div style="color:rgba(255,255,255,0.3);font-size:20px">·</div>
+  <div class="price-item"><div class="price-val">19–26</div><div class="price-lbl">July 2026</div></div>
+</div>
+
+<div class="principle-grid">
+  <div class="principle"><h4>Performance First</h4><p>High protein, complex carbs, anti-inflammatory ingredients every service. Athletes need fuel, not fuss.</p></div>
+  <div class="principle"><h4>100% Nut Free</h4><p>Zero nuts across all 16 services. Pumpkin seeds replace pine nuts. All suppliers confirmed nut-free.</p></div>
+  <div class="principle"><h4>Halal Available</h4><p>All proteins Halal-certified. No pork on any service. Separate serving utensils throughout.</p></div>
+  <div class="principle"><h4>Simple &amp; Consistent</h4><p>Maximum 3 salads per service. One hot soup every dinner. One protein hero per meal. No waste.</p></div>
+</div>
+
+<!-- DAY 1 -->
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 1 · Sunday 19 July</div><div class="day-date">Arrival Day · Welcome Dinner Only</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">WELCOME DINNER BUFFET <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Slow-roasted chicken thigh — herb jus</div>
+      <div class="menu-item">Beef meatballs in tomato ragù</div>
+      <div class="menu-item">Roasted seasonal vegetables <span class="note">GF · VG</span></div>
+      <div class="menu-item">Steamed jasmine rice + soft dinner rolls</div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Soup</h5>
+      <div class="menu-item">Garden salad — lemon vinaigrette <span class="note">GF · VG</span></div>
+      <div class="menu-item">Roasted tomato + bocconcini <span class="note">GF</span></div>
+      <div class="menu-item">Minestrone soup — tableside serve <span class="note">GF · VG</span></div>
+      <div class="menu-item">Bread rolls + butter</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Dessert</h5>
+      <div class="menu-item">Seasonal fresh fruit platter <span class="note">GF · VG</span></div>
+      <div class="menu-item">Vanilla panna cotta <span class="note">GF</span></div>
+    </div>
+    <div class="menu-col"><h5>Beverages</h5>
+      <div class="menu-item">Still + sparkling water</div>
+      <div class="menu-item">Juice · Tea · Coffee</div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<!-- DAY 2 -->
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 2 · Monday 20 July</div><div class="day-date">Rest Day · Lunch &amp; Dinner</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Grilled chicken breast — lemon herb</div>
+      <div class="menu-item">Pasta arrabbiata <span class="note">VG</span></div>
+      <div class="menu-item">Steamed rice + stir-fried vegetables <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Caesar salad (no anchovies) <span class="note">GF opt</span></div>
+      <div class="menu-item">Fresh fruit + yoghurt <span class="note">GF</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">DINNER BUFFET <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Butter chicken (Halal) <span class="note">GF</span></div>
+      <div class="menu-item">Dal makhani <span class="note">GF · VG</span></div>
+      <div class="menu-item">Basmati rice + garlic naan</div>
+      <div class="menu-item">Roasted cauliflower + chickpeas <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Cucumber raita + mango chutney <span class="note">GF</span></div>
+      <div class="menu-item">Lentil soup — turmeric <span class="note">GF · VG</span></div>
+      <div class="menu-item">Fresh fruit platter <span class="note">GF · VG</span></div>
+      <div class="menu-item">Mango coconut chia pudding <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Menu v5</span></div>
+</div>
+<!-- PAGE 3 — DAYS 3-4 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Days 3 &amp; 4 · Pre-Competition &amp; Game Day 1</span><span class="page-num">03</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 3 · Tuesday 21 July</div><div class="day-date">Rest Day · Lunch &amp; Dinner</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Beef stir-fry — ginger soy <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Steamed rice + noodles <span class="note">GF opt</span></div>
+      <div class="menu-item">Asian greens — oyster sauce <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Japanese-style cucumber salad <span class="note">GF · VG</span></div>
+      <div class="menu-item">Edamame + pickled vegetables <span class="note">GF · VG</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">DINNER BUFFET — ITALIAN NIGHT <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Chicken cacciatore <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Penne arrabbiata <span class="note">VG</span></div>
+      <div class="menu-item">Roasted potatoes + broccolini <span class="note">GF · VG</span></div>
+      <div class="menu-item">Garlic bread + GF rolls</div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Caprese salad — basil oil <span class="note">GF · VG</span></div>
+      <div class="menu-item">Rocket + parmesan + lemon <span class="note">GF</span></div>
+      <div class="menu-item">Minestrone soup <span class="note">GF · VG</span></div>
+      <div class="menu-item">Tiramisu cups + fresh fruit <span class="note">VG</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 4 · Wednesday 22 July</div><div class="day-date">Competition Day 1 · High Energy</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Grilled salmon fillet — lemon butter <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Smashed potatoes + herbs <span class="note">GF · VG</span></div>
+      <div class="menu-item">Steamed vegetables <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Greek salad — feta, olive <span class="note">GF · VG</span></div>
+      <div class="menu-item">Tabbouleh <span class="note">VG</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">DINNER BUFFET — MIDDLE EASTERN NIGHT <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Slow-braised lamb shoulder <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Chicken shawarma <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Saffron rice + flatbread <span class="note">GF opt</span></div>
+      <div class="menu-item">Roasted eggplant + chickpea <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Hummus + baba ghanoush <span class="note">GF · VG</span></div>
+      <div class="menu-item">Fattoush salad <span class="note">VG</span></div>
+      <div class="menu-item">Lentil soup — cumin <span class="note">GF · VG</span></div>
+      <div class="menu-item">Baklava (NF) + fresh fruit <span class="note">VG</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Menu v5</span></div>
+</div>
+
+<!-- PAGE 4 — DAYS 5-6 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Days 5 &amp; 6 · Competition Days 2 &amp; 3</span><span class="page-num">04</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 5 · Thursday 23 July</div><div class="day-date">Competition Day 2 · Recovery Focus</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Teriyaki chicken thigh <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Steamed rice + miso soup <span class="note">GF · VG</span></div>
+      <div class="menu-item">Stir-fried Asian greens <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Sesame noodle salad <span class="note">VG</span></div>
+      <div class="menu-item">Pickled cucumber + daikon <span class="note">GF · VG</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">DINNER BUFFET — ASIAN NIGHT <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Korean-style beef bulgogi <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Vegetable pad thai <span class="note">GF · VG</span></div>
+      <div class="menu-item">Steamed rice + spring rolls</div>
+      <div class="menu-item">Stir-fried broccoli + tofu <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Vietnamese slaw <span class="note">GF · VG</span></div>
+      <div class="menu-item">Tom yum soup (Halal) <span class="note">GF</span></div>
+      <div class="menu-item">Mango sticky rice <span class="note">GF · VG</span></div>
+      <div class="menu-item">Fresh fruit platter <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 6 · Friday 24 July</div><div class="day-date">Competition Day 3 · Semi-Final Build-Up</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Beef mince tacos — corn tortillas <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Black bean + corn salsa <span class="note">GF · VG</span></div>
+      <div class="menu-item">Mexican rice <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Charred corn + avocado salad <span class="note">GF · VG</span></div>
+      <div class="menu-item">Sour cream + salsa <span class="note">GF · VG</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">DINNER BUFFET — MEDITERRANEAN NIGHT <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Grilled lamb cutlets <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Baked barramundi — herbs + lemon <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Roasted potatoes + green beans <span class="note">GF · VG</span></div>
+      <div class="menu-item">Pita bread + tzatziki <span class="note">VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Greek salad — olives, feta <span class="note">GF · VG</span></div>
+      <div class="menu-item">Roasted capsicum + zucchini <span class="note">GF · VG</span></div>
+      <div class="menu-item">Roasted tomato soup <span class="note">GF · VG</span></div>
+      <div class="menu-item">Greek yoghurt + honey + fruit <span class="note">GF</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Menu v5</span></div>
+</div>
+<!-- PAGE 5 — DAYS 7-8 + BEVERAGES + SIGN OFF -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Days 7 &amp; 8 · Semi-Finals &amp; Grand Final</span><span class="page-num">05</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 7 · Saturday 25 July</div><div class="day-date">Semi-Finals Day · Peak Performance</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Roast beef — red wine jus <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Roast potatoes + Yorkshire <span class="note">VG opt</span></div>
+      <div class="menu-item">Steamed greens — butter <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Caesar salad <span class="note">GF opt</span></div>
+      <div class="menu-item">Coleslaw <span class="note">GF · VG</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">DINNER BUFFET — AUSTRALIAN NIGHT <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Whole roasted barramundi — native herbs <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Slow-roasted lamb leg <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Potato gratin <span class="note">GF</span></div>
+      <div class="menu-item">Roasted pumpkin + broccolini <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Beetroot + goat cheese salad <span class="note">GF</span></div>
+      <div class="menu-item">Rocket + pear + balsamic <span class="note">GF · VG</span></div>
+      <div class="menu-item">Pumpkin soup — cream <span class="note">GF</span></div>
+      <div class="menu-item">Pavlova + berry coulis <span class="note">GF</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr alt"><div class="day-title">Day 8 · Sunday 26 July</div><div class="day-date">Grand Final &amp; Closing · Farewell Feast</div></div>
+<div class="day-body">
+<div class="meal-section">
+  <div class="meal-label">LUNCH BUFFET <span class="meal-price">$45 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Grilled chicken + BBQ beef <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Corn on the cob + grilled vegetables <span class="note">GF · VG</span></div>
+      <div class="menu-item">Pasta salad + bread rolls</div>
+    </div>
+    <div class="menu-col"><h5>Salads &amp; Extras</h5>
+      <div class="menu-item">Mixed leaf + tomato <span class="note">GF · VG</span></div>
+      <div class="menu-item">Fresh fruit platter <span class="note">GF · VG</span></div>
+      <div class="menu-item">Build-your-own sandwich station</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="meal-section">
+  <div class="meal-label">CLOSING DINNER BUFFET <span class="meal-price">$65 pp</span></div>
+  <div class="menu-cols">
+    <div class="menu-col"><h5>Mains</h5>
+      <div class="menu-item">Slow-braised beef short rib <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Roasted barramundi — bush tomato <span class="note">GF · Halal</span></div>
+      <div class="menu-item">Mashed potato — butter enriched <span class="note">GF</span></div>
+      <div class="menu-item">Honey-glazed heirloom carrots <span class="note">GF · VG</span></div>
+    </div>
+    <div class="menu-col"><h5>Salads, Soup &amp; Dessert</h5>
+      <div class="menu-item">Heirloom tomato + basil <span class="note">GF · VG</span></div>
+      <div class="menu-item">Fennel + orange salad <span class="note">GF · VG</span></div>
+      <div class="menu-item">French onion soup <span class="note">GF opt</span></div>
+      <div class="menu-item">Individual pavlova + passionfruit <span class="note">GF</span></div>
+    </div>
+  </div>
+</div>
+<div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Menu v5</span></div>
+</div>
+
+<!-- PAGE 6 — BEVERAGES + SUMMARY + SIGN OFF -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Beverage Programme · Budget Summary · Sign-Off</span><span class="page-num">06</span></div>
+
+<div style="background:var(--dark);color:#fff;padding:5mm 6mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:3mm">Beverage Programme — All Services (Included in Per-Person Rate)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;font-size:9.5px;color:rgba(255,255,255,0.7);line-height:1.9">
+    <div><strong style="color:var(--gold)">Hot Beverages</strong><br>Filter coffee · Barista espresso<br>English Breakfast tea<br>Green tea · Peppermint<br>Chamomile · Decaf available</div>
+    <div><strong style="color:var(--gold)">Cold Beverages</strong><br>Still + sparkling water<br>Orange juice (chilled)<br>Apple + cranberry juice<br>Lemon water infused</div>
+    <div><strong style="color:var(--gold)">Performance</strong><br>Electrolyte water (all services)<br>Protein milk (post-competition)<br>Coconut water option<br>Ice available throughout</div>
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:4mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:3mm">8-Day Budget Summary</div>
+  <table style="width:100%;border-collapse:collapse;font-size:10px">
+    <thead><tr style="background:var(--accent)"><th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px;letter-spacing:1px;text-transform:uppercase">Service</th><th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Rate pp</th><th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Est. 400 pax</th><th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Days</th><th style="color:#fff;padding:2.5mm 3mm;text-align:right;font-size:8px">Total</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2.5mm 3mm">Lunch Buffet (Days 2–8)</td><td style="padding:2.5mm 3mm">$45</td><td style="padding:2.5mm 3mm">$18,000</td><td style="padding:2.5mm 3mm">7</td><td style="padding:2.5mm 3mm;text-align:right;font-weight:600">$126,000</td></tr>
+      <tr style="border-bottom:1px solid var(--border);background:#F8F5F0"><td style="padding:2.5mm 3mm">Dinner Buffet (Days 1–8)</td><td style="padding:2.5mm 3mm">$65</td><td style="padding:2.5mm 3mm">$26,000</td><td style="padding:2.5mm 3mm">8</td><td style="padding:2.5mm 3mm;text-align:right;font-weight:600">$208,000</td></tr>
+      <tr style="background:var(--accent)"><td style="padding:2.5mm 3mm;color:#fff;font-weight:700">TOTAL EVENT REVENUE</td><td colspan="3" style="padding:2.5mm 3mm;color:rgba(255,255,255,0.5)">15 services · 400 pax</td><td style="padding:2.5mm 3mm;text-align:right;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold)">$334,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm">
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--green);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:2mm">Food Safety</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.8">
+      ✓ All proteins Halal-certified<br>
+      ✓ 100% nut-free — all 16 services<br>
+      ✓ HACCP temperature logs maintained<br>
+      ✓ Allergen labelling on all dishes<br>
+      ✓ Separate utensils — dietary groups<br>
+      ✓ Daily food safety sign-off
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Operational Notes</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.8">
+      ✓ Service window: 60 mins per meal<br>
+      ✓ Setup 45 mins before service<br>
+      ✓ Replenishment every 20 mins<br>
+      ✓ Hot food maintained at 65°C+<br>
+      ✓ Cold food maintained at 4°C−<br>
+      ✓ Dietary flags on all chafing dishes
+    </div>
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:4mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2.5mm">Menu Subject to Change</div>
+  <div style="font-size:9.5px;color:#555;line-height:1.75">Menu items are subject to seasonal availability and supplier confirmation. Any substitutions will maintain the same nutritional profile, dietary compliance, and quality standard. Final menu to be confirmed 14 days prior to event commencement. Pricing confirmed at $45 lunch / $65 dinner per person inclusive of all non-alcoholic beverages and service.</div>
+</div>
+
+<div style="margin-top:4mm;padding-top:4mm;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:10mm">
+  <div>
+    <div style="border-bottom:1px solid var(--text);height:8mm;margin-bottom:1.5mm"></div>
+    <div style="font-size:8.5px;color:var(--mid)">Timothy Susanto · Head Chef</div>
+    <div style="font-size:8.5px;color:var(--mid)">Novotel Ibis Sydney Olympic Park</div>
+    <div style="font-size:8.5px;color:var(--mid)">Date: ___________</div>
+  </div>
+  <div>
+    <div style="border-bottom:1px solid var(--text);height:8mm;margin-bottom:1.5mm"></div>
+    <div style="font-size:8.5px;color:var(--mid)">Approved by: ___________________________</div>
+    <div style="font-size:8.5px;color:var(--mid)">Title: _________________________________</div>
+    <div style="font-size:8.5px;color:var(--mid)">Date: ___________</div>
+  </div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Menu v5</span></div>
+</div>
+
+</body>
+</html>
