@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Polo World Cup 2026 — Breakfast Programme</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--accent:#1B4F8A;--gold:#C8922A;--light:#F0EDE8;--mid:#8A8A8A;--dark:#0D2B4E;--border:#E0D9D0;--green:#2E7D32;--warm:#F5F0E8}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+
+/* COVER */
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-wave{position:absolute;bottom:0;left:0;right:0;height:80mm;background:linear-gradient(180deg,transparent 0%,rgba(27,79,138,0.2) 100%)}
+.cover-top{padding:14mm 16mm 0;z-index:1}
+.cover-logo{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:3mm}
+.cover-title .gold{color:var(--gold)}
+.cover-rule{width:50mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.5);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-chef{font-family:'Playfair Display',serif;font-size:12px;color:rgba(255,255,255,0.55)}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.2);text-align:right;line-height:1.8}
+
+/* PAGES */
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+
+/* BUFFET SECTIONS */
+.section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:3mm;border-left:4px solid var(--gold);padding-left:3mm}
+.buffet-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm}
+.buffet-block{background:#fff;border:1px solid var(--border);padding:3.5mm 4mm;page-break-inside:avoid}
+.buffet-block h4{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm;padding-bottom:1.5mm;border-bottom:1px solid var(--border)}
+.buffet-item{font-size:9.5px;color:#333;line-height:1.8;display:flex;justify-content:space-between;align-items:baseline;padding:0.3mm 0}
+.buffet-item .note{font-size:8px;color:#999;font-style:italic}
+.hot-block{background:var(--warm);border:1px solid var(--gold);border-left:4px solid var(--gold)}
+.hot-block h4{color:var(--gold)}
+.hot-badge{background:var(--gold);color:var(--dark);font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:0.5mm 2mm;margin-left:2mm}
+
+/* DIETARY */
+.diet-bar{display:flex;gap:2mm;flex-wrap:wrap;margin:2.5mm 0}
+.dtag{font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:1mm 2mm}
+.dtag.nf{background:#E8F5E9;color:#1B5E20}
+.dtag.gf{background:#E3F2FD;color:#0D47A1}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A}
+.dtag.hal{background:#FFF8E1;color:#E65100}
+
+/* DAY CARD */
+.day-card{border:1px solid var(--border);margin-bottom:4mm;page-break-inside:avoid}
+.day-hdr{background:var(--accent);padding:3mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.day-hdr.gold{background:linear-gradient(135deg,var(--dark),var(--accent))}
+.day-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff}
+.day-sub{font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px}
+.day-body{padding:3.5mm 5mm}
+
+/* PRICE BAR */
+.price-bar{background:var(--accent);color:#fff;padding:3mm 5mm;margin-bottom:4mm;display:flex;justify-content:space-around;align-items:center}
+.pb-item{text-align:center}
+.pb-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold)}
+.pb-lbl{font-size:7.5px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1.5px;margin-top:1mm}
+
+/* PRINT */
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:0}
+  .page,.cover{page-break-after:always;width:210mm;min-height:297mm}
+  .day-card,.buffet-block{page-break-inside:avoid}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-wave"></div>
+<div class="cover-top"><div class="cover-logo">Novotel Ibis · Sydney Olympic Park</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Water Polo World Cup 2026 · 16 Nations · 400 Athletes</div>
+  <div class="cover-title">Breakfast<br><span class="gold">Programme</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">8-Day Continental &amp; Hot Breakfast Buffet<br>19–26 July 2026 · Sydney Olympic Park</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">8</div><div class="cstat-lbl">Days</div></div>
+    <div class="cstat"><div class="cstat-val">400</div><div class="cstat-lbl">Athletes</div></div>
+    <div class="cstat"><div class="cstat-val">4</div><div class="cstat-lbl">Hot Items</div></div>
+    <div class="cstat"><div class="cstat-val">16</div><div class="cstat-lbl">Nations</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">Continental Buffet</span>
+    <span class="ctag">4 Hot Items Daily</span>
+    <span class="ctag">Scrambled Eggs</span>
+    <span class="ctag">100% Nut Free</span>
+    <span class="ctag">Halal Available</span>
+    <span class="ctag">GF Options</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div><div class="cover-chef">Timothy Susanto · Head Chef</div><div style="font-size:8px;color:rgba(255,255,255,0.25);margin-top:1mm">Novotel Ibis Sydney Olympic Park</div></div>
+  <div class="cover-meta">Breakfast Programme · June 2026<br>Water Polo World Cup Edition</div>
+</div>
+</div>
+
+<!-- PAGE 2 — STANDARD BUFFET + DAYS 1-2 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Standard Buffet Setup · Days 1 &amp; 2</span><span class="page-num">02</span></div>
+
+<div class="price-bar">
+  <div class="pb-item"><div class="pb-val">Continental</div><div class="pb-lbl">Base Buffet — Daily</div></div>
+  <div style="color:rgba(255,255,255,0.2);font-size:18px">+</div>
+  <div class="pb-item"><div class="pb-val">4 Hot Items</div><div class="pb-lbl">Incl. Scrambled Eggs</div></div>
+  <div style="color:rgba(255,255,255,0.2);font-size:18px">·</div>
+  <div class="pb-item"><div class="pb-val">6:30–9:30</div><div class="pb-lbl">Service Window</div></div>
+</div>
+
+<div class="section-title">Standard Continental Buffet — Every Day</div>
+<div class="buffet-grid">
+  <div class="buffet-block">
+    <h4>Breads &amp; Pastries</h4>
+    <div class="buffet-item">Sourdough loaf — sliced <span class="note">VG</span></div>
+    <div class="buffet-item">White + wholemeal toast <span class="note">VG</span></div>
+    <div class="buffet-item">Croissants — butter <span class="note">VG</span></div>
+    <div class="buffet-item">Gluten-free bread rolls <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Assorted Danish pastries <span class="note">VG</span></div>
+  </div>
+  <div class="buffet-block">
+    <h4>Cereals &amp; Grains</h4>
+    <div class="buffet-item">Rolled oats — hot porridge <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Granola (nut-free) <span class="note">VG</span></div>
+    <div class="buffet-item">Corn flakes + bran flakes <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Milk — full cream + skim <span class="note">GF</span></div>
+    <div class="buffet-item">Oat milk alternative <span class="note">GF · VG</span></div>
+  </div>
+  <div class="buffet-block">
+    <h4>Fruits &amp; Yoghurt</h4>
+    <div class="buffet-item">Seasonal fresh fruit platter <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Natural yoghurt — plain <span class="note">GF</span></div>
+    <div class="buffet-item">Greek yoghurt <span class="note">GF</span></div>
+    <div class="buffet-item">Mixed berry compote <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Sliced melon + citrus <span class="note">GF · VG</span></div>
+  </div>
+  <div class="buffet-block">
+    <h4>Condiments &amp; Spreads</h4>
+    <div class="buffet-item">Butter + margarine <span class="note">GF</span></div>
+    <div class="buffet-item">Strawberry jam + marmalade <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Vegemite + honey <span class="note">GF · VG</span></div>
+    <div class="buffet-item">Cream cheese <span class="note">GF</span></div>
+    <div class="buffet-item">Sliced cheese — cheddar <span class="note">GF</span></div>
+  </div>
+</div>
+
+<div class="buffet-block" style="margin-bottom:3mm">
+  <h4>Beverages — All Services</h4>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm">
+    <div>
+      <div class="buffet-item">Barista espresso coffee <span class="note">GF</span></div>
+      <div class="buffet-item">Filter coffee — regular + decaf <span class="note">GF</span></div>
+    </div>
+    <div>
+      <div class="buffet-item">English Breakfast + Green tea <span class="note">GF · VG</span></div>
+      <div class="buffet-item">Peppermint + chamomile tea <span class="note">GF · VG</span></div>
+    </div>
+    <div>
+      <div class="buffet-item">Orange + apple juice <span class="note">GF · VG</span></div>
+      <div class="buffet-item">Still + sparkling water <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 1 HOT ITEMS -->
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 1 · Sunday 19 July — Arrival Day</div><div class="day-sub">HOT ITEMS · 4 Stations</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+      <div class="buffet-item">Served from chafing dish, replenished every 20 min</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥓 Halal Beef Bacon <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Pan-fried Halal beef bacon <span class="note">GF · Halal</span></div>
+      <div class="buffet-item">Crispy finish — no pork throughout event</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🍄 Sautéed Mushrooms <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Button mushrooms — garlic, thyme, butter <span class="note">GF · VG</span></div>
+      <div class="buffet-item">Served hot in individual ramekins</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🍅 Grilled Tomatoes <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Vine-ripened tomatoes — olive oil, herbs <span class="note">GF · VG</span></div>
+      <div class="buffet-item">Halved, seasoned, oven-grilled</div>
+    </div>
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<!-- DAY 2 HOT ITEMS -->
+<div class="day-card">
+<div class="day-hdr gold"><div class="day-title">Day 2 · Monday 20 July — Rest Day</div><div class="day-sub">HOT ITEMS · 4 Stations</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+      <div class="buffet-item">Served from chafing dish, replenished every 20 min</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🌭 Halal Chicken Sausages <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Grilled Halal chicken sausages <span class="note">GF · Halal</span></div>
+      <div class="buffet-item">Whole + sliced options available</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥔 Hash Browns <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Oven-baked hash browns <span class="note">GF · VG</span></div>
+      <div class="buffet-item">Crispy outside, soft centre</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🫘 Baked Beans <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Heinz baked beans — tomato sauce <span class="note">GF · VG</span></div>
+      <div class="buffet-item">Served hot, great recovery carb</div>
+    </div>
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Breakfast Programme</span></div>
+</div>
+<!-- PAGE 3 — DAYS 3-4 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Days 3 &amp; 4 · Pre-Competition &amp; Game Day 1</span><span class="page-num">03</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 3 · Tuesday 21 July — Rest Day</div><div class="day-sub">HOT ITEMS · 4 Stations</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥓 Halal Beef Bacon <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Pan-fried Halal beef bacon <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥞 Pancakes <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Fluffy buttermilk pancakes <span class="note">VG</span></div>
+      <div class="buffet-item">Maple syrup + berry compote on side</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🍅 Grilled Tomatoes <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Vine-ripened tomatoes — olive oil <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr gold"><div class="day-title">Day 4 · Wednesday 22 July — Competition Day 1</div><div class="day-sub">HOT ITEMS · 4 Stations · Performance Focus</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🌭 Halal Chicken Sausages <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Grilled Halal chicken sausages <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥔 Hash Browns <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Oven-baked hash browns — crispy <span class="note">GF · VG</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🫘 Baked Beans <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Heinz baked beans — tomato sauce <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+  <div style="background:var(--warm);border:1px solid var(--gold);padding:2.5mm 3.5mm;margin-top:2mm;font-size:9px;color:#555">
+    <strong style="color:var(--gold)">⚡ Competition Day Note:</strong> Extra scrambled egg replenishment every 15 mins. High protein demand. Ensure chafing dishes are full at 6:30 AM sharp.
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<!-- DAY 5 -->
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 5 · Thursday 23 July — Competition Day 2</div><div class="day-sub">HOT ITEMS · 4 Stations</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥓 Halal Beef Bacon <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Pan-fried Halal beef bacon <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🍄 Sautéed Mushrooms <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Button mushrooms — garlic, thyme <span class="note">GF · VG</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥔 Hash Browns <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Oven-baked hash browns — crispy <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<!-- DAY 6 -->
+<div class="day-card">
+<div class="day-hdr gold"><div class="day-title">Day 6 · Friday 24 July — Competition Day 3</div><div class="day-sub">HOT ITEMS · 4 Stations</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🌭 Halal Chicken Sausages <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Grilled Halal chicken sausages <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥞 Pancakes <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Fluffy buttermilk pancakes <span class="note">VG</span></div>
+      <div class="buffet-item">Maple syrup + fresh berries on side</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🍅 Grilled Tomatoes <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Vine-ripened tomatoes — olive oil <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Breakfast Programme</span></div>
+</div>
+<!-- PAGE 4 — DAYS 7-8 + OPS + SIGN OFF -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Days 7 &amp; 8 · Semi-Finals &amp; Grand Final</span><span class="page-num">04</span></div>
+
+<div class="day-card">
+<div class="day-hdr"><div class="day-title">Day 7 · Saturday 25 July — Semi-Finals</div><div class="day-sub">HOT ITEMS · 4 Stations · Peak Event</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream <span class="note">GF</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥓 Halal Beef Bacon <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Pan-fried Halal beef bacon <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🌭 Halal Chicken Sausages <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Grilled Halal chicken sausages <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥔 Hash Browns <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Oven-baked hash browns — crispy <span class="note">GF · VG</span></div>
+    </div>
+  </div>
+  <div style="background:var(--warm);border:1px solid var(--gold);padding:2.5mm 3.5mm;margin-top:2mm;font-size:9px;color:#555">
+    <strong style="color:var(--gold)">🏆 Semi-Finals Note:</strong> Two hot proteins today (bacon + sausage). Athletes need maximum fuel. Extend service to 10:00 AM if competition schedule allows.
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="day-card">
+<div class="day-hdr gold"><div class="day-title">Day 8 · Sunday 26 July — Grand Final &amp; Closing</div><div class="day-sub">HOT ITEMS · 4 Stations · Farewell Breakfast</div></div>
+<div class="day-body">
+  <div class="buffet-grid">
+    <div class="buffet-block hot-block"><h4>🍳 Scrambled Eggs <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Soft scrambled eggs — chive, cream, truffle oil finish <span class="note">GF</span></div>
+      <div class="buffet-item">Closing day upgrade — small luxury touch</div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥓 Halal Beef Bacon <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Pan-fried Halal beef bacon <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🌭 Halal Chicken Sausages <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Grilled Halal chicken sausages <span class="note">GF · Halal</span></div>
+    </div>
+    <div class="buffet-block hot-block"><h4>🥞 Pancakes + Fresh Berry <span class="hot-badge">HOT</span></h4>
+      <div class="buffet-item">Fluffy buttermilk pancakes <span class="note">VG</span></div>
+      <div class="buffet-item">Warm mixed berry compote + maple syrup</div>
+    </div>
+  </div>
+  <div style="background:#E8F5E9;border:1px solid #2E7D32;padding:2.5mm 3.5mm;margin-top:2mm;font-size:9px;color:#1B5E20">
+    <strong>🎉 Closing Day Note:</strong> Truffle oil on scrambled eggs = small luxury at no significant cost. Athletes remember the last meal. Make it count.
+  </div>
+  <div class="diet-bar"><span class="dtag nf">NUT FREE</span><span class="dtag hal">HALAL</span><span class="dtag gf">GF OPTIONS</span><span class="dtag vg">VEGAN OPTIONS</span></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Breakfast Programme</span></div>
+</div>
+
+<!-- PAGE 5 — OPERATIONS + SIGN OFF -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Operations · Allergens · Sign-Off</span><span class="page-num">05</span></div>
+
+<!-- HOT ROTATION SUMMARY -->
+<div class="section-title" style="margin-bottom:3mm">8-Day Hot Item Rotation</div>
+<div style="background:#fff;border:1px solid var(--border);margin-bottom:4mm;overflow:hidden">
+  <table style="width:100%;border-collapse:collapse;font-size:9.5px">
+    <thead>
+      <tr style="background:var(--accent)">
+        <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px;text-transform:uppercase;letter-spacing:1px">Day</th>
+        <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Hot Item 1</th>
+        <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Hot Item 2</th>
+        <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Hot Item 3</th>
+        <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Hot Item 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Sun 19</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Halal Beef Bacon</td><td style="padding:2mm 3mm">Sautéed Mushrooms</td><td style="padding:2mm 3mm">Grilled Tomatoes</td></tr>
+      <tr style="border-bottom:1px solid var(--border);background:#F8F5F0"><td style="padding:2mm 3mm;font-weight:600">Mon 20</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Chicken Sausages</td><td style="padding:2mm 3mm">Hash Browns</td><td style="padding:2mm 3mm">Baked Beans</td></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Tue 21</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Halal Beef Bacon</td><td style="padding:2mm 3mm">Pancakes</td><td style="padding:2mm 3mm">Grilled Tomatoes</td></tr>
+      <tr style="border-bottom:1px solid var(--border);background:#F8F5F0"><td style="padding:2mm 3mm;font-weight:600">Wed 22 ⚡</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Chicken Sausages</td><td style="padding:2mm 3mm">Hash Browns</td><td style="padding:2mm 3mm">Baked Beans</td></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Thu 23</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Halal Beef Bacon</td><td style="padding:2mm 3mm">Sautéed Mushrooms</td><td style="padding:2mm 3mm">Hash Browns</td></tr>
+      <tr style="border-bottom:1px solid var(--border);background:#F8F5F0"><td style="padding:2mm 3mm;font-weight:600">Fri 24</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Chicken Sausages</td><td style="padding:2mm 3mm">Pancakes</td><td style="padding:2mm 3mm">Grilled Tomatoes</td></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Sat 25 🏆</td><td style="padding:2mm 3mm">Scrambled Eggs</td><td style="padding:2mm 3mm">Halal Beef Bacon</td><td style="padding:2mm 3mm">Chicken Sausages</td><td style="padding:2mm 3mm">Hash Browns</td></tr>
+      <tr style="background:var(--warm)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">Sun 26 🎉</td><td style="padding:2mm 3mm;font-style:italic">Eggs + Truffle Oil</td><td style="padding:2mm 3mm">Halal Beef Bacon</td><td style="padding:2mm 3mm">Chicken Sausages</td><td style="padding:2mm 3mm">Pancakes + Berry</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm">
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--green);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:2mm">Operational Standards</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.85">
+      ✓ Service window: 6:30 AM – 9:30 AM<br>
+      ✓ Setup complete by 6:15 AM<br>
+      ✓ Hot items replenished every 20 mins<br>
+      ✓ Scrambled eggs — every 15 mins competition days<br>
+      ✓ Chafing dishes at temp before 6:30 AM<br>
+      ✓ Cold items refreshed at 7:30 AM<br>
+      ✓ Fruit platter restocked at 8:00 AM<br>
+      ✓ Temperature log signed every 30 mins
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Allergen Summary</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.85">
+      ✓ 100% nut-free — all 8 services<br>
+      ✓ No pork — Halal beef bacon + chicken sausages<br>
+      ✓ Gluten-free bread available daily<br>
+      ✓ Dairy-free: oat milk, vegan margarine<br>
+      ✓ Egg-free: full continental options available<br>
+      ✓ All labels displayed in English<br>
+      ✓ Allergen register available on request<br>
+      ✓ Separate tongs for GF items
+    </div>
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3.5mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Notes &amp; Substitutions</div>
+  <div style="font-size:9.5px;color:#555;line-height:1.75">Menu items subject to seasonal availability. Any substitutions to hot items will be communicated to team leadership 24 hours in advance. The continental buffet base remains consistent across all 8 days. Hot items rotate to maintain athlete interest and nutritional variety. All items confirmed nut-free and Halal-compliant.</div>
+</div>
+
+<div style="margin-top:4mm;padding-top:4mm;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:10mm">
+  <div>
+    <div style="border-bottom:1px solid var(--text);height:8mm;margin-bottom:1.5mm"></div>
+    <div style="font-size:8.5px;color:var(--mid)">Timothy Susanto · Head Chef</div>
+    <div style="font-size:8.5px;color:var(--mid)">Novotel Ibis Sydney Olympic Park</div>
+    <div style="font-size:8.5px;color:var(--mid)">Date: ___________</div>
+  </div>
+  <div>
+    <div style="border-bottom:1px solid var(--text);height:8mm;margin-bottom:1.5mm"></div>
+    <div style="font-size:8.5px;color:var(--mid)">Approved by: ___________________________</div>
+    <div style="font-size:8.5px;color:var(--mid)">Title: _________________________________</div>
+    <div style="font-size:8.5px;color:var(--mid)">Date: ___________</div>
+  </div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Sydney Olympic Park</span><span class="pf-r">Water Polo World Cup 2026 · Breakfast Programme</span></div>
+</div>
+
+</body>
+</html>

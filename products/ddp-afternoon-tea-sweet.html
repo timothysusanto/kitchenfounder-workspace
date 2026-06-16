@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DDP Afternoon Tea — Healthy Sweet Rotation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--accent:#2E7D32;--gold:#C8922A;--light:#F0EDE8;--mid:#8A8A8A;--dark:#1A3A1A;--border:#E0D9D0;--warm:#F5F0E8;--green:#2E7D32;--softgreen:#E8F5E9}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-wave{position:absolute;bottom:0;left:0;right:0;height:80mm;background:linear-gradient(180deg,transparent 0%,rgba(46,125,50,0.2) 100%)}
+.cover-top{padding:14mm 16mm 0;z-index:1}
+.cover-logo{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:46px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:3mm}
+.cover-title .green{color:#81C784}
+.cover-rule{width:50mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.5);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-chef{font-family:'Playfair Display',serif;font-size:12px;color:rgba(255,255,255,0.55)}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.2);text-align:right;line-height:1.8}
+
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+
+/* ROTATION CARD */
+.rotation-card{border:1px solid var(--border);margin-bottom:5mm;page-break-inside:avoid;overflow:hidden}
+.rot-hdr{background:var(--accent);padding:3.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.rot-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff}
+.rot-badge{background:var(--gold);color:var(--dark);font-size:7.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.rot-body{padding:4mm 5mm}
+.rot-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:3mm}
+.item-block{background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);padding:3mm 3.5mm}
+.item-name{font-size:10px;font-weight:600;color:var(--dark);margin-bottom:1mm}
+.item-desc{font-size:9px;color:#555;line-height:1.65;margin-bottom:1.5mm}
+.item-tags{display:flex;gap:1.5mm;flex-wrap:wrap}
+.itag{font-size:7px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.8mm 1.8mm}
+.itag.gf{background:#E3F2FD;color:#0D47A1}
+.itag.vg{background:#F3E5F5;color:#6A1B9A}
+.itag.pa{background:#E8F5E9;color:#1B5E20}
+.itag.nf{background:#FFF8E1;color:#E65100}
+
+/* QUANTITIES TABLE */
+.qty-table{width:100%;border-collapse:collapse;font-size:9px;margin-top:2.5mm}
+.qty-table th{background:var(--dark);color:#fff;padding:2mm 3mm;text-align:left;font-size:7.5px;letter-spacing:1px;text-transform:uppercase}
+.qty-table td{padding:2mm 3mm;border-bottom:1px solid var(--border);color:#333}
+.qty-table tr:nth-child(even) td{background:#F8F5F0}
+.qty-table td.bold{font-weight:700;color:var(--dark)}
+.qty-table td.gold{font-weight:700;color:var(--gold)}
+
+/* PREP NOTE */
+.prep-note{background:var(--softgreen);border:1px solid var(--green);padding:2.5mm 3.5mm;margin-top:2.5mm;font-size:9px;color:#1B5E20;line-height:1.7}
+.prep-note strong{font-weight:700}
+
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:0}
+  .page,.cover{page-break-after:always;width:210mm;min-height:297mm}
+  .rotation-card{page-break-inside:avoid}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-wave"></div>
+<div class="cover-top"><div class="cover-logo">Novotel Ibis · Sydney Olympic Park · Conference &amp; Events</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Day Delegate Package · Afternoon Tea</div>
+  <div class="cover-title">Healthy<br>Sweet<br><span class="green">Rotation</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">5 Rotation Menus · Paleo · Gluten-Free Options<br>Designed for 500 pax · No Pastry Chef Required</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">5</div><div class="cstat-lbl">Rotations</div></div>
+    <div class="cstat"><div class="cstat-val">500</div><div class="cstat-lbl">Max Pax</div></div>
+    <div class="cstat"><div class="cstat-val">4</div><div class="cstat-lbl">Items Each</div></div>
+    <div class="cstat"><div class="cstat-val">0</div><div class="cstat-lbl">Pastry Req.</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">Paleo Options</span>
+    <span class="ctag">GF Throughout</span>
+    <span class="ctag">Low Sugar</span>
+    <span class="ctag">100% Nut Free</span>
+    <span class="ctag">Batch Prep Friendly</span>
+    <span class="ctag">Vegan Options</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div><div class="cover-chef">Timothy Susanto · Head Chef</div><div style="font-size:8px;color:rgba(255,255,255,0.25);margin-top:1mm">Novotel Ibis Sydney Olympic Park</div></div>
+  <div class="cover-meta">DDP Sweet Rotation · June 2026<br>Conference &amp; Events Edition</div>
+</div>
+</div>
+
+<!-- PAGE 2 — ROTATION 1 + 2 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Rotation 1 · Bliss Ball Bar &amp; Rotation 2 · Banana Bread Day</span><span class="page-num">02</span></div>
+
+<!-- ROTATION 1 -->
+<div class="rotation-card">
+<div class="rot-hdr"><div class="rot-title">Rotation 1 — Bliss Ball Bar</div><span class="rot-badge">Paleo · GF · VG</span></div>
+<div class="rot-body">
+  <div class="rot-grid">
+    <div class="item-block">
+      <div class="item-name">Date + Coconut Bliss Ball</div>
+      <div class="item-desc">Medjool dates, desiccated coconut, vanilla — rolled in coconut flakes. 2 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Cacao + Chia Bliss Ball</div>
+      <div class="item-desc">Raw cacao, chia seeds, oats, honey — rolled in cacao powder. 2 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Lemon Coconut Bliss Ball</div>
+      <div class="item-desc">Lemon zest, coconut, cashew-free base — rolled in shredded coconut. 2 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Fresh Fruit Skewer</div>
+      <div class="item-desc">Melon, grape, strawberry, pineapple on bamboo skewer. 1 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+  </div>
+  <table class="qty-table">
+    <thead><tr><th>Item</th><th>Per Person</th><th>100 pax</th><th>250 pax</th><th>500 pax</th><th>Make Ahead</th></tr></thead>
+    <tbody>
+      <tr><td>Date + Coconut Ball</td><td>2 pcs</td><td>200 pcs</td><td>500 pcs</td><td class="gold">1,000 pcs</td><td>2 days ahead</td></tr>
+      <tr><td>Cacao + Chia Ball</td><td>2 pcs</td><td>200 pcs</td><td>500 pcs</td><td class="gold">1,000 pcs</td><td>2 days ahead</td></tr>
+      <tr><td>Lemon Coconut Ball</td><td>2 pcs</td><td>200 pcs</td><td>500 pcs</td><td class="gold">1,000 pcs</td><td>2 days ahead</td></tr>
+      <tr><td>Fruit Skewer</td><td>1 skewer</td><td>100 pcs</td><td>250 pcs</td><td class="gold">500 pcs</td><td>3 hrs ahead</td></tr>
+    </tbody>
+  </table>
+  <div class="prep-note"><strong>Prep:</strong> Food processor → blend dates + coconut → roll → fridge. 1 cook can produce 500 bliss balls/hour. All 3 varieties 2 days ahead. Skewers morning of service. Display on tiered platter or slate board.</div>
+</div></div>
+
+<!-- ROTATION 2 -->
+<div class="rotation-card">
+<div class="rot-hdr"><div class="rot-title">Rotation 2 — Banana Bread Day</div><span class="rot-badge">GF · VG · Low Sugar</span></div>
+<div class="rot-body">
+  <div class="rot-grid">
+    <div class="item-block">
+      <div class="item-name">Banana Bread Slice</div>
+      <div class="item-desc">GF banana bread — ripe banana, almond flour, honey sweetened. Sliced, room temp. 1 slice per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Coconut Yoghurt Pot</div>
+      <div class="item-desc">Coconut yoghurt + mixed berry compote in 100ml portion cup. Serve chilled. 1 cup per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Dark Chocolate Bark</div>
+      <div class="item-desc">70% dark chocolate, sea salt, dried cranberry — broken into shards. 2 pieces per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Orange + Almond-Free Slice</div>
+      <div class="item-desc">Orange, sunflower seed flour, honey — dense, moist, no nuts. Slice to 5cm portions. 1 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+  </div>
+  <table class="qty-table">
+    <thead><tr><th>Item</th><th>Per Person</th><th>100 pax</th><th>250 pax</th><th>500 pax</th><th>Make Ahead</th></tr></thead>
+    <tbody>
+      <tr><td>Banana Bread Slice</td><td>1 slice</td><td>100 slices</td><td>250 slices</td><td class="gold">500 slices</td><td>Morning of</td></tr>
+      <tr><td>Coconut Yoghurt Pot</td><td>1 cup</td><td>100 cups</td><td>250 cups</td><td class="gold">500 cups</td><td>Night before</td></tr>
+      <tr><td>Dark Choc Bark</td><td>2 pcs</td><td>200 pcs</td><td>500 pcs</td><td class="gold">1,000 pcs</td><td>2 days ahead</td></tr>
+      <tr><td>Orange Slice</td><td>1 slice</td><td>100 slices</td><td>250 slices</td><td class="gold">500 slices</td><td>Morning of</td></tr>
+    </tbody>
+  </table>
+  <div class="prep-note"><strong>Prep:</strong> Bake banana bread + orange slice in full hotel pans — slice day of. Choc bark poured onto tray, set in fridge 2 days ahead, break into shards. Yoghurt pots portioned night before. Zero skilled pastry work required.</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Conference &amp; Events</span><span class="pf-r">DDP Afternoon Tea Sweet Rotation · 2026</span></div>
+</div>
+<!-- PAGE 3 — ROTATION 3 + 4 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Rotation 3 · Chia Cup Bar &amp; Rotation 4 · Raw Slice Day</span><span class="page-num">03</span></div>
+
+<!-- ROTATION 3 -->
+<div class="rotation-card">
+<div class="rot-hdr"><div class="rot-title">Rotation 3 — Chia Cup Bar</div><span class="rot-badge">Paleo · GF · VG</span></div>
+<div class="rot-body">
+  <div class="rot-grid">
+    <div class="item-block">
+      <div class="item-name">Mango Coconut Chia Cup</div>
+      <div class="item-desc">Coconut milk chia base — set overnight. Fresh mango layer on top. Served in 150ml portion cup.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Acai + Berry Chia Cup</div>
+      <div class="item-desc">Acai powder, mixed berry, coconut milk chia — topped with fresh berry. 150ml portion cup.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Vanilla Coconut Chia Cup</div>
+      <div class="item-desc">Vanilla bean, coconut milk chia — topped with passionfruit pulp. Clean, simple, elegant.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Medjool Date + Tahini Bite</div>
+      <div class="item-desc">Pitted Medjool date — pressed open, filled with tahini + sea salt flakes. 2 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+  </div>
+  <table class="qty-table">
+    <thead><tr><th>Item</th><th>Per Person</th><th>100 pax</th><th>250 pax</th><th>500 pax</th><th>Make Ahead</th></tr></thead>
+    <tbody>
+      <tr><td>Mango Coconut Chia Cup</td><td>1 cup</td><td>100 cups</td><td>250 cups</td><td class="gold">500 cups</td><td>Night before ✅</td></tr>
+      <tr><td>Acai + Berry Chia Cup</td><td>1 cup</td><td>100 cups</td><td>250 cups</td><td class="gold">500 cups</td><td>Night before ✅</td></tr>
+      <tr><td>Vanilla Coconut Chia Cup</td><td>1 cup</td><td>100 cups</td><td>250 cups</td><td class="gold">500 cups</td><td>Night before ✅</td></tr>
+      <tr><td>Medjool Date + Tahini</td><td>2 pcs</td><td>200 pcs</td><td>500 pcs</td><td class="gold">1,000 pcs</td><td>Day before ✅</td></tr>
+    </tbody>
+  </table>
+  <div class="prep-note"><strong>Prep:</strong> Mix chia + coconut milk → portion into cups → fridge overnight → top with fruit morning of. 1 cook can portion 300 cups/hour. Dates filled by hand — simple, 30 mins for 500 pcs. This rotation requires zero cooking on the day. Purely cold assembly.</div>
+</div></div>
+
+<!-- ROTATION 4 -->
+<div class="rotation-card">
+<div class="rot-hdr"><div class="rot-title">Rotation 4 — Raw Slice Day</div><span class="rot-badge">Paleo · GF · VG · No-Bake</span></div>
+<div class="rot-body">
+  <div class="rot-grid">
+    <div class="item-block">
+      <div class="item-name">Raw Cacao Slice</div>
+      <div class="item-desc">Date + sunflower seed base, raw cacao ganache top. Set in fridge. Slice to 4×4cm. 1 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Lemon Coconut Slice</div>
+      <div class="item-desc">Coconut base, lemon zest icing — no bake, no pastry. Set in tray, slice cold. 1 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Mango Coconut Chia Slice</div>
+      <div class="item-desc">Chia + coconut milk set in hotel pan, mango layer on top. Slice into 4×4cm portions. 1 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Fresh Berry Cup</div>
+      <div class="item-desc">Mixed fresh berries + mint in 100ml portion cup. Simple, clean, palate cleanser. 1 cup per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+  </div>
+  <table class="qty-table">
+    <thead><tr><th>Item</th><th>Per Person</th><th>100 pax</th><th>250 pax</th><th>500 pax</th><th>Make Ahead</th></tr></thead>
+    <tbody>
+      <tr><td>Raw Cacao Slice</td><td>1 slice</td><td>100 pcs</td><td>250 pcs</td><td class="gold">500 pcs</td><td>2 days ahead ✅</td></tr>
+      <tr><td>Lemon Coconut Slice</td><td>1 slice</td><td>100 pcs</td><td>250 pcs</td><td class="gold">500 pcs</td><td>2 days ahead ✅</td></tr>
+      <tr><td>Mango Chia Slice</td><td>1 slice</td><td>100 pcs</td><td>250 pcs</td><td class="gold">500 pcs</td><td>Night before ✅</td></tr>
+      <tr><td>Berry Cup</td><td>1 cup</td><td>100 cups</td><td>250 cups</td><td class="gold">500 cups</td><td>Morning of</td></tr>
+    </tbody>
+  </table>
+  <div class="prep-note"><strong>Prep:</strong> All slices pressed into full hotel pans — no oven needed for cacao + lemon varieties. Set in fridge 2 days ahead. Slice and portion morning of service. Berry cups portioned morning of. This entire rotation can be prepped by 1 cook in 3 hours for 500 pax.</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Conference &amp; Events</span><span class="pf-r">DDP Afternoon Tea Sweet Rotation · 2026</span></div>
+</div>
+<!-- PAGE 4 — ROTATION 5 + OPS SUMMARY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Rotation 5 · Fruit Forward &amp; Operations Summary</span><span class="page-num">04</span></div>
+
+<!-- ROTATION 5 -->
+<div class="rotation-card">
+<div class="rot-hdr"><div class="rot-title">Rotation 5 — Fruit Forward</div><span class="rot-badge">100% Paleo · GF · VG · Lightest Option</span></div>
+<div class="rot-body">
+  <div class="rot-grid">
+    <div class="item-block">
+      <div class="item-name">Seasonal Fruit Platter</div>
+      <div class="item-desc">Chef's selection — watermelon, rockmelon, pineapple, grapes, strawberry. Displayed on slate boards. Shared platter style.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Coconut Panna Cotta Cup</div>
+      <div class="item-desc">Coconut milk set with agar (not gelatine — fully vegan). Passionfruit pulp on top. 150ml cup.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Coconut Macaroon</div>
+      <div class="item-desc">Shredded coconut, egg white, honey — baked until golden. 3 ingredients. 2 per person.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+    <div class="item-block">
+      <div class="item-name">Watermelon + Mint Skewer</div>
+      <div class="item-desc">Cubed watermelon, fresh mint leaf, lime zest — bamboo skewer. Light, refreshing, no prep skill needed.</div>
+      <div class="item-tags"><span class="itag gf">GF</span><span class="itag vg">VG</span><span class="itag pa">PALEO</span><span class="itag nf">NF</span></div>
+    </div>
+  </div>
+  <table class="qty-table">
+    <thead><tr><th>Item</th><th>Per Person</th><th>100 pax</th><th>250 pax</th><th>500 pax</th><th>Make Ahead</th></tr></thead>
+    <tbody>
+      <tr><td>Fruit Platter</td><td>150g</td><td>15kg</td><td>37.5kg</td><td class="gold">75kg cut fruit</td><td>Morning of</td></tr>
+      <tr><td>Coconut Panna Cotta</td><td>1 cup</td><td>100 cups</td><td>250 cups</td><td class="gold">500 cups</td><td>Night before ✅</td></tr>
+      <tr><td>Coconut Macaroon</td><td>2 pcs</td><td>200 pcs</td><td>500 pcs</td><td class="gold">1,000 pcs</td><td>2 days ahead ✅</td></tr>
+      <tr><td>Watermelon Skewer</td><td>1 skewer</td><td>100 pcs</td><td>250 pcs</td><td class="gold">500 pcs</td><td>3 hrs ahead</td></tr>
+    </tbody>
+  </table>
+  <div class="prep-note"><strong>Prep:</strong> Panna cotta poured into cups night before — set overnight. Macaroons baked 2 days ahead, stored airtight. Fruit cut and skewers assembled morning of. This is the lightest, most health-conscious rotation — best for afternoon sessions where delegates need energy not a sugar spike.</div>
+</div></div>
+
+<!-- OPS SUMMARY TABLE -->
+<div style="background:#fff;border:1px solid var(--border);margin-bottom:4mm;overflow:hidden">
+  <div style="background:var(--dark);padding:3mm 5mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold)">5-Rotation Master Summary — 500 Pax</div>
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-size:9px">
+    <thead><tr style="background:var(--accent)">
+      <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px;letter-spacing:1px;text-transform:uppercase">Rotation</th>
+      <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Style</th>
+      <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Earliest Prep</th>
+      <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Day-Of Work</th>
+      <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Skill Level</th>
+      <th style="color:#fff;padding:2.5mm 3mm;text-align:left;font-size:8px">Best Season</th>
+    </tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2.5mm 3mm;font-weight:700">R1 · Bliss Ball Bar</td><td style="padding:2.5mm 3mm">No-bake · Finger food</td><td style="padding:2.5mm 3mm">2 days ahead</td><td style="padding:2.5mm 3mm">Skewers only</td><td style="padding:2.5mm 3mm;color:var(--green);font-weight:600">Cook 1</td><td style="padding:2.5mm 3mm">All year</td></tr>
+      <tr style="border-bottom:1px solid var(--border);background:#F8F5F0"><td style="padding:2.5mm 3mm;font-weight:700">R2 · Banana Bread</td><td style="padding:2.5mm 3mm">Baked · Slice + cup</td><td style="padding:2.5mm 3mm">2 days ahead</td><td style="padding:2.5mm 3mm">Slice bread</td><td style="padding:2.5mm 3mm;color:var(--green);font-weight:600">Cook 1</td><td style="padding:2.5mm 3mm">All year</td></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:2.5mm 3mm;font-weight:700">R3 · Chia Cup Bar</td><td style="padding:2.5mm 3mm">No-cook · Cup service</td><td style="padding:2.5mm 3mm">Night before</td><td style="padding:2.5mm 3mm">Top cups + dates</td><td style="padding:2.5mm 3mm;color:var(--green);font-weight:600">Cook 1</td><td style="padding:2.5mm 3mm">Summer</td></tr>
+      <tr style="border-bottom:1px solid var(--border);background:#F8F5F0"><td style="padding:2.5mm 3mm;font-weight:700">R4 · Raw Slice Day</td><td style="padding:2.5mm 3mm">No-bake · Slice</td><td style="padding:2.5mm 3mm">2 days ahead</td><td style="padding:2.5mm 3mm">Berry cups only</td><td style="padding:2.5mm 3mm;color:var(--green);font-weight:600">Cook 1</td><td style="padding:2.5mm 3mm">All year</td></tr>
+      <tr style="background:var(--softgreen)"><td style="padding:2.5mm 3mm;font-weight:700">R5 · Fruit Forward</td><td style="padding:2.5mm 3mm">Minimal cook · Light</td><td style="padding:2.5mm 3mm">Night before</td><td style="padding:2.5mm 3mm">Fruit cut + skewers</td><td style="padding:2.5mm 3mm;color:var(--green);font-weight:600">Cook 1</td><td style="padding:2.5mm 3mm">Summer</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--green);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:2mm">Allergen Rules — All Rotations</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.85">
+      ✓ 100% nut-free across all 5 rotations<br>
+      ✓ No almond flour — sunflower seed flour used<br>
+      ✓ No cashews — date base only<br>
+      ✓ GF options on every rotation<br>
+      ✓ Vegan options on every rotation<br>
+      ✓ Labels on every display item<br>
+      ✓ Separate tongs for each item
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Service Standards</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.85">
+      ✓ Portion cups labelled before service<br>
+      ✓ Platters refreshed every 30 mins<br>
+      ✓ Cold items held at 4°C until service<br>
+      ✓ Service window: 15:00 – 15:45<br>
+      ✓ Slices pre-cut — no service cutting<br>
+      ✓ Display height — minimum 2 levels<br>
+      ✓ Floral / herb garnish on platters
+    </div>
+  </div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Novotel Ibis · Conference &amp; Events</span><span class="pf-r">DDP Afternoon Tea Sweet Rotation · 2026</span></div>
+</div>
+
+</body>
+</html>
