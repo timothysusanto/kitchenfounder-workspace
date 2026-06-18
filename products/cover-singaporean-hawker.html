@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singaporean Hawker — Book Cover</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:40px}
+
+.book-wrap{position:relative;width:600px;height:800px;filter:drop-shadow(0 40px 80px rgba(0,0,0,0.8))}
+
+/* BOOK SPINE EFFECT */
+.book-wrap::before{
+  content:'';
+  position:absolute;
+  left:0;top:8px;
+  width:30px;height:784px;
+  background:linear-gradient(90deg,#1a0a00,#3d1f00,#1a0a00);
+  transform-origin:right;
+  transform:perspective(800px) rotateY(30deg);
+  z-index:0;
+}
+
+.cover{
+  position:absolute;
+  right:0;
+  width:570px;height:800px;
+  background:#0D0D0D;
+  overflow:hidden;
+  z-index:1;
+}
+
+/* FOOD PHOTO AREA — simulated with CSS gradient food scene */
+.food-photo{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:480px;
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(255,140,0,0.35) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 40%, rgba(180,60,0,0.3) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(255,200,50,0.2) 0%, transparent 50%),
+    linear-gradient(180deg, #1a0800 0%, #2d1200 30%, #1a0800 70%, #0D0D0D 100%);
+  overflow:hidden;
+}
+
+/* Steam effect */
+.steam{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:20px}
+.steam-line{width:3px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.15),transparent);border-radius:50%;animation:none}
+.steam-line:nth-child(1){height:80px;transform:rotate(-5deg)}
+.steam-line:nth-child(2){height:100px;margin-top:-20px}
+.steam-line:nth-child(3){height:70px;transform:rotate(5deg)}
+
+/* DISH ILLUSTRATIONS — CSS drawn food */
+/* Laksa bowl */
+.bowl{
+  position:absolute;
+  bottom:30px;left:50%;transform:translateX(-50%);
+  width:200px;height:90px;
+  background:linear-gradient(180deg,#8B1A00,#5C0F00);
+  border-radius:0 0 100px 100px;
+  border:3px solid rgba(255,150,0,0.3);
+  overflow:hidden;
+}
+.bowl::before{
+  content:'';
+  position:absolute;
+  top:10px;left:15px;right:15px;
+  height:40px;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(255,180,0,0.6) 0%, transparent 30%),
+    radial-gradient(circle at 70% 40%, rgba(255,100,0,0.5) 0%, transparent 25%),
+    linear-gradient(180deg,#D4580A,#8B2500);
+  border-radius:50%;
+}
+/* Noodles */
+.noodles{
+  position:absolute;
+  top:8px;left:20px;right:20px;height:30px;
+  background:repeating-linear-gradient(
+    15deg,
+    rgba(255,220,120,0.6) 0px,
+    rgba(255,220,120,0.6) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  border-radius:4px;
+}
+/* Garnish dots */
+.garnish{position:absolute;top:5px;right:25px;display:flex;gap:5px}
+.garnish span{width:8px;height:8px;border-radius:50%;background:#2d8a2d;opacity:0.8}
+
+/* Char kway teow pan */
+.pan{
+  position:absolute;
+  bottom:25px;left:60px;
+  width:130px;height:55px;
+  background:linear-gradient(180deg,#1a1a1a,#0d0d0d);
+  border-radius:4px 4px 8px 8px;
+  border:2px solid #333;
+  overflow:hidden;
+}
+.pan-food{
+  position:absolute;
+  inset:6px;
+  background:
+    radial-gradient(circle at 40% 40%, rgba(180,80,0,0.8) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(100,40,0,0.9) 0%, transparent 50%),
+    linear-gradient(135deg,#3d1f00,#1a0800);
+  border-radius:3px;
+}
+/* Chili crab hints */
+.crab{
+  position:absolute;
+  bottom:25px;right:55px;
+  width:110px;height:55px;
+  background:linear-gradient(135deg,#8B0000,#CC2200);
+  border-radius:8px;
+  overflow:hidden;
+  border:2px solid rgba(255,80,0,0.4);
+}
+.crab::before{
+  content:'';
+  position:absolute;
+  inset:5px;
+  background:radial-gradient(circle at 50% 40%, rgba(255,140,0,0.4) 0%, transparent 60%);
+}
+
+/* Smoke/aroma wisps */
+.aroma{
+  position:absolute;
+  top:20px;
+  left:50%;transform:translateX(-50%);
+  width:200px;height:60px;
+  background:radial-gradient(ellipse, rgba(255,200,100,0.05) 0%, transparent 70%);
+  filter:blur(8px);
+}
+
+/* OVERLAY GRADIENT */
+.photo-overlay{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:200px;
+  background:linear-gradient(180deg,transparent 0%,#0D0D0D 100%);
+}
+
+/* CORNER BADGE */
+.corner-badge{
+  position:absolute;
+  top:20px;right:20px;
+  width:70px;height:70px;
+  border:2px solid rgba(200,146,42,0.5);
+  border-radius:50%;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(4px);
+  z-index:10;
+}
+.cb-flag{font-size:22px;line-height:1}
+.cb-text{font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(200,146,42,0.8);text-transform:uppercase;margin-top:2px}
+
+/* STAMP */
+.stamp{
+  position:absolute;
+  top:20px;left:20px;
+  border:1.5px solid rgba(200,146,42,0.4);
+  padding:4px 10px;
+  z-index:10;
+}
+.stamp-text{font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.6)}
+
+/* TEXT SECTION */
+.text-area{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:24px 32px 28px;
+  background:linear-gradient(180deg,transparent,rgba(5,5,5,0.98) 30%);
+}
+.cuisine-tag{
+  font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(200,146,42,0.7);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.cuisine-tag::before{content:'';display:block;width:24px;height:1px;background:rgba(200,146,42,0.4)}
+.main-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:54px;font-weight:700;
+  color:#fff;line-height:0.95;
+  margin-bottom:6px;
+  letter-spacing:-1px;
+}
+.main-title .accent{color:var(--gold,#C8922A)}
+.sub-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;font-style:italic;
+  color:rgba(255,255,255,0.4);
+  margin-bottom:14px;
+  letter-spacing:1px;
+}
+.rule{width:100%;height:1px;background:linear-gradient(90deg,rgba(200,146,42,0.6),transparent);margin-bottom:14px}
+.meta-row{display:flex;justify-content:space-between;align-items:flex-end}
+.meta-left{}
+.edition{font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.dishes{font-size:10px;color:rgba(255,255,255,0.35);margin-top:3px;letter-spacing:1px}
+.meta-right{text-align:right}
+.brand{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:rgba(200,146,42,0.7);letter-spacing:2px;text-transform:uppercase}
+.price-tag{
+  display:inline-block;
+  background:rgba(200,146,42,0.15);
+  border:1px solid rgba(200,146,42,0.3);
+  color:var(--gold,#C8922A);
+  font-size:11px;font-weight:700;
+  padding:4px 12px;
+  margin-top:6px;
+  letter-spacing:1px;
+}
+
+/* DISH LABEL OVERLAYS */
+.dish-labels{
+  position:absolute;
+  bottom:200px;left:0;right:0;
+  display:flex;justify-content:space-around;
+  padding:0 20px;
+  z-index:5;
+}
+.dlabel{
+  background:rgba(0,0,0,0.75);
+  border:1px solid rgba(200,146,42,0.2);
+  padding:3px 8px;
+  font-size:7px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  color:rgba(200,146,42,0.8);
+  backdrop-filter:blur(4px);
+}
+</style>
+</head>
+<body>
+
+<div class="book-wrap">
+  <div class="cover">
+
+    <!-- FOOD PHOTO AREA -->
+    <div class="food-photo">
+      <div class="aroma"></div>
+
+      <!-- Char Kway Teow Pan -->
+      <div class="pan">
+        <div class="pan-food"></div>
+      </div>
+
+      <!-- Chili Crab -->
+      <div class="crab"></div>
+
+      <!-- Laksa Bowl (hero) -->
+      <div class="bowl">
+        <div class="noodles"></div>
+        <div class="garnish"><span></span><span></span><span></span></div>
+      </div>
+
+      <!-- Steam wisps -->
+      <div class="steam">
+        <div class="steam-line"></div>
+        <div class="steam-line"></div>
+        <div class="steam-line"></div>
+      </div>
+
+      <div class="photo-overlay"></div>
+    </div>
+
+    <!-- DISH LABELS -->
+    <div class="dish-labels">
+      <div class="dlabel">Char Kway Teow</div>
+      <div class="dlabel">Laksa</div>
+      <div class="dlabel">Chili Crab</div>
+    </div>
+
+    <!-- CORNER BADGE -->
+    <div class="corner-badge">
+      <div class="cb-flag">🇸🇬</div>
+      <div class="cb-text">Singapore</div>
+    </div>
+
+    <!-- TOP STAMP -->
+    <div class="stamp"><div class="stamp-text">NYC Benchmarked</div></div>
+
+    <!-- TEXT -->
+    <div class="text-area">
+      <div class="cuisine-tag">Restaurant Operations Guide</div>
+      <div class="main-title">Singaporean<br><span class="accent">Hawker</span></div>
+      <div class="sub-title">Complete Operator's Guide</div>
+      <div class="rule"></div>
+      <div class="meta-row">
+        <div class="meta-left">
+          <div class="edition">v7 · 2026 Edition</div>
+          <div class="dishes">28 Recipes · Kitchen Design · Service Scripts</div>
+        </div>
+        <div class="meta-right">
+          <div class="brand">KitchenFounder</div>
+          <div class="price-tag">$29.99</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
