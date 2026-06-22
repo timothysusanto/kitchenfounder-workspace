@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #41 — Australian Artisan Patisserie · v7 · 2026 Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;}
+body{background:#FAFAF8;color:#1C1C1C;font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;}
+@media print {
+  @page{size:A4;margin:0;}
+  body{background:#FAFAF8 !important;}
+  .recipe-card{page-break-inside:avoid;break-inside:avoid;}
+  .drink-card{page-break-inside:avoid;break-inside:avoid;}
+  .section-block{page-break-inside:avoid;break-inside:avoid;}
+  .cover{page-break-after:always;break-after:page;}
+  .toc-page{page-break-after:always;break-after:page;}
+  print-color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+}
+.cover{min-height:100vh;background:linear-gradient(160deg,#1C1C1C 0%,#2d2d2d 60%,#1a1a1a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 30% 20%,rgba(200,146,42,0.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(200,146,42,0.10) 0%,transparent 50%);pointer-events:none;}
+.cover-logo{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#C8922A;margin-bottom:50px;}
+.cover-guide-number{font-size:11px;font-weight:500;letter-spacing:6px;text-transform:uppercase;color:rgba(200,146,42,0.8);margin-bottom:20px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:#FAFAF8;line-height:1.15;margin-bottom:14px;max-width:700px;}
+.cover-subtitle{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;font-style:italic;color:#C8922A;margin-bottom:50px;}
+.cover-ornament{width:80px;height:2px;background:linear-gradient(90deg,transparent,#C8922A,transparent);margin:0 auto 40px;}
+.cover-tagline{font-size:13px;font-weight:300;color:rgba(250,250,248,0.6);letter-spacing:1px;max-width:480px;line-height:1.9;margin-bottom:60px;}
+.cover-stats{display:flex;gap:50px;margin:30px auto;flex-wrap:wrap;justify-content:center;}
+.cover-stat{text-align:center;}
+.cover-stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#C8922A;display:block;}
+.cover-stat-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.5);margin-top:4px;display:block;}
+.cover-edition{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.7);margin-top:50px;}
+.cover-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(250,250,248,0.3),transparent);margin:30px auto;}
+
+/* TOC */
+.toc-page{min-height:100vh;padding:80px 60px;background:#FAFAF8;}
+.toc-header{text-align:center;margin-bottom:60px;}
+.section-label{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#C8922A;margin-bottom:16px;display:block;}
+.page-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#1C1C1C;margin-bottom:8px;}
+.toc-ornament{width:60px;height:2px;background:#C8922A;margin:20px auto 0;}
+.toc-section{margin-bottom:36px;}
+.toc-section-title{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C8922A;padding-bottom:10px;border-bottom:1px solid rgba(200,146,42,0.3);margin-bottom:14px;}
+.toc-item{display:flex;align-items:baseline;padding:7px 0;border-bottom:1px dotted rgba(28,28,28,0.12);}
+.toc-num{font-family:'Playfair Display',serif;font-size:13px;font-weight:600;color:#C8922A;min-width:36px;}
+.toc-name{font-size:13px;font-weight:400;color:#1C1C1C;flex:1;}
+.toc-tags{display:flex;gap:4px;}
+.toc-tag{font-size:9px;font-weight:600;letter-spacing:0.5px;padding:2px 5px;border-radius:3px;background:rgba(200,146,42,0.1);color:#C8922A;border:1px solid rgba(200,146,42,0.25);}
+
+/* INTRO */
+.intro-page{padding:80px 60px;max-width:860px;margin:0 auto;}
+.intro-pullquote{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;font-weight:400;color:#1C1C1C;line-height:1.65;border-left:3px solid #C8922A;padding:20px 30px;margin:40px 0;background:rgba(200,146,42,0.04);}
+.intro-body{font-size:14px;font-weight:300;line-height:1.95;color:#1C1C1C;}
+.intro-body p{margin-bottom:20px;}
+.intro-body strong{font-weight:600;}
+.intro-signature{margin-top:50px;padding-top:30px;border-top:1px solid rgba(28,28,28,0.1);}
+.intro-sig-name{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:#1C1C1C;margin-bottom:4px;}
+.intro-sig-title{font-size:12px;font-weight:400;color:rgba(28,28,28,0.5);letter-spacing:1px;}
+
+/* SECTION DIVIDER */
+.section-divider{background:linear-gradient(135deg,#1C1C1C 0%,#2a2a2a 100%);padding:50px 60px;page-break-inside:avoid;break-inside:avoid;}
+.section-divider-inner{max-width:860px;margin:0 auto;}
+.section-divider-label{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#C8922A;margin-bottom:12px;}
+.section-divider-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#FAFAF8;margin-bottom:10px;}
+.section-divider-desc{font-size:13px;font-weight:300;color:rgba(250,250,248,0.6);max-width:560px;line-height:1.7;}
+
+/* RECIPE CARDS */
+.recipe-section{padding:40px 60px;max-width:960px;margin:0 auto;}
+.recipe-card{background:#fff;border:1px solid rgba(28,28,28,0.08);border-radius:6px;padding:40px;margin-bottom:36px;page-break-inside:avoid;break-inside:avoid;box-shadow:0 2px 12px rgba(28,28,28,0.05);}
+.recipe-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(28,28,28,0.08);gap:20px;flex-wrap:wrap;}
+.recipe-number{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C8922A;margin-bottom:6px;}
+.recipe-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#1C1C1C;margin-bottom:6px;line-height:1.2;}
+.recipe-subtitle{font-size:12px;font-weight:300;color:rgba(28,28,28,0.55);font-style:italic;}
+.recipe-meta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.recipe-cost{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:#C8922A;}
+.recipe-cost-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(28,28,28,0.4);text-align:right;}
+.allergen-tags{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;}
+.allergen-tag{font-size:9px;font-weight:700;letter-spacing:0.8px;padding:3px 7px;border-radius:3px;border:1.5px solid;}
+.tag-gf{color:#2D7D3A;border-color:#2D7D3A;background:rgba(45,125,58,0.06);}
+.tag-vg{color:#5B6BBF;border-color:#5B6BBF;background:rgba(91,107,191,0.06);}
+.tag-nf{color:#C06B1F;border-color:#C06B1F;background:rgba(192,107,31,0.06);}
+.tag-df{color:#7B5EA7;border-color:#7B5EA7;background:rgba(123,94,167,0.06);}
+.recipe-body{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.recipe-col-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C8922A;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(200,146,42,0.25);}
+.ingredients-list{list-style:none;padding:0;margin:0 0 20px;}
+.ingredients-list li{font-size:12.5px;font-weight:400;color:#1C1C1C;padding:5px 0;border-bottom:1px dotted rgba(28,28,28,0.1);display:flex;justify-content:space-between;gap:10px;}
+.ingredient-name{flex:1;}
+.ingredient-qty{font-weight:600;color:#C8922A;white-space:nowrap;font-size:11.5px;}
+.method-list{list-style:none;padding:0;margin:0;counter-reset:method-counter;}
+.method-list li{counter-increment:method-counter;font-size:12.5px;font-weight:400;color:#1C1C1C;padding:8px 0 8px 32px;border-bottom:1px dotted rgba(28,28,28,0.08);position:relative;line-height:1.65;}
+.method-list li::before{content:counter(method-counter);position:absolute;left:0;top:8px;width:22px;height:22px;background:#C8922A;color:#FAFAF8;font-size:10px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:22px;}
+.recipe-notes{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.note-block{padding:16px;border-radius:5px;border-left:3px solid;}
+.note-chef{background:rgba(200,146,42,0.06);border-color:#C8922A;}
+.note-tip{background:rgba(45,125,58,0.05);border-color:#2D7D3A;}
+.note-plating{background:rgba(91,107,191,0.05);border-color:#5B6BBF;grid-column:1 / -1;}
+.note-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px;}
+.note-chef .note-label{color:#C8922A;}
+.note-tip .note-label{color:#2D7D3A;}
+.note-plating .note-label{color:#5B6BBF;}
+.note-text{font-size:12px;font-weight:300;color:#1C1C1C;line-height:1.65;}
+
+/* DRINKS */
+.drinks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;padding:40px 60px;max-width:960px;margin:0 auto;}
+.drink-card{background:#fff;border:1px solid rgba(28,28,28,0.08);border-radius:6px;padding:28px;page-break-inside:avoid;break-inside:avoid;box-shadow:0 2px 8px rgba(28,28,28,0.04);}
+.drink-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.drink-title-block{}
+.drink-number{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C8922A;margin-bottom:4px;}
+.drink-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1C1C1C;line-height:1.2;}
+.drink-subtitle{font-size:11px;font-weight:300;color:rgba(28,28,28,0.5);font-style:italic;margin-top:3px;}
+.drink-cost{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:#C8922A;white-space:nowrap;}
+.drink-body{font-size:12px;color:#1C1C1C;line-height:1.7;margin-bottom:10px;}
+.drink-method{font-size:12px;font-weight:300;color:rgba(28,28,28,0.75);line-height:1.65;margin-bottom:12px;}
+.drink-note{font-size:11.5px;font-weight:300;color:rgba(28,28,28,0.7);font-style:italic;line-height:1.6;padding:10px 12px;background:rgba(200,146,42,0.05);border-left:2px solid #C8922A;border-radius:0 4px 4px 0;}
+
+/* FOOTER */
+.guide-footer{background:#1C1C1C;padding:50px 60px;text-align:center;margin-top:60px;}
+.footer-logo{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#C8922A;margin-bottom:16px;}
+.footer-text{font-size:12px;font-weight:300;color:rgba(250,250,248,0.5);line-height:1.7;}
+.footer-edition{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-top:20px;}
+
+@media(max-width:700px){
+  .recipe-body{grid-template-columns:1fr;}
+  .recipe-notes{grid-template-columns:1fr;}
+  .note-plating{grid-column:1;}
+  .recipe-section,.drinks-grid{padding:20px;}
+  .cover,.toc-page,.intro-page{padding:40px 20px;}
+  .section-divider{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER PAGE ===== -->
+<div class="cover">
+  <div class="cover-logo">KitchenFounder · Restaurant Guides</div>
+  <div class="cover-guide-number">Guide No. 41</div>
+  <div class="cover-ornament"></div>
+  <h1 class="cover-title">Australian Artisan Patisserie</h1>
+  <div class="cover-subtitle">Craft, Precision &amp; Seasonal Beauty</div>
+  <div class="cover-tagline">
+    A complete professional guide to artisan French-Australian pastry — from the laminated doughs of Paris to the sun-ripened fruits of the Southern Hemisphere. Twenty-eight recipes, each a study in technique and flavour.
+  </div>
+  <div class="cover-divider"></div>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <span class="cover-stat-num">28</span>
+      <span class="cover-stat-label">Recipes</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">6</span>
+      <span class="cover-stat-label">Signature Cakes</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">10</span>
+      <span class="cover-stat-label">Pastry Plates</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">4</span>
+      <span class="cover-stat-label">Sharing Plates</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">8</span>
+      <span class="cover-stat-label">Drinks</span>
+    </div>
+  </div>
+  <div class="cover-edition">v7 &middot; 2026 Edition</div>
+</div>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc-page">
+  <div class="toc-header">
+    <span class="section-label">Contents</span>
+    <h2 class="page-title">Menu &amp; Recipes</h2>
+    <div class="toc-ornament"></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Signature Cakes &amp; Starters — Nos. 1–6</div>
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">Strawberry Watermelon Cake</span><div class="toc-tags"><span class="toc-tag">GF</span></div></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Matcha Opera Cake</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Raspberry Lychee Tart</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Burnt Basque Cheesecake</span><div class="toc-tags"><span class="toc-tag">GF</span></div></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Passionfruit Mille-Feuille</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Croissant aux Amandes</span><div class="toc-tags"></div></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Main Pastry Plates — Nos. 7–16</div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">Paris-Brest</span><div class="toc-tags"><span class="toc-tag">NF opt</span></div></div>
+    <div class="toc-item"><span class="toc-num">08</span><span class="toc-name">Éclair au Chocolat</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">09</span><span class="toc-name">St Honoré</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">10</span><span class="toc-name">Tarte au Citron</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">11</span><span class="toc-name">Kouign-Amann</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">12</span><span class="toc-name">Canelé Bordelais</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">13</span><span class="toc-name">Mont Blanc</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">14</span><span class="toc-name">Financier</span><div class="toc-tags"><span class="toc-tag">NF opt</span></div></div>
+    <div class="toc-item"><span class="toc-num">15</span><span class="toc-name">Madeleine</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">16</span><span class="toc-name">Australian Lamington Entremet</span><div class="toc-tags"></div></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Sharing Plates — Nos. 17–20</div>
+    <div class="toc-item"><span class="toc-num">17</span><span class="toc-name">Afternoon Tea Selection</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">18</span><span class="toc-name">Macaron Tower</span><div class="toc-tags"><span class="toc-tag">NF</span><span class="toc-tag">GF</span></div></div>
+    <div class="toc-item"><span class="toc-num">19</span><span class="toc-name">Croissant &amp; Viennoiserie Basket</span><div class="toc-tags"></div></div>
+    <div class="toc-item"><span class="toc-num">20</span><span class="toc-name">Dessert Grazing Platter</span><div class="toc-tags"></div></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Drinks — Nos. 21–28</div>
+    <div class="toc-item"><span class="toc-num">21</span><span class="toc-name">Single Origin Pour-Over Coffee</span><div class="toc-tags"><span class="toc-tag">VG</span><span class="toc-tag">GF</span><span class="toc-tag">DF</span><span class="toc-tag">NF</span></div></div>
+    <div class="toc-item"><span class="toc-num">22</span><span class="toc-name">Matcha Latte</span><div class="toc-tags"><span class="toc-tag">VG</span><span class="toc-tag">GF</span><span class="toc-tag">DF</span></div></div>
+    <div class="toc-item"><span class="toc-num">23</span><span class="toc-name">Sparkling Yuzu Lemonade</span><div class="toc-tags"><span class="toc-tag">VG</span><span class="toc-tag">GF</span><span class="toc-tag">NF</span><span class="toc-tag">DF</span></div></div>
+    <div class="toc-item"><span class="toc-num">24</span><span class="toc-name">French Hot Chocolate</span><div class="toc-tags"><span class="toc-tag">GF</span></div></div>
+    <div class="toc-item"><span class="toc-num">25</span><span class="toc-name">Affogato</span><div class="toc-tags"><span class="toc-tag">GF</span></div></div>
+    <div class="toc-item"><span class="toc-num">26</span><span class="toc-name">Australian Bush Tea</span><div class="toc-tags"><span class="toc-tag">VG</span><span class="toc-tag">GF</span><span class="toc-tag">NF</span><span class="toc-tag">DF</span></div></div>
+    <div class="toc-item"><span class="toc-num">27</span><span class="toc-name">Strawberry Rose Iced Tea</span><div class="toc-tags"><span class="toc-tag">VG</span><span class="toc-tag">GF</span><span class="toc-tag">NF</span></div></div>
+    <div class="toc-item"><span class="toc-num">28</span><span class="toc-name">Champagne &amp; Patisserie Pairing</span><div class="toc-tags"><span class="toc-tag">GF</span><span class="toc-tag">NF</span></div></div>
+  </div>
+</div>
+
+<!-- ===== CHEF INTRODUCTION ===== -->
+<div class="intro-page">
+  <span class="section-label">From the Chef</span>
+  <h2 class="page-title">A Letter on Craft</h2>
+  <div class="toc-ornament" style="margin:20px 0 0;"></div>
+
+  <blockquote class="intro-pullquote">
+    "Patisserie is not baking. Baking feeds the body. Patisserie — true patisserie — feeds something deeper. It asks you to see, to feel, to remember."
+  </blockquote>
+
+  <div class="intro-body">
+    <p>I came to Sydney with flour-dusted hands and a head full of Paris. My years under a two-Michelin-star chef in the 7th arrondissement taught me that perfection lives in the gap between temperature and timing — that a ganache can break in ten seconds of inattention, that a proper laminated dough requires you to understand cold as a living force, not just a number on a dial.</p>
+
+    <p>But Sydney changed me. The strawberries here in December have a sweetness that no Parisian market can rival. The watermelons from the Hunter Valley are so full of juice they seem to breathe. Passionfruit climbs over suburban fences and perfumes entire streets. When I first encountered the casualness with which Sydneysiders treat their extraordinary produce, I felt something shift inside me — the rigidity of classical technique softened just enough to let the Southern Hemisphere in.</p>
+
+    <p>This guide is the result of that collision. <strong>Twenty-eight recipes</strong> that speak both languages — the precise, exacting grammar of French patisserie and the warm, generous vocabulary of Australian ingredients and culture. You will find the architecture of a Paris-Brest sitting comfortably beside an elevated Lamington Entremet. A St Honoré in which the caramel carries a faint memory of Brittany, assembled in a kitchen that looks out over the Pacific.</p>
+
+    <p>Each recipe in these pages was developed with the same philosophy I absorbed at the Pass: <strong>technique is only the beginning</strong>. The goal is always the moment a guest takes a first bite and goes quiet. That silence — that tiny arrest of breath — is what every pastry chef is truly working toward.</p>
+
+    <p>Some notes on using this guide: ingredient weights are given in grams because volume measurements lie. Oven temperatures assume a deck oven or a well-calibrated fan-forced domestic model — always verify with a thermometer. Where I note an allergen alternative (NF sunflower praline, for example), it is not a compromise; it is simply a different path to the same destination.</p>
+
+    <p>Read the chef notes. They contain the things I had to learn the hard way — the things no recipe text ever tells you because they are assumed knowledge in a professional kitchen. In sharing them here, I am trying to close that gap.</p>
+
+    <p>Cook with patience. Taste constantly. And if something goes wrong — and it will, because that is patisserie — do not panic. Understand. Then try again.</p>
+  </div>
+
+  <div class="intro-signature">
+    <div class="intro-sig-name">Chef Isabelle Moreau</div>
+    <div class="intro-sig-title">Trained Paris (2-Star Michelin) · Head Patissier, Sydney · Guide #41 Author</div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: SIGNATURE CAKES ===== -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="section-divider-label">Section One &mdash; Nos. 1&ndash;6</div>
+    <h2 class="section-divider-title">Signature Cakes &amp; Starters</h2>
+    <p class="section-divider-desc">The centrepiece creations that define our identity. Each built on classical French architecture, each finished with produce that could only come from Australia's extraordinary seasons.</p>
+  </div>
+</div>
+
+<div class="recipe-section">
+
+<!-- RECIPE 1: STRAWBERRY WATERMELON CAKE -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 01</div>
+      <h3 class="recipe-title">Strawberry Watermelon Cake</h3>
+      <div class="recipe-subtitle">Rose water cream &mdash; almond dacquoise &mdash; Australian summer fruit</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$14.50 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags">
+        <span class="allergen-tag tag-gf">GF</span>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Seedless watermelon (chilled, rind removed)</span><span class="ingredient-qty">1.2 kg</span></li>
+        <li><span class="ingredient-name">Fresh strawberries (hulled, halved)</span><span class="ingredient-qty">600 g</span></li>
+        <li><span class="ingredient-name">Thickened cream (35% fat)</span><span class="ingredient-qty">600 ml</span></li>
+        <li><span class="ingredient-name">Crème fraîche</span><span class="ingredient-qty">120 g</span></li>
+        <li><span class="ingredient-name">Icing sugar (sifted)</span><span class="ingredient-qty">80 g</span></li>
+        <li><span class="ingredient-name">Rose water</span><span class="ingredient-qty">8 ml</span></li>
+        <li><span class="ingredient-name">Vanilla bean paste</span><span class="ingredient-qty">5 g</span></li>
+        <li><span class="ingredient-name">Freeze-dried strawberry powder</span><span class="ingredient-qty">15 g</span></li>
+        <li><span class="ingredient-name">Micro herbs or edible rose petals (garnish)</span><span class="ingredient-qty">as needed</span></li>
+        <li><span class="ingredient-name">Pistachio dust (optional, for colour)</span><span class="ingredient-qty">10 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Using a long serrated knife, slice watermelon into three even discs approximately 4 cm thick, trimming to an even round (20 cm diameter). Pat dry with paper towel and refrigerate on a wire rack for 30 minutes to remove surface moisture.</li>
+        <li>Whip thickened cream to soft peaks in a chilled bowl. Add crème fraîche, icing sugar, rose water, and vanilla bean paste. Continue whipping to firm, spoonable peaks. Do not over-whip.</li>
+        <li>Place the first watermelon disc on a chilled serving board. Pipe or spread a generous 1.5 cm layer of rose cream, smoothing with an offset spatula.</li>
+        <li>Arrange halved strawberries in a single layer over the cream, cut-side down, pressing gently to adhere.</li>
+        <li>Add second watermelon disc. Repeat cream and strawberry layers. Top with final watermelon disc.</li>
+        <li>Apply a thin crumb coat of cream around the exterior. Refrigerate 20 minutes to set.</li>
+        <li>Apply a final generous exterior coat of cream. Use a bench scraper to create a clean or textured finish.</li>
+        <li>Dust top generously with freeze-dried strawberry powder. Arrange whole or halved strawberries and edible rose petals over the top. Finish with pistachio dust if using.</li>
+        <li>Refrigerate assembled cake for at least 1 hour before service. Slice with a hot, dry knife — wiping clean between cuts.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The watermelon must be genuinely cold and as dry as possible — moisture is the enemy of cream stability. In my Paris years, we would never use a fruit with 92% water content as a structural layer. Sydney taught me that if you respect the cold chain and work fast, watermelon becomes one of the most visually arresting base elements in modern patisserie. The rose water should whisper, not shout — 8 ml per 600 ml cream is the precise ratio where the floral note elevates rather than dominates.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If your cream begins to weep during service on a warm day, fold in 1 tsp of cornflour per 300 ml before whipping. Chill all equipment — bowl, whisk, spatulas — in the freezer for 10 minutes. The cake must never leave refrigeration for more than 15 minutes at a stretch. Assemble cold, serve cold, cut cold.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">At a celebrated Sydney patisserie, this style of cake is presented whole at the pass so guests can witness the moment of slicing — the theatrical reveal of pink watermelon flesh against white cream. For plated service, cut a generous wedge and lay on its side to show the layered cross-section. Dust the plate with additional strawberry powder. A single fresh rose petal placed at 11 o'clock completes the composition. Serve within 10 minutes of plating.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 2: MATCHA OPERA CAKE -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 02</div>
+      <h3 class="recipe-title">Matcha Opera Cake</h3>
+      <div class="recipe-subtitle">Almond joconde &mdash; ceremonial matcha buttercream &mdash; 70% dark chocolate ganache</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$12.80 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients — Almond Joconde (3 sheets)</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Almond meal (blanched)</span><span class="ingredient-qty">225 g</span></li>
+        <li><span class="ingredient-name">Icing sugar</span><span class="ingredient-qty">225 g</span></li>
+        <li><span class="ingredient-name">Whole eggs</span><span class="ingredient-qty">270 g (5 eggs)</span></li>
+        <li><span class="ingredient-name">Egg whites</span><span class="ingredient-qty">200 g (6 whites)</span></li>
+        <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Plain flour</span><span class="ingredient-qty">60 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (melted, 50°C)</span><span class="ingredient-qty">45 g</span></li>
+        <li><span class="ingredient-name">Ceremonial matcha (for buttercream)</span><span class="ingredient-qty">18 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (room temp, buttercream)</span><span class="ingredient-qty">280 g</span></li>
+        <li><span class="ingredient-name">Italian meringue base (sugar + whites)</span><span class="ingredient-qty">180 g</span></li>
+        <li><span class="ingredient-name">Valrhona 70% dark chocolate (ganache)</span><span class="ingredient-qty">180 g</span></li>
+        <li><span class="ingredient-name">Thickened cream (ganache)</span><span class="ingredient-qty">160 ml</span></li>
+        <li><span class="ingredient-name">Glucose syrup (ganache)</span><span class="ingredient-qty">25 g</span></li>
+        <li><span class="ingredient-name">Strong espresso or coffee syrup (soak)</span><span class="ingredient-qty">120 ml</span></li>
+        <li><span class="ingredient-name">Gold leaf or matcha powder (finish)</span><span class="ingredient-qty">as needed</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Preheat oven to 220°C fan. Whisk almond meal, icing sugar, and whole eggs together until pale and tripled in volume — approximately 8 minutes on high speed.</li>
+        <li>Separately, whip egg whites with caster sugar to a firm, glossy meringue. Fold meringue into the almond mixture in two additions using a large silicone spatula.</li>
+        <li>Sift flour over and fold through. Stream in melted butter and fold to combine. Spread thinly (4–5 mm) on three lined 30×40 cm trays. Bake 6–8 minutes per sheet until just golden. Cool completely on wire racks.</li>
+        <li>Make Italian meringue: boil sugar and water to 121°C; stream onto whipping whites. Cool to 35°C. Beat softened butter into cooled meringue until smooth. Sift matcha into buttercream and beat thoroughly. Rest 15 minutes.</li>
+        <li>Make ganache: bring cream and glucose to a simmer. Pour over chopped chocolate in three additions, emulsifying with a spatula from the centre outward. Rest at room temperature until spreadable (26–28°C).</li>
+        <li>Assembly: brush first joconde sheet with espresso soak. Spread a 5 mm layer of matcha buttercream. Add second joconde sheet; soak; spread ganache layer. Add third sheet; soak; spread remaining buttercream. Refrigerate 30 minutes.</li>
+        <li>Pour remaining ganache over top in a smooth, even layer. Refrigerate until set (1 hour).</li>
+        <li>Trim edges with a hot knife to reveal perfect layers. Mark portion lines with a warm ruler. Garnish each portion with a touch of gold leaf and a dusting of sifted matcha.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The opera cake is one of the most technically demanding of the French classics — its beauty is entirely in the precision of layering and the temperature control of each element. The joconde must be baked thin enough to absorb the soak while retaining structure. Using ceremonial-grade matcha rather than culinary-grade is non-negotiable — the flavour depth is categorically different, and the vivid green colour eliminates the need for artificial colouring. The ganache pour temperature is critical: too hot and it melts the buttercream; too cold and it pulls.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If your buttercream curdles (looks like scrambled eggs), it has temperature-shocked. Simply warm the bowl gently over hot water while beating — it will come back together. Always have all components at consistent temperatures before assembly. Chill the assembled cake overnight before cutting for cleanest layers.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Serve as a precisely cut 8×4 cm rectangle, positioned on the plate at a slight diagonal for dynamism. A quenelle of unsweetened crème fraîche alongside tempers the richness. Dust a fine line of matcha powder across the plate using a stencil. The cake should have visible, distinct alternating layers of green and dark brown — this cross-section IS the plating statement.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 3: RASPBERRY LYCHEE TART -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 03</div>
+      <h3 class="recipe-title">Raspberry Lychee Tart</h3>
+      <div class="recipe-subtitle">Crème pâtissière &mdash; fresh Queensland lychee &mdash; raspberry mirror glaze</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$11.20 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Plain flour (pâte sucrée)</span><span class="ingredient-qty">250 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (cold, cubed)</span><span class="ingredient-qty">125 g</span></li>
+        <li><span class="ingredient-name">Icing sugar (pâte sucrée)</span><span class="ingredient-qty">90 g</span></li>
+        <li><span class="ingredient-name">Egg yolks</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Ice water</span><span class="ingredient-qty">20 ml</span></li>
+        <li><span class="ingredient-name">Full-cream milk (crème pât)</span><span class="ingredient-qty">500 ml</span></li>
+        <li><span class="ingredient-name">Egg yolks (crème pât)</span><span class="ingredient-qty">5</span></li>
+        <li><span class="ingredient-name">Caster sugar (crème pât)</span><span class="ingredient-qty">120 g</span></li>
+        <li><span class="ingredient-name">Cornflour</span><span class="ingredient-qty">40 g</span></li>
+        <li><span class="ingredient-name">Vanilla bean (split)</span><span class="ingredient-qty">1</span></li>
+        <li><span class="ingredient-name">Unsalted butter (finish, crème pât)</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Fresh lychees (peeled, pitted)</span><span class="ingredient-qty">300 g</span></li>
+        <li><span class="ingredient-name">Fresh raspberries</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Raspberry coulis (mirror glaze base)</span><span class="ingredient-qty">150 ml</span></li>
+        <li><span class="ingredient-name">Caster sugar (glaze)</span><span class="ingredient-qty">60 g</span></li>
+        <li><span class="ingredient-name">Pectin NH</span><span class="ingredient-qty">5 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Make pâte sucrée: rub cold butter into flour until sandy. Mix in icing sugar. Add yolks and ice water; bring dough together without overworking. Wrap and rest in refrigerator for 2 hours minimum.</li>
+        <li>Roll to 3 mm on a lightly floured surface. Line individual tart rings (8 cm). Freeze 20 minutes. Blind bake at 170°C with baking weights for 15 min; remove weights, bake further 8 min until pale gold. Cool completely.</li>
+        <li>Make crème pâtissière: bring milk and split vanilla bean to a near-simmer. Whisk yolks, sugar, and cornflour until pale. Stream hot milk onto yolk mixture while whisking. Return to pot; cook over medium heat, whisking constantly until thick and boiling. Cook a further 60 seconds. Remove vanilla. Beat in cold butter. Press cling wrap to surface; cool to room temperature, then refrigerate until cold.</li>
+        <li>Beat chilled crème pâtissière until smooth. Pipe into tart shells, filling to 5 mm from rim. Smooth with palette knife. Refrigerate 30 minutes.</li>
+        <li>Arrange halved fresh lychees and whole raspberries over the cream in a tightly packed, decorative pattern.</li>
+        <li>Make raspberry glaze: blend coulis with mixed sugar and pectin; bring to boil, stirring. Cool to 60°C. Brush or spoon gently over fruit to coat and seal.</li>
+        <li>Refrigerate 20 minutes before service. Remove tart rings at the last moment.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The combination of lychee and raspberry is one of the great pairings — both have high esters, both carry a rose-like aromatic, and they reinforce each other magnificently. The key to a great crème pâtissière is patience at the final cooking stage: once it boils, you must cook for a full 60 seconds to eliminate the raw starch flavour. Cutting this short is the most common error in the home kitchen. The pectin NH glaze sets at room temperature but melts on the palate — never use gelatin-based glaze on fresh fruit as it creates an unpleasant rubbery sensation.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If your tart shell shrinks during baking, your dough was overworked or not cold enough when it went into the oven. Always dock the base with a fork before blind baking. If crème pâtissière develops lumps during cooking, strain immediately through a fine-mesh sieve while still hot, then continue to cool — it will be perfectly smooth.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Present the tart slightly elevated on a small round pedestal or thick cardboard round on a white plate. The concentric arrangement of lychee and raspberry should look almost architectural — guests should see the geometry before they see the colour. A few drops of raspberry coulis dragged across the plate with a spoon, and three fresh raspberry halves alongside, completes the composition without overpowering the tart's own visual statement.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 4: BURNT BASQUE CHEESECAKE -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 04</div>
+      <h3 class="recipe-title">Burnt Basque Cheesecake</h3>
+      <div class="recipe-subtitle">Extra creamy molten centre &mdash; deeply caramelised top &mdash; gluten-free</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$8.50 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags">
+        <span class="allergen-tag tag-gf">GF</span>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients (serves 12 — 20 cm cake)</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Full-fat cream cheese (room temp)</span><span class="ingredient-qty">900 g</span></li>
+        <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">280 g</span></li>
+        <li><span class="ingredient-name">Whole eggs</span><span class="ingredient-qty">5</span></li>
+        <li><span class="ingredient-name">Egg yolks (extra richness)</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Thickened cream (35%)</span><span class="ingredient-qty">400 ml</span></li>
+        <li><span class="ingredient-name">Cornflour (sifted)</span><span class="ingredient-qty">20 g</span></li>
+        <li><span class="ingredient-name">Vanilla bean paste</span><span class="ingredient-qty">8 g</span></li>
+        <li><span class="ingredient-name">Sea salt flakes</span><span class="ingredient-qty">3 g</span></li>
+        <li><span class="ingredient-name">Baking paper (for lining)</span><span class="ingredient-qty">2 sheets</span></li>
+        <li><span class="ingredient-name">Seasonal berry coulis (service)</span><span class="ingredient-qty">optional</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Preheat oven to 230°C fan (or 240°C conventional). Grease a 20 cm springform pan. Line with two overlapping sheets of baking paper, allowing 5 cm to rise above the rim — do not trim; the rustic paper pleating is intentional.</li>
+        <li>Beat cream cheese and caster sugar on medium speed until completely smooth, approximately 4 minutes. Scrape bowl thoroughly.</li>
+        <li>Add eggs and yolks one at a time, beating well between each addition. The batter should be very smooth and slightly glossy.</li>
+        <li>Add thickened cream, cornflour, vanilla bean paste, and sea salt. Beat on low until just incorporated — do not over-aerate at this stage.</li>
+        <li>Pass batter through a fine-mesh strainer into the prepared tin. This removes any lumps and ensures a silky texture.</li>
+        <li>Bake at 230°C for 28–32 minutes. The top should be deeply, dramatically dark — almost charred in appearance. The centre should still jiggle like set jelly when shaken.</li>
+        <li>Remove from oven. Do not touch. Cool in tin at room temperature for 2 hours, then refrigerate overnight. The centre will firm from liquid to creamy as it cools.</li>
+        <li>Remove from tin while still cold. Bring to room temperature (30 minutes) before service for optimal texture.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The Basque cheesecake inverts every rule of classical cheesecake technique: we want it dark, we want it to jiggle, we want the centre barely set. The Maillard reaction and caramelisation on the top surface create a bittersweet crust that counterpoints the rich, lactic interior. The overnight refrigeration is non-negotiable — the egg proteins need time to set from the outside in, creating the characteristic gradient from firm exterior to molten core. At room temperature, the cream cheese fat melts back to velvet. Never serve this cold.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If the top is browning too fast before the sides are set, the oven runs hot — drop 10°C next time and extend by 5 minutes. If the centre stays liquid even after overnight refrigeration, the eggs were beaten too fast (air was incorporated), preventing clean setting. Beat cream cheese and eggs slowly after the initial sugar cream stage. Every oven bakes this differently — keep notes on time and temperature for your specific oven.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Serve at room temperature as a thick wedge, allowing the creamy gradient to be visible at the cut edge. No garnish is needed — the contrast of caramelised black-to-amber top against ivory interior IS the dish. A very small puddle of seasonal berry coulis (passionfruit, raspberry, or mango) at the base of the wedge adds colour without competing. A few sea salt flakes on the top surface just before service elevates the caramel notes dramatically.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 5: PASSIONFRUIT MILLE-FEUILLE -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 05</div>
+      <h3 class="recipe-title">Passionfruit Mille-Feuille</h3>
+      <div class="recipe-subtitle">Rough puff pastry &mdash; crème diplomat &mdash; passionfruit curd</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$10.20 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Plain flour (rough puff)</span><span class="ingredient-qty">300 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (very cold, diced)</span><span class="ingredient-qty">240 g</span></li>
+        <li><span class="ingredient-name">Ice water</span><span class="ingredient-qty">120 ml</span></li>
+        <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">5 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (for caramelising)</span><span class="ingredient-qty">40 g</span></li>
+        <li><span class="ingredient-name">Full-cream milk (crème pât base)</span><span class="ingredient-qty">350 ml</span></li>
+        <li><span class="ingredient-name">Egg yolks</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Caster sugar (crème pât)</span><span class="ingredient-qty">85 g</span></li>
+        <li><span class="ingredient-name">Cornflour</span><span class="ingredient-qty">28 g</span></li>
+        <li><span class="ingredient-name">Gelatine leaves (diplomat fold)</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Thickened cream (whipped, diplomat)</span><span class="ingredient-qty">250 ml</span></li>
+        <li><span class="ingredient-name">Passionfruit pulp (fresh, strained)</span><span class="ingredient-qty">120 ml</span></li>
+        <li><span class="ingredient-name">Caster sugar (curd)</span><span class="ingredient-qty">80 g</span></li>
+        <li><span class="ingredient-name">Whole eggs (curd)</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Unsalted butter (curd)</span><span class="ingredient-qty">60 g</span></li>
+        <li><span class="ingredient-name">Icing sugar (finish)</span><span class="ingredient-qty">30 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Make rough puff: mix flour and salt. Cut cold butter into rough 1 cm cubes — do not rub. Add ice water and mix until dough just comes together with visible butter pieces. Turn out; roll into a rough rectangle. Fold in thirds (letter fold). Repeat 4 more times, resting 15 min in the refrigerator between each fold. Rest 1 hour before rolling.</li>
+        <li>Roll rough puff to 3 mm on a lightly floured surface. Cut three rectangles per portion (10×4 cm). Dock all over with a fork. Lay between two lined baking trays (to prevent rising). Bake at 200°C for 18–20 minutes until deep gold. Remove top tray; dust with caster sugar and grill or blast with blowtorch to caramelise. Cool completely on wire rack.</li>
+        <li>Make passionfruit curd: whisk eggs, sugar, and strained passionfruit juice in a heavy-bottomed saucepan. Cook over medium-low heat, stirring constantly, until mixture coats the back of a spoon (82°C). Remove from heat; whisk in cold butter in pieces. Strain; cool with cling wrap touching the surface.</li>
+        <li>Make crème diplomat: prepare crème pâtissière (as per Recipe 03 method). Bloom gelatine in cold water; squeeze out and dissolve in warm crème pât. Cool to room temperature. Fold whipped cream into cooled crème pât in two additions. Refrigerate 30 minutes.</li>
+        <li>Assembly: pipe crème diplomat onto first pastry layer in neat rosettes or a smooth layer. Drizzle with passionfruit curd. Add second pastry layer; repeat cream and curd. Place final pastry layer on top, flat-side up.</li>
+        <li>Dust top heavily with sifted icing sugar. For the classic burnt-line finish, heat a metal skewer and brand a grid pattern across the sugar surface. Serve within 20 minutes of assembly.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The mille-feuille is an act of theatre that succeeds only when every texture is alive at the moment of service — the pastry must shatter, the cream must be cold and light, the curd must provide an acidic counterpoint to the fat. This is why mille-feuille is assembled to order or at most 20 minutes before service. The passionfruit curd elevates the classic vanilla version into something unmistakably Australian — the tropical acidity cuts through the crème diplomat in a way that nothing else achieves. Booking the pastry layers the day before and storing in an airtight container is the professional way to manage service pressure.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If rough puff is not puffing evenly, your butter was too warm — the steam that drives the lamination escapes before structure sets. Chill all components aggressively. If the assembled mille-feuille collapses when cut, the cream is too soft — refrigerate the assembled pastry for 10 minutes before cutting. Always use a serrated knife with a very gentle sawing motion, never a pushing cut.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Stand the mille-feuille upright on the plate — the stack is the visual. A generous streak of passionfruit curd across the plate from one corner, three dots of cream at varying sizes, and a halved fresh passionfruit pod placed beside the pastry. Dust a final whisper of icing sugar over the entire composition just before it leaves the kitchen. The sound of the fork breaking through the caramelised pastry layers is part of the dining experience — do not let it sit and soften.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 6: CROISSANT AUX AMANDES -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 06</div>
+      <h3 class="recipe-title">Croissant aux Amandes</h3>
+      <div class="recipe-subtitle">Twice-baked laminated dough &mdash; frangipane &mdash; flaked almond &mdash; icing sugar</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$6.80 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Day-old house croissants</span><span class="ingredient-qty">6 pieces</span></li>
+        <li><span class="ingredient-name">Unsalted butter (frangipane)</span><span class="ingredient-qty">150 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (frangipane)</span><span class="ingredient-qty">150 g</span></li>
+        <li><span class="ingredient-name">Almond meal (blanched)</span><span class="ingredient-qty">150 g</span></li>
+        <li><span class="ingredient-name">Whole eggs</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Plain flour</span><span class="ingredient-qty">20 g</span></li>
+        <li><span class="ingredient-name">Dark rum or kirsch</span><span class="ingredient-qty">15 ml</span></li>
+        <li><span class="ingredient-name">Simple syrup (soak)</span><span class="ingredient-qty">80 ml</span></li>
+        <li><span class="ingredient-name">Almond extract (soak)</span><span class="ingredient-qty">3 ml</span></li>
+        <li><span class="ingredient-name">Flaked almonds</span><span class="ingredient-qty">80 g</span></li>
+        <li><span class="ingredient-name">Icing sugar (heavy dusting)</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Apricot jam (glaze, optional)</span><span class="ingredient-qty">40 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Make frangipane: cream softened butter and sugar until very pale and fluffy (5 minutes). Add eggs one at a time; beat well. Fold in almond meal, flour, and rum. The mixture should be smooth and pipeable. Rest 30 minutes in refrigerator.</li>
+        <li>Make almond soak: combine simple syrup with almond extract. Slice each day-old croissant in half horizontally — like opening a book.</li>
+        <li>Brush the interior cut surfaces of both halves generously with almond soak. The croissant should feel moistened throughout but not soggy.</li>
+        <li>Pipe or spoon a generous layer of frangipane (approximately 40 g) along the interior of the bottom half. Press the top half back on, gently compressing.</li>
+        <li>Pipe or spread additional frangipane along the top exterior of the croissant, covering the entire surface.</li>
+        <li>Scatter flaked almonds generously over the frangipane-topped surface, pressing lightly to adhere.</li>
+        <li>Bake at 175°C fan for 14–16 minutes until the frangipane is fully cooked through (a skewer should come out clean) and almonds are golden brown. Watch closely after 12 minutes — the window between golden and burnt is narrow.</li>
+        <li>Cool on wire rack for 10 minutes. Dust heavily with sifted icing sugar. Serve warm or at room temperature.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The croissant aux amandes is the most honest of all patisserie — it is literally built from yesterday's surplus, transformed by frangipane and a second baking into something better than the original. In Paris, every boulangerie does this. The magic is in the almond soak: the stale butter dough absorbs the moisture and becomes tender again, the frangipane melts into the layers during the second bake, and the top almonds toast to a deep nuttiness. Using a day-old croissant is not a shortcut — it is the correct technique. A fresh croissant is too soft and will not hold the frangipane cleanly.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If the frangipane puffs excessively and runs off the sides, it was too warm when applied. Chill it in the refrigerator until firm before loading the croissants. If the interior is still raw-tasting after 16 minutes, your oven temperature is too high (surface cooks before interior). Drop by 10°C and add 4 minutes. A perfectly cooked croissant aux amandes should feel substantially heavier than a plain croissant when you pick it up.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Place the warm croissant on a small wooden board or white plate at a slight angle. A snowdrift of icing sugar is the non-negotiable visual signal — guests expect the white powder. A small ramekin of room-temperature apricot jam alongside for dipping adds a classical note that many guests remember from childhood trips to French bakeries. No further garnish required. The beauty is in the simplicity.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end recipe-section -->
+
+<!-- ===== SECTION 2: MAIN PASTRY PLATES ===== -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="section-divider-label">Section Two &mdash; Nos. 7&ndash;16</div>
+    <h2 class="section-divider-title">Main Pastry Plates</h2>
+    <p class="section-divider-desc">The classical canon of French patisserie, each piece made from scratch using traditional method — executed with Australian produce and served at its seasonal best.</p>
+  </div>
+</div>
+
+<div class="recipe-section">
+
+<!-- RECIPE 7: PARIS-BREST -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 07</div>
+      <h3 class="recipe-title">Paris-Brest</h3>
+      <div class="recipe-subtitle">Choux ring &mdash; praline mousseline &mdash; caramelised hazelnuts &mdash; NF: sunflower praline</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$13.50 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags">
+        <span class="allergen-tag tag-nf">NF opt</span>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Water (choux)</span><span class="ingredient-qty">125 ml</span></li>
+        <li><span class="ingredient-name">Full-cream milk (choux)</span><span class="ingredient-qty">125 ml</span></li>
+        <li><span class="ingredient-name">Unsalted butter (choux)</span><span class="ingredient-qty">115 g</span></li>
+        <li><span class="ingredient-name">Plain flour (sifted, choux)</span><span class="ingredient-qty">140 g</span></li>
+        <li><span class="ingredient-name">Whole eggs</span><span class="ingredient-qty">4–5 (240 g)</span></li>
+        <li><span class="ingredient-name">Fine salt (choux)</span><span class="ingredient-qty">3 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (choux)</span><span class="ingredient-qty">5 g</span></li>
+        <li><span class="ingredient-name">Hazelnuts (praline)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (praline caramel)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Full-cream milk (mousseline)</span><span class="ingredient-qty">500 ml</span></li>
+        <li><span class="ingredient-name">Egg yolks (mousseline)</span><span class="ingredient-qty">5</span></li>
+        <li><span class="ingredient-name">Caster sugar (mousseline)</span><span class="ingredient-qty">120 g</span></li>
+        <li><span class="ingredient-name">Cornflour</span><span class="ingredient-qty">40 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (mousseline, beaten in)</span><span class="ingredient-qty">240 g</span></li>
+        <li><span class="ingredient-name">Praline paste (beaten in)</span><span class="ingredient-qty">120 g</span></li>
+        <li><span class="ingredient-name">Flaked almonds (craquelin)</span><span class="ingredient-qty">40 g</span></li>
+        <li><span class="ingredient-name">Icing sugar (finish)</span><span class="ingredient-qty">20 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Make praline: spread hazelnuts on a tray; roast at 180°C for 10 min until golden. Rub skins off in a cloth. Make a dry caramel with 200 g sugar until amber. Pour over hazelnuts on a silicone mat; cool. Blitz to a fine paste in a high-speed food processor until oil is released and paste is smooth (10–12 min). For NF version: use sunflower seeds roasted and caramelised in exactly the same way — the result is a slightly more delicate, nuttier flavour with no sacrifice in richness.</li>
+        <li>Make mousseline base: follow crème pâtissière method (see Recipe 03). Once cooled to room temperature, beat in 240 g soft butter a tablespoon at a time until silky. Beat in praline paste. Refrigerate until firm (1 hour), then beat again until light and mousse-like.</li>
+        <li>Make choux: bring water, milk, butter, salt, and sugar to a full boil. Add flour all at once; stir vigorously with a wooden spoon until paste pulls cleanly from sides. Cook, stirring, for 2 minutes to dry out. Transfer to stand mixer; beat on medium 2 minutes to cool. Add eggs one at a time — stop when paste falls in a slow, steady V-shape from the beater.</li>
+        <li>Pipe a ring (8 cm diameter) on a lined tray using a 1.5 cm round nozzle. Pipe a second ring just inside the first, and a third ring on top of the join. Scatter flaked almonds over the top. Bake at 190°C for 28–32 minutes without opening the oven. Cool completely on a wire rack.</li>
+        <li>Slice the ring in half horizontally. Pipe praline mousseline in generous rosettes on the bottom half, filling the space generously. Place the top half. Dust with icing sugar. Finish with a few caramelised whole hazelnuts.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The Paris-Brest was created in 1910 to celebrate a bicycle race — the wheel shape is deliberate. The praline mousseline is the most nuanced butter cream in the classical repertoire: rich yet airy, nutty yet delicate. The key is temperature — the crème pât must be room temperature and the butter must be soft before combining, or the mousseline will split. Homemade praline paste is infinitely superior to purchased — the fresh roasted hazelnut flavour is incomparable. The NF sunflower praline is a genuine discovery: it carries more toffee notes and pairs beautifully with the choux.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If your choux is hollow and dry, it was baked at too high a temperature — start at 190°C and never open the oven in the first 20 minutes or the steam escapes and the shells collapse. If the mousseline splits, both components were at different temperatures. Warm the bowl slightly and beat more aggressively. Always taste the praline paste — roasting depth directly determines flavour depth; under-roasted hazelnuts produce pale, bland praline.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The Paris-Brest should be served whole as an individual portion, positioned centrally on a white round plate. The cream filling should be visible and generous, spilling slightly beyond the choux ring — this signals abundance. Three caramelised hazelnuts placed asymmetrically on the cream surface, a dusting of icing sugar through a fine sieve. A small streak of praline paste on the plate itself, dragged with a spoon, connects the visual story from plate to pastry.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 8: ÉCLAIR AU CHOCOLAT -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 08</div>
+      <h3 class="recipe-title">Éclair au Chocolat</h3>
+      <div class="recipe-subtitle">Choux shell &mdash; 70% Valrhona ganache &mdash; mirror glaze</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$9.80 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Choux pastry (as per Recipe 07)</span><span class="ingredient-qty">1 batch</span></li>
+        <li><span class="ingredient-name">Valrhona Guanaja 70% dark chocolate</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Thickened cream (ganache)</span><span class="ingredient-qty">200 ml</span></li>
+        <li><span class="ingredient-name">Glucose syrup</span><span class="ingredient-qty">20 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (ganache, shine)</span><span class="ingredient-qty">25 g</span></li>
+        <li><span class="ingredient-name">Water (mirror glaze)</span><span class="ingredient-qty">75 ml</span></li>
+        <li><span class="ingredient-name">Caster sugar (glaze)</span><span class="ingredient-qty">150 g</span></li>
+        <li><span class="ingredient-name">Glucose syrup (glaze)</span><span class="ingredient-qty">150 g</span></li>
+        <li><span class="ingredient-name">Sweetened condensed milk</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Gelatine leaves (glaze)</span><span class="ingredient-qty">10 g (5 leaves)</span></li>
+        <li><span class="ingredient-name">Valrhona 70% chocolate (glaze)</span><span class="ingredient-qty">150 g</span></li>
+        <li><span class="ingredient-name">Gold lustre dust (optional finish)</span><span class="ingredient-qty">pinch</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Pipe choux into 12 cm logs using a fluted 1.2 cm nozzle on a lined tray. Bake at 190°C for 30–35 minutes. Pierce each end with a skewer immediately upon removal from oven to allow steam to escape. Cool completely.</li>
+        <li>Make ganache filling: bring cream and glucose to a bare simmer. Pour over chopped chocolate in three additions, emulsifying from centre. Add cold butter at the end; stir until completely melted. Cool to 28°C — it should be thick, glossy, and pipeable. Load into a piping bag with a small round nozzle.</li>
+        <li>Pierce each éclair at three points on the base with a small round nozzle. Pipe ganache until you feel resistance and a small bead appears at each hole. The éclair should feel substantially heavier when filled.</li>
+        <li>Make mirror glaze: bloom gelatine in cold water. Boil water, sugar, and glucose together (103°C). Remove from heat; add condensed milk and squeezed gelatine; stir until dissolved. Pour over chopped chocolate; blend with a hand blender. Keep blender submerged to avoid bubbles. Rest until 33–35°C before using.</li>
+        <li>Dip the top of each filled éclair into the glaze at a 45° angle. Lift smoothly; turn right-way up. Allow excess to drip off cleanly. Place on a wire rack; allow glaze to set (5 minutes).</li>
+        <li>Once set, apply a very thin stripe of gold lustre dust along the centreline using a dry brush for a professional finish.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The éclair is the examination piece of every pastry apprentice — it reveals everything about a chef's choux technique, ganache emulsification, and finishing precision. The mirror glaze temperature window is narrow: above 36°C and it flows too thin and pools; below 32°C and it sets lumpy. Work decisively and quickly. Valrhona Guanaja 70% is specified because its particular cocoa profile (from blended origins) creates a ganache with genuine depth — a single-origin chocolate at this percentage can read as one-dimensional.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">Bubbles in mirror glaze are the enemy — always blend with the head fully submerged and strain through a fine sieve before resting to temperature. If the glaze sets before you finish, gently rewarm over a bain-marie (do not boil) and re-blend. Underfilled éclairs collapse when bitten — fill until you meet genuine resistance. The three-hole filling method ensures even distribution along the full length.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Plate two éclairs per portion, angled slightly apart to form a soft V-shape. The mirror glaze surface should be genuinely mirror-like — it should reflect the room. A small scoop of vanilla bean ice cream between the éclairs bridges richness and temperature contrast. Three micro raspberries at the base for acidity and colour. No sauce needed — the glaze itself is the visual anchor. Never refrigerate glazed éclairs or the glaze will weep.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 9: ST HONORÉ -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 09</div>
+      <h3 class="recipe-title">St Honoré</h3>
+      <div class="recipe-subtitle">Puff pastry base &mdash; choux puffs &mdash; crème chiboust &mdash; spun caramel</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$15.80 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Puff pastry (bought or house-made)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Choux pastry (Recipe 07 batch)</span><span class="ingredient-qty">half batch</span></li>
+        <li><span class="ingredient-name">Full-cream milk (chiboust base)</span><span class="ingredient-qty">500 ml</span></li>
+        <li><span class="ingredient-name">Vanilla bean</span><span class="ingredient-qty">1</span></li>
+        <li><span class="ingredient-name">Egg yolks (chiboust)</span><span class="ingredient-qty">6</span></li>
+        <li><span class="ingredient-name">Caster sugar (chiboust)</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Cornflour (chiboust)</span><span class="ingredient-qty">45 g</span></li>
+        <li><span class="ingredient-name">Gelatine leaves</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Egg whites (Italian meringue)</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Caster sugar (Italian meringue syrup)</span><span class="ingredient-qty">120 g</span></li>
+        <li><span class="ingredient-name">Water (syrup)</span><span class="ingredient-qty">30 ml</span></li>
+        <li><span class="ingredient-name">Caster sugar (caramel dipping)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Glucose syrup (caramel)</span><span class="ingredient-qty">40 g</span></li>
+        <li><span class="ingredient-name">Whipped cream (Chantilly topping)</span><span class="ingredient-qty">200 ml</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Roll puff pastry to 4 mm; cut a 20 cm round disc. Dock all over. Place on a lined tray; pipe a ring of choux around the outer edge of the disc (using 1.2 cm nozzle) and one or two rings of choux dots in the centre. Bake at 190°C for 25–28 minutes until puff is cooked through and choux is hollow and golden. Cool completely.</li>
+        <li>Pipe additional small choux balls (golf ball size) on a separate tray. Bake at 190°C for 22–25 min. Cool; pierce and fill with crème chiboust using a small round nozzle.</li>
+        <li>Make crème chiboust: prepare a vanilla crème pâtissière; bloom and dissolve gelatine into the hot crème pât. Make Italian meringue (boil sugar to 121°C; stream onto stiff whites). Fold hot crème pât and Italian meringue together immediately while both are still warm. Use immediately — it sets as it cools.</li>
+        <li>Fill the baked puff-choux base with crème chiboust while still warm, spreading evenly. Refrigerate 1 hour to set.</li>
+        <li>Make caramel: dry-melt sugar with glucose to deep amber (175°C). Remove from heat; dip tops of filled choux balls into caramel (using a skewer or tongs). Allow to cool and harden on a silicone mat. Reserve extra caramel for the hairspun decoration.</li>
+        <li>Pipe Chantilly cream across the filled base using a St Honoré nozzle (or star nozzle) in signature wave pattern. Arrange caramel-dipped choux balls around the edge.</li>
+        <li>Spin remaining caramel (once cooled to thick golden thread consistency) over two forks held apart, creating fine golden threads. Drape dramatically over the cream for the signature spun caramel crown.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The St Honoré — named for the patron saint of bakers — is one of the most demanding compositions in French patisserie because it requires mastery of four separate elements simultaneously: puff pastry, choux, crème chiboust, and hot sugar work. The crème chiboust is unique in that it combines crème pâtissière and Italian meringue while both are still warm — they must be folded together immediately or the gelatine will set in uneven clumps. At the restaurant, we make this to order during service — the spun caramel crown is assembled at the pass, not in advance.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">Spun caramel is weather-sensitive — humidity causes it to collapse quickly. On humid days, add a few drops of lemon juice to the caramel to slow crystallisation, and assemble immediately before service. If your caramel hardens in the pot before spinning, reheat very gently — do not boil again or it will darken further. Choux balls must be completely dry and cool before dipping in caramel, or steam causes the caramel to cloud and splatter.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The St Honoré is presented whole as an individual portion (or shared for two, cut tableside). The spun caramel crown is the visual showpiece — it should rise at least 4 cm above the cream surface and catch the light. Serve immediately after assembling the caramel crown. No additional plate garnish is required; the drama of the spun sugar tells the entire story. A small sifted dusting of icing sugar just before service adds one final, soft touch.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end recipe-section -->
+
+<div class="recipe-section">
+
+<!-- RECIPE 10: TARTE AU CITRON -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 10</div>
+      <h3 class="recipe-title">Tarte au Citron</h3>
+      <div class="recipe-subtitle">Shortcrust shell &mdash; lemon curd &mdash; Italian meringue &mdash; blowtorch finish</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$8.90 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Pâte sucrée (as per Recipe 03)</span><span class="ingredient-qty">1 batch</span></li>
+        <li><span class="ingredient-name">Fresh lemon juice (strained)</span><span class="ingredient-qty">180 ml</span></li>
+        <li><span class="ingredient-name">Lemon zest (finely grated)</span><span class="ingredient-qty">3 lemons</span></li>
+        <li><span class="ingredient-name">Whole eggs</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Egg yolks</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Caster sugar (curd)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (curd, cold cubed)</span><span class="ingredient-qty">180 g</span></li>
+        <li><span class="ingredient-name">Egg whites (Italian meringue)</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Caster sugar (meringue syrup)</span><span class="ingredient-qty">220 g</span></li>
+        <li><span class="ingredient-name">Water (syrup)</span><span class="ingredient-qty">55 ml</span></li>
+        <li><span class="ingredient-name">Lemon thyme or dehydrated lemon (garnish)</span><span class="ingredient-qty">as needed</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Prepare and blind bake pâte sucrée shells (as Recipe 03 method) to a fully cooked, pale gold finish. Cool completely.</li>
+        <li>Make lemon curd: whisk eggs, yolks, sugar, lemon juice, and zest in a heavy-bottomed saucepan. Cook over medium heat, stirring constantly with a silicone spatula, until mixture reaches 82–84°C and has thickened noticeably. Do not exceed 85°C or the eggs will scramble.</li>
+        <li>Strain through a fine sieve into a jug. Cool to 60°C. Add cold butter in three additions, blending with a hand blender between each until fully emulsified. The curd should be very smooth and glossy.</li>
+        <li>Pour warm curd into baked tart shells, filling to within 2 mm of the rim. Refrigerate until set (minimum 2 hours).</li>
+        <li>Make Italian meringue: whip whites to soft peaks. Boil sugar and water to 121°C. With mixer running, stream syrup slowly onto the whites. Continue whipping until bowl is cool to touch and meringue is very stiff and glossy (8–10 minutes).</li>
+        <li>Transfer meringue to a piping bag with a large star or round nozzle. Pipe in desired pattern over the set lemon curd — classically in peaked rosettes, modernly in a smooth dome.</li>
+        <li>Using a kitchen blowtorch, toast the meringue until golden with lightly charred peaks. Serve immediately or refrigerate and serve within 2 hours (meringue will soften over time).</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The tarte au citron is deceptively simple — and precisely where most fail. The curd must be intensely, unapologetically acidic: if someone can eat it without puckering, reduce the ratio of sugar. The Italian meringue must be made with hot syrup at exactly 121°C (soft ball stage) — cooked to 118°C and it weeps; cooked to 125°C and it crystallises. The butter emulsion in the lemon curd is what gives it the signature satiny texture; adding it cold and blending in stages creates a more stable emulsion than adding melted butter.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If your curd is grainy, the eggs scrambled — it went above 85°C. Strain anyway and taste; if it still tastes good (not eggy), it may be serviceable. If eggs are evident in flavour, start again. Prevent this by using a thermometer. If meringue weeps liquid under the torch, the syrup temperature was too low. Practice on a spoon before committing to the tart surface.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Place the tart at a slight angle on a matte white plate. The contrast between the bright yellow curd (visible at the sides) and the golden-tipped white meringue is the dish's identity — do not obscure it. Three very small pieces of preserved lemon peel or a few fresh lemon thyme sprigs placed at the base provide aromatic and visual framing. A light final dusting of icing sugar through a fine sieve over the meringue peaks just before service creates a beautiful snow-frosted effect.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 11: KOUIGN-AMANN -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 11</div>
+      <h3 class="recipe-title">Kouign-Amann</h3>
+      <div class="recipe-subtitle">Laminated yeast dough &mdash; caramelised sugar crust &mdash; salted butter</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$7.50 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Strong bread flour</span><span class="ingredient-qty">450 g</span></li>
+        <li><span class="ingredient-name">Instant dried yeast</span><span class="ingredient-qty">7 g</span></li>
+        <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">8 g</span></li>
+        <li><span class="ingredient-name">Lukewarm water</span><span class="ingredient-qty">270 ml</span></li>
+        <li><span class="ingredient-name">Unsalted butter (lamination block)</span><span class="ingredient-qty">220 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (folded in)</span><span class="ingredient-qty">180 g</span></li>
+        <li><span class="ingredient-name">Fleur de sel (flaky sea salt)</span><span class="ingredient-qty">5 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (topping, caramelise)</span><span class="ingredient-qty">60 g</span></li>
+        <li><span class="ingredient-name">Salted butter (pan grease)</span><span class="ingredient-qty">30 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Mix flour, yeast, and salt (keep yeast and salt separate in the bowl initially). Add water and mix until a rough dough forms. Knead 8–10 minutes until smooth and elastic. Cover; rest at room temperature 1 hour until doubled.</li>
+        <li>Prepare butter block: pound cold butter between two sheets of baking paper into a 15×15 cm square. Return to refrigerator.</li>
+        <li>Roll dough to a 30×30 cm square on a lightly floured surface. Place butter block in centre; fold dough edges over to encase butter completely. Roll out to 20×60 cm. Fold in thirds (first fold). Rest 30 minutes in refrigerator. Repeat roll and fold two more times, resting 30 minutes between each. Total: 3 folds.</li>
+        <li>On the final roll, scatter 180 g caster sugar and fleur de sel over the dough surface. Roll and fold once more, incorporating the sugar into the layers. The sugar should be distributed throughout the dough but not fully dissolved.</li>
+        <li>Roll dough to fit a generously buttered 25 cm round baking tin. Place in tin; the dough should roughly fill the base. Top with remaining 60 g sugar. Leave to prove at room temperature 30–40 minutes until slightly puffed.</li>
+        <li>Bake at 210°C for 25–30 minutes until the top is deeply caramelised — the sugar should have melted and bubbled into a crackled amber crust. The caramel will continue to cook from residual heat after removal; place tin on a cooling rack immediately.</li>
+        <li>Cool in tin for 5 minutes only, then invert onto a wire rack over a tray (to catch caramel drips). The caramelised crust is now on top. Serve warm in wedges within 2 hours of baking.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The Kouign-Amann (pronounced KWEEN ah-MAHN) is from Brittany — "cake" and "butter" in Breton. Its genius is in the incorporation of sugar directly into the laminated layers: as it bakes, the sugar caramelises within each fold, creating pockets of toffee embedded in flaky pastry. The fleur de sel is non-negotiable — it cuts the caramel richness and creates the salted-butter caramel depth that makes this pastry uniquely compelling. The dough must not be over-proofed before baking or the caramel pockets collapse.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">The biggest risk is the caramel burning after removal from the oven — it continues to cook from residual heat. Always remove when just at deep amber (not black) and cool quickly. If inverting while too hot, the caramel will run everywhere; if too cold, it will stick to the tin. The 5-minute window is the sweet spot. Line the tin's sides with baking paper (buttered) if you are nervous about sticking.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Serve a generous wedge, caramelised crust facing up, on a small wooden board or a warm plate. The layers of flaky dough and embedded caramel should be visible at the cut edge. A small ceramic ramekin of crème fraîche alongside provides a cooling counterpoint to the warm richness. No further garnish — the deeply amber caramel surface is its own extraordinary visual. At service temperature (warm), the caramel will slightly give under a fork, releasing the aroma. Timing to service is everything.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 12: CANELÉ BORDELAIS -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 12</div>
+      <h3 class="recipe-title">Canelé Bordelais</h3>
+      <div class="recipe-subtitle">Beeswax mould &mdash; rum vanilla custard &mdash; mahogany lacquered crust</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$5.20 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients (makes 12 canelés)</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Full-cream milk</span><span class="ingredient-qty">500 ml</span></li>
+        <li><span class="ingredient-name">Unsalted butter</span><span class="ingredient-qty">50 g</span></li>
+        <li><span class="ingredient-name">Vanilla bean (split)</span><span class="ingredient-qty">1</span></li>
+        <li><span class="ingredient-name">Plain flour (sifted)</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">250 g</span></li>
+        <li><span class="ingredient-name">Whole eggs</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Egg yolks</span><span class="ingredient-qty">2</span></li>
+        <li><span class="ingredient-name">Dark rum (good quality)</span><span class="ingredient-qty">50 ml</span></li>
+        <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">2 g</span></li>
+        <li><span class="ingredient-name">Beeswax (mould coating)</span><span class="ingredient-qty">40 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (mould coating)</span><span class="ingredient-qty">40 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>The day before baking: heat milk, butter, and vanilla bean to 80°C. Remove from heat; steep 20 minutes. In a large bowl, mix flour, sugar, and salt. Add eggs and yolks; mix until smooth (do not beat — no air). Strain warm milk through a fine sieve into the batter, stirring constantly. Add rum. Strain the entire batter. Press cling wrap to surface; refrigerate at least 24 hours (48 hours is ideal).</li>
+        <li>Prepare moulds: melt beeswax and butter together. Using a pastry brush, coat copper or silicone canelé moulds liberally with the beeswax mixture. Place coated moulds in a freezer for 10 minutes to set the wax.</li>
+        <li>Preheat oven to 250°C (conventional). Place coated moulds in oven to heat for 5 minutes.</li>
+        <li>Remove batter from refrigerator; stir gently. Do not re-blend or beat. Pour batter into heated moulds, filling to 5 mm below the rim.</li>
+        <li>Bake at 250°C for 10 minutes, then reduce to 190°C for a further 50–60 minutes. The exterior should be a deep, dark mahogany — this is correct, not burnt.</li>
+        <li>Remove from oven. Immediately unmould onto a wire rack — do not allow to cool in the moulds or the beeswax coating will seal the canelé inside as it cools. The exterior should be hard and lacquered. The interior is custard-soft and custardy.</li>
+        <li>Serve within 2 hours of baking for the definitive texture contrast. After this point, the exterior softens.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The canelé is among the most technically demanding petit four in French patisserie — the contrast between the dark lacquered beeswax crust and the trembling vanilla custard interior is unique in the pastry world. The beeswax (not butter alone) is what creates the characteristically dark, almost varnished crust. The 48-hour batter rest is critical: it allows the gluten to relax and the flour to fully hydrate, producing the soft, barely-set custard interior. I have seen more failed canelés from impatience with the rest time than from any other error.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If canelés are pale and soft on the outside, the oven was not hot enough — the initial blast of 250°C is what sets the lacquered crust. If hollow inside, the oven was too hot for too long. The high-then-lower temperature method is non-negotiable. Silicone moulds produce a slightly less dramatic crust than copper but work well. Never fill moulds more than 5 mm from the rim — the batter rises then falls back; overfilling causes it to bubble over and destroy the shape.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Serve three canelés per person arranged in a loose triangle on a white plate or small slate. Their fluted cylindrical shape and deep mahogany colour need no embellishment — they are objects of rare visual beauty when made correctly. A very small saucer of crème anglaise alongside for dipping is optional but beloved. The visual contrast of the darkly lacquered exterior against the creamy interior (revealed when a guest bites through) is the entire experience. Freshness is everything — serve within the 2-hour window.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end recipe-section -->
+
+<div class="recipe-section">
+
+<!-- RECIPE 13: MONT BLANC -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 13</div>
+      <h3 class="recipe-title">Mont Blanc</h3>
+      <div class="recipe-subtitle">Meringue nest &mdash; chestnut cream vermicelli &mdash; vanilla chantilly</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$11.50 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Egg whites (meringue)</span><span class="ingredient-qty">4 (120 g)</span></li>
+        <li><span class="ingredient-name">Caster sugar (meringue)</span><span class="ingredient-qty">240 g</span></li>
+        <li><span class="ingredient-name">White wine vinegar</span><span class="ingredient-qty">1 tsp</span></li>
+        <li><span class="ingredient-name">Cornflour</span><span class="ingredient-qty">1 tsp</span></li>
+        <li><span class="ingredient-name">Vanilla extract</span><span class="ingredient-qty">1 tsp</span></li>
+        <li><span class="ingredient-name">Sweetened chestnut purée (Clément Faugier)</span><span class="ingredient-qty">400 g</span></li>
+        <li><span class="ingredient-name">Chestnut paste (unsweetened)</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Dark rum</span><span class="ingredient-qty">20 ml</span></li>
+        <li><span class="ingredient-name">Unsalted butter (soft)</span><span class="ingredient-qty">60 g</span></li>
+        <li><span class="ingredient-name">Thickened cream (chantilly)</span><span class="ingredient-qty">300 ml</span></li>
+        <li><span class="ingredient-name">Icing sugar (chantilly)</span><span class="ingredient-qty">20 g</span></li>
+        <li><span class="ingredient-name">Vanilla bean paste (chantilly)</span><span class="ingredient-qty">4 g</span></li>
+        <li><span class="ingredient-name">Candied chestnuts or marron glacé (garnish)</span><span class="ingredient-qty">4 pieces</span></li>
+        <li><span class="ingredient-name">Cocoa powder or icing sugar (dusting)</span><span class="ingredient-qty">as needed</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Preheat oven to 120°C (very low). Whip whites to soft peaks. Add sugar one tablespoon at a time, whipping continuously until meringue is very stiff, white, and glossy. Fold in vinegar, cornflour, and vanilla.</li>
+        <li>Pipe or spoon meringue into individual nests (8 cm diameter) with a shallow well in the centre on a lined tray. Bake 1.5–2 hours until crisp and dry to the touch. The interior should remain soft and marshmallow-like. Cool completely in the oven with the door ajar.</li>
+        <li>Make chestnut cream: beat chestnut purée, chestnut paste, rum, and soft butter together until completely smooth. Taste — adjust sweetness with icing sugar if needed. The cream should be rich, earthy, and subtly boozy. Load into a piping bag fitted with a fine vermicelli (spaghetti) nozzle — or a multi-hole icing disc.</li>
+        <li>Whip chantilly: beat cream with icing sugar and vanilla bean paste to firm, cloud-like peaks. Do not over-whip — it should still be soft enough to quiver.</li>
+        <li>Assembly: place a generous dome of chantilly in the meringue nest. Pipe chestnut cream vermicelli in careful, circular passes over the cream dome, completely covering it to mimic a snow-capped mountain peak. The strands should cascade down to the meringue base.</li>
+        <li>Place a single marron glacé or half a candied chestnut at the summit. Dust very lightly with cocoa or icing sugar. Serve immediately.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The Mont Blanc is named for the highest peak in the Alps — the visual representation of a snow-capped mountain is the entire concept, and every element must serve it. The meringue nest should be dry and crisp outside but still have a cloud-like, yielding interior — this is achieved by the low temperature and very slow drying. The chestnut vermicelli nozzle (or multi-hole disc) is the technical centrepiece; the strands must be piped at consistent pressure to fall evenly. If they break or clump, the cream is too cold — warm the bag in your hands briefly.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">Meringue is the enemy of humidity. On wet Sydney days, bake meringues longer (add 30 minutes) and store immediately in an airtight container. If meringue weeps or collapses within hours of baking, humidity got in. Chestnut purée quality varies enormously — Clément Faugier is the industry standard. Never substitute fresh chestnuts for purchased purée without cooking and sweetening them first; the texture will be entirely different.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The Mont Blanc is positioned centrally on a small white plate, elevated slightly on a thin cardboard round if needed. The mountain shape is the entire visual narrative — stand back after assembly and check for symmetry. The marron glacé crown at the summit catches the eye first. A fine thread of caramel drizzled at the base of the meringue at service adds a golden contrast to the ivory and brown palette. Serve immediately after assembly — the meringue will begin to absorb moisture from the cream within 20 minutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 14: FINANCIER -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 14</div>
+      <h3 class="recipe-title">Financier</h3>
+      <div class="recipe-subtitle">Brown butter &mdash; almond flour &mdash; golden crust &mdash; NF: sunflower flour version</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$4.80 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags">
+        <span class="allergen-tag tag-nf">NF opt</span>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients (makes 18 small financiers)</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Unsalted butter</span><span class="ingredient-qty">185 g</span></li>
+        <li><span class="ingredient-name">Almond meal (blanched)</span><span class="ingredient-qty">160 g</span></li>
+        <li><span class="ingredient-name">Plain flour (sifted)</span><span class="ingredient-qty">75 g</span></li>
+        <li><span class="ingredient-name">Icing sugar (sifted)</span><span class="ingredient-qty">260 g</span></li>
+        <li><span class="ingredient-name">Egg whites (room temp, not whipped)</span><span class="ingredient-qty">200 g (6 whites)</span></li>
+        <li><span class="ingredient-name">Vanilla bean paste</span><span class="ingredient-qty">5 g</span></li>
+        <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">2 g</span></li>
+        <li><span class="ingredient-name">Seasonal fruit (optional top: raspberry, blueberry)</span><span class="ingredient-qty">as desired</span></li>
+        <li><span class="ingredient-name">Extra butter (moulds)</span><span class="ingredient-qty">30 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Make beurre noisette: melt butter in a light-coloured saucepan over medium heat. Continue cooking, swirling occasionally, until the milk solids turn a deep nut-brown colour and a toasted, nutty aroma develops. Remove from heat immediately; strain through a fine sieve into a bowl to stop cooking. Allow to cool until warm but not set.</li>
+        <li>In a bowl, whisk together almond meal, sifted flour, icing sugar, and salt. Add egg whites and vanilla; stir with a spatula until combined (do not beat). Stream in warm (not hot) beurre noisette; fold until just incorporated.</li>
+        <li>Cover batter and rest in refrigerator for at least 2 hours (overnight preferred). The rested batter produces a denser, more flavourful crumb and a more pronounced golden crust.</li>
+        <li>Preheat oven to 200°C. Butter financier moulds generously. Spoon or pipe batter to three-quarters full. Top each with one piece of seasonal fruit if desired.</li>
+        <li>Bake 12–14 minutes until the tops are golden, edges are dark gold, and a skewer comes out clean. Cool in moulds 5 minutes before unmoulding. Best served warm or within 4 hours of baking.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The financier is a small masterpiece of simplicity — five ingredients that, in the right proportions and sequence, produce a dense, moist, golden-crusted cake that is one of the great pleasures of French patisserie. The beurre noisette is the heart of the dish — the nutty, caramel flavour it imparts is irreplaceable. Never melt butter in a dark saucepan, or you cannot see the colour developing. The egg whites are used unwhipped — this is not a mistake; the financier should be dense, not airy. The rest period allows gluten to relax and flavour to develop.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If financiers are pale and soft, the oven is not hot enough — 200°C is correct. For NF version: replace almond meal with equal weight sunflower seed flour (made by blitzing raw sunflower seeds to a fine flour in a food processor). The result has a subtly different flavour — more earthy, slightly more complex — with a very similar texture. Clearly label these as NF versions and ensure no cross-contamination with almond versions.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Arrange three financiers on a white rectangular plate, offset at slight angles. The golden-crusted rectangular or oval shape is classically elegant. A small quenelle of fromage blanc or crème fraîche at one end, with three fresh seasonal berries. A very light dusting of icing sugar. The financier is a petit four elevated to a dessert course — its presentation should reflect that elevation without over-complicating the inherent simplicity.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 15: MADELEINE -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 15</div>
+      <h3 class="recipe-title">Madeleine</h3>
+      <div class="recipe-subtitle">Lemon zest &mdash; wildflower honey &mdash; classic shell shape &mdash; signature hump</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$3.80 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients (makes 24 madeleines)</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Whole eggs (room temp)</span><span class="ingredient-qty">3</span></li>
+        <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">130 g</span></li>
+        <li><span class="ingredient-name">Wildflower honey</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Lemon zest (finely grated)</span><span class="ingredient-qty">2 lemons</span></li>
+        <li><span class="ingredient-name">Plain flour (sifted)</span><span class="ingredient-qty">160 g</span></li>
+        <li><span class="ingredient-name">Baking powder</span><span class="ingredient-qty">8 g</span></li>
+        <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">2 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (melted, 50°C)</span><span class="ingredient-qty">160 g</span></li>
+        <li><span class="ingredient-name">Full-cream milk</span><span class="ingredient-qty">20 ml</span></li>
+        <li><span class="ingredient-name">Extra butter + flour (moulds)</span><span class="ingredient-qty">as needed</span></li>
+        <li><span class="ingredient-name">Icing sugar (dusting)</span><span class="ingredient-qty">20 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Whisk eggs, caster sugar, honey, lemon zest, and salt together until pale and slightly thickened — approximately 3 minutes. The mixture should fall in ribbons.</li>
+        <li>Sift flour and baking powder; fold into egg mixture in two additions until just combined.</li>
+        <li>Add milk; fold through. Stream in melted butter (at 50°C — not hot, not cool) and fold until fully incorporated and smooth.</li>
+        <li>Cover batter with cling wrap touching the surface. Refrigerate for minimum 1 hour — this cold shock is what creates the characteristic hump when baked. Overnight resting produces an even more pronounced hump.</li>
+        <li>Preheat oven to 220°C. Generously butter and flour madeleine moulds, tapping out excess flour. Freeze for 10 minutes.</li>
+        <li>Fill moulds three-quarters full (do not overfill). Return to freezer for 5 minutes to set the exterior slightly. Place in hot oven at 220°C for 3 minutes, then reduce to 190°C for a further 7–9 minutes until golden and the hump is fully formed.</li>
+        <li>Unmould immediately onto a wire rack. Dust with icing sugar. Serve within 20 minutes of baking — the madeleine is at its apex when just warm.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">Proust's madeleine is one of the most famous objects in literature — and in patisserie, one of the most technically instructive. The hump is the mark of a properly rested, properly shocked batter: the cold batter hits the hot mould and oven simultaneously, creating a thermal shock that drives the centre upward into the characteristic dome. Without the rest, without the cold moulds, without the high initial temperature — the madeleine is merely a shell-shaped sponge. The lemon zest and wildflower honey combination is a Sydney elevation of the classic — the honey adds depth, the lemon adds brightness.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If no hump develops, the batter was not cold enough or the oven was not hot enough. Start at 220°C — always. If the madeleine sticks to the mould, the butter-and-flour coating was insufficient. Use a pastry brush and coat every groove thoroughly, then tap out all loose flour. If the texture is too dense, the butter was too hot when added — above 60°C it begins to cook the eggs.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Madeleines are best served warm, standing upright in a small linen-lined basket or on a slate, with the shell pattern facing outward. The icing sugar dusting should be applied just before service so it remains white and pristine. At our patisserie, we serve three madeleines as a petit four with coffee, or as an individual dessert accompanied by a small glass of warm lemon curd for dipping. The contrast of warm, tender sponge and cold, sharp curd is exceptional. Never serve cold madeleines — the butter sets and the texture becomes greasy.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 16: AUSTRALIAN LAMINGTON ENTREMET -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 16</div>
+      <h3 class="recipe-title">Australian Lamington Entremet</h3>
+      <div class="recipe-subtitle">Genoise sponge &mdash; coconut mousse &mdash; dark chocolate glaze &mdash; raspberry insert</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$13.20 <span class="recipe-cost-label">AUD / serve</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Whole eggs (genoise)</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Caster sugar (genoise)</span><span class="ingredient-qty">120 g</span></li>
+        <li><span class="ingredient-name">Plain flour (genoise)</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Cornflour (genoise)</span><span class="ingredient-qty">20 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (melted, genoise)</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Full-fat coconut cream</span><span class="ingredient-qty">400 ml</span></li>
+        <li><span class="ingredient-name">White chocolate</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Gelatine leaves (mousse)</span><span class="ingredient-qty">4</span></li>
+        <li><span class="ingredient-name">Thickened cream (mousse)</span><span class="ingredient-qty">200 ml</span></li>
+        <li><span class="ingredient-name">Desiccated coconut (toasted)</span><span class="ingredient-qty">80 g</span></li>
+        <li><span class="ingredient-name">Raspberry gel insert (raspberry coulis + pectin)</span><span class="ingredient-qty">150 ml</span></li>
+        <li><span class="ingredient-name">Dark chocolate 65% (glaze)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Thickened cream (glaze)</span><span class="ingredient-qty">160 ml</span></li>
+        <li><span class="ingredient-name">Glucose (glaze)</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Neutral glaze (finish shine)</span><span class="ingredient-qty">40 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Make genoise: whisk eggs and sugar over a bain-marie to 40°C; remove and whip at high speed until tripled in volume and ribbon-stage. Sift flour and cornflour; fold in two additions. Stream in melted butter and fold gently. Pour into lined tray (20×30 cm); bake 180°C for 18 minutes. Cool; cut two layers to fit individual entremet rings or a 20 cm ring.</li>
+        <li>Make raspberry gel insert: heat coulis with pectin and sugar; pour into flat silicone trays to 5 mm depth; set in freezer until solid. Cut to fit inside entremet rings (slightly smaller). Keep frozen.</li>
+        <li>Make coconut mousse: melt white chocolate. Heat half the coconut cream to a simmer; bloom gelatine and dissolve into cream. Pour over white chocolate; stir to combine. Add remaining cold coconut cream. Chill until mixture is cool but not set. Fold in whipped cream in two additions.</li>
+        <li>Assembly: place first genoise layer in bottom of ring. Pour half the coconut mousse; level. Press frozen raspberry gel insert gently into centre. Add remaining mousse to cover. Top with second genoise layer. Freeze until completely set (minimum 4 hours, preferably overnight).</li>
+        <li>Make chocolate glaze: heat cream and glucose to simmer; pour over chopped dark chocolate. Add neutral glaze; stir until smooth. Use at 35°C. Pour over unmoulded frozen entremet placed on a wire rack. Allow to set partially; carefully press toasted desiccated coconut around the lower sides.</li>
+        <li>Refrigerate 2 hours to fully thaw. Decorate top with a fresh raspberry and a small square of dark chocolate. Serve at cool room temperature.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The Lamington is Australia's most beloved cake — a colonial confection of sponge, chocolate, and coconut that has fed generations. This entremet re-imagines it through a French lens: the same flavour memory — chocolate, coconut, berry — but with the precision and elegance of modern French pastry architecture. The frozen insert technique ensures the raspberry layer sits perfectly centred in the mousse regardless of experience level. The toasted coconut on the outside is the crucial visual signal that tells the guest what this is — the homage must be legible even as the technique elevates it.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">Always freeze entremet before unmoulding and glazing — a semi-frozen entremet holds its shape during the glaze pour and the glaze sets quickly and evenly on the cold surface. If the glaze drips too thin, it's too warm — let it cool further and pour again. If it sets too thick and lumpy, warm slightly. The toasted coconut should be pressed on within 60 seconds of the glaze pour, while the surface is still tacky.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">Serve a perfect slice revealing the cross-section: chocolate glaze top, white coconut mousse, vivid ruby raspberry insert, and pale genoise base. This visual stacking is the modernist lamington's signature. Place the slice at a slight angle on the plate to emphasise the layers. A single fresh raspberry and a small curl of dark chocolate on the plate. Toasted coconut scattered casually across the plate surface echoes the outer coating. This dish should prompt a moment of recognition — "that's a Lamington" — followed by delight at what it has become.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end recipe-section -->
+
+<!-- ===== SECTION 3: SHARING PLATES ===== -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="section-divider-label">Section Three &mdash; Nos. 17&ndash;20</div>
+    <h2 class="section-divider-title">Sharing Plates</h2>
+    <p class="section-divider-desc">Designed for two or more, these plates are celebrations — afternoon tea traditions, dramatic towers, and seasonal grazing that brings people to the table and keeps them there.</p>
+  </div>
+</div>
+
+<div class="recipe-section">
+
+<!-- RECIPE 17: AFTERNOON TEA SELECTION -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 17</div>
+      <h3 class="recipe-title">Afternoon Tea Selection</h3>
+      <div class="recipe-subtitle">Three-tier stand &mdash; finger sandwiches &mdash; warm scones &mdash; petit fours &mdash; serves 2</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$58.00 <span class="recipe-cost-label">AUD / 2 pax</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Components &amp; Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">White sandwich bread (finger sandwiches)</span><span class="ingredient-qty">8 slices</span></li>
+        <li><span class="ingredient-name">Smoked salmon + crème fraîche + dill</span><span class="ingredient-qty">80 g + 40 g</span></li>
+        <li><span class="ingredient-name">Free-range egg mayo + watercress</span><span class="ingredient-qty">2 eggs + handful</span></li>
+        <li><span class="ingredient-name">Cucumber + cream cheese + mint</span><span class="ingredient-qty">½ cucumber</span></li>
+        <li><span class="ingredient-name">Plain flour (scones)</span><span class="ingredient-qty">300 g</span></li>
+        <li><span class="ingredient-name">Baking powder (scones)</span><span class="ingredient-qty">12 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (cold, scones)</span><span class="ingredient-qty">75 g</span></li>
+        <li><span class="ingredient-name">Caster sugar (scones)</span><span class="ingredient-qty">30 g</span></li>
+        <li><span class="ingredient-name">Buttermilk</span><span class="ingredient-qty">160 ml</span></li>
+        <li><span class="ingredient-name">Egg wash</span><span class="ingredient-qty">1 egg</span></li>
+        <li><span class="ingredient-name">Clotted cream + house strawberry jam</span><span class="ingredient-qty">60 g each</span></li>
+        <li><span class="ingredient-name">Petit fours selection (4 types, 2 each)</span><span class="ingredient-qty">8 pieces</span></li>
+        <li><span class="ingredient-name">Seasonal fruit (garnish tier)</span><span class="ingredient-qty">as needed</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method</div>
+      <ol class="method-list">
+        <li>Scones: rub cold butter into flour and baking powder until sandy. Add sugar, then buttermilk; bring together quickly without overworking. Turn onto a lightly floured surface; press to 3 cm thickness. Cut with a 5 cm cutter (push straight down — do not twist or sides won't rise evenly). Brush tops with egg wash. Bake 220°C for 12–14 minutes until risen and golden. Serve warm.</li>
+        <li>Finger sandwiches: prepare fillings fresh on the day. Spread bread generously with appropriate bases (crème fraîche, cream cheese, egg mayo). Layer fillings; press lids on firmly. Trim crusts with a sharp serrated knife. Cut each sandwich into three fingers. Keep covered with a damp cloth until service.</li>
+        <li>Petit fours selection (four types): (i) Chocolate-dipped strawberry with gold leaf; (ii) Lemon shortbread rounds with raspberry jam dot; (iii) Pistachio macarons (or NF equivalent); (iv) Chocolate truffle rolled in cocoa.</li>
+        <li>Assembly: polish the three-tier stand. Bottom tier: finger sandwiches arranged in alternating lines by filling. Middle tier: warm scones with separate pots of clotted cream and strawberry jam. Top tier: petit fours and seasonal fruit arranged as a tableau. Finish with small edible flowers throughout all tiers for colour.</li>
+        <li>Serve with chosen tea or coffee. Provide small dessert plates, butter knives, and cloth napkins. The stand should arrive at the table fully assembled — it is a presentation moment, not a DIY exercise.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">Afternoon tea is choreography as much as cooking. Every element must be timed so the scones arrive warm, the sandwiches arrive fresh, and the petit fours are at room temperature. In our kitchen, scone timing is the anchor — everything else is prepared to the moment the scones come out of the oven. The three-tier stand is both a functional serving device and a theatrical centrepiece. Height creates drama; the visual abundance signals generosity before a single bite is taken. In Sydney, afternoon tea has become a social ritual — the quality of the scone and the jam is what guests discuss at the table and remember long after.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">Scone dough must not be over-worked — it will become tough. Bring it together in less than 30 seconds from the moment milk hits flour. The cutter must go straight down with no twisting — twisted edges seal the sides and prevent the characteristic 'break' rise. Pre-cut all sandwiches and refrigerate covered; do not plate more than 20 minutes before service or bread dries and curls.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The three-tier stand should have colour at every level — use the seasonal petit fours, edible flowers, and small fresh berries strategically. Height and colour draw the eye upward. The stand itself should be clean, polished, and without drips. Scones should arrive visibly steaming — if not, a quick 45-second reheat in a warm oven before plating. Cloth napkins, individual butter knives, and proper tea cups complete the ritual. Afternoon tea at its best is not food service — it is a ceremony.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 18: MACARON TOWER (NF) -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 18</div>
+      <h3 class="recipe-title">Macaron Tower (NF)</h3>
+      <div class="recipe-subtitle">12 flavours &mdash; nut-free shells &mdash; house-made ganache &amp; buttercream fillings &mdash; tower for 4–6</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$48.00 <span class="recipe-cost-label">AUD / tower</span></div>
+      <div class="allergen-tags">
+        <span class="allergen-tag tag-nf">NF</span>
+        <span class="allergen-tag tag-gf">GF</span>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Ingredients (NF shell, makes ~60 shells)</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Icing sugar (sifted)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Sunflower seed flour (finely ground)</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Aged egg whites (divided)</span><span class="ingredient-qty">150 g (75 g + 75 g)</span></li>
+        <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">200 g</span></li>
+        <li><span class="ingredient-name">Water (syrup)</span><span class="ingredient-qty">50 ml</span></li>
+        <li><span class="ingredient-name">Gel food colours (12 colours)</span><span class="ingredient-qty">as needed</span></li>
+        <li><span class="ingredient-name">Assorted fillings (ganaches, curds, buttercreams)</span><span class="ingredient-qty">as per flavours below</span></li>
+      </ul>
+      <div class="recipe-col-label" style="margin-top:16px;">12 Flavours</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Strawberry rose (pink) — white choc ganache + rose water</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Salted caramel (gold) — salted caramel buttercream</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Matcha (green) — matcha white choc ganache</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Lemon (yellow) — lemon curd filling</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Raspberry (magenta) — raspberry jam + Swiss meringue</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Passionfruit (orange) — passionfruit curd</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Dark chocolate (brown) — 70% Valrhona ganache</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Coconut (white) — coconut cream ganache</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Blueberry violet (purple) — blueberry compote</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Coffee (cream/brown) — espresso buttercream</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Yuzu (pale yellow) — yuzu curd</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Champagne (ivory) — Champagne reduction buttercream</span><span class="ingredient-qty"></span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method (Italian Meringue Method)</div>
+      <ol class="method-list">
+        <li>Make tant-pour-tant (TPT): sift icing sugar and sunflower flour together; blend to a very fine powder. Mix with 75 g egg whites to form a thick, smooth paste. Divide into 12 portions; colour each with gel colour.</li>
+        <li>Make Italian meringue: cook water and sugar to 121°C. Stream onto 75 g whites whipping at medium speed. Increase speed; whip until stiff, cool, and glossy.</li>
+        <li>Fold meringue into each coloured TPT paste in three additions — macaronage until batter flows off the spatula in a smooth, lava-like ribbon that folds back in 10–15 seconds. Do not over-mix.</li>
+        <li>Pipe 3.5 cm rounds onto lined trays. Rest (croûter) at room temperature until a dry skin forms (30–60 min, depending on humidity). The surface should feel dry and not sticky when touched lightly.</li>
+        <li>Bake at 150°C fan for 13–15 minutes. Shells should release cleanly from the paper. Cool completely. Store in a single layer in airtight containers.</li>
+        <li>Prepare all 12 fillings. Pipe onto flat side of one shell; sandwich with matching shell. Refrigerate minimum 24 hours for the shells to mature — the filling moistens the interior, creating the proper chewy texture.</li>
+        <li>Assemble tower: arrange on a tiered metal or wooden macaron tower stand by colour family — gradient from light to dark, or in a rainbow pattern. Tag each flavour clearly. Serve at room temperature (remove from refrigerator 30 minutes before serving).</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The macaron is the most technically demanding biscuit in French patisserie — it responds to humidity, temperature, altitude, and even the lunar cycle (or so claimed my Paris mentor, who may have been testing my credulity). The NF sunflower flour shell is a genuine technical achievement — the protein and fat profile of sunflower seeds closely mirrors that of almond meal, producing a shell with comparable texture and foot formation. The 24-hour maturation is non-negotiable: an un-matured macaron is a crunchy, hollow disappointment. A matured macaron is a pillow of flavour with a slight chew that is one of the great small pleasures of patisserie.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If macarons crack on top during baking, they were under-rested (skin not formed) or oven too hot. If they have no feet, the batter was under-mixed or the meringue was too stiff. If shells are hollow, they were over-baked or oven temperature too high. Every batch is slightly different — keep detailed notes. Ageing the egg whites (leaving uncovered in the refrigerator for 24–48 hours) produces a more stable meringue with better feet formation.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The macaron tower is a centrepiece — it should arrive at the table to audible appreciation. Arrange by colour with intention: gradients, rainbows, or thematic colour stories (e.g. pastels for celebration, jewel tones for a statement). Small flavour cards propped beside or a printed menu card adds a professionallegibility. Individual macarons can also be presented in a gift box as a takeaway item — this is excellent for revenue and brand building. Serve with small tongs and individual small plates.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 19: CROISSANT + VIENNOISERIE BASKET -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 19</div>
+      <h3 class="recipe-title">Croissant &amp; Viennoiserie Basket</h3>
+      <div class="recipe-subtitle">6-piece house-made selection &mdash; classic croissant, pain au chocolat, pain aux raisins</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$28.00 <span class="recipe-cost-label">AUD / basket</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Détrempe (base dough) &amp; Ingredients</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Strong bread flour (T55 or similar)</span><span class="ingredient-qty">500 g</span></li>
+        <li><span class="ingredient-name">Full-cream milk (cold)</span><span class="ingredient-qty">300 ml</span></li>
+        <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">50 g</span></li>
+        <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">10 g</span></li>
+        <li><span class="ingredient-name">Instant dried yeast</span><span class="ingredient-qty">7 g</span></li>
+        <li><span class="ingredient-name">Unsalted butter (softened, in dough)</span><span class="ingredient-qty">25 g</span></li>
+        <li><span class="ingredient-name">European-style butter (beurrage, 84% fat)</span><span class="ingredient-qty">280 g</span></li>
+        <li><span class="ingredient-name">Egg wash (1 egg + 1 yolk + pinch salt)</span><span class="ingredient-qty"></span></li>
+        <li><span class="ingredient-name">Dark chocolate batons (pain au chocolat)</span><span class="ingredient-qty">12 pieces</span></li>
+        <li><span class="ingredient-name">Crème pâtissière + sultanas (pain aux raisins)</span><span class="ingredient-qty">200 g + 80 g</span></li>
+        <li><span class="ingredient-name">Apricot glaze (finish)</span><span class="ingredient-qty">60 g</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Method (3-day process)</div>
+      <ol class="method-list">
+        <li>Day 1 — Détrempe: mix flour, sugar, salt (separately from yeast), then yeast. Add cold milk and softened butter; mix until smooth dough forms. Do not over-knead — medium development only. Shape into a rectangle; wrap; refrigerate overnight.</li>
+        <li>Day 2 — Lamination: pound cold butter block (15×15 cm). Encase in dough. Roll to 20×60 cm. Fold in thirds. Rest 30 min (refrigerated). Repeat 3 more times. After 4 folds, wrap and refrigerate overnight. (84% fat European butter is critical — lower fat butters contain more water and produce steaming rather than lamination.)</li>
+        <li>Day 3 — Shaping: roll laminated dough to 4 mm. Cut croissant triangles (base 9 cm, height 20 cm); roll from base to tip. Cut rectangles for pain au chocolat (8×14 cm); wrap around two chocolate batons. For pain aux raisins: spread crème pâtissière and sultanas over a 20×30 cm sheet; roll tightly into a log; slice into 2.5 cm rounds.</li>
+        <li>Prove shaped viennoiserie on lined trays at room temperature (24–26°C) for 2–3 hours until noticeably puffed and the layers visible when held to light. Apply egg wash gently — do not press, which seals the layers.</li>
+        <li>Bake at 200°C for 16–18 minutes until deep golden brown on all surfaces. Brush pain aux raisins immediately with warmed apricot glaze.</li>
+        <li>Basket assembly: line a wide bread basket with a linen cloth. Arrange 6 pieces while warm: 2 croissants, 2 pain au chocolat, 2 pain aux raisins. Serve within 20 minutes of baking with small ramekins of butter and jam.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">Laminated dough is the foundation on which all viennoiserie rests, and the place where most home bakers struggle most profoundly. The butter block and dough must be at the same pliability when you begin laminating — if the butter is colder and harder than the dough, it will shatter and create uneven layers. Test by pressing both with your finger: they should resist with equal force. The 84% fat European butter is not a luxury — it is a technical specification. Lower fat butters produce steam during lamination, which destroys the clean separation of layers. A croissant should shatter into shards when bitten, with a honeycomb interior. Anything less is a compromise.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">If your croissants are not developing layers in the oven, the butter melted out during lamination — it was too warm. Keep everything cold and work quickly. If the interior is dense (not honeycomb), the dough was over-proved — the yeast consumed the sugars needed for structure. 2–3 hours at 24°C is the absolute maximum proof time. Test: a properly proved croissant should wobble visibly (like set gelatin) when the tray is shaken.</li>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The viennoiserie basket should arrive warm and visually abundant. A generous linen lining, visible golden pastry, and the accompanying ramekins of good butter and house jam create a complete composition. The basket should feel full — not stacked high, but generous and welcoming. Fresh butter must be at room temperature and properly salted. House strawberry or apricot jam should be in a small ceramic pot with a small silver spoon. This is café culture at its most pleasurable — uncomplicated, beautiful, and deeply satisfying.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE 20: DESSERT GRAZING PLATTER -->
+<div class="recipe-card">
+  <div class="recipe-header">
+    <div class="recipe-title-block">
+      <div class="recipe-number">Recipe No. 20</div>
+      <h3 class="recipe-title">Dessert Grazing Platter</h3>
+      <div class="recipe-subtitle">Seasonal fruits &mdash; house chocolates &mdash; mini tarts &mdash; house jellies &mdash; serves 4</div>
+    </div>
+    <div class="recipe-meta">
+      <div class="recipe-cost">$68.00 <span class="recipe-cost-label">AUD / platter</span></div>
+      <div class="allergen-tags"></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <div class="recipe-col-label">Components</div>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-name">Seasonal fruit selection (strawberries, raspberries, figs, grapes, mango, passionfruit)</span><span class="ingredient-qty">500 g</span></li>
+        <li><span class="ingredient-name">House dark chocolate truffles (cocoa-rolled)</span><span class="ingredient-qty">8 pieces</span></li>
+        <li><span class="ingredient-name">House milk chocolate bark (sea salt + dried fruit)</span><span class="ingredient-qty">100 g</span></li>
+        <li><span class="ingredient-name">Mini lemon curd tarts (pâte sucrée shells)</span><span class="ingredient-qty">6 pieces</span></li>
+        <li><span class="ingredient-name">Mini raspberry jelly domes</span><span class="ingredient-qty">6 pieces</span></li>
+        <li><span class="ingredient-name">Mini passionfruit pannacotta</span><span class="ingredient-qty">4 pieces</span></li>
+        <li><span class="ingredient-name">Shortbread rounds</span><span class="ingredient-qty">8 pieces</span></li>
+        <li><span class="ingredient-name">House caramel sauce (small jar, dipping)</span><span class="ingredient-qty">60 ml</span></li>
+        <li><span class="ingredient-name">Edible flowers and micro herbs (garnish)</span><span class="ingredient-qty">as needed</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="recipe-col-label">Assembly Method</div>
+      <ol class="method-list">
+        <li>Begin with the board: use a large slate or marble board (45×30 cm minimum). Place a small jar of caramel sauce slightly off-centre — this anchors the composition.</li>
+        <li>Place the largest items first: the fruit clusters (strawberries in one corner, grapes in another, figs halved in a third). These define the quadrants.</li>
+        <li>Fill in with the chocolate elements: truffles in a cluster near the caramel, chocolate bark broken into irregular shards laid flat.</li>
+        <li>Position the mini tarts and jellies — these are the most delicate elements and need to be stable. Space them evenly across the board so guests at all positions can reach them.</li>
+        <li>Tuck shortbread rounds into gaps between elements. Fill remaining spaces with micro herbs, edible flowers, and halved passionfruit pods.</li>
+        <li>Final check: every inch of board should have something — this is a grazing board, not a platter. The eye should be able to wander and discover. Bring to the table as a visual centrepiece; allow guests to self-serve.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-notes">
+    <div class="note-block note-chef">
+      <div class="note-label">&#x1F4A1; Chef Technique Note</div>
+      <div class="note-text">The grazing platter is the most democratic form of dessert service — it invites guests to explore, share, and choose their own adventure. The skill is in the curation and composition: variety of texture (crisp, soft, creamy, chewy), variety of flavour (sweet, acidic, bitter, rich), and variety of colour and visual form. The seasonal fruit is the most important element — it provides freshness and contrast to the richness of the made components. In Sydney, where fruit quality is extraordinary, the grazing board is an opportunity to showcase produce as much as technique.</div>
+    </div>
+    <div class="note-block note-tip">
+      <div class="note-label">&#x2705; Fail-Proof Tip</div>
+      <div class="note-text">Build the board fresh within 30 minutes of service — elements left too long will macerate into each other. Keep delicate items (jellies, pannacotta) refrigerated until the last moment. If fruit is cold from the refrigerator, allow 20 minutes at room temperature before plating — cold fruit has diminished aroma and flavour. The caramel sauce must be warm; microwave 20 seconds and stir before placing on the board.</div>
+    </div>
+    <div class="note-block note-plating">
+      <div class="note-label">&#x1F3A8; Plating Note</div>
+      <div class="note-text">The board should arrive at the table to a moment of genuine visual surprise — a sense of bounty and care. Edible flowers and micro herbs are the final flourish that elevate the board from 'nice' to 'exceptional.' Every element should be placed with deliberate intention — resist the temptation to simply pile things on. The negative space between elements (showing the board surface) creates breathing room and makes each item more legible. Provide small dessert plates, forks, and napkins alongside so guests can build their own plate from the communal board.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end recipe-section -->
+
+<!-- ===== SECTION 4: DRINKS ===== -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="section-divider-label">Section Four &mdash; Nos. 21&ndash;28</div>
+    <h2 class="section-divider-title">Drinks</h2>
+    <p class="section-divider-desc">Eight drinks that complete the patisserie experience — from single-origin pour-over to Champagne pairing — each crafted to complement the flavours on the plate.</p>
+  </div>
+</div>
+
+<div class="drinks-grid">
+
+<!-- DRINK 21: SINGLE ORIGIN POUR-OVER -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 21 &mdash; VG &middot; GF &middot; DF &middot; NF</div>
+      <div class="drink-title">Single Origin Pour-Over Coffee</div>
+      <div class="drink-subtitle">Ethiopian Yirgacheffe &mdash; Hario V60 &mdash; 92°C</div>
+    </div>
+    <div class="drink-cost">$6.50 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients:</strong> Single origin Ethiopian Yirgacheffe beans 18 g (medium-light roast, filter grind), filtered water 300 ml at 92°C, paper filter (pre-rinsed).
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Pre-rinse paper filter with hot water; discard rinse water. Add 18 g ground coffee. Bloom with 40 ml water for 30 seconds. Pour remaining water in slow, concentric circles over 2.5–3 minutes. Total brew time 3–3.5 minutes. Serve immediately in a pre-warmed ceramic cup with a small water alongside.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> Yirgacheffe is the terroir of Ethiopian coffee — naturally processed, with floral and blueberry notes that make it the ideal companion to delicate pastry. Serve black or with a small ceramic jug of full-cream milk. Never rush the bloom — it off-gases CO₂ and allows even saturation. Food cost includes bean waste from grinding.</div>
+</div>
+
+<!-- DRINK 22: MATCHA LATTE -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 22 &mdash; VG &middot; GF &middot; DF</div>
+      <div class="drink-title">Matcha Latte</div>
+      <div class="drink-subtitle">Ceremonial grade &mdash; oat milk &mdash; bamboo-whisked</div>
+    </div>
+    <div class="drink-cost">$7.00 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients:</strong> Ceremonial grade matcha powder 3 g, hot water (80°C) 60 ml, oat milk (barista grade) 200 ml, optional honey 5 g.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Sift matcha into a pre-warmed bowl or cup. Add 60 ml water at 80°C (not boiling — bitterness compounds denature below 85°C). Whisk vigorously in a W or zigzag motion using a bamboo chasen until fully dissolved and frothy. Steam oat milk to 62°C with a tight microfoam texture. Pour steamed milk over matcha paste; lift chasen foam onto surface.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> Ceremonial grade is non-negotiable — it is shade-grown, stone-ground, and has a sweet vegetal depth that culinary-grade cannot replicate. The 80°C water temperature preserves the L-theanine which provides the calm focus matcha is prized for. Pair with Matcha Opera Cake for a reinforcing flavour experience.
+  </div>
+</div>
+
+<!-- DRINK 23: SPARKLING YUZU LEMONADE -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 23 &mdash; VG &middot; GF &middot; NF &middot; DF</div>
+      <div class="drink-title">Sparkling Yuzu Lemonade</div>
+      <div class="drink-subtitle">House-made yuzu syrup &mdash; Meyer lemon &mdash; sparkling water</div>
+    </div>
+    <div class="drink-cost">$6.00 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients (makes syrup for 10 serves):</strong> Yuzu juice 100 ml, Meyer lemon juice 150 ml, caster sugar 200 g, water 200 ml, yuzu zest 1 fruit. Per serve: syrup 45 ml, sparkling water 180 ml, ice, lemon slice garnish.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Make yuzu syrup: combine sugar, water, and zest; simmer until sugar dissolves. Cool; add citrus juices; strain and bottle. Per serve: add 45 ml syrup to a chilled tall glass with ice. Top with sparkling water; stir gently. Garnish with a thin lemon wheel and a sprig of fresh lemon verbena if available.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> Yuzu is the citrus jewel of Japan — floral, complex, with notes of mandarin and grapefruit. It elevates a simple lemonade into something genuinely distinctive. The Meyer lemon is used for its lower acidity and more floral profile compared to Eureka lemons. Food cost includes syrup preparation waste and bottle storage.
+  </div>
+</div>
+
+<!-- DRINK 24: FRENCH HOT CHOCOLATE -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 24 &mdash; GF</div>
+      <div class="drink-title">French Hot Chocolate</div>
+      <div class="drink-subtitle">Valrhona 70% &mdash; steamed full-cream milk &mdash; one-pot method</div>
+    </div>
+    <div class="drink-cost">$7.50 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients per serve:</strong> Valrhona Guanaja 70% chocolate 40 g (finely chopped), full-cream milk 220 ml, caster sugar 5 g (optional), small pinch fleur de sel.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Heat milk to 70°C. Add chopped chocolate and salt; whisk continuously until completely melted and emulsified — approximately 2 minutes. The chocolate will thicken the milk noticeably. Optional: blend with a hand blender for 20 seconds to create a frothy surface. Serve in a pre-warmed cup or small ceramic bowl. Accompany with one canelé or madeleine.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> French hot chocolate (chocolat chaud) is not cocoa powder with hot water — it is a thick, rich, proper emulsion of quality chocolate and full-fat milk. The consistency should be closer to a thin ganache than a conventional hot drink. Valrhona Guanaja's particular blend of cocoa origins provides a deep, fruity bitterness that is never overwhelming. The fleur de sel is the finishing stroke — never omit it.
+  </div>
+</div>
+
+<!-- DRINK 25: AFFOGATO -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 25 &mdash; GF</div>
+      <div class="drink-title">Affogato</div>
+      <div class="drink-subtitle">Double espresso &mdash; vanilla bean ice cream &mdash; optional Frangelico</div>
+    </div>
+    <div class="drink-cost">$8.00 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients per serve:</strong> Double espresso 60 ml (freshly pulled), vanilla bean ice cream 2 scoops (80 g), optional Frangelico liqueur 15 ml (hazelnut), one house shortbread biscuit alongside.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Chill a small ceramic or glass cup in the freezer 5 minutes. Scoop two balls of very cold, firm vanilla bean ice cream into the cup. Pull a fresh double espresso. Present the espresso in a small separate vessel at the table. The guest pours the hot espresso over the cold ice cream — the theatre is the service. Add Frangelico before or after espresso if requested.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> The affogato (Italian: "drowned") is the simplest dessert drink, and perfectly illustrates how great ingredients require no elaboration. The ice cream must be a proper vanilla bean gelato or ice cream — not soft-serve. The espresso must be pulled correctly: 25–28 seconds, 9 bar, 93°C. At the patisserie, we serve this with a Canelé or Madeleine as a petit four pairing. The temperature contrast — scalding coffee against frozen cream — is the entire experience.
+  </div>
+</div>
+
+<!-- DRINK 26: AUSTRALIAN BUSH TEA -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 26 &mdash; VG &middot; GF &middot; NF &middot; DF</div>
+      <div class="drink-title">Australian Bush Tea</div>
+      <div class="drink-subtitle">Lemon myrtle &mdash; wattleseed chai &mdash; wildflower honey</div>
+    </div>
+    <div class="drink-cost">$6.00 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients per serve:</strong> Dried lemon myrtle leaves 3 g, roasted wattleseed 2 g, cinnamon stick ¼, ginger slices 3, black peppercorns 3, star anise ¼, hot water 300 ml (92°C), wildflower honey 10 g.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Combine lemon myrtle, wattleseed, and spices in a pre-warmed teapot or infuser. Pour 92°C water over; steep 4–5 minutes. Strain into a pre-warmed teacup. Serve with a small ceramic dish of wildflower honey for the guest to sweeten to taste. A thin slice of dried lemon on the saucer as garnish.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> Lemon myrtle (Backhousia citriodora) is a native Australian plant with a citral concentration higher than lemon itself — the aroma is intensely, almost impossibly lemony, with a clean freshness. Wattleseed carries hazelnut, chocolate, and coffee notes when roasted. Together they create a chai that is distinctly, beautifully Australian — appropriate for the afternoon tea or as a palate cleanser between sweet courses. It is a quiet act of pride to offer this.
+  </div>
+</div>
+
+<!-- DRINK 27: STRAWBERRY ROSE ICED TEA -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 27 &mdash; VG &middot; GF &middot; NF</div>
+      <div class="drink-title">Strawberry Rose Iced Tea</div>
+      <div class="drink-subtitle">House-made infusion &mdash; cold-brewed &mdash; floral &amp; fruity</div>
+    </div>
+    <div class="drink-cost">$6.50 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients (makes 1 litre):</strong> Fresh strawberries 300 g (hulled, halved), dried rose petals (food-grade) 5 g, jasmine green tea (loose-leaf) 8 g, cold filtered water 1 litre, caster sugar 80 g, rose water 5 ml, lemon juice 20 ml.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Cold-brew: combine strawberries, rose petals, tea, and cold water in a jug. Cover and refrigerate 8–12 hours (or overnight). Strain through a fine-mesh sieve; press gently to extract liquid (do not force or tea will become bitter). Add sugar; stir until dissolved. Add rose water and lemon juice. Bottle; refrigerate. Per serve: pour 200 ml over a glass of ice; garnish with a fresh strawberry and a dried rose petal.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> Cold-brewing extracts flavour more gently than hot infusion — the result is a clean, rounded tea with no bitterness and a vivid fruit-floral profile. This drink was developed as an alternative to alcohol for guests who prefer non-alcoholic options during the afternoon tea service. The cold-brewed method extends shelf life to 5 days under refrigeration. Always label clearly with date of production. The strawberry and rose combination echoes the Strawberry Watermelon Cake — it creates a coherent flavour narrative across the menu.
+  </div>
+</div>
+
+<!-- DRINK 28: CHAMPAGNE + PATISSERIE PAIRING -->
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-title-block">
+      <div class="drink-number">No. 28 &mdash; GF &middot; NF</div>
+      <div class="drink-title">Champagne &amp; Patisserie Pairing</div>
+      <div class="drink-subtitle">100ml Blanc de Blancs &mdash; paired with two house petit fours</div>
+    </div>
+    <div class="drink-cost">$22.00 AUD</div>
+  </div>
+  <div class="drink-body">
+    <strong>Ingredients per serve:</strong> Champagne Blanc de Blancs (100% Chardonnay, NV) 100 ml, two selected house petit fours (rotated seasonally — recommend: Canelé Bordelais + Lemon Shortbread, or Passionfruit Jelly + Financier), small menu card describing the pairing rationale.
+  </div>
+  <div class="drink-method">
+    <strong>Method:</strong> Chill Champagne to 8°C. Pour into a pre-chilled tulip flute (not a coupe — the tulip retains bubbles and directs the aroma). Select two petit fours that complement the Champagne's minerality and citrus notes. Present on a small slate alongside the flute with a brief written note on the pairing — guests appreciate the education. The pairing should be ordered in advance to allow proper chilling.
+  </div>
+  <div class="drink-note">
+    <strong>Chef Note:</strong> Blanc de Blancs Champagne — made exclusively from Chardonnay — is the most patisserie-friendly of all sparkling wines. Its high acidity, fine persistent bubbles, and flavours of green apple, brioche, and lemon cream cleanse the palate between bites of rich pastry. The Canelé pairing is particularly successful: the rum and vanilla custard interior of the canelé mirrors the yeasty brioche notes of the Champagne in a way that is greater than either alone. This pairing elevates the patisserie experience from a café visit into something genuinely memorable.
+  </div>
+</div>
+
+</div><!-- end drinks-grid -->
+
+<!-- ===== FOOTER ===== -->
+<div class="guide-footer">
+  <div class="footer-logo">KitchenFounder · Restaurant Guides</div>
+  <p class="footer-text">
+    This guide was authored by Chef Isabelle Moreau — classically trained in Paris under a two-Michelin-star chef, now operating one of Sydney's most admired artisan patisseries. All recipes reflect professional kitchen quantities and technique. Ingredient weights are in grams; all oven temperatures assume a fan-forced oven unless stated otherwise. Allergen codes: <strong>GF</strong> = Gluten Free | <strong>VG</strong> = Vegan | <strong>NF</strong> = Nut Free | <strong>DF</strong> = Dairy Free. Food costs are approximate AUD per serve at 2026 wholesale pricing and will vary with season and supplier.
+  </p>
+  <div class="footer-edition">KitchenFounder Guide No. 41 &nbsp;&middot;&nbsp; v7 &middot; 2026 Edition &nbsp;&middot;&nbsp; Australian Artisan Patisserie</div>
+</div>
+
+</body>
+</html>

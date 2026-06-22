@@ -1,0 +1,2490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #42 — Thai Dessert Bar · v7 · 2026 Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --gold: #C8922A;
+    --gold-light: #F0D99A;
+    --gold-pale: #FDF6E3;
+    --muted: #6B6B6B;
+    --border: #E2D9C8;
+    --card-bg: #FFFFFF;
+    --section-bg: #F5F0E8;
+    --danger: #8B2020;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: var(--bg); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .no-print { display: none; }
+    .recipe-card { page-break-inside: avoid; }
+    .section-header { page-break-inside: avoid; }
+    .cover { page-break-after: always; }
+    .toc-page { page-break-after: always; }
+    .intro-page { page-break-after: always; }
+  }
+  .cover {
+    width: 210mm;
+    min-height: 297mm;
+    background: linear-gradient(160deg, #1A0A1A 0%, #2B0D3A 40%, #1C1C1C 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(200,146,42,0.18) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 6px 18px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .cover-guide-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: rgba(200,146,42,0.7);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #FAFAF8;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .cover-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .cover-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(250,250,248,0.65);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .cover-stat { text-align: center; }
+  .cover-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+  }
+  .cover-stat-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.5);
+    margin-top: 4px;
+  }
+  .cover-edition {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.4);
+    position: absolute;
+    bottom: 36px;
+  }
+  .cover-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    position: relative;
+    opacity: 0.9;
+  }
+  .page {
+    width: 210mm;
+    padding: 18mm 18mm 16mm;
+    background: var(--bg);
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+  }
+  .page-header-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .page-header-info {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .toc-page { background: var(--section-bg); }
+  .toc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .toc-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+  }
+  .toc-section { margin-bottom: 20px; }
+  .toc-section-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+  .toc-item-name { font-size: 12px; color: var(--text); }
+  .toc-item-num { font-size: 10px; color: var(--gold); font-weight: 600; }
+  .chef-letter {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    padding: 28px 32px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .chef-letter-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .chef-letter p {
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: #3A3A3A;
+    margin-bottom: 12px;
+  }
+  .chef-letter-sig {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--gold);
+    margin-top: 16px;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .info-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    border-radius: 3px;
+  }
+  .info-box-title {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .info-box p { font-size: 11.5px; line-height: 1.7; color: var(--text); }
+  .section-header {
+    background: linear-gradient(135deg, #1A0A1A 0%, #2B0D3A 100%);
+    padding: 28px 30px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+  }
+  .section-header-num {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .section-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #FAFAF8;
+    margin-bottom: 6px;
+  }
+  .section-header-desc {
+    font-size: 12px;
+    color: rgba(250,250,248,0.6);
+    font-style: italic;
+  }
+  .recipe-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+  .recipe-card-header {
+    background: linear-gradient(135deg, var(--gold-pale) 0%, #FFF9EE 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 16px 20px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .recipe-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+  .recipe-title-block { flex: 1; }
+  .recipe-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .recipe-subtitle {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .recipe-meta-right {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+  .recipe-cost {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .recipe-cost-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .allergen-tags {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .tag {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+  }
+  .tag.gf { border-color: #4A7C59; color: #4A7C59; }
+  .tag.vg { border-color: #2E6B4F; color: #2E6B4F; }
+  .tag.nf { border-color: #8B6914; color: #8B6914; }
+  .tag.df { border-color: #2C5F8A; color: #2C5F8A; }
+  .recipe-body { padding: 16px 20px; }
+  .recipe-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 20px;
+    margin-bottom: 14px;
+  }
+  .ingredients-block h4,
+  .method-block h4 {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .ingredients-list { list-style: none; }
+  .ingredients-list li {
+    font-size: 11.5px;
+    padding: 3px 0;
+    border-bottom: 1px solid #F0ECE4;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .ingredient-name { color: var(--text); }
+  .ingredient-qty { color: var(--muted); font-weight: 500; white-space: nowrap; font-size: 11px; }
+  .method-list { list-style: none; counter-reset: method-steps; }
+  .method-list li {
+    counter-increment: method-steps;
+    font-size: 11.5px;
+    padding: 4px 0 4px 22px;
+    border-bottom: 1px solid #F0ECE4;
+    position: relative;
+    line-height: 1.6;
+  }
+  .method-list li::before {
+    content: counter(method-steps);
+    position: absolute;
+    left: 0;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--gold-pale);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+  }
+  .recipe-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .note-box {
+    background: var(--section-bg);
+    border-left: 3px solid var(--gold);
+    padding: 10px 12px;
+    border-radius: 0 2px 2px 0;
+  }
+  .note-box.tip { border-left-color: #4A7C59; }
+  .note-box.plating { border-left-color: #8B6914; }
+  .note-box-title {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+  .note-box.tip .note-box-title { color: #4A7C59; }
+  .note-box.plating .note-box-title { color: #8B6914; }
+  .note-box p { font-size: 10.5px; line-height: 1.6; color: #3A3A3A; }
+  .sourcing-bar {
+    background: linear-gradient(90deg, #1A0A1A, #2B0D3A);
+    padding: 8px 14px;
+    margin-top: 12px;
+    border-radius: 2px;
+    font-size: 10.5px;
+    color: rgba(250,250,248,0.8);
+  }
+  .sourcing-bar strong {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-right: 6px;
+  }
+  .drink-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+  .drink-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .drink-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .drink-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .drink-subtitle { font-size: 10.5px; color: var(--muted); font-style: italic; }
+  .drink-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .sharing-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+  .sharing-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .sharing-card-sub { font-size: 10.5px; color: var(--muted); font-style: italic; margin-bottom: 14px; }
+  .footer-bar {
+    background: #1A0A1A;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--gold);
+  }
+  .footer-info { font-size: 10px; color: rgba(250,250,248,0.4); text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     COVER PAGE
+═══════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">KitchenFounder Restaurant Guides</div>
+  <div class="cover-icon">🌺</div>
+  <div class="cover-guide-num">Guide No. 42</div>
+  <div class="cover-title">Thai<br>Dessert Bar</div>
+  <div class="cover-subtitle">Sweet Traditions of the Kingdom</div>
+  <div class="cover-divider"></div>
+  <p class="cover-desc">
+    28 authentic Thai dessert recipes — from street-style khanom through to refined plated sweets.
+    Inspired by the beloved Thai dessert bars that have captured Sydney's heart.
+    Pandan, coconut, mango, and the soul of Thai pastry tradition.
+  </p>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="cover-stat-num">28</div>
+      <div class="cover-stat-label">Recipes</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">6</div>
+      <div class="cover-stat-label">Starters</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">10</div>
+      <div class="cover-stat-label">Dessert Plates</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">8</div>
+      <div class="cover-stat-label">Drinks</div>
+    </div>
+  </div>
+  <div class="cover-edition">v7 · 2026 Edition</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TABLE OF CONTENTS
+═══════════════════════════════════════════════════════════════ -->
+<div class="page toc-page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+  <div class="toc-title">Contents</div>
+  <div class="toc-subtitle">28 recipes · 4 categories · full technique notes &amp; sourcing</div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Section 1 — Signature Starters (6 items)</div>
+    <div class="toc-item"><span class="toc-item-name">01. Mango Sticky Rice</span><span class="toc-item-num">#01</span></div>
+    <div class="toc-item"><span class="toc-item-name">02. Tub Tim Grob</span><span class="toc-item-num">#02</span></div>
+    <div class="toc-item"><span class="toc-item-name">03. Bua Loy</span><span class="toc-item-num">#03</span></div>
+    <div class="toc-item"><span class="toc-item-name">04. Khanom Krok</span><span class="toc-item-num">#04</span></div>
+    <div class="toc-item"><span class="toc-item-name">05. Lod Chong</span><span class="toc-item-num">#05</span></div>
+    <div class="toc-item"><span class="toc-item-name">06. Sangkaya Fak Thong</span><span class="toc-item-num">#06</span></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Section 2 — Main Dessert Plates (10 items)</div>
+    <div class="toc-item"><span class="toc-item-name">07. Mango Coconut Parfait</span><span class="toc-item-num">#07</span></div>
+    <div class="toc-item"><span class="toc-item-name">08. Pandan Crème Brûlée</span><span class="toc-item-num">#08</span></div>
+    <div class="toc-item"><span class="toc-item-name">09. Thai Milk Tea Cheesecake</span><span class="toc-item-num">#09</span></div>
+    <div class="toc-item"><span class="toc-item-name">10. Black Sesame Mochi Ice Cream</span><span class="toc-item-num">#10</span></div>
+    <div class="toc-item"><span class="toc-item-name">11. Durian Sticky Rice</span><span class="toc-item-num">#11</span></div>
+    <div class="toc-item"><span class="toc-item-name">12. Butterfly Pea Flower Panna Cotta</span><span class="toc-item-num">#12</span></div>
+    <div class="toc-item"><span class="toc-item-name">13. Coconut Ice Cream in Young Coconut</span><span class="toc-item-num">#13</span></div>
+    <div class="toc-item"><span class="toc-item-name">14. Roti Mataba Sweet</span><span class="toc-item-num">#14</span></div>
+    <div class="toc-item"><span class="toc-item-name">15. Thai Basil Lychee Sorbet</span><span class="toc-item-num">#15</span></div>
+    <div class="toc-item"><span class="toc-item-name">16. Khanom Chan</span><span class="toc-item-num">#16</span></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Section 3 — Sharing Plates (4 items)</div>
+    <div class="toc-item"><span class="toc-item-name">17. Thai Dessert Platter</span><span class="toc-item-num">#17</span></div>
+    <div class="toc-item"><span class="toc-item-name">18. Mango Feast</span><span class="toc-item-num">#18</span></div>
+    <div class="toc-item"><span class="toc-item-name">19. Coconut Dessert Flight</span><span class="toc-item-num">#19</span></div>
+    <div class="toc-item"><span class="toc-item-name">20. Thai Petit Fours</span><span class="toc-item-num">#20</span></div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Section 4 — Drinks (8 items)</div>
+    <div class="toc-item"><span class="toc-item-name">21. Thai Milk Tea</span><span class="toc-item-num">#21</span></div>
+    <div class="toc-item"><span class="toc-item-name">22. Pandan Coconut Latte</span><span class="toc-item-num">#22</span></div>
+    <div class="toc-item"><span class="toc-item-name">23. Fresh Young Coconut Water</span><span class="toc-item-num">#23</span></div>
+    <div class="toc-item"><span class="toc-item-name">24. Butterfly Pea Flower Lemonade</span><span class="toc-item-num">#24</span></div>
+    <div class="toc-item"><span class="toc-item-name">25. Mango Lassi Thai Style</span><span class="toc-item-num">#25</span></div>
+    <div class="toc-item"><span class="toc-item-name">26. Lychee Rose Sparkling</span><span class="toc-item-num">#26</span></div>
+    <div class="toc-item"><span class="toc-item-name">27. Taro Milk Tea</span><span class="toc-item-num">#27</span></div>
+    <div class="toc-item"><span class="toc-item-name">28. Thai Herbal Drink</span><span class="toc-item-num">#28</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     INTRO / CHEF LETTER
+═══════════════════════════════════════════════════════════════ -->
+<div class="page intro-page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <div class="chef-letter">
+    <div class="chef-letter-heading">A Letter from the Kitchen</div>
+    <p>
+      I grew up with the smell of pandan leaves simmering in coconut milk. My grandmother in Chiang Mai
+      would press fresh coconut cream through muslin cloth every morning — not because she had to, but
+      because she knew the difference it made. That memory lives in every dessert we create here.
+    </p>
+    <p>
+      When I came to Sydney as a pastry apprentice, I carried those flavours with me. Training under
+      French-trained chefs sharpened my technique, but it was always the Thai soul — the balance of
+      sweet, creamy, and fragrant — that guided my instincts. Over years working in both Bangkok patisseries
+      and Sydney's dessert scene, I developed the conviction that Thai sweets deserve the same reverence
+      as any great European pastry tradition.
+    </p>
+    <p>
+      A celebrated Sydney Thai dessert bar proved that conviction right. The queues stretched around the block
+      on opening night. Sydneysiders fell in love with Mango Sticky Rice done properly — premium Nam Dok Mai
+      mangoes, coconut cream that's never from a tin, sticky rice soaked overnight. The simplicity of
+      authentic Thai dessert is also its sophistication.
+    </p>
+    <p>
+      This guide holds 28 recipes: from beloved street khanom to refined plated desserts. Every recipe
+      carries the technique rationale, the fail-proof tip, and the plating direction that elevates a good
+      dish into a memorable experience. Metric weights throughout. No shortcuts on quality.
+    </p>
+    <p>
+      Thai desserts are an act of love. They take time, attention, and respect for tradition.
+      I hope these recipes become yours to treasure.
+    </p>
+    <div class="chef-letter-sig">— Nattaya Srisomwong, Thai-Australian Pastry Chef</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <div class="info-box-title">Concept</div>
+      <p>A Thai dessert bar celebrating authentic khanom tradition alongside contemporary plated desserts.
+      Premium ingredients, classical technique, Sydney hospitality. Every dish rooted in real Thai
+      pastry culture.</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Signature Ingredients</div>
+      <p>Nam Dok Mai mango · Pandan leaf · Coconut cream (fresh-pressed) · Palm sugar · Glutinous rice ·
+      Butterfly pea flower · Monthong durian · Taro · Black sesame</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Dietary Philosophy</div>
+      <p>Most recipes are naturally gluten-free and vegan. All allergens clearly tagged.
+      GF = Gluten Free · VG = Vegan · NF = Nut Free · DF = Dairy Free.
+      Coconut is classified as a tree nut in some regions — always declare.</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">How to Use This Guide</div>
+      <p>Each recipe is a full production spec: ingredients in grams, numbered method, chef technique note
+      explaining the "why", fail-proof tip, AUD food cost estimate, and plating direction.
+      Scale yields as needed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 1 — SIGNATURE STARTERS
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-header-num">Section 1 of 4</div>
+    <div class="section-header-title">Signature Starters</div>
+    <div class="section-header-desc">Classic Thai khanom — the desserts that define the tradition. Items #01–06</div>
+  </div>
+
+  <!-- ── RECIPE 01: Mango Sticky Rice ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">01</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Mango Sticky Rice</div>
+        <div class="recipe-subtitle">Khao Niao Mamuang — premium Nam Dok Mai mango, jasmine-scented sticky rice, salted coconut cream, toasted sesame · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$4.80</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Glutinous rice</span><span class="ingredient-qty">200g</span></li>
+            <li><span class="ingredient-name">Water (soaking)</span><span class="ingredient-qty">sufficient</span></li>
+            <li><span class="ingredient-name">Coconut cream (full-fat)</span><span class="ingredient-qty">200ml</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">50g</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">4g</span></li>
+            <li><span class="ingredient-name">Pandan leaf (tied in knot)</span><span class="ingredient-qty">2 leaves</span></li>
+            <li><span class="ingredient-name">Nam Dok Mai mango, ripe</span><span class="ingredient-qty">2 whole</span></li>
+            <li><span class="ingredient-name">Coconut cream (sauce)</span><span class="ingredient-qty">80ml</span></li>
+            <li><span class="ingredient-name">Palm sugar, shaved</span><span class="ingredient-qty">15g</span></li>
+            <li><span class="ingredient-name">Fine salt (sauce)</span><span class="ingredient-qty">2g</span></li>
+            <li><span class="ingredient-name">Rice flour (thickener)</span><span class="ingredient-qty">5g</span></li>
+            <li><span class="ingredient-name">Toasted white sesame seeds</span><span class="ingredient-qty">8g</span></li>
+            <li><span class="ingredient-name">Fresh pandan leaf (garnish)</span><span class="ingredient-qty">1 strip</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Soak glutinous rice in cold water for minimum 4 hours, preferably overnight. Drain and rinse thoroughly until water runs clear.</li>
+            <li>Line a bamboo steamer with muslin cloth or banana leaf. Spread rice evenly, 3–4cm thick. Steam over rapidly boiling water for 20–25 minutes until grains are tender and translucent, turning once at 12 minutes.</li>
+            <li>While rice steams, warm 200ml coconut cream with sugar, salt, and knotted pandan leaves over low heat. Stir until sugar dissolves — do not boil. Remove pandan.</li>
+            <li>Transfer hot rice to a bowl. Pour warm coconut cream mixture over rice, fold gently with a spatula. Cover with cling film and rest 15 minutes for absorption.</li>
+            <li>Prepare sauce: heat 80ml coconut cream with palm sugar and salt until dissolved. Whisk rice flour with 10ml cold water, add to sauce, stir over low heat 2 minutes until lightly thickened. Cool to room temperature.</li>
+            <li>Peel mangoes and slice cheeks cleanly, then slice each cheek into fan of 5–6 pieces, keeping base intact.</li>
+            <li>To plate: mould sticky rice into a neat oval using a rice mould or wet hands. Place beside fanned mango. Spoon coconut sauce over rice. Scatter sesame seeds. Garnish with pandan strip.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The overnight soak is non-negotiable — it hydrates the starch so the rice steams evenly without gummy cores. The coconut cream absorption must happen while rice is hot; the starch gelatinises and locks the cream in, creating that characteristic sticky-yet-individual grain texture.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Always salt your coconut cream — Thai desserts rely on the sweet-salty balance, and undersalted cream tastes flat. The sauce should taste almost too salty alone; paired with sweet mango and rice, it becomes perfect. Test with a pinch more salt if in doubt.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Use a fan of 5 mango slices at 45° to the rice mould. Drizzle sauce in a controlled arc over rice only — never flood the plate. Scatter sesame seeds last for contrast. A twisted pandan strip adds height and signals the fragrance within.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Nam Dok Mai mangoes from Thai grocers (Haymarket, Cabramatta) when in season Oct–Jan. Off-season substitute R2E2 mango — inferior flavour but workable. Palm sugar from Thai or Indonesian grocery stores; avoid refined substitutes.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 02: Tub Tim Grob ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">02</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Tub Tim Grob</div>
+        <div class="recipe-subtitle">Red Ruby — water chestnut rubies in tapioca coat, jasmine-scented coconut milk, crushed ice · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$2.90</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Water chestnuts (canned), drained</span><span class="ingredient-qty">200g</span></li>
+            <li><span class="ingredient-name">Red food colouring (natural)</span><span class="ingredient-qty">3ml</span></li>
+            <li><span class="ingredient-name">Tapioca flour</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Coconut milk (full-fat)</span><span class="ingredient-qty">400ml</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">60g</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">3g</span></li>
+            <li><span class="ingredient-name">Jasmine flowers or extract</span><span class="ingredient-qty">4 flowers or 2ml</span></li>
+            <li><span class="ingredient-name">Crushed ice</span><span class="ingredient-qty">200g</span></li>
+            <li><span class="ingredient-name">Pandan leaf</span><span class="ingredient-qty">2 leaves</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Dice water chestnuts into rough 1cm cubes. Toss with red food colouring, coating evenly. Rest 5 minutes.</li>
+            <li>Coat coloured chestnuts thoroughly in tapioca flour, pressing flour into crevices. Shake off excess — you want a full, even coat.</li>
+            <li>Bring a large pot of water to a rolling boil. Drop in coated chestnuts in batches. Cook 3–4 minutes until tapioca coat turns translucent and floats. Remove with slotted spoon directly into cold water. Drain.</li>
+            <li>Prepare coconut milk syrup: combine coconut milk, sugar, salt, and pandan leaves in saucepan. Heat gently until sugar dissolves, infuse with jasmine flowers off heat for 10 minutes. Strain and chill completely.</li>
+            <li>To serve: place generous scoop of crushed ice in a chilled bowl. Pile ruby chestnuts on top. Pour cold coconut syrup around and over ice. Garnish with a jasmine flower or pandan strip.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The double-texture is the dish's magic: the crisp water chestnut inside the yielding tapioca shell. This requires the chestnuts be fully dry before coating — any moisture prevents tapioca adhesion. Coat generously; thin coating tears during cooking and loses the jewel effect.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Cook chestnuts in small batches — crowding drops water temperature, causing uneven cooking and tapioca clumping. Transfer directly from boiling water to cold water bath; this sets the tapioca coat and stops cooking. Chestnuts can be prepared 4 hours ahead and kept refrigerated.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Serve in a clear glass bowl or deep dish so the red rubies glowing through white coconut milk is fully visible. Crushed ice should peek through the chestnuts. The coconut milk should be well-chilled and poured tableside for drama — a small jug on the side elevates the presentation.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Fresh water chestnuts give superior crunch but require peeling. Canned are reliable year-round. Natural red food colouring from beetroot powder at 15g per 100ml water gives a deep crimson without artificial dyes.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 03: Bua Loy ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">03</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Bua Loy</div>
+        <div class="recipe-subtitle">Floating Lotus — pandan and taro-filled glutinous rice balls in warm coconut soup · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$3.20</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Glutinous rice flour</span><span class="ingredient-qty">150g</span></li>
+            <li><span class="ingredient-name">Pandan juice (fresh-pressed)</span><span class="ingredient-qty">60ml</span></li>
+            <li><span class="ingredient-name">Warm water</span><span class="ingredient-qty">30ml</span></li>
+            <li><span class="ingredient-name">Taro, steamed and mashed</span><span class="ingredient-qty">100g</span></li>
+            <li><span class="ingredient-name">Palm sugar, shaved</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Coconut cream (for filling)</span><span class="ingredient-qty">30ml</span></li>
+            <li><span class="ingredient-name">Coconut milk (soup base)</span><span class="ingredient-qty">500ml</span></li>
+            <li><span class="ingredient-name">Pandan leaves (soup)</span><span class="ingredient-qty">4 leaves</span></li>
+            <li><span class="ingredient-name">Palm sugar (soup)</span><span class="ingredient-qty">50g</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">4g</span></li>
+            <li><span class="ingredient-name">Sesame seeds, toasted</span><span class="ingredient-qty">6g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Make pandan juice: blend 8 fresh pandan leaves with 80ml water, strain through fine sieve. Use 60ml for dough.</li>
+            <li>Mix glutinous rice flour with pandan juice and warm water until a smooth, pliable dough forms. It should not crack when rolled. Cover and rest 10 minutes.</li>
+            <li>Prepare taro filling: combine mashed taro with palm sugar and coconut cream in saucepan, stir over low heat until thick and pulls from sides. Cool completely, divide into 16 equal balls (approx 8g each).</li>
+            <li>Divide rice dough into 16 portions. Flatten each, place taro ball in centre, seal and roll smooth. Set aside on lightly oiled tray.</li>
+            <li>Prepare coconut soup: combine coconut milk, knotted pandan leaves, palm sugar, and salt. Heat gently until sugar dissolves. Taste — it should be lightly sweet and fragrant. Keep warm.</li>
+            <li>Bring separate pot of water to boil. Cook rice balls in batches 4–5 minutes until they float and have puffed slightly. Remove with slotted spoon.</li>
+            <li>To serve: ladle warm coconut soup into bowl. Add 8 rice balls per serve. Garnish with toasted sesame seeds and a pandan leaf strip.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Fresh pandan juice rather than extract gives a truer green and a grassier, more complex fragrance. The rice ball dough must be pliable but not sticky — if cracking, add water teaspoon by teaspoon. Taro filling must be completely cooled before filling or it softens the dough during rolling.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Float is your doneness signal — undercooked balls sink, properly cooked ones float cleanly. Give them 30 seconds more after first float. The soup should be warm, not boiling, when serving — boiling coconut milk splits and loses its silk. Keep at a gentle simmer.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Use a shallow, wide bowl to show the balls floating in white coconut soup. Alternate plain white balls with the taro-filled ones for visual variety. A diagonal pandan leaf across the rim and a scattering of sesame seeds adds elegance without clutter.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Fresh pandan leaves from Asian supermarkets (Woolworths in Cabramatta, Harris Farm, Thai grocers). Thai taro has a natural purple hue when steamed — significantly more flavourful than regular taro. Source from Cabramatta or Thai suppliers.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RECIPE 04-06 continued ── -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <!-- ── RECIPE 04: Khanom Krok ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">04</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Khanom Krok</div>
+        <div class="recipe-subtitle">Coconut Rice Pancakes — crispy-bottomed, custard-topped, spring onion and sweet corn filling · Serves 2 (12 pieces)</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$2.40</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Rice flour</span><span class="ingredient-qty">120g</span></li>
+            <li><span class="ingredient-name">Glutinous rice flour</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Coconut milk (base batter)</span><span class="ingredient-qty">200ml</span></li>
+            <li><span class="ingredient-name">Water</span><span class="ingredient-qty">100ml</span></li>
+            <li><span class="ingredient-name">Caster sugar (base)</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Fine salt (base)</span><span class="ingredient-qty">3g</span></li>
+            <li><span class="ingredient-name">Coconut cream (topping batter)</span><span class="ingredient-qty">150ml</span></li>
+            <li><span class="ingredient-name">Rice flour (topping)</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Caster sugar (topping)</span><span class="ingredient-qty">25g</span></li>
+            <li><span class="ingredient-name">Fine salt (topping)</span><span class="ingredient-qty">4g</span></li>
+            <li><span class="ingredient-name">Spring onion, finely sliced</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Sweet corn kernels</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Coconut oil (for pan)</span><span class="ingredient-qty">20ml</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Whisk together base batter: rice flour, glutinous rice flour, coconut milk, water, sugar, and salt until smooth. Rest 30 minutes to hydrate flour.</li>
+            <li>Mix topping batter: coconut cream, rice flour, sugar, and salt. Whisk until lump-free. This should be slightly thicker than the base batter.</li>
+            <li>Heat khanom krok pan (or æbleskiver pan) over medium heat. Brush each cavity well with coconut oil — it should sizzle on contact.</li>
+            <li>Fill each cavity two-thirds with base batter. Cover with lid and cook 2 minutes until edges set and base is slightly golden.</li>
+            <li>Drop 3–4 kernels of sweet corn and pinch of spring onion into each pancake.</li>
+            <li>Spoon 1 tablespoon topping batter over each to fill cavity. Replace lid, cook 2–3 minutes more until topping is just set — it should remain slightly wobbly in the centre.</li>
+            <li>Remove with a thin offset spatula or chopstick, joining two halves together. Serve immediately — they become chewy as they cool.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The two-batter system creates the textural contrast: crispy rice base from the high-heat direct contact, and a soft, barely-set coconut custard top. The salty-sweet topping against the neutral base is quintessentially Thai — salted coconut cream is a flavour principle across all khanom.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Pan temperature is everything. Too cool and the base spreads before setting — you'll get flat pancakes. Too hot and the base burns before the top sets. Test with a drop of batter: it should sizzle gently and form a disc within 5 seconds. Adjust heat between batches as the pan stabilises.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Serve six pairs on a banana leaf-lined plate or wooden board. The golden-and-white contrasting halves should face upward. A scattered pinch of fresh spring onion and a tiny fresh chilli for colour (without heat) finishes the display. Eat immediately — these do not hold.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> A traditional khanom krok pan is essential — the curved cavities create the domed shape. Available from Asian cookware suppliers online (approx $25 AUD). No adequate substitute exists; an æbleskiver pan is the closest Western equivalent.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 05: Lod Chong ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">05</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Lod Chong</div>
+        <div class="recipe-subtitle">Pandan Jelly Noodles — pandan-green rice noodles, cold coconut milk, palm sugar syrup, crushed ice · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$2.60</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Rice flour</span><span class="ingredient-qty">100g</span></li>
+            <li><span class="ingredient-name">Tapioca flour</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Pandan juice (fresh)</span><span class="ingredient-qty">250ml</span></li>
+            <li><span class="ingredient-name">Salt</span><span class="ingredient-qty">2g</span></li>
+            <li><span class="ingredient-name">Palm sugar</span><span class="ingredient-qty">120g</span></li>
+            <li><span class="ingredient-name">Water (for syrup)</span><span class="ingredient-qty">100ml</span></li>
+            <li><span class="ingredient-name">Pandan leaf (for syrup)</span><span class="ingredient-qty">2 leaves</span></li>
+            <li><span class="ingredient-name">Coconut milk</span><span class="ingredient-qty">400ml</span></li>
+            <li><span class="ingredient-name">Fine salt (coconut milk)</span><span class="ingredient-qty">3g</span></li>
+            <li><span class="ingredient-name">Crushed ice</span><span class="ingredient-qty">200g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Blend 12 pandan leaves with 300ml water, strain through fine sieve to yield 250ml deep green pandan juice.</li>
+            <li>Whisk rice flour, tapioca flour, and salt with pandan juice until smooth. Pour into saucepan and stir constantly over medium heat until batter thickens into a smooth, pulling dough, approximately 8–10 minutes.</li>
+            <li>While dough is hot, press immediately through a lod chong mould (colander with large holes, or piping bag fitted with 5mm round tip) held over a bowl of cold water. The noodles will set immediately on contact with cold water.</li>
+            <li>Rinse noodles gently in cold water, drain, and refrigerate until needed.</li>
+            <li>Make palm sugar syrup: combine palm sugar, water, and pandan leaves in saucepan. Stir over medium heat until sugar dissolves. Simmer 3 minutes until syrup coats the back of a spoon. Strain and cool.</li>
+            <li>Season coconut milk with salt, chill completely.</li>
+            <li>To serve: fill deep bowl with crushed ice. Pile generous nest of pandan noodles on top. Pour cold coconut milk around. Drizzle palm sugar syrup generously over noodles. Serve immediately.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The dough must be extruded while still hot — as it cools it becomes too stiff to press. Work quickly with confidence. The combination of rice flour (structure) and tapioca flour (elasticity) gives the noodle its characteristic bounce and translucency. All rice flour produces a brittle noodle; tapioca alone, too gummy.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Keep a second person ready to catch the noodles in cold water while you extrude. The window between workable and too stiff is only 2–3 minutes. If dough stiffens, return to heat briefly with a tablespoon of water. Pre-measure all components before cooking the dough.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Green noodles against white coconut milk on crushed ice is a visual centrepiece. Use a deep glass bowl for full visibility. Drizzle dark palm sugar syrup last in a figure-eight motion. The contrast of three layers — ice, noodles, coconut — should be unmistakeable from above.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Fresh pandan leaves are essential — extract gives a murky colour and chemical flavour. The dough can be made up to 8 hours ahead and stored in cold water in the fridge. Palm sugar from Thai grocers gives a distinct caramel-treacle flavour unavailable from regular brown sugar.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 06: Sangkaya Fak Thong ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">06</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Sangkaya Fak Thong</div>
+        <div class="recipe-subtitle">Thai Pumpkin Custard — steamed pandan coconut custard inside a whole Japanese pumpkin, served sliced · Serves 4</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$3.80</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Japanese kabocha pumpkin (small)</span><span class="ingredient-qty">1 whole (~800g)</span></li>
+            <li><span class="ingredient-name">Coconut cream</span><span class="ingredient-qty">200ml</span></li>
+            <li><span class="ingredient-name">Eggs (whole)</span><span class="ingredient-qty">4 large (200g)</span></li>
+            <li><span class="ingredient-name">Palm sugar, shaved</span><span class="ingredient-qty">100g</span></li>
+            <li><span class="ingredient-name">Pandan leaf juice (fresh)</span><span class="ingredient-qty">30ml</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">3g</span></li>
+            <li><span class="ingredient-name">Coconut cream (sauce)</span><span class="ingredient-qty">80ml</span></li>
+            <li><span class="ingredient-name">Pandan leaf (sauce)</span><span class="ingredient-qty">2 leaves</span></li>
+            <li><span class="ingredient-name">Palm sugar (sauce)</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Salt (sauce)</span><span class="ingredient-qty">2g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Cut lid from top of pumpkin (approx 6cm diameter). Scoop out seeds and stringy membrane thoroughly, leaving clean cavity. Rinse and pat dry inside.</li>
+            <li>Gently melt palm sugar with coconut cream over low heat until fully dissolved. Do not boil. Cool to room temperature (warm custard scrambles eggs).</li>
+            <li>Whisk eggs gently — avoid creating foam. Strain through fine sieve. Whisk in cooled coconut-palm sugar mixture, pandan juice, and salt until uniform.</li>
+            <li>Pour custard mixture into pumpkin cavity, filling to within 1cm of the top. Replace lid.</li>
+            <li>Place pumpkin in bamboo steamer over rapidly boiling water. Steam on medium heat (not maximum) for 45–55 minutes until a skewer inserted in custard comes out clean and pumpkin flesh yields when pressed.</li>
+            <li>Cool completely at room temperature — minimum 1 hour — before refrigerating. Serve chilled or at room temperature.</li>
+            <li>To serve: cut into wedges, revealing the golden custard inside the green pumpkin. Drizzle with pandan coconut cream sauce alongside.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The pumpkin walls continue to cook and compress after steaming, firming the custard as it cools. This is why cooling completely before cutting is essential — slicing too early produces a runny custard that falls from the pumpkin. The pandan juice (not extract) gives the custard a subtle green tint and true fragrance.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>If your custard is grainy or watery, the coconut cream was too hot when eggs were added — next time, cool to below 40°C before combining. Steam at moderate heat: violent boiling creates steam pressure that puffs the custard, producing an uneven, holey texture. A slow, steady steam produces silk.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>A cross-section wedge is the reveal — the bright yellow custard against dark green kabocha skin is theatrical. Lay the wedge on its side at an angle on a dark plate. Pool the pandan coconut cream sauce beside it. Garnish with micro pandan leaf cuts or edible flower for colour contrast.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Japanese kabocha (Kent pumpkin) from Asian grocers or any major supermarket. Its dense, sweet flesh and dark green skin create the signature presentation. Regular pumpkin can substitute but lacks the dramatic colour contrast. Sangkaya can be steamed 2 days ahead; refrigerates beautifully.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 2 — MAIN DESSERT PLATES (7–11)
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-header-num">Section 2 of 4</div>
+    <div class="section-header-title">Main Dessert Plates</div>
+    <div class="section-header-desc">Refined plated Thai desserts — classic flavours, contemporary technique · Items #07–16</div>
+  </div>
+
+  <!-- ── RECIPE 07: Mango Coconut Parfait ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">07</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Mango Coconut Parfait</div>
+        <div class="recipe-subtitle">Layers of mango sorbet, whipped coconut cream, sticky rice crumble, fresh mango · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$5.60</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Fresh Nam Dok Mai mango puree</span><span class="ingredient-qty">300g</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">60g</span></li>
+            <li><span class="ingredient-name">Lime juice, fresh</span><span class="ingredient-qty">15ml</span></li>
+            <li><span class="ingredient-name">Coconut cream (full-fat, chilled)</span><span class="ingredient-qty">200ml</span></li>
+            <li><span class="ingredient-name">Icing sugar</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Vanilla extract</span><span class="ingredient-qty">2ml</span></li>
+            <li><span class="ingredient-name">Cooked sticky rice (cold)</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Coconut oil</span><span class="ingredient-qty">15ml</span></li>
+            <li><span class="ingredient-name">Caster sugar (crumble)</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Sesame seeds, toasted</span><span class="ingredient-qty">10g</span></li>
+            <li><span class="ingredient-name">Fresh mango, diced 1cm</span><span class="ingredient-qty">100g</span></li>
+            <li><span class="ingredient-name">Micro mint or Thai basil</span><span class="ingredient-qty">6 leaves</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Make sorbet: blend mango puree with caster sugar and lime juice until sugar dissolves. Churn in ice cream machine until smooth and frozen, or freeze flat in tray, breaking up every 30 minutes over 3 hours.</li>
+            <li>Make sticky rice crumble: spread cold cooked sticky rice on baking paper. Toss with coconut oil and sugar. Bake at 160°C for 25–30 minutes, stirring every 10 minutes, until golden and crisp. Toss with sesame seeds. Cool completely — it crisps further as it cools.</li>
+            <li>Whip chilled coconut cream with icing sugar and vanilla to soft peaks. Do not over-whip. Keep refrigerated until assembly.</li>
+            <li>To assemble: in a chilled 200ml glass, layer — sticky rice crumble, mango sorbet quenelle, whipped coconut cream, diced fresh mango.</li>
+            <li>Repeat layering once more. Top with final scoop of sorbet, a cloud of coconut cream, and micro herbs.</li>
+            <li>Scatter remaining crumble for texture contrast. Serve immediately.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The sticky rice crumble is the textural anchor — it provides the crunch that counterpoints the sorbet and cream. Baking rather than frying extracts moisture evenly and gives a more consistent crisp. The slight saltiness of coconut cream against sweet mango and sorbet creates the Thai flavour signature in a Western format.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Coconut cream whips best when the tin has been refrigerated overnight — the cream separates to the top and the watery liquid can be poured off. Only whip the solid cream. If it won't hold peaks, return to fridge for 20 minutes. Sorbet softens fast — assemble plates just before service.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Use tall, clear glasses to reveal all layers to the guest — the visual of green-white-gold stacked layers is as compelling as the taste. Keep layers distinct; avoid muddling. A quenelle of sorbet on top adds elegance. Serve on a small side plate with a long spoon.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Full-fat coconut cream in tins (Aroy-D or Chaokoh brand) reliably separates when chilled. Light coconut cream will not whip. Mango sorbet can be prepped 5 days ahead and kept frozen in a covered container.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 08: Pandan Crème Brûlée ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">08</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Pandan Crème Brûlée</div>
+        <div class="recipe-subtitle">Pandan-infused custard, caramelised palm sugar crust — a Thai riff on the French classic · Serves 4</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$3.40</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Full-fat cream (35% fat)</span><span class="ingredient-qty">400ml</span></li>
+            <li><span class="ingredient-name">Coconut cream</span><span class="ingredient-qty">100ml</span></li>
+            <li><span class="ingredient-name">Pandan leaves, fresh</span><span class="ingredient-qty">8 leaves</span></li>
+            <li><span class="ingredient-name">Egg yolks</span><span class="ingredient-qty">6 (120g)</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">2g</span></li>
+            <li><span class="ingredient-name">Palm sugar, finely grated</span><span class="ingredient-qty">60g</span></li>
+            <li><span class="ingredient-name">Caster sugar (for brûlée)</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Fresh mango, micro-diced</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Pandan leaf strips (garnish)</span><span class="ingredient-qty">4 strips</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Combine cream, coconut cream, and pandan leaves in saucepan. Heat to 75°C (just below simmer). Remove from heat, cover, and infuse 30 minutes. Strain through fine sieve, pressing leaves to extract all green fragrance.</li>
+            <li>Whisk egg yolks, caster sugar, and salt until pale and ribbon-stage. Do not create foam.</li>
+            <li>Slowly pour warm pandan cream into yolk mixture, whisking constantly. Strain through fine sieve again. Skim surface foam.</li>
+            <li>Divide custard between 4 brûlée ramekins (120ml each). Place in deep baking tray. Pour boiling water around ramekins to come halfway up sides.</li>
+            <li>Bake at 150°C for 28–32 minutes until set at edges but still has a slight wobble in the centre (like set jelly when nudged). Remove from water bath, cool to room temperature, refrigerate minimum 4 hours or overnight.</li>
+            <li>Before service: mix palm sugar with caster sugar 50/50. Sprinkle 2 teaspoons evenly over each custard. Blowtorch in circular motion until fully caramelised with amber patches. Return to fridge 2 minutes to reset custard before serving.</li>
+            <li>Garnish with micro-diced mango and pandan strip. Serve immediately after brûlée sets.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Pandan infusion in fat captures the aromatic compounds far more effectively than water infusion. The combination of cream and coconut cream gives a richer, more complex custard than either alone. Palm sugar brulee creates a more complex, slightly smoky caramel with deeper flavour than pure caster sugar — the treacly notes complement pandan perfectly.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>The wobble test: gently nudge the ramekin — the edge should be set and the centre should wobble as a whole mass, not ripple like liquid. If it ripples, return to oven 5 more minutes. Over-baked brûlée is grainy. Under-baked brûlée weeps. When in doubt, slightly under is better — it firms in the fridge.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>The brûlée is the presentation — serve in its ramekin on a small round plate lined with a folded napkin to stop sliding. The moment the guest taps through the cracking caramel is the payoff. Position the small dice of mango to one side of the crust, pandan strip diagonally across the top.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Fresh pandan leaves are critical for colour and flavour. Dried or powdered pandan gives inferior green and a coarser fragrance. Custard can be prepared and baked 3 days ahead. Do not brûlée until service.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 09: Thai Milk Tea Cheesecake ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">09</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Thai Milk Tea Cheesecake</div>
+        <div class="recipe-subtitle">Thai tea-infused cream cheese, condensed milk, buttery graham cracker base, tea jelly top · Serves 8 slices</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$3.90</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Graham crackers / digestives</span><span class="ingredient-qty">180g</span></li>
+            <li><span class="ingredient-name">Unsalted butter, melted</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Caster sugar (base)</span><span class="ingredient-qty">15g</span></li>
+            <li><span class="ingredient-name">Thai tea leaves (Cha Yen)</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Full cream milk</span><span class="ingredient-qty">200ml</span></li>
+            <li><span class="ingredient-name">Cream cheese, softened</span><span class="ingredient-qty">500g</span></li>
+            <li><span class="ingredient-name">Sweetened condensed milk</span><span class="ingredient-qty">150g</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">60g</span></li>
+            <li><span class="ingredient-name">Eggs (whole)</span><span class="ingredient-qty">3 (150g)</span></li>
+            <li><span class="ingredient-name">Sour cream</span><span class="ingredient-qty">100g</span></li>
+            <li><span class="ingredient-name">Vanilla extract</span><span class="ingredient-qty">5ml</span></li>
+            <li><span class="ingredient-name">Thai tea (for jelly)</span><span class="ingredient-qty">150ml (brewed strong)</span></li>
+            <li><span class="ingredient-name">Gelatine sheets</span><span class="ingredient-qty">3 sheets (6g)</span></li>
+            <li><span class="ingredient-name">Evaporated milk (jelly)</span><span class="ingredient-qty">50ml</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Brew Thai tea: steep tea leaves in 200ml hot milk (not boiling) for 8 minutes. Strain thoroughly through fine sieve lined with muslin. Press leaves to extract all orange-amber liquid. Cool.</li>
+            <li>Blitz crackers to fine crumbs. Mix with melted butter and sugar. Press firmly into base of lined 20cm springform tin. Refrigerate 30 minutes.</li>
+            <li>Beat cream cheese until completely smooth. Add condensed milk, sugar, and cooled Thai tea milk. Mix until uniform orange colour with no streaks.</li>
+            <li>Add eggs one at a time, mixing on low speed. Fold in sour cream and vanilla. Do not over-mix after eggs are added.</li>
+            <li>Pour filling over base. Bake in water bath at 150°C for 55–65 minutes until edges set and centre has a gentle wobble. Turn off oven, leave door ajar, cool in oven 1 hour. Refrigerate overnight.</li>
+            <li>Make tea jelly: bloom gelatine in cold water 5 minutes. Heat 150ml strong brewed Thai tea with 50ml evaporated milk to 60°C, dissolve gelatine in liquid. Cool to room temperature. Pour over set cheesecake. Refrigerate 2 hours until jelly sets.</li>
+            <li>Remove from tin, slice with hot knife. Dust top with pinch of ground Thai tea.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Thai tea (Cha Yen) is steeped in milk rather than water to extract fat-soluble aromatic compounds that give the tea its characteristic orange colour and spiced depth. The condensed milk reduces the added sugar needed while amplifying the dessert's signature sweetness profile — it's how Thai iced tea is made, so this preserves authenticity in the filling.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Never mix cheesecake at high speed after adding eggs — it incorporates too much air, which expands in the oven and causes cracking on cooling. Low and slow from egg addition onward. The gradual oven cool-down (heat off, door ajar) prevents the sudden temperature drop that causes the centre to sink.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>The tea jelly top gives a glossy, amber mirror finish — the slice reveal should show the distinct jelly layer over the orange-tan filling and golden base. Clean knife cuts (wipe between each cut) are essential. Serve on a small dessert plate with a thin drizzle of condensed milk and micro Thai tea leaf crumbles.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Thai Cha Yen tea mix (often contains star anise, tamarind, food colouring) from Asian grocers. The distinctive orange colour comes from the dye in traditional Thai tea blend — use authentic product for the correct colour. Cheesecake keeps 5 days refrigerated.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RECIPES 10-13 ── -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <!-- ── RECIPE 10: Black Sesame Mochi Ice Cream ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">10</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Black Sesame Mochi Ice Cream</div>
+        <div class="recipe-subtitle">Glutinous rice shell, black sesame paste centre, coconut ice cream filling · Serves 6 pieces</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$4.20</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Glutinous rice flour</span><span class="ingredient-qty">150g</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Water</span><span class="ingredient-qty">150ml</span></li>
+            <li><span class="ingredient-name">Coconut milk</span><span class="ingredient-qty">50ml</span></li>
+            <li><span class="ingredient-name">Black sesame paste</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Palm sugar</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Coconut cream</span><span class="ingredient-qty">30ml</span></li>
+            <li><span class="ingredient-name">Coconut ice cream</span><span class="ingredient-qty">300ml</span></li>
+            <li><span class="ingredient-name">Potato starch (dusting)</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Toasted black sesame seeds</span><span class="ingredient-qty">15g</span></li>
+            <li><span class="ingredient-name">Gold leaf (optional garnish)</span><span class="ingredient-qty">2 pieces</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Mix black sesame paste, palm sugar, and coconut cream in small saucepan over low heat until combined and smooth. Spread thin on tray, freeze 1 hour into firm discs (approx 15g each). Freeze solid.</li>
+            <li>Scoop coconut ice cream into 6 small balls (approx 40g each), rolling quickly. Place on sesame disc, pressing gently. Freeze minimum 2 hours until completely solid.</li>
+            <li>Make mochi dough: whisk glutinous rice flour, sugar, water, and coconut milk in microwave-safe bowl. Microwave on high 2 minutes, stir vigorously. Microwave 1 more minute — dough should be thick, sticky, and slightly translucent. Alternatively, cook in saucepan over medium heat, stirring constantly for 8–10 minutes.</li>
+            <li>Dust work surface heavily with potato starch. Turn hot dough out, dust top generously. Roll to 4mm thickness while still warm and pliable.</li>
+            <li>Cut 12cm circles. Work quickly — warm mochi tears easily and cold mochi is unworkable. Place ice cream-sesame ball in centre, gather edges, seal by pinching and rolling in palms. Dust with sesame seeds immediately.</li>
+            <li>Freeze completed mochi minimum 1 hour. Remove from freezer 5 minutes before service to soften slightly.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The mochi dough must be worked warm — its window of workability is 5–8 minutes as it cools. Pre-cut all circles before filling. The potato starch prevents sticking without altering taste. Black sesame paste provides a bitter, nutty counterpoint to the sweet coconut ice cream — this bitter-sweet contrast is a Japanese-Thai flavour bridge that works beautifully.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Keep ice cream filling frozen solid until the last second before wrapping — soft ice cream and warm mochi is a recipe for tearing. Set up an assembly line: pre-cut circles, frozen balls ready, potato starch dusted board. The whole wrapping process should take under 60 seconds per piece. Work in a cold kitchen if possible.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Serve 3 pieces per portion on a rectangular black slate, dusted lightly with potato starch. The contrast of white mochi with black sesame speckling is visually striking. A small ramekin of extra sesame paste for dipping and a gold leaf accent on one piece elevates to dessert-bar fine dining.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Black sesame paste from Japanese/Korean grocers (Kuki brand preferred). Coconut ice cream from Asian grocery freezer section or make from scratch. Mochi can be prepared 1 week ahead and kept frozen — the starch coating prevents sticking.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 11: Durian Sticky Rice ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">11</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Durian Sticky Rice</div>
+        <div class="recipe-subtitle">Khao Niao Turian — premium Monthong durian flesh, warm salted coconut sauce, jasmine sticky rice · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$8.40</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Glutinous rice (soaked overnight)</span><span class="ingredient-qty">180g</span></li>
+            <li><span class="ingredient-name">Coconut cream</span><span class="ingredient-qty">180ml</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">45g</span></li>
+            <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">4g</span></li>
+            <li><span class="ingredient-name">Pandan leaves</span><span class="ingredient-qty">3 leaves</span></li>
+            <li><span class="ingredient-name">Monthong durian flesh</span><span class="ingredient-qty">200g</span></li>
+            <li><span class="ingredient-name">Coconut cream (sauce)</span><span class="ingredient-qty">100ml</span></li>
+            <li><span class="ingredient-name">Palm sugar</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Salt (sauce)</span><span class="ingredient-qty">3g</span></li>
+            <li><span class="ingredient-name">Rice flour</span><span class="ingredient-qty">8g</span></li>
+            <li><span class="ingredient-name">Sesame seeds, toasted</span><span class="ingredient-qty">8g</span></li>
+            <li><span class="ingredient-name">Pandan leaf strips (garnish)</span><span class="ingredient-qty">2 strips</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Steam soaked glutinous rice with pandan leaves 20–25 minutes until tender. Meanwhile, warm coconut cream with sugar, salt, and pandan. Stir until dissolved, remove pandan.</li>
+            <li>Transfer hot rice to bowl, fold in warm coconut cream immediately. Cover and rest 15 minutes for full absorption.</li>
+            <li>Inspect durian: Monthong should be creamy gold, firm yet yielding, with a custard-like texture. Remove seeds if present. Keep flesh intact in large pieces — do not blend or mash.</li>
+            <li>Prepare sauce: warm coconut cream with palm sugar and salt. Whisk rice flour with 15ml cold water, stir into sauce over low heat 2 minutes until thickened to a light nappe. Keep warm.</li>
+            <li>To plate: mould warm sticky rice into oval. Arrange durian pieces alongside — 2–3 large segments per serve. Spoon warm coconut sauce over rice. Garnish sesame seeds and pandan strips.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Monthong (Golden Pillow) is the premium Thai eating durian — milder, creamier, and sweeter than Musang King. Its custardy texture is the ideal complement to sticky rice, the creaminess mirroring the coconut cream. Never heat durian — warmth accentuates its aromatics uncomfortably. Room temperature is optimal for service.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Fresh durian is always superior to frozen, but frozen Monthong (thawed in fridge overnight) is an acceptable year-round alternative. Taste before service — durian quality varies significantly between seasons. The dish lives or dies on durian quality. Do not serve inferior durian; it will disappoint experienced guests.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>This is a show-stopper for durian lovers. Serve the durian segments upright against the rice — their natural gold and cream colour is beautiful. A dramatic approach: serve in a cleaned small durian husk section as a vessel. The aroma rising from the dish is part of the experience — serve promptly, in a well-ventilated area.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Fresh Monthong durian from Asian grocers June–August. Frozen Monthong available year-round from Thai and Vietnamese grocers. Always taste test before plating — durian quality varies by season, provenance, and ripeness. This is your highest food cost dish; price accordingly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RECIPES 12-14 ── -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <!-- ── RECIPE 12: Butterfly Pea Flower Panna Cotta ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">12</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Butterfly Pea Flower Panna Cotta</div>
+        <div class="recipe-subtitle">Natural blue-purple coconut panna cotta, lychee compote, coconut cream veil · Serves 4</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$3.60</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Coconut cream (full-fat)</span><span class="ingredient-qty">400ml</span></li>
+            <li><span class="ingredient-name">Coconut milk</span><span class="ingredient-qty">100ml</span></li>
+            <li><span class="ingredient-name">Dried butterfly pea flowers</span><span class="ingredient-qty">12g</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">60g</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">2g</span></li>
+            <li><span class="ingredient-name">Gelatine sheets</span><span class="ingredient-qty">4 sheets (8g)</span></li>
+            <li><span class="ingredient-name">Fresh lychee, peeled, deseeded</span><span class="ingredient-qty">200g</span></li>
+            <li><span class="ingredient-name">Caster sugar (compote)</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Lemon juice</span><span class="ingredient-qty">15ml</span></li>
+            <li><span class="ingredient-name">Lychee rose water</span><span class="ingredient-qty">5ml</span></li>
+            <li><span class="ingredient-name">Coconut cream (veil)</span><span class="ingredient-qty">60ml</span></li>
+            <li><span class="ingredient-name">Butterfly pea flowers (garnish)</span><span class="ingredient-qty">8 flowers</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Bloom gelatine in cold water 5 minutes. Heat coconut cream and coconut milk to 70°C. Add butterfly pea flowers, infuse off heat 15 minutes until deep indigo. Strain thoroughly.</li>
+            <li>Stir sugar and salt into warm infused cream until dissolved. Squeeze excess water from gelatine, whisk into warm cream until fully dissolved. Strain again through fine sieve.</li>
+            <li>Pour into 4 lightly oiled dariole moulds (or ramekins). Refrigerate minimum 4 hours or overnight until set firm.</li>
+            <li>Prepare lychee compote: halve lychees if large. Combine with sugar and lemon juice in small saucepan. Cook on medium 5 minutes until lychee softens and releases juice. Stir in rose water off heat. Cool and refrigerate.</li>
+            <li>To unmould: run thin knife around edge, invert mould onto plate, hold briefly — panna cotta will release with gentle tap. (If using ramekins, serve in ramekin.)</li>
+            <li>To demonstrate colour change: drizzle lemon juice beside panna cotta — the natural pH indicator will shift the blue to purple where acid touches. Present this to guests for the moment.</li>
+            <li>Spoon lychee compote beside. Drizzle thin coconut cream veil over top. Garnish with fresh butterfly pea flowers.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Butterfly pea flowers contain anthocyanins — natural pH-sensitive pigments. In neutral coconut cream they produce a deep indigo-blue. Adding acidic lemon juice at table shifts the colour to purple-violet. This colour change is scientific theatre and a beloved feature of Thai desserts. The flowers have no significant flavour contribution — they are purely visual.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Use 4 gelatine sheets per 500ml liquid for a firm panna cotta that unmoulds cleanly. Fewer sheets gives a wobbly panna cotta that collapses on unmoulding. If uncertain, make a test portion first. Always oil moulds lightly with neutral oil — never butter — to preserve the vivid blue colour of the set panna cotta.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>The unmoulded blue panna cotta on a white plate with pale white lychees and green-blue flowers is a genuinely striking presentation. Serve a small squeeze bottle of fresh lemon juice tableside and invite the guest to add it and watch the colour shift. This interactive element creates a memorable, shareable moment.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Dried butterfly pea flowers from Thai grocers and specialty tea shops. Fresh lychees are seasonal (Nov–Feb in Australia); canned lychees work adequately off-season — drain and pat dry before use. Panna cotta holds 3 days refrigerated in moulds.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 13: Coconut Ice Cream in Young Coconut ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">13</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Coconut Ice Cream in Young Coconut</div>
+        <div class="recipe-subtitle">Handmade coconut ice cream served in the shell, roasted coconut flakes, palm sugar toffee · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$4.80</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Young coconut (whole)</span><span class="ingredient-qty">2 coconuts</span></li>
+            <li><span class="ingredient-name">Coconut cream (full-fat)</span><span class="ingredient-qty">400ml</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">100g</span></li>
+            <li><span class="ingredient-name">Coconut milk</span><span class="ingredient-qty">200ml</span></li>
+            <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">3g</span></li>
+            <li><span class="ingredient-name">Pandan leaf</span><span class="ingredient-qty">3 leaves</span></li>
+            <li><span class="ingredient-name">Vanilla bean, split</span><span class="ingredient-qty">1 bean</span></li>
+            <li><span class="ingredient-name">Desiccated coconut (for flakes)</span><span class="ingredient-qty">40g</span></li>
+            <li><span class="ingredient-name">Palm sugar</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Water</span><span class="ingredient-qty">20ml</span></li>
+            <li><span class="ingredient-name">Young coconut flesh (scraped)</span><span class="ingredient-qty">from coconuts</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Make ice cream base: combine coconut cream, coconut milk, sugar, salt, pandan leaves, and vanilla bean in saucepan. Heat to 80°C, infuse 20 minutes off heat. Strain. Cool over ice bath.</li>
+            <li>Churn in ice cream machine until soft-serve consistency. Transfer to pre-chilled container, freeze 2 hours minimum until scoopable. Alternatively, freeze in tray, churning by hand every 30 minutes over 3 hours.</li>
+            <li>Prepare coconut shells: use a cleaver or coconut opener to remove the top of each young coconut, creating a bowl. Drain coconut water (reserve for drinks). Scrape interior flesh gently with spoon, reserve scraped flesh.</li>
+            <li>Toast desiccated coconut in dry pan over medium heat, stirring constantly, until golden brown. Cool.</li>
+            <li>Make palm sugar toffee: combine palm sugar and water in small pan. Cook over medium heat without stirring until amber toffee, 165°C. Pour thin onto baking paper. Cool and break into shards.</li>
+            <li>To serve: place 2–3 scoops of coconut ice cream in each coconut shell. Scatter scraped fresh coconut flesh and toasted flakes over ice cream. Add 2–3 palm sugar toffee shards. Serve immediately on a bed of crushed ice to maintain temperature.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>The pandan-and-vanilla infusion creates a coconut ice cream with layers of fragrance — the pandan provides a grassy top note while vanilla rounds the base. Full-fat coconut cream is the only option for a smooth, non-icy texture; low-fat versions produce an icy, grainy result because of their higher water content. The young coconut shell keeps the ice cream cold naturally.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Young coconuts open cleanly with a sharp cleaver strike around the top in a circle — practice the strike angle before service. If uncomfortable, purchase pre-opened young coconuts from some Asian suppliers. Ice cream must be properly hardened, not soft-serve, to survive the plating process. Keep scoops frozen on a tray until the last moment.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>The young coconut shell as a serving vessel is the entire visual statement — present it whole on a black slate with crushed ice underneath. The toffee shards breaking out of white ice cream are architectural and contrasting. Serve with a long spoon. The guest eating from the coconut shell creates the authentic street-food connection.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Young green coconuts from Asian grocers (refrigerated section) and some Woolworths/Coles. Choose coconuts that feel heavy (more water) and have no mould at the base. Ice cream recipe yields approximately 700ml — freeze extras for sharing plates.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 14: Roti Mataba Sweet ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">14</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Roti Mataba Sweet</div>
+        <div class="recipe-subtitle">Flaky pan-fried roti, banana-coconut filling, condensed milk drizzle, cinnamon sugar · Serves 2</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$2.80</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag vg">VG</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Plain flour (bread flour preferred)</span><span class="ingredient-qty">200g</span></li>
+            <li><span class="ingredient-name">Warm water</span><span class="ingredient-qty">100ml</span></li>
+            <li><span class="ingredient-name">Sweetened condensed milk (dough)</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Egg (dough)</span><span class="ingredient-qty">1 large (50g)</span></li>
+            <li><span class="ingredient-name">Ghee or butter (dough)</span><span class="ingredient-qty">20g</span></li>
+            <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">4g</span></li>
+            <li><span class="ingredient-name">Ghee or oil (laminating)</span><span class="ingredient-qty">60g</span></li>
+            <li><span class="ingredient-name">Cavendish banana, ripe</span><span class="ingredient-qty">2 medium (200g)</span></li>
+            <li><span class="ingredient-name">Coconut sugar / palm sugar</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Coconut cream (filling)</span><span class="ingredient-qty">40ml</span></li>
+            <li><span class="ingredient-name">Butter (cooking)</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Sweetened condensed milk (drizzle)</span><span class="ingredient-qty">40ml</span></li>
+            <li><span class="ingredient-name">Icing sugar + cinnamon mix</span><span class="ingredient-qty">20g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Make roti dough: combine flour, salt, warm water, condensed milk, egg, and softened butter. Knead 8–10 minutes until smooth and elastic. Divide into 4 balls, coat in thin layer of ghee, rest covered 1 hour minimum (overnight is better).</li>
+            <li>Make filling: slice bananas into 1cm rounds. Combine with coconut sugar and coconut cream in cold bowl — do not cook. Set aside.</li>
+            <li>To stretch roti: on an oiled surface, stretch each dough ball by hand into paper-thin disc approximately 30cm diameter. The dough should be almost translucent. Fold in thirds, stretch once more.</li>
+            <li>Place filling in centre of stretched roti — 5–6 banana slices with a spoon of coconut sugar mixture. Fold roti over filling envelope-style, sealing edges with a pinch.</li>
+            <li>Heat large flat pan or tawa over medium-high heat. Add butter. Cook roti 3 minutes per side until deep golden and crisp, pressing gently with spatula. The interior should be hot and banana should have caramelised in the steam.</li>
+            <li>Remove, cut into 4–6 pieces. Arrange on plate, drizzle condensed milk generously, dust with cinnamon-icing sugar mix. Serve immediately.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Roti flakiness comes from lamination — layers of dough separated by ghee, which creates steam pockets during cooking. The paper-thin stretch is the critical skill. The long dough rest (preferably overnight) fully relaxes the gluten, making stretching to translucency possible without tearing. Under-rested dough snaps back and cannot be stretched thin enough.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>Use ghee rather than butter for laminating — ghee's higher smoke point prevents burning during stretching. Oil your hands, the surface, and the dough generously; roti dough sticks to dry surfaces. If dough tears during stretching, simply patch it. Minor tears don't affect the final product — the flips and folds hide imperfections beautifully.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Cut on the diagonal, fanned open on a wooden board or dark ceramic plate. The layered flaky cross-section should be visible. Condensed milk drizzle in a zigzag pattern over the top, with the cinnamon dust cloud around the plate edge. The golden-brown surface with crispy edges is the visual; the aroma of caramelised banana seals the sale.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Ripe (but not over-ripe) Cavendish bananas — they should have some yellow still, not all brown. Over-ripe bananas release too much water and make the filling soggy. Ghee from Indian grocers or the deli section of major supermarkets. Pre-stretched roti dough can be refrigerated overnight between layers of oiled cling wrap.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RECIPES 15-16 ── -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <!-- ── RECIPE 15: Thai Basil Lychee Sorbet ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">15</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Thai Basil Lychee Sorbet</div>
+        <div class="recipe-subtitle">Fresh lychee, Thai holy basil, lime zest sorbet — intensely aromatic, palate-cleansing · Serves 4</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$3.20</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Fresh lychee, peeled and deseeded</span><span class="ingredient-qty">400g</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Water</span><span class="ingredient-qty">80ml</span></li>
+            <li><span class="ingredient-name">Thai holy basil (Bai Krapao)</span><span class="ingredient-qty">20g (about 30 leaves)</span></li>
+            <li><span class="ingredient-name">Lime zest</span><span class="ingredient-qty">2 limes</span></li>
+            <li><span class="ingredient-name">Lime juice, fresh</span><span class="ingredient-qty">40ml</span></li>
+            <li><span class="ingredient-name">Pinch fine salt</span><span class="ingredient-qty">1g</span></li>
+            <li><span class="ingredient-name">Egg white (stabiliser)</span><span class="ingredient-qty">30g (1 white)</span></li>
+            <li><span class="ingredient-name">Fresh lychees (garnish)</span><span class="ingredient-qty">4 whole</span></li>
+            <li><span class="ingredient-name">Thai basil flowers or leaves</span><span class="ingredient-qty">8 leaves</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Make simple syrup: combine sugar and water, stir over heat until dissolved, cool completely. Do not simmer excessively — the syrup should remain neutral-tasting.</li>
+            <li>Blanch Thai basil leaves in boiling water 10 seconds, transfer immediately to ice water. This preserves the vivid green colour. Drain and roughly chop.</li>
+            <li>Blend lychee flesh, cooled syrup, blanched basil, lime zest, lime juice, and salt on high speed 2 minutes until completely smooth and bright green-white.</li>
+            <li>Strain through fine sieve, pressing to extract maximum liquid. Taste — the basil should be present but not dominant; lychee fragrance should lead.</li>
+            <li>Add egg white to sorbet base (the egg white prevents the sorbet from icing over and adds a silky texture).</li>
+            <li>Churn in ice cream machine until smooth and holding shape. Transfer to container, freeze 2 hours minimum until scoopable.</li>
+            <li>Serve 2 quenelles per portion in a chilled bowl. Garnish with whole peeled lychee, Thai basil leaves, and grating of fresh lime zest. Serve immediately.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Thai holy basil (Bai Krapao) has a distinct clove-anise fragrance that differs significantly from Italian sweet basil. It pairs with lychee's floral notes in a way sweet basil cannot replicate. The blanch-and-ice-water step is critical for colour: unblanched basil oxidises to grey-brown within hours in sorbet. The colour payoff is worth the step.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>The egg white gives the sorbet a smooth, slightly silky texture and prevents over-icing. Without it, lychee's high sugar content creates a granular, crystalline texture after 24 hours. Sorbet should be churned to a smooth, paste-like consistency — not too stiff (brick-like) or too soft (liquid). Freeze churned sorbet uncovered for 30 minutes to harden to serving consistency.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>Two quenelles shaped in matching oval spoons create an elegant, minimalist presentation. A whole lychee — skin-on for drama or peeled to show the pearl — beside the sorbet. Micro basil flowers or tiny basil leaves scattered across both quenelles. Lime zest microplaned over the top at service for a fragrant cloud that hits the guest as the plate arrives.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Fresh Thai holy basil (Bai Krapao) from Asian grocery stores and farmers markets. It has a slightly furry leaf and clove-like scent. Do not substitute Italian basil. Fresh lychees November–February; canned in syrup (drain well, reduce added sugar in recipe by 20g) are workable year-round.</div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 16: Khanom Chan ── -->
+  <div class="recipe-card">
+    <div class="recipe-card-header">
+      <div class="recipe-number">16</div>
+      <div class="recipe-title-block">
+        <div class="recipe-title">Khanom Chan</div>
+        <div class="recipe-subtitle">Nine-Layer Steamed Cake — alternating pandan and coconut layers, jasmine-scented, silky texture · Serves 8</div>
+      </div>
+      <div class="recipe-meta-right">
+        <div class="recipe-cost">$2.20</div>
+        <div class="recipe-cost-label">Food Cost</div>
+        <div class="allergen-tags">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-two-col">
+        <div class="ingredients-block">
+          <h4>Ingredients</h4>
+          <ul class="ingredients-list">
+            <li><span class="ingredient-name">Tapioca starch</span><span class="ingredient-qty">150g</span></li>
+            <li><span class="ingredient-name">Rice flour</span><span class="ingredient-qty">80g</span></li>
+            <li><span class="ingredient-name">Arrowroot flour</span><span class="ingredient-qty">30g</span></li>
+            <li><span class="ingredient-name">Coconut cream</span><span class="ingredient-qty">400ml</span></li>
+            <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">160g</span></li>
+            <li><span class="ingredient-name">Fine sea salt</span><span class="ingredient-qty">4g</span></li>
+            <li><span class="ingredient-name">Pandan juice (fresh-pressed)</span><span class="ingredient-qty">120ml</span></li>
+            <li><span class="ingredient-name">Water (white batter)</span><span class="ingredient-qty">120ml</span></li>
+            <li><span class="ingredient-name">Jasmine essence / flowers</span><span class="ingredient-qty">3ml or 6 flowers</span></li>
+            <li><span class="ingredient-name">Coconut oil (for tin)</span><span class="ingredient-qty">15ml</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method</h4>
+          <ol class="method-list">
+            <li>Combine tapioca starch, rice flour, and arrowroot flour. Divide equally into two bowls (approximately 130g each).</li>
+            <li>Make coconut batter (white): mix half the flour blend with coconut cream (200ml), sugar (80g), salt (2g), jasmine essence, and water. Whisk until completely smooth — no lumps. Strain through sieve.</li>
+            <li>Make pandan batter (green): mix remaining flour blend with coconut cream (200ml), pandan juice (120ml), sugar (80g), salt (2g). Whisk smooth. Strain through sieve.</li>
+            <li>Oil a 20×15cm rectangular tin or round 20cm pan. Heat in steamer. Pre-heating the tin is essential — cold tin causes the first layer to stick.</li>
+            <li>Pour 80ml of white batter into hot tin. Steam 6 minutes until just set (no wobble when pan is nudged, but still tacky on top).</li>
+            <li>Without removing tin, pour 80ml of pandan batter over white layer. Steam 6 minutes. Continue alternating layers until 9 layers are complete (5 white, 4 pandan or vice versa). Steam final layer 8 minutes to fully set the top.</li>
+            <li>Cool completely at room temperature (minimum 2 hours) before cutting — warm khanom chan tears. Cut into 3×5cm rectangles or diamond shapes with oiled knife. Serve at room temperature.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-notes">
+        <div class="note-box">
+          <div class="note-box-title">Chef Technique Note</div>
+          <p>Nine layers is traditional — nine is an auspicious number in Thai culture, symbolising prosperity, which is why khanom chan is made for ceremonies and special occasions. The three-starch combination is deliberate: tapioca provides the characteristic bounce, rice flour adds structure and opacity, arrowroot flour contributes translucency and gloss. Each starch is irreplaceable in this ratio.</p>
+        </div>
+        <div class="note-box tip">
+          <div class="note-box-title">Fail-Proof Tip</div>
+          <p>The most common failure is layers peeling apart — caused by steaming the previous layer too long (it becomes dry) or too briefly (it stays too wet). The surface should be tacky, not wet and not fully dry, when the next layer is poured. At exactly 6 minutes per layer in a steady steam, this is consistent. Use a timer without deviation.</p>
+        </div>
+        <div class="note-box plating">
+          <div class="note-box-title">Plating Note</div>
+          <p>The cross-section of alternating green and white layers is the reveal — cut clean rectangles and stand them on their side so all 9 layers are visible. Three pieces fanned on a dark plate, garnished with a single jasmine flower and micro pandan leaf strips. The visual geometry of the layers signals the patience and craft that went into making it.</p>
+        </div>
+      </div>
+      <div class="sourcing-bar"><strong>Sourcing</strong> Tapioca starch, rice flour, and arrowroot from Asian grocers or bulk health food stores. Do not substitute cornflour for tapioca — the texture changes completely. Khanom chan keeps 3 days covered at room temperature; refrigeration makes it hard and chewy. Always serve at room temperature.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 3 — SHARING PLATES (17–20)
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-header-num">Section 3 of 4</div>
+    <div class="section-header-title">Sharing Plates</div>
+    <div class="section-header-desc">Designed for the table — curated Thai dessert experiences for 2–4 guests · Items #17–20</div>
+  </div>
+
+  <!-- ── RECIPE 17: Thai Dessert Platter ── -->
+  <div class="sharing-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold);">
+      <div>
+        <div class="sharing-card-title">17. Thai Dessert Platter</div>
+        <div class="sharing-card-sub">Six traditional Thai sweets — a curated journey through khanom traditions · For 2–3 guests</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);">$9.20</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;">Food Cost (platter)</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:20px;">
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Platter Components</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Mini Mango Sticky Rice</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Tub Tim Grob portion</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Khanom Krok (4 pcs)</span><span class="ingredient-qty">half serve</span></li>
+          <li><span class="ingredient-name">Lod Chong portion</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Khanom Chan (3 pieces)</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Sangkaya Fak Thong wedge</span><span class="ingredient-qty">1 wedge</span></li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;">Each component prepared fresh per order. The khanom krok is the only item that must be cooked to order — all others can be plated ahead.</p>
+      </div>
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Assembly &amp; Plating Direction</h4>
+        <ol class="method-list">
+          <li>Use a large rectangular slate or wooden board (minimum 35×20cm). Mentally divide into 6 zones — one per item.</li>
+          <li>Place mango sticky rice at far left: moulded rice oval, fanned mango, coconut sauce in side ramekin.</li>
+          <li>Position Tub Tim Grob in small clear glass (place glass directly on board). The red-on-white contrast provides colour anchor at the board's centre.</li>
+          <li>Arrange 4 Khanom Krok pieces in a 2×2 cluster on banana leaf square. These must go on last — served immediately from the pan.</li>
+          <li>Place Lod Chong in small glass bowl beside Tub Tim Grob. The twin clear glass vessels create symmetry.</li>
+          <li>Fan 3 Khanom Chan rectangles on their side showing the 9 green-and-white layers. Position at the back of the board for height.</li>
+          <li>Place Sangkaya wedge at the other end — the yellow custard and dark green pumpkin skin contrasts beautifully with the all-white and green items.</li>
+          <li>Garnish board: scatter fresh pandan leaf strips, a jasmine flower or two, and some toasted sesame seeds around the items. Not cluttered — purposeful spacing.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="sourcing-bar" style="margin-top:14px;"><strong>Chef Note</strong> This platter tells the story of Thai desserts in one experience. Order the 6 items as one platter or as individual serves — the platter price should reflect a modest discount to the sum of individual prices. Serve with a brief verbal description of each item: guests who know what they're eating enjoy it more.</div>
+  </div>
+
+  <!-- ── RECIPE 18: Mango Feast ── -->
+  <div class="sharing-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold);">
+      <div>
+        <div class="sharing-card-title">18. Mango Feast</div>
+        <div class="sharing-card-sub">Four mango preparations — fresh, sticky rice, sorbet, cheesecake slice · For 2 guests</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);">$10.40</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;">
+          <span class="tag gf">GF</span>
+          <span class="tag nf">NF</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:20px;">
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Four Mango Expressions</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Fresh Nam Dok Mai slices</span><span class="ingredient-qty">1 whole mango</span></li>
+          <li><span class="ingredient-name">Mini Mango Sticky Rice</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Mango Coconut Parfait</span><span class="ingredient-qty">1 glass</span></li>
+          <li><span class="ingredient-name">Thai Milk Tea Cheesecake slice</span><span class="ingredient-qty">1 slice</span></li>
+          <li><span class="ingredient-name">Mango sorbet quenelle (side)</span><span class="ingredient-qty">1 scoop</span></li>
+          <li><span class="ingredient-name">Palm sugar caramel drizzle</span><span class="ingredient-qty">30ml</span></li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;">This sharing plate celebrates Nam Dok Mai mango in its most versatile expressions — raw, traditional, frozen, and baked into the cheesecake. Best at mango season peak (Oct–Jan).</p>
+      </div>
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Assembly Direction</h4>
+        <ol class="method-list">
+          <li>Centre the sharing board: use a large oval ceramic plate or round wooden board. Asymmetric placement creates a more artful presentation than a grid.</li>
+          <li>Start with the cheesecake slice — it's the tallest element. Place it at the back with a small pool of palm sugar caramel beneath it.</li>
+          <li>Fan fresh mango slices across the centre of the board — the main visual feature. Thin, elegant slices (5mm) fanned in a peacock-tail arc.</li>
+          <li>Position mini sticky rice (moulded oval) alongside the fresh mango — the cream coconut sauce drizzled fresh at service.</li>
+          <li>Place the parfait glass at the front-right position. The layered glass provides vertical contrast to the flat board elements.</li>
+          <li>Add the sorbet quenelle between cheesecake and fresh mango at the last moment (it melts quickly).</li>
+          <li>Drizzle palm sugar caramel in a sweeping arc across the fresh mango slices for a glossy finish and caramel-fruit flavour connection.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="sourcing-bar" style="margin-top:14px;"><strong>Seasonal Note</strong> This sharing plate is a seasonal hero — promote it prominently during November–January when Nam Dok Mai mangoes are at peak. During off-season, use R2E2 mango for fresh components and Nam Dok Mai frozen puree (available year-round from Thai suppliers) for the sorbet and parfait. Adjust pricing seasonally.</div>
+  </div>
+
+  <!-- ── RECIPE 19: Coconut Dessert Flight ── -->
+  <div class="sharing-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold);">
+      <div>
+        <div class="sharing-card-title">19. Coconut Dessert Flight</div>
+        <div class="sharing-card-sub">Four coconut-based desserts — a study in coconut's versatility · For 2 guests</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);">$11.20</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:20px;">
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Flight Components</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Butterfly Pea Panna Cotta</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Coconut Ice Cream in Shell</span><span class="ingredient-qty">1 half-coconut</span></li>
+          <li><span class="ingredient-name">Mini Khanom Krok (4 pcs)</span><span class="ingredient-qty">half serve</span></li>
+          <li><span class="ingredient-name">Tub Tim Grob</span><span class="ingredient-qty">1 serve</span></li>
+          <li><span class="ingredient-name">Fresh pandan coconut cream sauce</span><span class="ingredient-qty">50ml</span></li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;">Four coconut expressions: cold cream (panna cotta), fresh ice cream, hot steamed pancakes, and coconut milk cold dessert. Temperature and texture variety is the design intent.</p>
+      </div>
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Service Notes</h4>
+        <ol class="method-list">
+          <li>This flight must be served with temperature consciousness — hot khanom krok and cold ice cream cannot sit together for long. Time the khanom krok to land at the table with the other elements already positioned.</li>
+          <li>Arrange on a large tray or board: panna cotta unmoulded on its side plate goes first, then coconut in shell, then Tub Tim Grob in glass, with khanom krok on banana leaf last.</li>
+          <li>Present lemon juice bottle for the panna cotta colour change ritual. Explain the anthocyanin chemistry to curious guests — it is consistently the most talked-about element on the table.</li>
+          <li>Suggested eating order: Tub Tim Grob first (coldest, most refreshing), then khanom krok while hot, panna cotta next, finishing with coconut ice cream as the richest, most indulgent element.</li>
+          <li>Small cards naming each element elevate the experience and educate guests on authentic Thai dessert names.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RECIPE 20: Thai Petit Fours ── -->
+  <div class="sharing-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold);">
+      <div>
+        <div class="sharing-card-title">20. Thai Petit Fours</div>
+        <div class="sharing-card-sub">Eight bite-sized traditional sweets — the full khanom spectrum in one box · For 2–4 guests</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);">$7.80</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;">
+          <span class="tag gf">GF</span>
+          <span class="tag vg">VG</span>
+          <span class="tag df">DF</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:20px;">
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Eight Petit Fours</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Khanom Chan rectangle (1 slice)</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Bua Loy rice ball (1 piece)</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Mini mango sticky rice bite</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Sangkaya spoon (teaspoon)</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Tub Tim Grob spoon</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Lod Chong nest (small)</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Black sesame mochi (half)</span><span class="ingredient-qty">1 piece</span></li>
+          <li><span class="ingredient-name">Thai basil lychee sorbet (teaspoon)</span><span class="ingredient-qty">1 piece</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--gold-light);">Box Assembly &amp; Service</h4>
+        <ol class="method-list">
+          <li>Use a lacquered box, a multi-compartment wooden tray, or a Japanese bento-style presentation tray. Each piece gets its own dedicated cell — no touching or flavour contamination.</li>
+          <li>Arrange by colour contrast: white next to green, orange (sangkaya) next to blue (panna cotta or butterfly pea element), red (tub tim) next to white (bua loy).</li>
+          <li>Temperature management is the technical challenge: sorbet piece goes in at the last second. Bua Loy should be warm; everything else is room temperature. Assemble in this order: room-temp items first, warm bua loy, sorbet last.</li>
+          <li>Each piece is one perfect bite — size and flavour should be calibrated to deliver the full character of the dessert in that single mouthful.</li>
+          <li>Present with a printed card naming all eight items in English and Thai script. This educational element creates conversation and repeat visits.</li>
+          <li>Petit fours box is an ideal dessert companion for non-dessert-bar guests, a takeaway add-on, and a beautiful gift box for events.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="sourcing-bar" style="margin-top:14px;"><strong>Production Note</strong> All eight components are made from existing recipes in this guide. The petit fours box requires precise coordination between kitchen stations. Set a dedicated "box assembly" station near service with all chilled and room-temp items pre-portioned. Sorbet spoons go in frozen in their teaspoon mould until the last moment before service.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SECTION 4 — DRINKS (21–28)
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-header-num">Section 4 of 4</div>
+    <div class="section-header-title">Drinks</div>
+    <div class="section-header-desc">Eight Thai-inspired beverages — from the iconic iced tea to botanical refreshers · Items #21–28</div>
+  </div>
+
+  <!-- ── DRINK 21: Thai Milk Tea ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">21</div>
+        <div>
+          <div class="drink-title">Thai Milk Tea</div>
+          <div class="drink-subtitle">Cha Yen — strong-brewed Ceylon tea, condensed milk, evaporated milk, over crushed ice</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.40</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Thai Cha Yen tea mix</span><span class="ingredient-qty">15g</span></li>
+          <li><span class="ingredient-name">Boiling water (brew)</span><span class="ingredient-qty">150ml</span></li>
+          <li><span class="ingredient-name">Sweetened condensed milk</span><span class="ingredient-qty">40ml</span></li>
+          <li><span class="ingredient-name">Evaporated milk</span><span class="ingredient-qty">30ml</span></li>
+          <li><span class="ingredient-name">Caster sugar (optional)</span><span class="ingredient-qty">5g</span></li>
+          <li><span class="ingredient-name">Crushed ice</span><span class="ingredient-qty">200g</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Steep Thai tea mix in boiling water 5 minutes. Strain through fine mesh — the tea is deep orange and highly aromatic. Do not squeeze the leaves.</li>
+          <li>While hot, stir in condensed milk and sugar if using. The heat helps fully dissolve and integrate the milks.</li>
+          <li>Cool to room temperature, then refrigerate for service. Thai milk tea should be prepared in batches and kept chilled.</li>
+          <li>To serve: fill tall glass with crushed ice. Pour chilled sweetened tea to three-quarters full. Pour evaporated milk slowly over the back of a spoon to create a white layer on top.</li>
+          <li>Serve with a long straw. The guest stirs to combine — the swirling orange and white is the presentation moment.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="recipe-notes">
+      <div class="note-box">
+        <div class="note-box-title">Technique Note</div>
+        <p>Thai Cha Yen mix typically contains black tea, star anise, cardamom, and tamarind seed, along with food-grade orange colouring. It is this specific blend — not plain black tea — that gives Thai milk tea its characteristic orange colour and complex spiced flavour. Substituting plain Ceylon changes the drink completely.</p>
+      </div>
+      <div class="note-box tip">
+        <div class="note-box-title">Fail-Proof Tip</div>
+        <p>Steep at 90°C for exactly 5 minutes — longer steeping makes the tea bitter and opaque. The tea base can be prepared in large batches (10x recipe) and refrigerated for 3 days, making service extremely fast. Pre-portion condensed milk in squeeze bottles for consistent dosing.</p>
+      </div>
+      <div class="note-box plating">
+        <div class="note-box-title">Service Note</div>
+        <p>The undisturbed layers — deep amber tea below, white evaporated milk floating above — is the signature visual. Present before the guest stirs. Use a tall, clear glass (at least 400ml capacity) to showcase the full layered effect. A long Thai-style iced tea glass (available from Asian kitchenware suppliers) is the traditional vessel.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DRINK 22: Pandan Coconut Latte ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">22</div>
+        <div>
+          <div class="drink-title">Pandan Coconut Latte</div>
+          <div class="drink-subtitle">House pandan syrup, steamed coconut milk, oat milk option — served hot or iced</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.60</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag vg">VG</span><span class="tag df">DF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Fresh pandan leaves</span><span class="ingredient-qty">6 leaves</span></li>
+          <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">80g (syrup batch)</span></li>
+          <li><span class="ingredient-name">Water</span><span class="ingredient-qty">80ml (syrup)</span></li>
+          <li><span class="ingredient-name">Pandan syrup (per serve)</span><span class="ingredient-qty">25ml</span></li>
+          <li><span class="ingredient-name">Coconut milk (barista grade)</span><span class="ingredient-qty">200ml</span></li>
+          <li><span class="ingredient-name">Oat milk (option)</span><span class="ingredient-qty">200ml</span></li>
+          <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">pinch</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Make pandan syrup batch: blend 6 pandan leaves with 100ml water, strain. Combine pandan juice with sugar and remaining water in saucepan. Stir over heat until dissolved. Cool. Refrigerate up to 2 weeks.</li>
+          <li>Add pandan syrup and pinch of salt to cup or glass.</li>
+          <li>For hot latte: steam coconut milk (or oat milk) to 65°C. Pour over syrup. Dust with a grating of dried pandan powder or matcha for colour.</li>
+          <li>For iced latte: fill glass with ice. Pour chilled coconut milk over pandan syrup. Do not stir — let guest combine for the visual swirl.</li>
+          <li>Top iced version with 2 tablespoons of thick coconut cream for a floating cream cap.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DRINK 23: Fresh Young Coconut Water ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">23</div>
+        <div>
+          <div class="drink-title">Fresh Young Coconut Water</div>
+          <div class="drink-subtitle">Whole young coconut, served in shell with straw — pure, electrolyte-rich, naturally sweet</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$2.20</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag vg">VG</span><span class="tag df">DF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Young green coconut (whole)</span><span class="ingredient-qty">1 coconut</span></li>
+          <li><span class="ingredient-name">Fresh lime wedge</span><span class="ingredient-qty">1 wedge</span></li>
+          <li><span class="ingredient-name">Paper/metal straw</span><span class="ingredient-qty">1</span></li>
+          <li><span class="ingredient-name">Ice bucket (for serving)</span><span class="ingredient-qty">optional</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Keep young coconuts refrigerated until service. The cold water is far more refreshing than room temperature.</li>
+          <li>Open coconut top with a sharp cleaver: strike in a circle at a 45° angle, remove the top cap. Alternatively, use a coconut drill for a clean puncture hole.</li>
+          <li>Check water by smell: fresh coconut water is lightly sweet and clean. Any fermented or sour smell means the coconut has turned — do not serve it.</li>
+          <li>Insert straw. Serve on a small side plate with a lime wedge and a teaspoon for scooping the inner jelly flesh once the water is finished.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── DRINKS 24-28 + FOOTER ── -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <!-- ── DRINK 24: Butterfly Pea Flower Lemonade ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">24</div>
+        <div>
+          <div class="drink-title">Butterfly Pea Flower Lemonade</div>
+          <div class="drink-subtitle">Colour-changing botanical drink — indigo blue shifts to vivid purple as lemon is added</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.20</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag vg">VG</span><span class="tag df">DF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Dried butterfly pea flowers</span><span class="ingredient-qty">8g</span></li>
+          <li><span class="ingredient-name">Hot water (brew)</span><span class="ingredient-qty">200ml</span></li>
+          <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">20g</span></li>
+          <li><span class="ingredient-name">Raw honey</span><span class="ingredient-qty">15g</span></li>
+          <li><span class="ingredient-name">Fresh lemon juice</span><span class="ingredient-qty">30ml</span></li>
+          <li><span class="ingredient-name">Cold sparkling water</span><span class="ingredient-qty">100ml</span></li>
+          <li><span class="ingredient-name">Ice cubes</span><span class="ingredient-qty">150g</span></li>
+          <li><span class="ingredient-name">Lemon slice (garnish)</span><span class="ingredient-qty">1 slice</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Steep butterfly pea flowers in hot water 10 minutes until deep indigo. Strain, stir in sugar until dissolved. Cool and refrigerate — this is your colour-changing tea concentrate. Makes 4–6 serves per batch.</li>
+          <li>To serve: fill tall glass with ice. Pour 100ml butterfly pea tea concentrate over ice. The liquid should be a rich, deep blue.</li>
+          <li>Add sparkling water to within 2cm of glass top. Add honey and stir gently once.</li>
+          <li>Present the glass of blue drink. Serve the lemon juice in a small jug alongside.</li>
+          <li>Invite the guest to pour the lemon juice — as it mixes with the tea, the drink transforms from blue to vivid purple-magenta. This colour change is the entertainment.</li>
+          <li>Garnish with a lemon slice on the rim. The colour continues to shift as more acid mixes in — eventually settling to deep purple-pink.</li>
+        </ol>
+      </div>
+    </div>
+    <div style="background:var(--section-bg);border-left:3px solid var(--gold);padding:10px 14px;margin-top:10px;border-radius:0 2px 2px 0;">
+      <p style="font-size:10.5px;line-height:1.6;color:#3A3A3A;"><strong style="color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;">Science Note</strong> Butterfly pea flowers contain anthocyanins — the same pH-sensitive pigments found in red cabbage. In neutral or alkaline water they produce blue; in acidic conditions (lemon juice) they shift to purple-pink. This is real chemistry, not artificial colouring. The colour change is permanent for that serve — it will not shift back to blue.</p>
+    </div>
+  </div>
+
+  <!-- ── DRINK 25: Mango Lassi Thai Style ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">25</div>
+        <div>
+          <div class="drink-title">Mango Lassi Thai Style</div>
+          <div class="drink-subtitle">Alphonso mango, full-fat yoghurt, cardamom, rose water — thick, fragrant, chilled</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.80</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Alphonso mango puree</span><span class="ingredient-qty">120g</span></li>
+          <li><span class="ingredient-name">Full-fat natural yoghurt</span><span class="ingredient-qty">120g</span></li>
+          <li><span class="ingredient-name">Whole milk</span><span class="ingredient-qty">50ml</span></li>
+          <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">15g</span></li>
+          <li><span class="ingredient-name">Ground cardamom</span><span class="ingredient-qty">0.5g</span></li>
+          <li><span class="ingredient-name">Rose water</span><span class="ingredient-qty">3ml</span></li>
+          <li><span class="ingredient-name">Ice cubes</span><span class="ingredient-qty">100g</span></li>
+          <li><span class="ingredient-name">Dried rose petals (garnish)</span><span class="ingredient-qty">pinch</span></li>
+          <li><span class="ingredient-name">Mango slice (garnish)</span><span class="ingredient-qty">1 slice</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Combine all ingredients except garnishes in a blender. Blend on high 60 seconds until completely smooth. Taste — adjust sweetness and rose water balance. Rose water should be a whisper, not dominant.</li>
+          <li>Blend with ice for a thick, chilled texture. The lassi should coat the back of a spoon — if too thin, add more yoghurt. If too thick, add a splash of milk.</li>
+          <li>Pour into a tall chilled glass. Do not top with ice — the lassi itself should be cold and thick.</li>
+          <li>Garnish with a small fan of mango slice on the rim and a scattering of dried rose petals on the surface. A dusting of ground cardamom completes the aroma profile.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DRINK 26: Lychee Rose Sparkling ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">26</div>
+        <div>
+          <div class="drink-title">Lychee Rose Sparkling</div>
+          <div class="drink-subtitle">Fresh lychee, house rose syrup, soda water — floral, effervescent, non-alcoholic refresher</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.40</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag vg">VG</span><span class="tag df">DF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Fresh lychee, peeled &amp; deseeded</span><span class="ingredient-qty">80g</span></li>
+          <li><span class="ingredient-name">Rose syrup (Monin or house-made)</span><span class="ingredient-qty">20ml</span></li>
+          <li><span class="ingredient-name">Fresh lime juice</span><span class="ingredient-qty">10ml</span></li>
+          <li><span class="ingredient-name">Chilled soda water</span><span class="ingredient-qty">150ml</span></li>
+          <li><span class="ingredient-name">Ice cubes</span><span class="ingredient-qty">150g</span></li>
+          <li><span class="ingredient-name">Dried rose petals</span><span class="ingredient-qty">pinch</span></li>
+          <li><span class="ingredient-name">Fresh lychee on skewer (garnish)</span><span class="ingredient-qty">2 pieces</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Muddle lychees gently in the base of a shaker or glass — press just enough to release juice without over-mashing into pulp. Some texture is desirable.</li>
+          <li>Add rose syrup, lime juice, and ice. Stir briefly (do not shake — no need for foam in this drink).</li>
+          <li>Strain lightly into tall glass filled with fresh ice. Top with soda water, poured gently over the back of a spoon to preserve carbonation.</li>
+          <li>Garnish with a skewer of 2 whole lychees laid across the glass rim, and a scatter of dried rose petals on the surface. Serve immediately.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DRINK 27: Taro Milk Tea ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">27</div>
+        <div>
+          <div class="drink-title">Taro Milk Tea</div>
+          <div class="drink-subtitle">House taro paste, oat milk, brown sugar boba pearls, iced — the violet boba classic</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.90</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag vg">VG</span><span class="tag df">DF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (per serve)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Taro (peeled, cooked, mashed)</span><span class="ingredient-qty">60g</span></li>
+          <li><span class="ingredient-name">Oat milk</span><span class="ingredient-qty">200ml</span></li>
+          <li><span class="ingredient-name">Coconut milk</span><span class="ingredient-qty">50ml</span></li>
+          <li><span class="ingredient-name">Caster sugar</span><span class="ingredient-qty">20g</span></li>
+          <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">1g</span></li>
+          <li><span class="ingredient-name">Brown sugar boba pearls (cooked)</span><span class="ingredient-qty">60g</span></li>
+          <li><span class="ingredient-name">Brown sugar syrup</span><span class="ingredient-qty">20ml</span></li>
+          <li><span class="ingredient-name">Ice cubes</span><span class="ingredient-qty">150g</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Make taro base: blend warm mashed taro with oat milk, coconut milk, sugar, and salt on high until completely smooth and uniformly purple. Strain through fine sieve. Chill completely.</li>
+          <li>Cook boba pearls per packet instructions (typically 20–25 minutes boiling, then rest in water 15 minutes). Toss warm with brown sugar syrup. Keep at room temperature — refrigerating boba makes them hard and gummy.</li>
+          <li>To assemble: drizzle 10ml brown sugar syrup in stripes down the inside of a clear glass. Add cooked boba pearls. Fill with ice.</li>
+          <li>Pour chilled taro milk over ice. The purple taro swirling through the brown sugar stripes and dark boba is the signature visual of this drink.</li>
+          <li>Serve with wide boba straw. The boba should be consumed through the straw as the guest drinks — balance of chewy pearl and smooth taro milk in every sip.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DRINK 28: Thai Herbal Drink ── -->
+  <div class="drink-card">
+    <div class="drink-card-header">
+      <div style="display:flex;align-items:flex-start;">
+        <div class="drink-number">28</div>
+        <div>
+          <div class="drink-title">Thai Herbal Drink</div>
+          <div class="drink-subtitle">Lemongrass, pandan, ginger, palm sugar — clean, digestive, naturally caffeine-free — served iced</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);">$1.10</div>
+        <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Food Cost</div>
+        <div class="allergen-tags" style="margin-top:6px;justify-content:flex-end;"><span class="tag gf">GF</span><span class="tag vg">VG</span><span class="tag df">DF</span><span class="tag nf">NF</span></div>
+      </div>
+    </div>
+    <div class="drink-two-col">
+      <div class="ingredients-block">
+        <h4>Ingredients (batch — 4 serves)</h4>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Lemongrass stalks, bruised</span><span class="ingredient-qty">4 stalks</span></li>
+          <li><span class="ingredient-name">Pandan leaves</span><span class="ingredient-qty">6 leaves</span></li>
+          <li><span class="ingredient-name">Fresh ginger, sliced</span><span class="ingredient-qty">40g</span></li>
+          <li><span class="ingredient-name">Water</span><span class="ingredient-qty">800ml</span></li>
+          <li><span class="ingredient-name">Palm sugar</span><span class="ingredient-qty">60g</span></li>
+          <li><span class="ingredient-name">Fine salt</span><span class="ingredient-qty">2g</span></li>
+          <li><span class="ingredient-name">Lime juice</span><span class="ingredient-qty">20ml</span></li>
+          <li><span class="ingredient-name">Ice and lemongrass stalk (garnish)</span><span class="ingredient-qty">per serve</span></li>
+        </ul>
+      </div>
+      <div class="method-block">
+        <h4>Method</h4>
+        <ol class="method-list">
+          <li>Bruise lemongrass by bashing with the back of a knife — this releases the aromatic oils. Knot pandan leaves. Slice ginger thinly.</li>
+          <li>Combine water, lemongrass, pandan, and ginger in saucepan. Bring to gentle simmer (not boiling — boiling bitters the lemongrass). Simmer 15 minutes on low.</li>
+          <li>Add palm sugar and salt. Stir until dissolved. Taste — it should be lightly sweet, clean, and deeply aromatic with lemongrass leading, ginger warming the finish.</li>
+          <li>Remove from heat, strain through fine sieve. Add lime juice. Cool completely. Refrigerate.</li>
+          <li>To serve: pour chilled herbal drink over ice in a rocks glass or tall glass. Garnish with a trimmed lemongrass stalk standing in the glass as a natural stirrer and aromatic garnish.</li>
+          <li>This drink benefits from sitting 1–2 hours after making — the flavours develop and deepen with time. Prepare same morning for evening service.</li>
+        </ol>
+      </div>
+    </div>
+    <div style="background:var(--section-bg);border-left:3px solid var(--gold);padding:10px 14px;margin-top:10px;border-radius:0 2px 2px 0;">
+      <p style="font-size:10.5px;line-height:1.6;color:#3A3A3A;"><strong style="color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;">Wellness Note</strong> Nam phak — Thai herbal drinks — are a centuries-old tradition, served in markets alongside sweet desserts as a digestive aid and palate cleanser. Lemongrass is known for its anti-inflammatory properties; ginger aids digestion; pandan is traditionally used in Thai medicine. This is a naturally functional drink that guests with dietary restrictions, pregnant women, and health-conscious diners will appreciate. Promote prominently as a non-caffeinated, zero-sugar-added option.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     APPENDIX — SOURCING & TECHNIQUES
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">KitchenFounder</span>
+    <span class="page-header-info">Guide #42 · Thai Dessert Bar · v7 · 2026 Edition</span>
+  </div>
+
+  <div style="margin-bottom:28px;">
+    <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:8px;">Appendix</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:24px;">Essential knowledge — ingredients, techniques, sourcing, seasonal calendar</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <div class="info-box-title">Key Thai Pantry Ingredients</div>
+      <p><strong>Pandan (Bai Toey):</strong> The vanilla of South-East Asia. Fresh leaves only for colour; extract for back-of-house prep.<br><br>
+      <strong>Palm Sugar (Nam Tan Peep):</strong> Made from coconut palm or date palm sap. Darker = deeper flavour. Unrefined blocks from Thai grocers.<br><br>
+      <strong>Glutinous Rice (Khao Niao):</strong> Short-grain sticky rice. Must be soaked minimum 4 hours. Do not substitute regular rice.<br><br>
+      <strong>Tapioca Flour:</strong> Extracted from cassava root. Gives bounce, translucency, and chew. Non-negotiable in many recipes.<br><br>
+      <strong>Butterfly Pea Flower (Dok Anchan):</strong> Dried flowers as natural blue-purple dye and antioxidant. pH-reactive.</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Sydney Sourcing Guide</div>
+      <p><strong>Cabramatta, NSW:</strong> Best Thai and South-East Asian grocery hub. Palm sugar blocks, pandan, glutinous rice, Thai tea mix, taro, banana blossoms, fresh lychees in season.<br><br>
+      <strong>Haymarket (Chinatown):</strong> Thai grocery stores, fresh coconuts, specialty Asian pastry ingredients, Thai ice cream supplies.<br><br>
+      <strong>Harris Farm Markets:</strong> Reliable source for fresh pandan, lemongrass, kaffir lime, and seasonal tropical fruits.<br><br>
+      <strong>Online:</strong> Temple of Thai (US), importers for butterfly pea flowers, specialty Thai rice varieties, traditional equipment (khanom krok pans, bamboo steamers).<br><br>
+      <strong>Asian Grocer Chains:</strong> Woolworths Metro (Thai/Asian ranges), Top Food Asian Grocery, Hong Kong Supermarket.</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Seasonal Mango Calendar (Australia)</div>
+      <p><strong>Oct–Nov:</strong> Early season Kensington Pride and R2E2. Good but not peak.<br><br>
+      <strong>Dec–Jan:</strong> Peak season. Nam Dok Mai imported from Thailand at its best. All mango dishes at maximum quality. Promote mango specials heavily.<br><br>
+      <strong>Feb–Mar:</strong> Late season. Quality declining. Supplement with mango puree (IQF frozen Nam Dok Mai) for cooked applications.<br><br>
+      <strong>Apr–Sep:</strong> Off-season. Use Alphonso mango puree (India, canned/frozen). Reduce fresh mango dishes on menu.<br><br>
+      <strong>Year-round:</strong> Frozen Nam Dok Mai flesh (Thai importers) maintains 85% of fresh flavour for sorbet, parfait, and sticky rice.</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Equipment Essentials</div>
+      <p><strong>Khanom Krok Pan:</strong> Unique cast-iron dimple pan for Recipe #04. $20–35 from Asian cookware stores or online.<br><br>
+      <strong>Bamboo Steamer Set:</strong> Essential for glutinous rice, khanom chan, sangkaya. 30cm diameter minimum. Available everywhere.<br><br>
+      <strong>Ice Cream Machine:</strong> For sorbet and coconut ice cream. A Cuisinart or similar home unit is adequate. Alternatively, use manual freeze-churn method described in recipes.<br><br>
+      <strong>Blowtorch:</strong> For Pandan Crème Brûlée. Any standard kitchen blowtorch (Bernzomatic, Soto) with adjustable flame.<br><br>
+      <strong>Muslin Cloth:</strong> For pandan juice extraction, coconut cream straining. Reusable, essential.<br><br>
+      <strong>Lod Chong Mould:</strong> Can improvise with a colander over cold water. Authentic moulds from Thai cookware importers.</p>
+    </div>
+  </div>
+
+  <div style="background:var(--gold-pale);border:1px solid var(--gold);padding:22px 26px;border-radius:3px;margin-top:20px;">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--text);margin-bottom:12px;">The Philosophy of Thai Desserts</div>
+    <p style="font-size:12px;line-height:1.85;color:#3A3A3A;margin-bottom:10px;">
+      Thai desserts are built on a flavour philosophy quite different from Western pastry. Where French patisserie prizes precision, balance, and subtlety — Thai khanom embraces exuberance: vivid colour from natural sources, pronounced sweetness tempered always by salt, fragrance that leads before flavour, and texture contrasts that keep the palate engaged from first bite to last.
+    </p>
+    <p style="font-size:12px;line-height:1.85;color:#3A3A3A;margin-bottom:10px;">
+      The salt in Thai desserts is not a mistake — it is the tradition. Coconut cream is salted because the Thai palate understands that fat and salt together amplify sweetness. The coconut sauce on Mango Sticky Rice should taste almost savoury alone; with mango, it becomes perfect. This is the principle of <em>saneh</em> — the charm or spell that a great Thai dessert casts. It is elusive but unmistakeable.
+    </p>
+    <p style="font-size:12px;line-height:1.85;color:#3A3A3A;">
+      These 28 recipes are an invitation to understand that philosophy through practice. Make each dish at least twice — the first time to understand the technique, the second time to own it. Thai desserts reward patience and punish shortcuts. They also reward generosity: make extra, share widely, and accept the compliments with grace.
+    </p>
+    <div style="font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--gold);margin-top:14px;">— Nattaya Srisomwong</div>
+  </div>
+
+  <div style="margin-top:24px;padding:16px 20px;background:var(--card-bg);border:1px solid var(--border);border-radius:3px;">
+    <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Allergen Summary — All 28 Recipes</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:10.5px;">
+      <div><strong>GF (Gluten Free):</strong><br>Recipes 1–6, 7, 10–13, 15–16, 21–28</div>
+      <div><strong>VG (Vegan):</strong><br>Recipes 1–7, 10–13, 15–16, 21–28</div>
+      <div><strong>NF (Nut Free):</strong><br>Recipes 2, 4–5, 10–12, 14–16, 21–28<br><em style="color:var(--muted);">Note: coconut is a tree nut in some classifications</em></div>
+      <div><strong>DF (Dairy Free):</strong><br>Recipes 1–3, 5–7, 10–13, 15–16, 21–24, 26–28<br><em style="color:var(--muted);">Thai desserts are naturally dairy-light</em></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<div class="footer-bar">
+  <div class="footer-brand">KitchenFounder</div>
+  <div class="footer-info">
+    Guide #42 — Thai Dessert Bar<br>
+    28 Recipes · 4 Sections · v7 · 2026 Edition<br>
+    © KitchenFounder 2026. For licensed use only.
+  </div>
+</div>
+
+</body>
+</html>

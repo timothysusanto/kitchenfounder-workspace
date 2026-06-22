@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Asian Dessert Bar — KitchenFounder Guide #43</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--gold:#C8922A;--accent:#1A1A2E;--border:#E0D9D0;--mid:#8A8A8A;--light:#F5F0E8;--pink:#E8B4C8;--teal:#2D7D7D}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+.cover{width:210mm;min-height:297mm;background:linear-gradient(135deg,#0D0D1A 0%,#1A0D2E 40%,#0D1A2E 100%);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-glow{position:absolute;top:20%;left:30%;width:300px;height:300px;background:radial-gradient(circle,rgba(232,180,200,0.15) 0%,transparent 70%);pointer-events:none}
+.cover-glow2{position:absolute;bottom:30%;right:20%;width:200px;height:200px;background:radial-gradient(circle,rgba(200,146,42,0.1) 0%,transparent 70%);pointer-events:none}
+.cover-top{padding:14mm 16mm 0;z-index:1}
+.cover-logo{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.7)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(232,180,200,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:50px;font-weight:900;color:#fff;line-height:0.95;margin-bottom:4mm}
+.cover-title .accent{color:var(--pink)}
+.cover-rule{width:50mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.45);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-chef{font-family:'Playfair Display',serif;font-size:12px;color:rgba(255,255,255,0.5)}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.2);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+.section-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);margin-bottom:4mm;border-left:4px solid var(--gold);padding-left:3mm}
+.recipe-card{background:#fff;border:1px solid var(--border);margin-bottom:4mm;page-break-inside:avoid;overflow:hidden}
+.rc-hdr{background:var(--accent);padding:3mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.rc-num{font-size:9px;font-weight:700;color:rgba(200,146,42,0.7);letter-spacing:2px}
+.rc-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff}
+.rc-sub{font-size:8.5px;color:rgba(255,255,255,0.45);font-style:italic}
+.rc-body{padding:4mm 5mm}
+.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm}
+.rc-ingredients h5,.rc-method h5{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm;border-bottom:1px solid var(--border);padding-bottom:1mm}
+.ingredient{font-size:9.5px;color:#333;line-height:1.75;display:flex;justify-content:space-between;padding:0.5mm 0;border-bottom:1px solid rgba(224,217,208,0.4)}
+.ingredient .qty{color:var(--mid);font-size:9px}
+.step{font-size:9.5px;color:#333;line-height:1.7;padding:1mm 0;border-bottom:1px solid rgba(224,217,208,0.3);display:flex;gap:3mm}
+.step-num{color:var(--gold);font-weight:700;font-size:10px;min-width:12px}
+.rc-notes{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:3mm}
+.note-box{padding:2.5mm 3mm;border-radius:2px}
+.note-box.tech{background:#E8F4F8;border-left:3px solid #1B4F8A}
+.note-box.fail{background:#FFF8E1;border-left:3px solid #C8922A}
+.note-box.insta{background:#FCE4EC;border-left:3px solid #E8B4C8}
+.note-box h6{font-size:7.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm}
+.note-box.tech h6{color:#1B4F8A}
+.note-box.fail h6{color:#C8922A}
+.note-box.insta h6{color:#C2185B}
+.note-box p{font-size:9px;color:#444;line-height:1.65}
+.rc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:2.5mm;padding-top:2.5mm;border-top:1px solid var(--border)}
+.cost{font-size:9px;color:#555}<br>.dtags{display:flex;gap:1.5mm}
+.dtag{font-size:7px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.8mm 1.8mm}
+.dtag.gf{background:#E3F2FD;color:#0D47A1}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A}
+.dtag.nf{background:#E8F5E9;color:#1B5E20}
+.dtag.df{background:#FFF3E0;color:#E65100}
+.drink-card{background:#fff;border:1px solid var(--border);margin-bottom:3mm;page-break-inside:avoid}
+.dk-hdr{background:linear-gradient(135deg,#1A0D2E,#2D1A4E);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.dk-title{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#fff}
+.dk-sub{font-size:8px;color:rgba(255,255,255,0.4);font-style:italic}
+.dk-body{padding:3mm 5mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.share-card{background:#fff;border:1px solid var(--border);border-left:4px solid var(--pink);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.share-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);margin-bottom:1.5mm}
+.share-desc{font-size:9.5px;color:#444;line-height:1.75}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:0}.page,.cover{page-break-after:always;width:210mm;min-height:297mm}.recipe-card,.drink-card,.share-card{page-break-inside:avoid}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-glow"></div><div class="cover-glow2"></div>
+<div class="cover-top"><div class="cover-logo">KitchenFounder · Guide #43</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Sydney Haymarket · Instagram Generation</div>
+  <div class="cover-title">Modern<br>Asian<br><span class="accent">Dessert Bar</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">Complete Restaurant Blueprint · 28 Recipes<br>Honey Toast · Kakigori · Bingsu · Boba · Mochi</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">28</div><div class="cstat-lbl">Recipes</div></div>
+    <div class="cstat"><div class="cstat-val">8</div><div class="cstat-lbl">Drinks</div></div>
+    <div class="cstat"><div class="cstat-val">6</div><div class="cstat-lbl">Signatures</div></div>
+    <div class="cstat"><div class="cstat-val">NYC</div><div class="cstat-lbl">Standard</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">Instagram-First Design</span><span class="ctag">Photogenic Plating</span>
+    <span class="ctag">GF Options</span><span class="ctag">Vegan Options</span><span class="ctag">NF Throughout</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div><div class="cover-chef">Modern Asian Dessert Bar · Complete Operator's Guide</div><div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1mm">KitchenFounder Series</div></div>
+  <div class="cover-meta">v7 · 2026 Edition<br>Guide #43 · $29.99</div>
+</div>
+</div>
+
+<!-- PAGE 2 — CHEF INTRO + PHILOSOPHY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Chef's Philosophy · The Instagram Dessert Revolution</span><span class="page-num">02</span></div>
+
+<div style="background:var(--accent);color:#fff;padding:6mm 8mm;margin-bottom:5mm">
+  <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:3mm">A Letter from the Chef</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.65);line-height:1.9">
+    I grew up between Taipei night markets and Sydney's Chinatown. My grandmother made tang yuan by hand every winter solstice. My uncle ran a shaved ice stall in Ximending. Food was always theatre — colour, texture, temperature, surprise.<br><br>
+    When I trained in Hong Kong and later brought those techniques to Sydney's Haymarket precinct, I realised something: the new generation doesn't just eat dessert. They photograph it first. They share it before they taste it. And that changes everything about how you design a dish.<br><br>
+    Every recipe in this guide is built around one principle: <strong style="color:var(--gold)">if it doesn't photograph beautifully, redesign it.</strong> But the taste must always justify the visual. Style without substance is just decoration.<br><br>
+    This guide gives you both.
+  </div>
+  <div style="margin-top:3mm;font-size:9px;color:rgba(200,146,42,0.7);font-style:italic">— Chef Wei-Lin Chen, Modern Asian Dessert Bar</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm">
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">The 5 Laws of Instagram Dessert</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.85">
+      <strong>1. Height wins.</strong> Tall always photographs better than flat.<br>
+      <strong>2. Contrast is king.</strong> Dark vs light, warm vs cold, smooth vs texture.<br>
+      <strong>3. Steam = life.</strong> Warm elements make photos feel alive.<br>
+      <strong>4. One hero colour.</strong> Choose your accent — pink, purple, matcha green.<br>
+      <strong>5. Serve fast.</strong> Ice melts. Soufflé falls. Time your service to 90 seconds.
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid var(--border);border-left:3px solid #E8B4C8;padding:3.5mm 4mm">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C2185B;margin-bottom:2mm">Restaurant Design Principles</div>
+    <div style="font-size:9.5px;color:#333;line-height:1.85">
+      ✓ Bright, even lighting — no harsh shadows<br>
+      ✓ White or marble surfaces for dessert photography<br>
+      ✓ Open kitchen — let guests see the assembly<br>
+      ✓ Height-adjustable dessert stands at every table<br>
+      ✓ Dedicated "photo corner" with ring light + props<br>
+      ✓ Staff trained to pause service for guest photos
+    </div>
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3.5mm 5mm;margin-bottom:4mm">
+  <div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Menu Architecture — 28 Items</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;font-size:9px;color:#555;line-height:1.8">
+    <div><strong style="color:var(--accent)">Signatures (6)</strong><br>Honey Toast Tower<br>Kakigori Shaved Ice<br>Strawberry Crepe Cake<br>Black Sesame Lava<br>Taro Ball Soup<br>Mango Pomelo Sago</div>
+    <div><strong style="color:var(--accent)">Mains (10)</strong><br>Bingsu<br>Raindrop Cake<br>Dango Skewers<br>Souffle Pancakes<br>Crepe Roll<br>Churros + Dips<br>HK Egg Waffle<br>Basque Asian Style<br>Coconut Jelly Mango<br>Red Bean Mochi Sundae</div>
+    <div><strong style="color:var(--accent)">Sharing (4)</strong><br>Asian Dessert Platter<br>Boba Dessert Flight<br>Instagram Tower<br>Mini Tasting Box</div>
+    <div><strong style="color:var(--accent)">Drinks (8)</strong><br>Brown Sugar Boba<br>Matcha Frappe<br>Taro Boba Latte<br>Strawberry Yakult<br>Mango Slushie<br>Hojicha Latte<br>Lychee Pandan Tea<br>Ube Purple Latte</div>
+  </div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Modern Asian Dessert Bar</span><span class="pf-r">v7 · 2026 Edition · Guide #43</span></div>
+</div>
+
+<!-- PAGE 3 — SIGNATURES 1-3 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Signature Desserts — Items 01 to 03</span><span class="page-num">03</span></div>
+<div class="section-title">Signature Desserts</div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">01</div><div class="rc-title">Honey Toast Tower</div><div class="rc-sub">Japanese Milk Bread · Honey Butter · Ice Cream · Fresh Fruit</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients</h5>
+<div class="ingredient">Japanese milk bread loaf <span class="qty">1 whole (400g)</span></div>
+<div class="ingredient">Unsalted butter <span class="qty">80g</span></div>
+<div class="ingredient">Raw honey <span class="qty">60ml</span></div>
+<div class="ingredient">Vanilla bean ice cream <span class="qty">2 scoops (120g)</span></div>
+<div class="ingredient">Fresh strawberries <span class="qty">80g, halved</span></div>
+<div class="ingredient">Fresh mango <span class="qty">60g, diced</span></div>
+<div class="ingredient">Whipped cream <span class="qty">40g</span></div>
+<div class="ingredient">Icing sugar <span class="qty">5g, to dust</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Score milk bread top in grid pattern without cutting base. Hollow interior leaving 1.5cm walls.</div>
+<div class="step"><span class="step-num">2</span>Melt butter and honey together. Brush generously inside and outside bread including scored top.</div>
+<div class="step"><span class="step-num">3</span>Toast in 180°C oven 12 minutes until golden and caramelised. Interior pieces scattered around base.</div>
+<div class="step"><span class="step-num">4</span>Place on serving board. Stack interior bread pieces beside. Top with 2 scoops ice cream.</div>
+<div class="step"><span class="step-num">5</span>Arrange fruit on and around ice cream. Pipe whipped cream. Dust with icing sugar. Serve immediately.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Score the bread all the way through before hollowing — this gives you uniform cube pieces. The hollow must be deep enough to cradle the ice cream without tipping.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Toast bread while plating everything else — assemble in under 60 seconds once out of oven. Ice cream melts fast. Have everything staged before bread goes in.</p></div>
+<div class="note-box insta" style="grid-column:1/-1"><h6>📸 Instagram Plating</h6><p>Serve on a small wooden board. Ice cream must be a perfect round scoop sitting proud. Dust icing sugar in the last 5 seconds before serving — the white powder dissipates fast. Photograph from 45° angle to capture height.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $4.20 · Suggested price: $18–22</span><div class="dtags"><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">02</div><div class="rc-title">Matcha Kakigori</div><div class="rc-sub">Fine Shaved Ice · Ceremonial Matcha · Red Bean · Mochi</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients</h5>
+<div class="ingredient">Block ice (pure water frozen) <span class="qty">300g per serve</span></div>
+<div class="ingredient">Ceremonial grade matcha <span class="qty">8g</span></div>
+<div class="ingredient">Simple syrup <span class="qty">80ml</span></div>
+<div class="ingredient">Sweetened red bean (tsubuan) <span class="qty">60g</span></div>
+<div class="ingredient">Mochi pieces (bite size) <span class="qty">3 pieces</span></div>
+<div class="ingredient">Condensed milk <span class="qty">15ml, to drizzle</span></div>
+<div class="ingredient">Matcha powder <span class="qty">2g, to dust</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Whisk matcha with 10ml warm water (not boiling — 70°C max) until smooth paste. Add simple syrup and whisk to combine. Chill.</div>
+<div class="step"><span class="step-num">2</span>Shave ice block on Japanese kakigori machine to snow consistency. Pile high in chilled bowl.</div>
+<div class="step"><span class="step-num">3</span>Pour matcha syrup evenly over ice in 3 layers as you build the pile.</div>
+<div class="step"><span class="step-num">4</span>Top with red bean, mochi pieces. Drizzle condensed milk. Dust matcha. Serve immediately.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Temperature of syrup is critical — it must be fridge cold when applied or it will melt the ice immediately. Shave ice in layers and add syrup between layers for even flavour throughout.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Never use crushed ice — you need a kakigori machine for the correct snow texture. Regular blended ice is too coarse and melts too fast. If no machine, use Korean bingsu machine.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $2.80 · Suggested price: $16–19</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag vg">VG</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">03</div><div class="rc-title">Strawberry Crepe Cake</div><div class="rc-sub">20 Layers · Fresh Cream · Strawberry · Mille Crêpe Style</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per cake (12 slices)</h5>
+<div class="ingredient">Plain flour <span class="qty">120g</span></div>
+<div class="ingredient">Eggs <span class="qty">3 whole (150g)</span></div>
+<div class="ingredient">Whole milk <span class="qty">400ml</span></div>
+<div class="ingredient">Butter, melted <span class="qty">30g</span></div>
+<div class="ingredient">Thickened cream <span class="qty">500ml</span></div>
+<div class="ingredient">Icing sugar <span class="qty">50g</span></div>
+<div class="ingredient">Vanilla bean paste <span class="qty">5ml</span></div>
+<div class="ingredient">Fresh strawberries <span class="qty">300g, sliced</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Blend flour, eggs, milk, butter until smooth. Rest 30 mins. Cook 20 thin crêpes in 20cm non-stick pan. Cool completely.</div>
+<div class="step"><span class="step-num">2</span>Whip cream, icing sugar, vanilla to firm peaks. Do not over-whip.</div>
+<div class="step"><span class="step-num">3</span>Layer: crêpe → thin cream → strawberry slices → repeat 20 times. Press gently.</div>
+<div class="step"><span class="step-num">4</span>Refrigerate minimum 4 hours or overnight. Slice with hot knife per service.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Even layer thickness is everything — use a palette knife and spread cream to within 5mm of edge. Too much cream and layers slide. The weight of 20 crêpes compresses slightly overnight — this is correct.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Crêpes MUST be completely cold before assembly or cream softens and slides. Make crêpes the day before. Slice with a thin knife dipped in hot water and wiped dry between each cut.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $3.50/slice · Suggested price: $14–17</span><div class="dtags"><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Modern Asian Dessert Bar</span><span class="pf-r">v7 · 2026 Edition · Guide #43</span></div>
+</div>
+<!-- PAGE 4 — SIGNATURES 4-6 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Signature Desserts — Items 04 to 06</span><span class="page-num">04</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">04</div><div class="rc-title">Black Sesame Lava Cake</div><div class="rc-sub">Warm Molten Centre · Sea Salt · Vanilla Ice Cream</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per 4 cakes</h5>
+<div class="ingredient">Dark chocolate 70% <span class="qty">120g</span></div>
+<div class="ingredient">Unsalted butter <span class="qty">100g</span></div>
+<div class="ingredient">Black sesame paste <span class="qty">80g</span></div>
+<div class="ingredient">Eggs <span class="qty">3 whole + 3 yolks</span></div>
+<div class="ingredient">Caster sugar <span class="qty">80g</span></div>
+<div class="ingredient">Plain flour <span class="qty">40g</span></div>
+<div class="ingredient">Tasmanian sea salt flakes <span class="qty">2g</span></div>
+<div class="ingredient">Vanilla bean ice cream <span class="qty">1 scoop per serve</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Melt chocolate and butter together over bain marie. Stir in black sesame paste until smooth. Cool 5 mins.</div>
+<div class="step"><span class="step-num">2</span>Whisk eggs, yolks and sugar until pale and slightly thickened — 3 minutes.</div>
+<div class="step"><span class="step-num">3</span>Fold chocolate mixture into eggs. Sift in flour and fold gently until just combined.</div>
+<div class="step"><span class="step-num">4</span>Butter and flour 4 ramekins. Fill to ¾. Refrigerate up to 24 hours.</div>
+<div class="step"><span class="step-num">5</span>Bake 200°C for exactly 11 minutes. Edges set, centre soft. Rest 1 min. Turn out. Serve immediately with ice cream and sea salt.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The black sesame paste creates a denser, nuttier lava than standard chocolate fondant. The fat content is higher so reduce butter by 10g if paste is very oily. Test one cake first to calibrate your oven timing precisely.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Oven timing is everything — 11 mins is a guide, not a rule. Every oven varies. Do a test bake on day 1. At 10 mins check — press edge gently, it should feel set with a wobble in the very centre only.</p></div>
+<div class="note-box insta" style="grid-column:1/-1"><h6>📸 Instagram Plating</h6><p>Turn out onto a dark slate or black plate — the contrast of the dark grey cake against dark background is visually striking. Cut open tableside for the guest to capture the lava flow. Flick sea salt flakes on top in the last second.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $3.80 · Suggested price: $17–20</span><div class="dtags"><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">05</div><div class="rc-title">Taro Ball Soup</div><div class="rc-sub">Purple Taro + Sweet Potato Balls · Coconut Soup · Crushed Ice Option</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — serves 4</h5>
+<div class="ingredient">Taro, cooked + mashed <span class="qty">200g</span></div>
+<div class="ingredient">Sweet potato, cooked + mashed <span class="qty">200g</span></div>
+<div class="ingredient">Tapioca flour <span class="qty">160g (80g per colour)</span></div>
+<div class="ingredient">Caster sugar <span class="qty">40g</span></div>
+<div class="ingredient">Coconut milk <span class="qty">400ml</span></div>
+<div class="ingredient">Palm sugar <span class="qty">60g</span></div>
+<div class="ingredient">Pandan leaves <span class="qty">3 leaves, tied</span></div>
+<div class="ingredient">Sea salt <span class="qty">pinch</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Mix taro mash with half the tapioca flour and half the sugar to form smooth dough. Repeat with sweet potato. Add more flour if sticky.</div>
+<div class="step"><span class="step-num">2</span>Roll into 2cm balls. Boil in salted water until they float + 2 minutes. Transfer to ice water.</div>
+<div class="step"><span class="step-num">3</span>Simmer coconut milk, palm sugar, pandan leaves and salt until sugar dissolves. Remove pandan.</div>
+<div class="step"><span class="step-num">4</span>Serve warm soup in bowl with balls. Or serve chilled over crushed ice for summer version.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The ratio of starch to mash determines texture — too much tapioca and balls become gummy, too little and they fall apart. The correct ball should be QQ — Taiwanese slang for chewy with bounce. Test one before rolling full batch.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Never add water to the dough — moisture comes only from the mash. If dough cracks when rolling, add 5ml warm water at a time. If too sticky, add tapioca flour 10g at a time. Balls can be frozen uncooked for 2 months.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $1.90 · Suggested price: $12–15</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag vg">VG</span><span class="dtag nf">NF</span><span class="dtag df">DF opt</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">06</div><div class="rc-title">Mango Pomelo Sago</div><div class="rc-sub">Hong Kong Style · Fresh Mango · Grapefruit · Coconut Milk</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — serves 4</h5>
+<div class="ingredient">Ripe mango (Alphonso preferred) <span class="qty">400g</span></div>
+<div class="ingredient">Small sago pearls <span class="qty">80g, cooked</span></div>
+<div class="ingredient">Coconut milk <span class="qty">200ml</span></div>
+<div class="ingredient">Evaporated milk <span class="qty">100ml</span></div>
+<div class="ingredient">Sugar syrup <span class="qty">40ml</span></div>
+<div class="ingredient">Pink grapefruit <span class="qty">1 whole, segmented</span></div>
+<div class="ingredient">Fresh mango diced <span class="qty">80g, to garnish</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Cook sago in boiling water 15 mins stirring constantly until translucent. Rinse under cold water. Set aside.</div>
+<div class="step"><span class="step-num">2</span>Blend 300g mango with coconut milk, evaporated milk and sugar syrup until silky smooth.</div>
+<div class="step"><span class="step-num">3</span>Fold cooked sago into mango base. Chill minimum 2 hours.</div>
+<div class="step"><span class="step-num">4</span>Serve in glass or bowl. Top with diced fresh mango and grapefruit segments. Serve chilled.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The balance of mango sweetness vs grapefruit bitterness is the dish. Taste as you go — if mango is very sweet, add more grapefruit. The pomelo (grapefruit) cuts through richness and makes this feel light despite the coconut base.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Overcooked sago becomes one solid mass. Stir constantly during cooking. Rinse immediately in cold water when translucent — this stops the cooking and keeps pearls separate. Under-rinsed sago turns gluey.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $2.40 · Suggested price: $13–16</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag vg">VG</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Modern Asian Dessert Bar</span><span class="pf-r">v7 · 2026 Edition · Guide #43</span></div>
+</div>
+
+<!-- PAGE 5 — MAINS 7-11 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main Dessert Plates — Items 07 to 11</span><span class="page-num">05</span></div>
+<div class="section-title">Main Dessert Plates</div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">07</div><div class="rc-title">Korean Bingsu</div><div class="rc-sub">Milk Ice · Seasonal Toppings · Condensed Milk · Shaved to Snow</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per serve</h5>
+<div class="ingredient">Whole milk ice block <span class="qty">250g (frozen overnight)</span></div>
+<div class="ingredient">Sweetened condensed milk <span class="qty">30ml</span></div>
+<div class="ingredient">Red bean paste (pat) <span class="qty">60g</span></div>
+<div class="ingredient">Mochi rice cake pieces <span class="qty">3 pieces</span></div>
+<div class="ingredient">Fresh strawberries or mango <span class="qty">60g</span></div>
+<div class="ingredient">Cereal flakes or rice puff <span class="qty">10g for crunch</span></div>
+<div class="ingredient">Matcha or strawberry powder <span class="qty">2g to dust</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Freeze whole milk in block moulds overnight. Do NOT use water ice — milk ice shaves to creamier snow.</div>
+<div class="step"><span class="step-num">2</span>Shave milk ice on bingsu or kakigori machine to ultra-fine snow. Pile high in large bowl.</div>
+<div class="step"><span class="step-num">3</span>Build toppings in distinct sections — red bean one side, fruit another, mochi on top.</div>
+<div class="step"><span class="step-num">4</span>Drizzle condensed milk over entire bowl. Dust with flavoured powder. Add crunch element last. Serve immediately.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Milk bingsu (uyu bingsu) is creamier and denser than water-based kakigori. The fat in milk creates a softer, almost ice-cream-like texture when shaved. Use full-fat whole milk for best results.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Service window is 4 minutes maximum before it starts melting into mush. Pre-stage ALL toppings in prep bowls before shaving. Never shave ice and then prepare toppings — the order must be reversed.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $2.60 · Suggested price: $16–19</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">08</div><div class="rc-title">Raindrop Cake</div><div class="rc-sub">Mizu Shingen Mochi · Roasted Soybean Powder · Black Sugar Syrup</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per 4 cakes</h5>
+<div class="ingredient">Still mineral water <span class="qty">500ml</span></div>
+<div class="ingredient">Agar agar powder <span class="qty">2g (not gelatine)</span></div>
+<div class="ingredient">Sugar <span class="qty">10g</span></div>
+<div class="ingredient">Roasted soybean powder (kinako) <span class="qty">20g</span></div>
+<div class="ingredient">Black sugar (kuromitsu) syrup <span class="qty">40ml</span></div>
+<div class="ingredient">Edible flowers (optional) <span class="qty">4 small flowers</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Dissolve agar and sugar in mineral water over medium heat. Do not boil vigorously — gentle simmer only.</div>
+<div class="step"><span class="step-num">2</span>Place edible flower in hemisphere mould base. Pour agar mixture carefully. Refrigerate 2 hours until set.</div>
+<div class="step"><span class="step-num">3</span>Unmould gently — raindrop shape should hold. Serve on chilled plate immediately.</div>
+<div class="step"><span class="step-num">4</span>Dust kinako powder beside cake. Pour kuromitsu in small pool. Serve with teaspoon to eat together.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The beauty of this dish is the crystal clarity. Use the highest quality still mineral water available — tap water minerals create cloudiness. Agar must be fully dissolved before pouring or you get lumps in the set.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>This dish has a very short service life — within 30 minutes at room temperature it begins to weep. Keep refrigerated until the moment of service. Never prep more than 2 hours ahead.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $1.20 · Suggested price: $12–15</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag vg">VG</span><span class="dtag nf">NF</span><span class="dtag df">DF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">09</div><div class="rc-title">Japanese Soufflé Pancakes</div><div class="rc-sub">Ultra Fluffy · Maple + Butter · Seasonal Fruit · Served Jiggly</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per 2 pancakes</h5>
+<div class="ingredient">Egg yolks <span class="qty">2</span></div>
+<div class="ingredient">Egg whites <span class="qty">3</span></div>
+<div class="ingredient">Caster sugar <span class="qty">40g</span></div>
+<div class="ingredient">Plain flour <span class="qty">40g</span></div>
+<div class="ingredient">Milk <span class="qty">30ml</span></div>
+<div class="ingredient">Baking powder <span class="qty">3g</span></div>
+<div class="ingredient">Cream of tartar <span class="qty">1g</span></div>
+<div class="ingredient">Butter + maple syrup <span class="qty">to serve</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Whisk yolks, milk, flour and baking powder to smooth batter.</div>
+<div class="step"><span class="step-num">2</span>Whip whites with cream of tartar to soft peaks. Add sugar gradually to firm glossy peaks.</div>
+<div class="step"><span class="step-num">3</span>Fold whites into yolk batter in 3 additions — keep as much air as possible.</div>
+<div class="step"><span class="step-num">4</span>Grease ring moulds in non-stick pan on very low heat. Pipe or spoon batter to fill halfway. Cover and cook 5 mins. Add more batter. Cover 5 more mins. Flip gently. Cover 3 more mins.</div>
+<div class="step"><span class="step-num">5</span>Serve immediately — they deflate within 3 minutes. Warn guest at ordering stage.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The soufflé effect comes entirely from the meringue. Any trace of yolk in whites kills the foam — use a perfectly clean, dry bowl. Low heat is essential — high heat sets the outside before the inside has risen.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>These cannot be held. Take order → make → serve → guest photographs → guest eats. Staff must warn every table: "These deflate in 3 minutes — photograph quickly!" This becomes part of the theatre, not a problem.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $2.10 · Suggested price: $16–20</span><div class="dtags"><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Modern Asian Dessert Bar</span><span class="pf-r">v7 · 2026 Edition · Guide #43</span></div>
+</div>
+<!-- PAGE 6 — MAINS 10-16 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main Dessert Plates — Items 10 to 16</span><span class="page-num">06</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">10</div><div class="rc-title">Crepe Roll</div><div class="rc-sub">Thin Crêpe · Diplomat Cream · Fresh Mango or Strawberry</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per 4 rolls</h5>
+<div class="ingredient">Crêpe batter (thin) <span class="qty">200ml (from Guide #03 recipe)</span></div>
+<div class="ingredient">Thickened cream <span class="qty">200ml</span></div>
+<div class="ingredient">Crème pâtissière <span class="qty">100g</span></div>
+<div class="ingredient">Icing sugar <span class="qty">20g</span></div>
+<div class="ingredient">Fresh mango, sliced thin <span class="qty">120g</span></div>
+<div class="ingredient">Icing sugar to dust <span class="qty">5g</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Cook thin crêpes in 22cm pan. Cool completely on wire rack.</div>
+<div class="step"><span class="step-num">2</span>Make diplomat: fold whipped cream into crème pâtissière. Chill 30 mins.</div>
+<div class="step"><span class="step-num">3</span>Lay crêpe flat. Spread thin diplomat layer. Place mango across bottom third. Roll tightly. Trim ends.</div>
+<div class="step"><span class="step-num">4</span>Slice on diagonal into 3 pieces. Stand upright to show spiral. Dust icing sugar.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The diagonal cut revealing the spiral interior is the money shot. Practice the cut angle — 45° shows the most cream and fruit. A sharp thin-bladed knife in one clean motion, no sawing.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Roll and refrigerate assembled rolls for 30 mins before cutting — the cream firms up and holds the spiral cleanly. Cutting a warm freshly rolled crêpe squashes the cream out the ends.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $2.20 · Suggested price: $13–16</span><div class="dtags"><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">11</div><div class="rc-title">Churros + 3 Dipping Sauces</div><div class="rc-sub">Matcha · Dark Chocolate · Condensed Milk · Crispy Hot</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — serves 4</h5>
+<div class="ingredient">Water <span class="qty">250ml</span></div>
+<div class="ingredient">Plain flour <span class="qty">150g</span></div>
+<div class="ingredient">Butter <span class="qty">60g</span></div>
+<div class="ingredient">Salt <span class="qty">3g</span></div>
+<div class="ingredient">Eggs <span class="qty">2</span></div>
+<div class="ingredient">Caster sugar + cinnamon <span class="qty">40g + 5g to coat</span></div>
+<div class="ingredient">Matcha powder + white choc <span class="qty">10g + 100g</span></div>
+<div class="ingredient">Dark chocolate 70% <span class="qty">100g + 80ml cream</span></div>
+<div class="ingredient">Condensed milk <span class="qty">80ml</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Boil water, butter, salt. Add flour all at once. Beat over heat until dough pulls from sides. Cool 5 mins.</div>
+<div class="step"><span class="step-num">2</span>Beat in eggs one at a time until smooth shiny dough. Pipe through star tip into 170°C oil. Fry 3-4 mins until golden.</div>
+<div class="step"><span class="step-num">3</span>Roll hot churros in cinnamon sugar immediately.</div>
+<div class="step"><span class="step-num">4</span>Sauces: Matcha — melt white chocolate, stir in matcha powder. Chocolate — hot cream over dark choc, stir smooth. Condensed milk — serve direct from tin in warm ramekin.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Choux pastry must be cooked until it leaves the sides of the pan — this drives off excess moisture which is critical for crispiness. Undercooked choux absorbs oil and goes soggy. The dough should be smooth, shiny, and just soft enough to pipe.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Oil temperature must be 170–175°C throughout. Too hot and outside burns before inside cooks. Too cool and churros absorb oil. Use a thermometer. Fry in small batches to maintain temperature.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $2.80 · Suggested price: $15–18</span><div class="dtags"><span class="dtag vg">VG</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">12</div><div class="rc-title">Hong Kong Egg Waffle Tower</div><div class="rc-sub">Bubble Waffle · Ice Cream · Fresh Fruit · Sauce</div></div></div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per waffle</h5>
+<div class="ingredient">Plain flour <span class="qty">120g</span></div>
+<div class="ingredient">Caster sugar <span class="qty">60g</span></div>
+<div class="ingredient">Eggs <span class="qty">2</span></div>
+<div class="ingredient">Evaporated milk <span class="qty">100ml</span></div>
+<div class="ingredient">Vegetable oil <span class="qty">30ml</span></div>
+<div class="ingredient">Baking powder <span class="qty">5g</span></div>
+<div class="ingredient">Custard powder <span class="qty">10g</span></div>
+<div class="ingredient">Vanilla extract <span class="qty">3ml</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Whisk all ingredients to smooth batter. Rest 30 mins. Batter should be pourable but coat back of spoon.</div>
+<div class="step"><span class="step-num">2</span>Heat bubble waffle iron. Brush generously with oil. Pour batter, close. Cook 4 mins until golden.</div>
+<div class="step"><span class="step-num">3</span>Remove and immediately shape into cone while still pliable. Hold 30 seconds until set.</div>
+<div class="step"><span class="step-num">4</span>Stand cone in holder. Add 2 scoops ice cream. Fruit on top. Sauce drizzle. Serve.</div>
+</div>
+</div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Custard powder is the secret ingredient — it adds that characteristic egg waffle flavour and helps browning. Evaporated milk creates a richer, denser bubble than regular milk. The shaping must happen within 20 seconds of leaving the iron while still hot and pliable.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Have your cone mould ready before you open the iron. Time is critical — a cooled waffle cracks when shaped. Practice the flip-and-shape motion until it's automatic. Pre-warm the mould so it doesn't drop the waffle temperature.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: ~AUD $3.20 · Suggested price: $17–21</span><div class="dtags"><span class="dtag vg">VG</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div><div class="rc-num">13–16</div><div class="rc-title">Basque Cheesecake · Coconut Jelly · Red Bean Mochi Sundae · Dango Skewers</div></div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">13 · Basque Asian Style</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Matcha version:</strong> 500g cream cheese, 3 eggs, 150g sugar, 200ml cream, 15g matcha, 20g flour. Blend smooth. Bake 220°C 25 mins in lined tin. Centre must be jiggly. Cool completely — do not refrigerate until fully cool. The burnt top is intentional and essential.<br><br><strong>Fail-proof:</strong> Every oven reads differently at 220°C. Check at 20 mins — burnt top with wobbling centre = correct. Remove immediately.</div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">14 · Coconut Jelly Mango</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Layers:</strong> Layer 1 — coconut milk (400ml) + agar (3g) + sugar (60g), pour 5mm layer into moulds, set. Layer 2 — fresh mango purée (200ml) + agar (2g), pour when layer 1 is set. Repeat 3 times alternating. Chill 4 hours. Turn out and slice.<br><br><strong>Fail-proof:</strong> Each layer must be semi-set (tacky to touch) before adding next. Too soon and layers bleed into each other. Too late and they don't bond and split when unmoulded.</div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">15 · Red Bean Mochi Sundae</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Vanilla soft serve base (or ice cream). Top with sweetened red bean paste (60g). Add 3 mochi pieces. Dust kinako (roasted soybean powder). Drizzle black sugar syrup (kuromitsu). Serve in glass bowl to show layers.<br><br><strong>Fail-proof:</strong> Soft serve temperature is critical — too soft and it slumps, too hard and it doesn't scoop cleanly. -6°C is ideal serving temperature for soft serve.</div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">16 · Dango Skewers</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Dough:</strong> 100g shiratamako (glutinous rice flour) + 80g tofu (silken) — knead to smooth dough. Roll 3cm balls, boil until floating + 2 mins. Thread 3 on bamboo skewer. Grill until slightly charred. Coat with mitarashi sauce (soy + mirin + sugar + starch thickened).<br><br><strong>Fail-proof:</strong> Tofu replaces water in this recipe — it creates a softer dough that stays soft even after chilling. Water-based dango hardens quickly.</div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Modern Asian Dessert Bar</span><span class="pf-r">v7 · 2026 Edition · Guide #43</span></div>
+</div>
+
+<!-- PAGE 7 — SHARING + DRINKS + OPS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Sharing Plates · Drinks · Operations</span><span class="page-num">07</span></div>
+
+<div class="section-title" style="margin-bottom:3mm">Sharing Plates</div>
+<div class="share-card"><div class="share-title">17 · Asian Dessert Platter for 2</div><div class="share-desc">6 items: Kakigori (half serve) · Honey Toast (half) · 2 Crepe Rolls · 4 Mochi pieces · Fresh seasonal fruit · Condensed milk dip. Served on tiered slate board with sparkler. <strong>AUD food cost ~$8.50 · Price $38–45.</strong></div></div>
+<div class="share-card"><div class="share-title">18 · Boba Dessert Flight</div><div class="share-desc">4 mini desserts each paired with 60ml boba: Mini Basque + Brown Sugar Boba · Mini Mochi Sundae + Taro Boba · 2 Dango skewers + Hojicha · Coconut Jelly + Lychee Tea. On long wooden board with numbered flags. <strong>AUD food cost ~$9.00 · Price $42–48.</strong></div></div>
+<div class="share-card"><div class="share-title">19 · Instagram Dessert Tower</div><div class="share-desc">4-level tiered tower: Level 1 — Honey Toast · Level 2 — Crepe cake slice + Bingsu cup · Level 3 — Churros in cone · Level 4 — Waffle cone ice cream on top. Arrives with sparkler. Staff photography assistance offered. <strong>AUD food cost ~$14 · Price $65–75.</strong></div></div>
+<div class="share-card"><div class="share-title">20 · Mini Dessert Tasting Box</div><div class="share-desc">8 bite-sized items in Japanese bento box: Dango skewer · Mini raindrop cake · Mango sago cup · Red bean mochi · Sesame lava bite · Crepe roll piece · Taro ball soup (small) · Coconut jelly square. <strong>AUD food cost ~$7.00 · Price $32–38.</strong></div></div>
+
+<div class="section-title" style="margin:4mm 0 3mm">Drinks</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div class="drink-card">
+<div class="dk-hdr"><div class="dk-title">21 · Brown Sugar Boba Milk Tea</div></div>
+<div class="dk-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Black tapioca pearls 60g · Brown sugar 30g · Strong black tea 150ml · Oat milk 150ml · Ice</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method</div><div style="font-size:9px;color:#333;line-height:1.7">Cook pearls 25 mins, toss in brown sugar syrup while hot. Create tiger stripe pattern on glass inner wall with brown sugar syrup. Add pearls, ice, tea, milk. <strong>Cost ~$1.80 · Price $8–10</strong></div></div>
+</div></div>
+
+<div class="drink-card">
+<div class="dk-hdr"><div class="dk-title">22 · Matcha Soft Serve Frappe</div></div>
+<div class="dk-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Ceremonial matcha 8g · Oat milk 200ml · Ice 150g · Vanilla soft serve 1 scoop · Whipped cream · Matcha powder to dust</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method</div><div style="font-size:9px;color:#333;line-height:1.7">Blend matcha, milk, ice until smooth. Pour. Top with soft serve scoop, whipped cream, dust matcha. <strong>Cost ~$2.20 · Price $10–12</strong></div></div>
+</div></div>
+
+<div class="drink-card">
+<div class="dk-hdr"><div class="dk-title">23 · Taro Boba Latte</div></div>
+<div class="dk-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Taro paste 40g · Oat milk 200ml · Brown sugar boba 60g · Ice · Brown sugar syrup 15ml</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method</div><div style="font-size:9px;color:#333;line-height:1.7">Blend taro paste with warm milk until smooth. Add ice, pour over boba. Layer brown sugar syrup for colour contrast. <strong>Cost ~$1.90 · Price $8–10</strong></div></div>
+</div></div>
+
+<div class="drink-card">
+<div class="dk-hdr"><div class="dk-title">24–28 · Remaining Drinks</div></div>
+<div class="dk-body" style="grid-template-columns:1fr">
+<div style="font-size:9px;color:#333;line-height:1.85">
+<strong style="color:var(--gold)">24 Strawberry Yakult Soda</strong> — 2 Yakult bottles + fresh strawberry purée 40ml + lemon juice + soda water. Layer for colour. ~$1.50 · Price $7–9<br>
+<strong style="color:var(--gold)">25 Mango Coconut Slushie</strong> — Fresh mango 150g + coconut milk 100ml + crushed ice, blended. Serve in tall glass with mango slice. ~$2.00 · Price $9–11<br>
+<strong style="color:var(--gold)">26 Hojicha Latte</strong> — Roasted Japanese green tea brewed strong 120ml + oat milk steamed 150ml + honey. Over ice or hot. ~$1.40 · Price $7–9<br>
+<strong style="color:var(--gold)">27 Lychee Pandan Iced Tea</strong> — Cold brew jasmine tea 150ml + pandan syrup 20ml + fresh lychee 3 pieces + ice. ~$1.60 · Price $8–10<br>
+<strong style="color:var(--gold)">28 Ube Purple Latte</strong> — Ube extract 15ml + oat milk 200ml steamed. Pour espresso shot through milk for layered effect. Striking purple colour. ~$1.80 · Price $8–10
+</div>
+</div></div>
+</div>
+
+<div style="background:var(--accent);color:#fff;padding:4mm 5mm;margin-top:4mm">
+<div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">Service & Operations Notes</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;font-size:9px;color:rgba(255,255,255,0.65);line-height:1.8">
+<div><strong style="color:var(--gold)">Speed Standards</strong><br>Soufflé pancakes: 15 min<br>Honey toast: 8 min<br>Churros: 5 min<br>Cold desserts: 3 min<br>Drinks: 2 min</div>
+<div><strong style="color:var(--gold)">Staff Scripts</strong><br>"This jiggles for 3 mins — photograph now!"<br>"Shall I help you get the perfect angle?"<br>"The lava flows best when cut immediately"<br>"Our ice melts in 4 minutes — enjoy quickly!"</div>
+<div><strong style="color:var(--gold)">Food Cost Targets</strong><br>Individual desserts: 18–22%<br>Sharing plates: 20–25%<br>Drinks: 12–18%<br>Overall blended: 20%<br>Target GP: 75–78%</div>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Modern Asian Dessert Bar</span><span class="pf-r">v7 · 2026 Edition · Guide #43</span></div>
+</div>
+
+</body>
+</html>

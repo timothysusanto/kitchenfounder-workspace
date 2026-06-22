@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #45 — Italian Gelato &amp; Dessert Bar · v7 · 2026 Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --text: #1C1C1C;
+    --accent: #C8922A;
+    --accent-light: #E8B86D;
+    --accent-pale: #FDF4E7;
+    --border: #E2D5C3;
+    --muted: #6B6560;
+    --card-bg: #FFFFFF;
+    --section-bg: #F4EFE8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    width: 210mm;
+    min-height: 297mm;
+    background: linear-gradient(160deg, #1C1C1C 0%, #2E2A24 50%, #3A2E1E 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(200,146,42,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(200,146,42,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+  .cover-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 4px 16px rgba(200,146,42,0.4));
+  }
+  .cover-series {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #FAFAF8;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .cover-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--accent-light);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .cover-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 auto 40px;
+  }
+  .cover-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(250,250,248,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .cover-meta strong {
+    color: var(--accent-light);
+  }
+  .cover-stats {
+    display: flex;
+    gap: 40px;
+    margin: 32px 0;
+  }
+  .cover-stat {
+    text-align: center;
+  }
+  .cover-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .cover-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.5);
+  }
+  .cover-footer {
+    position: absolute;
+    bottom: 32px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(250,250,248,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    width: 210mm;
+    padding: 14mm 14mm 12mm;
+    background: var(--bg);
+    margin: 0 auto;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+  .page-header-left {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .page-header-center {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .page-header-right {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .section-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── INTRO BLOCK ── */
+  .intro-block {
+    background: var(--accent-pale);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+  }
+  .intro-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .intro-block p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  .intro-block .chef-sig {
+    margin-top: 14px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+  }
+
+  /* ── MENU OVERVIEW ── */
+  .menu-overview {
+    page-break-inside: avoid;
+    margin-bottom: 28px;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .menu-item-thumb {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 10px;
+  }
+  .menu-item-thumb .num {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 11px;
+  }
+  .menu-item-thumb .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 2px;
+    display: block;
+  }
+  .menu-item-thumb .price {
+    color: var(--muted);
+    font-size: 9px;
+    margin-top: 3px;
+  }
+
+  /* ── RECIPE CARD ── */
+  .recipe-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .recipe-header {
+    background: linear-gradient(135deg, var(--accent) 0%, #A8721A 100%);
+    padding: 14px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .recipe-header-left {
+    flex: 1;
+  }
+  .recipe-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .recipe-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .recipe-name-it {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+  .recipe-header-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .recipe-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .recipe-cost {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+  }
+  .recipe-allergens {
+    margin-top: 6px;
+    display: flex;
+    gap: 4px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+  }
+  .recipe-body {
+    padding: 16px 20px;
+  }
+  .recipe-desc {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 14px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+  .recipe-columns {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .ingredients-block h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .ingredients-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .ingredients-block li {
+    font-size: 11px;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .ingredients-block li .ing-name {
+    color: var(--text);
+    flex: 1;
+  }
+  .ingredients-block li .ing-qty {
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+    font-size: 10px;
+  }
+  .method-block h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .method-block ol {
+    padding-left: 16px;
+  }
+  .method-block li {
+    font-size: 11px;
+    margin-bottom: 5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .method-block li::marker {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── CHEF NOTES ── */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .note-box {
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+  .note-box.technique {
+    background: #F0F7FF;
+    border-left: 3px solid #4A90D9;
+  }
+  .note-box.tip {
+    background: #F0FFF4;
+    border-left: 3px solid #48BB78;
+  }
+  .note-box.plating {
+    background: var(--accent-pale);
+    border-left: 3px solid var(--accent);
+  }
+  .note-box h5 {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .note-box.technique h5 { color: #4A90D9; }
+  .note-box.tip h5 { color: #48BB78; }
+  .note-box.plating h5 { color: var(--accent); }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 28px 0 20px;
+  }
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      background: var(--bg);
+    }
+    .recipe-card {
+      page-break-inside: avoid;
+    }
+    .note-box {
+      page-break-inside: avoid;
+    }
+    .intro-block {
+      page-break-inside: avoid;
+    }
+    .cover {
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ COVER PAGE -->
+<div class="cover">
+  <div class="cover-badge">KitchenFounder Restaurant Series</div>
+  <div class="cover-icon">🍨</div>
+  <div class="cover-series">Guide #45 · v7 · 2026 Edition</div>
+  <h1>Italian Gelato<br>&amp; Dessert Bar</h1>
+  <div class="cover-sub">Dolci Autentici · Artigianale Puro</div>
+  <div class="cover-divider"></div>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <span class="cover-stat-num">28</span>
+      <span class="cover-stat-label">Recipes</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">6</span>
+      <span class="cover-stat-label">Gelato Flavours</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">10</span>
+      <span class="cover-stat-label">Dessert Plates</span>
+    </div>
+  </div>
+  <div class="cover-meta">
+    Sicilian-Australian Gelato Maestro · 3rd Generation<br>
+    <strong>Trained in Bologna · Master Gelato School</strong><br>
+    Sydney's Most Creative Gelateria
+  </div>
+  <div class="cover-footer">
+    KitchenFounder · v7 · 2026 Edition · For Professional Culinary Use
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 1: INTRO -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">Italian Gelato &amp; Dessert Bar</div>
+    <div class="page-header-center">KitchenFounder · Guide #45</div>
+    <div class="page-header-right">v7 · 2026 Edition</div>
+  </div>
+
+  <div class="intro-block">
+    <h2>A Letter from the Maestro</h2>
+    <p>
+      My grandfather made gelato in Palermo with a hand-cranked machine, rock salt, and instinct honed by generations. My father carried that instinct to Sydney, and I — after four years training under a master artigiano in Bologna — brought it back as something new. Not fusion. Not novelty. Just rigour applied to memory.
+    </p>
+    <p style="margin-top:10px;">
+      This guide is every recipe we run at the bar: from the absolute purity of our Stracciatella — nothing but fior di latte and hand-drizzled dark chocolate — to the layered drama of a Cassata Siciliana, assembled with the patience of a cathedral builder. Gelato is not ice cream. It is lower in fat, lower in overrun, higher in density, served between -11°C and -8°C to stay paddle-soft. Once you understand the physics, you understand the taste.
+    </p>
+    <p style="margin-top:10px;">
+      I have trained my team to treat every scoop as a statement. Technique is love made visible. Read every note. Follow every temperature. Never rush the riposo.
+    </p>
+    <div class="chef-sig">— Salvatore Conti, Gelato Maestro · Sydney</div>
+  </div>
+
+  <div class="menu-overview">
+    <div class="section-title">Full Menu — 28 Items</div>
+    <div class="section-subtitle">6 Gelato Flavours · 10 Dessert Plates · 4 Sharing Plates · 8 Drinks</div>
+    <div class="menu-grid">
+      <div class="menu-item-thumb"><span class="num">01</span><span class="name">Stracciatella</span><div class="price">$7.50 / scoop</div></div>
+      <div class="menu-item-thumb"><span class="num">02</span><span class="name">Pistachio</span><div class="price">$8.50 / scoop</div></div>
+      <div class="menu-item-thumb"><span class="num">03</span><span class="name">Salted Caramel</span><div class="price">$7.50 / scoop</div></div>
+      <div class="menu-item-thumb"><span class="num">04</span><span class="name">Espresso</span><div class="price">$7.50 / scoop</div></div>
+      <div class="menu-item-thumb"><span class="num">05</span><span class="name">Hazelnut Nocciola</span><div class="price">$8.00 / scoop</div></div>
+      <div class="menu-item-thumb"><span class="num">06</span><span class="name">Mango Sorbet</span><div class="price">$7.00 / scoop</div></div>
+      <div class="menu-item-thumb"><span class="num">07</span><span class="name">Gelato Affogato</span><div class="price">$14.00</div></div>
+      <div class="menu-item-thumb"><span class="num">08</span><span class="name">Semifreddo Torrone</span><div class="price">$18.00</div></div>
+      <div class="menu-item-thumb"><span class="num">09</span><span class="name">Cannoli Siciliani</span><div class="price">$16.00</div></div>
+      <div class="menu-item-thumb"><span class="num">10</span><span class="name">Panna Cotta</span><div class="price">$15.00</div></div>
+      <div class="menu-item-thumb"><span class="num">11</span><span class="name">Tiramisu Classico</span><div class="price">$17.00</div></div>
+      <div class="menu-item-thumb"><span class="num">12</span><span class="name">Bomboloni</span><div class="price">$15.00</div></div>
+      <div class="menu-item-thumb"><span class="num">13</span><span class="name">Sfogliatella</span><div class="price">$16.00</div></div>
+      <div class="menu-item-thumb"><span class="num">14</span><span class="name">Zeppole S. Giuseppe</span><div class="price">$16.00</div></div>
+      <div class="menu-item-thumb"><span class="num">15</span><span class="name">Granita con Brioche</span><div class="price">$14.00</div></div>
+      <div class="menu-item-thumb"><span class="num">16</span><span class="name">Cassata Siciliana</span><div class="price">$19.00</div></div>
+      <div class="menu-item-thumb"><span class="num">17</span><span class="name">Gelato Flight</span><div class="price">$28.00</div></div>
+      <div class="menu-item-thumb"><span class="num">18</span><span class="name">Dessert Platter</span><div class="price">$42.00</div></div>
+      <div class="menu-item-thumb"><span class="num">19</span><span class="name">Gelato Cake</span><div class="price">$65.00</div></div>
+      <div class="menu-item-thumb"><span class="num">20</span><span class="name">Petit Fours Italiani</span><div class="price">$24.00</div></div>
+      <div class="menu-item-thumb"><span class="num">21</span><span class="name">Espresso Classico</span><div class="price">$5.00</div></div>
+      <div class="menu-item-thumb"><span class="num">22</span><span class="name">Affogato Cocktail</span><div class="price">$19.00</div></div>
+      <div class="menu-item-thumb"><span class="num">23</span><span class="name">Limonata Siciliana</span><div class="price">$8.00</div></div>
+      <div class="menu-item-thumb"><span class="num">24</span><span class="name">Granita Mandorla</span><div class="price">$9.00</div></div>
+      <div class="menu-item-thumb"><span class="num">25</span><span class="name">Cremino Hot Choc</span><div class="price">$12.00</div></div>
+      <div class="menu-item-thumb"><span class="num">26</span><span class="name">Caffè Shakerato</span><div class="price">$9.00</div></div>
+      <div class="menu-item-thumb"><span class="num">27</span><span class="name">Aperol Spritz Pairing</span><div class="price">$22.00</div></div>
+      <div class="menu-item-thumb"><span class="num">28</span><span class="name">Limoncello Service</span><div class="price">$14.00</div></div>
+    </div>
+  </div>
+</div>
+<!-- START PART 2 -->
+<!-- PAGE: SIGNATURE GELATO FLAVOURS -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">Signature Gelato Flavours</div>
+    <div class="page-header-center">KitchenFounder Guide #45</div>
+    <div class="page-header-right">v7 2026 Edition</div>
+  </div>
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Signature Gelato Flavours</div>
+    <div class="section-divider-line"></div>
+  </div>
+  <p class="section-subtitle">Six house-made gelato flavours churned fresh daily. Served at -11 deg C to -8 deg C. All bases made in-house from whole milk, fresh cream, and egg yolks.</p>
+
+  <!-- RECIPE 01: STRACCIATELLA -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 01 of 28 — Signature Gelato</div>
+        <div class="recipe-name">Stracciatella</div>
+        <div class="recipe-name-it">Fior di latte base, hand-drizzled dark chocolate shards</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$7.50</div>
+        <div class="recipe-cost">Food cost: $1.45 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The purest expression of Italian gelato craft. A silken fior di latte base — nothing but whole milk, fresh cream, sugar, and egg yolks — drizzled mid-churn with a thread of molten 70% dark chocolate that shatters into irregular shards. The word stracciatella means "torn apart" in Italian. Every bite should feel like both destruction and revelation.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 kg gelato</h4>
+          <ul>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">600 g</span></li>
+            <li><span class="ing-name">Fresh cream (35% fat)</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Egg yolks (fresh)</span><span class="ing-qty">80 g (4 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Skim milk powder</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Dextrose</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Locust bean gum</span><span class="ing-qty">2 g</span></li>
+            <li><span class="ing-name">Dark couverture 70% (Valrhona Guanaja)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Neutral cooking oil (for chocolate)</span><span class="ing-qty">5 g</span></li>
+            <li><span class="ing-name">Fleur de sel (finishing)</span><span class="ing-qty">pinch</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8–10 scoops per batch</h4>
+          <ol>
+            <li>Combine milk, cream, and skim milk powder in a heavy saucepan. Heat to 45°C, whisking to dissolve powder completely.</li>
+            <li>Whisk egg yolks with sugar and dextrose in a bowl until pale and ribbon-like, about 2 minutes.</li>
+            <li>Temper hot milk mixture into egg mixture in a slow stream, whisking constantly to avoid scrambling.</li>
+            <li>Return custard to saucepan. Add locust bean gum, whisking vigorously. Cook over medium heat, stirring constantly with a heat-safe spatula, until mix reaches 85°C (pasteurisation). Do not boil.</li>
+            <li>Immediately strain through a fine-mesh sieve into a clean container. Cool rapidly over an ice bath to below 4°C. Cover and ripen in refrigerator for minimum 4 hours (overnight preferred) — this is the riposo, critical for texture.</li>
+            <li>Churn base in a batch freezer or gelato machine set to standard programme. Target internal temperature of -6°C at extraction.</li>
+            <li>While churning is in final 2 minutes, melt couverture with oil to 40°C. Load into a squeeze bottle.</li>
+            <li>Open machine lid and drizzle molten chocolate in a thin, continuous stream directly into the churning gelato. It hits the cold mass and shatters instantly into irregular shards — stracciatella effect.</li>
+            <li>Extract immediately into a pre-chilled steel pan. Blast freeze or cover with parchment directly on surface. Harden at -20°C for 1 hour minimum before serving.</li>
+            <li>Serve between -11°C and -8°C. Scoop with a Parisienne paddle dipped in warm water.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Fior di latte should achieve 20–25% overrun (air incorporation) — dramatically less than commercial ice cream at 100%. Lower overrun means higher density and more intense flavour. The locust bean gum (LBG) stabilises the base during freezing, preventing large ice crystal formation. The 4-hour riposo allows the stabiliser to fully hydrate and the fat to homogenise. Never skip it.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The chocolate for stracciatella must be at exactly 40°C when drizzled — too hot and it pools rather than shatters, too cool and it seizes before dispersing. The small addition of neutral oil lowers the chocolate's setting temperature by 2°C, giving you a slightly wider window. Use a thermometer, not intuition, on this step.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Two generous quenelles on a chilled white ceramic cup. The chocolate shards should be visible in the scoop — if they're not, the drizzle was too fast. Finish with a pinch of fleur de sel on the peak of each scoop. At the bar, serve with a small pirouette biscuit. No sauce — the chocolate IS the sauce.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 02: PISTACHIO -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 02 of 28 — Signature Gelato</div>
+        <div class="recipe-name">Pistachio — Pistacchio di Bronte</div>
+        <div class="recipe-name-it">100% Bronte Sicilian pistachio paste, zero artificial colouring</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$8.50</div>
+        <div class="recipe-cost">Food cost: $2.20 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        This is my signature. If you order one gelato, let it be this one. We import 100% pure pistachio paste from Bronte, the small town on the slopes of Mount Etna where pistachios grow in volcanic soil and taste unlike anything else on earth. The colour is a natural khaki-green-grey — not the garish emerald of cheap artificially coloured product. That is how you know it is real. This recipe has not changed since I first made it in Bologna at age 22.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 kg gelato</h4>
+          <ul>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">550 g</span></li>
+            <li><span class="ing-name">Fresh cream (35% fat)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Egg yolks (fresh)</span><span class="ing-qty">100 g (5 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">140 g</span></li>
+            <li><span class="ing-name">Dextrose</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Skim milk powder</span><span class="ing-qty">25 g</span></li>
+            <li><span class="ing-name">Bronte pistachio paste (100% pure)</span><span class="ing-qty">120 g</span></li>
+            <li><span class="ing-name">Locust bean gum</span><span class="ing-qty">2 g</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">1 g</span></li>
+            <li><span class="ing-name">Chopped roasted pistachios (garnish)</span><span class="ing-qty">30 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8–10 scoops per batch</h4>
+          <ol>
+            <li>Warm pistachio paste in a small bowl over a double boiler to 35°C to loosen. Set aside.</li>
+            <li>Heat milk, cream, and milk powder to 45°C in a heavy saucepan, whisking to dissolve. Add LBG and whisk vigorously.</li>
+            <li>Whisk egg yolks with sugar and dextrose in a bowl until pale. Temper warm milk mixture in slowly while whisking constantly.</li>
+            <li>Return to saucepan. Cook over medium heat, stirring constantly, to 85°C. Strain through a fine sieve.</li>
+            <li>While custard is still warm (above 60°C), whisk in the loosened pistachio paste and sea salt until fully incorporated. A stick blender creates a smoother emulsion — recommended.</li>
+            <li>Cool rapidly over ice bath to below 4°C. Cover and ripen for minimum 6 hours (overnight ideal) — longer riposo than other flavours because pistachio fat needs extra time to integrate.</li>
+            <li>Churn in batch freezer to -6°C extraction temperature.</li>
+            <li>Extract into pre-chilled pan. Sprinkle half the chopped pistachios through the pan as you layer. Cover directly and harden at -20°C for 1 hour.</li>
+            <li>Serve at -11°C to -8°C with remaining chopped pistachios as garnish on top of the scoop.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Pistachio paste is high in natural fat (approx. 50% oil content). This affects the gelato's freeze point depression — the mix will feel slightly softer at the same serving temperature compared to fior di latte. We compensate by reducing the cream ratio and increasing milk. The result is a gelato that is dense but not heavy, with clean nut flavour unmasked by dairy fat. Overrun target: 22–25%.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Cheap pistachio paste is cut with almonds or artificially coloured. Real Bronte paste should be roughly-textured, oily, and smell intensely of pistachio — not sweetness, not marzipan. The colour will be an un-glamorous brownish-green. If your paste is bright green, it is not authentic. Source from a trusted Italian importer and pay the premium — it is the entire flavour of the dish.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Scoop into a ceramic cup or cone. The natural colour will surprise new customers — brief the front-of-house team to set expectations: "The natural colour of Bronte pistachio is not bright green. That muted tone is your guarantee of authenticity." Finish with a pinch of chopped roasted pistachios on top and a very small drizzle of high-quality pistachio oil if available.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 03: SALTED CARAMEL -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 03 of 28 — Signature Gelato</div>
+        <div class="recipe-name">Salted Caramel — Caramello Salato</div>
+        <div class="recipe-name-it">House dry-method caramel, Tasmanian sea salt flakes</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$7.50</div>
+        <div class="recipe-cost">Food cost: $1.60 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        We make our caramel the old way — dry, direct, dangerous, and deeply flavoured. No water, no corn syrup, just caster sugar in a dry pan taken to a mahogany amber. The smell of proper caramel should make you slightly nervous. If it doesn't, you haven't gone far enough. The Tasmanian salt flakes go in at three points: the caramel, the custard base, and the final scoop. Salt is not a garnish here. It is architecture.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 kg gelato</h4>
+          <ul>
+            <li><span class="ing-name">Caster sugar (for caramel)</span><span class="ing-qty">200 g</span></li>
+            <li><span class="ing-name">Unsalted butter</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Fresh cream 35% (for caramel)</span><span class="ing-qty">80 g (warm)</span></li>
+            <li><span class="ing-name">Tasmanian sea salt flakes</span><span class="ing-qty">4 g + extra</span></li>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">520 g</span></li>
+            <li><span class="ing-name">Fresh cream 35% (for base)</span><span class="ing-qty">80 g</span></li>
+            <li><span class="ing-name">Egg yolks</span><span class="ing-qty">80 g (4 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar (for base)</span><span class="ing-qty">60 g</span></li>
+            <li><span class="ing-name">Skim milk powder</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Locust bean gum</span><span class="ing-qty">2 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8–10 scoops per batch</h4>
+          <ol>
+            <li>Make dry caramel: place 200 g sugar in a heavy stainless or copper saucepan over medium-high heat. Do not stir — swirl the pan gently once the edges begin to melt. Cook to deep mahogany amber (175°C on a sugar thermometer).</li>
+            <li>Remove from heat. Add butter immediately — it will bubble violently. Whisk. Add warm cream in three additions, whisking between each. Add 2 g of the salt. Whisk until smooth. Set aside to cool slightly.</li>
+            <li>Heat milk, cream (base portion), and milk powder to 45°C. Add LBG and whisk.</li>
+            <li>Whisk egg yolks with 60 g sugar until pale. Temper warm milk in slowly, whisking constantly.</li>
+            <li>Return to saucepan and cook to 85°C, stirring continuously. Strain.</li>
+            <li>Whisk the caramel sauce into the hot custard base. Add remaining 2 g salt. Blend with a stick blender for 30 seconds for smoothness.</li>
+            <li>Cool over ice bath to below 4°C. Ripen 4–6 hours minimum.</li>
+            <li>Churn to -6°C. Extract into chilled pan. Fleck sea salt flakes through the layers as you pan. Harden at -20°C for 1 hour.</li>
+            <li>Serve at -11°C to -8°C. Finish each serving with 2–3 large salt flakes on top.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          The dry caramel introduces sucrose breakdown products (fructose, glucose, plus Maillard compounds) that lower the freezing point. The finished gelato will be noticeably softer than fior di latte at the same serving temperature. We compensate by reducing the dextrose to zero — caramelised sugar already provides antifreeze effect. Salt lowers freezing point very slightly but its primary role is flavour — it suppresses bitterness and amplifies sweetness at the sensory level.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The most common failure with dry caramel is stopping too early out of fear. Pale caramel produces pale flavour — sweet without complexity. You need the Maillard and pyrolysis compounds that form above 160°C. Take it to 175°C but do not exceed 180°C or it turns bitter. Keep a bowl of ice water nearby to dip the pan base if needed to stop cooking. Practice makes the window familiar.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve in a dark ceramic cup to contrast the warm amber tone of the gelato. Two scoops. Drizzle the cup with a small ribbon of leftover salted caramel sauce (kept warm in a squeeze bottle). Three large Tasmanian salt flakes placed on top — not ground salt, not table salt, specifically the large flat crystals. They provide a visual cue and a burst of crunch that resets the palate between bites.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 04: ESPRESSO GELATO -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 04 of 28 — Signature Gelato</div>
+        <div class="recipe-name">Espresso — Caffè</div>
+        <div class="recipe-name-it">Single origin double ristretto, dark roast intensity</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$7.50</div>
+        <div class="recipe-cost">Food cost: $1.35 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Coffee gelato in most places is a disappointment — diluted, sweet, vague. Ours uses a double ristretto from a single-origin Ethiopian Yirgacheffe, dark roasted to bring forward chocolate and blackcurrant notes. We brew 200 g of ristretto for every kilogram of base. It is intensely, unapologetically coffee. The caffeine is real. Order it at night at your own risk.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 kg gelato</h4>
+          <ul>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">480 g</span></li>
+            <li><span class="ing-name">Fresh cream (35% fat)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Double ristretto (freshly brewed, cooled)</span><span class="ing-qty">200 g</span></li>
+            <li><span class="ing-name">Egg yolks</span><span class="ing-qty">80 g (4 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">155 g</span></li>
+            <li><span class="ing-name">Skim milk powder</span><span class="ing-qty">25 g</span></li>
+            <li><span class="ing-name">Dextrose</span><span class="ing-qty">15 g</span></li>
+            <li><span class="ing-name">Locust bean gum</span><span class="ing-qty">2 g</span></li>
+            <li><span class="ing-name">Instant espresso powder (intensifier)</span><span class="ing-qty">8 g</span></li>
+            <li><span class="ing-name">Dark chocolate shavings (garnish)</span><span class="ing-qty">20 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8–10 scoops per batch</h4>
+          <ol>
+            <li>Brew double ristretto and allow to cool to room temperature. Do not refrigerate yet as the oils need to stay integrated.</li>
+            <li>Dissolve instant espresso powder into the cooled ristretto. This double-extraction technique maximises coffee solids without over-diluting the base.</li>
+            <li>Heat milk, cream, and milk powder to 45°C. Add LBG and whisk vigorously to dissolve.</li>
+            <li>Whisk egg yolks with sugar and dextrose until pale and thick.</li>
+            <li>Temper hot milk into eggs slowly, whisking. Return to saucepan and cook to 85°C, stirring constantly.</li>
+            <li>Strain custard. Immediately stir the coffee-ristretto mixture into the hot strained custard. The heat keeps coffee oils in suspension.</li>
+            <li>Blend with stick blender for 20 seconds. Cool over ice bath to below 4°C. Ripen minimum 4 hours.</li>
+            <li>Churn to -6°C. Extract into chilled pan. Harden 1 hour at -20°C.</li>
+            <li>Serve at -11°C. Garnish with dark chocolate shavings and a light dusting of espresso powder.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Coffee contains numerous compounds (chlorogenic acids, melanoidins, volatile aromatics) that affect gelato texture and freeze behaviour. Coffee also contains dissolved CO2 from the espresso extraction that must degas before churning — hence the cooling step. The instant espresso powder adds coffee solids (melanoidins) that contribute both colour and extra body to the mix. Overrun target: 20–22% — coffee gelato should be dense.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Never add hot espresso to hot custard and then reheat — the volatile aromatics responsible for fresh coffee flavour flash off above 70°C. Always let your ristretto cool to room temperature before incorporating into the strained (not still-cooking) custard. If you add coffee too early in the cooking process, you will have coffee-flavoured milk custard with no coffee aroma. The aroma is half the flavour.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve in a small espresso cup or a dark ceramic cup to reinforce the coffee identity. One large oval scoop. Dust the top lightly with fine espresso powder through a small fine-mesh sieve. Scatter dark chocolate shavings. The scoop should look like a crema-topped espresso. For the affogato service (Recipe 07), use this gelato as the base — the flavour combination is transcendent.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 05: HAZELNUT NOCCIOLA -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 05 of 28 — Signature Gelato</div>
+        <div class="recipe-name">Hazelnut — Nocciola IGP Piemonte</div>
+        <div class="recipe-name-it">100% Piedmont hazelnut paste · NF version: sunflower seed paste</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$8.00</div>
+        <div class="recipe-cost">Food cost: $1.90 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Hazelnuts from the Langhe hills of Piedmont are to Italian gelato what truffles are to the same region's cooking — the defining luxury ingredient. Our nocciola paste is 100% roasted Piedmont hazelnuts, ground to a smooth butter without added sugar or oil. It tastes like the air in a Piemontese autumn. The nut-free version uses a premium sunflower seed paste, roasted and ground the same way. It is not identical, but it is remarkable.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 kg gelato</h4>
+          <ul>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">540 g</span></li>
+            <li><span class="ing-name">Fresh cream (35% fat)</span><span class="ing-qty">90 g</span></li>
+            <li><span class="ing-name">Egg yolks</span><span class="ing-qty">100 g (5 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">140 g</span></li>
+            <li><span class="ing-name">Dextrose</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Skim milk powder</span><span class="ing-qty">25 g</span></li>
+            <li><span class="ing-name">Piedmont hazelnut paste (100% pure)</span><span class="ing-qty">130 g</span></li>
+            <li><span class="ing-name">Locust bean gum</span><span class="ing-qty">2 g</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">1 g</span></li>
+            <li><span class="ing-name">Whole roasted hazelnuts (garnish)</span><span class="ing-qty">20 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8–10 scoops per batch</h4>
+          <ol>
+            <li>Warm hazelnut paste to 35°C in a double boiler to loosen the oils. This ensures even distribution through the custard.</li>
+            <li>Heat milk, cream, and milk powder to 45°C, whisking to dissolve. Add LBG and whisk well.</li>
+            <li>In a bowl, whisk egg yolks with sugar and dextrose until pale and slightly thickened.</li>
+            <li>Temper warm milk into eggs slowly. Return to saucepan and cook to 85°C, stirring constantly. Strain through fine sieve.</li>
+            <li>While custard is still warm, whisk in loosened hazelnut paste and sea salt. Blend with stick blender for 30 seconds — the emulsion should be completely smooth with no paste streaks.</li>
+            <li>Cool over ice bath to below 4°C. Ripen minimum 6 hours. The hazelnut oils need extended time to integrate into the water phase of the mix.</li>
+            <li>Churn to -6°C extraction temperature. Extract into pre-chilled pan.</li>
+            <li>Press halved roasted hazelnuts into the surface of the panned gelato. Harden at -20°C for 1 hour.</li>
+            <li>Serve at -11°C. For NF version: replace hazelnut paste with sunflower seed paste at same quantity. All other steps identical.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Hazelnut paste (like pistachio) is naturally high in unsaturated fats which remain liquid at colder temperatures than saturated dairy fat. This gives nocciola gelato its characteristic soft, yielding texture even straight from the blast freezer. Overrun target: 22%. The extended riposo is not optional — under-rested nocciola gelato will exhibit fat separation at the surface (visible as a slightly greasy sheen) after churning.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          NF (nut-free) version: use a roasted sunflower seed paste made in-house or sourced from a dedicated nut-free facility. Standard sunflower butter has a slightly green, raw flavour — look specifically for roasted versions. If making in-house, roast hulled sunflower seeds at 170°C for 12 minutes until golden, cool completely, then blend in a high-powered blender for 8–10 minutes to a smooth paste. Allergen protocols must be strictly followed for the NF version — dedicated equipment.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The natural colour is a warm medium brown — not the pale beige of inferior product. Serve in a round ceramic cup. Two scoops, slightly offset. Place 3–4 whole roasted hazelnuts at the base of the scoops. For NF version, substitute toasted sunflower seeds (explicitly labelled for the customer). The hazelnut gelato pairs exceptionally well with the Caffè Shakerato (Recipe 26) — suggest the combination.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 06: MANGO SORBET -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 06 of 28 — Signature Gelato / Sorbet</div>
+        <div class="recipe-name">Mango Sorbet — Sorbetto di Mango Alphonso</div>
+        <div class="recipe-name-it">Alphonso mango puree, lime zest, no dairy — DF · VG · NF · GF</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$7.00</div>
+        <div class="recipe-cost">Food cost: $1.50 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">VG</span>
+          <span class="tag">NF</span>
+          <span class="tag">DF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        A sorbet, not a gelato — but made with the same rigour. Alphonso mangoes from Maharashtra (India) are the world's finest: saffron-orange, intensely aromatic, with a honey-richness that needs no embellishment. We use 60% pure Alphonso puree, a careful invert sugar syrup to control freeze point, and fresh lime zest added post-churn to preserve the volatile citrus oils. Completely dairy-free. Completely vegan. Completely not a compromise.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 kg sorbet</h4>
+          <ul>
+            <li><span class="ing-name">Alphonso mango puree (100%)</span><span class="ing-qty">600 g</span></li>
+            <li><span class="ing-name">Filtered water</span><span class="ing-qty">185 g</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">120 g</span></li>
+            <li><span class="ing-name">Dextrose</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Trehalose</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Invert sugar (trimoline)</span><span class="ing-qty">25 g</span></li>
+            <li><span class="ing-name">Lime zest (fresh Tahitian lime)</span><span class="ing-qty">3 g (2 limes)</span></li>
+            <li><span class="ing-name">Fresh lime juice</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Locust bean gum</span><span class="ing-qty">2 g</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">0.5 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8–10 scoops per batch</h4>
+          <ol>
+            <li>Combine water, caster sugar, dextrose, trehalose, and invert sugar in a saucepan. Heat to 85°C, stirring until fully dissolved. This is the simple syrup base.</li>
+            <li>Whisk in LBG while still warm. The stabiliser requires heat to hydrate properly in a dairy-free mix.</li>
+            <li>Cool syrup to below 30°C. Do not add mango to hot syrup — heat destroys the volatile Alphonso aromatics.</li>
+            <li>Combine cooled syrup with mango puree, lime juice, and sea salt. Blend with stick blender until perfectly smooth.</li>
+            <li>Taste for balance: the refractometer reading should be 28–32 Brix. If below 28, the sorbet will freeze rock-hard. If above 32, it will not freeze firm enough for scooping.</li>
+            <li>Ripen in refrigerator for 4 hours minimum.</li>
+            <li>Churn in batch freezer or sorbet setting. Sorbet churns faster than gelato — watch the machine. Extract at -5°C (slightly warmer than gelato as there is no dairy fat).</li>
+            <li>Extract into chilled pan. Add lime zest by folding gently through the freshly churned sorbet — do not churn the zest, fold it in post-extraction.</li>
+            <li>Harden at -20°C for 1 hour. Serve at -10°C to -8°C.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Sorbet freezing physics differ fundamentally from gelato: there is no fat to create creaminess, so texture depends entirely on sugar management (freeze point depression) and stabiliser use. The combination of sucrose, dextrose (lower molecular weight = more freezing point depression per gram), trehalose (provides body and anti-crystallisation), and invert sugar (prevents re-crystallisation on storage) is carefully balanced. Overrun target for sorbet: 25–30% — sorbets need slightly more air than gelato for a scoopable texture.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Use a refractometer. It is the single most important tool for consistent sorbet. Alphonso puree varies in natural sugar content between batches and seasons (typically 14–18 Brix). Adjust your added sugars based on the actual Brix reading of your puree. Without this measurement, your sorbet will be inconsistent in texture from batch to batch. A basic refractometer costs $25 AUD and pays for itself in the first week.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve in a chilled white ceramic cup — the saffron-orange colour of Alphonso sorbet is spectacular against white. One generous quenelle (oval scoop with a spoon dipped in warm water). Micro-grate additional lime zest directly over the top tableside for aroma. Optionally add 3–4 small pieces of fresh mango alongside. The sorbet should look like sunshine in a bowl. This is your best seller to customers who cannot eat dairy.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end gelato flavours page -->
+
+<!-- PAGE: MAIN DESSERT PLATES -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">Main Dessert Plates</div>
+    <div class="page-header-center">KitchenFounder Guide #45</div>
+    <div class="page-header-right">v7 2026 Edition</div>
+  </div>
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Main Dessert Plates</div>
+    <div class="section-divider-line"></div>
+  </div>
+  <p class="section-subtitle">Ten plated desserts showcasing the full range of southern Italian dolci tradition — from tableside affogato to layered Sicilian cassata.</p>
+
+  <!-- RECIPE 07: GELATO AFFOGATO -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 07 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Gelato Affogato</div>
+        <div class="recipe-name-it">Double ristretto poured tableside over house gelato — theatre on a plate</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$14.00</div>
+        <div class="recipe-cost">Food cost: $2.80 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        "Affogato" means drowned. The gelato is drowned in espresso — but the genius is that neither component fully wins. The hot coffee melts the gelato at the surface, creating a warm-cold, bitter-sweet emulsion in the bowl that changes with every spoonful as the customer eats it. This is the most beautiful dish on our menu and costs us almost nothing to make. The theatre is everything: pull the espresso tableside and pour it yourself.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per serving</h4>
+          <ul>
+            <li><span class="ing-name">House gelato (fior di latte or espresso)</span><span class="ing-qty">2 scoops (120 g)</span></li>
+            <li><span class="ing-name">Double ristretto (single origin, just pulled)</span><span class="ing-qty">60 ml (2 shots)</span></li>
+            <li><span class="ing-name">Small pirouette biscuit</span><span class="ing-qty">1 piece</span></li>
+            <li><span class="ing-name">Cocoa powder (for dusting)</span><span class="ing-qty">small pinch</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per serving, 2 minutes</h4>
+          <ol>
+            <li>Pre-chill a small ceramic tulip bowl in the freezer for at least 30 minutes before service.</li>
+            <li>Scoop two generous portions of gelato into the chilled bowl. Work quickly — the bowl must reach the table before the gelato starts to melt.</li>
+            <li>Carry the bowl and a freshly-pulled double ristretto to the table in separate vessels.</li>
+            <li>Present the gelato to the guest. Pour the hot ristretto directly over the gelato tableside. The hiss and steam are the dish's opening chord.</li>
+            <li>Dust lightly with cocoa powder. Place the pirouette biscuit at the edge of the bowl.</li>
+            <li>Instruct the guest: "Start immediately. The contrast lasts about 90 seconds."</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          The affogato is a live lesson in phase transitions. Hot espresso (93°C) hits cold gelato (-8°C) and creates an immediate thermal gradient. The fat globules in the gelato begin to melt from the outside, releasing the milk proteins that were holding the structure. The customer experiences this as a rapidly changing texture from firm-cold to cool-creamy to warm-liquid. The emulsification of melted gelato and espresso produces an extraordinarily smooth mouthfeel that neither component achieves alone.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Temperature control is everything. If the gelato is too warm when the coffee hits it, it collapses immediately and the guest gets soup. If the bowl is too warm, same result. Always use a chilled bowl (not just room-temp ceramic), and always pour coffee immediately upon table delivery. Brief your floor staff on the timing — the affogato waits for no one. Flavour choice: vanilla fior di latte gives the most contrast; espresso gelato gives the deepest coffee intensity.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The presentation is two pristine scoops in a chilled white tulip bowl, carried to the table with the espresso in a separate small pitcher. The pour is done by the server, not the kitchen — this is a service moment. The flourish of steam rising from cold gelato is the dish. Never pre-pour. Never assemble in the kitchen. The tableside theatre justifies the price point and creates a moment that customers photograph and share.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 08: SEMIFREDDO AL TORRONE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 08 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Semifreddo al Torrone</div>
+        <div class="recipe-name-it">Nougat semifreddo, Sicilian honey, orange zest, wafer</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$18.00</div>
+        <div class="recipe-cost">Food cost: $3.60 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Semifreddo is Italy's other frozen dessert — not churned, but frozen, lighter and more mousse-like than gelato. This version is built around torrone (Italian nougat) — a confection of honey, egg white, and almonds with roots in Arab-Sicilian culinary history. The semifreddo is rich with nougat, fragrant with orange zest, and finished with a thin ostia wafer on top. It is cut at the table with a hot knife for drama.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 loaf (8 portions)</h4>
+          <ul>
+            <li><span class="ing-name">Fresh egg yolks</span><span class="ing-qty">120 g (6 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Water (for sugar syrup)</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Fresh egg whites</span><span class="ing-qty">120 g (4 whites)</span></li>
+            <li><span class="ing-name">Thickened cream (35% fat)</span><span class="ing-qty">400 g</span></li>
+            <li><span class="ing-name">Torrone (Italian nougat, chopped)</span><span class="ing-qty">200 g</span></li>
+            <li><span class="ing-name">Sicilian orange blossom honey</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Orange zest (fresh, Navel orange)</span><span class="ing-qty">5 g (2 oranges)</span></li>
+            <li><span class="ing-name">Ostia wafer sheets</span><span class="ing-qty">2 sheets</span></li>
+            <li><span class="ing-name">Flaked almonds (toasted, for garnish)</span><span class="ing-qty">30 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Serves 8, prep 45 min, freeze 6 hrs</h4>
+          <ol>
+            <li>Make Italian meringue: cook sugar and water to 121°C (hard ball stage). Meanwhile whip egg whites to soft peak. Stream hot syrup into whites while machine is running. Whip to cool, stiff, glossy meringue.</li>
+            <li>Make pate a bombe: whip yolks over a double boiler with honey until pale, thick, and tripled in volume. Remove from heat, continue whipping until cool.</li>
+            <li>Whip cold cream to soft peaks — do not over-whip to stiff peaks as it will make the semifreddo grainy after freezing.</li>
+            <li>Fold the pate a bombe into the Italian meringue gently with a large rubber spatula, maintaining as much volume as possible.</li>
+            <li>Fold in whipped cream in two additions, cutting through the centre to avoid deflating.</li>
+            <li>Fold in chopped torrone and orange zest. The nougat pieces should be irregularly distributed.</li>
+            <li>Line a 10 x 20 cm loaf pan with plastic wrap, leaving overhang on all sides. Pour in the semifreddo mixture. Smooth the top.</li>
+            <li>Lay ostia wafer sheets on top, pressing gently to adhere. Fold plastic wrap over. Freeze for minimum 6 hours or overnight.</li>
+            <li>To serve: unmould onto a cutting board. Heat a knife in hot water and wipe dry. Cut slices 2.5 cm thick. Plate immediately.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Semifreddo achieves its creamy texture without churning through a combination of three foamed elements: Italian meringue (air in egg whites), pate a bombe (air in yolks), and whipped cream (air in fat). The resulting air content (overrun) is far higher than gelato — approximately 60–80%. This high air incorporation is what keeps semifreddo sliceable rather than hard at -18°C. The fat from cream and the sugar from nougat both contribute to freeze point depression.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The most common failure is using purchased torrone that is too hard — it shatters into jaw-cracking shards in the frozen semifreddo. Use a soft or medium-soft torrone (morbido). If your torrone is very firm, warm it briefly in an oven at 50°C for 5 minutes to soften before chopping. Cut into irregular pieces of 1–1.5 cm — too small and they disappear, too large and they impede clean slicing. Taste your torrone before using — sweetness levels vary enormously by brand.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve a 2.5 cm slice on a chilled white rectangular plate. The cut face should show beautiful marbling of white semifreddo and golden torrone pieces. Drizzle the plate with a thin line of Sicilian honey. Scatter toasted flaked almonds. Add a small sprig of fresh mint or a candied orange peel curl. The ostia wafer top gives a rustic crunch. Serve immediately — semifreddo softens quickly on a warm plate.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 09: CANNOLI SICILIANI -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 09 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Cannoli Siciliani</div>
+        <div class="recipe-name-it">Fried pastry shell, sheep's ricotta filling, candied orange, dark chocolate chips</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$16.00</div>
+        <div class="recipe-cost">Food cost: $2.90 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        There is one rule with cannoli: they must be filled to order. A pre-filled cannolo is a tragedy — the shell goes soft, the filling weeps, the whole point collapses. The shell must crack. The ricotta must be cold and dense. We use sheep's milk ricotta from a local Sicilian-style cheesemaker, drained overnight, mixed with a restrained hand. Two per serve. Filled tableside during quiet service, or batch-filled to order during rush. Never in advance.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per portion (2 cannoli)</h4>
+          <ul>
+            <li><span class="ing-name">Plain flour (00)</span><span class="ing-qty">200 g (batch)</span></li>
+            <li><span class="ing-name">Lard (or unsalted butter)</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">15 g</span></li>
+            <li><span class="ing-name">Marsala wine (dry)</span><span class="ing-qty">60 ml</span></li>
+            <li><span class="ing-name">Egg (whole)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">White wine vinegar</span><span class="ing-qty">5 ml</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">1 g</span></li>
+            <li><span class="ing-name">Sheep's milk ricotta (drained overnight)</span><span class="ing-qty">250 g per serve batch</span></li>
+            <li><span class="ing-name">Icing sugar</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Candied orange peel (chopped fine)</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Dark chocolate chips (70%)</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Cinnamon ground</span><span class="ing-qty">1 g</span></li>
+            <li><span class="ing-name">Sunflower oil (for deep frying)</span><span class="ing-qty">1 litre</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Shells: 1 hour. Filling: 15 min.</h4>
+          <ol>
+            <li>Make shell dough: combine flour, sugar, lard, salt, egg, Marsala, and vinegar. Knead 10 minutes to a smooth, firm dough. Wrap and rest 30 minutes minimum.</li>
+            <li>Roll dough on a pasta machine to setting 5 (approx. 2mm). Cut into 12 cm diameter rounds.</li>
+            <li>Wrap each round around a metal cannoli tube, sealing the overlap with egg white.</li>
+            <li>Heat oil to 175°C. Fry cannoli tubes in batches for 90 seconds, turning once, until deep golden brown. The shell should bubble and blister slightly.</li>
+            <li>Remove with tongs. Allow to cool 30 seconds before carefully twisting off the metal tube — hold the tube in a cloth to prevent burns.</li>
+            <li>Make filling: drain ricotta in a cheesecloth-lined sieve in the refrigerator overnight. Press firmly to remove maximum whey. Target: 180 g drained ricotta from 250 g fresh.</li>
+            <li>Sieve drained ricotta through a fine drum sieve to remove all graininess — this step is non-negotiable for a smooth filling.</li>
+            <li>Fold in icing sugar, cinnamon, half the orange peel, and half the chocolate chips. Do not over-mix. Refrigerate until use.</li>
+            <li>To order: pipe filling from both ends of the fried shell using a piping bag fitted with a plain 14mm nozzle. Dip each end in remaining orange peel and chocolate chips. Dust with icing sugar. Serve within 5 minutes of filling.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The Marsala wine and white wine vinegar in the dough serve distinct purposes. Marsala provides flavour compounds that survive frying and contribute the characteristic sweet-winey note. The vinegar's acidity inhibits gluten development, keeping the dough tender rather than tough. Lard (traditional) creates a shorter, more blistered texture than butter — the blisters are not a flaw, they are the correct aesthetic for authentic Sicilian cannoli.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The most catastrophic failure is wet ricotta filling — the cannolo goes soft in minutes and the filling slumps. The overnight drain in the refrigerator under weight is mandatory, not optional. After draining, your ricotta should be dense enough to hold a finger indent. If it is still wet, drain further or it will ruin the dish. Fresh sheep's milk ricotta drains better than cow's milk — source it if you can. Never use supermarket ricotta without draining.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Two cannoli diagonally on a rectangular slate or white plate. Both ends should overflow with filling and be visibly studded with orange peel and chocolate chips. Dust the shells generously with icing sugar from a shaker. Add a small orange blossom honey pool alongside for dipping. The cannoli must audibly crack when bitten — if they do not crack, the oil was not hot enough during frying. Serve immediately after filling.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 10: PANNA COTTA -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 10 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Panna Cotta</div>
+        <div class="recipe-name-it">Vanilla bean, strawberry compote, shortbread crumb</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$15.00</div>
+        <div class="recipe-cost">Food cost: $2.20 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF*</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Panna cotta is possibly the most abused dessert in the Italian canon. Most versions wobble like a door stopper — over-gelatinised, flavourless, an excuse to have a white thing on a plate. Ours trembles at the edge of collapse. The gelatin ratio is calibrated to the absolute minimum that will hold an unmoulded shape — a texture we call "just alive." The vanilla is two full Tahitian pods per litre. The strawberry compote is barely cooked, barely sweet.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 8 portions (150 ml each)</h4>
+          <ul>
+            <li><span class="ing-name">Full cream (35% fat)</span><span class="ing-qty">600 g</span></li>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">400 g</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">120 g</span></li>
+            <li><span class="ing-name">Tahitian vanilla beans (split, scraped)</span><span class="ing-qty">2 pods</span></li>
+            <li><span class="ing-name">Titanium-grade gelatine leaves</span><span class="ing-qty">7 g (3.5 sheets)</span></li>
+            <li><span class="ing-name">Strawberries (fresh, hulled)</span><span class="ing-qty">400 g</span></li>
+            <li><span class="ing-name">Caster sugar (for compote)</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Lemon juice (fresh)</span><span class="ing-qty">10 ml</span></li>
+            <li><span class="ing-name">Shortbread biscuits (crushed)</span><span class="ing-qty">80 g (contains gluten)</span></li>
+            <li><span class="ing-name">Unsalted butter (melted)</span><span class="ing-qty">25 g</span></li>
+            <li><span class="ing-name">Fresh strawberries, micro herbs (garnish)</span><span class="ing-qty">as needed</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Set time: 4–6 hours</h4>
+          <ol>
+            <li>Bloom gelatine sheets in cold water for 5 minutes until soft and pliable. Squeeze out excess water. Set aside.</li>
+            <li>Combine cream, milk, sugar, vanilla pods and seeds in a saucepan. Heat slowly over medium heat, stirring, to 80°C. Do not boil — boiling changes the texture of cream and can cause protein precipitation.</li>
+            <li>Remove from heat. Add bloomed gelatine immediately and stir until dissolved completely. Strain through a fine sieve to remove vanilla pods.</li>
+            <li>Pour into lightly greased dariole moulds (150 ml). Cool at room temperature for 15 minutes, then refrigerate for minimum 4 hours. Overnight is optimal.</li>
+            <li>Make strawberry compote: halve strawberries. Combine with sugar and lemon juice in a small saucepan. Heat to 85°C briefly, then remove from heat. The strawberries should be warm and slightly softened but hold their shape. Cool completely.</li>
+            <li>Make shortbread crumb: combine crushed shortbread with melted butter. Press lightly on a tray and bake at 160°C for 8 minutes until set. Cool and break into crumbs.</li>
+            <li>To unmould: run a thin palette knife around the edge of each mould. Invert onto a chilled plate with a single confident flip. Do not bang repeatedly — this causes the panna cotta to break.</li>
+            <li>Dress with strawberry compote spooned alongside. Scatter shortbread crumb. Garnish with 1–2 fresh strawberry halves and micro herbs.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          Gelatine strength is measured in Bloom (50–300). Titanium-grade gelatine (220 Bloom) sets firmer per gram than standard bronze-grade gelatine (150 Bloom). This recipe is calibrated for titanium. If using bronze-grade, increase to 9 g. If using powdered gelatine, use the same weight but bloom in 5x its weight in cold water. The panna cotta should hold its unmoulded shape but visibly tremble when the plate is gently tapped — like a firm jelly, not a rubber ball.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The most common failure: panna cotta that will not unmould cleanly. This is almost always caused by insufficient greasing of the moulds. Spray with a very thin film of neutral oil (or use a brush dipped in neutral oil). The oil film must be absolutely minimal — too much and the surface of the panna cotta looks greasy. Wipe excess with a paper towel and just leave the thinnest possible film. The clean unmoulded surface should be smooth and pearlescent.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Unmould onto a chilled flat white plate. The panna cotta should stand about 5 cm tall, slightly translucent at the edges, cream-white in the centre. Spoon the strawberry compote in a casual semicircle to one side — not all around, as symmetry looks institutional. Scatter shortbread crumb on the compote. One fresh strawberry half angled against the panna cotta base. Micro herbs (lemon verbena, or a mint leaf) on top. Serve chilled.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 11: TIRAMISU CLASSICO -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 11 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Tiramisu Classico</div>
+        <div class="recipe-name-it">Savoiardi, mascarpone, double espresso, Marsala wine</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$17.00</div>
+        <div class="recipe-cost">Food cost: $3.10 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        We serve tiramisu classico — no variations, no deconstructions, no liquid nitrogen theatrics. The version that exists because it is perfect. Savoiardi (ladyfingers) soaked — not drowned — in double espresso with dry Marsala. Mascarpone cream made with egg yolks, egg whites, and no gelatine. Cocoa dusted generously. It is set overnight and cut to order. If you want to understand Italian dessert philosophy, this is it: restraint, technique, and patience.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 tray (12 portions)</h4>
+          <ul>
+            <li><span class="ing-name">Mascarpone cheese (250g, room temp)</span><span class="ing-qty">500 g</span></li>
+            <li><span class="ing-name">Fresh egg yolks</span><span class="ing-qty">120 g (6 yolks)</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">130 g</span></li>
+            <li><span class="ing-name">Fresh egg whites</span><span class="ing-qty">150 g (5 whites)</span></li>
+            <li><span class="ing-name">Savoiardi (Italian ladyfinger biscuits)</span><span class="ing-qty">300 g (approx 24)</span></li>
+            <li><span class="ing-name">Double espresso (freshly brewed, cooled)</span><span class="ing-qty">400 ml</span></li>
+            <li><span class="ing-name">Dry Marsala wine</span><span class="ing-qty">80 ml</span></li>
+            <li><span class="ing-name">Dutch-process cocoa powder (unsweetened)</span><span class="ing-qty">30 g (for dusting)</span></li>
+            <li><span class="ing-name">Dark chocolate (70%, for garnish)</span><span class="ing-qty">20 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Prep 40 min, set overnight</h4>
+          <ol>
+            <li>Brew espresso and allow to cool to room temperature. Mix with Marsala. Set aside.</li>
+            <li>Make pate a bombe: whisk egg yolks and 80 g of the sugar in a bowl over a simmering double boiler. Whisk vigorously until the mixture reaches 60°C (kills raw egg risk), then whip off heat until cool, pale, and tripled in volume.</li>
+            <li>Beat mascarpone in a stand mixer until smooth and lump-free. Fold the yolk mixture into mascarpone gently with a rubber spatula until just combined.</li>
+            <li>In a clean bowl, whip egg whites to soft peaks. Add remaining 50 g sugar gradually and whip to firm, glossy Italian meringue.</li>
+            <li>Fold meringue into mascarpone mixture in three additions using a large spatula. Cutting strokes — do not stir or deflate.</li>
+            <li>Quickly dip each savoiardo into the espresso-Marsala mixture — one dip on each side, no more than 2 seconds total. The biscuit should be damp throughout but not so wet it disintegrates.</li>
+            <li>Layer soaked savoiardi in a deep tray. Cover with half the mascarpone cream. Dust generously with cocoa through a fine sieve.</li>
+            <li>Add second layer of soaked savoiardi. Cover with remaining cream. Smooth top. Cover tightly with plastic wrap. Refrigerate overnight — minimum 8 hours.</li>
+            <li>To serve: dust fresh cocoa over the top tableside. Cut portions with a warm, dry knife. Add dark chocolate shavings on each plate.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The pate a bombe over a double boiler (rather than just whisking cold) is a food safety and texture step. Raw egg yolks at 60°C are pasteurised while simultaneously creating a cooked-sugar coating on the yolk proteins that gives the mascarpone cream its characteristic stability without gelatine. This is the technical difference between a tiramisu that holds its structure when cut and one that slumps. Do not skip the temperature verification.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The "dipping" step is where most tiramisu fails. Too brief: the centre of the biscuit stays dry and powdery — you feel it in the finished dish as a hard core. Too long: the biscuit becomes a soggy mush that collapses the layers. The correct result is a savoiardo that is uniformly damp — flexible, not breaking — all the way through. Test your espresso temperature and biscuit brand before service. Different brands absorb at different rates.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Cut a 7 x 4 cm rectangular portion. Use a warm dry palette knife to transfer cleanly to a chilled plate. Dust the top of the portion with a fine layer of Dutch cocoa from 20 cm height for even coverage. Place one dark chocolate curl alongside. Add a small espresso-dipped savoiardo piece as a visual cue. The cross-section should show clean alternating layers of cream and biscuit — this requires the overnight set. Never serve the same day it is made.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 12: BOMBOLONI -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 12 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Bomboloni</div>
+        <div class="recipe-name-it">Fried Italian doughnuts, dark chocolate filling, vanilla custard, no Nutella</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$15.00</div>
+        <div class="recipe-cost">Food cost: $2.50 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Bomboloni are the Tuscan doughnut — softer and more pillowy than their Neapolitan cousins, fried in a light-coloured crust. Our filling is an intensely dark 70% chocolate cremeux — not the hazelnut spread that most cafes use as a shortcut. Alongside: classic vanilla bean custard. Two bomboloni per serve, warm, rolled in vanilla sugar. The custard is served in a small jug for dipping or pouring tableside. This is uncomplicated joy.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 12 bomboloni</h4>
+          <ul>
+            <li><span class="ing-name">Strong bread flour (12% protein)</span><span class="ing-qty">300 g</span></li>
+            <li><span class="ing-name">Whole milk (warm, 38°C)</span><span class="ing-qty">120 ml</span></li>
+            <li><span class="ing-name">Fresh yeast (or 7g dried)</span><span class="ing-qty">15 g</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Unsalted butter (softened)</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Eggs (whole)</span><span class="ing-qty">2</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">5 g</span></li>
+            <li><span class="ing-name">Sunflower oil (for frying)</span><span class="ing-qty">1 litre</span></li>
+            <li><span class="ing-name">Vanilla sugar (for rolling)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Dark couverture 70%</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Thickened cream 35% (for cremeux)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Unsalted butter (for cremeux)</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Vanilla bean custard (see method)</span><span class="ing-qty">200 ml</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Dough: 2.5 hrs. Fry to order.</h4>
+          <ol>
+            <li>Activate yeast in warm milk with 5 g of the sugar for 10 minutes until foamy.</li>
+            <li>In a stand mixer with dough hook: combine flour, remaining sugar, and salt. Add yeast mixture and eggs. Knead on medium for 5 minutes.</li>
+            <li>Add softened butter one tablespoon at a time with machine running. Knead further 8 minutes to a smooth, elastic, slightly tacky dough.</li>
+            <li>Bulk ferment at room temperature for 1.5 hours, covered, until doubled.</li>
+            <li>Punch down. Divide into 60 g portions. Roll into smooth balls. Proof on a lined tray, covered, for 45–60 minutes until puffy.</li>
+            <li>Make chocolate cremeux: boil cream, pour over chopped couverture. Wait 2 minutes. Stir from the centre outward until smooth. Add butter and emulsify. Cool to piping consistency.</li>
+            <li>Make vanilla custard: heat 200 ml milk with half a vanilla pod to 75°C. Whisk 2 egg yolks with 30 g sugar and 15 g cornflour. Temper, return to heat, cook until thickened. Cover surface with plastic. Cool.</li>
+            <li>Fry bomboloni at 170°C for 2.5 minutes per side until deep golden. Do not crowd the pan. Drain briefly on paper.</li>
+            <li>Roll immediately in vanilla sugar while hot. Fill with chocolate cremeux using a 6mm round nozzle inserted into the side. Serve two per portion with warm custard alongside in a small jug.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The enriched dough for bomboloni is technically similar to brioche — high butter and egg content creates a tender, closed crumb structure. The strong bread flour (12%+ protein) develops sufficient gluten to trap gas during fermentation, giving the characteristic light interior. Frying temperature is critical: 170°C creates a pale golden crust with maximum interior steam — the bombolone puffs fully. Above 180°C: dark crust before the interior is cooked. Below 160°C: oily, dense result.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Fill bomboloni within 2 minutes of frying — the residual heat keeps the interior structure pliable, making filling easier. If you wait for them to cool, the crumb firms and the filling struggles to distribute through the interior. Use gentle pressure on the piping bag — you should feel slight resistance as the cremeux fills the cavity, then a moment of give when it is full. Overfilling causes the bombolone to burst at the seam. Scale is helpful: a filled bombolone should weigh approximately 85 g total.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Two bomboloni on a wide, shallow warm ceramic plate. Both should be uniformly golden, still faintly warm, generously coated in vanilla sugar. Place a small ceramic jug of warm vanilla custard alongside for dipping or pouring. A light dusting of cocoa powder across the bomboloni surface adds contrast. The moment the guest cuts into the bombolone and the chocolate cremeux flows out — that is the money shot. Serve immediately after frying.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 13: SFOGLIATELLA -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 13 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Sfogliatella</div>
+        <div class="recipe-name-it">Flaky layered pastry shell, ricotta semolino filling, cinnamon</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$16.00</div>
+        <div class="recipe-cost">Food cost: $2.80 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The sfogliatella is one of the great technical achievements of the Italian pastry tradition. The riccia (curly) version requires dozens of tissue-thin layers of dough separated by lard — when baked, they shatter explosively into shards. There is a legend that the nuns of a Neapolitan convent invented it to avoid wasting a semolino porridge. Whether true or not, the result is a pastry of improbable complexity from humble ingredients. We make the riccia version only. The frolla is easier but not the same thing.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 8 pieces</h4>
+          <ul>
+            <li><span class="ing-name">Strong flour (00, 12% protein)</span><span class="ing-qty">500 g</span></li>
+            <li><span class="ing-name">Water (cold)</span><span class="ing-qty">175 ml</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">5 g</span></li>
+            <li><span class="ing-name">Honey</span><span class="ing-qty">10 g</span></li>
+            <li><span class="ing-name">Lard (for lamination)</span><span class="ing-qty">250 g (softened)</span></li>
+            <li><span class="ing-name">Sheep's milk ricotta (drained)</span><span class="ing-qty">250 g</span></li>
+            <li><span class="ing-name">Fine semolino (cooked, cooled)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">80 g</span></li>
+            <li><span class="ing-name">Candied orange peel (fine dice)</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Whole eggs (for filling)</span><span class="ing-qty">2</span></li>
+            <li><span class="ing-name">Ground cinnamon</span><span class="ing-qty">3 g</span></li>
+            <li><span class="ing-name">Icing sugar (for dusting)</span><span class="ing-qty">30 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Prep 2 hrs, rest overnight, bake 25 min</h4>
+          <ol>
+            <li>Make pasta: combine flour, water, salt, honey. Knead 10 minutes until very smooth and elastic. Wrap tightly. Rest 1 hour at room temperature — the gluten needs to relax fully for the thin rolling to follow.</li>
+            <li>Divide dough into 4 portions. Use a pasta machine to roll each to the thinnest setting (setting 9). The sheets should be almost transparent.</li>
+            <li>Lay one sheet on the bench. Spread a thin, even layer of softened lard over the entire surface using an offset palette knife. Lay the second sheet on top, spread with lard again. Repeat with all sheets to build a four-layer stack.</li>
+            <li>Roll the lard-layered stack into a tight log, working from the short end. Refrigerate the log overnight — this is essential for the lard to firm and the layers to set.</li>
+            <li>Make filling: cook semolino in 200 ml water with a pinch of salt until thick porridge. Cool completely. Combine with drained ricotta, sugar, eggs, cinnamon, and candied orange. Mix until homogenous.</li>
+            <li>Remove the dough log from refrigerator. Slice into 1 cm rounds. Cup each round in your palm and use your thumb to push the centre out, forming a cone shape. Rotate as you thin the edges — this is a skill that takes practice.</li>
+            <li>Fill each cone with 2 tablespoons of ricotta filling. Pinch the open edge closed firmly.</li>
+            <li>Bake at 200°C for 22–25 minutes until deeply golden, shatteringly flaky on the outside. Dust with icing sugar immediately after removal from oven.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The sfogliatella's shattered layers are the result of steam-lamination during baking. Water trapped between the lard-coated dough layers vaporises at 100°C, forcing the layers apart. The lard (high melting point, plastic texture) coats each layer preventing them from rebonding as they separate. Butter cannot replicate this effect — it has too much water content and too low a melting point. Lard is not negotiable for authentic sfogliatella. The overnight refrigeration ensures the lard is firm enough to keep the roll's shape during slicing.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The shaping step — pushing the centre of the slice into a cone — is the most technically demanding part. Work with cold dough from the refrigerator. Warm dough tears instead of stretching. Keep a bowl of cold water nearby to cool your hands if the heat from your palms begins to melt the lard. If a cone tears, press the tear closed firmly and bake anyway — small tears in sfogliatella are not visible after baking as the layers puff and hide imperfections.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve two sfogliatelle on a plain white plate, tips pointing toward the guest. Dust generously with icing sugar while still warm — sugar that melts into the hot pastry looks better than sugar dust that slides off a cold surface. Add a small espresso sauce or orange blossom honey pool. Sfogliatella is best served hot — serve within 10 minutes of leaving the oven. Brief the floor: this dish cannot be held and re-served.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 14: ZEPPOLE DI SAN GIUSEPPE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 14 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Zeppole di San Giuseppe</div>
+        <div class="recipe-name-it">Choux pastry ring, crème pâtissière, amarena cherry</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$16.00</div>
+        <div class="recipe-cost">Food cost: $2.70 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Made traditionally on the feast of San Giuseppe (March 19th) — the Neapolitan Father's Day. A ring of choux pastry, baked or fried, piped lavishly with crème pâtissière, crowned with an amarena cherry in its dark syrup. We bake ours for a lighter result, though the fried version is equally magnificent. The amarena cherry is non-negotiable: that bitter-sweet intensity against the vanilla cream is the entire logic of the dessert.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 8 portions</h4>
+          <ul>
+            <li><span class="ing-name">Water</span><span class="ing-qty">200 ml</span></li>
+            <li><span class="ing-name">Unsalted butter</span><span class="ing-qty">80 g</span></li>
+            <li><span class="ing-name">Plain flour (sifted)</span><span class="ing-qty">120 g</span></li>
+            <li><span class="ing-name">Whole eggs (room temperature)</span><span class="ing-qty">4 (approx 200 g)</span></li>
+            <li><span class="ing-name">Caster sugar (for dough)</span><span class="ing-qty">5 g</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">3 g</span></li>
+            <li><span class="ing-name">Whole milk (for creme pat)</span><span class="ing-qty">500 ml</span></li>
+            <li><span class="ing-name">Egg yolks (for creme pat)</span><span class="ing-qty">4</span></li>
+            <li><span class="ing-name">Caster sugar (for creme pat)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Cornflour</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Vanilla bean (split)</span><span class="ing-qty">1 pod</span></li>
+            <li><span class="ing-name">Unsalted butter (for creme pat)</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Amarena cherries in syrup</span><span class="ing-qty">16 cherries + syrup</span></li>
+            <li><span class="ing-name">Icing sugar (to finish)</span><span class="ing-qty">20 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Prep 1 hr, assemble to order</h4>
+          <ol>
+            <li>Make choux: bring water, butter, sugar, and salt to a full boil in a heavy saucepan. Add flour all at once. Stir vigorously with a wooden spoon — the dough will come together into a mass. Cook over medium heat for 2 minutes, stirring constantly, until the dough pulls away cleanly from the pan sides.</li>
+            <li>Transfer dough to stand mixer. Beat on medium with paddle attachment for 1 minute to cool slightly. Add eggs one at a time, incorporating fully before the next. The finished dough should fall from the beater in a slow, thick ribbon.</li>
+            <li>Transfer to a piping bag fitted with a large star nozzle (1.5 cm). Pipe rings, approx. 8 cm diameter, onto parchment-lined trays. Double-pipe for height.</li>
+            <li>Bake at 200°C (no fan) for 15 minutes, then reduce to 170°C for a further 15 minutes. Do not open the oven during first 15 minutes — collapse risk is high.</li>
+            <li>Cool completely on a wire rack. Slice each ring horizontally through the centre.</li>
+            <li>Make crème pâtissière: heat milk with vanilla to 80°C. Whisk yolks, sugar, and cornflour until pale. Temper hot milk in. Return to heat, cook whisking constantly until thick and boiling (starch must cook out fully). Remove from heat, add butter, stir to emulsify. Cover surface with plastic wrap. Refrigerate until cold.</li>
+            <li>Beat cold crème pâtissière until smooth. Transfer to piping bag with a large star nozzle.</li>
+            <li>Assembly: pipe generous swirls of crème pâtissière onto the bottom half of each ring. Replace the top. Pipe a further flourish of cream on top. Crown with 2 amarena cherries, drizzle with cherry syrup. Dust with icing sugar.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The panade stage (cooking the dough in the pan after adding flour) is critical — it gelatinises the starch and drives off excess water, creating a structure that can absorb a large quantity of eggs without becoming runny. Under-cooked panade leads to wet choux that will not hold its shape or puff properly. The dough is adequately dried when it no longer sticks to the pan and a thin film coats the base. This takes precisely 2 minutes of active stirring.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Egg quantity varies by dough moisture — use 3 eggs, then check consistency before adding the 4th. The correct dough consistency is described as "the letter V" — when a spatula is dipped and lifted, the dough should fall slowly in a V-shaped stream and the tip should fold back. If the dough is too stiff after 3 eggs, add the 4th beaten egg gradually. Too wet and the rings will spread flat. Too stiff and they will crack rather than puff. Precision beats recipe adherence here.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve on a round white plate on a lace paper doily (traditional). The assembled zeppola should be impressive in height — the piped cream should create drama. Two large amarena cherries in the cream crown, their dark syrup running down the cream spirals. A dusting of icing sugar. Serve chilled (crème pâtissière must be cold at service). The contrast of baked choux and cold cream is the defining textural experience.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 15: GRANITA CON BRIOCHE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 15 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Granita con Brioche</div>
+        <div class="recipe-name-it">Sicilian almond granita, toasted brioche bun, Chantilly cream</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$14.00</div>
+        <div class="recipe-cost">Food cost: $2.40 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">DF*</span>
+          <span class="tag">VG*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        In Sicily, granita con brioche is not a dessert — it is breakfast. You dip the split brioche into the granita and eat the mixture together. The almond granita of Messina and Catania is made with acqua di mandorla — almond milk drawn from whole blanched almonds with a stone mortar. It is the most ancient taste I know. We serve it with a house brioche bun, split and toasted, and freshly whipped Chantilly cream. The cream is optional — but deeply advisable.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per portion</h4>
+          <ul>
+            <li><span class="ing-name">Raw almonds (blanched)</span><span class="ing-qty">200 g (for almond milk)</span></li>
+            <li><span class="ing-name">Cold filtered water</span><span class="ing-qty">500 ml</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">80 g</span></li>
+            <li><span class="ing-name">Bitter almond extract</span><span class="ing-qty">2–3 drops (careful — powerful)</span></li>
+            <li><span class="ing-name">Sea salt</span><span class="ing-qty">0.5 g</span></li>
+            <li><span class="ing-name">Brioche bun (house made, see note)</span><span class="ing-qty">1 per serve</span></li>
+            <li><span class="ing-name">Thickened cream 35% (for Chantilly)</span><span class="ing-qty">100 ml</span></li>
+            <li><span class="ing-name">Icing sugar (for Chantilly)</span><span class="ing-qty">10 g</span></li>
+            <li><span class="ing-name">Vanilla bean seeds (for Chantilly)</span><span class="ing-qty">quarter pod</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Granita: start 6 hrs ahead</h4>
+          <ol>
+            <li>Blanch almonds: pour boiling water over almonds, stand 2 minutes, drain, and slip off skins. The white inner nut is the raw material.</li>
+            <li>Blend blanched almonds with cold water in a high-powered blender for 3–4 minutes until completely smooth. Strain through a fine muslin cloth, squeezing firmly to extract maximum milk. Discard the almond pulp (or reserve for biscuits).</li>
+            <li>Stir sugar into almond milk until fully dissolved. Add bitter almond extract drop by drop — taste after each drop. It should enhance the almond flavour without tasting artificial. Add sea salt.</li>
+            <li>Pour into a wide, shallow metal tray. Freeze flat.</li>
+            <li>After 45 minutes, use a fork to scrape the edges (which freeze first) toward the centre. Return to freezer. Repeat every 30–40 minutes, 5–6 times total, until the granita is a uniform mass of fine crystals. No blender — no machine — this is manual crystallisation.</li>
+            <li>Make Chantilly: whip cold cream with icing sugar and vanilla seeds to soft, billowing peaks. Do not over-whip. Refrigerate until service.</li>
+            <li>To serve: split and briefly toast the brioche bun cut-side down in a hot pan with a small amount of butter until golden. Serve warm.</li>
+            <li>Place a generous mound of granita in a chilled ceramic cup. Serve alongside the warm brioche and Chantilly in a small bowl or pipe directly onto the brioche half.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Granita Science</h5>
+          Unlike sorbet, granita intentionally develops large ice crystals — this is the defining texture. The scraping technique manually breaks the growing ice matrix into fragments before they form the large interlocking crystals of a solid block of ice. The result is icy, light, and refreshing rather than smooth. Almond milk has very low dissolved solids compared to a sugar syrup, meaning it freezes more readily — the first scrape should happen earlier (40–45 min) than for a fruit-based granita.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Bitter almond extract is extraordinarily powerful — 2 drops is genuinely sufficient for 500 ml of liquid. Add it drop by drop and taste between drops. Too much produces a cough-syrup medicinal quality that cannot be corrected. The authentic Sicilian almond flavour is subtle and floral, not aggressive. Also: use a metal tray, not glass or plastic — metal conducts cold more efficiently and freezes the edges faster, giving better scraping results.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The granita goes in a pre-frozen ceramic cup (store cups in the freezer). The brioche arrives warm, split, toasted golden. The Chantilly is piled generously on top of the brioche half or piped alongside. The temperature contrast — icy granita, warm bread, room-temp cream — is the Sicilian morning in a serving. A final dusting of very finely ground almonds over the granita is an optional traditional touch. Serve the components separately so the guest can combine them at their own pace.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 16: CASSATA SICILIANA -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 16 of 28 — Main Dessert Plates</div>
+        <div class="recipe-name">Cassata Siciliana</div>
+        <div class="recipe-name-it">Pan di spagna, sweetened ricotta, candied fruit, green icing — marzipan-free version</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$19.00</div>
+        <div class="recipe-cost">Food cost: $3.80 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The cassata is the most ornate dessert in Sicilian tradition — a monument of sugar work that reflects the island's layered culinary history: Arab candied fruits and sugar work, Norman sponge technique, Baroque decorative excess. Our version omits the marzipan shell (which contains almonds) to serve nut-allergy guests, using a tinted white chocolate coating instead. The flavour is unchanged. The drama is preserved. This is a celebration cake made and sold by the slice.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 1 x 20 cm cake (10 slices)</h4>
+          <ul>
+            <li><span class="ing-name">Eggs (for pan di spagna)</span><span class="ing-qty">4</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">120 g</span></li>
+            <li><span class="ing-name">Plain flour (00, sifted)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Cornflour</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Sheep's milk ricotta (drained overnight)</span><span class="ing-qty">600 g</span></li>
+            <li><span class="ing-name">Icing sugar</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Candied fruit mix (citron, orange, green)</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Dark chocolate chips (70%)</span><span class="ing-qty">80 g</span></li>
+            <li><span class="ing-name">White couverture (for NF coating)</span><span class="ing-qty">300 g</span></li>
+            <li><span class="ing-name">Fat-soluble green food colour</span><span class="ing-qty">2–3 drops</span></li>
+            <li><span class="ing-name">Rum or Marsala (for soaking sponge)</span><span class="ing-qty">60 ml</span></li>
+            <li><span class="ing-name">Water (for syrup)</span><span class="ing-qty">100 ml</span></li>
+            <li><span class="ing-name">Caster sugar (for syrup)</span><span class="ing-qty">80 g</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Build over 2 days</h4>
+          <ol>
+            <li>Make pan di spagna: whisk eggs and sugar in a double boiler to 40°C. Transfer to stand mixer and whip 8 minutes to thick, pale ribbon. Fold in sifted flour and cornflour in 3 additions. Pour into a greased, lined 20 cm springform pan. Bake at 170°C for 28 minutes. Cool completely.</li>
+            <li>Make soaking syrup: dissolve sugar in water over heat. Cool. Add rum or Marsala.</li>
+            <li>Prepare ricotta filling: pass drained ricotta through a drum sieve until silky smooth. Fold in icing sugar, half the candied fruit, and all the chocolate chips. Taste — should be very sweet and rich.</li>
+            <li>Slice the cooled pan di spagna horizontally into 3 layers. Line the springform base and sides with plastic wrap.</li>
+            <li>Layer: sponge base, brush generously with soaking syrup. Spread half the ricotta filling 2 cm thick. Layer of sponge, soak again, remaining ricotta, top sponge layer, soak again. Press gently. Wrap and refrigerate overnight.</li>
+            <li>Unmould the chilled cassata onto a clean board. Trim edges if uneven.</li>
+            <li>Melt white couverture. Add fat-soluble green colour drop by drop, stirring to achieve the traditional Sicilian green. Pour over the top of the cassata in one smooth motion to coat the entire surface and sides — let it set at room temperature.</li>
+            <li>Once set, arrange remaining candied fruit in a decorative pattern on top. Refrigerate until service. Slice with a warm, dry knife to order.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The traditional marzipan collar for cassata requires pistachios (or almonds) — both are tree nuts and excluded in our NF version. White couverture tinted green is texturally different from marzipan (harder, less chewy) but achieves the same visual effect and the flavour of white chocolate complements the ricotta far better than marzipan in any case. Using fat-soluble green colour (not water-based) is essential — water-based colours cause the couverture to seize immediately.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The cassata must be built cold and stored cold throughout. Ricotta filling at room temperature is too soft to hold its structure. After the overnight refrigeration, the cassata should be firm enough to cut cleanly with a warm knife. If the ricotta is still weeping liquid after draining (you can see it in the filling), your drain time was insufficient. Well-drained ricotta holds a defined shape when pressed with a finger. This is the technical foundation of the entire recipe.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          A wedge of 3 cm at the tip, cut cleanly to reveal the cross-section of sponge and ricotta layers. The vivid green couverture coating on top is the visual signature — it should be intact and glossy. Present the candied fruit arrangement on the top face of the slice facing the guest. Add a small amarena cherry alongside and a dust of icing sugar. Serve chilled. Describe the history briefly to the guest — this dish has a 1,000-year story worth sharing.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main dessert plates page -->
+<!-- PART 3: SHARING PLATES AND DRINKS -->
+
+<!-- PAGE: SHARING PLATES -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">Sharing Plates</div>
+    <div class="page-header-center">KitchenFounder Guide #45</div>
+    <div class="page-header-right">v7 2026 Edition</div>
+  </div>
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Sharing Plates — For the Table</div>
+    <div class="section-divider-line"></div>
+  </div>
+  <p class="section-subtitle">Four communal dessert experiences designed for groups of 2–4. The gelato flight is our signature arrival plate; the dessert platter is our farewell.</p>
+
+  <!-- RECIPE 17: GELATO FLIGHT -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 17 of 28 — Sharing Plates</div>
+        <div class="recipe-name">Gelato Flight</div>
+        <div class="recipe-name-it">5 scoops, seasonal flavours, waffle cone pieces, house honeycomb</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$28.00</div>
+        <div class="recipe-cost">Food cost: $5.50 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The gelato flight is the best way to understand what we do. Five scoops arranged on a cold marble slab — our five signature flavours, or the current seasonal selection, each labelled with a small handwritten card. Waffle cone fragments for scooping. House honeycomb for drizzling. The flight is designed as a conversation piece: the ordering, the deliberation over flavours, the sharing. We suggest moving from lightest (sorbet) to richest (pistachio or hazelnut) for maximum flavour progression.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per flight (serves 2–3)</h4>
+          <ul>
+            <li><span class="ing-name">Stracciatella gelato (R01)</span><span class="ing-qty">80 g (1 scoop)</span></li>
+            <li><span class="ing-name">Pistachio gelato (R02)</span><span class="ing-qty">80 g (1 scoop)</span></li>
+            <li><span class="ing-name">Salted Caramel gelato (R03)</span><span class="ing-qty">80 g (1 scoop)</span></li>
+            <li><span class="ing-name">Espresso gelato (R04)</span><span class="ing-qty">80 g (1 scoop)</span></li>
+            <li><span class="ing-name">Mango Sorbet (R06)</span><span class="ing-qty">80 g (1 scoop)</span></li>
+            <li><span class="ing-name">Waffle cone (broken into large shards)</span><span class="ing-qty">1 cone</span></li>
+            <li><span class="ing-name">House honeycomb (see note)</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Fresh mint sprigs</span><span class="ing-qty">2–3 small</span></li>
+            <li><span class="ing-name">Flavour cards (handwritten or printed)</span><span class="ing-qty">5 cards</span></li>
+            <li><span class="ing-name">Cold marble slab or chilled slate</span><span class="ing-qty">1 (30 x 20 cm)</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Assembly: 5 minutes</h4>
+          <ol>
+            <li>Store the marble slab or slate in the blast freezer — retrieve just before plating. The cold surface extends the gelato's holding time significantly.</li>
+            <li>Set out five chilled ceramic cups, small glasses, or pre-portioned indentations on the slab. The cups should be pre-frozen for 30 minutes.</li>
+            <li>Scoop each gelato with a Parisienne paddle dipped in warm water between scoops. Work quickly from lightest-coloured to darkest to avoid cross-contamination of colour.</li>
+            <li>Arrange scoops in flavour-progression order on the slab: sorbet (palate cleanser) at one end, richest at the other.</li>
+            <li>Break waffle cone into irregular shards. Tuck 2–3 pieces alongside or between the scoops.</li>
+            <li>Break house honeycomb into irregular pieces (1–2 cm) and scatter across the slab.</li>
+            <li>Add small mint sprigs for freshness and colour contrast.</li>
+            <li>Place handwritten flavour cards in front of each scoop — this educates the guest and adds artisanal character.</li>
+            <li>Carry to the table immediately on a tray lined with a cloth napkin to prevent slab from sliding. Brief the guest on the suggested tasting order.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Service Temperature</h5>
+          Five scoops on one slab is a time-critical service. Each scoop loses 1°C of surface temperature per 30–45 seconds at room temperature. From plating to table must be under 3 minutes. The cold marble buys you 2–3 additional minutes through its thermal mass. Practice your scooping speed: a trained gelato server can place five clean quenelles in under 90 seconds. The scoop shape should be smooth with clean edges — a rough scoop signals a warm or dry paddle.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          House honeycomb recipe: dissolve 200 g sugar and 80 g glucose in 60 g water in a heavy saucepan. Cook without stirring to 150°C (hard crack). Off heat, add 1 tsp bicarbonate of soda, stir quickly — it will foam explosively. Pour immediately onto a greased baking tray. Do not touch. Cool completely. Break into pieces. Store in an airtight container with silica gel sachets — humidity is the enemy. Make fresh every 2 days.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The gelato flight is a visual statement about the quality of your product — five different colours and textures displayed openly. Each scoop should be pristine. The slab presentation signals artisan commitment. Handwritten flavour cards signal care. All of these elements together justify the price premium and create a shareable moment. Encourage the guest to photograph it before starting — the instagrammable quality drives word-of-mouth.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 18: ITALIAN DESSERT PLATTER -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 18 of 28 — Sharing Plates</div>
+        <div class="recipe-name">Italian Dessert Platter</div>
+        <div class="recipe-name-it">Cannoli + Tiramisu + Panna Cotta + Bomboloni — the full quartet</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$42.00</div>
+        <div class="recipe-cost">Food cost: $9.20 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Four of Italy's great desserts on one board — the full Italian dolci experience for the table. One cannolo (filled to order), a square of tiramisu, a petit panna cotta, and one warm bombolone with custard. Each component comes from the full recipes above. The platter is composed on a warm wood board lined with parchment, delivered with four dessert spoons and small forks. It is designed for groups of 3–4 at the end of a meal, and invariably leads to dessert envy from the next table.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per platter (serves 3–4)</h4>
+          <ul>
+            <li><span class="ing-name">Cannolo (shell + filled, R09)</span><span class="ing-qty">2 pieces</span></li>
+            <li><span class="ing-name">Tiramisu Classico (R11, portioned)</span><span class="ing-qty">2 x 60 g squares</span></li>
+            <li><span class="ing-name">Panna Cotta (R10, petite unmoulded)</span><span class="ing-qty">2 x 80 g</span></li>
+            <li><span class="ing-name">Bomboloni (R12, freshly fried)</span><span class="ing-qty">2 pieces</span></li>
+            <li><span class="ing-name">Vanilla custard (warm, in small jug)</span><span class="ing-qty">80 ml</span></li>
+            <li><span class="ing-name">Strawberry compote (R10, side)</span><span class="ing-qty">40 g</span></li>
+            <li><span class="ing-name">Icing sugar and cocoa for dusting</span><span class="ing-qty">as needed</span></li>
+            <li><span class="ing-name">Fresh berries, micro herbs (garnish)</span><span class="ing-qty">small handful</span></li>
+            <li><span class="ing-name">Amarena cherries (garnish)</span><span class="ing-qty">4 cherries</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Assembly: 8 minutes</h4>
+          <ol>
+            <li>Fry the bomboloni first — they are the time-critical element. Fill while warm. Set on absorbent paper.</li>
+            <li>Cut tiramisu squares. Dust tops with fresh cocoa. Hold refrigerated.</li>
+            <li>Unmould two small panna cottas (use 80 ml petit fours moulds for the platter version — daintier than the full portion). Hold refrigerated.</li>
+            <li>Fill cannoli shells at the last possible moment before plating.</li>
+            <li>Arrange on a lined timber board (approx. 40 x 25 cm): corners for the four dessert types. No component should touch another. Use small ramekins for the custard and compote.</li>
+            <li>Dust the board around the components with alternating icing sugar and cocoa in a light decorative pattern.</li>
+            <li>Add fresh berries, mint, amarena cherries as colour accents.</li>
+            <li>Place warm custard jug prominently — it ties the cold components together and signals warmth on arrival.</li>
+            <li>Carry to table with four sets of cutlery. Describe each component briefly.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Timing</h5>
+          The platter has four components at different temperatures: cannolo (room temp shell, cold filling), tiramisu (refrigerator cold), panna cotta (refrigerator cold), and bombolone (warm, just fried). The sequencing of their preparation is critical. Start prep in this order: 1) Fry and fill bomboloni. 2) Unmould panna cotta. 3) Cut and dust tiramisu. 4) Fill cannoli. Board assembly follows immediately. Total assembly time target: 8 minutes from first step to service.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The board presentation is also a mise en place discipline: pre-mark your board with gentle chalk outlines for each dessert zone so assembly is consistent under pressure. A rushed platter with components crowded or touching looks amateur despite the quality of individual items. Consistency of board layout matters as much as recipe execution — a guest who orders the platter twice should receive the same visual experience both times. Photograph your ideal platter and post it in the kitchen as a reference.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The Italian Dessert Platter is a signature table moment. When you deliver it, slow down, describe each component, and suggest an order of eating: "Start with the cannolo while it is crispest. The panna cotta and tiramisu are patient — enjoy the bombolone while it is still warm." This brief narrative adds perceived value and turns a dessert into an education. Guests remember the story. Guests who remember the story return and recommend you to others.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 19: GELATO CAKE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 19 of 28 — Sharing Plates</div>
+        <div class="recipe-name">Gelato Cake — Torta Gelato</div>
+        <div class="recipe-name-it">16cm whole cake, 3 gelato layers, waffle cone crumb base, to share</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$65.00</div>
+        <div class="recipe-cost">Food cost: $14.00 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The torta gelato is our showpiece — a 16 cm cake of three distinct gelato layers, pressed and frozen in a springform mould, glazed with a thin shell of dark couverture, and decorated with piped gelato rosettes and waffle cone fragments. It serves 6–8 people and must be pre-ordered 24 hours in advance for walk-in service, or is available on the daily specials board when production permits. It is carried to the table whole, with the candles if it is someone's birthday, and cut tableside with a hot knife.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — 16 cm cake (serves 6–8)</h4>
+          <ul>
+            <li><span class="ing-name">Waffle cone biscuit crumb</span><span class="ing-qty">120 g (base)</span></li>
+            <li><span class="ing-name">Unsalted butter (melted)</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Stracciatella gelato (R01)</span><span class="ing-qty">350 g</span></li>
+            <li><span class="ing-name">Pistachio gelato (R02)</span><span class="ing-qty">350 g</span></li>
+            <li><span class="ing-name">Salted Caramel gelato (R03)</span><span class="ing-qty">350 g</span></li>
+            <li><span class="ing-name">Dark couverture 70% (for glaze)</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Neutral oil (for glaze)</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Waffle cone fragments (decoration)</span><span class="ing-qty">30 g</span></li>
+            <li><span class="ing-name">Chopped pistachios (decoration)</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Edible gold leaf or gold dust</span><span class="ing-qty">optional</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Build 24 hrs ahead</h4>
+          <ol>
+            <li>Make crumb base: combine waffle cone crumbs with melted butter. Press firmly into the base of a 16 cm springform pan lined with parchment. Freeze until solid (30 minutes).</li>
+            <li>Temper each gelato slightly (leave at room temperature for 3–5 minutes) until it is soft enough to spread but not melting.</li>
+            <li>First layer: salted caramel gelato. Spread onto the frozen crumb base 2.5–3 cm deep. Smooth with an offset spatula. Return to blast freezer for 30 minutes until solid.</li>
+            <li>Second layer: pistachio gelato. Spread on top of the solid caramel layer. Smooth. Freeze 30 minutes.</li>
+            <li>Third layer: stracciatella gelato. Spread on top. Smooth top perfectly flat. Freeze overnight — minimum 8 hours at -20°C.</li>
+            <li>Unmould: run a hot cloth around the outside of the springform ring. Release spring. Lift ring. Place cake on a wire rack over a tray.</li>
+            <li>Make mirror glaze: melt couverture and oil together to 35°C. Pour over the frozen cake top in one smooth motion. Tilt to coat the sides evenly. The cold cake will set the glaze in seconds.</li>
+            <li>Decorate immediately before glaze fully sets: press waffle cone fragments, chopped pistachios, and optional gold leaf into the glaze. Work quickly.</li>
+            <li>Return to freezer. Remove 5 minutes before service. Cut tableside with a warm knife dipped in hot water and wiped dry between cuts.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Gelato Science</h5>
+          Each gelato layer must be fully hardened at -20°C before adding the next — partial hardening leads to layer mixing and loss of the clean stripe effect in the cross-section. The glaze (couverture + oil) is an enrobing technique: the oil lowers the chocolate's viscosity and raises its flexibility when set, preventing the glaze from cracking when cut. The glaze also creates an airtight seal that prevents ice crystal formation on the cake's surface during storage.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The most impressive visual element of the gelato cake is the cross-section — three clean, distinct-coloured layers with sharp horizontal lines. This requires each layer to be perfectly flat before the next layer is applied. Use an offset spatula and a cake turntable. View from table height to check level. A spirit level on the tray before layering is not excessive. The 5 minutes of pre-service tempering is critical — gelato that is too cold will shatter when cut; too warm will slump.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Carry the whole cake to the table on a chilled board. Present it uncut — the decorated top (with gold, pistachios, waffle shards) is the opening statement. Cut tableside: dip a long knife in hot water, wipe clean, cut with one smooth downward press (no sawing). The three-layer cross-section is the reveal. Each slice on an individual plate with a small drizzle of salted caramel sauce (left over from R03 production). Birthday candles slot into the top decoration holes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 20: PETIT FOURS ITALIANI -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 20 of 28 — Sharing Plates</div>
+        <div class="recipe-name">Petit Fours Italiani</div>
+        <div class="recipe-name-it">8 pieces: amaretti, ricciarelli, tartufo al cioccolato, chocolate mendiants</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$24.00</div>
+        <div class="recipe-cost">Food cost: $5.50 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The classic Italian caffe dolci selection — served in a small wooden box lined with parchment. Two amaretti (almond-free version: sunflower seed amaretti, labelled NF), two ricciarelli (Sienese almond biscuits — contains almonds, labelled with nut warning), two tartufo al cioccolato (chocolate truffles rolled in cocoa), and two dark chocolate mendiants with candied fruit. This is what we place at the table with the bill, and the reason guests come back.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Yields 24 of each type</h4>
+          <ul>
+            <li><span class="ing-name">Almond meal (for ricciarelli)</span><span class="ing-qty">200 g</span></li>
+            <li><span class="ing-name">Caster sugar (ricciarelli)</span><span class="ing-qty">180 g</span></li>
+            <li><span class="ing-name">Egg white (ricciarelli)</span><span class="ing-qty">60 g</span></li>
+            <li><span class="ing-name">Orange zest (ricciarelli)</span><span class="ing-qty">5 g</span></li>
+            <li><span class="ing-name">Icing sugar (ricciarelli coating)</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Ground almonds or sunflower (amaretti)</span><span class="ing-qty">200 g</span></li>
+            <li><span class="ing-name">Caster sugar (amaretti)</span><span class="ing-qty">160 g</span></li>
+            <li><span class="ing-name">Egg whites (amaretti)</span><span class="ing-qty">2</span></li>
+            <li><span class="ing-name">Amaretto liqueur or almond extract</span><span class="ing-qty">5 ml</span></li>
+            <li><span class="ing-name">Dark couverture 70% (tartufo ganache)</span><span class="ing-qty">200 g</span></li>
+            <li><span class="ing-name">Cream 35% (tartufo)</span><span class="ing-qty">100 g</span></li>
+            <li><span class="ing-name">Unsalted butter (tartufo)</span><span class="ing-qty">20 g</span></li>
+            <li><span class="ing-name">Cocoa powder (tartufo coating)</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Dark couverture (mendiants)</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Candied fruit, dried berries (mendiants)</span><span class="ing-qty">assorted, 50 g total</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Make in batches, store up to 5 days</h4>
+          <ol>
+            <li>Ricciarelli: combine almond meal, sugar, egg white, and orange zest into a stiff paste. Roll into logs, cut into ovals 4 cm long. Roll in icing sugar generously. Place on parchment-lined tray. Rest uncovered for 2 hours to form a skin. Bake at 150°C for 14–16 minutes until just set with slight crack. Cool on tray.</li>
+            <li>Amaretti (NF version: use roasted sunflower seed meal): whip egg whites to stiff peaks. Fold in ground almonds/sunflower meal, sugar, and amaretto. Pipe small rounds (3 cm) onto parchment. Rest 30 minutes to skin. Bake 160°C for 12 minutes until golden and crisp outside, chewy inside.</li>
+            <li>Tartufo ganache: bring cream to a simmer. Pour over chopped couverture. Wait 2 minutes. Stir smooth. Add butter. Emulsify. Refrigerate until firm enough to roll (2–3 hours).</li>
+            <li>Portion ganache with a small melon baller (15 g each). Roll between palms into smooth balls. Refrigerate on a tray for 30 minutes. Roll in sifted cocoa powder twice to coat thoroughly.</li>
+            <li>Mendiants: temper dark couverture (melt to 50°C, cool to 27°C on marble, reheat to 31°C). Spoon small pools onto parchment, about 5 cm diameter. Immediately press 2–3 pieces of candied fruit or dried berry into each pool. Allow to set completely at room temperature.</li>
+            <li>Assemble petit fours box: 2 ricciarelli, 2 amaretti, 2 tartufo, 2 mendiants. Label ricciarelli and any nut-containing items clearly with allergen indicators. Serve in a small lined wooden box with gold tissue paper.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The tartufo ganache uses a 2:1 chocolate to cream ratio (200g chocolate : 100g cream) producing a firm ganache suitable for rolling into truffle shapes. This ratio gives a body that holds shape at room temperature for up to 20 minutes — adequate for service. Mendiants require properly tempered chocolate to set with a gloss and snap — un-tempered couverture will set with a dull surface and soft texture. Use a marble slab for hand tempering or a tempering machine for volume production.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Ricciarelli skin formation (the 2-hour rest before baking) is what creates the characteristic cracked surface. If you bake without resting, the biscuits spread rather than crack and the texture is wrong. The skin forms when the surface sugars absorb moisture from the egg white and dry out slightly. In a humid kitchen environment, this may take 3 hours. In a dry environment, 90 minutes may suffice. Touch the surface gently — it should feel dry and slightly firm, not tacky, before baking.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Present in a small 15 x 10 cm lined wooden box or a ceramic petit fours tray. Lay gold tissue paper as a base. Arrange items in two rows of four. Place a small allergen card in the box identifying which items contain nuts. The box itself becomes a keepsake — quality packaging communicates quality product. Pair with the Limoncello Service (R28) or the Cremino Hot Chocolate (R25) for the perfect end-of-evening ritual.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end sharing plates page -->
+
+<!-- PAGE: DRINKS -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">Drinks Menu</div>
+    <div class="page-header-center">KitchenFounder Guide #45</div>
+    <div class="page-header-right">v7 2026 Edition</div>
+  </div>
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Drinks — Caffe, Cocktails &amp; House Specials</div>
+    <div class="section-divider-line"></div>
+  </div>
+  <p class="section-subtitle">Eight drinks ranging from the perfectly pulled espresso to the Sicilian granita drink, dessert cocktails, and the closing limoncello ritual.</p>
+
+  <!-- RECIPE 21: ESPRESSO CLASSICO -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 21 of 28 — Drinks</div>
+        <div class="recipe-name">Espresso Classico</div>
+        <div class="recipe-name-it">Single origin, short extraction, 9-bar pressure, 25 seconds</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$5.00</div>
+        <div class="recipe-cost">Food cost: $0.55 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">DF</span>
+          <span class="tag">VG</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The espresso is our opening chord, our closing note, and everything in between. We use a single-origin Ethiopian Yirgacheffe, dark roast, pulled as a ristretto — 30 ml in 25 seconds at 9 bar, 93°C. The crema should be hazelnut-brown, dense, and persist for 90 seconds without breaking. We do not offer milk in the espresso. Milk is available separately. This cup is designed to be experienced as it was made: alone, small, and without interruption.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per espresso</h4>
+          <ul>
+            <li><span class="ing-name">Ground Ethiopian Yirgacheffe (dark roast)</span><span class="ing-qty">18 g (double basket)</span></li>
+            <li><span class="ing-name">Filtered water (93°C, pre-heated)</span><span class="ing-qty">30 ml yield</span></li>
+            <li><span class="ing-name">Extraction time</span><span class="ing-qty">25–28 seconds</span></li>
+            <li><span class="ing-name">Pressure</span><span class="ing-qty">9 bar (machine set)</span></li>
+            <li><span class="ing-name">Pre-heated espresso cup (ceramic, 90 ml)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">Small square of dark chocolate (service)</span><span class="ing-qty">1 piece</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per espresso</h4>
+          <ol>
+            <li>Pre-heat everything: cup, group head (run a blank shot), and spoon. Cold equipment steals temperature from the extraction.</li>
+            <li>Grind to order if possible. Freshly ground coffee degasses CO2 which creates the crema — pre-ground coffee is flat.</li>
+            <li>Dose 18 g into the double portafilter basket. Distribute evenly with a finger or distribution tool. Tamp with 15–20 kg pressure, perfectly level. The tamp level is critical — uneven tamp causes channelling.</li>
+            <li>Lock portafilter and pull shot immediately — do not allow the dry puck to absorb steam from the group head.</li>
+            <li>Target yield: 30 ml in 25–28 seconds. Crema should be caramel-brown, not pale (under-extracted) or dark-brown with a white hole (over-extracted).</li>
+            <li>Serve immediately. Do not allow to sit. Place on a small white saucer with a dark chocolate piece alongside.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Coffee Science</h5>
+          The crema in espresso is an emulsion of CO2 gas trapped in a matrix of emulsified coffee oils and melanoidin foam. It forms under 9-bar pressure during extraction. Single-origin Ethiopian Yirgacheffe at dark roast yields a crema with pronounced chocolate and blackcurrant notes, lower acidity than light roast, and the characteristic dense body required for affogato and the Shakerato. Light roast produces more acidity and fruit — interesting but wrong for this menu's direction.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The three most common espresso failures: 1) Sour = under-extracted (too coarse grind, too short time, too cool water). 2) Bitter = over-extracted (too fine grind, too long, too hot). 3) Weak = channelling (uneven tamp creating water pathways through the puck). Each failure has one specific correction. Keep a tasting log of each day's first pull and adjust the grinder by 0.5 notch increments. The environment — humidity, temperature, barometric pressure — affects grind size daily.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          White pre-heated ceramic espresso cup (90 ml, 60 ml fill). White saucer with a small teaspoon. One square of dark 70% chocolate on the saucer edge. No sugar on the table unless requested — our espresso at the correct extraction is balanced without sugar. Serve immediately upon pulling. A two-second gap between the shot completing and the cup reaching the customer is acceptable. Longer, and the crema begins to deteriorate. Speed and temperature are the two non-negotiables.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 22: AFFOGATO COCKTAIL -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 22 of 28 — Drinks</div>
+        <div class="recipe-name">Affogato Cocktail</div>
+        <div class="recipe-name-it">Kahlua, vanilla vodka, double espresso, fior di latte gelato</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$19.00</div>
+        <div class="recipe-cost">Food cost: $3.80 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The affogato's natural evolution: a shot of Kahlua and vanilla vodka poured over gelato, then the espresso layered on top. Three layers of temperature, alcohol, and coffee — drunk through the gelato at the bottom as it slowly melts into the spirits. It is a dessert, a digestif, and a nightcap simultaneously. Served in a wide, short whisky glass so the guest can see all three layers. Served without a straw — drink it directly from the glass as it evolves.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per cocktail</h4>
+          <ul>
+            <li><span class="ing-name">Fior di latte gelato (R01 base without chocolate)</span><span class="ing-qty">80 g (1 scoop)</span></li>
+            <li><span class="ing-name">Kahlua coffee liqueur</span><span class="ing-qty">30 ml</span></li>
+            <li><span class="ing-name">Vanilla vodka</span><span class="ing-qty">30 ml</span></li>
+            <li><span class="ing-name">Double espresso ristretto (freshly pulled)</span><span class="ing-qty">60 ml</span></li>
+            <li><span class="ing-name">Pre-frozen wide whisky glass (200 ml)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">Dark chocolate shaving (garnish)</span><span class="ing-qty">1 curl</span></li>
+            <li><span class="ing-name">Fine espresso powder (dusting)</span><span class="ing-qty">pinch</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per cocktail, 3 minutes</h4>
+          <ol>
+            <li>Chill whisky glass in the freezer for minimum 30 minutes before service.</li>
+            <li>Pull double espresso ristretto and allow to cool for exactly 90 seconds. Do not use freshly pulled hot espresso for the cocktail — it will melt the gelato too aggressively before the guest begins drinking.</li>
+            <li>Combine Kahlua and vanilla vodka in a small chilled measuring cup. Stir briefly — do not shake, as aeration affects the layering.</li>
+            <li>Place one scoop of fior di latte gelato in the chilled glass.</li>
+            <li>Pour the Kahlua-vodka mixture slowly over the back of a bar spoon held just above the gelato surface — this creates a gentle flow that pools around the gelato base.</li>
+            <li>Layer the cooled espresso on top by pouring very slowly over the bar spoon — the espresso should sit visibly as a darker layer on top of the spirits.</li>
+            <li>Grate one curl of dark chocolate on top. Dust with fine espresso powder.</li>
+            <li>Serve immediately without stirring. Instruct the guest: "Do not stir. Drink from the glass and let the layers blend naturally as the gelato melts."</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The layering effect works because of density differences: the Kahlua-vodka mixture (approx. 1.04 g/ml density) sinks below the espresso (approx. 1.00 g/ml). The gelato acts as a physical barrier between the two liquids until the guest begins drinking. As the gelato melts, the three liquids gradually blend into a single rich, creamy, coffee-spirits emulsion. The 90-second cooling of the espresso prevents thermal shock to the gelato that would collapse the structure too quickly.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          A common mistake: pulling the espresso and using it immediately while at 90°C. This vaporises alcohol from the spirits in the glass (Kahlua loses its sweetness quickly), collapses the gelato in seconds, and destroys the layered presentation. Allow the 90-second rest. A second common mistake: using a tall narrow glass. The whisky glass's wide base allows the gelato to sit with spirits around all sides, creating maximum gelato-liquid surface contact and the beautiful visual layering.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve on a small wooden board or directly on a cocktail napkin. No straw. The three-layer visual in the pre-frozen glass is the presentation: pale ivory gelato visible through the glass, amber spirits layer, dark espresso on top. The chocolate curl and espresso dust sit on the espresso layer. Serve to the guest personally — this is a bartender's drink, not a kitchen expedite item. The explanation of how it evolves as you drink is part of the experience.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 23: LIMONATA SICILIANA -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 23 of 28 — Drinks</div>
+        <div class="recipe-name">Limonata Siciliana</div>
+        <div class="recipe-name-it">House-made Amalfi lemon shrub, sparkling water, fresh mint</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$8.00</div>
+        <div class="recipe-cost">Food cost: $1.20 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">DF</span>
+          <span class="tag">VG</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        Made with Italian Amalfi lemons (or Eureka as seasonal availability dictates), cold-pressed and combined with a light sugar syrup, then topped with chilled Italian sparkling water. The key is not to dilute the lemon — the water ratio is conservative. The drink should taste unmistakably of lemon: sharp, aromatic, slightly bitter from the peel oils. Fresh mint is torn, not slapped, which bruises without pulverising. This is the palate-cleanser drink between gelato courses.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per glass (serves 1)</h4>
+          <ul>
+            <li><span class="ing-name">Fresh Amalfi/Eureka lemon juice</span><span class="ing-qty">60 ml (2 lemons)</span></li>
+            <li><span class="ing-name">Lemon zest (micro-grated)</span><span class="ing-qty">1 g</span></li>
+            <li><span class="ing-name">Simple syrup (1:1 sugar:water)</span><span class="ing-qty">30 ml</span></li>
+            <li><span class="ing-name">Italian sparkling mineral water (chilled)</span><span class="ing-qty">120 ml</span></li>
+            <li><span class="ing-name">Ice (large format cubes)</span><span class="ing-qty">4–5 pieces</span></li>
+            <li><span class="ing-name">Fresh mint (2 sprigs, torn)</span><span class="ing-qty">6–8 leaves</span></li>
+            <li><span class="ing-name">Lemon wheel (garnish)</span><span class="ing-qty">1 slice</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per glass, 2 minutes</h4>
+          <ol>
+            <li>Combine lemon juice, zest, and simple syrup in a chilled tall glass. Stir briefly to combine.</li>
+            <li>Add large-format ice cubes. Large cubes melt more slowly, preventing dilution.</li>
+            <li>Top with chilled Italian sparkling water. Stir once with a long spoon — gentle enough to preserve carbonation.</li>
+            <li>Tear mint leaves between fingers (not slap on the palm) and add directly to the glass.</li>
+            <li>Garnish with a lemon wheel on the rim or inside the glass against the side.</li>
+            <li>Serve immediately with a long spoon for the guest to stir further if desired.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The micro-grated zest adds lemon essential oils (limonene, linalool) without the bitterness of pith. These aromatic compounds are highly volatile and will begin to degrade within 2–3 minutes of zesting. Always zest to order, not in advance. Tearing mint instead of bruising or blending releases oils gradually, perfuming the drink without overwhelming it. Slapping mint on the palm (the bartender's standard technique) is appropriate for drinks like mojitos where rapid release is desired but is too aggressive here.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Adjust the syrup ratio based on the lemon variety. Amalfi lemons are less acidic and more aromatic than common Eureka — they require slightly less syrup. Meyer lemons are sweeter still and may need minimal syrup. Taste the lemon juice first, then calibrate. A batch of simple syrup (equal weight sugar and water, heated to dissolve, cooled) keeps refrigerated for 2 weeks. Add a strip of lemon zest to the syrup batch for additional complexity.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Serve in a tall, clear Italian-style glass (350 ml) so the lemon colour and mint are visible. The drink should be a pale lemon-yellow with visible carbonation bubbles. The torn mint leaves and lemon wheel create visual freshness. A small bamboo straw or glass straw placed in the glass (no plastic straws — policy). Pairs beautifully with the gelato flight (R17) as a palate cleanser between flavours, and with the Petit Fours Italiani (R20) at the meal's end.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 24: GRANITA DI MANDORLA DRINK -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 24 of 28 — Drinks</div>
+        <div class="recipe-name">Granita di Mandorla</div>
+        <div class="recipe-name-it">Almond granita drink — iced, cold-brewed, almond milk over crushed almond granita</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$9.00</div>
+        <div class="recipe-cost">Food cost: $1.60 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">DF*</span>
+          <span class="tag">VG</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        A liquid version of the granita con brioche experience (R15) — the almond granita is loosened with cold almond milk and served as a thick, icy drink in a small wide glass. In the heat of a Sydney summer this is the drink that makes people stop in the street. We sell more of these on a hot February day than any other item. The almond flavour is clean and pure — no cloying sweetness, no vanilla masking, just blanched almonds, water, a little sugar, and a drop of bitter almond.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per drink</h4>
+          <ul>
+            <li><span class="ing-name">Almond granita (R15 base, pre-frozen crystals)</span><span class="ing-qty">150 g</span></li>
+            <li><span class="ing-name">Cold house-made almond milk</span><span class="ing-qty">80 ml</span></li>
+            <li><span class="ing-name">Simple syrup (adjust to taste)</span><span class="ing-qty">10 ml</span></li>
+            <li><span class="ing-name">Wide short glass (200 ml, pre-chilled)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">Whole blanched almond (garnish)</span><span class="ing-qty">2 pieces</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per drink, 1 minute</h4>
+          <ol>
+            <li>Remove almond granita crystals from the blast freezer. Spoon 150 g of crystals into a pre-chilled wide glass.</li>
+            <li>Pour cold almond milk over the crystals slowly — it should pool around the crystals and begin melting the edges.</li>
+            <li>Drizzle 10 ml simple syrup over the surface. Stir once very gently with a wide spoon to partially combine — the drink should have textural variation between the icy crystals and the liquid milk.</li>
+            <li>Place two whole blanched almonds on top as garnish.</li>
+            <li>Serve immediately with a wide spoon. Instruct the guest to eat it rather than drink it — the crystals are the star of the drink.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          This is technically an eating experience disguised as a drink — the granita crystals are the dominant component. The almond milk provides a liquid medium and reinforces the almond flavour without diluting it. The simple syrup allows adjustment for the natural sweetness variation of different batches of almonds. Production efficiency: the granita base (R15) serves double duty for the Granita con Brioche plated dessert and this drink — make in larger batches to reduce per-unit labour.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The granita crystals must be stored in a wide shallow container in the blast freezer, not a deep tub — deep storage compresses the bottom crystals under weight, fusing them into a solid block. If this happens, use a fork to re-scrape the block before service. Ideally, the granita is scraped fresh each morning and replenished hourly during service on busy days. The crystals deteriorate in texture after 4–5 hours at service temperature due to re-crystallisation — fresh is always better.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Present in a squat, wide-mouthed glass (bicchiere basso) so the guest can get a wide spoon in without difficulty. The visual is icy white crystals with almond milk pooling at the base — clean, pale, and pure. Two whole almonds on top. No straw — this is a spoon drink. Serve on a small saucer with a wide dessert spoon. In summer, keep the serving glasses in the freezer at all times. A warm glass will melt the granita before it reaches the customer.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 25: CREMINO HOT CHOCOLATE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 25 of 28 — Drinks</div>
+        <div class="recipe-name">Cremino Hot Chocolate</div>
+        <div class="recipe-name-it">Valrhona single-origin, steamed whole milk, edible gold leaf finish</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$12.00</div>
+        <div class="recipe-cost">Food cost: $2.10 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        This is not hot cocoa. It is a dense, almost pudding-thick European-style hot chocolate made with Valrhona Caraibe 66% and steamed whole milk — no water, no milk powder, no shortcuts. The cremino refers to the initial texture: thick, barely pourable, with the density of a loose custard. It becomes slightly thinner as you drink it as the chocolate cools and the cocoa butter resolidifies marginally. Finished with a fragment of edible 24-karat gold leaf — because sometimes a Tuesday needs ceremony.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per cup</h4>
+          <ul>
+            <li><span class="ing-name">Valrhona Caraibe 66% dark couverture</span><span class="ing-qty">50 g</span></li>
+            <li><span class="ing-name">Whole milk (3.5% fat)</span><span class="ing-qty">200 ml</span></li>
+            <li><span class="ing-name">Thickened cream (for richness)</span><span class="ing-qty">20 ml</span></li>
+            <li><span class="ing-name">Caster sugar (optional, adjust to taste)</span><span class="ing-qty">10 g</span></li>
+            <li><span class="ing-name">Sea salt (pinch)</span><span class="ing-qty">0.5 g</span></li>
+            <li><span class="ing-name">Edible 24-karat gold leaf</span><span class="ing-qty">1 fragment</span></li>
+            <li><span class="ing-name">Pre-heated tulip cup (240 ml)</span><span class="ing-qty">1</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per cup, 5 minutes</h4>
+          <ol>
+            <li>Chop couverture very finely. The smaller the chop, the faster and more even the melt.</li>
+            <li>Heat whole milk and cream in a small saucepan to 70°C. Do not boil — boiled milk develops a skin and loses sweetness from caramelisation.</li>
+            <li>Remove from heat. Add chopped couverture all at once. Wait 90 seconds without stirring to allow the heat to penetrate.</li>
+            <li>Begin stirring from the centre outward in small circles, gradually expanding — classic Valrhona ganache emulsification technique. Continue until perfectly smooth and glossy.</li>
+            <li>Add sugar (if using) and sea salt. Return to low heat and whisk vigorously for 2 minutes until the mixture thickens slightly and a gentle foam develops on the surface.</li>
+            <li>Pour into a pre-heated tulip cup.</li>
+            <li>Lay one fragment of edible gold leaf on the surface of the hot chocolate using a dry, fine brush — do not use fingers as body moisture dissolves gold leaf instantly.</li>
+            <li>Serve immediately with a small teaspoon and a pirouette biscuit on the saucer.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note</h5>
+          The emulsification technique (stirring from centre outward) creates a smooth, unbroken chocolate emulsion where the cocoa butter droplets are uniformly dispersed throughout the milk. If you stir incorrectly (large sweeping strokes from the start), the fat and water phases can separate, leaving a grainy texture. The final 2 minutes over heat whisking thickens the drink through partial starch gelatinisation from the cocoa solids and protein denaturation from the milk — this is what creates the cremino texture distinct from regular hot chocolate.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Edible gold leaf is the most volatile garnish in professional kitchens. Store in its booklet away from air movement (never open near a vent or fan). Use a dry, fine artist's brush to transfer — any moisture dissolves it instantly. The leaf should be applied last, after the cup reaches the customer if possible. One fragment (approx. 3 x 3 cm) is sufficient and visually striking. Confirm your supplier is selling food-grade 24-karat leaf, not craft gold which contains nickel. The flavour is neutral — the effect is entirely visual.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          White tulip cup (240 ml) on a matching white saucer. One small teaspoon. One pirouette biscuit at 4 o'clock on the saucer (classic Italian caffe presentation). The gold leaf fragment sits on the surface of the dark chocolate — a startling visual luxury for $12. This drink is your highest-margin item with the highest perceived value. It photographs beautifully. In winter, it is a reason to stay. Brief your floor: "The gold leaf is edible, 24-karat, and completely tasteless. It is purely for beauty."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 26: CAFFE SHAKERATO -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 26 of 28 — Drinks</div>
+        <div class="recipe-name">Caffe Shakerato</div>
+        <div class="recipe-name-it">Double espresso, ice, caster sugar — shaken to a cold foam</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$9.00</div>
+        <div class="recipe-cost">Food cost: $0.90 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF</span>
+          <span class="tag">DF</span>
+          <span class="tag">VG</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        The shakerato is Italy's summer espresso: hot coffee shaken violently with ice and sugar until a cold, aerated foam forms on top. The foam is the espresso crema transformed — the proteins and melanoidins that create crema under pressure instead create a cold foam under mechanical agitation. The result is cold, slightly sweet, intensely caffeinated, and topped with a foam that persists for several minutes. Served in a chilled martini glass. No milk, no cream — just coffee and ice and physics.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per shakerato</h4>
+          <ul>
+            <li><span class="ing-name">Double espresso ristretto (just pulled)</span><span class="ing-qty">60 ml</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">10 g</span></li>
+            <li><span class="ing-name">Ice (crushed or small cubes)</span><span class="ing-qty">6–8 pieces</span></li>
+            <li><span class="ing-name">Cocktail shaker (tin and glass)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">Pre-chilled martini glass (150 ml)</span><span class="ing-qty">1</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Per shakerato, 90 seconds</h4>
+          <ol>
+            <li>Pre-chill martini glass in the freezer for minimum 15 minutes.</li>
+            <li>Pull a double ristretto. Add sugar immediately while the espresso is hot — the heat helps dissolve the sugar instantly.</li>
+            <li>Pour hot sweetened espresso into the cocktail shaker. Add ice immediately.</li>
+            <li>Seal shaker firmly. Shake vigorously for 15 seconds — hard, consistent shakes. You should hear the ice fragments reducing in size. Your hands should get very cold.</li>
+            <li>Double-strain through the fine-mesh strainer of the shaker into the pre-chilled martini glass. The fine strain removes ice shards while allowing the cold foam to pass.</li>
+            <li>The foam should be at least 1–1.5 cm deep on top of the drink. A light brown, aerated crema-like foam. If foam is thin or absent, the shaking time was insufficient.</li>
+            <li>Serve immediately without garnish — the foam is the presentation. Do not add anything that would disturb or sink through the foam.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Coffee Science</h5>
+          The shakerato foam forms because espresso contains surface-active compounds (melanoidins, proteins, phospholipids) that stabilise air bubbles at the liquid surface. Vigorous mechanical agitation incorporates air while the rapid cooling (from ice contact) lowers surface tension, trapping the air. The foam is structurally similar to the hot crema but contains different compounds — more melanoidins, less CO2. Sugar increases the viscosity of the liquid phase, providing additional foam stability. Without sugar, the foam collapses in 30 seconds.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          Two common failures: 1) Thin or no foam — you are not shaking hard enough or long enough. 15 seconds at full effort should be enough to create crema-level foam from fresh espresso. 2) Foam collapses on pouring — your glass is warm or the double-strain is too slow. Pre-freeze the glass and pour through the strainer in one continuous motion. Also: use fresh espresso only. Coffee that has been sitting even 2 minutes has lost the CO2 and surface-active compounds needed for foam formation. Pull to order, always.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The shakerato arrives in a chilled martini glass with a deep, stable cold foam on top — no garnish, no decoration. The elegance is in its purity. Place on a small white doily or a folded napkin (the chilled glass will sweat and leave a ring on the bar top). This is the drink for an Italian summer afternoon — serve it ice-cold, serve it immediately, and do not serve it to anyone who asks for milk. That is a different drink and a different conversation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 27: APEROL SPRITZ DESSERT PAIRING -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 27 of 28 — Drinks</div>
+        <div class="recipe-name">Aperol Spritz Dessert Pairing</div>
+        <div class="recipe-name-it">100ml Aperol spritz with house petit fours selection</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$22.00</div>
+        <div class="recipe-cost">Food cost: $4.80 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">GF*</span>
+          <span class="tag">NF*</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        A curated pairing: a petite (100 ml) Aperol Spritz alongside four pieces from our Petit Fours Italiani selection. The slight bitterness of Aperol paired with the sweetness of the ricciarelli and tartufo creates a balance that neither achieves alone. This pairing was born at a staff meal when we ran out of the right dessert wine and opened a bottle of Prosecco. We kept it on the menu immediately. It is the happiest accident on our drinks list.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — Per pairing</h4>
+          <ul>
+            <li><span class="ing-name">Aperol</span><span class="ing-qty">40 ml</span></li>
+            <li><span class="ing-name">Prosecco DOC (extra dry)</span><span class="ing-qty">50 ml</span></li>
+            <li><span class="ing-name">Italian sparkling water</span><span class="ing-qty">25 ml</span></li>
+            <li><span class="ing-name">Ice (large cubes)</span><span class="ing-qty">3–4 pieces</span></li>
+            <li><span class="ing-name">Orange slice (half wheel)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">Ricciarelli (R20)</span><span class="ing-qty">1 piece</span></li>
+            <li><span class="ing-name">Tartufo al cioccolato (R20)</span><span class="ing-qty">1 piece</span></li>
+            <li><span class="ing-name">Amaretti (R20)</span><span class="ing-qty">1 piece</span></li>
+            <li><span class="ing-name">Chocolate mendiant (R20)</span><span class="ing-qty">1 piece</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Assembly: 3 minutes</h4>
+          <ol>
+            <li>Fill a small balloon wine glass (or a standard Spritz glass) with large ice cubes.</li>
+            <li>Pour Aperol over ice first. Add Prosecco — pour gently down the inside of the glass to preserve bubbles.</li>
+            <li>Add sparkling water gently. Give one brief stir from the bottom.</li>
+            <li>Add orange half-wheel to the inside of the glass against the rim.</li>
+            <li>Arrange the four petit fours pieces on a small white ceramic plate alongside the glass — one of each type.</li>
+            <li>Serve together on a wooden board or tray. The pairing suggestion: "Start with a sip of Spritz, then the ricciarelli. Alternate between each petit four and a sip. Let the bitterness of the Aperol cut through the sweetness of each confection."</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Pairing Logic</h5>
+          The classic Italian aperitivo principle is bitterness as a palate primer. Aperol (11% ABV, 35 Brix residual sugar, high gentian and rhubarb bitterness) creates a contrast mechanism: the bitterness suppresses sweetness perception momentarily, then releases it when the sweet petit four is eaten, amplifying its flavour. This is the same principle behind pairing dry Champagne with caviar or dry sherry with olives. Bitterness amplifies what follows it.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The Aperol Spritz should be petite — 100 ml total. This is a pairing portion, not a bar pour. A full Spritz overwhelms the petit fours, making them an afterthought rather than a co-star. The standard recipe is 3:2:1 (Prosecco:Aperol:water) — we maintain this ratio at the smaller volume. Use Prosecco DOC Extra Dry (not Brut) — the slightly higher residual sugar in Extra Dry complements the Aperol's bitterness better than a very dry Brut would.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          Carry the Spritz glass and the petit fours plate together on a small wooden board. The visual pairing is the point: the vivid orange of the Aperol Spritz alongside the jewel-like variety of the petit fours. Present with the pairing narrative — this is a menu item with a story (the staff-meal accident) that the floor team should memorise and share. Stories sell. A compelling provenance narrative can double the uptake of a menu item.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE 28: LIMONCELLO SERVICE -->
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <div class="recipe-header-left">
+        <div class="recipe-number">Recipe 28 of 28 — Drinks</div>
+        <div class="recipe-name">Limoncello Service</div>
+        <div class="recipe-name-it">30ml house limoncello, frozen ceramic shot, lemon biscotti</div>
+      </div>
+      <div class="recipe-header-right">
+        <div class="recipe-price">$14.00</div>
+        <div class="recipe-cost">Food cost: $1.80 AUD</div>
+        <div class="recipe-allergens">
+          <span class="tag">DF</span>
+          <span class="tag">NF</span>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-desc">
+        We make our limoncello in-house from Amalfi lemon zest, pure grain neutral spirit, and spring water. It macerates for 30 days in glass — no shortcuts, no commercial extract. The result is a viscous, intensely aromatic limoncello with a natural yellow-gold colour from the lemon oils, not added colouring. It is served at -18°C in a ceramic shot glass that has been stored in the blast freezer — it should arrive at the table with a faint frost on the exterior of the glass. This is the closing ceremony of every meal.
+      </div>
+      <div class="recipe-columns">
+        <div class="ingredients-block">
+          <h4>Ingredients — House Limoncello (yields 1 litre)</h4>
+          <ul>
+            <li><span class="ing-name">Amalfi lemons (unwaxed) — zest only</span><span class="ing-qty">10 large lemons</span></li>
+            <li><span class="ing-name">Pure grain spirit (95% ABV)</span><span class="ing-qty">500 ml</span></li>
+            <li><span class="ing-name">Spring water</span><span class="ing-qty">600 ml</span></li>
+            <li><span class="ing-name">Caster sugar</span><span class="ing-qty">400 g</span></li>
+            <li><span class="ing-name">Glass jar (1.5 litre, airtight)</span><span class="ing-qty">1</span></li>
+            <li><span class="ing-name">Per serve — house limoncello</span><span class="ing-qty">30 ml</span></li>
+            <li><span class="ing-name">Lemon biscotti (house baked)</span><span class="ing-qty">2 pieces</span></li>
+            <li><span class="ing-name">Ceramic shot glass (pre-frozen)</span><span class="ing-qty">1</span></li>
+          </ul>
+        </div>
+        <div class="method-block">
+          <h4>Method — Maceration: 30 days</h4>
+          <ol>
+            <li>Zest the lemons using a Microplane or vegetable peeler — avoid the white pith entirely. The zest should be thin, fragrant, and bright yellow.</li>
+            <li>Combine zest with grain spirit in the glass jar. Seal airtight. Store in a cool, dark place for exactly 30 days. Do not agitate or open.</li>
+            <li>After 30 days, the spirit will have turned deep gold-yellow and will be intensely aromatic. Strain through cheesecloth, squeezing the zest firmly to extract maximum oil.</li>
+            <li>Make simple syrup: combine water and sugar, heat to dissolve, cool completely.</li>
+            <li>Combine strained spirit with cooled syrup. Stir well. Bottle. Refrigerate for 24 hours minimum — the flavours knit together during this rest period.</li>
+            <li>Transfer to blast freezer or freeze at -18°C for service. The high sugar content prevents freezing solid — it will remain pourable at -18°C.</li>
+            <li>Serve: pour 30 ml from the frozen bottle into a ceramic shot glass that has been stored in the blast freezer. The glass should have a light frost when served.</li>
+            <li>Accompany with 2 lemon biscotti. Place on a small white saucer. Bring to the table after the main dessert is cleared.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="notes-grid">
+        <div class="note-box technique">
+          <h5>Chef Technique Note — Limoncello Science</h5>
+          Lemon essential oils (d-limonene, linalool, alpha-terpineol) dissolve readily in high-ABV ethanol during maceration — they are lipophilic compounds that extract efficiently into alcohol but not water. This is why dilution timing matters: combine the strained spirit with the sugar syrup only after maceration is complete. Adding water before maceration would lower the ABV and significantly reduce the extraction efficiency of the aromatic compounds. The final ABV of house limoncello is approximately 32% — high enough for good flavour preservation, moderate enough for responsible service.
+        </div>
+        <div class="note-box tip">
+          <h5>Fail-Proof Tip</h5>
+          The 30-day maceration is not arbitrary — peak aromatic extraction occurs between days 25–35. Under 15 days and the limoncello tastes thin; over 45 days and bitter terpene compounds begin to dominate, making the limoncello harsh. Mark your jar with the date started and date to strain. Also: use unwaxed lemons only. Waxed lemons have a food-grade coating that can extract into the spirit, affecting flavour and clarity. Organic Amalfi lemons are ideal — source from Italian importers when available.
+        </div>
+        <div class="note-box plating">
+          <h5>Plating and Serving Note</h5>
+          The limoncello service is the final punctuation of the meal. The frosted ceramic shot, the golden liquid, the two biscotti — it arrives unbidden as a complimentary digestivo gesture, or is ordered specifically. In either case, it signals that the meal is ending and ending well. It is the Italian equivalent of mints with the bill — but one that is actually worth looking forward to. Brief the floor: when a table orders coffee and tiramisu after a long meal, ask if they would like to close with the limoncello service. The conversion rate is very high.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end drinks page -->
+
+<!-- PAGE: GLOSSARY AND CLOSING NOTES -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">Gelato Science &amp; Glossary</div>
+    <div class="page-header-center">KitchenFounder Guide #45</div>
+    <div class="page-header-right">v7 2026 Edition</div>
+  </div>
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Gelato Science Reference</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="intro-block">
+    <h2>Understanding Gelato — A Technical Primer</h2>
+    <p>
+      Gelato and ice cream are both frozen dairy emulsions but they differ in four critical ways: fat content (gelato: 4–8%, ice cream: 10–16%), overrun (gelato: 20–35%, ice cream: 50–100%), serving temperature (gelato: -8°C to -11°C, ice cream: -14°C to -18°C), and texture at serving (gelato: dense and pliable, ice cream: lighter and firmer). These differences are not merely stylistic — they reflect fundamentally different approaches to flavour delivery. In gelato, lower fat means the flavour compounds are not masked by fat, and lower overrun means each mouthful is denser in flavour. The slightly warmer serving temperature ensures the gelato is paddle-soft at service, yielding immediately on the tongue.
+    </p>
+    <div class="chef-sig">— From the Bologna training notes, 2011</div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--accent); margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:6px;">Key Gelato Terms</h3>
+      <table style="width:100%; font-size:11px; border-collapse:collapse;">
+        <tr style="background:var(--accent-pale);">
+          <th style="padding:5px 8px; text-align:left; font-weight:700; color:var(--accent);">Term</th>
+          <th style="padding:5px 8px; text-align:left; font-weight:700; color:var(--accent);">Definition</th>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:5px 8px; font-weight:600;">Overrun</td>
+          <td style="padding:5px 8px; color:var(--muted);">% increase in volume from air incorporation during churning. Gelato: 20–35%. Ice cream: 50–100%.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;">
+          <td style="padding:5px 8px; font-weight:600;">Riposo</td>
+          <td style="padding:5px 8px; color:var(--muted);">The resting period (4–12 hours, 4°C) for the base before churning. Allows stabilisers to hydrate and fat to homogenise.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:5px 8px; font-weight:600;">Mantecatura</td>
+          <td style="padding:5px 8px; color:var(--muted);">The churning phase in the gelato machine. The paddles simultaneously freeze and incorporate air into the base.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;">
+          <td style="padding:5px 8px; font-weight:600;">LBG</td>
+          <td style="padding:5px 8px; color:var(--muted);">Locust Bean Gum — a natural stabiliser extracted from carob seeds. Prevents large ice crystal formation during storage.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:5px 8px; font-weight:600;">Fior di Latte</td>
+          <td style="padding:5px 8px; color:var(--muted);">Literally "flower of milk" — a plain gelato base of whole milk, cream, egg yolks, and sugar with no added flavouring. The purest expression.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;">
+          <td style="padding:5px 8px; font-weight:600;">Dextrose</td>
+          <td style="padding:5px 8px; color:var(--muted);">A monosaccharide (glucose) used to lower the freezing point of gelato bases more efficiently per gram than sucrose.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:5px 8px; font-weight:600;">Brix</td>
+          <td style="padding:5px 8px; color:var(--muted);">A measure of dissolved sugar content. Measured with a refractometer. Sorbet target: 28–32 Brix. Gelato base target: 22–26 Brix.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;">
+          <td style="padding:5px 8px; font-weight:600;">POD (Sweetening Power)</td>
+          <td style="padding:5px 8px; color:var(--muted);">The perceived sweetness of a sugar relative to sucrose (sucrose = 100). Dextrose = 75, fructose = 170, trehalose = 45.</td>
+        </tr>
+        <tr>
+          <td style="padding:5px 8px; font-weight:600;">AFP (Antifreeze Power)</td>
+          <td style="padding:5px 8px; color:var(--muted);">The freezing point depression effect of a sugar. Dextrose AFP = 190 (vs sucrose = 100). Invert sugar AFP = 190.</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--accent); margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:6px;">Allergen Matrix — All 28 Items</h3>
+      <table style="width:100%; font-size:10px; border-collapse:collapse;">
+        <tr style="background:var(--accent-pale);">
+          <th style="padding:4px 6px; text-align:left; font-weight:700; color:var(--accent);">Item</th>
+          <th style="padding:4px; text-align:center; font-weight:700; color:var(--accent);">GF</th>
+          <th style="padding:4px; text-align:center; font-weight:700; color:var(--accent);">VG</th>
+          <th style="padding:4px; text-align:center; font-weight:700; color:var(--accent);">NF</th>
+          <th style="padding:4px; text-align:center; font-weight:700; color:var(--accent);">DF</th>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">01 Stracciatella</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">02 Pistachio</td><td style="text-align:center; color:green;">✓</td><td></td><td></td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">03 Salted Caramel</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">04 Espresso</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">05 Hazelnut (NF: sunflower)</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:orange;">NF*</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">06 Mango Sorbet</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">07 Affogato</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">08 Semifreddo Torrone</td><td style="text-align:center; color:orange;">GF*</td><td></td><td></td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">09 Cannoli Siciliani</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">10 Panna Cotta</td><td style="text-align:center; color:orange;">GF*</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">11 Tiramisu</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">12 Bomboloni</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">13 Sfogliatella</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">14 Zeppole</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">15 Granita con Brioche</td><td></td><td></td><td></td><td style="text-align:center; color:orange;">DF*</td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">16 Cassata Siciliana</td><td></td><td></td><td style="text-align:center; color:orange;">NF*</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">17 Gelato Flight</td><td style="text-align:center; color:orange;">GF*</td><td></td><td></td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">18 Dessert Platter</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">19 Gelato Cake</td><td style="text-align:center; color:orange;">GF*</td><td></td><td></td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">20 Petit Fours</td><td style="text-align:center; color:orange;">GF*</td><td></td><td style="text-align:center; color:orange;">NF*</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">21 Espresso</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">22 Affogato Cocktail</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">23 Limonata Siciliana</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">24 Granita di Mandorla</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:orange;">*</td><td style="text-align:center; color:orange;">DF*</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">25 Cremino Hot Choc</td><td style="text-align:center; color:green;">✓</td><td></td><td style="text-align:center; color:green;">✓</td><td></td></tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafaf8;"><td style="padding:3px 6px;">26 Caffe Shakerato</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:3px 6px;">27 Aperol Spritz Pairing</td><td style="text-align:center; color:orange;">GF*</td><td></td><td style="text-align:center; color:orange;">NF*</td><td></td></tr>
+        <tr><td style="padding:3px 6px;">28 Limoncello Service</td><td></td><td></td><td style="text-align:center; color:green;">✓</td><td style="text-align:center; color:green;">✓</td></tr>
+      </table>
+      <p style="font-size:9px; color:var(--muted); margin-top:6px;">* Asterisk indicates modification required or cross-contamination risk — consult kitchen before ordering for allergy purposes.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING NOTE -->
+  <div class="intro-block" style="margin-top:20px;">
+    <h2>Closing Notes — From the Maestro</h2>
+    <p>
+      The 28 items in this guide represent the full range of what our bar does: the silence of a perfectly churned fior di latte, the violence of molten chocolate hitting cold gelato, the patience of a tiramisu set overnight, the ceremony of a frozen limoncello at the meal's end. None of this is possible without care. Care for the temperature. Care for the ingredients — the Bronte pistachios, the Alphonso mangoes, the Yirgacheffe espresso. Care for the guest who trusts you with their celebration, their date, their Tuesday afternoon alone with a book and a granita.
+    </p>
+    <p style="margin-top:10px;">
+      A celebrated Sydney gelateria showed a generation of this city what Italian gelato could be. It raised the standard. Our responsibility is to keep raising it. Study this guide. Challenge it. Improve it. And when you find something better, write it down.
+    </p>
+    <div class="chef-sig">— Salvatore Conti, Gelato Maestro · Sydney · 2026</div>
+  </div>
+
+</div><!-- end glossary page -->
+
+<!-- BACK COVER -->
+<div class="cover" style="page-break-before:always;">
+  <div class="cover-icon">🍋</div>
+  <div class="cover-series">Guide #45 Complete</div>
+  <h1 style="font-size:38px;">Italian Gelato<br>&amp; Dessert Bar</h1>
+  <div class="cover-sub">28 Recipes · 6 Gelato Flavours · 10 Dessert Plates · 4 Sharing · 8 Drinks</div>
+  <div class="cover-divider"></div>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <span class="cover-stat-num">28</span>
+      <span class="cover-stat-label">Total Recipes</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">-11°C</span>
+      <span class="cover-stat-label">Serving Temp</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">25%</span>
+      <span class="cover-stat-label">Max Overrun</span>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <strong>KitchenFounder Restaurant Guide Series</strong><br>
+    v7 · 2026 Edition · Guide #45 of the Series<br>
+    For professional culinary use · All recipes yield professional portions
+  </div>
+  <div class="cover-footer">
+    KitchenFounder · © 2026 · Italian Gelato &amp; Dessert Bar · Guide #45
+  </div>
+</div>
+
+</body>
+</html>
