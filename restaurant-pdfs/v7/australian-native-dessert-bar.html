@@ -3088,5 +3088,1306 @@
   </div>
 </div>
 
+
+<style>
+  /* ── OPERATIONAL SECTIONS — added v7 append ── */
+  .ops-page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--bg);
+    padding: 40px 44px;
+    position: relative;
+  }
+  .ops-page-dark {
+    width: 210mm;
+    min-height: 297mm;
+    background: linear-gradient(160deg, #1A1208 0%, #2E1F0A 40%, #1C1C1C 100%);
+    padding: 40px 44px;
+    position: relative;
+    color: rgba(250,250,248,0.9);
+  }
+  .sn2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .ops-page h2 {
+    display: flex;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold-light);
+    padding-bottom: 10px;
+    margin-bottom: 22px;
+  }
+  .ops-page-dark h2 {
+    display: flex;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold-light);
+    border-bottom: 2px solid rgba(200,146,42,0.4);
+    padding-bottom: 10px;
+    margin-bottom: 22px;
+  }
+  /* Script boxes */
+  .script-box {
+    background: #FFFDF5;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .script-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .script-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .script-why {
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px dashed var(--border);
+    padding-top: 7px;
+    margin-top: 7px;
+  }
+  .script-why strong { color: var(--text); }
+  /* Lens card */
+  .lens-card {
+    background: linear-gradient(135deg, #1A1208 0%, #2E1F0A 100%);
+    color: rgba(250,250,248,0.9);
+    border-radius: 6px;
+    padding: 28px 30px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .lens-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(200,146,42,0.15) 0%, transparent 70%);
+  }
+  .lens-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .lens-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(250,250,248,0.85);
+    position: relative;
+  }
+  .lens-closer {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--gold-light);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+  }
+  /* Info box */
+  .info-box-ops {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold-light);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .info-box-ops-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  /* Tables */
+  .prep-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .prep-table th {
+    background: var(--gold);
+    color: #fff;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .prep-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .prep-table tr:nth-child(even) td { background: #FAFAF5; }
+  .prep-table tr:hover td { background: var(--gold-pale); }
+  .rev-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .rev-table th {
+    background: #1A1208;
+    color: var(--gold-light);
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .rev-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .rev-table tr:nth-child(even) td { background: #FAFAF5; }
+  .rev-table .rev-total td {
+    background: var(--gold-pale);
+    font-weight: 600;
+    border-top: 2px solid var(--gold);
+  }
+  /* Allergen table */
+  .allergen-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-bottom: 20px;
+  }
+  .allergen-table th {
+    background: var(--gold);
+    color: #fff;
+    padding: 7px 8px;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .allergen-table th:first-child { text-align: left; }
+  .allergen-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .allergen-table td:first-child { text-align: left; font-weight: 500; }
+  .allergen-table tr:nth-child(even) td { background: #FAFAF5; }
+  .allergen-yes { color: var(--danger); font-weight: 700; }
+  .allergen-no { color: #999; }
+  .allergen-may { color: #C87A2A; font-weight: 600; }
+  /* Workflow timeline */
+  .timeline-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .timeline-time {
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .timeline-desc {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.5;
+    padding-top: 3px;
+  }
+  /* Retention card */
+  .retention-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .retention-card-title {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  /* Section divider */
+  .ops-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  /* Philosophy callout */
+  .philosophy-box {
+    background: linear-gradient(135deg, #2E1F0A 0%, #1A1208 100%);
+    color: rgba(250,250,248,0.9);
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .philosophy-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.7;
+  }
+  .philosophy-box .attr {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(200,146,42,0.6);
+    margin-top: 10px;
+  }
+  /* P&L highlight */
+  .pl-highlight {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold-light);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pl-label { font-size: 12px; color: var(--muted); }
+  .pl-value { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold); font-weight: 700; }
+  .pl-note { font-size: 10px; color: var(--muted); margin-top: 2px; }
+</style>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 5 — SERVICE TRAINING MODULE
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Guide #44 · Ops Section 5</span>
+  </div>
+  <h2><span class="sn2">5</span>Service Training Module</h2>
+
+  <div class="philosophy-box">
+    <p>"Every plate we send to the table carries 65,000 years of knowledge.<br>Our job is not to serve dessert — it is to tell a story of Country."</p>
+    <div class="attr">Service Philosophy · Australian Native Dessert Bar</div>
+  </div>
+
+  <div class="info-box-ops">
+    <div class="info-box-ops-title">Staff are Storytellers</div>
+    <p style="font-size:12px;line-height:1.65;">This concept lives or dies on the quality of the story told at the table. Guests pay a premium not just for the flavour — they pay for connection to place, to culture, to something genuinely Australian. Every floor team member must understand native ingredients, their cultural significance, and how to share that story with respect and warmth. A server who cannot explain the difference between wattleseed and finger lime is not ready for the floor.</p>
+  </div>
+
+  <!-- Script 1 -->
+  <div class="script-box">
+    <div class="script-label">Script 1 — Welcome &amp; Concept Introduction</div>
+    <div class="script-text">
+      "Welcome to [Bar Name] — I'm [Name], and I'll be your guide today. Everything on our menu is built around native Australian ingredients — plants that have fed and nurtured people on this land for over 65,000 years. We work with First Nations suppliers to source them, and our chefs transform them using modern pastry technique. Tonight you might taste wattleseed for the first time, or finger lime, or Davidson plum — and each one will tell you something about where we are. Ready to explore?"
+    </div>
+    <div class="script-why"><strong>Why:</strong> Guests who understand the concept before ordering invest emotionally in the experience. This opening frames the meal as a journey, not just a dessert course — and sets the stage for higher spend and stronger word-of-mouth.</div>
+  </div>
+
+  <!-- Script 2 -->
+  <div class="script-box">
+    <div class="script-label">Script 2 — Ingredient Education (Wattleseed, Finger Lime, Lemon Myrtle, Bush Tomato, Davidson Plum)</div>
+    <div class="script-text">
+      "Let me tell you a little about what you're about to taste — <br><br>
+      <strong>Wattleseed</strong> is roasted and ground from the Acacia tree. It has a rich, nutty, slightly mocha flavour — think coffee and chocolate had a bush baby. We use it in our ice cream, our financiers, and our custard tart base.<br><br>
+      <strong>Finger lime</strong> — sometimes called 'citrus caviar' — is a native rainforest fruit from Queensland and northern NSW. When you cut it open, thousands of tiny pearls burst out. They're tart and bright and completely unlike anything you've tasted. We use them fresh on our tarts and as a palate cleanser element.<br><br>
+      <strong>Lemon myrtle</strong> has an intense, clean lemon fragrance — more aromatic than a lemon, more complex. It's used in our syrups, our panna cotta, and as a dried garnish.<br><br>
+      <strong>Davidson plum</strong> is a deep-purple native fruit — extremely tart and tannic raw, but when cooked down into a reduction or jam, it becomes this stunning garnet-coloured, complex sorbet-worthy flavour. We use it for our plated dessert sauces and our chocolate tart pairing.<br><br>
+      <strong>Bush tomato</strong> — also called desert raisin — has a sun-dried, spiced, slightly caramel depth. You'll find it in our caramel sauces and our macadamia praline."
+    </div>
+    <div class="script-why"><strong>Why:</strong> Guests cannot appreciate what they don't understand. Naming and describing each ingredient before it arrives builds anticipation and prevents the "what is this?" moment mid-bite from being confusing rather than delightful. Education = engagement = return visits.</div>
+  </div>
+
+  <!-- Script 3 -->
+  <div class="script-box">
+    <div class="script-label">Script 3 — Native Tea Pairing Recommendation</div>
+    <div class="script-text">
+      "If I may suggest — our native tea service pairs beautifully with several desserts on the menu. Our <em>Lemon Myrtle &amp; Pepperberry Infusion</em> is a natural partner for anything with finger lime or citrus. The <em>Wattleseed Cold Brew</em> works like a dessert wine alongside our chocolate-based plates — it has that same roasted depth without the alcohol. And our <em>Kakadu Plum Tisane</em>, which is extraordinarily high in Vitamin C, is a lovely light option to close the meal. All teas are made from Australian grown or foraged botanical stock."
+    </div>
+    <div class="script-why"><strong>Why:</strong> Native tea service lifts average spend by $8–14 per table with near-zero food cost. Guests presented with a compelling pairing narrative convert at roughly 60% versus 20% when tea is just listed on the menu. Frame it as a pairing, not an upsell.</div>
+  </div>
+
+  <!-- Script 4 -->
+  <div class="script-box">
+    <div class="script-label">Script 4 — First Nations Cultural Context (Share Respectfully)</div>
+    <div class="script-text">
+      "I want to share something before you start — this land we're on is the traditional Country of the Gadigal people of the Eora Nation. The ingredients you're tasting tonight have been part of the food culture of Country for thousands of years. We work directly with First Nations growers and harvesters, and we believe it's important that we name that clearly. If you'd like to know more about any of our supplier partnerships or the cultural significance of specific ingredients, I'd love to share that with you. This food has a home, and that home is here."
+    </div>
+    <div class="script-why"><strong>Why:</strong> Cultural acknowledgement done with sincerity builds trust and deep loyalty. It also inoculates against any perception of cultural appropriation. Be brief, genuine, and never lecture. If the guest wants to engage further, be ready with supplier names and ingredient stories. If they don't, move on with warmth.</div>
+  </div>
+
+  <!-- Script 5 -->
+  <div class="script-box">
+    <div class="script-label">Script 5 — Return Driver &amp; Instagram Engagement</div>
+    <div class="script-text">
+      "Before you go — a few things worth knowing. Our menu changes seasonally because native ingredients have seasons just like everything else. Finger lime season peaks around March–June, Davidson plum comes in late summer, and our wattleseed harvest shifts the flavour profile of our ice cream twice a year. So if you loved tonight, there'll be something different — and something new — next time you visit.<br><br>
+      We're also very active on Instagram and share weekly content about the ingredients, the farmers, and the stories behind each plate. Tag us tonight if you'd like — we genuinely love seeing the photos, and we reshare guests who post. The hashtag is <strong>#EatCountry</strong>. Thank you for spending the evening with us."
+    </div>
+    <div class="script-why"><strong>Why:</strong> The mention of seasonal changes creates a legitimate, specific reason to return — not a generic "come back soon." Instagram engagement turns guests into organic marketing. Resharing guest content costs nothing and generates authentic social proof worth more than paid advertising at this concept level.</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 6 — STAFF WORKFLOW: KITCHEN & FLOOR
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Guide #44 · Ops Section 6</span>
+  </div>
+  <h2><span class="sn2">6</span>Staff Workflow — Kitchen &amp; Floor</h2>
+
+  <div class="info-box-ops" style="border-left:4px solid var(--danger);background:#FFF5F5;">
+    <div class="info-box-ops-title" style="color:var(--danger);">⚠ Mandatory: Cultural Awareness Training</div>
+    <p style="font-size:12px;line-height:1.65;">All staff — kitchen and floor — must complete a First Nations cultural awareness training module before commencing work at this concept. Recommended provider: <em>Diversity Council Australia</em> or a local First Nations-led training organisation. This is non-negotiable. Staff who serve native ingredients without understanding their cultural context risk causing harm, even unintentionally. Cultural competency is a condition of employment here, not an optional add-on.</p>
+  </div>
+
+  <!-- Staffing model -->
+  <div style="margin-bottom:22px;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;">Staffing Model — 40-Seat Service</div>
+    <table class="prep-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Count</th>
+          <th>Responsibilities</th>
+          <th>Key Requirement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Head Chef / Native Ingredient Specialist</strong></td>
+          <td>1</td>
+          <td>Menu development, supplier relationships, AM prep oversight, quality control, plating standards</td>
+          <td>Demonstrated experience with native Australian ingredients; ideally established supplier network</td>
+        </tr>
+        <tr>
+          <td><strong>Pastry Cook</strong></td>
+          <td>1–2</td>
+          <td>AM prep execution, à la minute plating, batch work (reductions, jams, infusions), cold production</td>
+          <td>Pastry background essential; native ingredient training on-site within first 2 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>Storytime Server (FOH Lead)</strong></td>
+          <td>1</td>
+          <td>Table welcome, ingredient storytelling, tea pairing recommendations, cultural context delivery, table management</td>
+          <td>Must complete Service Training Module; strong oral storytelling ability; genuine curiosity about native ingredients</td>
+        </tr>
+        <tr>
+          <td><strong>FOH Support</strong></td>
+          <td>1–2</td>
+          <td>Drinks service, table clearing, order taking, runner duties, Instagram engagement support</td>
+          <td>Cultural awareness training complete before first floor shift</td>
+        </tr>
+        <tr>
+          <td><strong>Dishwasher / Kitchen Hand</strong></td>
+          <td>1</td>
+          <td>Dish, glassware, kitchen hygiene, basic prep support</td>
+          <td>Cultural awareness training recommended (will interact with service culture)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="ops-divider">
+
+  <!-- Kitchen Timeline -->
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;">Kitchen Timeline — Service Day</div>
+
+  <div class="timeline-row">
+    <span class="timeline-time">7:00 AM</span>
+    <div class="timeline-desc"><strong>Head Chef arrives.</strong> Check supplier delivery (finger lime, native herbs). Inspect for quality — reject any bruised or oxidised finger lime immediately. Begin wattleseed cold brew infusion (needs 4–6 hours).</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">7:30 AM</span>
+    <div class="timeline-desc"><strong>Pastry Cook in.</strong> Begin lemon myrtle syrup reduction (20 min). Pull Davidson plum reduction from fridge — check consistency. If too thick, loosen with 1–2 tbsp water over low heat. Set ice cream base to churn.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">8:30 AM</span>
+    <div class="timeline-desc"><strong>Finger lime processing.</strong> Slice finger limes lengthwise, squeeze pearls into hotel pan. Cover with cling wrap — do NOT add acid at this stage (will soften pearls). Refrigerate uncovered for no more than 4 hours before service.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">9:00 AM</span>
+    <div class="timeline-desc"><strong>Native herb extraction.</strong> Prepare fresh lemon myrtle oil (bruise leaves, warm in neutral oil 60°C, 30 min, strain). Prepare anise myrtle powder (dehydrated leaves, blitz fine). Stock mise en place for all 28 menu items.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">10:30 AM</span>
+    <div class="timeline-desc"><strong>Pre-service check.</strong> Head Chef walks every mise en place station. Taste Davidson plum reduction, wattleseed ice cream, lemon myrtle syrup — adjust seasoning. Brief pastry cook on any menu tweaks for service.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">11:00 AM</span>
+    <div class="timeline-desc"><strong>Plating practice (new staff).</strong> Any team member with &lt;1 month tenure must plate at least one full dessert per service day before doors open. Consistency is the standard.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">11:30 AM</span>
+    <div class="timeline-desc"><strong>Doors open (lunch service).</strong> Head Chef on pass. Pastry Cook on production. All items plated to spec within 8 minutes of order.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">3:00 PM</span>
+    <div class="timeline-desc"><strong>Afternoon break / restock.</strong> Top up all mise en place. Begin macadamia praline batch for dinner service. Re-portion finger lime pearls if required.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">5:00 PM</span>
+    <div class="timeline-desc"><strong>Dinner service begins.</strong> Full kitchen staffed. Bush tomato caramel sauce warmed. Davidson plum reduction refreshed. Wattleseed cold brew strained and transferred to service vessel.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">9:30 PM</span>
+    <div class="timeline-desc"><strong>Last orders.</strong> Kitchen begins close-down procedure. Remaining finger lime pearls discarded (do not hold overnight). All native herb oils dated and refrigerated (use within 48h).</div>
+  </div>
+
+  <hr class="ops-divider">
+
+  <!-- Floor Workflow -->
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;">Floor Workflow — Guest Journey</div>
+
+  <div class="timeline-row">
+    <span class="timeline-time">Arrival</span>
+    <div class="timeline-desc"><strong>Storytime Server greets within 60 seconds.</strong> Deliver Script 1 (Welcome &amp; Concept Introduction). Hand menus — do not rush the order. Allow guests to read and ask questions.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">Ordering</span>
+    <div class="timeline-desc"><strong>Ingredient education moment.</strong> As guests select items, weave in ingredient descriptions naturally (Script 2). Suggest tea pairing proactively (Script 3). For first-time guests, offer the "Country Tasting" combination if available.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">Delivery</span>
+    <div class="timeline-desc"><strong>Plate presentation.</strong> Server names the key native ingredient in each dish as it lands — "This is the finger lime tart — you'll see the citrus pearls on top, they're going to burst when you bite." Do not rush past the table.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">Mid-meal</span>
+    <div class="timeline-desc"><strong>Check in after 3 minutes.</strong> Ask not "Is everything okay?" but "Which ingredient is surprising you most?" Opens conversation, generates stories, creates Instagram moments.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">Close</span>
+    <div class="timeline-desc"><strong>Departure script (Script 5).</strong> Mention seasonal changes, #EatCountry, and any upcoming events. If guests seem deeply engaged, offer a takeaway native ingredient card (small printed cards with 5 key ingredients). This is the most powerful return driver.</div>
+  </div>
+  <div class="timeline-row">
+    <span class="timeline-time">After</span>
+    <div class="timeline-desc"><strong>Cultural context (if requested).</strong> Deliver Script 4 when guests signal interest — never uninvited. Some guests will have read about the concept; some will be entirely new to it. Read the table. Be a guide, not a lecturer.</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 7 — WEEKLY PREP SCHEDULE
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Guide #44 · Ops Section 7</span>
+  </div>
+  <h2><span class="sn2">7</span>Weekly Prep Schedule</h2>
+
+  <div class="info-box-ops">
+    <div class="info-box-ops-title">Prep Philosophy</div>
+    <p style="font-size:12px;line-height:1.65;">Native ingredients are perishable, seasonal, and expensive. Over-prepping wastes cost and flavour; under-prepping compromises service. This schedule is built around a 5.5-day trading week (closed Sunday night and Monday). Adjust delivery days with your supplier — most native ingredient suppliers operate Tuesday–Friday. Confirm lead times on finger lime (2-day minimum) and Davidson plum (frozen stock vs. fresh seasonal).</p>
+  </div>
+
+  <table class="prep-table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Frequency</th>
+        <th>Est. Time</th>
+        <th>Responsible</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Wattleseed Roasting &amp; Grinding</strong></td>
+        <td>Weekly (Tuesday)</td>
+        <td>45 min</td>
+        <td>Head Chef</td>
+        <td>Roast whole seeds in dry pan over medium heat until fragrant and darkened — approx. 8–10 min. Cool completely before grinding. Grind to fine powder in spice mill. Store airtight at room temp up to 2 weeks. Do not roast in bulk — wattleseed loses aromatics within 10 days of grinding.</td>
+      </tr>
+      <tr>
+        <td><strong>Davidson Plum Reduction</strong></td>
+        <td>Twice weekly (Mon AM, Thu AM)</td>
+        <td>30 min per batch</td>
+        <td>Pastry Cook</td>
+        <td>Simmer Davidson plum purée (frozen stock) with sugar and citric acid until glossy and coating-consistency. Yield per batch: approx. 600ml. Refrigerate in squeeze bottles — use within 5 days. Label with date. Fresh Davidson plum (Jan–Mar season): reduce cook time by 20%, adjust sugar down slightly as fresh fruit is more complex.</td>
+      </tr>
+      <tr>
+        <td><strong>Finger Lime Sourcing &amp; Inspection</strong></td>
+        <td>Every 2 days (Mon, Wed, Fri)</td>
+        <td>15 min inspection</td>
+        <td>Head Chef</td>
+        <td>Order 48h ahead. Inspect on arrival — reject if skin is broken, pearls are cloudy, or fruit is soft. Whole finger limes: do not cut until day of use. Store at 10°C (not fridge cold — damages pearls). Shelf life: 5–7 days whole, 4 hours once cut. Build order quantity on previous 2-day sales data.</td>
+      </tr>
+      <tr>
+        <td><strong>Lemon Myrtle Syrup</strong></td>
+        <td>Twice weekly (Tue, Fri)</td>
+        <td>25 min</td>
+        <td>Pastry Cook</td>
+        <td>1:1 sugar syrup infused with fresh or dried lemon myrtle leaves (dried preferred for consistency). Simmer 15 min, steep additional 30 min off heat, strain. Yield: 1 litre per batch. Store refrigerated up to 2 weeks. If flavour is weak, increase leaf quantity not steep time.</td>
+      </tr>
+      <tr>
+        <td><strong>Kakadu Plum Jam</strong></td>
+        <td>Weekly (Wednesday)</td>
+        <td>40 min</td>
+        <td>Pastry Cook</td>
+        <td>Kakadu plum has the highest recorded Vitamin C content of any fruit — extremely tart. Balance with sugar (1:0.8 fruit:sugar ratio) and a small amount of vanilla. Do not over-cook — colour degrades to brown if jam reaches setting point by temp. Use gel test. Store refrigerated up to 3 weeks. Yield: approx. 800g per batch.</td>
+      </tr>
+      <tr>
+        <td><strong>Bush Tucker Supplier Order</strong></td>
+        <td>Weekly (Monday)</td>
+        <td>20 min</td>
+        <td>Head Chef</td>
+        <td>Primary supplier order placed Monday AM for Tuesday–Wednesday delivery. Items: dried lemon myrtle, dried anise myrtle, bush tomato (dried), wattleseed (raw), Kakadu plum powder, Davidson plum purée (frozen). Maintain 2-week buffer stock on dried goods. Fresh items ordered per delivery schedule below.</td>
+      </tr>
+      <tr>
+        <td><strong>Supplier Delivery Schedule</strong></td>
+        <td>Reference</td>
+        <td>—</td>
+        <td>Head Chef</td>
+        <td><strong>Tue:</strong> Dried native herbs and spices (primary supplier). <strong>Wed:</strong> Fresh finger lime (if ordered Mon). <strong>Thu:</strong> Macadamia nuts (raw and roasted), native oils. <strong>Fri:</strong> Davidson plum fresh (seasonal Jan–Mar only). Always have frozen Davidson plum purée as backup stock (min. 5kg).</td>
+      </tr>
+      <tr>
+        <td><strong>Macadamia Nut Preparation</strong></td>
+        <td>3× weekly (Mon, Wed, Fri)</td>
+        <td>20 min</td>
+        <td>Pastry Cook</td>
+        <td>Rough chop for praline base. Fine chop for garnish. Roast in 160°C oven 8–10 min (do not over-roast — macadamia burns fast). Cool before use. Macadamia praline: melt sugar to amber caramel, fold in warm nuts, pour onto silpat. Blitz to crumble when set. Store airtight 1 week. Note: macadamia is a <strong>declared allergen at this venue</strong> — use dedicated chopping board (red label).</td>
+      </tr>
+      <tr>
+        <td><strong>Native Herb Drying</strong></td>
+        <td>Weekly (Tuesday)</td>
+        <td>2–3 days passive</td>
+        <td>Head Chef</td>
+        <td>Fresh lemon myrtle and anise myrtle hung or spread on drying racks at 40°C in combi oven (fan, no steam) for 2–3 hours, or air-dried 2–3 days. Dried herbs stored in sealed jars, away from heat. Label with harvest/dry date. Use within 3 months. Sourced fresh herbs lose aromatics quickly — dry within 24h of delivery.</td>
+      </tr>
+      <tr>
+        <td><strong>Wattleseed Ice Cream Base</strong></td>
+        <td>Daily (AM)</td>
+        <td>30 min + churn</td>
+        <td>Pastry Cook</td>
+        <td>Crème anglaise base infused with ground wattleseed (1 tbsp per litre). Steep at 70°C for 20 min. Strain, churn, pull at soft-serve consistency. Blast-freeze to -18°C. Temper 5 min before serving. Ice cream should not be held in freezer more than 3 days — texture degrades and wattleseed flavour fades.</td>
+      </tr>
+      <tr>
+        <td><strong>Bush Tomato Caramel Sauce</strong></td>
+        <td>Twice weekly (Mon, Thu)</td>
+        <td>20 min</td>
+        <td>Pastry Cook</td>
+        <td>Dry caramel (no water) to deep amber. Deglaze with cream and butter. Add rehydrated bush tomato (chopped fine — flavour is intensely savoury-sweet, use sparingly: 1 tsp per 500ml). Blend until smooth. Strain. Refrigerate up to 1 week. Reheat gently — do not boil or sauce will split.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box-ops">
+    <div class="info-box-ops-title">Critical Allergen Reminder — Prep Schedule</div>
+    <p style="font-size:12px;line-height:1.65;">Macadamia nuts are processed at this venue and must be treated as a <strong>cross-contamination risk</strong>. Use dedicated cutting board (red label), dedicated knife (stored separately), and wash hands between macadamia prep and all other tasks. All containers holding macadamia-containing preparations must be labelled with a red "MAC" sticker. Alert front-of-house at every service: macadamia is present in multiple desserts and the allergen table must be consulted for every guest who flags a nut allergy.</p>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 8 — CUSTOMER RETENTION SYSTEM
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Guide #44 · Ops Section 8</span>
+  </div>
+  <h2><span class="sn2">8</span>Customer Retention System</h2>
+
+  <div class="philosophy-box">
+    <p>"The guest who returns is not coming back for a dessert.<br>They are coming back to learn something new about Country."</p>
+    <div class="attr">Retention Strategy · Australian Native Dessert Bar</div>
+  </div>
+
+  <!-- Storytelling Loyalty -->
+  <div class="retention-card">
+    <div class="retention-card-title">01 — Storytelling-Based Loyalty</div>
+    <p style="font-size:12px;line-height:1.65;">Traditional loyalty programmes (points, stamps, discounts) are a race to the bottom on margin. At this concept, loyalty is built on intellectual and emotional investment. Each visit, a guest can learn something new — a new ingredient, a new cultural story, a different seasonal expression. The retention mechanism is curiosity, not reward points.</p>
+    <ul style="font-size:12px;line-height:1.8;margin-top:8px;padding-left:18px;">
+      <li><strong>Native Ingredient Passport:</strong> A small, beautifully printed card given to first-time guests listing 10 native Australian ingredients. Each visit, staff "stamp" (or tick) the ingredients the guest has tasted. When complete, the guest receives a complimentary dessert of their choice. Cost: $0.30/card, reward cost: one dessert at ~$8 food cost. Perceived value: high.</li>
+      <li><strong>Storytelling Depth:</strong> Train staff to have 3 levels of story for each ingredient — a 15-second version (for busy tables), a 2-minute version (for engaged guests), and a 5-minute deep dive (for passionate guests who want the cultural and botanical full story). The depth of story is the product.</li>
+      <li><strong>Handwritten Closing Note:</strong> For tables of 4+ or special occasion bookings, have the Head Chef sign a small card naming the ingredients on their table and a sentence about their origin. Costs 2 minutes of labour. Generates social media posts and near-universal return intent.</li>
+    </ul>
+  </div>
+
+  <!-- Seasonal Specials -->
+  <div class="retention-card">
+    <div class="retention-card-title">02 — Seasonal Native Ingredient Specials</div>
+    <p style="font-size:12px;line-height:1.65;">Native ingredients have genuine seasons — this is one of the most powerful retention levers available. Guests who understand this will plan visits around ingredient availability.</p>
+    <table class="prep-table" style="margin-top:10px;">
+      <thead>
+        <tr>
+          <th>Season / Month</th>
+          <th>Feature Ingredient</th>
+          <th>Special Opportunity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jan – Mar</td>
+          <td>Davidson Plum (fresh)</td>
+          <td>"Fresh Davidson Plum Season" tasting menu — fresh vs. preserved comparison plate. Instagram campaign: "It's plum season — for 8 weeks only."</td>
+        </tr>
+        <tr>
+          <td>Mar – Jun</td>
+          <td>Finger Lime (peak season)</td>
+          <td>Finger Lime Flight — 3 preparations of finger lime across starter/main/drink. Peak flavour and maximum pearl yield. Price premium justified.</td>
+        </tr>
+        <tr>
+          <td>Jun – Aug</td>
+          <td>Wattleseed (new harvest)</td>
+          <td>New-crop wattleseed has brighter, more complex flavour. "New Harvest Wattleseed Menu" drop — update ice cream, update custard tart, promote freshness.</td>
+        </tr>
+        <tr>
+          <td>Sep – Nov</td>
+          <td>Lemon Myrtle (spring growth)</td>
+          <td>Fresh lemon myrtle in season — spring panna cotta special. Floral and bright. Feature in native tea menu with fresh-leaf infusions.</td>
+        </tr>
+        <tr>
+          <td>Year-round</td>
+          <td>Kakadu Plum</td>
+          <td>Ongoing feature — rotate position on menu seasonally. "Our highest Vitamin C ingredient" — wellness angle for health-conscious guests.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;">Communicate seasonal changes via email list, Instagram, and at-table script. Guests who feel "in the know" about seasons become advocates.</p>
+  </div>
+
+  <!-- Supplier Partnership -->
+  <div class="retention-card">
+    <div class="retention-card-title">03 — First Nations Supplier Partnership as Story &amp; Ethics</div>
+    <p style="font-size:12px;line-height:1.65;">Your supplier relationships are not just operational — they are part of the story and the ethical foundation of the concept. Name your suppliers. Display their stories. When a guest asks where the finger lime comes from, have a specific answer: a grower's name, a region, a face if possible.</p>
+    <ul style="font-size:12px;line-height:1.8;margin-top:8px;padding-left:18px;">
+      <li>Create a small <strong>"Our Growers" wall panel</strong> — framed A4 cards with grower names, Country, and one key ingredient they supply. Cost: $50 to produce. Value: enormous for brand trust and cultural legitimacy.</li>
+      <li>Invite suppliers to <strong>quarterly supplier evenings</strong> — small-format events (12–16 guests) where a First Nations grower shares the story of their ingredient. Tickets at $85–120 per head. These sell out. They generate media coverage and deep loyalty in your most valuable guest segment.</li>
+      <li>Maintain a <strong>supplier transparency page</strong> on your website: list each key ingredient, its source, and what percentage of the sale price returns to First Nations supply chains. This is not marketing — it is accountability. Guests who care about this will become your most loyal advocates.</li>
+    </ul>
+  </div>
+
+  <!-- Social Media -->
+  <div class="retention-card">
+    <div class="retention-card-title">04 — Social Media Strategy: #EatCountry Content</div>
+    <p style="font-size:12px;line-height:1.65;">Instagram is this concept's primary organic marketing channel. The visual richness of native ingredients — finger lime pearls, Davidson plum's deep garnet hue, wattleseed's speckled texture — is inherently photogenic. Build a content strategy that educates, not just showcases.</p>
+    <ul style="font-size:12px;line-height:1.8;margin-top:8px;padding-left:18px;">
+      <li><strong>Weekly "Ingredient Story" post:</strong> One native ingredient per week, photographed beautifully, with a 150-word caption covering origin, cultural significance, and how it's used on the menu. No recipe — intrigue, not instruction.</li>
+      <li><strong>Behind-the-scenes prep content:</strong> Wattleseed roasting, finger lime being cut, Davidson plum reduction — process content performs strongly in the food niche and builds perceived craft value.</li>
+      <li><strong>Guest reshares:</strong> Actively reshare any tagged guest post within 24 hours. A reshare is a relationship — the guest becomes an advocate because you noticed them.</li>
+      <li><strong>Seasonal countdown content:</strong> "3 weeks until fresh finger lime season" — builds anticipation and gives the algorithm a reason to surface your account repeatedly.</li>
+      <li><strong>Hashtag strategy:</strong> Primary — #EatCountry. Secondary — #AustralianNativeIngredients #BushTucker #SydneyDessert #NativeFood #IndigenousFlavours #WattleseedIceCream #FingerLime. Avoid generic tags — precision beats volume.</li>
+    </ul>
+  </div>
+
+  <!-- Group Bookings -->
+  <div class="retention-card">
+    <div class="retention-card-title">05 — Group Booking Strategy: Cultural Dining Experiences</div>
+    <p style="font-size:12px;line-height:1.65;">Groups are high-value and low-friction to retain. One group booking generates multiple first-time guests, many of whom will return individually. Build a group experience product that is distinct from walk-in service.</p>
+    <table class="prep-table" style="margin-top:10px;">
+      <thead>
+        <tr>
+          <th>Experience Tier</th>
+          <th>Group Size</th>
+          <th>Format</th>
+          <th>Price Per Head (AUD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tasting Journey</strong></td>
+          <td>8–16</td>
+          <td>5-course native ingredient tasting with guided ingredient education. Each course narrated by Storytime Server. Native tea pairing included.</td>
+          <td>$95–115 pp</td>
+        </tr>
+        <tr>
+          <td><strong>Cultural Dining Experience</strong></td>
+          <td>10–20</td>
+          <td>As above + invited First Nations speaker or grower (45-min presentation). Pre-booked only. Requires 4-week lead time for speaker arrangement.</td>
+          <td>$130–150 pp</td>
+        </tr>
+        <tr>
+          <td><strong>Corporate / Private Event</strong></td>
+          <td>20–40</td>
+          <td>Full venue hire, bespoke menu, branded ingredient takeaway pack. Canapé-style or seated. Includes cultural acknowledgement of Country by venue.</td>
+          <td>$160–220 pp (min. spend $4,000)</td>
+        </tr>
+        <tr>
+          <td><strong>School / Educational Group</strong></td>
+          <td>15–30</td>
+          <td>Modified experience for secondary and tertiary students. Focus on ingredient science and First Nations food systems. Simplified menu at lower price.</td>
+          <td>$45–65 pp</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;">Group bookings require minimum 48h notice; Cultural Dining Experiences require 4-week lead time. Collect guest names and emails at booking — send follow-up ingredient story card 3 days after the event.</p>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 9 — P&L MODEL
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Guide #44 · Ops Section 9</span>
+  </div>
+  <h2><span class="sn2">9</span>P&amp;L Model — 40-Seat Australian Native Dessert Bar</h2>
+
+  <div class="info-box-ops">
+    <div class="info-box-ops-title">Model Assumptions — Australian Market 2026</div>
+    <p style="font-size:12px;line-height:1.65;">All figures in <strong>AUD</strong>. 40-seat venue. Trading 5.5 days/week (closed Sun night, Mon). Lunch service: 60% seat utilisation. Dinner service: 85% seat utilisation. Average covers: <strong>120/day</strong>. Average dessert spend: <strong>$25</strong>. Average tea/drink add-on: <strong>$9</strong>. Total average per-head spend: <strong>$34</strong>. Premium positioning justified by unique concept, native ingredient sourcing story, and cultural dining experience — do not attempt to compete on price.</p>
+  </div>
+
+  <!-- Revenue Section -->
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;">Monthly Revenue Model</div>
+  <table class="rev-table">
+    <thead>
+      <tr>
+        <th>Revenue Stream</th>
+        <th>Daily Est.</th>
+        <th>Monthly Est.</th>
+        <th>% of Revenue</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Dine-in Desserts</strong></td>
+        <td>$3,000</td>
+        <td>$66,000</td>
+        <td>72%</td>
+        <td>120 covers × $25 avg. Desserts priced $18–$35. Main dessert plates $26–35; starters $18–24; sharing plates $28–38 for table.</td>
+      </tr>
+      <tr>
+        <td><strong>Native Tea &amp; Drinks Service</strong></td>
+        <td>$1,080</td>
+        <td>$23,760</td>
+        <td>26%</td>
+        <td>120 covers × $9 avg (60% attach rate on tea pairing). Non-alcoholic only. Tea service margin: ~75%. Highest-margin revenue line.</td>
+      </tr>
+      <tr>
+        <td><strong>Catering &amp; Private Events</strong></td>
+        <td>—</td>
+        <td>$5,500</td>
+        <td>6%</td>
+        <td>Avg. 2 events/month at $2,750 each. Corporate and cultural dining experience tier. Grows with reputation — target $12,000/month by Year 2.</td>
+      </tr>
+      <tr>
+        <td><strong>Native Ingredient Retail</strong></td>
+        <td>$80</td>
+        <td>$1,760</td>
+        <td>2%</td>
+        <td>Small curated retail — wattleseed packs, lemon myrtle tea, Kakadu plum jam (own production). Impulse purchase at counter. 70%+ margin. Do not overinvest in stock — test with 4–6 SKUs.</td>
+      </tr>
+      <tr class="rev-total">
+        <td><strong>Total Revenue</strong></td>
+        <td><strong>~$4,160</strong></td>
+        <td><strong>~$91,520</strong></td>
+        <td><strong>100%</strong></td>
+        <td>Annual est.: ~$1.1M. Peak months (festival season, tourism): add 15–20% uplift.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Cost Section -->
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;margin-top:20px;">Monthly Cost Structure</div>
+  <table class="rev-table">
+    <thead>
+      <tr>
+        <th>Cost Line</th>
+        <th>% of Revenue</th>
+        <th>Monthly Est.</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Food Cost (Native Ingredients)</strong></td>
+        <td>30–35%</td>
+        <td>$27,456–$32,032</td>
+        <td>Native ingredients command premium wholesale prices. Wattleseed: ~$60–80/kg. Finger lime: ~$35–50/kg fresh. Davidson plum purée: ~$22–28/kg frozen. Do not attempt to reduce food cost below 28% — quality and authenticity will degrade visibly. Target 30% as baseline.</td>
+      </tr>
+      <tr>
+        <td><strong>Labour (Kitchen + FOH)</strong></td>
+        <td>36–40%</td>
+        <td>$32,947–$36,608</td>
+        <td>Head Chef: $80–95K AUD/year. Pastry Cook: $58–68K. FOH Storytime Server (Lead): $55–65K. FOH Support (2×, casual): $28–32/hr. Kitchen hand: $25–28/hr. Cultural awareness staffing commands slight premium — budget for it. Do not understaff floor.</td>
+      </tr>
+      <tr>
+        <td><strong>Rent (Sydney inner/mid metro)</strong></td>
+        <td>10–13%</td>
+        <td>$9,000–$12,000</td>
+        <td>Highly location-dependent. Inner-city Sydney (Surry Hills, Newtown, Paddington): $12,000–18,000/month for 80–100sqm. Mid-metro (Parramatta, Chatswood): $7,000–10,000. Seek cultural precinct locations for brand alignment.</td>
+      </tr>
+      <tr>
+        <td><strong>Utilities, Supplies, Packaging</strong></td>
+        <td>3–4%</td>
+        <td>$2,746–$3,661</td>
+        <td>Native ingredient retail packaging, ingredient cards, chef notes cards, service collateral. Budget for branded paper goods — they are part of the experience.</td>
+      </tr>
+      <tr>
+        <td><strong>Marketing &amp; Social</strong></td>
+        <td>2–3%</td>
+        <td>$1,830–$2,746</td>
+        <td>Primarily Instagram content creation. Supplier story photography (quarterly). PR for cultural events. Do not spend heavily on paid advertising — organic storytelling outperforms paid at this concept tier.</td>
+      </tr>
+      <tr>
+        <td><strong>Other (insurance, POS, misc.)</strong></td>
+        <td>2–3%</td>
+        <td>$1,830–$2,746</td>
+        <td>—</td>
+      </tr>
+      <tr class="rev-total">
+        <td><strong>Total Operating Costs</strong></td>
+        <td><strong>~78–84%</strong></td>
+        <td><strong>~$75,809–$89,793</strong></td>
+        <td>Tighter at launch (higher food cost as you establish supplier pricing). Cost efficiency improves with volume and supplier relationships by Month 6.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- P&L Summary Cards -->
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;margin-top:20px;">P&amp;L Summary</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+    <div class="pl-highlight" style="flex-direction:column;align-items:flex-start;display:flex;">
+      <div class="pl-label">Avg. Dessert Spend</div>
+      <div class="pl-value">$25</div>
+      <div class="pl-note">Range: $18–$35 per plate</div>
+    </div>
+    <div class="pl-highlight" style="flex-direction:column;align-items:flex-start;display:flex;">
+      <div class="pl-label">Per-Head Total</div>
+      <div class="pl-value">$34</div>
+      <div class="pl-note">Incl. tea pairing (60% attach)</div>
+    </div>
+    <div class="pl-highlight" style="flex-direction:column;align-items:flex-start;display:flex;">
+      <div class="pl-label">Food Cost %</div>
+      <div class="pl-value">30–35%</div>
+      <div class="pl-note">Premium native ingredient sourcing</div>
+    </div>
+    <div class="pl-highlight" style="flex-direction:column;align-items:flex-start;display:flex;">
+      <div class="pl-label">Net Profit Target</div>
+      <div class="pl-value">18–22%</div>
+      <div class="pl-note">~$16,474–$20,134/month</div>
+    </div>
+  </div>
+
+  <div class="info-box-ops" style="border-left:4px solid #2E7D32;background:#F1F8F1;">
+    <div class="info-box-ops-title" style="color:#2E7D32;">Key Financial Insight</div>
+    <p style="font-size:12px;line-height:1.65;">The premium positioning of this concept is its financial protection. A concept charging $22–$28 per dessert does not compete with cafés or casual dining — it occupies a distinct category where the guest expects to pay for experience, story, and rarity. Resist the temptation to discount. Every discount erodes the story. Native ingredients are genuinely more expensive to source than commodity ingredients — this is a fact, not a marketing claim, and it justifies the price. Communicate it clearly. Guests who understand the supply chain accept the price. Guests who don't are not your target market.</p>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 10 — ALLERGEN SUMMARY TABLE
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Guide #44 · Ops Section 10</span>
+  </div>
+  <h2><span class="sn2">10</span>Allergen Summary Table — All 28 Menu Items</h2>
+
+  <div class="info-box-ops" style="border-left:4px solid var(--danger);background:#FFF5F5;">
+    <div class="info-box-ops-title" style="color:var(--danger);">⚠ Allergen Notice — Macadamia Nut</div>
+    <p style="font-size:12px;line-height:1.65;"><strong>Macadamia nut is a native Australian ingredient used extensively across this menu.</strong> While macadamia is botanically a tree nut and is covered under the Tree Nuts allergen category, it should be called out <strong>specifically by name</strong> in all guest communications. Many guests with tree nut allergies may not realise macadamia is present in items they consider "nut-free." Additionally, macadamia is processed on-site — cross-contamination risk exists for all menu items. Guests with any nut allergy must be advised of this clearly. This table uses separate columns for Macadamia and Tree Nuts for this reason.</p>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;"><strong>Key:</strong> <span class="allergen-yes">●</span> Contains · <span class="allergen-may">◐</span> May Contain (cross-contact risk) · <span class="allergen-no">○</span> Not Present</p>
+  </div>
+
+  <table class="allergen-table">
+    <thead>
+      <tr>
+        <th style="min-width:200px;">Menu Item</th>
+        <th>Gluten</th>
+        <th>Dairy</th>
+        <th>Eggs</th>
+        <th>Macadamia</th>
+        <th>Soya</th>
+        <th>Sesame</th>
+        <th>Tree Nuts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Section 1: Signature Starters (01–06) -->
+      <tr><td colspan="8" style="background:var(--gold-pale);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;padding:6px 8px;">Signature Starters</td></tr>
+      <tr>
+        <td>01 · Wattleseed Custard Tart with Finger Lime</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>02 · Lemon Myrtle Panna Cotta, Davidson Plum Gel</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>03 · Native Citrus Financier, Kakadu Plum Curd</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>04 · Finger Lime &amp; Coconut Mango Starter Plate</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>05 · Bush Tomato Caramel Macaron</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>06 · Anise Myrtle Meringue, Davidson Plum Coulis</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <!-- Section 2: Main Dessert Plates (07–16) -->
+      <tr><td colspan="8" style="background:var(--gold-pale);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;padding:6px 8px;">Main Dessert Plates</td></tr>
+      <tr>
+        <td>07 · Wattleseed Ice Cream, Macadamia Praline, Finger Lime</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+      </tr>
+      <tr>
+        <td>08 · Davidson Plum Tart, Wattleseed Cream</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>09 · Lemon Myrtle Soufflé, Kakadu Plum Sorbet</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>10 · Chocolate &amp; Davidson Plum Fondant</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>11 · Native Pavlova, Finger Lime, Lemon Myrtle Cream</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>12 · Bush Tomato Caramel Tart, Macadamia Crumble</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+      </tr>
+      <tr>
+        <td>13 · Wattleseed Crème Brûlée</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>14 · Kakadu Plum Cheesecake, Native Herb Syrup</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>15 · Finger Lime Tart, Anise Myrtle Pastry Cream</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>16 · Native Semifreddo, Davidson Plum Reduction</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <!-- Section 3: Sharing Plates (17–20) -->
+      <tr><td colspan="8" style="background:var(--gold-pale);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;padding:6px 8px;">Sharing Plates</td></tr>
+      <tr>
+        <td>17 · Country Board — Native Petits Fours Selection</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+      </tr>
+      <tr>
+        <td>18 · Wattleseed &amp; Macadamia Brownie Sharing Plate</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+      </tr>
+      <tr>
+        <td>19 · Native Fruit Mezze — Finger Lime, Davidson Plum, Quandong</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>20 · Lemon Myrtle &amp; Coconut Lamington Sharing Stack</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <!-- Section 4: Drinks (21–28) -->
+      <tr><td colspan="8" style="background:var(--gold-pale);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;padding:6px 8px;">Drinks</td></tr>
+      <tr>
+        <td>21 · Wattleseed Cold Brew</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>22 · Lemon Myrtle &amp; Pepperberry Infusion (hot/iced)</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>23 · Kakadu Plum Tisane</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>24 · Davidson Plum &amp; Rosella Sparkling</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>25 · Anise Myrtle Oat Latte</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>26 · Finger Lime &amp; Yuzu Lemonade</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>27 · Bush Tucker Spice Chai (native spice blend)</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-yes">●</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+      <tr>
+        <td>28 · Native Botanical Sparkling Water (house blend)</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-no">○</td>
+        <td class="allergen-may">◐</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box-ops">
+    <div class="info-box-ops-title">Cross-Contact Warning</div>
+    <p style="font-size:12px;line-height:1.65;">All items marked <span class="allergen-may" style="font-weight:700;">◐ May Contain</span> for Macadamia and Tree Nuts reflect the fact that macadamia nuts are processed in this kitchen. Any guest with a macadamia or tree nut allergy must be informed of this cross-contact risk before ordering. We cannot guarantee a fully nut-free preparation. For severe nut allergies, please advise the guest that we cannot safely accommodate them in our current kitchen setup. This is not a limitation — it is a responsible, honest position that protects both guests and the business.</p>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     MICHELIN CHEF'S LENS — CLOSING REFLECTION
+     ════════════════════════════════════════════════════════════ -->
+<div class="ops-page-dark" style="page-break-before:always;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px;">
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.5);">Guide #44 · Closing · Michelin Chef's Lens</span>
+  </div>
+
+  <div class="lens-card">
+    <div class="lens-title">Cooking with Country</div>
+    <div class="lens-text">
+      <p style="margin-bottom:14px;">When you cook with Davidson plum or wattleseed, you are not simply working with interesting ingredients. You are handling something that has been known, tended, gathered, and understood for 65,000 years. That is the oldest continuous food tradition on earth. Modern technique is perhaps 300 years old. Country is 65,000. The responsibility ratio is clear.</p>
+      <p style="margin-bottom:14px;">The responsibility we carry in this kitchen is threefold. To the land itself — that these plants are sourced sustainably, that we do not exhaust what took millennia to develop. To the Traditional Custodians — that we name them, pay them fairly, and share their stories only with permission and gratitude, never as appropriation dressed up as appreciation. And to the guest — that what lands on the plate is genuine: a true encounter with something Australian, not a performance of it.</p>
+      <p style="margin-bottom:14px;">When a guest tastes finger lime for the first time, something small happens that I believe matters. They are, for a moment, connected to a place and a people they may never have thought about. Food does that. No other art form delivers the past directly into the body. We have been given the privilege of being the conduit for that moment. Do not take it lightly.</p>
+      <p>Cook with humility. Source with honesty. Tell the story with care. And remember always that the ingredient arrived at your bench long before you did, and will outlast you if you tend it well.</p>
+    </div>
+    <div class="lens-closer">
+      "Ngurra" — Country, home, the place where you belong.<br>
+      <span style="font-size:11px;color:rgba(200,146,42,0.6);font-style:normal;letter-spacing:1px;">Dharawal / Gadigal Language · Eora Nation · Sydney</span>
+    </div>
+  </div>
+
+  <!-- Acknowledgement of Country -->
+  <div style="text-align:center;margin-top:28px;margin-bottom:32px;">
+    <p style="font-size:11px;color:rgba(250,250,248,0.45);letter-spacing:1px;line-height:1.8;">We acknowledge the Gadigal people of the Eora Nation as the Traditional Custodians of the land on which this guide was produced.<br>We pay our respects to Elders past, present, and emerging. This food has always belonged to Country.</p>
+  </div>
+
+  <!-- Footer -->
+  <div style="border-top:1px solid rgba(200,146,42,0.25);padding-top:20px;text-align:center;">
+    <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,146,42,0.7);margin-bottom:8px;">
+      KitchenFounder Operations Guide v7 · Australian Native Dessert Bar · kitchen-founder.myshopify.com
+    </div>
+    <div style="font-size:10px;color:rgba(250,250,248,0.3);letter-spacing:1px;">
+      © 2026 KitchenFounder · Australian Market Edition · For operational use only · Not for resale
+    </div>
+    <div style="margin-top:20px;display:flex;justify-content:center;gap:32px;">
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);">10</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.35);margin-top:4px;">Sections</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);">28</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.35);margin-top:4px;">Menu Items</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);">65K+</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.35);margin-top:4px;">Years of Tradition</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);">#44</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.35);margin-top:4px;">Guide No.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 </body>
 </html>
