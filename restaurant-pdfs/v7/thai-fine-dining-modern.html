@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #48 — Thai Fine Dining Modern · v7 · 2026 Edition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--gold:#C8922A;--jade:#1A4A3A;--accent:#1A4A3A;--border:#E0D9D0;--mid:#8A8A8A;--light:#F5F0E8}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+.cover{width:210mm;min-height:297mm;background:linear-gradient(155deg,#050E08 0%,#0D2018 45%,#0A0A14 100%);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-glow{position:absolute;top:25%;right:15%;width:300px;height:300px;background:radial-gradient(circle,rgba(200,146,42,0.1) 0%,transparent 70%);pointer-events:none}
+.cover-top{padding:14mm 16mm 0;z-index:1;position:relative}
+.cover-logo{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.45)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;position:relative}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.55);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:#fff;line-height:0.93;margin-bottom:4mm}
+.cover-title .gd{color:var(--gold)}
+.cover-rule{width:55mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.32);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end;position:relative}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.18);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);margin:5mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+.sn2{display:inline-block;background:var(--gold);color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:0.8rem;font-weight:700;margin-right:8px}
+.recipe-card{background:#fff;border:1px solid var(--border);margin-bottom:4mm;page-break-inside:avoid}
+.rc-hdr{background:var(--accent);padding:3mm 5mm}
+.rc-num{font-size:9px;font-weight:700;color:rgba(200,146,42,0.7);letter-spacing:2px}
+.rc-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff}
+.rc-sub{font-size:8.5px;color:rgba(255,255,255,0.4);font-style:italic}
+.rc-body{padding:3.5mm 5mm}
+.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm}
+.rc-ingredients h5,.rc-method h5{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm;border-bottom:1px solid var(--border);padding-bottom:1mm}
+.ingredient{font-size:9.5px;color:#333;line-height:1.75;display:flex;justify-content:space-between;padding:0.5mm 0;border-bottom:1px solid rgba(224,217,208,0.4)}
+.ingredient .qty{color:var(--mid);font-size:9px}
+.step{font-size:9.5px;color:#333;line-height:1.7;padding:1mm 0;border-bottom:1px solid rgba(224,217,208,0.3);display:flex;gap:3mm}
+.step-num{color:var(--gold);font-weight:700;font-size:10px;min-width:12px}
+.rc-notes{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:3mm}
+.note-box{padding:2.5mm 3mm;border-radius:2px}
+.note-box.tech{background:#E8F4F8;border-left:3px solid #1B4F8A}
+.note-box.fail{background:#FFF8E1;border-left:3px solid var(--gold)}
+.note-box.fine{background:#F0F4E8;border-left:3px solid var(--jade)}
+.note-box h6{font-size:7.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm}
+.note-box.tech h6{color:#1B4F8A}
+.note-box.fail h6{color:var(--gold)}
+.note-box.fine h6{color:var(--jade)}
+.note-box p{font-size:9px;color:#444;line-height:1.65}
+.rc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:2.5mm;padding-top:2.5mm;border-top:1px solid var(--border)}
+.cost{font-size:9px;color:#555}
+.dtags{display:flex;gap:1.5mm}
+.dtag{font-size:7px;font-weight:700;padding:0.8mm 1.8mm}
+.dtag.gf{background:#E3F2FD;color:#0D47A1}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A}
+.dtag.nf{background:#E8F5E9;color:#1B5E20}
+.dtag.df{background:#FFF3E0;color:#E65100}
+.wine-card{background:#fff;border:1px solid var(--border);margin-bottom:3mm;page-break-inside:avoid}
+.wc-hdr{background:linear-gradient(135deg,#0D1A0A,#1A4A3A);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.wc-title{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#fff}
+.wc-sub{font-size:8px;color:rgba(200,146,42,0.6);font-style:italic}
+.wc-body{padding:3mm 5mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.share-card{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.share-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);margin-bottom:1.5mm}
+.share-desc{font-size:9.5px;color:#444;line-height:1.75}
+.script-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.script-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm;font-family:'Courier New',monospace}
+.script-text{font-size:9.5px;color:#1C1C1C;line-height:1.8;font-style:italic;background:#F8F6F2;padding:2mm 3mm;border-left:2px solid var(--gold);margin-bottom:2mm}
+.script-why{font-size:9px;color:#555;line-height:1.7}
+.script-why strong{color:var(--accent)}
+.info-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm}
+.info-box h5{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm}
+.info-box p,.info-box li{font-size:9.5px;color:#333;line-height:1.8}
+.staff-table,.prep-table,.rev-table,.allergen-table{width:100%;border-collapse:collapse;margin-bottom:3mm;font-size:9px}
+.staff-table th,.prep-table th,.rev-table th,.allergen-table th{background:var(--accent);color:#fff;padding:2.5mm 3mm;text-align:left;font-weight:600;font-size:8px}
+.staff-table td,.prep-table td,.rev-table td,.allergen-table td{padding:2mm 3mm;border-bottom:1px solid var(--border);color:#333;line-height:1.6}
+.total-row td{font-weight:700;color:var(--accent);background:rgba(200,146,42,0.06)!important;border-top:2px solid var(--gold)}
+.net-row td{font-weight:700;color:#2D7D4F;background:rgba(45,125,79,0.06)!important;border-top:2px solid #2D7D4F}
+.lens-card{background:var(--accent);color:#fff;padding:5mm 6mm;margin-top:4mm}
+.lens-title{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.7);margin-bottom:2mm;font-family:'Courier New',monospace}
+.lens-text{font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.9}
+.lens-closer{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(200,146,42,0.7);margin-top:3mm;border-top:1px solid rgba(255,255,255,0.1);padding-top:2mm}
+footer{background:var(--accent);color:rgba(255,255,255,0.35);padding:5mm 16mm;text-align:center;font-size:8px;letter-spacing:1px;line-height:1.8}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:0}.page,.cover{page-break-after:always;width:210mm;min-height:297mm}.recipe-card,.wine-card,.share-card,.script-box{page-break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-glow"></div>
+<div class="cover-top"><div class="cover-logo">KitchenFounder · Guide #48 · Thailand Market Edition</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Bangkok · Contemporary Thai · Fine Dining</div>
+  <div class="cover-title">Thai Fine<br><span class="gd">Dining</span><br>Modern</div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">Complete Operator's Blueprint · 28 Recipes<br>Modern Thai Technique · Classic Ingredients · Fine Dining Service</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">28</div><div class="cstat-lbl">Recipes</div></div>
+    <div class="cstat"><div class="cstat-val">THB</div><div class="cstat-lbl">+ USD Pricing</div></div>
+    <div class="cstat"><div class="cstat-val">10</div><div class="cstat-lbl">Sections</div></div>
+    <div class="cstat"><div class="cstat-val">BKK</div><div class="cstat-lbl">Premium 2026</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">Modern Thai Technique</span><span class="ctag">Tasting Menu Format</span>
+    <span class="ctag">Wine Pairing</span><span class="ctag">Fine Dining P&amp;L</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div style="font-family:'Playfair Display',serif;font-size:11px;color:rgba(255,255,255,0.4)">Complete Operator's Guide · Thailand Premium Market</div>
+  <div class="cover-meta">v7 · 2026 Edition<br>Guide #48 · $29.99</div>
+</div>
+</div>
+
+<!-- INTRO -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Chef's Introduction · The Modern Thai Philosophy</span><span class="page-num">02</span></div>
+<div style="background:var(--accent);color:#fff;padding:6mm 8mm;margin-bottom:4mm">
+  <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:3mm">Ancient Flavours. Contemporary Hands.</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.6);line-height:1.9">
+    Thai cuisine is one of the great balancing acts of the culinary world. Sweet, sour, salty, spicy, bitter — not in sequence, but simultaneously, in every mouthful. The ancient royal court kitchens of Ayutthaya understood this balance as an expression of harmony. The street vendor at the night market expresses the same harmony with a wok, a fire, and thirty years of muscle memory. What modern Thai fine dining asks is whether that same harmony can be expressed with precision, with refinement, with intention — without losing the soul.<br><br>
+    The answer is yes. But only if you <strong style="color:var(--gold)">start with flavour, not technique</strong>. Every recipe in this guide begins with a traditional Thai preparation — the gaeng, the laab, the tom, the yam — and then applies contemporary technique: temperature control, emulsification, dehydration, gel. The technique serves the flavour. The moment the reverse is true, you have stopped cooking Thai food and started performing it. There is a difference, and the guest always knows.
+  </div>
+  <div style="margin-top:3mm;font-size:9px;color:rgba(200,146,42,0.6);font-style:italic">— Head Chef, Guide #48</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm">
+  <div class="info-box"><h5>Menu Architecture — 28 Items</h5>
+    <p><strong>Section 1:</strong> 6 Amuse-Bouche / Small Plates<br><strong>Section 2:</strong> 10 Main Courses<br><strong>Section 3:</strong> 4 Dessert Plates (fine dining style)<br><strong>Section 4:</strong> 8 Drinks (wines + signature cocktails)</p>
+  </div>
+  <div class="info-box"><h5>Fine Dining Pricing (THB / USD)</h5>
+    <p>Small plates: THB 380–680 / USD 11–19<br>Mains: THB 680–2,200 / USD 19–63<br>Desserts: THB 320–480 / USD 9–14<br>Tasting menu: THB 2,800–4,500 / USD 80–129<br>THB exchange rate: 35 THB = 1 USD</p>
+  </div>
+</div>
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+<!-- SECTION 1: SMALL PLATES + SECTION 2: MAINS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 1 — Small Plates / Amuse-Bouche · Items 01–06</span><span class="page-num">03</span></div>
+<h2><span class="sn2">1</span>Small Plates &amp; Amuse-Bouche</h2>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">01</div><div class="rc-title">Laab Gai Tartare</div><div class="rc-sub">Free-Range Chicken · Toasted Rice Powder · Kaffir Lime · Betel Leaf</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — 4 portions</h5>
+<div class="ingredient">Free-range chicken breast, minced <span class="qty">200g</span></div>
+<div class="ingredient">Toasted rice powder (khao khua) <span class="qty">15g</span></div>
+<div class="ingredient">Fish sauce <span class="qty">20ml</span></div>
+<div class="ingredient">Lime juice, fresh <span class="qty">25ml</span></div>
+<div class="ingredient">Bird's eye chilli, sliced fine <span class="qty">2</span></div>
+<div class="ingredient">Shallots, sliced paper-thin <span class="qty">40g</span></div>
+<div class="ingredient">Dried chilli flakes, toasted <span class="qty">3g</span></div>
+<div class="ingredient">Kaffir lime leaf, micro-chiffonade <span class="qty">3 leaves</span></div>
+<div class="ingredient">Fresh betel leaves <span class="qty">8 leaves</span></div>
+<div class="ingredient">Coriander, mint (small leaves) <span class="qty">10g each</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Flash-poach chicken mince in boiling salted water 90 seconds — just cooked, no colour. Drain. Ice bath. Dry completely on paper towel. Refrigerate.</div>
+<div class="step"><span class="step-num">2</span>Khao khua: dry-toast uncooked glutinous rice in pan until golden-brown, grind to powder (not flour). This is non-negotiable — it adds flavour and textural contrast no substitute can provide.</div>
+<div class="step"><span class="step-num">3</span>Dress chicken with fish sauce + lime juice. Add shallots, chilli, dried flakes, kaffir lime chiffonade, khao khua. Toss. Taste — should be sharp, herbal, savoury, with a lip-tingle from the dried chilli.</div>
+<div class="step"><span class="step-num">4</span>Fine dining plating: press 40g into ring mould on betel leaf cup. Crown with single mint leaf, kaffir lime oil drop (infused neutral oil), micro coriander. Serve within 5 minutes — khao khua softens quickly.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Khao khua must be freshly ground per service — pre-ground loses the nutty volatile oils within 2 hours. The betel leaf base provides a subtle peppery bitterness that frames the brightness of the laab. This is intentional balance, not decoration.</p></div>
+<div class="note-box fine"><h6>Fine Dining Presentation</h6><p>3 betel cups arranged in a gentle arc on black slate. Micro herbs at exact same height. Kaffir lime oil drop placed with pipette. The minimalism of the presentation signals: this kitchen is in control. Everything here is intentional.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 85 / USD 2.43 · Suggested price: THB 380–450 / USD 10.86–12.86</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag df">DF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">02</div><div class="rc-title">Tom Kha Foam with Scallop</div><div class="rc-sub">Seared Hokkaido Scallop · Coconut Galangal Foam · Kaffir Oil · Crispy Shallot</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — 4 portions</h5>
+<div class="ingredient">Hokkaido scallop U10 <span class="qty">4 pieces</span></div>
+<div class="ingredient">Coconut cream <span class="qty">300ml</span></div>
+<div class="ingredient">Galangal, sliced <span class="qty">30g</span></div>
+<div class="ingredient">Lemongrass, bruised <span class="qty">2 stalks</span></div>
+<div class="ingredient">Kaffir lime leaves <span class="qty">6</span></div>
+<div class="ingredient">Fish sauce <span class="qty">15ml</span></div>
+<div class="ingredient">Lime juice <span class="qty">20ml</span></div>
+<div class="ingredient">Soy lecithin <span class="qty">3g (for foam)</span></div>
+<div class="ingredient">Crispy shallots <span class="qty">10g</span></div>
+<div class="ingredient">Kaffir lime oil <span class="qty">10ml</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Simmer coconut cream + galangal + lemongrass + kaffir leaves 20 min. Strain. Season with fish sauce + lime. This is your tom kha base — taste it like a soup; it must be balanced.</div>
+<div class="step"><span class="step-num">2</span>Foam: cool base to 60°C. Add soy lecithin (3g per 300ml). Blend with immersion blender at surface to create stable foam. White, delicate, aromatic.</div>
+<div class="step"><span class="step-num">3</span>Dry scallops completely. Season. Sear in screaming hot pan with neutral oil 90 sec one side only — never flip a scallop twice. Baste with butter, garlic, thyme final 20 seconds. Rest.</div>
+<div class="step"><span class="step-num">4</span>Plate: pool 30ml warm tom kha base. Place scallop centre — seared face up. Spoon foam over and around generously. Kaffir oil drops around. Crispy shallots on scallop peak. Micro herbs. Serve immediately.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>Soy lecithin foam is surface tension, not air — too little lecithin and foam collapses within 2 minutes. 3g per 300ml is the correct ratio. Foam must be made at service, never in advance.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>The single sear is everything for scallop. Wet scallops steam instead of sear — pat absolutely dry with paper towel twice. Pan must be 220°C minimum. You should hear the sizzle from across the kitchen.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 220 / USD 6.29 · Suggested price: THB 580–680 / USD 16.57–19.43</span><div class="dtags"><span class="dtag gf">GF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">03–06</div><div class="rc-title">Green Mango Gazpacho · Wagyu Betel Wrap · Prawn Miang · Mushroom Tom Yum Espuma</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">03 · Green Mango Gazpacho</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Green mango 300g + cucumber 100g + shallot 20g + fish sauce 20ml + lime 30ml + palm sugar 10g + galangal 10g + bird's eye chilli 1 + fresh coconut water 80ml. Blend smooth, strain fine. Chill 4+ hours — it thickens and flavours intensify. Serve in small shot glass or shallow bowl: 60ml per portion. Garnish: dried shrimp crisp (prawn cracker) on rim. The sourness of green mango + coconut water = a palate-cleansing cold soup that resets the mouth beautifully. <strong>Cost: THB 45 · Price: THB 220–260 / USD 6.29–7.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">04 · Wagyu Betel Wrap (Miang Kham)</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Traditional miang kham elevated: fresh betel leaves, inside each: wagyu tartare 10g (seasoned with fish sauce + lime + shallot), toasted shredded coconut 5g, dried shrimp 3g, ginger brunoise, bird's eye chilli, peanut 3g. Miang sauce (toasted coconut 50g + palm sugar 60g + fish sauce 15ml + shrimp paste 5g — blended to thick paste). Spoon sauce on leaf, add toppings, fold. One bite. The point of the dish is the single-bite explosion of every Thai flavour simultaneously. <strong>Cost: THB 160 · Price: THB 480–560 / USD 13.71–16</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">05 · Prawn Miang Amuse</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Compressed cucumber cup (use ring cutter, scoop centre, compress in vacuum bag with Thai basil oil 15 min). Fill: seared river prawn 1 per cup, kaffir lime curd 5g (kaffir lime juice + eggs + butter cooked like lemon curd), nahm jim pearls (nahm jim set with 0.5% agar, dropped into warm oil to form pearls). Serve on crushed ice. The temperature contrast (cold cucumber + warm prawn + room temp curd) is the fine dining payoff. <strong>Cost: THB 120 · Price: THB 380–450 / USD 10.86–12.86</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">06 · Mushroom Tom Yum Espuma</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Tom yum base: shiitake + oyster mushrooms 200g + lemongrass + galangal + kaffir + bird's eye chilli + tomato 60g + fish sauce + lime. Simmer 30 min, strain. Load into ISI whipper with 2 cream chargers — espuma. Serve warm in Asian spoon or small cup. Garnish: one fresh oyster mushroom sliced paper-thin + chilli oil drop. This is classical French technique (espuma) applied to a classical Thai flavour — the technique disappears; only the flavour remains. <strong>Cost: THB 55 · Price: THB 280–320 / USD 8–9.14</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 2 — Main Courses · Items 07–16</span><span class="page-num">04</span></div>
+<h2><span class="sn2">2</span>Main Courses</h2>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">07</div><div class="rc-title">Massaman Braised Short Rib</div><div class="rc-sub">72hr Wagyu Short Rib · Massaman Emulsion · Fingerling Potato · Crispy Shallot</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — 4 portions</h5>
+<div class="ingredient">Wagyu short rib, bone-in <span class="qty">800g (200g/portion)</span></div>
+<div class="ingredient">Massaman curry paste <span class="qty">80g</span></div>
+<div class="ingredient">Coconut cream <span class="qty">400ml</span></div>
+<div class="ingredient">Beef stock <span class="qty">600ml</span></div>
+<div class="ingredient">Fish sauce <span class="qty">30ml</span></div>
+<div class="ingredient">Palm sugar <span class="qty">40g</span></div>
+<div class="ingredient">Star anise <span class="qty">3</span></div>
+<div class="ingredient">Fingerling potatoes <span class="qty">300g</span></div>
+<div class="ingredient">Crispy shallots <span class="qty">20g</span></div>
+<div class="ingredient">Massaman oil (paste + neutral) <span class="qty">30ml</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Season short ribs. Sear all sides until deep mahogany crust — 3 min per side. Remove. Toast massaman paste in same pan 2 min.</div>
+<div class="step"><span class="step-num">2</span>Add coconut cream + stock + fish sauce + palm sugar + star anise. Return ribs. Braise 160°C for 6 hours covered, or 24 hrs sous vide at 72°C for maximum texture.</div>
+<div class="step"><span class="step-num">3</span>Massaman emulsion: strain braising liquid. Reduce by half. Blend with 30ml massaman oil until glossy and emulsified. Strain. This is your sauce — it should coat a spoon heavily.</div>
+<div class="step"><span class="step-num">4</span>Confit fingerling potatoes in duck fat 160°C 45 min. Glaze in braising reduction. Plate: potato cluster, short rib (boneless or bone-in for theatre), emulsion pooled around. Crispy shallots on rib peak. Serve with jasmine rice compressed and turned.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The 72hr sous vide short rib is the premium version — the texture is fundamentally different to oven braising. Plan: Monday sous vide → Wednesday service. The massaman emulsion must be made fresh per service — it splits when reheated aggressively.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Short ribs release enormous fat during braising — skim braising liquid before reducing or your sauce will be greasy. Refrigerate overnight and lift solidified fat off the surface before reducing. This one step separates a professional sauce from an amateur one.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 380 / USD 10.86 · Suggested price: THB 980–1,200 / USD 28–34.29</span><div class="dtags"><span class="dtag gf">GF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">08–12</div><div class="rc-title">Gaeng Kari Lobster · Pla Kapong Nung Ma Nao · Pad See Ew Duck · Wagyu Sirloin · Green Curry Barramundi</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">08 · Gaeng Kari Half Lobster</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Yellow curry paste 40g + coconut milk 400ml + fish sauce 20ml + palm sugar 15g + lemongrass + kaffir. Simmer curry base 15 min. Add par-cooked half lobster (roasted 200°C 8 min), finish in curry 3 min. Serve in bowl: lobster in shell, curry poured tableside from small copper pot. Jasmine rice and roti alongside. The tableside pour is the service moment. <strong>Cost: THB 420 · Price: THB 1,200–1,500 / USD 34.29–42.86</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">09 · Pla Kapong Nung Ma Nao</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Whole sea bass 500g (or fillet 200g), steamed over aromatic broth (lemongrass + galangal + kaffir + ginger + water). Sauce: lime juice 60ml + fish sauce 40ml + garlic 3 cloves + bird's eye chilli 3 + palm sugar 20g + coriander root — blended and strained. Pour hot sauce over steamed fish tableside — it sizzles. Crown with julienne ginger + spring onion. The steaming + hot lime sauce technique is ancient Thai; the presentation is refined. <strong>Cost: THB 240 · Price: THB 680–820 / USD 19.43–23.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">10 · Pad See Ew Confit Duck</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Wide flat rice noodles 150g, confit duck leg 180g shredded, Chinese broccoli (gai lan) 80g, egg 2, dark soy sauce 30ml, oyster sauce 20ml, sugar 5g, white pepper 3g. Wok at extreme heat — the char (wok hei) is essential and cannot be replicated on a domestic range. Noodles must char in the wok — 90 seconds maximum contact. Duck added last. Egg folded in. Serve immediately. The Michelin technique is the wok temperature; the Thai soul is in the seasoning ratio. <strong>Cost: THB 160 · Price: THB 580–680 / USD 16.57–19.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">11 · Wagyu Sirloin MBS6+</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Australian wagyu sirloin MBS6+ 200g. Nam Tok marinade applied 15 min before service (fish sauce + lime + toasted rice powder + dried chilli + shallot — the classic warm beef salad dressing served as marinade). Grill medium-rare internal 54°C. Rest 5 min mandatory. Slice on angle. Serve over sweet potato purée + crispy garlic + nam tok dressing pooled. The wagyu fat takes the bold Thai dressing better than any other cut. <strong>Cost: THB 480 · Price: THB 1,400–1,800 / USD 40–51.43</strong></div>
+</div>
+<div style="grid-column:1/-1">
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">12 · Green Curry Barramundi</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Ingredients:</strong> Barramundi fillet 200g skin on, green curry paste 40g (house-made: lemongrass + green chilli + galangal + coriander root + shrimp paste + kaffir lime zest + garlic + shallot), coconut milk 350ml, fish sauce 20ml, palm sugar 10g, Thai basil 15g, pea eggplant 40g, kaffir lime leaves 3. <strong>Method:</strong> Fry paste in coconut cream until oil separates and paste is fragrant (3 min — this step unlocks the aroma). Add coconut milk, fish sauce, sugar. Add pea eggplant 3 min. Sear barramundi skin-down 4 min (never move). Rest 1 min. Plate: curry pool in bowl, rice cake, fish skin-up at the edge of curry. Fresh Thai basil + kaffir leaf chiffonade. The house-made green curry paste is what separates this dish from every Thai restaurant in Bangkok. <strong>Cost: THB 200 · Price: THB 620–740 / USD 17.71–21.14</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">13–16</div><div class="rc-title">Gaeng Daeng Duck · Khao Ob Sapparod · Prawn Pad Cha · Pork Belly Moo Hong</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">13 · Gaeng Daeng Confit Duck</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Red curry paste 50g (house blend: dried chilli + lemongrass + galangal + kaffir zest + shrimp paste + garlic + white peppercorn) + coconut cream 400ml + duck stock 200ml + bamboo shoots 80g + Thai basil + fish sauce + palm sugar. Fry paste in separated cream until aromatic. Build curry. Add confit duck leg pieces (pre-confited, 80°C 6 hrs in duck fat). Simmer 10 min. Serve in copper bowl with steamed jasmine rice + green onion julienne. <strong>Cost: THB 200 · Price: THB 620–740 / USD 17.71–21.14</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">14 · Khao Ob Sapparod</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Pineapple fried rice served inside carved pineapple half. Jasmine rice 200g (day-old mandatory), tiger prawns 6 + chicken 60g + pineapple chunks 80g + egg 2 + onion + spring onion + raisin 20g + cashew 30g + curry powder 8g + fish sauce 20ml + oyster sauce 15ml. Wok fry at high heat. Fill into carved, warmed pineapple. Crown with fried egg or prawn skewer. The pineapple boat is pure Bangkok theatre and should not be underestimated. <strong>Cost: THB 110 · Price: THB 380–450 / USD 10.86–12.86</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">15 · Prawn Pad Cha</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Wild ginger (krachai) 30g, green peppercorn on stalk 20g, bird's eye chilli 3, holy basil 15g, tiger prawns 6, oyster sauce 20ml, fish sauce 15ml, sugar 5g, roasted chilli paste 10g. The pad cha wok is extremely high heat — 30 second window. Wok oil smoking. Krachai + green peppercorn first 10 sec (releases volatile oils — this is the defining flavour). Prawns 90 sec. Sauce. Basil last (wilts in 5 sec). Serve immediately. Never hold pad cha. <strong>Cost: THB 180 · Price: THB 580–680 / USD 16.57–19.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">16 · Moo Hong Pork Belly</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Pork belly 600g, Phuket-style braise: dark soy 60ml + light soy 30ml + oyster sauce 20ml + five spice 5g + cinnamon stick + star anise 2 + palm sugar 50g + garlic 6 cloves + water 400ml. Braise low 4 hrs until gelatinous and deeply caramelised. Rest overnight. Slice 3cm portions. Reheat in reduced braising jus. Serve over jasmine rice with braised egg (soft-boiled then braised in same master stock 2 hrs). Pickled mustard greens alongside. The moo hong sauce reduces to an extraordinary Chinese-Thai lacquer. <strong>Cost: THB 140 · Price: THB 480–580 / USD 13.71–16.57</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+<!-- SECTIONS 3+4+5+6 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 3 — Dessert Plates · Section 4 — Drinks</span><span class="page-num">05</span></div>
+<h2><span class="sn2">3</span>Dessert Plates</h2>
+
+<div class="share-card"><div class="share-title">17 · Pandan Soufflé with Coconut Ice Cream</div><div class="share-desc">Individual pandan soufflé (eggs 3 whites + yolks 2 + pandan curd base 80g + caster sugar 40g + flour 15g). Butter and sugar 4 ramekins. Fill to ¾. Bake 200°C 12 min. Rises 3–4cm above rim. Serve immediately with house-made coconut ice cream (coconut milk 400ml + cream 100ml + sugar 80g + stabiliser). Pierce soufflé at table, spoon ice cream inside. The pandan green + white coconut ice cream melting together inside the soufflé is the dessert moment of the meal. <strong>Cost: THB 85 · Price: THB 320–380 / USD 9.14–10.86</strong></div></div>
+
+<div class="share-card"><div class="share-title">18 · Sticky Rice Tasting Plate</div><div class="share-desc">Three preparations of glutinous rice on one plate: (A) Classic mango sticky rice with Alphonso mango and young coconut cream. (B) Black sticky rice (khao niao dam) with taro compote and sesame brittle — nutty, earthy, complex. (C) Purple butterfly pea sticky rice with condensed milk gel sphere and crispy lotus seeds. Each portion 50g. Presented on slate in ascending colour order. The concept: one ingredient, three expressions. This is modern Thai fine dining thinking. <strong>Cost: THB 110 · Price: THB 380–440 / USD 10.86–12.57</strong></div></div>
+
+<div class="share-card"><div class="share-title">19 · Kaffir Lime Tart</div><div class="share-desc">Shortcrust tart shell (flour 120g + butter 60g + icing sugar 20g + egg yolk 1). Kaffir lime curd (kaffir lime juice 60ml + eggs 3 + sugar 80g + butter 60g — cook over bain marie to thick curd). Fill blind-baked shell. Torch meringue top (egg whites 3 + sugar 120g Italian meringue). Micro Thai basil leaf + gold leaf. The kaffir lime curd is sharper and more aromatic than standard lemon curd — it has a floral-citrus quality no other citrus can replicate. <strong>Cost: THB 65 · Price: THB 280–340 / USD 8–9.71</strong></div></div>
+
+<div class="share-card"><div class="share-title">20 · Thai Basil Panna Cotta</div><div class="share-desc">Panna cotta base: cream 400ml + milk 100ml + Thai basil leaves 20g (infused 20 min, strained) + sugar 50g + gelatin 4 leaves — set overnight. Thai basil oil: blanch basil 30 sec, ice bath, blend with neutral oil, strain — vivid green. Mango coulis (mango 200g + lime + sugar). Tuile crisp (isomalt + sesame + sesame oil). Unmould panna cotta on cold plate. Mango coulis pool. Basil oil drops. Tuile standing at angle. The delicate basil perfume in the cream is the unexpected pleasure. <strong>Cost: THB 70 · Price: THB 280–340 / USD 8–9.71</strong></div></div>
+
+<h2><span class="sn2">4</span>Drinks — Wine &amp; Cocktail Pairing</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+
+<div class="wine-card">
+<div class="wc-hdr"><div class="wc-title">21 · Monsoon Valley White Wine</div><div class="wc-sub">Thai Wine · Chenin Blanc · Hua Hin Hills</div></div>
+<div class="wc-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Pairing</div><div style="font-size:9px;color:#333;line-height:1.7">Thailand's most awarded white wine. Tropical fruit, floral, fresh acid. Pairs perfectly with: tom kha scallop, green mango gazpacho, pla kapong. <strong>Cost THB 120/glass · Price THB 380–450 / USD 10.86–12.86</strong></div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Service</div><div style="font-size:9px;color:#333;line-height:1.7">Serve at 10°C in white wine glass. Open the conversation about Thai wine — guests are always surprised by its quality. It is a point of difference from every other fine dining restaurant.</div></div>
+</div></div>
+
+<div class="wine-card">
+<div class="wc-hdr"><div class="wc-title">22 · Syrah Red</div><div class="wc-sub">Granmonte Estate · Asoke Valley · Thailand</div></div>
+<div class="wc-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Pairing</div><div style="font-size:9px;color:#333;line-height:1.7">Bold Thai red with peppery, dark fruit character. Pairs with: massaman short rib, wagyu sirloin, confit duck gaeng daeng. The Thai terroir gives it a subtle spice that bridges the gap to Thai curry flavours. <strong>Cost THB 150/glass · Price THB 450–520 / USD 12.86–14.86</strong></div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Service</div><div style="font-size:9px;color:#333;line-height:1.7">Decant 30 min before service. Serve 18°C. This wine leads naturally into a conversation about Thai winemaking — Asoke Valley's altitude and drainage create a surprisingly elegant red.</div></div>
+</div></div>
+
+<div class="wine-card">
+<div class="wc-hdr"><div class="wc-title">23 · Lemongrass Gimlet</div><div class="wc-sub">House Cocktail · Gin · Lemongrass Cordial</div></div>
+<div class="wc-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Gin 45ml · Lemongrass cordial (lemongrass 4 stalks + water 300ml + sugar 200g — simmer, steep 1hr) 25ml · Lime juice 20ml · Ice · Lemongrass stalk garnish</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Shake all with ice. Double strain into chilled coupe. Lemongrass stalk placed along rim. The cordial is simple to batch (makes 500ml for 20 cocktails). Clean, aromatic, unmistakably Thai. <strong>Cost THB 75 · Price THB 320–380 / USD 9.14–10.86</strong></div></div>
+</div></div>
+
+<div class="wine-card">
+<div class="wc-hdr"><div class="wc-title">24–28 · Remaining Drinks</div></div>
+<div class="wc-body" style="grid-template-columns:1fr">
+<div style="font-size:9px;color:#333;line-height:1.9">
+<strong style="color:var(--gold)">24 Tamarind Sour</strong> — Whisky 45ml + tamarind purée 30ml (tamarind paste 60g + water 100ml + palm sugar 30g, strained) + lime 15ml + egg white 20ml + bitters 2 dashes. Dry shake, wet shake, fine strain. Tamarind and whisky is a classic Thai bar combination. Cost THB 80 · Price THB 320–380 / USD 9.14–10.86<br>
+<strong style="color:var(--gold)">25 Thai Basil Martini</strong> — Vodka 45ml + Thai basil syrup 15ml + lime 15ml + soda 30ml. Shake, serve over ice in rocks glass. Thai basil garnish. The herb oil in the basil gives the martini a green floral quality no other herb replicates. Cost THB 70 · Price THB 300–360 / USD 8.57–10.29<br>
+<strong style="color:var(--gold)">26 Mocktail: Jasmine &amp; Ginger</strong> — Jasmine tea cold brew 120ml + ginger syrup 20ml + lime 15ml + sparkling water 80ml + jasmine flowers garnish. Delicate, floral, zero alcohol. Cost THB 30 · Price THB 180–220 / USD 5.14–6.29<br>
+<strong style="color:var(--gold)">27 Aged Thai Rum Old Fashioned</strong> — Chalong Bay Thai rum 45ml + palm sugar syrup 10ml + kaffir lime bitters 3 dashes + ice sphere + kaffir lime leaf express. Thai rum is underappreciated globally — this cocktail introduces it. Cost THB 90 · Price THB 360–420 / USD 10.29–12<br>
+<strong style="color:var(--gold)">28 Fine Tea Service</strong> — Premium Thai tea selection: aged oolong from Chiang Rai, fresh Thai green tea, butterfly pea herbal. Served in ceremonial teapot with timer. Pairs with dessert course. Cost THB 40 · Price THB 180–220 / USD 5.14–6.29
+</div>
+</div></div>
+
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 5 — Service Training · Section 6 — Staff Workflow</span><span class="page-num">06</span></div>
+<h2><span class="sn2">5</span>Service Training Module</h2>
+
+<div class="info-box"><h5>Fine Dining Service Philosophy</h5><p>Fine dining service has one guiding principle: <strong>the guest should never have to ask for anything</strong>. Water refilled before they notice the glass is half-full. Bread offered before they look around for it. The pace of the meal managed so the next course arrives just as they're finishing the previous. This level of attentiveness requires active table reading — watching without staring, knowing without hovering. It is, in every sense, a performance.</p></div>
+
+<div class="script-box">
+<div class="script-label">// Menu Introduction — Tasting Menu</div>
+<div class="script-text">"This evening we're offering two experiences: the à la carte menu, where you choose freely, or our 7-course tasting menu at THB 2,800 per person. The tasting menu follows the arc of a traditional Thai royal meal — from cooling and aromatic through building heat and richness, finishing with our pandan soufflé. For a first visit, our chefs recommend the tasting menu — it was designed to tell the story of this kitchen in one sitting. And we have a Thai wine pairing to match each course if you're open to it."</div>
+<div class="script-why"><strong>Why this works:</strong> The "story of this kitchen" framing transforms the tasting menu from a price decision into a cultural experience. The Thai wine pairing recommendation adds average spend significantly and differentiates the experience from standard tasting menus. Always lead with the recommendation; let the guest decline rather than never offering.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Tom Kha Scallop Course Delivery</div>
+<div class="script-text">"Your second course: Hokkaido scallop with tom kha foam. The foam is made to order using soy lecithin — it will hold for about 4 minutes before it settles. The scallop is seared on one face only, which is intentional — you'll see the textural difference between the caramelised sear side and the raw interior. The kaffir lime oil underneath is made here in the kitchen daily. Please don't wait — this one is best in the first 2 minutes."</div>
+<div class="script-why"><strong>Why this works:</strong> Explaining the technique without lecturing signals kitchen confidence. The 2-minute advisory creates gentle urgency that is actually true — foam and seared scallop are both time-sensitive. Guests who eat immediately have a better experience and become better advocates.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Wine Pairing Introduction (Thai Wine)</div>
+<div class="script-text">"This is a Monsoon Valley Chenin Blanc from the Hua Hin Hills. Thailand has a small but serious wine industry — the Asoke Valley and Hua Hin Hills both produce at an altitude that creates genuine complexity. This is not a novelty wine; it won its last three international competitions against New World whites. With the scallop and the tom kha, the tropical fruit in this wine is going to track the coconut very well. Would you like a glass?"</div>
+<div class="script-why"><strong>Why this works:</strong> Removing the guest's hesitation about Thai wine (with facts, not persuasion) opens the sale. The competition wins remove the quality doubt. The specific pairing reasoning ("coconut") makes the recommendation feel personalised rather than a standard pour.</div>
+</div>
+
+<h2><span class="sn2">6</span>Staff Workflow</h2>
+<table class="staff-table">
+<tr><th>Role</th><th>Count</th><th>Key Responsibilities</th><th>Hours</th></tr>
+<tr><td><strong>Head Chef</strong></td><td>1</td><td>Tasting menu execution, quality gate every plate, staff briefing, supplier relationships, menu evolution</td><td>11am–12am</td></tr>
+<tr><td><strong>Sous Chef (Protein)</strong></td><td>1</td><td>All à la minute proteins: wagyu, short rib, lobster, duck breast. Temperature control, resting management</td><td>2pm–12am</td></tr>
+<tr><td><strong>Chef de Partie (Sauce/Pastry)</strong></td><td>1</td><td>All sauces, soufflés, panna cottas, desserts. Foam production at service. Curry emulsifications.</td><td>2pm–12am</td></tr>
+<tr><td><strong>Chef de Partie (Cold/Amuse)</strong></td><td>1</td><td>All amuse-bouche, cold starters, laab tartare, miang preparations, garnish station</td><td>2pm–11pm</td></tr>
+<tr><td><strong>Sommelier / Head Waiter</strong></td><td>1</td><td>Wine programme, Thai wine advocacy, tasting menu pacing, table reading, service choreography</td><td>5pm–12am</td></tr>
+<tr><td><strong>Senior Waiter</strong></td><td>2</td><td>Course delivery with narrative, table clearing, water management, tasting menu tracking per table</td><td>5pm–12am</td></tr>
+<tr><td><strong>Floor Waiter</strong></td><td>1–2</td><td>Support service, bread, water, mise en place running</td><td>Staggered 5pm–11pm</td></tr>
+</table>
+
+<table class="prep-table" style="margin-top:2mm">
+<tr><th>Time</th><th>Kitchen</th><th>Pastry/Sauce</th><th>Floor</th></tr>
+<tr><td>11am</td><td>Head Chef: short rib check, stock reductions, curry paste production, seafood delivery</td><td>Panna cotta set, kaffir tart baked, sticky rice soaked</td><td>—</td></tr>
+<tr><td>2pm</td><td>Protein prep: wagyu portions, scallops counted, barramundi portioned, duck skin scored</td><td>Mango coulis, basil oil, soufflé bases prepped</td><td>—</td></tr>
+<tr><td>4pm</td><td>Cold station: miang prep, laab mise en place, gazpacho chilled + tasted, khao khua ground fresh</td><td>Dessert garnishes staged, foam base measured + loaded, soufflé batter mixed</td><td>Table setup, briefing, tasting menu copy check</td></tr>
+<tr><td>6pm</td><td>Kitchen open. Full brigade. Tasting menu walk-through.</td><td>Soufflé ramekins buttered + sugared and refrigerated</td><td>Floor open. Sommelier at station. Thai wine briefing.</td></tr>
+<tr><td>Service</td><td>Tasting menu pacing: 25–30 min per course for full 7-course. à la carte: 15–18 min.</td><td>Soufflés: 12 min to order — monitor booking sheet for dessert timing, prep 8 min early</td><td>Tasting menu tracker on floor — each table on different course. Pacing is the entire job.</td></tr>
+</table>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+<!-- SECTIONS 7-10 + CLOSING -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 7 — Weekly Prep · Section 8 — Customer Retention</span><span class="page-num">07</span></div>
+<h2><span class="sn2">7</span>Weekly Prep Schedule</h2>
+<table class="prep-table">
+<tr><th>Task</th><th>Frequency</th><th>Time</th><th>Notes</th></tr>
+<tr><td>Short rib sous vide or braise</td><td>Mon + Thu</td><td>72hrs / 6hrs</td><td>Sous vide preferred: 72°C for 72 hours in sealed bags. Chill in ice bath. Refrigerate in bag. Reheat portion-by-portion in 60°C water bath. Better than day-one braising. Plan Mon = Wed/Thu service; Thu = Sat/Sun.</td></tr>
+<tr><td>Duck confit</td><td>Weekly (Mon)</td><td>6hrs + cure</td><td>24hr salt cure (salt + sugar + star anise + cinnamon). Rinse, dry, confit 80°C duck fat 6hrs. Cool in fat. Store up to 2 weeks in fat in sealed container. Pull legs as needed.</td></tr>
+<tr><td>Curry paste production</td><td>Twice weekly (Mon + Thu)</td><td>1.5–2hrs</td><td>All house-made pastes: green, red, massaman, pad cha base. Pound or blend. Store in airtight containers up to 5 days. Never use commercial paste in fine dining — it is always detectable.</td></tr>
+<tr><td>Khao khua (toasted rice powder)</td><td>Daily</td><td>10 min</td><td>Toast glutinous rice in dry pan until golden-nutty brown, grind to powder. Volatile aromatics dissipate within 2 hours. Make fresh per service without exception.</td></tr>
+<tr><td>Stock production</td><td>Weekly (Mon)</td><td>6–8hrs</td><td>Prawn bisque from shells, chicken stock from carcasses, beef stock from trim, fish stock from bones. These are the foundation of every sauce in this kitchen. No commercial stock in fine dining.</td></tr>
+<tr><td>Kaffir lime curd</td><td>Twice weekly</td><td>30 min</td><td>Kaffir lime juice + eggs + sugar + butter over bain marie. Strain. Refrigerate. Used in: kaffir tart + prawn miang amuse + Chalong Bay cocktail. One batch covers all applications 3 days.</td></tr>
+<tr><td>Coconut ice cream batch</td><td>Daily</td><td>20 min + churn</td><td>Base made daily morning. Churn per machine schedule. Pull from freezer 5 min before service — must scoop cleanly but not melt. Store at -12°C not colder.</td></tr>
+<tr><td>Soy lecithin foam base</td><td>Daily (4pm)</td><td>30 min</td><td>Tom kha base made fresh daily. Lecithin measured and added at service only. Never pre-foam — lecithin foam must be made to order. Base refrigerated and reheated gently to 65°C before service.</td></tr>
+<tr><td>Lemongrass cordial (bar)</td><td>Twice weekly</td><td>1hr</td><td>4 lemongrass stalks + 300ml water + 200g sugar. Simmer, steep 1hr minimum. Strain. Refrigerate. One batch = 20 cocktails. Make Mon + Thu.</td></tr>
+<tr><td>Miang kham toppings prep</td><td>Daily</td><td>30 min</td><td>Toasted coconut (fresh daily), ginger brunoise, dried shrimp, peanuts toasted. Each component staged in individual mise en place. The miang sauce lasts 5 days — make weekly.</td></tr>
+<tr><td>Mango coulis</td><td>Daily</td><td>15 min</td><td>Fresh Alphonso mango + lime + sugar. Blend, strain. Taste daily — mango ripeness varies. Adjust sugar and lime accordingly. Never use frozen mango.</td></tr>
+<tr><td>Soufflé ramekin prep</td><td>Daily (4pm)</td><td>20 min</td><td>Butter ramekins vertically with pastry brush. Dust with caster sugar. Refrigerate. Ready for service. Count against expected covers — soufflés cannot be made on spec, only to order.</td></tr>
+<tr><td>Seafood delivery inspection</td><td>Daily (morning)</td><td>20 min</td><td>Scallops: must smell of clean ocean, firm and dry. Lobster: live delivery only or guaranteed 24hr fresh. Barramundi and sea bass: clear eyes, bright red gills, firm flesh. Reject immediately if any doubt.</td></tr>
+<tr><td>Thai wine floor par</td><td>Daily (4pm)</td><td>10 min</td><td>Count Monsoon Valley white + Granmonte Syrah. Chill white by 5pm. Decant Syrah. Ensure minimum 6 bottles of each on floor before service begins.</td></tr>
+</table>
+
+<h2><span class="sn2">8</span>Customer Retention System</h2>
+<div class="info-box"><h5>Fine Dining Loyalty Strategy</h5><p>Fine dining guests are the most valuable guests in hospitality. They spend more, stay longer, and when they find a restaurant they trust, they return for every occasion worth celebrating. Your retention system has one priority above all others: <strong>personalisation</strong>. Know their dietary preferences before they sit down. Know their regular wine before they order. Know it's their anniversary before they mention it. This information should be in your booking system and briefed to the floor team before service.</p></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div class="script-box" style="margin-bottom:0">
+<div class="script-label">// Pre-Visit Personalisation Message</div>
+<div class="script-text">"We're looking forward to welcoming you tomorrow evening. Your usual Monsoon Valley white is chilled and ready. If you have any dietary preferences you'd like the kitchen to know about for your visit, just reply to this message. See you at 7:30pm."</div>
+<div class="script-why"><strong>Why this works:</strong> "Your usual" is the most powerful phrase in hospitality. It signals: we know you, we remember you, you matter here. This single line converts a second visit into the beginning of a relationship. CRM systems like Eat App or Dimmi allow you to store guest preferences permanently.</div>
+</div>
+<div class="info-box" style="margin-bottom:0"><h5>Occasion &amp; Loyalty Calendar</h5>
+<p><strong>Birthday tracking:</strong> Record birthdays in CRM. Send complimentary dessert card + handwritten note 5 days before. Email: "Would you like to celebrate with us this year?" Converts at 45%.<br>
+<strong>Anniversary reservation:</strong> For returning couples, note relationship milestones. Match the table they sat at before when possible. Pre-set champagne on ice.<br>
+<strong>Monthly Chef's Table:</strong> 8-seat chef's table — full kitchen view, 10 courses, chef narrates each course. THB 4,500–6,000 per person. Limited release via CRM first. Sells out consistently.<br>
+<strong>Seasonal menu launch:</strong> Each season's new tasting menu emailed to all returning guests 1 week before public launch. Exclusive first-week reservations. Creates genuine VIP urgency.<br>
+<strong>Post-visit feedback:</strong> 24hrs after visit: personal email from the Head Chef (not automated template). One question: "Was there anything about your evening we can improve?" 30% response rate. 100% valuable.</p>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 9 — P&amp;L Model · Section 10 — Allergen Table</span><span class="page-num">08</span></div>
+<h2><span class="sn2">9</span>P&amp;L Model — 40-Seat Thai Fine Dining · Bangkok 2026</h2>
+
+<table class="rev-table">
+<tr><th>Revenue Stream</th><th>Daily Volume</th><th>Avg Spend</th><th>Monthly THB</th><th>Monthly USD</th></tr>
+<tr><td>Tasting menu (7 courses)</td><td>30 covers</td><td>THB 3,500</td><td>THB 3,150,000</td><td>USD 90,000</td></tr>
+<tr><td>À la carte dining</td><td>20 covers</td><td>THB 1,800</td><td>THB 1,080,000</td><td>USD 30,857</td></tr>
+<tr><td>Bar (pre-dinner cocktails)</td><td>20 guests</td><td>THB 400</td><td>THB 240,000</td><td>USD 6,857</td></tr>
+<tr><td>Monthly Chef's Table (8 covers)</td><td>8 × 1/mo</td><td>THB 5,500</td><td>THB 44,000</td><td>USD 1,257</td></tr>
+<tr><td>Private events</td><td>—</td><td>—</td><td>THB 180,000</td><td>USD 5,143</td></tr>
+<tr class="total-row"><td><strong>Total Monthly Revenue</strong></td><td colspan="2"></td><td><strong>THB 4,694,000</strong></td><td><strong>USD 134,114</strong></td></tr>
+</table>
+
+<table class="rev-table">
+<tr><th>Cost Category</th><th>% Revenue</th><th>Monthly THB</th><th>Monthly USD</th><th>Notes</th></tr>
+<tr><td>Food &amp; beverage cost</td><td>26%</td><td>THB 1,220,440</td><td>USD 34,870</td><td>Premium ingredients: wagyu, lobster, scallops. Wine at 35% cost. Thai wine program lower cost than import.</td></tr>
+<tr><td>Labour (9–10 staff)</td><td>34%</td><td>THB 1,596,160</td><td>USD 45,604</td><td>Head Chef 80K + Sous 55K + CDPs 35K × 2 + Sommelier 50K + Senior Waiters 30K × 2 + support</td></tr>
+<tr><td>Rent (fine dining BKK)</td><td>10.6%</td><td>THB 500,000</td><td>USD 14,286</td><td>Boutique location: Thonglor, Sukhumvit, Silom. Negotiate 10% revenue clause above THB 3.5M</td></tr>
+<tr><td>Utilities</td><td>3.2%</td><td>THB 150,000</td><td>USD 4,286</td><td>Fine dining kitchen requires less volume power but precision equipment is continuous-use</td></tr>
+<tr><td>Linen + China + Glassware</td><td>2.1%</td><td>THB 100,000</td><td>USD 2,857</td><td>Fine dining attrition rate is lower than casual but each item more expensive. Budget separate breakage reserve.</td></tr>
+<tr><td>Marketing + PR</td><td>2.5%</td><td>THB 120,000</td><td>USD 3,429</td><td>Monthly CRM email, food critic hosting, food photographer for seasonal menus, PR agency retainer</td></tr>
+<tr class="total-row"><td><strong>Total Operating Costs</strong></td><td><strong>78.4%</strong></td><td><strong>THB 3,686,600</strong></td><td><strong>USD 105,331</strong></td><td></td></tr>
+<tr class="net-row"><td><strong>Net Operating Profit</strong></td><td><strong>21.6%</strong></td><td><strong>THB 1,007,400/month</strong></td><td><strong>USD 28,783/month</strong></td><td><strong>THB 12.1M / USD 345K annually</strong></td></tr>
+</table>
+
+<h2><span class="sn2">10</span>Allergen Summary Table</h2>
+<table class="allergen-table">
+<tr><th>Item</th><th>Gluten</th><th>Dairy</th><th>Eggs</th><th>Nuts</th><th>Shellfish</th><th>Fish/Sauce</th><th>Sesame</th></tr>
+<tr><td>01 Laab Gai Tartare</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>02 Tom Kha Foam Scallop</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>03 Green Mango Gazpacho</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>✓</td><td>—</td></tr>
+<tr><td>04 Wagyu Betel Wrap (Miang)</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓*</td><td>✓</td><td>—</td></tr>
+<tr><td>05 Prawn Miang Amuse</td><td>—</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>06 Mushroom Tom Yum Espuma</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>07 Massaman Braised Short Rib</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>08 Gaeng Kari Lobster</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>09 Pla Kapong Nung Ma Nao</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>10 Pad See Ew Confit Duck</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>11 Wagyu Sirloin MBS6+</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>12 Green Curry Barramundi</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>13 Gaeng Daeng Confit Duck</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>✓</td><td>—</td></tr>
+<tr><td>14 Khao Ob Sapparod</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>15 Prawn Pad Cha</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>16 Moo Hong Pork Belly</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>17 Pandan Soufflé</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>18 Sticky Rice Tasting Plate</td><td>—</td><td>✓*</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>19 Kaffir Lime Tart</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>20 Thai Basil Panna Cotta</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>21–22 Thai Wines</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>23–27 Cocktails + Mocktail</td><td>—</td><td>—</td><td>✓*</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>28 Fine Tea Service</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+<p style="font-size:8px;color:var(--mid);margin-top:2mm">✓* = trace ingredient (fish sauce, shrimp paste, dried shrimp). Always disclose shrimp paste content to shellfish-allergic guests — it is present in most Thai curry pastes. Fine dining standard: pre-screen all dietary requirements at booking, brief kitchen before service.</p>
+
+<div class="lens-card">
+<div class="lens-title">// Michelin Chef's Lens — Modern Thai Fine Dining</div>
+<div class="lens-text">
+The question modern Thai fine dining must answer is not a culinary one. It is a philosophical one: what does it mean to refine a cuisine that was already perfect? The phad thai of a Bangkok street vendor is already an expression of perfect balance. The som tam of a market vendor is already built from 4,000 years of agricultural and culinary intelligence. What, exactly, is fine dining adding?<br><br>
+The honest answer, from chefs who have worked both a Michelin-starred kitchen and a charcoal wok: precision, not improvement. The lemongrass gimlet does not taste more lemongrass than a glass of lemongrass tea from a market stall — it is simply more <em>consistent</em>. The tom kha foam does not taste deeper than a traditional tom kha gai — it is simply more <em>precise</em>. The massaman short rib does not taste better than a massaman from a Bangkok home kitchen — it is simply more <em>controlled</em>.<br><br>
+This is what the fine dining guest pays for: the guarantee of consistency, precision, and control. The best modern Thai chefs carry both disciplines simultaneously: <strong>the soul of the market, the hands of the laboratory</strong>. This guide gives you the tools. The soul must come from you.
+</div>
+<div class="lens-closer">รสมือ — The flavour of the hand. What no recipe can teach.</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Fine Dining Modern</span><span class="pf-r">v7 · 2026 Edition · Guide #48</span></div>
+</div>
+
+<footer>
+KitchenFounder Operations Guide v7 · Thai Fine Dining Modern · kitchen-founder.myshopify.com<br>
+© 2026 KitchenFounder · Thailand Market Edition · For operational use only · Not for resale
+</footer>
+
+</body>
+</html>

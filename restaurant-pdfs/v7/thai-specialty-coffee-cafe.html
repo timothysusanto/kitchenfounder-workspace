@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #50 — Thai Specialty Coffee & Café · v7 · 2026 Edition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--gold:#C8922A;--brew:#4A2C0A;--accent:#2C1A06;--cream:#F5ECD7;--border:#E0D9D0;--mid:#8A8A8A}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+.cover{width:210mm;min-height:297mm;background:linear-gradient(150deg,#0A0600 0%,#1A0C03 50%,#0A0A0A 100%);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-glow{position:absolute;top:30%;left:20%;width:380px;height:380px;background:radial-gradient(circle,rgba(200,146,42,0.12) 0%,transparent 65%)}
+.cover-top{padding:14mm 16mm 0;z-index:1;position:relative}
+.cover-logo{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.4)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:#fff;line-height:0.93;margin-bottom:4mm}
+.cover-title .gd{color:var(--gold)}
+.cover-rule{width:55mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.32);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.18);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);margin:5mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+.sn2{display:inline-block;background:var(--gold);color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:0.8rem;font-weight:700;margin-right:8px}
+.recipe-card{background:#fff;border:1px solid var(--border);margin-bottom:4mm;page-break-inside:avoid}
+.rc-hdr{background:var(--accent);padding:3mm 5mm}
+.rc-num{font-size:9px;font-weight:700;color:rgba(200,146,42,0.7);letter-spacing:2px}
+.rc-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff}
+.rc-sub{font-size:8.5px;color:rgba(255,255,255,0.4);font-style:italic}
+.rc-body{padding:3.5mm 5mm}
+.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm}
+.rc-ingredients h5,.rc-method h5{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm;border-bottom:1px solid var(--border);padding-bottom:1mm}
+.ingredient{font-size:9.5px;color:#333;line-height:1.75;display:flex;justify-content:space-between;padding:0.5mm 0;border-bottom:1px solid rgba(224,217,208,0.4)}
+.ingredient .qty{color:var(--mid);font-size:9px}
+.step{font-size:9.5px;color:#333;line-height:1.7;padding:1mm 0;border-bottom:1px solid rgba(224,217,208,0.3);display:flex;gap:3mm}
+.step-num{color:var(--gold);font-weight:700;font-size:10px;min-width:12px}
+.rc-notes{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:3mm}
+.note-box{padding:2.5mm 3mm;border-radius:2px}
+.note-box.tech{background:#E8F4F8;border-left:3px solid #1B4F8A}
+.note-box.fail{background:#FFF8E1;border-left:3px solid var(--gold)}
+.note-box.brew{background:#FFF3E0;border-left:3px solid var(--brew)}
+.note-box h6{font-size:7.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm}
+.note-box.tech h6{color:#1B4F8A}
+.note-box.fail h6{color:var(--gold)}
+.note-box.brew h6{color:var(--brew)}
+.note-box p{font-size:9px;color:#444;line-height:1.65}
+.rc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:2.5mm;padding-top:2.5mm;border-top:1px solid var(--border)}
+.cost{font-size:9px;color:#555}
+.dtags{display:flex;gap:1.5mm}
+.dtag{font-size:7px;font-weight:700;padding:0.8mm 1.8mm}
+.dtag.gf{background:#E3F2FD;color:#0D47A1}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A}
+.dtag.nf{background:#E8F5E9;color:#1B5E20}
+.dtag.df{background:#FFF3E0;color:#E65100}
+.coffee-card{background:#fff;border:1px solid var(--border);margin-bottom:3mm;page-break-inside:avoid}
+.cf-hdr{background:linear-gradient(135deg,#0A0600,#2C1A06);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.cf-title{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#fff}
+.cf-sub{font-size:8px;color:rgba(200,146,42,0.6);font-style:italic}
+.cf-body{padding:3mm 5mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.share-card{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.share-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);margin-bottom:1.5mm}
+.share-desc{font-size:9.5px;color:#444;line-height:1.75}
+.script-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.script-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm;font-family:'Courier New',monospace}
+.script-text{font-size:9.5px;color:#1C1C1C;line-height:1.8;font-style:italic;background:#F8F6F2;padding:2mm 3mm;border-left:2px solid var(--gold);margin-bottom:2mm}
+.script-why{font-size:9px;color:#555;line-height:1.7}
+.script-why strong{color:var(--accent)}
+.info-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm}
+.info-box h5{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm}
+.info-box p{font-size:9.5px;color:#333;line-height:1.8}
+.origin-card{background:var(--accent);color:#fff;padding:4mm 5mm;margin-bottom:3mm}
+.origin-card h5{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.7);margin-bottom:2mm}
+.origin-card p{font-size:9.5px;color:rgba(255,255,255,0.6);line-height:1.8}
+.staff-table,.prep-table,.rev-table,.allergen-table{width:100%;border-collapse:collapse;margin-bottom:3mm;font-size:9px}
+.staff-table th,.prep-table th,.rev-table th,.allergen-table th{background:var(--accent);color:#fff;padding:2.5mm 3mm;text-align:left;font-weight:600;font-size:8px}
+.staff-table td,.prep-table td,.rev-table td,.allergen-table td{padding:2mm 3mm;border-bottom:1px solid var(--border);color:#333;line-height:1.6}
+.total-row td{font-weight:700;color:var(--accent);background:rgba(200,146,42,0.06)!important;border-top:2px solid var(--gold)}
+.net-row td{font-weight:700;color:#2D7D4F;background:rgba(45,125,79,0.06)!important;border-top:2px solid #2D7D4F}
+.lens-card{background:var(--accent);color:#fff;padding:5mm 6mm;margin-top:4mm}
+.lens-title{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.7);margin-bottom:2mm;font-family:'Courier New',monospace}
+.lens-text{font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.9}
+.lens-closer{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(200,146,42,0.7);margin-top:3mm;border-top:1px solid rgba(255,255,255,0.1);padding-top:2mm}
+footer{background:var(--accent);color:rgba(255,255,255,0.35);padding:5mm 16mm;text-align:center;font-size:8px;letter-spacing:1px;line-height:1.8}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:0}.page,.cover{page-break-after:always;width:210mm;min-height:297mm}.recipe-card,.coffee-card,.share-card,.script-box{page-break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-glow"></div>
+<div class="cover-top"><div class="cover-logo">KitchenFounder · Guide #50 · Thailand Market Edition</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Bangkok · Doi Chang · Doi Tung · Third Wave Specialty</div>
+  <div class="cover-title">Thai Specialty<br><span class="gd">Coffee</span><br>&amp; Café</div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">Complete Operator's Blueprint · 28 Recipes<br>Single-Origin Thai Coffee · Café Food · Pastries · Signature Drinks</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">28</div><div class="cstat-lbl">Recipes</div></div>
+    <div class="cstat"><div class="cstat-val">THB</div><div class="cstat-lbl">+ USD Pricing</div></div>
+    <div class="cstat"><div class="cstat-val">10</div><div class="cstat-lbl">Sections</div></div>
+    <div class="cstat"><div class="cstat-val">#50</div><div class="cstat-lbl">Series Complete</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">Doi Chang · Doi Tung</span><span class="ctag">Third Wave Coffee</span>
+    <span class="ctag">Thai Coffee Origins</span><span class="ctag">Café Food P&amp;L</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div style="font-family:'Playfair Display',serif;font-size:11px;color:rgba(255,255,255,0.4)">Complete Operator's Guide · Bangkok Specialty Coffee Market · Guide #50 of 50</div>
+  <div class="cover-meta">v7 · 2026 Edition<br>Guide #50 · $29.99</div>
+</div>
+</div>
+
+<!-- INTRO -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Introduction · Thailand's Coffee Renaissance</span><span class="page-num">02</span></div>
+<div style="background:var(--accent);color:#fff;padding:6mm 8mm;margin-bottom:4mm">
+  <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:3mm">From Opium Fields to Espresso Bars: The Thai Coffee Story</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.6);line-height:1.9">
+    The hills of northern Thailand — Chiang Rai, Chiang Mai, Mae Hong Son — produce some of the most complex specialty coffee in Asia, and almost nobody outside Thailand knows it. That is about to change. Doi Chang, grown by the Akha hill tribe people at 1,400–1,800m altitude, replaced opium cultivation in the 1980s under royal patronage and produced a coffee with natural fruit acidity and floral notes that win international competitions quietly and consistently. Doi Tung, under the royal project of Princess Mother Srinagarindra, produces a cleaner, lighter profile with stone fruit and mild sweetness.<br><br>
+    Bangkok's specialty coffee scene has grown faster than any other Southeast Asian capital in the last five years. The city now has more third-wave specialty cafés than Melbourne, Singapore, or Tokyo per capita in the premium urban corridors of Thonglor, Ari, and Siam. <strong style="color:var(--gold)">This is not a trend — it is a cultural shift</strong>. The Thai middle class has developed genuine coffee literacy, and they are willing to pay THB 150–220 for a pour-over or a single-origin espresso from coffee they know was grown in their own country. This guide teaches you to build a café that honours that literacy and profits from it.
+  </div>
+  <div style="margin-top:3mm;font-size:9px;color:rgba(200,146,42,0.6);font-style:italic">— Head Barista / Founder, Guide #50</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-bottom:3mm">
+<div class="origin-card">
+<h5>Doi Chang — Chiang Rai</h5>
+<p>Altitude: 1,400–1,800m. Akha hill tribe growers. Natural and washed process. Flavour: tropical fruit, jasmine, caramel body. Best as: pour-over, aeropress, cold brew. The village of Doi Chang is the most visited coffee origin destination in Thailand.</p>
+</div>
+<div class="origin-card">
+<h5>Doi Tung — Mae Fah Luang</h5>
+<p>Altitude: 1,200–1,500m. Royal Project foundation. Shade-grown under macadamia + fruit trees. Flavour: stone fruit, mild citrus, clean finish. Best as: espresso, flat white, drip coffee. The royalty story creates a premium positioning narrative.</p>
+</div>
+<div class="origin-card">
+<h5>Maejo · Nan · Chiang Mai</h5>
+<p>Emerging micro-origins. Single-farm lots available direct from producers. Nan province produces a particularly high-altitude Arabica with bright acidity and green apple notes. Serve as rotating single-origin filter — creates a reason for regulars to return weekly.</p>
+</div>
+</div>
+
+<div class="info-box"><h5>Menu Architecture — 28 Items</h5>
+<p><strong>Section 1:</strong> 6 Specialty Coffee Drinks · <strong>Section 2:</strong> 10 Café Food Items (breakfast + lunch + all-day) · <strong>Section 3:</strong> 4 Café Experience Items (coffee flights + pairings) · <strong>Section 4:</strong> 8 Signature Drinks (non-coffee + seasonal)</p>
+</div>
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+<!-- SECTIONS 1+2 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 1 — Specialty Coffee Drinks · Items 01–06</span><span class="page-num">03</span></div>
+<h2><span class="sn2">1</span>Specialty Coffee Programme</h2>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">01</div><div class="rc-title">Doi Chang Single-Origin Pour-Over</div><div class="rc-sub">V60 · Chiang Rai · Washed Process · Jasmine · Tropical Fruit · Light Roast</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Parameters</h5>
+<div class="ingredient">Doi Chang Arabica, light roast <span class="qty">15g</span></div>
+<div class="ingredient">Filtered water, 93°C <span class="qty">250ml</span></div>
+<div class="ingredient">Brew ratio <span class="qty">1:16.7</span></div>
+<div class="ingredient">Grind size <span class="qty">Medium-fine (V60)</span></div>
+<div class="ingredient">Total brew time <span class="qty">3:00–3:30 min</span></div>
+<div class="ingredient">Pre-infusion (bloom) <span class="qty">30–35ml / 30 sec</span></div>
+<div class="ingredient">Pouring technique <span class="qty">Spiral, 4 pours</span></div>
+<div class="ingredient">V60 filter <span class="qty">Size 02, pre-rinsed</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Pre-rinse paper filter with hot water — removes paper taste, heats vessel. Discard rinse water. Add 15g freshly ground coffee.</div>
+<div class="step"><span class="step-num">2</span>Bloom: pour 35ml water in slow spiral. Wait 30 seconds — CO2 releases (the coffee "blooms"). Fresh beans = vigorous bloom. Old beans = flat bloom. This tells you everything about your coffee's freshness.</div>
+<div class="step"><span class="step-num">3</span>Pour 1: 80ml, slow spiral from centre out. Pour 2: 60ml when drawdown reaches crust. Pour 3: 60ml. Pour 4: 15ml to finish. Maintain water level — never let bed run dry between pours.</div>
+<div class="step"><span class="step-num">4</span>Total drawdown: 3:00–3:30 min. Under 2:30 = too coarse (sour). Over 4:00 = too fine (bitter). Adjust grind daily — humidity affects extraction. Serve in warmed ceramic cup with origin card.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Dialling In</h6><p>Every new bag of coffee needs dialling in — even same origin, different harvest. First cup of a new batch: taste carefully. Too bright/sour = grind finer or lower temp to 91°C. Too flat/bitter = grind coarser or raise temp to 95°C. Document your final recipe on the bag.</p></div>
+<div class="note-box brew"><h6>The Origin Story Script</h6><p>"This is Doi Chang from Chiang Rai — grown by the Akha people at 1,600m. It replaced opium cultivation in the 1980s under royal patronage. You'll taste jasmine and a natural tropical fruit sweetness. No added flavouring — that's just what grows there." This 30-second story adds THB 30–50 of perceived value immediately.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 35 / USD 1 · Suggested price: THB 150–180 / USD 4.29–5.14</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag vg">VG</span><span class="dtag df">DF</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">02</div><div class="rc-title">Doi Tung Flat White</div><div class="rc-sub">Double Ristretto · Steamed Full-Fat Milk · Microfoam Tulip · Royal Project</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Parameters</h5>
+<div class="ingredient">Doi Tung espresso blend <span class="qty">18g in / 26g out</span></div>
+<div class="ingredient">Extraction time <span class="qty">28–32 seconds</span></div>
+<div class="ingredient">Full-fat fresh milk <span class="qty">130ml</span></div>
+<div class="ingredient">Steam temperature <span class="qty">62–65°C</span></div>
+<div class="ingredient">Microfoam texture <span class="qty">Silky, no dry foam</span></div>
+<div class="ingredient">Serve vessel <span class="qty">170ml ceramic tulip cup</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Dose 18g, distribute evenly, tamp level at 20kg pressure. Lock portafilter. Extract 26g espresso in 28–32 seconds. Doi Tung at correct extraction: stone fruit body, mild sweetness, clean finish. Taste every shot.</div>
+<div class="step"><span class="step-num">2</span>Steam 130ml cold milk. Submerge steam wand just below surface — you want a faint hiss, not a roar. As milk heats, lower pitcher to incorporate. Target: silky microfoam, no visible bubbles, 62–65°C.</div>
+<div class="step"><span class="step-num">3</span>Tap pitcher on counter twice, swirl to integrate. Pour with intention: centre pour, then steer the foam into a tulip. In a 170ml flat white cup, the ratio is critical — too much milk buries the espresso.</div>
+<div class="step"><span class="step-num">4</span>Serve immediately. Flat white waits for no one — the espresso oxidises and the foam settles within 2 minutes. If a flat white sits on the pass for 90 seconds, remake it.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Flat White vs Latte</h6><p>A flat white is not a small latte. The espresso-to-milk ratio is fundamentally different: 26g espresso + 130ml milk vs 20g + 200ml. The coffee must dominate. If a guest can't taste the Doi Tung in the finished drink, your ratio is wrong.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Fresh milk is non-negotiable for microfoam quality. UHT milk creates weak foam that collapses in under 1 minute. Source local fresh milk (Nongpochana or Dutch Mill full-fat). Never reheat steamed milk — if the shot is pulled before the milk is ready, pull a new shot. The milk is faster to resteem than to repull.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 28 / USD 0.80 · Suggested price: THB 120–150 / USD 3.43–4.29</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">03–06</div><div class="rc-title">Cold Brew Thai Coffee · Thai-Style Iced Latte · Aeropress Nan Arabica · Espresso Tonic</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:2mm">03 · Cold Brew Thai Coffee (Oliang Base)</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Traditional Thai oliang coffee blend (roasted with sesame, corn, soy) 80g + filtered cold water 1L. Steep 18–20 hours refrigerated (overnight). Strain through fine cloth or Chemex filter — do not press. Serve over large ice in glass. Options: black / condensed milk 20ml / evaporated milk 15ml. The cold brew method takes the bitter edge off oliang and reveals its nutty, caramel character. <strong>Cost: THB 20 · Price: THB 90–110 / USD 2.57–3.14</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:2mm">04 · Thai-Style Iced Latte</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Double espresso 50ml (Doi Chang or house blend) + condensed milk 20ml + evaporated milk 15ml + ice 200g in tall glass. The Thai condensed + evaporated milk combination is different from Western sweetened lattes — it's creamier, richer, with a slight caramel undertone from condensed milk. Stir before drinking. Serve with long spoon. Add coconut milk option for vegan version. <strong>Cost: THB 25 · Price: THB 95–120 / USD 2.71–3.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:2mm">05 · Aeropress — Nan Province Arabica</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Nan Arabica 15g, medium-fine grind. Inverted aeropress: 85°C water (lower temp for lighter roast, preserves fruit notes). Steep 2 minutes. Flip and press 30 seconds. Result: 200ml concentrated, clean, filtered coffee. Nan profile: green apple, mild citrus, bright clean finish. Serve with origin information card. Offer as a "rarely seen outside Chiang Rai café scene" education moment. <strong>Cost: THB 40 · Price: THB 160–190 / USD 4.57–5.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:2mm">06 · Espresso Tonic</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Premium tonic water (Fever-Tree or Q Tonic) 150ml poured over large ice in highball glass. Double espresso 50ml poured slowly over back of spoon to float on top. The espresso floats as a dark layer over the effervescent tonic — two layers, two temperatures, two textures. Add kaffir lime zest strip for Bangkok identity. The visual is striking; the taste is bitter-sweet-effervescent — unlike any standard coffee drink. <strong>Cost: THB 45 · Price: THB 150–180 / USD 4.29–5.14</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 2 — Café Food · Items 07–16</span><span class="page-num">04</span></div>
+<h2><span class="sn2">2</span>Café Food — Breakfast, Brunch &amp; All-Day</h2>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">07</div><div class="rc-title">Avocado Toast with Thai Twist</div><div class="rc-sub">Sourdough · Smashed Avocado · Nam Prik Pao · Poached Egg · Micro Herbs</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — 1 serve</h5>
+<div class="ingredient">Sourdough, thick-sliced <span class="qty">2 slices</span></div>
+<div class="ingredient">Ripe avocado <span class="qty">1, halved</span></div>
+<div class="ingredient">Nam prik pao (roasted chilli paste) <span class="qty">10g</span></div>
+<div class="ingredient">Lime juice <span class="qty">10ml</span></div>
+<div class="ingredient">Fish sauce <span class="qty">5ml</span></div>
+<div class="ingredient">Eggs, free-range <span class="qty">2 (poached)</span></div>
+<div class="ingredient">Cherry tomatoes <span class="qty">4, halved</span></div>
+<div class="ingredient">Micro coriander + basil <span class="qty">5g</span></div>
+<div class="ingredient">Sesame seeds, toasted <span class="qty">3g</span></div>
+<div class="ingredient">Chilli flakes <span class="qty">2g</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Toast sourdough until golden and sturdy. Brush with olive oil while hot.</div>
+<div class="step"><span class="step-num">2</span>Smash avocado with fork — not a blender. Chunks are the texture. Season: nam prik pao + lime + fish sauce + salt. The nam prik pao adds a smoky, slightly sweet roasted chilli note that completely transforms Western avo toast.</div>
+<div class="step"><span class="step-num">3</span>Poach eggs: bring water + 20ml white vinegar to gentle simmer. Swirl water. Drop cracked egg into centre. 3 min for runny yolk. Drain on paper towel.</div>
+<div class="step"><span class="step-num">4</span>Spread avo on toast. Place eggs. Cherry tomatoes halved. Micro herbs. Sesame seeds. Chilli flakes. The nam prik pao is the ingredient that makes guests ask: "What's in this?" — which is the opening for a conversation about Thai food.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Nam Prik Pao Sourcing</h6><p>Maesri or Pantai brand roasted chilli paste is available at every Thai supermarket. It is smoky, slightly sweet, with dried shrimp undertones. It is not spicy in the way fresh chilli is — it adds depth, not heat. Important to disclose for shellfish/shrimp-allergic guests.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Pre-prep avocado per service only — never in advance (oxidises to grey within 20 minutes even with lime). Have avocados at perfect ripeness: gives to gentle thumb pressure but not soft. Hard = acrid. Over-ripe = grey and stringy. Check every morning.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 70 / USD 2 · Suggested price: THB 220–260 / USD 6.29–7.43</span><div class="dtags"><span class="dtag nf">NF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">08–12</div><div class="rc-title">Ricotta Pancakes · Granola Bowl · Croque Monsier Thai · Banana Walnut Loaf · Açaí Smoothie Bowl</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">08 · Ricotta Hotcakes</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Ricotta 200g + flour 100g + eggs 3 separated + milk 80ml + sugar 20g + baking powder 5g + vanilla 5ml. Whip whites to soft peaks, fold into batter. Cook on medium heat 3 min each side. Fluffy, cloud-like. Top: fresh passionfruit (Thailand grows excellent passionfruit May–Aug), honeycomb 20g, compote berries, cream. The passionfruit + honeycomb combination is a classic Melbourne café pairing — it works here with Thai fruit. <strong>Cost: THB 85 · Price: THB 240–280 / USD 6.86–8</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">09 · Doi Chang Granola Bowl</div>
+<div style="font-size:9px;color:#333;line-height:1.7">House granola: rolled oats 400g + coconut flakes 80g + pumpkin seeds 60g + sesame seeds 40g + honey 60ml + coconut oil 40ml + cinnamon 5g + Doi Chang cold brew 30ml (adds coffee depth) — bake 160°C 25 min, stir twice. Serve with thick yoghurt 150g + seasonal tropical fruit (mango, dragonfruit, rambutan) + extra cold brew drizzle. The coffee-infused granola is the house signature — it's different and worth talking about. <strong>Cost: THB 80 · Price: THB 220–260 / USD 6.29–7.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">10 · Croque Monsieur Thai</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Brioche 2 thick slices, ham 60g, gruyère 40g grated, béchamel 40ml (butter + flour + milk + Dijon). Thai twist: add green chilli paste 5g to béchamel + kaffir lime leaf micro-chiffonade inside. Assemble: bread → ham → cheese → bread. Béchamel on top. Gratinée 200°C 8 min until golden + bubbling. The kaffir lime in the béchamel is barely there but unmistakably Thai. Serve with small green salad + Dijon on the side. <strong>Cost: THB 90 · Price: THB 240–280 / USD 6.86–8</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">11 · Banana Walnut Loaf</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Ripe bananas 3 (mashed) + flour 200g + sugar 120g + eggs 2 + butter 80g melted + baking soda 5g + salt 3g + walnuts 80g + cinnamon 5g + cardamom 3g. Fold together — don't overmix. Bake 170°C 55 min. Cool completely. Serve thick slice with house-made coconut butter (butter 100g + coconut oil 30g + honey 15g + sea salt — whip together). The cardamom addition is the café signature. <strong>Cost: THB 25/slice · Price: THB 80–95 / USD 2.29–2.71</strong></div>
+</div>
+<div style="grid-column:1/-1">
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">12 · Açaí Smoothie Bowl</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Base:</strong> Açaí pack 100g (frozen) + frozen banana 1 + coconut milk 80ml + honey 10ml. Blend thick — almost frozen, spoonable, not pourable. Should hold toppings without sinking. <strong>Toppings:</strong> house granola 40g + sliced banana + fresh mango + dragon fruit + fresh coconut shavings + chia seeds + honey drizzle + edible flowers. <strong>Key principle:</strong> The base should be almost tasteless (mild açaí) — the toppings create the flavour, the colour, and the photograph. Serve in chilled bowl. This is one of the top 3 photographed café food items in Bangkok in 2026. <strong>Cost: THB 110 · Price: THB 280–320 / USD 8–9.14</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">13–16</div><div class="rc-title">Eggs Benedict · Club Sandwich · Thai Basil Shakshuka · Cheesecake Slice</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">13 · Eggs Benedict (Thai Crab)</div>
+<div style="font-size:9px;color:#333;line-height:1.7">English muffin 2 halves toasted, Thai blue swimmer crab 60g (or smoked salmon), poached eggs 2, hollandaise: egg yolks 3 + butter 150g clarified + lemon 20ml + cayenne. Hollandaise whisked over bain marie to ribbon. Thai twist: add lemongrass oil 5ml + kaffir lime zest to hollandaise. Serve: muffin → crab → egg → hollandaise cascaded over. Micro chives + chilli flakes. <strong>Cost: THB 130 · Price: THB 320–380 / USD 9.14–10.86</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">14 · Classic Club Sandwich</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Triple-decker: sourdough 3 slices toasted, free-range chicken breast 80g (grilled, sliced), streaky bacon 2 rashers crispy, egg 1 fried, tomato 2 slices, lettuce, avocado 30g smashed. House sriracha mayo (sriracha 20ml + Japanese mayo 60ml). Cut into 4 triangles, secured with cocktail picks. Serve with fries (thin-cut, double-fried) or green salad. The café staple — non-negotiable for the laptop-working crowd who need a proper lunch. <strong>Cost: THB 110 · Price: THB 280–320 / USD 8–9.14</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">15 · Thai Basil Shakshuka</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Tomato base with Thai basil twist: olive oil + onion + garlic + bird's eye chilli 2 + red capsicum + can crushed tomato 400g + fish sauce 15ml + palm sugar 10g + thai basil 15g. Simmer 15 min. Make 4 wells, crack in eggs, cover, cook 5–6 min (set white, runny yolk). Serve in cast iron pan with sourdough toast + extra Thai basil + feta crumble + fresh chilli. The fish sauce + palm sugar transforms the shakshuka base from Mediterranean to Thai-inflected. <strong>Cost: THB 95 · Price: THB 260–300 / USD 7.43–8.57</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">16 · New York Cheesecake Slice</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Baked New York cheesecake: cream cheese 500g + sour cream 100g + eggs 3 + sugar 150g + vanilla 8ml + lemon 20ml. Graham cracker base: crumbs 200g + butter 80g + sugar 20g. Bake water bath 150°C 60 min, turn off oven, rest 1hr inside. Refrigerate overnight. Portion with hot knife. Thai seasonal fruit compote alongside (tamarind caramel, mango, passionfruit). Slice presentation: clean cut, sour cream quenelle, compote pool. <strong>Cost: THB 60/slice · Price: THB 160–200 / USD 4.57–5.71</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+<!-- SECTIONS 3+4+5+6 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 3 — Coffee Experiences · Section 4 — Signature Drinks</span><span class="page-num">05</span></div>
+<h2><span class="sn2">3</span>Coffee Experiences — Flights &amp; Pairings</h2>
+
+<div class="share-card"><div class="share-title">17 · Thai Origins Coffee Flight</div><div class="share-desc">Three 80ml pour-overs side by side: Doi Chang (jasmine, tropical fruit) · Doi Tung (stone fruit, clean finish) · Nan Province (green apple, bright citrus). Served on wooden tray with origin cards for each. The barista presents and explains each origin before the guest begins. Tasting order: Nan → Doi Tung → Doi Chang (lightest to most complex). The flight is both a product and an education — guests who do this once become regulars who understand your coffee. <strong>Food cost: THB 105 · Price: THB 320–380 / USD 9.14–10.86</strong></div></div>
+
+<div class="share-card"><div class="share-title">18 · Coffee &amp; Pastry Pairing</div><div class="share-desc">One specialty coffee of choice (any preparation) paired with two house pastries specifically selected by the barista to match the coffee's flavour profile. Doi Chang (fruity/floral) → croissant with passion fruit curd + banana walnut loaf. Doi Tung (stone fruit/clean) → plain butter croissant + almond financier. Cold brew (chocolate/caramel) → dark chocolate brownie + cardamom shortbread. Serve on wooden board with tasting note card. <strong>Food cost: THB 120 · Price: THB 280–340 / USD 8–9.71</strong></div></div>
+
+<div class="share-card"><div class="share-title">19 · Barista's Table — For 2</div><div class="share-desc">Barista prepares a full pour-over tableside on a portable V60 stand. Guest watches the full process — grinding, blooming, pouring. Barista narrates origin story, flavour profile, growing region. Then serves with Thai-sourced accompaniments: palm sugar cubes, condensed milk pot, coconut cream, fresh Thai fruits. The barista's table is a reservation experience (book in advance, THB 380 minimum per person), not a walk-in item. <strong>Food cost: THB 160 · Price: THB 380–450 / USD 10.86–12.86</strong></div></div>
+
+<div class="share-card"><div class="share-title">20 · Cold Brew Tasting Flight</div><div class="share-desc">Three 100ml cold brew preparations: Traditional Thai oliang (nutty, roasted) · Doi Chang single-origin cold brew 18hr steep (fruit-forward, sweet) · Cold brew with coconut cream float (Thai-style, dessert-adjacent). Serve in small rocks glasses on slate board. The three preparations illustrate the entire spectrum of Thai coffee culture — traditional street food through specialty third-wave through Thai-influenced fusion. <strong>Food cost: THB 80 · Price: THB 240–280 / USD 6.86–8</strong></div></div>
+
+<h2><span class="sn2">4</span>Signature Non-Coffee Drinks</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+
+<div class="coffee-card">
+<div class="cf-hdr"><div class="cf-title">21 · Matcha Latte (Ceremonial)</div><div class="cf-sub">Japanese-Thai · Oat Milk · No Sugar Default</div></div>
+<div class="cf-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Ceremonial grade matcha 8g · Hot water 30ml (70°C) · Oat milk 200ml steamed · Honey optional · Ice for iced version</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Whisk matcha with hot water to smooth paste (no lumps). Steam oat milk to 62°C same as espresso. Pour matcha first, then steamed milk. Latte art optional — matcha paste creates a dark green base that shows pours beautifully. <strong>Cost THB 40 · Price THB 130–160 / USD 3.71–4.57</strong></div></div>
+</div></div>
+
+<div class="coffee-card">
+<div class="cf-hdr"><div class="cf-title">22 · Thai Herb Iced Tea</div><div class="cf-sub">Lemongrass · Pandan · Kaffir Lime · House Blend</div></div>
+<div class="cf-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Lemongrass 2 stalks + pandan leaves 3 + kaffir lime leaf 2 + hot water 500ml + honey 20ml. Steep 15 min, strain. Chill.</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Batch-brew daily. Serve over ice in tall glass with fresh lemongrass stalk garnish. Pale gold colour. Zero caffeine. Perfect for guests who want something distinctly Thai without coffee. <strong>Cost THB 20 · Price THB 80–100 / USD 2.29–2.86</strong></div></div>
+</div></div>
+
+<div class="coffee-card">
+<div class="cf-hdr"><div class="cf-title">23 · Sparkling Yuzu Lemonade</div><div class="cf-sub">Fresh Yuzu · Sparkling Water · Honey</div></div>
+<div class="cf-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Yuzu juice 25ml (fresh or premium bottled) · Honey syrup 15ml (1:1 honey + warm water) · Sparkling water 200ml · Ice · Yuzu zest + mint garnish</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Build over ice. Add honey syrup, yuzu juice. Top with sparkling water. Express yuzu zest over glass. Mint sprig. Refreshing, aromatic, non-sweet. Pairs exceptionally well with avocado toast or ricotta pancakes. <strong>Cost THB 30 · Price THB 100–120 / USD 2.86–3.43</strong></div></div>
+</div></div>
+
+<div class="coffee-card">
+<div class="cf-hdr"><div class="cf-title">24–28 · Remaining Drinks</div></div>
+<div class="cf-body" style="grid-template-columns:1fr">
+<div style="font-size:9px;color:#333;line-height:1.9">
+<strong style="color:var(--gold)">24 Rose Milk (Cha Nom Kula Maep)</strong> — Thai rose syrup 30ml (Sala brand, slightly sweet with natural rose) + fresh milk 200ml + ice + dried rose petals. Pink, nostalgic, Instagram-friendly. Classic Thai sweet milk tea, upgraded with garnish. Cost THB 22 · Price THB 80–95 / USD 2.29–2.71<br>
+<strong style="color:var(--gold)">25 Turmeric Golden Latte</strong> — Fresh turmeric 15g grated + ginger 5g + coconut milk 200ml + honey 10ml + black pepper pinch + cinnamon. Simmer 5 min, strain, froth. The black pepper activates curcumin absorption — this detail is worth mentioning to health-conscious guests. Cost THB 35 · Price THB 120–150 / USD 3.43–4.29<br>
+<strong style="color:var(--gold)">26 Fresh Watermelon Juice</strong> — Seedless watermelon 300g + lime 15ml + mint + pinch salt. Blend, strain. Serve immediately — don't store (separates quickly). The salt amplifies the sweetness. Cost THB 25 · Price THB 80–100 / USD 2.29–2.86<br>
+<strong style="color:var(--gold)">27 Iced Hojicha Latte</strong> — Japanese roasted green tea hojicha 10g steeped in hot water 80ml, chilled. Oat milk 150ml. Over ice. The roasted, caramel character of hojicha bridges Japanese and Thai café cultures well. Cost THB 35 · Price THB 120–150 / USD 3.43–4.29<br>
+<strong style="color:var(--gold)">28 Seasonal Thai Fruit Smoothie</strong> — Rotating daily based on market availability: mango season (Mar–Jun) = mango + coconut milk + lime. Rambutan = rambutan + pineapple + ginger. Dragon fruit = dragon fruit + banana + coconut water. Promote seasonal availability on blackboard + Instagram stories only — creates daily urgency. Cost THB 45 · Price THB 130–160 / USD 3.71–4.57
+</div>
+</div></div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 5 — Service Training · Section 6 — Staff Workflow</span><span class="page-num">06</span></div>
+<h2><span class="sn2">5</span>Service Training — The Specialty Café Standard</h2>
+
+<div class="info-box"><h5>Specialty Coffee Service Philosophy</h5><p>The specialty café sells expertise, not just beverage. Your guests pay a 40–60% premium over mass-market coffee because they trust that you know more about coffee than they do — and that the knowledge translates into a better cup. Every staff interaction should reinforce that trust. This does not mean being pretentious or making guests feel uneducated. It means being <strong>enthusiastically knowledgeable</strong> — sharing what you know because you love it, not because you're proving something.</p></div>
+
+<div class="script-box">
+<div class="script-label">// Coffee Recommendation for First-Time Guest</div>
+<div class="script-text">"Are you a black coffee drinker or do you prefer milk? Perfect — then I'd actually recommend starting with the Doi Chang pour-over before anything else. It's the coffee that put northern Thailand on the global coffee map. It's fruity and floral in a way that feels surprising the first time — no acidity, just this clean tropical fruit sweetness. If you like it, everything else on the menu will make more sense. Takes about 4 minutes — worth the wait."</div>
+<div class="script-why"><strong>Why this works:</strong> "The coffee that put northern Thailand on the map" is a genuine, confident claim. The flavour description is specific and non-intimidating. The 4-minute heads-up manages expectations while building anticipation. The guest feels guided by a knowledgeable friend, not upsold by a barista.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Origin Flight Tableside Presentation</div>
+<div class="script-text">"So — three coffees, three mountains. Start from the left: this is from Nan Province, about 1,400m altitude, very bright and clean — you'll get a little green apple, nothing heavy. Middle: Doi Tung, the Royal Project coffee, stone fruit, peach, very elegant. Right: Doi Chang, grown by the Akha people at 1,600m — this one has a natural jasmine quality that's almost floral. Same country, three completely different cups. Take your time."</div>
+<div class="script-why"><strong>Why this works:</strong> The story format (three mountains, three people, three flavours) is memorable and shareable. Guests will repeat this story to friends. The word "elegant" applied to a coffee from northern Thailand challenges assumptions about Thai coffee quality. "Take your time" signals: we're not rushing you. This is how regulars are made.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Handling the "Why Is It So Expensive?" Moment</div>
+<div class="script-text">"The Doi Chang is THB 160 because it's single-origin — this specific lot was grown by one family at a specific altitude in Chiang Rai. Every bag is traceable to the farmer. We pay above-market rate directly to them — it's how the program works. The same coffee in Tokyo or Melbourne sells for THB 250–300. Honestly, you're getting the best deal in the region for the quality. Do you want me to tell you a bit about the Akha farmers while it brews?"</div>
+<div class="script-why"><strong>Why this works:</strong> Justifying price with provenance, direct trade, and international context removes buyer's resistance without being defensive. The Japan/Melbourne comparison is specific and credible. The offer to share more story while it brews turns a potential friction point into an engagement opportunity. The guest almost always says yes.</div>
+</div>
+
+<h2><span class="sn2">6</span>Staff Workflow</h2>
+<table class="staff-table">
+<tr><th>Role</th><th>Count</th><th>Responsibilities</th><th>Hours</th></tr>
+<tr><td><strong>Head Barista</strong></td><td>1</td><td>Coffee programme ownership: dialling in daily, origin flights, barista's table reservations, staff training, bean sourcing, quality control</td><td>7am–4pm</td></tr>
+<tr><td><strong>Barista</strong></td><td>1–2</td><td>Espresso bar, pour-overs, cold brew service, all drink preparation, bar cleanliness</td><td>Staggered 7am–5pm</td></tr>
+<tr><td><strong>Café Chef / Cook</strong></td><td>1</td><td>All café food: breakfast prep, plating, lunch service, pastry production or sourcing management</td><td>7am–4pm</td></tr>
+<tr><td><strong>FOH</strong></td><td>1–2</td><td>Table service, order taking, coffee explanation to guests, cake/pastry sales, digital ordering management, table clearing</td><td>8am–5pm</td></tr>
+</table>
+
+<table class="prep-table" style="margin-top:2mm">
+<tr><th>Time</th><th>Coffee Bar</th><th>Kitchen</th><th>FOH</th></tr>
+<tr><td>7:00am</td><td>Head Barista: dial in espresso grinder. Pull 3 test shots. Note grind setting. Cold brew check (pour off overnight batch). V60 rinse + station setup.</td><td>Cheesecake portioned. Granola checked. Bread delivery (sourdough + brioche).</td><td>—</td></tr>
+<tr><td>8:00am</td><td>Open bar. First customers arrive. Origin card display refreshed.</td><td>Open kitchen. Avocado ripeness checked. Eggs counted. Mise en place ready.</td><td>Open floor. Specials board updated.</td></tr>
+<tr><td>8–11am</td><td>Peak coffee + breakfast. Espresso dominant. Pour-overs on request. Flight bookings for 10am.</td><td>Heavy breakfast service: avo toast, eggs benedict, ricotta hotcakes.</td><td>Coffee story conversations. Flight and pairing upsells.</td></tr>
+<tr><td>11am–2pm</td><td>Midday: iced coffee dominant. Cold brew service, espresso tonic, matcha lattes peak.</td><td>Lunch service: club sandwich, shakshuka, granola bowls, cake slices.</td><td>Laptop crowd management. Don't rush seated guests.</td></tr>
+<tr><td>2–5pm</td><td>Afternoon: pour-over flights, Barista's Table appointments, specialty tea + smoothies.</td><td>Prep for next day: cheesecake baked, granola batch, cold brew loaded for overnight steep.</td><td>Late afternoon quiet. Update Instagram with afternoon content.</td></tr>
+<tr><td>5:00pm</td><td>Close bar. Clean equipment: backflush machine, clean steam wands, rinse group heads.</td><td>Close kitchen. Food safety temps logged. Prep list for tomorrow.</td><td>Float counted. Reservation book checked for tomorrow's Barista's Tables.</td></tr>
+</table>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+<!-- SECTIONS 7-10 + CLOSING -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 7 — Weekly Prep · Section 8 — Customer Retention</span><span class="page-num">07</span></div>
+<h2><span class="sn2">7</span>Weekly Prep Schedule</h2>
+<table class="prep-table">
+<tr><th>Task</th><th>Frequency</th><th>Time</th><th>Notes</th></tr>
+<tr><td>Espresso grinder dial-in</td><td>Daily (first task)</td><td>15–20 min</td><td>Pull 3 shots, taste each. Adjust grind 1 click at a time. Target: 26g in / 26g out / 28–32 seconds. Humidity changes grind setting daily. Document grind number on whiteboard. Never skip — bad dial-in means bad coffee for 50+ guests that day.</td></tr>
+<tr><td>Cold brew steep loading</td><td>Daily (5pm)</td><td>10 min</td><td>Load 80g oliang + 1L water for overnight 18hr steep. Pull from fridge each morning at opening. Strain through fine cloth, portion into service container. Discard grounds. Thai oliang cold brew has a shelf life of 3 days refrigerated.</td></tr>
+<tr><td>Pour-over station prep</td><td>Daily (7am)</td><td>10 min</td><td>Pre-rinse all V60 filters, have them staged in dripper. Fresh beans ground per order — never pre-grind for pour-over. Have a grinder timer calibrated for single dose (15g). Keep water at 93°C in temperature-controlled kettle.</td></tr>
+<tr><td>Granola batch</td><td>Weekly (Monday)</td><td>45 min</td><td>One batch yields approximately 30 portions. Bake at 160°C 25 min in 2 trays — stir at 10 and 20 min. Cool completely before storing. Store in airtight jar, counter display. Makes the café smell incredible — this is intentional marketing. Batch lasts 7 days.</td></tr>
+<tr><td>Cheesecake production</td><td>Twice weekly (Mon + Thu)</td><td>1hr bake + overnight rest</td><td>Bake Monday PM and Thursday PM. Rest overnight in turned-off oven. Refrigerate following morning. Portion with hot knife each morning. One 22cm cheesecake = 10 slices. Calculate par against expected covers.</td></tr>
+<tr><td>Sourdough + pastry order</td><td>Daily (morning delivery)</td><td>—</td><td>Source from artisan bakery. Order previous day PM. Pastry display drives impulse purchases — ensure 6+ items visible from counter at all times. Croissants, banana walnut loaf, cookies, financiers minimum.</td></tr>
+<tr><td>House herb tea batch</td><td>Daily (8am)</td><td>20 min</td><td>Lemongrass + pandan + kaffir lime steeped in 1L water. One batch serves approximately 15 drinks. Refrigerate. Resteep afternoon batch if morning sells out. Fresh herbs sourced from market weekly (or maintain small potted herb garden at café — excellent content, better quality).</td></tr>
+<tr><td>Avocado ripeness management</td><td>Daily check + 3-day cycle</td><td>5 min</td><td>Order hard avocados 3 days in advance. Check daily — move ripe ones to front of storage. Count against expected brunch covers. Waste is significant if avocados over-ripen. Build ordering discipline: Monday + Thursday orders for the week split.</td></tr>
+<tr><td>Origin card refresh</td><td>Weekly (Monday)</td><td>20 min</td><td>Print or write new origin cards for any new beans. Display prominently on bar. Customers photograph the origin cards — free UGC. Include: farm name, altitude, process, flavour notes, price paid to farmer.</td></tr>
+<tr><td>Equipment cleaning</td><td>Daily (close)</td><td>30 min</td><td>Backflush espresso machine (blind filter + cleaner). Clean steam wands (wipe + purge after each use during service). Rinse V60 station. Wipe grinder. Clean refrigerated display. A dirty espresso machine produces off-flavoured coffee within 24 hours — no exceptions.</td></tr>
+<tr><td>Weekly bean rotation</td><td>Weekly (Monday)</td><td>30 min</td><td>Assess remaining stock of each bean. Place orders for following week. Roast date rule: never use beans under 5 days from roast (CO2 disrupts extraction) or over 28 days (flavour stales). Maintain 7–14 day optimal window stock.</td></tr>
+<tr><td>Barista's Table scheduling</td><td>Weekly (Monday)</td><td>15 min</td><td>Confirm reservations for Barista's Table experiences. Assign specific Head Barista shift to Barista's Table days. Prepare origin sample sets for the week. Source any special micro-lot coffees in advance if a guest has requested something specific.</td></tr>
+<tr><td>Instagram content scheduling</td><td>Weekly (Thursday)</td><td>45 min</td><td>Schedule 5 posts for the following week: Monday brew video, Wednesday food shot, Friday behind-scenes, Saturday/Sunday real-time stories from service. Seasonal smoothie announced via Stories only — creates daily story views habit. Aim for 1 Reel per week minimum (pour-over video performs well).</td></tr>
+<tr><td>Fruit delivery + seasonal check</td><td>3× weekly (Mon/Wed/Fri)</td><td>15 min</td><td>Source from Or Tor Kor Market or direct from northern Thailand supplier for specialty fruits. Check seasonal availability: mango season Mar–Jun is hero content and peak smoothie bowl demand. Dragon fruit, rambutan, longan, mangosteen rotate through the year.</td></tr>
+</table>
+
+<h2><span class="sn2">8</span>Customer Retention — The Specialty Café Community</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div class="info-box"><h5>Turning Guests into Regulars</h5>
+<p><strong>The daily regular pattern:</strong> A specialty café regular visits 3–5 times per week. Their average spend is THB 150–180 per visit. Their annual value: THB 25,000–47,000. One regular is worth more than 10 one-time visitors. Design every touchpoint around converting a first visit into a second, and a second into a habit.<br><br>
+<strong>Know their order:</strong> By visit 3, your barista should know their regular order. By visit 5, it should be started when they walk in. This is not a system — it is a human discipline. It is also the most powerful retention mechanism in hospitality.<br><br>
+<strong>Bean release notifications:</strong> When a new single-origin arrives, text or Line message your top 20 regulars first. "We just got a new Nan Province lot — very limited. Want us to save you a bag?" This turns coffee purchasing into a relationship.</p>
+</div>
+<div class="info-box"><h5>Loyalty &amp; Community Events</h5>
+<p><strong>Monthly Origin Night:</strong> Once a month, after hours. 20 guests max. Head Barista presents one Thai coffee origin in depth — brewing 3–4 preparations, discussing the farmer, the process, the flavour evolution. THB 380 per person. Books out within 2 days of announcement via LINE OA. This event is the brand cornerstone — every Origin Night guest becomes an ambassador.<br><br>
+<strong>Stamp card (physical):</strong> 10 specialty coffees = 1 free. The physical card is not just loyalty — it's a tactile object that lives in their wallet. Every time they open their wallet, your café exists. Digital stamp apps lose 70% of users within 30 days.<br><br>
+<strong>Seasonal menu launch events:</strong> New seasonal menu every 3 months. Invite top 30 regulars for a preview tasting before public launch. No charge. The event costs THB 3,000–5,000 in food + coffee. The goodwill and social media coverage from 30 loyal regulars is worth THB 50,000+ in advertising equivalent.</p>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 9 — P&amp;L Model · Section 10 — Allergen Table</span><span class="page-num">08</span></div>
+<h2><span class="sn2">9</span>P&amp;L Model — 40-Seat Bangkok Specialty Café · 2026</h2>
+
+<table class="rev-table">
+<tr><th>Revenue Stream</th><th>Daily Volume</th><th>Avg Spend</th><th>Monthly THB</th><th>Monthly USD</th></tr>
+<tr><td>Specialty coffee (espresso + pour-over)</td><td>120 cups</td><td>THB 145</td><td>THB 522,000</td><td>USD 14,914</td></tr>
+<tr><td>Café food (breakfast + brunch + lunch)</td><td>80 covers</td><td>THB 260</td><td>THB 624,000</td><td>USD 17,829</td></tr>
+<tr><td>Non-coffee drinks (matcha, teas, smoothies)</td><td>50 drinks</td><td>THB 120</td><td>THB 180,000</td><td>USD 5,143</td></tr>
+<tr><td>Coffee experiences (flights, Barista's Table)</td><td>10 orders</td><td>THB 350</td><td>THB 105,000</td><td>USD 3,000</td></tr>
+<tr><td>Retail beans + merchandise</td><td>—</td><td>—</td><td>THB 90,000</td><td>USD 2,571</td></tr>
+<tr class="total-row"><td><strong>Total Monthly Revenue</strong></td><td colspan="2"></td><td><strong>THB 1,521,000</strong></td><td><strong>USD 43,457</strong></td></tr>
+</table>
+
+<table class="rev-table">
+<tr><th>Cost Category</th><th>% Revenue</th><th>Monthly THB</th><th>Monthly USD</th><th>Notes</th></tr>
+<tr><td>Food &amp; beverage cost</td><td>28%</td><td>THB 425,880</td><td>USD 12,168</td><td>Specialty beans 20–25% COGS. Food COGS 30–35%. Retail beans at 50% margin. Blended 28%.</td></tr>
+<tr><td>Labour (5–6 staff)</td><td>32%</td><td>THB 486,720</td><td>USD 13,906</td><td>Head Barista 40K + Barista 25K + Café Chef 30K + FOH 20K × 2 = THB 135K/month. Small, skilled team.</td></tr>
+<tr><td>Rent (specialty café BKK)</td><td>13.2%</td><td>THB 200,000</td><td>USD 5,714</td><td>Ari, Thonglor, Ekkamai ground floor. Specialty café can work in 50–80sqm — smaller = lower rent + cozier feel.</td></tr>
+<tr><td>Utilities</td><td>3.9%</td><td>THB 60,000</td><td>USD 1,714</td><td>Espresso machine draws significant power. A/C continuous. Calculate electric cost per sq meter.</td></tr>
+<tr><td>Equipment amortisation</td><td>3.3%</td><td>THB 50,000</td><td>USD 1,429</td><td>Espresso machine THB 300–600K + grinders + V60 + bar tools. Amortise over 5 years + monthly service contract.</td></tr>
+<tr><td>Marketing + events</td><td>2.0%</td><td>THB 30,000</td><td>USD 857</td><td>Monthly Origin Night cost + Instagram content + bean retail bags + branded merchandise</td></tr>
+<tr class="total-row"><td><strong>Total Operating Costs</strong></td><td><strong>82.4%</strong></td><td><strong>THB 1,252,600</strong></td><td><strong>USD 35,789</strong></td><td></td></tr>
+<tr class="net-row"><td><strong>Net Operating Profit</strong></td><td><strong>17.6%</strong></td><td><strong>THB 268,400/month</strong></td><td><strong>USD 7,669/month</strong></td><td><strong>THB 3.2M / USD 92K annually</strong></td></tr>
+</table>
+<p style="font-size:8px;color:var(--mid);margin-top:1mm">Note: Specialty café margin is lower than dessert/rooftop models but income is more stable (daily habit vs occasion dining). Scale by opening a second location or adding retail bean subscription model — both multiply revenue without proportional cost increase.</p>
+
+<h2><span class="sn2">10</span>Allergen Summary Table</h2>
+<table class="allergen-table">
+<tr><th>Item</th><th>Gluten</th><th>Dairy</th><th>Eggs</th><th>Nuts</th><th>Shellfish</th><th>Soya</th><th>Sesame</th></tr>
+<tr><td>01 Doi Chang Pour-Over</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>02 Doi Tung Flat White</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td></tr>
+<tr><td>03 Cold Brew Thai Oliang</td><td>✓*</td><td>✓*</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>✓</td></tr>
+<tr><td>04 Thai-Style Iced Latte</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>05 Aeropress Nan Arabica</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>06 Espresso Tonic</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>07 Avocado Toast Thai Twist</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>✓*</td><td>—</td><td>✓</td></tr>
+<tr><td>08 Ricotta Hotcakes</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>09 Doi Chang Granola Bowl</td><td>✓*</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>10 Croque Monsieur Thai</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>11 Banana Walnut Loaf</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>12 Açaí Smoothie Bowl</td><td>✓*</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>13 Eggs Benedict Thai Crab</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td>14 Club Sandwich</td><td>✓</td><td>✓*</td><td>✓</td><td>—</td><td>—</td><td>✓*</td><td>—</td></tr>
+<tr><td>15 Thai Basil Shakshuka</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>16 New York Cheesecake</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>17–20 Coffee Experiences</td><td>—</td><td>✓*</td><td>—</td><td>✓*</td><td>—</td><td>—</td><td>✓*</td></tr>
+<tr><td>21 Matcha Latte</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>22 Thai Herb Iced Tea</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>23 Sparkling Yuzu Lemonade</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>24 Rose Milk</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>25 Turmeric Golden Latte</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>26 Watermelon Juice</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>27 Iced Hojicha Latte</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>28 Seasonal Thai Smoothie</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+<p style="font-size:8px;color:var(--mid);margin-top:2mm">✓* = oliang blend contains roasted corn + soy + sesame; oat milk contains trace gluten; nam prik pao in avo toast contains dried shrimp. Always disclose oliang ingredients to guests with soy/sesame/shellfish allergies. Japanese mayo in club sandwich contains egg.</p>
+
+<div class="lens-card">
+<div class="lens-title">// Michelin Chef's Lens — Thailand's Coffee Renaissance</div>
+<div class="lens-text">
+There is something quietly extraordinary about the Doi Chang story. In the 1980s, the hillsides of Chiang Rai were producing opium under the control of trade networks that made farmers wealthy and destroyed communities. The royal agricultural project that replaced opium with coffee was not motivated by economics — it was motivated by dignity. The Akha people now produce one of the most respected specialty coffees in Asia. The same altitude, the same soil, the same hands — different seeds, different future.<br><br>
+When you serve Doi Chang in your Bangkok café, you are not just serving an excellent coffee. You are participating in an ongoing act of agricultural redemption. Your guest's THB 160 travels back to a family in Chiang Rai who chose coffee over opium. That story — told correctly, with respect and not sentiment — is the most powerful menu item you have. It is not marketing. It is simply true.<br><br>
+Bangkok's specialty coffee scene will continue to grow. The generation drinking Doi Chang pour-overs today will open the specialty cafés of 2030. <strong>Build your café with enough craft and authenticity to deserve their loyalty.</strong> The coffee will do the rest.
+</div>
+<div class="lens-closer">กาแฟที่ดีมาจากดินที่ดีและมือที่ดี — Great coffee comes from good soil and good hands.</div>
+</div>
+
+<div style="background:var(--cream);border:2px solid var(--gold);padding:5mm 6mm;margin-top:4mm;text-align:center">
+<div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--accent);margin-bottom:2mm">KitchenFounder · Guide #50 of 50</div>
+<div style="font-size:10px;color:#555;line-height:1.8">From Brazilian Churrasco to Bangkok Specialty Coffee — 50 guides, 1,400 recipes, every cuisine worth building.<br>This is the complete KitchenFounder v7 Restaurant Guide Series. © 2026 KitchenFounder · kitchen-founder.myshopify.com</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Thai Specialty Coffee & Café</span><span class="pf-r">v7 · 2026 Edition · Guide #50</span></div>
+</div>
+
+<footer>
+KitchenFounder Operations Guide v7 · Thai Specialty Coffee & Café · kitchen-founder.myshopify.com<br>
+© 2026 KitchenFounder · Thailand Market Edition · Guide #50 of 50 · For operational use only · Not for resale
+</footer>
+
+</body>
+</html>

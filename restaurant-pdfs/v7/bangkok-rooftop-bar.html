@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide #47 — Bangkok Rooftop Bar & Dining · v7 · 2026 Edition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--gold:#C8922A;--sky:#1A3A5C;--accent:#1A3A5C;--copper:#B87333;--border:#E0D9D0;--mid:#8A8A8A;--light:#F5F0E8}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+.cover{width:210mm;min-height:297mm;background:linear-gradient(160deg,#050D1A 0%,#0A1E38 45%,#0D0A1A 100%);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cover-stars{position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 70% 30%,rgba(255,200,100,0.06) 0%,transparent 60%),radial-gradient(circle at 20% 60%,rgba(26,58,92,0.3) 0%,transparent 50%)}
+.cover-city{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent 0%,rgba(26,58,92,0.15) 100%)}
+.cover-top{padding:14mm 16mm 0;z-index:1;position:relative}
+.cover-logo{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(184,115,51,0.5)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;position:relative}
+.cover-eyebrow{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(200,146,42,0.6);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:#fff;line-height:0.93;margin-bottom:4mm}
+.cover-title .gd{color:var(--gold)}
+.cover-rule{width:55mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.cover-lead{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.9;margin-bottom:5mm}
+.cover-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-bottom:4mm}
+.cstat{border:1px solid rgba(200,146,42,0.2);padding:3mm;text-align:center}
+.cstat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.cstat-lbl{font-size:7px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;margin-top:1mm}
+.cover-tags{display:flex;flex-wrap:wrap;gap:2mm}
+.ctag{border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.35);font-size:7.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end;position:relative}
+.cover-meta{font-size:8px;color:rgba(255,255,255,0.18);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);margin:5mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+.sn2{display:inline-block;background:var(--gold);color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:0.8rem;font-weight:700;margin-right:8px}
+.recipe-card{background:#fff;border:1px solid var(--border);margin-bottom:4mm;page-break-inside:avoid}
+.rc-hdr{background:var(--accent);padding:3mm 5mm}
+.rc-num{font-size:9px;font-weight:700;color:rgba(200,146,42,0.7);letter-spacing:2px}
+.rc-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff}
+.rc-sub{font-size:8.5px;color:rgba(255,255,255,0.4);font-style:italic}
+.rc-body{padding:3.5mm 5mm}
+.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm}
+.rc-ingredients h5,.rc-method h5{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm;border-bottom:1px solid var(--border);padding-bottom:1mm}
+.ingredient{font-size:9.5px;color:#333;line-height:1.75;display:flex;justify-content:space-between;padding:0.5mm 0;border-bottom:1px solid rgba(224,217,208,0.4)}
+.ingredient .qty{color:var(--mid);font-size:9px}
+.step{font-size:9.5px;color:#333;line-height:1.7;padding:1mm 0;border-bottom:1px solid rgba(224,217,208,0.3);display:flex;gap:3mm}
+.step-num{color:var(--gold);font-weight:700;font-size:10px;min-width:12px}
+.rc-notes{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:3mm}
+.note-box{padding:2.5mm 3mm;border-radius:2px}
+.note-box.tech{background:#E8F4F8;border-left:3px solid #1B4F8A}
+.note-box.fail{background:#FFF8E1;border-left:3px solid var(--gold)}
+.note-box.view{background:#F0F4E8;border-left:3px solid #4A7A1E}
+.note-box h6{font-size:7.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm}
+.note-box.tech h6{color:#1B4F8A}
+.note-box.fail h6{color:var(--gold)}
+.note-box.view h6{color:#4A7A1E}
+.note-box p{font-size:9px;color:#444;line-height:1.65}
+.rc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:2.5mm;padding-top:2.5mm;border-top:1px solid var(--border)}
+.cost{font-size:9px;color:#555}
+.dtags{display:flex;gap:1.5mm}
+.dtag{font-size:7px;font-weight:700;padding:0.8mm 1.8mm}
+.dtag.gf{background:#E3F2FD;color:#0D47A1}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A}
+.dtag.nf{background:#E8F5E9;color:#1B5E20}
+.dtag.df{background:#FFF3E0;color:#E65100}
+.dtag.sp{background:#FCE4EC;color:#880E4F}
+.cocktail-card{background:#fff;border:1px solid var(--border);margin-bottom:3mm;page-break-inside:avoid}
+.ck-hdr{background:linear-gradient(135deg,#050D1A,#0A1E38);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.ck-title{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#fff}
+.ck-sub{font-size:8px;color:rgba(200,146,42,0.6);font-style:italic}
+.ck-body{padding:3mm 5mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.share-card{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.share-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);margin-bottom:1.5mm}
+.share-desc{font-size:9.5px;color:#444;line-height:1.75}
+.script-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);margin-bottom:3mm;padding:3.5mm 5mm;page-break-inside:avoid}
+.script-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1.5mm;font-family:'Courier New',monospace}
+.script-text{font-size:9.5px;color:#1C1C1C;line-height:1.8;font-style:italic;background:#F8F6F2;padding:2mm 3mm;border-left:2px solid var(--gold);margin-bottom:2mm}
+.script-why{font-size:9px;color:#555;line-height:1.7}
+.script-why strong{color:var(--accent)}
+.info-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm}
+.info-box h5{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm}
+.info-box p,.info-box li{font-size:9.5px;color:#333;line-height:1.8}
+.staff-table,.prep-table,.rev-table,.allergen-table{width:100%;border-collapse:collapse;margin-bottom:3mm;font-size:9px}
+.staff-table th,.prep-table th,.rev-table th,.allergen-table th{background:var(--accent);color:#fff;padding:2.5mm 3mm;text-align:left;font-weight:600;font-size:8px}
+.staff-table td,.prep-table td,.rev-table td,.allergen-table td{padding:2mm 3mm;border-bottom:1px solid var(--border);color:#333;line-height:1.6}
+.total-row td{font-weight:700;color:var(--accent);background:rgba(200,146,42,0.06)!important;border-top:2px solid var(--gold)}
+.net-row td{font-weight:700;color:#2D7D4F;background:rgba(45,125,79,0.06)!important;border-top:2px solid #2D7D4F}
+.lens-card{background:var(--accent);color:#fff;padding:5mm 6mm;margin-top:4mm}
+.lens-title{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,146,42,0.7);margin-bottom:2mm;font-family:'Courier New',monospace}
+.lens-text{font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.9}
+.lens-closer{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(200,146,42,0.7);margin-top:3mm;border-top:1px solid rgba(255,255,255,0.1);padding-top:2mm}
+footer{background:var(--accent);color:rgba(255,255,255,0.35);padding:5mm 16mm;text-align:center;font-size:8px;letter-spacing:1px;line-height:1.8}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:0}.page,.cover{page-break-after:always;width:210mm;min-height:297mm}.recipe-card,.cocktail-card,.share-card,.script-box{page-break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-stars"></div>
+<div class="cover-city"></div>
+<div class="cover-top"><div class="cover-logo">KitchenFounder · Guide #47 · Thailand Market Edition</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Bangkok · Skyline Dining · Cocktail Theatre</div>
+  <div class="cover-title">Bangkok<br>Rooftop<br><span class="gd">Bar & Dining</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-lead">Complete Operator's Blueprint · 28 Recipes<br>Small Plates · Mains · Sharers · Craft Cocktails · Mocktails</div>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-val">28</div><div class="cstat-lbl">Recipes</div></div>
+    <div class="cstat"><div class="cstat-val">THB</div><div class="cstat-lbl">+ USD Pricing</div></div>
+    <div class="cstat"><div class="cstat-val">10</div><div class="cstat-lbl">Sections</div></div>
+    <div class="cstat"><div class="cstat-val">BKK</div><div class="cstat-lbl">Sky Dining</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="ctag">Golden Hour Service</span><span class="ctag">Sunset Cocktail Menu</span>
+    <span class="ctag">Sky-High P&amp;L</span><span class="ctag">Bangkok Premium Market</span>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div style="font-family:'Playfair Display',serif;font-size:11px;color:rgba(255,255,255,0.4)">Complete Operator's Guide · Thailand Premium Market</div>
+  <div class="cover-meta">v7 · 2026 Edition<br>Guide #47 · $29.99</div>
+</div>
+</div>
+
+<!-- CHEF INTRO -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Chef's Introduction · The Rooftop Philosophy</span><span class="page-num">02</span></div>
+<div style="background:var(--accent);color:#fff;padding:6mm 8mm;margin-bottom:4mm">
+  <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:3mm">The Sky is Not the Limit — It Is the Setting</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.6);line-height:1.9">
+    Bangkok from above is one of the great spectacles of modern Asia. The river bends south through the city like a silver stroke. The temple spires catch the last light at 6pm. The expressways write their slow calligraphy in red and white light after dark. Anyone who eats thirty floors above the city does not eat in isolation — they eat with all of this as their companion. Your menu must honour that companion.<br><br>
+    A rooftop restaurant in Bangkok is not about altitude. It is about <strong style="color:var(--gold)">atmosphere, timing, and intention</strong>. The guest who books a sunset table at 5:30pm is not ordering food — they are purchasing a specific emotional experience. The food must match the moment. That means flavours bright enough to stand against the spectacle of golden hour. Presentations clean enough for the photographers. Service relaxed enough for the romantics. Cocktails theatrical enough for the celebrations.<br><br>
+    This guide gives you everything: the menu, the systems, the scripts, the numbers. The view, Bangkok will provide.
+  </div>
+  <div style="margin-top:3mm;font-size:9px;color:rgba(200,146,42,0.6);font-style:italic">— Head Chef, Guide #47</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm">
+  <div class="info-box"><h5>Menu Architecture — 28 Items</h5>
+    <p><strong>Section 1:</strong> 6 Small Plates / Starters<br><strong>Section 2:</strong> 10 Main Plates<br><strong>Section 3:</strong> 4 Sharing Platters<br><strong>Section 4:</strong> 8 Drinks (cocktails + mocktails)</p>
+  </div>
+  <div class="info-box"><h5>Bangkok Rooftop Pricing (THB / USD)</h5>
+    <p>Small plates: THB 280–480 / USD 8–14<br>Mains: THB 480–1,200 / USD 14–34<br>Sharing: THB 780–2,400 / USD 22–69<br>Cocktails: THB 280–480 / USD 8–14<br>THB exchange rate: 35 THB = 1 USD</p>
+  </div>
+</div>
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+<!-- SECTION 1: SMALL PLATES 1-6 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 1 — Small Plates · Items 01–06</span><span class="page-num">03</span></div>
+<h2><span class="sn2">1</span>Small Plates</h2>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">01</div><div class="rc-title">Wagyu Beef Tataki</div><div class="rc-sub">Australian Wagyu MBS4 · Yuzu Ponzu · Crispy Shallots · Micro Herbs</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — 4 portions</h5>
+<div class="ingredient">Australian wagyu sirloin MBS4 <span class="qty">300g</span></div>
+<div class="ingredient">Yuzu juice <span class="qty">30ml</span></div>
+<div class="ingredient">Soy sauce (Japanese) <span class="qty">40ml</span></div>
+<div class="ingredient">Mirin <span class="qty">20ml</span></div>
+<div class="ingredient">Rice vinegar <span class="qty">10ml</span></div>
+<div class="ingredient">Crispy shallots <span class="qty">20g</span></div>
+<div class="ingredient">Micro cress + herbs <span class="qty">10g</span></div>
+<div class="ingredient">Sesame oil <span class="qty">5ml</span></div>
+<div class="ingredient">Chilli oil <span class="qty">5ml</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Tie wagyu into even cylinder with butcher's string. Season aggressively with salt. Rest at room temp 20 min.</div>
+<div class="step"><span class="step-num">2</span>Sear on screaming hot grill or iron pan 30 seconds each side — outside charred, inside raw. Ice bath immediately. Refrigerate 20 min minimum.</div>
+<div class="step"><span class="step-num">3</span>Combine yuzu, soy, mirin, rice vinegar, sesame oil. Taste — should be bright, salty, citrus-forward. Adjust yuzu.</div>
+<div class="step"><span class="step-num">4</span>Slice wagyu paper-thin (3mm). Fan 8 slices per plate in loose arc. Spoon ponzu tableside. Crispy shallots, micro herbs, chilli oil drop. Serve immediately — the ponzu begins to cure the beef after 90 seconds.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The ice bath stops the carry-over cooking cold. A rested cylinder slices cleanly — a warm one tears. Yuzu ponzu: make in advance (1 day rested = more complex flavour) but always taste and adjust acid before service.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Never slice to order for parties of 4+ — you'll fall behind. Pre-slice just before service, cover with cling wrap, refrigerate. Plate to order. Keep ponzu cold — warm ponzu kills the dish.</p></div>
+<div class="note-box view"><h6>🌆 Rooftop Plating</h6><p>White wide-rim plate. Fan arc faces the view — sunset or city depending on table orientation. Micro herbs must stand upright. The thin translucent wagyu slices against white plate photograph beautifully. This is your hero starter.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 165 / USD 4.71 · Suggested price: THB 380–450 / USD 10.86–12.86</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag df">DF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">02</div><div class="rc-title">Bangkok Oysters (3 Ways)</div><div class="rc-sub">Freshly Shucked · Classic · Thai Nahm Jim · Coconut Mignonette</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — per 3 oysters</h5>
+<div class="ingredient">Fresh Pacific oysters <span class="qty">3 pieces</span></div>
+<div class="ingredient"><em>— Classic:</em> lemon wedge, tabasco <span class="qty">per serve</span></div>
+<div class="ingredient"><em>— Thai Nahm Jim:</em> lime 15ml, fish sauce 10ml <span class="qty"></span></div>
+<div class="ingredient">Bird's eye chilli 1/2 · palm sugar 5g · garlic 1/4 clove</div>
+<div class="ingredient"><em>— Coconut Mignonette:</em> coconut vinegar <span class="qty">15ml</span></div>
+<div class="ingredient">Shallot 10g minced · kaffir lime leaf 1, chiffonade</div>
+<div class="ingredient">Rock salt for presentation <span class="qty">100g base</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Shuck oysters to order — never in advance (they die within 15 minutes once open). Cup must be intact and deeply cupped, liquor retained.</div>
+<div class="step"><span class="step-num">2</span>Thai Nahm Jim: pound chilli + garlic to rough paste. Add fish sauce, lime juice, palm sugar. Balance — sweet, sour, salty, spicy in equal measure. Refrigerate.</div>
+<div class="step"><span class="step-num">3</span>Coconut Mignonette: combine coconut vinegar + shallot + kaffir lime chiffonade. Rest 30 min minimum — shallots must soften and mellow.</div>
+<div class="step"><span class="step-num">4</span>Serve on rock salt or crushed ice. 3 oysters each dressed: classic / Thai nahm jim / coconut mignonette. Present in order from left to right for the tasting journey.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The Thai Nahm Jim must be balanced — not just hot. Taste every batch: fish sauce brands vary significantly in salinity (Tiparos vs Megachef = different salt levels). The coconut vinegar mignonette is your Bangkok signature — it's the dish that gets written about.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Store live oysters cup-side down on ice — they retain liquor longer. Never cover with ice directly — that kills them. Check each oyster after shucking: if it doesn't flinch slightly to lemon juice, reject it.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 130 / USD 3.71 · Suggested price: THB 320–380 / USD 9.14–10.86</span><div class="dtags"><span class="dtag gf">GF</span><span class="dtag df">DF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">03–06</div><div class="rc-title">Tuna Tostada · Prawn Tom Yum Arancini · Duck Spring Rolls · Truffle Edamame</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">03 · Sashimi Tuna Tostada</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Ingredients:</strong> Sashimi-grade tuna 200g, wonton wrapper 8pcs fried crisp, avocado 1 ripe, lime 1, sriracha mayo (sriracha 20ml + Japanese mayo 40ml), sesame seeds 5g, crispy shallots 10g, coriander micro herbs.<br><strong>Method:</strong> Slice tuna 5mm. Avocado smash with lime + salt. Pipe avocado on crisp wonton. Drape 2 tuna slices. Sriracha mayo dots. Sesame + shallots + micro coriander. Serve stacked on slate board.<br><strong>Cost: THB 120 · Price: THB 320–360 / USD 9.14–10.29</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">04 · Tom Yum Prawn Arancini</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Ingredients:</strong> Arborio rice 200g, tom yum paste 30g, tiger prawns 150g chopped, kaffir lime leaves 3 chiffonade, galangal 5g grated, lemongrass 1 stalk finely chopped, parmesan 30g, eggs 2, panko 100g.<br><strong>Method:</strong> Cook risotto with tom yum paste + stock. Fold in prawn, kaffir lime, galangal, lemongrass off heat. Cool completely. Form 4cm balls. Crumb (flour → egg → panko). Deep fry 170°C 3 mins golden. Serve with sriracha aioli.<br><strong>Cost: THB 95 · Price: THB 280–320 / USD 8–9.14</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">05 · Crispy Duck Spring Rolls</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Ingredients:</strong> Duck leg confit 250g shredded, shiitake mushrooms 80g, glass noodles 50g soaked + cut, oyster sauce 20ml, fish sauce 10ml, sugar 5g, spring roll wrappers 8pcs, vegetable oil for frying. Plum sauce for dipping.<br><strong>Method:</strong> Sauté mushrooms. Add duck + glass noodles + sauces + sugar. Season. Cool completely. Roll tight in wrappers, seal with egg wash. Fry 170°C 4 mins golden and crisp. Cut on angle. Plum sauce + fresh chilli alongside.<br><strong>Cost: THB 110 · Price: THB 280–320 / USD 8–9.14</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">06 · Black Truffle Edamame</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Ingredients:</strong> Frozen edamame in pod 300g, truffle oil 10ml, Maldon sea salt 3g, black truffle shavings 2g (or truffle paste 5g), garlic butter 15g, dried chilli flakes 2g.<br><strong>Method:</strong> Boil edamame 3 mins. Drain. Toss in pan with garlic butter until glazed. Off heat: truffle oil + salt flakes. Arrange in bowl. Truffle shavings on top. Chilli flake finish. The aroma of truffle opening at the table is the theatre of this dish.<br><strong>Cost: THB 85 · Price: THB 260–300 / USD 7.43–8.57</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+
+<!-- SECTION 2: MAINS 7-16 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 2 — Main Plates · Items 07–16</span><span class="page-num">04</span></div>
+<h2><span class="sn2">2</span>Main Plates</h2>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">07</div><div class="rc-title">Chiang Rai Lamb Rack</div><div class="rc-sub">Herb Crust · Massaman Jus · Whipped Potato · Roasted Baby Carrots</div></div>
+<div class="rc-body"><div class="rc-grid">
+<div class="rc-ingredients"><h5>Ingredients — 2 portions</h5>
+<div class="ingredient">French-trimmed lamb rack 400g <span class="qty">2 cutlets</span></div>
+<div class="ingredient">Panko 60g <span class="qty"></span></div>
+<div class="ingredient">Parsley + mint + coriander <span class="qty">30g each, chopped</span></div>
+<div class="ingredient">Dijon mustard <span class="qty">20g</span></div>
+<div class="ingredient">Massaman curry paste <span class="qty">30g</span></div>
+<div class="ingredient">Coconut cream <span class="qty">100ml</span></div>
+<div class="ingredient">Lamb stock <span class="qty">150ml</span></div>
+<div class="ingredient">Mashed potato <span class="qty">200g</span></div>
+<div class="ingredient">Baby carrots <span class="qty">6, roasted</span></div>
+</div>
+<div class="rc-method"><h5>Method</h5>
+<div class="step"><span class="step-num">1</span>Combine panko + parsley + mint + coriander. Season. This is your herb crust.</div>
+<div class="step"><span class="step-num">2</span>Sear lamb racks fat-side down in hot pan until golden. Cool slightly. Brush fat side with Dijon mustard. Press herb crust firmly over mustard. Refrigerate until service.</div>
+<div class="step"><span class="step-num">3</span>Massaman jus: toast paste in dry pan 1 min. Add stock, reduce by half. Add coconut cream, reduce to sauce consistency. Strain if desired. Season with fish sauce + palm sugar.</div>
+<div class="step"><span class="step-num">4</span>Roast herb-crusted lamb 200°C 12 min (medium-rare, internal 57°C). Rest 5 min. Plate: whipped potato quenelle, roasted carrots, 2 cutlets against each other. Massaman jus poured tableside.</div>
+</div></div>
+<div class="rc-notes">
+<div class="note-box tech"><h6>Chef Technique</h6><p>The Massaman jus is the Bangkok twist on a French preparation — keep it loose enough to pour tableside but thick enough to coat. Lamb rack is a high-margin, high-drama plate. The tableside sauce pour is the service moment for this dish.</p></div>
+<div class="note-box fail"><h6>Fail-Proof Tip</h6><p>Herb crust browns in 8 minutes and burns in 14. Know your oven. Pre-sear in bulk, crust them cold, and roast to order with a temp probe — every time. Never guess lamb temperature on a rooftop.</p></div>
+</div>
+<div class="rc-footer"><span class="cost">Food cost: THB 280 / USD 8 · Suggested price: THB 780–950 / USD 22.29–27.14</span><div class="dtags"><span class="dtag gf">GF</span></div></div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">08–12</div><div class="rc-title">Sea Bass En Papillote · Wagyu Cheek · Thai Prawn Pasta · Barramundi · Mushroom Risotto</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">08 · Sea Bass En Papillote</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Sea bass fillet 180g, lemongrass 1 stalk bruised, kaffir lime 3 leaves, galangal 3 slices, coconut milk 50ml, fish sauce 10ml, palm sugar 5g, cherry tomato 4, spring onion. Wrap in baking paper parcel with all aromatics + coconut milk. Bake 200°C 14 mins. Serve in parcel — opens tableside, steam escaping. The aromatics + coconut milk create a fragrant broth around the fish. <strong>Cost: THB 200 · Price: THB 580–680 / USD 16.57–19.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">09 · 48hr Wagyu Beef Cheek</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Wagyu beef cheek 400g. Braise: red wine 200ml + beef stock 500ml + rosemary + garlic + Thai five spice + star anise at 160°C for 6 hours until knife-tender. Rest overnight. Portion. Reheat in reduced braising jus. Serve on sweet potato purée (300g roasted sweet potato + butter 30g + coconut cream 60ml). Fried lotus root chip on top. <strong>Cost: THB 240 · Price: THB 680–820 / USD 19.43–23.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">10 · Bangkok Prawn Pasta</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Tiger prawns 6pcs, linguine 120g, tom kha base (coconut milk 150ml + galangal + lemongrass + kaffir lime), cherry tomato 6, parmesan 20g, fresh basil, chilli oil, garlic 2 cloves. Cook pasta al dente. Sauté prawns 90 sec each side. Build tom kha coconut sauce. Toss pasta in sauce. Plate: prawns on top, parmesan, basil, chilli oil. Bangkok + Naples = this plate. <strong>Cost: THB 160 · Price: THB 480–580 / USD 13.71–16.57</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">11 · Crispy Skin Barramundi</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Barramundi fillet 200g skin on, green curry purée (green curry paste 30g + coconut milk 200ml reduced to thick), jasmine rice cake (pressed cooked jasmine rice, pan-fried until crust forms), nahm jim dressing 20ml, pickled cucumber 30g. Score skin. Pan-fry skin-down 4 mins — never move it. Turn 1 min. Plate: rice cake base, curry purée pool, fish skin-up. Nahm jim drizzle. Cucumber alongside. <strong>Cost: THB 180 · Price: THB 520–620 / USD 14.86–17.71</strong></div>
+</div>
+<div style="grid-column:1/-1">
+<div style="font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">12 · Black Garlic Mushroom Risotto</div>
+<div style="font-size:9px;color:#333;line-height:1.7"><strong>Ingredients:</strong> Arborio rice 180g, black garlic 4 cloves (mashed to paste), shiitake mushrooms 80g, oyster mushrooms 60g, porcini powder 5g, vegetable stock 800ml warm, white wine 80ml, parmesan 40g, butter 30g, truffle oil 10ml, chives. <strong>Method:</strong> Sweat shallots. Add rice, toast 2 min. White wine. Add stock ladle by ladle — total 20 min stirring. Add black garlic paste halfway (it turns risotto dramatic dark purple-grey). Sauté mushrooms separately in hot pan — never in the risotto. Fold butter + parmesan off heat. Plate with mushrooms on top, truffle oil, chives, parmesan snow. <strong>Cost: THB 130 · Price: THB 420–500 / USD 12–14.29</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="recipe-card">
+<div class="rc-hdr"><div class="rc-num">13–16</div><div class="rc-title">Duck Breast · Lobster Thermidor · Thai Spiced Chicken · Tuna Steak</div></div>
+<div class="rc-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">13 · Confit Duck Breast</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Duck breast 200g, tamarind gastrique (tamarind 60g + palm sugar 80g + fish sauce 20ml — reduce to syrup), pomme purée 150g, bok choy 2 halves chargrilled, crispy duck skin. Score fat, render fat-down 8 min — crucial step. Roast skin-up 180°C 8 min. Rest 5 min. Slice on angle. Fan on plate. Tamarind gastrique — sweet, sour, Thai. Duck skin crisp on top. <strong>Cost: THB 220 · Price: THB 620–750 / USD 17.71–21.43</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">14 · Half Lobster Thermidor</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Lobster half 350g, thermidor sauce (shallot 20g + white wine 60ml + cream 100ml + Dijon 10g + tarragon + gruyère 30g grated), lemon, parsley. Halve and clean lobster. Bake 200°C 12 min. Make thermidor sauce — reduce, cream, mustard, cheese. Spoon over lobster in shell. Gratinée under grill until golden. Serve in shell on rock salt bed. Lemon + parsley. The shell presentation justifies the price. <strong>Cost: THB 380 · Price: THB 1,100–1,400 / USD 31.43–40</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">15 · Thai Spiced Half Chicken</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Half chicken 450g. Marinade: lemongrass 2 stalks + coriander root 3 + garlic 4 cloves + white pepper 5g + fish sauce 30ml + coconut milk 100ml — blitz, marinate overnight. Roast 190°C 35 min. Rest 8 min. Serve on bed of jasmine rice + green papaya slaw (papaya 100g + lime + fish sauce + palm sugar + chilli + peanuts). Serve pan jus alongside. <strong>Cost: THB 130 · Price: THB 420–520 / USD 12–14.86</strong></div>
+</div>
+<div>
+<div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">16 · Seared Yellowfin Tuna</div>
+<div style="font-size:9px;color:#333;line-height:1.7">Yellowfin tuna loin 200g, sesame seeds 30g (black + white), wasabi pea purée (wasabi paste 10g + pea purée 100g), soy ginger dressing (soy 30ml + ginger 5g + sesame oil 5ml + mirin 10ml), pickled daikon 30g, micro shiso. Coat tuna in sesame seeds. Sear 30 sec each long side, raw in centre. Slice. Plate: wasabi pea base, tuna fanned, soy ginger drizzle, pickled daikon, micro shiso. <strong>Cost: THB 190 · Price: THB 560–680 / USD 16–19.43</strong></div>
+</div>
+</div>
+</div></div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+<!-- SECTION 3: SHARING + SECTION 4: COCKTAILS + SECTION 5: SERVICE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 3 — Sharing Platters · Section 4 — Cocktails & Mocktails</span><span class="page-num">05</span></div>
+<h2><span class="sn2">3</span>Sharing Platters</h2>
+
+<div class="share-card"><div class="share-title">17 · Rooftop Seafood Tower for 2</div><div class="share-desc">Half lobster thermidor · 6 oysters (3 ways) · 4 tuna tostadas · tiger prawn skewers × 4 · mussels in coconut lemongrass broth. Served on 3-tier stainless tower, ice on lower tier. Tableside assembly with staff. Champagne or cocktail pairing recommended. <strong>Food cost: THB 680 · Price: THB 1,800–2,200 / USD 51.43–62.86</strong></div></div>
+
+<div class="share-card"><div class="share-title">18 · Bangkok Night BBQ Board</div><div class="share-desc">Wagyu beef skewers 4pcs · Thai chicken satay 6pcs · pork belly moo ping 4pcs · whole grilled tiger prawns × 4. Served on long wooden board with 4 dipping sauces: satay peanut, sweet chilli, nahm jim, tamarind. Jasmine rice in bamboo steamer on side. For 2–3 people. <strong>Food cost: THB 420 · Price: THB 980–1,200 / USD 28–34.29</strong></div></div>
+
+<div class="share-card"><div class="share-title">19 · Cheese & Charcuterie with Thai Accents</div><div class="share-desc">3 artisan cheeses (brie, aged cheddar, blue) · Thai-spiced salami · duck rillettes · fig chutney with Thai chilli · honeycomb · candied lotus seeds · fresh grapes · lavosh + sourdough toast. Serves 3–4. Plated on slate board with herb garnish. The Thai accents (lotus seeds, chilli fig, lemongrass honey) distinguish this from any standard board. <strong>Food cost: THB 380 · Price: THB 780–950 / USD 22.29–27.14</strong></div></div>
+
+<div class="share-card"><div class="share-title">20 · Sunset Antipasto for 4</div><div class="share-desc">Tuna tataki 8 slices · tom yum arancini 8pcs · duck spring rolls 4pcs · truffle edamame bowl · crispy calamari with sriracha aioli · wagyu beef sliders × 4 (mini brioche + wagyu patty + truffle mayo). Built for groups of 4 arriving at golden hour. Designed to anchor a 2-hour dining session. <strong>Food cost: THB 580 · Price: THB 1,400–1,800 / USD 40–51.43</strong></div></div>
+
+<h2><span class="sn2">4</span>Cocktails &amp; Mocktails</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+
+<div class="cocktail-card">
+<div class="ck-hdr"><div class="ck-title">21 · Bangkok Sunset</div><div class="ck-sub">Signature Cocktail · Rooftop Theme</div></div>
+<div class="ck-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Tequila blanco 45ml · Cointreau 20ml · Passion fruit purée 30ml · Lime juice 20ml · Butterfly pea syrup 15ml · Salt rim · Ice · Dehydrated lime wheel</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Shake tequila + cointreau + passion fruit + lime with ice. Double strain into salt-rimmed coupe. Float butterfly pea syrup (it sinks creating a sunset ombre — orange top, purple base). Dehydrated lime wheel. <strong>Cost THB 80 · Price THB 320–380 / USD 9.14–10.86</strong></div></div>
+</div></div>
+
+<div class="cocktail-card">
+<div class="ck-hdr"><div class="ck-title">22 · Chao Phraya Negroni</div><div class="ck-sub">Bangkok Twist on a Classic</div></div>
+<div class="ck-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Gin 30ml · Campari 30ml · Sweet vermouth 30ml · Lemongrass syrup 10ml · Kaffir lime bitters 3 dashes · Ice sphere · Orange peel · Kaffir lime leaf garnish</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Stir all ingredients over ice 30 seconds. Strain over large ice sphere in rocks glass. Express orange peel over glass, rim, drop in. Float kaffir lime leaf. The lemongrass + kaffir lime transforms a classic into a Bangkok original. <strong>Cost THB 90 · Price THB 340–400 / USD 9.71–11.43</strong></div></div>
+</div></div>
+
+<div class="cocktail-card">
+<div class="ck-hdr"><div class="ck-title">23 · Golden Hour Spritz</div><div class="ck-sub">Aperol · Yuzu · Prosecco</div></div>
+<div class="ck-body">
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Ingredients</div><div style="font-size:9px;color:#333;line-height:1.7">Aperol 60ml · Prosecco 90ml · Yuzu juice 15ml · Soda water 30ml · Large ice · Orange wheel + fresh basil</div></div>
+<div><div style="font-size:8px;font-weight:700;color:var(--gold);margin-bottom:1.5mm">Method + Cost</div><div style="font-size:9px;color:#333;line-height:1.7">Build in large wine glass over ice. Aperol first, yuzu juice, prosecco, soda. Stir gently once. Orange wheel + basil. The yuzu brightens the aperol — perfect sunset timing, designed for golden hour service (5–7pm happy hour). <strong>Cost THB 70 · Price THB 280–320 / USD 8–9.14</strong></div></div>
+</div></div>
+
+<div class="cocktail-card">
+<div class="ck-hdr"><div class="ck-title">24–28 · Remaining Drinks</div></div>
+<div class="ck-body" style="grid-template-columns:1fr">
+<div style="font-size:9px;color:#333;line-height:1.9">
+<strong style="color:var(--gold)">24 Mekong Mule</strong> — Mekong whisky 45ml + ginger beer 150ml + lime juice 20ml + cucumber 3 slices in copper mug over ice. Mekong whisky is Thailand's spirit — serves as cultural ambassador on the menu. Cost THB 75 · Price THB 300–360 / USD 8.57–10.29<br>
+<strong style="color:var(--gold)">25 Thai Basil Gin &amp; Tonic</strong> — Hendricks gin 45ml + premium tonic 150ml + Thai basil 5 leaves muddled + cucumber 3 slices + lime. Serve in tall glass, garnish with basil sprig and cucumber ribbon. Cost THB 80 · Price THB 320–380 / USD 9.14–10.86<br>
+<strong style="color:var(--gold)">26 Mocktail: Skyline Fizz</strong> — Butterfly pea tea 80ml + lychee syrup 30ml + lime juice 15ml + ginger beer 100ml + lychee 2pcs. Colour changes from blue to violet as ginger beer is added. Non-alcoholic showstopper. Cost THB 35 · Price THB 180–220 / USD 5.14–6.29<br>
+<strong style="color:var(--gold)">27 Mocktail: Golden Temple</strong> — Fresh turmeric juice 20ml + mango purée 60ml + coconut water 100ml + honey 10ml + lime 15ml + sparkling water 60ml. Golden colour, served in highball, turmeric candied slice garnish. Cost THB 30 · Price THB 160–200 / USD 4.57–5.71<br>
+<strong style="color:var(--gold)">28 Champagne / Sparkling Wine</strong> — House Prosecco NV pour (150ml). Available by glass and bottle. Standard rooftop upsell — every toast, every celebration, every sunset photo. Cost THB 120/glass · Price THB 380–450 / USD 10.86–12.86
+</div>
+</div></div>
+
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+
+<!-- SECTIONS 5 + 6 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 5 — Service Training · Section 6 — Staff Workflow</span><span class="page-num">06</span></div>
+<h2><span class="sn2">5</span>Service Training Module</h2>
+
+<div class="info-box"><h5>Rooftop Service Philosophy</h5><p>Rooftop dining is <strong>emotional hospitality</strong>. Your guests arrive for a reason: anniversary, first date, birthday, business deal, Instagram post, or simply the joy of being above the city. Your job is to read which one and match your service to that emotional register. A romantic couple does not want loud upselling. A birthday table wants champagne and enthusiasm. A business dinner wants seamless invisibility. Read the table before you open your mouth.</p></div>
+
+<div class="script-box">
+<div class="script-label">// Golden Hour Table Welcome (5pm–7pm)</div>
+<div class="script-text">"Welcome — you've timed it perfectly. Sunset tonight is at 6:18. Your table faces west, so you'll have a direct view across to Wat Arun from about 5:45. Can I start you with our Bangkok Sunset cocktail? It's named for exactly what you're about to see — it changes colour in the glass as you watch it."</div>
+<div class="script-why"><strong>Why this works:</strong> Giving the specific sunset time makes guests feel attended to and informed — it's memorable detail. The cocktail recommendation is timed to the experience they're already having. The colour-change cocktail creates immediate engagement and is almost always ordered.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Seafood Tower Tableside Introduction</div>
+<div class="script-text">"Your Rooftop Seafood Tower — I'll just set this up for you. The lobster is on the top tier, still hot. The oysters are fresh-shucked; this one's the Thai nahm jim dressing, this is our coconut mignonette — that's our Bangkok twist on the classic. The prawns on the ice. Start with the oysters while the lobster's at temperature. And if you'd like to try the Bangkok Sunset cocktail with this, the tequila-passion fruit cuts through the lobster beautifully."</div>
+<div class="script-why"><strong>Why this works:</strong> The tableside narration creates theatre and perceived value. Guiding how to eat the tower prevents decision paralysis. The cocktail pairing suggestion is a natural upsell embedded in the service moment — not a separate pitch.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Sunset Photo Moment</div>
+<div class="script-text">"Would you like me to take a photo for you? The light right now is actually perfect — the golden hour lasts about another 12 minutes. I can get the tower and the view in the same shot from here. Or if you have a phone stand, I can set it up so you're both in the frame with the city behind you."</div>
+<div class="script-why"><strong>Why this works:</strong> Proactively offering photography creates a deeply memorable service moment. The mention of "golden hour lasts 12 more minutes" creates gentle urgency without pressure. This guest will post that photo. Your restaurant is in it. Free marketing with every sunset.</div>
+</div>
+
+<div class="script-box">
+<div class="script-label">// Celebration Upsell</div>
+<div class="script-text">"I noticed this is a special occasion — congratulations. Would you like us to bring a complimentary Prosecco toast with the dessert? Or we have a bottle of Moët on ice that we can prepare for you now. For a night like tonight, it would complete the experience."</div>
+<div class="script-why"><strong>Why this works:</strong> "I noticed" + complimentary Prosecco shows attentiveness and generosity. The Moët offer follows naturally — it's not a hard sell, it's a suggestion that fits the moment. Bottle champagne sales on rooftops have a 35–40% conversion rate on celebration occasions.</div>
+</div>
+
+<h2><span class="sn2">6</span>Staff Workflow</h2>
+<table class="staff-table">
+<tr><th>Role</th><th>Count</th><th>Responsibilities</th><th>Hours</th></tr>
+<tr><td><strong>Head Chef</strong></td><td>1</td><td>Full kitchen oversight, quality control, seafood sourcing, menu updates, supplier management</td><td>2pm–12am</td></tr>
+<tr><td><strong>Sous Chef / Grill</strong></td><td>1</td><td>All à la minute cooking — lamb, duck, tuna, barramundi. Grill and oven management. Protein cook-off.</td><td>3pm–12am</td></tr>
+<tr><td><strong>Cold / Pastry Cook</strong></td><td>1</td><td>Oyster shucking, tataki, tostadas, risotto, pasta. Cold starters prep. Pre-dessert sourcing.</td><td>2pm–12am</td></tr>
+<tr><td><strong>Head Bartender</strong></td><td>1</td><td>Signature cocktail programme, bar prep, training bar staff, spirits inventory</td><td>3pm–1am</td></tr>
+<tr><td><strong>Bar Staff</strong></td><td>2</td><td>Cocktail production, wine service, mocktails, bar float management</td><td>Staggered 4pm–1am</td></tr>
+<tr><td><strong>Senior Waiter</strong></td><td>2</td><td>Table management, sunset photo service, seafood tower tableside, wine pairing suggestions</td><td>4pm–12am</td></tr>
+<tr><td><strong>Floor Waiter / Host</strong></td><td>2–3</td><td>Welcome, table management, order taking, food running, reservation management</td><td>Staggered 4pm–12am</td></tr>
+</table>
+
+<table class="prep-table" style="margin-top:2mm">
+<tr><th>Time</th><th>Kitchen</th><th>Bar</th><th>Floor</th></tr>
+<tr><td>2:00pm</td><td>Head Chef: stock check, seafood delivery inspection, braised items portioned</td><td>—</td><td>—</td></tr>
+<tr><td>3:00pm</td><td>Sous Chef: lamb racks seared + crusted, duck fat rendered, beef cheek reheating</td><td>Bartender: cocktail batch prep, juices pressed, butterfly pea steep</td><td>—</td></tr>
+<tr><td>4:00pm</td><td>Cold Cook: oyster count + storage check, tuna portioned, arancini fried to par</td><td>Bar: spirits stocked, ice programme started, garnishes prepped</td><td>Table setup, reservation seating map confirmed</td></tr>
+<tr><td>5:00pm</td><td>Kitchen ready. Full brigade briefing.</td><td>Bar open. Golden hour menu active.</td><td>Host position at lift/entrance. Service begins.</td></tr>
+<tr><td>5–7pm</td><td>Golden hour peak: small plates + cocktails dominant. Pace: 12-min courses.</td><td>Peak cocktail service. Bangkok Sunset + Golden Hour Spritz highest volume.</td><td>Sunset photo assistance active. Champagne upsell window.</td></tr>
+<tr><td>7–10pm</td><td>Dinner service: mains + sharing dominant. Beef cheek reheating, lobster thermidor to order.</td><td>Wine service dominant. Cocktails steady.</td><td>Course management, table turn at 10pm.</td></tr>
+<tr><td>11:30pm</td><td>Kitchen close: cool, wrap, store. Waste log complete.</td><td>Last orders called. Bar breakdown.</td><td>Final tables settled. Float counted.</td></tr>
+</table>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+<!-- SECTIONS 7-10 + CLOSING -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 7 — Weekly Prep · Section 8 — Customer Retention</span><span class="page-num">07</span></div>
+<h2><span class="sn2">7</span>Weekly Prep Schedule</h2>
+<table class="prep-table">
+<tr><th>Task</th><th>Frequency</th><th>Time</th><th>Notes</th></tr>
+<tr><td>Wagyu beef cheek braise</td><td>Twice weekly (Mon + Thu)</td><td>7–8 hrs</td><td>Braise overnight or early morning. Chill in braising liquid. Better after 24 hrs rest. Minimum 6 portions per batch.</td></tr>
+<tr><td>Duck confit</td><td>Weekly (Mon)</td><td>6 hrs</td><td>Salt cure duck legs 24hr before confiting at 80°C in duck fat 6 hrs. Refrigerate in fat — improves for up to 2 weeks. Pull portions to order, reheat skin-side down to re-crisp.</td></tr>
+<tr><td>Massaman jus batch</td><td>Twice weekly</td><td>45 min</td><td>Make in 2L batches. Refrigerate. Reheat portion to order. Taste each batch — paste varies by brand + age.</td></tr>
+<tr><td>Tom yum arancini production</td><td>Daily</td><td>90 min</td><td>Risotto made daily morning. Roll + crumb. Par-fry to blond — finish to golden to order. Count evening par based on booking numbers.</td></tr>
+<tr><td>Oyster delivery check</td><td>Daily (morning delivery)</td><td>15 min</td><td>Check live delivery — oysters must be tightly closed and smell of clean ocean. Reject any open ones that don't close on tap. Count par against evening bookings. Source from local Thai supplier or import from Australia (peak quality).</td></tr>
+<tr><td>Seafood tower assembly par</td><td>Daily pre-service</td><td>20 min</td><td>Calculate expected tower orders from bookings. Pre-stage towers with ice. Stage lobsters for thermidor. Count oysters and prawns per tower.</td></tr>
+<tr><td>Butterfly pea batch</td><td>Daily</td><td>15 min</td><td>Bar steep for cocktail programme (Bangkok Sunset + Chao Phraya) + kitchen (papillote broth garnish). Keep cold — loses colour quickly at room temp.</td></tr>
+<tr><td>Herb crust prep</td><td>Daily</td><td>20 min</td><td>Fresh parsley + mint + coriander chopped, combined with panko. Never store more than 24 hrs — herbs oxidise and turn the crust dark green.</td></tr>
+<tr><td>Cocktail juice press</td><td>Daily (4pm)</td><td>30 min</td><td>Lime juice, yuzu, lemon, passion fruit — all pressed fresh daily. Bottled juice is detectable and unacceptable at premium price point.</td></tr>
+<tr><td>Champagne + wine floor par</td><td>Daily</td><td>10 min</td><td>Ice champagne from 4pm. Confirm floor stock before 5pm golden hour. Golden hour typically moves 8–12 bottles of Prosecco + 3–5 Champagne on busy nights.</td></tr>
+<tr><td>Tuna tataki batch</td><td>Daily pre-service (4pm)</td><td>20 min</td><td>Sear, ice bath, refrigerate. Slice to service par (calculate 3 plates per 10 covers). Never sear more than needed — day-old tataki loses that clean raw-centre look.</td></tr>
+<tr><td>Duck spring roll production</td><td>Daily</td><td>45 min</td><td>Roll and seal daily. Never pre-fry. Fried to order from raw ensures maximum crunch. Count par against bookings.</td></tr>
+<tr><td>Ponzu yuzu sauce batch</td><td>Twice weekly</td><td>15 min</td><td>Rested ponzu tastes better. Make Mon + Thu batches. Taste each — yuzu acidity varies. Balance salt/acid before service.</td></tr>
+<tr><td>Stock and jus production</td><td>Weekly (Mon)</td><td>4–5 hrs</td><td>Lamb stock from bones. Beef stock from trim. Lobster bisque base from shells. These are the foundations of the rooftop flavour profile — never use commercial stock.</td></tr>
+</table>
+
+<h2><span class="sn2">8</span>Customer Retention System</h2>
+<div class="info-box"><h5>Rooftop Loyalty Philosophy</h5><p>The rooftop diner in Bangkok is <strong>experience-driven and occasion-based</strong>. They do not come every week — they come for the moments. Your retention strategy is not about frequency; it is about ensuring that when the next special occasion arrives, your name is the first one they type. That requires one thing above all others: that the last experience was perfect enough to remember. Perfect food is the floor — not the ceiling. It's memorable service that drives return.</p></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:2mm">
+<div class="script-box" style="margin-bottom:0">
+<div class="script-label">// Post-Meal Follow-Up (LINE OA)</div>
+<div class="script-text">"Thank you for joining us for sunset last night. We hope the view was as good as we promised. We'd love to have you back for our next Skyline Dinner Series — 4-course menu with wine pairing, first Saturday of every month. Reply SKYLINE to get the next menu before we announce it publicly."</div>
+<div class="script-why"><strong>Why this works:</strong> Exclusive early access to a recurring event creates a pull that generic "hope you enjoyed your visit" messages never achieve. The Skyline Dinner Series becomes a reason to return on a cadence — monthly converts occasional visitors into regulars.</div>
+</div>
+<div class="info-box" style="margin-bottom:0"><h5>Rooftop Marketing Calendar</h5>
+<p><strong>Valentine's Day (Feb):</strong> Pre-set 2-course + champagne on arrival. Fully booked 3 weeks in advance every year. Start taking reservations January 1.<br>
+<strong>Songkran (Apr):</strong> Water Festival viewing from rooftop. Serve Thai-forward cocktails, traditional Thai snack board. Promote water-view tables heavily.<br>
+<strong>New Year's Eve (Dec 31):</strong> Most valuable night of the year. Multi-course set menu THB 2,500–3,500 per person. Fully sold by November. Open bookings in October.<br>
+<strong>Monthly Skyline Dinner:</strong> 4-course set menu + wine pairing. Same night monthly. Creates reliable recurring revenue and a database of returning guests.<br>
+<strong>Golden Hour Happy Hour (5–7pm daily):</strong> Cocktails THB 220, canapes on arrival. Fills early tables that would otherwise sit empty, introduces new guests to the full menu.</p>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section 9 — P&amp;L Model · Section 10 — Allergen Table</span><span class="page-num">08</span></div>
+<h2><span class="sn2">9</span>P&amp;L Model — 60-Seat Bangkok Rooftop · 2026</h2>
+
+<table class="rev-table">
+<tr><th>Revenue Stream</th><th>Daily Volume</th><th>Avg Spend</th><th>Monthly THB</th><th>Monthly USD</th></tr>
+<tr><td>Golden Hour (5–7pm)</td><td>80 covers</td><td>THB 600</td><td>THB 1,440,000</td><td>USD 41,143</td></tr>
+<tr><td>Dinner Service (7–10pm)</td><td>60 covers</td><td>THB 1,400</td><td>THB 2,520,000</td><td>USD 72,000</td></tr>
+<tr><td>Cocktail & Bar (walk-in)</td><td>40 guests</td><td>THB 350</td><td>THB 420,000</td><td>USD 12,000</td></tr>
+<tr><td>Monthly Skyline Dinners</td><td>60 covers × 1/mo</td><td>THB 2,800</td><td>THB 168,000</td><td>USD 4,800</td></tr>
+<tr><td>Events & Private Hire</td><td>—</td><td>—</td><td>THB 200,000</td><td>USD 5,714</td></tr>
+<tr class="total-row"><td><strong>Total Monthly Revenue</strong></td><td colspan="2"></td><td><strong>THB 4,748,000</strong></td><td><strong>USD 135,657</strong></td></tr>
+</table>
+
+<table class="rev-table">
+<tr><th>Cost Category</th><th>% Revenue</th><th>Monthly THB</th><th>Monthly USD</th><th>Notes</th></tr>
+<tr><td>Food &amp; beverage cost</td><td>22%</td><td>THB 1,044,560</td><td>USD 29,844</td><td>Premium ingredients: wagyu, lobster, oysters, tuna. Cocktail programme cost: 18–20%</td></tr>
+<tr><td>Labour (10–12 staff)</td><td>30%</td><td>THB 1,424,400</td><td>USD 40,697</td><td>Head Chef 65K + Sous 40K + Bartender 45K + FOH senior 30K × 2 + support 18–22K</td></tr>
+<tr><td>Rent (premium BKK rooftop)</td><td>12.7%</td><td>THB 600,000</td><td>USD 17,143</td><td>Premium location: Silom, Sathorn, Sukhumvit high-rise. Negotiate % revenue clause above THB 3M</td></tr>
+<tr><td>Utilities</td><td>4.2%</td><td>THB 200,000</td><td>USD 5,714</td><td>A/C overhead from ground floor + lift + all kitchen equipment</td></tr>
+<tr><td>Glassware + Linen + Supplies</td><td>2.1%</td><td>THB 100,000</td><td>USD 2,857</td><td>Rooftop environments are hard on glassware — wind breakage. Budget higher than indoor concepts.</td></tr>
+<tr><td>Marketing + Events</td><td>2.5%</td><td>THB 120,000</td><td>USD 3,429</td><td>Instagram advertising, influencer hosting (2/month), LINE OA subscription, Google Ads</td></tr>
+<tr class="total-row"><td><strong>Total Operating Costs</strong></td><td><strong>73.5%</strong></td><td><strong>THB 3,488,960</strong></td><td><strong>USD 99,684</strong></td><td></td></tr>
+<tr class="net-row"><td><strong>Net Operating Profit</strong></td><td><strong>26.5%</strong></td><td><strong>THB 1,259,040/month</strong></td><td><strong>USD 35,973/month</strong></td><td><strong>THB 15.1M / USD 431K annually</strong></td></tr>
+</table>
+
+<h2><span class="sn2">10</span>Allergen Summary Table</h2>
+<table class="allergen-table">
+<tr><th>Item</th><th>Gluten</th><th>Dairy</th><th>Eggs</th><th>Nuts</th><th>Shellfish</th><th>Fish</th><th>Sesame</th></tr>
+<tr><td>01 Wagyu Beef Tataki</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td>02 Bangkok Oysters 3 Ways</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓*</td><td>—</td></tr>
+<tr><td>03 Sashimi Tuna Tostada</td><td>✓</td><td>—</td><td>✓*</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>04 Tom Yum Prawn Arancini</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓*</td><td>—</td></tr>
+<tr><td>05 Crispy Duck Spring Rolls</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓*</td><td>—</td></tr>
+<tr><td>06 Black Truffle Edamame</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>07 Chiang Rai Lamb Rack</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td></tr>
+<tr><td>08 Sea Bass En Papillote</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>09 48hr Wagyu Beef Cheek</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>10 Bangkok Prawn Pasta</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>✓*</td><td>—</td></tr>
+<tr><td>11 Crispy Skin Barramundi</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td>12 Black Garlic Mushroom Risotto</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>13 Confit Duck Breast</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td></tr>
+<tr><td>14 Half Lobster Thermidor</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td>15 Thai Spiced Half Chicken</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td></tr>
+<tr><td>16 Seared Yellowfin Tuna</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>17 Rooftop Seafood Tower</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>18 Bangkok Night BBQ Board</td><td>✓*</td><td>—</td><td>—</td><td>✓*</td><td>✓</td><td>✓*</td><td>✓</td></tr>
+<tr><td>19 Cheese &amp; Charcuterie</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>20 Sunset Antipasto for 4</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>21–25 Cocktails</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>26–27 Mocktails</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>28 Champagne / Prosecco</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+<p style="font-size:8px;color:var(--mid);margin-top:2mm">✓* = contains as flavouring (fish sauce, soy). Always verify with suppliers. Guests with severe shellfish or fish allergies should inform staff before ordering. Cocktails may share equipment — advise staff of severe nut allergies.</p>
+
+<div class="lens-card">
+<div class="lens-title">// Michelin Chef's Lens — Bangkok Rooftop Dining</div>
+<div class="lens-text">
+There is a particular discipline required to cook well at altitude. Not altitude as in the Andes — altitude as in the thirty-second floor of a Bangkok high-rise, where the view competes with every plate you put down. The inexperienced chef responds to this by making the food louder: bigger presentations, more garnishes, more drama. The experienced chef does the opposite. They simplify. They trust the view to bring the drama and ask the food to bring the truth.<br><br>
+The Chao Phraya Negroni works not because it shouts Bangkok at you, but because it whispers it — the kaffir lime leaf, the lemongrass, barely there, just enough to locate you precisely. The en papillote sea bass opens at the table and releases a cloud of galangal and lime that briefly competes with the city lights, and then yields to them. That is the correct ambition for rooftop cooking: <strong>present, intentional, complete</strong>, but never louder than the sky.<br><br>
+Build the list, train the team, price for the view. Then trust the view to close the deal.
+</div>
+<div class="lens-closer">สูงขึ้นไป รสชาติดีขึ้น — The higher you go, the better it tastes.</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Bangkok Rooftop Bar & Dining</span><span class="pf-r">v7 · 2026 Edition · Guide #47</span></div>
+</div>
+
+<footer>
+KitchenFounder Operations Guide v7 · Bangkok Rooftop Bar & Dining · kitchen-founder.myshopify.com<br>
+© 2026 KitchenFounder · Thailand Market Edition · For operational use only · Not for resale
+</footer>
+
+</body>
+</html>
