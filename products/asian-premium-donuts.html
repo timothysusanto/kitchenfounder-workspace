@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Asian Donuts — Michelin Chef Collection</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--gold:#8B6914;--border:#E0D9D0;--mid:#8A8A8A;--accent:#1A1A2E;--warm:#F5F0E8;--green:#2D7D4F;--red:#C0392B}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+.cover{width:210mm;min-height:297mm;background:linear-gradient(150deg,#050508 0%,#0F0A18 40%,#0A0C05 100%);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cg1{position:absolute;top:10%;left:15%;width:400px;height:400px;background:radial-gradient(circle,rgba(139,105,20,0.12) 0%,transparent 60%)}
+.cg2{position:absolute;bottom:10%;right:10%;width:300px;height:300px;background:radial-gradient(circle,rgba(180,60,80,0.08) 0%,transparent 55%)}
+.cg3{position:absolute;top:50%;right:30%;width:200px;height:200px;background:radial-gradient(circle,rgba(45,125,79,0.07) 0%,transparent 55%)}
+.cover-top{padding:14mm 16mm 0;z-index:1}
+.cover-logo{font-size:8px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(200,168,75,0.4)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:8px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:rgba(200,168,75,0.55);margin-bottom:5mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:50px;font-weight:900;color:#fff;line-height:0.88;margin-bottom:5mm}
+.cover-title .gd{color:#C8A84B}
+.cover-rule{width:65mm;height:2px;background:linear-gradient(90deg,#C8A84B,transparent);margin:5mm 0}
+.cover-sub{font-size:11px;color:rgba(255,255,255,0.38);line-height:2;font-style:italic;margin-bottom:6mm}
+.cover-list{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm;margin-bottom:5mm}
+.cl-item{border:1px solid rgba(200,168,75,0.18);padding:2.5mm 3.5mm;display:flex;align-items:center;gap:2mm}
+.cl-num{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:rgba(200,168,75,0.5);min-width:6mm}
+.cl-text{font-size:8px;color:rgba(255,255,255,0.5);line-height:1.4}
+.cl-text strong{color:rgba(255,255,255,0.75);display:block;font-size:8.5px}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-by{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.3)}
+.cover-meta{font-size:7.5px;color:rgba(255,255,255,0.15);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+.recipe-card{background:#fff;border:1px solid var(--border);margin-bottom:5mm;page-break-inside:avoid;overflow:hidden}
+.rc-hdr{padding:4mm 5mm;display:flex;justify-content:space-between;align-items:flex-start}
+.rc-num{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,75,0.7);margin-bottom:1mm}
+.rc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.05}
+.rc-sub{font-size:9px;color:rgba(255,255,255,0.45);font-style:italic;margin-top:1.5mm;line-height:1.5}
+.rc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:1.5mm}
+.badge{font-size:7px;font-weight:700;padding:1.5mm 3mm;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;border-radius:1px}
+.badge.temp{background:rgba(200,168,75,0.15);color:#C8A84B;border:1px solid rgba(200,168,75,0.3)}
+.badge.time{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.1)}
+.badge.yield{background:rgba(45,125,79,0.18);color:#6BE88A;border:1px solid rgba(45,125,79,0.3)}
+.rc-body{padding:4mm 5mm}
+.rc-grid{display:grid;grid-template-columns:70mm 1fr;gap:5mm}
+.rc-ingr h6,.rc-method h6{font-size:7.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:2.5mm;padding-bottom:1.5mm;border-bottom:1px solid var(--border)}
+.ingr-table{width:100%;border-collapse:collapse}
+.ingr-table tr:nth-child(even){background:var(--warm)}
+.ingr-table td{padding:1.5mm 2mm;font-size:9px;color:#333;line-height:1.5;border-bottom:1px solid rgba(224,217,208,0.5)}
+.ingr-table td:first-child{font-weight:600;color:var(--text);width:42mm}
+.ingr-table td:last-child{color:var(--mid);font-size:8.5px;font-style:italic}
+.ingr-section{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:1.5mm 2mm 1mm;background:rgba(139,105,20,0.07);border-bottom:1px solid var(--border)}
+.method-steps{list-style:none;padding:0}
+.method-steps li{display:grid;grid-template-columns:6mm 1fr;gap:2mm;margin-bottom:2.5mm;font-size:9px;color:#333;line-height:1.75}
+.method-steps li .sn{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--gold);line-height:1}
+.tip-box{background:var(--warm);border-left:3px solid var(--gold);padding:3mm 3.5mm;margin-top:3mm;font-size:9px;color:#444;line-height:1.75}
+.tip-box strong{color:var(--accent);font-size:7.5px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:1mm}
+.plating-box{background:linear-gradient(135deg,#0A0A1A,#1A1A2E);border-left:3px solid #C8A84B;padding:3mm 3.5mm;margin-top:2mm}
+.plating-box strong{font-size:7.5px;text-transform:uppercase;letter-spacing:1px;color:rgba(200,168,75,0.7);display:block;margin-bottom:1mm}
+.plating-box p{font-size:9px;color:rgba(255,255,255,0.55);line-height:1.75;font-style:italic}
+.cost-strip{background:var(--accent);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.cs-item{text-align:center}
+.cs-val{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#C8A84B}
+.cs-lbl{font-size:6.5px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.35);margin-top:0.5mm}
+.allergen-row{padding:2mm 5mm;background:var(--warm);border-top:1px solid var(--border);font-size:8px;color:var(--mid)}
+.allergen-row strong{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cg1"></div><div class="cg2"></div><div class="cg3"></div>
+<div class="cover-top"><div class="cover-logo">KitchenFounder · Michelin Chef Series · Asian Pastry</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Premium Donuts · Asian Identity · Fine Pastry Craft</div>
+  <div class="cover-title">Asian<br><span class="gd">Premium</span><br>Donuts</div>
+  <div class="cover-rule"></div>
+  <div class="cover-sub">"A great donut is not a simple thing.<br>It is brioche discipline, flavour conviction,<br>and the courage to make something familiar<br>taste completely new."</div>
+  <div class="cover-list">
+    <div class="cl-item"><div class="cl-num">01</div><div class="cl-text"><strong>Black Sesame & Yuzu</strong>Silky sesame custard · yuzu glaze · gold leaf</div></div>
+    <div class="cl-item"><div class="cl-num">02</div><div class="cl-text"><strong>Pandan Coconut Crème</strong>Pandan diplomat · toasted coconut · butterfly pea</div></div>
+    <div class="cl-item"><div class="cl-num">03</div><div class="cl-text"><strong>Matcha White Choc</strong>Ceremonial matcha cream · ruby chocolate · mochi</div></div>
+    <div class="cl-item"><div class="cl-num">04</div><div class="cl-text"><strong>Thai Tea Brûlée</strong>Crème brûlée filling · caramelised sugar dome</div></div>
+    <div class="cl-item"><div class="cl-num">05</div><div class="cl-num">05</div><div class="cl-text"><strong>Miso Caramel</strong>White miso · salted caramel · toasted rice crunch</div></div>
+    <div class="cl-item"><div class="cl-num">06</div><div class="cl-text"><strong>Lychee Rose</strong>Lychee jam · rose mascarpone · freeze-dried lychee</div></div>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div class="cover-by">KitchenFounder · Timothy Susanto</div>
+  <div class="cover-meta">Michelin Chef Series · 2026<br>6 Premium Recipes · Full Method</div>
+</div>
+</div>
+
+<!-- BASE DOUGH PAGE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">The Foundation · Brioche Donut Dough · Master Recipe</span><span class="page-num">02</span></div>
+
+<div style="background:var(--accent);color:#fff;padding:5mm 6mm;margin-bottom:4mm">
+<div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#C8A84B;margin-bottom:2mm">The Dough Is Everything</div>
+<div style="font-size:9.5px;color:rgba(255,255,255,0.6);line-height:1.9">
+A premium donut at Michelin level is judged on one thing first: the dough. Not the filling. Not the glaze. The moment the tooth breaks through the crust and meets the crumb — that's the verdict. <strong style="color:#C8A84B">This is a brioche-style enriched dough</strong>: high butter, high egg, slow ferment. It produces a dough that is featherlight, faintly sweet, with a delicate pull and a crumb that tears into gossamer strands. It fries golden without absorbing excess oil. It holds any filling without collapsing. Everything else is decoration on this foundation.
+</div>
+</div>
+
+<div class="recipe-card">
+<div class="rc-hdr" style="background:var(--accent)">
+  <div>
+    <div class="rc-num">Master Recipe · All 6 Donuts</div>
+    <div class="rc-name">Brioche Donut Dough</div>
+    <div class="rc-sub">Cold butter method · overnight cold proof · 170°C fry · yields 16–18 donuts</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Fry 170°C · 2 min per side</span>
+    <span class="badge time">Active 45 min · Cold proof 12–16 hrs</span>
+    <span class="badge yield">Yields 16–18 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Dry</td></tr>
+<tr><td>Bread flour (strong)</td><td>500 g</td></tr>
+<tr><td>Caster sugar</td><td>60 g</td></tr>
+<tr><td>Fine salt</td><td>8 g</td></tr>
+<tr><td>Instant dry yeast</td><td>7 g</td></tr>
+<tr><td class="ingr-section" colspan="2">Wet</td></tr>
+<tr><td>Whole eggs</td><td>3 large (150 g)</td></tr>
+<tr><td>Egg yolks</td><td>2 (40 g)</td></tr>
+<tr><td>Full-cream milk, warm (32°C)</td><td>120 ml</td></tr>
+<tr><td>Vanilla bean paste</td><td>1 tsp</td></tr>
+<tr><td class="ingr-section" colspan="2">Butter (cold, cubed)</td></tr>
+<tr><td>Unsalted butter, cold, 1cm cubes</td><td>180 g</td></tr>
+<tr><td class="ingr-section" colspan="2">For Frying</td></tr>
+<tr><td>Neutral oil (rice bran or vegetable)</td><td>2 litres</td></tr>
+<tr><td class="ingr-section" colspan="2">Sugar Coat (all donuts)</td></tr>
+<tr><td>Caster sugar</td><td>200 g</td></tr>
+<tr><td>Fine salt</td><td>pinch</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Combine flour, sugar, salt, and yeast in the bowl of a stand mixer fitted with a dough hook. Keep salt and yeast on opposite sides — direct contact can kill the yeast. Mix briefly to combine.</span></li>
+<li><span class="sn">2</span><span>Add warm milk, eggs, egg yolks, and vanilla. Mix on medium speed for 5 minutes until a shaggy dough forms and begins to pull away from the sides of the bowl. The dough will look rough — this is correct.</span></li>
+<li><span class="sn">3</span><span>With the mixer running on medium-low, add cold butter one cube at a time — wait for each cube to be mostly incorporated before adding the next. This process takes 10–12 minutes. Do not rush. This is where the gluten structure is built and the butter is emulsified into the dough.</span></li>
+<li><span class="sn">4</span><span>Increase to medium-high. Knead 6–8 minutes until the dough is smooth, glossy, and passes the windowpane test — stretch a small piece thin enough to see light through without tearing. This is full gluten development.</span></li>
+<li><span class="sn">5</span><span>Shape into a ball. Place in a lightly oiled bowl. Cover tightly with cling film. Refrigerate overnight (12–16 hours). Cold fermentation develops flavour and makes the dough much easier to handle. Do not skip this step.</span></li>
+<li><span class="sn">6</span><span>Next day: remove dough. It will have doubled. Turn onto a lightly floured surface. Roll to 2.5 cm thickness. Cut rounds with a 7–8 cm cutter (for filled donuts, no hole). Place on individual squares of baking paper on trays. Cover loosely. Proof at room temperature 1.5–2 hours until puffy and slightly jiggle when the tray is shaken.</span></li>
+<li><span class="sn">7</span><span>Heat oil to 170°C in a deep, wide pot. Use a thermometer — temperature control is everything. Lower donuts (on their paper squares) into the oil. The paper releases naturally; remove with tongs. Fry 2 minutes per side until deep golden. Do not go darker — the inside is still cooking after you remove them.</span></li>
+<li><span class="sn">8</span><span>Drain on a wire rack 2 minutes. While still warm (not hot), roll in caster sugar. Cool completely before filling — filling a warm donut = condensation = soggy bottom.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Michelin Chef's Note</strong>
+The cold butter addition is the difference between a brioche donut and a supermarket donut. It builds a laminated fat structure within the gluten network that creates the characteristic feathery pull. Oil temperature consistency is the other non-negotiable — if the oil drops below 160°C, the donut absorbs oil. If it climbs above 180°C, the outside burns before the inside sets. A clip-on thermometer and a heavy pot with good heat retention solve both problems.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Master Dough Recipe</span></div>
+</div>
+<!-- DONUTS 1 & 2 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Donut 01 · Black Sesame &amp; Yuzu</span><span class="page-num">03</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#0A0A0A,#1C1A0A)">
+  <div>
+    <div class="rc-num">Donut 01 of 06</div>
+    <div class="rc-name">Black Sesame & Yuzu</div>
+    <div class="rc-sub">Silky black sesame custard · yuzu glaze · edible gold · toasted sesame brittle</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Custard 82°C · Set 4 hrs</span>
+    <span class="badge time">Prep 30 min · Set overnight</span>
+    <span class="badge yield">Fills 6 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Black Sesame Custard</td></tr>
+<tr><td>Black sesame paste (pure, no sugar)</td><td>80 g</td></tr>
+<tr><td>Full-cream milk</td><td>250 ml</td></tr>
+<tr><td>Double cream</td><td>100 ml</td></tr>
+<tr><td>Egg yolks</td><td>4 large</td></tr>
+<tr><td>Caster sugar</td><td>60 g</td></tr>
+<tr><td>Cornflour</td><td>20 g</td></tr>
+<tr><td>Unsalted butter</td><td>30 g</td></tr>
+<tr><td>Fine sea salt</td><td>1 pinch</td></tr>
+<tr><td class="ingr-section" colspan="2">Yuzu Glaze</td></tr>
+<tr><td>Icing sugar, sifted</td><td>200 g</td></tr>
+<tr><td>Yuzu juice (fresh or bottled)</td><td>3 tbsp</td></tr>
+<tr><td>Yuzu zest (if available)</td><td>½ tsp</td></tr>
+<tr><td>White food colouring (optional)</td><td>1 drop</td></tr>
+<tr><td class="ingr-section" colspan="2">Sesame Brittle</td></tr>
+<tr><td>Caster sugar</td><td>100 g</td></tr>
+<tr><td>Toasted black &amp; white sesame seeds</td><td>40 g</td></tr>
+<tr><td>Butter</td><td>10 g</td></tr>
+<tr><td class="ingr-section" colspan="2">Finishing</td></tr>
+<tr><td>Edible gold leaf or gold dust</td><td>to garnish</td></tr>
+<tr><td>Yuzu zest microplaned fresh</td><td>1 yuzu</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span><strong>Black sesame custard:</strong> whisk egg yolks, sugar, and cornflour in a bowl until pale. Heat milk, cream, and sesame paste together until steaming — whisk constantly to keep the sesame from settling. Once steaming, slowly pour into the egg mixture while whisking (tempering). Return to the pan.</span></li>
+<li><span class="sn">2</span><span>Cook over medium heat, stirring constantly with a rubber spatula, until the custard thickens and large bubbles pop on the surface — 82°C. This kills the starch taste and sets the custard. Remove from heat. Add butter and salt. Stir until butter melts. The colour should be deep charcoal grey — extraordinary and unexpected. Press cling film directly on the surface. Refrigerate minimum 4 hours or overnight.</span></li>
+<li><span class="sn">3</span><span>Once set, transfer to a piping bag fitted with a long filling nozzle. Use a skewer to pierce a cavity in the side of each donut. Insert nozzle and fill generously — you should feel slight resistance when the donut is full (approx 40–50 g filling per donut). The hole can be sealed with a tiny dot of glaze.</span></li>
+<li><span class="sn">4</span><span><strong>Yuzu glaze:</strong> sift icing sugar into a bowl. Add yuzu juice one tablespoon at a time until you reach a thick, flowing consistency — it should coat the back of a spoon and fall off in a thick ribbon. Too thin = slides off. Too thick = cracks when set. A few drops of white colouring gives a clean, pale ivory-white finish that contrasts beautifully against the dark filling inside.</span></li>
+<li><span class="sn">5</span><span><strong>Sesame brittle:</strong> dry caramel method — heat sugar in a light-coloured pan without stirring until it reaches a deep amber caramel. Add butter. Immediately pour over sesame seeds on a silpat or baking paper. Spread thin. Cool completely. Break into shards. Store in an airtight container with silica gel — it absorbs moisture and turns soft quickly.</span></li>
+<li><span class="sn">6</span><span>To finish: dip the top third of each filled donut into yuzu glaze. Allow excess to drip. Set on a wire rack. While glaze is still wet, press one shard of sesame brittle into the glaze. Apply a micro-fragment of gold leaf with tweezers. Microplane fresh yuzu zest over the finished donut at the moment of service.</span></li>
+</ol>
+<div class="plating-box">
+<strong>Michelin Plating Moment</strong>
+<p>Serve on a piece of polished black slate or a dark ceramic tile. The ivory glaze, charcoal sesame brittle, and gold leaf against the dark background is visually stunning. Cut one donut in half for display — the deep grey custard interior creates a visual "reveal" that photographs at Michelin level. Add a small pot of extra yuzu curd on the side for guests who want to intensify the citrus.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$4.20</div><div class="cs-lbl">Cost Per Donut</div></div>
+<div class="cs-item"><div class="cs-val">$12.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">35%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$7.80</div><div class="cs-lbl">Gross Profit Each</div></div>
+<div class="cs-item"><div class="cs-val">⭐ Signature</div><div class="cs-lbl">Positioning</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Sesame · Eggs · Milk · Gluten (dough) · May contain: tree nuts (cross-contact kitchen)</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Donut 01 — Black Sesame &amp; Yuzu</span></div>
+</div>
+
+<!-- DONUT 2: PANDAN COCONUT -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Donut 02 · Pandan Coconut Crème</span><span class="page-num">04</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#041A08,#0A2A10)">
+  <div>
+    <div class="rc-num">Donut 02 of 06</div>
+    <div class="rc-name">Pandan Coconut Crème</div>
+    <div class="rc-sub">Pandan diplomat cream · butterfly pea glaze (colour-change) · toasted coconut flakes · kaffir lime zest</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Crème 80°C · Whip cold</span>
+    <span class="badge time">Prep 35 min · Set 4 hrs</span>
+    <span class="badge yield">Fills 6 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Pandan Diplomat Cream</td></tr>
+<tr><td>Fresh pandan leaves (or 2 tsp extract)</td><td>6 leaves</td></tr>
+<tr><td>Coconut milk (full fat, Ayam brand)</td><td>200 ml</td></tr>
+<tr><td>Full-cream milk</td><td>100 ml</td></tr>
+<tr><td>Egg yolks</td><td>3 large</td></tr>
+<tr><td>Caster sugar</td><td>50 g</td></tr>
+<tr><td>Cornflour</td><td>18 g</td></tr>
+<tr><td>Unsalted butter</td><td>25 g</td></tr>
+<tr><td>Gelatine leaves</td><td>1.5 sheets (3 g)</td></tr>
+<tr><td>Double cream, cold, whipped to soft peaks</td><td>120 ml</td></tr>
+<tr><td class="ingr-section" colspan="2">Butterfly Pea Glaze</td></tr>
+<tr><td>Dried butterfly pea flowers</td><td>10 g</td></tr>
+<tr><td>Hot water</td><td>60 ml</td></tr>
+<tr><td>Icing sugar, sifted</td><td>180 g</td></tr>
+<tr><td>Lemon juice</td><td>½ tsp (for colour-change effect)</td></tr>
+<tr><td class="ingr-section" colspan="2">To Finish</td></tr>
+<tr><td>Toasted coconut flakes (large)</td><td>40 g</td></tr>
+<tr><td>Kaffir lime zest, microplaned</td><td>1 leaf</td></tr>
+<tr><td>Freeze-dried pandan powder (optional)</td><td>dusting</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span><strong>Pandan infusion:</strong> blend pandan leaves with 100 ml cold water. Strain through a fine sieve — press to extract every drop of the vivid green liquid. Combine with coconut milk and regular milk. Heat to steaming.</span></li>
+<li><span class="sn">2</span><span>Soak gelatine sheets in cold water 5 minutes. Whisk egg yolks, sugar, and cornflour until pale. Temper the hot pandan coconut milk into the egg mixture. Return to pan and cook to 80°C stirring constantly until thick. Remove from heat. Squeeze out gelatine and whisk in. Add butter. Mix until smooth. The colour: a pure, luminous jade green. Press cling film on surface. Cool to room temperature then refrigerate until completely set.</span></li>
+<li><span class="sn">3</span><span>Once cold and set, whisk the pastry cream to loosen it. Fold in cold-whipped cream in two additions — this is the diplomat technique that makes it lighter than a pure crème pâtissière. Transfer to piping bag with long filling nozzle. Fill each donut generously.</span></li>
+<li><span class="sn">4</span><span><strong>Butterfly pea glaze:</strong> steep dried flowers in hot water 10 minutes. Strain — the liquid is a stunning deep violet-blue. Mix with sifted icing sugar to a thick glaze. The moment you add the lemon juice, the glaze shifts from violet to a vivid magenta-purple — this is the colour-change effect. Use immediately before the colour stabilises.</span></li>
+<li><span class="sn">5</span><span>Dip filled donuts in the butterfly pea glaze. Allow to set 2 minutes. While still slightly tacky, press toasted coconut flakes onto the glaze so they stand upright. Microplane kaffir lime zest directly over the top at service — the fragrance is immediate and striking.</span></li>
+</ol>
+<div class="plating-box">
+<strong>Michelin Plating Moment</strong>
+<p>The colour contrast here is the visual story: the deep violet-to-purple glaze, the pale ivory coconut flakes, and the vivid green pandan filling visible when cut. Present on a banana leaf segment on a white ceramic plate. If serving 2–3 donuts as a dessert plate, cut one in half to show the jade interior. The fragrance of fresh kaffir lime zest microplaned tableside elevates this to an interactive sensory experience.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$3.60</div><div class="cs-lbl">Cost Per Donut</div></div>
+<div class="cs-item"><div class="cs-val">$11.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">32.7%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$7.40</div><div class="cs-lbl">Gross Profit Each</div></div>
+<div class="cs-item"><div class="cs-val">💚 Fan Fave</div><div class="cs-lbl">Positioning</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Eggs · Milk · Coconut (tree nut) · Gluten (dough) · Gelatine (not vegan)</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Donut 02 — Pandan Coconut</span></div>
+</div>
+<!-- DONUTS 3 & 4 -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Donut 03 · Matcha White Chocolate</span><span class="page-num">05</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#081A08,#1A2E10)">
+  <div>
+    <div class="rc-num">Donut 03 of 06</div>
+    <div class="rc-name">Ceremonial Matcha & White Chocolate</div>
+    <div class="rc-sub">Matcha white choc ganache · ruby chocolate drizzle · mochi piece · freeze-dried raspberry dust</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Ganache 45°C · Set 2 hrs</span>
+    <span class="badge time">Prep 25 min · Set 2 hrs</span>
+    <span class="badge yield">Fills 6 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Matcha White Choc Ganache</td></tr>
+<tr><td>Quality white chocolate (Valrhona Opalys)</td><td>200 g</td></tr>
+<tr><td>Double cream</td><td>100 ml</td></tr>
+<tr><td>Ceremonial grade matcha powder</td><td>12 g</td></tr>
+<tr><td>Unsalted butter</td><td>20 g</td></tr>
+<tr><td>Fine salt</td><td>1 pinch</td></tr>
+<tr><td class="ingr-section" colspan="2">Matcha Glaze (exterior)</td></tr>
+<tr><td>White chocolate, melted</td><td>150 g</td></tr>
+<tr><td>Vegetable oil</td><td>1 tbsp (for fluidity)</td></tr>
+<tr><td>Ceremonial matcha</td><td>8 g</td></tr>
+<tr><td class="ingr-section" colspan="2">Ruby Chocolate Drizzle</td></tr>
+<tr><td>Ruby chocolate (Callebaut RB1)</td><td>60 g</td></tr>
+<tr><td>Vegetable oil</td><td>½ tsp</td></tr>
+<tr><td class="ingr-section" colspan="2">To Finish</td></tr>
+<tr><td>Fresh mochi cubes (store-bought fine)</td><td>1 small cube per donut</td></tr>
+<tr><td>Freeze-dried raspberry powder</td><td>dusting</td></tr>
+<tr><td>Matcha powder (extra, for dusting)</td><td>to garnish</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span><strong>Matcha ganache filling:</strong> sift matcha thoroughly into cream (lumps = bitter green spots). Heat cream and matcha together until steaming — do not boil. Pour over chopped white chocolate in a bowl. Let sit 1 minute. Stir from the centre outward in slow circles until fully emulsified. Add butter. Mix until glossy. A pinch of salt sharpens the matcha flavour dramatically. Set at room temperature 1 hour then refrigerate until pipeable — soft enough to flow but firm enough to hold inside the donut.</span></li>
+<li><span class="sn">2</span><span>Fill donuts using the long nozzle method. The ganache is richer and denser than custard — fill to about 35–40 g per donut. More will make the donut feel heavy.</span></li>
+<li><span class="sn">3</span><span><strong>Matcha glaze:</strong> melt white chocolate gently over a bain marie. Add vegetable oil (prevents the glaze from setting too hard and cracking). Sift in matcha and whisk until completely smooth. Keep at 40–45°C for dipping — too cool and it sets unevenly, too hot and it runs off.</span></li>
+<li><span class="sn">4</span><span>Dip the top of each filled donut into the matcha glaze. The colour should be a clean, vivid green. Set on wire rack.</span></li>
+<li><span class="sn">5</span><span><strong>Ruby drizzle:</strong> melt ruby chocolate with oil. Transfer to a small piping bag or squeeze bottle. While matcha glaze is set but not fully hardened, drizzle ruby chocolate in parallel lines or a deliberate zigzag across the top. Ruby chocolate is naturally pink — the green and pink contrast is visually spectacular.</span></li>
+<li><span class="sn">6</span><span>To finish: press one small mochi cube into the top (it should half-sink into the glaze — the glaze holds it). Dust lightly with freeze-dried raspberry powder using a fine sieve. The pink dust settles on the matcha glaze and frames the ruby drizzle.</span></li>
+</ol>
+<div class="plating-box">
+<strong>Michelin Plating Moment</strong>
+<p>The colour palette on this donut is the whole story: deep ceremonial green glaze, pink ruby chocolate lines, a snow-white mochi cube, and the blush of freeze-dried raspberry dust. Present on a white ceramic surface with a small mound of sifted matcha powder beside it. When cut, the ivory ganache interior spills slightly — pair this moment with a matcha tea service for the full sensory experience.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$4.80</div><div class="cs-lbl">Cost Per Donut</div></div>
+<div class="cs-item"><div class="cs-val">$13.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">36.9%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$8.20</div><div class="cs-lbl">Gross Profit Each</div></div>
+<div class="cs-item"><div class="cs-val">📸 Most Instagram</div><div class="cs-lbl">Positioning</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Milk (cream, chocolate) · Gluten (dough + mochi) · Eggs · Soy (may be in white choc) · Nuts (may be in Valrhona)</div>
+</div>
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Donut 03 — Matcha White Chocolate</span></div>
+</div>
+
+<!-- DONUT 4: THAI TEA BRÛLÉE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Donut 04 · Thai Tea Brûlée</span><span class="page-num">06</span></div>
+<div class="recipe-card">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#1A0A00,#2E1500)">
+  <div>
+    <div class="rc-num">Donut 04 of 06</div>
+    <div class="rc-name">Thai Tea Brûlée</div>
+    <div class="rc-sub">Thai tea crème brûlée filling · caramelised sugar dome · condensed milk drizzle · star anise dust</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Custard 80°C · Brûlée to order</span>
+    <span class="badge time">Prep 30 min · Set 6 hrs</span>
+    <span class="badge yield">Fills 6 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Thai Tea Custard</td></tr>
+<tr><td>Thai tea leaves (ChaTraMue brand)</td><td>25 g</td></tr>
+<tr><td>Full-cream milk</td><td>300 ml</td></tr>
+<tr><td>Double cream</td><td>80 ml</td></tr>
+<tr><td>Egg yolks</td><td>4 large</td></tr>
+<tr><td>Caster sugar</td><td>70 g</td></tr>
+<tr><td>Cornflour</td><td>20 g</td></tr>
+<tr><td>Condensed milk</td><td>2 tbsp</td></tr>
+<tr><td>Unsalted butter</td><td>25 g</td></tr>
+<tr><td class="ingr-section" colspan="2">Brûlée Topping</td></tr>
+<tr><td>Caster sugar (for brûlée)</td><td>1 tsp per donut</td></tr>
+<tr><td class="ingr-section" colspan="2">Thai Tea Glaze Base</td></tr>
+<tr><td>Thai tea liquid (from infusion)</td><td>50 ml</td></tr>
+<tr><td>Icing sugar, sifted</td><td>200 g</td></tr>
+<tr><td>Orange food colouring</td><td>1–2 drops (deepens the colour)</td></tr>
+<tr><td class="ingr-section" colspan="2">To Finish</td></tr>
+<tr><td>Condensed milk, for drizzle</td><td>2 tbsp</td></tr>
+<tr><td>Star anise (ground fine)</td><td>light dusting</td></tr>
+<tr><td>Thai tea powder (for extra colour)</td><td>light dusting</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span><strong>Thai tea infusion:</strong> steep Thai tea leaves in hot milk and cream for 12 minutes. Strain very thoroughly — the liquid should be a deep, vivid orange-amber. The flavour: spiced, vanilla-adjacent, slightly floral. This is the most distinctly Asian flavour in the collection.</span></li>
+<li><span class="sn">2</span><span>Whisk egg yolks, sugar, cornflour, and condensed milk until pale. Reheat the strained Thai tea milk until steaming. Temper into the egg mixture. Return to pan and cook over medium heat to 80°C, stirring constantly, until thick and smooth. Add butter. Mix until glossy. The colour: a rich amber-orange custard. Cool with cling film on surface. Refrigerate until completely set — minimum 6 hours.</span></li>
+<li><span class="sn">3</span><span>Fill donuts. Unlike the ganache, this custard is pipeable but slightly loose — fill confidently and quickly. Seal the filling hole with a touch of glaze.</span></li>
+<li><span class="sn">4</span><span><strong>Thai tea glaze:</strong> mix 50 ml strained Thai tea liquid with sifted icing sugar. Add orange food colouring if the natural colour needs boosting. The glaze should be a striking copper-orange. Dip the tops of filled donuts. Set on rack.</span></li>
+<li><span class="sn">5</span><span><strong>The brûlée moment:</strong> while the glaze is fully set, spoon ½ tsp caster sugar on top of each donut in a thin even layer. Torch immediately with a small kitchen blowtorch until the sugar caramelises into a cracking amber dome. Do this to order — the brûlée dome softens within 15 minutes and must be served immediately after torching.</span></li>
+<li><span class="sn">6</span><span>Finish: drizzle condensed milk across the brûlée dome in a fine zigzag. Dust lightly with ground star anise. The condensed milk drizzle is the authentic Thai tea signal — every Thai person recognises it immediately.</span></li>
+</ol>
+<div class="plating-box">
+<strong>Michelin Plating Moment</strong>
+<p>The brûlée must be done tableside or at the pass immediately before service — the cracking sound when the guest breaks through the sugar dome is the entire experience. Present on a ceramic slate with a small pot of condensed milk on the side. The visual: deep amber glaze, cracked caramel dome, white condensed milk drizzle. Smells like a Bangkok iced tea cart. Tastes like fine pastry. That tension is the point.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$3.40</div><div class="cs-lbl">Cost Per Donut</div></div>
+<div class="cs-item"><div class="cs-val">$12.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">28.3%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$8.60</div><div class="cs-lbl">Gross Profit Each</div></div>
+<div class="cs-item"><div class="cs-val">🔥 Best Margin</div><div class="cs-lbl">Positioning</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Eggs · Milk (custard, condensed milk) · Gluten (dough) · May contain: tree nuts, soy</div>
+</div>
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Donut 04 — Thai Tea Brûlée</span></div>
+</div>
+<!-- DONUTS 5 & 6 + SUMMARY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Donut 05 · White Miso Salted Caramel</span><span class="page-num">07</span></div>
+<div class="recipe-card">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#0A0800,#1A1400)">
+  <div>
+    <div class="rc-num">Donut 05 of 06</div>
+    <div class="rc-name">White Miso Salted Caramel</div>
+    <div class="rc-sub">Miso caramel crème · toasted rice crunch · dark chocolate mirror glaze · fleur de sel</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Caramel 118°C · Cool before adding miso</span>
+    <span class="badge time">Prep 35 min · Set 4 hrs</span>
+    <span class="badge yield">Fills 6 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Miso Caramel Custard</td></tr>
+<tr><td>Caster sugar</td><td>120 g</td></tr>
+<tr><td>Double cream, warm</td><td>200 ml</td></tr>
+<tr><td>White miso paste (Marukome Shiro)</td><td>35 g</td></tr>
+<tr><td>Unsalted butter</td><td>40 g</td></tr>
+<tr><td>Egg yolks</td><td>3 large</td></tr>
+<tr><td>Cornflour</td><td>15 g</td></tr>
+<tr><td>Fleur de sel</td><td>generous pinch</td></tr>
+<tr><td class="ingr-section" colspan="2">Dark Chocolate Glaze</td></tr>
+<tr><td>Dark chocolate 70% (Valrhona Guanaja)</td><td>120 g</td></tr>
+<tr><td>Double cream</td><td>60 ml</td></tr>
+<tr><td>Glucose syrup</td><td>15 g</td></tr>
+<tr><td>Neutral oil</td><td>1 tsp</td></tr>
+<tr><td class="ingr-section" colspan="2">Toasted Rice Crunch</td></tr>
+<tr><td>Japanese short-grain rice (cooked &amp; dried overnight)</td><td>60 g</td></tr>
+<tr><td>Neutral oil (for frying)</td><td>500 ml</td></tr>
+<tr><td>Sea salt flakes</td><td>pinch</td></tr>
+<tr><td class="ingr-section" colspan="2">To Finish</td></tr>
+<tr><td>Fleur de sel</td><td>3–4 crystals per donut</td></tr>
+<tr><td>Edible gold dust (optional)</td><td>light dusting</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span><strong>Miso caramel:</strong> dry caramel — heat sugar in a heavy saucepan without stirring until it reaches a deep amber at 170°C (use thermometer). Remove from heat. Slowly pour warm cream in — it will bubble violently. Return to heat and stir until smooth. Cool to 60°C. Whisk in miso paste and butter. The miso adds a savoury depth that makes this caramel taste unlike anything else. Season with fleur de sel. Cool completely.</span></li>
+<li><span class="sn">2</span><span>Whisk egg yolks and cornflour together in a separate bowl. Heat the miso caramel until steaming. Temper into the egg mixture. Return to pan, cook to 80°C until thick. It will be a deep amber-brown with an extraordinary aroma. Cool with cling on surface. Refrigerate 4+ hours.</span></li>
+<li><span class="sn">3</span><span><strong>Toasted rice crunch:</strong> day-old cooked rice, spread on a tray and dried overnight. Deep-fry in batches at 180°C until each grain puffs and turns golden, 30–45 seconds. Drain. Season immediately with sea salt flakes. These toasted rice crisps are Japan's answer to Rice Krispies — more flavour, more texture, less sugar.</span></li>
+<li><span class="sn">4</span><span><strong>Dark chocolate glaze:</strong> heat cream with glucose. Pour over chopped dark chocolate. Stir from centre. Add oil for fluidity. Keep at 35–38°C for dipping. This glaze sets with a slight sheen rather than a hard crack.</span></li>
+<li><span class="sn">5</span><span>Fill donuts. Dip in chocolate glaze. While still wet, press toasted rice crunch liberally onto the top and sides of the glaze — they should cover the glaze in a crunchy, irregular layer. Set 5 minutes. Finish with 3–4 crystals of fleur de sel and a very light dusting of gold dust if desired.</span></li>
+</ol>
+<div class="plating-box">
+<strong>Michelin Plating Moment</strong>
+<p>The paradox of this donut — sweet caramel, savoury miso, bitter dark chocolate, salty fleur de sel, crunchy toasted rice — is what makes it the most sophisticated flavour in the collection. Serve on dark slate. When cut, the amber caramel custard spills. The toasted rice crunch has an audible, satisfying snap. Present with a few loose toasted rice crisps scattered on the plate for textural context.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$3.90</div><div class="cs-lbl">Cost Per Donut</div></div>
+<div class="cs-item"><div class="cs-val">$12.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">32.5%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$8.10</div><div class="cs-lbl">Gross Profit Each</div></div>
+<div class="cs-item"><div class="cs-val">🧠 Chef's Pick</div><div class="cs-lbl">Positioning</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Milk · Eggs · Soy (miso) · Gluten (dough) · Sesame (miso may contain). Note: Marukome Shiro Miso = gluten free, soy only ✅</div>
+</div>
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Donut 05 — White Miso Salted Caramel</span></div>
+</div>
+
+<!-- DONUT 6: LYCHEE ROSE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Donut 06 · Lychee Rose</span><span class="page-num">08</span></div>
+<div class="recipe-card">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#1A0510,#2E0A20)">
+  <div>
+    <div class="rc-num">Donut 06 of 06</div>
+    <div class="rc-name">Lychee & Rose</div>
+    <div class="rc-sub">Lychee compote core · rose mascarpone cream · rose water glaze · freeze-dried lychee · micro rose petals</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Compote 75°C · Mascarpone cold</span>
+    <span class="badge time">Prep 25 min · Set 3 hrs</span>
+    <span class="badge yield">Fills 6 donuts</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Lychee Compote (jam core)</td></tr>
+<tr><td>Fresh lychees, peeled, pitted (or canned)</td><td>300 g</td></tr>
+<tr><td>Caster sugar</td><td>60 g</td></tr>
+<tr><td>Lemon juice</td><td>1 tbsp</td></tr>
+<tr><td>Rose water</td><td>1 tsp</td></tr>
+<tr><td>Pectin NH (or 2 gelatine sheets)</td><td>4 g</td></tr>
+<tr><td class="ingr-section" colspan="2">Rose Mascarpone Cream</td></tr>
+<tr><td>Mascarpone, cold</td><td>200 g</td></tr>
+<tr><td>Double cream, cold</td><td>100 ml</td></tr>
+<tr><td>Icing sugar, sifted</td><td>40 g</td></tr>
+<tr><td>Rose water (quality — not perfume)</td><td>1½ tsp</td></tr>
+<tr><td>Pink food colouring (gel)</td><td>1 small drop</td></tr>
+<tr><td class="ingr-section" colspan="2">Rose Water Glaze</td></tr>
+<tr><td>Icing sugar, sifted</td><td>200 g</td></tr>
+<tr><td>Rose water</td><td>2 tsp</td></tr>
+<tr><td>Hot water</td><td>2 tbsp</td></tr>
+<tr><td>Pink gel food colouring</td><td>2–3 drops</td></tr>
+<tr><td class="ingr-section" colspan="2">To Finish</td></tr>
+<tr><td>Freeze-dried lychee slices</td><td>3 slices per donut</td></tr>
+<tr><td>Dried edible rose petals (food grade)</td><td>small pinch per donut</td></tr>
+<tr><td>Lychee syrup (from canned lychees)</td><td>light brush</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span><strong>Lychee compote:</strong> roughly chop lychees. Combine with sugar, lemon juice, and rose water in a small saucepan. Cook over medium heat until the lychees break down and the mixture thickens — 15 minutes. Mix pectin (or squeezed gelatine) in. Stir 1 minute more. Pour into a shallow tray to set. Once cold and firm, cut into small blocks that can be pushed into the centre of the donut before the mascarpone cream. This double-filling technique — jam core inside cream — is what elevates this to fine pastry territory.</span></li>
+<li><span class="sn">2</span><span><strong>Rose mascarpone cream:</strong> whip cold mascarpone and cream together on medium speed until soft peaks — 2–3 minutes. Add sifted icing sugar, rose water, and one small drop of pink gel colouring. Whip to firm peaks. The colour should be a blush pink — barely there, not neon. Taste and adjust rose water — it should be fragrant but not soapy. Pipe into a bag with a large star tip.</span></li>
+<li><span class="sn">3</span><span>Dual-fill method: make a wider hole in the top of each donut (use a 1.5 cm round cutter to cut a shallow well). Push one lychee compote block into the bottom of the well. Pipe rose mascarpone cream over the top in a generous rosette swirl using the star tip — building height above the surface of the donut by 2–3 cm. This is now an open-top filled donut, more patisserie than traditional donut.</span></li>
+<li><span class="sn">4</span><span><strong>Rose water glaze:</strong> mix icing sugar, rose water, and hot water. Add pink colouring to a soft blush. Drizzle around the base of the mascarpone rosette rather than dipping — the cream is the visual centrepiece, not the glaze.</span></li>
+<li><span class="sn">5</span><span>Finish: place 2–3 freeze-dried lychee slices tucked into the mascarpone rosette. Scatter a pinch of dried rose petals. Brush the base of the donut with lychee syrup for a subtle gloss and fragrance.</span></li>
+</ol>
+<div class="plating-box">
+<strong>Michelin Plating Moment</strong>
+<p>This is the most visually feminine donut in the collection and the most delicate in flavour. Present on white porcelain. The blush pink mascarpone rosette, pale freeze-dried lychee, and pastel rose petals create a dessert that photographs like something from a Tokyo patisserie. The lychee-rose combination is a classic of Chinese fine dining. On a donut, it becomes unexpected and beautiful. Serve with a small glass of chilled lychee juice on the side.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$3.80</div><div class="cs-lbl">Cost Per Donut</div></div>
+<div class="cs-item"><div class="cs-val">$11.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">34.5%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$7.20</div><div class="cs-lbl">Gross Profit Each</div></div>
+<div class="cs-item"><div class="cs-val">🌸 Visual Star</div><div class="cs-lbl">Positioning</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Milk (mascarpone, cream) · Eggs (dough) · Gluten (dough) · May contain: tree nuts. GF version possible with GF dough base.</div>
+</div>
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Donut 06 — Lychee Rose</span></div>
+</div>
+
+<!-- SUMMARY + CHEF NOTES -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Collection Summary · Menu Pricing · Chef's Philosophy</span><span class="page-num">09</span></div>
+
+<h2 style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--accent);margin:0 0 4mm;border-left:4px solid var(--gold);padding-left:3mm">6 Donuts — Collection at a Glance</h2>
+
+<table style="width:100%;border-collapse:collapse;margin-bottom:5mm;font-size:9.5px">
+<tr style="background:var(--accent);color:#fff">
+  <th style="padding:2.5mm 3mm;text-align:left;font-size:8px">#</th>
+  <th style="padding:2.5mm 3mm;text-align:left;font-size:8px">Donut</th>
+  <th style="padding:2.5mm 3mm;text-align:left;font-size:8px">Flavour Identity</th>
+  <th style="padding:2.5mm 3mm;text-align:center;font-size:8px">Price</th>
+  <th style="padding:2.5mm 3mm;text-align:center;font-size:8px">Cost</th>
+  <th style="padding:2.5mm 3mm;text-align:center;font-size:8px">FC%</th>
+  <th style="padding:2.5mm 3mm;text-align:center;font-size:8px">GP</th>
+  <th style="padding:2.5mm 3mm;text-align:center;font-size:8px">Position</th>
+</tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">01</td><td style="padding:2mm 3mm;font-weight:600">Black Sesame &amp; Yuzu</td><td style="padding:2mm 3mm;color:var(--mid);font-style:italic">Dark · Citrus · Gold</td><td style="padding:2mm 3mm;text-align:center;font-weight:600">$12.00</td><td style="padding:2mm 3mm;text-align:center">$4.20</td><td style="padding:2mm 3mm;text-align:center;color:var(--gold)">35%</td><td style="padding:2mm 3mm;text-align:center;color:var(--green);font-weight:600">$7.80</td><td style="padding:2mm 3mm;text-align:center">⭐ Signature</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">02</td><td style="padding:2mm 3mm;font-weight:600">Pandan Coconut Crème</td><td style="padding:2mm 3mm;color:var(--mid);font-style:italic">Jade green · Tropical · Butterfly pea</td><td style="padding:2mm 3mm;text-align:center;font-weight:600">$11.00</td><td style="padding:2mm 3mm;text-align:center">$3.60</td><td style="padding:2mm 3mm;text-align:center;color:var(--green)">32.7%</td><td style="padding:2mm 3mm;text-align:center;color:var(--green);font-weight:600">$7.40</td><td style="padding:2mm 3mm;text-align:center">💚 Fan Fave</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">03</td><td style="padding:2mm 3mm;font-weight:600">Matcha White Chocolate</td><td style="padding:2mm 3mm;color:var(--mid);font-style:italic">Vivid green · Ruby pink · Mochi</td><td style="padding:2mm 3mm;text-align:center;font-weight:600">$13.00</td><td style="padding:2mm 3mm;text-align:center">$4.80</td><td style="padding:2mm 3mm;text-align:center;color:var(--gold)">36.9%</td><td style="padding:2mm 3mm;text-align:center;color:var(--green);font-weight:600">$8.20</td><td style="padding:2mm 3mm;text-align:center">📸 Most IG</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">04</td><td style="padding:2mm 3mm;font-weight:600">Thai Tea Brûlée</td><td style="padding:2mm 3mm;color:var(--mid);font-style:italic">Amber · Spiced · Cracking caramel dome</td><td style="padding:2mm 3mm;text-align:center;font-weight:600">$12.00</td><td style="padding:2mm 3mm;text-align:center">$3.40</td><td style="padding:2mm 3mm;text-align:center;color:var(--green)">28.3%</td><td style="padding:2mm 3mm;text-align:center;color:var(--green);font-weight:600">$8.60</td><td style="padding:2mm 3mm;text-align:center">🔥 Best Margin</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">05</td><td style="padding:2mm 3mm;font-weight:600">White Miso Salted Caramel</td><td style="padding:2mm 3mm;color:var(--mid);font-style:italic">Dark choc · Savoury · Rice crunch</td><td style="padding:2mm 3mm;text-align:center;font-weight:600">$12.00</td><td style="padding:2mm 3mm;text-align:center">$3.90</td><td style="padding:2mm 3mm;text-align:center;color:var(--green)">32.5%</td><td style="padding:2mm 3mm;text-align:center;color:var(--green);font-weight:600">$8.10</td><td style="padding:2mm 3mm;text-align:center">🧠 Chef's Pick</td></tr>
+<tr style="background:var(--warm);border-bottom:2px solid var(--gold)"><td style="padding:2mm 3mm;font-weight:700;color:var(--gold)">06</td><td style="padding:2mm 3mm;font-weight:600">Lychee &amp; Rose</td><td style="padding:2mm 3mm;color:var(--mid);font-style:italic">Blush · Floral · Patisserie rosette</td><td style="padding:2mm 3mm;text-align:center;font-weight:600">$11.00</td><td style="padding:2mm 3mm;text-align:center">$3.80</td><td style="padding:2mm 3mm;text-align:center;color:var(--gold)">34.5%</td><td style="padding:2mm 3mm;text-align:center;color:var(--green);font-weight:600">$7.20</td><td style="padding:2mm 3mm;text-align:center">🌸 Visual Star</td></tr>
+<tr style="background:rgba(200,168,75,0.07);border-top:2px solid var(--gold)"><td colspan="3" style="padding:2.5mm 3mm;font-weight:700;font-size:10px;color:var(--accent)">COLLECTION AVERAGES</td><td style="padding:2.5mm 3mm;text-align:center;font-weight:700;font-size:10px;color:var(--accent)">$11.83</td><td style="padding:2.5mm 3mm;text-align:center;font-weight:700">$3.95</td><td style="padding:2.5mm 3mm;text-align:center;font-weight:700;color:var(--gold)">33.4%</td><td style="padding:2.5mm 3mm;text-align:center;font-weight:700;color:var(--green)">$7.88</td><td style="padding:2.5mm 3mm;text-align:center"></td></tr>
+</table>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm">
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:4mm">
+<div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">Service Notes</div>
+<ul style="font-size:9.5px;color:#333;line-height:1.85;padding-left:4mm">
+<li>Dough made the <strong>night before</strong>, proofed same day</li>
+<li>All custards/fillings made <strong>morning of service</strong></li>
+<li>Glazes prepared 1 hour before service, kept at temp</li>
+<li><strong>Thai Tea Brûlée: torch to order only</strong> — max 10 min before service</li>
+<li>Lychee Rose assembled at service — mascarpone rosette piped to order</li>
+<li>All donuts best eaten within <strong>4 hours of glazing</strong></li>
+</ul>
+</div>
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--green);padding:4mm">
+<div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:2mm">Menu Engineering</div>
+<ul style="font-size:9.5px;color:#333;line-height:1.85;padding-left:4mm">
+<li><strong>Price anchor:</strong> Matcha at $13 makes $11–12 feel reasonable</li>
+<li><strong>Bestseller prediction:</strong> Pandan (#02) and Thai Tea (#04) — familiarity + drama</li>
+<li><strong>Upsell play:</strong> "The Full Collection" box of all 6 at $59 (vs $71.00 individually)</li>
+<li><strong>Best margin:</strong> Thai Tea Brûlée at 28.3% FC — promote on menu</li>
+<li><strong>Social media driver:</strong> Matcha #03 — push this on TikTok/Instagram</li>
+</ul>
+</div>
+</div>
+
+<div style="background:var(--accent);color:#fff;padding:5mm 6mm">
+<div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#C8A84B;margin-bottom:2mm">The Philosophy</div>
+<div style="font-size:9.5px;color:rgba(255,255,255,0.6);line-height:1.9">
+A Michelin chef approaches a donut the way they approach any dish: with respect for the ingredient, precision in technique, and a clear point of view about what the eating experience should feel like. The six flavours in this collection are not random. They represent the full emotional spectrum of Asian pastry — the dark drama of black sesame, the tropical nostalgia of pandan, the ceremony of matcha, the street food warmth of Thai tea, the intellectual sophistication of miso caramel, and the delicate romance of lychee rose.<br><br>
+A donut at this level is not a snack. It is a dessert course that happens to be round. <strong style="color:#C8A84B">Treat it that way and your guests will too.</strong>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Asian Premium Donuts · KitchenFounder</span><span class="pf-r">Collection Summary · 2026</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classic Pub Fine Dining — 6 Signature Mains</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAFAF8;--text:#1C1C1C;--gold:#8B6914;--border:#E0D9D0;--mid:#8A8A8A;--accent:#1C2B1A;--green:#2D7D4F;--red:#C0392B;--warm:#F5F0E8}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+.cover{width:210mm;min-height:297mm;background:linear-gradient(160deg,#0D1A0B 0%,#1C2B1A 45%,#0A1208 100%);display:flex;flex-direction:column;justify-content:space-between;padding:0;page-break-after:always;position:relative;overflow:hidden}
+.cg1{position:absolute;top:15%;left:20%;width:380px;height:380px;background:radial-gradient(circle,rgba(139,105,20,0.1) 0%,transparent 65%)}
+.cg2{position:absolute;bottom:15%;right:10%;width:280px;height:280px;background:radial-gradient(circle,rgba(45,125,79,0.07) 0%,transparent 60%)}
+.cover-top{padding:14mm 16mm 0;z-index:1;position:relative}
+.cover-logo{font-size:8px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(139,105,20,0.5)}
+.cover-center{padding:0 16mm;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-eyebrow{font-size:8px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(139,105,20,0.6);margin-bottom:5mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#fff;line-height:0.9;margin-bottom:4mm}
+.cover-title .gd{color:#C8A84B}
+.cover-rule{width:65mm;height:2px;background:linear-gradient(90deg,#C8A84B,transparent);margin:5mm 0}
+.cover-sub{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.9;font-style:italic;margin-bottom:6mm}
+.cover-dishes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-bottom:5mm}
+.cd-item{border:1px solid rgba(200,168,75,0.2);padding:3mm;text-align:center}
+.cd-name{font-size:8px;font-weight:700;color:rgba(200,168,75,0.8);text-transform:uppercase;letter-spacing:1px}
+.cd-desc{font-size:7px;color:rgba(255,255,255,0.3);margin-top:0.5mm;line-height:1.5}
+.cover-bottom{padding:8mm 16mm;z-index:1;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cover-by{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.3)}
+.cover-meta{font-size:7.5px;color:rgba(255,255,255,0.15);text-align:right;line-height:1.8}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;position:relative;background:var(--bg)}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+.recipe-card{background:#fff;border:1px solid var(--border);margin-bottom:5mm;page-break-inside:avoid;overflow:hidden}
+.rc-hdr{background:var(--accent);padding:4mm 5mm;display:flex;justify-content:space-between;align-items:flex-start}
+.rc-left{}
+.rc-num{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,75,0.6);margin-bottom:1mm}
+.rc-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.1}
+.rc-sub{font-size:9px;color:rgba(255,255,255,0.45);font-style:italic;margin-top:1mm}
+.rc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:1.5mm}
+.badge{font-size:7px;font-weight:700;padding:1.5mm 3mm;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.badge.temp{background:rgba(200,168,75,0.2);color:#C8A84B;border:1px solid rgba(200,168,75,0.3)}
+.badge.time{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.12)}
+.badge.serves{background:rgba(45,125,79,0.2);color:#6BE88A;border:1px solid rgba(45,125,79,0.3)}
+.rc-body{padding:4mm 5mm}
+.rc-grid{display:grid;grid-template-columns:72mm 1fr;gap:5mm}
+.rc-ingr h6,.rc-method h6,.rc-notes h6{font-size:7.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:2.5mm;padding-bottom:1.5mm;border-bottom:1px solid var(--border)}
+.ingr-table{width:100%;border-collapse:collapse}
+.ingr-table tr:nth-child(even){background:var(--warm)}
+.ingr-table td{padding:1.5mm 2mm;font-size:9px;color:#333;line-height:1.5;border-bottom:1px solid rgba(224,217,208,0.5)}
+.ingr-table td:first-child{font-weight:600;color:var(--text);width:45mm}
+.ingr-table td:last-child{color:var(--mid);font-style:italic;font-size:8.5px}
+.ingr-section{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:2mm 2mm 1mm;background:rgba(139,105,20,0.06);border-bottom:1px solid var(--border)}
+.method-steps{list-style:none;padding:0}
+.method-steps li{display:grid;grid-template-columns:6mm 1fr;gap:2mm;margin-bottom:2mm;font-size:9px;color:#333;line-height:1.7}
+.method-steps li .sn{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--gold);line-height:1}
+.tip-box{background:var(--warm);border-left:3px solid var(--gold);padding:3mm 3.5mm;margin-top:3mm;font-size:9px;color:#444;line-height:1.7}
+.tip-box strong{color:var(--accent);font-size:8px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:1mm}
+.cost-strip{background:var(--accent);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.cs-item{text-align:center}
+.cs-val{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#C8A84B}
+.cs-lbl{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.35);margin-top:0.5mm}
+.allergen-row{padding:2mm 5mm;background:var(--warm);border-top:1px solid var(--border);font-size:8px;color:var(--mid)}
+.allergen-row strong{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cg1"></div><div class="cg2"></div>
+<div class="cover-top"><div class="cover-logo">KitchenFounder · Pub Fine Dining Collection</div></div>
+<div class="cover-center">
+  <div class="cover-eyebrow">Gastropub · Elevated British Classics · 6 Signature Mains</div>
+  <div class="cover-title">Classic<br>Pub<br><span class="gd">Fine Dining</span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-sub">"The best pub food is not fancy food served in a pub.<br>It is honest food, cooked with complete conviction,<br>that happens to taste extraordinary."</div>
+  <div class="cover-dishes">
+    <div class="cd-item"><div class="cd-name">Beef Short Rib</div><div class="cd-desc">72hr braised · red wine jus · horseradish cream</div></div>
+    <div class="cd-item"><div class="cd-name">Roast Duck Breast</div><div class="cd-desc">confit leg · cherry gastrique · celeriac</div></div>
+    <div class="cd-item"><div class="cd-name">Pan Roast Salmon</div><div class="cd-desc">crispy skin · pea purée · brown butter capers</div></div>
+    <div class="cd-item"><div class="cd-name">Lamb Rump</div><div class="cd-desc">herb crust · minted pea · rosemary jus</div></div>
+    <div class="cd-item"><div class="cd-name">Pork Belly</div><div class="cd-desc">crackling · apple purée · calvados jus</div></div>
+    <div class="cd-item"><div class="cd-name">Mushroom Wellington</div><div class="cd-desc">porcini duxelles · truffle · red wine reduction</div></div>
+  </div>
+</div>
+<div class="cover-bottom">
+  <div class="cover-by">KitchenFounder · Timothy Susanto</div>
+  <div class="cover-meta">Gastropub Series · 2026<br>Head Chef Recipe Collection</div>
+</div>
+</div>
+
+<!-- MAIN 1: BEEF SHORT RIB -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main 01 · Beef Short Rib</span><span class="page-num">02</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr">
+  <div class="rc-left">
+    <div class="rc-num">Main 01 of 06</div>
+    <div class="rc-name">72-Hour Braised Beef Short Rib</div>
+    <div class="rc-sub">Red wine &amp; thyme jus · horseradish cream · crispy shallots · buttered mash</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Braise 160°C · 6–8 hrs</span>
+    <span class="badge time">Prep 45 min · Braise overnight</span>
+    <span class="badge serves">Serves 4</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">The Short Rib</td></tr>
+<tr><td>Beef short rib (bone-in)</td><td>1.2 kg (4 ribs)</td></tr>
+<tr><td>Olive oil</td><td>30 ml</td></tr>
+<tr><td>Salt, cracked black pepper</td><td>to season</td></tr>
+<tr><td>Brown onion, halved</td><td>1 large</td></tr>
+<tr><td>Carrot, rough chop</td><td>2 medium</td></tr>
+<tr><td>Celery stalks</td><td>2 stalks</td></tr>
+<tr><td>Garlic cloves, crushed</td><td>6 cloves</td></tr>
+<tr><td>Tomato paste</td><td>30 g</td></tr>
+<tr><td>Red wine (shiraz or cab sav)</td><td>500 ml</td></tr>
+<tr><td>Beef stock</td><td>800 ml</td></tr>
+<tr><td>Thyme sprigs</td><td>5</td></tr>
+<tr><td>Bay leaves</td><td>2</td></tr>
+<tr><td class="ingr-section" colspan="2">Horseradish Cream</td></tr>
+<tr><td>Crème fraîche</td><td>150 g</td></tr>
+<tr><td>Fresh horseradish, grated</td><td>2 tbsp</td></tr>
+<tr><td>Lemon juice</td><td>1 tsp</td></tr>
+<tr><td>Chives, finely sliced</td><td>1 tbsp</td></tr>
+<tr><td class="ingr-section" colspan="2">To Serve</td></tr>
+<tr><td>Mashed potato (see tip)</td><td>200 g/plate</td></tr>
+<tr><td>Crispy shallots (store-bought fine)</td><td>handful</td></tr>
+<tr><td>Watercress or micro herbs</td><td>small bunch</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Preheat oven to 160°C. Season short ribs generously on all sides with salt and cracked pepper. Heat oil in a large heavy-based braising pan over high heat. Sear ribs until deep mahogany on all sides — 3–4 minutes per side. Do not rush this step. Remove and set aside.</span></li>
+<li><span class="sn">2</span><span>In the same pan, add onion cut-side down. Char until deeply caramelised, 4 minutes. Add carrot and celery. Cook 3 minutes. Add garlic and tomato paste. Stir and cook 2 minutes until paste darkens slightly.</span></li>
+<li><span class="sn">3</span><span>Deglaze with red wine. Scrape all the fond off the base. Reduce wine by half over high heat. Add beef stock, thyme, and bay leaves. Return ribs to pan — liquid should come three-quarters up the ribs.</span></li>
+<li><span class="sn">4</span><span>Cover tightly with a lid or double layer of foil. Braise in oven 6–8 hours until the meat is yielding and pulls cleanly from the bone. For overnight: reduce temp to 130°C and braise 10–12 hours.</span></li>
+<li><span class="sn">5</span><span>Remove ribs carefully. Strain the braising liquid through a fine sieve. Return liquid to high heat and reduce by 60–70% until it coats the back of a spoon and has a glossy, sticky jus consistency. Season to taste.</span></li>
+<li><span class="sn">6</span><span>Horseradish cream: fold grated horseradish and lemon juice through crème fraîche. Season. Keep cold. Add chives at service.</span></li>
+<li><span class="sn">7</span><span>To plate: place a generous mound of buttered mash slightly off-centre. Rest one short rib against the mash. Spoon 60 ml jus around the plate. Quenelle of horseradish cream to the side. Crispy shallots over the rib. Watercress to finish.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Chef's Tip</strong>
+The mash here is non-negotiable — it must be Robuchon-style: equal parts potato and butter by weight, passed through a tamis. Don't serve a dry mash under a 6-hour braise. The jus is the star so don't over-season it — it will concentrate further when reheated at service. Short ribs braise better the day before and reheated gently in their jus.
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$18.40</div><div class="cs-lbl">Food Cost/Plate</div></div>
+<div class="cs-item"><div class="cs-val">$42.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">43.8%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$23.60</div><div class="cs-lbl">Gross Profit</div></div>
+<div class="cs-item"><div class="cs-val">⭐ Signature</div><div class="cs-lbl">Menu Position</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Milk (butter, crème fraîche) · Celery · Sulphites (wine) · May contain gluten if stock cubes used — use GF stock.</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Main 01 — Beef Short Rib</span></div>
+</div>
+<!-- MAIN 2: DUCK BREAST -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main 02 · Roast Duck Breast</span><span class="page-num">03</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr">
+  <div class="rc-left">
+    <div class="rc-num">Main 02 of 06</div>
+    <div class="rc-name">Pan-Roasted Duck Breast</div>
+    <div class="rc-sub">Confit leg croquette · cherry &amp; red wine gastrique · celeriac purée · wilted spinach</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Duck breast 57°C core · Skin side down first</span>
+    <span class="badge time">Prep 30 min · Cook 20 min</span>
+    <span class="badge serves">Serves 4</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Duck Breast</td></tr>
+<tr><td>Duck breasts (Muscovy or Pekin)</td><td>4 × 220 g</td></tr>
+<tr><td>Salt, white pepper</td><td>to season</td></tr>
+<tr><td>Thyme sprigs</td><td>4</td></tr>
+<tr><td>Garlic cloves, skin on</td><td>4</td></tr>
+<tr><td class="ingr-section" colspan="2">Cherry Gastrique</td></tr>
+<tr><td>Fresh or frozen cherries, pitted</td><td>250 g</td></tr>
+<tr><td>Red wine</td><td>150 ml</td></tr>
+<tr><td>Red wine vinegar</td><td>40 ml</td></tr>
+<tr><td>Caster sugar</td><td>60 g</td></tr>
+<tr><td>Chicken or duck stock</td><td>200 ml</td></tr>
+<tr><td>Butter</td><td>20 g</td></tr>
+<tr><td class="ingr-section" colspan="2">Celeriac Purée</td></tr>
+<tr><td>Celeriac, peeled and diced</td><td>500 g</td></tr>
+<tr><td>Butter</td><td>60 g</td></tr>
+<tr><td>Double cream</td><td>80 ml</td></tr>
+<tr><td>Salt, white pepper</td><td>to taste</td></tr>
+<tr><td class="ingr-section" colspan="2">To Finish</td></tr>
+<tr><td>Baby spinach</td><td>120 g</td></tr>
+<tr><td>Butter</td><td>15 g</td></tr>
+<tr><td>Confit leg croquette (optional)</td><td>1 per plate</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Score duck skin in a fine crosshatch — cuts should reach the fat but not into the flesh. Season well with salt and white pepper. Place skin-side down in a cold, dry frying pan. Turn heat to medium. Render the fat slowly for 10–12 minutes until skin is deep golden and crisp and most of the fat has rendered out.</span></li>
+<li><span class="sn">2</span><span>Flip. Add thyme and garlic to the pan. Tilt pan and baste with the rendered duck fat for 2 minutes. Transfer to oven at 180°C for 5–6 minutes to a core temp of 57°C (medium-rare to medium). Rest on a rack for 8 minutes minimum — non-negotiable.</span></li>
+<li><span class="sn">3</span><span>Cherry gastrique: in a small saucepan, combine sugar and red wine vinegar over medium heat without stirring until it becomes a light amber caramel. Immediately add red wine — it will bubble furiously. Add cherries and stock. Reduce by half. Season. Mount with cold butter off the heat for gloss.</span></li>
+<li><span class="sn">4</span><span>Celeriac purée: simmer celeriac in salted water until completely tender, 15–20 minutes. Drain well. Blend with butter and cream until silky smooth. Pass through a fine sieve. Season aggressively — celeriac needs salt.</span></li>
+<li><span class="sn">5</span><span>Wilt spinach in butter in a hot pan. Season, drain excess moisture.</span></li>
+<li><span class="sn">6</span><span>To plate: smear celeriac purée across one side of the plate with the back of a spoon. Slice duck breast into 4–5 slices on a bias, fan on the purée. Nest spinach alongside. Spoon cherry gastrique over and around the duck. Garnish with micro herbs or a few reserved fresh cherries.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Chef's Tip</strong>
+Always start the duck breast in a cold pan — this slowly renders the thick fat layer without burning the skin. A hot pan will char the outside before the fat renders. The resting time is critical: duck tightens dramatically if carved too soon and the juices flood the plate rather than the meat. If doing confit leg croquettes, make them the day before — they hold much better cold-crumbed then fried at service.
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$16.20</div><div class="cs-lbl">Food Cost/Plate</div></div>
+<div class="cs-item"><div class="cs-val">$44.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">36.8%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$27.80</div><div class="cs-lbl">Gross Profit</div></div>
+<div class="cs-item"><div class="cs-val">⭐ Premium</div><div class="cs-lbl">Menu Position</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Milk (butter, cream) · Sulphites (wine, vinegar) · Gluten (croquette breadcrumbs if used)</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Main 02 — Duck Breast</span></div>
+</div>
+
+<!-- MAIN 3: SALMON -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main 03 · Pan-Roast Salmon</span><span class="page-num">04</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr">
+  <div class="rc-left">
+    <div class="rc-num">Main 03 of 06</div>
+    <div class="rc-name">Crispy-Skin Pan-Roast Salmon</div>
+    <div class="rc-sub">Crushed pea &amp; mint purée · brown butter &amp; capers · charred lemon · cucumber ribbon</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Salmon 50–52°C core · Skin crispy</span>
+    <span class="badge time">Prep 20 min · Cook 12 min</span>
+    <span class="badge serves">Serves 4</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Salmon</td></tr>
+<tr><td>Atlantic salmon fillet, skin on</td><td>4 × 180 g</td></tr>
+<tr><td>Neutral oil (rice bran)</td><td>30 ml</td></tr>
+<tr><td>Salt, white pepper</td><td>to season</td></tr>
+<tr><td class="ingr-section" colspan="2">Brown Butter &amp; Capers</td></tr>
+<tr><td>Unsalted butter</td><td>100 g</td></tr>
+<tr><td>Baby capers, drained</td><td>3 tbsp</td></tr>
+<tr><td>Lemon juice</td><td>2 tbsp</td></tr>
+<tr><td>Flat-leaf parsley, chopped</td><td>2 tbsp</td></tr>
+<tr><td class="ingr-section" colspan="2">Crushed Pea Purée</td></tr>
+<tr><td>Frozen peas</td><td>400 g</td></tr>
+<tr><td>Butter</td><td>40 g</td></tr>
+<tr><td>Fresh mint leaves</td><td>10 g</td></tr>
+<tr><td>Crème fraîche</td><td>3 tbsp</td></tr>
+<tr><td>Lemon zest</td><td>½ lemon</td></tr>
+<tr><td>Salt, white pepper</td><td>to taste</td></tr>
+<tr><td class="ingr-section" colspan="2">To Serve</td></tr>
+<tr><td>Lemon halves, for charring</td><td>2</td></tr>
+<tr><td>Cucumber, peeled into ribbons</td><td>½ cucumber</td></tr>
+<tr><td>Dill sprigs or micro herbs</td><td>to garnish</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Pat salmon skin completely dry with paper towel — this is the single most important step for crispy skin. Season the flesh side, not the skin side. Press the skin gently with your hand to ensure total contact with the pan.</span></li>
+<li><span class="sn">2</span><span>Heat a heavy stainless or cast iron pan over high heat until it just starts to smoke. Add oil. Place salmon skin-side down. Immediately press each fillet flat with a fish slice for 10 seconds to prevent curling. Cook skin-side down for 6–7 minutes without moving — 80% of the cooking happens on this side.</span></li>
+<li><span class="sn">3</span><span>Flip gently. Cook flesh side 2 minutes. Remove from heat. The residual heat will carry it to 50–52°C core (medium — just translucent in the very centre). Rest 3 minutes.</span></li>
+<li><span class="sn">4</span><span>Pea purée: blanch peas in boiling salted water 2 minutes. Drain. Blend with butter, crème fraîche, mint, and lemon zest. Blend until smooth but with some texture remaining — this is crushed pea, not soup. Season well. Keep warm.</span></li>
+<li><span class="sn">5</span><span>Brown butter: in a light-coloured pan, melt butter over medium heat. Swirl continuously until it turns golden brown and smells nutty — 4 minutes. Watch it carefully; it goes from golden to burnt in 20 seconds. Off heat, add capers, lemon juice, and parsley. It will spit. Season.</span></li>
+<li><span class="sn">6</span><span>Char lemon halves cut-side down in a dry hot pan for 2 minutes.</span></li>
+<li><span class="sn">7</span><span>To plate: place pea purée in the centre. Lay salmon skin-side up on the purée. Spoon brown butter caper sauce over and around. Cucumber ribbons alongside. Dill to garnish. Charred lemon to the side.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Chef's Tip</strong>
+Dry skin = crispy skin. There are no shortcuts. If the skin sticks to the pan, it simply means the skin wasn't ready — leave it another 30 seconds and it will release. Forcing it tears the skin. The brown butter must be made to order — it breaks and tastes different if held. The pea purée holds well for 2 hours at service temperature.
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$12.80</div><div class="cs-lbl">Food Cost/Plate</div></div>
+<div class="cs-item"><div class="cs-val">$38.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">33.7%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$25.20</div><div class="cs-lbl">Gross Profit</div></div>
+<div class="cs-item"><div class="cs-val">🐟 Fish Option</div><div class="cs-lbl">Menu Position</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Fish · Milk (butter, crème fraîche) · May contain: crustaceans (shared kitchen)</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Main 03 — Salmon</span></div>
+</div>
+<!-- MAIN 4: LAMB RUMP -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main 04 · Herb-Crusted Lamb Rump</span><span class="page-num">05</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr">
+  <div class="rc-left">
+    <div class="rc-num">Main 04 of 06</div>
+    <div class="rc-name">Herb-Crusted Lamb Rump</div>
+    <div class="rc-sub">Dijon &amp; herb crust · smashed minted peas · roasted root vegetables · rosemary jus</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Lamb 58–60°C core · Medium</span>
+    <span class="badge time">Prep 25 min · Cook 25 min</span>
+    <span class="badge serves">Serves 4</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Lamb Rump</td></tr>
+<tr><td>Lamb rump (fat cap on)</td><td>4 × 220 g</td></tr>
+<tr><td>Salt, cracked pepper</td><td>to season</td></tr>
+<tr><td>Neutral oil</td><td>30 ml</td></tr>
+<tr><td class="ingr-section" colspan="2">Herb Crust</td></tr>
+<tr><td>Dijon mustard</td><td>4 tbsp</td></tr>
+<tr><td>Fresh rosemary, finely chopped</td><td>2 tbsp</td></tr>
+<tr><td>Fresh thyme leaves</td><td>2 tbsp</td></tr>
+<tr><td>Flat-leaf parsley, chopped</td><td>3 tbsp</td></tr>
+<tr><td>Panko breadcrumbs</td><td>60 g</td></tr>
+<tr><td>Garlic, minced</td><td>2 cloves</td></tr>
+<tr><td>Olive oil</td><td>2 tbsp</td></tr>
+<tr><td class="ingr-section" colspan="2">Rosemary Jus</td></tr>
+<tr><td>Lamb or beef stock (good quality)</td><td>500 ml</td></tr>
+<tr><td>Red wine</td><td>150 ml</td></tr>
+<tr><td>Rosemary sprigs</td><td>3</td></tr>
+<tr><td>Garlic cloves</td><td>2</td></tr>
+<tr><td>Butter</td><td>30 g</td></tr>
+<tr><td class="ingr-section" colspan="2">To Serve</td></tr>
+<tr><td>Frozen peas, blanched</td><td>300 g</td></tr>
+<tr><td>Fresh mint, torn</td><td>10 g</td></tr>
+<tr><td>Butter</td><td>20 g</td></tr>
+<tr><td>Roasted root veg (parsnip, carrot)</td><td>200 g</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Score the fat cap on the lamb rump in a crosshatch. Season all over. Sear fat-side down in a hot ovenproof pan with oil for 4 minutes until the fat renders and browns. Sear remaining sides, 2 minutes each. Transfer pan to oven at 200°C.</span></li>
+<li><span class="sn">2</span><span>Roast 10–12 minutes to a core of 52°C. Remove from oven. Brush top and sides generously with Dijon mustard immediately while hot.</span></li>
+<li><span class="sn">3</span><span>Mix herbs, panko, garlic, and olive oil together into a coarse paste. Season. Press firmly onto the mustard-coated lamb — the mustard acts as glue. Return to oven (or under a hot grill/salamander) for 4–5 minutes until the crust is golden and set. Core should now be 58–60°C. Rest on a rack 8 minutes.</span></li>
+<li><span class="sn">4</span><span>Rosemary jus: reduce red wine by half in a small saucepan. Add stock, rosemary, and garlic. Reduce by 60% until glossy and lightly syrupy. Strain. Mount with cold butter off the heat. Season. Keep warm.</span></li>
+<li><span class="sn">5</span><span>Smashed minted peas: warm blanched peas with butter and mint in a pan over medium heat. Season. Roughly crush with a fork — leave some whole for texture. Not smooth, not whole. In between.</span></li>
+<li><span class="sn">6</span><span>To plate: place smashed peas to one side. Rest lamb rump slightly against the peas showing the crust. Arrange roasted roots around. Pour rosemary jus around the plate. Finish with a small sprig of fresh rosemary.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Chef's Tip</strong>
+Lamb rump is forgiving and highly consistent on a pub menu — it holds well under a salamander and responds better to high-heat roasting than lamb rack. The Dijon crust application must happen the moment the lamb comes out of the oven — the heat helps the mustard set and grip the crumb. If the lamb has cooled, the crust slides off.
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$14.60</div><div class="cs-lbl">Food Cost/Plate</div></div>
+<div class="cs-item"><div class="cs-val">$40.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">36.5%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$25.40</div><div class="cs-lbl">Gross Profit</div></div>
+<div class="cs-item"><div class="cs-val">🥩 Best Seller</div><div class="cs-lbl">Menu Position</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Gluten (panko breadcrumbs) · Milk (butter) · Mustard · Sulphites (wine)</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Main 04 — Lamb Rump</span></div>
+</div>
+
+<!-- MAIN 5: PORK BELLY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main 05 · Slow-Roast Pork Belly</span><span class="page-num">06</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr">
+  <div class="rc-left">
+    <div class="rc-num">Main 05 of 06</div>
+    <div class="rc-name">Slow-Roast Pork Belly</div>
+    <div class="rc-sub">Perfect crackling · apple &amp; calvados purée · sage-braised lentils · calvados jus</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Belly 160°C 3 hrs · Blast 240°C crackling</span>
+    <span class="badge time">Prep 30 min · Total 4 hrs</span>
+    <span class="badge serves">Serves 4–6</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Pork Belly</td></tr>
+<tr><td>Pork belly, skin on, scored</td><td>1.2 kg</td></tr>
+<tr><td>Sea salt (for skin)</td><td>2 tbsp</td></tr>
+<tr><td>Fennel seeds, crushed</td><td>1 tbsp</td></tr>
+<tr><td>Garlic powder</td><td>1 tsp</td></tr>
+<tr><td>White wine</td><td>200 ml</td></tr>
+<tr><td>Chicken stock</td><td>300 ml</td></tr>
+<tr><td>Onion, sliced</td><td>1 large</td></tr>
+<tr><td>Apple, halved</td><td>1</td></tr>
+<tr><td>Bay leaves, thyme</td><td>3 each</td></tr>
+<tr><td class="ingr-section" colspan="2">Apple &amp; Calvados Purée</td></tr>
+<tr><td>Granny Smith apples, peeled, diced</td><td>4 large</td></tr>
+<tr><td>Calvados (or apple brandy)</td><td>60 ml</td></tr>
+<tr><td>Butter</td><td>40 g</td></tr>
+<tr><td>Caster sugar</td><td>1 tbsp</td></tr>
+<tr><td>Lemon juice</td><td>1 tsp</td></tr>
+<tr><td class="ingr-section" colspan="2">Calvados Jus</td></tr>
+<tr><td>Reserved pork cooking juices</td><td>300 ml</td></tr>
+<tr><td>Calvados</td><td>50 ml</td></tr>
+<tr><td>Butter</td><td>25 g</td></tr>
+<tr><td class="ingr-section" colspan="2">To Serve</td></tr>
+<tr><td>Puy lentils, cooked</td><td>200 g</td></tr>
+<tr><td>Sage leaves, fried crispy</td><td>8 leaves</td></tr>
+<tr><td>Apple, thinly sliced</td><td>½</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Score the pork skin deeply — cuts all the way through the fat to the flesh, spaced 1 cm apart. Rub sea salt, fennel seeds, and garlic powder vigorously into the cuts and all over the skin. Pat the flesh side dry. Leave uncovered in the fridge overnight or minimum 4 hours — the drier the skin, the better the crackling.</span></li>
+<li><span class="sn">2</span><span>Preheat oven to 160°C. Place onion, apple, bay, and thyme in the base of a deep roasting tray. Pour in white wine and stock. Place pork belly skin-side up on top of the aromatics — the belly should sit above the liquid, not submerged. The steam from the liquid keeps the flesh moist while the skin stays dry and blisteringly hot above.</span></li>
+<li><span class="sn">3</span><span>Roast at 160°C for 3 hours. The flesh should be completely tender and yielding — probe it; it should offer no resistance. Carefully pour off the cooking liquids and reserve. Now blast the belly at 240°C (no fan) for 20–25 minutes until the skin bubbles, blisters, and crisps into full crackling. Watch it carefully — it can char quickly after 20 minutes.</span></li>
+<li><span class="sn">4</span><span>Apple calvados purée: cook diced apple with butter and sugar in a covered saucepan over low heat until completely soft — 15 minutes. Remove lid, add calvados. Cook 2 minutes. Blend completely smooth. Season with lemon juice and salt. Silky and slightly sharp — this cuts through the fat perfectly.</span></li>
+<li><span class="sn">5</span><span>Calvados jus: strain reserved cooking juices. Skim fat. Reduce by half. Add calvados. Reduce 2 more minutes. Mount with cold butter. Season.</span></li>
+<li><span class="sn">6</span><span>To plate: slice pork belly into thick portions. Spoon apple purée to one side. Place lentils (warmed with a little butter and seasoning) alongside. Rest pork belly on the purée. Spoon jus around. Crispy sage leaves over the top. Apple slices for freshness.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Chef's Tip</strong>
+The overnight dry salt cure is not optional — it is the difference between glass-like crackling and leathery skin. The flash-blast technique (low slow then 240°C) produces more consistent crackling than starting hot. If the crackling isn't crisping at 240°C, the skin still has moisture — give it another 10 minutes. Puy lentils are the ideal pairing: they absorb the pork fat beautifully and add textural contrast.
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$11.40</div><div class="cs-lbl">Food Cost/Plate</div></div>
+<div class="cs-item"><div class="cs-val">$36.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">31.7%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$24.60</div><div class="cs-lbl">Gross Profit</div></div>
+<div class="cs-item"><div class="cs-val">💰 Best Margin</div><div class="cs-lbl">Menu Position</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Milk (butter) · Sulphites (wine, calvados) · Celery (lentil prep). GF if stock is GF.</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Main 05 — Pork Belly</span></div>
+</div>
+<!-- MAIN 6: MUSHROOM WELLINGTON (VEG) -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Main 06 · Mushroom Wellington</span><span class="page-num">07</span></div>
+
+<div class="recipe-card">
+<div class="rc-hdr">
+  <div class="rc-left">
+    <div class="rc-num">Main 06 of 06</div>
+    <div class="rc-name">Portobello &amp; Porcini Wellington</div>
+    <div class="rc-sub">Wild mushroom &amp; truffle duxelles · golden puff pastry · roasted cherry tomatoes · red wine reduction</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge temp">Oven 200°C · 25 min · Golden pastry</span>
+    <span class="badge time">Prep 40 min · Bake 25 min</span>
+    <span class="badge serves">Serves 4</span>
+  </div>
+</div>
+<div class="rc-body">
+<div class="rc-grid">
+<div class="rc-ingr">
+<h6>Ingredients</h6>
+<table class="ingr-table">
+<tr><td class="ingr-section" colspan="2">Wellington</td></tr>
+<tr><td>Large portobello mushrooms</td><td>4 × 100 g</td></tr>
+<tr><td>Puff pastry, good quality</td><td>500 g</td></tr>
+<tr><td>Egg yolk + splash cream (egg wash)</td><td>2 yolks</td></tr>
+<tr><td class="ingr-section" colspan="2">Porcini Duxelles</td></tr>
+<tr><td>Mixed mushrooms (chestnut, field, shiitake)</td><td>600 g</td></tr>
+<tr><td>Dried porcini, soaked 20 min</td><td>25 g</td></tr>
+<tr><td>Shallots, finely diced</td><td>3 large</td></tr>
+<tr><td>Garlic, minced</td><td>3 cloves</td></tr>
+<tr><td>Butter</td><td>50 g</td></tr>
+<tr><td>Olive oil</td><td>2 tbsp</td></tr>
+<tr><td>Dry sherry or white wine</td><td>80 ml</td></tr>
+<tr><td>Thyme leaves</td><td>1 tbsp</td></tr>
+<tr><td>Truffle oil (optional finish)</td><td>1 tsp</td></tr>
+<tr><td>Salt, white pepper</td><td>to season</td></tr>
+<tr><td class="ingr-section" colspan="2">Red Wine Reduction</td></tr>
+<tr><td>Red wine</td><td>300 ml</td></tr>
+<tr><td>Vegetable stock</td><td>400 ml</td></tr>
+<tr><td>Shallot, sliced</td><td>1</td></tr>
+<tr><td>Rosemary, thyme</td><td>2 sprigs each</td></tr>
+<tr><td>Butter</td><td>30 g</td></tr>
+<tr><td class="ingr-section" colspan="2">To Serve</td></tr>
+<tr><td>Cherry tomatoes, on the vine</td><td>2 vines</td></tr>
+<tr><td>Wilted spinach or French beans</td><td>120 g</td></tr>
+<tr><td>Watercress</td><td>small bunch</td></tr>
+</table>
+</div>
+<div class="rc-method">
+<h6>Method</h6>
+<ol class="method-steps">
+<li><span class="sn">1</span><span>Prepare the portobello mushrooms: remove stalks. Brush caps with olive oil, season. Sear in a very hot pan, 2 minutes per side. They must be completely dry after searing — place on a wire rack and cool completely. Pat dry with paper towel. Moisture is the enemy of crispy pastry.</span></li>
+<li><span class="sn">2</span><span>Porcini duxelles: drain soaked porcini, reserve the soaking liquid (strain to remove grit). Finely chop all mushrooms — they should be almost minced. Sweat shallots and garlic in butter and oil over medium heat until soft, 5 minutes. Add all mushrooms. Cook over high heat, stirring frequently, until completely dry — 15–20 minutes. This is critical. Add sherry and porcini soaking liquid. Reduce until completely evaporated. Add thyme. Season aggressively. Cool completely. Add truffle oil if using.</span></li>
+<li><span class="sn">3</span><span>Roll puff pastry to 3–4 mm thickness. Cut into 4 portions large enough to wrap one mushroom with 3 cm overlap. Place a generous spoonful of duxelles in the centre of each pastry rectangle. Set a portobello mushroom on top gill-side down. Cover with more duxelles. Fold pastry up and over, sealing edges with egg wash. Press firmly. Flip seam-side down. Score the top decoratively. Refrigerate 30 minutes minimum — this is crucial for holding the shape.</span></li>
+<li><span class="sn">4</span><span>Brush generously with egg wash. Place on a baking paper-lined tray. Bake at 200°C for 20–25 minutes until deep golden brown and the pastry sounds hollow when tapped.</span></li>
+<li><span class="sn">5</span><span>Red wine reduction: sweat shallot with herbs. Add red wine. Reduce by two-thirds. Add vegetable stock. Reduce by half until glossy and slightly syrupy. Strain through fine sieve. Mount with cold butter. Season.</span></li>
+<li><span class="sn">6</span><span>Roast cherry tomato vines in the oven for the last 8 minutes of the Wellington baking time — 180°C until just blistered.</span></li>
+<li><span class="sn">7</span><span>To plate: place Wellington slightly off-centre. Wilted greens or French beans alongside. Roasted cherry tomato vine draped over or beside. Pour red wine reduction around. Watercress for height and freshness.</span></li>
+</ol>
+<div class="tip-box">
+<strong>Chef's Tip</strong>
+The duxelles must be completely bone dry before it goes into the pastry — any residual moisture will steam inside and make the pastry soggy. The refrigeration rest before baking is not optional — it firms the butter in the pastry and prevents it ballooning unevenly in the oven. This is your vegetarian showpiece — it should look as impressive as the beef rib. If using shop-bought puff pastry, use all-butter puff only. The cheap vegetable-fat versions don't colour properly and taste flat.
+</div>
+</div>
+</div>
+</div>
+<div class="cost-strip">
+<div class="cs-item"><div class="cs-val">$9.80</div><div class="cs-lbl">Food Cost/Plate</div></div>
+<div class="cs-item"><div class="cs-val">$34.00</div><div class="cs-lbl">Menu Price</div></div>
+<div class="cs-item"><div class="cs-val">28.8%</div><div class="cs-lbl">Food Cost %</div></div>
+<div class="cs-item"><div class="cs-val">$24.20</div><div class="cs-lbl">Gross Profit</div></div>
+<div class="cs-item"><div class="cs-val">🌿 Veg Feature</div><div class="cs-lbl">Menu Position</div></div>
+</div>
+<div class="allergen-row"><strong>Allergens:</strong> Gluten (puff pastry) · Milk (butter) · Eggs (egg wash) · Sulphites (wine, sherry) · Suitable for vegetarians ✅</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Main 06 — Mushroom Wellington</span></div>
+</div>
+
+<!-- SUMMARY PAGE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Menu Summary · Food Cost · Chef's Notes</span><span class="page-num">08</span></div>
+
+<h2 style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--accent);margin:0 0 4mm;border-left:4px solid var(--gold);padding-left:3mm">6 Mains — Menu at a Glance</h2>
+
+<table style="width:100%;border-collapse:collapse;margin-bottom:5mm;font-size:9.5px">
+<tr style="background:var(--accent);color:#fff">
+  <th style="padding:3mm;text-align:left;font-size:8px;letter-spacing:0.5px">#</th>
+  <th style="padding:3mm;text-align:left;font-size:8px">Dish</th>
+  <th style="padding:3mm;text-align:left;font-size:8px">Key Flavours</th>
+  <th style="padding:3mm;text-align:center;font-size:8px">Menu Price</th>
+  <th style="padding:3mm;text-align:center;font-size:8px">Food Cost</th>
+  <th style="padding:3mm;text-align:center;font-size:8px">FC %</th>
+  <th style="padding:3mm;text-align:center;font-size:8px">Gross Profit</th>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;color:var(--gold)">01</td>
+  <td style="padding:2.5mm 3mm;font-weight:600">72-Hour Beef Short Rib</td>
+  <td style="padding:2.5mm 3mm;color:var(--mid);font-style:italic">Red wine jus, horseradish, mash</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:600">$42.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center">$18.40</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--red)">43.8%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green);font-weight:600">$23.60</td>
+</tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;color:var(--gold)">02</td>
+  <td style="padding:2.5mm 3mm;font-weight:600">Pan-Roasted Duck Breast</td>
+  <td style="padding:2.5mm 3mm;color:var(--mid);font-style:italic">Cherry gastrique, celeriac, confit croquette</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:600">$44.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center">$16.20</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--gold)">36.8%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green);font-weight:600">$27.80</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;color:var(--gold)">03</td>
+  <td style="padding:2.5mm 3mm;font-weight:600">Crispy-Skin Pan-Roast Salmon</td>
+  <td style="padding:2.5mm 3mm;color:var(--mid);font-style:italic">Pea purée, brown butter capers, charred lemon</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:600">$38.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center">$12.80</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green)">33.7%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green);font-weight:600">$25.20</td>
+</tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;color:var(--gold)">04</td>
+  <td style="padding:2.5mm 3mm;font-weight:600">Herb-Crusted Lamb Rump</td>
+  <td style="padding:2.5mm 3mm;color:var(--mid);font-style:italic">Dijon crust, minted peas, rosemary jus</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:600">$40.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center">$14.60</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--gold)">36.5%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green);font-weight:600">$25.40</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;color:var(--gold)">05</td>
+  <td style="padding:2.5mm 3mm;font-weight:600">Slow-Roast Pork Belly</td>
+  <td style="padding:2.5mm 3mm;color:var(--mid);font-style:italic">Perfect crackling, apple calvados, lentils</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:600">$36.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center">$11.40</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green)">31.7%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green);font-weight:600">$24.60</td>
+</tr>
+<tr style="background:var(--warm);border-bottom:2px solid var(--gold)">
+  <td style="padding:2.5mm 3mm;font-weight:700;color:var(--gold)">06</td>
+  <td style="padding:2.5mm 3mm;font-weight:600">Portobello &amp; Porcini Wellington</td>
+  <td style="padding:2.5mm 3mm;color:var(--mid);font-style:italic">Truffle duxelles, puff pastry, red wine reduction</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:600">$34.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center">$9.80</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green)">28.8%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;color:var(--green);font-weight:600">$24.20</td>
+</tr>
+<tr style="background:rgba(200,168,75,0.08);border-top:2px solid var(--gold)">
+  <td colspan="3" style="padding:2.5mm 3mm;font-weight:700;font-size:10px;color:var(--accent)">MENU AVERAGES</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:700;font-size:10px;color:var(--accent)">$39.00</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:700">$13.87</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:700;color:var(--gold)">35.6%</td>
+  <td style="padding:2.5mm 3mm;text-align:center;font-weight:700;color:var(--green)">$25.13</td>
+</tr>
+</table>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm">
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:4mm">
+<div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm">Chef's Notes — Mise en Place</div>
+<ul style="font-size:9.5px;color:#333;line-height:1.85;padding-left:4mm">
+<li>Short rib and pork belly <strong>must be started the night before service</strong> — minimum 6 hours each</li>
+<li>Duck breasts seared, rested, and held at 52°C — finish to order under salamander</li>
+<li>Wellington assembled and refrigerated — baked to order (25 min)</li>
+<li>All sauces made in bulk each morning — held hot in bain marie at service</li>
+<li>Pea purées made fresh each service — hold no more than 2 hours</li>
+<li>Brown butter for salmon made to order — takes 4 minutes, cannot be held</li>
+</ul>
+</div>
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--green);padding:4mm">
+<div style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:2mm">Menu Engineering Notes</div>
+<ul style="font-size:9.5px;color:#333;line-height:1.85;padding-left:4mm">
+<li><strong>Star (High profit, High popularity):</strong> Salmon, Lamb Rump</li>
+<li><strong>Ploughorse (High profit, Lower popularity):</strong> Wellington, Pork Belly</li>
+<li><strong>Puzzle (Low profit, High popularity):</strong> Beef Short Rib</li>
+<li><strong>Dog (Low profit, Low popularity):</strong> None — this is a clean menu</li>
+<li>Short Rib's high food cost % is offset by its role as the signature draw — it sells everything else on the table (wine, sides, desserts)</li>
+<li>Promote Wellington more actively — lowest food cost, highest margin</li>
+</ul>
+</div>
+</div>
+
+<div style="background:var(--accent);color:#fff;padding:5mm 6mm">
+<div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#C8A84B;margin-bottom:2mm">The Philosophy of the Pub Fine Dining Menu</div>
+<div style="font-size:9.5px;color:rgba(255,255,255,0.6);line-height:1.9">
+A great pub kitchen does not try to be a restaurant. It tries to be the best possible version of itself. These six dishes are built on that principle — every one of them has classical British or European roots, every one has been refined into something worth driving for, and every one can be executed consistently by a team of four on a busy Friday night. No ingredient requires specialist sourcing. No technique requires special equipment beyond a heavy braising pan and a reliable oven.<br><br>
+The short rib is the soul of the menu. The wellington is the proof that this kitchen takes its vegetarian guests seriously. The salmon is the dish that brings in the guest who wasn't sure they'd like pub food. The duck is the surprise — it outperforms its price point every time. The lamb is the reliable bestseller that pays the wages. The pork belly is the one that makes people come back.<br><br>
+<span style="color:#C8A84B;font-style:italic;font-family:'Playfair Display',serif">Six dishes. One kitchen. One standard. No exceptions.</span>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Classic Pub Fine Dining · KitchenFounder</span><span class="pf-r">Menu Summary · 2026</span></div>
+</div>
+
+</body>
+</html>
