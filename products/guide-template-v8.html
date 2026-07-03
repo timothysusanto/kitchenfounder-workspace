@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFounder Guide Template v8 — [GUIDE NAME]</title>
+<!--
+  ============================================================
+  KITCHENFOUNDEER GUIDE TEMPLATE v8 (July 2026)
+  ============================================================
+  DESIGN: Light editorial magazine style
+  PRINT:  Chrome → Legal paper · 80% scale · Background graphics ON
+          No headers/footers · No margins
+  LAYOUT: Ingredients stack ABOVE method (not side-by-side)
+  ACCENT: Change --accent-h (hue), --gv (accent colour), --gv-rgb per cuisine
+  ============================================================
+
+  RECIPE CARD STRUCTURE:
+    <div class="rc">
+      <div class="rc-hdr" style="background:linear-gradient(135deg,#HEX1,#HEX2)">
+        <div>
+          <div class="rc-cat">Category · Notes</div>
+          <div class="rc-name">Recipe Name</div>
+          <div class="rc-jp">Translation / Price / FC%</div>
+          <div class="rc-sub">Brief description</div>
+        </div>
+        <div class="rc-badges">
+          <span class="badge season">Season</span>
+          <span class="badge yield">FC 00%</span>
+        </div>
+      </div>
+      <div class="rc-body">
+        <div class="col-h6">Ingredients</div>
+        <table class="ingr-t">
+          <tr><td>Ingredient name</td><td>Amount</td></tr>
+          <tr class="secret-row"><td class="secret">↳ Secret: ...</td><td class="secret">effect</td></tr>
+        </table>
+        <div class="col-h6" style="margin-top:3mm">Method</div>
+        <ol class="steps">
+          <li><span class="sn">1</span><span>Step text</span></li>
+        </ol>
+        <div class="secret-box"><strong>🧊 Title</strong>Text</div>
+        <div class="tip"><strong>Tip Label</strong>Tip text</div>
+      </div>
+      <div class="cost-bar">
+        <div class="cb-item"><div class="cb-val">$X.XX</div><div class="cb-lbl">Cost</div></div>
+        <div class="cb-item"><div class="cb-val">$X.XX</div><div class="cb-lbl">Price</div></div>
+        <div class="cb-item"><div class="cb-val">XX%</div><div class="cb-lbl">FC%</div></div>
+        <div class="cb-item"><div class="cb-val">$X.XX</div><div class="cb-lbl">GP</div></div>
+        <div class="cb-item"><div class="cb-val">Position</div><div class="cb-lbl">Position</div></div>
+      </div>
+      <div class="al-bar"><strong>Allergens:</strong> List here</div>
+    </div>
+
+  PAGE STRUCTURE:
+    <div class="page">
+      <div class="page-hdr"><span class="page-section">Section · Title</span><span class="page-num">NN</span></div>
+      ... content ...
+      <div class="page-footer">
+        <span class="pf-l">Guide #XX · [Name] · KitchenFounder</span>
+        <span class="pf-r">Section Name</span>
+      </div>
+    </div>
+
+  COLOUR VARIABLES TO CHANGE PER CUISINE:
+    --gv         main accent colour (used in cover title line 2, headings glow)
+    --gv-rgb     same as --gv in R,G,B format (for rgba() transparency)
+    --ice        recipe card section headers + secret row highlights
+    Cover gradient: change cg1/cg2/cg3 rgba values to match --gv
+    Cover header gradient: linear-gradient(135deg,#DARK1,#DARK2)
+
+  KNOWN ACCENT COLOURS (previous guides):
+    Kakigori      --gv:#7EC8D4  --ice:#4A8FAB  (ice blue)
+    NAMA28        --gv:#D4A96A  --ice:#C49A5A  (warm gold)
+    Artisan Bakery --gv:#A8C8A0 --ice:#6A9E62  (sage green)
+    Bangkok Dessert --gv:#E8B4C8 --ice:#C2607A  (rose pink)
+    Rooftop Bar   --gv:#B8C8E8  --ice:#1A3A5C  (navy/copper)
+  ============================================================
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* === CHANGE THESE PER CUISINE === */
+  --gv:#7EC8D4;          /* accent colour — cover title line 2, stat values */
+  --ice:#4A8FAB;         /* recipe card headers, secret rows, col-h6 */
+  --gold:#4A8FAB;        /* info-box left border (default = same as ice) */
+
+  /* === STANDARD PALETTE — do not change === */
+  --bg:#FAFAF8;--text:#1C1C1C;--border:#E0D9D0;--mid:#8A8A8A;--warm:#F5F0E8;
+  --accent:#0D1C2B;
+  --matcha:#2E6B4A;--sakura:#C2607A;--yuzu:#C8930A;
+  --dark:#070E14;--red:#C0392B;--green:#2D7D4F
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+
+/* ── COVER ── */
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden}
+.cg1{position:absolute;top:-5%;left:-5%;width:420px;height:420px;background:radial-gradient(circle,rgba(74,143,171,0.10) 0%,transparent 60%)}
+.cg2{position:absolute;bottom:0;right:0;width:380px;height:380px;background:radial-gradient(circle,rgba(126,200,164,0.07) 0%,transparent 55%)}
+.cg3{position:absolute;top:42%;left:55%;width:220px;height:220px;background:radial-gradient(circle,rgba(194,96,122,0.05) 0%,transparent 55%)}
+.ctop{padding:13mm 16mm 0;z-index:2;position:relative}
+.c-logo{font-size:7.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(74,143,171,0.40)}
+.c-num{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.15);margin-top:1mm}
+.cmid{padding:0 16mm;flex:1;display:flex;flex-direction:column;justify-content:center;z-index:2;position:relative}
+.c-eye{font-size:8px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(74,143,171,0.65);margin-bottom:3.5mm}
+.c-title{font-family:'Playfair Display',serif;font-weight:900;line-height:0.85;margin-bottom:4mm}
+.c-title .t1{font-size:58px;color:#fff;display:block}
+.c-title .t2{font-size:58px;color:var(--gv);display:block}  /* ← cuisine accent */
+.c-title .t3{font-size:28px;font-style:italic;color:rgba(255,255,255,0.28);display:block;margin-top:2mm}
+.c-rule{width:70mm;height:2px;background:linear-gradient(90deg,var(--gv),transparent);margin:4mm 0}
+.c-quote{font-family:'Playfair Display',serif;font-size:10px;font-style:italic;color:rgba(255,255,255,0.3);line-height:1.95;max-width:155mm;margin-bottom:5mm}
+.c-pills{display:flex;flex-wrap:wrap;gap:2mm;margin-bottom:4mm}
+.cpill{border:1px solid rgba(255,255,255,0.07);color:rgba(255,255,255,0.25);font-size:6.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.c-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
+.cs{border:1px solid rgba(255,255,255,0.07);padding:2.5mm;text-align:center}
+.cs-v{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gv)}
+.cs-l{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.25);margin-top:0.5mm}
+.cbot{padding:8mm 16mm;z-index:2;position:relative;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cbot-l{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.28)}
+.cbot-r{font-size:7px;color:rgba(255,255,255,0.14);text-align:right;line-height:1.9}
+
+/* ── PAGES ── */
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;background:var(--bg);position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+
+/* ── TYPOGRAPHY ── */
+h2{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--accent);margin:4mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+h3{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin:3mm 0 2mm;padding-bottom:1mm;border-bottom:1px solid var(--border)}
+p{font-size:9.5px;color:#333;line-height:1.9;margin-bottom:2mm}
+ul,ol{padding-left:4mm}
+ul li,ol li{font-size:9px;color:#333;line-height:1.85;margin-bottom:0.8mm}
+
+/* ── LAYOUT HELPERS ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm}
+
+/* ── DARK BAND (concept / philosophy blocks) ── */
+.dark-band{background:var(--accent);color:#fff;padding:5mm 6mm;margin-bottom:4mm}
+.db-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gv);margin-bottom:2mm}
+.db-body{font-size:9.5px;color:rgba(255,255,255,0.58);line-height:1.95}
+
+/* ── INFO BOXES ── */
+.info-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:3.5mm 4mm;margin-bottom:3mm}
+.info-box.mt{border-left-color:var(--matcha)}
+.info-box.sk{border-left-color:var(--sakura)}
+.info-box.yu{border-left-color:var(--yuzu)}
+.ib-title{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm}
+.ib-ic{color:var(--ice)}.ib-mt{color:var(--matcha)}.ib-sk{color:var(--sakura)}.ib-yu{color:var(--yuzu)}.ib-gd{color:var(--gold)}
+.info-box p,.info-box li{font-size:9px;color:#333;line-height:1.85}
+.info-box ul{padding-left:3.5mm}
+
+/* ── RECIPE CARDS ── */
+.rc{background:#fff;border:1px solid var(--border);margin-bottom:3.5mm;page-break-inside:avoid;overflow:hidden}
+.rc-hdr{padding:3mm 4.5mm;display:flex;justify-content:space-between;align-items:flex-start}
+.rc-cat{font-size:7px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:0.5mm}
+.rc-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;line-height:1.05}
+.rc-jp{font-size:9px;color:rgba(255,255,255,0.32);margin-top:0.5mm}
+.rc-sub{font-size:8px;color:rgba(255,255,255,0.38);font-style:italic;margin-top:0.5mm;line-height:1.4}
+.rc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:1.5mm;flex-shrink:0}
+.badge{font-size:7px;font-weight:700;padding:1mm 2.5mm;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.badge.temp{background:rgba(200,168,75,0.15);color:var(--yuzu);border:1px solid rgba(200,168,75,0.3)}
+.badge.yield{background:rgba(46,107,74,0.18);color:var(--matcha);border:1px solid rgba(46,107,74,0.3)}
+.badge.season{background:rgba(74,143,171,0.15);color:var(--ice);border:1px solid rgba(74,143,171,0.25)}
+
+/* ── RECIPE CARD BODY: STACKED (ingredients ABOVE method) ── */
+.rc-body{padding:3mm 4.5mm}
+
+/* ── INGREDIENT TABLE ── */
+.col-h6{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-bottom:1mm;border-bottom:1px solid var(--border);margin-bottom:2mm;color:var(--ice)}
+.ingr-t{width:100%;border-collapse:collapse;margin-bottom:3mm}
+.ingr-t tr:nth-child(even){background:var(--warm)}
+.ingr-t td{padding:1.3mm 2mm;font-size:8.5px;color:#333;border-bottom:1px solid rgba(224,217,208,0.4);vertical-align:top}
+.ingr-t td:first-child{font-weight:500}
+.ingr-t td:last-child{text-align:right;color:var(--mid);white-space:nowrap;font-size:8px}
+.ingr-t td.sec{font-size:6.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:1.5mm 2mm;border-bottom:1px solid var(--border);background:rgba(74,143,171,0.05);color:var(--ice)}
+.ingr-t td.secret{color:var(--ice);font-weight:600;font-size:8px}
+.ingr-t tr.secret-row td{background:rgba(74,143,171,0.06)}
+
+/* ── METHOD STEPS ── */
+.steps{list-style:none;padding:0;margin-bottom:2mm}
+.steps li{display:grid;grid-template-columns:5.5mm 1fr;gap:1.5mm;margin-bottom:2mm;font-size:8.5px;color:#333;line-height:1.75}
+.sn{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ice);line-height:1}
+
+/* ── CALLOUT BOXES ── */
+.tip{background:var(--warm);border-left:3px solid var(--gold);padding:2.5mm 3mm;margin-top:2mm;font-size:8.5px;color:#444;line-height:1.75}
+.tip strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);display:block;margin-bottom:0.5mm}
+.secret-box{background:rgba(74,143,171,0.06);border-left:3px solid var(--ice);padding:2.5mm 3mm;margin-top:2mm;font-size:8.5px;color:#333;line-height:1.75}
+.secret-box strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--ice);display:block;margin-bottom:1mm}
+
+/* ── COST + ALLERGEN BARS ── */
+.cost-bar{background:var(--accent);padding:2mm 4.5mm;display:flex;justify-content:space-between}
+.cb-item{text-align:center}
+.cb-val{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;color:var(--gv)}
+.cb-lbl{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-top:0.3mm}
+.al-bar{padding:1.5mm 4.5mm;background:var(--warm);border-top:1px solid var(--border);font-size:7.5px;color:var(--mid)}
+.al-bar strong{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     COVER PAGE
+     Change: t1 (guide name line 1), t2 (line 2 in accent colour),
+     t3 (subtitle/edition), c-eye (eyebrow), c-quote, c-pills, c-stats
+     ═══════════════════════════════════════════════ -->
+<div class="cover">
+<div class="cg1"></div><div class="cg2"></div><div class="cg3"></div>
+<div class="ctop">
+  <div class="c-logo">KitchenFounder · Guide #XX · Michelin Chef Series · 2026 Edition</div>
+  <div class="c-num">[Concept Name] · [Location/Style] · [Format]</div>
+</div>
+<div class="cmid">
+  <div class="c-eye">[Eyebrow keywords · Separated · By dots]</div>
+  <div class="c-title">
+    <span class="t1">[Guide Name]</span>
+    <span class="t2">[Name Line 2]</span>
+    <span class="t3">Complete Guide · 2026 Edition</span>
+  </div>
+  <div class="c-rule"></div>
+  <div class="c-quote">"[Opening quote — 2–3 sentences. Philosophy of this cuisine/concept.]"</div>
+  <div class="c-pills">
+    <span class="cpill">28 Menu Items</span><span class="cpill">6 Starters</span>
+    <span class="cpill">10 Mains</span><span class="cpill">4 Desserts</span><span class="cpill">8 Drinks</span>
+    <span class="cpill">Service Scripts · Retention</span>
+    <span class="cpill">Staff Forecast · Kitchen Design · Full P&amp;L</span>
+  </div>
+  <div class="c-stats">
+    <div class="cs"><div class="cs-v">28</div><div class="cs-l">Menu Items</div></div>
+    <div class="cs"><div class="cs-v">XX%</div><div class="cs-l">Avg FC</div></div>
+    <div class="cs"><div class="cs-v">$XX</div><div class="cs-l">Avg GP</div></div>
+    <div class="cs"><div class="cs-v">XX%</div><div class="cs-l">Net Margin</div></div>
+  </div>
+</div>
+<div class="cbot">
+  <div class="cbot-l">KitchenFounder · Timothy Susanto · Head Chef Series</div>
+  <div class="cbot-r">Guide #XX · v8 · 2026 Edition<br>Confidential · All rights reserved</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CONTENT PAGES — repeat .page blocks as needed
+     ═══════════════════════════════════════════════ -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Section Name · Sub-title</span><span class="page-num">02</span></div>
+
+<!-- CONCEPT DARK BAND -->
+<div class="dark-band">
+<div class="db-title">The Concept: [Headline]</div>
+<div class="db-body">Concept description here.</div>
+</div>
+
+<!-- SAMPLE RECIPE CARD -->
+<div class="rc">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#0D1C2B,#1A2E40)">
+  <div>
+    <div class="rc-cat" style="color:rgba(126,200,212,0.8)">Starter 01 · [Category]</div>
+    <div class="rc-name">Recipe Name</div>
+    <div class="rc-jp">Translation · $XX.XX</div>
+    <div class="rc-sub">Brief description of the dish</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge season">Year-round</span>
+    <span class="badge yield">FC 28%</span>
+  </div>
+</div>
+<div class="rc-body">
+  <div class="col-h6">Ingredients (serves 1)</div>
+  <table class="ingr-t">
+    <tr><td>Main ingredient</td><td>100 g</td></tr>
+    <tr><td>Second ingredient</td><td>50 g</td></tr>
+    <tr class="secret-row"><td class="secret">↳ Secret: special ingredient or technique</td><td class="secret">why it matters</td></tr>
+  </table>
+
+  <div class="col-h6">Method</div>
+  <ol class="steps">
+    <li><span class="sn">1</span><span>Step one description.</span></li>
+    <li><span class="sn">2</span><span>Step two description.</span></li>
+    <li><span class="sn">3</span><span>Step three description.</span></li>
+  </ol>
+  <div class="secret-box"><strong>🔑 Insight Title</strong>Insight text here.</div>
+  <div class="tip"><strong>Chef Note</strong>Tip text here.</div>
+</div>
+<div class="cost-bar">
+  <div class="cb-item"><div class="cb-val">$X.XX</div><div class="cb-lbl">Cost</div></div>
+  <div class="cb-item"><div class="cb-val">$XX.XX</div><div class="cb-lbl">Price</div></div>
+  <div class="cb-item"><div class="cb-val">XX%</div><div class="cb-lbl">FC%</div></div>
+  <div class="cb-item"><div class="cb-val">$XX.XX</div><div class="cb-lbl">GP</div></div>
+  <div class="cb-item"><div class="cb-val">Position</div><div class="cb-lbl">Position</div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> List allergens here</div>
+</div>
+
+<div class="page-footer">
+  <span class="pf-l">Guide #XX · [Guide Name] · KitchenFounder</span>
+  <span class="pf-r">Section Name</span>
+</div>
+</div>
+
+</body>
+</html>

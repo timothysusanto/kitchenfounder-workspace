@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide #51 — Japanese Artisan Bakery Café · Amam Dacotan Inspired</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--text:#1C1C1C;--border:#E0D9D0;--mid:#8A8A8A;--warm:#F5F0E8;
+  --accent:#1C1410;--gold:#8B6914;--matcha:#3D6B4F;--sakura:#C2607A;
+  --rust:#8B3A2A;--forest:#2A3D2A;--cream:#F0EAD6;--dark:#0D0B08
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+
+/* COVER */
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden}
+.cov-texture{position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(139,105,20,0.015) 0px,rgba(139,105,20,0.015) 1px,transparent 1px,transparent 12px),repeating-linear-gradient(-45deg,rgba(42,61,42,0.02) 0px,rgba(42,61,42,0.02) 1px,transparent 1px,transparent 18px)}
+.cov-glow1{position:absolute;top:-10%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(139,96,32,0.09) 0%,transparent 55%)}
+.cov-glow2{position:absolute;bottom:0;right:0;width:350px;height:350px;background:radial-gradient(circle,rgba(61,107,79,0.07) 0%,transparent 55%)}
+.cov-glow3{position:absolute;top:40%;right:10%;width:200px;height:200px;background:radial-gradient(circle,rgba(194,96,122,0.05) 0%,transparent 55%)}
+.cov-top{padding:12mm 15mm 0;z-index:2;position:relative}
+.cov-logo{font-size:7.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(200,168,75,0.35)}
+.cov-num{font-size:7.5px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-top:1.5mm}
+.cov-mid{padding:0 15mm;flex:1;display:flex;flex-direction:column;justify-content:center;z-index:2;position:relative}
+.cov-eye{font-size:8px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(139,96,32,0.6);margin-bottom:3mm}
+.cov-title{font-family:'Playfair Display',serif;font-weight:900;color:#fff;line-height:0.88;margin-bottom:4mm}
+.cov-title .l1{font-size:44px;display:block;color:rgba(255,255,255,0.9)}
+.cov-title .l2{font-size:52px;display:block;color:#C8A84B}
+.cov-title .l3{font-size:32px;display:block;font-style:italic;color:rgba(255,255,255,0.35);margin-top:1mm}
+.cov-rule{width:65mm;height:1.5px;background:linear-gradient(90deg,#C8A84B,transparent);margin:4mm 0}
+.cov-quote{font-family:'Playfair Display',serif;font-size:10px;font-style:italic;color:rgba(255,255,255,0.32);line-height:1.9;max-width:150mm;margin-bottom:5mm}
+.cov-pills{display:flex;flex-wrap:wrap;gap:2mm;margin-bottom:4mm}
+.pill{border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);font-size:7px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3mm}
+.cov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm;margin-bottom:0}
+.cg-box{border:1px solid rgba(255,255,255,0.07);padding:3mm;text-align:center}
+.cg-icon{font-size:14px;margin-bottom:1mm}
+.cg-val{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#C8A84B}
+.cg-lbl{font-size:6.5px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.25);margin-top:0.5mm}
+.cov-bot{padding:8mm 15mm;z-index:2;position:relative;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cov-by{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.28)}
+.cov-meta{font-size:7px;color:rgba(255,255,255,0.14);text-align:right;line-height:1.9}
+
+/* PAGES */
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;background:var(--bg);position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.ph-left{font-size:8px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent)}
+.ph-right{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);margin:4mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+h3{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);margin:3mm 0 2mm;padding-bottom:1mm;border-bottom:1px solid var(--border)}
+p{font-size:9.5px;color:#333;line-height:1.9;margin-bottom:2mm}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.info-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:3.5mm 4mm;margin-bottom:3mm}
+.info-box.forest{border-left-color:var(--forest)}
+.info-box.sakura{border-left-color:var(--sakura)}
+.info-box.rust{border-left-color:var(--rust)}
+.info-box.matcha{border-left-color:var(--matcha)}
+.ib-title{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm}
+.ib-title.gd{color:var(--gold)}
+.ib-title.fr{color:var(--forest)}
+.ib-title.sk{color:var(--sakura)}
+.ib-title.ru{color:var(--rust)}
+.ib-title.mt{color:var(--matcha)}
+.info-box p,.info-box li{font-size:9px;color:#333;line-height:1.85}
+.info-box ul,.info-box ol{padding-left:3.5mm}
+.dark-band{background:var(--accent);color:#fff;padding:5mm 6mm;margin-bottom:4mm}
+.db-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#C8A84B;margin-bottom:2mm}
+.db-body{font-size:9.5px;color:rgba(255,255,255,0.58);line-height:1.95}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cov-texture"></div>
+<div class="cov-glow1"></div><div class="cov-glow2"></div><div class="cov-glow3"></div>
+<div class="cov-top">
+  <div class="cov-logo">KitchenFounder · Guide #51 · Michelin Chef Series · 2026 Edition</div>
+  <div class="cov-num">Japanese Artisan Bakery Café · Inspired by Amam Dacotan, Fukuoka</div>
+</div>
+<div class="cov-mid">
+  <div class="cov-eye">Italian Technique · Japanese Soul · Artisan Bread · Café Culture</div>
+  <div class="cov-title">
+    <span class="l1">Japanese</span>
+    <span class="l2">Artisan Bakery</span>
+    <span class="l3">Café Complete Guide</span>
+  </div>
+  <div class="cov-rule"></div>
+  <div class="cov-quote">"This is not a bakery that happens to have Japanese flavours. It is a bakery that was built in Japan, breathes Japanese seasonality, and happens to have mastered the Italian techniques that produce the world's finest enriched breads. The maritozzo is Roman. The filling is Kyoto. The result is neither — and both."</div>
+  <div class="cov-pills">
+    <span class="pill">28 Menu Items</span>
+    <span class="pill">6 Starters</span>
+    <span class="pill">10 Bread/Mains</span>
+    <span class="pill">4 Desserts</span>
+    <span class="pill">8 Drinks</span>
+    <span class="pill">Maritozzo · Sourdough · Focaccia</span>
+    <span class="pill">Matcha · Miso · Sakura · Yuzu</span>
+    <span class="pill">Staff Scripts · Retention System</span>
+    <span class="pill">Full P&amp;L · Franchise Notes</span>
+  </div>
+  <div class="cov-grid">
+    <div class="cg-box"><div class="cg-icon">🏠</div><div class="cg-val">40–60</div><div class="cg-lbl">Seats (Café)</div></div>
+    <div class="cg-box"><div class="cg-icon">🍞</div><div class="cg-val">80+</div><div class="cg-lbl">Bread Types</div></div>
+    <div class="cg-box"><div class="cg-icon">💰</div><div class="cg-val">$8–22</div><div class="cg-lbl">Price Range</div></div>
+    <div class="cg-box"><div class="cg-icon">📈</div><div class="cg-val">23%</div><div class="cg-lbl">Net Margin</div></div>
+  </div>
+</div>
+<div class="cov-bot">
+  <div class="cov-by">KitchenFounder · Timothy Susanto · Head Chef Series</div>
+  <div class="cov-meta">Guide #51 · v7 · 2026 Edition<br>Confidential · All rights reserved</div>
+</div>
+</div>
+
+<!-- PAGE 2: CONCEPT + BRAND DNA -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Concept · Brand DNA · The Amam Dacotan Philosophy</span><span class="ph-right">02</span></div>
+
+<div class="dark-band">
+<div class="db-title">The Concept: Italian Craft × Japanese Precision</div>
+<div class="db-body">
+Amam Dacotan was founded in Fukuoka in 2018 by Italian-trained chef Ryota Hirako. The name is a phonetic play on Japanese — and the brand is exactly that: a translation. Italian bread culture — slow fermentation, flour obsession, the handmade maritozzo, the dark weight of canelé — translated through Japanese eyes. Seasonal ingredients, extreme attention to texture, the discipline of Japanese craft applied to European technique. The result is something that doesn't exist in Italy and doesn't exist in traditional Japan, which is exactly why 310,000 people have saved that one photo of strawberry cream on dark bread, and why lines form before 8am every single day. <strong style="color:#C8A84B">This guide teaches you how to build that business.</strong>
+</div>
+</div>
+
+<div class="two-col">
+<div>
+<h2>What Amam Dacotan Does</h2>
+<div class="info-box forest">
+<div class="ib-title fr">The Core Offer</div>
+<ul>
+<li><strong>~120 bread types per day</strong> — rotated constantly; never the same display twice</li>
+<li><strong>Hero product: Maritozzo</strong> — Italian cream-filled brioche bun, reimagined with Japanese fillings (matcha, kinako, sakura, pistachio, anko)</li>
+<li><strong>Dark country loaves</strong> — heavy sourdough, miche, rye — the visual anchors of the display counter</li>
+<li><strong>Viennoiserie Japanese style</strong> — croissants with miso butter, pain au chocolat with matcha ganache, kouign-amann with hojicha caramel</li>
+<li><strong>Kyoto exclusives</strong> — Sasami Saikyo Yaki bread (chicken + white miso), Matcha Anko pan</li>
+<li><strong>Italian classics</strong> — canelé, fougasse, focaccia (but served with yuzu olive oil)</li>
+<li><strong>Café upstairs</strong> — 45 seats, bar seating, coffee + seasonal drinks</li>
+</ul>
+</div>
+
+<div class="info-box">
+<div class="ib-title gd">The Physical Space Philosophy</div>
+<ul>
+<li>Renovated <strong>machiya townhouse</strong> — traditional Kyoto townhouse, narrow frontage, deep interior</li>
+<li>Ground floor = <strong>bakery display</strong>, full counter of breads visible on entry</li>
+<li>Upper floor = <strong>café seating</strong> — exposed timber, dried botanicals, warm lantern lighting</li>
+<li>The aesthetic is: <strong>old forest + Japanese farmhouse + European bakery</strong></li>
+<li>No bright overhead lights — everything is warm, slightly dramatic</li>
+<li>The bread is the decoration — artfully stacked loaves ARE the interior design</li>
+<li>No reservations. Takeout recommended for shorter waits. This intentional friction creates perceived exclusivity.</li>
+</ul>
+</div>
+</div>
+
+<div>
+<h2>Why It Works on Instagram</h2>
+<div class="info-box sakura">
+<div class="ib-title sk">The Visual Formula — 310K Saves on One Photo</div>
+<p>The image Mothy sent — dark rye toast loaded with white cream, fresh strawberries, kiwi slices — is the Instagram engine. Every element is calculated:</p>
+<ul>
+<li><strong>Dark bread</strong> as the base → maximum contrast with white cream and vivid fruit</li>
+<li><strong>Fresh fruit piled high</strong> → abundance signal, Japanese fruit fetishism, seasonal triggers</li>
+<li><strong>White cream overflow</strong> → the maritozzo "spill" that signals generosity and handmade quality</li>
+<li><strong>Natural light, wooden surface</strong> → warmth, artisan, not commercial</li>
+<li><strong>Imperfect arrangement</strong> → not styled, "just placed" — feels authentic even when it isn't</li>
+</ul>
+<p style="margin-top:2mm">The formula: <strong>dark base + white cream + vivid seasonal fruit + natural surface + soft light</strong>. Every hero item in this guide is designed around this same visual grammar.</p>
+</div>
+
+<div class="info-box matcha">
+<div class="ib-title mt">The Business Model Insight</div>
+<ul>
+<li><strong>High-volume, low-seat</strong> model — most revenue comes from takeout, not dine-in</li>
+<li><strong>Sell-out by evening</strong> is the daily goal — not maximum production</li>
+<li><strong>120+ bread types</strong> creates a "discovery" experience — guests come back to try what they missed</li>
+<li><strong>Seasonal exclusives</strong> create urgency — "only during cherry blossom season"</li>
+<li><strong>Lines = free marketing</strong> — people film the queue and post it</li>
+<li><strong>No reservations policy</strong> — simplifies operations, preserves mystique</li>
+<li><strong>Gift box format</strong> — premium packaging drives corporate and tourist purchases at 2–3× markup</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="dark-band" style="margin-top:3mm;margin-bottom:0">
+<div class="db-title" style="font-size:12px">Your Version: The 28-Item Artisan Bakery Café Menu</div>
+<div class="db-body" style="font-size:9px">This guide builds a commercially viable version of this concept for first-time operators: 6 starters (small plates to eat in), 10 hero bread/main products (the display counter), 4 dessert specials, and 8 drinks. Every recipe is designed with the Amam Dacotan visual grammar — dark bread, white cream, vivid colour, seasonal Japanese ingredients — but documented for replication by trained staff in any well-equipped bakery kitchen.</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Concept & Brand DNA</span></div>
+</div>
+<!-- PAGE 3: STARTERS (6) -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Starters · 6 Small Plates to Eat In</span><span class="ph-right">03</span></div>
+
+<style>
+.menu-card{background:#fff;border:1px solid var(--border);margin-bottom:3.5mm;page-break-inside:avoid;overflow:hidden}
+.mc-hdr{padding:3mm 4.5mm;display:flex;justify-content:space-between;align-items:flex-start}
+.mc-left .mc-cat{font-size:7px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:0.5mm}
+.mc-left .mc-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;line-height:1.05}
+.mc-left .mc-jp{font-size:9px;color:rgba(255,255,255,0.35);margin-top:0.5mm}
+.mc-left .mc-sub{font-size:8px;color:rgba(255,255,255,0.4);font-style:italic;margin-top:0.5mm;line-height:1.4}
+.mc-right{display:flex;flex-direction:column;align-items:flex-end;gap:1.5mm;flex-shrink:0}
+.mc-price{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#C8A84B}
+.tag{font-size:7px;font-weight:700;padding:1mm 2.5mm;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.tag.fc{background:rgba(61,107,79,0.2);color:#5A9A6A;border:1px solid rgba(61,107,79,0.3)}
+.tag.al{background:rgba(200,168,75,0.12);color:#C8A84B;border:1px solid rgba(200,168,75,0.25)}
+.mc-body{padding:3mm 4.5mm;display:grid;grid-template-columns:68mm 1fr;gap:4mm}
+.col-h6{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-bottom:1mm;border-bottom:1px solid var(--border);margin-bottom:2mm}
+.ingr-t{width:100%;border-collapse:collapse}
+.ingr-t tr:nth-child(even){background:var(--warm)}
+.ingr-t td{padding:1.3mm 2mm;font-size:8.5px;color:#333;border-bottom:1px solid rgba(224,217,208,0.4)}
+.ingr-t td:first-child{font-weight:600}
+.ingr-t td.sec{font-size:6.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:1mm 2mm;border-bottom:1px solid var(--border)}
+.steps{list-style:none;padding:0}
+.steps li{display:grid;grid-template-columns:5mm 1fr;gap:1.5mm;margin-bottom:1.5mm;font-size:8.5px;color:#333;line-height:1.7}
+.sn{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;line-height:1}
+.chef-tip{background:var(--warm);border-left:3px solid var(--gold);padding:2mm 3mm;margin-top:2mm;font-size:8.5px;color:#444;line-height:1.7}
+.chef-tip strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);display:block;margin-bottom:0.5mm}
+.cost-bar{background:var(--accent);padding:2mm 4.5mm;display:flex;justify-content:space-between}
+.cb-item{text-align:center}
+.cb-val{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;color:#E8A0B4}
+.cb-lbl{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-top:0.3mm}
+.al-bar{padding:1.5mm 4.5mm;background:var(--warm);border-top:1px solid var(--border);font-size:7.5px;color:var(--mid)}
+.al-bar strong{color:var(--text)}
+</style>
+
+<p style="font-size:9px;color:var(--mid);font-style:italic;margin-bottom:3mm">Small plates designed to eat in the café upstairs — the bridge between bakery takeout and a sit-down experience. Each starter is bread-forward but plated with Japanese precision.</p>
+
+<!-- STARTER 1 -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#120E08,#1E1608)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(200,168,75,0.7)">Starter 01 · Bread + Cream</div><div class="mc-name">Dark Rye Maritozzo Toast</div><div class="mc-jp">ライ麦マリトッツォトースト</div><div class="mc-sub">Dark rye toast · whipped cream · seasonal fruit · honey · the Amam Dacotan signature</div></div>
+  <div class="mc-right"><div class="mc-price">$14</div><span class="tag fc">FC 28%</span><span class="tag al">Signature Hero</span></div>
+</div>
+<div class="mc-body">
+<div>
+<div class="col-h6" style="color:var(--gold)">Ingredients (per serve)</div>
+<table class="ingr-t">
+<tr><td class="sec" colspan="2" style="background:rgba(200,168,75,0.06);color:var(--gold)">Dark Rye Toast</td></tr>
+<tr><td>In-house dark rye sourdough loaf</td><td>2 thick slices (1.5 cm)</td></tr>
+<tr><td>Unsalted butter, softened</td><td>10 g — lightly spread before toast</td></tr>
+<tr><td class="sec" colspan="2" style="background:rgba(200,168,75,0.06);color:var(--gold)">Whipped Mascarpone Cream</td></tr>
+<tr><td>Double cream, cold</td><td>60 ml</td></tr>
+<tr><td>Mascarpone</td><td>25 g</td></tr>
+<tr><td>Icing sugar</td><td>8 g</td></tr>
+<tr><td>Vanilla bean paste</td><td>½ tsp</td></tr>
+<tr><td class="sec" colspan="2" style="background:rgba(200,168,75,0.06);color:var(--gold)">Seasonal Fruit (adjust per season)</td></tr>
+<tr><td>Strawberries, halved</td><td>4–5 (spring/summer)</td></tr>
+<tr><td>Kiwi fruit, sliced thin</td><td>3–4 slices</td></tr>
+<tr><td>Acacia honey drizzle</td><td>1 tsp</td></tr>
+<tr><td>Fresh mint leaf</td><td>1–2 small</td></tr>
+</table>
+</div>
+<div>
+<div class="col-h6" style="color:var(--gold)">Method</div>
+<ol class="steps">
+<li><span class="sn" style="color:var(--gold)">1</span><span>Toast dark rye slices in salamander or pan until surface is hot and slightly crisped — interior should still be moist and chewy. Brush with butter immediately off the heat.</span></li>
+<li><span class="sn" style="color:var(--gold)">2</span><span>Whip cream and mascarpone together to firm peaks. Fold in icing sugar and vanilla. Keep cold — cream must hold its shape visually on the plate for at least 10 minutes.</span></li>
+<li><span class="sn" style="color:var(--gold)">3</span><span>Spoon cream generously onto toast — pile high, not spread flat. The cream should be a thick, generous mound that overflows the bread edge slightly. This is the visual signature.</span></li>
+<li><span class="sn" style="color:var(--gold)">4</span><span>Arrange fruit on and around the cream — not flat, at angles and heights. Drizzle honey over fruit. Add mint. Serve immediately on a wooden board or dark ceramic plate.</span></li>
+</ol>
+<div class="chef-tip"><strong>Seasonal Rotation — Franchise SOP</strong>Spring: strawberry + sakura petals. Summer: mango + passion fruit + lime zest. Autumn: persimmon + roasted walnut + maple. Winter: blood orange + pomegranate + dark chocolate. The same base dish changes identity with the season. Train staff to describe the current fruit as "today's seasonal selection" — creates a reason to return.</div>
+</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$3.90</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$14.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">27.9%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$10.10</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">🍓 Hero Item</div><div class="cb-lbl">Position</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten (rye + wheat) · Tree nuts (honey — not allergen, disclose for vegan)</div>
+</div>
+
+<!-- STARTER 2 -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A1408,#101E10)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(61,107,79,0.8)">Starter 02 · Savoury Bread</div><div class="mc-name">Sasami Saikyo Yaki Toast</div><div class="mc-jp">ささみ西京焼きトースト</div><div class="mc-sub">Kyoto white miso marinated chicken · milk bread · pickled cucumber · shiso — Kyoto Exclusive</div></div>
+  <div class="mc-right"><div class="mc-price">$16</div><span class="tag fc">FC 32%</span><span class="tag al">Kyoto Exclusive</span></div>
+</div>
+<div class="mc-body">
+<div>
+<div class="col-h6" style="color:var(--matcha)">Ingredients (per serve)</div>
+<table class="ingr-t">
+<tr><td class="sec" colspan="2" style="background:rgba(61,107,79,0.06);color:var(--matcha)">Sasami Saikyo Chicken</td></tr>
+<tr><td>Chicken tenderloin (sasami)</td><td>120 g</td></tr>
+<tr><td>Saikyo miso (sweet white, Kyoto)</td><td>40 g</td></tr>
+<tr><td>Mirin</td><td>15 ml</td></tr>
+<tr><td>Sake</td><td>10 ml</td></tr>
+<tr><td>Ginger, microplaned</td><td>½ tsp</td></tr>
+<tr><td>Marinate: minimum 24 hrs cold</td><td>—</td></tr>
+<tr><td class="sec" colspan="2" style="background:rgba(61,107,79,0.06);color:var(--matcha)">Toast Base + Condiments</td></tr>
+<tr><td>In-house shokupan (milk bread) slices</td><td>2 thick slices</td></tr>
+<tr><td>Japanese mayo (Kewpie)</td><td>1 tbsp spread</td></tr>
+<tr><td>Pickled cucumber (kyuri asazuke)</td><td>30 g — thin slices</td></tr>
+<tr><td>Fresh green shiso, chiffonade</td><td>4–5 leaves</td></tr>
+<tr><td>Toasted sesame seeds</td><td>½ tsp</td></tr>
+<tr><td>Saikyo miso glaze (reserved marinade, reduced)</td><td>drizzle</td></tr>
+</table>
+</div>
+<div>
+<div class="col-h6" style="color:var(--matcha)">Method</div>
+<ol class="steps">
+<li><span class="sn" style="color:var(--matcha)">1</span><span>Marinate chicken tenderloins in saikyo miso, mirin, sake, and ginger for 24 hrs minimum. The miso proteins and sugars will lightly cure and tenderise the meat. Wipe off excess miso before cooking — it burns at high heat.</span></li>
+<li><span class="sn" style="color:var(--matcha)">2</span><span>Grill sasami on flat grill or cast iron pan over medium-high heat, 2.5 min per side. The surface should be deeply golden and slightly charred at the thinnest edges — Maillard + miso caramelisation. Rest 2 min, slice on the diagonal into 4–5 pieces.</span></li>
+<li><span class="sn" style="color:var(--matcha)">3</span><span>Toast milk bread thick-cut. Spread Kewpie mayo generously — it is both condiment and moisture barrier preventing the bread from going soggy. Layer pickled cucumber slices flat. Arrange chicken slices overlapping slightly. Drizzle reduced saikyo glaze over the top.</span></li>
+<li><span class="sn" style="color:var(--matcha)">4</span><span>Scatter shiso chiffonade generously — the green against the golden chicken is the colour story. Sprinkle toasted sesame. Serve on dark ceramic or wooden slate. This is one of the most quietly extraordinary combinations in Japanese street food culture.</span></li>
+</ol>
+<div class="chef-tip"><strong>Saikyo Miso Note</strong>Saikyo miso (西京味噌) is the sweeter, milder Kyoto miso — lower salt, higher rice koji content. It is the miso of Kyoto haute cuisine (kaiseki). If unavailable, use white shiro miso + 1 tsp extra mirin + ½ tsp sugar. The marinade left over after chicken is removed — reduce by half in a small pan, strain. This becomes the glaze. Zero waste.</div>
+</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$5.10</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$16.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">31.9%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$10.90</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">🍗 Kyoto Exclusive</div><div class="cb-lbl">Position</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten · Soy (miso, Kewpie) · Eggs (Kewpie) · Sesame</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Starters 01–02</span></div>
+</div>
+<!-- PAGE 4: STARTERS 3-6 -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Starters 03–06 · Miso Butter · Tartine · Egg · Soup</span><span class="ph-right">04</span></div>
+
+<!-- STARTER 3 -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#120808,#1E1010)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(194,96,122,0.75)">Starter 03 · Bread + Spread</div><div class="mc-name">Matcha Pistachio Open Toast</div><div class="mc-jp">抹茶ピスタチオトースト</div><div class="mc-sub">Ceremonial matcha cream · crushed pistachios · honey · sourdough — Instagram driver</div></div>
+  <div class="mc-right"><div class="mc-price">$13</div><span class="tag fc">FC 29%</span><span class="tag al">Bestseller</span></div>
+</div>
+<div class="mc-body">
+<div>
+<div class="col-h6" style="color:var(--sakura)">Ingredients (per serve)</div>
+<table class="ingr-t">
+<tr><td>In-house sourdough, thick slice</td><td>2 slices</td></tr>
+<tr><td>Mascarpone</td><td>50 g</td></tr>
+<tr><td>Ceremonial matcha (sifted)</td><td>1.5 tsp</td></tr>
+<tr><td>Icing sugar</td><td>10 g</td></tr>
+<tr><td>Double cream</td><td>30 ml</td></tr>
+<tr><td>Raw pistachios, crushed coarsely</td><td>20 g</td></tr>
+<tr><td>Acacia honey</td><td>1 tsp drizzle</td></tr>
+<tr><td>Dried rose petals (food grade)</td><td>pinch</td></tr>
+<tr><td>Sea salt flakes</td><td>2–3 crystals</td></tr>
+</table>
+</div>
+<div>
+<div class="col-h6" style="color:var(--sakura)">Method</div>
+<ol class="steps">
+<li><span class="sn" style="color:var(--sakura)">1</span><span>Blend matcha into mascarpone using a small whisk. Add icing sugar. Loosen slightly with cold cream until spreadable but thick. The colour should be deep jade green — use ceremonial grade matcha only.</span></li>
+<li><span class="sn" style="color:var(--sakura)">2</span><span>Toast sourdough until golden with slight char on the crust edges. While warm, spread matcha cream generously — ½ cm thick. The warmth slightly softens the mascarpone into the bread surface.</span></li>
+<li><span class="sn" style="color:var(--sakura)">3</span><span>Scatter crushed pistachios over the surface — the vivid green pistachio against jade matcha cream against char-edged sourdough is the visual formula. Drizzle honey in a slow spiral. Add rose petals for contrast. Sea salt crystals last. Serve on dark slate.</span></li>
+</ol>
+<div class="chef-tip"><strong>The Pistachio Rule</strong>Crush pistachios by hand in a cloth — do not process. You want irregular pieces: some powder, some half-nuts, some whole. The irregular texture creates a more artisan appearance than uniform chop. Pre-mix the matcha mascarpone in batches of 10 serves. Hold cold. Assemble to order.</div>
+</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$3.80</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$13.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">29.2%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$9.20</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">📸 Instagram Driver</div><div class="cb-lbl">Position</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten · Tree nuts (pistachios)</div>
+</div>
+
+<!-- STARTER 4 -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A0E14,#101420)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(139,96,32,0.75)">Starter 04 · Savoury Tartine</div><div class="mc-name">Yuzu Smoked Salmon Tartine</div><div class="mc-jp">柚子スモークサーモンタルティーヌ</div><div class="mc-sub">Cream cheese · yuzu zest · smoked salmon · capers · dill · dark sourdough</div></div>
+  <div class="mc-right"><div class="mc-price">$18</div><span class="tag fc">FC 35%</span><span class="tag al">Premium</span></div>
+</div>
+<div class="mc-body">
+<div>
+<div class="col-h6" style="color:var(--gold)">Ingredients (per serve)</div>
+<table class="ingr-t">
+<tr><td>Dark sourdough, thick slice</td><td>2 slices</td></tr>
+<tr><td>Full-fat cream cheese</td><td>50 g</td></tr>
+<tr><td>Yuzu zest (fresh or frozen)</td><td>½ tsp folded into cream cheese</td></tr>
+<tr><td>Yuzu juice</td><td>¼ tsp — in cream cheese</td></tr>
+<tr><td>Cold smoked salmon, quality</td><td>80 g — thin-sliced</td></tr>
+<tr><td>Baby capers, rinsed</td><td>1 tbsp</td></tr>
+<tr><td>Fresh dill fronds</td><td>small bunch</td></tr>
+<tr><td>Cucumber, shaved thin with peeler</td><td>4–5 ribbons</td></tr>
+<tr><td>Lemon or yuzu wedge</td><td>1 per serve</td></tr>
+<tr><td>Black pepper, cracked</td><td>to finish</td></tr>
+</table>
+</div>
+<div>
+<div class="col-h6" style="color:var(--gold)">Method + Notes</div>
+<ol class="steps">
+<li><span class="sn" style="color:var(--gold)">1</span><span>Fold yuzu zest and juice into cream cheese. The yuzu lifts the cream cheese from generic to distinctly Japanese — this small change is the entire identity of the dish. Mix well. Season with fine salt if needed (cream cheese and yuzu are both quite neutral).</span></li>
+<li><span class="sn" style="color:var(--gold)">2</span><span>Toast sourdough lightly — this is a tartine, so the bread is structural, not the hero. Spread yuzu cream cheese thickly. Drape salmon slices over in loose folds — not flat and uniform. Layer cucumber ribbons between salmon folds. Scatter capers.</span></li>
+<li><span class="sn" style="color:var(--gold)">3</span><span>Finish with dill fronds, cracked black pepper, and yuzu wedge on the side. The guest squeezes yuzu over everything at the table — this is a service theatre moment. Serve on black slate or white ceramic.</span></li>
+</ol>
+<div class="chef-tip"><strong>The European × Japanese Translation</strong>This is a French tartine done with Japanese yuzu instead of lemon. The substitution takes 5 seconds in the kitchen and creates a completely distinct flavour identity. This is the Amam Dacotan philosophy in a single dish: European technique, Japanese ingredient, zero compromise on either.</div>
+</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$6.30</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$18.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">35.0%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$11.70</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">🐟 Premium Starter</div><div class="cb-lbl">Position</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten · Fish (salmon) · Eggs (may contain)</div>
+</div>
+
+<!-- STARTERS 5 + 6 side by side brief format -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#140E0A,#201610)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(139,58,42,0.8)">Starter 05 · Egg Dish</div><div class="mc-name">Miso Butter Scrambled Egg Toast</div><div class="mc-jp">味噌バター卵トースト</div></div>
+  <div class="mc-right"><div class="mc-price">$15</div><span class="tag fc">FC 26%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;margin-bottom:2mm"><strong>The concept:</strong> French-method soft scrambled eggs (Gordon Ramsay style — low heat, constant stir, remove early) finished with 1 tsp white miso dissolved in butter. The miso adds a savoury umami depth that no amount of salt can replicate. Served on thick toasted milk bread (shokupan) with furikake seasoning and a shiso garnish.</p>
+<table class="ingr-t" style="margin-bottom:2mm">
+<tr><td>Free-range eggs</td><td>3</td></tr>
+<tr><td>Unsalted butter</td><td>20 g</td></tr>
+<tr><td>White miso</td><td>1 tsp melted into butter</td></tr>
+<tr><td>Double cream</td><td>1 tbsp — added off heat</td></tr>
+<tr><td>Milk bread (shokupan), thick slice</td><td>2</td></tr>
+<tr><td>Furikake</td><td>½ tsp garnish</td></tr>
+<tr><td>Fresh shiso chiffonade</td><td>3–4 leaves</td></tr>
+</table>
+<div class="chef-tip" style="margin-top:0"><strong>Key Technique</strong>Never add miso to the eggs directly — it clumps. Melt butter in pan, dissolve miso into butter first, then add eggs. Cook low and slow — 3.5 minutes constant stirring. Off heat 30 sec before done. The residual heat finishes them.</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$3.90</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$15.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">26%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$11.10</div><div class="cb-lbl">GP</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten · Soy (miso, furikake)</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A0E14,#0E1620)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(61,107,79,0.8)">Starter 06 · Soup + Bread</div><div class="mc-name">Hojicha Roasted Tomato Soup</div><div class="mc-jp">ほうじ茶トマトスープ</div></div>
+  <div class="mc-right"><div class="mc-price">$14</div><span class="tag fc">FC 22%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;margin-bottom:2mm"><strong>The concept:</strong> Classic roasted tomato soup but with hojicha (roasted green tea) steeped into the cream at the finish. The hojicha adds a smoky, toasty background note that amplifies the roasted tomato. Served with a wedge of in-house focaccia and a side of yuzu crème fraîche. A familiar soup that tastes like it's been reimagined by someone who grew up in both Italy and Japan.</p>
+<table class="ingr-t" style="margin-bottom:2mm">
+<tr><td>Vine tomatoes, roasted 200°C 45min</td><td>400 g</td></tr>
+<tr><td>Garlic (whole head roasted)</td><td>1 head</td></tr>
+<tr><td>Onion, caramelised</td><td>1 medium</td></tr>
+<tr><td>Hojicha loose leaf</td><td>10 g steeped in 100ml hot cream</td></tr>
+<tr><td>Vegetable stock</td><td>300 ml</td></tr>
+<tr><td>In-house focaccia wedge</td><td>1 piece per serve</td></tr>
+<tr><td>Yuzu crème fraîche</td><td>1 tbsp (yuzu zest + crème fraîche)</td></tr>
+</table>
+<div class="chef-tip" style="margin-top:0"><strong>Hojicha Infusion Timing</strong>Steep hojicha in warm cream (not boiling — 80°C) for exactly 4 minutes. Strain immediately. Over-steeping makes it bitter. Add infused cream as the final step after blending — preserves the delicate roasted tea note.</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$3.10</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$14.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">22.1%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$10.90</div><div class="cb-lbl">GP</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten · Celery (stock)</div>
+</div>
+
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Starters 03–06</span></div>
+</div>
+<!-- PAGE 5: MAINS / HERO BREADS 1-4 -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Hero Breads · 10 Signature Products · The Display Counter</span><span class="ph-right">05</span></div>
+
+<p style="font-size:9px;color:var(--mid);font-style:italic;margin-bottom:3mm">The display counter is the heart of the bakery. These 10 products are the daily rotation — some baked every morning, some limited batches. Each is designed for visual impact as much as flavour.</p>
+
+<!-- MAIN 1 -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0E0A14,#160E20)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(194,96,122,0.8)">Hero Bread 01 · Maritozzo</div><div class="mc-name">Sakura Anko Maritozzo</div><div class="mc-jp">桜あんこマリトッツォ</div><div class="mc-sub">Enriched brioche · salted sakura cream · smooth azuki · cherry blossom glaze · the flagship</div></div>
+  <div class="mc-right"><div class="mc-price">$9.50</div><span class="tag fc">FC 30%</span><span class="tag al">Hero Product</span></div>
+</div>
+<div class="mc-body">
+<div>
+<div class="col-h6" style="color:var(--sakura)">Ingredients (per batch 12)</div>
+<table class="ingr-t">
+<tr><td class="sec" colspan="2" style="background:rgba(194,96,122,0.06);color:var(--sakura)">Maritozzo Brioche Dough</td></tr>
+<tr><td>Bread flour (strong)</td><td>500 g</td></tr>
+<tr><td>Caster sugar</td><td>80 g</td></tr>
+<tr><td>Fine salt</td><td>9 g</td></tr>
+<tr><td>Instant dry yeast</td><td>7 g</td></tr>
+<tr><td>Whole eggs</td><td>3 (150 g)</td></tr>
+<tr><td>Whole milk, warm 30°C</td><td>120 ml</td></tr>
+<tr><td>Unsalted butter, cold, cubed</td><td>120 g</td></tr>
+<tr><td>Vanilla bean paste</td><td>1 tsp</td></tr>
+<tr><td>Orange zest</td><td>1 orange — the Italian base note</td></tr>
+<tr><td class="sec" colspan="2" style="background:rgba(194,96,122,0.06);color:var(--sakura)">Sakura Anko Filling</td></tr>
+<tr><td>Tsubuan (chunky azuki paste)</td><td>200 g</td></tr>
+<tr><td>Salted sakura petals, rinsed, finely chopped</td><td>15 g</td></tr>
+<tr><td>Double cream, whipped firm</td><td>150 ml</td></tr>
+<tr><td>Mascarpone</td><td>60 g</td></tr>
+<tr><td>Icing sugar</td><td>20 g</td></tr>
+<tr><td class="sec" colspan="2" style="background:rgba(194,96,122,0.06);color:var(--sakura)">Glaze + Finish</td></tr>
+<tr><td>Pale pink glaze (icing sugar + sakura water)</td><td>—</td></tr>
+<tr><td>Dried sakura petal (one per bun)</td><td>—</td></tr>
+</table>
+</div>
+<div>
+<div class="col-h6" style="color:var(--sakura)">Method</div>
+<ol class="steps">
+<li><span class="sn" style="color:var(--sakura)">1</span><span><strong>Maritozzo dough:</strong> combine dry ingredients. Add eggs, milk, vanilla, and orange zest. Mix 5 min. Add cold butter cube by cube over 10 min. Knead to windowpane. Bulk proof 1.5 hrs at room temperature, then refrigerate overnight. The overnight cold retard develops the buttery, slightly citrus flavour that distinguishes true maritozzo from generic brioche.</span></li>
+<li><span class="sn" style="color:var(--sakura)">2</span><span>Shape into oval buns 60–70g each. Final proof 2 hrs at room temperature until visibly puffed. Brush with egg wash. Bake 180°C for 14 min — pale golden, domed, very soft.</span></li>
+<li><span class="sn" style="color:var(--sakura)">3</span><span><strong>Sakura cream:</strong> fold chopped salted sakura petals into whipped cream and mascarpone. The salt in the preserved sakura is sufficient — no additional salt needed. The flavour is: floral, faintly savoury, delicately pink, distinctly Japanese.</span></li>
+<li><span class="sn" style="color:var(--sakura)">4</span><span><strong>Assembly:</strong> cut each bun horizontally through the equator, not all the way through — leave a hinge. Spread 15g tsubuan on the base half. Pipe sakura cream in a generous oval dome through the cut until it overflows on both sides — the cream is the visual signature of maritozzo. The "spill" must be generous.</span></li>
+<li><span class="sn" style="color:var(--sakura)">5</span><span>Dip the top surface lightly in pale pink sakura glaze. Press one preserved sakura petal to the surface while glaze is wet. Refrigerate 10 min to set. Display at room temperature but serve within 4 hours of filling.</span></li>
+</ol>
+<div class="chef-tip"><strong>The Maritozzo Signature Cut</strong>The split must show equal bread on both sides with cream visible from every angle. The "equator cut" exposing the cream is the Instagram moment — this is why the Roman bakery invented it. The cream should overflow 5–8mm on each side. Less than this looks unfinished. More looks messy. Calibrate with the first 3 buns of each batch.</div>
+</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$2.85</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$9.50</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">30.0%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$6.65</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">🌸 Flagship</div><div class="cb-lbl">Position</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten · Soy (azuki — check brand)</div>
+</div>
+
+<!-- MAIN 2 -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A1208,#101E10)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(61,107,79,0.8)">Hero Bread 02 · Maritozzo</div><div class="mc-name">Matcha White Chocolate Maritozzo</div><div class="mc-jp">抹茶ホワイトチョコマリトッツォ</div><div class="mc-sub">Matcha brioche dough · white choc ganache core · matcha diplomat cream · azuki · gold leaf</div></div>
+  <div class="mc-right"><div class="mc-price">$10.00</div><span class="tag fc">FC 32%</span><span class="tag al">Top Seller</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:9px;color:#333;line-height:1.8;margin-bottom:2mm">Same maritozzo base dough with 2 tsp ceremonial matcha folded into the flour at mixing — the entire crumb becomes pale jade green. Baked as above. Filling: white chocolate ganache (100g Valrhona Ivoire + 40ml cream) piped as a core layer, then matcha diplomat cream (matcha pastry cream folded with whipped cream) piped as the visible overflow layer. A thin line of smooth azuki (koshian) runs between the two cream layers — visible when viewed from the cut side. Glazed with thin matcha glaze (deep green, not sweet). Finished with gold leaf and azuki paste dot. The cross-section cut: green crumb, white ganache, green cream, dark azuki — four horizontal layers of colour and flavour.</p>
+<div class="chef-tip"><strong>The "Inside Architecture" Principle</strong>At Amam Dacotan, people cut their pastries in half before eating — to see the inside. Design every filled product with the cross-section in mind. Customers will photograph the inside and share it. The visible layer architecture is marketing. Build it intentionally.</div>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm -4.5mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$3.20</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$10.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">32%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$6.80</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">🍵 #2 Bestseller</div><div class="cb-lbl">Position</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten · Soy (may contain)</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Hero Breads 01–02 · Maritozzo</span></div>
+</div>
+<!-- PAGE 6: HERO BREADS 3-7 -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Hero Breads 03–07 · Focaccia · Sourdough · Shokupan · Croissant · Canelé</span><span class="ph-right">06</span></div>
+
+<!-- MAIN 3: MISO FOCACCIA -->
+<div class="menu-card">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#14100A,#201808)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(200,168,75,0.75)">Hero Bread 03 · Focaccia</div><div class="mc-name">White Miso &amp; Rosemary Focaccia</div><div class="mc-jp">白味噌ローズマリーフォカッチャ</div><div class="mc-sub">High-hydration dough · Ligurian method · white miso brine · fresh rosemary · finishing salt</div></div>
+  <div class="mc-right"><div class="mc-price">$7 slice / $32 loaf</div><span class="tag fc">FC 24%</span><span class="tag al">Daily Bake</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<div style="display:grid;grid-template-columns:68mm 1fr;gap:4mm">
+<div>
+<div class="col-h6" style="color:var(--gold)">Ingredients (1 full tray, 24×36cm)</div>
+<table class="ingr-t">
+<tr><td>Tipo 00 flour or strong bread flour</td><td>500 g</td></tr>
+<tr><td>Water (cold)</td><td>425 ml (85% hydration)</td></tr>
+<tr><td>Fine salt</td><td>10 g</td></tr>
+<tr><td>Instant dry yeast</td><td>5 g</td></tr>
+<tr><td>Extra virgin olive oil</td><td>50 ml (in dough)</td></tr>
+<tr><td class="sec" colspan="2" style="color:var(--gold)">Miso Brine (the Japanese addition)</td></tr>
+<tr><td>Water</td><td>40 ml</td></tr>
+<tr><td>White miso</td><td>15 g dissolved in water</td></tr>
+<tr><td>Olive oil</td><td>25 ml</td></tr>
+<tr><td>This replaces standard salt-water dimple brine</td><td>—</td></tr>
+<tr><td class="sec" colspan="2" style="color:var(--gold)">Toppings</td></tr>
+<tr><td>Fresh rosemary sprigs</td><td>generous covering</td></tr>
+<tr><td>Cherry tomatoes, halved</td><td>12–15 per tray (optional)</td></tr>
+<tr><td>Maldon sea salt flakes</td><td>generous finish</td></tr>
+<tr><td>Extra virgin olive oil, final drizzle</td><td>2 tbsp before bake</td></tr>
+</table>
+</div>
+<div>
+<div class="col-h6" style="color:var(--gold)">Method</div>
+<ol class="steps">
+<li><span class="sn" style="color:var(--gold)">1</span><span>Mix flour, yeast, salt, water, and olive oil to a shaggy wet dough. No kneading. Rest 30 min. Perform 3 sets of stretch-and-folds (every 30 min). The dough goes from shaggy to smooth purely through the folds.</span></li>
+<li><span class="sn" style="color:var(--gold)">2</span><span>Coat tray generously with olive oil. Transfer dough. Spread gently to fill tray — do not force. Refrigerate overnight (18–24 hrs). The cold retard is non-negotiable for flavour.</span></li>
+<li><span class="sn" style="color:var(--gold)">3</span><span>Remove from fridge 2 hrs before baking. Let come to room temperature and rise slightly. Make deep dimples with all four fingers pressed firmly to the base of the tray. Pour miso brine over the surface — it pools in the dimples. Add rosemary, tomatoes (if using), and olive oil. Bake 230°C for 22–25 min. The top should be deep golden with slightly crisped rosemary. Bottom should be crispy when lifted.</span></li>
+<li><span class="sn" style="color:var(--gold)">4</span><span>Immediately after baking: scatter Maldon salt and a final olive oil drizzle. The miso brine leaves a subtle, umami-savoury depth in the crust that guests cannot identify but cannot stop eating. This is the Japanese addition.</span></li>
+</ol>
+<div class="chef-tip"><strong>The Miso Brine Difference</strong>Standard Italian focaccia brine = water + salt + olive oil. The white miso replaces the salt entirely. The result: same salinity, plus the fermented, slightly sweet umami of the miso. It is invisible in the final product — you cannot see it, you cannot name it — but the focaccia tastes more complex, more "finished" than any standard recipe.</div>
+</div>
+</div>
+</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$7.70 tray</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$32 loaf</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">24%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$24.30</div><div class="cb-lbl">GP</div></div><div class="cb-item"><div class="cb-val">🌿 Daily Anchor</div><div class="cb-lbl">Position</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Gluten · Soy (miso) · Sulphites (wine yeast trace)</div>
+</div>
+
+<!-- MAINS 4-7 brief format -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:0">
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A1408,#121E10)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(61,107,79,0.75)">Hero Bread 04 · Shokupan</div><div class="mc-name">Hokkaido Milk Bread Loaf</div><div class="mc-jp">北海道牛乳食パン</div></div>
+  <div class="mc-right"><div class="mc-price">$12 loaf</div><span class="tag fc">FC 22%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">Tangzhong method (same principle as NAMA28 dough). Hokkaido milk (or full-cream with extra milk powder) for maximum richness. Pull-apart loaf tin format — 4 rolls in a 450g tin. Signature: the top brushed with cream (not egg wash) for a porcelain-white crust. Served in the café as thick-cut toast. Sold whole at the counter. The simplest product in the bakery and often the fastest to sell out.</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$2.65</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$12.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">22%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$9.35</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#120808,#1E1010)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(194,96,122,0.75)">Hero Bread 05 · Viennoiserie</div><div class="mc-name">Hojicha Caramel Kouign-Amann</div><div class="mc-jp">ほうじ茶クイニーアマン</div></div>
+  <div class="mc-right"><div class="mc-price">$8 each</div><span class="tag fc">FC 33%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">The Breton pastry — caramelised, buttery, flaky — made Japanese with hojicha caramel instead of plain caramelised sugar. Method: standard kouign-amann laminated dough, but the sugar layer in the folds contains 1.5 tsp finely ground hojicha. The result: the classic crackling, caramelised crust with a roasted, slightly smoky hojicha undertone. One of the most complex-tasting products in the bakery with a relatively simple addition.</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$2.65</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$8.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">33%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$5.35</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A0E14,#0E1420)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(139,96,32,0.75)">Hero Bread 06 · Viennoiserie</div><div class="mc-name">Miso Butter Croissant</div><div class="mc-jp">白味噌バタークロワッサン</div></div>
+  <div class="mc-right"><div class="mc-price">$7 each</div><span class="tag fc">FC 30%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">Standard laminated croissant dough (3 double folds, best-quality European butter). The Japanese addition: a miso butter glaze applied twice — once at the very start of the final proof (brushed thinly) and once 5 minutes before the end of baking. The miso sugars caramelise during baking, creating a deeper, glossier, more complex crust than a standard egg wash. The flavour difference is subtle at first bite and profound at the second.</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$2.10</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$7.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">30%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$4.90</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten · Soy (miso)</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0E0A06,#1A1008)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(122,92,58,0.8)">Hero Bread 07 · Classic French</div><div class="mc-name">Yuzu Vanilla Canelé</div><div class="mc-jp">柚子バニラカヌレ</div></div>
+  <div class="mc-right"><div class="mc-price">$6 each / 4 for $22</div><span class="tag fc">FC 28%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">Traditional canelé bordelais — copper moulds, beeswax and butter lining, dark crackling crust, custardy interior. The Japanese adaptation: replace standard vanilla with yuzu zest + vanilla bean combined. The yuzu adds a floral citrus note to the custard interior while the exterior caramelises identically to the classic. One addition, completely different identity. Baked in batches of 24. Display in a pyramid on the counter — the dark mahogany colour of a well-baked canelé is one of the most attractive bakery counter visuals in the world.</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$1.68</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$6.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">28%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$4.32</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten</div>
+</div>
+
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Hero Breads 03–07</span></div>
+</div>
+<!-- PAGE 7: HERO BREADS 8-10 + DESSERTS 1-4 -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Hero Breads 08–10 · Desserts 01–04</span><span class="ph-right">07</span></div>
+
+<!-- BREADS 8-10 compact -->
+<h3 style="color:var(--accent);margin-bottom:3mm">Hero Breads 08–10 · Sourdough Country Loaves</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-bottom:4mm">
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0E0A08,#1A1210)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(200,168,75,0.7)">Hero Bread 08</div><div class="mc-name" style="font-size:12px">Dark Country Sourdough</div><div class="mc-jp" style="font-size:8px">田舎パン / Miche</div></div>
+  <div class="mc-right"><div class="mc-price">$18</div></div>
+</div>
+<div style="padding:3mm 4.5mm;font-size:8.5px;color:#333;line-height:1.75">80% bread flour / 20% whole wheat / 5% dark rye. 75% hydration. 16hr cold retard. Scored in Japanese wave or lattice pattern — the scoring IS the branding. Deep ear, open crumb, chewy crust. The visual anchor of the counter display. Baked in Dutch oven.</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$3.20</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$18.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">17.8%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$14.80</div><div class="cb-lbl">GP</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Gluten</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A0E14,#0E1620)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(61,107,79,0.75)">Hero Bread 09</div><div class="mc-name" style="font-size:12px">Matcha Walnut Sourdough</div><div class="mc-jp" style="font-size:8px">抹茶くるみパン</div></div>
+  <div class="mc-right"><div class="mc-price">$22</div></div>
+</div>
+<div style="padding:3mm 4.5mm;font-size:8.5px;color:#333;line-height:1.75">Country sourdough base with 2 tbsp ceremonial matcha folded into the dough during final fold. Toasted walnuts folded in at the same time (120g per loaf). Crumb: jade green with walnut pockets. Crust: dark with green tinge. Scored with a single deep curve — the moon score. Pairs with cream cheese, butter, or sliced cold cuts. Visual impact is exceptional when cut open.</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$5.50</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$22.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">25%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$16.50</div><div class="cb-lbl">GP</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Gluten · Tree nuts</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#120808,#1E0E0E)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(194,96,122,0.75)">Hero Bread 10</div><div class="mc-name" style="font-size:12px">Black Sesame Miso Loaf</div><div class="mc-jp" style="font-size:8px">黒ごま味噌食パン</div></div>
+  <div class="mc-right"><div class="mc-price">$20</div></div>
+</div>
+<div style="padding:3mm 4.5mm;font-size:8.5px;color:#333;line-height:1.75">Enriched sourdough with black sesame paste (neri goma, 50g per loaf) and white miso (25g) folded into the dough. The result: a dramatically dark grey-black crumb with intense sesame aroma and a subtle savoury miso undertone. Loaf tin format for clean slices. Extraordinarily good with butter and honey. The darkest bread on the counter — visual contrast anchor.</div>
+<div class="cost-bar"><div class="cb-item"><div class="cb-val">$4.80</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$20.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">24%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$15.20</div><div class="cb-lbl">GP</div></div></div>
+<div class="al-bar"><strong>Allergens:</strong> Gluten · Sesame · Soy</div>
+</div>
+</div>
+
+<!-- DESSERTS -->
+<h2>Desserts · 4 Plated Sweets for the Café Upstairs</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0E0A14,#160E20)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(194,96,122,0.8)">Dessert 01</div><div class="mc-name">Hojicha Tiramisu</div><div class="mc-jp">ほうじ茶ティラミス</div></div>
+  <div class="mc-right"><div class="mc-price">$16</div><span class="tag fc">FC 29%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">The most Italian dessert in the Japanese bakery tradition. Hojicha replaces espresso entirely — the savoiardi are soaked in strong cold-brewed hojicha instead of coffee. The mascarpone cream is standard: mascarpone + egg yolks + sugar + whipped cream. The flavour is softer, roastier, less bitter than coffee tiramisu. Dusted with hojicha powder instead of cocoa. Served in individual glasses or small rectangular portions. The cognac or Marsala step: replace with a splash of sake or simply omit (keeping it family-friendly and Japanese-appropriate).</p>
+<div class="chef-tip" style="margin-bottom:2mm"><strong>Cold Brew Hojicha (24hr)</strong>Steep 30g hojicha loose leaf in 400ml cold water for 24 hrs in the fridge. Strain. Intensely flavoured, smooth, zero bitterness. Use this to soak savoiardi — brush don't dunk, to avoid sogginess.</div>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:0"><div class="cb-item"><div class="cb-val">$4.65</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$16.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">29%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$11.35</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A1408,#0E1E10)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(61,107,79,0.8)">Dessert 02</div><div class="mc-name">Matcha Soufflé Pancake</div><div class="mc-jp">抹茶スフレパンケーキ</div></div>
+  <div class="mc-right"><div class="mc-price">$18</div><span class="tag fc">FC 31%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">Japanese soufflé pancake (thick, wobbling, cloud-like) with ceremonial matcha folded into the batter. Method: separate yolks and whites, whip whites to stiff peaks, fold into batter very gently, cook in a ring mould over very low heat with a lid on (steam cooking). Two thick pancakes per serve, dusted with matcha powder, served with: a small pot of yuzu honey, azuki bean paste, and softly whipped cream. The wobble when placed on the table is the entire show. Cook to order, 12–14 min — manage guest expectations (worth the wait).</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$5.60</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$18.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">31%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$12.40</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#0A0C10,#10121A)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(139,96,32,0.8)">Dessert 03</div><div class="mc-name">Sakura Panna Cotta</div><div class="mc-jp">桜パンナコッタ</div></div>
+  <div class="mc-right"><div class="mc-price">$15</div><span class="tag fc">FC 26%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">Silky Italian panna cotta, made Japanese with salted sakura petals steeped in the cream during infusion. Method: heat cream to 80°C, add rinsed salted sakura petals, steep 15 min, strain, dissolve gelatine, pour into glasses, set overnight. The cream becomes faintly pink with a haunting floral-salt note. Served with: a small spoonful of yuzu curd, a single preserved sakura petal on top, and a tuile made from leftover bread crumbs (circular, buttery, golden). The bread crumb tuile is the full-circle moment — the bakery's waste becomes the dessert garnish.</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$3.90</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$15.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">26%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$11.10</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Gluten (tuile) · Gelatine</div>
+</div>
+
+<div class="menu-card" style="margin-bottom:0">
+<div class="mc-hdr" style="background:linear-gradient(135deg,#120A08,#1E1008)">
+  <div class="mc-left"><div class="mc-cat" style="color:rgba(200,168,75,0.75)">Dessert 04</div><div class="mc-name">Bread &amp; Butter Pudding</div><div class="mc-jp">ブレッドプディング / 黒糖カスタード</div></div>
+  <div class="mc-right"><div class="mc-price">$16</div><span class="tag fc">FC 20%</span></div>
+</div>
+<div style="padding:3mm 4.5mm">
+<p style="font-size:8.5px;color:#333;line-height:1.75;margin-bottom:2mm">The bakery's best use of day-old bread. Thick slices of in-house shokupan (milk bread) soaked in a custard of eggs, double cream, kinako sugar, and vanilla. The kinako (roasted soybean flour) replaces standard white sugar — it adds a nutty, toasty sweetness. Baked in individual portions at 160°C for 22 min. Served warm with a tableside pour of cold hojicha cream anglaise. The contrast of warm pudding and cold cream is the service theatre. Best dessert margin in the menu because it uses end-of-day bread that would otherwise be composted.</p>
+<div class="cost-bar" style="margin:-3mm -4.5mm -3mm;margin-top:2mm"><div class="cb-item"><div class="cb-val">$3.20</div><div class="cb-lbl">Cost</div></div><div class="cb-item"><div class="cb-val">$16.00</div><div class="cb-lbl">Price</div></div><div class="cb-item"><div class="cb-val">20%</div><div class="cb-lbl">FC%</div></div><div class="cb-item"><div class="cb-val">$12.80</div><div class="cb-lbl">GP</div></div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Milk · Eggs · Gluten · Soy (kinako)</div>
+</div>
+
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Hero Breads 08–10 · Desserts 01–04</span></div>
+</div>
+<!-- PAGE 8: DRINKS (8) -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Drinks · 8 Beverages · Coffee + Japanese Tea + Seasonal Specials</span><span class="ph-right">08</span></div>
+
+<p style="font-size:9px;color:var(--mid);font-style:italic;margin-bottom:3mm">The drinks programme is designed to pair with the bread counter and generate the highest margin in the café. Every drink uses the same Japanese flavour vocabulary as the food menu — creating a coherent experience where everything belongs to the same culinary language.</p>
+
+<style>
+.drink-card{background:#fff;border:1px solid var(--border);margin-bottom:3mm;page-break-inside:avoid;overflow:hidden}
+.dk-hdr{padding:2.5mm 4mm;display:flex;justify-content:space-between;align-items:center}
+.dk-name{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff;line-height:1.05}
+.dk-jp{font-size:8.5px;color:rgba(255,255,255,0.35);margin-top:0.5mm}
+.dk-cat{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5mm}
+.dk-body{padding:2.5mm 4mm;display:grid;grid-template-columns:1fr 48mm;gap:3mm;align-items:start}
+.dk-desc{font-size:9px;color:#333;line-height:1.8}
+.dk-specs{font-size:8.5px}
+.dk-spec-row{display:flex;justify-content:space-between;padding:1mm 0;border-bottom:1px solid var(--border)}
+.dk-spec-row:last-child{border-bottom:none}
+.dk-sl{color:var(--mid)}
+.dk-sv{font-weight:600;color:var(--accent)}
+</style>
+
+<!-- DRINK 1 -->
+<div class="drink-card">
+<div class="dk-hdr" style="background:linear-gradient(135deg,#0E0A08,#1A1208)">
+  <div><div class="dk-cat" style="color:rgba(200,168,75,0.7)">Drink 01 · Signature Coffee</div><div class="dk-name">Hojicha Latte</div><div class="dk-jp">ほうじ茶ラテ</div></div>
+  <div style="text-align:right"><div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#C8A84B">$7.50</div><span class="tag fc" style="display:inline-block;margin-top:1mm">FC 18%</span></div>
+</div>
+<div class="dk-body">
+<div class="dk-desc">Roasted green tea steeped in hot milk to order, poured over steamed milk foam in a ceramic cup. The hojicha gives the latte a warm, toasty, almost caramel note — deeply comforting, less caffeinated than espresso-based coffee, completely Japanese. Served hot or iced. The iced version: cold-brewed hojicha + oat milk + ice in a tall glass. One of the fastest-growing café drinks in Australia, Japan, and Southeast Asia.<br><strong>How to build:</strong> steep 2 tsp loose hojicha in 180ml whole milk at 80°C for 4 min. Strain. Steam until microfoam. Pour over foam in cup. Dust with ground hojicha.</div>
+<div class="dk-specs">
+<div class="dk-spec-row"><span class="dk-sl">Cost</span><span class="dk-sv">$1.35</span></div>
+<div class="dk-spec-row"><span class="dk-sl">Price</span><span class="dk-sv">$7.50</span></div>
+<div class="dk-spec-row"><span class="dk-sl">FC%</span><span class="dk-sv">18%</span></div>
+<div class="dk-spec-row"><span class="dk-sl">GP</span><span class="dk-sv">$6.15</span></div>
+<div class="dk-spec-row"><span class="dk-sl">Temp</span><span class="dk-sv">Hot / Iced</span></div>
+</div>
+</div>
+</div>
+
+<!-- DRINK 2 -->
+<div class="drink-card">
+<div class="dk-hdr" style="background:linear-gradient(135deg,#0A1408,#101E10)">
+  <div><div class="dk-cat" style="color:rgba(61,107,79,0.8)">Drink 02 · Signature Tea</div><div class="dk-name">Ceremonial Matcha</div><div class="dk-jp">抹茶 — 点て方</div></div>
+  <div style="text-align:right"><div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#C8A84B">$9.00</div><span class="tag fc" style="display:inline-block;margin-top:1mm">FC 22%</span></div>
+</div>
+<div class="dk-body">
+<div class="dk-desc">Served in two formats: <strong>Traditional (Koicha/Usucha)</strong> — whisked in-house in a ceramic bowl with a bamboo chasen, served as the Japanese tea ceremony experience; or <strong>Matcha Latte</strong> — 1.5 tsp ceremonial matcha whisked with 30ml hot water to a smooth paste, then steamed milk poured over. The distinction between ceremonial grade (deep umami, complex) and culinary grade (flat, grassy, bitter) is explained to every guest. Serving ceremonial grade in a café context is an education statement — it positions the bakery as a place of genuine Japanese knowledge, not aesthetic performance.<br>Price includes the ceremony of service — bamboo chasen prepared tableside for the traditional style.</div>
+<div class="dk-specs">
+<div class="dk-spec-row"><span class="dk-sl">Cost</span><span class="dk-sv">$1.98</span></div>
+<div class="dk-spec-row"><span class="dk-sl">Price</span><span class="dk-sv">$9.00</span></div>
+<div class="dk-spec-row"><span class="dk-sl">FC%</span><span class="dk-sv">22%</span></div>
+<div class="dk-spec-row"><span class="dk-sl">GP</span><span class="dk-sv">$7.02</span></div>
+<div class="dk-spec-row"><span class="dk-sl">Format</span><span class="dk-sv">Bowl / Latte</span></div>
+</div>
+</div>
+</div>
+
+<!-- DRINKS 3-8 compact grid -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm">
+
+<div style="background:#fff;border:1px solid var(--border);padding:3mm;page-break-inside:avoid">
+<div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1mm">Drink 03</div>
+<div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:0.5mm">Yuzu Sparkling Soda</div>
+<div style="font-size:8px;color:var(--mid);margin-bottom:2mm">柚子ソーダ · $7.00 · FC 15%</div>
+<div style="font-size:8.5px;color:#333;line-height:1.7;margin-bottom:2mm">Fresh yuzu juice (or high-quality bottled, Kikkoman Yuzu Ponzu base) + house-made yuzu simple syrup + sparkling water. Served tall with ice, yuzu wheel, and a sprig of fresh mint. The yuzu aroma hits before the glass reaches the table. Bright, floral, acidic. Zero alcohol — the flagship non-coffee drink. Use during summer and spring menus.</div>
+<div style="font-size:8px;color:var(--mid)">GP: <strong style="color:var(--accent)">$5.95</strong> | Cost: $1.05</div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3mm;page-break-inside:avoid">
+<div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sakura);margin-bottom:1mm">Drink 04</div>
+<div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:0.5mm">Sakura Milk Steamer</div>
+<div style="font-size:8px;color:var(--mid);margin-bottom:2mm">桜ミルクスティーマー · $8.00 · FC 20%</div>
+<div style="font-size:8.5px;color:#333;line-height:1.7;margin-bottom:2mm">Steamed whole milk + sakura syrup (made from salted sakura petals, sugar, water) + vanilla. Pink, floral, completely caffeine-free. Topped with foam and a preserved sakura petal. The spring seasonal drink — available September–November (Southern Hemisphere) or March–May (Japan). Goes viral on Instagram every spring without fail.</div>
+<div style="font-size:8px;color:var(--mid)">GP: <strong style="color:var(--accent)">$6.40</strong> | Cost: $1.60</div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3mm;page-break-inside:avoid">
+<div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust);margin-bottom:1mm">Drink 05</div>
+<div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:0.5mm">Black Sesame Latte</div>
+<div style="font-size:8px;color:var(--mid);margin-bottom:2mm">黒ごまラテ · $8.50 · FC 25%</div>
+<div style="font-size:8.5px;color:#333;line-height:1.7;margin-bottom:2mm">Neri goma (black sesame paste) — 1 tbsp — dissolved in 40ml hot water + steamed milk. Deep charcoal-grey colour with a rich, nutty, almost peanut butter depth. Stunning against white foam. One of the most photographed café drinks in Japan. The colour is the Instagram moment. Add a white sesame sprinkle on the foam. Sweetness level adjustable — add black sugar syrup for sweeter profile.</div>
+<div style="font-size:8px;color:var(--mid)">GP: <strong style="color:var(--accent)">$6.38</strong> | Cost: $2.13</div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3mm;page-break-inside:avoid">
+<div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--matcha);margin-bottom:1mm">Drink 06</div>
+<div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:0.5mm">Single Origin Espresso</div>
+<div style="font-size:8px;color:var(--mid);margin-bottom:2mm">シングルオリジンコーヒー · $5.50 / $6.50</div>
+<div style="font-size:8.5px;color:#333;line-height:1.7;margin-bottom:2mm">Standard espresso bar — flat white, latte, long black, piccolo. Bean selection should rotate (single-origin emphasis — Ethiopia, Yirgacheffe, or Japanese-roasted beans sourced from specialty roasters). The coffee is not the hero of this café, but it must be excellent. Partnership with a local specialty roaster for bean supply creates a collaboration story for Instagram and menu credibility.</div>
+<div style="font-size:8px;color:var(--mid)">GP: <strong style="color:var(--accent)">$4.25</strong> | FC: ~23%</div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3mm;page-break-inside:avoid">
+<div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1mm">Drink 07 · Seasonal</div>
+<div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:0.5mm">Amazake Winter Warmer</div>
+<div style="font-size:8px;color:var(--mid);margin-bottom:2mm">甘酒ウィンター · $9.00 (winter only)</div>
+<div style="font-size:8.5px;color:#333;line-height:1.7;margin-bottom:2mm">Warm amazake (sweet fermented rice drink, non-alcoholic) with grated fresh ginger and yuzu zest. Traditional Japanese winter drink — sold at temples and shrines during New Year. Zero alcohol, rich in koji enzymes, mildly sweet. Served in a ceramic vessel with a cinnamon stick. The story sells it: "This is what Japanese grandmothers give children on New Year's morning." If guests don't know amazake, they discover it here. If they do, they're transported home.</div>
+<div style="font-size:8px;color:var(--mid)">GP: <strong style="color:var(--accent)">$7.20</strong> | Cost: $1.80</div>
+</div>
+
+<div style="background:#fff;border:1px solid var(--border);padding:3mm;page-break-inside:avoid">
+<div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:1mm">Drink 08 · Premium</div>
+<div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:0.5mm">Gyokuro Shade Tea</div>
+<div style="font-size:8px;color:var(--mid);margin-bottom:2mm">玉露 · $14.00 · FC 28%</div>
+<div style="font-size:8.5px;color:#333;line-height:1.7;margin-bottom:2mm">The most expensive tea in the Japanese repertoire. Gyokuro (jade dew) is shade-grown for 20 days before harvest — the shading increases chlorophyll and L-theanine, producing a sweet, umami-rich, deeply complex green tea with almost no bitterness. Served cold-brew style: 5g in 100ml cold water, steeped 2 hours, strained, served over a single large ice cube in a clear glass. The flavour is unlike any tea most guests have experienced. Price is fully justified by the ingredient. This drink is a conversation.</div>
+<div style="font-size:8px;color:var(--mid)">GP: <strong style="color:var(--accent)">$10.08</strong> | Cost: $3.92</div>
+</div>
+
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Drinks 01–08</span></div>
+</div>
+<!-- PAGE 9: STAFF SCRIPTS + RETENTION -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Service Training · Staff Scripts · Customer Retention System</span><span class="ph-right">09</span></div>
+
+<div class="dark-band">
+<div class="db-title">The NAMA28 → Artisan Bakery Service Philosophy</div>
+<div class="db-body">This is not a takeout counter. The bakery is a <strong style="color:#C8A84B">discovery environment</strong>. Every staff interaction is an opportunity to teach the guest one thing they didn't know before — one ingredient, one technique, one story. Guests who leave knowing something new come back to learn more. The product is the bread. The experience is the education. This is the service standard.</div>
+</div>
+
+<h2>Staff Scripts · 6 Key Moments</h2>
+
+<style>
+.script-box{background:#fff;border:1px solid var(--border);margin-bottom:3mm;page-break-inside:avoid;overflow:hidden}
+.sb-hdr{padding:2.5mm 4mm;display:flex;justify-content:space-between;align-items:center}
+.sb-title{font-weight:700;font-size:10px;color:#fff}
+.sb-context{font-size:7.5px;color:rgba(255,255,255,0.4);margin-top:0.5mm}
+.sb-body{padding:3mm 4mm}
+.script-line{border-left:3px solid var(--gold);padding:2mm 3mm;margin-bottom:2mm;background:var(--warm)}
+.script-line .who{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.5mm}
+.script-line .say{font-size:9px;color:var(--accent);line-height:1.75;font-style:italic}
+.note{font-size:8.5px;color:var(--mid);margin-top:1.5mm;line-height:1.6}
+</style>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+
+<div class="script-box">
+<div class="sb-hdr" style="background:linear-gradient(135deg,#120E08,#1E1810)">
+  <div><div class="sb-title">Script 01 · Counter Welcome</div><div class="sb-context">When a guest approaches the display counter for the first time</div></div>
+</div>
+<div class="sb-body">
+<div class="script-line">
+<div class="who">Staff</div>
+<div class="say">"Welcome. Feel free to look at everything — there's no rush. If you'd like to know what anything is or what it tastes like, just ask. Today's seasonal maritozzo is the sakura cream if you're looking for a starting point."</div>
+</div>
+<div class="note">Key principle: no pressure, permission to browse, one gentle pointing suggestion. Never list more than one item in the welcome — information overload makes guests anxious and they default to "just a coffee."</div>
+</div>
+</div>
+
+<div class="script-box">
+<div class="sb-hdr" style="background:linear-gradient(135deg,#0A1408,#101E10)">
+  <div><div class="sb-title">Script 02 · Maritozzo Explanation</div><div class="sb-context">When a guest asks "what is that?" about the maritozzo</div></div>
+</div>
+<div class="sb-body">
+<div class="script-line">
+<div class="who">Staff</div>
+<div class="say">"That's a maritozzo — it's a Roman brioche bun that's been eaten in Italy for hundreds of years. We make it with Japanese fillings — today's is salted sakura cream with azuki bean paste inside. The bread is baked fresh this morning. It's soft like a cloud and not too sweet."</div>
+</div>
+<div class="note">Always give the history (Roman), the Japanese addition (sakura/azuki), the freshness cue (this morning), and the texture promise (cloud, not sweet). These four elements close the sale.</div>
+</div>
+</div>
+
+<div class="script-box">
+<div class="sb-hdr" style="background:linear-gradient(135deg,#0E0A14,#160E22)">
+  <div><div class="sb-title">Script 03 · Drink Pairing</div><div class="sb-context">When a guest orders a bread item without a drink</div></div>
+</div>
+<div class="sb-body">
+<div class="script-line">
+<div class="who">Staff</div>
+<div class="say">"Would you like something to drink with it? The hojicha latte pairs really well with the matcha flavours — they're both roasted teas so they have the same warmth. Or the yuzu soda if you'd like something cold and refreshing."</div>
+</div>
+<div class="note">Always offer two options — one warm, one cold. Always explain why they pair well (the flavour connection). Never just say "would you like a drink?" — give them a reason to say yes.</div>
+</div>
+</div>
+
+<div class="script-box">
+<div class="sb-hdr" style="background:linear-gradient(135deg,#120A08,#1E1008)">
+  <div><div class="sb-title">Script 04 · Gift Box Upsell</div><div class="sb-context">Late morning / afternoon when gift box display is visible</div></div>
+</div>
+<div class="sb-body">
+<div class="script-line">
+<div class="who">Staff</div>
+<div class="say">"If you're visiting someone or need a gift, we put together gift boxes starting from $35 — we can include any combination from the counter and we wrap it in Japanese tissue paper. Very popular for birthdays or just because."</div>
+</div>
+<div class="note">The "just because" framing removes the pressure of a special occasion requirement. Gift boxes at 2–3× item margin are the second highest revenue generator after dine-in. Train staff to mention this to anyone purchasing 3+ items.</div>
+</div>
+</div>
+
+<div class="script-box">
+<div class="sb-hdr" style="background:linear-gradient(135deg,#0A0E14,#0E1422)">
+  <div><div class="sb-title">Script 05 · Ingredient Explanation</div><div class="sb-context">When a guest encounters an unfamiliar Japanese ingredient</div></div>
+</div>
+<div class="sb-body">
+<div class="script-line">
+<div class="who">Guest</div>
+<div class="say">"What's kinako?"</div>
+</div>
+<div class="script-line" style="border-left-color:var(--matcha)">
+<div class="who" style="color:var(--matcha)">Staff</div>
+<div class="say">"Kinako is roasted soybean flour — it's been used in Japanese sweets for centuries, especially with mochi. The flavour is like a toasted, nutty version of peanut butter, but lighter. It's in the cream on top of the miso caramel donut and also dusted on the kouign-amann today."</div>
+</div>
+<div class="note">Every staff member must be able to explain: kinako, hojicha, azuki, sake lees, miso (as pastry ingredient), amazake, saikyo miso, shiso. These are not optional. This knowledge is what makes the café worth visiting.</div>
+</div>
+</div>
+
+<div class="script-box">
+<div class="sb-hdr" style="background:linear-gradient(135deg,#0E1208,#181E0A)">
+  <div><div class="sb-title">Script 06 · Sell-Out Management</div><div class="sb-context">When an item has sold out</div></div>
+</div>
+<div class="sb-body">
+<div class="script-line">
+<div class="who">Staff</div>
+<div class="say">"The sakura maritozzo sold out just before 1pm today — they usually go early. If you'd like to be here for them tomorrow, we open at 8am and they'll be ready from opening. We sometimes post on Instagram when specific items are available, if you follow us."</div>
+</div>
+<div class="note">Never apologise excessively for selling out — this signals failure. Reframe as success: "it went early" implies demand. Give the guest a plan (8am). Convert them to Instagram follower. The sell-out is marketing. Treat it that way.</div>
+</div>
+</div>
+
+</div>
+
+<h2 style="margin-top:3mm">Customer Retention System</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm">
+<div class="info-box forest"><div class="ib-title fr">Seasonal Rotation (Quarterly)</div><ul><li>Seasonal maritozzo flavour changes every 3 months</li><li>One new bread type added to counter each month</li><li>Family 7 (Seasonal/Limited) drops announced via Instagram Stories only — no website update, forces social follow</li><li>Regulars who follow see it first. This is a loyalty reward that costs nothing.</li></ul></div>
+<div class="info-box matcha"><div class="ib-title mt">Daily Sell-Out Strategy</div><ul><li>Make slightly fewer than expected demand</li><li>Sell-out target: 30 min before closing</li><li>Post "almost gone" Instagram story at 75% sold</li><li>Post "sold out — see you tomorrow 8am" story daily</li><li>Never discount end-of-day stock — compost or staff meal only</li><li>The sell-out post generates more reach than any other post type</li></ul></div>
+<div class="info-box sakura"><div class="ib-title sk">Instagram &amp; Repeat Visit Drivers</div><ul><li>Staff suggest following Instagram for "first access to limited items"</li><li>Monthly baking class: 8 guests, $85/head — teaches maritozzo or sourdough; converts participants into evangelists</li><li>Birthday bread: if a regular mentions birthday, complimentary canelé with a handwritten tag — zero cost, maximum recall</li><li>Gift box packaging designed for photos — every gift box that leaves = free Instagram content</li></ul></div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Staff Scripts · Retention System</span></div>
+</div>
+<!-- PAGE 10: KITCHEN DESIGN + WORKFLOW + P&L -->
+<div class="page">
+<div class="page-hdr"><span class="ph-left">Kitchen Design · Daily Workflow · Staff Forecast · P&amp;L</span><span class="ph-right">10</span></div>
+
+<h2>Kitchen Design · The Artisan Bakery Layout</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm">
+<div>
+<div class="info-box forest">
+<div class="ib-title fr">Ground Floor — Production Kitchen</div>
+<ul>
+<li><strong>Deck oven</strong> (2-deck minimum) — sourdough at 250°C; maritozzo and shokupan at 180°C; different decks simultaneously</li>
+<li><strong>Planetary mixer</strong> (20L commercial) — maritozzo dough, croissant dough, brioche</li>
+<li><strong>Proofing cabinet</strong> — temperature/humidity controlled for consistent final proof</li>
+<li><strong>Laminating table</strong> (marble or granite) — cold surface for croissant and kouign-amann</li>
+<li><strong>Fryer</strong> (12L) — canelé copper moulds, also usable for any fried pastry expansion</li>
+<li><strong>Cold room</strong> — overnight cold retard for all doughs; also holds filled maritozzo pre-service</li>
+<li><strong>Display counter</strong> (front of house, visible from entry) — the entire production output is the visual merchandising</li>
+</ul>
+</div>
+</div>
+<div>
+<div class="info-box">
+<div class="ib-title gd">Upper Floor — Café Bar</div>
+<ul>
+<li><strong>Commercial espresso machine</strong> (2-group minimum) + grinder</li>
+<li><strong>Matcha station</strong> — electric chasen (whisk), ceramic bowls, water temperature kettle</li>
+<li><strong>Tea preparation area</strong> — gooseneck kettle, timer, pre-measured tea portions in display jars</li>
+<li><strong>Pass-through window</strong> to kitchen for plated desserts and hot starters</li>
+<li><strong>Bar seating</strong> (counter-height, 8–12 seats) looking into the kitchen or street — the "show kitchen" principle: watching bread being made IS the entertainment</li>
+<li><strong>45–55 covers</strong> total: bar seating + shared long tables + window seats</li>
+</ul>
+</div>
+<div class="info-box matcha" style="margin-bottom:0">
+<div class="ib-title mt">Space Requirements</div>
+<ul>
+<li>Minimum viable: <strong>80 sqm total</strong> (50 sqm production + 30 sqm café)</li>
+<li>Ideal: <strong>120–150 sqm</strong> (70 sqm production + 50–80 sqm café)</li>
+<li>The machiya townhouse format (narrow + deep, 2 floors) is the Amam Dacotan model — works in both Japan and Australian terrace house/shopfront buildings</li>
+<li><strong>Street visibility</strong> essential — the bread counter must be visible from the footpath</li>
+</ul>
+</div>
+</div>
+</div>
+
+<h2>Daily Workflow · The Baker's Clock</h2>
+<table style="width:100%;border-collapse:collapse;font-size:8.5px;margin-bottom:4mm">
+<tr style="background:var(--accent);color:#fff"><th style="padding:2mm 3mm;font-size:8px;text-align:left">Time</th><th style="padding:2mm 3mm;font-size:8px">Baker 1 (Head Baker)</th><th style="padding:2mm 3mm;font-size:8px">Baker 2</th><th style="padding:2mm 3mm;font-size:8px">Café Staff (opens 8am)</th></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">4:30am</td><td style="padding:2mm 3mm">Arrive. Shape sourdoughs (from overnight cold retard). Score and load deck oven.</td><td style="padding:2mm 3mm">Arrive. Shape and proof maritozzo buns. Prep fillings (cream, azuki, ganache).</td><td style="padding:2mm 3mm">—</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">5:30am</td><td style="padding:2mm 3mm">Mix maritozzo dough for next day. Begin shokupan (milk bread) for 8am service.</td><td style="padding:2mm 3mm">Bake maritozzo. Fill and glaze all maritozzo while hot buns cool slightly.</td><td style="padding:2mm 3mm">—</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">6:30am</td><td style="padding:2mm 3mm">Bake focaccia, kouign-amann, croissants. Begin canelé batch.</td><td style="padding:2mm 3mm">Assemble gift boxes for pre-orders. Prep café mise en place (matcha, hojicha portions, cream).</td><td style="padding:2mm 3mm">—</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">7:30am</td><td style="padding:2mm 3mm">Counter loading: arrange all breads for display. Brief Baker 2 on today's items.</td><td style="padding:2mm 3mm">Final quality check on all items. Labelling (name, allergens, price).</td><td style="padding:2mm 3mm">Set up café upstairs. Pre-weigh all tea portions. Brief on today's menu.</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">8:00am</td><td style="padding:2mm 3mm" colspan="3" style="text-align:center;font-weight:600;color:var(--matcha)">OPEN. All items on counter. Café serving from upstairs.</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">10:00am</td><td style="padding:2mm 3mm">Second bread batch (afternoon restocking). Mix next day doughs. Begin cold retard.</td><td style="padding:2mm 3mm">Counter restocking. Communicate sold-out items to café staff. Bake additional canelé if needed.</td><td style="padding:2mm 3mm">Plated orders, drinks service, gift box assembly. Post Instagram story at 75% sold mark.</td></tr>
+<tr style="border-bottom:2px solid var(--gold)"><td style="padding:2mm 3mm;font-weight:600">2:30–3:00pm</td><td style="padding:2mm 3mm" colspan="3" style="text-align:center;font-weight:600;color:var(--rust)">SELL OUT TARGET. Post "sold out — see you tomorrow 8am" Instagram story. Clean down. Prep tomorrow doughs into cold retard by 4pm.</td></tr>
+</table>
+
+<h2>Staff Forecast · 40-Seat Café + Counter</h2>
+<table style="width:100%;border-collapse:collapse;font-size:9px;margin-bottom:4mm">
+<tr style="background:var(--accent);color:#fff"><th style="padding:2mm 3mm;font-size:8px">Role</th><th style="padding:2mm 3mm;font-size:8px">Hours/Week</th><th style="padding:2mm 3mm;font-size:8px">Rate</th><th style="padding:2mm 3mm;font-size:8px">Weekly Cost</th><th style="padding:2mm 3mm;font-size:8px">Monthly</th></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Head Baker (FT)</td><td style="padding:2mm 3mm">40</td><td style="padding:2mm 3mm">$28/hr</td><td style="padding:2mm 3mm">$1,120</td><td style="padding:2mm 3mm">$4,853</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Baker 2 (FT)</td><td style="padding:2mm 3mm">38</td><td style="padding:2mm 3mm">$24/hr</td><td style="padding:2mm 3mm">$912</td><td style="padding:2mm 3mm">$3,952</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Café Manager (FT)</td><td style="padding:2mm 3mm">38</td><td style="padding:2mm 3mm">$26/hr</td><td style="padding:2mm 3mm">$988</td><td style="padding:2mm 3mm">$4,281</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Café Staff x2 (FT)</td><td style="padding:2mm 3mm">38 each</td><td style="padding:2mm 3mm">$22/hr</td><td style="padding:2mm 3mm">$1,672</td><td style="padding:2mm 3mm">$7,245</td></tr>
+<tr style="border-bottom:2px solid var(--gold)"><td style="padding:2mm 3mm;font-weight:700">Total Labour</td><td style="padding:2mm 3mm"></td><td style="padding:2mm 3mm"></td><td style="padding:2mm 3mm;font-weight:700">$4,692</td><td style="padding:2mm 3mm;font-weight:700">$20,331</td></tr>
+</table>
+
+<h2>Monthly P&amp;L · 40-Seat Artisan Bakery Café</h2>
+<table style="width:100%;border-collapse:collapse;font-size:9px">
+<tr style="background:var(--accent);color:#fff"><th style="padding:2mm 3mm;font-size:8px;text-align:left">Revenue Stream</th><th style="padding:2mm 3mm;text-align:right;font-size:8px">Monthly</th><th style="padding:2mm 3mm;text-align:right;font-size:8px">Annual</th></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Bread Counter Sales (80 units/day avg × $11 avg)</td><td style="padding:2mm 3mm;text-align:right">$26,400</td><td style="padding:2mm 3mm;text-align:right">$316,800</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Café Dine-In (starters + desserts, 40 covers/day × $18 avg)</td><td style="padding:2mm 3mm;text-align:right">$21,600</td><td style="padding:2mm 3mm;text-align:right">$259,200</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Drinks Revenue (120 drinks/day × $7.80 avg)</td><td style="padding:2mm 3mm;text-align:right">$28,080</td><td style="padding:2mm 3mm;text-align:right">$336,960</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Gift Boxes (10/day × $40 avg)</td><td style="padding:2mm 3mm;text-align:right">$12,000</td><td style="padding:2mm 3mm;text-align:right">$144,000</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm;font-weight:600">Monthly Baking Classes (2 × 8 guests × $85)</td><td style="padding:2mm 3mm;text-align:right">$1,360</td><td style="padding:2mm 3mm;text-align:right">$16,320</td></tr>
+<tr style="border-bottom:2px solid var(--gold)"><td style="padding:2mm 3mm;font-weight:700">Gross Revenue</td><td style="padding:2mm 3mm;text-align:right;font-weight:700">$89,440</td><td style="padding:2mm 3mm;text-align:right;font-weight:700">$1,073,280</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm">Food &amp; Beverage Cost (avg 27%)</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$24,149</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$289,786</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm">Labour (5 staff)</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$20,331</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$243,972</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm">Rent + Utilities + Consumables</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$18,000</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$216,000</td></tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)"><td style="padding:2mm 3mm">Marketing + Packaging + Insurance</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$3,500</td><td style="padding:2mm 3mm;text-align:right;color:var(--rust)">-$42,000</td></tr>
+<tr style="border-bottom:2px solid var(--matcha)"><td style="padding:2mm 3mm;font-weight:700;color:var(--matcha)">Net Operating Profit</td><td style="padding:2mm 3mm;text-align:right;font-weight:700;color:var(--matcha)">$23,460</td><td style="padding:2mm 3mm;text-align:right;font-weight:700;color:var(--matcha)">$281,520</td></tr>
+<tr><td style="padding:1.5mm 3mm;font-size:8px;color:var(--mid)">Net Margin</td><td style="padding:1.5mm 3mm;text-align:right;font-size:8px;font-weight:600">26.2%</td><td colspan="1"></td></tr>
+</table>
+
+<div class="page-footer"><span class="pf-l">Guide #51 · Japanese Artisan Bakery Café · KitchenFounder</span><span class="pf-r">Kitchen Design · Workflow · P&amp;L</span></div>
+</div>
+
+</body>
+</html>

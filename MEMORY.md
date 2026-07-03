@@ -37,6 +37,16 @@ $2M assets in 2 years → propose to Carina → family → leave Australia (2–
 ## Carina
 34, Sydney, ISTP, Accor T&C dept, married (separation in progress). Same company. Patient & consistent is the strategy. INFP + ISTP dynamic.
 
+## Guide Template v8 (CURRENT)
+- **File**: `/workspace/products/guide-template-v8.html` — 307 lines, 20KB
+- **URL**: `http://54.251.18.206:8081/products/guide-template-v8.html`
+- **Layout**: Ingredients stacked ABOVE method (not side-by-side) — `.rc-body{padding:3mm 4.5mm}` (no grid)
+- **Print**: Chrome → Legal paper · 80% scale · Background graphics ON
+- **Accent swap**: change `--gv`, `--ice`, `--gold` CSS vars per cuisine
+- **Recipe card structure**: `.rc-hdr` (dark gradient) → `.rc-body` (ingredients table → method steps) → `.cost-bar` → `.al-bar`
+- **Page footer**: `position:absolute;bottom:7mm` — always use `min-height:297mm` on `.page`
+- **v8 vs v7**: only change is `.rc-body` — removed `display:grid;grid-template-columns:66mm 1fr`; everything else identical
+
 ## Key Technical Rules
 - File writing: `exec cat > heredoc` ONLY — write tool blocked, perl -i multi-line dangerous
 - sessions_spawn: pass `task` only — phantom bug in long Discord sessions
