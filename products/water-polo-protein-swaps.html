@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Water Polo World Cup — Protein Swaps · Lamb Stew + Chinese Fish</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--text:#1C1C1C;--border:#E0D9D0;--mid:#8A8A8A;--warm:#F5F0E8;
+  --accent:#0D1C2B;--gold:#C8930A;--dark:#070E14;--green:#2D7D4F;--red:#C0392B
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;background:var(--bg);position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--accent);margin:5mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+
+/* SWAP INDICATOR */
+.swap-band{display:flex;align-items:center;gap:3mm;margin-bottom:3mm;padding:2.5mm 4mm;background:var(--warm);border:1px solid var(--border);border-left:3px solid var(--mid)}
+.swap-out{font-size:8px;color:var(--red);text-decoration:line-through;font-style:italic}
+.swap-arrow{font-size:14px;color:var(--mid)}
+.swap-in{font-size:8px;color:var(--green);font-weight:700}
+.swap-label{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-right:1mm}
+
+/* PROTEIN CARD */
+.rc{background:#fff;border:1px solid var(--border);margin-bottom:5mm;page-break-inside:avoid;overflow:hidden}
+.rc-hdr{padding:4mm 5mm;display:flex;justify-content:space-between;align-items:flex-start}
+.rc-label{font-size:7px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:1mm}
+.rc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.05}
+.rc-jp{font-size:9px;color:rgba(255,255,255,0.35);margin-top:1mm}
+.rc-sub{font-size:8.5px;color:rgba(255,255,255,0.45);font-style:italic;margin-top:1mm;line-height:1.5}
+.rc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:2mm;flex-shrink:0}
+.badge{font-size:7px;font-weight:700;padding:1mm 2.5mm;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.badge.gf{background:rgba(46,107,74,0.25);color:#5CA87A;border:1px solid rgba(46,107,74,0.4)}
+.badge.hal{background:rgba(200,147,10,0.2);color:var(--gold);border:1px solid rgba(200,147,10,0.35)}
+.badge.pr{background:rgba(74,143,171,0.2);color:#4A8FAB;border:1px solid rgba(74,143,171,0.3)}
+.rc-body{padding:4mm 5mm}
+.col-h6{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-bottom:1mm;border-bottom:1px solid var(--border);margin-bottom:2mm;color:var(--gold)}
+.ingr-t{width:100%;border-collapse:collapse;margin-bottom:4mm}
+.ingr-t tr:nth-child(even){background:var(--warm)}
+.ingr-t td{padding:1.5mm 2mm;font-size:8.5px;color:#333;border-bottom:1px solid rgba(224,217,208,0.4);vertical-align:top}
+.ingr-t td:first-child{font-weight:500}
+.ingr-t td:last-child{text-align:right;color:var(--mid);white-space:nowrap;font-size:8px}
+.ingr-t td.sec{font-size:6.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:1.5mm 2mm;background:rgba(200,147,10,0.06);color:var(--gold);border-bottom:1px solid var(--border)}
+.steps{list-style:none;padding:0;margin-bottom:3mm}
+.steps li{display:grid;grid-template-columns:5.5mm 1fr;gap:1.5mm;margin-bottom:2.5mm;font-size:8.5px;color:#333;line-height:1.8}
+.sn{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--gold);line-height:1}
+.tip{background:var(--warm);border-left:3px solid var(--gold);padding:3mm 4mm;margin-top:2mm;font-size:8.5px;color:#444;line-height:1.8}
+.tip strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);display:block;margin-bottom:0.5mm}
+.cost-bar{background:var(--accent);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.cb-item{text-align:center}
+.cb-val{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--gold)}
+.cb-lbl{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-top:0.3mm}
+.al-bar{padding:1.8mm 5mm;background:var(--warm);border-top:1px solid var(--border);font-size:7.5px;color:var(--mid)}
+.al-bar strong{color:var(--text)}
+.why-box{background:rgba(200,147,10,0.06);border-left:3px solid var(--gold);padding:3mm 4mm;margin-top:3mm;font-size:8.5px;color:#444;line-height:1.8}
+.why-box strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);display:block;margin-bottom:1mm}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: MOROCCAN LAMB STEW -->
+<div class="page">
+<div class="page-hdr">
+  <span class="page-section">Protein Swap 01 · Lamb Stew · Moroccan-Spiced</span>
+  <span class="page-num">01</span>
+</div>
+
+<div class="swap-band">
+  <span class="swap-label">Replaces →</span>
+  <span class="swap-out">Lamb kofta — harissa yoghurt (Day 3 Lunch)</span>
+  <span class="swap-arrow">→</span>
+  <span class="swap-in">Moroccan Lamb Stew — same theme, completely different technique + flavour profile</span>
+</div>
+
+<div class="rc">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#2C1A06,#4A2E0A)">
+  <div>
+    <div class="rc-label" style="color:rgba(200,147,10,0.75)">🔥 Lunch Addition · Day 3 · Moroccan / Middle Eastern</div>
+    <div class="rc-name">Moroccan Lamb Stew</div>
+    <div class="rc-jp">Mrouzia-inspired · Slow-braised · Harissa on side · $55 Lunch</div>
+    <div class="rc-sub">Lamb shoulder diced · ras el hanout · preserved lemon · chickpeas · tomato · slow-braised 2.5 hours · finished with fresh coriander and pomegranate seeds</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge gf">GF</span>
+    <span class="badge hal">Halal ✓</span>
+    <span class="badge pr">~42g protein</span>
+  </div>
+</div>
+<div class="rc-body">
+  <div class="col-h6">Ingredients — Batch (serves 20)</div>
+  <table class="ingr-t">
+    <tr><td class="sec" colspan="2">The Lamb</td></tr>
+    <tr><td>Lamb shoulder, diced 4cm (Halal certified)</td><td>4 kg</td></tr>
+    <tr><td>Neutral oil for searing</td><td>3 tbsp</td></tr>
+    <tr><td class="sec" colspan="2">The Stew Base</td></tr>
+    <tr><td>Brown onion, finely diced</td><td>4 large</td></tr>
+    <tr><td>Garlic cloves, crushed</td><td>10 cloves</td></tr>
+    <tr><td>Fresh ginger, grated</td><td>40 g</td></tr>
+    <tr><td>Ras el hanout spice blend</td><td>4 tbsp</td></tr>
+    <tr><td>Ground cumin</td><td>2 tsp</td></tr>
+    <tr><td>Ground coriander</td><td>2 tsp</td></tr>
+    <tr><td>Ground cinnamon</td><td>1 tsp</td></tr>
+    <tr><td>Smoked paprika</td><td>1 tsp</td></tr>
+    <tr><td>Canned crushed tomato</td><td>2 × 400g tins</td></tr>
+    <tr><td>Beef stock (Halal)</td><td>1.5 L</td></tr>
+    <tr><td>Preserved lemon, rind only, finely diced</td><td>3 pieces</td></tr>
+    <tr><td>Cooked chickpeas</td><td>400 g</td></tr>
+    <tr><td class="sec" colspan="2">Finish + Garnish</td></tr>
+    <tr><td>Fresh coriander, roughly chopped</td><td>1 bunch</td></tr>
+    <tr><td>Pomegranate seeds</td><td>100 g</td></tr>
+    <tr><td>Harissa paste — served on the side in small ramekins</td><td>to table</td></tr>
+    <tr><td>Steamed couscous or jasmine rice alongside (pre-existing side)</td><td>service</td></tr>
+  </table>
+
+  <div class="col-h6">Method</div>
+  <ol class="steps">
+    <li><span class="sn">1</span><span><strong>Sear in batches:</strong> pat lamb dry — this is critical. Wet lamb steams instead of searing. High heat, small batches. Deep brown crust on all sides. Remove each batch and set aside. Do not crowd the pan. Total searing time: 20–25 min for 4kg.</span></li>
+    <li><span class="sn">2</span><span><strong>Build the base:</strong> sweat onion in the same pan 8 min until soft and golden. Add garlic + ginger, cook 2 min. Add all dry spices — ras el hanout, cumin, coriander, cinnamon, paprika. Stir constantly for 90 seconds to bloom the spices in the oil. The kitchen will smell extraordinary.</span></li>
+    <li><span class="sn">3</span><span><strong>Braise:</strong> return lamb to pot. Add crushed tomato + beef stock + preserved lemon rind. Bring to simmer, cover tightly. Braise at 160°C for 2 hours. Check at 1.5 hrs — lamb should be beginning to yield. Add chickpeas at the 2-hour mark. Continue uncovered for final 30 min to reduce sauce to a thick, coating consistency.</span></li>
+    <li><span class="sn">4</span><span><strong>Service:</strong> taste and adjust salt. Transfer to hotel pan for buffet service. Scatter fresh coriander + pomegranate seeds just before guests arrive — not in advance. Set harissa ramekins alongside. The pomegranate seeds add colour, acidity and texture that cuts through the richness of the lamb.</span></li>
+  </ol>
+  <div class="tip"><strong>Kitchen Note</strong>Start this at 9:00am for a 12:00 lunch service. The 2.5hr braise is non-negotiable — rushed lamb stew is the most obvious failure in buffet catering. Hold at 75°C in hotel pan. If sauce tightens too much on hold, add a splash of stock to loosen. Never add water — dilutes flavour.</div>
+  <div class="why-box"><strong>Why This Works on the Menu</strong>The existing Day 3 menu has beef meatballs in tomato ragù at lunch. The Moroccan lamb stew is a completely different protein (lamb vs beef), completely different technique (slow braise vs meatball), and a richer, spiced Moroccan flavour profile vs the Italian ragù. They sit on the same buffet without competing. Athletes get genuine choice — European Italian vs North African Moroccan — both within the Day 3 Middle Eastern / Mediterranean theme.</div>
+</div>
+<div class="cost-bar">
+  <div class="cb-item"><div class="cb-val">~$7.20</div><div class="cb-lbl">Food Cost/serve</div></div>
+  <div class="cb-item"><div class="cb-val">Lunch $55pp</div><div class="cb-lbl">Service</div></div>
+  <div class="cb-item"><div class="cb-val">~42g</div><div class="cb-lbl">Protein/serve</div></div>
+  <div class="cb-item"><div class="cb-val">2.5 hrs</div><div class="cb-lbl">Cook Time</div></div>
+  <div class="cb-item"><div class="cb-val">Start 9am</div><div class="cb-lbl">Prep Time</div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> GF ✓ · Halal ✓ · DF ✓ · No nuts · Preserved lemon (citrus)</div>
+</div>
+
+<div class="page-footer">
+  <span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span>
+  <span class="pf-r">Protein Swap 01 · Moroccan Lamb Stew</span>
+</div>
+</div>
+
+<!-- PAGE 2: CHINESE FISH -->
+<div class="page">
+<div class="page-hdr">
+  <span class="page-section">Protein Swap 02 · Fish · Chinese Cuisine</span>
+  <span class="page-num">02</span>
+</div>
+
+<div class="swap-band">
+  <span class="swap-label">Replaces →</span>
+  <span class="swap-out">Steamed barramundi — ginger soy (Day 2 Lunch, already used elsewhere)</span>
+  <span class="swap-arrow">→</span>
+  <span class="swap-in">Hong Kong-Style Crispy Skin Fish — Black Bean Sauce · Distinct Chinese technique + flavour</span>
+</div>
+
+<div class="rc">
+<div class="rc-hdr" style="background:linear-gradient(135deg,#0A1A2E,#0D2A4A)">
+  <div>
+    <div class="rc-label" style="color:rgba(74,143,171,0.85)">🔥 Fish Addition · Chinese Cuisine · Day 2 or Day 4</div>
+    <div class="rc-name">HK Crispy Skin Barramundi</div>
+    <div class="rc-jp">豉汁脆皮魚 — Black Bean &amp; Ginger Sauce · Wok-Tossed · $55 Lunch / $72 Dinner</div>
+    <div class="rc-sub">Barramundi fillet skin-on · dried skin technique · wok-seared skin-side down until glass-crispy · black bean + ginger + chilli sauce spooned over · spring onion oil finish</div>
+  </div>
+  <div class="rc-badges">
+    <span class="badge gf">GF</span>
+    <span class="badge hal">Halal ✓</span>
+    <span class="badge pr">~34g protein</span>
+  </div>
+</div>
+<div class="rc-body">
+  <div class="col-h6">Ingredients — Per Batch (serves 20)</div>
+  <table class="ingr-t">
+    <tr><td class="sec" colspan="2">The Fish</td></tr>
+    <tr><td>Barramundi fillet, skin-on, portioned 160–180g</td><td>20 portions</td></tr>
+    <tr><td>Fine salt — for drying the skin only</td><td>light sprinkle</td></tr>
+    <tr><td>Neutral oil (rice bran or vegetable) for searing</td><td>3 tbsp per pan</td></tr>
+    <tr><td class="sec" colspan="2">Chinese Black Bean Sauce (make in advance)</td></tr>
+    <tr><td>Fermented black beans (douchi), rinsed and roughly chopped</td><td>60 g</td></tr>
+    <tr><td>Fresh ginger, very finely minced</td><td>30 g</td></tr>
+    <tr><td>Garlic cloves, minced</td><td>6 cloves</td></tr>
+    <tr><td>Long red chilli, sliced (seeds in for heat, remove for mild)</td><td>2 chillies</td></tr>
+    <tr><td>Shaoxing rice wine (halal substitute: dry apple juice or omit)</td><td>60 ml</td></tr>
+    <tr><td>Light soy sauce</td><td>3 tbsp</td></tr>
+    <tr><td>Oyster sauce</td><td>2 tbsp</td></tr>
+    <tr><td>Chicken stock (Halal)</td><td>120 ml</td></tr>
+    <tr><td>Sesame oil — added off heat only</td><td>1 tsp</td></tr>
+    <tr><td>Cornstarch slurry (1 tbsp cornstarch + 2 tbsp cold water)</td><td>to thicken</td></tr>
+    <tr><td class="sec" colspan="2">Finish + Garnish</td></tr>
+    <tr><td>Spring onion, cut into 5cm batons — blanched 30 sec in boiling oil</td><td>3 bunches</td></tr>
+    <tr><td>Fresh red chilli, sliced thin — garnish only</td><td>2 chillies</td></tr>
+    <tr><td>Steamed jasmine rice alongside (pre-existing)</td><td>service</td></tr>
+  </table>
+
+  <div class="col-h6">Method</div>
+  <ol class="steps">
+    <li><span class="sn">1</span><span><strong>Dry the skin — this step cannot be skipped:</strong> score the skin 3–4 times with a sharp knife (prevents curling). Salt the skin lightly. Leave uncovered on a rack in the cool room for minimum 1 hour — ideally 2 hours. The surface moisture must be completely gone. Wet skin never crisps. This is the difference between a great fish dish and a mediocre one.</span></li>
+    <li><span class="sn">2</span><span><strong>Make the black bean sauce ahead:</strong> heat wok to high. Add 1 tbsp oil. Fry black beans + ginger + garlic + chilli for 90 seconds — let them catch slightly, the toasty note is important. Add Shaoxing wine (or substitute), let it sizzle and reduce by half. Add soy + oyster sauce + stock. Simmer 3 min. Add cornstarch slurry to thicken to a light coating sauce. Off heat: sesame oil. Hold warm in bain-marie.</span></li>
+    <li><span class="sn">3</span><span><strong>Cook to order at the station:</strong> heat heavy-based pan (not non-stick) with oil until smoking. Place fish skin-side down. Press gently with a fish slice for the first 30 seconds to prevent curling. Cook skin-side 3.5–4 min — do not move it. When the skin is glass-crispy and golden, flip once. Cook flesh-side 90 seconds only. The fish should be just cooked through at 60°C — still moist inside.</span></li>
+    <li><span class="sn">4</span><span><strong>Plate and serve:</strong> place fish skin-side UP on the plate. Spoon 2 tbsp warm black bean sauce over the flesh side only — never over the skin (it goes soft immediately). Blanch spring onion batons in very hot oil for 30 seconds, lay over the fish. Garnish with chilli slices. Serve immediately.</span></li>
+  </ol>
+
+  <div class="tip"><strong>Crispy Skin Rule</strong>Sauce goes on the FLESH side only. Never on the skin. Once the sauce touches the crispy skin it turns soft within 30 seconds and the entire point of the dish is lost. Brief the service team specifically on this. If doing buffet scale — cook in batches and serve skin-side up in hotel pans with the sauce in a separate insert alongside for guests to self-serve.</span></div>
+
+  <div class="tip"><strong>Buffet Scale Adaptation</strong>For 400 covers — sear fish in batches of 8–10 portions, transfer to oven trays skin-side up, hold at 160°C for max 8 min. Do not stack. Do not cover. Keep sauce in a separate bain-marie. Staff at the station spoon sauce over flesh as they plate — never pre-sauced. Replenish in 20-portion batches every 15–20 min. Fish sitting longer than 20 min in a hotel pan loses the skin texture entirely.</div>
+
+  <div class="why-box"><strong>Why This Is Distinctly Chinese — Not Just "Asian Fish"</strong>Douchi (fermented black beans) is one of the oldest Chinese condiments — used in Cantonese cooking for over 2,000 years. The combination of douchi + ginger + garlic is the defining flavour base of Hong Kong-style fish dishes. It is immediately recognisable to Chinese and Hong Kong athletes as home cooking. The crispy skin technique comes from Cantonese roast culture — the pursuit of crackling, glass-crispy skin is a Chinese culinary obsession. This dish is specifically Chinese, not generically Asian. That specificity is what makes it respectful and memorable.</div>
+</div>
+<div class="cost-bar">
+  <div class="cb-item"><div class="cb-val">~$6.80</div><div class="cb-lbl">Food Cost/serve</div></div>
+  <div class="cb-item"><div class="cb-val">Lunch or Dinner</div><div class="cb-lbl">Service</div></div>
+  <div class="cb-item"><div class="cb-val">~34g</div><div class="cb-lbl">Protein/serve</div></div>
+  <div class="cb-item"><div class="cb-val">1–2 hrs</div><div class="cb-lbl">Skin Drying</div></div>
+  <div class="cb-item"><div class="cb-val">Day 2 or 4</div><div class="cb-lbl">Best Fit</div></div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Fish · Soy (black beans, soy sauce, oyster sauce) · Sesame · Shellfish (oyster sauce — confirm brand or swap to hoisin) · GF ✓ · Halal ✓</div>
+</div>
+
+<div class="page-footer">
+  <span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span>
+  <span class="pf-r">Protein Swap 02 · HK Crispy Skin Fish · Black Bean Sauce</span>
+</div>
+</div>
+
+</body>
+</html>

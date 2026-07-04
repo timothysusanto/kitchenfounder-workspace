@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Water Polo World Cup — 3-Day Team Dinner Rotation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--text:#1C1C1C;--border:#E0D9D0;--mid:#8A8A8A;--warm:#F5F0E8;
+  --accent:#0D1C2B;--gold:#C8930A;--dark:#070E14;
+  --nl:#AE1C28;--nl2:#21468B;
+  --es:#AA151B;--es2:#8B1010;
+  --us:#B22234;--us2:#3C3B6E;
+  --green:#2D7D4F;--red:#C0392B
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden}
+.cg1{position:absolute;top:-5%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,147,10,0.10) 0%,transparent 60%)}
+.cg2{position:absolute;bottom:0;right:0;width:360px;height:360px;background:radial-gradient(circle,rgba(174,28,40,0.08) 0%,transparent 55%)}
+.ctop{padding:13mm 16mm 0;z-index:2;position:relative}
+.c-logo{font-size:7.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(200,147,10,0.50)}
+.c-num{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.15);margin-top:1mm}
+.cmid{padding:0 16mm;flex:1;display:flex;flex-direction:column;justify-content:center;z-index:2;position:relative}
+.c-eye{font-size:8px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(200,147,10,0.65);margin-bottom:3.5mm}
+.c-title{font-family:'Playfair Display',serif;font-weight:900;line-height:0.85;margin-bottom:4mm}
+.c-title .t1{font-size:52px;color:#fff;display:block}
+.c-title .t2{font-size:52px;color:var(--gold);display:block}
+.c-title .t3{font-size:24px;font-style:italic;color:rgba(255,255,255,0.28);display:block;margin-top:2mm}
+.c-rule{width:70mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.c-quote{font-family:'Playfair Display',serif;font-size:10px;font-style:italic;color:rgba(255,255,255,0.3);line-height:1.95;max-width:155mm;margin-bottom:5mm}
+.c-flags{display:flex;gap:4mm;margin-bottom:5mm}
+.flag-block{border:1px solid rgba(255,255,255,0.12);padding:3mm 5mm;text-align:center;min-width:40mm}
+.flag-emoji{font-size:26px;display:block;margin-bottom:1mm}
+.flag-name{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+.c-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
+.cs{border:1px solid rgba(255,255,255,0.07);padding:2.5mm;text-align:center}
+.cs-v{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold)}
+.cs-l{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.25);margin-top:0.5mm}
+.cbot{padding:8mm 16mm;z-index:2;position:relative;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cbot-l{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.28)}
+.cbot-r{font-size:7px;color:rgba(255,255,255,0.14);text-align:right;line-height:1.9}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;background:var(--bg);position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--accent);margin:4mm 0 3mm;border-left:4px solid var(--gold);padding-left:3mm}
+.day-band{padding:4mm 5mm;margin-bottom:4mm;display:flex;justify-content:space-between;align-items:center}
+.day-band.nl{background:linear-gradient(135deg,var(--nl),var(--nl2))}
+.day-band.es{background:linear-gradient(135deg,var(--es),var(--es2))}
+.day-band.us{background:linear-gradient(135deg,var(--us2),#1A1A3E)}
+.day-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff}
+.day-sub{font-size:8px;color:rgba(255,255,255,0.55);margin-top:0.5mm;letter-spacing:1px;text-transform:uppercase}
+.day-flag{font-size:32px}
+.day-price{background:rgba(255,255,255,0.15);color:#fff;font-size:9px;font-weight:700;padding:1.5mm 3mm;text-align:center}
+.day-price-val{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);display:block}
+.section-label{font-size:7.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mid);margin-bottom:2mm;padding-bottom:1mm;border-bottom:1px solid var(--border)}
+.protein-hero{background:var(--accent);padding:3.5mm 4.5mm;margin-bottom:3mm;display:grid;grid-template-columns:1fr auto;gap:3mm;align-items:start}
+.ph-label{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(200,147,10,0.7);margin-bottom:0.8mm}
+.ph-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff}
+.ph-desc{font-size:8px;color:rgba(255,255,255,0.45);margin-top:0.8mm;line-height:1.65;font-style:italic}
+.ph-inspo{font-size:7.5px;color:rgba(200,147,10,0.65);margin-top:1mm;font-weight:600}
+.ph-stats{display:flex;flex-direction:column;gap:1.5mm;align-items:flex-end}
+.ph-stat{text-align:center;background:rgba(255,255,255,0.06);padding:1.5mm 2.5mm}
+.ph-stat-v{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--gold)}
+.ph-stat-l{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3)}
+.protein-2{background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm}
+.p2-label{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.8mm}
+.p2-name{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent)}
+.p2-desc{font-size:8px;color:#555;margin-top:0.5mm;line-height:1.65;font-style:italic}
+.buffet-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:3mm}
+.buffet-col-hdr{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:1mm;margin-bottom:1.5mm}
+.buffet-item{font-size:8.5px;color:#333;line-height:1.85;padding:0.5mm 0;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(224,217,208,0.3)}
+.buffet-item:last-child{border-bottom:none}
+.bi-name{font-weight:500}
+.bi-tag{font-size:7px;color:var(--mid);font-style:italic;flex-shrink:0;margin-left:2mm}
+.bi-highlight{background:rgba(200,147,10,0.07);border-left:2px solid var(--gold);padding-left:2mm}
+.soup-card{background:var(--warm);border:1px solid var(--border);border-left:4px solid var(--accent);padding:3mm 4mm;margin-bottom:3mm;display:grid;grid-template-columns:1fr auto;gap:3mm;align-items:center}
+.soup-name{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent)}
+.soup-desc{font-size:8px;color:#555;margin-top:0.5mm;font-style:italic}
+.soup-label{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:0.5mm}
+.soup-tag{background:var(--accent);color:var(--gold);font-size:7px;font-weight:700;padding:1mm 2.5mm;text-align:center}
+.culture-note{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm}
+.cn-label{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1mm}
+.cn-text{font-size:8.5px;color:#444;line-height:1.8}
+.perf-bar{background:var(--warm);border-top:2px solid var(--accent);padding:2.5mm 4mm;margin-top:2mm;font-size:8px;color:#444;line-height:1.7}
+.perf-bar strong{color:var(--accent);font-size:7.5px;text-transform:uppercase;letter-spacing:1px}
+.diet-bar{display:flex;gap:2mm;flex-wrap:wrap;margin-top:2mm}
+.dtag{font-size:7px;font-weight:700;padding:1mm 2.5mm;text-transform:uppercase;letter-spacing:0.5px}
+.dtag.gf{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A;border:1px solid #CE93D8}
+.dtag.hal{background:#FFF8E1;color:#E65100;border:1px solid #FFE082}
+.dtag.nf{background:#FCE4EC;color:#880E4F;border:1px solid #F48FB1}
+.summary-table{width:100%;border-collapse:collapse;font-size:8.5px;margin-bottom:3mm}
+.summary-table th{background:var(--accent);color:#fff;padding:2mm 3mm;text-align:left;font-size:7px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.summary-table td{padding:2mm 3mm;border-bottom:1px solid var(--border);vertical-align:top}
+.summary-table tr:nth-child(even) td{background:var(--warm)}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cg1"></div><div class="cg2"></div>
+<div class="ctop">
+  <div class="c-logo">Novotel Sydney Olympic Park · Catering &amp; Events · Head Chef Timothy Susanto</div>
+  <div class="c-num">Water Polo World Cup 2026 · Team Dinner Rotation · Confidential</div>
+</div>
+<div class="cmid">
+  <div class="c-eye">Country-Specific · 2 Hot Proteins · Tableside Soup · Plated Dessert</div>
+  <div class="c-title">
+    <span class="t1">3-Day Team</span>
+    <span class="t2">Dinner Rotation</span>
+    <span class="t3">Water Polo World Cup · July 2026</span>
+  </div>
+  <div class="c-rule"></div>
+  <div class="c-quote">"Dinner is recovery. After a match the body needs more than protein — it needs comfort, warmth and the feeling of being fed well. Every dinner is built around that principle: familiar flavours, generous portions, something warm and something sweet."</div>
+  <div class="c-flags">
+    <div class="flag-block"><span class="flag-emoji">🇳🇱</span><span class="flag-name">Day 1 · Netherlands</span></div>
+    <div class="flag-block"><span class="flag-emoji">🇪🇸</span><span class="flag-name">Day 2 · Spain</span></div>
+    <div class="flag-block"><span class="flag-emoji">🇺🇸</span><span class="flag-name">Day 3 · USA</span></div>
+  </div>
+  <div class="c-stats">
+    <div class="cs"><div class="cs-v">$65</div><div class="cs-l">Per Person</div></div>
+    <div class="cs"><div class="cs-v">2</div><div class="cs-l">Hot Proteins</div></div>
+    <div class="cs"><div class="cs-v">Soup</div><div class="cs-l">Every Dinner</div></div>
+    <div class="cs"><div class="cs-v">100%</div><div class="cs-l">Nut Free</div></div>
+  </div>
+</div>
+<div class="cbot">
+  <div class="cbot-l">Novotel Sydney Olympic Park · Head Chef Timothy Susanto</div>
+  <div class="cbot-r">Water Polo World Cup 2026<br>Dinner Rotation · July 19–26</div>
+</div>
+</div>
+<!-- PAGE 2: DINNER DAY 1 — NETHERLANDS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 1 Dinner · Netherlands · Recovery &amp; Comfort</span><span class="page-num">02</span></div>
+
+<div class="day-band nl">
+  <div>
+    <div class="day-title">Day 1 — Netherlands 🇳🇱</div>
+    <div class="day-sub">Dinner Buffet · $65 per person · 2 Hot Proteins · Soup · Dessert</div>
+  </div>
+  <div style="display:flex;gap:3mm;align-items:center">
+    <div class="day-price"><div class="day-price-val">$65</div><div style="font-size:6.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px">Per Person</div></div>
+    <div class="day-flag">🇳🇱</div>
+  </div>
+</div>
+
+<!-- SOUP -->
+<div class="section-label">Soup — Tableside Serve</div>
+<div class="soup-card">
+  <div>
+    <div class="soup-label">Dutch-Inspired Soup · GF · VG</div>
+    <div class="soup-name">Erwtensoep — Dutch Split Pea Soup</div>
+    <div class="soup-desc">Classic Dutch winter soup — split peas, celery root, leek, carrot and smoked paprika. Thick, hearty, deeply savoury. Served tableside from a pot with crusty bread on the side. No pork — smoked paprika oil replaces the traditional rookworst sausage.</div>
+  </div>
+  <div class="soup-tag">Tableside<br>12:00 → 14:00</div>
+</div>
+
+<!-- HOT PROTEIN 1 -->
+<div class="section-label">Hot Protein 1 — Main Hero</div>
+<div class="protein-hero">
+  <div>
+    <div class="ph-label">🔥 Protein 1 · Netherlands · Recovery Dish</div>
+    <div class="ph-name">Slow-Braised Beef Shin — Dutch Hachée Style</div>
+    <div class="ph-desc">Beef shin slow-braised 4 hours in dark beer, caramelised onions, bay leaves, cloves and beef stock. Deeply rich, fall-apart tender. Classic Dutch hachée — the ultimate cold-weather recovery protein. Served with cooking jus spooned over at the station.</div>
+    <div class="ph-inspo">▸ Hachée is a Dutch grandmother dish — deeply familiar for the Netherlands squad · dark beer braise = complex without being heavy · beef shin = maximum collagen + protein for post-match recovery · the slow braise fills the entire venue with aroma</div>
+  </div>
+  <div class="ph-stats">
+    <div class="ph-stat"><div class="ph-stat-v">~44g</div><div class="ph-stat-l">Protein/serve</div></div>
+    <div class="ph-stat"><div class="ph-stat-v">GF</div><div class="ph-stat-l">Gluten Free</div></div>
+    <div class="ph-stat"><div class="ph-stat-v">Halal</div><div class="ph-stat-l">Certified</div></div>
+  </div>
+</div>
+
+<!-- HOT PROTEIN 2 -->
+<div class="section-label">Hot Protein 2 — Secondary Option</div>
+<div class="protein-2">
+  <div class="p2-label">🔥 Protein 2 · Plant + Light Option</div>
+  <div class="p2-name">Baked Salmon Fillet — Dill &amp; Lemon Butter</div>
+  <div class="p2-desc">Skin-on Atlantic salmon portions baked to 60°C core, finished with clarified dill butter and lemon zest. Clean, light, high omega-3. Perfect for athletes who want protein without a heavy red meat option post-match. Served with lemon wedges.</div>
+</div>
+
+<!-- BUFFET -->
+<div class="buffet-grid">
+  <div class="buffet-col">
+    <div class="buffet-col-hdr">Salads &amp; Cold</div>
+    <div class="buffet-item bi-highlight"><span class="bi-name">Warm Dutch potato salad — mustard, capers, parsley</span><span class="bi-tag">GF · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Pickled cucumber &amp; dill salad</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Roasted beetroot, goat cheese &amp; watercress</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Carbs &amp; Sides</div>
+    <div class="buffet-item"><span class="bi-name">Mashed potato — butter + cream (stoofperen style)</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-item"><span class="bi-name">Steamed jasmine rice</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Dutch-style soft white rolls + butter</span><span class="bi-tag">V</span></div>
+  </div>
+  <div class="buffet-col">
+    <div class="buffet-col-hdr">Vegetables</div>
+    <div class="buffet-item"><span class="bi-name">Braised red cabbage — apple, clove, brown sugar</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Roasted root vegetables — carrot, parsnip, celeriac</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Green beans with shallot butter</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Dessert</div>
+    <div class="buffet-item bi-highlight"><span class="bi-name">Dutch apple cake (appeltaart) — warm slice + cream</span><span class="bi-tag">V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Vanilla panna cotta + berry coulis</span><span class="bi-tag">GF · V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Seasonal fresh fruit platter</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Beverages</div>
+    <div class="buffet-item"><span class="bi-name">Still + sparkling water · Juice · Tea · Coffee</span><span class="bi-tag"></span></div>
+  </div>
+</div>
+
+<div class="culture-note">
+  <div class="cn-label">🇳🇱 Cultural Note — Why This Dinner</div>
+  <div class="cn-text">Erwtensoep is so central to Dutch culture it is simply called "snert" — a dish every Dutch athlete associates with cold winter evenings and family tables. Hachée is the Sunday stew of the Netherlands — braised beef with caramelised onions and cloves, slow-cooked for hours. The appeltaart is the Dutch national dessert, served in every café from Amsterdam to Rotterdam. Eating these dishes after a match in Sydney is psychological recovery as much as physical recovery.</div>
+</div>
+
+<div class="perf-bar"><strong>Recovery Note · </strong>Beef shin delivers the highest collagen yield of any cut — ideal for joint recovery after a water polo match. Salmon omega-3 reduces inflammation. Split pea soup provides plant protein + fibre. Mashed potato replenishes glycogen fast. Appeltaart portion controlled — recovery carbs, not excess sugar.</div>
+
+<div class="diet-bar">
+  <span class="dtag nf">100% Nut Free</span>
+  <span class="dtag hal">Halal All Proteins</span>
+  <span class="dtag gf">GF Options Throughout</span>
+  <span class="dtag vg">Vegan Options Available</span>
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Day 1 Dinner · Netherlands</span></div>
+</div>
+<!-- PAGE 3: DINNER DAY 2 — SPAIN -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 2 Dinner · Spain · Post-Match Feast</span><span class="page-num">03</span></div>
+
+<div class="day-band es">
+  <div>
+    <div class="day-title">Day 2 — Spain 🇪🇸</div>
+    <div class="day-sub">Dinner Buffet · $65 per person · 2 Hot Proteins · Soup · Dessert</div>
+  </div>
+  <div style="display:flex;gap:3mm;align-items:center">
+    <div class="day-price"><div class="day-price-val">$65</div><div style="font-size:6.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px">Per Person</div></div>
+    <div class="day-flag">🇪🇸</div>
+  </div>
+</div>
+
+<!-- SOUP -->
+<div class="section-label">Soup — Tableside Serve</div>
+<div class="soup-card">
+  <div>
+    <div class="soup-label">Spanish-Inspired Soup · GF · VG</div>
+    <div class="soup-name">Gazpacho Caliente — Warm Tomato &amp; Red Pepper Soup</div>
+    <div class="soup-desc">A warm interpretation of Spain's most iconic cold soup — slow-roasted tomato, red pepper, garlic, smoked paprika and extra virgin olive oil, blended silky smooth. A drizzle of good olive oil and torn basil to finish. Served tableside from a ceramic pot.</div>
+  </div>
+  <div class="soup-tag">Tableside<br>Warm Serve</div>
+</div>
+
+<!-- HOT PROTEIN 1 -->
+<div class="section-label">Hot Protein 1 — Main Hero</div>
+<div class="protein-hero">
+  <div>
+    <div class="ph-label">🔥 Protein 1 · Spain · The Post-Match Feast</div>
+    <div class="ph-name">Cordero Asado — Slow-Roasted Lamb Shoulder</div>
+    <div class="ph-desc">Whole lamb shoulder slow-roasted for 5 hours with garlic, rosemary, smoked paprika, white wine and lemon. Carved tableside. The skin lacquered, the meat falling off the bone. This is the dish served at Spanish celebrations — a feast protein, not a service protein.</div>
+    <div class="ph-inspo">▸ Cordero asado is Spain's celebration roast — served at weddings, birthdays, major sporting victories · the carving station becomes theatre · lamb shoulder is the richest recovery protein on this entire 3-day rotation · garlic + rosemary = natural anti-inflammatory combination</div>
+  </div>
+  <div class="ph-stats">
+    <div class="ph-stat"><div class="ph-stat-v">~46g</div><div class="ph-stat-l">Protein/serve</div></div>
+    <div class="ph-stat"><div class="ph-stat-v">GF</div><div class="ph-stat-l">Gluten Free</div></div>
+    <div class="ph-stat"><div class="ph-stat-v">Halal</div><div class="ph-stat-l">Certified</div></div>
+  </div>
+</div>
+
+<!-- HOT PROTEIN 2 -->
+<div class="section-label">Hot Protein 2 — Secondary Option</div>
+<div class="protein-2">
+  <div class="p2-label">🔥 Protein 2 · Lighter Option</div>
+  <div class="p2-name">Gambas al Ajillo — Garlic Prawns in Olive Oil</div>
+  <div class="p2-desc">Tiger prawns sautéed in extra virgin olive oil with a generous amount of sliced garlic, dried chilli and smoked paprika. Finished with dry sherry and flat-leaf parsley. Served in a warm terracotta cazuela. One of Spain's most universally loved tapas dishes — elevated to buffet scale.</div>
+</div>
+
+<!-- BUFFET -->
+<div class="buffet-grid">
+  <div class="buffet-col">
+    <div class="buffet-col-hdr">Salads &amp; Cold</div>
+    <div class="buffet-item bi-highlight"><span class="bi-name">Ensaladilla rusa — Spanish potato &amp; tuna salad</span><span class="bi-tag">GF · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Roasted pepper, olive &amp; anchovy salad</span><span class="bi-tag">GF · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Manchego, quince &amp; rocket salad</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Carbs &amp; Sides</div>
+    <div class="buffet-item"><span class="bi-name">Patatas bravas — crispy, smoked paprika aioli alongside</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-item"><span class="bi-name">Saffron rice with toasted garlic</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Crusty pan de cristal rolls + olive oil</span><span class="bi-tag">VG</span></div>
+  </div>
+  <div class="buffet-col">
+    <div class="buffet-col-hdr">Vegetables</div>
+    <div class="buffet-item"><span class="bi-name">Espinacas con garbanzos — spinach &amp; chickpeas</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Pisto manchego — Spanish ratatouille</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Grilled asparagus with sea salt &amp; olive oil</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Dessert</div>
+    <div class="buffet-item bi-highlight"><span class="bi-name">Churros + warm chocolate dipping sauce</span><span class="bi-tag">V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Crema catalana — individual portions, torched tableside</span><span class="bi-tag">GF · V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Fresh fruit platter — Valencia orange &amp; melon</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Beverages</div>
+    <div class="buffet-item"><span class="bi-name">Still + sparkling water · Orange juice · Tea · Coffee</span><span class="bi-tag"></span></div>
+  </div>
+</div>
+
+<div class="culture-note">
+  <div class="cn-label">🇪🇸 Cultural Note — Why This Dinner</div>
+  <div class="cn-text">Cordero asado is the Spanish celebration roast. After a match — win or lose — the Spanish team sits down to a dinner that feels like a fiesta. The gambas al ajillo cazuela, the crema catalana torched at the table, the churros with chocolate — this is Sunday dinner in a Spanish household. The gazpacho caliente reimagines Spain's most famous cold soup as a warm recovery starter. The whole dinner communicates: we understand Spanish food culture, not just Spanish ingredients.</div>
+</div>
+
+<div class="perf-bar"><strong>Recovery Note · </strong>Lamb shoulder is the highest protein density on this rotation (46g/serve) + high zinc for immune recovery. Prawns deliver fast-absorbing lean protein + iodine. Chickpea + spinach adds iron — critical for endurance athletes. Crema catalana serves as a portion-controlled sweet finish without excess refined sugar.</div>
+
+<div class="diet-bar">
+  <span class="dtag nf">100% Nut Free</span>
+  <span class="dtag hal">Halal All Proteins</span>
+  <span class="dtag gf">GF Options Throughout</span>
+  <span class="dtag vg">Vegan Options Available</span>
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Day 2 Dinner · Spain</span></div>
+</div>
+<!-- PAGE 4: DINNER DAY 3 — USA -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 3 Dinner · USA · The Victory Dinner</span><span class="page-num">04</span></div>
+
+<div class="day-band us">
+  <div>
+    <div class="day-title">Day 3 — USA 🇺🇸</div>
+    <div class="day-sub">Dinner Buffet · $65 per person · 2 Hot Proteins · Soup · Dessert</div>
+  </div>
+  <div style="display:flex;gap:3mm;align-items:center">
+    <div class="day-price"><div class="day-price-val">$65</div><div style="font-size:6.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px">Per Person</div></div>
+    <div class="day-flag">🇺🇸</div>
+  </div>
+</div>
+
+<!-- SOUP -->
+<div class="section-label">Soup — Tableside Serve</div>
+<div class="soup-card">
+  <div>
+    <div class="soup-label">American-Inspired Soup · GF · DF</div>
+    <div class="soup-name">Roasted Corn &amp; Sweet Potato Chowder</div>
+    <div class="soup-desc">Thick, golden, smoky — fire-roasted corn kernels, sweet potato, smoked paprika, garlic and chicken stock. Dairy-free base (coconut milk) so it works for all athletes. A drizzle of chilli oil and fresh chives to finish. Bold American comfort in a bowl.</div>
+  </div>
+  <div class="soup-tag">Tableside<br>Dairy Free</div>
+</div>
+
+<!-- HOT PROTEIN 1 -->
+<div class="section-label">Hot Protein 1 — Main Hero</div>
+<div class="protein-hero">
+  <div>
+    <div class="ph-label">🔥 Protein 1 · USA · The Victory Centrepiece</div>
+    <div class="ph-name">Slow-Smoked BBQ Beef Brisket</div>
+    <div class="ph-desc">Beef brisket rubbed in a Texas-style dry rub — black pepper, smoked paprika, garlic, cumin and brown sugar. Slow-cooked 8 hours in the combi oven at 120°C until the bark is set and the meat pulls with a fork. Sliced at the carving station. House BBQ sauce on the side.</div>
+    <div class="ph-inspo">▸ Texas brisket is the most prestigious American BBQ protein — a carving station brisket at dinner communicates prestige and respect · 8-hour cook creates the caramelised bark that defines authentic US BBQ · this dish takes the longest to prepare and the shortest to eat — athletes will be photographing it · the aroma from a resting brisket is unmatched</div>
+  </div>
+  <div class="ph-stats">
+    <div class="ph-stat"><div class="ph-stat-v">~48g</div><div class="ph-stat-l">Protein/serve</div></div>
+    <div class="ph-stat"><div class="ph-stat-v">GF</div><div class="ph-stat-l">Gluten Free</div></div>
+    <div class="ph-stat"><div class="ph-stat-v">Halal</div><div class="ph-stat-l">Certified</div></div>
+  </div>
+</div>
+
+<!-- HOT PROTEIN 2 -->
+<div class="section-label">Hot Protein 2 — Secondary Option</div>
+<div class="protein-2">
+  <div class="p2-label">🔥 Protein 2 · Lighter / Chicken Option</div>
+  <div class="p2-name">Buttermilk-Marinated Grilled Chicken — Southern Style</div>
+  <div class="p2-desc">Chicken thighs marinated 12 hours in buttermilk, garlic, smoked paprika and cayenne. Grilled (not fried) to keep it clean for athletic performance. Served with a house hot sauce on the side. The buttermilk marinade produces an exceptionally tender result without deep frying.</div>
+</div>
+
+<!-- BUFFET -->
+<div class="buffet-grid">
+  <div class="buffet-col">
+    <div class="buffet-col-hdr">Salads &amp; Cold</div>
+    <div class="buffet-item bi-highlight"><span class="bi-name">Classic American coleslaw — creamy apple cider base</span><span class="bi-tag">GF · V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Corn, black bean, avocado &amp; lime salad</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Mixed greens — buttermilk ranch dressing on side</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Carbs &amp; Sides</div>
+    <div class="buffet-item"><span class="bi-name">Mac &amp; cheese — baked, golden crust</span><span class="bi-tag">V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Baked sweet potato — sour cream on side</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-item"><span class="bi-name">Steamed jasmine rice + cornbread squares</span><span class="bi-tag">V · NF</span></div>
+  </div>
+  <div class="buffet-col">
+    <div class="buffet-col-hdr">Vegetables</div>
+    <div class="buffet-item"><span class="bi-name">Grilled corn on the cob — herb butter</span><span class="bi-tag">GF · V</span></div>
+    <div class="buffet-item"><span class="bi-name">Roasted broccoli — lemon + garlic</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-item"><span class="bi-name">Southern-style collard greens — garlic, apple cider</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Dessert</div>
+    <div class="buffet-item bi-highlight"><span class="bi-name">Warm brownie + vanilla ice cream — the American classic</span><span class="bi-tag">V · NF · GF opt</span></div>
+    <div class="buffet-item"><span class="bi-name">Banana pudding — vanilla wafer, chantilly</span><span class="bi-tag">V · NF</span></div>
+    <div class="buffet-item"><span class="bi-name">Fresh fruit platter — watermelon + berries</span><span class="bi-tag">GF · VG · DF</span></div>
+    <div class="buffet-col-hdr" style="margin-top:2mm">Beverages</div>
+    <div class="buffet-item"><span class="bi-name">Still + sparkling water · Apple juice · Tea · Coffee</span><span class="bi-tag"></span></div>
+  </div>
+</div>
+
+<div class="culture-note">
+  <div class="cn-label">🇺🇸 Cultural Note — Why This Dinner</div>
+  <div class="cn-text">Texas brisket at a carving station is an American sporting event statement — it says this kitchen takes BBQ seriously. Mac &amp; cheese is the American comfort side dish, present at every celebration from Little League to Super Bowl Sunday. The banana pudding is a Southern staple that almost no international hotel kitchen gets right — doing it correctly earns enormous respect from the US team. The warm brownie + ice cream is universal American dessert. This dinner is designed to feel like the best version of an American team dinner, not a caricature of it.</div>
+</div>
+
+<div class="perf-bar"><strong>Recovery Note · </strong>Brisket delivers the highest protein per serve (48g) + creatine-rich red meat for muscle repair. Buttermilk chicken = lean protein for athletes who avoid heavy red meat at dinner. Sweet potato + mac &amp; cheese = fast glycogen replenishment. Collard greens are one of the highest calcium green vegetables — ideal for bone recovery in collision sport athletes.</div>
+
+<div class="diet-bar">
+  <span class="dtag nf">100% Nut Free</span>
+  <span class="dtag hal">Halal All Proteins</span>
+  <span class="dtag gf">GF Options Throughout</span>
+  <span class="dtag vg">Vegan Options Available</span>
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Day 3 Dinner · USA</span></div>
+</div>
+<!-- PAGE 5: DINNER SUMMARY + KITCHEN NOTES -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">3-Day Dinner Summary · Kitchen Notes · Allergen Matrix</span><span class="page-num">05</span></div>
+
+<h2>3-Day Dinner At-a-Glance</h2>
+<table class="summary-table">
+<tr>
+  <th style="width:10mm">Day</th>
+  <th style="width:12mm">Team</th>
+  <th>Soup</th>
+  <th>Protein 1 (Hero)</th>
+  <th>Protein 2</th>
+  <th>Signature Dessert</th>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--nl)">Day 1</td>
+  <td>🇳🇱 NED</td>
+  <td>Erwtensoep — Dutch split pea</td>
+  <td><strong>Slow-braised beef shin</strong> — hachée style, dark beer, caramelised onion</td>
+  <td>Baked salmon — dill + lemon butter</td>
+  <td>Dutch appeltaart + cream</td>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--es)">Day 2</td>
+  <td>🇪🇸 ESP</td>
+  <td>Gazpacho caliente — warm tomato + red pepper</td>
+  <td><strong>Cordero asado</strong> — slow-roasted lamb shoulder, garlic, rosemary, paprika</td>
+  <td>Gambas al ajillo — garlic prawns cazuela</td>
+  <td>Crema catalana — torched tableside + churros</td>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--us2)">Day 3</td>
+  <td>🇺🇸 USA</td>
+  <td>Roasted corn + sweet potato chowder</td>
+  <td><strong>Slow-smoked BBQ beef brisket</strong> — Texas dry rub, 8-hour cook, carved tableside</td>
+  <td>Buttermilk grilled chicken — Southern style</td>
+  <td>Warm brownie + vanilla ice cream + banana pudding</td>
+</tr>
+</table>
+
+<h2>Kitchen Production Notes — Dinner</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm">
+<div>
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--nl);padding:3mm 4mm;margin-bottom:3mm">
+  <div style="font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--nl);margin-bottom:1.5mm">Day 1 · Netherlands</div>
+  <ul style="padding-left:4mm;font-size:8.5px;color:#333;line-height:1.9">
+    <li><strong>Beef shin:</strong> start braise at 7am for evening service — 4hrs minimum at 160°C. Sear in batches first. Halal beer or substitute with extra beef stock + balsamic.</li>
+    <li><strong>Erwtensoep:</strong> start 3hrs before service. Split peas need time. Blend half for texture — leave half whole.</li>
+    <li><strong>Salmon:</strong> portion in AM. Bake to order in 10-min windows at 160°C. Do not overcook — 60°C internal only.</li>
+    <li><strong>Appeltaart:</strong> bake morning of. Reheat portions at service. Serve warm with double cream.</li>
+  </ul>
+</div>
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--es);padding:3mm 4mm;margin-bottom:0">
+  <div style="font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--es);margin-bottom:1.5mm">Day 2 · Spain</div>
+  <ul style="padding-left:4mm;font-size:8.5px;color:#333;line-height:1.9">
+    <li><strong>Lamb shoulder:</strong> start at 6am — 5hrs at 150°C. Score and rub night before. Rest 30 min before carving. Carving station with rosemary garnish = theatre.</li>
+    <li><strong>Gambas al ajillo:</strong> mise en place ready. Cook in 2-min batches to order. Keep warm in cazuela. Do not pre-cook — prawns overcook fast.</li>
+    <li><strong>Crema catalana:</strong> set day before. Torch at table — have 2 blow torches + spare gas.</li>
+    <li><strong>Churros:</strong> fry to order in small batches. Keep chocolate sauce warm in bain-marie.</li>
+  </ul>
+</div>
+</div>
+<div>
+<div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--us2);padding:3mm 4mm;margin-bottom:3mm">
+  <div style="font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--us2);margin-bottom:1.5mm">Day 3 · USA</div>
+  <ul style="padding-left:4mm;font-size:8.5px;color:#333;line-height:1.9">
+    <li><strong>Brisket:</strong> start 8–10hrs before service in combi oven 120°C. Dry rub night before. Target core temp 90–95°C for full collagen breakdown. Rest minimum 45 min wrapped in butcher paper. Slice at station against the grain.</li>
+    <li><strong>Buttermilk chicken:</strong> marinate 12hrs minimum. Grill to 74°C internal. Hold on rack, not in sauce — skin stays crispy.</li>
+    <li><strong>Mac &amp; cheese:</strong> make day before, bake to order in portions at 180°C for golden crust.</li>
+    <li><strong>Brownies:</strong> bake same day. Serve warm. Ice cream scooped to order.</li>
+  </ul>
+</div>
+<div style="background:var(--accent);padding:3mm 4mm">
+  <div style="font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm">All 3 Dinners — Non-Negotiables</div>
+  <ul style="padding-left:4mm;font-size:8.5px;color:rgba(255,255,255,0.6);line-height:1.9">
+    <li>Zero nuts. Zero cross-contamination. Check every incoming delivery.</li>
+    <li>All proteins Halal-certified. Separate serving utensils at every station.</li>
+    <li>Hot proteins held minimum 63°C throughout service.</li>
+    <li>Soup served at minimum 75°C — check every 20 min.</li>
+    <li>Desserts labelled: allergens, dairy content, GF status.</li>
+    <li>Dinner service window: 19:00 — 21:00. Protein replenished at 20:00 if below 30%.</li>
+    <li>All carving stations staffed — no self-serve for large protein cuts.</li>
+  </ul>
+</div>
+</div>
+</div>
+
+<h2>Allergen Matrix — All Proteins</h2>
+<table class="summary-table">
+<tr>
+  <th>Protein</th><th>Gluten</th><th>Dairy</th><th>Egg</th><th>Shellfish</th><th>Nuts</th><th>Halal</th><th>Protein/serve</th>
+</tr>
+<tr><td><strong>Beef Shin — Hachée (Day 1)</strong></td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Yes</td><td style="font-weight:700">~44g</td></tr>
+<tr><td><strong>Baked Salmon (Day 1)</strong></td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Yes</td><td style="font-weight:700">~38g</td></tr>
+<tr><td><strong>Lamb Shoulder — Cordero (Day 2)</strong></td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Yes</td><td style="font-weight:700">~46g</td></tr>
+<tr><td><strong>Gambas al Ajillo (Day 2)</strong></td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--red);font-weight:700">Contains</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Yes</td><td style="font-weight:700">~32g</td></tr>
+<tr><td><strong>BBQ Beef Brisket (Day 3)</strong></td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Yes</td><td style="font-weight:700">~48g</td></tr>
+<tr><td><strong>Buttermilk Grilled Chicken (Day 3)</strong></td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--red);font-weight:700">Contains</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Free</td><td style="color:var(--green);font-weight:700">✓ Yes</td><td style="font-weight:700">~40g</td></tr>
+</table>
+
+<div style="background:var(--warm);border-top:2px solid var(--accent);padding:2.5mm 4mm;margin-top:2mm;font-size:8px;color:#444;line-height:1.7">
+<strong style="font-size:7.5px;text-transform:uppercase;letter-spacing:1px;color:var(--accent)">Note re Gambas · </strong>Prawns contain shellfish allergen. Staff must clearly label the cazuela and verbally advise guests with shellfish allergies. Keep serving tongs separate from all other proteins.
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Dinner Summary · Kitchen Notes · Allergens</span></div>
+</div>
+
+</body>
+</html>

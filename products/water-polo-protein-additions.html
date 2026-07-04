@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Water Polo World Cup — Additional Proteins · 5-Day Rotation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--text:#1C1C1C;--border:#E0D9D0;--mid:#8A8A8A;--warm:#F5F0E8;
+  --accent:#0D1C2B;--gold:#C8930A;--dark:#070E14;
+  --green:#2D7D4F;--red:#C0392B;
+  --d1:#6B3FA0;--d2:#1565C0;--d3:#2E7D32;--d4:#E65100;--d5:#B71C1C
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden}
+.cg1{position:absolute;top:-5%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,147,10,0.10) 0%,transparent 60%)}
+.cg2{position:absolute;bottom:0;right:0;width:360px;height:360px;background:radial-gradient(circle,rgba(107,63,160,0.08) 0%,transparent 55%)}
+.ctop{padding:13mm 16mm 0;z-index:2;position:relative}
+.c-logo{font-size:7.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(200,147,10,0.50)}
+.c-num{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.15);margin-top:1mm}
+.cmid{padding:0 16mm;flex:1;display:flex;flex-direction:column;justify-content:center;z-index:2;position:relative}
+.c-eye{font-size:8px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(200,147,10,0.65);margin-bottom:3.5mm}
+.c-title{font-family:'Playfair Display',serif;font-weight:900;line-height:0.85;margin-bottom:4mm}
+.c-title .t1{font-size:48px;color:#fff;display:block}
+.c-title .t2{font-size:48px;color:var(--gold);display:block}
+.c-title .t3{font-size:22px;font-style:italic;color:rgba(255,255,255,0.28);display:block;margin-top:2mm}
+.c-rule{width:70mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.c-quote{font-family:'Playfair Display',serif;font-size:10px;font-style:italic;color:rgba(255,255,255,0.3);line-height:1.95;max-width:155mm;margin-bottom:5mm}
+.c-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
+.cs{border:1px solid rgba(255,255,255,0.07);padding:2.5mm;text-align:center}
+.cs-v{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold)}
+.cs-l{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.25);margin-top:0.5mm}
+.cbot{padding:8mm 16mm;z-index:2;position:relative;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cbot-l{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.28)}
+.cbot-r{font-size:7px;color:rgba(255,255,255,0.14);text-align:right;line-height:1.9}
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;background:var(--bg);position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-l{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:8px;color:#CCC;font-style:italic}
+h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--accent);margin:4mm 0 2.5mm;border-left:4px solid var(--gold);padding-left:3mm}
+.day-band{padding:3.5mm 5mm;margin-bottom:3.5mm;display:flex;justify-content:space-between;align-items:center}
+.day-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
+.day-sub{font-size:7.5px;color:rgba(255,255,255,0.55);margin-top:0.5mm;letter-spacing:1px;text-transform:uppercase}
+.day-flag{font-size:22px}
+.protein-card{margin-bottom:3mm;page-break-inside:avoid}
+.pc-header{padding:2.5mm 4mm;display:flex;justify-content:space-between;align-items:flex-start}
+.pc-label{font-size:6.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5mm}
+.pc-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;line-height:1.1}
+.pc-desc{font-size:8px;color:rgba(255,255,255,0.45);margin-top:0.8mm;line-height:1.65;font-style:italic}
+.pc-why{font-size:7.5px;margin-top:1mm;font-weight:600}
+.pc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:1.5mm;flex-shrink:0}
+.badge{font-size:7px;font-weight:700;padding:1mm 2.5mm;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.badge.gf{background:rgba(46,107,74,0.25);color:#7EC8A0;border:1px solid rgba(46,107,74,0.4)}
+.badge.hal{background:rgba(200,147,10,0.2);color:var(--gold);border:1px solid rgba(200,147,10,0.35)}
+.badge.pr{background:rgba(74,143,171,0.2);color:#7EC8D4;border:1px solid rgba(74,143,171,0.3)}
+.pc-body{padding:2.5mm 4mm;background:#fff;border:1px solid var(--border);border-top:none}
+.pc-row{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.pc-ingr{font-size:8px;color:#333;line-height:1.8}
+.pc-ingr strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--mid);display:block;margin-bottom:1mm}
+.pc-method{font-size:8px;color:#333;line-height:1.8}
+.pc-method strong{font-size:7px;text-transform:uppercase;letter-spacing:1px;color:var(--mid);display:block;margin-bottom:1mm}
+.existing-bar{background:var(--warm);border:1px solid var(--border);border-left:3px solid var(--mid);padding:2mm 3.5mm;margin-bottom:2mm;font-size:8px;color:#555}
+.existing-bar strong{color:var(--accent);font-size:7.5px;text-transform:uppercase;letter-spacing:1px}
+.al-bar{padding:1.5mm 4mm;background:var(--warm);border:1px solid var(--border);border-top:none;font-size:7.5px;color:var(--mid)}
+.summary-t{width:100%;border-collapse:collapse;font-size:8.5px;margin-bottom:3mm}
+.summary-t th{background:var(--accent);color:#fff;padding:2mm 3mm;text-align:left;font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.summary-t td{padding:2mm 3mm;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7}
+.summary-t tr:nth-child(even) td{background:var(--warm)}
+.new-tag{background:var(--gold);color:#fff;font-size:6.5px;font-weight:700;padding:0.5mm 1.5mm;text-transform:uppercase;letter-spacing:1px;margin-left:1.5mm;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cg1"></div><div class="cg2"></div>
+<div class="ctop">
+  <div class="c-logo">Novotel Sydney Olympic Park · Catering &amp; Events · Head Chef Timothy Susanto</div>
+  <div class="c-num">Water Polo World Cup 2026 · Additional Proteins · 5-Day Rotation Supplement</div>
+</div>
+<div class="cmid">
+  <div class="c-eye">1 Additional Protein Per Meal · On-Theme · Cuisine-Matched</div>
+  <div class="c-title">
+    <span class="t1">Additional Proteins</span>
+    <span class="t2">5-Day Rotation</span>
+    <span class="t3">Water Polo World Cup · July 2026</span>
+  </div>
+  <div class="c-rule"></div>
+  <div class="c-quote">"Each added protein is chosen to complement the existing dish — same cuisine theme, different cut, different technique. Athletes who want more variety without abandoning familiar flavour territory."</div>
+  <div class="c-stats">
+    <div class="cs"><div class="cs-v">10</div><div class="cs-l">New Proteins</div></div>
+    <div class="cs"><div class="cs-v">5</div><div class="cs-l">Lunch Additions</div></div>
+    <div class="cs"><div class="cs-v">5</div><div class="cs-l">Dinner Additions</div></div>
+    <div class="cs"><div class="cs-v">100%</div><div class="cs-l">Nut Free · Halal</div></div>
+  </div>
+</div>
+<div class="cbot">
+  <div class="cbot-l">Novotel Sydney Olympic Park · Head Chef Timothy Susanto</div>
+  <div class="cbot-r">Water Polo World Cup 2026<br>Protein Additions · July 19–26</div>
+</div>
+</div>
+
+<!-- PAGE 2: DAY 1 + DAY 2 ADDITIONS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 1 &amp; Day 2 · Additional Proteins · Lunch + Dinner</span><span class="page-num">02</span></div>
+
+<!-- DAY 1 -->
+<div class="day-band" style="background:linear-gradient(135deg,#4A148C,#6B3FA0)">
+  <div><div class="day-title">Day 1 — Indian / Mediterranean Theme</div>
+  <div class="day-sub">Lunch $55 · Dinner $72</div></div>
+  <div class="day-flag">🌶️</div>
+</div>
+
+<div class="existing-bar"><strong>Existing Lunch:</strong> Roasted chicken — lemon herb spice &nbsp;|&nbsp; <strong>Existing Dinner:</strong> Butter chicken + Kashmiri beef rogan josh</div>
+
+<!-- DAY 1 LUNCH ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#3E1060,#5C2E8A)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Lunch Addition · Day 1 · Indian-Spiced</div>
+    <div class="pc-name">Tandoori-Style Grilled Salmon</div>
+    <div class="pc-desc">Atlantic salmon fillets marinated in yoghurt, tandoori spice blend, lemon juice and ginger. Grilled on char grill for a charred exterior, tender pink centre. Served with cucumber raita and lemon wedges.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Indian theme · complements the chicken · offers seafood alternative · yoghurt marinade = same profile as the existing Indian sides</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~36g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Salmon fillet · full-fat yoghurt · tandoori spice blend · fresh ginger · garlic · lemon · cumin · coriander seed · chilli powder · turmeric · salt</div>
+<div class="pc-method"><strong>Method</strong>Marinate minimum 2 hrs. Char grill 4 min each side to 60°C internal. Rest 2 min. Serve with raita on the side. Portion at station — do not pre-slice.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Fish · Dairy (yoghurt marinade + raita) · GF ✓</div>
+</div>
+
+<!-- DAY 1 DINNER ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#1A0A30,#3E1060)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Dinner Addition · Day 1 · Indian-Spiced</div>
+    <div class="pc-name">Dal Tadka Grilled Chicken Thigh</div>
+    <div class="pc-desc">Bone-in chicken thighs marinated in a dal tadka-inspired spice paste — turmeric, cumin, coriander, garlic, ginger and mustard seed temper in ghee. Grilled until charred, served with a small ladle of lentil tadka sauce over the top.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Indian theme · different technique from butter chicken (grilled vs braised) · different protein cut · lentil sauce ties it into the vegetarian dal already on the menu</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~38g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Bone-in chicken thigh · ghee · turmeric · cumin · coriander · mustard seed · garlic · ginger · lentil tadka sauce (pre-made) · fresh coriander garnish</div>
+<div class="pc-method"><strong>Method</strong>Marinate 4 hrs minimum. Grill char grill medium-high. Finish oven 180°C to 74°C internal. Spoon warm dal tadka over at service. Garnish coriander leaves.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Dairy (ghee) · GF ✓ · Halal ✓</div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day-band" style="background:linear-gradient(135deg,#0D47A1,#1565C0)">
+  <div><div class="day-title">Day 2 — Asian / Italian Theme</div>
+  <div class="day-sub">Lunch $55 · Dinner $72</div></div>
+  <div class="day-flag">🍜</div>
+</div>
+
+<div class="existing-bar"><strong>Existing Lunch:</strong> Beef stir-fry — bok choy, ginger soy &nbsp;|&nbsp; <strong>Existing Dinner:</strong> Chicken cacciatore + Grilled salmon — lemon butter</div>
+
+<!-- DAY 2 LUNCH ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#0A2E6E,#0D47A1)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Lunch Addition · Day 2 · Asian</div>
+    <div class="pc-name">Steamed Barramundi — Ginger, Soy &amp; Spring Onion</div>
+    <div class="pc-desc">Whole barramundi portions steamed to 60°C, finished tableside with hot ginger-infused oil poured over soy, fresh ginger julienne and spring onion. Classic Cantonese whole fish technique — clean, light, high-performance.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Asian theme · different protein (fish vs beef) · steamed not stir-fried = lighter technique · Australian barramundi = local + sustainable · Cantonese method well-understood by Asian athletes</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~34g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Barramundi portions · light soy sauce · sesame oil · fresh ginger julienne · spring onion · neutral oil for finishing pour · coriander</div>
+<div class="pc-method"><strong>Method</strong>Steam portions 8–10 min at 90°C. Place on serving tray. Lay ginger + spring onion on top. Heat neutral oil to smoking point, pour over ginger — it sizzles at table. Add soy + sesame oil. Serve immediately.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Fish · Soy · Sesame · GF ✓</div>
+</div>
+
+<!-- DAY 2 DINNER ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#0A1E4A,#0D3080)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Dinner Addition · Day 2 · Italian</div>
+    <div class="pc-name">Osso Buco-Style Braised Lamb Shank</div>
+    <div class="pc-desc">Lamb shank braised in tomato, white wine, garlic, carrot and celery for 3.5 hours until falling off the bone. Finished with gremolata (lemon zest, parsley, garlic). Served alongside the existing chicken cacciatore — both Italian braises, different proteins.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Italian theme · same braised technique as cacciatore · lamb vs chicken = different protein choice · osso buco is the premium Italian braise — elevates the overall dinner perception</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~45g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Lamb shank · canned tomato · white wine · beef stock · garlic · carrot · celery · bay leaf · thyme · lemon zest · flat-leaf parsley (gremolata)</div>
+<div class="pc-method"><strong>Method</strong>Sear shank all sides. Braise 3.5 hrs 160°C covered. Remove lid last 20 min to reduce sauce. Hold in braising liquid. Sprinkle gremolata at service. One shank per 2 portions.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> GF ✓ · Halal ✓ · DF ✓</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Day 1 &amp; 2 · Additional Proteins</span></div>
+</div>
+
+<!-- PAGE 3: DAY 3 + DAY 4 ADDITIONS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 3 &amp; Day 4 · Additional Proteins · Lunch + Dinner</span><span class="page-num">03</span></div>
+
+<!-- DAY 3 -->
+<div class="day-band" style="background:linear-gradient(135deg,#1B5E20,#2E7D32)">
+  <div><div class="day-title">Day 3 — Middle Eastern / European Theme</div>
+  <div class="day-sub">Lunch $55 · Dinner $72</div></div>
+  <div class="day-flag">🫒</div>
+</div>
+
+<div class="existing-bar"><strong>Existing Lunch:</strong> Beef meatballs in tomato ragù &nbsp;|&nbsp; <strong>Existing Dinner:</strong> Slow cooked beef brisket + Chicken shawarma with hummus &amp; baba ghanoush</div>
+
+<!-- DAY 3 LUNCH ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#0E3A16,#1B5E20)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Lunch Addition · Day 3 · Middle Eastern</div>
+    <div class="pc-name">Grilled Lamb Kofta — Harissa Yoghurt</div>
+    <div class="pc-desc">Hand-formed lamb kofta with onion, parsley, cumin, coriander, smoked paprika and allspice. Grilled on skewers. Served with a harissa-spiked yoghurt sauce and warm flatbread. Complements the beef meatballs with a different protein and Middle Eastern spice profile.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Middle Eastern theme · lamb vs beef = different protein · kofta + ragù meatballs = same mince technique, different culture · harissa yoghurt ties into the hummus/baba ghanoush already on the dinner menu</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~36g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Lamb mince · brown onion grated · flat-leaf parsley · cumin · coriander · allspice · smoked paprika · salt · skewers · harissa · Greek yoghurt for sauce</div>
+<div class="pc-method"><strong>Method</strong>Mix kofta by hand — do not over-work. Form onto flat skewers 100g each. Grill char grill 3 min each side. Hold in oven 160°C until service. Serve 2 skewers per portion with harissa yoghurt alongside.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Dairy (yoghurt sauce) · GF ✓ · Halal ✓</div>
+</div>
+
+<!-- DAY 3 DINNER ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#0A2E10,#0E3A16)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Dinner Addition · Day 3 · Middle Eastern</div>
+    <div class="pc-name">Za'atar Roasted Chicken Leg — Tahini Drizzle</div>
+    <div class="pc-desc">Whole chicken legs roasted with za'atar, olive oil, lemon, garlic and sumac until skin is crispy and golden. Drizzled with a thin tahini sauce at service. Za'atar is the herb blend most associated with Levantine cooking — it bridges the Israeli, Lebanese and Syrian palates present at this event.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Middle Eastern theme · chicken vs beef brisket and shawarma = third protein choice · za'atar + tahini = different flavour register from the shawarma spice blend · whole leg = dramatic plating at carving station</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~40g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Chicken leg · za'atar spice blend · olive oil · lemon juice + zest · garlic · sumac · salt · tahini sauce (tahini + lemon + garlic + water)</div>
+<div class="pc-method"><strong>Method</strong>Score chicken legs. Rub za'atar paste all over including under skin. Roast 180°C 45 min until skin golden + crispy. Rest 10 min. Carve or serve whole at station. Drizzle tahini at service — not in advance (tahini oxidises).</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Sesame (tahini) · GF ✓ · Halal ✓</div>
+</div>
+
+<!-- DAY 4 -->
+<div class="day-band" style="background:linear-gradient(135deg,#BF360C,#E64A19)">
+  <div><div class="day-title">Day 4 — Asian / Korean Theme</div>
+  <div class="day-sub">Lunch $55 · Dinner $72</div></div>
+  <div class="day-flag">🥢</div>
+</div>
+
+<div class="existing-bar"><strong>Existing Lunch:</strong> Teriyaki chicken thigh fillet with Asian greens &nbsp;|&nbsp; <strong>Existing Dinner:</strong> Steamed barramundi — soy/ginger/shallots + Korean-style beef bulgogi</div>
+
+<!-- DAY 4 LUNCH ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#7B1C00,#BF360C)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Lunch Addition · Day 4 · Korean-Inspired</div>
+    <div class="pc-name">Gochujang Glazed Pork Belly — Ssam Style</div>
+    <div class="pc-desc">Thick pork belly slabs marinated in gochujang, soy, sesame oil, garlic and ginger. Roasted until caramelised, sliced and served with cos lettuce cups, steamed rice and a sesame dipping sauce for ssam-style wrapping. The interactive element creates conversation at the buffet.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Korean theme · pork vs chicken = different protein · gochujang glaze is the defining Korean flavour · ssam-style service = interactive, familiar to Korean athletes, novel for others · complements teriyaki chicken without competing</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal opt</span><span class="badge pr">~35g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Halal pork belly (or substitute beef short rib for full Halal) · gochujang paste · soy sauce · sesame oil · garlic · ginger · brown sugar · cos lettuce cups · sesame dipping sauce</div>
+<div class="pc-method"><strong>Method</strong>Marinate overnight. Roast 160°C 2 hrs. Increase to 200°C last 15 min for caramelised glaze. Rest 10 min. Slice 1cm thick at station. Serve with lettuce cups and rice on side for self-assembly.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Soy · Sesame · GF ✓ · Note: substitute beef short rib if full Halal required</div>
+</div>
+
+<!-- DAY 4 DINNER ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#5C1600,#7B1C00)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Dinner Addition · Day 4 · Asian</div>
+    <div class="pc-name">Five-Spice Duck Leg — Hoisin Glaze</div>
+    <div class="pc-desc">Duck legs slow-roasted with Chinese five-spice, soy, ginger and a hoisin glaze applied in the final 15 minutes. Crispy skin, rich dark meat. Served with sliced spring onion and cucumber ribbons. Bridges the Korean theme with a broader pan-Asian profile — bold enough to stand next to bulgogi.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Asian theme · duck vs fish and beef = third protein · five-spice + hoisin = Chinese influence that complements Korean flavours · duck is a premium protein — elevates the dinner station</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~38g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Duck leg · five-spice powder · soy sauce · ginger · garlic · hoisin sauce · spring onion · cucumber · sesame oil</div>
+<div class="pc-method"><strong>Method</strong>Score duck skin. Rub five-spice + soy + ginger paste. Roast 160°C 1.5 hrs. Brush hoisin glaze last 15 min, increase to 200°C for crispy skin. Rest 10 min. Serve whole leg with garnish.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Soy · Sesame · GF ✓ · Halal ✓</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Day 3 &amp; 4 · Additional Proteins</span></div>
+</div>
+
+<!-- PAGE 4: DAY 5 + SUMMARY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 5 · Additional Proteins + Full 5-Day Summary</span><span class="page-num">04</span></div>
+
+<!-- DAY 5 -->
+<div class="day-band" style="background:linear-gradient(135deg,#7F0000,#B71C1C)">
+  <div><div class="day-title">Day 5 — Mexican / Greek Theme</div>
+  <div class="day-sub">Lunch $55 · Dinner $72</div></div>
+  <div class="day-flag">🌮</div>
+</div>
+
+<div class="existing-bar"><strong>Existing Lunch:</strong> Beef mince tacos with tortillas &nbsp;|&nbsp; <strong>Existing Dinner:</strong> Slow cooked lamb shoulder + tzatziki · Roasted chicken cutlet — Greek spices</div>
+
+<!-- DAY 5 LUNCH ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#4A0000,#7F0000)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Lunch Addition · Day 5 · Mexican</div>
+    <div class="pc-name">Achiote Grilled Chicken Breast — Pico de Gallo</div>
+    <div class="pc-desc">Chicken breast marinated in achiote (annatto) paste, orange juice, cumin, garlic and oregano — the Yucatán cochinita pibil flavour profile applied to chicken. Grilled and served with fresh pico de gallo and corn tortillas alongside the existing beef tacos. Two taco proteins = more variety, same station.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Mexican theme · chicken vs beef = second taco protein · achiote is the signature Yucatán spice — different flavour register from the beef mince · athletes can mix and match taco proteins · pico de gallo is already a condiment-familiar item</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~40g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Chicken breast · achiote paste · orange juice · lime · cumin · garlic · dried oregano · salt · pico de gallo (tomato, white onion, jalapeño, coriander, lime)</div>
+<div class="pc-method"><strong>Method</strong>Marinate 4 hrs minimum — achiote stains, use gloves. Butterfly thick breasts. Grill char grill 4 min each side to 74°C internal. Rest. Slice against grain. Serve at taco station alongside beef mince.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> GF ✓ · Halal ✓ · DF ✓</div>
+</div>
+
+<!-- DAY 5 DINNER ADDITION -->
+<div class="protein-card">
+<div class="pc-header" style="background:linear-gradient(135deg,#2E0000,#4A0000)">
+  <div>
+    <div class="pc-label" style="color:rgba(200,147,10,0.75)">🍽 Dinner Addition · Day 5 · Greek</div>
+    <div class="pc-name">Lemon &amp; Herb Grilled Barramundi — Olive Salsa Verde</div>
+    <div class="pc-desc">Barramundi fillets marinated in lemon, olive oil, oregano, garlic and fresh thyme. Grilled skin-side first until crispy. Served with a Greek-style olive salsa verde — green olives, capers, anchovy, parsley and lemon. Light seafood option to balance the lamb shoulder and chicken on the existing menu.</div>
+    <div class="pc-why" style="color:rgba(200,147,10,0.7)">▸ Greek theme · fish vs lamb and chicken = third protein for dinner · Greek cuisine has one of the strongest seafood traditions in Europe · olive salsa verde is Mediterranean · athletes wanting a lighter dinner option after 3 days of heavier proteins</div>
+  </div>
+  <div class="pc-badges"><span class="badge gf">GF</span><span class="badge hal">Halal</span><span class="badge pr">~34g protein</span></div>
+</div>
+<div class="pc-body">
+<div class="pc-row">
+<div class="pc-ingr"><strong>Key Ingredients</strong>Barramundi fillet skin-on · lemon · olive oil · dried oregano · fresh thyme · garlic · olive salsa verde (Kalamata olives, capers, anchovy, parsley, lemon, olive oil)</div>
+<div class="pc-method"><strong>Method</strong>Score skin. Marinate 1 hr max (lemon acid denatures fish quickly). Grill skin-side 3 min, flip 2 min. 60°C internal. Spoon olive salsa verde over at service. Do not pre-sauce — keep crispy skin.</div>
+</div>
+</div>
+<div class="al-bar"><strong>Allergens:</strong> Fish · GF ✓ · Halal ✓ · Contains anchovy (fish)</div>
+</div>
+
+<!-- FULL SUMMARY TABLE -->
+<h2>Complete 5-Day Protein Summary</h2>
+<table class="summary-t">
+<tr>
+  <th>Day</th><th>Theme</th>
+  <th>Lunch — Existing</th><th>Lunch — NEW <span class="new-tag">+1</span></th>
+  <th>Dinner — Existing</th><th>Dinner — NEW <span class="new-tag">+1</span></th>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--d1)">1</td>
+  <td>Indian / Med</td>
+  <td>Roasted chicken — lemon herb</td>
+  <td style="font-weight:600;color:var(--d1)">Tandoori salmon — cucumber raita</td>
+  <td>Butter chicken + Kashmiri beef rogan josh</td>
+  <td style="font-weight:600;color:var(--d1)">Dal tadka grilled chicken thigh</td>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--d2)">2</td>
+  <td>Asian / Italian</td>
+  <td>Beef stir-fry — ginger soy</td>
+  <td style="font-weight:600;color:var(--d2)">Steamed barramundi — ginger soy, spring onion</td>
+  <td>Chicken cacciatore + Grilled salmon</td>
+  <td style="font-weight:600;color:var(--d2)">Osso buco-style braised lamb shank</td>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--d3)">3</td>
+  <td>Middle Eastern</td>
+  <td>Beef meatballs — tomato ragù</td>
+  <td style="font-weight:600;color:var(--d3)">Grilled lamb kofta — harissa yoghurt</td>
+  <td>Beef brisket + Chicken shawarma</td>
+  <td style="font-weight:600;color:var(--d3)">Za'atar roasted chicken leg — tahini</td>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--d4)">4</td>
+  <td>Asian / Korean</td>
+  <td>Teriyaki chicken — Asian greens</td>
+  <td style="font-weight:600;color:var(--d4)">Gochujang pork belly ssam style</td>
+  <td>Barramundi soy/ginger + Beef bulgogi</td>
+  <td style="font-weight:600;color:var(--d4)">Five-spice duck leg — hoisin glaze</td>
+</tr>
+<tr>
+  <td style="font-weight:700;border-left:3px solid var(--d5)">5</td>
+  <td>Mexican / Greek</td>
+  <td>Beef mince tacos</td>
+  <td style="font-weight:600;color:var(--d5)">Achiote chicken breast — pico de gallo</td>
+  <td>Lamb shoulder tzatziki + Roasted chicken Greek</td>
+  <td style="font-weight:600;color:var(--d5)">Grilled barramundi — olive salsa verde</td>
+</tr>
+</table>
+
+<div style="background:var(--accent);padding:3mm 5mm;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3mm;margin-top:2mm">
+  <div style="text-align:center"><div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold)">10</div><div style="font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3)">New Proteins Added</div></div>
+  <div style="text-align:center"><div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold)">100%</div><div style="font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3)">Nut Free</div></div>
+  <div style="text-align:center"><div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold)">100%</div><div style="font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3)">Halal (incl pork sub)</div></div>
+  <div style="text-align:center"><div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold)">0</div><div style="font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3)">Duplicated Proteins</div></div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Water Polo World Cup 2026 · Novotel Sydney Olympic Park</span><span class="pf-r">Day 5 · Full 5-Day Summary</span></div>
+</div>
+
+</body>
+</html>

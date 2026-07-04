@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Water Polo World Cup — Pre-Camp Menu · USA, Spain, Netherlands · Jul 15–17</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--text:#1C1C1C;--border:#E0D9D0;--mid:#8A8A8A;--warm:#F5F0E8;
+  --accent:#0D1C2B;--gold:#C8930A;--dark:#070E14;
+  --green:#2D7D4F;--red:#C0392B;--new:#C8930A
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:11px}
+@page{size:A4;margin:0}
+
+.cover{width:210mm;min-height:297mm;background:var(--dark);display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden}
+.cg1{position:absolute;top:-5%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,147,10,0.10) 0%,transparent 60%)}
+.cg2{position:absolute;bottom:0;right:0;width:360px;height:360px;background:radial-gradient(circle,rgba(174,28,40,0.07) 0%,transparent 55%)}
+.ctop{padding:13mm 16mm 0;z-index:2;position:relative}
+.c-logo{font-size:7.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(200,147,10,0.50)}
+.c-num{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.15);margin-top:1mm}
+.cmid{padding:0 16mm;flex:1;display:flex;flex-direction:column;justify-content:center;z-index:2;position:relative}
+.c-eye{font-size:8px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(200,147,10,0.65);margin-bottom:3.5mm}
+.c-title{font-family:'Playfair Display',serif;font-weight:900;line-height:0.85;margin-bottom:4mm}
+.c-title .t1{font-size:46px;color:#fff;display:block}
+.c-title .t2{font-size:46px;color:var(--gold);display:block}
+.c-title .t3{font-size:22px;font-style:italic;color:rgba(255,255,255,0.28);display:block;margin-top:2mm}
+.c-rule{width:70mm;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:4mm 0}
+.c-quote{font-family:'Playfair Display',serif;font-size:9.5px;font-style:italic;color:rgba(255,255,255,0.3);line-height:1.95;max-width:155mm;margin-bottom:5mm}
+.c-flags{display:flex;gap:4mm;margin-bottom:5mm}
+.flag-block{border:1px solid rgba(255,255,255,0.12);padding:3mm 5mm;text-align:center;min-width:42mm}
+.flag-emoji{font-size:26px;display:block;margin-bottom:1mm}
+.flag-name{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+.c-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm}
+.cs{border:1px solid rgba(255,255,255,0.07);padding:2.5mm;text-align:center}
+.cs-v{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--gold)}
+.cs-l{font-size:6px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.25);margin-top:0.5mm}
+.cbot{padding:8mm 16mm;z-index:2;position:relative;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:flex-end}
+.cbot-l{font-family:'Playfair Display',serif;font-size:10px;color:rgba(255,255,255,0.28)}
+.cbot-r{font-size:7px;color:rgba(255,255,255,0.14);text-align:right;line-height:1.9}
+
+.page{width:210mm;min-height:297mm;padding:11mm 14mm 16mm;page-break-after:always;background:var(--bg);position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4mm;padding-bottom:3mm;border-bottom:2px solid var(--accent)}
+.page-section{font-size:8px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent)}
+.page-num{font-size:9px;color:var(--mid);font-style:italic}
+.page-footer{position:absolute;bottom:6mm;left:14mm;right:14mm;display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:2mm}
+.pf-l{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.pf-r{font-size:7.5px;color:#CCC;font-style:italic}
+
+/* DAY BAND */
+.day-band{padding:3.5mm 5mm;margin-bottom:3mm;display:flex;justify-content:space-between;align-items:center}
+.day-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff}
+.day-sub{font-size:7.5px;color:rgba(255,255,255,0.55);margin-top:0.5mm;letter-spacing:1px;text-transform:uppercase}
+.day-pill{background:rgba(255,255,255,0.15);color:#fff;font-size:8px;font-weight:700;padding:1.5mm 3mm}
+.day-pill span{font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);display:block}
+
+/* MEAL SECTION */
+.meal-hdr{display:flex;justify-content:space-between;align-items:center;margin:3mm 0 2mm}
+.meal-label{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent)}
+.meal-price{background:var(--accent);color:var(--gold);font-size:8px;font-weight:700;padding:1mm 3mm}
+
+/* MENU TABLE */
+.menu-t{width:100%;border-collapse:collapse;margin-bottom:3.5mm;font-size:9px}
+.menu-t th{background:var(--accent);color:rgba(255,255,255,0.5);font-size:6.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:1.5mm 3mm;text-align:left}
+.menu-t td{padding:1.5mm 3mm;border-bottom:1px solid rgba(224,217,208,0.4);vertical-align:top;line-height:1.7}
+.menu-t tr:nth-child(even) td{background:var(--warm)}
+.menu-t td.cat{font-size:7px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);width:22mm}
+.menu-t td.item{color:#333}
+.menu-t td.tag{font-size:7.5px;color:var(--mid);font-style:italic;text-align:right;width:28mm}
+
+/* NEW ITEMS — chef's recommendation highlight */
+.new-row td{background:#FFFBF0 !important;border-left:3px solid var(--gold)}
+.new-row td.item{font-weight:600;color:#5A3A00}
+.new-row td.cat{color:var(--gold)}
+.new-badge{display:inline-block;background:var(--gold);color:#fff;font-size:6px;font-weight:700;padding:0.3mm 1.5mm;text-transform:uppercase;letter-spacing:1px;margin-left:2mm;vertical-align:middle}
+
+/* LEGEND */
+.legend{display:flex;gap:3mm;align-items:center;margin-bottom:3mm;padding:2mm 3mm;background:var(--warm);border:1px solid var(--border);font-size:8px}
+.legend-item{display:flex;align-items:center;gap:1.5mm}
+.legend-swatch{width:10mm;height:3mm}
+.legend-swatch.std{background:#fff;border:1px solid var(--border)}
+.legend-swatch.new{background:#FFFBF0;border-left:3px solid var(--gold)}
+
+/* DIETARY TAGS */
+.dtag{font-size:6.5px;font-weight:700;padding:0.3mm 1.5mm;text-transform:uppercase;letter-spacing:0.5px;display:inline-block;margin-right:1mm}
+.dtag.gf{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.dtag.vg{background:#F3E5F5;color:#6A1B9A;border:1px solid #CE93D8}
+.dtag.hal{background:#FFF8E1;color:#E65100;border:1px solid #FFE082}
+.dtag.df{background:#E3F2FD;color:#1565C0;border:1px solid #90CAF9}
+.dtag.nf{background:#FCE4EC;color:#880E4F;border:1px solid #F48FB1}
+
+/* RECOMMENDATION BOX */
+.rec-box{background:rgba(200,147,10,0.07);border:1px solid rgba(200,147,10,0.3);border-left:4px solid var(--gold);padding:3mm 4mm;margin-bottom:3mm;font-size:8.5px;color:#444;line-height:1.85}
+.rec-box strong{font-size:7px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);display:block;margin-bottom:1mm}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cg1"></div><div class="cg2"></div>
+<div class="ctop">
+  <div class="c-logo">Novotel Sydney Olympic Park · Food &amp; Beverage · Head Chef Timothy Susanto</div>
+  <div class="c-num">Water Polo World Cup 2026 · Pre-Camp Menu · Confidential · For Jacinta</div>
+</div>
+<div class="cmid">
+  <div class="c-eye">Pre-Camp · 3 Nights · Country-Themed · Chef's Recommendations Included</div>
+  <div class="c-title">
+    <span class="t1">Pre-Camp Menu</span>
+    <span class="t2">Wed 15 – Fri 17 July</span>
+    <span class="t3">USA · Spain · Netherlands · 80 Pax</span>
+  </div>
+  <div class="c-rule"></div>
+  <div class="c-quote">"Based on our experience hosting international sports teams, we have observed that elite athletes consistently prefer three protein options at dinner — offering variety without overwhelming choice. Our Chef's Recommendations (highlighted in yellow) reflect this pattern and have been added to complement the existing menu with country-specific proteins for each team."</div>
+  <div class="c-flags">
+    <div class="flag-block"><span class="flag-emoji">🇺🇸</span><span class="flag-name">Day 1 · Wed 15 · USA</span></div>
+    <div class="flag-block"><span class="flag-emoji">🇪🇸</span><span class="flag-name">Day 2 · Thu 16 · Spain</span></div>
+    <div class="flag-block"><span class="flag-emoji">🇳🇱</span><span class="flag-name">Day 3 · Fri 17 · Netherlands</span></div>
+  </div>
+  <div class="c-stats">
+    <div class="cs"><div class="cs-v">80</div><div class="cs-l">Pax</div></div>
+    <div class="cs"><div class="cs-v">3</div><div class="cs-l">Days</div></div>
+    <div class="cs"><div class="cs-v">$55</div><div class="cs-l">Lunch pp</div></div>
+    <div class="cs"><div class="cs-v">$72</div><div class="cs-l">Dinner pp</div></div>
+    <div class="cs"><div class="cs-v">3</div><div class="cs-l">Proteins/Dinner</div></div>
+  </div>
+</div>
+<div class="cbot">
+  <div class="cbot-l">Novotel Sydney Olympic Park · Head Chef Timothy Susanto</div>
+  <div class="cbot-r">Pre-Camp · 15–17 July 2026<br>Prepared for Jacinta · Confidential</div>
+</div>
+</div>
+
+<!-- PAGE 2: DAY 1 — USA -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 1 · Wednesday 15 July · USA 🇺🇸</span><span class="page-num">02</span></div>
+
+<div class="day-band" style="background:linear-gradient(135deg,#3C3B6E,#1A1A3E)">
+  <div><div class="day-title">Wednesday 15 July — USA 🇺🇸</div>
+  <div class="day-sub">80 Pax · American / BBQ Theme · Lunch + Dinner</div></div>
+  <div class="day-pill"><span>$55/$72</span>Lunch / Dinner pp</div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch std"></div><span>Standard menu</span></div>
+  <div class="legend-item"><div class="legend-swatch new"></div><span><strong>Chef's Recommendation</strong> — additional protein (yellow highlight)</span></div>
+</div>
+
+<!-- LUNCH -->
+<div class="meal-hdr"><div class="meal-label">Lunch Buffet</div><div class="meal-price">$55 per person</div></div>
+<table class="menu-t">
+<tr><th>Category</th><th>Item</th><th>Dietary</th></tr>
+<tr><td class="cat">Sandwich Station</td><td class="item">Assorted bread: white, wholemeal, multigrain, sourdough, wraps<br><span style="font-size:8px;color:#888">Mix leaves, tomato, cucumber, carrot, onion, beetroot, sliced cheese<br>Sliced meats: chicken, ham, beef, tuna, falafel<br>Condiments: mayo, pesto, mustard, pickles, ketchup, butter, margarine</span></td><td class="tag"></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Charred corn and avocado salad</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Main</td><td class="item">BBQ-glazed grilled chicken breast — smoked paprika, brown sugar, apple cider glaze</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr class="new-row"><td class="cat">Main <span class="new-badge">Chef's Rec</span></td><td class="item">Achiote grilled chicken breast — Yucatán spice, pico de gallo <span class="new-badge">NEW</span></td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main Veg</td><td class="item">Mixed bean chilli con carne (plant-based)</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Side</td><td class="item">Mexican rice · sour cream · salsa</td><td class="tag"><span class="dtag gf">GF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Seasonal fresh fruit platter</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+</table>
+
+<!-- DINNER -->
+<div class="meal-hdr"><div class="meal-label">Dinner Buffet</div><div class="meal-price">$72 per person</div></div>
+<table class="menu-t">
+<tr><th>Category</th><th>Item</th><th>Dietary</th></tr>
+<tr><td class="cat">Salad</td><td class="item">Classic American coleslaw — creamy apple cider base</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Corn, black bean &amp; avocado salad</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Mixed greens — ranch-style dressing on side</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Soup</td><td class="item">Roasted corn &amp; sweet potato chowder — tableside serve</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag df">DF</span></td></tr>
+<tr><td class="cat">Main 1</td><td class="item">Slow-smoked BBQ beef brisket — Texas dry rub, 8hr cook, carved tableside</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main 2</td><td class="item">Buttermilk grilled chicken thigh — Southern style, hot sauce on side</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr class="new-row"><td class="cat">Main 3 <span class="new-badge">Chef's Rec</span></td><td class="item">BBQ-glazed pork rib (halal) — house glaze, apple cider finish <span class="new-badge">NEW</span></td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main Veg</td><td class="item">Baked beans — tomato &amp; molasses, no pork</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Side</td><td class="item">Baked sweet potato wedges · mac &amp; cheese · grilled corn · cornbread</td><td class="tag"><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Warm brownie + vanilla ice cream</td><td class="tag"><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Banana pudding — vanilla wafer, chantilly cream</td><td class="tag"><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Seasonal fresh fruit platter</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Beverages</td><td class="item">Still + sparkling water · Apple juice · Tea · Coffee</td><td class="tag"></td></tr>
+</table>
+
+<div class="rec-box"><strong>Chef's Note — Day 1 · USA</strong>Based on our pattern with sports teams, we have added a third dinner protein (halal BBQ pork rib) to ensure athletes with different protein preferences are catered for without depleting one option. The BBQ theme across all three proteins — brisket, buttermilk chicken and ribs — creates a cohesive American BBQ experience rather than a generic buffet. The achiote chicken at lunch gives a Tex-Mex dimension alongside the standard BBQ chicken.</div>
+
+<div style="display:flex;gap:2mm;margin-top:2mm"><span class="dtag nf">100% Nut Free</span><span class="dtag hal">All Proteins Halal</span><span class="dtag gf">GF Options Throughout</span><span class="dtag vg">Vegan Available</span></div>
+
+<div class="page-footer"><span class="pf-l">Pre-Camp Menu · Novotel Sydney Olympic Park · Confidential</span><span class="pf-r">Day 1 · Wednesday 15 July · USA</span></div>
+</div>
+
+<!-- PAGE 3: DAY 2 — SPAIN -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 2 · Thursday 16 July · Spain 🇪🇸</span><span class="page-num">03</span></div>
+
+<div class="day-band" style="background:linear-gradient(135deg,#8B1010,#AA151B)">
+  <div><div class="day-title">Thursday 16 July — Spain 🇪🇸</div>
+  <div class="day-sub">80 Pax · Spanish / Mediterranean Theme · Lunch + Dinner</div></div>
+  <div class="day-pill"><span>$55/$72</span>Lunch / Dinner pp</div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch std"></div><span>Standard menu</span></div>
+  <div class="legend-item"><div class="legend-swatch new"></div><span><strong>Chef's Recommendation</strong> — additional protein (yellow highlight)</span></div>
+</div>
+
+<!-- LUNCH -->
+<div class="meal-hdr"><div class="meal-label">Lunch Buffet</div><div class="meal-price">$55 per person</div></div>
+<table class="menu-t">
+<tr><th>Category</th><th>Item</th><th>Dietary</th></tr>
+<tr><td class="cat">Sandwich Station</td><td class="item">Assorted bread: white, wholemeal, multigrain, sourdough, wraps<br><span style="font-size:8px;color:#888">Mix leaves, tomato, cucumber, carrot, onion, beetroot, sliced cheese<br>Sliced meats: chicken, ham, beef, tuna, falafel<br>Condiments: mayo, pesto, mustard, pickles, ketchup, butter, margarine</span></td><td class="tag"></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Greek salad — feta, olive, cucumber, tomato</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Main</td><td class="item">Beef meatballs in tomato ragù</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr class="new-row"><td class="cat">Main <span class="new-badge">Chef's Rec</span></td><td class="item">Pollo al ajillo — Spanish garlic chicken, white wine, pimentón de la Vera, bay <span class="new-badge">NEW</span></td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main Veg</td><td class="item">Pasta with mushroom sauce</td><td class="tag"><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Side</td><td class="item">Smashed potatoes with herb butter · steamed rice</td><td class="tag"><span class="dtag gf">GF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Seasonal fresh fruit platter</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+</table>
+
+<!-- DINNER -->
+<div class="meal-hdr"><div class="meal-label">Dinner Buffet</div><div class="meal-price">$72 per person</div></div>
+<table class="menu-t">
+<tr><th>Category</th><th>Item</th><th>Dietary</th></tr>
+<tr><td class="cat">Salad</td><td class="item">Rocket, parmesan &amp; pear salad</td><td class="tag"><span class="dtag gf">GF</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Roasted pepper, olive &amp; caper salad</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Ensaladilla rusa — Spanish potato &amp; tuna salad</td><td class="tag"><span class="dtag gf">GF</span></td></tr>
+<tr><td class="cat">Soup</td><td class="item">Gazpacho caliente — warm roasted tomato &amp; red pepper, olive oil — tableside</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Main 1</td><td class="item">Cordero asado — slow-roasted lamb shoulder, garlic, rosemary, smoked paprika — carved tableside</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main 2</td><td class="item">Gambas al ajillo — garlic prawns in olive oil, smoked paprika, sherry — served in cazuela</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr class="new-row"><td class="cat">Main 3 <span class="new-badge">Chef's Rec</span></td><td class="item">Chicken cacciatore — braised chicken, tomato, olive, capers, white wine <span class="new-badge">NEW</span></td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main Veg</td><td class="item">Espinacas con garbanzos — spinach &amp; chickpeas, cumin, smoked paprika</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Side</td><td class="item">Saffron rice · patatas bravas · crusty rolls + olive oil</td><td class="tag"><span class="dtag gf">GF opt</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Crema catalana — individual portions, torched tableside</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Churros + warm chocolate dipping sauce</td><td class="tag"><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Seasonal fresh fruit platter — Valencia orange &amp; melon</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Beverages</td><td class="item">Still + sparkling water · Orange juice · Tea · Coffee</td><td class="tag"></td></tr>
+</table>
+
+<div class="rec-box"><strong>Chef's Note — Day 2 · Spain</strong>We have added pollo al ajillo at lunch — the garlic-braised chicken is the most universally recognised Spanish home dish and complements the beef meatballs without competing. At dinner we have added chicken cacciatore as the third protein, providing a lighter braised option alongside the lamb shoulder and prawns. Athletes who have trained heavily and prefer a less rich option will gravitate to this. The gambas al ajillo contains shellfish — this has been clearly labelled and separate serving utensils are provided.</div>
+
+<div style="display:flex;gap:2mm;margin-top:2mm"><span class="dtag nf">100% Nut Free</span><span class="dtag hal">All Main Proteins Halal</span><span class="dtag gf">GF Options Throughout</span><span class="dtag vg">Vegan Available</span></div>
+
+<div class="page-footer"><span class="pf-l">Pre-Camp Menu · Novotel Sydney Olympic Park · Confidential</span><span class="pf-r">Day 2 · Thursday 16 July · Spain</span></div>
+</div>
+
+<!-- PAGE 4: DAY 3 — NETHERLANDS -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Day 3 · Friday 17 July · Netherlands 🇳🇱</span><span class="page-num">04</span></div>
+
+<div class="day-band" style="background:linear-gradient(135deg,#21468B,#1A3570)">
+  <div><div class="day-title">Friday 17 July — Netherlands 🇳🇱</div>
+  <div class="day-sub">80 Pax · Dutch / Northern European Theme · Lunch + Dinner</div></div>
+  <div class="day-pill"><span>$55/$72</span>Lunch / Dinner pp</div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch std"></div><span>Standard menu</span></div>
+  <div class="legend-item"><div class="legend-swatch new"></div><span><strong>Chef's Recommendation</strong> — additional protein (yellow highlight)</span></div>
+</div>
+
+<!-- LUNCH -->
+<div class="meal-hdr"><div class="meal-label">Lunch Buffet</div><div class="meal-price">$55 per person</div></div>
+<table class="menu-t">
+<tr><th>Category</th><th>Item</th><th>Dietary</th></tr>
+<tr><td class="cat">Sandwich Station</td><td class="item">Assorted bread: white, wholemeal, multigrain, sourdough, wraps<br><span style="font-size:8px;color:#888">Mix leaves, tomato, cucumber, carrot, onion, beetroot, sliced cheese<br>Sliced meats: chicken, ham, beef, tuna, falafel<br>Condiments: mayo, pesto, mustard, pickles, ketchup, butter, margarine</span></td><td class="tag"></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Dutch herring-style potato salad — mustard, dill, apple cider vinegar, white onion</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag df">DF</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Cucumber, dill &amp; white onion salad — apple cider vinegar</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Main</td><td class="item">Mustard-herb grilled chicken thigh — whole grain mustard, dill, lemon, pan jus</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr class="new-row"><td class="cat">Main <span class="new-badge">Chef's Rec</span></td><td class="item">Tandoori-style grilled salmon — yoghurt, tandoori spice blend, cucumber raita <span class="new-badge">NEW</span></td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main Veg</td><td class="item">Hokkien noodle stir-fry with tofu and bok choy</td><td class="tag"><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Side</td><td class="item">Steamed baby potatoes with dill butter · steamed rice</td><td class="tag"><span class="dtag gf">GF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Seasonal fresh fruit platter</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+</table>
+
+<!-- DINNER -->
+<div class="meal-hdr"><div class="meal-label">Dinner Buffet</div><div class="meal-price">$72 per person</div></div>
+<table class="menu-t">
+<tr><th>Category</th><th>Item</th><th>Dietary</th></tr>
+<tr><td class="cat">Salad</td><td class="item">Warm Dutch potato salad — mustard, capers, parsley</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag df">DF</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Roasted beetroot, goat cheese &amp; watercress</td><td class="tag"><span class="dtag gf">GF</span></td></tr>
+<tr><td class="cat">Salad</td><td class="item">Shaved fennel, orange &amp; watercress</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Soup</td><td class="item">Erwtensoep — Dutch split pea soup, celeriac, leek, smoked paprika — tableside serve</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Main 1</td><td class="item">Slow-braised beef shin hachée — dark beer, caramelised onion, cloves, bay — fall-apart tender</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main 2</td><td class="item">Baked salmon fillet — dill &amp; lemon butter</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr class="new-row"><td class="cat">Main 3 <span class="new-badge">Chef's Rec</span></td><td class="item">Dal tadka grilled chicken thigh — turmeric, cumin, mustard seed temper, lentil sauce <span class="new-badge">NEW</span></td><td class="tag"><span class="dtag gf">GF</span><span class="dtag hal">Halal</span></td></tr>
+<tr><td class="cat">Main Veg</td><td class="item">Braised red cabbage — apple, clove, brown sugar · roasted root vegetables</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Side</td><td class="item">Mashed potato (butter + cream) · steamed green beans · Dutch soft white rolls</td><td class="tag"><span class="dtag gf">GF opt</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Dutch appeltaart — warm slice + double cream</td><td class="tag"><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Vanilla panna cotta + berry coulis</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag nf">NF</span></td></tr>
+<tr><td class="cat">Sweet</td><td class="item">Seasonal fresh fruit platter</td><td class="tag"><span class="dtag gf">GF</span><span class="dtag vg">VG</span></td></tr>
+<tr><td class="cat">Beverages</td><td class="item">Still + sparkling water · Juice · Tea · Coffee</td><td class="tag"></td></tr>
+</table>
+
+<div class="rec-box"><strong>Chef's Note — Day 3 · Netherlands</strong>We have added tandoori salmon at lunch to give athletes a seafood protein option alongside the chicken — the yoghurt-based tandoori marinade also complements the mustard-dill flavour profile of the Dutch theme. At dinner, the dal tadka grilled chicken has been added as the third protein — it provides a lighter grilled option alongside the rich beef shin and baked salmon, ensuring athletes at different stages of recovery have appropriate choices. All three dinner proteins represent different cooking techniques: braised (beef shin), baked (salmon), grilled (chicken) — this is intentional.</div>
+
+<div style="display:flex;gap:2mm;margin-top:2mm"><span class="dtag nf">100% Nut Free</span><span class="dtag hal">All Proteins Halal</span><span class="dtag gf">GF Options Throughout</span><span class="dtag vg">Vegan Available</span></div>
+
+<div class="page-footer"><span class="pf-l">Pre-Camp Menu · Novotel Sydney Olympic Park · Confidential</span><span class="pf-r">Day 3 · Friday 17 July · Netherlands</span></div>
+</div>
+
+<!-- PAGE 5: CHEF'S NOTE + SUMMARY + EMAIL -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Chef's Recommendation · Rationale + Full Summary</span><span class="page-num">05</span></div>
+
+<div style="background:var(--accent);padding:5mm 6mm;margin-bottom:5mm">
+  <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);margin-bottom:2mm">Why We Recommend 3 Proteins at Dinner</div>
+  <div style="font-size:9px;color:rgba(255,255,255,0.6);line-height:2">Based on our experience hosting international sports teams at this property, we have observed a consistent pattern: <strong style="color:rgba(255,255,255,0.85)">elite athletes consume protein at approximately 2–3× the rate of leisure guests</strong> and deplete single-protein buffet stations well before service ends, creating a substandard experience for the final 20–30% of athletes to be served. Three proteins per dinner service solves this by distributing demand across options, ensuring every athlete has full access to a complete protein regardless of when they arrive. It also accommodates the dietary diversity within a squad — athletes managing weight, athletes in heavy recovery, athletes with personal preferences — without requiring special requests.</div>
+</div>
+
+<h2 style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--accent);margin:0 0 3mm;border-left:4px solid var(--gold);padding-left:3mm">3-Day Pre-Camp Summary</h2>
+<table style="width:100%;border-collapse:collapse;font-size:8.5px;margin-bottom:5mm">
+<tr style="background:var(--accent)">
+  <th style="padding:2mm 3mm;color:rgba(255,255,255,0.5);font-size:7px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left;width:14mm">Day</th>
+  <th style="padding:2mm 3mm;color:rgba(255,255,255,0.5);font-size:7px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left">Lunch Proteins</th>
+  <th style="padding:2mm 3mm;color:rgba(255,255,255,0.5);font-size:7px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left">Dinner Proteins (3)</th>
+  <th style="padding:2mm 3mm;color:rgba(255,255,255,0.5);font-size:7px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left;width:18mm">Signature Dessert</th>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;border-left:3px solid #3C3B6E">Wed 15<br>🇺🇸 USA</td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">BBQ-glazed chicken breast<br><span style="color:var(--gold);font-weight:600">+ Achiote chicken — pico de gallo ✦</span></td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Texas BBQ brisket — carved tableside<br>Buttermilk grilled chicken — Southern<br><span style="color:var(--gold);font-weight:600">+ BBQ halal pork rib ✦</span></td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Warm brownie + vanilla ice cream<br>Banana pudding</td>
+</tr>
+<tr style="background:var(--warm);border-bottom:1px solid var(--border)">
+  <td style="padding:2.5mm 3mm;font-weight:700;border-left:3px solid #AA151B">Thu 16<br>🇪🇸 Spain</td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Beef meatballs — tomato ragù<br><span style="color:var(--gold);font-weight:600">+ Pollo al ajillo — garlic chicken ✦</span></td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Cordero asado — lamb shoulder carved<br>Gambas al ajillo — garlic prawns<br><span style="color:var(--gold);font-weight:600">+ Chicken cacciatore ✦</span></td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Crema catalana — torched tableside<br>Churros + chocolate</td>
+</tr>
+<tr style="border-bottom:2px solid var(--accent)">
+  <td style="padding:2.5mm 3mm;font-weight:700;border-left:3px solid #21468B">Fri 17<br>🇳🇱 NED</td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Mustard-herb chicken thigh<br><span style="color:var(--gold);font-weight:600">+ Tandoori salmon — cucumber raita ✦</span></td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Beef shin hachée — braised<br>Baked salmon — dill + lemon butter<br><span style="color:var(--gold);font-weight:600">+ Dal tadka grilled chicken ✦</span></td>
+  <td style="padding:2.5mm 3mm;line-height:1.8">Dutch appeltaart — warm + cream<br>Vanilla panna cotta</td>
+</tr>
+</table>
+
+<div style="font-size:7.5px;color:var(--mid);margin-bottom:5mm">✦ Chef's Recommendation — additional proteins highlighted in yellow throughout the menu</div>
+
+<div style="background:var(--warm);border:1px solid var(--border);border-left:4px solid var(--accent);padding:4mm 5mm">
+  <div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2mm">Event Details</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;font-size:8.5px;color:#333;line-height:1.9">
+    <div><strong>Dates:</strong> Wed 15 – Fri 17 July 2026<br><strong>Pax:</strong> 80 per service<br><strong>Teams:</strong> USA · Spain · Netherlands</div>
+    <div><strong>Lunch:</strong> $55 per person<br><strong>Dinner:</strong> $72 per person<br><strong>Service:</strong> Buffet</div>
+    <div><strong>Allergens:</strong> 100% nut free<br><strong>Halal:</strong> All proteins certified<br><strong>GF/VG:</strong> Options every service</div>
+  </div>
+</div>
+
+<div class="page-footer"><span class="pf-l">Pre-Camp Menu · Novotel Sydney Olympic Park · Confidential</span><span class="pf-r">Chef's Rationale · Summary</span></div>
+</div>
+
+</body>
+</html>
