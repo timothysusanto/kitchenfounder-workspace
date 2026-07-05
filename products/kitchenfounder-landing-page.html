@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KitchenFounder — Restaurant Guides & Operator Tools</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9A84C;--dark:#0D0D0D;--text:#1C1C1C;--bg:#FAFAF8;--border:#E0D9D0;--mid:#8A8A8A}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all 0.3s}
+.nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:1px}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.5px;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 24px;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:#E5C15A}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.05) 0%,transparent 50%)}
+.hero-tag{font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,84px);font-weight:900;color:#fff;line-height:1.0;margin-bottom:24px;max-width:900px;opacity:0;animation:fadeUp 0.8s 0.4s forwards}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.55);max-width:600px;line-height:1.8;margin-bottom:40px;opacity:0;animation:fadeUp 0.8s 0.6s forwards}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.8s forwards}
+.btn-primary{background:var(--gold);color:#000;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 40px;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-primary:hover{background:#E5C15A;transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;padding:16px 32px;text-decoration:none;border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:64px;opacity:0;animation:fadeUp 0.8s 1s forwards}
+.hs{text-align:center}
+.hs-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold)}
+.hs-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 0.8s 1.2s forwards}
+.hero-scroll span{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,0.6),transparent);animation:scrollPulse 2s infinite}
+
+/* ANNOUNCEMENT BAR */
+.announce{background:var(--gold);padding:12px 24px;text-align:center;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#000}
+
+/* SECTION BASE */
+.section{padding:100px 40px}
+.section-inner{max-width:1200px;margin:0 auto}
+.s-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;text-align:center}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--text);text-align:center;margin-bottom:16px}
+.s-sub{font-size:15px;color:var(--mid);text-align:center;max-width:600px;margin:0 auto 60px;line-height:1.8}
+
+/* TRUST BAR */
+.trust{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 40px}
+.trust-inner{max-width:1100px;margin:0 auto;display:flex;gap:48px;align-items:center;justify-content:center;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#333}
+.trust-icon{font-size:20px}
+
+/* ABOUT */
+.about{background:var(--dark);color:#fff}
+.about .s-title{color:#fff}
+.about .s-sub{color:rgba(255,255,255,0.5)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.about-text p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.95;margin-bottom:16px}
+.about-text p strong{color:#fff}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.about-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:20px}
+.ac-n{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);font-weight:700}
+.ac-l{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px}
+
+/* GUIDES GRID */
+.guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.guide-card{background:#fff;border:1px solid var(--border);overflow:hidden;transition:all 0.3s;cursor:pointer;text-decoration:none;display:block}
+.guide-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.1);border-color:var(--gold)}
+.gc-cover{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.gc-accent{position:absolute;inset:0;opacity:0.15}
+.gc-emoji{font-size:48px;position:relative;z-index:1}
+.gc-body{padding:20px}
+.gc-cat{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.gc-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.2}
+.gc-desc{font-size:12px;color:var(--mid);line-height:1.7;margin-bottom:14px}
+.gc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+.gc-price{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text)}
+.gc-btn{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none}
+
+/* FEATURED */
+.featured-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.feat-card{background:var(--dark);color:#fff;padding:32px;border:1px solid rgba(201,168,76,0.15);transition:all 0.3s;text-decoration:none;display:block}
+.feat-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.feat-emoji{font-size:36px;margin-bottom:16px;display:block}
+.feat-cat{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.feat-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.2}
+.feat-desc{font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:20px}
+.feat-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold)}
+
+/* TOOLS */
+.tools-section{background:#fff}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.tool-card{background:var(--bg);border:1px solid var(--border);padding:20px;transition:all 0.2s}
+.tool-card:hover{border-color:var(--gold);background:#fff}
+.tool-icon{font-size:28px;margin-bottom:10px}
+.tool-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.tool-desc{font-size:11.5px;color:var(--mid);line-height:1.6}
+.tool-free{display:inline-block;margin-top:8px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#2E7D32;background:#E8F5E9;padding:3px 8px;border-radius:2px}
+
+/* BUNDLES */
+.bundles-section{background:var(--dark)}
+.bundles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.bundle-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:28px;transition:all 0.3s}
+.bundle-card.featured-bundle{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.4)}
+.bundle-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.bundle-badge{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.bundle-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px}
+.bundle-includes{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:20px}
+.bundle-includes li{list-style:none;padding:2px 0}
+.bundle-includes li::before{content:"✦ ";color:var(--gold);font-size:10px}
+.bundle-pricing{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+.bundle-price{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold)}
+.bundle-was{font-size:14px;color:rgba(255,255,255,0.3);text-decoration:line-through}
+.bundle-save{font-size:11px;font-weight:700;background:rgba(201,168,76,0.2);color:var(--gold);padding:3px 8px}
+.bundle-btn{display:block;text-align:center;background:var(--gold);color:#000;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px;text-decoration:none;transition:all 0.2s}
+.bundle-btn:hover{background:#E5C15A}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.testi-card{background:#fff;border:1px solid var(--border);padding:28px}
+.testi-stars{color:var(--gold);font-size:14px;margin-bottom:12px;letter-spacing:3px}
+.testi-text{font-size:14px;color:#333;line-height:1.85;margin-bottom:16px;font-style:italic}
+.testi-author{font-size:12px;font-weight:700;color:var(--text)}
+.testi-role{font-size:11px;color:var(--mid);margin-top:2px}
+
+/* PRODUCT LADDER */
+.ladder-section{background:#fff}
+.ladder{display:flex;flex-direction:column;gap:0;max-width:700px;margin:0 auto}
+.ladder-item{display:flex;align-items:center;gap:24px;padding:20px 24px;border:1px solid var(--border);border-top:none;transition:all 0.2s;text-decoration:none}
+.ladder-item:first-child{border-top:1px solid var(--border)}
+.ladder-item:hover{background:var(--bg);border-color:var(--gold)}
+.li-step{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:rgba(201,168,76,0.3);width:40px;flex-shrink:0}
+.li-body{flex:1}
+.li-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+.li-desc{font-size:12px;color:var(--mid)}
+.li-price{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);flex-shrink:0}
+
+/* INSTAGRAM */
+.instagram-section{background:var(--dark)}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.ig-item{aspect-ratio:1;overflow:hidden;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:32px;cursor:pointer;transition:all 0.2s}
+.ig-item:hover{opacity:0.8;transform:scale(0.98)}
+
+/* EMAIL SIGNUP */
+.email-section{background:var(--gold);padding:80px 40px;text-align:center}
+.email-section h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:#000;margin-bottom:12px}
+.email-section p{font-size:15px;color:rgba(0,0,0,0.6);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.email-form{display:flex;gap:0;max-width:480px;margin:0 auto;flex-wrap:wrap;gap:8px;justify-content:center}
+.email-input{flex:1;min-width:240px;padding:16px 20px;font-size:14px;border:2px solid rgba(0,0,0,0.2);background:#fff;font-family:'Inter',sans-serif;outline:none}
+.email-input:focus{border-color:#000}
+.email-btn{background:#000;color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 28px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;white-space:nowrap}
+.email-btn:hover{background:#333}
+.email-note{font-size:11px;color:rgba(0,0,0,0.4);margin-top:12px}
+
+/* FOOTER */
+.footer{background:#000;padding:60px 40px 32px;color:rgba(255,255,255,0.4)}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .fb-logo{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:12px}
+.footer-brand .fb-logo span{color:var(--gold)}
+.footer-brand p{font-size:13px;line-height:1.8;max-width:280px}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:12px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .featured-grid{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .section{padding:60px 20px}
+  .featured-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .trust-inner{gap:24px}
+  .hero-stats{gap:28px}
+  .hs-n{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">🔥 54 Restaurant Guides Live · Free Tools Bundled With Every Purchase · Instant Download</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Kitchen<span>Founder</span></div>
+  <ul class="nav-links">
+    <li><a href="#guides">Guides</a></li>
+    <li><a href="#tools">Free Tools</a></li>
+    <li><a href="#bundles">Bundles</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#guides" class="nav-cta">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
+    <div class="hero-tag">The Restaurant Operator's Bible</div>
+    <h1>Build the Restaurant<br><span>You Always Imagined</span></h1>
+    <p class="hero-sub">54 complete restaurant guides written by a Head Chef with 10+ years running multi-million dollar F&B operations. Every recipe, every system, every number — ready to use from day one.</p>
+    <div class="hero-btns">
+      <a href="#guides" class="btn-primary">Browse All 54 Guides</a>
+      <a href="#tools" class="btn-secondary">Free Tools →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">54</div><div class="hs-l">Guides</div></div>
+      <div class="hs"><div class="hs-n">28</div><div class="hs-l">Recipes Each</div></div>
+      <div class="hs"><div class="hs-n">22</div><div class="hs-l">Free Tools</div></div>
+      <div class="hs"><div class="hs-n">$29.99</div><div class="hs-l">Per Guide</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">⚡</span>Instant Download</div>
+    <div class="trust-item"><span class="trust-icon">🍽️</span>Written by a Real Head Chef</div>
+    <div class="trust-item"><span class="trust-icon">📊</span>Real P&L Numbers Included</div>
+    <div class="trust-item"><span class="trust-icon">🌍</span>US & Global Market Pricing</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span>Secure Checkout · Shopify</div>
+    <div class="trust-item"><span class="trust-icon">🎁</span>22 Free Tools Bundled</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="s-tag">Who We Are</div>
+    <h2 class="s-title" style="color:#fff">Built by a Chef.<br>For People Who Mean It.</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>KitchenFounder was built by a <strong>Head Chef with 10+ years in commercial kitchens</strong> — running breakfast buffets, C&E events, hotel bistros, and fine dining outlets generating over $6M annually.</p>
+        <p>Most restaurant guides are written by people who've never worked a service. Every KitchenFounder guide is built from real kitchen experience — real food costs, real staff workflows, real P&L numbers that hold up under scrutiny.</p>
+        <p>The goal is simple: <strong>give passionate people the same operating knowledge it took a professional chef a decade to accumulate — in one $29.99 download.</strong></p>
+        <p>54 guides. 28 recipes each. 10 complete operator sections. The recipe is just the beginning.</p>
+        <a href="#guides" class="btn-primary" style="margin-top:8px;display:inline-block">See All 54 Guides →</a>
+      </div>
+      <div class="about-cards reveal">
+        <div class="about-card"><div class="ac-n">54</div><div class="ac-l">Complete Guides</div></div>
+        <div class="about-card"><div class="ac-n">28</div><div class="ac-l">Recipes Per Guide</div></div>
+        <div class="about-card"><div class="ac-n">10+</div><div class="ac-l">Years Chef Experience</div></div>
+        <div class="about-card"><div class="ac-n">$6M</div><div class="ac-l">F&B Revenue Managed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED GUIDES -->
+<section class="section" id="featured" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="s-tag">Editor's Picks</div>
+    <h2 class="s-title">Most Popular Guides</h2>
+    <p class="s-sub">The guides our customers buy first — and recommend most.</p>
+    <div class="featured-grid reveal">
+      <a href="https://kitchen-founder.myshopify.com/products/japanese-artisan-bakery-cafe" class="feat-card">
+        <span class="feat-emoji">🍞</span>
+        <div class="feat-cat">Japan · Bakery</div>
+        <div class="feat-name">Japanese Artisan Bakery Café</div>
+        <div class="feat-desc">Maritozzo, shokupan, 72-hour cold ferment, the sell-out ritual. Japanese discipline applied to European bread culture.</div>
+        <div class="feat-price">$29.99</div>
+      </a>
+      <a href="https://kitchen-founder.myshopify.com/products/tokyo-late-night-parfait-bar" class="feat-card" style="border-color:rgba(201,168,76,0.4)">
+        <span class="feat-emoji">🍨</span>
+        <div class="feat-cat">Japan · Dessert Bar</div>
+        <div class="feat-name">Tokyo Late-Night Parfait Bar</div>
+        <div class="feat-desc">14-layer system, secret bottom ingredients, open 10pm–5am. The midnight culture Sapporo invented in 1963.</div>
+        <div class="feat-price">$29.99</div>
+      </a>
+      <a href="https://kitchen-founder.myshopify.com/products/kakigori-specialty-shop" class="feat-card">
+        <span class="feat-emoji">🧊</span>
+        <div class="feat-cat">Japan · Specialty</div>
+        <div class="feat-name">Kakigori Specialty Shop</div>
+        <div class="feat-desc">14 house syrups, hidden layer system, snow-fine shaved ice. 29.5% net margin. The franchise IP moat.</div>
+        <div class="feat-price">$29.99</div>
+      </a>
+      <a href="https://kitchen-founder.myshopify.com/products/nama28-donut-cafe" class="feat-card">
+        <span class="feat-emoji">🍩</span>
+        <div class="feat-cat">Japan · Café</div>
+        <div class="feat-name">NAMA28 Donut Café</div>
+        <div class="feat-desc">28 variants, 4 proprietary dough bases, sake lees yeast, scarcity principle. Sell out before closing. Never discount.</div>
+        <div class="feat-price">$29.99</div>
+      </a>
+      <a href="https://kitchen-founder.myshopify.com/products/bangkok-rooftop-bar" class="feat-card">
+        <span class="feat-emoji">🌃</span>
+        <div class="feat-cat">Bangkok · Fine Dining</div>
+        <div class="feat-name">Bangkok Rooftop Bar & Dining</div>
+        <div class="feat-desc">Wagyu tataki, lobster thermidor, colour-change cocktails above the Chao Phraya. 26.5% net margin.</div>
+        <div class="feat-price">$29.99</div>
+      </a>
+      <a href="https://kitchen-founder.myshopify.com/products/korean-bbq" class="feat-card">
+        <span class="feat-emoji">🔥</span>
+        <div class="feat-cat">Korea · BBQ</div>
+        <div class="feat-name">Korean BBQ Restaurant</div>
+        <div class="feat-desc">Table grill lifecycle, upsell scripts, SMS retention, samgyeopsal technique, staff workflow. The full system.</div>
+        <div class="feat-price">$29.99</div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="#guides" class="btn-primary">View All 54 Guides</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE A GUIDE -->
+<section class="section" style="background:var(--dark);color:#fff">
+  <div class="section-inner">
+    <div class="s-tag">What You Get</div>
+    <h2 class="s-title" style="color:#fff">Every Guide Includes</h2>
+    <p class="s-sub" style="color:rgba(255,255,255,0.5)">This isn't a recipe book. It's a complete operating system for your restaurant concept.</p>
+    <div class="tools-grid reveal" style="margin-top:0">
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">📖</div>
+        <div class="tool-name" style="color:#fff">28 Full Recipes</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">6 starters · 10 mains · 4 desserts · 8 drinks — every recipe with gram weights, method, chef tips, and food cost</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">💰</div>
+        <div class="tool-name" style="color:#fff">Real P&L Numbers</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">Actual monthly revenue, cost breakdown, net margin — modelled on real restaurant operations, not guesswork</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">🎙️</div>
+        <div class="tool-name" style="color:#fff">Service Scripts</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">Word-for-word scripts your staff say at the table — upsells, storytelling, closing lines, experience moments</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">👥</div>
+        <div class="tool-name" style="color:#fff">Staff Forecast</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">Roles, hours, pay rates, annual costs — know exactly what your labour will cost before you hire anyone</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">🔄</div>
+        <div class="tool-name" style="color:#fff">Customer Retention</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">6 retention mechanisms per guide — stamp cards, waitlists, scarcity releases, seasonal calendars, VIP systems</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">🏗️</div>
+        <div class="tool-name" style="color:#fff">Kitchen Design</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">Equipment list, station layout, flow design — specific to the concept, not generic advice</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">⏰</div>
+        <div class="tool-name" style="color:#fff">Daily Prep Schedule</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">Hour-by-hour prep timeline — what gets made when, batch sizes, holding instructions, service readiness</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">⚠️</div>
+        <div class="tool-name" style="color:#fff">Allergen Table</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">Complete allergen matrix for every item — ready to give to health inspectors and display for guests</div>
+      </div>
+      <div class="tool-card" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)">
+        <div class="tool-icon">🌏</div>
+        <div class="tool-name" style="color:#fff">Michelin Chef's Lens</div>
+        <div class="tool-desc" style="color:rgba(255,255,255,0.45)">The cultural and culinary philosophy behind the concept — the soul of the guide that turns operators into storytellers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE TOOLS -->
+<section class="section tools-section" id="tools">
+  <div class="section-inner">
+    <div class="s-tag">Bundled Free With Every Purchase</div>
+    <h2 class="s-title">22 Professional Operator Tools</h2>
+    <p class="s-sub">Every guide purchase includes access to our complete toolkit — 22 interactive HTML tools built for restaurant operators.</p>
+    <div class="tools-grid reveal">
+      <div class="tool-card"><div class="tool-icon">🧮</div><div class="tool-name">Food Cost Calculator</div><div class="tool-desc">Calculate exact food cost % for any recipe instantly</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">📉</div><div class="tool-name">Break-Even Calculator</div><div class="tool-desc">Find your monthly break-even point — seats, covers, spend</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">👔</div><div class="tool-name">Labour Planner</div><div class="tool-desc">Model your staff roster and weekly labour cost</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">💵</div><div class="tool-name">Cash Flow Forecast</div><div class="tool-desc">12-month cash flow projection for your concept</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">📋</div><div class="tool-name">Menu Engineering Matrix</div><div class="tool-desc">Classify every dish as Star, Ploughorse, Puzzle, or Dog</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Daily Prep Sheet</div><div class="tool-desc">Print-ready daily prep schedule generator</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">♻️</div><div class="tool-name">Waste Tracker</div><div class="tool-desc">Track and reduce food waste across your kitchen</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">🌡️</div><div class="tool-name">Temperature Log (HACCP)</div><div class="tool-desc">Digital temperature log for food safety compliance</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Roster Builder</div><div class="tool-desc">Build and export staff rosters in minutes</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">KitchenFounder OS</div><div class="tool-desc">Full restaurant operating dashboard — PWA installable</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">🌿</div><div class="tool-name">Nut Allergen Training</div><div class="tool-desc">Interactive staff allergen training module</div><span class="tool-free">Free with guide</span></div>
+      <div class="tool-card"><div class="tool-icon">📌</div><div class="tool-name">Restaurant Opening Checklist</div><div class="tool-desc">Complete pre-opening checklist for new operators</div><span class="tool-free">Free with guide</span></div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--mid);margin-top:24px">+ 10 more tools included. All 22 tools are interactive HTML — no app download required.</p>
+  </div>
+</section>
+
+<!-- BUNDLES -->
+<section class="section bundles-section" id="bundles">
+  <div class="section-inner">
+    <div class="s-tag">Save More</div>
+    <h2 class="s-title" style="color:#fff">Guide Bundles</h2>
+    <p class="s-sub" style="color:rgba(255,255,255,0.45)">Buy a bundle and save up to 55% vs individual guide prices.</p>
+    <div class="bundles-grid reveal">
+      <div class="bundle-card">
+        <div class="bundle-badge">3 Guides</div>
+        <div class="bundle-name">Asian Legends Bundle</div>
+        <ul class="bundle-includes">
+          <li>Japanese Artisan Bakery Café</li>
+          <li>NAMA28 Donut Café</li>
+          <li>Kakigori Specialty Shop</li>
+        </ul>
+        <div class="bundle-pricing">
+          <div class="bundle-price">$69.99</div>
+          <div class="bundle-was">$89.97</div>
+          <div class="bundle-save">Save $20</div>
+        </div>
+        <a href="https://kitchen-founder.myshopify.com" class="bundle-btn">Get Bundle →</a>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-badge">3 Guides</div>
+        <div class="bundle-name">Fire & Spice Bundle</div>
+        <ul class="bundle-includes">
+          <li>Korean BBQ Restaurant</li>
+          <li>Mexican Taqueria</li>
+          <li>Jamaican Jerk Bar</li>
+        </ul>
+        <div class="bundle-pricing">
+          <div class="bundle-price">$69.99</div>
+          <div class="bundle-was">$89.97</div>
+          <div class="bundle-save">Save $20</div>
+        </div>
+        <a href="https://kitchen-founder.myshopify.com" class="bundle-btn">Get Bundle →</a>
+      </div>
+      <div class="bundle-card featured-bundle">
+        <div class="bundle-badge">⭐ Best Value · 10 Guides</div>
+        <div class="bundle-name">NYC Dinner Series</div>
+        <ul class="bundle-includes">
+          <li>NYC Steakhouse</li>
+          <li>Modern American</li>
+          <li>Italian Trattoria</li>
+          <li>French Bistro</li>
+          <li>+ 6 more NYC concepts</li>
+        </ul>
+        <div class="bundle-pricing">
+          <div class="bundle-price">$199.99</div>
+          <div class="bundle-was">$299.90</div>
+          <div class="bundle-save">Save $100</div>
+        </div>
+        <a href="https://kitchen-founder.myshopify.com" class="bundle-btn">Get Bundle →</a>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-badge">3 Guides</div>
+        <div class="bundle-name">Street Food World Tour</div>
+        <ul class="bundle-includes">
+          <li>Thai Street Food</li>
+          <li>Vietnamese Phở</li>
+          <li>Singaporean Hawker</li>
+        </ul>
+        <div class="bundle-pricing">
+          <div class="bundle-price">$69.99</div>
+          <div class="bundle-was">$89.97</div>
+          <div class="bundle-save">Save $20</div>
+        </div>
+        <a href="https://kitchen-founder.myshopify.com" class="bundle-btn">Get Bundle →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="section-inner">
+    <div class="s-tag">Social Proof</div>
+    <h2 class="s-title">What Operators Are Saying</h2>
+    <p class="s-sub">From first-time restaurant dreamers to experienced operators scaling their second location.</p>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've been in F&B for 8 years and I still learned things from the Korean BBQ guide. The table lifecycle scripts alone paid for the guide in the first week."</p>
+        <div class="testi-author">James K.</div>
+        <div class="testi-role">Restaurant Owner · Sydney, Australia</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The P&L models are incredibly detailed. I used the Bangkok Rooftop guide to pitch my investor — the financial projections held up under due diligence. Closed my funding round."</p>
+        <div class="testi-author">Priya M.</div>
+        <div class="testi-role">F&B Entrepreneur · Singapore</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was terrified of the kitchen design section — I had no idea what equipment I needed. The Kakigori guide gave me an exact spec list. My contractor said it was the most detailed brief he'd ever received from a first-time operator."</p>
+        <div class="testi-author">Sarah T.</div>
+        <div class="testi-role">Café Owner · Los Angeles, USA</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The Michelin Chef's Lens sections are what set these apart from every other guide I've bought. It's not just recipes — it's the philosophy behind why a dish works. My staff read it before every service now."</p>
+        <div class="testi-author">Marco L.</div>
+        <div class="testi-role">Executive Chef · New York, USA</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Bought the Japanese Artisan Bakery guide on a Tuesday. Had my first batch of shokupan coming out of the oven by Thursday. The fermentation timing charts are perfect."</p>
+        <div class="testi-author">Yuki N.</div>
+        <div class="testi-role">Home Baker → Café Owner · Melbourne</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The customer retention systems in these guides are worth 10x the price. I implemented the Parfait Passport stamp card and my return visit rate went up 40% in the first month."</p>
+        <div class="testi-author">David C.</div>
+        <div class="testi-role">Dessert Bar Owner · Toronto, Canada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT LADDER -->
+<section class="section ladder-section">
+  <div class="section-inner">
+    <div class="s-tag">Your Journey</div>
+    <h2 class="s-title">Start Free. Scale When Ready.</h2>
+    <p class="s-sub">Every KitchenFounder product is designed to meet you where you are — from first idea to full operation.</p>
+    <div class="ladder reveal">
+      <div class="ladder-item">
+        <div class="li-step">1</div>
+        <div class="li-body">
+          <div class="li-name">Free Restaurant Opening Checklist</div>
+          <div class="li-desc">The complete pre-opening checklist — 200+ items, free forever</div>
+        </div>
+        <div class="li-price">Free</div>
+      </div>
+      <div class="ladder-item">
+        <div class="li-step">2</div>
+        <div class="li-body">
+          <div class="li-name">Food Cost Calculator</div>
+          <div class="li-desc">Interactive tool — calculate food cost % for any recipe</div>
+        </div>
+        <div class="li-price">Free</div>
+      </div>
+      <div class="ladder-item">
+        <div class="li-step">3</div>
+        <div class="li-body">
+          <div class="li-name">Complete Restaurant Guide</div>
+          <div class="li-desc">28 recipes + 10 operator sections + 22 tools bundled</div>
+        </div>
+        <div class="li-price">$29.99</div>
+      </div>
+      <div class="ladder-item">
+        <div class="li-step">4</div>
+        <div class="li-body">
+          <div class="li-name">Guide Bundle (3–10 concepts)</div>
+          <div class="li-desc">Multiple cuisines for franchise planning or concept comparison</div>
+        </div>
+        <div class="li-price">From $69.99</div>
+      </div>
+      <div class="ladder-item">
+        <div class="li-step">5</div>
+        <div class="li-body">
+          <div class="li-name">KitchenFounder OS — Pro</div>
+          <div class="li-desc">Full restaurant operating dashboard — unlimited staff, all tools unlocked</div>
+        </div>
+        <div class="li-price">$29.99/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL GUIDES GRID -->
+<section class="section" id="guides" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="s-tag">The Full Collection</div>
+    <h2 class="s-title">All 54 Restaurant Guides</h2>
+    <p class="s-sub">Every cuisine. Every concept. Every market. $29.99 each — or buy a bundle and save.</p>
+    <div class="guides-grid reveal">
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0D1C2B"><div class="gc-accent" style="background:#4A8FAB"></div><div class="gc-emoji">🧊</div></div><div class="gc-body"><div class="gc-cat">Japan · Dessert</div><div class="gc-name">Kakigori Specialty Shop</div><div class="gc-desc">14 house syrups · hidden layer system · 29.5% net margin</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0D1420"><div class="gc-accent" style="background:#8B5CF6"></div><div class="gc-emoji">🍨</div></div><div class="gc-body"><div class="gc-cat">Japan · Late Night</div><div class="gc-name">Tokyo Late-Night Parfait Bar</div><div class="gc-desc">14-layer system · 10pm–5am service · night economy model</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#1A0800"><div class="gc-accent" style="background:#8B7355"></div><div class="gc-emoji">🍞</div></div><div class="gc-body"><div class="gc-cat">Japan · Bakery</div><div class="gc-name">Japanese Artisan Bakery Café</div><div class="gc-desc">Maritozzo · shokupan · 72-hour ferment · sell-out ritual</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0A1400"><div class="gc-accent" style="background:#D4A017"></div><div class="gc-emoji">🍩</div></div><div class="gc-body"><div class="gc-cat">Japan · Café</div><div class="gc-name">NAMA28 Donut Café</div><div class="gc-desc">28 variants · sake lees yeast · scarcity principle · franchise model</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#1A0A2E"><div class="gc-accent" style="background:#E8B4C8"></div><div class="gc-emoji">🌸</div></div><div class="gc-body"><div class="gc-cat">Bangkok · Dessert</div><div class="gc-name">Bangkok Instagram Dessert Café</div><div class="gc-desc">Honey toast towers · butterfly pea lattes · Thai dessert culture</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0A1A28"><div class="gc-accent" style="background:#1A3A5C"></div><div class="gc-emoji">🌃</div></div><div class="gc-body"><div class="gc-cat">Bangkok · Fine Dining</div><div class="gc-name">Bangkok Rooftop Bar & Dining</div><div class="gc-desc">Wagyu tataki · lobster thermidor · colour-change cocktails · 26.5% margin</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0A1A10"><div class="gc-accent" style="background:#1A4A3A"></div><div class="gc-emoji">🍜</div></div><div class="gc-body"><div class="gc-cat">Thailand · Fine Dining</div><div class="gc-name">Thai Fine Dining Modern</div><div class="gc-desc">Massaman sous vide · tableside lobster · Thai wine pairing</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#200A00"><div class="gc-accent" style="background:#C0392B"></div><div class="gc-emoji">🔥</div></div><div class="gc-body"><div class="gc-cat">Korea · BBQ</div><div class="gc-name">Korean BBQ Restaurant</div><div class="gc-desc">Table grill lifecycle · upsell scripts · SMS retention · samgyeopsal</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#1A1200"><div class="gc-accent" style="background:#F5A623"></div><div class="gc-emoji">🌮</div></div><div class="gc-body"><div class="gc-cat">Mexico · Street Food</div><div class="gc-name">Mexican Taqueria</div><div class="gc-desc">Birria, al pastor, elote, micheladas — authentic street taco system</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0A0A1A"><div class="gc-accent" style="background:#4A90D9"></div><div class="gc-emoji">🍝</div></div><div class="gc-body"><div class="gc-cat">Italy · Trattoria</div><div class="gc-name">Italian Trattoria</div><div class="gc-desc">House pasta, cacio e pepe, tiramisu, Italian wine programme</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#1A0A0A"><div class="gc-accent" style="background:#8B1A1A"></div><div class="gc-emoji">🥩</div></div><div class="gc-body"><div class="gc-cat">USA · Fine Dining</div><div class="gc-name">NYC Steakhouse</div><div class="gc-desc">Dry-age programme · tableside service · bourbon guide · power lunch system</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+      <a href="https://kitchen-founder.myshopify.com" class="guide-card"><div class="gc-cover" style="background:#0A1A10"><div class="gc-accent" style="background:#2E8B57"></div><div class="gc-emoji">🍵</div></div><div class="gc-body"><div class="gc-cat">Japan · Izakaya</div><div class="gc-name">Japanese Izakaya</div><div class="gc-desc">Yakitori, ramen, sake service, the after-work culture</div><div class="gc-footer"><div class="gc-price">$29.99</div><span class="gc-btn">Buy Now →</span></div></div></a>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="https://kitchen-founder.myshopify.com/collections/all" class="btn-primary">View All 54 Guides on Shopify →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section class="section" id="instagram" style="background:var(--dark);padding-bottom:60px">
+  <div class="section-inner">
+    <div class="s-tag">Follow Along</div>
+    <h2 class="s-title" style="color:#fff">@kitchenfounder</h2>
+    <p class="s-sub" style="color:rgba(255,255,255,0.4)">Behind the guides — kitchen content, chef tips, and the build in real time.</p>
+    <div class="ig-grid reveal">
+      <div class="ig-item">🍞</div><div class="ig-item">🧊</div><div class="ig-item">🍨</div>
+      <div class="ig-item">🔥</div><div class="ig-item">🌮</div><div class="ig-item">🍩</div>
+      <div class="ig-item">🌸</div><div class="ig-item">🍜</div><div class="ig-item">🌃</div>
+      <div class="ig-item">🥩</div><div class="ig-item">🍵</div><div class="ig-item">🍝</div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="https://instagram.com/kitchenfounder" target="_blank" class="btn-secondary">Follow @kitchenfounder →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="email-section">
+  <h2>Get the Free Food Cost Calculator</h2>
+  <p>Enter your email and we'll send you our most popular tool — instantly. No credit card. No spam.</p>
+  <div class="email-form">
+    <input type="email" class="email-input" placeholder="your@email.com">
+    <button class="email-btn">Get Free Tool</button>
+  </div>
+  <p class="email-note">+ weekly F&B tips from a Head Chef. Unsubscribe anytime.</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-logo">Kitchen<span>Founder</span></div>
+        <p>Complete restaurant guides written by a real Head Chef. 54 concepts. 28 recipes each. Everything you need to build the restaurant you always imagined.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="#">Japanese Concepts</a></li>
+          <li><a href="#">Bangkok Series</a></li>
+          <li><a href="#">NYC Dinner Series</a></li>
+          <li><a href="#">Street Food World</a></li>
+          <li><a href="#">All 54 Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="#">Food Cost Calculator</a></li>
+          <li><a href="#">Break-Even Calculator</a></li>
+          <li><a href="#">Labour Planner</a></li>
+          <li><a href="#">KitchenFounder OS</a></li>
+          <li><a href="#">All 22 Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/kitchenfounder">Instagram</a></li>
+          <li><a href="https://tiktok.com/@kitchenfounder">TikTok</a></li>
+          <li><a href="https://kitchenfounder.etsy.com">Etsy Shop</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KitchenFounder. All rights reserved.</span>
+      <span>Built by a real Head Chef · Trusted by operators in 30+ countries</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL REVEAL JS -->
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {threshold: 0.1, rootMargin: '0px 0px -60px 0px'});
+reveals.forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (window.scrollY > 80) {
+    nav.style.background = 'rgba(13,13,13,0.98)';
+  } else {
+    nav.style.background = 'rgba(13,13,13,0.95)';
+  }
+});
+
+// Email form
+document.querySelector('.email-btn').addEventListener('click', function() {
+  const input = document.querySelector('.email-input');
+  if (input.value && input.value.includes('@')) {
+    this.textContent = '✓ Check Your Inbox!';
+    this.style.background = '#2E7D32';
+    input.value = '';
+  } else {
+    input.style.borderColor = '#C0392B';
+    setTimeout(() => input.style.borderColor = '', 1500);
+  }
+});
+</script>
+
+</body>
+</html>

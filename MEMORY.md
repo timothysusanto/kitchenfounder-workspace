@@ -59,3 +59,41 @@ Joe Poovaiya (Dir F&B) · Carina T&C · Ki-young Lee (Sous) · Praveen (CDP/Sous
 
 ## Lessons
 Speed > perfection · Honest > sycophantic · Show personality · The PDF is the trust-builder, not the product · Flywheel: audience → trust → tools → SaaS → empire
+
+## KitchenFounder AI Image Prompt Template (LOCKED July 4 2026)
+
+### Food Explosion Hardcover Book — MASTER FORMAT
+Use this exact structure for ALL future KitchenFounder guide cover image prompts.
+**Never deviate from this format — it is the uniform standard.**
+
+```
+Photorealistic 3D render of a premium luxury hardcover book lying open at a 35-degree angle. The book is physically detailed — thick [TEXTURE] hardcover boards, embossed [COLOUR] title on the front cover reading "[GUIDE TITLE IN CAPS]" in [FONT STYLE] font, a visible spine with "KitchenFounder" in raised [COLOUR] lettering below it, [PAGE COLOUR] interior pages with recipe text and food photography visible. A small KitchenFounder logo embossed on the lower front cover beside "[UNIQUE SUBTITLE]". The book title page visible on the left reads "Complete Restaurant Blueprint · $29.99 · KitchenFounder". From the open pages, an explosion of [CUISINE-SPECIFIC HERO DISHES] bursting outward — [LIST 5–6 SPECIFIC DISHES with dramatic food action: sliced mid-air / cream erupting / glaze dripping / shattering / dissolving]. [FLOATING ELEMENTS: powders, petals, seeds, crystals mid-air]. Background: [SPECIFIC CULTURAL SETTING at specific time of day] — [3–4 atmospheric details in soft bokeh]. Colours: [LIST 5–6 SPECIFIC COLOURS with descriptors]. Hyperrealistic food photography quality, 8K, appetising, mouth-watering.
+```
+
+### Variables to fill per guide:
+- `[TEXTURE]` — matte linen / semi-gloss / gloss / textured cloth
+- `[COLOUR]` title emboss — gold / warm gold / cool silver / copper / ivory
+- `[GUIDE TITLE IN CAPS]` — exact guide name in uppercase
+- `[FONT STYLE]` — elegant serif / bold modern serif / refined cool-white serif / classic italic
+- `[PAGE COLOUR]` — cream / crisp white / warm ivory
+- `[UNIQUE SUBTITLE]` — 2–4 words capturing the IP (e.g. "14 House Syrups · Hidden Layer System" / "28 Variants" / "72-Hour Cold Ferment")
+- `[CUISINE-SPECIFIC HERO DISHES]` — 5–6 signature dishes from that specific guide
+- `[FLOATING ELEMENTS]` — ingredient-specific (flour dust / matcha powder / ice crystals / sakura petals / spice clouds)
+- `[SPECIFIC CULTURAL SETTING]` — real place, specific time of day (e.g. Kyoto machiya at dawn / Tokyo side street golden hour)
+- `[ATMOSPHERIC DETAILS]` — 3–4 sensory background elements in bokeh
+- `[5–6 SPECIFIC COLOURS]` — named colours with descriptors (not just "green" — "matcha sage green")
+
+### Rules:
+- NO guide numbers on book cover or spine — only "KitchenFounder"
+- Book title page always reads: "Complete Restaurant Blueprint · $29.99 · KitchenFounder"
+- Always 35-degree angle open book
+- Always 8K hyperrealistic food photography quality
+- Always cultural setting in background bokeh matching the cuisine
+- Food explosion = 5–6 dishes minimum, each with specific dramatic action word
+- Floating elements must be cuisine-specific (never generic)
+
+### Confirmed Working Examples:
+- Guide #51 Japanese Artisan Bakery: maritozzo + shokupan + matcha loaf + almond croissant + dark rye tartine · Background: Kyoto machiya dawn
+- Guide #52 NAMA28 Donut: matcha donut sliced mid-air + pandan cream erupting + lychee rose glaze + miso caramel pooling + donut holes scattering · Background: Tokyo café golden hour
+- Guide #53 Kakigori: matcha kakigori mid-shatter + strawberry balsamic arc + yuzu frozen mist + black sesame ribbons + hidden layer revealed · Background: Tokyo Yanaka summer
+- Guide #44 Australian Native: wattleseed pavlova + Davidson plum tart + lemon myrtle panna cotta + Kakadu plum ice cream + macadamia honey tart · Background: Australian outback golden sunset, Uluru bokeh

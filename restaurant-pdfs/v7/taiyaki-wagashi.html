@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taiyaki & Wagashi — Complete Restaurant Guide #57 · KitchenFounder</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@page{size:A4;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gv:#B5451B;
+  --ice:#FEF5F0;
+  --gold:#C9A84C;
+  --dark:#1C1C1C;
+  --mid:#6B6B6B;
+  --border:#F0DDD5;
+  --bg:#FAFAF8;
+  --cream:#FDF9F6;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);font-size:10pt;line-height:1.5}
+.page{width:210mm;min-height:297mm;margin:0 auto;background:#fff;position:relative;page-break-after:always;overflow:hidden}
+.cover{background:linear-gradient(160deg,#1A0800 0%,#3D1200 35%,#8B2500 65%,#2A0C00 100%);min-height:297mm;display:flex;flex-direction:column;justify-content:space-between;padding:0}
+.cover-top{padding:14mm 14mm 0}
+.cover-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(181,69,27,0.7);margin-bottom:3mm}
+.cover-logo{font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:2px}
+.cover-mid{padding:0 14mm;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-guide-num{font-size:8pt;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gv);margin-bottom:4mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:32pt;font-weight:900;color:#FFFFFF;line-height:1.05;margin-bottom:5mm}
+.cover-title span{color:var(--gold)}
+.cover-sub{font-size:9.5pt;color:rgba(255,255,255,0.6);line-height:1.7;max-width:130mm;margin-bottom:7mm}
+.cover-tags{display:flex;gap:3mm;flex-wrap:wrap}
+.cover-tag{font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:rgba(181,69,27,0.15);color:#E8864A;padding:2mm 4mm;border:1px solid rgba(181,69,27,0.3)}
+.cover-deco{width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:6mm 0}
+.cover-stats{display:flex;gap:8mm}
+.cs{text-align:center}
+.cs-n{font-family:'Playfair Display',serif;font-size:18pt;font-weight:700;color:var(--gold)}
+.cs-l{font-size:6.5pt;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:1mm}
+.cover-bottom{padding:8mm 14mm;border-top:1px solid rgba(181,69,27,0.2);display:flex;justify-content:space-between;align-items:center}
+.cb-left{font-size:7pt;color:rgba(255,255,255,0.35);line-height:1.7}
+.cb-right{text-align:right}
+.cb-price{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:var(--gold)}
+.cb-price-label{font-size:6.5pt;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:1mm}
+.page-inner{padding:14mm 14mm 18mm}
+.section-header{margin-bottom:7mm;padding-bottom:4mm;border-bottom:2px solid var(--gv)}
+.sh-tag{font-size:7pt;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gv);margin-bottom:2mm}
+.sh-title{font-family:'Playfair Display',serif;font-size:20pt;font-weight:700;color:var(--dark)}
+.sh-sub{font-size:9pt;color:var(--mid);margin-top:2mm;line-height:1.6;max-width:150mm}
+.rc{background:var(--cream);border:1px solid var(--border);border-left:4px solid var(--gv);margin-bottom:5mm;page-break-inside:avoid}
+.rc-hdr{background:linear-gradient(135deg,#8B2500,#3D1200);padding:4mm 5mm;display:flex;justify-content:space-between;align-items:flex-start}
+.rc-name{font-family:'Playfair Display',serif;font-size:12pt;font-weight:700;color:#fff}
+.rc-jp{font-size:8pt;color:rgba(255,255,255,0.55);margin-top:1mm;font-style:italic}
+.rc-hdr-right{text-align:right;flex-shrink:0;margin-left:4mm}
+.rc-cost{font-size:9pt;font-weight:700;color:#FFCBA4}
+.rc-cost-label{font-size:6.5pt;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:1px}
+.rc-body{padding:3mm 4.5mm}
+.rc-section-title{font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gv);margin:2mm 0 1.5mm}
+table.ing{width:100%;border-collapse:collapse;font-size:8.5pt;margin-bottom:2mm}
+table.ing th{padding:1.5mm 2mm;background:rgba(181,69,27,0.07);color:var(--mid);font-size:7pt;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left}
+table.ing td{padding:1.5mm 2mm;border-bottom:1px solid rgba(240,221,213,0.6);color:var(--dark)}
+table.ing tr:last-child td{border-bottom:none}
+.steps{padding-left:0;list-style:none;margin-bottom:2mm;counter-reset:step}
+.steps li{font-size:8.5pt;color:var(--dark);padding:1.5mm 0 1.5mm 6mm;border-bottom:1px dotted var(--border);position:relative;line-height:1.55}
+.steps li:before{content:counter(step);counter-increment:step;position:absolute;left:0;top:1.5mm;font-size:7pt;font-weight:700;color:var(--gv)}
+.steps li:last-child{border-bottom:none}
+.chef-tip{background:rgba(181,69,27,0.05);border-left:3px solid var(--gold);padding:2.5mm 3.5mm;font-size:8pt;color:#3A1200;margin:2mm 0;line-height:1.55}
+.chef-tip strong{color:var(--gv)}
+.cost-bar{display:flex;gap:3mm;padding:2.5mm 4.5mm;background:rgba(181,69,27,0.04);border-top:1px solid var(--border);flex-wrap:wrap}
+.cb-item{font-size:7.5pt;color:var(--mid)}
+.cb-item strong{color:var(--dark);font-weight:700}
+.al-bar{display:flex;gap:2mm;padding:2mm 4.5mm;background:rgba(181,69,27,0.02);border-top:1px dotted var(--border);flex-wrap:wrap;align-items:center}
+.al-label{font-size:7pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
+.al-tag{font-size:7pt;background:rgba(181,69,27,0.1);color:var(--gv);padding:1mm 2.5mm;border-radius:2px;font-weight:600}
+.temp{display:inline-block;background:var(--gv);color:#fff;font-size:7pt;font-weight:700;padding:1mm 2.5mm;margin-left:2mm;vertical-align:middle}
+.info-box{background:var(--cream);border:1px solid var(--border);padding:5mm 6mm;margin-bottom:5mm;page-break-inside:avoid}
+.info-box h3{font-family:'Playfair Display',serif;font-size:12pt;font-weight:700;color:var(--gv);margin-bottom:3mm}
+.info-box p{font-size:9pt;color:var(--dark);line-height:1.7;margin-bottom:2mm}
+.info-box ul{padding-left:4mm;font-size:9pt;color:var(--dark);line-height:1.8}
+.info-box ul li{margin-bottom:1mm}
+.script-box{background:#fff;border:1px solid var(--border);border-top:3px solid var(--gv);padding:4mm 5mm;margin-bottom:4mm;page-break-inside:avoid}
+.sb-title{font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gv);margin-bottom:3mm}
+.sb-line{font-size:8.5pt;color:var(--dark);line-height:1.7;margin-bottom:2mm}
+.sb-line strong{color:var(--gv)}
+.sb-context{font-size:7.5pt;color:var(--mid);font-style:italic;margin-bottom:1.5mm}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-bottom:5mm}
+.kpi{background:var(--cream);border:1px solid var(--border);padding:4mm;text-align:center}
+.kpi-n{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:var(--gv)}
+.kpi-l{font-size:7pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-top:1mm}
+table.data{width:100%;border-collapse:collapse;font-size:8.5pt;margin-bottom:5mm}
+table.data th{padding:2mm 3mm;background:var(--gv);color:#fff;font-size:7.5pt;font-weight:700;text-align:left}
+table.data td{padding:2mm 3mm;border-bottom:1px solid var(--border);color:var(--dark);line-height:1.5}
+table.data tr:nth-child(even) td{background:var(--cream)}
+.drink-card{background:var(--cream);border:1px solid var(--border);border-left:4px solid var(--gold);margin-bottom:4mm;page-break-inside:avoid;padding:4mm 5mm}
+.dc-name{font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:var(--dark);margin-bottom:1mm}
+.dc-type{font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2.5mm}
+.dc-body{font-size:8.5pt;color:var(--dark);line-height:1.7}
+.dc-cost{font-size:7.5pt;color:var(--mid);margin-top:2mm}
+.page-footer{position:absolute;bottom:7mm;left:14mm;right:14mm;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:2.5mm}
+.pf-left{font-size:7pt;color:var(--mid)}
+.pf-right{font-size:7pt;color:var(--mid);text-align:right}
+.season-badge{display:inline-block;background:linear-gradient(135deg,var(--gv),#3D1200);color:#fff;font-size:7pt;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:1.5mm 3.5mm;margin-bottom:3mm}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page">
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-eyebrow">KitchenFounder · Complete Restaurant Guide</div>
+    <div class="cover-logo">KitchenFounder</div>
+  </div>
+  <div class="cover-mid">
+    <div class="cover-guide-num">Guide #57 · Tokyo Dessert Series</div>
+    <div class="cover-title">Taiyaki &<br><span>Wagashi</span></div>
+    <div class="cover-sub">The fish-shaped icon of Japanese street food meets 1,200 years of wagashi confectionery. Ningyo-yaki tradition, modern fillings, matcha ceremony culture — and the retail-plus-café model that makes this Japan's most enduring dessert business.</div>
+    <div class="cover-deco"></div>
+    <div class="cover-stats">
+      <div class="cs"><div class="cs-n">28</div><div class="cs-l">Recipes</div></div>
+      <div class="cs"><div class="cs-n">¥600</div><div class="cs-l">Avg Spend</div></div>
+      <div class="cs"><div class="cs-n">27%</div><div class="cs-l">Net Margin</div></div>
+      <div class="cs"><div class="cs-n">1,200</div><div class="cs-l">Yrs of Wagashi</div></div>
+    </div>
+    <div style="height:5mm"></div>
+    <div class="cover-tags">
+      <span class="cover-tag">Taiyaki Street Model</span>
+      <span class="cover-tag">Wagashi Craft</span>
+      <span class="cover-tag">Matcha Ceremony Tea</span>
+      <span class="cover-tag">Retail + Café Hybrid</span>
+      <span class="cover-tag">v7 · 2026 Edition</span>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cb-left">
+      28 Recipes · 6 Starters · 10 Mains · 4 Desserts · 8 Drinks<br>
+      Service Scripts · Staff Forecast · Kitchen Design · P&L Model<br>
+      Michelin Chef's Lens · Customer Retention System
+    </div>
+    <div class="cb-right">
+      <div class="cb-price">$29.99</div>
+      <div class="cb-price-label">Instant Download</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PAGE 2: CONCEPT & ORIGIN -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Concept & Origin</div>
+    <div class="sh-title">The Fish That Never Goes Out of Style</div>
+    <div class="sh-sub">From Edo-period ningyo-yaki to modern taiyaki — and the 1,200-year wagashi tradition that sits behind every bean paste filling.</div>
+  </div>
+  <div class="info-box">
+    <h3>Taiyaki — The Origin</h3>
+    <p>Taiyaki (鯛焼き — literally "baked sea bream") was invented in 1909 at Naniwaya Sōhonten in Azabu-Jūban, Tokyo. The fish shape was chosen deliberately: sea bream (tai) is Japan's most auspicious fish, associated with celebration, luck, and new beginnings. The original filling was koshian — smooth red bean paste, the foundation of Japanese wagashi confectionery. The recipe has not changed in 115 years.</p>
+    <p>The iron mould is the technology. Two cast-iron fish-shaped cavities on a long handle. Batter in, filling in, close, flip, two minutes each side over a gas flame. The result: a crisp, golden fish-shaped cake with a molten filling visible only when bitten. The suspense of the first bite — where is the filling? — is part of the experience.</p>
+    <p>Naniwaya Sōhonten still operates today. The queue still forms at 10am. The taiyaki still costs ¥180. The iron moulds are original.</p>
+  </div>
+  <div class="info-box">
+    <h3>Wagashi — 1,200 Years of Confectionery</h3>
+    <p>Wagashi (和菓子 — "Japanese confectionery") encompasses every traditional Japanese sweet: mochi, daifuku, yokan, namagashi, dorayaki, monaka, and hundreds of others. The tradition dates to the Heian period (794–1185 AD) when sweets were offered at imperial court ceremonies and Buddhist temples.</p>
+    <p>Wagashi philosophy is inseparable from the seasons — each sweet is designed to evoke a specific moment in the natural year. Spring: sakura namagashi, cherry blossom daifuku. Summer: yokan with cooling mint, kakigori mochi. Autumn: chestnut kinton, persimmon nerikiri. Winter: yuzu monaka, oshiruko sweet soup. A wagashi shop that doesn't change its menu with the seasons is not a wagashi shop.</p>
+    <p><strong>The modern opportunity:</strong> Pairing the approachability of taiyaki (street food, under ¥300, anyone can eat it) with the craft and beauty of wagashi (premium, seasonal, gift-worthy, ¥500–2,000) creates a business with two revenue streams, two price points, and two audiences that overlap perfectly in the same small shop.</p>
+  </div>
+  <div class="two-col">
+    <div class="info-box">
+      <h3>The Business Model</h3>
+      <div class="season-badge">Retail + Café Hybrid</div>
+      <ul>
+        <li><strong>Taiyaki counter:</strong> Street-facing window, iron mould production, queue culture, ¥180–350 per piece</li>
+        <li><strong>Wagashi display case:</strong> Interior counter, seasonal items, gift boxes, ¥400–2,000 per item</li>
+        <li><strong>Tea service:</strong> 4–8 seats, matcha + wagashi pairing, ¥1,200–2,000 per set</li>
+        <li><strong>Gift retail:</strong> Boxed wagashi assortments, omiyage (souvenir) packaging, ¥2,000–5,000</li>
+        <li><strong>Combined model:</strong> Foot traffic buys taiyaki → curious guests enter for wagashi → seated guests order tea sets → departing guests buy gift boxes</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>Seasonal Calendar Overview</h3>
+      <ul>
+        <li><strong>Spring (Mar–May):</strong> Sakura nerikiri, hanami daifuku, cherry blossom taiyaki (sakura cream filling)</li>
+        <li><strong>Summer (Jun–Aug):</strong> Mizuyōkan (chilled yokan), mint-yuzu daifuku, kakigori mochi</li>
+        <li><strong>Autumn (Sep–Nov):</strong> Chestnut kinton, persimmon nerikiri, kuri yokan, classic koshian taiyaki</li>
+        <li><strong>Winter (Dec–Feb):</strong> Oshiruko (hot sweet soup with mochi), yuzu monaka, strawberry daifuku</li>
+        <li><strong>Year-round:</strong> Classic taiyaki (koshian + custard), basic daifuku, dorayaki</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Concept & Origin · Page 2</div></div>
+</div>
+
+<!-- PAGE 3: STARTERS 1-3 -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 1 · Starters — Taiyaki Foundations</div>
+    <div class="sh-title">The Master Batter & Classic Taiyaki 1–3</div>
+    <div class="sh-sub">Everything starts with the batter and the fillings. The taiyaki batter recipe is 115 years old — this is the Naniwaya method.</div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Naniwaya-Style Taiyaki Batter</div><div class="rc-jp">鯛焼き生地 · The 1909 Original Method</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.12 / taiyaki</div><div class="rc-cost-label">Batch of 24</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — batch of 24 taiyaki</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Cake flour (or plain flour — cake flour preferred)</td><td>200g</td><td>$0.40</td></tr>
+        <tr><td>Baking powder</td><td>4g</td><td>$0.02</td></tr>
+        <tr><td>Baking soda</td><td>1g</td><td>$0.01</td></tr>
+        <tr><td>Caster sugar</td><td>40g</td><td>$0.08</td></tr>
+        <tr><td>Salt, fine</td><td>1g</td><td>$0.01</td></tr>
+        <tr><td>Egg, whole</td><td>1 large</td><td>$0.35</td></tr>
+        <tr><td>Whole milk</td><td>280ml</td><td>$0.42</td></tr>
+        <tr><td>Neutral oil (sunflower/canola)</td><td>15ml</td><td>$0.05</td></tr>
+        <tr><td>Mirin (sweet rice wine)</td><td>10ml</td><td>$0.08</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Sift flour, baking powder, baking soda, sugar, and salt into a bowl. Mix dry ingredients thoroughly.</li>
+        <li>Whisk egg, milk, oil, and mirin together in a separate bowl.</li>
+        <li>Pour wet into dry. Whisk until just combined — a few small lumps are acceptable. Do not overwork the batter: gluten development makes it tough.</li>
+        <li>Rest batter 20 minutes minimum — 40 minutes preferred. The baking powder activates and the batter relaxes. <span class="temp">Rest 20–40 min</span></li>
+        <li>The mirin is the secret: it adds a light sweetness and a subtle glaze to the finished taiyaki skin. Do not skip it. Naniwaya uses it. This is why their taiyaki has a different finish to others.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip — Iron Mould Temperature:</strong> Preheat the iron mould over medium gas flame for 3 minutes — both sides. Brush lightly with neutral oil. The correct temperature produces a taiyaki that releases cleanly and has an even golden-brown finish. Too cool: batter sticks and tears. Too hot: exterior burns before interior cooks. Test: a drop of batter should sizzle and set in 10 seconds — that is the correct temperature. Never use butter to grease the mould — it burns at this temperature.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Batch Cost:</strong> $1.42</span><span class="cb-item"><strong>Per Taiyaki:</strong> $0.06 (batter only)</span><span class="cb-item"><strong>Batch:</strong> 24 pieces</span><span class="cb-item"><strong>Shelf life:</strong> Use within 3 hours of mixing</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Classic Koshian Taiyaki</div><div class="rc-jp">こしあん鯛焼き · The 115-Year Original</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.55 / piece</div><div class="rc-cost-label">Food Cost 20%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Koshian (Smooth Red Bean Paste) — batch fills 30 taiyaki</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Dried adzuki beans</td><td>300g</td><td>$1.80</td></tr>
+        <tr><td>Caster sugar</td><td>250g</td><td>$0.50</td></tr>
+        <tr><td>Salt, fine</td><td>1g</td><td>$0.01</td></tr>
+        <tr><td>Water (for cooking)</td><td>1.2L</td><td>—</td></tr>
+      </table>
+      <div class="rc-section-title">Koshian Method</div>
+      <ol class="steps">
+        <li>Rinse adzuki beans. Soak overnight in cold water or quick-soak: boil 5 min, drain, cover with fresh cold water.</li>
+        <li>Simmer beans in 1.2L fresh water until completely tender — 60–75 minutes. Beans should crush between fingers with no resistance.</li>
+        <li>Drain beans. Pass through a fine sieve or food mill to remove skins — press firmly. You want the pure smooth paste, not the skins.</li>
+        <li>Transfer smooth paste to a wide heavy-based pan. Add sugar and salt. Cook over medium heat, stirring constantly, until the paste pulls away from the sides of the pan and holds a shape. <span class="temp">Cook until firm · 15–20 min</span></li>
+        <li>Cool completely. Shape into 30g cylinders (one per taiyaki). Freeze unused portions — they keep 3 months.</li>
+      </ol>
+      <div class="rc-section-title">Assembly</div>
+      <ol class="steps">
+        <li>Heat mould. Pour 25ml batter into each fish cavity — fill to 80%.</li>
+        <li>Place one 30g koshian cylinder into the centre of the batter. Close mould firmly.</li>
+        <li>Cook over medium gas flame: 2 minutes each side. Flip without opening. The batter expands around the filling as it cooks.</li>
+        <li>Open mould — taiyaki should be golden, slightly crisp, and release cleanly. Cool on a wire rack for 2 minutes before serving.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Koshian is made in large batches and frozen. Defrost overnight in the refrigerator. Never microwave to defrost — uneven heating changes the texture. The discipline of making koshian in-house (vs buying commercial paste) is the single most important quality decision you will make. Commercial paste is sweeter, less complex, and less interesting. Your koshian is the product.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.55</span><span class="cb-item"><strong>Menu Price:</strong> $2.80</span><span class="cb-item"><strong>GP:</strong> 80.4%</span><span class="cb-item"><strong>Production:</strong> 4 min per mould</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Vanilla Custard Taiyaki</div><div class="rc-jp">カスタード鯛焼き · Modern Classic</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.60 / piece</div><div class="rc-cost-label">Food Cost 21%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Thick Custard Filling — batch fills 20 taiyaki</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Whole milk</td><td>250ml</td><td>$0.38</td></tr>
+        <tr><td>Egg yolks</td><td>3</td><td>$0.53</td></tr>
+        <tr><td>Caster sugar</td><td>60g</td><td>$0.12</td></tr>
+        <tr><td>Cornstarch</td><td>30g</td><td>$0.06</td></tr>
+        <tr><td>Vanilla bean, seeds only</td><td>½ bean</td><td>$0.70</td></tr>
+        <tr><td>Butter, cold</td><td>15g</td><td>$0.15</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Heat milk with vanilla seeds to just below simmer. Whisk yolks, sugar, and cornstarch until pale and thick.</li>
+        <li>Pour hot milk over yolk mixture whisking constantly. Return to heat, cook to full boil stirring — 2 minutes. <span class="temp">Full boil · 2 min</span></li>
+        <li>Remove from heat, whisk in cold butter. The custard must be thicker than a crème pâtissière — it needs to hold its shape inside a hot taiyaki without running. If too loose, return to heat 1 minute more.</li>
+        <li>Press plastic wrap directly on surface. Refrigerate until completely cold. Scoop into 35g balls for filling.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> The custard filling must be thick enough to hold its shape at 180°C — the internal temperature of a cooking taiyaki. Standard crème pâtissière is too thin. Increase the cornstarch to 30g per 250ml milk (vs the usual 20g) to achieve the correct consistency. When you bite the taiyaki, the custard should be hot, molten, and thick — not watery. Test one before service every day.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.60</span><span class="cb-item"><strong>Menu Price:</strong> $2.90</span><span class="cb-item"><strong>GP:</strong> 79.3%</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span></div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Taiyaki Batter & Starters 1–3 · Page 3</div></div>
+</div>
+
+<!-- PAGE 4: STARTERS 4-6 -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 1 · Starters continued</div>
+    <div class="sh-title">Taiyaki Variations 4–6</div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Matcha & Shiratama Taiyaki</div><div class="rc-jp">抹茶白玉鯛焼き · Green Tea Variant</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.72 / piece</div><div class="rc-cost-label">Food Cost 22%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — filling per taiyaki</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Matcha custard (standard custard + 6g Uji matcha)</td><td>30g</td><td>$0.52</td></tr>
+        <tr><td>Shiratama mochi ball, small</td><td>1 piece</td><td>$0.12</td></tr>
+        <tr><td>White bean paste (shiroan), as inner layer</td><td>10g</td><td>$0.12</td></tr>
+        <tr><td>Matcha batter (add 6g matcha per full batch)</td><td>1 taiyaki worth</td><td>$0.18</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Make matcha batter: add 6g sifted Uji matcha powder to the dry ingredients in the master batter. The cooked taiyaki exterior will be a delicate pale green — beautiful contrast with any filling.</li>
+        <li>Matcha custard: whisk 6g sifted Uji matcha into the warm custard mixture before setting. The green custard should be vivid — if it looks grey-green, the matcha quality is too low.</li>
+        <li>Assembly: spoon small amount of shiroan (white bean paste) into matcha batter as a base layer. This is the hidden interior surprise. Place cooked shiratama mochi ball on top. Cover with matcha custard. Close mould.</li>
+        <li>Cook 2 min each side. The matcha exterior + matcha custard + white bean inner + mochi is four textures and two flavour layers in a single fish-shaped bite.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> The shiroan base layer and the mochi ball are optional — this is the premium variant. It takes 30 seconds longer per taiyaki than the basic versions but justifies a ¥80 price premium. Offer it as "Matcha Special" on the menu board alongside the standard versions. The visible green exterior alone will sell it to everyone walking past who doesn't know what's inside.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.72</span><span class="cb-item"><strong>Menu Price:</strong> $3.30</span><span class="cb-item"><strong>GP:</strong> 78.2%</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Strawberry Daifuku</div><div class="rc-jp">いちご大福 · Spring Icon</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.95 / piece</div><div class="rc-cost-label">Food Cost 24%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — per piece</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Shiratamako (glutinous rice flour)</td><td>25g per piece (batch: 200g)</td><td>$0.22</td></tr>
+        <tr><td>Caster sugar</td><td>20g per batch (200g flour)</td><td>$0.04</td></tr>
+        <tr><td>Water</td><td>160ml per batch</td><td>—</td></tr>
+        <tr><td>Koshian (smooth red bean paste)</td><td>20g per piece</td><td>$0.18</td></tr>
+        <tr><td>Fresh strawberry, small-medium, hulled</td><td>1</td><td>$0.35</td></tr>
+        <tr><td>Katakuriko (potato starch) for dusting</td><td>as needed</td><td>$0.02</td></tr>
+        <tr><td>Food colouring (pink, optional)</td><td>2 drops</td><td>$0.01</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Mix shiratamako, sugar, and water until smooth. Microwave 2 minutes. Stir vigorously. Microwave 1 more minute. Stir — the mochi should be translucent, elastic, and very sticky. <span class="temp">Microwave 3 min total</span></li>
+        <li>Turn out onto a surface dusted generously with katakuriko. Divide into portions (40g each). Dust hands — mochi sticks to everything.</li>
+        <li>Flatten each mochi piece into a circle. Place 20g koshian in centre. Press koshian around the whole strawberry (point up), encasing it in bean paste. Place bean-coated strawberry on mochi, bean side down.</li>
+        <li>Wrap mochi up around the strawberry, pinch seam closed at the bottom. The finished daifuku should be round, smooth, with no seam visible from the top.</li>
+        <li>Dust with katakuriko. Serve within 3 hours — mochi hardens after this time.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> The strawberry should be exactly the right size — too large and the mochi tears, too small and the ratio is wrong. Source consistent small-medium strawberries (30–40g per berry). The katakuriko (potato starch) dusting is traditional and essential — cornstarch is an acceptable substitute but potato starch has a cleaner flavour. Make daifuku in batches of 12 every 2 hours during service — never more than 3 hours old.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.95</span><span class="cb-item"><strong>Menu Price:</strong> $3.90</span><span class="cb-item"><strong>GP:</strong> 75.6%</span><span class="cb-item"><strong>Shelf life:</strong> 3 hours maximum</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">May contain Gluten (cross-contact)</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Dorayaki — The Pancake Sandwich</div><div class="rc-jp">どら焼き · Edo Period Classic</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.65 / piece</div><div class="rc-cost-label">Food Cost 19%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — makes 8 dorayaki</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Eggs, whole</td><td>3</td><td>$1.05</td></tr>
+        <tr><td>Caster sugar</td><td>100g</td><td>$0.20</td></tr>
+        <tr><td>Honey</td><td>20g</td><td>$0.22</td></tr>
+        <tr><td>Mirin</td><td>10ml</td><td>$0.08</td></tr>
+        <tr><td>Baking soda</td><td>3g</td><td>$0.01</td></tr>
+        <tr><td>Water (warm)</td><td>15ml</td><td>—</td></tr>
+        <tr><td>Plain flour</td><td>120g</td><td>$0.24</td></tr>
+        <tr><td>Tsubuan (chunky red bean), for filling</td><td>40g per dorayaki</td><td>$0.38 each</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Dissolve baking soda in warm water. Whisk eggs and sugar until pale and thick — 3 minutes. Add honey and mirin.</li>
+        <li>Add baking soda solution. Fold in sifted flour until smooth. Rest 30 minutes — the baking soda needs time to activate and the batter needs to relax.</li>
+        <li>Cook pancakes on a lightly oiled flat griddle at 170°C — pour 30ml batter per pancake, cook until bubbles form across the surface and edges are set (90 sec). Flip, cook 30 seconds more. <span class="temp">Griddle 170°C · 90 sec</span></li>
+        <li>Cool flat on wire racks. Sandwich pairs with 40g tsubuan (chunky paste — always tsubuan for dorayaki, never koshian). The chunky texture contrasts with the soft pancake.</li>
+        <li>Wrap tightly in cellophane if storing. Best within 6 hours of assembly.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> The honey and mirin in the batter give dorayaki its distinctive deep golden colour and slight shine. Plain pancake recipes produce flat colour — dorayaki must be amber-gold. The tsubuan filling is intentional: the visible red bean chunks through the sides of the sandwich are a quality signal. Offer: classic tsubuan · matcha cream + tsubuan · custard + fresh cream (modern variant). Three fillings, one pancake recipe.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.65</span><span class="cb-item"><strong>Menu Price:</strong> $3.40</span><span class="cb-item"><strong>GP:</strong> 80.9%</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Egg</span></div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Taiyaki Variations 4–6 · Page 4</div></div>
+</div>
+
+<!-- PAGE 5: MAINS 1-5 (Wagashi) -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 2 · Main Wagashi Plates 1–5</div>
+    <div class="sh-title">The Wagashi Collection — Seasonal Craft</div>
+    <div class="sh-sub">Five core wagashi items that form the display case and the tea service pairing menu.</div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Nerikiri — Seasonal Sculptured Wagashi</div><div class="rc-jp">練り切り · The Artisan Centrepiece</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$1.20 / piece</div><div class="rc-cost-label">Food Cost 20%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — batch of 20 pieces</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Shiroan (white bean paste base)</td><td>400g</td><td>$3.80</td></tr>
+        <tr><td>Joshinko (non-glutinous rice flour)</td><td>25g</td><td>$0.25</td></tr>
+        <tr><td>Water</td><td>20ml</td><td>—</td></tr>
+        <tr><td>Food colouring (natural: matcha / beetroot / turmeric / charcoal)</td><td>as needed</td><td>$0.40</td></tr>
+        <tr><td>Koshian, for inner filling</td><td>10g per piece</td><td>$2.00</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Combine shiroan and joshinko with water in a pan. Cook over medium heat, stirring constantly, until the paste becomes smooth and non-sticky — pulls away from pan sides. <span class="temp">Cook until firm</span></li>
+        <li>Divide into portions. Colour each portion with natural food colouring: matcha (green/spring), beetroot (pink/cherry), turmeric (yellow/autumn), charcoal (black/winter).</li>
+        <li>Flatten each coloured portion (25g) into a disc. Place 10g koshian in the centre. Wrap around, seal, and shape.</li>
+        <li>Seasonal shapes: cherry blossom (spring pinch-and-fold technique) · chrysanthemum (autumn, scored surface) · maple leaf (pressed mould) · camellia (winter, two-tone technique).</li>
+        <li>Each piece should take 3–4 minutes to shape. Make 20–30 per day. Display in the refrigerated case on ceramic plates with seasonal labels.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Nerikiri is the highest-skill, highest-prestige item in your shop. It cannot be rushed. Each piece is a small sculpture — the season expressed in 35 grams of bean paste. One Instagram photo of your nerikiri display case will reach more potential customers than a month of paid advertising. Invest in a small dedicated display plate per season, photographed in natural light. This is your brand image.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $1.20</span><span class="cb-item"><strong>Menu Price:</strong> $5.90</span><span class="cb-item"><strong>GP:</strong> 79.7%</span><span class="cb-item"><strong>Display:</strong> Refrigerated case, 24hr max</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">May contain Gluten</span><span class="al-tag">Soy (bean paste)</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Yokan — Red Bean Jelly Block</div><div class="rc-jp">羊羹 · 700-Year-Old Recipe</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.55 / slice</div><div class="rc-cost-label">Food Cost 14%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — makes one 18cm loaf (12 slices)</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Kanten (agar-agar powder)</td><td>4g</td><td>$0.35</td></tr>
+        <tr><td>Water</td><td>200ml</td><td>—</td></tr>
+        <tr><td>Koshian (smooth red bean paste)</td><td>300g</td><td>$2.70</td></tr>
+        <tr><td>Caster sugar</td><td>100g</td><td>$0.20</td></tr>
+        <tr><td>Salt, fine</td><td>pinch</td><td>$0.01</td></tr>
+        <tr><td>Optional: chestnut (autumn) / yuzu zest (winter) / matcha (spring)</td><td>—</td><td>$0.40</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Dissolve kanten in 200ml cold water. Bring to a full boil over medium heat, stirring — kanten must fully dissolve at boiling point or the gel will not set. <span class="temp">Full boil · dissolve completely</span></li>
+        <li>Add sugar and salt. Stir until dissolved. Reduce heat to low. Add koshian, stirring vigorously until completely smooth and combined.</li>
+        <li>Add seasonal flavouring: whole chestnuts (stir in), yuzu zest (stir in), or matcha paste (whisk in).</li>
+        <li>Pour into a loaf mould lined with cling wrap. Cool to room temperature. Refrigerate 2 hours until fully set.</li>
+        <li>Turn out, slice into 1.5cm thick pieces. Serve with thin bamboo skewer. Display sliced in the case alongside the loaf to show the interior.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Yokan is your highest-volume, highest-margin product. One batch (12 slices) takes 20 minutes and costs under $4.00 to produce. At ¥400 per slice, one loaf generates ¥4,800 — a 92% gross profit. Make 3 loaves daily in different flavours (classic, matcha, seasonal). Slice to order so guests see the full loaf. The ritual of slicing yokan at the counter is part of the experience.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Batch Cost:</strong> $3.66</span><span class="cb-item"><strong>Per Slice:</strong> $0.30</span><span class="cb-item"><strong>Menu Price:</strong> $3.90/slice</span><span class="cb-item"><strong>Batch GP:</strong> 92.2%</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Soy (bean paste)</span><span class="al-tag">Gluten (cross-contact possible)</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Monaka — Wafer Shell Sandwich</div><div class="rc-jp">最中 · Crisp & Elegant</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.85 / piece</div><div class="rc-cost-label">Food Cost 21%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — per piece</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Monaka shells (bought — made from mochi rice wafers)</td><td>2 shells</td><td>$0.35</td></tr>
+        <tr><td>Koshian or tsubuan (choice of filling)</td><td>35g</td><td>$0.32</td></tr>
+        <tr><td>Optional seasonal add: yuzu cream / matcha cream / chestnut</td><td>10g</td><td>$0.12</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Source good-quality monaka shells — round, square, or seasonal shapes (cherry blossom, maple leaf). Import from Japanese wagashi suppliers or specialty Asian grocers.</li>
+        <li>Fill to order only: overfilled monaka seals badly; underfilled feels empty. Target 35g filling per shell, spread evenly, leaving a 3mm border.</li>
+        <li>Sandwich immediately. The guest should eat within 5 minutes — the crisp shell softens rapidly once in contact with the moist filling. This is intentional: the guest eats it warm, crisp, then soft.</li>
+        <li>For premium version: pipe 10g yuzu cream or matcha cream onto the bean paste before sandwiching. Two flavour layers, one bite.</li>
+        <li>Serve on a small paper square, presented with a bamboo pick. Never pre-assembled for more than 3 minutes.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Monaka is assembled to order because the shell goes soft in 5 minutes. This is a quality advantage, not an inconvenience — it signals freshness. Tell guests: "We fill these to order so the shell is still crisp for you." That sentence converts a potential complaint into a feature. Monaka is also the most beautiful wagashi gift item — pack 4 assorted flavours in a lacquer-style box for gifting at ¥1,800–2,200.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.85</span><span class="cb-item"><strong>Menu Price:</strong> $4.00</span><span class="cb-item"><strong>GP:</strong> 78.8%</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten (monaka shell)</span><span class="al-tag">Soy</span></div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Main Wagashi 1–5 · Page 5</div></div>
+</div>
+
+<!-- PAGE 6: MAINS 6-10 -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 2 · Main Wagashi continued</div>
+    <div class="sh-title">Main Wagashi 6–10</div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Sakura Mochi — Spring Signature</div><div class="rc-jp">桜餅 · March–May</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.78 / piece</div><div class="rc-cost-label">Food Cost 20%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — per piece</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Domyoji rice flour (coarse glutinous)</td><td>30g</td><td>$0.28</td></tr>
+        <tr><td>Caster sugar</td><td>8g</td><td>$0.02</td></tr>
+        <tr><td>Hot water</td><td>35ml</td><td>—</td></tr>
+        <tr><td>Pink food colouring (natural, sakura extract preferred)</td><td>2 drops</td><td>$0.02</td></tr>
+        <tr><td>Koshian filling</td><td>20g</td><td>$0.18</td></tr>
+        <tr><td>Preserved sakura leaf (塩漬け桜の葉), desalted</td><td>1 leaf</td><td>$0.22</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Combine domyoji flour, sugar, and pink water (add colouring to hot water before mixing). Mix until a coarse, slightly sticky dough forms.</li>
+        <li>Steam in a bamboo steamer for 20 minutes. Remove, cool slightly. The texture should be chewy, with visible rice grains intact — this is correct. <span class="temp">Steam 20 min</span></li>
+        <li>Divide into 50g portions. Flatten into oval. Place 20g koshian ball in centre. Fold rice dough around the bean paste, shaping into an elongated oval.</li>
+        <li>Soak preserved sakura leaf in cold water 10 minutes to desalt. Pat dry. Wrap the sakura mochi in the leaf — left side up, stem pointing away from the guest.</li>
+        <li>The leaf is edible and should be eaten with the mochi. It imparts a delicate floral-briny flavour. Never remove it before serving.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> The preserved sakura leaf is the signature flavour of sakura mochi — without it, this is just pink mochi. Import from Japanese specialty suppliers (Kataoka & Co, or similar). The leaf's subtle saltiness against the sweet bean paste and floral pink rice is one of the great flavour contrasts in wagashi. Available March–May only — scarcity is authentic here, not manufactured.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $0.78</span><span class="cb-item"><strong>Menu Price:</strong> $3.90</span><span class="cb-item"><strong>GP:</strong> 80%</span><span class="cb-item"><strong>Season:</strong> March–May only</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten (cross-contact)</span><span class="al-tag">Soy</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Oshiruko — Hot Sweet Red Bean Soup</div><div class="rc-jp">おしるこ · Winter Warmer · Dec–Feb</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$1.20 / bowl</div><div class="rc-cost-label">Food Cost 18%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — serves 1</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Tsubuan (chunky red bean paste)</td><td>80g</td><td>$0.72</td></tr>
+        <tr><td>Water</td><td>200ml</td><td>—</td></tr>
+        <tr><td>Caster sugar (adjust to taste)</td><td>10g</td><td>$0.02</td></tr>
+        <tr><td>Salt, pinch</td><td>—</td><td>$0.01</td></tr>
+        <tr><td>Shiratama mochi balls, 3–4</td><td>3–4 pieces</td><td>$0.32</td></tr>
+        <tr><td>Grilled mochi (kirimochi) slice, optional</td><td>1 piece</td><td>$0.18</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Combine tsubuan and water in a small saucepan. Simmer over low heat 5 minutes, stirring, until the bean paste dissolves into a pourable soup. Adjust water for consistency — it should flow from a spoon in thick ribbons, not run like water.</li>
+        <li>Season with sugar and a pinch of salt. The salt is essential — it elevates the bean flavour and prevents the soup tasting one-dimensionally sweet.</li>
+        <li>Simmer shiratama mochi balls separately until they float. Add to the soup just before serving.</li>
+        <li>Optional: toast a slice of kirimochi (rectangular dried mochi) until puffed and slightly charred — add to the bowl for textural contrast: crisp charred outside, molten inside against the hot soup.</li>
+        <li>Serve immediately in a small ceramic bowl with a small wooden spoon. <span class="temp">Serve at 75°C</span></li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Oshiruko is your most powerful cold-weather revenue driver. On a winter day in Tokyo, a bowl of hot sweet red bean soup with mochi sells itself. Price it as a set with tea. The kirimochi addition is seasonal and premium — charge ¥150 extra. The grilled kirimochi should be visibly charred at the edges when placed in the bowl: the char aroma rising with the steam is one of the great wintertime sensory experiences in Japanese food culture.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $1.20</span><span class="cb-item"><strong>Menu Price:</strong> $6.50</span><span class="cb-item"><strong>GP:</strong> 81.5%</span><span class="cb-item"><strong>Season:</strong> Dec–Feb</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Soy</span><span class="al-tag">Gluten (if kirimochi)</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Kuri Kinton — Chestnut & Sweet Potato</div><div class="rc-jp">栗きんとん · Autumn Celebration Wagashi</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$1.10 / piece</div><div class="rc-cost-label">Food Cost 22%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — batch of 15 pieces</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Satsuma-imo (Japanese sweet potato), peeled</td><td>400g</td><td>$2.40</td></tr>
+        <tr><td>Caster sugar</td><td>80g</td><td>$0.16</td></tr>
+        <tr><td>Mirin</td><td>15ml</td><td>$0.12</td></tr>
+        <tr><td>Kuchinashi (gardenia) seed dye (for colour)</td><td>2 seeds</td><td>$0.08</td></tr>
+        <tr><td>Marrons glacés or whole boiled chestnuts</td><td>15 pieces</td><td>$9.00</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Soak kuchinashi seeds in 50ml water overnight — the water turns deep amber-yellow. This is the traditional natural colourant for kuri kinton.</li>
+        <li>Boil sweet potato in kuchinashi water until completely tender. Drain. Pass through a fine sieve while hot.</li>
+        <li>Return to heat with sugar and mirin, stirring constantly until the paste thickens and pulls from the pan sides.</li>
+        <li>Wrap each whole chestnut in 30g sweet potato paste, shaping into a rough ball. The paste should be visible around the chestnut, not hiding it — the chestnut is the crown jewel.</li>
+        <li>Place in small paper cupcake cup. The deep gold colour of the kinton with the dark chestnut visible at the top is the signature look.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Kuri kinton is the most important wagashi for New Year (Oshōgatsu) — it is served in every Japanese household's osechi ryori (New Year's celebratory food box) and symbolises wealth and golden fortune. Running this from October through January positions your shop as a destination for seasonal gifting. Sell in sets of 5 in lacquered gift boxes. Target ¥2,500 per box.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Food Cost:</strong> $1.10</span><span class="cb-item"><strong>Menu Price:</strong> $4.90</span><span class="cb-item"><strong>GP:</strong> 77.6%</span><span class="cb-item"><strong>Season:</strong> Oct–Jan</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Tree Nuts (Chestnut)</span></div>
+  </div>
+
+  <div class="rc">
+    <div class="rc-hdr">
+      <div class="rc-hdr-left"><div class="rc-name">Mizuyōkan — Chilled Summer Jelly</div><div class="rc-jp">水羊羹 · Summer Cooling Wagashi</div></div>
+      <div class="rc-hdr-right"><div class="rc-cost">$0.40 / portion</div><div class="rc-cost-label">Food Cost 12%</div></div>
+    </div>
+    <div class="rc-body">
+      <div class="rc-section-title">Ingredients — makes 10 portions</div>
+      <table class="ing"><tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+        <tr><td>Kanten (agar-agar powder)</td><td>3g</td><td>$0.26</td></tr>
+        <tr><td>Water</td><td>350ml</td><td>—</td></tr>
+        <tr><td>Koshian</td><td>200g</td><td>$1.80</td></tr>
+        <tr><td>Caster sugar</td><td>50g</td><td>$0.10</td></tr>
+        <tr><td>Salt, tiny pinch</td><td>—</td><td>$0.01</td></tr>
+        <tr><td>Optional: yuzu zest / mint / fresh edamame (for visual)</td><td>—</td><td>$0.20</td></tr>
+      </table>
+      <div class="rc-section-title">Method</div>
+      <ol class="steps">
+        <li>Mizuyōkan uses less kanten than standard yokan — 3g vs 4g — for a softer, more trembling set. This is intentional: it should barely hold its shape, giving a cooling, almost liquid sensation.</li>
+        <li>Dissolve kanten in water, bring to full boil. Add koshian, sugar, salt. Stir until smooth.</li>
+        <li>Pour into small individual moulds (rectangular, 5cm × 3cm) or one loaf mould. Refrigerate minimum 3 hours. Serve cold — ideally at 8°C. <span class="temp">Serve at 8°C</span></li>
+        <li>Optional visual: press 3 fresh edamame or a strip of yuzu zest into the poured mixture before setting. They suspend in the translucent bean jelly — beautiful.</li>
+        <li>Turn out onto a cold plate. Serve with a small bamboo pick.</li>
+      </ol>
+      <div class="chef-tip"><strong>Chef's Tip:</strong> Mizuyōkan is the only wagashi served cold — it is explicitly a summer item, designed to provide cooling sensation in humid Japanese summers. The refrigerator temperature is part of the product. When a guest opens the display case on a summer day and sees the deep purple-brown jelly glistening with condensation — that is a sensory sale before a single word is spoken. Make in the morning, serve from 11am.</div>
+    </div>
+    <div class="cost-bar"><span class="cb-item"><strong>Batch Cost:</strong> $2.37</span><span class="cb-item"><strong>Per Portion:</strong> $0.24</span><span class="cb-item"><strong>Menu Price:</strong> $3.30</span><span class="cb-item"><strong>GP:</strong> 92.7%</span><span class="cb-item"><strong>Season:</strong> June–Aug</span></div>
+    <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Soy</span></div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Main Wagashi 6–10 · Page 6</div></div>
+</div>
+
+<!-- PAGE 7: DESSERT PLATES + DRINKS -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 3 · Dessert Sets · Section 4 · Drinks</div>
+    <div class="sh-title">Tea Sets & 8 Drinks</div>
+  </div>
+
+  <div class="info-box">
+    <h3>4 Wagashi Tea Sets — The Premium Offering</h3>
+  </div>
+
+  <div class="two-col">
+    <div class="rc" style="margin-bottom:4mm">
+      <div class="rc-hdr"><div class="rc-hdr-left"><div class="rc-name">Matcha Ceremony Set</div><div class="rc-jp">抹茶セット · The Signature</div></div><div class="rc-hdr-right"><div class="rc-cost">$3.80 / set</div><div class="rc-cost-label">FC 19%</div></div></div>
+      <div class="rc-body">
+        <p style="font-size:8.5pt;color:var(--dark);line-height:1.7">Served on a lacquer tray: a bowl of usucha matcha (whisked to a fine foam, 70°C), one seasonal nerikiri piece, one yokan slice, one classic taiyaki. The matcha and wagashi combination is the authentic tearoom experience. No substitutions on the tea — only usucha matcha. Price: $19.90 per set (food cost $3.80, GP 80.9%)</p>
+      </div>
+      <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span><span class="al-tag">Soy</span></div>
+    </div>
+    <div class="rc" style="margin-bottom:4mm">
+      <div class="rc-hdr"><div class="rc-hdr-left"><div class="rc-name">Seasonal Wagashi Tasting Set</div><div class="rc-jp">季節和菓子セット</div></div><div class="rc-hdr-right"><div class="rc-cost">$4.50 / set</div><div class="rc-cost-label">FC 18%</div></div></div>
+      <div class="rc-body">
+        <p style="font-size:8.5pt;color:var(--dark);line-height:1.7">Five current-season wagashi items presented on a ceramic board with seasonal foliage garnish and a small label card for each piece. Hojicha tea (pot, 2 cups) served alongside. Rotates every 6–8 weeks with the season. This is the highest per-ticket item in the shop and the most photographed. Price: $24.90 (GP 81.9%)</p>
+      </div>
+      <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Soy</span><span class="al-tag">Egg</span></div>
+    </div>
+    <div class="rc" style="margin-bottom:4mm">
+      <div class="rc-hdr"><div class="rc-hdr-left"><div class="rc-name">Taiyaki Trio + Milk Tea Set</div><div class="rc-jp">鯛焼きトリオセット</div></div><div class="rc-hdr-right"><div class="rc-cost">$2.20 / set</div><div class="rc-cost-label">FC 20%</div></div></div>
+      <div class="rc-body">
+        <p style="font-size:8.5pt;color:var(--dark);line-height:1.7">Three mini taiyaki (half-size, 40g each): koshian / custard / matcha, served warm on a small wooden board with a cold hojicha milk (hojicha concentrate + cold milk over ice). The contrast of warm taiyaki and cold tea is deliberate. This is your family/children item. Price: $14.90 (GP 85.2%)</p>
+      </div>
+      <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span></div>
+    </div>
+    <div class="rc" style="margin-bottom:4mm">
+      <div class="rc-hdr"><div class="rc-hdr-left"><div class="rc-name">Gift Box — Wagashi Assortment</div><div class="rc-jp">和菓子ギフトボックス</div></div><div class="rc-hdr-right"><div class="rc-cost">$5.50 / box</div><div class="rc-cost-label">FC 18%</div></div></div>
+      <div class="rc-body">
+        <p style="font-size:8.5pt;color:var(--dark);line-height:1.7">8-piece assortment in a lacquered gift box: 2 nerikiri (seasonal) + 2 yokan slices + 2 dorayaki + 1 monaka + 1 seasonal (sakura mochi/kuri kinton/mizuyōkan). Branded tissue paper, gold ribbon, store card inside. This is your omiyage product — targeted at tourists and gift buyers. Price: $29.90 (GP 81.6%). Seasonal box also available at higher price point.</p>
+      </div>
+      <div class="al-bar"><span class="al-label">Allergens:</span><span class="al-tag">Gluten</span><span class="al-tag">Dairy</span><span class="al-tag">Egg</span><span class="al-tag">Soy</span></div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:4mm">
+    <div class="sh-tag">Section 4 · Drinks</div>
+    <div class="sh-title">8 Tea & Beverage Programme</div>
+  </div>
+  <div class="two-col">
+    <div class="drink-card"><div class="dc-name">Usucha Matcha (Whisked)</div><div class="dc-type">Hot · Ceremonial · The Signature</div><div class="dc-body">Sift 2g Uji ceremonial matcha into a pre-warmed chawan bowl. Add 70ml water at exactly 80°C. Whisk in a rapid W motion until a fine foam appears — 20–30 seconds. The froth should be stable, fine-bubbled, and uniform. No sweetener. Served with a small seasonal wagashi on the side. This is the soul of the shop — if the matcha quality is wrong, nothing else matters.<br><br><strong>Temperature: water at 80°C, bowl pre-warmed.</strong></div><div class="dc-cost">Food Cost $1.20 · Menu Price $7.50 · GP 84%</div></div>
+    <div class="drink-card"><div class="dc-name">Hojicha Pot Tea</div><div class="dc-type">Hot · Roasted Tea · Best Seller</div><div class="dc-body">5g high-quality roasted hojicha leaves steeped in 300ml water at 90°C for 90 seconds — no longer, or it becomes bitter. Served in a small cast-iron or ceramic teapot with 2 matching cups. The roasted, caramel-amber colour and nutty aroma are immediately comforting. Refills of hot water available. This is the most approachable tea for non-matcha guests and drives the highest table time of any beverage. Long table dwell time = higher food spend.</div><div class="dc-cost">Food Cost $0.45 · Menu Price $6.50 · GP 93.1%</div></div>
+    <div class="drink-card"><div class="dc-name">Iced Matcha Latte</div><div class="dc-type">Cold · Year-Round</div><div class="dc-body">3g Uji matcha whisked with 30ml water at 80°C to a smooth paste. Pour over ice (4–5 large cubes) in a tall clear glass. Add 200ml cold oat milk (or full-fat) — pour slowly, the green swirling into white milk is the visual moment. Optional: 10ml honey or koshian syrup on the side for guests who prefer sweetness. The contrast of forest green matcha against white milk in a clear glass is the signature drink photo.</div><div class="dc-cost">Food Cost $0.95 · Menu Price $7.00 · GP 86.4%</div></div>
+    <div class="drink-card"><div class="dc-name">Amazake (Hot Sweet Rice Drink)</div><div class="dc-type">Hot · Non-Alcoholic · Winter</div><div class="dc-body">Amazake is a traditional Japanese sweet drink made from fermented rice or sake lees — naturally sweet, low alcohol (virtually nil in the fermented rice version). Heat to 65°C. Serve in a small earthenware cup with a tiny pinch of fresh grated ginger on top — the warmth, sweetness, and ginger heat is one of the great cold-weather drinks. Available Dec–Feb at traditional matsuri festivals — offering it in a permanent shop makes it special outside of that context. Pairs with oshiruko as a winter set.</div><div class="dc-cost">Food Cost $0.55 · Menu Price $5.50 · GP 90%</div></div>
+    <div class="drink-card"><div class="dc-name">Yuzu Honey Soda</div><div class="dc-type">Cold · Non-Alcoholic · Spring/Summer</div><div class="dc-body">Fresh lemon juice 15ml + bottled yuzu juice 20ml + honey syrup 20ml (honey:water 1:1, warmed to combine). Shake briefly over ice. Pour into a tall glass with ice. Top with sparkling mineral water 160ml. Garnish: thin lemon round + yuzu zest strip curled over the rim. The citrus brightness and honey floral sweetness is the ideal accompaniment to the sweetness of wagashi — it resets the palate between bites.</div><div class="dc-cost">Food Cost $0.60 · Menu Price $5.50 · GP 89.1%</div></div>
+    <div class="drink-card"><div class="dc-name">Genmaicha Pot</div><div class="dc-type">Hot · Brown Rice Green Tea</div><div class="dc-body">4g genmaicha (green tea blended with roasted brown rice) steeped in 280ml water at 80°C for 60 seconds. The toasted rice in genmaicha gives a nutty, savoury quality that is completely different from standard green tea. It pairs beautifully with sweet wagashi — the savoury-nutty tea against the sweet bean paste is a contrast that enhances both. Served in a ceramic teapot. Offer as the alternative pairing for guests who find matcha too strong.</div><div class="dc-cost">Food Cost $0.38 · Menu Price $6.00 · GP 93.7%</div></div>
+    <div class="drink-card"><div class="dc-name">Sakura Milk (Spring)</div><div class="dc-type">Hot or Iced · March–May</div><div class="dc-body">Steam full-fat milk to 65°C. Add 20ml preserved sakura blossom syrup (Japanese import). The milk turns a delicate pale pink and takes on a floral, lightly briny cherry blossom flavour. A drop of rose water (2 drops only — more is overwhelming) amplifies the floral note. Garnish with one preserved sakura blossom floating on the surface. The pale pink milk is the spring visual. Serve hot in a white ceramic cup or iced over ice in a clear glass.</div><div class="dc-cost">Food Cost $0.75 · Menu Price $6.00 · GP 87.5%</div></div>
+    <div class="drink-card"><div class="dc-name">Kinako Warm Milk</div><div class="dc-type">Hot · Comfort Drink · All Year</div><div class="dc-body">Steam 200ml full-fat milk to 65°C. Stir in 10g kinako (roasted soybean flour) until fully dissolved — use a small handheld whisk. Add 8ml honey. The result: a naturally sweet, nutty, caramel-golden warm milk that is distinctly Japanese in flavour. Kinako is the flour of soybean — roasted, it develops a complex peanut-butter-adjacent flavour. Dust with additional kinako on top. This is the highest-comfort drink in the menu and the best paired with fresh mochi.</div><div class="dc-cost">Food Cost $0.50 · Menu Price $5.50 · GP 90.9%</div></div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Tea Sets & Drinks · Page 7</div></div>
+</div>
+
+<!-- PAGE 8: SERVICE SCRIPTS + RETENTION -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 5 · Service Scripts · Section 6 · Retention</div>
+    <div class="sh-title">Scripts & Customer Retention</div>
+  </div>
+
+  <div class="script-box">
+    <div class="sb-title">Script 01 · Welcoming — Window & Shop</div>
+    <div class="sb-context">Guest approaches the taiyaki window or enters the shop.</div>
+    <div class="sb-line"><strong>At the window:</strong> "Fresh taiyaki — just out of the iron. Classic red bean, custard, or matcha today. All made here." [Point to the iron mould on the flame.] The visual and the sound of the iron does most of the selling. Staff should be working — not standing idle — when guests approach.</div>
+    <div class="sb-line"><strong>Entering the shop:</strong> "Welcome. Take your time — everything in the case is made this morning. The seasonal items are on the top shelf. If you'd like a tea set, we have seats at the counter."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="sb-title">Script 02 · Explaining Wagashi to Non-Japanese Guests</div>
+    <div class="sb-context">Guest looks at the display case with curiosity but hesitation.</div>
+    <div class="sb-line"><strong>Staff:</strong> "These are wagashi — traditional Japanese sweets. They're made from bean paste, mochi rice, and seasonal ingredients. Nothing artificial. The flavour is quite different from Western desserts — less sweet, more earthy. Would you like to try a small piece before you decide?"</div>
+    <div class="sb-line"><strong>If they agree to try:</strong> Offer a tiny sample of yokan or a small daifuku piece. This conversion step turns hesitant browsers into buyers 60–70% of the time. Never offer to explain every item — ask which catches their eye and explain that one.</div>
+  </div>
+
+  <div class="script-box">
+    <div class="sb-title">Script 03 · Tea Set Upsell</div>
+    <div class="sb-context">Guest is buying 2+ wagashi items individually.</div>
+    <div class="sb-line"><strong>Staff:</strong> "If you're having a few pieces, our matcha ceremony set includes the matcha and three wagashi — it's a nicer experience than taking them separately, and it's [price comparison]. Would you like to sit at the counter?"</div>
+    <div class="sb-line"><strong>Key:</strong> Never say "cheaper" — say "a nicer experience." You are selling an upgrade, not a discount.</div>
+  </div>
+
+  <div class="script-box">
+    <div class="sb-title">Script 04 · The Gift Box Recommendation</div>
+    <div class="sb-context">Guest is buying for someone else, or mentions "gifts" or "souvenir."</div>
+    <div class="sb-line"><strong>Staff:</strong> "We have gift boxes — 8 pieces assorted, all made today. [Price.] We wrap it here. It travels well — everything is individually packaged inside." [Show the box.] "It's a fairly unusual gift because most people haven't seen wagashi like this outside Japan."</div>
+    <div class="sb-line">That last sentence is the close. Uniqueness is the strongest gift justification.</div>
+  </div>
+
+  <div class="script-box">
+    <div class="sb-title">Script 05 · Seasonal Item Explanation</div>
+    <div class="sb-context">Guest asks about a seasonal item in the display case.</div>
+    <div class="sb-line"><strong>Staff:</strong> "That's [sakura mochi / kuri kinton / oshiruko] — it's only available in [spring / autumn / winter]. Wagashi follows the seasons very strictly, so this one will be gone in [weeks]. The [flavour detail]. It pairs beautifully with the hojicha tea."</div>
+  </div>
+
+  <div class="script-box">
+    <div class="sb-title">Script 06 · Taiyaki Freshness</div>
+    <div class="sb-context">When a guest asks how fresh the taiyaki are, or if they can wait for a fresh batch.</div>
+    <div class="sb-line"><strong>Staff:</strong> "We make them every 15–20 minutes. The ones in the warmer have been there about [X] minutes — still warm. If you'd like one straight from the iron, that's about [Y] minutes." Always give the honest answer. A guest who waits 5 minutes for a fresh taiyaki is a guest who trusts you. That trust converts into a return visit.</div>
+  </div>
+
+  <div style="margin-top:5mm">
+    <div class="info-box">
+      <h3>6 Customer Retention Mechanisms</h3>
+      <p><strong>1 · Seasonal Announcement Cards:</strong> Every guest who buys a tea set receives a small card: "Next season begins [date] — [name of next seasonal item]. We announce it on Instagram one week before." This converts one-time buyers into seasonal regulars.</p>
+      <p><strong>2 · The Nerikiri Display as Daily Social Content:</strong> Photograph today's nerikiri arrangement every morning before opening. Post on Instagram with the season and the wagashi name. This is your daily content strategy — no extra effort, consistent posting, always beautiful.</p>
+      <p><strong>3 · Gift Box Pre-Order Programme:</strong> Before Golden Week, Obon, and New Year — open pre-orders for gift boxes 3 weeks in advance. Post on Instagram: "Gift boxes for [holiday] — pre-order closes [date]." Creates urgency, guarantees revenue, and reduces production waste.</p>
+      <p><strong>4 · Taiyaki Fresh Batch Timer:</strong> A small chalkboard or digital display at the window showing "Next fresh batch: [time]." Guests who see this will wait, or will return at the correct time. It communicates craft and systems simultaneously.</p>
+      <p><strong>5 · Wagashi Making Workshop (Monthly):</strong> One Saturday morning per month — 6 guests, ¥4,500 per person, 90 minutes learning nerikiri or mochi making. The workshop is also your content creation session. Films generate 5–10 posts. Participants post their own content. Revenue from the workshop itself covers 2 weeks of Instagram advertising at zero incremental cost.</p>
+      <p><strong>6 · Loyal Guest Wagashi Tasting (Quarterly):</strong> Post: "Our next new seasonal items are being tested this [date]. First 10 guests to DM us get a complimentary tasting." This creates a micro-community of invested regulars. They become brand advocates. They bring friends on the official launch day.</p>
+    </div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Scripts & Retention · Page 8</div></div>
+</div>
+
+<!-- PAGE 9: KITCHEN + STAFF -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 7 · Kitchen Design · Section 8 · Staff</div>
+    <div class="sh-title">Shop Design & Staffing Model</div>
+  </div>
+  <div class="two-col">
+    <div class="info-box">
+      <h3>Shop Design — 20–35 sqm Hybrid</h3>
+      <p><strong>Zone 1 — Street Window (3 sqm):</strong> Taiyaki iron moulds on gas burners, facing outward. Guests can see the production. The smoke and aroma draws foot traffic. This is your live advertisement. Never let this station be empty during trading hours.</p>
+      <p><strong>Zone 2 — Display Counter (4 sqm):</strong> Refrigerated display case: nerikiri, daifuku, yokan, dorayaki, monaka — all labelled with seasonal names and ingredient cards. Tempered glass top, interior lighting. The case is the shop's identity. Change the display arrangement weekly.</p>
+      <p><strong>Zone 3 — Tea Counter (4–6 seats):</strong> Counter-height seating, 4–6 stools. Matcha preparation station behind the counter (visible to seated guests). Cast-iron teapots, ceramic chawan bowls, bamboo whisks. The tea service is performed in view of seated guests.</p>
+      <p><strong>Equipment list:</strong></p>
+      <ul>
+        <li>Cast-iron taiyaki moulds × 4 (single-fish traditional style — not the 5-fish commercial version)</li>
+        <li>Gas burner station × 2</li>
+        <li>Refrigerated display case (1.2m, front-opening)</li>
+        <li>Matcha preparation station (small, dedicated)</li>
+        <li>Commercial steamer (for mochi, daifuku)</li>
+        <li>Stand mixer (mochi kneading)</li>
+        <li>Blast chiller (yokan setting, mochi cooling)</li>
+        <li>Display warmer (taiyaki holding, 60°C)</li>
+        <li>Fine sieve set × 3 (koshian, custard, yokan)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="info-box">
+        <h3>Staff Forecast — 25 sqm Shop</h3>
+        <table class="data">
+          <tr><th>Role</th><th>HC</th><th>Rate</th><th>Hrs/wk</th><th>Annual</th></tr>
+          <tr><td>Head Wagashi Chef</td><td>1</td><td>$26</td><td>45h</td><td>$60,840</td></tr>
+          <tr><td>Taiyaki / Prep Chef</td><td>1</td><td>$20</td><td>38h</td><td>$39,520</td></tr>
+          <tr><td>Shop Staff (tea + service)</td><td>2</td><td>$18</td><td>30h each</td><td>$56,160</td></tr>
+          <tr><td>Casual / Weekend</td><td>2</td><td>$18</td><td>12h each</td><td>$22,464</td></tr>
+        </table>
+        <p style="font-size:8pt;color:var(--mid);margin-top:2mm"><strong>Annual Labour:</strong> ~$178,984 · <strong>Labour %:</strong> ~26% at target revenue.</p>
+      </div>
+      <div class="info-box">
+        <h3>Daily Prep — Key Timings</h3>
+        <table class="data">
+          <tr><th>Time</th><th>Task</th></tr>
+          <tr><td>6:00am</td><td>Koshian batch (if needed — frozen stock otherwise)</td></tr>
+          <tr><td>7:00am</td><td>Taiyaki batter — rest begins</td></tr>
+          <tr><td>7:30am</td><td>Daifuku, yokan, nerikiri made (morning production)</td></tr>
+          <tr><td>9:00am</td><td>Display case arranged — photo taken for Instagram</td></tr>
+          <tr><td>9:30am</td><td>Taiyaki iron moulds preheated · custard in warm bain-marie</td></tr>
+          <tr><td>10:00am</td><td>OPEN — taiyaki production begins</td></tr>
+          <tr><td>Every 20 min</td><td>Fresh batch of taiyaki (4–6 pieces per iron mould)</td></tr>
+          <tr><td>2:00pm</td><td>Afternoon wagashi restock — restock daifuku, nerikiri</td></tr>
+          <tr><td>5:00pm</td><td>Evening wind-down — reduce taiyaki batches</td></tr>
+          <tr><td>7:00pm</td><td>CLOSE · Clean irons · refrigerate remaining wagashi · wrap display case</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Kitchen & Staff · Page 9</div></div>
+</div>
+
+<!-- PAGE 10: ALLERGENS + MICHELIN LENS -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 9 · Allergen Table · Section 10 · Michelin Chef's Lens</div>
+    <div class="sh-title">Allergens & The Philosophy of Wagashi</div>
+  </div>
+  <div class="info-box">
+    <h3>Complete Allergen Matrix</h3>
+    <table class="data" style="font-size:8pt">
+      <tr><th>Item</th><th>Gluten</th><th>Dairy</th><th>Egg</th><th>Soy</th><th>Tree Nuts</th><th>Sesame</th></tr>
+      <tr><td>Taiyaki Batter</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Koshian (Red Bean Paste)</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Classic Koshian Taiyaki</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Vanilla Custard Taiyaki</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Matcha & Shiratama Taiyaki</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Strawberry Daifuku</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Dorayaki</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Nerikiri</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Yokan</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Monaka</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Sakura Mochi</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Oshiruko</td><td>✓(if kirimochi)</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Kuri Kinton</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓ Chestnut</td><td>—</td></tr>
+      <tr><td>Mizuyōkan</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Matcha Ceremony Set</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Usucha Matcha (bowl)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Kinako Warm Milk</td><td>—</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Amazake</td><td>✓(if rice)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    </table>
+    <p style="font-size:8pt;color:var(--mid);margin-top:3mm">✓ = Contains · — = Not present. Kitchen handles soy, gluten, egg, dairy, tree nuts. Cross-contamination possible. All adzuki and white bean pastes contain soy. Advise all guests with soy allergy before ordering any wagashi item.</p>
+  </div>
+  <div class="info-box">
+    <h3>🎋 Michelin Chef's Lens — The Sweetness of Transience</h3>
+    <p>The Japanese word for wagashi contains the character 和 (wa) — harmony, Japan, peace. Japanese confectionery is not merely sweet food. It is a material expression of mono no aware — the awareness of impermanence, the bittersweet recognition that beautiful things do not last. The cherry blossom mochi is beautiful because it will be gone in six weeks. The chestnut kinton tastes like autumn precisely because autumn ends.</p>
+    <p>A wagashi shop that doesn't change with the seasons is not a wagashi shop — it is a candy store. The seasonal calendar is not a marketing technique. It is the philosophical core of the entire tradition. When you remove the sakura mochi from your display case on May 16th, you are not managing inventory. You are honouring the season's end. The discipline of removal is as important as the craft of creation.</p>
+    <p>Taiyaki sits alongside wagashi as the populist expression of the same value system. The fish mould has not changed since 1909 because it doesn't need to change. The sea bream shape is auspicious. The casting iron is the correct tool. The red bean filling is the correct filling. Improvement here is not innovation — it is erosion. The taiyaki shops that last for generations are the ones that change nothing.</p>
+    <p>Your job, as an operator who has read this guide, is to understand which parts of your menu to protect from change (the classic taiyaki, the koshian recipe, the seasonal calendar structure) and which parts to evolve (the modern fillings, the matcha cream variants, the gift packaging). Protect the soul. Evolve the surface. This is the discipline that makes 115-year-old businesses.</p>
+    <p style="font-size:9pt;color:var(--gv);font-style:italic;margin-top:3mm"><em>"物の哀れ — Mono no aware. The pathos of things. The awareness that beauty and impermanence are the same thing." — Heian period, 1,200 years ago. Still the most important idea in Japanese aesthetics.</em></p>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi</div><div class="pf-right">Allergens & Philosophy · Page 10</div></div>
+</div>
+
+<!-- PAGE 11: P&L + FRANCHISE -->
+<div class="page">
+<div class="page-inner">
+  <div class="section-header">
+    <div class="sh-tag">Section 11 · P&L Model · Franchise Blueprint</div>
+    <div class="sh-title">Financial Model & Franchise Framework</div>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-n">25 sqm</div><div class="kpi-l">Shop Size</div></div>
+    <div class="kpi"><div class="kpi-n">$685K</div><div class="kpi-l">Annual Revenue</div></div>
+    <div class="kpi"><div class="kpi-n">27%</div><div class="kpi-l">Net Margin</div></div>
+    <div class="kpi"><div class="kpi-n">$185K</div><div class="kpi-l">Annual Net</div></div>
+  </div>
+  <div class="two-col">
+    <div class="info-box">
+      <h3>Monthly P&L — Hybrid Taiyaki + Wagashi Shop</h3>
+      <table class="data">
+        <tr><th>Line Item</th><th>Monthly</th><th>%</th></tr>
+        <tr><td><strong>Gross Revenue</strong></td><td><strong>$57,083</strong></td><td>100%</td></tr>
+        <tr><td>Food & Beverage Cost</td><td>$10,275</td><td>18%</td></tr>
+        <tr><td><strong>Gross Profit</strong></td><td><strong>$46,808</strong></td><td>82%</td></tr>
+        <tr><td>Labour (incl. super/benefits)</td><td>$14,915</td><td>26.1%</td></tr>
+        <tr><td>Rent (high street / tourist area)</td><td>$5,500</td><td>9.6%</td></tr>
+        <tr><td>Utilities + Equipment</td><td>$1,400</td><td>2.5%</td></tr>
+        <tr><td>Packaging (gift boxes, cone paper)</td><td>$1,100</td><td>1.9%</td></tr>
+        <tr><td>Marketing + Instagram</td><td>$400</td><td>0.7%</td></tr>
+        <tr><td>Misc / Contingency</td><td>$1,100</td><td>1.9%</td></tr>
+        <tr><td><strong>Total Operating Costs</strong></td><td><strong>$24,415</strong></td><td>42.8%</td></tr>
+        <tr><td><strong>Net Operating Profit</strong></td><td><strong>$15,418</strong></td><td><strong>27%</strong></td></tr>
+      </table>
+      <p style="font-size:8pt;color:var(--mid);margin-top:2mm">Annual Net: ~$185,016. Peak months: Oct–Jan (chestnut/New Year gifting) and Mar–May (sakura season). Gift box revenue Dec = additional $6,000–9,000.</p>
+    </div>
+    <div class="info-box">
+      <h3>Revenue Split by Stream</h3>
+      <table class="data">
+        <tr><th>Revenue Stream</th><th>Monthly Share</th><th>%</th></tr>
+        <tr><td>Taiyaki (street window)</td><td>$18,000</td><td>31.5%</td></tr>
+        <tr><td>Wagashi retail (display case)</td><td>$14,500</td><td>25.4%</td></tr>
+        <tr><td>Tea sets (seated service)</td><td>$12,500</td><td>21.9%</td></tr>
+        <tr><td>Gift boxes + omiyage</td><td>$8,000</td><td>14%</td></tr>
+        <tr><td>Drinks (standalone)</td><td>$4,083</td><td>7.2%</td></tr>
+      </table>
+      <div class="info-box" style="margin-top:4mm;margin-bottom:0">
+        <h3>Franchise Blueprint</h3>
+        <ul>
+          <li><strong>Initial fee:</strong> $22,000 USD per location</li>
+          <li><strong>Royalty:</strong> 5% of gross monthly revenue</li>
+          <li><strong>Territory:</strong> 1km exclusive radius</li>
+          <li><strong>Training:</strong> 3-week certification — koshian, nerikiri sculpting, taiyaki production, tea service</li>
+          <li><strong>IP included:</strong> All batter and paste recipes · seasonal calendar · nerikiri technique guide · gift box packaging design · workshop programme template</li>
+          <li><strong>Target cities:</strong> Tokyo (flagship) · Kyoto · Osaka · Sydney · Melbourne · Singapore · Bangkok</li>
+          <li><strong>Moat:</strong> Nerikiri sculpting skill + seasonal calendar discipline are hard to replicate at speed. The artisan position is the barrier. Mass-produced wagashi exists — artisan, seasonal, photographable wagashi in non-Japanese markets is extremely rare.</li>
+          <li><strong>Workshop programme:</strong> Monthly workshop adds $2,700/month passive per location at near-zero cost.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-footer"><div class="pf-left">KitchenFounder · Guide #57 · Taiyaki & Wagashi · v7 · 2026 Edition</div><div class="pf-right">P&L & Franchise · Page 11 · kitchenfounder.com</div></div>
+</div>
+
+</body>
+</html>
