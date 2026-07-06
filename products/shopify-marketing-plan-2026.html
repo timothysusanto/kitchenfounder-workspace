@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KitchenFounder — Shopify 2.0 + Sales Marketing Master Plan 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#FAFAF8;color:#1C1C1C;font-size:10pt;line-height:1.6}
+:root{--gold:#C8A832;--dark:#1C1C1C;--mid:#555;--light:#888;--bg:#FAFAF8;--border:#E8E5E0;--paper:#fff}
+
+.cover{width:210mm;min-height:297mm;background:#0D0D0D;display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden}
+.cover-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(200,168,50,0.04) 39px,rgba(200,168,50,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(200,168,50,0.04) 39px,rgba(200,168,50,0.04) 40px)}
+.cover-content{position:relative;z-index:2;padding:18mm 16mm;display:flex;flex-direction:column;height:100%;min-height:297mm}
+.cover-eyebrow{font-family:'JetBrains Mono',monospace;font-size:7pt;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(200,168,50,0.7);margin-bottom:5mm}
+.cover-title{font-family:'Playfair Display',serif;font-size:36pt;font-weight:900;color:#fff;line-height:1.05;margin-bottom:4mm}
+.cover-title span{color:#C8A832}
+.cover-sub{font-size:9.5pt;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:7mm;max-width:140mm}
+.cover-divider{width:20mm;height:1px;background:rgba(200,168,50,0.4);margin-bottom:7mm}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-bottom:auto}
+.cs{text-align:center;padding:3.5mm;border:1px solid rgba(255,255,255,0.07)}
+.cs-v{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:#C8A832}
+.cs-l{font-size:6pt;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-top:1mm}
+.cover-quote{border-left:3px solid rgba(200,168,50,0.4);padding:3.5mm 4.5mm;margin-top:7mm;font-size:8.5pt;color:rgba(255,255,255,0.5);font-style:italic;line-height:1.7}
+.cover-footer{margin-top:5mm;padding-top:3.5mm;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;font-size:6.5pt;color:rgba(255,255,255,0.25);letter-spacing:1px}
+
+.page{width:210mm;min-height:297mm;padding:13mm 16mm 17mm;page-break-after:always;background:#FAFAF8;position:relative}
+.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm;padding-bottom:3mm;border-bottom:2px solid #1C1C1C}
+.page-section{font-size:7pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#555}
+.page-num{font-size:9pt;color:#999;font-style:italic}
+.page-footer{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;font-size:6.5pt;color:#bbb;border-top:1px solid #e8e5e0;padding-top:2mm}
+
+h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1C1C1C;margin-bottom:2.5mm;margin-top:4mm}
+h3{font-size:9pt;font-weight:700;color:#1C1C1C;margin-bottom:1.5mm;margin-top:3.5mm}
+p{font-size:8.5pt;color:#333;line-height:1.75;margin-bottom:2mm}
+strong{color:#1C1C1C}
+ul,ol{padding-left:4mm;font-size:8.5pt;color:#333;line-height:1.8}
+li{margin-bottom:1mm}
+
+.tag{display:inline-block;font-size:6pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:1mm 2.5mm;margin-bottom:2mm}
+.tag-gold{background:rgba(200,168,50,0.1);color:#7A5F00;border:1px solid rgba(200,168,50,0.3)}
+.tag-blue{background:rgba(30,80,200,0.07);color:#0A2A80;border:1px solid rgba(30,80,200,0.2)}
+.tag-green{background:rgba(20,140,60,0.07);color:#0A4A20;border:1px solid rgba(20,140,60,0.2)}
+.tag-red{background:rgba(200,30,30,0.07);color:#7A0A0A;border:1px solid rgba(200,30,30,0.2)}
+.tag-purple{background:rgba(120,30,200,0.07);color:#4A0A7A;border:1px solid rgba(120,30,200,0.2)}
+
+.card{background:#fff;border:1px solid var(--border);padding:4mm 5mm;margin-bottom:3.5mm;page-break-inside:avoid}
+.card-hdr{display:flex;align-items:flex-start;gap:3mm;margin-bottom:2mm}
+.card-num{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:var(--gold);line-height:1;min-width:8mm}
+.card-title{font-size:9.5pt;font-weight:700;color:#1C1C1C}
+.card-sub{font-size:7.5pt;color:var(--mid);margin-top:0.5mm}
+.card-body{font-size:8.5pt;color:#333;line-height:1.75}
+.card-body ul{margin-top:1.5mm}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm;margin-bottom:3.5mm}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-bottom:3.5mm}
+.col-box{background:#fff;border:1px solid var(--border);padding:3.5mm 4mm}
+.col-box h4{font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2mm}
+.col-box p,.col-box li{font-size:8pt;color:#444;line-height:1.7}
+.col-box ul{padding-left:3.5mm}
+.col-box li{margin-bottom:1mm}
+
+.table{width:100%;border-collapse:collapse;font-size:8pt;margin-bottom:3.5mm}
+.table th{padding:2.5mm 3mm;background:#1C1C1C;color:#fff;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:left}
+.table td{padding:2.5mm 3mm;border-bottom:1px solid var(--border);color:#333;vertical-align:top;line-height:1.6}
+.table tr:nth-child(even) td{background:#f8f6f3}
+.table .green{color:#157A30;font-weight:700}
+.table .gold{color:#7A5F00;font-weight:700}
+.table .red{color:#8B0000;font-weight:700}
+
+.highlight{background:#FFF8E6;border-left:4px solid var(--gold);padding:3mm 4mm;margin:2.5mm 0;font-size:8.5pt;color:#4A3500;line-height:1.7}
+.note{background:#F0F7FF;border-left:4px solid #2060C0;padding:3mm 4mm;margin:2.5mm 0;font-size:8.5pt;color:#0A2050;line-height:1.7}
+.action{background:#F0FFF4;border-left:4px solid #20A040;padding:3mm 4mm;margin:2.5mm 0;font-size:8.5pt;color:#0A3A18;line-height:1.7}
+
+.phase-bar{background:#1C1C1C;color:#fff;padding:3mm 4mm;margin-bottom:2mm;display:flex;align-items:center;gap:3mm}
+.phase-label{font-size:6.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,50,0.8);min-width:18mm}
+.phase-title{font-size:9pt;font-weight:700;color:#fff}
+.phase-meta{font-size:7.5pt;color:rgba(255,255,255,0.5);margin-left:auto}
+
+.funnel-step{display:flex;gap:3mm;margin-bottom:2mm;page-break-inside:avoid}
+.funnel-icon{width:8mm;height:8mm;background:var(--gold);color:#000;font-size:7pt;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.5mm}
+.funnel-body{flex:1}
+.funnel-title{font-size:9pt;font-weight:700;color:#1C1C1C;margin-bottom:0.5mm}
+.funnel-desc{font-size:8pt;color:#444;line-height:1.7}
+.funnel-arrow{text-align:center;font-size:10pt;color:var(--gold);margin:1mm 0 1mm 11mm}
+
+@media print{
+  body{background:#fff}
+  .cover,.page{page-break-after:always}
+  @page{size:A4;margin:0}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+<div class="cover-grid"></div>
+<div class="cover-content">
+  <div class="cover-eyebrow">KitchenFounder · Sales & Marketing Master Plan · July 2026</div>
+  <div class="cover-title">Shopify 2.0<br><span>Sales Machine</span><br>+ New Gen Marketing</div>
+  <div class="cover-sub">Complete playbook: Shopify 2.0 store architecture, sales funnel, TikTok-first content engine, email automation, paid ads, SEO, bundle strategy, and the new generation sales psychology that turns $29.99 guides into a $1M/year business.</div>
+  <div class="cover-divider"></div>
+  <div class="cover-stats">
+    <div class="cs"><div class="cs-v">7</div><div class="cs-l">Sales Channels</div></div>
+    <div class="cs"><div class="cs-v">5</div><div class="cs-l">Funnel Stages</div></div>
+    <div class="cs"><div class="cs-v">$65</div><div class="cs-l">Avg Order Value Target</div></div>
+    <div class="cs"><div class="cs-v">$1M</div><div class="cs-l">Year 2 Revenue Target</div></div>
+  </div>
+  <div class="cover-quote">"The new generation doesn't respond to ads. They respond to proof. Show them your kitchen. Show them the numbers. Show them you've done what they want to do. That 30-second TikTok is the most powerful sales tool you own — and it costs nothing."</div>
+  <div class="cover-footer">
+    <span>KITCHENFOUNDER · KITCHEN-FOUNDER.MYSHOPIFY.COM</span>
+    <span>CONFIDENTIAL · TIMOTHY SUSANTO · 2026</span>
+  </div>
+</div>
+</div>
+
+<!-- PAGE 2: SHOPIFY 2.0 STORE ARCHITECTURE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Shopify 2.0 Store Architecture · What to Build · Priority Order</span><span class="page-num">02</span></div>
+
+<div class="tag tag-blue">Shopify 2.0</div>
+<h2>The Store That Sells While You Sleep</h2>
+<p>Shopify 2.0 gives you Section Everywhere, metafields, and app blocks — tools that make your store behave like a custom-coded site without touching a developer. Here's the exact architecture to build, in priority order.</p>
+
+<div class="phase-bar"><div class="phase-label">Priority 1</div><div class="phase-title">Homepage — The Trust Machine</div><div class="phase-meta">1–2 hours to build</div></div>
+<div class="card">
+<div class="card-body">
+<p>Your homepage has one job: turn a curious visitor into someone who believes you know what you're talking about. In that order. Not sell first — believe first. The new generation skips anything that feels like an ad. They stay for proof.</p>
+<p><strong>Homepage section order (Dawn theme, drag-and-drop in Shopify editor):</strong></p>
+<ul>
+<li><strong>Hero banner:</strong> Dark background. Headline: "Turn any cuisine into a profitable restaurant." Sub: "$29.99 · 28 recipes · Full P&amp;L · Instant download." CTA button: "Browse all guides." — NO carousel, NO animation. One clean statement.</li>
+<li><strong>Credential strip:</strong> "59 cuisines · 28 recipes per guide · 22 free tools · Built by a Head Chef with 10 years in hotel F&amp;B" — single line, dark background, small text. This is the trust anchor.</li>
+<li><strong>Featured collection:</strong> Show 6 best-selling guides. Title: "Most popular right now." Use Shopify metafields to add "P&amp;L: $2.9M · Margin: 38%" under each product.</li>
+<li><strong>What's inside section:</strong> 8-item grid (use multicolumn block). Each item = one thing inside every guide (recipes, P&amp;L, floor plan, scripts, SMS templates etc.)</li>
+<li><strong>Social proof:</strong> 3 quote cards. No fake reviews. Use real reactions from social media or write from genuine chef perspective.</li>
+<li><strong>22 tools strip:</strong> "Every guide includes 22 free operator tools. No account needed. Works on any device." Link to tools page.</li>
+<li><strong>FAQ accordion:</strong> 5 questions. Use Shopify native FAQ section (Dawn has one built in).</li>
+<li><strong>Final CTA:</strong> Full-width dark section. "$29.99 · Instant download · Browse all 59 guides."</li>
+</ul>
+</div>
+</div>
+
+<div class="phase-bar"><div class="phase-label">Priority 2</div><div class="phase-title">Product Pages — The Conversion Engine</div><div class="phase-meta">30 min per product</div></div>
+<div class="card">
+<div class="card-body">
+<p>Every product page follows this exact structure. Do NOT use the default Shopify product template — create a custom one:</p>
+<ul>
+<li><strong>Above the fold:</strong> Product title + cuisine flag emoji + price ($29.99) + "Instant download" badge + Add to Cart button. Nothing else competes with the button.</li>
+<li><strong>The hook paragraph:</strong> 2 sentences. Specific to the cuisine. "The Argentine Asado guide documents the exact system behind a $2.9M/year concept — fire-cooked proteins, chimichurri build from scratch, silver service floor scripts for 80 covers." Not generic. Specific.</li>
+<li><strong>What's inside accordion:</strong> Expand to show full 28-recipe list. This answers "what exactly am I buying?" without overwhelming above the fold.</li>
+<li><strong>P&amp;L summary box:</strong> Projected revenue + net margin. Dark background. Makes the $29.99 feel like an investment, not a cost.</li>
+<li><strong>22 tools list:</strong> Collapsed by default. "Also includes 22 free operator tools — expand to see." This adds perceived value without cluttering.</li>
+<li><strong>FAQ (product-specific):</strong> 3 questions relevant to that cuisine. Use Shopify metafields so each product has different FAQ content.</li>
+<li><strong>Related guides:</strong> "Customers also bought" — manually curate (not Shopify's default algorithm). Group by region: "Also in the Asian series: Korean BBQ, Japanese Izakaya, Thai Street Food."</li>
+</ul>
+</div>
+</div>
+
+<div class="phase-bar"><div class="phase-label">Priority 3</div><div class="phase-title">Collections Page — The Browse Experience</div><div class="phase-meta">20 min</div></div>
+<div class="card">
+<div class="card-body">
+<ul>
+<li><strong>Create 6 collections:</strong> All Guides · Asian Series · Americas Series · Middle East & Africa · European Series · Tokyo Dessert Series</li>
+<li><strong>Collection filter tags:</strong> Add Shopify tags: "asian", "americas", "european", "under-$50-startup", "high-margin", "franchise-ready" — lets buyers filter by their situation</li>
+<li><strong>Collection banner:</strong> Each collection has a short description: "The Asian Series — 22 guides covering the most profitable Asian restaurant concepts in the US market."</li>
+<li><strong>Sort options:</strong> Enable "Best selling" as default. Buyers trust what other buyers chose.</li>
+</ul>
+</div>
+</div>
+
+<div class="phase-bar"><div class="phase-label">Priority 4</div><div class="phase-title">Key Shopify 2.0 Settings to Enable Now</div><div class="phase-meta">15 min — do today</div></div>
+<div class="two-col">
+<div class="col-box">
+<h4>Shopify Admin → Settings</h4>
+<ul>
+<li>Checkout → enable "Order status page" custom message → "Check your email for your download link. Questions? Reply to this email."</li>
+<li>Notifications → edit the "Order confirmation" email → add your download instructions at the top clearly</li>
+<li>Analytics → connect Google Analytics 4</li>
+<li>Pixels → add Meta Pixel ID (get from Meta Business Suite)</li>
+<li>Markets → US only (your target market)</li>
+</ul>
+</div>
+<div class="col-box">
+<h4>Online Store → Preferences</h4>
+<ul>
+<li>Title tag: "KitchenFounder — Restaurant Operations Guides · $29.99"</li>
+<li>Meta description: "28 recipes, full P&amp;L model, and 22 free tools in every guide. Built by a Head Chef. $29.99, instant download. 59 cuisines available."</li>
+<li>Social sharing image: your best guide cover</li>
+<li>Password: OFF (confirm it's still public)</li>
+<li>Google Search Console: already verified ✅ — check indexing weekly</li>
+</ul>
+</div>
+</div>
+
+<div class="action"><strong>This week's Shopify 2.0 action:</strong> Add guides #51–59 as products first (descriptions already written). Then rebuild homepage in Shopify editor using the section order above. Both tasks = 2 hours total.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">Shopify 2.0 Architecture</span></div>
+</div>
+
+<!-- PAGE 3: THE SALES FUNNEL -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">The 5-Stage Sales Funnel · Stranger to Repeat Buyer</span><span class="page-num">03</span></div>
+
+<div class="tag tag-gold">Sales Funnel</div>
+<h2>The New Generation Sales Funnel</h2>
+<p>The old funnel was: run an ad → land on product page → buy. That funnel is dead for 25–35 year olds. The new funnel is: <strong>earn trust → educate → convert → retain → upsell.</strong> Each stage has specific tools. Every stage must exist before the next one works.</p>
+
+<div class="funnel-step">
+<div class="funnel-icon">1</div>
+<div class="funnel-body">
+<div class="funnel-title">AWARENESS — "Who is this and why should I care?"</div>
+<div class="funnel-desc"><strong>Primary tool: TikTok organic.</strong> 30-second videos from your hotel kitchen. Credential bomb format: "I'm a Head Chef running a $6M hotel kitchen. Here's what most restaurant owners get wrong about food cost." The viewer doesn't know you yet. They need to understand your authority in the first 3 seconds. Speak to their exact pain: they want to open a restaurant and they're scared of failing. Show them you understand that fear from the inside.</div>
+</div>
+</div>
+<div class="funnel-arrow">↓</div>
+
+<div class="funnel-step">
+<div class="funnel-icon">2</div>
+<div class="funnel-body">
+<div class="funnel-title">INTEREST — "This person knows things I need to know"</div>
+<div class="funnel-desc"><strong>Primary tools: TikTok profile → link in bio → landing page.</strong> After 3–5 videos, the viewer follows. They check your profile. Your bio converts them to the store: "59 restaurant operation guides · Built by a real Head Chef · $29.99 each · Link below." The landing page (the Higgsfield-style page we built) is the bridge between social trust and purchase intent. It answers: what exactly am I buying, who made this, and why should I trust it?</div>
+</div>
+</div>
+<div class="funnel-arrow">↓</div>
+
+<div class="funnel-step">
+<div class="funnel-icon">3</div>
+<div class="funnel-body">
+<div class="funnel-title">CONSIDERATION — "I want this but I need to be sure"</div>
+<div class="funnel-desc"><strong>Primary tools: Product page + email capture + Klaviyo welcome sequence.</strong> The buyer lands on a product page. They read. They hesitate. Two things push them over: (1) The P&amp;L box — seeing "$2.9M projected revenue" next to $29.99 reframes the price completely. (2) The email capture popup — "Not ready? Get the free Restaurant Opening Checklist" → they opt in → 5-day Klaviyo sequence nurtures them → Day 3 email converts 40% of hesitators. This is where your email list becomes your most valuable asset.</div>
+</div>
+</div>
+<div class="funnel-arrow">↓</div>
+
+<div class="funnel-step">
+<div class="funnel-icon">4</div>
+<div class="funnel-body">
+<div class="funnel-title">CONVERSION — "I'm buying this right now"</div>
+<div class="funnel-desc"><strong>Primary tools: Shopify checkout + post-purchase upsell + order confirmation email.</strong> At checkout: no friction, one-click where possible, clear "Instant download" reassurance. Post-purchase upsell (use ReConvert app, free tier): immediately after checkout show "Add the Asian Bundle for $39.99 more (save $20)." 15–25% of buyers take the upsell. Order confirmation email: clear download instructions at the top + "You also get 22 free tools — here's how to access them." Reduces support emails by 80%.</div>
+</div>
+</div>
+<div class="funnel-arrow">↓</div>
+
+<div class="funnel-step">
+<div class="funnel-icon">5</div>
+<div class="funnel-body">
+<div class="funnel-title">RETENTION + UPSELL — "I trust this brand. What else do they have?"</div>
+<div class="funnel-desc"><strong>Primary tools: Klaviyo post-purchase sequence + new guide announcement emails.</strong> Day 7 after purchase: "How's the guide going? Here's the 3 biggest mistakes first-time operators make using it." Day 14: "New guide just dropped — [latest guide]. As a KitchenFounder customer, you get 20% off for 48 hours." Day 30: bundle offer. Repeat buyers have a 3× higher lifetime value than first-time buyers. The email list is the machine that converts one $29.99 sale into a $200+ lifetime customer.</div>
+</div>
+</div>
+
+<div class="highlight"><strong>The new generation insight:</strong> 25–35 year olds have the highest BS detector of any consumer generation in history. They grew up with ads. They can smell a funnel from 3 pages away. The way to sell to them is to not sell — to educate so thoroughly that buying feels like the logical next step, not a persuasion outcome. Every TikTok is education. Every email is education. The sale happens naturally when they trust you enough.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">The 5-Stage Sales Funnel</span></div>
+</div>
+
+<!-- PAGE 4: TIKTOK-FIRST CONTENT ENGINE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">TikTok-First Content Engine · 5 Formats · Weekly Schedule</span><span class="page-num">04</span></div>
+
+<div class="tag tag-red">TikTok · New Gen Marketing</div>
+<h2>TikTok-First: The Only Organic Channel That Matters in 2026</h2>
+<p>Pinterest is evergreen. Instagram is discovery. YouTube is depth. But TikTok is the only platform where a zero-follower account can reach 500,000 people on day one with the right video. For KitchenFounder, TikTok is not a marketing channel — it is the top of the entire funnel. Everything else is secondary.</p>
+
+<h3 style="margin-top:4mm">The 5 TikTok Formats — Rotate Weekly</h3>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num">F1</div><div><div class="card-title">The Credential Bomb</div><div class="card-sub">Hook: authority first · Best for: new followers · Post: Mon/Tue</div></div></div>
+<div class="card-body">
+<p><strong>Formula:</strong> "I [specific credential]. Here's what [audience fear]." Open in the kitchen. Fast cut. No intro, no "hey guys", no setup. The first 3 words must contain either a number, a dollar amount, or the word "mistake".</p>
+<p><strong>Example scripts:</strong></p>
+<ul>
+<li>"I've run a $6M hotel kitchen for 10 years. The #1 reason new restaurants fail in month 3 has nothing to do with the food."</li>
+<li>"I built 59 restaurant guides from scratch. Here's the one thing every guide has that no YouTube tutorial will ever show you."</li>
+<li>"I'm a Head Chef. A customer asked me last week if they should open a restaurant. Here's exactly what I told them."</li>
+</ul>
+<p><strong>End frame:</strong> "I documented all of it. Link in bio." — never say "buy my guide". Say "I documented it."</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num">F2</div><div><div class="card-title">The Number Reveal</div><div class="card-sub">Hook: specific data · Best for: virality · Post: Wed</div></div></div>
+<div class="card-body">
+<p><strong>Formula:</strong> Reveal one specific number that surprises people. Food cost %, revenue per cover, how much a chef earns vs how much the restaurant earns, how many kilos of protein per service.</p>
+<ul>
+<li>"A Korean BBQ restaurant with 40 covers can do $1.8M in year one. Here's the exact model." → show a P&amp;L on screen for 3 seconds</li>
+<li>"The average restaurant throws away $3,200 of food every month. Here's why and how to fix it in one afternoon."</li>
+<li>"I pay my Head Chef $75K a year. The restaurant generates $6M. Here's where the other $5.9M goes."</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num">F3</div><div><div class="card-title">The Day in My Life (Kitchen)</div><div class="card-sub">Hook: authenticity · Best for: parasocial bond · Post: Thu/Fri</div></div></div>
+<div class="card-body">
+<p><strong>Formula:</strong> 60–90 seconds. Film your actual shift. B-roll of mise en place, plating, service. Voiceover with one insight per scene. No scripting — stream of consciousness from someone who knows their craft. This format builds the deepest trust because it's real and unteachable by AI.</p>
+<ul>
+<li>"5:30AM kitchen setup. Here's what I check before any chef arrives." (panning fridge check, mise en place stations)</li>
+<li>"Saturday service — 200 covers. Here's the 3 things that went wrong and how we recovered."</li>
+<li>"I'm plating 40 covers of wagyu right now. Here's why the doneness is everything." (action shot)</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num">F4</div><div><div class="card-title">The Guide Reveal</div><div class="card-sub">Hook: the product as content · Best for: direct conversion · Post: Sat</div></div></div>
+<div class="card-body">
+<p><strong>Formula:</strong> Open the guide on screen. Scroll through it at moderate speed. Voiceover explains 3 specific things you see. Never say "it costs $29.99" in the video — say the price on the end card only or in the caption.</p>
+<ul>
+<li>Open the Japanese Mochi guide. "This is 28 mochi recipes with full costing, a floor plan for a 300sqft shop, and the P&amp;L for a $200K/year business. Built for someone who's never made mochi before."</li>
+<li>Open the NYC Steakhouse guide. Show the silver service scripts page. "This is the exact script my wait staff uses for a 12-cover private dining room. Word for word."</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num">F5</div><div><div class="card-title">The Myth Buster</div><div class="card-sub">Hook: disagreement · Best for: shares and comments · Post: Sun</div></div></div>
+<div class="card-body">
+<p><strong>Formula:</strong> Start with a common belief → disagree with it → explain why with specific expertise → end with the correct version. Disagreement drives comments. Comments drive algorithm. Algorithm drives reach.</p>
+<ul>
+<li>"Everyone says passion is enough to open a restaurant. They're wrong. Here's what actually matters."</li>
+<li>"TikTok keeps showing me restaurant business advice from people who've never run a restaurant. Let me fix that."</li>
+<li>"The biggest lie in the restaurant industry: 'Location is everything.' Here's what the data actually says."</li>
+</ul>
+</div>
+</div>
+
+<h3 style="margin-top:4mm">Weekly Content Schedule</h3>
+<table class="table">
+<tr><th>Day</th><th>Format</th><th>Topic idea</th><th>Film time</th><th>Post time</th></tr>
+<tr><td><strong>Monday</strong></td><td>F1 · Credential Bomb</td><td>One specific mistake new restaurants make</td><td>10 min</td><td>6–8 PM local</td></tr>
+<tr><td><strong>Wednesday</strong></td><td>F2 · Number Reveal</td><td>One revenue/cost number with context</td><td>10 min</td><td>6–8 PM local</td></tr>
+<tr><td><strong>Thursday</strong></td><td>F3 · Day in My Life</td><td>Actual kitchen shift B-roll + voiceover</td><td>During shift</td><td>6–8 PM local</td></tr>
+<tr><td><strong>Saturday</strong></td><td>F4 · Guide Reveal</td><td>Scroll through one specific guide</td><td>15 min</td><td>10 AM–12 PM</td></tr>
+<tr><td><strong>Sunday</strong></td><td>F5 · Myth Buster</td><td>Disagree with one popular restaurant belief</td><td>10 min</td><td>10 AM–12 PM</td></tr>
+</table>
+
+<div class="note"><strong>Repurpose rule:</strong> Every TikTok → post simultaneously as Instagram Reel → YouTube Short → Pinterest Idea Pin. One 10-minute filming session = 4 platforms covered. Use CapCut for editing (free). Bangkok creator handles the editing/posting from Month 2.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">TikTok-First Content Engine</span></div>
+</div>
+
+<!-- PAGE 5: EMAIL + KLAVIYO -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Email Marketing · Klaviyo Setup · 5-Day Welcome Sequence · Broadcast Calendar</span><span class="page-num">05</span></div>
+
+<div class="tag tag-green">Email · Klaviyo</div>
+<h2>Email — The Highest ROI Channel You're Not Using Yet</h2>
+<p>TikTok reaches millions but you own nothing. Email reaches fewer people but you own every address forever. The benchmark for e-commerce email: <strong>$1 per subscriber per month.</strong> 1,000 subscribers = $1,000/month passively. 10,000 subscribers = $10,000/month. Building your list is the single highest-leverage action after filming your first TikTok.</p>
+
+<h3>Klaviyo Setup — Install Today (Free up to 250 subscribers)</h3>
+<div class="two-col">
+<div class="col-box">
+<h4>Step 1 · Install + Connect</h4>
+<ul>
+<li>Shopify Admin → Apps → search "Klaviyo" → install</li>
+<li>Connect your Shopify store in Klaviyo dashboard</li>
+<li>Sync existing customers automatically</li>
+<li>Takes 10 minutes</li>
+</ul>
+</div>
+<div class="col-box">
+<h4>Step 2 · Lead Magnet Popup</h4>
+<ul>
+<li>Offer: "Free Restaurant Opening Checklist" (you have this at /products/restaurant-opening-checklist.html)</li>
+<li>Popup trigger: exit intent OR 30 seconds on site</li>
+<li>Headline: "Opening a restaurant? Get the free 47-point checklist."</li>
+<li>Collect: email only (no name — friction killer)</li>
+</ul>
+</div>
+</div>
+
+<h3 style="margin-top:3mm">The 5-Day Welcome Sequence — Every New Subscriber Gets This</h3>
+<table class="table">
+<tr><th>Day</th><th>Subject line</th><th>Content</th><th>CTA</th></tr>
+<tr><td><strong>Day 0</strong><br><span style="font-size:7pt;color:#888">Immediate</span></td><td>"Your free checklist is here"</td><td>Deliver the checklist. One paragraph: "I'm Mothy, Head Chef running a $6M hotel kitchen in Sydney. I built KitchenFounder because I kept watching passionate people lose everything on restaurants they weren't ready for. This checklist is the start of doing it right."</td><td>Download checklist</td></tr>
+<tr><td><strong>Day 1</strong></td><td>"The #1 mistake that kills restaurants in month 3"</td><td>Educational email. One specific insight about food cost or labour cost. 150 words max. End: "I documented the full system in [Guide Name]. Here's what's inside."</td><td>View the guide</td></tr>
+<tr><td><strong>Day 3</strong></td><td>"What a $2.9M restaurant actually looks like on paper"</td><td>Show the Argentine Asado P&amp;L numbers. Make $29.99 feel like nothing against $2.9M. "This is the exact model inside the guide. Every number is real, built for US market pricing."</td><td>Get the guide — $29.99</td></tr>
+<tr><td><strong>Day 5</strong></td><td>"59 cuisines. Which one is right for you?"</td><td>Quiz-style email. "Are you drawn to Asian flavours? High-margin dessert concepts? Fire-cooked proteins?" List 6 categories with 2 guide recommendations each. Multiple entry points = more clicks.</td><td>Browse all guides</td></tr>
+<tr><td><strong>Day 7</strong></td><td>"Last thing from me this week"</td><td>Soft email. Share one personal insight about the restaurant industry. No hard sell. Build relationship. "Reply to this email with the cuisine you're thinking about — I read every reply."</td><td>Reply (engagement)</td></tr>
+</table>
+
+<h3 style="margin-top:3mm">Monthly Broadcast Calendar</h3>
+<table class="table">
+<tr><th>Week</th><th>Email type</th><th>Subject</th><th>Goal</th></tr>
+<tr><td>W1</td><td>New guide launch</td><td>"New: [Guide Name] just dropped — 48hr launch price"</td><td>New guide sales</td></tr>
+<tr><td>W2</td><td>Education</td><td>"The truth about [cuisine] margins in the US market"</td><td>Trust building</td></tr>
+<tr><td>W3</td><td>Bundle offer</td><td>"The [Series] bundle — save $20 this week only"</td><td>AOV increase</td></tr>
+<tr><td>W4</td><td>Personal story</td><td>"What happened in my kitchen this week"</td><td>Parasocial bond</td></tr>
+</table>
+
+<div class="highlight"><strong>Klaviyo flows to build (in order):</strong> (1) Welcome sequence above. (2) Abandoned cart — 1hr, 24hr, 72hr emails. (3) Post-purchase — Day 7 check-in + Day 14 upsell + Day 30 bundle. (4) Win-back — subscribers who haven't opened in 60 days. These 4 flows run forever and generate revenue without you touching them.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">Email · Klaviyo · Welcome Sequence</span></div>
+</div>
+
+<!-- PAGE 6: PAID ADS + BUNDLE STRATEGY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">Paid Ads · Bundle Strategy · AOV Growth · $2,400/Month Budget</span><span class="page-num">06</span></div>
+
+<div class="tag tag-purple">Paid Ads · Bundles</div>
+<h2>Paid Ads — Only After Organic Works</h2>
+<p>Rule: never run paid ads to cold traffic on a product that hasn't proven it converts organically. Your TikTok will tell you which video works. That video becomes your Spark Ad. Don't guess — let the algorithm show you the winner first.</p>
+
+<h3>The $2,400/Month Ad Budget — Allocation</h3>
+<table class="table">
+<tr><th>Platform</th><th>Budget/mo</th><th>Ad type</th><th>Audience</th><th>Goal</th></tr>
+<tr><td><strong>TikTok Spark Ad</strong></td><td class="gold">$600</td><td>Boost best organic video</td><td>Lookalike of video engagers · 25–40 · US</td><td>Top of funnel · followers → store</td></tr>
+<tr><td><strong>Pinterest Promoted Pin</strong></td><td class="gold">$300</td><td>Static guide cover pins</td><td>"restaurant business" · "food entrepreneur" · "chef" keywords</td><td>Evergreen traffic · SEO-adjacent</td></tr>
+<tr><td><strong>Meta Retargeting</strong></td><td class="gold">$450</td><td>Dynamic product ads</td><td>Shopify store visitors who didn't buy (Meta Pixel required)</td><td>Recover abandoned visitors</td></tr>
+<tr><td><strong>Reddit Ads</strong></td><td class="gold">$450</td><td>Promoted post</td><td>r/entrepreneur · r/smallbusiness · r/restaurantowners · r/foodservice</td><td>High-intent niche audience</td></tr>
+<tr><td><strong>Twitter/X Ads</strong></td><td class="gold">$600</td><td>Promoted tweet</td><td>Restaurant owners · chefs · F&B entrepreneurs · 25–45 US</td><td>Brand awareness + D6 audience</td></tr>
+<tr><td><strong>TOTAL</strong></td><td class="green"><strong>$2,400</strong></td><td>—</td><td>—</td><td>Target ROAS: 3× ($7,200/month from ads)</td></tr>
+</table>
+
+<div class="note"><strong>When to start each:</strong> TikTok Spark Ad → start when first video hits 10K organic views. Pinterest → start Month 2 (set and forget). Meta Retargeting → start after Meta Pixel has 500 store visitors (2–3 weeks). Reddit → start Month 2. Twitter/X → start Month 3. Don't run all 5 at once — test TikTok first, add platforms as revenue covers the cost.</div>
+
+<h3 style="margin-top:4mm">Bundle Strategy — Raise AOV from $29.99 to $65+</h3>
+<p>Average Order Value (AOV) is your most powerful revenue lever. Going from $29.99 to $65 AOV with the same traffic doubles your revenue without finding a single new customer. Bundles do this.</p>
+
+<table class="table">
+<tr><th>Bundle name</th><th>Guides included</th><th>Price</th><th>Individual value</th><th>Saving</th></tr>
+<tr><td><strong>Asian Legends Bundle</strong></td><td>Japanese Izakaya + Korean BBQ + Thai Street Food</td><td class="gold">$69.99</td><td>$89.97</td><td class="green">Save $20</td></tr>
+<tr><td><strong>Tokyo Dessert Series</strong></td><td>NAMA28 + Japanese Mochi + Kakigori + Mont Blanc + Crêpe Stand</td><td class="gold">$119.99</td><td>$149.95</td><td class="green">Save $30</td></tr>
+<tr><td><strong>Fire & Spice Bundle</strong></td><td>Argentine Asado + Brazilian Churrasco + Mexican Taqueria</td><td class="gold">$69.99</td><td>$89.97</td><td class="green">Save $20</td></tr>
+<tr><td><strong>NYC Dinner Series</strong></td><td>All 10 NYC guides</td><td class="gold">$199.99</td><td>$299.90</td><td class="green">Save $100</td></tr>
+<tr><td><strong>Street Food World Tour</strong></td><td>Thai + Vietnamese + Korean Fried Chicken + Filipino Kamayan + Singaporean Hawker</td><td class="gold">$89.99</td><td>$149.95</td><td class="green">Save $60</td></tr>
+<tr><td><strong>Full Collection</strong></td><td>All 59 guides</td><td class="gold">$499.99</td><td>$1,769.41</td><td class="green">Save $1,269</td></tr>
+</table>
+
+<h3 style="margin-top:3mm">How to Build Bundles in Shopify (No App Needed)</h3>
+<div class="two-col">
+<div class="col-box">
+<h4>Method A · Manual Bundle Product</h4>
+<ul>
+<li>Create a new product: "Asian Legends Bundle"</li>
+<li>Price: $69.99</li>
+<li>Description: list the 3 guides included with bullet points</li>
+<li>In Pendora Downloads: attach all 3 PDF files to this product</li>
+<li>Done. Buyer gets all 3 PDFs on one purchase.</li>
+<li>No app needed. Works immediately.</li>
+</ul>
+</div>
+<div class="col-box">
+<h4>Method B · Shopify Bundles App</h4>
+<ul>
+<li>Install free "Shopify Bundles" app</li>
+<li>Create bundle from existing products</li>
+<li>Advantage: inventory tracked per component</li>
+<li>Risk: may conflict with Pendora Downloads — test before going live</li>
+<li>If it breaks download delivery → use Method A</li>
+</ul>
+</div>
+</div>
+
+<div class="action"><strong>Bundle action this week:</strong> Build the Asian Legends Bundle and Tokyo Dessert Series as manual products (Method A). These are your two highest-demand series. Test the Pendora delivery on both. Add to Shopify homepage as "Bundles" section. Email your list with the launch.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">Paid Ads · Bundle Strategy · AOV</span></div>
+</div>
+
+<!-- PAGE 7: SEO + PINTEREST + YOUTUBE -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">SEO · Pinterest · YouTube · Long-Term Organic Traffic Engines</span><span class="page-num">07</span></div>
+
+<div class="tag tag-blue">Long-Term Organic</div>
+<h2>The Channels That Compound for Years</h2>
+<p>TikTok is fast but volatile — one algorithm change and your reach disappears. Pinterest, SEO, and YouTube are slow but permanent. Content you post today on these platforms can still drive sales in 2029. The strategy: TikTok for NOW, Pinterest/SEO/YouTube for FOREVER.</p>
+
+<h3>SEO — Your Shopify Store in Google Search</h3>
+<div class="card">
+<div class="card-body">
+<p><strong>Target keywords (high intent, low competition):</strong></p>
+<ul>
+<li>"restaurant operations guide" — 2,400 searches/month · low competition</li>
+<li>"how to open a [cuisine] restaurant" — 1,000–5,000/month per cuisine</li>
+<li>"restaurant business plan template" — 8,100/month · medium competition</li>
+<li>"food cost calculator restaurant" — 3,600/month · low competition</li>
+<li>"[cuisine] restaurant startup guide" — 500–2,000/month per cuisine · very low competition</li>
+</ul>
+<p><strong>What to do:</strong></p>
+<ul>
+<li>Every product page title: "[Cuisine] Restaurant Operations Guide — 28 Recipes + Full P&amp;L | KitchenFounder"</li>
+<li>Every product meta description: "Complete [Cuisine] restaurant blueprint. 28 recipes with food cost %, full P&amp;L model, 22 operator tools. $29.99, instant download. Built by a Head Chef."</li>
+<li>Create a blog on Shopify (Online Store → Blog posts) — publish one 800-word post per week: "How to Open a Korean BBQ Restaurant in 2026: The Complete Cost Breakdown." Each post targets a different cuisine keyword and links to the matching guide.</li>
+<li>Google Search Console: check weekly for which queries are driving impressions. Double down on those topics.</li>
+</ul>
+</div>
+</div>
+
+<h3>Pinterest — The Evergreen Traffic Machine</h3>
+<div class="two-col">
+<div class="col-box">
+<h4>Why Pinterest for KitchenFounder</h4>
+<ul>
+<li>Pinterest users actively search for "restaurant ideas", "food business", "how to start a restaurant"</li>
+<li>Pins have a 6–12 month lifespan (vs 24hr for TikTok)</li>
+<li>$300/month Promoted Pins = very efficient for this audience</li>
+<li>Food + business content = Pinterest's core use case</li>
+<li>1 hour of pinning today = passive traffic in 2027</li>
+</ul>
+</div>
+<div class="col-box">
+<h4>Pinterest Action Plan</h4>
+<ul>
+<li>Create boards: "Restaurant Business Ideas" · "How to Open a Restaurant" · "Food Cost & P&amp;L" · "Asian Restaurant Concepts" · "Tokyo Dessert Cafés"</li>
+<li>Pin all 59 guide covers with keyword descriptions</li>
+<li>Add Shopify product URLs to every pin</li>
+<li>Pin 5× per day (use Tailwind scheduler, free tier)</li>
+<li>Description format: "[Cuisine] Restaurant Operations Guide — 28 recipes, full P&amp;L model, 22 free tools. Perfect for first-time operators. $29.99 instant download. KitchenFounder."</li>
+</ul>
+</div>
+</div>
+
+<h3>YouTube — The Long-Form Trust Builder</h3>
+<div class="card">
+<div class="card-body">
+<p><strong>Channel concept:</strong> "KitchenFounder — Real Restaurant Operations, from a Real Chef." Not a cooking channel. A business channel hosted by someone who actually runs kitchens.</p>
+<p><strong>First 10 videos (post one per week starting Month 2):</strong></p>
+<ul>
+<li>"I analyzed 59 restaurant concepts. Here are the 5 most profitable in 2026." — 10 min · SEO target: "most profitable restaurant business"</li>
+<li>"Full food cost breakdown: Japanese Izakaya restaurant" — 12 min · show actual numbers from the guide</li>
+<li>"How I built 59 restaurant guides in 12 months as a working Head Chef" — 8 min · the origin story</li>
+<li>"The real P&amp;L of a Korean BBQ restaurant — not what you expect" — 10 min</li>
+<li>"What a $6M hotel kitchen looks like in 2026" — 15 min · kitchen tour + ops breakdown</li>
+</ul>
+<p><strong>Each video ends with:</strong> "I documented everything in the KitchenFounder guide — link in description." YouTube description contains direct Shopify product link. One well-ranked YouTube video can drive $500–2,000/month in sales permanently.</p>
+</div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">SEO · Pinterest · YouTube</span></div>
+</div>
+
+<!-- PAGE 8: NEW GENERATION SALES PSYCHOLOGY -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">New Generation Sales Psychology · Gen Z + Millennial Buying Behaviour · 2026</span><span class="page-num">08</span></div>
+
+<div class="tag tag-red">New Gen Psychology</div>
+<h2>How the 25–35 Buyer Actually Makes Decisions in 2026</h2>
+<p>This is the generation that grew up watching every sales tactic invented. They've seen every countdown timer, every "only 3 left in stock", every fake testimonial. The tactics that worked in 2015 actively repel them now. Here is the psychology that actually works.</p>
+
+<div class="three-col" style="margin-top:4mm">
+<div class="col-box">
+<h4>What They Respond To</h4>
+<ul>
+<li><strong>Specificity over claims:</strong> "38% net margin" beats "high profit business." Numbers feel real. Adjectives feel like marketing.</li>
+<li><strong>The anti-pitch:</strong> "I'm not sure this is right for everyone" creates more desire than "this is for everyone."</li>
+<li><strong>Behind-the-scenes:</strong> Film the actual work. The messy kitchen prep shot converts better than a polished ad.</li>
+<li><strong>Peer proof:</strong> Someone like them who bought and used it. Not a celebrity. Not an expert. A peer.</li>
+<li><strong>Instant gratification:</strong> "Instant download" must be visible before the buy button. This generation doesn't wait.</li>
+</ul>
+</div>
+<div class="col-box">
+<h4>What Kills Conversions</h4>
+<ul>
+<li><strong>Fake scarcity:</strong> "Only 2 left!" on a digital product. They know. It destroys trust instantly.</li>
+<li><strong>Long-form sales copy:</strong> They scroll. The first 3 lines matter. Everything after must earn the next scroll.</li>
+<li><strong>Stock photography:</strong> They can smell it. Your iPhone in your kitchen beats a $5,000 commercial food shoot.</li>
+<li><strong>Complicated checkout:</strong> Every extra field costs you 10% of buyers. Email only at signup.</li>
+<li><strong>Upsell popups at checkout:</strong> Acceptable post-purchase. At checkout = rage-inducing.</li>
+</ul>
+</div>
+<div class="col-box">
+<h4>The Reframe That Changes Everything</h4>
+<ul>
+<li><strong>$29.99 vs $30K:</strong> A restaurant consultant charges $300/hour. 100 hours = $30,000. Your guide = $29.99. State this math explicitly in your copy.</li>
+<li><strong>Not a course, a tool:</strong> They've been burned by courses. "A working file you operate from daily, not a course you'll never finish" — this exact line converts.</li>
+<li><strong>You're not selling information — you're selling time:</strong> "This took me 10 years to learn. You're getting it in 2 hours."</li>
+</ul>
+</div>
+</div>
+
+<h3 style="margin-top:4mm">The 4 Emotional Triggers for Your Buyer</h3>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num" style="font-size:12pt">01</div><div><div class="card-title">Fear of wasting savings on a failed restaurant</div><div class="card-sub">Primary emotion. Address it first.</div></div></div>
+<div class="card-body"><p>Your buyer has $50–200K saved. They are terrified of losing it. Your guide doesn't just promise profit — it prevents catastrophic failure. "The restaurant industry has a 60% failure rate in year one. The main cause is operators who didn't know what they didn't know. This guide is what they didn't know." This copy converts because it speaks to their real fear, not their aspiration.</p></div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num" style="font-size:12pt">02</div><div><div class="card-title">Desire to escape the 9–5 through something they love</div><div class="card-sub">The dream. Make it feel achievable.</div></div></div>
+<div class="card-body"><p>They don't just want a restaurant — they want freedom. The restaurant is the vehicle. Speak to the freedom: "Run your own kitchen. Set your own hours. Build something you're proud of." Then immediately ground it in reality: "With the right systems, it's possible. Without them, it's just hope." You're the person who gives them the systems.</p></div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num" style="font-size:12pt">03</div><div><div class="card-title">Imposter syndrome — "I don't have the credentials"</div><div class="card-sub">Address the internal objection before they voice it.</div></div></div>
+<div class="card-body"><p>"You don't need culinary school. You need the system. The system is in this guide." Your credential (Head Chef, 10 years, $6M operation) lends them credibility by association. When they follow your system, they're operating at your level. Make that explicit.</p></div>
+</div>
+
+<div class="card">
+<div class="card-hdr"><div class="card-num" style="font-size:12pt">04</div><div><div class="card-title">FOMO — "Someone else is already doing this"</div><div class="card-sub">Real urgency, not fake.</div></div></div>
+<div class="card-body"><p>In 2026 the restaurant industry is genuinely recovering and new concepts are opening. "The Japanese dessert café market in the US is underserved. The operators who move in the next 12–24 months will take the best locations at the best rents." Real market urgency, grounded in real data. Not a countdown timer. A genuine market window.</p></div>
+</div>
+
+<div class="highlight"><strong>The sentence that converts better than anything else:</strong> "This is not a course. It is a working file built by someone who has run exactly this kind of restaurant, built for someone who hasn't — yet." Put this on your homepage, your product pages, and your TikTok bio. Test it. It speaks to every emotional trigger simultaneously.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">New Generation Sales Psychology</span></div>
+</div>
+
+<!-- PAGE 9: 90-DAY ACTION PLAN -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">90-Day Action Plan · Week by Week · Revenue Targets</span><span class="page-num">09</span></div>
+
+<div class="tag tag-gold">90-Day Plan</div>
+<h2>The 90-Day Marketing Sprint</h2>
+<p>Three phases. Each phase builds on the last. Nothing in Phase 2 works without Phase 1. Nothing in Phase 3 works without Phase 2. Do them in order.</p>
+
+<div class="phase-bar"><div class="phase-label">Phase 1</div><div class="phase-title">Foundation — Weeks 1–4 · Build the machine</div><div class="phase-meta">Target: first 10 sales</div></div>
+<table class="table">
+<tr><th>Week</th><th>Primary action</th><th>Secondary</th><th>Revenue target</th></tr>
+<tr><td><strong>W1</strong></td><td>Film + post first TikTok (Credential Bomb). Add guides #51–59 to Shopify.</td><td>Install Klaviyo. Set up lead magnet popup.</td><td class="gold">$0 → first sale</td></tr>
+<tr><td><strong>W2</strong></td><td>Post 3 TikToks. Rebuild Shopify homepage using section order from Page 2.</td><td>Create 6 Shopify collections. Add collection tags.</td><td class="gold">$200–500</td></tr>
+<tr><td><strong>W3</strong></td><td>5-day Klaviyo welcome sequence live. Post 3 TikToks.</td><td>Pin all 59 guide covers on Pinterest.</td><td class="gold">$500–1,000</td></tr>
+<tr><td><strong>W4</strong></td><td>Build Asian Legends Bundle + Tokyo Dessert Series Bundle. Email list launch.</td><td>Rebuild all product pages with P&amp;L boxes.</td><td class="gold">$1,000–2,000</td></tr>
+</table>
+
+<div class="phase-bar"><div class="phase-label">Phase 2</div><div class="phase-title">Acceleration — Weeks 5–8 · Pour fuel on what's working</div><div class="phase-meta">Target: $5K/month</div></div>
+<table class="table">
+<tr><th>Week</th><th>Primary action</th><th>Secondary</th><th>Revenue target</th></tr>
+<tr><td><strong>W5</strong></td><td>Launch TikTok Spark Ad on best-performing video ($20/day).</td><td>Install Meta Pixel. Start collecting retargeting data.</td><td class="gold">$2,000–3,000</td></tr>
+<tr><td><strong>W6</strong></td><td>YouTube channel launch. Post first video (10 min).</td><td>Start Reddit Ads ($15/day) targeting r/entrepreneur.</td><td class="gold">$3,000–4,000</td></tr>
+<tr><td><strong>W7</strong></td><td>Launch Meta Retargeting ads once Pixel has 500 visitors.</td><td>Build post-purchase Klaviyo flow (Day 7 + Day 14).</td><td class="gold">$4,000–5,000</td></tr>
+<tr><td><strong>W8</strong></td><td>Monthly review. Kill what's not converting. Double ad spend on what is.</td><td>Start Pinterest Promoted Pins ($10/day).</td><td class="gold">$5,000</td></tr>
+</table>
+
+<div class="phase-bar"><div class="phase-label">Phase 3</div><div class="phase-title">Scale — Weeks 9–12 · System running, you directing</div><div class="phase-meta">Target: $10K/month</div></div>
+<table class="table">
+<tr><th>Week</th><th>Primary action</th><th>Secondary</th><th>Revenue target</th></tr>
+<tr><td><strong>W9</strong></td><td>Hire Bangkok creator/editor. Hand off all video editing + posting.</td><td>Launch $997 course pre-sale to email list.</td><td class="gold">$6,000–7,000</td></tr>
+<tr><td><strong>W10</strong></td><td>Build Guide #60. Post 5 TikToks. Full ad stack running.</td><td>Shopify blog: first SEO post published.</td><td class="gold">$7,000–8,000</td></tr>
+<tr><td><strong>W11</strong></td><td>Full Collection bundle launched. Email campaign to entire list.</td><td>YouTube video #3 posted. Backlink outreach.</td><td class="gold">$8,000–9,000</td></tr>
+<tr><td><strong>W12</strong></td><td>90-day review. Revenue, ad ROAS, email open rates, best-selling guides.</td><td>Singapore company setup initiated if revenue confirms.</td><td class="gold">$10,000</td></tr>
+</table>
+
+<div class="action"><strong>The single most important metric to track each week:</strong> Revenue per 1,000 TikTok views. If you're getting $5+ per 1,000 views, your content-to-sale funnel is working. If you're getting less than $2, the content is reaching the wrong audience or the product page isn't converting. Fix the lower number first before spending on ads.</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">90-Day Action Plan</span></div>
+</div>
+
+<!-- PAGE 10: KPI DASHBOARD + FINAL -->
+<div class="page">
+<div class="page-hdr"><span class="page-section">KPI Dashboard · What to Measure · The $1M Roadmap</span><span class="page-num">10</span></div>
+
+<div class="tag tag-green">Metrics</div>
+<h2>What to Measure — Weekly KPI Dashboard</h2>
+<p>You can't improve what you don't track. These are the 8 numbers that matter. Check them every Sunday. Nothing else.</p>
+
+<table class="table">
+<tr><th>KPI</th><th>Where to find it</th><th>Month 1 target</th><th>Month 6 target</th><th>Month 12 target</th></tr>
+<tr><td><strong>Weekly revenue</strong></td><td>Shopify → Analytics</td><td class="gold">$500</td><td class="gold">$5,000</td><td class="green">$20,000</td></tr>
+<tr><td><strong>Average Order Value</strong></td><td>Shopify → Analytics</td><td class="gold">$30</td><td class="gold">$50</td><td class="green">$65</td></tr>
+<tr><td><strong>TikTok followers</strong></td><td>TikTok app</td><td class="gold">500</td><td class="gold">10,000</td><td class="green">50,000</td></tr>
+<tr><td><strong>Email list size</strong></td><td>Klaviyo dashboard</td><td class="gold">50</td><td class="gold">500</td><td class="green">5,000</td></tr>
+<tr><td><strong>Email open rate</strong></td><td>Klaviyo</td><td class="gold">35%</td><td class="gold">30%</td><td class="green">25%</td></tr>
+<tr><td><strong>Shopify conversion rate</strong></td><td>Shopify → Analytics</td><td class="gold">1.5%</td><td class="gold">2.5%</td><td class="green">3.5%</td></tr>
+<tr><td><strong>Ad ROAS</strong></td><td>Meta/TikTok Ads Manager</td><td>N/A</td><td class="gold">2.5×</td><td class="green">3.5×</td></tr>
+<tr><td><strong>Revenue per 1K TikTok views</strong></td><td>Calculate: revenue ÷ views × 1000</td><td class="gold">$3</td><td class="gold">$6</td><td class="green">$10</td></tr>
+</table>
+
+<h3 style="margin-top:4mm">The $1M Revenue Roadmap</h3>
+<table class="table">
+<tr><th>Month</th><th>Revenue</th><th>Key driver</th><th>Guides live</th><th>Avg order value</th></tr>
+<tr><td>Month 1–2</td><td class="gold">$2,000–5,000</td><td>TikTok organic · first 59 guides listed</td><td>59</td><td>$30</td></tr>
+<tr><td>Month 3–4</td><td class="gold">$5,000–15,000</td><td>TikTok Spark Ad · Klaviyo sequences live · bundles launched</td><td>70</td><td>$45</td></tr>
+<tr><td>Month 5–6</td><td class="gold">$15,000–30,000</td><td>Full ad stack · YouTube · email list 500+</td><td>80</td><td>$55</td></tr>
+<tr><td>Month 7–9</td><td class="gold">$30,000–50,000</td><td>Course launch ($997) · Bangkok editor hired · Pinterest traffic compounding</td><td>100</td><td>$65</td></tr>
+<tr><td>Month 10–12</td><td class="gold">$50,000–85,000</td><td>SEO traffic building · 5,000 email subscribers · Full Collection bundle</td><td>120</td><td>$70</td></tr>
+<tr><td>Year 2</td><td class="green"><strong>$85,000–150,000/mo</strong></td><td>300 guides · brand licensing · Singapore company · YouTube 100K subs</td><td>300</td><td>$80</td></tr>
+</table>
+
+<div style="background:#1C1C1C;padding:5mm;margin-top:4mm">
+<div style="font-family:'Playfair Display',serif;font-size:13pt;font-weight:700;color:#C8A832;margin-bottom:2mm;text-align:center">The One Rule That Overrides All of This</div>
+<div style="font-size:8.5pt;color:rgba(255,255,255,0.75);line-height:1.8;text-align:center;max-width:140mm;margin:0 auto">Film the TikTok. Post it. Check what worked. Double down. Kill what didn't.<br>Every single framework in this document collapses without that first video.<br><strong style="color:#C8A832">The machine starts the day you press record.</strong></div>
+</div>
+
+<div class="page-footer"><span class="pf-l">KitchenFounder · Sales & Marketing Master Plan 2026</span><span class="pf-r">KPI Dashboard · $1M Roadmap</span></div>
+</div>
+
+</body>
+</html>

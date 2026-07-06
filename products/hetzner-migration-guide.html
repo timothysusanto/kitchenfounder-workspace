@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hetzner Migration Guide — Claw · KitchenFounder</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0D1117;color:#E6EDF3;font-size:10pt;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:10mm 8mm}
+h1{font-family:'Playfair Display',serif;font-size:24pt;font-weight:900;color:#fff;margin-bottom:2mm}
+.subtitle{font-size:9pt;color:#8B949E;margin-bottom:8mm;padding-bottom:4mm;border-bottom:1px solid #21262D}
+.phase{margin-bottom:10mm}
+.phase-header{background:linear-gradient(135deg,#161B22,#21262D);border:1px solid #30363D;border-left:4px solid var(--col);padding:5mm 6mm;margin-bottom:5mm}
+.phase-num{font-size:7pt;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--col);margin-bottom:1.5mm}
+.phase-title{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:#fff}
+.phase-sub{font-size:8.5pt;color:#8B949E;margin-top:1.5mm;line-height:1.6}
+.phase-time{font-size:7.5pt;font-weight:700;color:var(--col);margin-top:2mm}
+
+.step{background:#161B22;border:1px solid #21262D;margin-bottom:4mm;overflow:hidden}
+.step-header{padding:3.5mm 5mm;background:#0D1117;display:flex;align-items:center;gap:3mm;border-bottom:1px solid #21262D}
+.step-num{width:6mm;height:6mm;background:var(--col);color:#000;font-size:7pt;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%}
+.step-title{font-size:9.5pt;font-weight:700;color:#E6EDF3}
+.step-body{padding:4mm 5mm}
+.step-body p{font-size:8.5pt;color:#8B949E;line-height:1.7;margin-bottom:2.5mm}
+.step-body p:last-child{margin-bottom:0}
+.step-body strong{color:#E6EDF3}
+.step-body ul{padding-left:4mm;font-size:8.5pt;color:#8B949E;line-height:1.8;margin-bottom:2mm}
+.step-body li{margin-bottom:1mm}
+
+pre{background:#010409;border:1px solid #21262D;border-left:3px solid var(--col);padding:4mm 5mm;margin:3mm 0;overflow-x:auto;cursor:pointer;position:relative}
+pre:hover{border-left-color:#F0883E}
+pre:hover::after{content:"Click to copy";position:absolute;top:2mm;right:3mm;font-size:6.5pt;color:#8B949E;font-family:'Inter',sans-serif}
+code{font-family:'JetBrains Mono',monospace;font-size:8pt;color:#79C0FF;line-height:1.7}
+code .comment{color:#8B949E;font-style:italic}
+code .green{color:#56D364}
+code .yellow{color:#E3B341}
+code .red{color:#F85149}
+code .orange{color:#F0883E}
+code .purple{color:#BC8CFF}
+code .white{color:#E6EDF3}
+
+.warn{background:#1C1500;border:1px solid #3D2800;border-left:4px solid #F0883E;padding:3.5mm 4.5mm;margin:3mm 0;font-size:8.5pt;color:#E3B341;line-height:1.6}
+.warn strong{color:#F0883E}
+.success{background:#0D1F0D;border:1px solid #1A3A1A;border-left:4px solid #56D364;padding:3.5mm 4.5mm;margin:3mm 0;font-size:8.5pt;color:#7EE787;line-height:1.6}
+.success strong{color:#56D364}
+.info{background:#0D1626;border:1px solid #1A2E4A;border-left:4px solid #79C0FF;padding:3.5mm 4.5mm;margin:3mm 0;font-size:8.5pt;color:#79C0FF;line-height:1.6}
+
+.checklist{background:#161B22;border:1px solid #21262D;padding:5mm;margin-bottom:5mm}
+.checklist h3{font-size:9.5pt;font-weight:700;color:#E6EDF3;margin-bottom:3mm}
+.check-item{display:flex;align-items:flex-start;gap:3mm;padding:1.5mm 0;border-bottom:1px dotted #21262D;font-size:8.5pt;color:#8B949E;line-height:1.6}
+.check-item:last-child{border-bottom:none}
+.check-box{width:4mm;height:4mm;border:1px solid #30363D;flex-shrink:0;margin-top:1mm}
+.check-item strong{color:#E6EDF3}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm}
+.col-box{background:#161B22;border:1px solid #21262D;padding:4mm 5mm}
+.col-box h4{font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--col);margin-bottom:2.5mm}
+.col-box p,.col-box li{font-size:8.5pt;color:#8B949E;line-height:1.7}
+.col-box ul{padding-left:3.5mm}
+.col-box li{margin-bottom:1mm}
+
+.cost-table{width:100%;border-collapse:collapse;margin-bottom:4mm;font-size:8.5pt}
+.cost-table th{padding:2.5mm 3mm;background:#161B22;color:#8B949E;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:left;border-bottom:1px solid #21262D}
+.cost-table td{padding:2.5mm 3mm;border-bottom:1px solid #161B22;color:#E6EDF3;vertical-align:top}
+.cost-table tr:nth-child(even) td{background:#0D1117}
+.cost-table .green{color:#56D364;font-weight:700}
+.cost-table .red{color:#F85149}
+.cost-table .yellow{color:#E3B341;font-weight:700}
+
+.footer{border-top:1px solid #21262D;padding-top:5mm;margin-top:10mm;text-align:center;font-size:7.5pt;color:#8B949E}
+
+/* Phase accent colours */
+.p1{--col:#56D364}
+.p2{--col:#79C0FF}
+.p3{--col:#F0883E}
+.p4{--col:#BC8CFF}
+.p5{--col:#E3B341}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🚀 Hetzner Migration Guide</h1>
+<div class="subtitle">AWS → Hetzner CX22 + Claude.ai Max · Complete step-by-step · Built July 2026 · Estimated time: 2 hours</div>
+
+<!-- COST COMPARISON -->
+<table class="cost-table">
+  <tr><th>Item</th><th>AWS (Current)</th><th>Hetzner + Claude Max (New)</th><th>Saving</th></tr>
+  <tr><td>Server</td><td class="red">~$20–40/mo (Lightsail)</td><td class="green">€4.51/mo (~$7 AUD)</td><td class="green">~$33/mo</td></tr>
+  <tr><td>AI API (Bedrock)</td><td class="red">Variable — CAN SPIKE TO $800</td><td class="green">$0 (included in Max)</td><td class="green">∞ safer</td></tr>
+  <tr><td>Claude.ai Max</td><td>$0</td><td class="yellow">$100/mo flat</td><td>—</td></tr>
+  <tr><td><strong>Total</strong></td><td class="red"><strong>$20–800+/mo</strong></td><td class="green"><strong>~$107/mo HARD CAP</strong></td><td class="green"><strong>No runaway risk ever</strong></td></tr>
+</table>
+
+<div class="warn"><strong>⚠️ Before you start:</strong> Make sure your GitHub repo is up to date. SSH into your AWS server now and run <code>cd /home/ubuntu/.openclaw/workspace && git add -A && git commit -m "Pre-migration backup" && git push</code> — this is your safety net.</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 1: BEFORE YOU TOUCH ANYTHING -->
+<!-- ============================================================ -->
+<div class="phase p1">
+  <div class="phase-header">
+    <div class="phase-num">Phase 1</div>
+    <div class="phase-title">Before You Touch Anything — Gather Your Credentials</div>
+    <div class="phase-sub">You need 4 things before starting. Find them all first. Do not start the migration until you have all 4.</div>
+    <div class="phase-time">⏱ 15 minutes</div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">1</div><div class="step-title">Get your Discord Bot Token</div></div>
+    <div class="step-body">
+      <p>Go to <strong>discord.com/developers/applications</strong> → Your bot application → Bot → <strong>Reset Token → Copy</strong></p>
+      <p>Save it somewhere safe. Looks like: <code>MTIzNDU2Nzg5MDEyMzQ1Njc4.XXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</code></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">2</div><div class="step-title">Get your Anthropic API Key (from Claude Max)</div></div>
+    <div class="step-body">
+      <p>First, subscribe to <strong>Claude.ai Max ($100/mo)</strong> at claude.ai → Settings → Billing. Make sure you select the plan that includes <strong>API access</strong>.</p>
+      <p>Then go to <strong>console.anthropic.com</strong> → API Keys → Create Key → Copy</p>
+      <p>Looks like: <code>sk-ant-api03-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</code></p>
+      <div class="warn"><strong>Important:</strong> This key is what replaces AWS Bedrock. This is how Claude Max pays for your API usage at no extra per-token cost within your plan limits.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">3</div><div class="step-title">Confirm your GitHub repo URL + access</div></div>
+    <div class="step-body">
+      <p>Your repo: <strong>https://github.com/timothysusanto/kitchenfounder-workspace</strong> (private)</p>
+      <p>You need either: (a) GitHub Personal Access Token, or (b) SSH key. Check you can clone it from your Mac by running:</p>
+      <pre onclick="selectCode(this)"><code>git clone https://github.com/timothysusanto/kitchenfounder-workspace --depth=1</code></pre>
+      <p>If it asks for a password — use your GitHub PAT (Personal Access Token), not your GitHub password. Generate one at: <strong>github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → Generate new</strong> with <code>repo</code> scope.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">4</div><div class="step-title">Push final AWS backup RIGHT NOW</div></div>
+    <div class="step-body">
+      <p>SSH into your AWS server one last time and run this:</p>
+      <pre onclick="selectCode(this)"><code><span class="comment"># SSH into AWS</span>
+ssh ubuntu@54.251.18.206
+
+<span class="comment"># Push everything to GitHub</span>
+cd /home/ubuntu/.openclaw/workspace
+git add -A
+git commit -m "Final backup before Hetzner migration - $(date '+%Y-%m-%d')"
+git push origin main
+
+<span class="comment"># Confirm it pushed</span>
+git log --oneline -3</code></pre>
+      <div class="success"><strong>✅ You should see your commit in the output.</strong> If git push fails, the repo may need your PAT. Run: <code>git remote set-url origin https://YOUR_PAT@github.com/timothysusanto/kitchenfounder-workspace.git</code></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 2: CREATE HETZNER SERVER -->
+<!-- ============================================================ -->
+<div class="phase p2">
+  <div class="phase-header">
+    <div class="phase-num">Phase 2</div>
+    <div class="phase-title">Create Your Hetzner Server</div>
+    <div class="phase-sub">Sign up, spin up the server, get your new IP address. This takes 5 minutes and the server is live within 60 seconds of creation.</div>
+    <div class="phase-time">⏱ 10 minutes</div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">5</div><div class="step-title">Sign up at Hetzner</div></div>
+    <div class="step-body">
+      <p>Go to <strong>hetzner.com/cloud</strong> → Sign up (email + password, no contract, cancel anytime)</p>
+      <p>Add a payment method. Hetzner charges monthly. €4.51 = roughly <strong>$7.50 AUD/month</strong>.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">6</div><div class="step-title">Create the CX22 server — exact settings</div></div>
+    <div class="step-body">
+      <p>In Hetzner Cloud Console → <strong>New Server</strong> → use these exact settings:</p>
+      <ul>
+        <li><strong>Location:</strong> Helsinki or Frankfurt (whichever is closer/cheaper — both fine)</li>
+        <li><strong>Image:</strong> Ubuntu 22.04 LTS</li>
+        <li><strong>Type:</strong> Shared vCPU → x86 → <strong>CX22</strong> (2 vCPU, 4GB RAM, 40GB disk)</li>
+        <li><strong>SSH Keys:</strong> Add your Mac's SSH public key (see below if you don't have one)</li>
+        <li><strong>Name:</strong> claw-server (or anything you like)</li>
+        <li><strong>Everything else:</strong> Leave as default</li>
+      </ul>
+      <p>Click <strong>Create &amp; Buy</strong>. Server is live in ~30 seconds. You'll see a green IP address like <code>65.21.XXX.XXX</code> — copy it.</p>
+
+      <div class="info"><strong>Don't have an SSH key?</strong> On your Mac, open Terminal and run: <code>ssh-keygen -t ed25519 -C "mothy-hetzner"</code> → press Enter 3 times → then run <code>cat ~/.ssh/id_ed25519.pub</code> → copy that text → paste it into the Hetzner SSH key field during server creation.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">7</div><div class="step-title">SSH into the new server — confirm it's working</div></div>
+    <div class="step-body">
+      <p>On your Mac, open Terminal:</p>
+      <pre onclick="selectCode(this)"><code>ssh root@YOUR_HETZNER_IP
+
+<span class="comment"># You should see something like:</span>
+<span class="green">Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.x.x-27-cloud-amd64 x86_64)</span>
+
+<span class="comment"># Confirm specs</span>
+free -h       <span class="comment"># should show ~3.8GB RAM</span>
+df -h /       <span class="comment"># should show ~38GB disk</span>
+uname -a      <span class="comment"># Ubuntu 22.04</span></code></pre>
+      <div class="success"><strong>✅ If you see the Ubuntu welcome message — your server is ready.</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 3: INSTALL EVERYTHING -->
+<!-- ============================================================ -->
+<div class="phase p3">
+  <div class="phase-header">
+    <div class="phase-num">Phase 3</div>
+    <div class="phase-title">Install Everything — One Master Script</div>
+    <div class="phase-sub">This single script installs Node.js, clones your workspace, installs OpenClaw, sets up the file server, and configures the Discord bot. Copy it, fill in your 3 values, paste it into the server. That's it.</div>
+    <div class="phase-time">⏱ 20–30 minutes (mostly automated)</div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">8</div><div class="step-title">Fill in your 3 values — then run the master script</div></div>
+    <div class="step-body">
+      <p>Replace these 3 placeholders before running:</p>
+      <ul>
+        <li><strong>YOUR_ANTHROPIC_API_KEY</strong> — from console.anthropic.com (starts with <code>sk-ant-</code>)</li>
+        <li><strong>YOUR_DISCORD_BOT_TOKEN</strong> — from discord.com/developers</li>
+        <li><strong>YOUR_GITHUB_PAT</strong> — your GitHub Personal Access Token</li>
+      </ul>
+      <pre onclick="selectCode(this)"><code><span class="comment">#!/bin/bash
+# ============================================================
+# CLAW SERVER SETUP — Hetzner CX22 · Ubuntu 22.04
+# Fill in the 3 values below before running
+# Run as: bash setup.sh
+# ============================================================</span>
+
+<span class="comment"># ── YOUR 3 VALUES ────────────────────────────────────────────</span>
+ANTHROPIC_API_KEY="<span class="yellow">sk-ant-api03-YOUR_KEY_HERE</span>"
+DISCORD_BOT_TOKEN="<span class="yellow">YOUR_DISCORD_BOT_TOKEN_HERE</span>"
+GITHUB_PAT="<span class="yellow">YOUR_GITHUB_PAT_HERE</span>"
+GITHUB_REPO="timothysusanto/kitchenfounder-workspace"
+<span class="comment"># ─────────────────────────────────────────────────────────────</span>
+
+set -e
+echo "<span class="green">🚀 Starting Claw server setup...</span>"
+
+<span class="comment"># 1. Update system</span>
+apt-get update -qq && apt-get upgrade -y -qq
+echo "<span class="green">✅ System updated</span>"
+
+<span class="comment"># 2. Install Node.js v22</span>
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt-get install -y nodejs
+node --version
+npm --version
+echo "<span class="green">✅ Node.js installed</span>"
+
+<span class="comment"># 3. Install git + other tools</span>
+apt-get install -y git curl wget unzip htop
+echo "<span class="green">✅ Tools installed</span>"
+
+<span class="comment"># 4. Create ubuntu user workspace</span>
+mkdir -p /home/ubuntu
+useradd -m -s /bin/bash ubuntu 2>/dev/null || true
+
+<span class="comment"># 5. Clone workspace from GitHub</span>
+cd /home/ubuntu
+git clone "https://${GITHUB_PAT}@github.com/${GITHUB_REPO}.git" .openclaw/workspace
+echo "<span class="green">✅ Workspace cloned from GitHub</span>"
+
+<span class="comment"># 6. Install OpenClaw globally</span>
+npm install -g openclaw 2>&1 | tail -5
+echo "<span class="green">✅ OpenClaw installed</span>"
+
+<span class="comment"># 7. Create OpenClaw config directory</span>
+mkdir -p /home/ubuntu/.openclaw
+
+<span class="comment"># 8. Write the .env file</span>
+cat > /home/ubuntu/.openclaw/.env << EOF
+ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+MODEL=anthropic/claude-sonnet-4-5
+WORKSPACE=/home/ubuntu/.openclaw/workspace
+EOF
+echo "<span class="green">✅ .env file created</span>"
+
+<span class="comment"># 9. Set up Discord bot dependencies</span>
+cd /home/ubuntu/.openclaw/workspace/claw-discord-bot
+npm install
+echo "<span class="green">✅ Discord bot dependencies installed</span>"
+
+<span class="comment"># 10. Write bot .env</span>
+cat > /home/ubuntu/.openclaw/workspace/claw-discord-bot/.env << EOF
+DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+CLAUDE_MODEL=claude-sonnet-4-5
+SYSTEM_PROMPT_PATH=/home/ubuntu/.openclaw/workspace/products/claw-startup-context.md
+EOF
+echo "<span class="green">✅ Bot .env written</span>"
+
+<span class="comment"># 11. Install PM2 (keeps bot running permanently)</span>
+npm install -g pm2
+echo "<span class="green">✅ PM2 installed</span>"
+
+<span class="comment"># 12. Set up the file server (port 8081) as a systemd service</span>
+cat > /etc/systemd/system/claw-files.service << EOF
+[Unit]
+Description=KitchenFounder File Server (port 8081)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/.openclaw/workspace
+ExecStart=/usr/bin/python3 -m http.server 8081
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable claw-files
+systemctl start claw-files
+echo "<span class="green">✅ File server running on port 8081</span>"
+
+<span class="comment"># 13. Open firewall ports</span>
+ufw allow 22/tcp    <span class="comment"># SSH</span>
+ufw allow 8081/tcp  <span class="comment"># File server</span>
+ufw --force enable
+echo "<span class="green">✅ Firewall configured</span>"
+
+<span class="comment"># 14. Set ownership</span>
+chown -R ubuntu:ubuntu /home/ubuntu/.openclaw
+echo "<span class="green">✅ Ownership set</span>"
+
+<span class="comment"># 15. Start Discord bot via PM2</span>
+su - ubuntu -c "cd /home/ubuntu/.openclaw/workspace/claw-discord-bot && pm2 start bot.js --name claw-bot && pm2 save"
+pm2 startup systemd -u ubuntu --hp /home/ubuntu
+echo "<span class="green">✅ Discord bot started via PM2</span>"
+
+echo ""
+echo "<span class="green">============================================</span>"
+echo "<span class="green">🎉 SETUP COMPLETE!</span>"
+echo "<span class="green">============================================</span>"
+echo "File server: http://$(curl -s ifconfig.me):8081"
+echo "Bot status:  pm2 status"
+echo "Bot logs:    pm2 logs claw-bot"
+echo "<span class="green">============================================</span>"</code></pre>
+
+      <p><strong>How to run it on the server:</strong></p>
+      <pre onclick="selectCode(this)"><code><span class="comment"># On your Mac — SSH into Hetzner server</span>
+ssh root@YOUR_HETZNER_IP
+
+<span class="comment"># Create the setup script</span>
+nano setup.sh
+<span class="comment"># Paste the script above (with your 3 values filled in)
+# Ctrl+X → Y → Enter to save</span>
+
+<span class="comment"># Make it executable and run</span>
+chmod +x setup.sh
+bash setup.sh</code></pre>
+      <div class="warn"><strong>⚠️ This will take 10–20 minutes.</strong> You'll see green checkmarks as each step completes. If it stops on any step, scroll up to find the error and message Claw for help.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">9</div><div class="step-title">Verify everything is running</div></div>
+    <div class="step-body">
+      <pre onclick="selectCode(this)"><code><span class="comment"># Check PM2 — bot should show "online"</span>
+pm2 status
+
+<span class="comment"># Check bot logs — should show "Claw is online"</span>
+pm2 logs claw-bot --lines 20
+
+<span class="comment"># Check file server</span>
+systemctl status claw-files
+
+<span class="comment"># Test file server from browser — open this URL:</span>
+<span class="comment"># http://YOUR_HETZNER_IP:8081/products/empire-master-book.html</span></code></pre>
+      <div class="success"><strong>✅ You should see:</strong> PM2 shows "online" · Bot logs show "Claw is online as Claw#XXXX" · Browser loads the empire-master-book HTML file from the new IP.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 4: OPENCLAW SETUP -->
+<!-- ============================================================ -->
+<div class="phase p4">
+  <div class="phase-header">
+    <div class="phase-num">Phase 4</div>
+    <div class="phase-title">Configure OpenClaw — Connect Discord</div>
+    <div class="phase-sub">Point OpenClaw at your Discord channel and your new Anthropic API key. This is what makes you able to chat with Claw exactly as you do now.</div>
+    <div class="phase-time">⏱ 15 minutes</div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">10</div><div class="step-title">Option A — Use the custom Discord bot (recommended)</div></div>
+    <div class="step-body">
+      <p>Your custom bot (<code>claw-discord-bot/bot.js</code>) is already running via PM2 from the setup script. It uses the Anthropic API directly with your system prompt from <code>products/claw-startup-context.md</code>.</p>
+      <p><strong>To test it:</strong> Go to your Discord server → DM the bot (or mention it in a channel) → type "hello" → it should reply as Claw.</p>
+
+      <div class="warn"><strong>If the bot doesn't respond:</strong> Check the logs with <code>pm2 logs claw-bot --lines 50</code>. The most common issues are:<br>
+      1. Wrong Discord bot token — regenerate at discord.com/developers<br>
+      2. Bot not invited to your server — use the OAuth2 URL generator in the Discord developer portal<br>
+      3. Wrong system prompt path — check the <code>SYSTEM_PROMPT_PATH</code> in the bot's .env</div>
+
+      <pre onclick="selectCode(this)"><code><span class="comment"># If you need to restart the bot after fixing .env</span>
+pm2 restart claw-bot
+
+<span class="comment"># Watch live logs</span>
+pm2 logs claw-bot
+
+<span class="comment"># Edit bot .env if needed</span>
+nano /home/ubuntu/.openclaw/workspace/claw-discord-bot/.env</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">11</div><div class="step-title">Option B — Run full OpenClaw (if you want heartbeats + skills)</div></div>
+    <div class="step-body">
+      <p>If you want the full OpenClaw experience (heartbeats, cron, skills, all the tools I use now), run OpenClaw instead of just the custom bot:</p>
+      <pre onclick="selectCode(this)"><code><span class="comment"># Switch to ubuntu user</span>
+su - ubuntu
+
+<span class="comment"># Initialise OpenClaw (first time only)</span>
+openclaw init
+
+<span class="comment"># Edit the OpenClaw config</span>
+nano ~/.openclaw/.env
+<span class="comment"># Add these lines:
+# ANTHROPIC_API_KEY=sk-ant-api03-YOUR_KEY
+# MODEL=anthropic/claude-sonnet-4-5
+# DISCORD_BOT_TOKEN=YOUR_TOKEN</span>
+
+<span class="comment"># Start OpenClaw</span>
+openclaw gateway start
+
+<span class="comment"># Check status</span>
+openclaw gateway status
+
+<span class="comment"># Set up as a systemd service (permanent)</span>
+openclaw gateway install</code></pre>
+      <div class="info"><strong>Note:</strong> If OpenClaw init asks for pairing, follow the QR code pairing process on your phone or use the manual pairing code. This is the same process as setting up a new device.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">12</div><div class="step-title">Update the system prompt with your startup files</div></div>
+    <div class="step-body">
+      <p>The bot uses <code>products/claw-startup-context.md</code> as its system prompt. This file should contain the merged content of SOUL.md + USER.md + MEMORY.md key points. Update it now:</p>
+      <pre onclick="selectCode(this)"><code><span class="comment"># Check what's in the current startup context</span>
+cat /home/ubuntu/.openclaw/workspace/products/claw-startup-context.md | head -50
+
+<span class="comment"># If it's outdated, regenerate it by copying the key files</span>
+cat /home/ubuntu/.openclaw/workspace/SOUL.md > /tmp/system-prompt.md
+echo "" >> /tmp/system-prompt.md
+cat /home/ubuntu/.openclaw/workspace/IDENTITY.md >> /tmp/system-prompt.md
+echo "" >> /tmp/system-prompt.md
+cat /home/ubuntu/.openclaw/workspace/USER.md >> /tmp/system-prompt.md
+echo "" >> /tmp/system-prompt.md
+cat /home/ubuntu/.openclaw/workspace/MEMORY.md >> /tmp/system-prompt.md
+
+cp /tmp/system-prompt.md /home/ubuntu/.openclaw/workspace/products/claw-startup-context.md
+echo "System prompt updated: $(wc -c < /home/ubuntu/.openclaw/workspace/products/claw-startup-context.md) bytes"
+
+<span class="comment"># Restart bot to pick up new system prompt</span>
+pm2 restart claw-bot</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">13</div><div class="step-title">Set up nightly GitHub backup (same as AWS)</div></div>
+    <div class="step-body">
+      <pre onclick="selectCode(this)"><code><span class="comment"># Switch to ubuntu user</span>
+su - ubuntu
+
+<span class="comment"># Set git credentials</span>
+git config --global user.email "timothy.susanto@gmail.com"
+git config --global user.name "Timothy Susanto"
+
+<span class="comment"># Set remote URL with PAT</span>
+cd /home/ubuntu/.openclaw/workspace
+git remote set-url origin https://YOUR_GITHUB_PAT@github.com/timothysusanto/kitchenfounder-workspace.git
+
+<span class="comment"># Create backup script</span>
+cat > /home/ubuntu/backup.sh << 'EOF'
+#!/bin/bash
+cd /home/ubuntu/.openclaw/workspace
+git add -A
+git commit -m "Nightly backup $(date '+%Y-%m-%d %H:%M')" --allow-empty
+git push origin main
+EOF
+
+chmod +x /home/ubuntu/backup.sh
+
+<span class="comment"># Add to crontab — runs at 2AM UTC daily</span>
+(crontab -l 2>/dev/null; echo "0 2 * * * /home/ubuntu/backup.sh >> /home/ubuntu/backup.log 2>&1") | crontab -
+
+<span class="comment"># Verify crontab</span>
+crontab -l</code></pre>
+      <div class="success"><strong>✅ Nightly backup is live.</strong> Every day at 2AM UTC your workspace pushes to GitHub automatically — same as AWS.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PHASE 5: UPDATE YOUR BOOKMARKS + TEST EVERYTHING -->
+<!-- ============================================================ -->
+<div class="phase p5">
+  <div class="phase-header">
+    <div class="phase-num">Phase 5</div>
+    <div class="phase-title">Update Bookmarks + Final Checks</div>
+    <div class="phase-sub">Replace all old AWS IP addresses with your new Hetzner IP. Test every critical function.</div>
+    <div class="phase-time">⏱ 10 minutes</div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">14</div><div class="step-title">Replace old IP in all your bookmarks</div></div>
+    <div class="step-body">
+      <p>Old AWS IP: <strong>54.251.18.206</strong> → New Hetzner IP: <strong>YOUR_HETZNER_IP</strong></p>
+      <p>Update these URLs in your browser bookmarks and anywhere you reference them:</p>
+      <pre onclick="selectCode(this)"><code><span class="comment"># Old AWS URLs → New Hetzner URLs (replace IP only)</span>
+
+http://54.251.18.206:8081/products/empire-master-book.html
+→ http://YOUR_HETZNER_IP:8081/products/empire-master-book.html
+
+http://54.251.18.206:8081/restaurant-pdfs/v7/japanese-mochi.html
+→ http://YOUR_HETZNER_IP:8081/restaurant-pdfs/v7/japanese-mochi.html
+
+http://54.251.18.206:8081/marketing/shopify-descriptions-55-59.html
+→ http://YOUR_HETZNER_IP:8081/marketing/shopify-descriptions-55-59.html
+
+<span class="comment"># All other guide URLs follow the same pattern — just swap the IP</span></code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-header"><div class="step-num">15</div><div class="step-title">Final verification checklist</div></div>
+    <div class="step-body">
+      <p>Run through this list before you consider migration complete:</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <h3>✅ Migration Complete Checklist</h3>
+    <div class="check-item"><div class="check-box"></div><div><strong>Discord bot responds</strong> — DM the bot "hello" and it replies as Claw</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>File server loads</strong> — open http://YOUR_HETZNER_IP:8081 in browser — see workspace files</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>Guide loads</strong> — open any guide URL with new IP — HTML renders correctly</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>PM2 status shows "online"</strong> — run <code>pm2 status</code> on the server</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>GitHub backup works</strong> — run <code>/home/ubuntu/backup.sh</code> manually once — check GitHub for the commit</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>Memory files present</strong> — run <code>ls /home/ubuntu/.openclaw/workspace/memory/</code> — your daily notes should be there</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>Build a test file</strong> — ask Claw to create a test HTML file — verify it appears at the new URL</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>Billing alert set on Anthropic</strong> — go to console.anthropic.com → Usage Limits → set a $50 monthly limit as a safeguard</div></div>
+    <div class="check-item"><div class="check-box"></div><div><strong>AWS account</strong> — once migration confirmed working, go to AWS and STOP (not terminate) the Lightsail instance. Keep it stopped for 2 weeks as a backup. Then terminate.</div></div>
+  </div>
+</div>
+
+<!-- ONGOING MAINTENANCE -->
+<div class="phase p1" style="margin-top:6mm">
+  <div class="phase-header">
+    <div class="phase-num">Ongoing</div>
+    <div class="phase-title">Keeping It Running — Daily Commands You'll Use</div>
+    <div class="phase-sub">Save these. You'll use them when something needs checking.</div>
+    <div class="phase-time">Reference card</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box">
+      <h4>Bot Management</h4>
+      <pre onclick="selectCode(this)" style="margin:2mm 0"><code>pm2 status          <span class="comment"># Is bot running?</span>
+pm2 logs claw-bot   <span class="comment"># See last messages</span>
+pm2 restart claw-bot <span class="comment"># Restart after .env change</span>
+pm2 stop claw-bot   <span class="comment"># Stop bot</span>
+pm2 start claw-bot  <span class="comment"># Start bot</span></code></pre>
+    </div>
+    <div class="col-box">
+      <h4>File Server</h4>
+      <pre onclick="selectCode(this)" style="margin:2mm 0"><code>systemctl status claw-files   <span class="comment"># Is it running?</span>
+systemctl restart claw-files  <span class="comment"># Restart it</span>
+systemctl stop claw-files     <span class="comment"># Stop it</span></code></pre>
+    </div>
+    <div class="col-box">
+      <h4>Manual GitHub Backup</h4>
+      <pre onclick="selectCode(this)" style="margin:2mm 0"><code>cd /home/ubuntu/.openclaw/workspace
+git add -A
+git commit -m "Manual backup"
+git push origin main</code></pre>
+    </div>
+    <div class="col-box">
+      <h4>Server Health</h4>
+      <pre onclick="selectCode(this)" style="margin:2mm 0"><code>free -h      <span class="comment"># RAM usage</span>
+df -h /      <span class="comment"># Disk usage</span>
+htop         <span class="comment"># Live CPU/RAM monitor</span>
+uptime       <span class="comment"># How long running</span></code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- COST SUMMARY -->
+<div style="background:#0D1F0D;border:1px solid #1A3A1A;padding:5mm;margin-top:6mm">
+  <div style="font-size:9pt;font-weight:700;color:#56D364;margin-bottom:3mm">💰 Your New Monthly Bill — Hard Cap</div>
+  <table class="cost-table" style="margin-bottom:0">
+    <tr><th>Item</th><th>Cost</th><th>Notes</th></tr>
+    <tr><td>Hetzner CX22</td><td class="green">€4.51 (~$7 AUD)</td><td>2 vCPU, 4GB RAM, 40GB — more than enough for OpenClaw</td></tr>
+    <tr><td>Claude.ai Max</td><td class="yellow">$100 USD</td><td>Flat rate — unlimited usage within plan limits — NO runaway billing possible</td></tr>
+    <tr><td>Everything else</td><td class="green">$0</td><td>GitHub free, Discord free, file server built-in</td></tr>
+    <tr><td><strong>Total</strong></td><td class="green"><strong>~$107 AUD/month</strong></td><td><strong>vs $20–800+ on AWS. Saving $500–700+ on a bad month.</strong></td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  Hetzner Migration Guide · Built by Claw for Mothy · July 2026<br>
+  KitchenFounder · claw-discord-bot/bot.js · github.com/timothysusanto/kitchenfounder-workspace
+</div>
+
+</div>
+
+<script>
+function selectCode(el){
+  var range=document.createRange();
+  range.selectNodeContents(el);
+  var sel=window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+</script>
+</body>
+</html>
