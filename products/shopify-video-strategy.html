@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KitchenFounder · Higgsfield Video Strategy</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C8A832;--dark:#0F0F0F;--charcoal:#1C1C1C;--cream:#FAFAF8;--border:#E8E5E0;--mid:#666;--font-serif:'Georgia',serif;--font-sans:-apple-system,'Helvetica Neue',sans-serif}
+body{font-family:var(--font-sans);background:var(--cream);color:var(--charcoal);padding:28px}
+.wrap{max-width:900px;margin:0 auto}
+.page-title{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:6px}
+.page-sub{font-size:.9rem;color:var(--mid);margin-bottom:32px;line-height:1.6}
+.section{background:#fff;border:1px solid var(--border);padding:28px 32px;margin-bottom:20px}
+.section-label{font-size:.65rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.section-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:700;margin-bottom:6px}
+.section-sub{font-size:.85rem;color:var(--mid);margin-bottom:18px;line-height:1.65}
+h4{font-size:.85rem;font-weight:700;margin:14px 0 6px}
+p{font-size:.85rem;color:#333;line-height:1.75;margin-bottom:8px}
+ul{padding-left:16px;margin-bottom:10px}
+li{font-size:.85rem;color:#333;line-height:1.8}
+.tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;margin-bottom:12px}
+.tag-model{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.tag-use{background:#FFF0C0;color:#7A5F00;border:1px solid #D4A820}
+.tag-where{background:#F0FFF4;color:#065F46;border:1px solid #6EE7B7}
+.prompt-box{background:#1C1C1C;color:#F0EDE8;padding:14px 16px;font-size:.78rem;line-height:1.85;margin:10px 0;font-family:'Courier New',monospace}
+.prompt-label{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-family:var(--font-sans)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0}
+.col-box{background:#F9F7F4;border:1px solid var(--border);padding:14px 16px}
+.note{background:#FFF8E6;border-left:4px solid var(--gold);padding:10px 14px;font-size:.82rem;color:#4A3500;line-height:1.7;margin:10px 0}
+.warn{background:#FFF0F0;border-left:4px solid #C03030;padding:10px 14px;font-size:.82rem;color:#5A0A0A;line-height:1.7;margin:10px 0}
+.cmd{background:#0D0D0D;color:#00FF88;font-family:'Courier New',monospace;font-size:.75rem;padding:10px 14px;margin:6px 0;display:block;line-height:1.7}
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin:10px 0}
+th{background:var(--charcoal);color:#fff;padding:8px 12px;text-align:left;font-size:.68rem;letter-spacing:1px;text-transform:uppercase}
+td{padding:8px 12px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#F9F7F4}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="page-title">KitchenFounder · Higgsfield Video Plan</div>
+<div class="page-sub">Moving backgrounds, hero videos, and marketing ads for the Shopify store. 4 video types, exact CLI commands, copy-paste embed code.</div>
+
+<!-- VIDEO 1: HERO BACKGROUND LOOP -->
+<div class="section">
+  <div class="section-label">Video 01 · Landing Page</div>
+  <div class="tag tag-model">Seedance 2.0</div>
+  <div class="tag tag-use" style="margin-left:6px">Looping Background</div>
+  <div class="tag tag-where" style="margin-left:6px">Hero Section</div>
+  <div class="section-title">Hero Background Video — The "Open Kitchen" Loop</div>
+  <div class="section-sub">A seamless 8-second loop playing behind the hero headline. No audio. Cinematic kitchen motion — embers, steam, plating action. Subconsciously signals craft and credibility before the user reads a single word.</div>
+
+  <h4>What it looks like</h4>
+  <p>Slow cinematic push-in on a professional kitchen pass at golden hour. A chef's hands plate a dish in slow motion. Steam rises from a pan. Embers from a wood-fired grill drift upward. 16:9, dark and warm, desaturated slightly so text overlays read clearly. Loops seamlessly.</p>
+
+  <h4>CLI Command (run after Higgsfield auth)</h4>
+  <code class="cmd">higgsfield generate create seedance_2_0 --prompt "Slow cinematic push-in on a professional restaurant kitchen pass, golden warm overhead light, chef hands plating a dish in ultra slow motion, steam rising from cast iron pan, glowing embers from wood grill drifting upward, dark dramatic atmosphere, no faces visible, seamless loop-ready ending, 16:9 cinematic, film grain, 8K quality" --aspect_ratio 16:9 --duration 8 --wait</code>
+
+  <h4>Shopify Embed Code — Replace hero image with video</h4>
+  <div class="prompt-box">
+    <div class="prompt-label">HTML — paste into page.kitchenfounder.liquid hero section</div>
+&lt;!-- Replace static hero-bg-img with this video block --&gt;
+&lt;video
+  class="hero-bg-video"
+  autoplay muted loop playsinline
+  poster="[FALLBACK_IMAGE_URL]"
+  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0.5"&gt;
+  &lt;source src="[HIGGSFIELD_VIDEO_URL]" type="video/mp4"&gt;
+&lt;/video&gt;
+  </div>
+
+  <div class="note"><strong>Performance tip:</strong> Upload the Higgsfield MP4 to Shopify Files (Admin → Settings → Files) to get a permanent CDN URL. Never hotlink directly from Higgsfield — URLs expire. Shopify CDN = permanent + fast global delivery.</div>
+</div>
+
+<!-- VIDEO 2: BOOK EXPLOSION REVEAL -->
+<div class="section">
+  <div class="section-label">Video 02 · Product Page Hero</div>
+  <div class="tag tag-model">Cinema Studio Video 3.0</div>
+  <div class="tag tag-use" style="margin-left:6px">Product Hero</div>
+  <div class="tag tag-where" style="margin-left:6px">Product Page Top</div>
+  <div class="section-title">Hardcover Book Explosion — Per-Guide Video Hero</div>
+  <div class="section-sub">Each product page gets a 6-second cinematic video of the guide's hardcover book exploding open with the cuisine's hero dishes bursting out. This replaces the static image hero on product pages. Most powerful trust and desire signal on any product page.</div>
+
+  <h4>What it looks like</h4>
+  <p>The KitchenFounder hardcover guide sits closed on a dark surface. Camera pulls back slowly. The book opens dramatically — pages fan, and from the pages a burst of the cuisine's hero dishes explodes outward in cinematic slow motion. Steam, particles, colour. Camera holds on the open book with dishes suspended mid-air. 6 seconds.</p>
+
+  <h4>CLI Command — Argentine Asado example</h4>
+  <code class="cmd">higgsfield generate create cinema_studio_video_3 --prompt "Cinematic 6-second sequence: a premium dark hardcover book titled ARGENTINE ASADO in gold embossed letters sits closed on a dark stone surface, warm amber light. Camera pulls back slowly, the book opens dramatically, pages fan out, and from the open pages an explosion of Argentine asado meats — whole roasted rack of ribs mid-air, chimichurri splashing, empanadas bursting open, Malbec wine pouring — suspended in dramatic slow motion, fire embers and smoke particles floating, ultra cinematic, 8K, magazine quality, ends on book open with dishes suspended" --aspect_ratio 16:9 --duration 6 --wait</code>
+
+  <h4>Scale: one per guide</h4>
+  <p>59 guides = 59 videos. With Higgsfield CLI this is a shell loop — I write the loop script for you. Each video takes ~2 minutes to generate. 59 × $0.15 = ~$9 total cost.</p>
+  <code class="cmd">for guide in "Argentine Asado" "Japanese Izakaya" "Korean BBQ" "Thai Street Food"; do
+  higgsfield generate create cinema_studio_video_3 \
+    --prompt "Cinematic hardcover book explosion for $guide restaurant guide..." \
+    --aspect_ratio 16:9 --duration 6 --wait
+done</code>
+</div>
+
+<!-- VIDEO 3: TIKTOK AD -->
+<div class="section">
+  <div class="section-label">Video 03 · TikTok + Reels Ad</div>
+  <div class="tag tag-model">Marketing Studio Video</div>
+  <div class="tag tag-use" style="margin-left:6px">Paid Ad</div>
+  <div class="tag tag-where" style="margin-left:6px">TikTok · Instagram Reels</div>
+  <div class="section-title">UGC-Style Marketing Ad — "Chef Marcus Walks You Through It"</div>
+  <div class="section-sub">Uses Higgsfield's Marketing Studio with Chef Marcus Reid avatar + KitchenFounder product. Generates a 15-second UGC-style ad that looks like a real creator talking to camera about the guide. Most powerful paid ad format for this audience in 2026.</div>
+
+  <h4>What it looks like</h4>
+  <p>Chef Marcus Reid (white-haired authority chef) standing in a professional kitchen. Talks directly to camera. Opens the guide, flips through pages, holds it up. Voiceover/subtitle: "I've run a $6M hotel kitchen for 10 years. This is the system I built so you don't make the mistakes I watched everyone else make." Ends with product URL. 9:16 vertical, 15 seconds.</p>
+
+  <h4>CLI Workflow</h4>
+  <code class="cmd"># Step 1: Import the KitchenFounder Shopify product
+higgsfield marketing-studio products fetch --url https://kitchen-founder.myshopify.com/products/argentine-asado-restaurant-guide --wait
+
+# Step 2: Create Chef Marcus avatar (upload 3 reference photos first)
+higgsfield marketing-studio avatars create --name "Chef Marcus Reid" --image chef_marcus_01.jpg --image chef_marcus_02.jpg --image chef_marcus_03.jpg
+
+# Step 3: Generate the UGC ad
+higgsfield generate create marketing_studio_video \
+  --prompt "Head chef with white hair and chef coat opens a premium restaurant operations guide and speaks directly to camera: 'I built this so you don't lose your savings on a restaurant you weren't ready for.' Shows guide pages, P&L charts, recipes. Authentic kitchen background, warm professional lighting. 15 seconds." \
+  --avatars '[{"id":"CHEF_MARCUS_ID","type":"custom"}]' \
+  --product_ids '[PRODUCT_ID]' \
+  --mode ugc \
+  --duration 15 \
+  --aspect_ratio 9:16 \
+  --resolution 720p \
+  --wait</code>
+
+  <div class="note"><strong>This is your TikTok Spark Ad source.</strong> Post this video organically first. When it hits 10K organic views, boost it as a Spark Ad at $20/day. You don't need to film yourself — Chef Marcus IS the face.</div>
+</div>
+
+<!-- VIDEO 4: COLLECTION PAGE AMBIENT -->
+<div class="section">
+  <div class="section-label">Video 04 · Collection Page</div>
+  <div class="tag tag-model">Seedance 2.0</div>
+  <div class="tag tag-use" style="margin-left:6px">Ambient Background</div>
+  <div class="tag tag-where" style="margin-left:6px">Collection Header</div>
+  <div class="section-title">Collection Header — Floating Cuisine World</div>
+  <div class="section-sub">The collection page header becomes a slow ambient video showing ingredients, dishes, and spices from multiple cuisines floating through frame — like a world food atlas in motion. 12 seconds, seamless loop, very slow, mostly dark with warm highlights.</div>
+
+  <h4>CLI Command</h4>
+  <code class="cmd">higgsfield generate create seedance_2_0 --prompt "Ultra slow motion ambient video: ingredients and signature dishes from world cuisines floating gently through a dark atmospheric space — Japanese mochi, Argentine asado ribs, Korean BBQ cuts, Thai herbs, Mexican spices, French pastries — each element catching warm golden rim lighting, particles and spice dust drifting, cinematic depth of field, no text, no faces, seamless loop, 16:9, 12 seconds, museum-quality food cinematography" --aspect_ratio 16:9 --duration 12 --wait</code>
+</div>
+
+<!-- EXECUTION ORDER -->
+<div class="section">
+  <div class="section-label">Execution Plan</div>
+  <div class="section-title">What to Generate First — Priority Order</div>
+  <table>
+    <tr><th>#</th><th>Video</th><th>Model</th><th>Est. time</th><th>Est. cost</th><th>Impact</th></tr>
+    <tr><td>1</td><td>Hero background loop (landing page)</td><td>Seedance 2.0</td><td>~3 min</td><td>~$0.20</td><td>🔥🔥🔥 Immediate visual upgrade</td></tr>
+    <tr><td>2</td><td>UGC marketing ad (TikTok/Reels)</td><td>Marketing Studio</td><td>~5 min</td><td>~$0.50</td><td>🔥🔥🔥 Drives sales directly</td></tr>
+    <tr><td>3</td><td>Argentine Asado book explosion (featured product)</td><td>Cinema Studio 3.0</td><td>~4 min</td><td>~$0.30</td><td>🔥🔥 Product page conversion</td></tr>
+    <tr><td>4</td><td>Collection ambient loop</td><td>Seedance 2.0</td><td>~3 min</td><td>~$0.20</td><td>🔥 Browse experience</td></tr>
+    <tr><td>5</td><td>All 59 product book explosions (loop)</td><td>Cinema Studio 3.0</td><td>~3 hrs total</td><td>~$9</td><td>🔥🔥 Full catalogue upgrade</td></tr>
+  </table>
+
+  <div class="warn"><strong>Before any of this works:</strong> SSH into Lightsail → run <code style="background:#f0f0f0;padding:1px 4px">curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh</code> → run <code style="background:#f0f0f0;padding:1px 4px">higgsfield auth login</code> → confirm back here. I'll generate everything in sequence.</div>
+</div>
+
+<!-- HTML INTEGRATION -->
+<div class="section">
+  <div class="section-label">Integration</div>
+  <div class="section-title">How Videos Embed in the Shopify Pages</div>
+  <div class="grid2">
+    <div class="col-box">
+      <h4>Landing Page Hero — Video Background</h4>
+      <ul>
+        <li>Upload MP4 to Shopify Files → get CDN URL</li>
+        <li>Replace <code style="background:#f0f0f0;padding:1px 3px">hero-bg-img</code> tag with <code style="background:#f0f0f0;padding:1px 3px">&lt;video autoplay muted loop&gt;</code></li>
+        <li>Poster image = static fallback for slow connections</li>
+        <li>CSS: <code style="background:#f0f0f0;padding:1px 3px">position:absolute;object-fit:cover;opacity:0.5</code></li>
+        <li>Dark overlay stays on top — text always readable</li>
+      </ul>
+    </div>
+    <div class="col-box">
+      <h4>Product Page — Book Explosion Video</h4>
+      <ul>
+        <li>Upload per-guide MP4 to Shopify Files</li>
+        <li>Store URL in product metafield: <code style="background:#f0f0f0;padding:1px 3px">kitchenfounder.hero_video_url</code></li>
+        <li>Liquid: <code style="background:#f0f0f0;padding:1px 3px">{{ product.metafields.kitchenfounder.hero_video_url }}</code></li>
+        <li>Video plays on hover or autoplay muted</li>
+        <li>Static image fallback if no video metafield</li>
+      </ul>
+    </div>
+    <div class="col-box">
+      <h4>Mobile Performance</h4>
+      <ul>
+        <li>autoplay + muted + playsinline = required for iOS Safari</li>
+        <li>Compress to 720p max for mobile</li>
+        <li>poster attribute = instant visible frame before video loads</li>
+        <li>Consider: pause video on mobile, show poster only (bandwidth)</li>
+      </ul>
+    </div>
+    <div class="col-box">
+      <h4>TikTok Ad Deployment</h4>
+      <ul>
+        <li>Download UGC ad from Higgsfield</li>
+        <li>Post to @kitchenfounder TikTok organically first</li>
+        <li>Wait for organic views (10K target)</li>
+        <li>Boost as Spark Ad at $20/day</li>
+        <li>Also post to Instagram Reels simultaneously</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

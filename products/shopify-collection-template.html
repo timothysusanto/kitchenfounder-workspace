@@ -1,0 +1,194 @@
+{% comment %}
+  KitchenFounder — Collection Page Template
+  File: templates/collection.kitchenfounder.liquid
+  Deploy: Shopify Admin → Themes → Edit Code → templates/collection.kitchenfounder.liquid
+  Assign: Collections → [collection] → Theme template → kitchenfounder
+{% endcomment %}
+{% layout none %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ collection.title }} — KitchenFounder</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C8A832;--dark:#0F0F0F;--charcoal:#1C1C1C;--cream:#FAFAF8;--warm:#F5F0E8;--border:#E8E5E0;--mid:#666;--font-serif:'Georgia',serif;--font-sans:-apple-system,'Helvetica Neue',sans-serif}
+body{font-family:var(--font-sans);background:var(--cream);color:var(--charcoal)}
+a{text-decoration:none;color:inherit}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(15,15,15,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,50,0.15)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:#fff}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55)}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--gold);color:var(--dark)!important;font-weight:700!important;font-size:.75rem!important;letter-spacing:1.5px!important;text-transform:uppercase;padding:8px 16px}
+
+/* COLLECTION HEADER */
+.col-header{background:var(--charcoal);padding:56px 24px 48px}
+.col-header-inner{max-width:1200px;margin:0 auto}
+.col-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.col-h1{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:12px}
+.col-desc{font-size:.9rem;color:rgba(255,255,255,.5);max-width:540px;line-height:1.75;margin-bottom:24px}
+.col-stats{display:flex;gap:28px;flex-wrap:wrap}
+.col-stat{border-left:2px solid rgba(200,168,50,.4);padding-left:12px}
+.col-stat-val{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--gold)}
+.col-stat-lbl{font-size:.65rem;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase}
+
+/* FILTER + SORT BAR */
+.filter-bar{background:#fff;border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:60px;z-index:50}
+.filter-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;gap:16px}
+.filter-tabs{display:flex;gap:0;height:100%}
+.f-tab{background:none;border:none;font-family:var(--font-sans);font-size:.75rem;font-weight:600;color:var(--mid);padding:0 16px;cursor:pointer;border-bottom:2px solid transparent;letter-spacing:.5px;transition:all .15s;white-space:nowrap}
+.f-tab:hover{color:var(--charcoal)}
+.f-tab.active{color:var(--charcoal);border-bottom-color:var(--charcoal)}
+.sort-select{font-family:var(--font-sans);font-size:.78rem;color:var(--mid);border:1px solid var(--border);padding:6px 12px;background:var(--cream);cursor:pointer}
+
+/* PRODUCT GRID */
+.grid-section{padding:32px 24px 64px}
+.grid-inner{max-width:1200px;margin:0 auto}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.product-card{background:#fff;border:1px solid var(--border);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.pc-img{position:relative;height:200px;overflow:hidden}
+.pc-img-inner{width:100%;height:100%;object-fit:cover}
+.pc-img-placeholder{width:100%;height:100%;display:flex;align-items:flex-end;padding:12px}
+.pc-badge{position:absolute;top:10px;left:10px;background:rgba(200,168,50,.9);color:var(--dark);font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 8px}
+.pc-body{padding:16px}
+.pc-cuisine{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.pc-title{font-size:.9rem;font-weight:700;color:var(--charcoal);margin-bottom:6px;line-height:1.3}
+.pc-meta{font-size:.72rem;color:var(--mid);line-height:1.5;margin-bottom:10px}
+.pc-footer{display:flex;align-items:center;justify-content:space-between}
+.pc-price{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--charcoal)}
+.pc-btn{background:var(--charcoal);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;transition:background .15s}
+.pc-btn:hover{background:var(--gold);color:var(--dark)}
+
+/* BANNER: FULL COLLECTION CTA */
+.cta-banner{background:var(--charcoal);padding:48px 24px;text-align:center;margin-top:16px}
+.cta-banner-inner{max-width:600px;margin:0 auto}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);font-weight:700;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;padding:16px 32px;transition:all .2s}
+.btn-gold:hover{background:#F5E98A}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Kitchen<span>Founder</span></a>
+    <div class="nav-links">
+      <a href="/collections/all">All Guides</a>
+      <a href="/collections/bundles">Bundles</a>
+      <a href="/pages/about">About</a>
+      <a href="/collections/all" class="nav-cta">Browse All →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- COLLECTION HEADER -->
+<div class="col-header">
+  <div class="col-header-inner">
+    <div class="col-eyebrow">KitchenFounder · Restaurant Guides</div>
+    <h1 class="col-h1">{{ collection.title }}</h1>
+    <p class="col-desc">{{ collection.description | strip_html | default: 'Complete restaurant operations blueprints. 28 recipes per guide, full P&L model, 22 operator tools. Built by a working Head Chef.' }}</p>
+    <div class="col-stats">
+      <div class="col-stat"><div class="col-stat-val">{{ collection.products_count }}</div><div class="col-stat-lbl">Guides Available</div></div>
+      <div class="col-stat"><div class="col-stat-val">28</div><div class="col-stat-lbl">Recipes Each</div></div>
+      <div class="col-stat"><div class="col-stat-val">22</div><div class="col-stat-lbl">Free Tools</div></div>
+      <div class="col-stat"><div class="col-stat-val">$29.99</div><div class="col-stat-lbl">Per Guide</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER + SORT BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-tabs">
+      <button class="f-tab active" onclick="filterTag('all',this)">All</button>
+      <button class="f-tab" onclick="filterTag('japanese',this)">Japanese</button>
+      <button class="f-tab" onclick="filterTag('korean',this)">Korean</button>
+      <button class="f-tab" onclick="filterTag('latin',this)">Latin</button>
+      <button class="f-tab" onclick="filterTag('nyc',this)">NYC Series</button>
+      <button class="f-tab" onclick="filterTag('dessert',this)">Dessert</button>
+      <button class="f-tab" onclick="filterTag('middle-east',this)">Middle East</button>
+    </div>
+    <select class="sort-select" onchange="sortProducts(this.value)">
+      <option value="default">Sort: Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="title-asc">Title: A–Z</option>
+    </select>
+  </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="grid-section">
+  <div class="grid-inner">
+    <div class="product-grid" id="productGrid">
+      {% for product in collection.products %}
+      <div class="product-card" data-tag="{{ product.tags | join: ' ' | downcase }}">
+        <a href="{{ product.url }}">
+          <div class="pc-img">
+            {% if product.featured_image %}
+              <img class="pc-img-inner" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" loading="lazy">
+            {% else %}
+              <!-- IMAGE SLOT: {{ product.title }} cover — generate via Higgsfield -->
+              <div class="pc-img-placeholder" style="background:linear-gradient(135deg,{{ product.metafields.kitchenfounder.gradient_from | default: '#1C1C1C' }},{{ product.metafields.kitchenfounder.gradient_to | default: '#333' }})">
+                <span style="font-size:.65rem;color:rgba(200,168,50,.5);font-weight:600;letter-spacing:1px">{{ product.metafields.kitchenfounder.cuisine_tag | default: 'Restaurant Guide' | upcase }}</span>
+              </div>
+            {% endif %}
+            <div class="pc-badge">Guide</div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-cuisine">{{ product.metafields.kitchenfounder.cuisine_tag | default: 'Restaurant Guide' }}</div>
+            <div class="pc-title">{{ product.title }}</div>
+            <div class="pc-meta">28 recipes · Full P&amp;L model · 22 tools included</div>
+            <div class="pc-footer">
+              <div class="pc-price">{{ product.price | money }}</div>
+              <div class="pc-btn">Get Guide →</div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- FULL COLLECTION CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <div style="font-size:.68rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Best Value</div>
+    <h2 style="font-family:var(--font-serif);font-size:1.9rem;color:#fff;font-weight:700;margin-bottom:10px">Get All 59 Guides</h2>
+    <p style="font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:24px">The complete KitchenFounder library. Every cuisine, every concept, every tool. One purchase.</p>
+    <div style="font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:line-through;margin-bottom:4px">$1,769.41 bought individually</div>
+    <div style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:20px">$499.99 — Save $1,269</div>
+    <a href="/products/full-collection" class="btn-gold">Get the Full Collection →</a>
+  </div>
+</div>
+
+<footer style="background:#0a0a0a;padding:28px 24px;text-align:center">
+  <a href="/" style="font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:rgba(255,255,255,.4)">Kitchen<span style="color:var(--gold)">Founder</span></a>
+  <div style="font-size:.72rem;color:rgba(255,255,255,.2);margin-top:6px">© 2026 KitchenFounder. Instant PDF download. Built by a Head Chef.</div>
+</footer>
+
+<script>
+function filterTag(tag,btn){
+  document.querySelectorAll('.f-tab').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(function(c){
+    if(tag==='all'||c.dataset.tag.indexOf(tag)>-1){c.style.display='block'}
+    else{c.style.display='none'}
+  });
+}
+function sortProducts(val){
+  var grid=document.getElementById('productGrid');
+  var cards=Array.from(grid.querySelectorAll('.product-card'));
+  if(val==='title-asc'){
+    cards.sort(function(a,b){return a.querySelector('.pc-title').textContent.localeCompare(b.querySelector('.pc-title').textContent)});
+    cards.forEach(function(c){grid.appendChild(c)});
+  }
+}
+</script>
+</body>
+</html>

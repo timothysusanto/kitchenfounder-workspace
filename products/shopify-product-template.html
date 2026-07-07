@@ -1,0 +1,265 @@
+{% comment %}
+  KitchenFounder — Product Page Template
+  File: templates/product.kitchenfounder.liquid
+  Deploy: Shopify Admin → Themes → Edit Code → templates/product.kitchenfounder.liquid
+  Assign to products: Products → [product] → Theme template → kitchenfounder
+{% endcomment %}
+{% layout none %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ product.title }} — KitchenFounder</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C8A832;--dark:#0F0F0F;--charcoal:#1C1C1C;--cream:#FAFAF8;--warm:#F5F0E8;--border:#E8E5E0;--mid:#666;--font-serif:'Georgia',serif;--font-sans:-apple-system,'Helvetica Neue',sans-serif}
+body{font-family:var(--font-sans);background:var(--cream);color:var(--charcoal)}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(15,15,15,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,50,0.15)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:#fff}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:.8rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:#fff}
+.nav-cta{background:var(--gold);color:var(--dark);font-weight:700;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px}
+
+/* HERO SPLIT */
+.product-hero{display:grid;grid-template-columns:1fr 1fr;min-height:600px;background:var(--charcoal)}
+.ph-img{position:relative;overflow:hidden;min-height:500px}
+/* IMAGE SLOT per product — replace background with Higgsfield generated image */
+.ph-img-inner{width:100%;height:100%;min-height:500px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:rgba(200,168,50,.3);text-align:center;padding:20px;line-height:1.8}
+.ph-content{padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
+.ph-breadcrumb{font-size:.7rem;color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:12px}
+.ph-tag{display:inline-block;background:rgba(200,168,50,.12);border:1px solid rgba(200,168,50,.3);color:var(--gold);font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;margin-bottom:14px}
+.ph-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:12px}
+.ph-desc{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:24px}
+.ph-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;padding:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.pm-val{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--gold)}
+.pm-lbl{font-size:.65rem;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.ph-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+.ph-price{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:#fff}
+.ph-price-note{font-size:.78rem;color:rgba(255,255,255,.4)}
+.btn-buy{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--dark);font-weight:700;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;padding:16px 32px;width:100%;margin-bottom:12px;transition:all .2s;cursor:pointer;border:none;font-family:var(--font-sans)}
+.btn-buy:hover{background:#F5E98A}
+.btn-secondary{display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:rgba(255,255,255,.6);font-weight:600;font-size:.8rem;letter-spacing:1px;padding:13px 24px;width:100%;border:1px solid rgba(255,255,255,.15);transition:all .2s;cursor:pointer;font-family:var(--font-sans)}
+.btn-secondary:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.ph-trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}
+.ph-trust-item{display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(255,255,255,.4)}
+
+/* WHAT'S INSIDE TABS */
+.tabs-section{background:#fff;border-bottom:2px solid var(--charcoal)}
+.tabs-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.tabs-nav{display:flex;gap:0;border-bottom:1px solid var(--border)}
+.tab-btn{background:none;border:none;font-family:var(--font-sans);font-size:.8rem;font-weight:600;color:var(--mid);padding:16px 20px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;letter-spacing:.5px;transition:all .15s}
+.tab-btn.active{color:var(--charcoal);border-bottom-color:var(--charcoal)}
+.tab-panel{display:none;padding:32px 0 40px}
+.tab-panel.active{display:block}
+
+/* RECIPE GRID PREVIEW */
+.recipe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:16px}
+.recipe-card{background:#fff;padding:16px}
+.rc-cat{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.rc-name{font-size:.85rem;font-weight:700;color:var(--charcoal);margin-bottom:2px}
+.rc-meta{font-size:.72rem;color:var(--mid)}
+
+/* TOOLS LIST */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:16px}
+.tool-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--warm);border:1px solid var(--border);font-size:.82rem;font-weight:500;color:var(--charcoal)}
+.tool-icon{font-size:1rem;flex-shrink:0}
+
+/* P&L PREVIEW */
+.pl-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.85rem}
+.pl-table th{background:var(--charcoal);color:#fff;padding:10px 14px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase}
+.pl-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.pl-table tr:nth-child(even) td{background:var(--warm)}
+.pl-table .pl-highlight td{font-weight:700;color:var(--charcoal);background:#FFF8E6!important}
+
+/* UPSELL / BUNDLE */
+.upsell-section{background:var(--warm);padding:48px 24px}
+.upsell-inner{max-width:1200px;margin:0 auto}
+.upsell-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.upsell-card{background:#fff;border:1px solid var(--border);padding:20px 20px}
+.uc-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+.uc-desc{font-size:.78rem;color:var(--mid);margin-bottom:12px;line-height:1.6}
+.uc-price{font-size:1.1rem;font-weight:700;color:var(--charcoal);font-family:var(--font-serif)}
+.uc-was{font-size:.75rem;color:#aaa;text-decoration:line-through;margin-right:6px}
+.uc-btn{display:block;text-align:center;background:var(--charcoal);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px;margin-top:12px;transition:background .2s}
+.uc-btn:hover{background:var(--gold);color:var(--dark)}
+
+@media(max-width:768px){
+  .product-hero{grid-template-columns:1fr}
+  .ph-img{min-height:300px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Kitchen<span>Founder</span></a>
+    <a href="/collections/all" class="nav-back">← All Guides</a>
+    <a href="#buy" class="nav-cta">Get This Guide</a>
+  </div>
+</nav>
+
+<!-- PRODUCT HERO -->
+<div class="product-hero">
+  <div class="ph-img">
+    <!-- IMAGE SLOT: {{ product.title }} hardcover book explosion
+         Higgsfield prompt auto-generated per product via metafield product.metafields.kitchenfounder.cover_prompt -->
+    <div class="ph-img-inner" style="background:linear-gradient(135deg,{{ product.metafields.kitchenfounder.gradient_from | default: '#1C1C1C' }},{{ product.metafields.kitchenfounder.gradient_to | default: '#2a2a2a' }})">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
+      {% else %}
+        [ Cover image — generate via Higgsfield ]<br>{{ product.title }}<br>Hardcover Book Explosion
+      {% endif %}
+    </div>
+  </div>
+  <div class="ph-content" id="buy">
+    <div class="ph-breadcrumb">KITCHENFOUNDER · RESTAURANT GUIDE</div>
+    <div class="ph-tag">{{ product.metafields.kitchenfounder.cuisine_tag | default: 'Restaurant Guide' }}</div>
+    <h1 class="ph-title">{{ product.title }}</h1>
+    <p class="ph-desc">{{ product.description | strip_html | truncate: 200 }}</p>
+    <div class="ph-metrics">
+      <div><div class="pm-val">28</div><div class="pm-lbl">Recipes</div></div>
+      <div><div class="pm-val">{{ product.metafields.kitchenfounder.revenue_potential | default: '$1.8M' }}</div><div class="pm-lbl">Year 1 Potential</div></div>
+      <div><div class="pm-val">22</div><div class="pm-lbl">Free Tools</div></div>
+    </div>
+    <div class="ph-price-row">
+      <div class="ph-price">{{ product.price | money }}</div>
+      <div class="ph-price-note">Instant PDF download</div>
+    </div>
+    {% form 'product', product %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="btn-buy">⚡ Get Instant Access — {{ product.price | money }}</button>
+    {% endform %}
+    <button class="btn-secondary" onclick="document.getElementById('tabRecipes').click()">Preview 28 Recipes ↓</button>
+    <div class="ph-trust">
+      <div class="ph-trust-item">⚡ Instant download</div>
+      <div class="ph-trust-item">📄 PDF — works on any device</div>
+      <div class="ph-trust-item">👨‍🍳 Built by a Head Chef</div>
+      <div class="ph-trust-item">🔧 22 tools included</div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS: WHAT'S INSIDE -->
+<div class="tabs-section">
+  <div class="tabs-inner">
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tabRecipes" onclick="openTab('recipes',this)">28 Recipes</button>
+      <button class="tab-btn" onclick="openTab('tools',this)">22 Tools</button>
+      <button class="tab-btn" onclick="openTab('pl',this)">P&amp;L Model</button>
+      <button class="tab-btn" onclick="openTab('ops',this)">Operations</button>
+    </div>
+    <div class="tab-panel active" id="panel-recipes">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin-bottom:4px">Complete Recipe List</h3>
+      <p style="font-size:.82rem;color:var(--mid);margin-bottom:0">Every recipe includes gram weights, food cost %, allergen tags, and US market pricing.</p>
+      <div class="recipe-grid">
+        <div class="recipe-card"><div class="rc-cat">Starter 01</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_01 | default: 'Recipe 1' }}</div><div class="rc-meta">Food cost ~28% · GF available</div></div>
+        <div class="recipe-card"><div class="rc-cat">Starter 02</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_02 | default: 'Recipe 2' }}</div><div class="rc-meta">Food cost ~24%</div></div>
+        <div class="recipe-card"><div class="rc-cat">Starter 03</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_03 | default: 'Recipe 3' }}</div><div class="rc-meta">Food cost ~22%</div></div>
+        <div class="recipe-card"><div class="rc-cat">Main 01</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_07 | default: 'Signature Main' }}</div><div class="rc-meta">Food cost ~32%</div></div>
+        <div class="recipe-card"><div class="rc-cat">Main 02</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_08 | default: 'Main Dish 2' }}</div><div class="rc-meta">Food cost ~29%</div></div>
+        <div class="recipe-card"><div class="rc-cat">Dessert</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_17 | default: 'Signature Dessert' }}</div><div class="rc-meta">Food cost ~18% · High margin</div></div>
+        <div class="recipe-card"><div class="rc-cat">Drink</div><div class="rc-name">{{ product.metafields.kitchenfounder.recipe_21 | default: 'Signature Drink' }}</div><div class="rc-meta">Food cost ~12% · Best margin</div></div>
+        <div class="recipe-card" style="background:var(--warm);display:flex;align-items:center;justify-content:center;text-align:center"><div style="font-size:.78rem;color:var(--mid);line-height:1.7">+ 21 more recipes<br>in the full guide</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-tools">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin-bottom:4px">22 Operator Tools — Included Free</h3>
+      <p style="font-size:.82rem;color:var(--mid);margin-bottom:0">HTML tools that run in any browser. No app, no install, no subscription.</p>
+      <div class="tools-grid" style="margin-top:16px">
+        <div class="tool-item"><span class="tool-icon">🧮</span>Food Cost Calculator</div>
+        <div class="tool-item"><span class="tool-icon">👥</span>Labour Planner</div>
+        <div class="tool-item"><span class="tool-icon">🗑️</span>Waste Tracker</div>
+        <div class="tool-item"><span class="tool-icon">📊</span>Menu Engineering Matrix</div>
+        <div class="tool-item"><span class="tool-icon">🌡️</span>HACCP Temperature Log</div>
+        <div class="tool-item"><span class="tool-icon">📋</span>Daily Prep Sheet Generator</div>
+        <div class="tool-item"><span class="tool-icon">🔄</span>Shift Handover Report</div>
+        <div class="tool-item"><span class="tool-icon">📅</span>Roster Builder</div>
+        <div class="tool-item"><span class="tool-icon">💵</span>Cash Flow Forecast</div>
+        <div class="tool-item"><span class="tool-icon">⚖️</span>Break-Even Calculator</div>
+        <div class="tool-item"><span class="tool-icon">📈</span>Live Market Dashboard</div>
+        <div class="tool-item"><span class="tool-icon">🏗️</span>Restaurant Opening Checklist</div>
+        <div class="tool-item"><span class="tool-icon">🌿</span>Nut Allergen Training Module</div>
+        <div class="tool-item"><span class="tool-icon">🍽️</span>KitchenFounder OS Dashboard</div>
+        <div class="tool-item" style="background:#FFF8E6;border-color:#D4A820">+ 8 more included in guide</div>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-pl">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin-bottom:4px">P&amp;L Model Preview</h3>
+      <p style="font-size:.82rem;color:var(--mid);margin-bottom:0">Year 1 projection for a 40-cover restaurant. US market pricing, 2025 costs.</p>
+      <table class="pl-table">
+        <tr><th>Line Item</th><th>Monthly</th><th>Annual</th><th>% Revenue</th></tr>
+        <tr><td>Gross Revenue</td><td>$42,000</td><td>$504,000</td><td>100%</td></tr>
+        <tr><td>Food Cost</td><td>$12,600</td><td>$151,200</td><td>30%</td></tr>
+        <tr><td>Labour</td><td>$14,700</td><td>$176,400</td><td>35%</td></tr>
+        <tr><td>Occupancy + Utilities</td><td>$6,300</td><td>$75,600</td><td>15%</td></tr>
+        <tr><td>Operating Expenses</td><td>$2,520</td><td>$30,240</td><td>6%</td></tr>
+        <tr class="pl-highlight"><td><strong>Net Operating Profit</strong></td><td><strong>$5,880</strong></td><td><strong>$70,560</strong></td><td><strong>14%</strong></td></tr>
+      </table>
+      <p style="font-size:.75rem;color:var(--mid);margin-top:10px">Full model in the guide includes 3 scenarios: conservative (40 covers), realistic (55 covers), and optimistic (70 covers). All adjustable by your actual costs.</p>
+    </div>
+    <div class="tab-panel" id="panel-ops">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin-bottom:16px">What Else Is in the Guide</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <div style="padding:16px;background:var(--warm);border:1px solid var(--border)"><strong style="font-size:.85rem">Service Training Module</strong><p style="font-size:.78rem;color:var(--mid);margin-top:4px;line-height:1.65">Front-of-house scripts, table lifecycle, upsell language, guest recovery protocol</p></div>
+        <div style="padding:16px;background:var(--warm);border:1px solid var(--border)"><strong style="font-size:.85rem">Kitchen Design + Workflow</strong><p style="font-size:.78rem;color:var(--mid);margin-top:4px;line-height:1.65">Floor plan reference, equipment list, station layout and prep flow for this cuisine</p></div>
+        <div style="padding:16px;background:var(--warm);border:1px solid var(--border)"><strong style="font-size:.85rem">Customer Retention System</strong><p style="font-size:.78rem;color:var(--mid);margin-top:4px;line-height:1.65">SMS sequence, loyalty mechanic, re-engagement flow, repeat visit strategy</p></div>
+        <div style="padding:16px;background:var(--warm);border:1px solid var(--border)"><strong style="font-size:.85rem">Staff Forecast + Roster</strong><p style="font-size:.78rem;color:var(--mid);margin-top:4px;line-height:1.65">Opening week staffing model, role descriptions, wage benchmarks, roster template</p></div>
+        <div style="padding:16px;background:var(--warm);border:1px solid var(--border)"><strong style="font-size:.85rem">Michelin Lens + Philosophy</strong><p style="font-size:.78rem;color:var(--mid);margin-top:4px;line-height:1.65">Cultural context, flavour philosophy, quality standards — the best in the world</p></div>
+        <div style="padding:16px;background:var(--warm);border:1px solid var(--border)"><strong style="font-size:.85rem">Supplier Sourcing Guide</strong><p style="font-size:.78rem;color:var(--mid);margin-top:4px;line-height:1.65">Where to source key ingredients in the US market, distributor categories, quality grades</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPSELL: RELATED BUNDLE -->
+<div class="upsell-section">
+  <div class="upsell-inner">
+    <div style="font-size:.68rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Save More</div>
+    <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:4px">Add a Bundle and Save</h3>
+    <p style="font-size:.85rem;color:var(--mid)">Get this guide as part of a curated bundle at a better price.</p>
+    <div class="upsell-grid">
+      <div class="upsell-card">
+        <div class="uc-title">Asian Legends Bundle</div>
+        <div class="uc-desc">Japanese Izakaya + Korean BBQ + Thai Street Food</div>
+        <div class="uc-price"><span class="uc-was">$89.97</span>$69.99</div>
+        <a href="/products/asian-legends-bundle" class="uc-btn">Get Bundle — Save $20</a>
+      </div>
+      <div class="upsell-card">
+        <div class="uc-title">Tokyo Dessert Series</div>
+        <div class="uc-desc">NAMA28 + Mochi + Kakigori + Mont Blanc + Crêpe Stand</div>
+        <div class="uc-price"><span class="uc-was">$149.95</span>$119.99</div>
+        <a href="/products/tokyo-dessert-series" class="uc-btn">Get Bundle — Save $30</a>
+      </div>
+      <div class="upsell-card" style="border:2px solid var(--gold)">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Best Value</div>
+        <div class="uc-title">Full Collection — All 59</div>
+        <div class="uc-desc">Every KitchenFounder guide + all 22 tools</div>
+        <div class="uc-price"><span class="uc-was">$1,769.41</span>$499.99</div>
+        <a href="/products/full-collection" class="uc-btn" style="background:var(--gold);color:var(--dark)">Get Everything — Save $1,269</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0a0a0a;padding:28px 24px;text-align:center">
+  <a href="/" style="font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:rgba(255,255,255,.4)">Kitchen<span style="color:var(--gold)">Founder</span></a>
+  <div style="font-size:.72rem;color:rgba(255,255,255,.2);margin-top:6px">© 2026 KitchenFounder. Instant PDF download. Built by a Head Chef.</div>
+</footer>
+
+<script>
+function openTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
