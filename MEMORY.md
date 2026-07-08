@@ -97,3 +97,45 @@ Photorealistic 3D render of a premium luxury hardcover book lying open at a 35-d
 - Guide #52 NAMA28 Donut: matcha donut sliced mid-air + pandan cream erupting + lychee rose glaze + miso caramel pooling + donut holes scattering · Background: Tokyo café golden hour
 - Guide #53 Kakigori: matcha kakigori mid-shatter + strawberry balsamic arc + yuzu frozen mist + black sesame ribbons + hidden layer revealed · Background: Tokyo Yanaka summer
 - Guide #44 Australian Native: wattleseed pavlova + Davidson plum tart + lemon myrtle panna cotta + Kakadu plum ice cream + macadamia honey tart · Background: Australian outback golden sunset, Uluru bokeh
+
+## July 6–7 2026 Updates
+
+### New Files Built
+- **Shopify Marketing Plan 2026** — `/workspace/products/shopify-marketing-plan-2026.html` — 10 pages, TikTok strategy, Klaviyo, ads, bundles, 90-day plan
+- **Fogarty Challenge doc** — `/workspace/products/fogarty-challenge.html` — KitchenFounder vs DailyMentor.co strategy analysis
+- **Persona Briefs** — `/workspace/products/persona-briefs.html` — Chef Marcus Reid (authority chef, white hair) + Mei Lin (Fanvue, Chinese, innocent)
+- **3 Shopify Templates built** (paste-ready Liquid):
+  - Landing page v2: `/workspace/products/shopify-landing-v2.html` (541 lines)
+  - Product page template: `/workspace/products/shopify-product-template.html` (265 lines)
+  - Collection page template: `/workspace/products/shopify-collection-template.html` (194 lines)
+- **Higgsfield Video Strategy** — `/workspace/products/shopify-video-strategy.html` — 4 video types with exact CLI commands
+- **Meet the Chef reply** — `/workspace/products/meet-the-chef-reply.html` — reply to Josephine Merfield (restaurant manager)
+
+### Higgsfield Status
+- Skill installed at `/workspace/skills/higgsfield-generate/` ✅
+- CLI binary NOT installed — GitHub 429 rate limit + npm package doesn't exist + cdn domain wrong
+- Fix: SSH Lightsail → `curl -L -o /tmp/higgsfield https://github.com/higgsfield-ai/cli/releases/latest/download/higgsfield-linux-x64 && chmod +x /tmp/higgsfield && sudo mv /tmp/higgsfield /usr/local/bin/higgsfield`
+- Once installed: generate hero bg loop, UGC ad, 59 book explosion videos
+
+### Claude Max Migration
+- Mothy subscribed Claude Max $100/mo — Claude Sonnet 4.5 (Fable5)
+- GitHub connector done ✅
+- Next: build Claude Projects knowledge package + connect Discord via Anthropic API
+
+### Shopify Templates — Deploy Instructions
+1. Shopify Admin → Themes → Edit Code
+2. `templates/` folder → Add new template → type: page → name: kitchenfounder → paste landing page HTML (add `{% layout none %}` as line 1)
+3. Same for product.kitchenfounder and collection.kitchenfounder
+4. Assign pages/products/collections to the new templates
+
+### David Fogarty / DailyMentor Analysis (July 6)
+- Fogarty model: physical products + cold paid traffic + fake scarcity
+- KitchenFounder model: expertise + organic trust + catalogue depth
+- Adopt from Fogarty: Klaviyo flows, bundle architecture, retargeting, post-purchase upsell, mobile-first
+- Reject: cold paid ads before organic, fake scarcity, product research tools, star rating imports
+
+### Meet the Chef Initiative (July 6)
+- Josephine Merfield (restaurant manager) proposed lobby tasting sessions
+- JJ prawn toast as first activation, July 13 pilot
+- Key caveats flagged: staffing coverage, Water Polo timing (Jul 15-26), allergen protocol, 30% discount needs Joe sign-off
+- Reply email built and ready to send
