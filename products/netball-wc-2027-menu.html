@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Netball World Cup 2027 — The Brewery Party Zone · 4-Day Rotating Menu</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --nwc:#7B2D8B;--nwc-lt:#9B4DAB;--gold:#C8A832;
+  --dark:#1C1C1C;--border:#E8E5E0;--warm:#F9F6F0;--cream:#FAFAF8;
+  --a:#C0392B;--b:#E67E22;--c:#27AE60;--d:#2980B9;
+}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);font-size:9pt;line-height:1.6}
+@page{size:A4;margin:11mm 13mm}
+@media print{.page{page-break-after:always}}
+
+.page{width:210mm;min-height:297mm;padding:9mm 11mm 14mm;background:#fff;margin-bottom:8px;position:relative}
+
+/* COVER */
+.cover-bg{background:linear-gradient(135deg,#1A0A2E 0%,#2D1B4E 50%,#1A0A2E 100%);min-height:297mm;display:flex;flex-direction:column;padding:14mm 12mm}
+.cover-logo-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:auto}
+.cover-badge{background:var(--nwc);color:#fff;font-size:7pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 10px}
+.cover-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:8mm 0}
+.cover-eyebrow{font-size:7pt;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:rgba(200,168,50,.7);margin-bottom:5mm}
+.cover-h1{font-family:'Playfair Display',serif;font-size:32pt;font-weight:900;color:#fff;line-height:1.05;margin-bottom:4mm}
+.cover-h1 span{color:var(--gold)}
+.cover-sub{font-size:9.5pt;color:rgba(255,255,255,.55);line-height:1.75;max-width:130mm;margin-bottom:8mm}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-bottom:8mm}
+.cs-card{border:1px solid rgba(200,168,50,.25);padding:4mm;text-align:center}
+.cs-val{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:var(--gold);line-height:1}
+.cs-lbl{font-size:6.5pt;color:rgba(255,255,255,.4);letter-spacing:1.5px;text-transform:uppercase;margin-top:2mm;line-height:1.4}
+.theme-pills{display:flex;gap:3mm;flex-wrap:wrap;margin-bottom:6mm}
+.tp{padding:4px 10px;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.tp-a{background:var(--a)}.tp-b{background:var(--b)}.tp-c{background:var(--c)}.tp-d{background:var(--d)}
+.cover-footer{border-top:1px solid rgba(255,255,255,.1);padding-top:4mm;display:flex;justify-content:space-between;font-size:7pt;color:rgba(255,255,255,.25)}
+
+/* SHARED */
+.page-hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:3mm;margin-bottom:5mm;border-bottom:2px solid var(--dark)}
+.page-hdr-l{font-size:7pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#888}
+.page-hdr-r{font-size:7.5pt;color:#999}
+
+h2{font-family:'Playfair Display',serif;font-size:13pt;font-weight:700;color:var(--dark);margin-bottom:2mm}
+h3{font-size:8.5pt;font-weight:700;color:var(--dark);margin:3.5mm 0 2mm;text-transform:uppercase;letter-spacing:1px}
+h4{font-size:8pt;font-weight:700;color:var(--dark);margin:2.5mm 0 1.5mm}
+p{font-size:8pt;color:#444;line-height:1.7;margin-bottom:2mm}
+
+/* THEME HEADER */
+.theme-hdr{padding:4mm 5mm;margin-bottom:0;display:flex;align-items:center;gap:4mm}
+.theme-letter{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14pt;font-weight:900;color:#fff;flex-shrink:0;font-family:'Playfair Display',serif}
+.theme-info h2{margin-bottom:0;color:#fff;font-size:11pt}
+.theme-info p{color:rgba(255,255,255,.7);font-size:7.5pt;margin:0;line-height:1.5}
+.theme-days{margin-left:auto;text-align:right}
+.theme-days .day-badge{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:6.5pt;font-weight:700;letter-spacing:2px;padding:2px 7px;margin-bottom:2px}
+.theme-days p{color:rgba(255,255,255,.6);font-size:6.5pt;margin:0}
+
+.theme-block{border:1px solid var(--border);margin-bottom:5mm;page-break-inside:avoid}
+
+/* CANAPE TABLE */
+table.canape{width:100%;border-collapse:collapse;font-size:8pt}
+table.canape th{background:#F0EDE8;padding:3px 8px;text-align:left;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#666}
+table.canape td{padding:4px 8px;border-bottom:1px solid #F5F3F0;vertical-align:top}
+table.canape tr:last-child td{border-bottom:none}
+table.canape .diet{font-size:6.5pt;color:var(--nwc);font-weight:600;white-space:nowrap}
+table.canape .note{font-size:6.5pt;color:#999;font-style:italic}
+
+/* LIVE STATION BOX */
+.live-box{background:#1C1C1C;color:#fff;padding:3.5mm 4mm;margin:0}
+.live-box-hdr{font-size:6.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm}
+.live-box-title{font-size:9.5pt;font-weight:700;color:#fff;margin-bottom:1.5mm}
+.live-box-desc{font-size:7.5pt;color:rgba(255,255,255,.65);line-height:1.7}
+
+/* BUFFET + SWEET */
+.side-col h4{margin-top:0}
+.bullet-list{padding-left:12px;font-size:8pt;color:#333;line-height:1.85}
+.bullet-list li{margin-bottom:1px}
+
+/* SECTION GRID */
+.three-section{display:grid;grid-template-columns:1fr 1fr;gap:3mm;padding:3.5mm 4mm}
+.sec-box{background:var(--warm);border:1px solid var(--border);padding:3mm}
+
+/* OPERATIONAL */
+.ops-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm}
+.ops-card{border:1px solid var(--border);padding:3.5mm 4mm}
+.ops-card h4{font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2.5mm}
+table.ops{width:100%;border-collapse:collapse;font-size:7.5pt}
+table.ops th{background:#F0EDE8;padding:2.5px 6px;font-size:6.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#666;text-align:left}
+table.ops td{padding:3px 6px;border-bottom:1px solid #F5F3F0}
+table.ops tr:last-child td{border-bottom:none}
+table.ops .qty{font-weight:700;color:var(--dark)}
+
+.alert{background:#FFF0F0;border-left:3px solid #C03030;padding:2.5mm 3.5mm;font-size:7.5pt;color:#7A0A0A;line-height:1.7;margin-top:2.5mm}
+.tip{background:#F0F7FF;border-left:3px solid #2060C0;padding:2.5mm 3.5mm;font-size:7.5pt;color:#0A2A60;line-height:1.7;margin-top:2.5mm}
+.gold-note{background:#FFF8E6;border-left:3px solid var(--gold);padding:2.5mm 3.5mm;font-size:7.5pt;color:#4A3500;line-height:1.7;margin-top:2.5mm}
+
+.pf{position:absolute;bottom:7mm;left:11mm;right:11mm;display:flex;justify-content:space-between;font-size:6pt;color:#bbb;border-top:1px solid #eee;padding-top:2mm}
+
+/* DIET TAGS */
+.halal{color:#1A7A3A;font-weight:700;font-size:6.5pt}
+.vegan{color:#7B2D8B;font-weight:700;font-size:6.5pt}
+.veg{color:#2980B9;font-weight:700;font-size:6.5pt}
+.gf{color:#C0392B;font-weight:700;font-size:6.5pt}
+.df{color:#E67E22;font-weight:700;font-size:6.5pt}
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="page" style="padding:0">
+<div class="cover-bg">
+  <div class="cover-logo-row">
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:2px">NOVOTEL SYDNEY OLYMPIC PARK</div>
+      <div style="font-size:7pt;color:rgba(255,255,255,.3);letter-spacing:3px;text-transform:uppercase;margin-top:2px">The Brewery · Party Zone</div>
+    </div>
+    <div class="cover-badge">Prepared for Netball Australia</div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-eyebrow">Menu Proposal · Brewery Party Zone</div>
+    <div class="cover-h1">Netball World<br>Cup <span>2027</span></div>
+    <div class="cover-sub">A 4-theme rotating menu built for roving canapés, one live cooking station, and a small grazing buffet each day — refreshed on a 4-day cycle so returning fans always see something new. Food revenue target: $100 per person.</div>
+
+    <div class="theme-pills">
+      <div class="tp tp-a">A — Aussie BBQ & Coastal Grill</div>
+      <div class="tp tp-b">B — Asian Night Market</div>
+      <div class="tp tp-c">C — Mediterranean Feast</div>
+      <div class="tp tp-d">D — Global Street Food</div>
+    </div>
+
+    <div class="cover-stats">
+      <div class="cs-card"><div class="cs-val">12</div><div class="cs-lbl">Event Days<br>25 Aug–5 Sep</div></div>
+      <div class="cs-card"><div class="cs-val">800</div><div class="cs-lbl">Pax Day/Night<br>Sessions D1–8</div></div>
+      <div class="cs-card"><div class="cs-val">500</div><div class="cs-lbl">Pax Twilight<br>Sessions D9–12</div></div>
+      <div class="cs-card"><div class="cs-val">$100</div><div class="cs-lbl">Food Revenue<br>Target pp</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm">
+      <div style="border:1px solid rgba(255,255,255,.1);padding:4mm">
+        <div style="font-size:6.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,50,.7);margin-bottom:2mm">Day/Night Sessions (Days 1–8)</div>
+        <div style="font-size:8pt;color:rgba(255,255,255,.6);line-height:1.75">5-hour service window · 2:30 PM – 7:30 PM<br>Pre-match wave: ~400 pax (2:30–5:30 PM)<br>Post-match wave: ~400 pax (4:30–7:30 PM)<br>1-hour crossover (4:30–5:30 PM) = peak · double station staffing</div>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.1);padding:4mm">
+        <div style="font-size:6.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,50,.7);margin-bottom:2mm">Twilight Sessions (Days 9–12 · Finals)</div>
+        <div style="font-size:8pt;color:rgba(255,255,255,.6);line-height:1.75">3–4 hour service window · 9:30 AM – 1:30 PM<br>Single guest wave · ~500 pax<br>No overlap crowd to manage<br>Theme D runs Days 4, 8, 12 (Finals — highest energy)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <span>Prepared for Netball Australia · Netball World Cup 2027</span>
+    <span>Novotel Sydney Olympic Park · The Brewery · CONFIDENTIAL</span>
+  </div>
+</div>
+</div>
+
+<!-- PAGE 2: THEME A + B -->
+<div class="page">
+<div class="page-hdr">
+  <div class="page-hdr-l">Netball World Cup 2027 · The Brewery Party Zone · 4-Day Rotating Menu</div>
+  <div class="page-hdr-r">Themes A & B</div>
+</div>
+
+<!-- THEME A -->
+<div class="theme-block">
+  <div class="theme-hdr" style="background:var(--a)">
+    <div class="theme-letter" style="background:rgba(0,0,0,.25)">A</div>
+    <div class="theme-info">
+      <h2>Aussie BBQ & Coastal Grill</h2>
+      <p>Halal-certified · interactive build-your-own grill · coastal Australian energy</p>
+    </div>
+    <div class="theme-days">
+      <div class="day-badge">DAYS 1 · 5 · 9</div>
+      <p>First rotation — sets the tone</p>
+    </div>
+  </div>
+
+  <div style="padding:3.5mm 4mm">
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4mm">
+      <div>
+        <h3>Roving Canapés — 5 pieces per guest</h3>
+        <table class="canape">
+          <tr><th>Item</th><th>Dietary</th></tr>
+          <tr><td>Chargrilled chicken skewers, lemon myrtle marinade</td><td><span class="halal">HALAL</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Corn & haloumi fritters, chilli jam</td><td><span class="veg">VEG</span> · <span class="gf">GF</span></td></tr>
+          <tr><td>Beef & caramelised onion sliders, mini brioche <span class="note">GF bun on request</span></td><td><span class="halal">HALAL</span></td></tr>
+          <tr><td>Watermelon, mint & vegan feta bites</td><td><span class="vegan">VEGAN</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Grilled prawn & mango skewers, lime <span class="note">Seafood — clearly signed</span></td><td><span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+        </table>
+
+        <div class="live-box" style="margin-top:3mm">
+          <div class="live-box-hdr">🔥 Live Cooking Station — "The Chargrill"</div>
+          <div class="live-box-title">Build-Your-Own Interactive Grill Bar</div>
+          <div class="live-box-desc">Guests choose halal-certified chicken tenderloin or grilled haloumi, chef-grilled to order in full view. Guests dress from a condiment bar: chimichurri · slaw · lemon aioli · chilli jam · pickled onion. GF roll and lettuce-wrap option available. Full 5-hour service window. Second attendant added at peak 1-hour crossover (4:30–5:30 PM).</div>
+        </div>
+      </div>
+      <div>
+        <h3>Small Buffet / Grazing Table</h3>
+        <ul class="bullet-list">
+          <li>Potato salad (vegan mayo option) · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Coleslaw (DF dressing) · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Garden salad (GF, vegan) · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Grilled corn cobs, chilli-lime butter · <span class="veg" style="font-size:7pt">VEG GF</span></li>
+        </ul>
+        <h3 style="margin-top:3mm">Quantities — 800 pax Day/Night</h3>
+        <table class="canape" style="font-size:7.5pt">
+          <tr><th>Item</th><th>Qty</th></tr>
+          <tr><td>Chicken skewers (canapé)</td><td class="qty" style="font-weight:700">500 pcs</td></tr>
+          <tr><td>Beef sliders (canapé)</td><td class="qty" style="font-weight:700">400 pcs</td></tr>
+          <tr><td>Prawn skewers</td><td class="qty" style="font-weight:700">400 pcs</td></tr>
+          <tr><td>Chicken (live station)</td><td class="qty" style="font-weight:700">20 kg</td></tr>
+          <tr><td>Haloumi (live station)</td><td class="qty" style="font-weight:700">5 kg</td></tr>
+          <tr><td>Grazing buffet items</td><td class="qty" style="font-weight:700">5 kg each</td></tr>
+        </table>
+        <div class="tip" style="margin-top:3mm"><strong>Station staffing:</strong> 1 chef full window + 1 additional during 4:30–5:30 PM crossover. All proteins halal-certified. Supplier confirmation required pre-event.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THEME B -->
+<div class="theme-block">
+  <div class="theme-hdr" style="background:var(--b)">
+    <div class="theme-letter" style="background:rgba(0,0,0,.2)">B</div>
+    <div class="theme-info">
+      <h2>Asian Night Market</h2>
+      <p>Wok & Noodle Bar · halal tamari base · high energy · aromatic</p>
+    </div>
+    <div class="theme-days">
+      <div class="day-badge">DAYS 2 · 6 · 10</div>
+      <p>Second rotation</p>
+    </div>
+  </div>
+
+  <div style="padding:3.5mm 4mm">
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4mm">
+      <div>
+        <h3>Roving Canapés — 5 pieces per guest</h3>
+        <table class="canape">
+          <tr><th>Item</th><th>Dietary</th></tr>
+          <tr><td>Chicken satay skewers, peanut sauce <span class="note">Contains peanuts — clearly signed</span></td><td><span class="halal">HALAL</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Vegetable dumplings, tamari dip <span class="note">GF wrapper available</span></td><td><span class="vegan">VEGAN</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Beef rendang cups, jasmine rice</td><td><span class="halal">HALAL</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Corn fritters, sweet chilli</td><td><span class="veg">VEG</span> · <span class="gf">GF</span></td></tr>
+          <tr><td>Mango sticky rice bites</td><td><span class="vegan">VEGAN</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+        </table>
+
+        <div class="live-box" style="margin-top:3mm">
+          <div class="live-box-hdr">🥢 Live Cooking Station — "Wok & Noodle Bar"</div>
+          <div class="live-box-title">Build-Your-Own Wok-Tossed Noodles</div>
+          <div class="live-box-desc">Guests pick halal chicken, tofu, or vegetables — wok-tossed to order in a GF tamari base, finished tableside with choice of sauce: sweet chilli · satay · black bean. Garnished with crispy shallot, coriander, lime, chilli. Chef-attended, high visibility. Runs full session window. Second wok added during peak crossover.</div>
+        </div>
+      </div>
+      <div>
+        <h3>Small Buffet / Grazing Table</h3>
+        <ul class="bullet-list">
+          <li>Asian slaw · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Edamame · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Pickled vegetables · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Steamed rice · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+        </ul>
+        <h3 style="margin-top:3mm">Quantities — 800 pax Day/Night</h3>
+        <table class="canape" style="font-size:7.5pt">
+          <tr><th>Item</th><th>Qty</th></tr>
+          <tr><td>Chicken satay skewers</td><td class="qty" style="font-weight:700">500 pcs</td></tr>
+          <tr><td>Dumplings</td><td class="qty" style="font-weight:700">600 pcs</td></tr>
+          <tr><td>Beef rendang cups</td><td class="qty" style="font-weight:700">400 pcs</td></tr>
+          <tr><td>Chicken (wok station)</td><td class="qty" style="font-weight:700">18 kg</td></tr>
+          <tr><td>Tofu (wok station)</td><td class="qty" style="font-weight:700">6 kg</td></tr>
+          <tr><td>Rice noodles / egg noodles</td><td class="qty" style="font-weight:700">12 kg dry</td></tr>
+        </table>
+        <div class="alert" style="margin-top:3mm"><strong>⚠ Allergen:</strong> Satay = peanuts. Must be clearly signed at station and on canapé tray. Separate tongs for peanut items.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pf"><span>Netball World Cup 2027 · The Brewery Party Zone · Novotel Sydney Olympic Park</span><span>Themes A & B · Page 2</span></div>
+</div>
+
+<!-- PAGE 3: THEME C + D -->
+<div class="page">
+<div class="page-hdr">
+  <div class="page-hdr-l">Netball World Cup 2027 · The Brewery Party Zone · 4-Day Rotating Menu</div>
+  <div class="page-hdr-r">Themes C & D</div>
+</div>
+
+<!-- THEME C -->
+<div class="theme-block">
+  <div class="theme-hdr" style="background:var(--c)">
+    <div class="theme-letter" style="background:rgba(0,0,0,.2)">C</div>
+    <div class="theme-info">
+      <h2>Mediterranean Feast</h2>
+      <p>"The Spit" — live rotisserie carving · halal chicken & lamb shawarma · warm theatrical service</p>
+    </div>
+    <div class="theme-days">
+      <div class="day-badge">DAYS 3 · 7 · 11</div>
+      <p>Third rotation</p>
+    </div>
+  </div>
+
+  <div style="padding:3.5mm 4mm">
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4mm">
+      <div>
+        <h3>Roving Canapés — 5 pieces per guest</h3>
+        <table class="canape">
+          <tr><th>Item</th><th>Dietary</th></tr>
+          <tr><td>Lamb kofta skewers, tzatziki <span class="note">DF yoghurt-alternative available</span></td><td><span class="halal">HALAL</span></td></tr>
+          <tr><td>Falafel bites, tahini</td><td><span class="vegan">VEGAN</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Haloumi & roasted vegetable skewers</td><td><span class="veg">VEG</span> · <span class="gf">GF</span></td></tr>
+          <tr><td>Chicken shawarma cups</td><td><span class="halal">HALAL</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Stuffed vine leaves (dolmades)</td><td><span class="vegan">VEGAN</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+        </table>
+
+        <div class="live-box" style="margin-top:3mm">
+          <div class="live-box-hdr">🍖 Live Cooking Station — "The Spit"</div>
+          <div class="live-box-title">Live Rotisserie Carving Station</div>
+          <div class="live-box-desc">Live rotisserie carving of halal chicken and lamb shawarma tableside. Guests build their own wrap or bowl (GF wrap or rice bowl base) dressed from a bar of hummus, tabbouleh, tahini, pickled turnip, and chilli sauce. Visible carving = the theatre moment — runs full session window. Second carver added at peak crossover.</div>
+        </div>
+      </div>
+      <div>
+        <h3>Small Buffet / Grazing Table</h3>
+        <ul class="bullet-list">
+          <li>Greek salad (vegan feta option) · <span class="vegan" style="font-size:7pt">VEGAN GF</span></li>
+          <li>Tabbouleh (GF grain swap available)</li>
+          <li>Hummus & pita (GF pita available) · <span class="vegan" style="font-size:7pt">VEGAN</span></li>
+          <li>Marinated olives · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+        </ul>
+        <h3 style="margin-top:3mm">Sweet Bites</h3>
+        <ul class="bullet-list">
+          <li>Baklava bites <span style="color:#C03030;font-size:7pt;font-weight:700">(contains nuts — signed)</span></li>
+          <li>Vegan orange & almond cake (GF, vegan <span style="color:#C03030;font-size:7pt;font-weight:700">— contains almonds, signed)</span></li>
+        </ul>
+        <h3 style="margin-top:3mm">Quantities — 800 pax Day/Night</h3>
+        <table class="canape" style="font-size:7.5pt">
+          <tr><th>Item</th><th>Qty</th></tr>
+          <tr><td>Lamb kofta skewers</td><td class="qty" style="font-weight:700">400 pcs</td></tr>
+          <tr><td>Chicken shawarma cups</td><td class="qty" style="font-weight:700">500 pcs</td></tr>
+          <tr><td>Falafel bites</td><td class="qty" style="font-weight:700">500 pcs</td></tr>
+          <tr><td>Chicken (rotisserie)</td><td class="qty" style="font-weight:700">15 kg</td></tr>
+          <tr><td>Lamb shawarma (rotisserie)</td><td class="qty" style="font-weight:700">10 kg</td></tr>
+          <tr><td>Wraps/GF wraps/rice bowls</td><td class="qty" style="font-weight:700">900 pcs</td></tr>
+        </table>
+        <div class="alert" style="margin-top:3mm"><strong>⚠ Nuts:</strong> Baklava + almond cake contain tree nuts. Separate tray, clearly signed. Instruct all roving staff.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THEME D -->
+<div class="theme-block">
+  <div class="theme-hdr" style="background:var(--d)">
+    <div class="theme-letter" style="background:rgba(0,0,0,.2)">D</div>
+    <div class="theme-info">
+      <h2>Global Street Food</h2>
+      <p>Grand Final energy · Taco & Tortilla Bar · highest-energy theme · closes the cycle</p>
+    </div>
+    <div class="theme-days">
+      <div class="day-badge">DAYS 4 · 8 · 12 (FINALS)</div>
+      <p>Finals Week — highest energy</p>
+    </div>
+  </div>
+
+  <div style="padding:3.5mm 4mm">
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4mm">
+      <div>
+        <h3>Roving Canapés — 5 pieces per guest (peak crossover)</h3>
+        <table class="canape">
+          <tr><th>Item</th><th>Dietary</th></tr>
+          <tr><td>Butter chicken sliders <span class="note">DF version with coconut cream base</span></td><td><span class="halal">HALAL</span></td></tr>
+          <tr><td>Vegetable samosas, mint chutney <span class="note">GF pastry available</span></td><td><span class="vegan">VEGAN</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Halloumi churros, spiced honey</td><td><span class="veg">VEG</span></td></tr>
+          <tr><td>Jackfruit tacos <span class="note">Corn tortilla</span></td><td><span class="vegan">VEGAN</span> · <span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+          <tr><td>Fish taco bites <span class="note">Seafood — clearly signed; corn tortilla</span></td><td><span class="gf">GF</span> · <span class="df">DF</span></td></tr>
+        </table>
+
+        <div class="live-box" style="margin-top:3mm">
+          <div class="live-box-hdr">🌮 Live Cooking Station — "Taco & Tortilla Bar"</div>
+          <div class="live-box-title">Build-Your-Own Taco Assembly Line</div>
+          <div class="live-box-desc">Guests choose halal beef, jackfruit, or fish — folded into a GF corn or flour tortilla, then dress from a full condiment bar: pico de gallo · guacamole · DF sour cream · shredded cheese · jalapeños · lime · coriander · pickled onion. Chef-attended assembly line keeps pace fast. Full session window, extra hands at peak crossover.</div>
+        </div>
+      </div>
+      <div>
+        <h3>Small Buffet / Grazing Table</h3>
+        <ul class="bullet-list">
+          <li>Mexican rice · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Black bean salad · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Roasted corn salsa · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+          <li>Guacamole · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+        </ul>
+        <h3 style="margin-top:3mm">Sweet Bites</h3>
+        <ul class="bullet-list">
+          <li>Churros, chocolate & DF caramel dip · <span class="veg" style="font-size:7pt">VEG</span></li>
+          <li>Seasonal fruit skewers · <span class="vegan" style="font-size:7pt">VEGAN GF DF</span></li>
+        </ul>
+        <h3 style="margin-top:3mm">Quantities — 800 pax Day/Night</h3>
+        <table class="canape" style="font-size:7.5pt">
+          <tr><th>Item</th><th>Qty</th></tr>
+          <tr><td>Butter chicken sliders</td><td class="qty" style="font-weight:700">400 pcs</td></tr>
+          <tr><td>Samosas</td><td class="qty" style="font-weight:700">500 pcs</td></tr>
+          <tr><td>Halal beef (taco station)</td><td class="qty" style="font-weight:700">15 kg</td></tr>
+          <tr><td>Jackfruit (taco station)</td><td class="qty" style="font-weight:700">6 kg</td></tr>
+          <tr><td>Fish portions (taco station)</td><td class="qty" style="font-weight:700">8 kg</td></tr>
+          <tr><td>Corn/flour tortillas</td><td class="qty" style="font-weight:700">1,200 pcs</td></tr>
+        </table>
+        <div class="gold-note" style="margin-top:3mm"><strong>Finals strategy:</strong> Theme D closes the cycle on Days 4, 8, and 12 (Grand Final). Highest-energy, most interactive format. Max staff at taco station. This is the energy the finals crowd expects.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pf"><span>Netball World Cup 2027 · The Brewery Party Zone · Novotel Sydney Olympic Park</span><span>Themes C & D · Page 3</span></div>
+</div>
+
+<!-- PAGE 4: OPERATIONAL SUMMARY -->
+<div class="page">
+<div class="page-hdr">
+  <div class="page-hdr-l">Netball World Cup 2027 · The Brewery Party Zone</div>
+  <div class="page-hdr-r">Operational Summary · Staffing · Key Notes</div>
+</div>
+
+<h2 style="margin-bottom:3mm">Rotation Schedule — All 12 Days</h2>
+<table style="width:100%;border-collapse:collapse;font-size:8pt;margin-bottom:5mm">
+  <tr style="background:#1C1C1C;color:#fff">
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Day</th>
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Date</th>
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Theme</th>
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Session Type</th>
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Pax</th>
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Service Window</th>
+    <th style="padding:5px 8px;text-align:left;font-size:7pt;letter-spacing:1px;text-transform:uppercase">Live Station</th>
+  </tr>
+  <tr style="background:#FFF2F2"><td style="padding:4px 8px;border-bottom:1px solid #eee">1</td><td style="padding:4px 8px;border-bottom:1px solid #eee">25 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--a);font-weight:700">A — Aussie BBQ</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">The Chargrill</td></tr>
+  <tr><td style="padding:4px 8px;border-bottom:1px solid #eee">2</td><td style="padding:4px 8px;border-bottom:1px solid #eee">26 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--b);font-weight:700">B — Asian Night Market</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Wok & Noodle Bar</td></tr>
+  <tr style="background:#F5FFF5"><td style="padding:4px 8px;border-bottom:1px solid #eee">3</td><td style="padding:4px 8px;border-bottom:1px solid #eee">27 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--c);font-weight:700">C — Mediterranean</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">The Spit</td></tr>
+  <tr style="background:#F0F7FF"><td style="padding:4px 8px;border-bottom:1px solid #eee">4</td><td style="padding:4px 8px;border-bottom:1px solid #eee">28 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--d);font-weight:700">D — Global Street Food ⭐</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Taco & Tortilla Bar</td></tr>
+  <tr style="background:#FFF2F2"><td style="padding:4px 8px;border-bottom:1px solid #eee">5</td><td style="padding:4px 8px;border-bottom:1px solid #eee">29 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--a);font-weight:700">A — Aussie BBQ</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">The Chargrill</td></tr>
+  <tr><td style="padding:4px 8px;border-bottom:1px solid #eee">6</td><td style="padding:4px 8px;border-bottom:1px solid #eee">30 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--b);font-weight:700">B — Asian Night Market</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Wok & Noodle Bar</td></tr>
+  <tr style="background:#F5FFF5"><td style="padding:4px 8px;border-bottom:1px solid #eee">7</td><td style="padding:4px 8px;border-bottom:1px solid #eee">31 Aug</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--c);font-weight:700">C — Mediterranean</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">The Spit</td></tr>
+  <tr style="background:#F0F7FF"><td style="padding:4px 8px;border-bottom:1px solid #eee">8</td><td style="padding:4px 8px;border-bottom:1px solid #eee">1 Sep</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--d);font-weight:700">D — Global Street Food ⭐</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Day/Night</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">800</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2:30–7:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Taco & Tortilla Bar</td></tr>
+  <tr style="background:#FFF2F2"><td style="padding:4px 8px;border-bottom:1px solid #eee">9</td><td style="padding:4px 8px;border-bottom:1px solid #eee">2 Sep</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--a);font-weight:700">A — Aussie BBQ</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--nwc);font-weight:700">Twilight</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">500</td><td style="padding:4px 8px;border-bottom:1px solid #eee">9:30 AM–1:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">The Chargrill</td></tr>
+  <tr><td style="padding:4px 8px;border-bottom:1px solid #eee">10</td><td style="padding:4px 8px;border-bottom:1px solid #eee">3 Sep</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--b);font-weight:700">B — Asian Night Market</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--nwc);font-weight:700">Twilight</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">500</td><td style="padding:4px 8px;border-bottom:1px solid #eee">9:30 AM–1:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">Wok & Noodle Bar</td></tr>
+  <tr style="background:#F5FFF5"><td style="padding:4px 8px;border-bottom:1px solid #eee">11</td><td style="padding:4px 8px;border-bottom:1px solid #eee">4 Sep</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--c);font-weight:700">C — Mediterranean</td><td style="padding:4px 8px;border-bottom:1px solid #eee;color:var(--nwc);font-weight:700">Twilight</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-weight:700">500</td><td style="padding:4px 8px;border-bottom:1px solid #eee">9:30 AM–1:30 PM</td><td style="padding:4px 8px;border-bottom:1px solid #eee">The Spit</td></tr>
+  <tr style="background:#F0F7FF"><td style="padding:4px 8px;font-weight:700">12</td><td style="padding:4px 8px;font-weight:700">5 Sep</td><td style="padding:4px 8px;color:var(--d);font-weight:700">D — Global Street Food ⭐ GRAND FINAL</td><td style="padding:4px 8px;color:var(--nwc);font-weight:700">Twilight · Finals</td><td style="padding:4px 8px;font-weight:700">500</td><td style="padding:4px 8px">9:30 AM–1:30 PM</td><td style="padding:4px 8px">Taco & Tortilla Bar</td></tr>
+</table>
+
+<div class="ops-grid">
+  <div class="ops-card">
+    <h4>Staffing Per Session</h4>
+    <table class="ops">
+      <tr><th>Role</th><th>D1–8 (800 pax)</th><th>D9–12 (500 pax)</th></tr>
+      <tr><td>Live station chef (primary)</td><td class="qty">1</td><td class="qty">1</td></tr>
+      <tr><td>Live station chef (crossover)</td><td class="qty">+1 (4:30–5:30)</td><td class="qty">N/A</td></tr>
+      <tr><td>Roving canapé staff</td><td class="qty">4–5</td><td class="qty">3</td></tr>
+      <tr><td>Buffet maintenance</td><td class="qty">1</td><td class="qty">1</td></tr>
+      <tr><td>Kitchen prep (back of house)</td><td class="qty">2</td><td class="qty">1</td></tr>
+      <tr><td><strong>Total kitchen</strong></td><td class="qty"><strong>8–9</strong></td><td class="qty"><strong>6</strong></td></tr>
+    </table>
+  </div>
+  <div class="ops-card">
+    <h4>Key Operational Notes</h4>
+    <table class="ops">
+      <tr><td colspan="2" style="font-weight:700;color:#7B2D8B;font-size:7.5pt">All themes — non-negotiable</td></tr>
+      <tr><td>All proteins</td><td class="qty">Halal-certified · supplier confirmed pre-event</td></tr>
+      <tr><td>Allergen signs</td><td class="qty">Peanuts (Theme B) · Tree nuts (Theme C) · Seafood (all) · Clearly signed at station + tray</td></tr>
+      <tr><td>Hot holding temp</td><td class="qty">≥65°C · probe check at service start + every 90 min</td></tr>
+      <tr><td>GF options</td><td class="qty">Every theme has GF canapés + GF wrap/bowl at live station</td></tr>
+      <tr><td>Dietary labels</td><td class="qty">All grazing items labelled HALAL/VEGAN/VEG/GF/DF/NUT</td></tr>
+      <tr><td>Waste protocol</td><td class="qty">Any protein held >2hrs at <65°C to be discarded</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="gold-note"><strong>Pricing note (from proposal):</strong> Food revenue target $100 pp. Beverage package quoted separately in the accompanying operational proposal. Quantities above scale to 800 pax for Day/Night sessions (Days 1–8) and 500 pax for Twilight sessions (Days 9–12).</div>
+
+<div class="pf"><span>Netball World Cup 2027 · The Brewery Party Zone · Novotel Sydney Olympic Park</span><span>Operational Summary · Page 4 of 4</span></div>
+</div>
+
+</body>
+</html>
