@@ -8,6 +8,9 @@
 
 | # | Cuisine | File |
 |---|---|---|
+| 68 | Greek Taverna | [guides/68-greek-taverna.pdf](guides/68-greek-taverna.pdf) |
+| 73 | Caribbean Roti Shop | [guides/73-caribbean-roti-shop.pdf](guides/73-caribbean-roti-shop.pdf) |
+| 74 | Bombay Café | [guides/74-bombay-cafe.pdf](guides/74-bombay-cafe.pdf) |
 | 75 | Mexican Taqueria | [guides/75-mexican-taqueria.pdf](guides/75-mexican-taqueria.pdf) |
 | 76 | Korean BBQ | [guides/76-korean-bbq.pdf](guides/76-korean-bbq.pdf) |
 | 77 | Japanese Izakaya | [guides/77-japanese-izakaya.pdf](guides/77-japanese-izakaya.pdf) |
@@ -17,6 +20,8 @@
 *(Table grows with each batch.)*
 
 ## Status
+Batch 2: **3 guides checked in** (#68 Greek Taverna, #73 Caribbean Roti Shop, #74 Bombay Café). All verified — photos embedded and rendering, consistent structure (pantry bible → menu → floor plan → FOH scripts → prep schedule → P&L → allergens → chef's lens), no duplicates against this folder.
+
 Batch 1 of ~10–15 expected: **5 guides checked in** (#75–79). All verified — photos embedded and rendering, consistent structure (foundations → menu → floor plan → FOH scripts → prep schedule → P&L → allergens → chef's lens), no duplicates against this folder.
 
 ## Note on repo location
