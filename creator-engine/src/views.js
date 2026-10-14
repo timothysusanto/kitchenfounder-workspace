@@ -3,7 +3,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 
 function layout(title, body, flash) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)} · Video Engine</title>
+<title>${esc(title)} · Creator Engine</title>
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--line:#dfe3ea;--ink:#0f1218;--ink2:#4b5263;--ink3:#7a8194;--accent:#2a78d6;--good:#0a7a0a;--warn:#a86f00;--bad:#b52f2f}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -81,8 +81,8 @@ function reviewPage({ items }) {
 function settingsPage({ config, ffmpeg }) {
   const row = (k, v) => `<tr><td>${esc(k)}</td><td>${v ? '<span class="pill pass">set</span>' : '<span class="pill fail">missing</span>'}</td></tr>`;
   return `<h1>Settings</h1><div class="card"><table><tbody>
-${row('SHOPIFY_CLIENT_ID', config.shopify.clientId)}${row('SHOPIFY_CLIENT_SECRET', config.shopify.clientSecret)}${row('ANTHROPIC_API_KEY', config.anthropic.apiKey)}${row('HEYGEN_API_KEY', config.heygen.apiKey)}
-<tr><td>APP_URL</td><td>${esc(config.appUrl)}</td></tr><tr><td>Shopify API version</td><td>${esc(config.shopify.apiVersion)}</td></tr><tr><td>Claude model</td><td>${esc(config.anthropic.model)}</td></tr>
+${row('SHOPIFY_CLIENT_ID', config.shopify.clientId)}${row('SHOPIFY_CLIENT_SECRET', config.shopify.clientSecret)}${row('ANTHROPIC_API_KEY', config.anthropic.apiKey)}${row('APIFY_TOKEN (creator discovery)', config.apify.token)}${row('HEYGEN_API_KEY (optional, hook tests)', config.heygen.apiKey)}
+<tr><td>APP_URL</td><td>${esc(config.appUrl)}</td></tr><tr><td>Default market</td><td>${esc(config.defaultMarket)}</td></tr><tr><td>Shopify API version</td><td>${esc(config.shopify.apiVersion)}</td></tr><tr><td>Claude model</td><td>${esc(config.anthropic.model)}</td></tr>
 <tr><td>HeyGen avatar / voice</td><td>${esc(config.heygen.avatarId || 'first available')} / ${esc(config.heygen.voiceId || 'first English voice')}</td></tr>
 <tr><td>Brand</td><td>${esc(config.brand.name)} — ${esc(config.brand.voice)}</td></tr><tr><td>Disclosure line</td><td>${esc(config.brand.disclosure)}</td></tr>
 <tr><td>FFmpeg (burns the AI label into files)</td><td>${ffmpeg ? '<span class="pill pass">found</span>' : '<span class="pill review">not found, label step skipped</span>'}</td></tr>

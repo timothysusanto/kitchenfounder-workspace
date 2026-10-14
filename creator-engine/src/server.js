@@ -24,7 +24,7 @@ const flashFrom = (req) => {
   try { return JSON.parse(f); } catch { return null; }
 };
 const setFlash = (res, type, text) => res.cookie('flash', JSON.stringify({ type, text }), { signed: true, httpOnly: true, sameSite: 'lax', maxAge: 10000 });
-const render = (req, res, html) => { const f = flashFrom(req); if (f) res.clearCookie('flash'); res.send(views.layout('Video Engine', html, f)); };
+const render = (req, res, html) => { const f = flashFrom(req); if (f) res.clearCookie('flash'); res.send(views.layout('Creator Engine', html, f)); };
 const wrap = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
 
 app.get('/healthz', (req, res) => res.json({ ok: true }));
@@ -220,7 +220,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 });
 
 if (require.main === module) {
-  app.listen(config.port, () => console.log(`Video Engine listening on ${config.appUrl} (port ${config.port})`));
+  app.listen(config.port, () => console.log(`Creator Engine listening on ${config.appUrl} (port ${config.port})`));
 }
 
 module.exports = app;
