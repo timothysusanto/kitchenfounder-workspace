@@ -1,3 +1,10 @@
 # Railway build: Node 22 plus FFmpeg so the AI label can be burned into finished videos.
+# python3 / gcc / gnumake let node-gyp compile better-sqlite3 when no prebuilt binary is available.
 [phases.setup]
-nixPkgs = ["nodejs_22", "ffmpeg"]
+nixPkgs = ["nodejs_22", "ffmpeg", "python3", "gcc", "gnumake"]
+
+[phases.install]
+cmds = ["npm ci --no-audit --no-fund"]
+
+[start]
+cmd = "npm start"
