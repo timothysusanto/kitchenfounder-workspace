@@ -81,7 +81,8 @@ function reviewPage({ items }) {
 function settingsPage({ config, ffmpeg }) {
   const row = (k, v) => `<tr><td>${esc(k)}</td><td>${v ? '<span class="pill pass">set</span>' : '<span class="pill fail">missing</span>'}</td></tr>`;
   return `<h1>Settings</h1><div class="card"><table><tbody>
-${row('SHOPIFY_CLIENT_ID', config.shopify.clientId)}${row('SHOPIFY_CLIENT_SECRET', config.shopify.clientSecret)}${row('ANTHROPIC_API_KEY', config.anthropic.apiKey)}${row('APIFY_TOKEN (creator discovery)', config.apify.token)}${row('HEYGEN_API_KEY (optional, hook tests)', config.heygen.apiKey)}
+<tr><td>Shopify store (SHOPIFY_SHOP + SHOPIFY_ACCESS_TOKEN)</td><td>${config.shopify.shop && config.shopify.accessToken ? `<span class="pill pass">set</span> ${esc(config.shopify.shop)}` : '<span class="pill review">not set — easiest option: custom-app token from your store admin</span>'}</td></tr>
+${row('SHOPIFY_CLIENT_ID (only for OAuth / multi-store)', config.shopify.clientId)}${row('SHOPIFY_CLIENT_SECRET (only for OAuth / multi-store)', config.shopify.clientSecret)}${row('ANTHROPIC_API_KEY', config.anthropic.apiKey)}${row('APIFY_TOKEN (creator discovery)', config.apify.token)}${row('HEYGEN_API_KEY (optional, hook tests)', config.heygen.apiKey)}
 <tr><td>APP_URL</td><td>${esc(config.appUrl)}</td></tr><tr><td>Default market</td><td>${esc(config.defaultMarket)}</td></tr><tr><td>Shopify API version</td><td>${esc(config.shopify.apiVersion)}</td></tr><tr><td>Claude model</td><td>${esc(config.anthropic.model)}</td></tr>
 <tr><td>HeyGen avatar / voice</td><td>${esc(config.heygen.avatarId || 'first available')} / ${esc(config.heygen.voiceId || 'first English voice')}</td></tr>
 <tr><td>Brand</td><td>${esc(config.brand.name)} — ${esc(config.brand.voice)}</td></tr><tr><td>Disclosure line</td><td>${esc(config.brand.disclosure)}</td></tr>

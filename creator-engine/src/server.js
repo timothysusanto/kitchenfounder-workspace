@@ -219,8 +219,27 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.redirect(req.get('referer') || '/');
 });
 
-if (require.main === module) {
-  app.listen(config.port, () => console.log(`Creator Engine listening on ${config.appUrl} (port ${config.port})`));
+/** Connect the store from SHOPIFY_SHOP + SHOPIFY_ACCESS_TOKEN (custom-app token) without OAuth. Idempotent. */
+async function connectStoreFromEnv() {
+  const { shop, accessToken, scopes } = config.shopify;
+  if (!shop || !accessToken) return null;
+  if (!shopify.isValidShop(shop)) { console.error(`SHOPIFY_SHOP must look like your-store.myshopify.com (got "${shop}")`); return null; }
+  const existing = q.storeByShop.get(shop);
+  if (existing && existing.access_token === accessToken) return existing;
+  q.upsertStore.run({ shop, access_token: accessToken, scope: scopes });
+  const store = q.storeByShop.get(shop);
+  try { const n = await jobs.syncStore(store.id); console.log(`Connected ${shop} from env and synced ${n} products`); }
+  catch (e) { console.error(`Connected ${shop} from env but product sync failed: ${e.message}`); }
+  return store;
 }
+
+if (require.main === module) {
+  app.listen(config.port, () => {
+    console.log(`Creator Engine listening on ${config.appUrl} (port ${config.port})`);
+    connectStoreFromEnv().catch((e) => console.error(e));
+  });
+}
+
+app.connectStoreFromEnv = connectStoreFromEnv;
 
 module.exports = app;

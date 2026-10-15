@@ -17,6 +17,10 @@ const config = {
     clientSecret: env('SHOPIFY_CLIENT_SECRET', ''),
     scopes: env('SHOPIFY_SCOPES', 'read_products,read_orders,write_discounts'),
     apiVersion: env('SHOPIFY_API_VERSION', '2026-10'),
+    // Single-store shortcut: a custom app's Admin API token (Shopify admin → Settings → Apps → Develop apps).
+    // When both are set the store is connected on boot and OAuth is not needed.
+    shop: env('SHOPIFY_SHOP', '').trim().toLowerCase(),
+    accessToken: env('SHOPIFY_ACCESS_TOKEN', ''),
   },
   anthropic: {
     apiKey: env('ANTHROPIC_API_KEY', ''),

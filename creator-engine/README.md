@@ -41,7 +41,9 @@ cp .env.example .env   # fill in the keys below
 npm start              # open http://localhost:3000
 ```
 
-1. **Shopify custom app** — Partner Dashboard → Apps → Create app manually. App URL `http://localhost:3000`, redirect URL `http://localhost:3000/auth/shopify/callback`. Copy Client ID and secret into `.env`. Scopes requested: `read_products,read_orders,write_discounts` (orders are limited to the last 60 days unless Shopify grants `read_all_orders`).
+1. **Shopify — pick one.**
+   - *Option A, one store (simplest):* in your store admin go to Settings → Apps and sales channels → Develop apps → Create app. Under Admin API scopes tick `read_products`, `read_orders`, `write_discounts`, install the app and reveal the token (`shpat_…`). Set `SHOPIFY_SHOP=your-store.myshopify.com` and `SHOPIFY_ACCESS_TOKEN=shpat_…`. The store connects itself on boot.
+   - *Option B, OAuth (to connect other brands' stores):* Partner Dashboard → Apps → Create app manually. App URL `http://localhost:3000`, redirect URL `http://localhost:3000/auth/shopify/callback`. Copy Client ID and secret into `.env`. Scopes requested: `read_products,read_orders,write_discounts` (orders are limited to the last 60 days unless Shopify grants `read_all_orders`).
 2. **Anthropic key** — console.anthropic.com → API keys → `ANTHROPIC_API_KEY`.
 3. **Apify token** — console.apify.com → Settings → Integrations → `APIFY_TOKEN`. The free plan is enough to start.
 4. **Brand voice** — `BRAND_NAME`, `BRAND_VOICE`, `DEFAULT_MARKET` (AU or US).
