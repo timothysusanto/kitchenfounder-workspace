@@ -4,7 +4,7 @@ const money = (v, cur = '') => (v === null || v === undefined ? '—' : `${cur ?
 const pct = (v) => (v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`);
 const STATUSES = ['shortlisted', 'invited', 'agreed', 'shipped', 'posted', 'amplified', 'declined'];
 
-function creatorsPage({ store, creators, seeds }) {
+function creatorsPage({ store, creators, seeds, products = [] }) {
   const rows = creators.map((c) => `<tr>
     <td><input type="checkbox" name="creator_ids" value="${c.id}" form="addform"></td>
     <td><a href="${esc(c.profile_url)}" target="_blank" rel="noopener">@${esc(c.handle)}</a><div class="muted">${esc(c.platform)} · ${esc(c.tier)} · ${esc(c.status)}</div></td>
@@ -23,8 +23,17 @@ function creatorsPage({ store, creators, seeds }) {
  <button class="btn">Discover</button></form>
  <p class="muted" style="margin-top:8px">Costs about US$0.003 per post via Apify. 60 posts × 3 hashtags ≈ 50 cents and 24 seconds. Starting points for ${esc(store.market)}:</p>${seedHtml}</div>
 <div class="card"><form id="addform" method="post" action="/stores/${store.id}/campaigns/add-creators">
- <label>Add ticked creators to campaign <select name="campaign_id" required>${(store.campaigns || []).map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label> <button class="btn">Add to campaign</button>
- ${(store.campaigns || []).length ? '' : '<span class="muted">(create a campaign first)</span>'}</form>
+ <b>Step 2 · Put ticked creators into a campaign</b>
+ <div style="margin-top:8px">
+ ${(store.campaigns || []).length ? `<label>Existing campaign <select name="campaign_id"><option value="">— new campaign (below) —</option>${store.campaigns.map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label> <span class="muted">or</span> ` : ''}
+ <label>New campaign name <input type="text" name="name" placeholder="Nov seeding – Chilli Oil" style="min-width:220px"></label>
+ <label> Product <select name="product_id">${products.map((p) => `<option value="${p.id}">${esc(p.title)}</option>`).join('')}</select></label>
+ <label> Type <select name="kind"><option value="gifted">Gifted product</option><option value="paid">Paid per post</option><option value="affiliate">Affiliate commission</option></select></label>
+ <label> Customer discount % <input type="number" name="customer_discount_pct" value="10" style="width:60px"></label>
+ <label> Sample cost $ <input type="number" name="sample_cost" value="30" style="width:70px"></label>
+ <button class="btn">Add to campaign</button>
+ </div>
+ <p class="muted" style="margin-top:6px">Tick creators in the table, then click. A new campaign is created if you leave "Existing campaign" empty. Fees, commission and the brief are set on the campaign page next. ${products.length ? '' : '<b>No products synced yet — open the store page and click Sync products first.</b>'}</p></form>
 <table style="margin-top:10px"><thead><tr><th></th><th>Creator</th><th>Followers</th><th>Median plays</th><th>Engagement</th><th>Score /100</th><th>Bio</th></tr></thead><tbody>${rows || '<tr><td colspan="7" class="muted">No creators yet. Run Discover.</td></tr>'}</tbody></table></div>`;
 }
 

@@ -132,7 +132,7 @@ app.get('/stores/:id/creators', (req, res) => {
   const store = q.storeById.get(Number(req.params.id));
   if (!store) return res.status(404).send('store not found');
   store.campaigns = q.campaignsByStore.all(store.id);
-  render(req, res, vl.creatorsPage({ store, creators: q.creatorsByStore.all(store.id), seeds: SEED_HASHTAGS[store.market] || SEED_HASHTAGS.AU }));
+  render(req, res, vl.creatorsPage({ store, creators: q.creatorsByStore.all(store.id), seeds: SEED_HASHTAGS[store.market] || SEED_HASHTAGS.AU, products: q.productsByStore.all(store.id) }));
 });
 
 app.post('/stores/:id/discover', wrap(async (req, res) => {
@@ -155,11 +155,18 @@ app.post('/stores/:id/campaigns', (req, res) => {
 });
 
 app.post('/stores/:id/campaigns/add-creators', (req, res) => {
+  const storeId = Number(req.params.id);
   const ids = [].concat(req.body.creator_ids || []).map(Number).filter(Boolean);
-  const campaignId = Number(req.body.campaign_id);
-  if (!campaignId || !ids.length) { setFlash(res, 'error', 'Tick at least one creator and pick a campaign'); return res.redirect(`/stores/${req.params.id}/creators`); }
+  if (!ids.length) { setFlash(res, 'error', 'Tick at least one creator in the table first'); return res.redirect(`/stores/${storeId}/creators`); }
+  let campaignId = Number(req.body.campaign_id);
+  let created = false;
+  if (!campaignId) {
+    if (!String(req.body.name || '').trim()) { setFlash(res, 'error', 'Give the new campaign a name (or pick an existing one)'); return res.redirect(`/stores/${storeId}/creators`); }
+    const c = loop.createCampaign(storeId, req.body);
+    campaignId = c.id; created = true;
+  }
   loop.addCreators(campaignId, ids);
-  setFlash(res, 'ok', `Added ${ids.length} creators`);
+  setFlash(res, 'ok', `${created ? 'Campaign created and ' : ''}${ids.length} creators added. Next: Generate brief, then Issue codes + links.`);
   res.redirect(`/campaigns/${campaignId}`);
 });
 
