@@ -33,6 +33,11 @@ const config = {
   },
   defaultMarket: env('DEFAULT_MARKET', 'AU'),
   allowSignup: env('ALLOW_SIGNUP', 'true') !== 'false',
+  // Owner account managed from the environment: created on boot, password re-synced on every boot (change the var to change the password).
+  ownerEmail: env('OWNER_EMAIL', '').trim().toLowerCase(),
+  ownerPassword: env('OWNER_PASSWORD', ''),
+  // One-shot automation on boot (idempotent): JSON {"name","product","kind","commission","discount","test_creator"}
+  bootstrap: env('BOOTSTRAP_PROGRAMME', ''),
   autoSyncMinutes: Number(env('AUTO_SYNC_MINUTES', 60)),
   heygen: {
     apiKey: env('HEYGEN_API_KEY', ''),

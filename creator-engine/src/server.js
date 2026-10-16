@@ -12,6 +12,7 @@ const vp = require('./views_public');
 const loop = require('./loop');
 const auth = require('./auth');
 const attribution = require('./attribution');
+const { bootstrapProgramme, parseSpec } = require('./bootstrap');
 const { SEED_HASHTAGS } = require('./discovery');
 const { DISCLOSURE } = require('./briefs');
 const { hasFfmpeg } = require('./render');
@@ -406,7 +407,11 @@ async function autoSyncAll() {
 if (require.main === module) {
   app.listen(config.port, () => {
     console.log(`Creator Engine listening on ${config.appUrl} (port ${config.port})`);
-    connectStoreFromEnv().catch((e) => console.error(e));
+    (async () => {
+      await connectStoreFromEnv();
+      auth.syncOwnerFromEnv(config);
+      await bootstrapProgramme(parseSpec(config.bootstrap));
+    })().catch((e) => console.error('boot tasks failed', e));
     if (config.autoSyncMinutes > 0) {
       setTimeout(() => autoSyncAll().catch(() => {}), 30000);
       setInterval(() => autoSyncAll().catch(() => {}), config.autoSyncMinutes * 60000);

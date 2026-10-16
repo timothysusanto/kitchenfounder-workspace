@@ -92,4 +92,22 @@ function campaignFor(req, campaignId) {
   return canAccessStore(req.user, store) ? c : null;
 }
 
-module.exports = { COOKIE, hashPassword, verifyPassword, createUser, login, startSession, endSession, attach, guard, isOwner, canAccessStore, storeFor, campaignFor };
+/** OWNER_EMAIL + OWNER_PASSWORD: create the owner on boot, or re-sync the password. Returns the owner or null. */
+function syncOwnerFromEnv(config) {
+  const { ownerEmail, ownerPassword } = config;
+  if (!ownerEmail || !ownerPassword) return null;
+  if (!validEmail(ownerEmail) || ownerPassword.length < 8) { console.error('OWNER_EMAIL/OWNER_PASSWORD invalid (password needs 8+ chars)'); return null; }
+  const existing = q.userByEmail.get(ownerEmail);
+  let owner;
+  if (existing) {
+    if (!verifyPassword(ownerPassword, existing.password_hash) || existing.role !== 'owner') q.updateUserPassword.run(hashPassword(ownerPassword), 'owner', existing.id);
+    owner = q.userById.get(existing.id);
+  } else {
+    owner = createUser({ email: ownerEmail, password: ownerPassword, role: 'owner', brand_name: config.brand.name });
+    console.log(`Owner account created for ${ownerEmail} from env`);
+  }
+  for (const s of q.allStores.all()) if (!s.user_id) q.setStoreOwner.run(owner.id, s.id);
+  return owner;
+}
+
+module.exports = { syncOwnerFromEnv, COOKIE, hashPassword, verifyPassword, createUser, login, startSession, endSession, attach, guard, isOwner, canAccessStore, storeFor, campaignFor };

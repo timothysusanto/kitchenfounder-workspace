@@ -265,6 +265,7 @@ const q = {
   userByEmail: db.prepare('SELECT * FROM users WHERE email = ?'),
   userById: db.prepare('SELECT id, email, role, brand_name, created_at FROM users WHERE id = ?'),
   insertUser: db.prepare('INSERT INTO users (email, password_hash, role, brand_name) VALUES (@email, @password_hash, @role, @brand_name)'),
+  updateUserPassword: db.prepare('UPDATE users SET password_hash = ?, role = ? WHERE id = ?'),
   insertSession: db.prepare("INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, datetime('now', '+30 days'))"),
   sessionUser: db.prepare(`SELECT u.id, u.email, u.role, u.brand_name FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.id = ? AND s.expires_at > datetime('now')`),
   deleteSession: db.prepare('DELETE FROM sessions WHERE id = ?'),
