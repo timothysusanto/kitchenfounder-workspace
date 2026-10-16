@@ -26,7 +26,7 @@ test.before(async () => {
   q.upsertStore.run({ shop: 'chilli.myshopify.com', access_token: 'fake', scope: 'read_orders' });
   storeId = q.storeByShop.get('chilli.myshopify.com').id;
   q.setStoreOwner.run(brandUser.id, storeId);
-  q.upsertProduct.run({ store_id: storeId, shopify_id: 'gid://shopify/Product/1', title: 'Restaurant Ops Guide', handle: 'ops-guide', description: '', price: '189.00', currency: 'USD', image_url: null, product_url: 'https://chilli.myshopify.com/products/ops-guide', tags: '', raw_json: '{}' });
+  q.upsertProduct.run({ store_id: storeId, shopify_id: 'gid://shopify/Product/1', title: 'Restaurant Ops Guide', handle: 'ops-guide', description: '', price: '189.00', currency: 'USD', image_url: null, product_url: 'https://chilli.myshopify.com/products/ops-guide', tags: '', raw_json: '{}', is_subscription: 0, billing_interval: null });
   const product = q.productsByStore.all(storeId)[0];
   const c = loop.createCampaign(storeId, { name: 'Ops guide affiliates', product_id: product.id, kind: 'affiliate', customer_discount_pct: 10, creator_commission_pct: 40 });
   campaignId = c.id;
@@ -138,4 +138,39 @@ test('orderFromWebhook is pure and handles missing fields', () => {
   assert.deepEqual(o.discountCodes, []);
   assert.equal(o.customerJourneySummary, null);
   assert.equal(o.currentTotalPriceSet.shopMoney.amount, '10.00');
+});
+
+test('membership renewals with no code or UTM are attributed to the creator who brought the customer (lifetime attribution)', async () => {
+  const cc = q.campaignCreators.all(campaignId)[0];
+  const before = cc.orders;
+  const first = JSON.stringify({ id: 2001, name: '#2001', created_at: '2026-10-16T03:00:00Z', current_total_price: '8.99', currency: 'USD',
+    discount_codes: [{ code: 'SAMCOOKS-OPSGUI' }], landing_site: '/', customer: { id: 777, admin_graphql_api_id: 'gid://shopify/Customer/777' } });
+  let r = await fetch(`${base}/webhooks/shopify/orders`, { method: 'POST', headers: { 'content-type': 'application/json', 'X-Shopify-Hmac-Sha256': signed(first), 'X-Shopify-Shop-Domain': 'chilli.myshopify.com' }, body: first });
+  assert.equal(r.status, 200);
+  const renewal = JSON.stringify({ id: 2002, name: '#2002', created_at: '2026-11-16T03:00:00Z', current_total_price: '9.99', currency: 'USD', discount_codes: [], landing_site: null, customer: { id: 777 } });
+  r = await fetch(`${base}/webhooks/shopify/orders`, { method: 'POST', headers: { 'content-type': 'application/json', 'X-Shopify-Hmac-Sha256': signed(renewal), 'X-Shopify-Shop-Domain': 'chilli.myshopify.com' }, body: renewal });
+  assert.equal(r.status, 200);
+  const stranger = JSON.stringify({ id: 2003, name: '#2003', created_at: '2026-11-16T04:00:00Z', current_total_price: '9.99', currency: 'USD', discount_codes: [], landing_site: null, customer: { id: 888 } });
+  r = await fetch(`${base}/webhooks/shopify/orders`, { method: 'POST', headers: { 'content-type': 'application/json', 'X-Shopify-Hmac-Sha256': signed(stranger), 'X-Shopify-Shop-Domain': 'chilli.myshopify.com' }, body: stranger });
+  const after = q.campaignCreators.all(campaignId)[0];
+  assert.equal(after.orders, before + 2, 'first order + renewal, not the stranger');
+  const orders = q.portalOrders.all(cc.id);
+  assert.equal(orders.find((o) => o.order_name === '#2002').match_method, 'customer');
+  const portal = await (await fetch(`${base}/c/${cc.portal_token}`)).text();
+  assert.match(portal, /renewal \/ repeat/);
+});
+
+test('discount codes for subscription products are created with appliesOnSubscription', async () => {
+  const calls = [];
+  const shopify = require('../src/shopify');
+  const orig = shopify.graphql;
+  shopify.graphql = async (shop, token, query, vars) => { calls.push(vars); return { discountCodeBasicCreate: { codeDiscountNode: { id: 'gid://x' }, userErrors: [] } }; };
+  try {
+    await attribution.createDiscountCode({ shop: 'x.myshopify.com', access_token: 't' }, { code: 'A', title: 'A', percentage: 10, subscription: true });
+    await attribution.createDiscountCode({ shop: 'x.myshopify.com', access_token: 't' }, { code: 'B', title: 'B', percentage: 10 });
+  } finally { shopify.graphql = orig; }
+  assert.equal(calls[0].basicCodeDiscount.customerGets.appliesOnSubscription, true);
+  assert.equal(calls[0].basicCodeDiscount.recurringCycleLimit, 1);
+  assert.equal(calls[1].basicCodeDiscount.customerGets.appliesOnSubscription, false);
+  assert.equal(calls[1].basicCodeDiscount.recurringCycleLimit, undefined);
 });

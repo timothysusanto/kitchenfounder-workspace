@@ -82,7 +82,7 @@ function report(storeId) {
 }
 
 // ---- Public programme: creators sign themselves up ----
-const slug = () => crypto.randomBytes(5).toString('base64url').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 8) || crypto.randomBytes(4).toString('hex');
+const slug = () => crypto.randomBytes(4).toString('hex'); // 8 chars, always [0-9a-f]
 
 function publishCampaign(campaignId, { isPublic, terms }) {
   const c = q.campaignById.get(campaignId);

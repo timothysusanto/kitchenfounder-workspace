@@ -79,6 +79,8 @@ query Products($first: Int!, $after: String) {
       onlineStoreUrl
       featuredMedia { preview { image { url } } }
       priceRangeV2 { minVariantPrice { amount currencyCode } }
+      requiresSellingPlan
+      sellingPlanGroups(first: 1) { nodes { sellingPlans(first: 1) { nodes { billingPolicy { ... on SellingPlanRecurringBillingPolicy { interval intervalCount } } } } } }
     }
   }
 }`;
@@ -107,6 +109,8 @@ function normaliseProduct(shop, n) {
     image_url: n.featuredMedia?.preview?.image?.url ?? null,
     product_url: n.onlineStoreUrl || `https://${shop}/products/${n.handle}`,
     tags: Array.isArray(n.tags) ? n.tags.join(', ') : '',
+    is_subscription: n.requiresSellingPlan || (n.sellingPlanGroups?.nodes?.length > 0) ? 1 : 0,
+    billing_interval: n.sellingPlanGroups?.nodes?.[0]?.sellingPlans?.nodes?.[0]?.billingPolicy?.interval?.toLowerCase() || null,
     raw_json: JSON.stringify(n),
   };
 }

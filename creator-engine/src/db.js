@@ -183,8 +183,12 @@ for (const sql of [
   'ALTER TABLE campaign_creators ADD COLUMN commission_paid REAL DEFAULT 0',
   'ALTER TABLE campaign_creators ADD COLUMN joined_at TEXT',
   'ALTER TABLE attributed_orders ADD COLUMN source TEXT',
+  'ALTER TABLE attributed_orders ADD COLUMN customer_id TEXT',
+  'ALTER TABLE products ADD COLUMN is_subscription INTEGER NOT NULL DEFAULT 0',
+  'ALTER TABLE products ADD COLUMN billing_interval TEXT',
 ]) { try { db.exec(sql); } catch (e) { /* column exists */ } }
 db.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_campaign_slug ON campaigns(public_slug)');
+db.exec('CREATE INDEX IF NOT EXISTS idx_orders_customer ON attributed_orders(store_id, customer_id)');
 db.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_cc_portal ON campaign_creators(portal_token)');
 
 
@@ -195,10 +199,11 @@ const q = {
   storeById: db.prepare('SELECT * FROM stores WHERE id = ?'),
   stores: db.prepare('SELECT id, shop, scope, installed_at, last_sync_at FROM stores ORDER BY id'),
   touchSync: db.prepare(`UPDATE stores SET last_sync_at = datetime('now') WHERE id = ?`),
-  upsertProduct: db.prepare(`INSERT INTO products (store_id, shopify_id, title, handle, description, price, currency, image_url, product_url, tags, raw_json)
-    VALUES (@store_id, @shopify_id, @title, @handle, @description, @price, @currency, @image_url, @product_url, @tags, @raw_json)
+  upsertProduct: db.prepare(`INSERT INTO products (store_id, shopify_id, title, handle, description, price, currency, image_url, product_url, tags, raw_json, is_subscription, billing_interval)
+    VALUES (@store_id, @shopify_id, @title, @handle, @description, @price, @currency, @image_url, @product_url, @tags, @raw_json, COALESCE(@is_subscription, 0), @billing_interval)
     ON CONFLICT(store_id, shopify_id) DO UPDATE SET title=excluded.title, handle=excluded.handle, description=excluded.description,
-      price=excluded.price, currency=excluded.currency, image_url=excluded.image_url, product_url=excluded.product_url, tags=excluded.tags, raw_json=excluded.raw_json`),
+      price=excluded.price, currency=excluded.currency, image_url=excluded.image_url, product_url=excluded.product_url, tags=excluded.tags, raw_json=excluded.raw_json,
+      is_subscription=excluded.is_subscription, billing_interval=excluded.billing_interval`),
   productsByStore: db.prepare(`SELECT p.*, (SELECT COUNT(*) FROM scripts s WHERE s.product_id = p.id) AS script_count
     FROM products p WHERE store_id = ? ORDER BY title`),
   productById: db.prepare('SELECT * FROM products WHERE id = ?'),
@@ -234,7 +239,7 @@ const q = {
     VALUES (@store_id, @product_id, @name, @market, @kind, @customer_discount_pct, @creator_commission_pct, @fee_per_post, @sample_cost)`),
   campaignsByStore: db.prepare(`SELECT c.*, p.title AS product_title, (SELECT COUNT(*) FROM campaign_creators cc WHERE cc.campaign_id = c.id) AS creator_count
     FROM campaigns c LEFT JOIN products p ON p.id = c.product_id WHERE c.store_id = ? ORDER BY c.id DESC`),
-  campaignById: db.prepare('SELECT c.*, p.title AS product_title, p.product_url, p.handle AS product_handle FROM campaigns c LEFT JOIN products p ON p.id = c.product_id WHERE c.id = ?'),
+  campaignById: db.prepare('SELECT c.*, p.title AS product_title, p.product_url, p.handle AS product_handle, p.is_subscription, p.billing_interval, p.price AS product_price FROM campaigns c LEFT JOIN products p ON p.id = c.product_id WHERE c.id = ?'),
   setCampaignBrief: db.prepare('UPDATE campaigns SET brief = ?, caption_template = ?, compliance_status = ?, compliance_notes = ? WHERE id = ?'),
   setCampaignStatus: db.prepare('UPDATE campaigns SET status = ? WHERE id = ?'),
   addCampaignCreator: db.prepare('INSERT OR IGNORE INTO campaign_creators (campaign_id, creator_id) VALUES (?, ?)'),
@@ -249,10 +254,12 @@ const q = {
     posted_at=CASE WHEN @post_url IS NOT NULL AND @post_url <> '' AND posted_at IS NULL THEN datetime('now') ELSE posted_at END,
     ad_platform=@ad_platform, ad_auth_code=@ad_auth_code, ad_spend=@ad_spend, notes=@notes, updated_at=datetime('now') WHERE id=@id`),
   setCampaignCreatorCode: db.prepare('UPDATE campaign_creators SET discount_code=?, discount_gid=?, utm_link=?, updated_at=datetime(\'now\') WHERE id=?'),
-  upsertAttributedOrder: db.prepare(`INSERT INTO attributed_orders (store_id, shopify_order_id, order_name, created_at, total, currency, discount_codes, utm_source, utm_campaign, utm_content, campaign_creator_id, match_method)
-    VALUES (@store_id, @shopify_order_id, @order_name, @created_at, @total, @currency, @discount_codes, @utm_source, @utm_campaign, @utm_content, @campaign_creator_id, @match_method)
+  upsertAttributedOrder: db.prepare(`INSERT INTO attributed_orders (store_id, shopify_order_id, order_name, created_at, total, currency, discount_codes, utm_source, utm_campaign, utm_content, campaign_creator_id, match_method, customer_id)
+    VALUES (@store_id, @shopify_order_id, @order_name, @created_at, @total, @currency, @discount_codes, @utm_source, @utm_campaign, @utm_content, @campaign_creator_id, @match_method, @customer_id)
     ON CONFLICT(store_id, shopify_order_id) DO UPDATE SET total=excluded.total, discount_codes=excluded.discount_codes, utm_source=excluded.utm_source, utm_campaign=excluded.utm_campaign,
-      utm_content=excluded.utm_content, campaign_creator_id=excluded.campaign_creator_id, match_method=excluded.match_method`),
+      utm_content=excluded.utm_content, customer_id=COALESCE(excluded.customer_id, customer_id),
+      campaign_creator_id=COALESCE(excluded.campaign_creator_id, campaign_creator_id), match_method=COALESCE(excluded.match_method, match_method)`),
+  creatorForCustomer: db.prepare(`SELECT campaign_creator_id FROM attributed_orders WHERE store_id = ? AND customer_id = ? AND campaign_creator_id IS NOT NULL ORDER BY created_at ASC LIMIT 1`),
   storeReport: db.prepare(`SELECT c.id AS campaign_id, c.name AS campaign_name, c.market, c.kind, c.sample_cost, c.creator_commission_pct, cc.id AS cc_id, cr.handle, cr.platform, cr.tier, cr.followers, cr.source, cr.payout_email, cc.status, cc.discount_code,
       cc.fee_paid, cc.usage_rights, cc.usage_rights_fee, cc.ad_spend, cc.post_url, cc.commission_paid,
       (SELECT COUNT(*) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS orders,
@@ -278,7 +285,7 @@ const q = {
   allStores: db.prepare('SELECT * FROM stores ORDER BY id'),
   // --- public programme + portal ---
   setCampaignPublic: db.prepare('UPDATE campaigns SET is_public = ?, public_slug = COALESCE(public_slug, ?), terms = COALESCE(?, terms) WHERE id = ?'),
-  campaignBySlug: db.prepare(`SELECT c.*, p.title AS product_title, p.product_url, p.image_url AS product_image, p.price AS product_price, p.currency AS product_currency,
+  campaignBySlug: db.prepare(`SELECT c.*, p.title AS product_title, p.product_url, p.image_url AS product_image, p.price AS product_price, p.currency AS product_currency, p.is_subscription, p.billing_interval,
       s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand FROM campaigns c LEFT JOIN products p ON p.id = c.product_id JOIN stores s ON s.id = c.store_id LEFT JOIN users u ON u.id = s.user_id WHERE c.public_slug = ? AND c.is_public = 1`),
   creatorByHandle: db.prepare('SELECT * FROM creators WHERE store_id = ? AND platform = ? AND handle = ?'),
   insertAppliedCreator: db.prepare(`INSERT INTO creators (store_id, platform, handle, profile_url, display_name, email, payout_email, source, status, score, score_notes, tier)
@@ -287,7 +294,7 @@ const q = {
   campaignCreatorByPair: db.prepare('SELECT * FROM campaign_creators WHERE campaign_id = ? AND creator_id = ?'),
   setPortalToken: db.prepare("UPDATE campaign_creators SET portal_token = ?, status = CASE WHEN status = 'shortlisted' THEN 'agreed' ELSE status END, joined_at = COALESCE(joined_at, datetime('now')) WHERE id = ?"),
   portalByToken: db.prepare(`SELECT cc.*, cr.handle, cr.platform, cr.display_name, cr.email, cr.payout_email, c.name AS campaign_name, c.kind, c.market, c.customer_discount_pct, c.creator_commission_pct,
-      c.caption_template, c.brief, c.terms, c.product_id, p.title AS product_title, p.product_url, p.price AS product_price, p.currency AS product_currency, s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand, s.id AS store_id,
+      c.caption_template, c.brief, c.terms, c.product_id, p.title AS product_title, p.product_url, p.price AS product_price, p.currency AS product_currency, p.is_subscription, p.billing_interval, s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand, s.id AS store_id,
       (SELECT COUNT(*) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS orders,
       (SELECT COALESCE(SUM(o.total),0) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS revenue
     FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id JOIN campaigns c ON c.id = cc.campaign_id JOIN stores s ON s.id = c.store_id LEFT JOIN users u ON u.id = s.user_id LEFT JOIN products p ON p.id = c.product_id

@@ -1,7 +1,8 @@
 'use strict';
 /**
  * One-shot automation from BOOTSTRAP_PROGRAMME (JSON) on boot. Idempotent: safe to leave set.
- * {"name":"Guide affiliates","product":"Omakase","kind":"affiliate","commission":40,"discount":10,"terms":"...","test_creator":"kf.test"}
+ * {"name":"Membership affiliates","product":"Membership","kind":"affiliate","commission":40,"discount":10,"terms":"...","test_creator":"kf.test","only":true}
+ * "only": close every other open programme on the store so creators are pointed at one offer.
  * Steps: order webhook on → campaign (by name) → brief (if missing) → programme open → optional test creator with a real code.
  * Everything it does is printed to the logs with the links.
  */
@@ -43,6 +44,9 @@ async function bootstrapProgramme(spec, log = console.log) {
   campaign = loop.publishCampaign(campaign.id, { isPublic: true, terms: spec.terms });
   out.joinUrl = `${config.appUrl}/join/${campaign.public_slug}`;
   log(`bootstrap: programme open → ${out.joinUrl}`);
+  if (spec.only) {
+    for (const other of q.campaignsByStore.all(store.id)) if (other.id !== campaign.id && other.is_public) { loop.publishCampaign(other.id, { isPublic: false }); log(`bootstrap: closed programme "${other.name}" (only one open at a time)`); }
+  }
 
   if (spec.test_creator) {
     try {

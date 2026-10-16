@@ -27,7 +27,7 @@ test('owner is created from env, password re-synced on change, unowned stores cl
 
 test('bootstrap builds campaign + brief attempt + open programme + test creator, and is idempotent', async () => {
   const store = q.storeByShop.get('boot.myshopify.com');
-  q.upsertProduct.run({ store_id: store.id, shopify_id: 'gid://shopify/Product/9', title: 'The Japanese Omakase & Izakaya Guide', handle: 'omakase', description: '', price: '189.00', currency: 'USD', image_url: null, product_url: 'https://boot.myshopify.com/products/omakase', tags: '', raw_json: '{}' });
+  q.upsertProduct.run({ store_id: store.id, shopify_id: 'gid://shopify/Product/9', title: 'The Japanese Omakase & Izakaya Guide', handle: 'omakase', description: '', price: '189.00', currency: 'USD', image_url: null, product_url: 'https://boot.myshopify.com/products/omakase', tags: '', raw_json: '{}', is_subscription: 0, billing_interval: null });
   const logs = [];
   const spec = parseSpec('{"name":"Guide affiliates","product":"omakase","kind":"affiliate","commission":40,"discount":10,"test_creator":"kf.test"}');
   const out = await bootstrapProgramme(spec, (m) => logs.push(m));

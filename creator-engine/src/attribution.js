@@ -30,13 +30,15 @@ mutation CreateCode($basicCodeDiscount: DiscountCodeBasicInput!) {
   }
 }`;
 
-async function createDiscountCode(store, { code, title, percentage }) {
+async function createDiscountCode(store, { code, title, percentage, subscription = false, recurringCycleLimit = 1 }) {
   const data = await shopify.graphql(store.shop, store.access_token, CREATE_CODE, {
     basicCodeDiscount: {
       title, code, startsAt: new Date().toISOString(),
       customerSelection: { all: true },
-      customerGets: { value: { percentage: percentage / 100 }, items: { all: true } },
+      customerGets: { value: { percentage: percentage / 100 }, items: { all: true },
+        appliesOnOneTimePurchase: true, appliesOnSubscription: !!subscription },
       appliesOncePerCustomer: true,
+      ...(subscription ? { recurringCycleLimit } : {}),
     },
   });
   const errs = data.discountCodeBasicCreate.userErrors;
@@ -54,7 +56,7 @@ async function issueTracking(ccId) {
   const code = codeFor(cc.handle, campaign.name);
   const link = utmLink(campaign.product_url || `https://${store.shop}`, campaign.name, cc.handle);
   try {
-    const gid = await createDiscountCode(store, { code, title: `Creator ${cc.handle} · ${campaign.name}`, percentage: campaign.customer_discount_pct || 10 });
+    const gid = await createDiscountCode(store, { code, title: `Creator ${cc.handle} · ${campaign.name}`, percentage: campaign.customer_discount_pct || 10, subscription: !!campaign.is_subscription, recurringCycleLimit: 1 });
     q.setCampaignCreatorCode.run(code, gid, link, ccId);
   } catch (e) {
     q.setCampaignCreatorCode.run(null, null, link, ccId);
@@ -68,7 +70,7 @@ query Orders($first: Int!, $after: String, $query: String) {
   orders(first: $first, after: $after, query: $query, sortKey: CREATED_AT, reverse: true) {
     pageInfo { hasNextPage endCursor }
     nodes {
-      id name createdAt discountCodes
+      id name createdAt discountCodes customer { id }
       currentTotalPriceSet { shopMoney { amount currencyCode } }
       customerJourneySummary { lastVisit { utmParameters { source medium campaign content } } firstVisit { utmParameters { source medium campaign content } } }
     }
@@ -78,7 +80,7 @@ const ORDERS_CODES_ONLY = `
 query Orders($first: Int!, $after: String, $query: String) {
   orders(first: $first, after: $after, query: $query, sortKey: CREATED_AT, reverse: true) {
     pageInfo { hasNextPage endCursor }
-    nodes { id name createdAt discountCodes currentTotalPriceSet { shopMoney { amount currencyCode } } }
+    nodes { id name createdAt discountCodes customer { id } currentTotalPriceSet { shopMoney { amount currencyCode } } }
   }
 }`;
 
@@ -148,6 +150,7 @@ function orderFromWebhook(payload) {
     name: payload.name,
     createdAt: payload.created_at,
     discountCodes: (payload.discount_codes || []).map((d) => d.code).filter(Boolean),
+    customer: payload.customer?.id ? { id: payload.customer.admin_graphql_api_id || `gid://shopify/Customer/${payload.customer.id}` } : null,
     currentTotalPriceSet: { shopMoney: { amount: payload.current_total_price ?? payload.total_price ?? 0, currencyCode: payload.currency } },
     customerJourneySummary: hasUtm ? { lastVisit: { utmParameters: utm } } : null,
   };
@@ -156,13 +159,16 @@ function orderFromWebhook(payload) {
 /** Attribute one order (from webhook or sync) for a store. Returns the match or null. */
 function recordOrder(storeId, order, source) {
   const trackers = q.allCampaignCreatorsForStore.all(storeId);
-  const m = matchOrder(order, trackers);
+  let m = matchOrder(order, trackers);
+  const customerId = order.customer?.id || null;
+  // Lifetime attribution: a renewal or repeat order with no code/UTM belongs to whoever brought the customer in.
+  if (!m && customerId) { const prev = q.creatorForCustomer.get(storeId, customerId); if (prev) m = { id: prev.campaign_creator_id, method: 'customer' }; }
   const u = order.customerJourneySummary?.lastVisit?.utmParameters || {};
   q.upsertAttributedOrder.run({
     store_id: storeId, shopify_order_id: order.id, order_name: order.name, created_at: order.createdAt,
     total: Number(order.currentTotalPriceSet?.shopMoney?.amount || 0), currency: order.currentTotalPriceSet?.shopMoney?.currencyCode || null,
     discount_codes: (order.discountCodes || []).join(','), utm_source: u.source || null, utm_campaign: u.campaign || null, utm_content: u.content || null,
-    campaign_creator_id: m ? m.id : null, match_method: m ? m.method : null,
+    campaign_creator_id: m ? m.id : null, match_method: m ? m.method : null, customer_id: customerId,
   });
   return m;
 }
