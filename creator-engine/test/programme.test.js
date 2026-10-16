@@ -174,3 +174,32 @@ test('discount codes for subscription products are created with appliesOnSubscri
   assert.equal(calls[1].basicCodeDiscount.customerGets.appliesOnSubscription, false);
   assert.equal(calls[1].basicCodeDiscount.recurringCycleLimit, undefined);
 });
+
+test('commission steps down after N months from the customer\'s first attributed order', () => {
+  const campaign = { kind: 'affiliate', creator_commission_pct: 40, commission_months: 12, creator_commission_after_pct: 20 };
+  const first = '2026-01-01T00:00:00Z';
+  assert.equal(attribution.commissionForOrder({ total: 9.99, created_at: '2026-01-01T00:00:00Z' }, campaign, first).toFixed(3), '3.996');
+  assert.equal(attribution.commissionForOrder({ total: 9.99, created_at: '2026-11-15T00:00:00Z' }, campaign, first).toFixed(3), '3.996');
+  assert.equal(attribution.commissionForOrder({ total: 9.99, created_at: '2027-01-02T00:00:00Z' }, campaign, first).toFixed(3), '1.998');
+  assert.equal(attribution.commissionForOrder({ total: 9.99, created_at: '2027-01-02T00:00:00Z' }, campaign, null).toFixed(3), '3.996', 'no customer: headline rate');
+  assert.equal(attribution.commissionForOrder({ total: 9.99, created_at: '2027-01-02T00:00:00Z' }, { ...campaign, commission_months: null }, first).toFixed(3), '3.996', 'flat rate');
+  assert.equal(attribution.commissionForOrder({ total: 9.99, created_at: '2027-01-02T00:00:00Z' }, { ...campaign, kind: 'gifted' }, first), 0);
+});
+
+test('report applies the step-down per customer across real attributed orders', async () => {
+  q.setCampaignCommission.run(40, 12, 20, campaignId);
+  const cc = q.campaignCreators.all(campaignId)[0];
+  // customer 777: first order 2026-10-16 → a renewal 13 months later should earn 20%
+  const late = JSON.stringify({ id: 2010, name: '#2010', created_at: '2027-11-20T03:00:00Z', current_total_price: '9.99', currency: 'USD', discount_codes: [], landing_site: null, customer: { id: 777 } });
+  const r = await fetch(`${base}/webhooks/shopify/orders`, { method: 'POST', headers: { 'content-type': 'application/json', 'X-Shopify-Hmac-Sha256': signed(late), 'X-Shopify-Shop-Domain': 'chilli.myshopify.com' }, body: late });
+  assert.equal(r.status, 200);
+  const campaign = q.campaignById.get(campaignId);
+  const c = attribution.commissionForCc(cc.id, campaign);
+  // orders: 189 (no customer, 40%) + 170.10 (no customer, 40%) + 8.99 (777, m0, 40%) + 9.99 (777, m1, 40%) + 9.99 (777, m13, 20%)
+  const expected = 0.4 * (189 + 170.10 + 8.99 + 9.99) + 0.2 * 9.99;
+  assert.equal(c.toFixed(2), expected.toFixed(2));
+  const rep = loop.report(storeId);
+  assert.equal(rep.commission.toFixed(2), expected.toFixed(2));
+  const page = await (await fetch(`${base}/join/${slug}`)).text();
+  assert.match(page, /first 12 months, then <b>20%<\/b>/);
+});

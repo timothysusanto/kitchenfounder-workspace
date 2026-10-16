@@ -24,14 +24,16 @@ ${error ? `<div class="flash err">${esc(error)}</div>` : ''}
 function joinPage({ campaign, error, values = {} }) {
   const brand = campaign.store_brand || campaign.shop.replace('.myshopify.com', '');
   const sub = campaign.is_subscription ? ` every ${campaign.billing_interval || 'month'} for as long as they stay a member` : '';
+  const step = campaign.commission_months && campaign.creator_commission_after_pct !== null && campaign.creator_commission_after_pct !== undefined
+    ? ` for each member's first ${campaign.commission_months} months, then <b>${campaign.creator_commission_after_pct}%</b>` : '';
   const pay = campaign.kind === 'affiliate'
-    ? `<b>${campaign.creator_commission_pct}% commission</b> on every order that uses your code or link${sub}`
+    ? `<b>${campaign.creator_commission_pct}% commission</b> on every order that uses your code or link${sub}${step}`
     : campaign.kind === 'paid' ? `<b>${money(campaign.fee_per_post)}</b> per post, plus your own discount code` : '<b>Free product</b> plus your own discount code';
   const price = campaign.product_price ? ` · ${money(campaign.product_price, campaign.product_currency)}${campaign.is_subscription ? `/${campaign.billing_interval || 'month'}` : ''}` : '';
   const per = campaign.product_price ? Number(campaign.product_price) * campaign.creator_commission_pct / 100 : 0;
   const perSale = campaign.kind === 'affiliate' && campaign.product_price
     ? (campaign.is_subscription
-      ? ` That is <b>${money(per, campaign.product_currency)} per member, every ${campaign.billing_interval || 'month'}</b>: 100 members who stay a year is about ${money(per * 100 * 12, campaign.product_currency)} to you.`
+      ? ` That is <b>${money(per, campaign.product_currency)} per member, every ${campaign.billing_interval || 'month'}</b>: 100 members who stay a year is about ${money(per * 100 * Math.min(12, campaign.commission_months || 12), campaign.product_currency)} to you.`
       : ` That is about <b>${money(per, campaign.product_currency)} per sale</b>.`) : '';
   return `<div style="max-width:640px;margin:20px auto">
 <h1>${esc(brand)} creator programme</h1>
@@ -55,9 +57,9 @@ ${error ? `<div class="flash err">${esc(error)}</div>` : ''}
 }
 
 /** The creator's own page: code, link, sales, commission. Reached by secret token. */
-function portalPage({ cc, orders }) {
+function portalPage({ cc, orders, commission: commissionIn }) {
   const brand = cc.store_brand || cc.shop.replace('.myshopify.com', '');
-  const commission = cc.kind === 'affiliate' ? Number(cc.revenue) * Number(cc.creator_commission_pct) / 100 : 0;
+  const commission = commissionIn !== undefined ? commissionIn : (cc.kind === 'affiliate' ? Number(cc.revenue) * Number(cc.creator_commission_pct) / 100 : 0);
   const owed = Math.max(0, commission - Number(cc.commission_paid || 0));
   const rows = orders.map((o) => `<tr><td>${esc(o.order_name || '')}</td><td>${esc(String(o.created_at || '').slice(0, 10))}</td><td class="num">${money(o.total, o.currency)}</td><td class="muted">${o.match_method === 'customer' ? 'renewal / repeat' : esc(o.match_method || '')}</td></tr>`).join('');
   return `<div style="max-width:640px;margin:20px auto">
@@ -68,7 +70,7 @@ function portalPage({ cc, orders }) {
  ${cc.utm_link ? `<p><b>Your tracked link</b><br><input type="text" readonly value="${esc(cc.utm_link)}" onclick="this.select()" style="width:100%"></p><p class="muted">Put this in your bio or link sticker. Orders from it are matched to you even without the code.</p>` : ''}
 </div>
 <div class="card"><h2 style="margin-top:0">Your sales</h2>
- <p><b>${cc.orders}</b> orders · <b>${money(cc.revenue, cc.product_currency)}</b> revenue${cc.kind === 'affiliate' ? ` · <b>${money(commission, cc.product_currency)}</b> earned at ${cc.creator_commission_pct}% · paid ${money(cc.commission_paid, cc.product_currency)} · <b>owed ${money(owed, cc.product_currency)}</b>` : ''}</p>
+ <p><b>${cc.orders}</b> orders · <b>${money(cc.revenue, cc.product_currency)}</b> revenue${cc.kind === 'affiliate' ? ` · <b>${money(commission, cc.product_currency)}</b> earned at ${cc.creator_commission_pct}%${cc.commission_months ? ` (${cc.creator_commission_after_pct}% after ${cc.commission_months} months)` : ''} · paid ${money(cc.commission_paid, cc.product_currency)} · <b>owed ${money(owed, cc.product_currency)}</b>` : ''}</p>
  <table><thead><tr><th>Order</th><th>Date</th><th>Total</th><th>Matched by</th></tr></thead><tbody>${rows || '<tr><td colspan="4" class="muted">No orders yet. Orders appear here within a minute of checkout.</td></tr>'}</tbody></table>
  <p class="muted" style="margin-top:8px">Payouts go to ${esc(cc.payout_email || cc.email || 'the email you gave')}.</p></div>
 ${cc.brief ? `<div class="card"><h2 style="margin-top:0">Brief</h2><pre style="color:var(--ink);font-size:13px">${esc(cc.brief)}</pre>${cc.caption_template ? `<p class="muted">Caption to adapt: ${esc(cc.caption_template)}</p>` : ''}</div>` : ''}

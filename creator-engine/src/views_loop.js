@@ -46,7 +46,8 @@ function campaignsPage({ store, campaigns, products, appUrl = '' }) {
  <label> Market <select name="market"><option value="AU" ${store.market === 'AU' ? 'selected' : ''}>AU</option><option value="US" ${store.market === 'US' ? 'selected' : ''}>US</option></select></label>
  <label> Type <select name="kind"><option value="gifted">Gifted product</option><option value="paid">Paid per post</option><option value="affiliate">Affiliate commission</option></select></label><br>
  <label>Customer discount % <input type="number" name="customer_discount_pct" value="10" style="width:70px"></label>
- <label> Creator commission % <input type="number" name="creator_commission_pct" value="30" style="width:70px"></label>
+ <label> Creator commission % <input type="number" name="creator_commission_pct" value="40" style="width:70px"></label>
+ <label> for <input type="number" name="commission_months" placeholder="12" style="width:60px"> months, then <input type="number" name="creator_commission_after_pct" placeholder="20" style="width:60px">% <span class="muted">(leave blank for a flat rate)</span></label>
  <label> Fee per post $ <input type="number" name="fee_per_post" value="0" style="width:90px"></label>
  <label> Landed sample cost $ <input type="number" name="sample_cost" value="30" style="width:90px"></label>
  <button class="btn">Create campaign</button></form></div>
@@ -54,7 +55,8 @@ function campaignsPage({ store, campaigns, products, appUrl = '' }) {
 }
 
 function campaignPage({ campaign, creators, disclosure, appUrl = '' }) {
-  const commissionOf = (cc) => (campaign.kind === 'affiliate' ? Number(cc.revenue) * Number(campaign.creator_commission_pct) / 100 : 0);
+  const { creatorEconomics } = require('./attribution');
+  const commissionOf = (cc) => creatorEconomics({ ...cc, kind: campaign.kind, creator_commission_pct: campaign.creator_commission_pct, commission_months: campaign.commission_months, creator_commission_after_pct: campaign.creator_commission_after_pct, store_id: campaign.store_id, cc_id: cc.id }).commission;
   const joinUrl = `${appUrl}/join/${campaign.public_slug || ''}`;
   const rows = creators.map((cc) => `<tr><form method="post" action="/campaign-creators/${cc.id}">
     <td><a href="${esc(cc.profile_url)}" target="_blank" rel="noopener">@${esc(cc.handle)}</a><div class="muted">${cc.source === 'applied' ? '<span class="pill pass">applied</span> ' : ''}${esc(cc.platform)} · ${esc(cc.tier)}${cc.followers ? ` · ${Number(cc.followers).toLocaleString()} · ER ${pct(cc.engagement_pct)}` : ''}${cc.portal_token ? ` · <a href="/c/${esc(cc.portal_token)}" target="_blank" rel="noopener">their page</a>` : ''}</div></td>
@@ -67,7 +69,7 @@ function campaignPage({ campaign, creators, disclosure, appUrl = '' }) {
     <td class="num">${campaign.kind === 'affiliate' ? `<b>${money(commissionOf(cc))}</b><div class="muted">paid <input type="number" name="commission_paid" value="${cc.commission_paid || 0}" style="width:70px"></div><div class="muted">owed ${money(Math.max(0, commissionOf(cc) - Number(cc.commission_paid || 0)))}</div>${cc.payout_email ? `<div class="muted">${esc(cc.payout_email)}</div>` : ''}` : '<span class="muted">—</span>'}</td>
     <td><input type="text" name="notes" value="${esc(cc.notes || '')}" style="min-width:120px"><button class="btn secondary" style="margin-top:4px">Save</button></td>
   </form></tr>`).join('');
-  return `<h1>${esc(campaign.name)}</h1><p class="muted"><a href="/stores/${campaign.store_id}/campaigns">← campaigns</a> · ${esc(campaign.market)} · ${esc(campaign.kind)} · ${esc(campaign.product_title || 'no product')} · customer code ${campaign.customer_discount_pct}% off${campaign.kind === 'affiliate' ? ` · creator commission ${campaign.creator_commission_pct}%` : ''}</p>
+  return `<h1>${esc(campaign.name)}</h1><p class="muted"><a href="/stores/${campaign.store_id}/campaigns">← campaigns</a> · ${esc(campaign.market)} · ${esc(campaign.kind)} · ${esc(campaign.product_title || 'no product')} · customer code ${campaign.customer_discount_pct}% off${campaign.kind === 'affiliate' ? ` · creator commission ${campaign.creator_commission_pct}%${campaign.commission_months ? ` for ${campaign.commission_months} months, then ${campaign.creator_commission_after_pct}%` : ''}` : ''}</p>
 <div class="card"><b>Brief</b> <span class="pill ${esc(campaign.compliance_status)}">${esc(campaign.compliance_status)}</span>
  <form class="inline" method="post" action="/campaigns/${campaign.id}/brief"><button class="btn secondary">${campaign.brief ? 'Regenerate brief' : 'Generate brief'}</button></form>
  ${campaign.compliance_notes ? `<pre>${esc(campaign.compliance_notes)}</pre>` : ''}

@@ -62,7 +62,7 @@ Deploy from GitHub; `nixpacks.toml` adds FFmpeg. Add a volume at `/data` and set
 ## Commands
 
 ```bash
-npm test                    # 52 tests: scoring, brief rules, code/UTM generation, order matching, economics, Shopify HMAC, routes
+npm test                    # 56 tests: scoring, brief rules, code/UTM generation, order matching, economics, Shopify HMAC, routes
 npm run dev                 # auto-restart
 node src/cli.js poll        # HeyGen render polling (hook tests only)
 ```

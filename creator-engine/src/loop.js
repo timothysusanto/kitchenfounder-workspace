@@ -31,6 +31,8 @@ function createCampaign(storeId, body) {
     creator_commission_pct: Number(body.creator_commission_pct || 10),
     fee_per_post: Number(body.fee_per_post || 0),
     sample_cost: Number(body.sample_cost || 0),
+    commission_months: body.commission_months ? Number(body.commission_months) : null,
+    creator_commission_after_pct: body.creator_commission_after_pct !== undefined && body.creator_commission_after_pct !== '' ? Number(body.creator_commission_after_pct) : null,
   });
   return q.campaignById.get(info.lastInsertRowid);
 }

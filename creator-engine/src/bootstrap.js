@@ -32,9 +32,13 @@ async function bootstrapProgramme(spec, log = console.log) {
     campaign = loop.createCampaign(store.id, {
       name: spec.name, product_id: product.id, kind: spec.kind || 'affiliate', market: spec.market || store.market,
       customer_discount_pct: spec.discount ?? 10, creator_commission_pct: spec.commission ?? 40, fee_per_post: 0, sample_cost: 0,
+      commission_months: spec.commission_months, creator_commission_after_pct: spec.commission_after,
     });
     log(`bootstrap: campaign "${campaign.name}" created for "${product.title}" (${campaign.kind}, ${campaign.creator_commission_pct}% commission, ${campaign.customer_discount_pct}% off)`);
-  } else log(`bootstrap: campaign "${campaign.name}" already exists`);
+  } else {
+    if (spec.commission !== undefined) q.setCampaignCommission.run(spec.commission, spec.commission_months ?? null, spec.commission_after ?? null, campaign.id);
+    log(`bootstrap: campaign "${campaign.name}" already exists (commission ${spec.commission ?? campaign.creator_commission_pct}%${spec.commission_months ? ` for ${spec.commission_months} months, then ${spec.commission_after}%` : ''})`);
+  }
   campaign = q.campaignById.get(campaign.id);
   out.campaignUrl = `${config.appUrl}/campaigns/${campaign.id}`;
 

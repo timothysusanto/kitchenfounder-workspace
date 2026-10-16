@@ -179,6 +179,8 @@ for (const sql of [
   'ALTER TABLE campaigns ADD COLUMN public_slug TEXT',
   'ALTER TABLE campaigns ADD COLUMN is_public INTEGER NOT NULL DEFAULT 0',
   'ALTER TABLE campaigns ADD COLUMN terms TEXT',
+  'ALTER TABLE campaigns ADD COLUMN commission_months INTEGER',
+  'ALTER TABLE campaigns ADD COLUMN creator_commission_after_pct REAL',
   'ALTER TABLE campaign_creators ADD COLUMN portal_token TEXT',
   'ALTER TABLE campaign_creators ADD COLUMN commission_paid REAL DEFAULT 0',
   'ALTER TABLE campaign_creators ADD COLUMN joined_at TEXT',
@@ -235,18 +237,21 @@ const q = {
   creatorsByStore: db.prepare('SELECT * FROM creators WHERE store_id = ? ORDER BY score DESC, engagement_pct DESC'),
   creatorById: db.prepare('SELECT * FROM creators WHERE id = ?'),
   setCreatorStatus: db.prepare('UPDATE creators SET status = ?, contact = COALESCE(?, contact) WHERE id = ?'),
-  insertCampaign: db.prepare(`INSERT INTO campaigns (store_id, product_id, name, market, kind, customer_discount_pct, creator_commission_pct, fee_per_post, sample_cost)
-    VALUES (@store_id, @product_id, @name, @market, @kind, @customer_discount_pct, @creator_commission_pct, @fee_per_post, @sample_cost)`),
+  insertCampaign: db.prepare(`INSERT INTO campaigns (store_id, product_id, name, market, kind, customer_discount_pct, creator_commission_pct, fee_per_post, sample_cost, commission_months, creator_commission_after_pct)
+    VALUES (@store_id, @product_id, @name, @market, @kind, @customer_discount_pct, @creator_commission_pct, @fee_per_post, @sample_cost, @commission_months, @creator_commission_after_pct)`),
+  setCampaignCommission: db.prepare('UPDATE campaigns SET creator_commission_pct = ?, commission_months = ?, creator_commission_after_pct = ? WHERE id = ?'),
+  ordersByCc: db.prepare('SELECT shopify_order_id, created_at, total, customer_id FROM attributed_orders WHERE campaign_creator_id = ? ORDER BY created_at ASC'),
+  firstOrderDateByCustomer: db.prepare('SELECT MIN(created_at) AS first FROM attributed_orders WHERE store_id = ? AND customer_id = ? AND campaign_creator_id IS NOT NULL'),
   campaignsByStore: db.prepare(`SELECT c.*, p.title AS product_title, (SELECT COUNT(*) FROM campaign_creators cc WHERE cc.campaign_id = c.id) AS creator_count
     FROM campaigns c LEFT JOIN products p ON p.id = c.product_id WHERE c.store_id = ? ORDER BY c.id DESC`),
   campaignById: db.prepare('SELECT c.*, p.title AS product_title, p.product_url, p.handle AS product_handle, p.is_subscription, p.billing_interval, p.price AS product_price FROM campaigns c LEFT JOIN products p ON p.id = c.product_id WHERE c.id = ?'),
   setCampaignBrief: db.prepare('UPDATE campaigns SET brief = ?, caption_template = ?, compliance_status = ?, compliance_notes = ? WHERE id = ?'),
   setCampaignStatus: db.prepare('UPDATE campaigns SET status = ? WHERE id = ?'),
   addCampaignCreator: db.prepare('INSERT OR IGNORE INTO campaign_creators (campaign_id, creator_id) VALUES (?, ?)'),
-  campaignCreators: db.prepare(`SELECT cc.*, cr.handle, cr.platform, cr.profile_url, cr.followers, cr.engagement_pct, cr.median_plays, cr.tier, cr.score, cr.source, cr.email, cr.payout_email,
+  campaignCreators: db.prepare(`SELECT cc.*, c.kind, c.creator_commission_pct, c.commission_months, c.creator_commission_after_pct, c.store_id, cr.handle, cr.platform, cr.profile_url, cr.followers, cr.engagement_pct, cr.median_plays, cr.tier, cr.score, cr.source, cr.email, cr.payout_email,
       (SELECT COUNT(*) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS orders,
       (SELECT COALESCE(SUM(o.total),0) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS revenue
-    FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id WHERE cc.campaign_id = ? ORDER BY revenue DESC, cr.score DESC`),
+    FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id JOIN campaigns c ON c.id = cc.campaign_id WHERE cc.campaign_id = ? ORDER BY revenue DESC, cr.score DESC`),
   campaignCreatorById: db.prepare('SELECT cc.*, cr.handle, cr.platform FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id WHERE cc.id = ?'),
   allCampaignCreatorsForStore: db.prepare(`SELECT cc.id, cc.discount_code, cc.utm_link, cr.handle, c.name AS campaign_name FROM campaign_creators cc
     JOIN campaigns c ON c.id = cc.campaign_id JOIN creators cr ON cr.id = cc.creator_id WHERE c.store_id = ?`),
@@ -260,7 +265,7 @@ const q = {
       utm_content=excluded.utm_content, customer_id=COALESCE(excluded.customer_id, customer_id),
       campaign_creator_id=COALESCE(excluded.campaign_creator_id, campaign_creator_id), match_method=COALESCE(excluded.match_method, match_method)`),
   creatorForCustomer: db.prepare(`SELECT campaign_creator_id FROM attributed_orders WHERE store_id = ? AND customer_id = ? AND campaign_creator_id IS NOT NULL ORDER BY created_at ASC LIMIT 1`),
-  storeReport: db.prepare(`SELECT c.id AS campaign_id, c.name AS campaign_name, c.market, c.kind, c.sample_cost, c.creator_commission_pct, cc.id AS cc_id, cr.handle, cr.platform, cr.tier, cr.followers, cr.source, cr.payout_email, cc.status, cc.discount_code,
+  storeReport: db.prepare(`SELECT c.id AS campaign_id, c.name AS campaign_name, c.market, c.kind, c.sample_cost, c.creator_commission_pct, c.commission_months, c.creator_commission_after_pct, c.store_id, cc.id AS cc_id, cr.handle, cr.platform, cr.tier, cr.followers, cr.source, cr.payout_email, cc.status, cc.discount_code,
       cc.fee_paid, cc.usage_rights, cc.usage_rights_fee, cc.ad_spend, cc.post_url, cc.commission_paid,
       (SELECT COUNT(*) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS orders,
       (SELECT COALESCE(SUM(o.total),0) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS revenue
@@ -294,7 +299,7 @@ const q = {
   campaignCreatorByPair: db.prepare('SELECT * FROM campaign_creators WHERE campaign_id = ? AND creator_id = ?'),
   setPortalToken: db.prepare("UPDATE campaign_creators SET portal_token = ?, status = CASE WHEN status = 'shortlisted' THEN 'agreed' ELSE status END, joined_at = COALESCE(joined_at, datetime('now')) WHERE id = ?"),
   portalByToken: db.prepare(`SELECT cc.*, cr.handle, cr.platform, cr.display_name, cr.email, cr.payout_email, c.name AS campaign_name, c.kind, c.market, c.customer_discount_pct, c.creator_commission_pct,
-      c.caption_template, c.brief, c.terms, c.product_id, p.title AS product_title, p.product_url, p.price AS product_price, p.currency AS product_currency, p.is_subscription, p.billing_interval, s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand, s.id AS store_id,
+      c.caption_template, c.brief, c.terms, c.product_id, c.commission_months, c.creator_commission_after_pct, p.title AS product_title, p.product_url, p.price AS product_price, p.currency AS product_currency, p.is_subscription, p.billing_interval, s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand, s.id AS store_id,
       (SELECT COUNT(*) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS orders,
       (SELECT COALESCE(SUM(o.total),0) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS revenue
     FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id JOIN campaigns c ON c.id = cc.campaign_id JOIN stores s ON s.id = c.store_id LEFT JOIN users u ON u.id = s.user_id LEFT JOIN products p ON p.id = c.product_id

@@ -193,17 +193,51 @@ async function ensureOrderWebhook(store) {
   return id;
 }
 
-/** Pure: per-creator economics. CAC = all money spent on that creator / orders. */
+/**
+ * Pure: commission for one order. Rate steps down after `commission_months` from the customer's first attributed order
+ * (e.g. 40% for 12 months, then 20%). Without customer data or a step-down, the headline rate applies.
+ */
+function commissionForOrder(order, campaign, customerFirst) {
+  if (campaign.kind !== 'affiliate') return 0;
+  let pct = Number(campaign.creator_commission_pct || 0);
+  if (campaign.commission_months && campaign.creator_commission_after_pct !== null && campaign.creator_commission_after_pct !== undefined && customerFirst && order.created_at) {
+    const months = (Date.parse(order.created_at) - Date.parse(customerFirst)) / (30.4375 * 86400000);
+    if (months >= Number(campaign.commission_months)) pct = Number(campaign.creator_commission_after_pct);
+  }
+  return Number(order.total || 0) * pct / 100;
+}
+
+/** Commission across a creator's attributed orders (looks up each customer's first attributed order for the step-down). */
+function commissionForCc(ccId, campaign) {
+  if (campaign.kind !== 'affiliate') return 0;
+  const orders = q.ordersByCc.all(ccId);
+  const firsts = new Map();
+  let total = 0;
+  for (const o of orders) {
+    let first = null;
+    if (o.customer_id) {
+      if (!firsts.has(o.customer_id)) firsts.set(o.customer_id, q.firstOrderDateByCustomer.get(campaign.store_id, o.customer_id)?.first || null);
+      first = firsts.get(o.customer_id);
+    }
+    total += commissionForOrder(o, campaign, first);
+  }
+  return total;
+}
+
+/** Pure-ish: per-creator economics. CAC = all money spent on that creator / orders. */
 const SAMPLE_SENT = new Set(['shipped', 'posted', 'amplified']);
 function creatorEconomics(row) {
   const sample = row.status === undefined || SAMPLE_SENT.has(row.status) ? Number(row.sample_cost || 0) : 0;
   const spend = Number(row.fee_paid || 0) + Number(row.usage_rights_fee || 0) + Number(row.ad_spend || 0) + sample;
   const orders = Number(row.orders || 0), revenue = Number(row.revenue || 0);
-  const commission = row.kind === 'affiliate' ? revenue * Number(row.creator_commission_pct || 0) / 100 : 0;
+  const ccId = row.cc_id ?? row.id;
+  const commission = row.kind === 'affiliate'
+    ? (row.commission_months && ccId ? commissionForCc(ccId, row) : revenue * Number(row.creator_commission_pct || 0) / 100)
+    : 0;
   const commissionPaid = Number(row.commission_paid || 0);
   const allIn = spend + commission;
   return { spend, commission, commissionPaid, commissionOwed: Math.max(0, commission - commissionPaid), orders, revenue,
     cac: orders ? allIn / orders : null, roas: allIn ? revenue / allIn : null };
 }
 
-module.exports = { codeFor, utmLink, createDiscountCode, issueTracking, fetchRecentOrders, matchOrder, syncOrders, creatorEconomics, verifyWebhookHmac, orderFromWebhook, recordOrder, ensureOrderWebhook };
+module.exports = { codeFor, utmLink, createDiscountCode, issueTracking, fetchRecentOrders, matchOrder, syncOrders, creatorEconomics, commissionForOrder, commissionForCc, verifyWebhookHmac, orderFromWebhook, recordOrder, ensureOrderWebhook };

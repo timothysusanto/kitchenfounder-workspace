@@ -369,7 +369,7 @@ app.post('/join/:slug', wrap(async (req, res) => {
 app.get('/c/:token', (req, res) => {
   const cc = q.portalByToken.get(String(req.params.token));
   if (!cc) return res.status(404).send(publicLayout('Creator page', '<div class="card" style="max-width:520px;margin:40px auto">That link is not valid.</div>'));
-  res.send(publicLayout('Your creator page', vp.portalPage({ cc, orders: q.portalOrders.all(cc.id) })));
+  res.send(publicLayout('Your creator page', vp.portalPage({ cc, orders: q.portalOrders.all(cc.id), commission: attribution.creatorEconomics({ ...cc, cc_id: cc.id }).commission })));
 });
 
 // ---- Errors ----
