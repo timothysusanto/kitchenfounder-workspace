@@ -95,6 +95,9 @@ function scoreCreator(c, market = config.defaultMarket) {
   if (market === 'US' && c.platform === 'tiktok' && c.shop_tagged_posts > 0) { s += 10; notes.push('already sells via TikTok Shop'); }
   // penalties
   if (plays >= 100000 && er < 1.5) { s -= 15; notes.push('high reach, low engagement: likely a finds/aggregator account'); }
+  if (f >= 1000000) { s -= 30; notes.push('1M+ followers: media or celebrity account, not reachable by seeding or commission'); }
+  else if (f >= 500000) { s -= 10; notes.push('500K+ followers: agency-managed, expect a rate card'); }
+  if (/(news|official|magazine|network|radio|channel)\b|\btv\b/i.test(`${c.handle || ''} ${c.bio || ''}`)) { s -= 20; notes.push('looks like a media/brand account'); }
   if (c.posts_in_sample === 1) notes.push('one post in sample: verify profile before contacting');
   s = Math.max(0, Math.min(100, s));
   return { score: s, notes };
@@ -112,8 +115,14 @@ async function discoverInstagram(hashtags, perTag = 40) {
 
 /** Hashtag starting points by market and niche, from the Oct 2026 research. */
 const SEED_HASHTAGS = {
-  AU: { food: ['sydneyfoodie', 'melbournefoodie', 'brisbanefoodie', 'homecookau', 'aussiefood'], cookware: ['kitchenaustralia', 'homecookau', 'mealprepaustralia'], coffee: ['sydneycoffee', 'melbournecoffee', 'coffeeaustralia'] },
-  US: { food: ['foodtok', 'homecook', 'easyrecipes', 'tiktokshopfinds'], cookware: ['kitchenfinds', 'kitchentok', 'tiktokmademebuyit', 'kitchenmusthaves'], coffee: ['coffeetok', 'homebarista', 'coffeefinds'] },
+  AU: {
+    'hospitality business (restaurant guides, courses, software)': ['restaurantowner', 'cafeowner', 'openingarestaurant', 'hospitalitylife', 'cheflifeaustralia', 'smallbusinessaustralia', 'foodtruckaustralia'],
+    food: ['sydneyfoodie', 'melbournefoodie', 'brisbanefoodie', 'homecookau', 'aussiefood'], cookware: ['kitchenaustralia', 'homecookau', 'mealprepaustralia'], coffee: ['sydneycoffee', 'melbournecoffee', 'coffeeaustralia'],
+  },
+  US: {
+    'hospitality business (restaurant guides, courses, software)': ['restaurantowner', 'openingarestaurant', 'cafeowner', 'chefstiktok', 'foodtruckbusiness', 'restaurantlife', 'smallbusinessowner', 'ghostkitchen'],
+    food: ['foodtok', 'homecook', 'easyrecipes', 'tiktokshopfinds'], cookware: ['kitchenfinds', 'kitchentok', 'tiktokmademebuyit', 'kitchenmusthaves'], coffee: ['coffeetok', 'homebarista', 'coffeefinds'],
+  },
 };
 
 module.exports = { runActorSync, collapseTikTok, collapseInstagram, scoreCreator, tierFor, discoverTikTok, discoverInstagram, SEED_HASHTAGS };

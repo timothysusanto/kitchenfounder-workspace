@@ -5,6 +5,7 @@
  */
 const { q } = require('./db');
 const shopify = require('./shopify');
+const config = require('./config');
 
 function codeFor(handle, campaignName) {
   const h = String(handle).replace(/[^a-z0-9]/gi, '').toUpperCase().slice(0, 12) || 'CREATOR';
@@ -43,7 +44,7 @@ async function createDiscountCode(store, { code, title, percentage }) {
   return data.discountCodeBasicCreate.codeDiscountNode.id;
 }
 
-/** Issue code + link for one campaign creator. Idempotent. */
+/** Issue code + link for one campaign creator. Idempotent. The link is always written; the code needs Shopify. */
 async function issueTracking(ccId) {
   const cc = q.campaignCreatorById.get(ccId);
   if (!cc) throw new Error('campaign creator not found');
@@ -51,9 +52,14 @@ async function issueTracking(ccId) {
   const campaign = q.campaignById.get(cc.campaign_id);
   const store = q.storeById.get(campaign.store_id);
   const code = codeFor(cc.handle, campaign.name);
-  const gid = await createDiscountCode(store, { code, title: `Creator ${cc.handle} · ${campaign.name}`, percentage: campaign.customer_discount_pct || 10 });
   const link = utmLink(campaign.product_url || `https://${store.shop}`, campaign.name, cc.handle);
-  q.setCampaignCreatorCode.run(code, gid, link, ccId);
+  try {
+    const gid = await createDiscountCode(store, { code, title: `Creator ${cc.handle} · ${campaign.name}`, percentage: campaign.customer_discount_pct || 10 });
+    q.setCampaignCreatorCode.run(code, gid, link, ccId);
+  } catch (e) {
+    q.setCampaignCreatorCode.run(null, null, link, ccId);
+    throw e;
+  }
   return q.campaignCreatorById.get(ccId);
 }
 
@@ -111,21 +117,74 @@ function matchOrder(order, trackers) {
 async function syncOrders(storeId, days = 60) {
   const store = q.storeById.get(storeId);
   if (!store) throw new Error('store not found');
-  const trackers = q.allCampaignCreatorsForStore.all(storeId);
   const { orders, utmSupported } = await fetchRecentOrders(store, days);
   let attributed = 0;
-  for (const o of orders) {
-    const m = matchOrder(o, trackers);
-    const u = o.customerJourneySummary?.lastVisit?.utmParameters || {};
-    q.upsertAttributedOrder.run({
-      store_id: storeId, shopify_order_id: o.id, order_name: o.name, created_at: o.createdAt,
-      total: Number(o.currentTotalPriceSet?.shopMoney?.amount || 0), currency: o.currentTotalPriceSet?.shopMoney?.currencyCode || null,
-      discount_codes: (o.discountCodes || []).join(','), utm_source: u.source || null, utm_campaign: u.campaign || null, utm_content: u.content || null,
-      campaign_creator_id: m ? m.id : null, match_method: m ? m.method : null,
-    });
-    if (m) attributed++;
-  }
+  for (const o of orders) if (recordOrder(storeId, o, 'sync')) attributed++;
+  q.touchOrderSync.run(storeId);
   return { fetched: orders.length, attributed, utmSupported };
+}
+
+// ---- Real-time: Shopify orders/create webhook ----
+const crypto = require('crypto');
+
+/** Verify X-Shopify-Hmac-Sha256 (base64 HMAC of the raw body with the app's client secret). */
+function verifyWebhookHmac(rawBody, headerValue, secret = config.shopify.clientSecret) {
+  if (!headerValue || !secret) return false;
+  const digest = crypto.createHmac('sha256', secret).update(rawBody).digest('base64');
+  const a = Buffer.from(digest), b = Buffer.from(String(headerValue));
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+
+/** Pure: webhook order payload (REST shape) → the order shape matchOrder understands. UTM comes from landing_site. */
+function orderFromWebhook(payload) {
+  let utm = {};
+  try {
+    const u = new URL(String(payload.landing_site || ''), 'https://x.invalid');
+    utm = { source: u.searchParams.get('utm_source'), medium: u.searchParams.get('utm_medium'), campaign: u.searchParams.get('utm_campaign'), content: u.searchParams.get('utm_content') };
+  } catch { /* no landing site */ }
+  const hasUtm = Object.values(utm).some(Boolean);
+  return {
+    id: payload.admin_graphql_api_id || `gid://shopify/Order/${payload.id}`,
+    name: payload.name,
+    createdAt: payload.created_at,
+    discountCodes: (payload.discount_codes || []).map((d) => d.code).filter(Boolean),
+    currentTotalPriceSet: { shopMoney: { amount: payload.current_total_price ?? payload.total_price ?? 0, currencyCode: payload.currency } },
+    customerJourneySummary: hasUtm ? { lastVisit: { utmParameters: utm } } : null,
+  };
+}
+
+/** Attribute one order (from webhook or sync) for a store. Returns the match or null. */
+function recordOrder(storeId, order, source) {
+  const trackers = q.allCampaignCreatorsForStore.all(storeId);
+  const m = matchOrder(order, trackers);
+  const u = order.customerJourneySummary?.lastVisit?.utmParameters || {};
+  q.upsertAttributedOrder.run({
+    store_id: storeId, shopify_order_id: order.id, order_name: order.name, created_at: order.createdAt,
+    total: Number(order.currentTotalPriceSet?.shopMoney?.amount || 0), currency: order.currentTotalPriceSet?.shopMoney?.currencyCode || null,
+    discount_codes: (order.discountCodes || []).join(','), utm_source: u.source || null, utm_campaign: u.campaign || null, utm_content: u.content || null,
+    campaign_creator_id: m ? m.id : null, match_method: m ? m.method : null,
+  });
+  return m;
+}
+
+const WEBHOOK_CREATE = `
+mutation Sub($topic: WebhookSubscriptionTopic!, $sub: WebhookSubscriptionInput!) {
+  webhookSubscriptionCreate(topic: $topic, webhookSubscription: $sub) { webhookSubscription { id } userErrors { field message } }
+}`;
+const WEBHOOK_LIST = `{ webhookSubscriptions(first: 20, topics: [ORDERS_CREATE]) { nodes { id endpoint { __typename ... on WebhookHttpEndpoint { callbackUrl } } } } }`;
+
+/** Make sure this store sends us orders/create. Idempotent: reuses an existing subscription to our URL. */
+async function ensureOrderWebhook(store) {
+  const callbackUrl = `${config.appUrl}/webhooks/shopify/orders`;
+  const existing = await shopify.graphql(store.shop, store.access_token, WEBHOOK_LIST);
+  const mine = (existing.webhookSubscriptions?.nodes || []).find((n) => n.endpoint?.callbackUrl === callbackUrl);
+  if (mine) { q.setStoreWebhook.run(mine.id, store.id); return mine.id; }
+  const data = await shopify.graphql(store.shop, store.access_token, WEBHOOK_CREATE, { topic: 'ORDERS_CREATE', sub: { callbackUrl, format: 'JSON' } });
+  const errs = data.webhookSubscriptionCreate.userErrors;
+  if (errs && errs.length) throw new Error(`Webhook error: ${errs.map((e) => e.message).join('; ')}`);
+  const id = data.webhookSubscriptionCreate.webhookSubscription.id;
+  q.setStoreWebhook.run(id, store.id);
+  return id;
 }
 
 /** Pure: per-creator economics. CAC = all money spent on that creator / orders. */
@@ -134,7 +193,11 @@ function creatorEconomics(row) {
   const sample = row.status === undefined || SAMPLE_SENT.has(row.status) ? Number(row.sample_cost || 0) : 0;
   const spend = Number(row.fee_paid || 0) + Number(row.usage_rights_fee || 0) + Number(row.ad_spend || 0) + sample;
   const orders = Number(row.orders || 0), revenue = Number(row.revenue || 0);
-  return { spend, orders, revenue, cac: orders ? spend / orders : null, roas: spend ? revenue / spend : null };
+  const commission = row.kind === 'affiliate' ? revenue * Number(row.creator_commission_pct || 0) / 100 : 0;
+  const commissionPaid = Number(row.commission_paid || 0);
+  const allIn = spend + commission;
+  return { spend, commission, commissionPaid, commissionOwed: Math.max(0, commission - commissionPaid), orders, revenue,
+    cac: orders ? allIn / orders : null, roas: allIn ? revenue / allIn : null };
 }
 
-module.exports = { codeFor, utmLink, createDiscountCode, issueTracking, fetchRecentOrders, matchOrder, syncOrders, creatorEconomics };
+module.exports = { codeFor, utmLink, createDiscountCode, issueTracking, fetchRecentOrders, matchOrder, syncOrders, creatorEconomics, verifyWebhookHmac, orderFromWebhook, recordOrder, ensureOrderWebhook };

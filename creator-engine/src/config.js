@@ -32,6 +32,8 @@ const config = {
     instagramActor: env('APIFY_INSTAGRAM_ACTOR', 'apify~instagram-hashtag-scraper'),
   },
   defaultMarket: env('DEFAULT_MARKET', 'AU'),
+  allowSignup: env('ALLOW_SIGNUP', 'true') !== 'false',
+  autoSyncMinutes: Number(env('AUTO_SYNC_MINUTES', 60)),
   heygen: {
     apiKey: env('HEYGEN_API_KEY', ''),
     avatarId: env('HEYGEN_AVATAR_ID', ''),

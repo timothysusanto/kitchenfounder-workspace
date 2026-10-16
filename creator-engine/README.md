@@ -2,7 +2,9 @@
 
 Find the right small creators for a Shopify brand, brief and seed them legally, give every creator their own discount code and tracked link, match every Shopify order back to the creator who caused it, and show which creators to put ad money behind. Built for food, drink, cookware and hospitality brands selling in Australia and the United States.
 
-The loop, in one line: **discover → campaign + brief → codes and links → orders → report → amplify the winners.**
+The loop, in one line: **discover or let creators sign themselves up → campaign + brief → codes and links → orders matched in real time → commission owed → amplify the winners.**
+
+Two ways to fill a campaign: **discover** creators by hashtag and invite them, or **open the programme** and share one public link — anyone who applies gets a Shopify discount code and a tracked link on the spot, plus their own page showing their sales and commission. Orders arrive by Shopify webhook within seconds of checkout; an hourly sync catches anything missed. Brands have their own accounts; the owner sees every store.
 
 ## Why this and not AI videos
 
@@ -15,7 +17,9 @@ Creators drive sales in three ways that have published numbers behind them: seed
 | **Stores** | Connect a Shopify store (OAuth). Set its market: AU or US. |
 | **1 · Find creators** | Enter hashtags, pick TikTok or Instagram, click Discover. Apify pulls the posts (about US$0.003 each), the app collapses them into creators and scores them 0–100: engagement, reach, affordability (nano/micro score higher), recency, and in the US, proof they already sell via TikTok Shop. Accounts with huge reach and tiny engagement ("finds" aggregators) are penalised. |
 | **2 · Campaigns & briefs** | Create a campaign for a product: gifted, paid per post, or affiliate commission; customer discount %; landed sample cost. **Generate brief** writes the creator brief with Claude, then the rules check it: it must tell the creator how to disclose (in-video and `#ad` in caption, market-specific wording), must ask for their honest experience, and must not condition anything on positivity. Add creators from the discovery list. **Issue codes + links** creates a Shopify discount code per creator (`write_discounts`) and a UTM link per creator. Track each creator through shortlisted → invited → agreed → shipped → posted → amplified, record fees, usage-rights purchases, and Spark / Partnership ad auth codes and spend. |
-| **3 · Sales report** | **Sync Shopify orders** pulls the last 60 days of orders and attributes each one to a creator by discount code first, then by `utm_source=creator&utm_content=<handle>` from the customer journey. Per creator: spend (fee + rights + ad spend + sample once shipped), orders, revenue, CAC, ROAS. Blended CAC and ROAS for the store. **Winners to amplify** lists creators with 2+ orders and ROAS ≥ 2× and tells you to buy usage rights and run the post as an ad if you have not. CSV download. |
+| **Programme** (on a campaign) | Click **Open programme** → you get `/join/<slug>`. Creators apply with name, handle, email, PayPal email, and a disclosure agreement; they are added to the campaign, get a code and a link, and land on `/c/<token>` — their private page with the code, link, orders, revenue, commission earned/paid/owed and the brief. Close it any time; existing creators keep their codes. |
+| **Accounts** | First visit → `/setup` creates the owner. Brands register at `/signup`, connect their own Shopify store, and see only their stores. `ALLOW_SIGNUP=false` closes registration. |
+| **3 · Sales report** | Orders arrive automatically: an `orders/create` webhook is registered when a store connects (HMAC-verified), attributed by discount code first, then by `utm_source=creator&utm_content=<handle>` from the landing page; every `AUTO_SYNC_MINUTES` the last 7 days are re-pulled as a safety net. **Sync Shopify orders** pulls 60 days on demand. Per creator: spend (fee + rights + ad spend + sample once shipped), commission earned / paid / owed (affiliate campaigns), orders, revenue, CAC and ROAS including commission. The CSV carries payout emails and amounts owed — your monthly payout run. Blended CAC and ROAS for the store. **Winners to amplify** lists creators with 2+ orders and ROAS ≥ 2× and tells you to buy usage rights and run the post as an ad if you have not. CSV download. |
 | **Hook tests** (optional) | The earlier AI-presenter pipeline (Claude scripts → HeyGen render → review queue). Use it to test hooks cheaply; have a human re-shoot the winner. |
 
 ## AU vs US, built in
@@ -58,19 +62,25 @@ Deploy from GitHub; `nixpacks.toml` adds FFmpeg. Add a volume at `/data` and set
 ## Commands
 
 ```bash
-npm test                    # 31 tests: scoring, brief rules, code/UTM generation, order matching, economics, Shopify HMAC, routes
+npm test                    # 49 tests: scoring, brief rules, code/UTM generation, order matching, economics, Shopify HMAC, routes
 npm run dev                 # auto-restart
 node src/cli.js poll        # HeyGen render polling (hook tests only)
 ```
+
+## Selling this to other brands
+
+The pitch that works is the one every cold email already uses — except this one is true: *pay only on tracked orders.* A brand signs up, connects Shopify (OAuth), opens a programme, shares the link. Suggested pricing: a small platform fee plus a % of attributed revenue. Before taking money from brands: Stripe billing on the `users` table and Shopify public-app review (so any store can install without the Dev Dashboard).
 
 ## Files
 
 ```
 src/discovery.js    Apify runs, post → creator collapse, scoring (pure, tested), seed hashtags by market
 src/briefs.js       Claude brief generation + the brief rules (disclosure, honesty, no coercion, claims)
-src/attribution.js  discount code per creator (Shopify), UTM links, order fetch, matching, economics
+src/attribution.js  discount code per creator (Shopify), UTM links, order fetch, webhook verify + parse, matching, economics incl. commission
 src/loop.js         the loop as functions: discover, campaign, brief, tracking, orders, report, CSV
 src/views_loop.js   the four loop screens
+src/views_public.js login/setup/signup, the public programme page, the creator portal
+src/auth.js         accounts: scrypt passwords, sessions, route guard, store ownership
 src/server.js       routes
 src/db.js           SQLite schema: stores, products, creators, campaigns, campaign_creators, attributed_orders (+ hook-test tables)
 src/shopify.js      OAuth, HMAC, Admin GraphQL
