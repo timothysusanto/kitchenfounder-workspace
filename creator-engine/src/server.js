@@ -70,11 +70,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(config.sessionSecret));
 app.use(auth.attach);
 app.use(auth.guard);
-// Brands whose trial has ended (or whose card failed) can browse but not run actions. Owners and billing-off engines are never blocked.
+// Brands past their free allowance (or whose card failed) can browse but not run actions. Owners and billing-off engines are never blocked.
 app.use((req, res, next) => {
   if (req.method !== 'POST' || !req.user || req.path.startsWith('/billing') || req.path === '/logout') return next();
-  if (billing.accessFor(req.user).allowed) return next();
-  setFlash(res, 'error', 'Your free trial has ended. Subscribe on the Billing page to keep running campaigns.');
+  if (billing.accessFor(billing.withUsage(req.user)).allowed) return next();
+  setFlash(res, 'error', 'Your free start is used up — creators have produced your first sales. Subscribe on the Billing page to keep running campaigns.');
   return res.redirect('/billing');
 });
 

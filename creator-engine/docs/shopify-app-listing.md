@@ -6,7 +6,7 @@
 
 **Features:** 1) Creator discovery and scoring. 2) Compliant creator briefs (AU and US disclosure rules). 3) Per-creator codes and links. 4) Real-time order attribution, including subscription renewals. 5) Public creator programme page and creator portal with earnings. 6) Commission tracking.
 
-**Pricing text:** Free for 14 days. Then $99/month plus 10% of revenue from creator-attributed orders.
+**Pricing text:** Free until your creators produce your first 3 attributed orders. Then a monthly fee plus 10% of revenue from creator-attributed orders.
 
 **Scopes and why:** `read_products` (list products for campaigns), `read_orders` (attribute orders to creators), `write_discounts` (create each creator's code).
 

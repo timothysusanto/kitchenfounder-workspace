@@ -36,7 +36,7 @@ const config = {
     secretKey: env('STRIPE_SECRET_KEY', ''),
     priceId: env('STRIPE_PRICE_ID', ''),
     webhookSecret: env('STRIPE_WEBHOOK_SECRET', ''),
-    trialDays: Number(env('TRIAL_DAYS', 14)),
+    freeSales: Number(env('FREE_SALES', 3)), // brands pay nothing until creators have produced this many attributed orders
     performanceFeePct: Number(env('PERFORMANCE_FEE_PCT', 10)),
   },
   digest: {

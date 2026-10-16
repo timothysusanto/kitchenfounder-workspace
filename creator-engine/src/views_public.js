@@ -96,7 +96,7 @@ function privacyPage() {
 function termsPage() {
   return `<div style="max-width:720px;margin:20px auto"><h1>Terms of service</h1><p class="muted">Creator Engine, operated by Timothy Susanto (Sydney, Australia). Contact: ${esc(CONTACT())}</p>
 <div class="card"><h2 style="margin-top:0">The service</h2><p>Creator Engine helps Shopify brands find creators, issue discount codes and tracked links, attribute orders, and track commission owed. It does not pay creators; brands pay creators directly.</p>
-<h2>Fees</h2><p>After the free trial, a monthly platform fee applies, plus a percentage of revenue from orders attributed to creators through the service, as shown on the Billing page. The performance fee is invoiced monthly. You can cancel any time from the Billing page; cancellation takes effect at the end of the paid period.</p>
+<h2>Fees</h2><p>The service is free until creators have produced your first few attributed orders (shown on the Billing page). After that, a monthly platform fee applies, plus a percentage of revenue from orders attributed to creators through the service, as shown on the Billing page. The performance fee is invoiced monthly. You can cancel any time from the Billing page; cancellation takes effect at the end of the paid period.</p>
 <h2>Your responsibilities</h2><p>You are responsible for your creator agreements and for paying creators what they have earned. Creators must disclose paid partnerships as required by law (in Australia the AANA Code of Ethics and Australian Consumer Law; in the United States the FTC Endorsement Guides). The service generates briefs that tell creators to do so; you remain responsible for compliance. Do not use the service for deceptive, unlawful or unsafe promotion.</p>
 <h2>Accuracy</h2><p>Attribution relies on discount codes, link parameters and Shopify data, and some orders may not be attributable. Reports are provided as-is.</p>
 <h2>Liability</h2><p>To the extent permitted by law, the service is provided without warranties beyond those that cannot be excluded (including under the Australian Consumer Law), and our liability is limited to the fees you paid in the previous three months.</p>
@@ -106,7 +106,7 @@ function termsPage() {
 function billingPage({ sum, flash }) {
   const a = sum.access;
   const money2 = (n) => `$${Number(n || 0).toFixed(2)}`;
-  const status = { exempt: 'Owner account — not billed', active: 'Active subscription', trial: `Free trial — ${a.daysLeft} day${a.daysLeft === 1 ? '' : 's'} left`, expired: 'Trial ended — subscribe to keep using the engine', past_due: 'Payment failed — update your card', none: '' }[a.state];
+  const status = { exempt: 'Owner account — not billed', active: 'Active subscription', free: `Free to start — ${a.salesLeft} more creator sale${a.salesLeft === 1 ? '' : 's'} before billing begins`, expired: 'Your free start is used up — subscribe to keep using the engine', past_due: 'Payment failed — update your card', none: '' }[a.state];
   const actions = !sum.enabled ? '<p class="muted">Billing is not switched on for this engine yet.</p>'
     : a.state === 'active' || a.state === 'past_due' ? '<form method="post" action="/billing/portal"><button class="btn secondary">Manage subscription</button></form>'
     : a.state === 'exempt' ? '' : '<form method="post" action="/billing/checkout"><button class="btn">Subscribe</button></form>';

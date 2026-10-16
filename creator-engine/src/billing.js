@@ -25,14 +25,17 @@ function verifyStripeSignature(rawBody, header, secret, now = Date.now(), tolera
   });
 }
 
-/** Pure: where does this brand stand? owner/disabled => 'exempt'; paid => 'active'; inside trial => 'trial'; else 'expired'. */
+/**
+ * Pure: where does this brand stand? Free until the programme has produced `freeSales` attributed orders (no card, no clock).
+ * owner/billing-off => 'exempt'; paid => 'active'; fewer sales than the free allowance => 'free'; else 'expired' / 'past_due'.
+ * `user.attributed_orders` is the brand's lifetime creator-attributed order count.
+ */
 function accessFor(user, now = Date.now()) {
   if (!user) return { state: 'none', allowed: false };
   if (user.role === 'owner' || !enabled()) return { state: 'exempt', allowed: true };
   if (user.billing_status === 'active') return { state: 'active', allowed: true };
-  const created = Date.parse(String(user.created_at || '').replace(' ', 'T') + 'Z');
-  const endsAt = created + config.stripe.trialDays * 86400000;
-  if (Number.isFinite(created) && now < endsAt) return { state: 'trial', allowed: true, daysLeft: Math.max(0, Math.ceil((endsAt - now) / 86400000)) };
+  const sales = Number(user.attributed_orders || 0);
+  if (sales < config.stripe.freeSales) return { state: 'free', allowed: true, salesLeft: config.stripe.freeSales - sales };
   return { state: user.billing_status === 'past_due' ? 'past_due' : 'expired', allowed: false };
 }
 
@@ -93,9 +96,12 @@ function applyEvent(event) {
 }
 
 function summary(user) {
-  const access = accessFor(user);
+  const access = accessFor({ ...user, attributed_orders: q.lifetimeOrdersByUser.get(user.id).n });
   const rev = q.monthRevenueByUser.get(user.id, monthKey());
-  return { enabled: enabled(), access, month: monthKey(), revenue: rev.revenue, orders: rev.orders, performanceFee: performanceFee(rev.revenue), performanceFeePct: config.stripe.performanceFeePct, trialDays: config.stripe.trialDays };
+  return { enabled: enabled(), access, month: monthKey(), revenue: rev.revenue, orders: rev.orders, performanceFee: performanceFee(rev.revenue), performanceFeePct: config.stripe.performanceFeePct, freeSales: config.stripe.freeSales };
 }
 
-module.exports = { enabled, verifyStripeSignature, accessFor, performanceFee, checkoutUrl, portalUrl, applyEvent, summary, monthKey };
+/** Attach the lifetime order count so accessFor can decide. */
+const withUsage = (user) => ({ ...user, attributed_orders: user && user.role !== 'owner' ? q.lifetimeOrdersByUser.get(user.id).n : 0 });
+
+module.exports = { withUsage, enabled, verifyStripeSignature, accessFor, performanceFee, checkoutUrl, portalUrl, applyEvent, summary, monthKey };

@@ -320,6 +320,7 @@ const q = {
   userByStripeCustomer: db.prepare('SELECT id FROM users WHERE stripe_customer_id = ?'),
   setUserBilling: db.prepare('UPDATE users SET billing_status = @billing_status, stripe_customer_id = COALESCE(@stripe_customer_id, stripe_customer_id), stripe_subscription_id = COALESCE(@stripe_subscription_id, stripe_subscription_id) WHERE id = @id'),
   monthRevenueByUser: db.prepare(`SELECT COALESCE(SUM(o.total),0) AS revenue, COUNT(*) AS orders FROM attributed_orders o JOIN stores s ON s.id = o.store_id WHERE s.user_id = ? AND o.campaign_creator_id IS NOT NULL AND substr(o.created_at,1,7) = ?`),
+  lifetimeOrdersByUser: db.prepare('SELECT COUNT(*) AS n FROM attributed_orders o JOIN stores s ON s.id = o.store_id WHERE s.user_id = ? AND o.campaign_creator_id IS NOT NULL'),
   deleteStoreById: db.prepare('DELETE FROM stores WHERE id = ?'),
   clearCustomer: db.prepare('UPDATE attributed_orders SET customer_id = NULL WHERE store_id = ? AND customer_id = ?'),
   insertUser: db.prepare('INSERT INTO users (email, password_hash, role, brand_name) VALUES (@email, @password_hash, @role, @brand_name)'),

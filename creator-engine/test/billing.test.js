@@ -6,7 +6,7 @@ process.env.APP_URL = 'https://engine.test';
 process.env.STRIPE_SECRET_KEY = 'sk_test_x';
 process.env.STRIPE_PRICE_ID = 'price_x';
 process.env.STRIPE_WEBHOOK_SECRET = 'whsec_stripe';
-process.env.TRIAL_DAYS = '14';
+process.env.FREE_SALES = '3';
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const crypto = require('crypto');
@@ -25,15 +25,15 @@ test('stripe signature: valid, wrong secret, stale, missing', () => {
   assert.equal(billing.verifyStripeSignature(body, '', 'whsec_stripe'), false);
 });
 
-test('access: owner exempt, trial by account age, expired after, active when paid', () => {
-  const now = Date.parse('2026-11-30T00:00:00Z');
-  assert.equal(billing.accessFor({ role: 'owner' }, now).state, 'exempt');
-  assert.equal(billing.accessFor({ role: 'brand', created_at: '2026-11-25 00:00:00', billing_status: 'none' }, now).state, 'trial');
-  assert.equal(billing.accessFor({ role: 'brand', created_at: '2026-11-25 00:00:00', billing_status: 'none' }, now).daysLeft, 9);
-  const old = billing.accessFor({ role: 'brand', created_at: '2026-10-01 00:00:00', billing_status: 'none' }, now);
-  assert.equal(old.state, 'expired'); assert.equal(old.allowed, false);
-  assert.equal(billing.accessFor({ role: 'brand', created_at: '2026-10-01 00:00:00', billing_status: 'active' }, now).allowed, true);
-  assert.equal(billing.accessFor({ role: 'brand', created_at: '2026-10-01 00:00:00', billing_status: 'past_due' }, now).state, 'past_due');
+test('access: owner exempt, free until the allowance of attributed sales, then blocked until paid', () => {
+  assert.equal(billing.accessFor({ role: 'owner' }).state, 'exempt');
+  const fresh = billing.accessFor({ role: 'brand', billing_status: 'none', attributed_orders: 0 });
+  assert.equal(fresh.state, 'free'); assert.equal(fresh.salesLeft, 3); assert.equal(fresh.allowed, true);
+  assert.equal(billing.accessFor({ role: 'brand', billing_status: 'none', attributed_orders: 2 }).salesLeft, 1);
+  const used = billing.accessFor({ role: 'brand', billing_status: 'none', attributed_orders: 3 });
+  assert.equal(used.state, 'expired'); assert.equal(used.allowed, false);
+  assert.equal(billing.accessFor({ role: 'brand', billing_status: 'active', attributed_orders: 50 }).allowed, true);
+  assert.equal(billing.accessFor({ role: 'brand', billing_status: 'past_due', attributed_orders: 5 }).state, 'past_due');
 });
 
 test('performance fee is a percentage of attributed revenue', () => {
@@ -41,17 +41,28 @@ test('performance fee is a percentage of attributed revenue', () => {
   assert.equal(billing.performanceFee(0), 0);
 });
 
-test('expired brand is blocked from POST actions until a verified Stripe webhook activates it', async () => {
+test('a brand past its free sales is blocked from POST actions until a verified Stripe webhook activates it', async () => {
   const owner = await startApp(app); await setupOwner(owner.client);
   const brand = await startApp(app);
   assert.equal((await brand.client('/signup', { form: { brand_name: 'Old Brand', email: 'old@test.local', password: 'password123' } })).status, 302);
   const u = q.userByEmail.get('old@test.local');
-  require('../src/db').db.prepare("UPDATE users SET created_at = datetime('now','-30 days') WHERE id = ?").run(u.id);
+  const dbm = require('../src/db');
+  q.upsertStore.run({ shop: 'old.myshopify.com', access_token: 'x', scope: '' });
+  const st = q.storeByShop.get('old.myshopify.com'); q.setStoreOwner.run(u.id, st.id);
+  const free = await brand.client('/stores/999/sync-orders', { method: 'POST', form: {} });
+  assert.notEqual(free.headers.get('location'), '/billing'); // still inside the free allowance
+  dbm.db.prepare("INSERT INTO campaigns (store_id, name, market, kind) VALUES (?, 'c', 'AU', 'affiliate')").run(st.id);
+  const camp = dbm.db.prepare('SELECT id FROM campaigns WHERE store_id = ?').get(st.id).id;
+  dbm.db.prepare("INSERT INTO creators (store_id, platform, handle) VALUES (?, 'tiktok', 'h')").run(st.id);
+  const cr = dbm.db.prepare('SELECT id FROM creators WHERE store_id = ?').get(st.id).id;
+  dbm.db.prepare('INSERT INTO campaign_creators (campaign_id, creator_id) VALUES (?, ?)').run(camp, cr);
+  const cc = dbm.db.prepare('SELECT id FROM campaign_creators').get().id;
+  for (let i = 0; i < 3; i++) dbm.db.prepare("INSERT INTO attributed_orders (store_id, shopify_order_id, created_at, total, campaign_creator_id) VALUES (?, ?, '2026-10-01', 10, ?)").run(st.id, `o${i}`, cc);
 
   const blocked = await brand.client('/stores/999/sync-orders', { method: 'POST', form: {} });
   assert.equal(blocked.status, 302); assert.equal(blocked.headers.get('location'), '/billing');
   const page = await brand.client('/billing');
-  assert.equal(page.status, 200); assert.match(await page.text(), /Trial ended/);
+  assert.equal(page.status, 200); assert.match(await page.text(), /free start is used up/);
 
   const bad = await fetch(`${brand.base}/webhooks/stripe`, { method: 'POST', body: '{}', headers: { 'Stripe-Signature': 't=1,v1=00' } });
   assert.equal(bad.status, 400);

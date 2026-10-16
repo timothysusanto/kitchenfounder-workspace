@@ -103,7 +103,7 @@ A brief fails if it lacks the in-video and `#ad` disclosure instruction, does no
 
 ## Brand billing and Shopify app readiness
 
-Set `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` (a recurring Price for the platform fee, e.g. $99/month) and `STRIPE_WEBHOOK_SECRET`. In Stripe, add a webhook endpoint `APP_URL/webhooks/stripe` for `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`. Brands get `TRIAL_DAYS` free, then POST actions redirect to **Billing** until they subscribe. The owner is never billed. The Billing page shows this month's creator-attributed revenue and the `PERFORMANCE_FEE_PCT` fee (invoice it at month end; it is not auto-charged).
+Set `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` (a recurring Price for the platform fee, e.g. $99/month) and `STRIPE_WEBHOOK_SECRET`. In Stripe, add a webhook endpoint `APP_URL/webhooks/stripe` for `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`. Brands pay nothing until creators have produced `FREE_SALES` (default 3) attributed orders; after that POST actions redirect to **Billing** until they subscribe. The owner is never billed. The Billing page shows this month's creator-attributed revenue and the `PERFORMANCE_FEE_PCT` fee (invoice it at month end; it is not auto-charged).
 
 Shopify public-app submission needs: privacy policy `APP_URL/privacy`, compliance webhooks `APP_URL/webhooks/shopify/compliance` for `customers/data_request`, `customers/redact`, `shop/redact`, and the app URL/redirect set in the Dev Dashboard. See `docs/shopify-app-listing.md`.
 
