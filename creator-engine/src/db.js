@@ -279,7 +279,7 @@ const q = {
   // --- public programme + portal ---
   setCampaignPublic: db.prepare('UPDATE campaigns SET is_public = ?, public_slug = COALESCE(public_slug, ?), terms = COALESCE(?, terms) WHERE id = ?'),
   campaignBySlug: db.prepare(`SELECT c.*, p.title AS product_title, p.product_url, p.image_url AS product_image, p.price AS product_price, p.currency AS product_currency,
-      s.shop, s.brand_name AS store_brand FROM campaigns c LEFT JOIN products p ON p.id = c.product_id JOIN stores s ON s.id = c.store_id WHERE c.public_slug = ? AND c.is_public = 1`),
+      s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand FROM campaigns c LEFT JOIN products p ON p.id = c.product_id JOIN stores s ON s.id = c.store_id LEFT JOIN users u ON u.id = s.user_id WHERE c.public_slug = ? AND c.is_public = 1`),
   creatorByHandle: db.prepare('SELECT * FROM creators WHERE store_id = ? AND platform = ? AND handle = ?'),
   insertAppliedCreator: db.prepare(`INSERT INTO creators (store_id, platform, handle, profile_url, display_name, email, payout_email, source, status, score, score_notes, tier)
     VALUES (@store_id, @platform, @handle, @profile_url, @display_name, @email, @payout_email, 'applied', 'agreed', 0, 'applied via programme page', 'unknown')
@@ -287,10 +287,10 @@ const q = {
   campaignCreatorByPair: db.prepare('SELECT * FROM campaign_creators WHERE campaign_id = ? AND creator_id = ?'),
   setPortalToken: db.prepare("UPDATE campaign_creators SET portal_token = ?, status = CASE WHEN status = 'shortlisted' THEN 'agreed' ELSE status END, joined_at = COALESCE(joined_at, datetime('now')) WHERE id = ?"),
   portalByToken: db.prepare(`SELECT cc.*, cr.handle, cr.platform, cr.display_name, cr.email, cr.payout_email, c.name AS campaign_name, c.kind, c.market, c.customer_discount_pct, c.creator_commission_pct,
-      c.caption_template, c.brief, c.terms, c.product_id, p.title AS product_title, p.product_url, p.price AS product_price, p.currency AS product_currency, s.shop, s.brand_name AS store_brand, s.id AS store_id,
+      c.caption_template, c.brief, c.terms, c.product_id, p.title AS product_title, p.product_url, p.price AS product_price, p.currency AS product_currency, s.shop, COALESCE(s.brand_name, u.brand_name) AS store_brand, s.id AS store_id,
       (SELECT COUNT(*) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS orders,
       (SELECT COALESCE(SUM(o.total),0) FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) AS revenue
-    FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id JOIN campaigns c ON c.id = cc.campaign_id JOIN stores s ON s.id = c.store_id LEFT JOIN products p ON p.id = c.product_id
+    FROM campaign_creators cc JOIN creators cr ON cr.id = cc.creator_id JOIN campaigns c ON c.id = cc.campaign_id JOIN stores s ON s.id = c.store_id LEFT JOIN users u ON u.id = s.user_id LEFT JOIN products p ON p.id = c.product_id
     WHERE cc.portal_token = ?`),
   portalOrders: db.prepare('SELECT order_name, created_at, total, currency, match_method FROM attributed_orders WHERE campaign_creator_id = ? ORDER BY created_at DESC LIMIT 50'),
   setCommissionPaid: db.prepare("UPDATE campaign_creators SET commission_paid = ?, updated_at = datetime('now') WHERE id = ?"),
