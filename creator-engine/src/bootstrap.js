@@ -10,6 +10,7 @@ const config = require('./config');
 const { q } = require('./db');
 const loop = require('./loop');
 const attribution = require('./attribution');
+const jobs = require('./jobs');
 
 async function bootstrapProgramme(spec, log = console.log) {
   if (!spec || !spec.name) return null;
@@ -20,6 +21,7 @@ async function bootstrapProgramme(spec, log = console.log) {
   try { out.webhook = await attribution.ensureOrderWebhook(store); log(`bootstrap: order webhook on for ${store.shop} (${out.webhook})`); }
   catch (e) { out.webhookError = e.message; log(`bootstrap: webhook failed: ${e.message}`); }
 
+  try { await jobs.syncStore(store.id); } catch (e) { log(`bootstrap: product sync failed: ${e.message}`); }
   const products = q.productsByStore.all(store.id);
   const needle = String(spec.product || '').toLowerCase();
   const product = products.find((p) => needle && p.title.toLowerCase().includes(needle)) || products.find((p) => Number(p.price) > 0) || products[0];
