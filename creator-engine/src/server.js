@@ -12,6 +12,7 @@ const vp = require('./views_public');
 const loop = require('./loop');
 const auth = require('./auth');
 const attribution = require('./attribution');
+const billing = require('./billing');
 const { bootstrapProgramme, parseSpec } = require('./bootstrap');
 const { SEED_HASHTAGS } = require('./discovery');
 const { DISCLOSURE } = require('./briefs');
@@ -36,10 +37,44 @@ app.post('/webhooks/shopify/orders', express.raw({ type: '*/*', limit: '2mb' }),
   } catch (e) { console.error('webhook error', e); res.status(500).send('error'); }
 });
 
+// Stripe webhook (raw body, signature checked).
+app.post('/webhooks/stripe', express.raw({ type: '*/*', limit: '1mb' }), (req, res) => {
+  try {
+    const raw = Buffer.isBuffer(req.body) ? req.body : Buffer.from('');
+    if (!billing.verifyStripeSignature(raw, req.get('Stripe-Signature'), config.stripe.webhookSecret)) return res.status(400).send('bad signature');
+    const note = billing.applyEvent(JSON.parse(raw.toString('utf8')));
+    console.log(`stripe webhook: ${note}`);
+    res.status(200).send('ok');
+  } catch (e) { console.error('stripe webhook error', e); res.status(500).send('error'); }
+});
+
+// Shopify mandatory privacy webhooks (customers/data_request, customers/redact, shop/redact). One URL, topic in the header.
+app.post('/webhooks/shopify/compliance', express.raw({ type: '*/*', limit: '1mb' }), (req, res) => {
+  try {
+    const raw = Buffer.isBuffer(req.body) ? req.body : Buffer.from('');
+    if (!attribution.verifyWebhookHmac(raw, req.get('X-Shopify-Hmac-Sha256'))) return res.status(401).send('bad hmac');
+    const topic = String(req.get('X-Shopify-Topic') || '');
+    const payload = JSON.parse(raw.toString('utf8') || '{}');
+    const store = q.storeByShopAny.get(String(payload.shop_domain || req.get('X-Shopify-Shop-Domain') || '').toLowerCase());
+    if (topic === 'shop/redact' && store) q.deleteStoreById.run(store.id);
+    if (topic === 'customers/redact' && store && payload.customer && payload.customer.id) q.clearCustomer.run(store.id, `gid://shopify/Customer/${payload.customer.id}`);
+    // customers/data_request: we hold no customer personal data (only Shopify's customer id on orders), so there is nothing to export.
+    console.log(`shopify compliance webhook ${topic} for ${(store && store.shop) || 'unknown shop'}`);
+    res.status(200).send('ok');
+  } catch (e) { console.error('compliance webhook error', e); res.status(500).send('error'); }
+});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(config.sessionSecret));
 app.use(auth.attach);
 app.use(auth.guard);
+// Brands whose trial has ended (or whose card failed) can browse but not run actions. Owners and billing-off engines are never blocked.
+app.use((req, res, next) => {
+  if (req.method !== 'POST' || !req.user || req.path.startsWith('/billing') || req.path === '/logout') return next();
+  if (billing.accessFor(req.user).allowed) return next();
+  setFlash(res, 'error', 'Your free trial has ended. Subscribe on the Billing page to keep running campaigns.');
+  return res.redirect('/billing');
+});
 
 const flashFrom = (req) => {
   const f = req.signedCookies.flash;
@@ -53,6 +88,22 @@ const notFound = (res, what = 'not found') => res.status(404).send(what);
 const safeNext = (v) => (typeof v === 'string' && v.startsWith('/') && !v.startsWith('//') ? v : '/');
 
 app.get('/healthz', (req, res) => res.json({ ok: true }));
+
+app.get('/privacy', (req, res) => res.send(views.layout('Privacy', vp.privacyPage(), null, req.user)));
+app.get('/terms', (req, res) => res.send(views.layout('Terms', vp.termsPage(), null, req.user)));
+
+app.get('/billing', (req, res) => {
+  const u = q.userById.get(req.user.id);
+  render(req, res, vp.billingPage({ sum: billing.summary({ ...req.user, ...u }) }));
+});
+app.post('/billing/checkout', wrap(async (req, res) => {
+  if (!billing.enabled()) { setFlash(res, 'error', 'Billing is not switched on yet.'); return res.redirect('/billing'); }
+  try { res.redirect(303, await billing.checkoutUrl(req.user)); } catch (e) { setFlash(res, 'error', e.message); res.redirect('/billing'); }
+}));
+app.post('/billing/portal', wrap(async (req, res) => {
+  try { res.redirect(303, await billing.portalUrl(req.user)); } catch (e) { setFlash(res, 'error', e.message); res.redirect('/billing'); }
+}));
+
 
 // ---- Accounts ----
 app.get('/setup', (req, res) => {

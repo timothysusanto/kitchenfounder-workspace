@@ -31,6 +31,14 @@ const config = {
     tiktokActor: env('APIFY_TIKTOK_ACTOR', 'clockworks~tiktok-hashtag-scraper'),
     instagramActor: env('APIFY_INSTAGRAM_ACTOR', 'apify~instagram-hashtag-scraper'),
   },
+  // Brand billing. Everything is off until STRIPE_SECRET_KEY and STRIPE_PRICE_ID are set.
+  stripe: {
+    secretKey: env('STRIPE_SECRET_KEY', ''),
+    priceId: env('STRIPE_PRICE_ID', ''),
+    webhookSecret: env('STRIPE_WEBHOOK_SECRET', ''),
+    trialDays: Number(env('TRIAL_DAYS', 14)),
+    performanceFeePct: Number(env('PERFORMANCE_FEE_PCT', 10)),
+  },
   defaultMarket: env('DEFAULT_MARKET', 'AU'),
   allowSignup: env('ALLOW_SIGNUP', 'true') !== 'false',
   // Owner account managed from the environment: created on boot, password re-synced on every boot (change the var to change the password).

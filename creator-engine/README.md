@@ -62,7 +62,7 @@ Deploy from GitHub; `nixpacks.toml` adds FFmpeg. Add a volume at `/data` and set
 ## Commands
 
 ```bash
-npm test                    # 56 tests: scoring, brief rules, code/UTM generation, order matching, economics, Shopify HMAC, routes
+npm test                    # 62 tests: scoring, briefs, codes, attribution, commissions, accounts, billing, webhooks
 npm run dev                 # auto-restart
 node src/cli.js poll        # HeyGen render polling (hook tests only)
 ```
@@ -100,3 +100,9 @@ test/               node:test suites
 ## Legal lines the app enforces
 
 A brief fails if it lacks the in-video and `#ad` disclosure instruction, does not ask for the creator's honest experience, or contains coercive language ("only post if you love it", "must be positive", "no need to disclose"). It goes to review if it contains medical, scientific, guarantee or "#1" claims. Codes cannot be issued on a failed brief. These map to the FTC Endorsement Guides and 16 CFR Part 465 (US) and the AANA Code of Ethics s2.7 and Australian Consumer Law (AU).
+
+## Brand billing and Shopify app readiness
+
+Set `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` (a recurring Price for the platform fee, e.g. $99/month) and `STRIPE_WEBHOOK_SECRET`. In Stripe, add a webhook endpoint `APP_URL/webhooks/stripe` for `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`. Brands get `TRIAL_DAYS` free, then POST actions redirect to **Billing** until they subscribe. The owner is never billed. The Billing page shows this month's creator-attributed revenue and the `PERFORMANCE_FEE_PCT` fee (invoice it at month end; it is not auto-charged).
+
+Shopify public-app submission needs: privacy policy `APP_URL/privacy`, compliance webhooks `APP_URL/webhooks/shopify/compliance` for `customers/data_request`, `customers/redact`, `shop/redact`, and the app URL/redirect set in the Dev Dashboard. See `docs/shopify-app-listing.md`.

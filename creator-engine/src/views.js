@@ -20,10 +20,10 @@ pre{white-space:pre-wrap;font-size:12px;color:var(--ink2);margin:4px 0 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}video{width:100%;max-height:520px;background:#000;border-radius:8px}
 form.inline{display:inline}
 </style></head><body><div class="wrap">
-${opts.minimal ? '' : `<nav><a class="brand" href="/">Creator Engine</a>${user ? `<a href="/">Stores</a>${user.role === 'owner' ? '<a href="/review">Hook tests</a><a href="/settings">Settings</a>' : ''}<span style="flex:1"></span><span class="muted">${esc(user.email)}</span><form class="inline" method="post" action="/logout"><button class="btn secondary" style="padding:4px 10px">Log out</button></form>` : ''}</nav>`}
+${opts.minimal ? '' : `<nav><a class="brand" href="/">Creator Engine</a>${user ? `<a href="/">Stores</a>${user.role === 'owner' ? '<a href="/review">Hook tests</a><a href="/settings">Settings</a>' : '<a href="/billing">Billing</a>'}<span style="flex:1"></span><span class="muted">${esc(user.email)}</span><form class="inline" method="post" action="/logout"><button class="btn secondary" style="padding:4px 10px">Log out</button></form>` : ''}</nav>`}
 ${flash ? `<div class="flash ${flash.type === 'error' ? 'err' : ''}">${esc(flash.text)}</div>` : ''}
 ${body}
-</div></body></html>`;
+<p class="muted" style="margin-top:30px"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p></div></body></html>`;
 }
 
 function dashboard({ stores, stats, user }) {

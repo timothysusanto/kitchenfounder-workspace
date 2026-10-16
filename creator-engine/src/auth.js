@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const { q } = require('./db');
 
 const COOKIE = 'ce_session';
-const PUBLIC_PREFIXES = ['/healthz', '/login', '/logout', '/setup', '/signup', '/join/', '/c/', '/webhooks/'];
+const PUBLIC_PREFIXES = ['/healthz', '/login', '/logout', '/setup', '/signup', '/join/', '/c/', '/webhooks/', '/privacy', '/terms'];
 
 function hashPassword(password) {
   const salt = crypto.randomBytes(16).toString('hex');
