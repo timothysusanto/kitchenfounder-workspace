@@ -117,4 +117,59 @@ function billingPage({ sum, flash }) {
 <p class="muted">Creator commissions are paid by you directly to creators and are shown on each campaign page.</p></div></div>`;
 }
 
-module.exports = { privacyPage, termsPage, billingPage, authPage, joinPage, portalPage };
+function setupPage({ store, products, error, values = {} }) {
+  const opts = products.map((p) => `<option value="${p.id}" ${String(values.product_id) === String(p.id) ? 'selected' : ''}>${esc(p.title)} — ${esc(p.price || '')} ${esc(p.currency || '')}${p.is_subscription ? ' (subscription)' : ''}</option>`).join('');
+  return `<div style="max-width:640px"><h1>Open your creator programme</h1><p class="muted">${esc(store.shop)} · Three questions. Then creators can join from a link you share, get their own code, and every order is tracked.</p>
+${error ? `<div class="flash err">${esc(error)}</div>` : ''}
+<div class="card"><form method="post" action="/stores/${store.id}/setup">
+<p><b>1 · Which product should creators sell?</b><br><select name="product_id" required style="max-width:100%">${opts || '<option value="">No products yet — click Sync now first</option>'}</select></p>
+<p><b>2 · What discount does their audience get?</b><br><input type="number" name="discount" min="0" max="50" value="${esc(values.discount ?? 10)}" style="width:80px"> %</p>
+<p><b>3 · What commission does the creator earn?</b><br><input type="number" name="commission" min="1" max="60" value="${esc(values.commission ?? 20)}" style="width:80px"> % of each order<br>
+<span class="muted">Optional step-down for subscriptions: after <input type="number" name="commission_months" min="1" max="36" value="${esc(values.commission_months ?? '')}" style="width:60px"> months pay <input type="number" name="commission_after" min="0" max="60" value="${esc(values.commission_after ?? '')}" style="width:60px"> %. Leave blank for one flat rate.</span></p>
+<button class="btn">Open my programme</button></form></div>
+<p class="muted">This switches on order tracking, writes a creator brief that includes the disclosure rules, and publishes a join page. Creators are never asked to say anything they don't believe.</p></div>`;
+}
+
+function reportFormPage({ error, values = {}, niches = {} }) {
+  const opt = (market) => Object.keys(niches[market] || {}).map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+  return `<div style="max-width:640px;margin:20px auto"><h1>Free creator report for your Shopify store</h1>
+<p>See 10 real TikTok creators who already make content in your niche, ranked by how well they fit a small brand (engagement, reach, price tier, recent activity). Takes about a minute.</p>
+${error ? `<div class="flash err">${esc(error)}</div>` : ''}
+<div class="card"><form method="post" action="/report">
+<p><label>Your email<br><input type="text" name="email" value="${esc(values.email || '')}" placeholder="you@brand.com" required></label></p>
+<p><label>Market<br><select name="market" id="mk"><option value="AU">Australia</option><option value="US">United States</option></select></label></p>
+<p><label>Niche<br><select name="niche" id="niche"></select></label></p>
+<p><label>Or type up to 3 hashtags (optional)<br><input type="text" name="custom" placeholder="coffeetok, homebarista" value="${esc(values.custom || '')}"></label></p>
+<button class="btn">Get my report</button></form></div>
+<script>var N=${JSON.stringify(Object.fromEntries(Object.entries(niches).map(([m, v]) => [m, Object.keys(v)])))};var mk=document.getElementById('mk'),nn=document.getElementById('niche');function f(){nn.innerHTML=(N[mk.value]||[]).map(function(n){return '<option>'+n+'</option>'}).join('')}mk.onchange=f;f();</script>
+<p class="muted">Public data only. We store your email to send you the list and, if you create an account, to help you start. <a href="/privacy">Privacy</a></p></div>`;
+}
+
+function reportResultPage({ row, summary }) {
+  if (row.status === 'running') return `<meta http-equiv="refresh" content="6"><div style="max-width:640px;margin:40px auto"><h1>Finding your creators…</h1><p class="muted">This takes up to a minute. This page refreshes by itself.</p></div>`;
+  if (row.status === 'error') return `<div style="max-width:640px;margin:40px auto"><h1>That did not work</h1><p>${esc(row.error || 'Please try again.')}</p><p><a class="btn" href="/report">Try again</a></p></div>`;
+  const nf = (n) => Number(n || 0).toLocaleString('en-US');
+  const rows = summary.top.map((r, i) => `<tr><td>${i + 1}</td><td><a href="${esc(r.profile_url)}" target="_blank" rel="noopener">@${esc(r.handle)}</a><div class="muted">${esc(r.tier)}</div></td><td class="num">${nf(r.followers)}</td><td class="num">${nf(r.median_plays)}</td><td class="num">${esc(r.engagement_pct)}%</td><td class="num"><b>${esc(r.score)}</b></td></tr>`).join('');
+  return `<div style="max-width:720px;margin:20px auto"><h1>Your creator report</h1>
+<p class="muted">${esc(row.market)} · #${esc(row.hashtags.split(',').join(' #'))}</p>
+<div class="card"><p><b>${summary.found}</b> creators found, <b>${summary.smallOnes}</b> of them nano or micro (the affordable ones). Your top 10 reach about <b>${nf(summary.combinedMedianReach)}</b> views per post combined, at a median engagement of <b>${esc(summary.medianEngagement)}%</b>.</p>
+<table><thead><tr><th>#</th><th>Creator</th><th class="num">Followers</th><th class="num">Median views</th><th class="num">Engagement</th><th class="num">Fit</th></tr></thead><tbody>${rows}</tbody></table>
+<p class="muted">Fit is 0–100: engagement, reach, affordability, recent posting. These are public numbers from recent posts; we have not contacted anyone.</p></div>
+<div class="card"><h2 style="margin-top:0">What happens next</h2>
+<p>A 30-creator gifted test costs about <b>$${nf(summary.testCost)}</b> in product (assuming $${summary.sampleCost} landed cost each, your number will differ). Creators who post earn commission only on tracked orders.</p>
+<p>Create a free account to connect your Shopify store, open a creator programme in three questions, and get a code and tracked link for every creator you add.</p>
+<p><a class="btn" href="/signup">Create my free account</a></p></div></div>`;
+}
+
+function leadsPage({ rows }) {
+  const body = rows.map((r) => `<tr><td>${esc(r.created_at)}</td><td>${esc(r.email)}</td><td>${esc(r.market)}</td><td>${esc(r.hashtags)}</td><td>${esc(r.status)}</td></tr>`).join('');
+  return `<h1>Leads</h1><div class="card"><table><thead><tr><th>When</th><th>Email</th><th>Market</th><th>Hashtags</th><th>Status</th></tr></thead><tbody>${body || '<tr><td colspan="5" class="muted">No reports run yet.</td></tr>'}</tbody></table></div>`;
+}
+
+function digestPage({ digest }) {
+  return `<div style="max-width:640px"><h1>Weekly digest</h1><p class="muted">Sent every Monday morning${digest ? '' : '; none yet'}.</p>
+${digest ? `<div class="card"><p class="muted">${esc(digest.created_at)} · ${esc(digest.sent_via === 'email' ? 'emailed' : 'saved here (email not configured)')}</p>${digest.html}</div>` : ''}
+<form method="post" action="/digest/send"><button class="btn secondary">Build this week's digest now</button></form></div>`;
+}
+
+module.exports = { setupPage, reportFormPage, reportResultPage, leadsPage, digestPage, privacyPage, termsPage, billingPage, authPage, joinPage, portalPage };

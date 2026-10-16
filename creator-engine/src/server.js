@@ -13,6 +13,8 @@ const loop = require('./loop');
 const auth = require('./auth');
 const attribution = require('./attribution');
 const billing = require('./billing');
+const digest = require('./digest');
+const freeReport = require('./report');
 const { bootstrapProgramme, parseSpec } = require('./bootstrap');
 const { SEED_HASHTAGS } = require('./discovery');
 const { DISCLOSURE } = require('./briefs');
@@ -88,6 +90,59 @@ const notFound = (res, what = 'not found') => res.status(404).send(what);
 const safeNext = (v) => (typeof v === 'string' && v.startsWith('/') && !v.startsWith('//') ? v : '/');
 
 app.get('/healthz', (req, res) => res.json({ ok: true }));
+
+// ---- Setup wizard: three questions to a live programme ----
+app.get('/stores/:id/setup', wrap(async (req, res) => {
+  const store = auth.storeFor(req, req.params.id);
+  if (!store) return notFound(res, 'store not found');
+  if (!q.productsByStore.all(store.id).length) { try { await jobs.syncStore(store.id); } catch (e) { setFlash(res, 'error', `Could not sync products: ${e.message}`); } }
+  render(req, res, vp.setupPage({ store, products: q.productsByStore.all(store.id) }));
+}));
+app.post('/stores/:id/setup', wrap(async (req, res) => {
+  const store = auth.storeFor(req, req.params.id);
+  if (!store) return notFound(res, 'store not found');
+  const products = q.productsByStore.all(store.id);
+  const num = (v, lo, hi) => { const n = Number(v); return Number.isFinite(n) && n >= lo && n <= hi ? n : null; };
+  const product = products.find((p) => String(p.id) === String(req.body.product_id));
+  const discount = num(req.body.discount, 0, 50), commission = num(req.body.commission, 1, 60);
+  const months = req.body.commission_months ? num(req.body.commission_months, 1, 36) : null;
+  const after = req.body.commission_after !== '' && req.body.commission_after !== undefined ? num(req.body.commission_after, 0, 60) : null;
+  const err = !product ? 'Pick a product.' : discount === null ? 'Discount must be 0–50%.' : commission === null ? 'Commission must be 1–60%.'
+    : ((months === null) !== (after === null)) ? 'Fill in both step-down boxes, or leave both blank.' : null;
+  if (err) return res.status(400).send(views.layout('Set up', vp.setupPage({ store, products, error: err, values: req.body }), null, req.user));
+  const out = await bootstrapProgramme({ name: `${product.title} partners`.slice(0, 60), product_id: product.id, kind: 'affiliate', commission, discount, commission_months: months || undefined, commission_after: after ?? undefined, terms: 'Disclose every paid partnership. Share your honest experience. Commission is paid monthly on tracked orders.' }, console.log, store);
+  if (!out || !out.joinUrl) { setFlash(res, 'error', 'Setup did not finish. Check that products are synced and try again.'); return res.redirect(`/stores/${store.id}`); }
+  setFlash(res, 'ok', `Programme is live. Share this link with creators: ${out.joinUrl}`);
+  res.redirect(`/stores/${store.id}`);
+}));
+
+// ---- Weekly digest ----
+app.get('/digest', (req, res) => render(req, res, vp.digestPage({ digest: q.latestDigest.get(req.user.id) })));
+app.post('/digest/send', wrap(async (req, res) => {
+  await digest.sendFor(req.user, { force: true });
+  setFlash(res, 'ok', 'Digest built.');
+  res.redirect('/digest');
+}));
+
+// ---- Free creator report (public) ----
+const niches = () => ({ AU: require('./discovery').SEED_HASHTAGS.AU, US: require('./discovery').SEED_HASHTAGS.US });
+app.get('/report', (req, res) => res.send(views.layout('Free creator report', vp.reportFormPage({ niches: niches() }), null, req.user, { minimal: !req.user })));
+app.post('/report', (req, res) => {
+  try {
+    const { token } = freeReport.start({ email: req.body.email, market: req.body.market, niche: req.body.niche, custom: req.body.custom, ip: req.ip });
+    res.redirect(303, `/report/${token}`);
+  } catch (e) { res.status(400).send(views.layout('Free creator report', vp.reportFormPage({ error: e.message, values: req.body, niches: niches() }), null, req.user, { minimal: !req.user })); }
+});
+app.get('/report/:token', (req, res) => {
+  const row = q.reportByToken.get(req.params.token);
+  if (!row) return notFound(res, 'report not found');
+  const rows = row.result_json ? JSON.parse(row.result_json) : [];
+  res.send(views.layout('Your creator report', vp.reportResultPage({ row, summary: freeReport.summarise(rows) }), null, req.user, { minimal: !req.user }));
+});
+app.get('/leads', (req, res) => {
+  if (!auth.isOwner(req.user)) return notFound(res);
+  render(req, res, vp.leadsPage({ rows: q.allReports.all() }));
+});
 
 app.get('/privacy', (req, res) => res.send(views.layout('Privacy', vp.privacyPage(), null, req.user)));
 app.get('/terms', (req, res) => res.send(views.layout('Terms', vp.termsPage(), null, req.user)));
@@ -466,6 +521,7 @@ if (require.main === module) {
     if (config.autoSyncMinutes > 0) {
       setTimeout(() => autoSyncAll().catch(() => {}), 30000);
       setInterval(() => autoSyncAll().catch(() => {}), config.autoSyncMinutes * 60000);
+      setInterval(() => digest.tick().then((n) => n && console.log(`digest: built ${n}`)).catch((e) => console.error('digest tick failed', e.message)), 3600000);
     }
   });
 }

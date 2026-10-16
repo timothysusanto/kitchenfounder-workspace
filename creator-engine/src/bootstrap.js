@@ -12,9 +12,9 @@ const loop = require('./loop');
 const attribution = require('./attribution');
 const jobs = require('./jobs');
 
-async function bootstrapProgramme(spec, log = console.log) {
+async function bootstrapProgramme(spec, log = console.log, forStore = null) {
   if (!spec || !spec.name) return null;
-  const store = config.shopify.shop ? q.storeByShop.get(config.shopify.shop) : q.allStores.all()[0];
+  const store = forStore || (config.shopify.shop ? q.storeByShop.get(config.shopify.shop) : q.allStores.all()[0]);
   if (!store) { log('bootstrap: no store connected yet'); return null; }
   const out = { store: store.shop };
 
@@ -24,7 +24,7 @@ async function bootstrapProgramme(spec, log = console.log) {
   try { await jobs.syncStore(store.id); } catch (e) { log(`bootstrap: product sync failed: ${e.message}`); }
   const products = q.productsByStore.all(store.id);
   const needle = String(spec.product || '').toLowerCase();
-  const product = products.find((p) => needle && p.title.toLowerCase().includes(needle)) || products.find((p) => Number(p.price) > 0) || products[0];
+  const product = (spec.product_id && products.find((p) => p.id === Number(spec.product_id))) || products.find((p) => needle && p.title.toLowerCase().includes(needle)) || products.find((p) => Number(p.price) > 0) || products[0];
   if (!product) { log('bootstrap: store has no products synced'); return out; }
 
   let campaign = q.campaignsByStore.all(store.id).find((c) => c.name === spec.name);

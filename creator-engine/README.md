@@ -62,7 +62,7 @@ Deploy from GitHub; `nixpacks.toml` adds FFmpeg. Add a volume at `/data` and set
 ## Commands
 
 ```bash
-npm test                    # 62 tests: scoring, briefs, codes, attribution, commissions, accounts, billing, webhooks
+npm test                    # 66 tests: scoring, briefs, codes, attribution, commissions, accounts, billing, webhooks
 npm run dev                 # auto-restart
 node src/cli.js poll        # HeyGen render polling (hook tests only)
 ```
@@ -106,3 +106,11 @@ A brief fails if it lacks the in-video and `#ad` disclosure instruction, does no
 Set `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` (a recurring Price for the platform fee, e.g. $99/month) and `STRIPE_WEBHOOK_SECRET`. In Stripe, add a webhook endpoint `APP_URL/webhooks/stripe` for `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`. Brands get `TRIAL_DAYS` free, then POST actions redirect to **Billing** until they subscribe. The owner is never billed. The Billing page shows this month's creator-attributed revenue and the `PERFORMANCE_FEE_PCT` fee (invoice it at month end; it is not auto-charged).
 
 Shopify public-app submission needs: privacy policy `APP_URL/privacy`, compliance webhooks `APP_URL/webhooks/shopify/compliance` for `customers/data_request`, `customers/redact`, `shop/redact`, and the app URL/redirect set in the Dev Dashboard. See `docs/shopify-app-listing.md`.
+
+## The brand-owner flow
+
+1. **Hook:** `/report` is public. A visitor enters an email and a niche (or 3 hashtags) and gets ten ranked creators in about a minute. Results are cached 7 days per market+hashtags, each IP gets `REPORT_PER_IP_DAILY` per day, and live runs are capped at `REPORT_DAILY_CAP` a day so Apify spend is bounded. Owner sees the emails at `/leads`.
+2. **Sign up and connect** the store.
+3. **Setup wizard** (`/stores/:id/setup`, shown as "Start here" until a programme is open): product, customer discount, creator commission (with optional step-down). It syncs products, switches on order tracking, writes the brief, publishes the join page.
+4. **Creators join** from the link; codes and links are issued instantly.
+5. **Monday digest** (`/digest`): orders and revenue from creators in the last 7 days, new creators, commission owed and who to pay, creators with no sales after 2 weeks, and one next action. Built hourly-checked for Monday at `DIGEST_HOUR` in `DIGEST_TZ`; emailed through Resend if `RESEND_API_KEY` and `DIGEST_FROM` are set (verify the sending domain in Resend), otherwise saved for the page.

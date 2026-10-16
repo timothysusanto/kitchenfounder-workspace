@@ -39,6 +39,13 @@ const config = {
     trialDays: Number(env('TRIAL_DAYS', 14)),
     performanceFeePct: Number(env('PERFORMANCE_FEE_PCT', 10)),
   },
+  digest: {
+    resendKey: env('RESEND_API_KEY', ''),
+    from: env('DIGEST_FROM', ''),
+    timezone: env('DIGEST_TZ', 'Australia/Sydney'),
+    hour: Number(env('DIGEST_HOUR', 8)),
+  },
+  report: { dailyCap: Number(env('REPORT_DAILY_CAP', 15)), perIpPerDay: Number(env('REPORT_PER_IP_DAILY', 3)) },
   defaultMarket: env('DEFAULT_MARKET', 'AU'),
   allowSignup: env('ALLOW_SIGNUP', 'true') !== 'false',
   // Owner account managed from the environment: created on boot, password re-synced on every boot (change the var to change the password).

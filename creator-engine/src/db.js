@@ -158,6 +158,27 @@ CREATE TABLE IF NOT EXISTS users (
   brand_name TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+CREATE TABLE IF NOT EXISTS digests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  week TEXT NOT NULL,
+  subject TEXT, text TEXT, html TEXT, sent_via TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE(user_id, week)
+);
+CREATE TABLE IF NOT EXISTS reports (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  token TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL,
+  market TEXT NOT NULL,
+  hashtags TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'running',
+  result_json TEXT,
+  error TEXT,
+  ip TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_reports_cache ON reports(market, hashtags, status, created_at);
 CREATE TABLE IF NOT EXISTS sessions (
   id TEXT PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -275,6 +296,23 @@ const q = {
     FROM campaign_creators cc JOIN campaigns c ON c.id = cc.campaign_id JOIN creators cr ON cr.id = cc.creator_id WHERE c.store_id = ? ORDER BY revenue DESC`),
   storeOrderTotals: db.prepare(`SELECT COUNT(*) AS n, COALESCE(SUM(total),0) AS revenue, SUM(CASE WHEN campaign_creator_id IS NOT NULL THEN 1 ELSE 0 END) AS attributed_n,
       COALESCE(SUM(CASE WHEN campaign_creator_id IS NOT NULL THEN total ELSE 0 END),0) AS attributed_revenue FROM attributed_orders WHERE store_id = ?`),
+  // --- digest ---
+  weekOrders: db.prepare(`SELECT COUNT(*) AS orders, COALESCE(SUM(total),0) AS revenue FROM attributed_orders WHERE store_id = ? AND campaign_creator_id IS NOT NULL AND created_at >= ?`),
+  weekTopCreators: db.prepare(`SELECT cr.handle, COUNT(*) AS orders, COALESCE(SUM(o.total),0) AS revenue FROM attributed_orders o JOIN campaign_creators cc ON cc.id = o.campaign_creator_id JOIN creators cr ON cr.id = cc.creator_id WHERE o.store_id = ? AND o.created_at >= ? GROUP BY cr.handle ORDER BY revenue DESC LIMIT 3`),
+  staleCreators: db.prepare(`SELECT cr.handle, cc.portal_token, cc.joined_at FROM campaign_creators cc JOIN campaigns c ON c.id = cc.campaign_id JOIN creators cr ON cr.id = cc.creator_id WHERE c.store_id = ? AND cc.joined_at IS NOT NULL AND cc.joined_at <= datetime('now','-14 days') AND NOT EXISTS (SELECT 1 FROM attributed_orders o WHERE o.campaign_creator_id = cc.id) LIMIT 10`),
+  newCreatorsSince: db.prepare(`SELECT COUNT(*) AS n FROM campaign_creators cc JOIN campaigns c ON c.id = cc.campaign_id WHERE c.store_id = ? AND cc.joined_at >= ?`),
+  digestFor: db.prepare('SELECT 1 FROM digests WHERE user_id = ? AND week = ?'),
+  insertDigest: db.prepare('INSERT OR IGNORE INTO digests (user_id, week, subject, text, html, sent_via) VALUES (@user_id, @week, @subject, @text, @html, @sent_via)'),
+  latestDigest: db.prepare('SELECT * FROM digests WHERE user_id = ? ORDER BY id DESC LIMIT 1'),
+  digestUsers: db.prepare("SELECT id, email, role, brand_name FROM users"),
+  // --- free creator report ---
+  insertReport: db.prepare('INSERT INTO reports (token, email, market, hashtags, status, result_json, ip) VALUES (@token, @email, @market, @hashtags, @status, @result_json, @ip)'),
+  reportByToken: db.prepare('SELECT * FROM reports WHERE token = ?'),
+  finishReport: db.prepare('UPDATE reports SET status = ?, result_json = ?, error = ? WHERE id = ?'),
+  cachedReport: db.prepare("SELECT result_json FROM reports WHERE market = ? AND hashtags = ? AND status = 'done' AND created_at >= datetime('now','-7 days') ORDER BY id DESC LIMIT 1"),
+  reportsTodayByIp: db.prepare("SELECT COUNT(*) AS n FROM reports WHERE ip = ? AND created_at >= datetime('now','-1 day')"),
+  liveRunsToday: db.prepare("SELECT COUNT(*) AS n FROM reports WHERE status IN ('running','done','error') AND error IS NOT 'cached' AND created_at >= datetime('now','-1 day')"),
+  allReports: db.prepare('SELECT id, email, market, hashtags, status, created_at FROM reports ORDER BY id DESC LIMIT 200'),
   // --- accounts ---
   userCount: db.prepare('SELECT COUNT(*) AS n FROM users'),
   userByEmail: db.prepare('SELECT * FROM users WHERE email = ?'),
